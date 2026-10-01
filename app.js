@@ -98,7 +98,12 @@
   $$('[data-open-search]').forEach(b => b.addEventListener('click', () => { open($('#search-dialog')); $('#search-input').focus(); loadWasm().then(search); search(); }));
   $('#search-input')?.addEventListener('input', search);
 
-  const saved = () => { try { return JSON.parse(localStorage.getItem('godune-routes') || '[]'); } catch { return []; } };
+  const saved = () => {
+    try {
+      const values = JSON.parse(localStorage.getItem('godune-routes') || '[]');
+      return Array.isArray(values) ? values.filter(value => typeof value === 'string') : [];
+    } catch { return []; }
+  };
   $$('[data-save-route]').forEach(b => {
     const id = b.dataset.saveRoute;
     const refresh = () => { const on = saved().includes(id); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Маршрут сохранён' : 'Сохранить маршрут'; };
@@ -108,16 +113,15 @@
       catch { b.textContent = 'Браузер не разрешил сохранение'; }
     });
   });
-  $$('[data-step-check]').forEach(input => input.addEventListener('change', () => {
-    const checks = $$('[data-step-check]');
-    $('#walk-progress').textContent = `Пройдено остановок: ${checks.filter(c => c.checked).length} из ${checks.length}`;
-    const next = checks.find(c => !c.checked);
-    $('#next-stop').textContent = next ? `Следующая остановка: ${next.dataset.name}` : 'Прогулка завершена. До встречи у моря!';
-  }));
-  $$('[data-start-route]').forEach(b => b.addEventListener('click', () => {
-    $('#route-stops')?.scrollIntoView({block:'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-    $('[data-step-check]')?.focus();
-  }));
+  if (document.body.dataset.route) {
+    import(url('walk.mjs?v=1')).then(({initWalk}) => initWalk()).catch(() => {
+      const notice = $('#walk-storage');
+      if (notice) {
+        notice.hidden = false;
+        notice.textContent = 'Отметки пока не сохраняются. Обновите страницу, чтобы загрузить прогулку.';
+      }
+    });
+  }
   function navigatorLink(p) { return `https://yandex.ru/maps/?pt=${p.lon},${p.lat}&z=17&l=map`; }
   function loadMapLibrary() {
     if (window.maplibregl) return Promise.resolve();
