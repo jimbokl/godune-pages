@@ -286,3 +286,194 @@
   .route-facts dd { font-size: 27px; }
   .route-legend { grid-template-columns: 1fr; }
 }
+
+/* A quiet paper draft, beside one daily invitation to explore. */
+.trip-workshop { margin-top: 54px; margin-bottom: 70px; scroll-margin-top: 24px; }
+.workshop-heading { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 30px; }
+.workshop-heading h2 { font-size: clamp(39px, 4.2vw, 64px); font-weight: 300; letter-spacing: -1.4px; margin: 9px 0 16px; }
+.workshop-heading p:last-child { font: 12px/1.9 var(--sans); color: #53615e; }
+.month-choice { display: grid; gap: 9px; font: 10px/1.6 var(--sans); color: #53615e; min-width: 190px; }
+.month-choice select { appearance: auto; width: 100%; padding: 12px 14px; border: 1px solid #c9cfca; border-radius: 0; background: #faf9f5; color: #243837; font: 14px/1.5 var(--sans); min-height: 48px; }
+.workshop-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 28px; align-items: start; }
+.trip-draft { background: #f3f1ea; border: 1px solid #dddcd2; padding: 30px 34px; }
+.trip-draft-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 1px solid #d3d4c9; padding-bottom: 18px; margin-bottom: 24px; }
+.draft-mark { font: italic 20px var(--serif); color: #907858; }
+.trip-draft h3 { font-size: 31px; font-weight: 300; margin-bottom: 17px; }
+.trip-empty,.trip-order-note,.trip-device-note { font: 12px/1.9 var(--sans); color: #596862; }
+.trip-empty { max-width: 390px; }
+.trip-empty[hidden],#trip-storage[hidden],.save-feedback[hidden] { display: none; }
+.trip-draft-links { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 17px; }
+.trip-draft-links a,.trip-draft > .route-download { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; font: 11px/1.6 var(--sans); text-decoration: underline; text-underline-offset: 5px; }
+.trip-order-note { font-size: 10px; margin-top: 12px; }
+.trip-draft .saved-walks-heading { margin-top: 31px; padding-top: 24px; border-top: 1px solid #d3d4c9; }
+.trip-device-note { font-size: 10px; margin-top: 18px; }
+#trip-storage { font: 11px/1.8 var(--sans); border-left: 2px solid #986339; padding-left: 12px; margin-top: 14px; }
+.my-trip-list { list-style: none; padding: 0; margin: 0; }
+.my-trip-list li { display: flex; align-items: center; gap: 18px; padding: 15px 0; border-bottom: 1px solid #d3d4c9; }
+.my-trip-list li > div:first-child { flex: 1; min-width: 0; }
+.my-trip-list li a { font: 20px/1.4 var(--serif); text-decoration: none; }
+.my-trip-list li a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.my-trip-list li small { display: block; margin-top: 5px; font: 9px/1.7 var(--sans); color: #596862; }
+.trip-item-actions { display: flex; flex-shrink: 0; }
+.trip-item-actions button { min-width: 44px; min-height: 44px; border: 0; background: none; color: #324a42; font-size: 22px; cursor: pointer; }
+.trip-item-actions button:disabled { opacity: .25; cursor: default; }
+.daily-discovery { background: #faf9f5; border: 1px solid #dddcd2; }
+.daily-discovery figure { margin: 0; position: relative; }
+.daily-discovery figure img { width: 100%; display: block; height: auto; aspect-ratio: 1.5; object-fit: cover; }
+.daily-discovery figcaption { position: absolute; bottom: 10px; left: 14px; padding: 4px 7px; font: 8px/1.6 var(--sans); color: #fdfcf8; background: #233832ba; letter-spacing: .15px; }
+.discovery-copy { padding: 24px 28px 25px; }
+.discovery-area { font: 10px/1.8 var(--sans); color: #7d796c; margin-top: 13px; }
+.discovery-copy h3 { font-size: 32px; line-height: 1.2; font-weight: 300; margin: 9px 0 15px; }
+.discovery-copy h3 a { text-decoration: none; }
+.discovery-copy > p:not(.eyebrow):not(.discovery-area) { font: 12px/1.9 var(--sans); color: #53615e; }
+.save-item { border: 1px solid #c3c9bf; background: transparent; color: #344d44; padding: 10px 14px; min-height: 44px; font: 10px/1.5 var(--sans); cursor: pointer; }
+.save-item:hover,.save-item[aria-pressed="true"] { background: #e7eae1; border-color: #8d9d91; }
+.save-item:disabled { opacity: .7; cursor: default; }
+.discovery-copy .save-item { margin-top: 20px; }
+.poi-card-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 18px; }
+.route-row .save-item { margin-top: 18px; }
+.save-feedback { position: fixed; left: 50%; transform: translateX(-50%); bottom: max(22px, env(safe-area-inset-bottom)); z-index: 30; max-width: min(490px, calc(100vw - 32px)); width: max-content; padding: 13px 20px; background: #263c36; color: #fffef7; box-shadow: 0 6px 28px #142c3133; font: 11px/1.7 var(--sans); }
+.shore-interlude { margin: 64px 0 0; position: relative; }
+.shore-interlude img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: cover; object-position: 50% 58%; }
+.shore-interlude figcaption { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 17px 0; color: #596862; }
+.shore-interlude figcaption > span { font: italic 25px var(--serif); }
+.shore-interlude figcaption small { font: 9px/1.7 var(--sans); }
+@media (max-width: 1000px) {
+  .workshop-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; }
+  .trip-draft { padding: 25px; }
+  .my-trip-list li { flex-wrap: wrap; gap: 5px; }
+  .my-trip-list li > div:first-child { flex-basis: 100%; }
+}
+@media (max-width: 700px) {
+  .trip-workshop { margin-top: 36px; margin-bottom: 46px; }
+  .workshop-heading { align-items: start; flex-direction: column; gap: 22px; margin-bottom: 24px; }
+  .workshop-heading h2 { font-size: 43px; }
+  .month-choice { width: 100%; }
+  .month-choice select { font-size: 16px; }
+  .workshop-grid { grid-template-columns: 1fr; gap: 24px; }
+  .trip-draft { padding: 23px; }
+  .discovery-copy { padding: 23px; }
+  .my-trip-list li > div:first-child { flex-basis: auto; }
+  .my-trip-list li { gap: 10px; flex-wrap: nowrap; }
+  .my-trip-list li a { font-size: 19px; }
+  .shore-interlude { margin-top: 42px; }
+  .shore-interlude figcaption { align-items: start; flex-direction: column; gap: 9px; }
+}
+@media (max-width: 370px) {
+  .trip-draft,.discovery-copy { padding: 19px; }
+  .my-trip-list li { flex-wrap: wrap; }
+  .my-trip-list li > div:first-child { flex-basis: 100%; }
+}
+
+/* Places and collections share the quiet typography of the walking atlas. */
+.place-intro,.collection-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .9fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+.place-intro-copy,.collection-intro-copy { padding-top: 8px; min-width: 0; }
+.place-intro .inner-title,.collection-intro .inner-title {
+  font-size: clamp(40px, 4.8vw, 70px);
+  line-height: 1.12;
+  font-weight: 300;
+  letter-spacing: -1.5px;
+  text-wrap: balance;
+  margin: 21px 0 24px;
+  overflow-wrap: anywhere;
+}
+.place-intro .inner-lead,.collection-intro .inner-lead { font-size: 14px; line-height: 1.9; }
+.place-advice { border-left: 2px solid #ad865b; padding-left: 21px; margin-top: 33px; }
+.place-advice .inner-kicker { font-size: 9px; letter-spacing: 1.5px; }
+.place-advice p:last-child { font-size: 12px; line-height: 1.9; color: #586566; margin: 12px 0 0; }
+.place-intro .inner-actions,.collection-intro .inner-actions { margin: 28px 0 0; gap: 10px 25px; }
+.place-intro .button,.collection-intro .button { min-height: 48px; font-size: 17px; padding-inline: 20px; gap: 20px; }
+.place-grid { fill: none; stroke: #dedfd6; stroke-width: .6px; }
+.place-focus-ring { fill: #c9b08a; fill-opacity: .17; stroke: #ad865b; stroke-width: .7px; }
+.place-focus { fill: #9d703f; stroke: #f7f5ef; stroke-width: 2px; }
+.place-plate-focus { display: flex; gap: 11px; font-size: 12px; margin: 2px 0 17px; line-height: 1.7; }
+.place-plate-focus span { color: #9d703f; font-size: 11px; }
+.place-legend { grid-template-columns: 1fr; }
+.place-legend a { align-items: flex-start; gap: 14px; font-size: 11px; padding-block: 12px; }
+.place-legend small { display: block; color: #6d776e; font-size: 9px; margin-top: 3px; }
+.place-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, .85fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 90px);
+  margin-top: 80px;
+}
+.place-layout h2,.collection-walks h2 { font-size: clamp(34px, 3.4vw, 49px); font-weight: 300; line-height: 1.2; margin: 15px 0 24px; }
+.place-layout .planner-note { font-size: 11px; line-height: 1.9; max-width: 540px; margin-bottom: 24px; }
+.numbered-places .poi-card { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 22px; padding: 26px 0; scroll-margin-top: 25px; }
+.poi-index { font-family: var(--serif); font-size: 30px; font-weight: 300; line-height: 1.4; color: #947b5b; }
+.numbered-places .poi-card .meta { font-size: 9px; color: #7b6b54; margin: 0 0 11px; line-height: 1.8; }
+.numbered-places .poi-card h3 { font-weight: 300; font-size: 31px; line-height: 1.25; margin: 0 0 13px; }
+.poi-card h3 a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.numbered-places .poi-card p { font-size: 12px; line-height: 1.9; color: #586566; margin: 0; }
+.numbered-places .poi-card .stop-nav { display: inline-flex; align-items: center; gap: 15px; min-height: 44px; margin-top: 9px; font-size: 10px; text-decoration: underline; text-underline-offset: 4px; }
+.place-practical h2,.collection-practical h2 { font-size: 36px; margin-top: 15px; }
+.place-practical .route-source-note a { text-decoration: underline; text-underline-offset: 3px; }
+.collection-guide { background: #f7f5ef; border: 1px solid #deded5; padding: 27px 30px 24px; }
+.collection-guide .inner-kicker { font-size: 9px; letter-spacing: 1.5px; }
+.collection-total { display: flex; align-items: baseline; gap: 15px; font-family: var(--serif); font-size: 80px; font-weight: 300; line-height: 1.1; margin: 25px 0 22px; }
+.collection-total span { font-family: var(--sans); font-size: 12px; color: #647169; }
+.collection-composition { list-style: none; margin: 0; padding: 0; }
+.collection-composition li { border-top: 1px solid #d9ddd3; }
+.collection-composition a { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 46px; font-size: 11px; }
+.collection-composition a:hover { color: #956732; }
+.collection-composition span:last-child { color: #8d7251; font-size: 10px; }
+.collection-guide-note { font-size: 10px; color: #6d776e; line-height: 1.85; margin-top: 21px; }
+.collection-guide h2 { font-size: 35px; font-weight: 300; margin: 18px 0 24px; }
+.collection-guide .trip-picker { display: grid; grid-template-columns: 1fr; gap: 17px; margin: 0; padding: 0; border: 0; background: transparent; }
+.collection-guide .trip-picker select { width: 100%; font-size: 12px; padding-block: 14px; }
+.collection-guide .trip-picker label { min-width: 0; }
+.collection-guide .trip-picker .button { margin-top: 7px; width: 100%; min-width: 0; font-size: 19px; justify-content: space-between; padding-inline: 18px; }
+.section-jumps { display: flex; gap: 18px 30px; flex-wrap: wrap; padding-block: 14px; border-block: 1px solid var(--line); margin-top: 60px; }
+.section-jumps a { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; }
+.section-jumps a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.collection-layout { margin-top: 54px; }
+.collection-layout .route-count { text-align: left; font-size: 11px; margin: 0 0 26px; line-height: 1.8; }
+.collection-layout .route-row { grid-template-columns: 36px minmax(0, 1fr) 24px; gap: 22px; padding-block: 29px; }
+.collection-layout .route-row[hidden] { display: none; }
+.collection-layout .route-number { font-size: 30px; color: #947b5b; }
+.collection-layout .route-row h3 { font-size: 31px; font-weight: 300; line-height: 1.25; }
+.collection-layout .route-row .eyebrow { font-size: 9px; }
+.collection-layout .route-row p:last-child { font-size: 12px; line-height: 1.9; }
+.collection-layout .route-link { align-self: center; }
+.collection-walks { margin-top: 75px; }
+.collection-footer .tool-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.collection-footer .collections-nav a { display: flex; align-items: center; min-height: 56px; padding: 15px; line-height: 1.8; }
+.section-jumps ~ .place-layout h2,.collection-walks,.collection-practical { scroll-margin-top: 24px; }
+@media (max-width: 1000px) {
+  .place-intro,.collection-intro { gap: 32px; }
+  .place-intro .inner-title,.collection-intro .inner-title { font-size: 45px; }
+  .place-layout { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
+  .collection-guide { padding-inline: 23px; }
+}
+@media (max-width: 700px) {
+  .place-intro,.collection-intro { grid-template-columns: 1fr; gap: 35px; }
+  .place-intro-copy,.collection-intro-copy { padding-top: 0; }
+  .place-intro .inner-title,.collection-intro .inner-title { font-size: clamp(35px, 9.5vw, 48px); letter-spacing: -.9px; margin-top: 16px; }
+  .place-intro .inner-lead,.collection-intro .inner-lead { font-size: 13px; }
+  .place-advice { margin-top: 25px; padding-left: 17px; }
+  .place-layout { grid-template-columns: 1fr; gap: 35px; margin-top: 52px; }
+  .place-layout h2,.collection-walks h2 { font-size: 35px; }
+  .numbered-places .poi-card { grid-template-columns: 31px minmax(0, 1fr); gap: 14px; padding-block: 24px; }
+  .poi-index { font-size: 28px; }
+  .numbered-places .poi-card h3 { font-size: 27px; }
+  .collection-total { font-size: 72px; margin-top: 18px; }
+  .collection-guide .trip-picker select { font-size: 16px; }
+  .section-jumps { margin-top: 36px; gap: 0 24px; padding-block: 10px; }
+  .collection-layout { margin-top: 35px; }
+  .collection-layout .route-row { grid-template-columns: 29px minmax(0, 1fr) 20px; gap: 13px; }
+  .collection-layout .route-row h3 { font-size: 26px; }
+  .collection-layout .route-number { font-size: 27px; }
+  .collection-layout .route-link { width: 24px; height: 44px; }
+  .collection-walks { margin-top: 52px; }
+}
+@media (max-width: 420px) {
+  .place-intro .inner-actions,.collection-intro .inner-actions { flex-direction: column; align-items: stretch; }
+  .place-intro .route-download,.collection-intro .route-download { justify-content: center; }
+  .place-intro .button,.collection-intro .button { justify-content: space-between; }
+}

@@ -1,1329 +1,2027 @@
 {
-  "version": 1,
-  "updated_at": "2026-10-01",
+  "collections": [
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "Преголя связывает несколько разных прогулок: вокруг собора, вдоль музейной набережной, через мосты к Рыбной деревне. Виллы Амалиенау и городские ворота стоит оставить для отдельного пути.",
+      "name": "Калининград: что посмотреть",
+      "path": "kaliningrad/chto-posmotret/",
+      "poi": [
+        "kafedralny-sobor",
+        "mogila-kanta",
+        "ostrov-kanta",
+        "rybnaya-derevnya",
+        "bashnya-mayak",
+        "medovyy-most",
+        "sudno-vityaz",
+        "muzej-mirovogo-okeana",
+        "planeta-okean",
+        "mayak-irbenskiy",
+        "fridrihsburgskie-vorota",
+        "brandenburgskie-vorota",
+        "korolevskie-vorota",
+        "zakhaymskie-vorota",
+        "muzej-yantarya",
+        "rosgartenskie-vorota",
+        "kirha-svyatogo-semeystva",
+        "kirha-korolevy-luizy",
+        "centralnyy-park",
+        "villa-shmidt",
+        "villa-leo",
+        "altes-haus",
+        "kaliningradskiy-zoopark",
+        "pergola-korolevy-luizy"
+      ]
+    },
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "В Зеленоградске прогулка легко меняет направление: с Курортного проспекта к морю, от старого здания — к небольшой музейной коллекции. Выберите несколько остановок и оставьте время на берег.",
+      "name": "Зеленоградск: что посмотреть",
+      "path": "zelenogradsk/chto-posmotret/",
+      "poi": [
+        "promenad-zelenogradsk",
+        "kurortnyy-prospekt",
+        "murarium",
+        "muzej-zelenogradska",
+        "muzej-skeletov",
+        "kirha-svyatogo-adalberta",
+        "kurhaus-kranc",
+        "byuvet-luizy",
+        "skver-luizy",
+        "koshachiy-svetofor"
+      ]
+    },
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "На косе лес, дюны и море лежат близко на карте, но у каждой тропы своё начало. Выберите прогулку, а переезд до следующей остановки рассчитайте отдельно.",
+      "name": "Куршская коса: что посмотреть",
+      "path": "kurshskaya-kosa/chto-posmotret/",
+      "poi": [
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "smotrovaya-efa",
+        "vysota-myullera",
+        "fringilla",
+        "korolevskiy-bor",
+        "plyazh-lesnoy",
+        "mayak-lesnoy"
+      ]
+    },
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "Озеро Тихое, водонапорная башня и променад показывают Светлогорск с разных сторон. Решите заранее, включать ли спуск к морю: обратный подъём тоже займёт время.",
+      "name": "Светлогорск: что посмотреть",
+      "path": "svetlogorsk/chto-posmotret/",
+      "poi": [
+        "promenad-svetlogorsk",
+        "bashnya-svetlogorsk",
+        "ozero-tihoe",
+        "solnechnye-chasy"
+      ]
+    },
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "Маяк и музей Балтийского флота дают два взгляда на город у морского канала. Начните с береговой прогулки или подстройте день под посещение музея.",
+      "name": "Балтийск: что посмотреть",
+      "path": "baltiysk/chto-posmotret/",
+      "poi": [
+        "baltiyskiy-mayak",
+        "muzej-baltiyskogo-flota"
+      ]
+    },
+    {
+      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
+      "featured": true,
+      "intro": "В Янтарном можно построить день вокруг берега: идти по променаду, задержаться на пляже, развернуться, когда захочется. Длину прогулки выбирайте по ветру и своим силам.",
+      "name": "Янтарный: что посмотреть",
+      "path": "yantarny/chto-posmotret/",
+      "poi": [
+        "plyazh-yantarny",
+        "promenad-yantarny"
+      ]
+    },
+    {
+      "advice": "Время включает ходьбу и короткие остановки. Долгое посещение музеев, дорогу до начала и ожидание транспорта планируйте отдельно.",
+      "featured": true,
+      "intro": "У моря взгляд уходит к горизонту, в лесу — к соснам, в городе — к деталям фасадов. Здесь пять прогулок по Калининграду и Куршской косе: выберите место и время, остальное посмотрите по пути.",
+      "name": "Пешие маршруты по Балтике",
+      "path": "routes/",
+      "poi": [
+        "villa-leo",
+        "kafedralny-sobor",
+        "korolevskie-vorota",
+        "tancuyushchiy-les",
+        "vysota-efa"
+      ]
+    },
+    {
+      "advice": "Отметки на карте помогают выбрать район, но не заменяют путь по улицам и разрешённым тропам.",
+      "featured": true,
+      "intro": "Собор у реки, сосновая тропа, городской променад — у каждой остановки свой масштаб. Найдите места для поездки и посмотрите, что можно соединить в одну прогулку.",
+      "name": "Места Калининградской области",
+      "path": "places/",
+      "poi": [
+        "kafedralny-sobor",
+        "mogila-kanta",
+        "ostrov-kanta",
+        "rybnaya-derevnya",
+        "bashnya-mayak",
+        "medovyy-most",
+        "sudno-vityaz",
+        "muzej-mirovogo-okeana",
+        "planeta-okean",
+        "mayak-irbenskiy",
+        "fridrihsburgskie-vorota",
+        "brandenburgskie-vorota",
+        "korolevskie-vorota",
+        "zakhaymskie-vorota",
+        "muzej-yantarya",
+        "rosgartenskie-vorota",
+        "kirha-svyatogo-semeystva",
+        "kirha-korolevy-luizy",
+        "centralnyy-park",
+        "villa-shmidt",
+        "villa-leo",
+        "altes-haus",
+        "kaliningradskiy-zoopark",
+        "pergola-korolevy-luizy",
+        "promenad-zelenogradsk",
+        "kurortnyy-prospekt",
+        "murarium",
+        "muzej-zelenogradska",
+        "muzej-skeletov",
+        "kirha-svyatogo-adalberta",
+        "kurhaus-kranc",
+        "byuvet-luizy",
+        "skver-luizy",
+        "koshachiy-svetofor",
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "smotrovaya-efa",
+        "vysota-myullera",
+        "fringilla",
+        "korolevskiy-bor",
+        "plyazh-lesnoy",
+        "mayak-lesnoy",
+        "promenad-svetlogorsk",
+        "bashnya-svetlogorsk",
+        "ozero-tihoe",
+        "solnechnye-chasy",
+        "baltiyskiy-mayak",
+        "muzej-baltiyskogo-flota",
+        "plyazh-yantarny",
+        "promenad-yantarny"
+      ]
+    },
+    {
+      "advice": "Сначала уточните сеанс и билет. Затем подстройте маршрут; время внутри музея не равно времени перехода между точками.",
+      "featured": true,
+      "intro": "На музейной набережной можно увидеть суда, в Зеленоградске — выбрать небольшую тематическую коллекцию. Начните с одного музея, а соседние места оставьте для прогулки после него.",
+      "name": "Музеи по пути",
+      "path": "museums/",
+      "poi": [
+        "sudno-vityaz",
+        "muzej-mirovogo-okeana",
+        "planeta-okean",
+        "mayak-irbenskiy",
+        "muzej-yantarya",
+        "altes-haus",
+        "murarium",
+        "muzej-zelenogradska",
+        "muzej-skeletov",
+        "muzej-baltiyskogo-flota"
+      ]
+    },
+    {
+      "advice": "Для косы проверяйте правила национального парка. Погода и доступность дорожек важнее прямого расстояния между метками.",
+      "featured": true,
+      "intro": "Дюны, сосновый лес и вода меняют темп поездки. Здесь собраны природные остановки на косе и зелёные места в городах; до начала некоторых прогулок понадобится транспорт.",
+      "name": "Дюны, лес и вода",
+      "path": "nature/",
+      "poi": [
+        "ostrov-kanta",
+        "centralnyy-park",
+        "kaliningradskiy-zoopark",
+        "skver-luizy",
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "fringilla",
+        "korolevskiy-bor",
+        "plyazh-lesnoy",
+        "ozero-tihoe",
+        "plyazh-yantarny"
+      ]
+    },
+    {
+      "advice": "Обзорная карта показывает расположение объектов. Линии пяти пеших маршрутов доступны из их карточек.",
+      "featured": true,
+      "intro": "Посмотрите на регион целиком, затем приблизьте свой район. На карте собраны места первого каталога и линии пяти прогулок — от городских улиц до троп на косе.",
+      "name": "Карта мест и маршрутов",
+      "path": "map/",
+      "poi": [
+        "kafedralny-sobor",
+        "mogila-kanta",
+        "ostrov-kanta",
+        "rybnaya-derevnya",
+        "bashnya-mayak",
+        "medovyy-most",
+        "sudno-vityaz",
+        "muzej-mirovogo-okeana",
+        "planeta-okean",
+        "mayak-irbenskiy",
+        "fridrihsburgskie-vorota",
+        "brandenburgskie-vorota",
+        "korolevskie-vorota",
+        "zakhaymskie-vorota",
+        "muzej-yantarya",
+        "rosgartenskie-vorota",
+        "kirha-svyatogo-semeystva",
+        "kirha-korolevy-luizy",
+        "centralnyy-park",
+        "villa-shmidt",
+        "villa-leo",
+        "altes-haus",
+        "kaliningradskiy-zoopark",
+        "pergola-korolevy-luizy",
+        "promenad-zelenogradsk",
+        "kurortnyy-prospekt",
+        "murarium",
+        "muzej-zelenogradska",
+        "muzej-skeletov",
+        "kirha-svyatogo-adalberta",
+        "kurhaus-kranc",
+        "byuvet-luizy",
+        "skver-luizy",
+        "koshachiy-svetofor",
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "smotrovaya-efa",
+        "vysota-myullera",
+        "fringilla",
+        "korolevskiy-bor",
+        "plyazh-lesnoy",
+        "mayak-lesnoy",
+        "promenad-svetlogorsk",
+        "bashnya-svetlogorsk",
+        "ozero-tihoe",
+        "solnechnye-chasy",
+        "baltiyskiy-mayak",
+        "muzej-baltiyskogo-flota",
+        "plyazh-yantarny",
+        "promenad-yantarny"
+      ]
+    },
+    {
+      "advice": "Начните у вилл и закончите в парке. Частные здания смотрите с улицы, посещение музея согласуйте заранее.",
+      "featured": false,
+      "intro": "Виллы Лео и Шмидт, «Альтес Хаус», кирха памяти королевы Луизы и Центральный парк. Начните с деталей зданий, затем продолжите прогулку среди деревьев.",
+      "name": "Амалиенау пешком",
+      "path": "kaliningrad/amalienau/",
+      "poi": [
+        "villa-leo",
+        "villa-shmidt",
+        "altes-haus",
+        "kirha-korolevy-luizy",
+        "pergola-korolevy-luizy"
+      ]
+    },
+    {
+      "advice": "Выберите мост до перехода на следующий берег. Для музейной набережной оставьте свободное время, если решите зайти внутрь.",
+      "featured": false,
+      "intro": "Здесь направление задаёт Преголя. Собор, мосты и Рыбная деревня складываются в прогулку по двум берегам; на карте видно, где перейти реку.",
+      "name": "Набережные Калининграда",
+      "path": "kaliningrad/naberezhnye/",
+      "poi": [
+        "ostrov-kanta",
+        "rybnaya-derevnya",
+        "medovyy-most",
+        "sudno-vityaz",
+        "planeta-okean"
+      ]
+    },
+    {
+      "advice": "Все ворота за одну короткую прогулку — длинный переход. Выберите южную или восточную группу, а остальные оставьте на другой день.",
+      "featured": false,
+      "intro": "Городские ворота сохранились в разных частях Калининграда. Выберите несколько для своего дня: между ними придётся идти по улицам или ехать.",
+      "name": "Исторические ворота Калининграда",
+      "path": "kaliningrad/vorota/",
+      "poi": [
+        "brandenburgskie-vorota",
+        "fridrihsburgskie-vorota",
+        "korolevskie-vorota",
+        "zakhaymskie-vorota",
+        "rosgartenskie-vorota"
+      ]
+    },
+    {
+      "advice": "Выбирайте билет под конкретную экспозицию. Четыре метки рядом не означают четыре быстрых посещения.",
+      "featured": false,
+      "intro": "«Витязь», маяк «Ирбенский» и музейные корпуса стоят у одной набережной. Можно пройти вдоль воды или выбрать отдельную экспозицию для долгой остановки.",
+      "name": "Музеи у Преголи",
+      "path": "kaliningrad/muzei-u-reki/",
+      "poi": [
+        "sudno-vityaz",
+        "muzej-mirovogo-okeana",
+        "planeta-okean",
+        "mayak-irbenskiy"
+      ]
+    },
+    {
+      "advice": "Концерт задаёт время дня. Кирха Святого Семейства находится на юге, кирха Луизы — у Центрального парка; между ними нужен отдельный переход.",
+      "featured": false,
+      "intro": "Кафедральный собор и исторические кирхи находятся в разных районах. Для концерта сначала выберите сеанс; для знакомства с архитектурой — удобный путь между зданиями.",
+      "name": "Орган и архитектура",
+      "path": "kaliningrad/organ-i-arhitektura/",
+      "poi": [
+        "kafedralny-sobor",
+        "kirha-svyatogo-semeystva",
+        "kirha-korolevy-luizy"
+      ]
+    },
+    {
+      "advice": "Если есть только часть дня, оставайтесь у острова. Добавляйте башню или музей лишь после проверки времени посещения.",
+      "featured": false,
+      "intro": "Собор, могила Канта, дорожки острова и Медовый мост лежат рядом с рекой. Хороший масштаб для короткой прогулки с продолжением к Рыбной деревне.",
+      "name": "Остров Канта и ближайшие остановки",
+      "path": "kaliningrad/ostrov-kanta/",
+      "poi": [
+        "kafedralny-sobor",
+        "mogila-kanta",
+        "medovyy-most",
+        "rybnaya-derevnya"
+      ]
+    },
+    {
+      "advice": "Выберите один большой объект — зоопарк или музей — и короткую прогулку. Доступность, возрастные особенности и билеты уточните для вашей группы.",
+      "featured": false,
+      "intro": "Зоопарк, парк и музей предлагают разный ритм дня. Выберите одно основное место, а остальные остановки добавьте, если останутся время и силы.",
+      "name": "Калининград с детьми",
+      "path": "kaliningrad/s-detmi/",
+      "poi": [
+        "kaliningradskiy-zoopark",
+        "centralnyy-park",
+        "sudno-vityaz",
+        "planeta-okean"
+      ]
+    },
+    {
+      "advice": "Не рассчитывайте на вход без проверки: у мест разные часы и правила записи. Переходы между музеями остаются уличными.",
+      "featured": false,
+      "intro": "Когда дождь меняет планы, день можно собрать вокруг музея. Здесь несколько крытых остановок; билеты и время посещения лучше уточнить перед выходом.",
+      "name": "Калининград в дождь",
+      "path": "kaliningrad/v-dozhd/",
+      "poi": [
+        "muzej-yantarya",
+        "planeta-okean",
+        "muzej-mirovogo-okeana",
+        "altes-haus"
+      ]
+    },
+    {
+      "advice": "Центральный парк и остров Канта — отдельные районы. Выберите один для короткой прогулки или учтите путь между ними.",
+      "featured": false,
+      "intro": "В Центральном парке и на острове Канта городской день становится спокойнее. Выберите прогулку среди деревьев или рядом с Преголей.",
+      "name": "Зелёные прогулки в Калининграде",
+      "path": "kaliningrad/zelenye-progulki/",
+      "poi": [
+        "centralnyy-park",
+        "pergola-korolevy-luizy",
+        "ostrov-kanta"
+      ]
+    },
+    {
+      "advice": "Для подъёма уточните часы; береговая прогулка работает как отдельный вариант. Ветер и свет влияют на выбор остановки.",
+      "featured": false,
+      "intro": "На Преголю можно смотреть с набережной, Медового моста или башни в Рыбной деревне. Выберите свой уровень: береговая прогулка и подъём требуют разного времени.",
+      "name": "Смотровая и речные виды",
+      "path": "kaliningrad/smotrovye/",
+      "poi": [
+        "bashnya-mayak",
+        "medovyy-most",
+        "rybnaya-derevnya"
+      ]
+    },
+    {
+      "advice": "Начните с готовой прогулки по набережным или воротам. Переходы между районами планируйте по реальному треку.",
+      "featured": false,
+      "intro": "Собор, остров, мосты и Рыбная деревня можно связать пешей прогулкой. Начните с готового пути или выберите свои остановки и проверьте переходы между ними.",
+      "name": "Калининград без машины",
+      "path": "kaliningrad/bez-mashiny/",
+      "poi": [
+        "kafedralny-sobor",
+        "rybnaya-derevnya",
+        "muzej-mirovogo-okeana",
+        "korolevskie-vorota"
+      ]
+    },
+    {
+      "advice": "Это отдельный сценарий от Амалиенау. Учитывайте городские улицы и переходы; посещение зала добавляется по афише.",
+      "featured": false,
+      "intro": "Фридрихсбургские и Бранденбургские ворота, кирха Святого Семейства — три повода посмотреть южную часть города. Они находятся в разных местах; переходы планируйте отдельно.",
+      "name": "Южный берег Калининграда",
+      "path": "kaliningrad/yuzhnyy-bereg/",
+      "poi": [
+        "brandenburgskie-vorota",
+        "kirha-svyatogo-semeystva",
+        "fridrihsburgskie-vorota"
+      ]
+    },
+    {
+      "advice": "Сначала пройдите центр, затем выходите к морю. Один музей проще сочетать с берегом, чем несколько посещений подряд.",
+      "featured": false,
+      "intro": "Курортный проспект, «Курхаус», музей и променад дают несколько направлений на один день. Оставьте время между остановками: море не требует расписания.",
+      "name": "Зеленоградск за один день",
+      "path": "zelenogradsk/za-odin-den/",
+      "poi": [
+        "kurortnyy-prospekt",
+        "kurhaus-kranc",
+        "promenad-zelenogradsk",
+        "byuvet-luizy",
+        "murarium"
+      ]
+    },
+    {
+      "advice": "Выберите по интересу: история курорта, кошачья тема или необычная коллекция. Проверяйте билеты и часы каждого места отдельно.",
+      "featured": false,
+      "intro": "«Мурариум», краеведческий музей и музей скелетов рассказывают о разных предметах. Выберите тему, которая вам ближе, и уточните время посещения.",
+      "name": "Музеи Зеленоградска",
+      "path": "zelenogradsk/muzei/",
+      "poi": [
+        "murarium",
+        "muzej-zelenogradska",
+        "muzej-skeletov"
+      ]
+    },
+    {
+      "advice": "Осматривайте фасады с улицы. У гостиниц и действующих зданий собственные правила доступа.",
+      "featured": false,
+      "intro": "Курортный проспект, «Курхаус» и историческая кирха помогают рассмотреть город через его здания. Идите от одного фасада к другому, сверяя переходы на карте.",
+      "name": "Архитектура Зеленоградска",
+      "path": "zelenogradsk/arhitektura/",
+      "poi": [
+        "kurhaus-kranc",
+        "kirha-svyatogo-adalberta",
+        "kurortnyy-prospekt"
+      ]
+    },
+    {
+      "advice": "Не превращайте поиск деталей в гонку. Музей требует времени, а светофор — безопасного места для фотографии.",
+      "featured": false,
+      "intro": "Кошачья тема встречается в музейной коллекции и городских деталях Зеленоградска. «Мурариум» и кошачий светофор можно включить в прогулку по центру.",
+      "name": "Кошачьи остановки Зеленоградска",
+      "path": "zelenogradsk/koshachiy-gorod/",
+      "poi": [
+        "murarium",
+        "koshachiy-svetofor",
+        "kurortnyy-prospekt"
+      ]
+    },
+    {
+      "advice": "Для ветреного дня предусмотрите короткую береговую прогулку и возврат в центр. Береговая метка не гарантирует условия для купания.",
+      "featured": false,
+      "intro": "Начните с променада, затем выберите остановку в городской части. Здесь берег и центр можно чередовать, меняя длину прогулки по погоде.",
+      "name": "Зеленоградск у моря",
+      "path": "zelenogradsk/u-morya/",
+      "poi": [
+        "promenad-zelenogradsk",
+        "byuvet-luizy",
+        "kurhaus-kranc"
+      ]
+    },
+    {
+      "advice": "Сначала проверьте часы выбранного музея. Курхаус в подборке — архитектурный ориентир, а не обещание свободного входа.",
+      "featured": false,
+      "intro": "В дождливый день Зеленоградск можно рассматривать изнутри — через музейные коллекции. Выберите одну или две и оставьте запас времени на переходы.",
+      "name": "Зеленоградск в дождь",
+      "path": "zelenogradsk/v-dozhd/",
+      "poi": [
+        "muzej-zelenogradska",
+        "murarium",
+        "muzej-skeletov",
+        "kurhaus-kranc"
+      ]
+    },
+    {
+      "advice": "Задайте место разворота на променаде и оставьте паузу в сквере. Расписание обратного транспорта проверьте заранее.",
+      "featured": false,
+      "intro": "Сквер, бювет и историческое здание — небольшие остановки для дня без спешки. Выберите короткий путь и задержитесь там, где захочется.",
+      "name": "Неспешный день в Зеленоградске",
+      "path": "zelenogradsk/spokoynyy-den/",
+      "poi": [
+        "skver-luizy",
+        "kurortnyy-prospekt",
+        "byuvet-luizy",
+        "promenad-zelenogradsk"
+      ]
+    },
+    {
+      "advice": "Между Танцующим лесом и Эфа нужен переезд. Линии каждой прогулки открываются отдельно; доступ сверяйте с сообщениями парка.",
+      "featured": false,
+      "intro": "Лесная дорожка и подъём к дюнам дают разные прогулки. Танцующий лес и высота Эфа — отдельные тропы; между их началами нужен переезд.",
+      "name": "Пешие маршруты Куршской косы",
+      "path": "kurshskaya-kosa/marshruty/",
+      "poi": [
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "smotrovaya-efa",
+        "korolevskiy-bor"
+      ]
+    },
+    {
+      "advice": "Выберите одну тропу для короткой остановки. Между ними планируется транспорт, а на подъём и возвращение нужно время.",
+      "featured": false,
+      "intro": "К высоте Мюллера и смотровой Эфа ведут разные тропы. Выберите одну для короткой поездки или заложите время на переезд и два подъёма.",
+      "name": "Смотровые Куршской косы",
+      "path": "kurshskaya-kosa/smotrovye/",
+      "poi": [
+        "vysota-myullera",
+        "smotrovaya-efa"
+      ]
+    },
+    {
+      "advice": "Следуйте официальным указателям. Лесная тропа не означает свободный проход через любую часть леса.",
+      "featured": false,
+      "intro": "Сосны, лесные дорожки и подъём к смотровой. У каждой прогулки своё начало: выберите тропу и следуйте указателям национального парка.",
+      "name": "Лесные тропы на косе",
+      "path": "kurshskaya-kosa/lesnye-tropy/",
+      "poi": [
+        "tancuyushchiy-les",
+        "korolevskiy-bor",
+        "vysota-myullera"
+      ]
+    },
+    {
+      "advice": "Проверьте доступный подход к берегу и возвращение к транспорту. Маяк рассматривайте снаружи, пока вход не подтверждён.",
+      "featured": false,
+      "intro": "Лесной — одна из остановок на косе, откуда можно выйти к морю. Перед поездкой проверьте дорогу до посёлка и разрешённый выход на берег.",
+      "name": "Остановка в Лесном",
+      "path": "kurshskaya-kosa/lesnoy/",
+      "poi": [
+        "plyazh-lesnoy",
+        "mayak-lesnoy"
+      ]
+    },
+    {
+      "advice": "Открывайте готовый маршрут, чтобы увидеть путь туда и обратно. Учитывайте ступени и не сокращайте путь по дюне.",
+      "featured": false,
+      "intro": "Начало тропы и смотровая Эфа — две точки одного пути. Подъём, остановка у дюн и возвращение собраны в отдельную прогулку.",
+      "name": "Высота Эфа: вход и смотровая",
+      "path": "kurshskaya-kosa/efa/",
+      "poi": [
+        "vysota-efa",
+        "smotrovaya-efa"
+      ]
+    },
+    {
+      "advice": "Возраст и темп важнее количества точек. Станция зависит от сезона и сеансов; берег — от погоды; доступ к тропе проверяйте у парка.",
+      "featured": false,
+      "intro": "Лесная тропа, орнитологическая станция и берег предлагают разные впечатления. Выберите одну основную остановку с учётом возраста, погоды и времени посещения.",
+      "name": "Коса с детьми: выбрать остановку",
+      "path": "kurshskaya-kosa/s-detmi/",
+      "poi": [
+        "tancuyushchiy-les",
+        "fringilla",
+        "plyazh-lesnoy"
+      ]
+    },
+    {
+      "advice": "Не пытайтесь пройти косу пешком между всеми метками. Выберите две прогулки, рассчитайте переезды и проверьте билет в парк.",
+      "featured": false,
+      "intro": "Для первого дня на косе достаточно нескольких остановок: лес, смотровая или море. Посмотрите, где начинаются прогулки, и оставьте время на переезды.",
+      "name": "Первая поездка на Куршскую косу",
+      "path": "kurshskaya-kosa/pervaya-poezdka/",
+      "poi": [
+        "korolevskiy-bor",
+        "tancuyushchiy-les",
+        "vysota-efa",
+        "plyazh-lesnoy"
+      ]
+    },
+    {
+      "advice": "Сначала решите, готовы ли вы к спуску и подъёму. Озеро и верхняя часть подходят для отдельного спокойного сценария.",
+      "featured": false,
+      "intro": "От озера Тихого к городской башне, затем — к променаду, если хочется увидеть море вблизи. Обратный подъём включите в планы заранее.",
+      "name": "Светлогорск за один день",
+      "path": "svetlogorsk/za-odin-den/",
+      "poi": [
+        "ozero-tihoe",
+        "bashnya-svetlogorsk",
+        "promenad-svetlogorsk",
+        "solnechnye-chasy"
+      ]
+    },
+    {
+      "advice": "Уточните действующий спуск на променад. Обратный подъём включайте в время дня, даже если расстояние на карте небольшое.",
+      "featured": false,
+      "intro": "Променад и солнечные часы находятся у моря, ниже основной городской части. Проверьте действующий спуск и оставьте силы на возвращение наверх.",
+      "name": "Светлогорск у моря",
+      "path": "svetlogorsk/u-morya/",
+      "poi": [
+        "promenad-svetlogorsk",
+        "solnechnye-chasy"
+      ]
+    },
+    {
+      "advice": "Этот сценарий помогает оставить море для другого дня. Подход к озеру и переход к башне всё равно проверяются по карте.",
+      "featured": false,
+      "intro": "Озеро Тихое и водонапорная башня дают прогулку по верхней части Светлогорска. Можно провести день здесь и оставить спуск к морю для другой поездки.",
+      "name": "Светлогорск без спуска к морю",
+      "path": "svetlogorsk/bez-spuska-k-moryu/",
+      "poi": [
+        "ozero-tihoe",
+        "bashnya-svetlogorsk"
+      ]
+    },
+    {
+      "advice": "Сначала проверьте посещение музея и обратный транспорт. Переправа на косу требует отдельного расписания и времени.",
+      "featured": false,
+      "intro": "Маяк у морского канала и музей Балтийского флота помогают собрать береговой день. Переправу на Балтийскую косу планируйте отдельно, по расписанию парома.",
+      "name": "Морской день в Балтийске",
+      "path": "baltiysk/morskoy-den/",
+      "poi": [
+        "baltiyskiy-mayak",
+        "muzej-baltiyskogo-flota"
+      ]
+    },
+    {
+      "advice": "Задайте длину прогулки по погоде и своим силам. Статус оборудованных зон, купание и сезонные услуги проверяются на месте.",
+      "featured": false,
+      "intro": "Пляж и променад задают простой маршрут вдоль моря. Выберите, сколько идти, где остановиться и когда повернуть обратно.",
+      "name": "Янтарный: пляж и променад",
+      "path": "yantarny/plyazh-i-promenad/",
+      "poi": [
+        "plyazh-yantarny",
+        "promenad-yantarny"
+      ]
+    },
+    {
+      "advice": "Для одного дня выберите один город или учтите реальные переезды. Это обзор остановок, а не готовая непрерывная пешая линия.",
+      "featured": false,
+      "intro": "Зеленоградск, Светлогорск, Балтийск и Янтарный — четыре разных выхода к Балтике. Для короткого дня выберите один город; для поездки вдоль берега рассчитайте переезды.",
+      "name": "Города балтийского побережья",
+      "path": "poberezhe/",
+      "poi": [
+        "promenad-zelenogradsk",
+        "promenad-svetlogorsk",
+        "baltiyskiy-mayak",
+        "plyazh-yantarny"
+      ]
+    },
+    {
+      "advice": "Сверяйте прогноз перед выходом. При сильном ветре выбирайте короткий участок и вариант возврата в город; безопасность оценивается на месте.",
+      "featured": false,
+      "intro": "На открытом берегу ветер влияет на весь день: одежду, длину прогулки и время возвращения. Сравните места и проверьте прогноз перед выходом.",
+      "name": "Морская прогулка в ветреный день",
+      "path": "pogoda/veter-u-morya/",
+      "poi": [
+        "promenad-zelenogradsk",
+        "plyazh-lesnoy",
+        "promenad-svetlogorsk",
+        "plyazh-yantarny"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "note": "Не каждый маяк стоит на берегу. «Ирбенский» — судно: оставьте ему одну остановку в прогулке вдоль Преголи.",
+      "poi": "mayak-irbenskiy"
+    },
+    {
+      "note": "На косе есть место и для лесной прогулки. Начните с Королевского бора, а дальние тропы оставьте на отдельные остановки.",
+      "poi": "korolevskiy-bor"
+    },
+    {
+      "note": "Амалиенау раскрывается в деталях домов. Рассмотрите виллу с улицы, затем продолжите пешком к соседним кварталам.",
+      "poi": "villa-leo"
+    },
+    {
+      "note": "Небольшие ориентиры помогают замечать город. Найдите бювет по дороге к морю — для этой остановки не нужен отдельный день.",
+      "poi": "byuvet-luizy"
+    },
+    {
+      "note": "В Светлогорске вода не заканчивается морем. Озеро Тихое даёт прогулке другой ритм, без спуска к променаду.",
+      "poi": "ozero-tihoe"
+    },
+    {
+      "note": "У Центрального парка стоит кирха памяти королевы Луизы. Рассмотрите её снаружи и оставьте время на аллеи рядом.",
+      "poi": "kirha-korolevy-luizy"
+    }
+  ],
   "poi": [
     {
-      "id": "39c6ba56-93ca-51e4-9ee4-96003017311b",
-      "slug": "kafedralny-sobor",
-      "name": "Кафедральный собор",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Собор на острове Канта удобно включить в прогулку между городскими набережными. Внешний осмотр и посещение органного зала — разные части поездки.",
-      "practical": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5114879,
+      "hours": null,
+      "id": "39c6ba56-93ca-51e4-9ee4-96003017311b",
       "lat": 54.7064427,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/5204125122",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.5114879,
+      "name": "Кафедральный собор",
       "osm_ref": "node/5204125122",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа.",
       "price": null,
-      "photos": []
+      "slug": "kafedralny-sobor",
+      "source_url": "https://www.openstreetmap.org/node/5204125122",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "243c1479-97b8-5d19-ad62-543ed5a00749",
-      "slug": "mogila-kanta",
-      "name": "Могила Иммануила Канта",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Мемориальное место у стен Кафедрального собора. Его можно посмотреть в одной остановке с собором, не закладывая отдельный переезд.",
-      "practical": "На карте указана точка мемориала. Для музея и органного зала проверьте отдельные условия посещения.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5128866,
+      "hours": null,
+      "id": "243c1479-97b8-5d19-ad62-543ed5a00749",
       "lat": 54.706492,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/471928293",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.5128866,
+      "name": "Могила Иммануила Канта",
       "osm_ref": "node/471928293",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "На карте указана точка мемориала. Для музея и органного зала проверьте отдельные условия посещения.",
       "price": null,
-      "photos": []
+      "slug": "mogila-kanta",
+      "source_url": "https://www.openstreetmap.org/node/471928293",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "bfc12edf-489e-5a29-acff-914d299b4fd8",
-      "slug": "ostrov-kanta",
-      "name": "Остров Канта",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "park",
       "category_name": "Парк",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Остров между рукавами Преголи объединяет собор и зелёные прогулочные пространства. Это связующая остановка между Рыбной деревней и набережной музея.",
-      "practical": "Для перехода на другой берег используйте мосты. Выберите направление следующей остановки до выхода с острова.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5103284,
+      "hours": null,
+      "id": "bfc12edf-489e-5a29-acff-914d299b4fd8",
       "lat": 54.7068462,
-      "tags": [
-        "Парк",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/relation/318469",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5103284,
+      "name": "Остров Канта",
       "osm_ref": "relation/318469",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Для перехода на другой берег используйте мосты. Выберите направление следующей остановки до выхода с острова.",
       "price": null,
-      "photos": []
+      "slug": "ostrov-kanta",
+      "source_url": "https://www.openstreetmap.org/relation/318469",
+      "tags": [
+        "Парк",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "0a20ef1e-7f88-5f13-9a98-5ea58f89d18a",
-      "slug": "rybnaya-derevnya",
-      "name": "Рыбная деревня",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Городской квартал у Преголи, который удобно смотреть с набережной. Здесь прогулка может продолжиться к Медовому мосту и острову Канта.",
-      "practical": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5152898,
+      "hours": null,
+      "id": "0a20ef1e-7f88-5f13-9a98-5ea58f89d18a",
       "lat": 54.7024527,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/relation/6397713",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5152898,
+      "name": "Рыбная деревня",
       "osm_ref": "relation/6397713",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно.",
       "price": null,
-      "photos": []
+      "slug": "rybnaya-derevnya",
+      "source_url": "https://www.openstreetmap.org/relation/6397713",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "c2ed086f-67c4-5776-b074-502581e00775",
-      "slug": "bashnya-mayak",
-      "name": "Смотровая башня «Маяк»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "viewpoint",
       "category_name": "Смотровая",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Вертикальный ориентир Рыбной деревни рядом с набережной. Подъём на смотровую и прогулка у здания требуют разного времени.",
-      "practical": "Перед подъёмом уточните часы и условия входа. Внешний осмотр можно совместить с проходом по набережной.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5146386,
+      "hours": null,
+      "id": "c2ed086f-67c4-5776-b074-502581e00775",
       "lat": 54.7050966,
-      "tags": [
-        "Смотровая",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/148564494",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5146386,
+      "name": "Смотровая башня «Маяк»",
       "osm_ref": "way/148564494",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Перед подъёмом уточните часы и условия входа. Внешний осмотр можно совместить с проходом по набережной.",
       "price": null,
-      "photos": []
+      "slug": "bashnya-mayak",
+      "source_url": "https://www.openstreetmap.org/way/148564494",
+      "tags": [
+        "Смотровая",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "ddc82484-78f5-540b-86e1-a9e15fb0d985",
-      "slug": "medovyy-most",
-      "name": "Медовый мост",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Мост связывает остров Канта с районом Рыбной деревни. Он полезен как переход между остановками, а не как повод для отдельного переезда.",
-      "practical": "На прогулке учитывайте, на какой берег вы выходите: собор и Рыбная деревня находятся по разные стороны перехода.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5137548,
+      "hours": null,
+      "id": "ddc82484-78f5-540b-86e1-a9e15fb0d985",
       "lat": 54.7057741,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/relation/6747632",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5137548,
+      "name": "Медовый мост",
       "osm_ref": "relation/6747632",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "На прогулке учитывайте, на какой берег вы выходите: собор и Рыбная деревня находятся по разные стороны перехода.",
       "price": null,
-      "photos": []
+      "slug": "medovyy-most",
+      "source_url": "https://www.openstreetmap.org/relation/6747632",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "e7de7430-fb2b-5624-a6e1-56a3e1f157ed",
-      "slug": "sudno-vityaz",
-      "name": "Судно «Витязь»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно на набережной Мирового океана. Включайте его в прогулку вдоль реки, а внутреннюю экспозицию планируйте как отдельное посещение.",
-      "practical": "Не пытайтесь вместить все музейные суда в короткую прогулку. Выберите одно посещение и проверьте билет.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4999435,
+      "hours": null,
+      "id": "e7de7430-fb2b-5624-a6e1-56a3e1f157ed",
       "lat": 54.7061531,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/173639308",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4999435,
+      "name": "Судно «Витязь»",
       "osm_ref": "way/173639308",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Не пытайтесь вместить все музейные суда в короткую прогулку. Выберите одно посещение и проверьте билет.",
       "price": null,
-      "photos": []
+      "slug": "sudno-vityaz",
+      "source_url": "https://www.openstreetmap.org/way/173639308",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "9accc422-2942-5b97-b474-b19bdd3faf7c",
-      "slug": "muzej-mirovogo-okeana",
-      "name": "Музей Мирового океана: «Глубина»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Экспозиционный корпус на музейной набережной. Рядом расположены другие корпуса и суда, поэтому здесь легко продлить городской маршрут.",
-      "practical": "На карте отмечен конкретный корпус. Проверьте, какие экспозиции входят в выбранный билет.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.499947,
+      "hours": null,
+      "id": "9accc422-2942-5b97-b474-b19bdd3faf7c",
       "lat": 54.7066321,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/188173828",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.499947,
+      "name": "Музей Мирового океана: «Глубина»",
       "osm_ref": "way/188173828",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "На карте отмечен конкретный корпус. Проверьте, какие экспозиции входят в выбранный билет.",
       "price": null,
-      "photos": []
+      "slug": "muzej-mirovogo-okeana",
+      "source_url": "https://www.openstreetmap.org/way/188173828",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "97de3752-4332-58a7-89a2-2360b4184e26",
-      "slug": "planeta-okean",
-      "name": "«Планета Океан»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Корпус Музея Мирового океана у Преголи. Его можно выбрать основной музейной остановкой дня и оставить набережную для прогулки до или после входа.",
-      "practical": "Уточните доступные сеансы и режим работы перед поездкой. Время внутри не включено автоматически в пеший трек.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5022689,
+      "hours": null,
+      "id": "97de3752-4332-58a7-89a2-2360b4184e26",
       "lat": 54.7065081,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/853053301",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5022689,
+      "name": "«Планета Океан»",
       "osm_ref": "way/853053301",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Уточните доступные сеансы и режим работы перед поездкой. Время внутри не включено автоматически в пеший трек.",
       "price": null,
-      "photos": []
+      "slug": "planeta-okean",
+      "source_url": "https://www.openstreetmap.org/way/853053301",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "873647de-4cc0-55a1-b7fb-82c1f6554244",
-      "slug": "mayak-irbenskiy",
-      "name": "Плавучий маяк «Ирбенский»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно у набережной Мирового океана. Хорошая точка для знакомства с устройством маяка в контексте прогулки по речному берегу.",
-      "practical": "Внешний осмотр и доступ на борт различаются. Проверяйте условия посещения конкретного судна.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5034586,
+      "hours": null,
+      "id": "873647de-4cc0-55a1-b7fb-82c1f6554244",
       "lat": 54.7060816,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/997577042",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5034586,
+      "name": "Плавучий маяк «Ирбенский»",
       "osm_ref": "way/997577042",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Внешний осмотр и доступ на борт различаются. Проверяйте условия посещения конкретного судна.",
       "price": null,
-      "photos": []
+      "slug": "mayak-irbenskiy",
+      "source_url": "https://www.openstreetmap.org/way/997577042",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "a6b371e3-13e5-53fc-ab95-b64b5b627e94",
-      "slug": "fridrihsburgskie-vorota",
-      "name": "Фридрихсбургские ворота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Ворота у южного берега Преголи, в стороне от острова Канта. При включении в маршрут учитывайте переход через реку и подход по городским улицам.",
-      "practical": "Для музейного посещения проверьте расписание. Уличная прогулка и экскурсия внутри — отдельные сценарии.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.493601,
+      "hours": null,
+      "id": "a6b371e3-13e5-53fc-ab95-b64b5b627e94",
       "lat": 54.704504,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/261379749",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.493601,
+      "name": "Фридрихсбургские ворота",
       "osm_ref": "way/261379749",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Для музейного посещения проверьте расписание. Уличная прогулка и экскурсия внутри — отдельные сценарии.",
       "price": null,
-      "photos": []
+      "slug": "fridrihsburgskie-vorota",
+      "source_url": "https://www.openstreetmap.org/way/261379749",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "686e4be8-a61f-5c1a-a47d-6e748d0d2c8a",
-      "slug": "brandenburgskie-vorota",
-      "name": "Бранденбургские ворота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Исторические ворота в южной части города. Их удобно рассматривать в маршруте по южному берегу, а не добавлять без расчёта дороги к северным воротам.",
-      "practical": "Осматривайте архитектуру с тротуара: через ворота проходит транспорт. Для экспозиций внутри уточняйте вход.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4946356,
+      "hours": null,
+      "id": "686e4be8-a61f-5c1a-a47d-6e748d0d2c8a",
       "lat": 54.6973146,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/98840945",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4946356,
+      "name": "Бранденбургские ворота",
       "osm_ref": "way/98840945",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Осматривайте архитектуру с тротуара: через ворота проходит транспорт. Для экспозиций внутри уточняйте вход.",
       "price": null,
-      "photos": []
+      "slug": "brandenburgskie-vorota",
+      "source_url": "https://www.openstreetmap.org/way/98840945",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "e00243c1-ec39-5c32-be71-534fa75de14a",
-      "slug": "korolevskie-vorota",
-      "name": "Королевские ворота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Исторические ворота на восточной стороне центральной части Калининграда. До острова Канта отсюда требуется самостоятельный городской переход.",
-      "practical": "Если продолжаете к Янтарному музею, проверьте весь путь, а не только расстояние между значками.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5359816,
+      "hours": null,
+      "id": "e00243c1-ec39-5c32-be71-534fa75de14a",
       "lat": 54.7137124,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/54981216",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5359816,
+      "name": "Королевские ворота",
       "osm_ref": "way/54981216",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Если продолжаете к Янтарному музею, проверьте весь путь, а не только расстояние между значками.",
       "price": null,
-      "photos": []
+      "slug": "korolevskie-vorota",
+      "source_url": "https://www.openstreetmap.org/way/54981216",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "4e7c6eed-f401-5f1e-af37-4996c05023b5",
-      "slug": "zakhaymskie-vorota",
-      "name": "Закхаймские ворота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Ворота в восточной части города. Подходят для сочетания с Королевскими воротами и дальнейшей прогулкой к Преголе.",
-      "practical": "Сначала посмотрите внешний объём здания; мероприятия и доступ внутрь сверяйте на дату поездки.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.538188,
+      "hours": null,
+      "id": "4e7c6eed-f401-5f1e-af37-4996c05023b5",
       "lat": 54.7095678,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/53357477",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.538188,
+      "name": "Закхаймские ворота",
       "osm_ref": "way/53357477",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Сначала посмотрите внешний объём здания; мероприятия и доступ внутрь сверяйте на дату поездки.",
       "price": null,
-      "photos": []
+      "slug": "zakhaymskie-vorota",
+      "source_url": "https://www.openstreetmap.org/way/53357477",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "5bd31df1-7109-5691-a166-91a73472416c",
-      "slug": "muzej-yantarya",
-      "name": "Музей янтаря",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музей в историческом оборонительном сооружении у Верхнего озера. В одном районе можно соединить архитектуру, выставку и прогулку у воды.",
-      "practical": "Оставьте время на выставку отдельно от пешего расстояния. Уточните часы, выходные и билет перед выездом.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5230848,
+      "hours": null,
+      "id": "5bd31df1-7109-5691-a166-91a73472416c",
       "lat": 54.722122,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/53809208",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5230848,
+      "name": "Музей янтаря",
       "osm_ref": "way/53809208",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Оставьте время на выставку отдельно от пешего расстояния. Уточните часы, выходные и билет перед выездом.",
       "price": null,
-      "photos": []
+      "slug": "muzej-yantarya",
+      "source_url": "https://www.openstreetmap.org/way/53809208",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "92407b76-2e16-51de-a4f0-43192d0efa98",
-      "slug": "rosgartenskie-vorota",
-      "name": "Росгартенские ворота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Архитектурная остановка рядом с Музеем янтаря. Эти два объекта можно смотреть последовательно без переезда между ними.",
-      "practical": "При планировании прогулки различайте внешний осмотр ворот и посещение расположенных в районе заведений.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5238452,
+      "hours": null,
+      "id": "92407b76-2e16-51de-a4f0-43192d0efa98",
       "lat": 54.7220447,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/53809211",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5238452,
+      "name": "Росгартенские ворота",
       "osm_ref": "way/53809211",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "При планировании прогулки различайте внешний осмотр ворот и посещение расположенных в районе заведений.",
       "price": null,
-      "photos": []
+      "slug": "rosgartenskie-vorota",
+      "source_url": "https://www.openstreetmap.org/way/53809211",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b7c4f825-d228-5b12-9f43-7264131a3d0f",
-      "slug": "kirha-svyatogo-semeystva",
-      "name": "Кирха Святого Семейства",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Кирха находится в южной части города и связана с органной музыкой. Это отдельный район относительно Амалиенау.",
-      "practical": "Планируйте посещение по афише и адресу зала. Не включайте её в прогулку по Амалиенау как соседнюю точку.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.5096814,
+      "hours": null,
+      "id": "b7c4f825-d228-5b12-9f43-7264131a3d0f",
       "lat": 54.6978239,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/47184395",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.5096814,
+      "name": "Кирха Святого Семейства",
       "osm_ref": "way/47184395",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Планируйте посещение по афише и адресу зала. Не включайте её в прогулку по Амалиенау как соседнюю точку.",
       "price": null,
-      "photos": []
+      "slug": "kirha-svyatogo-semeystva",
+      "source_url": "https://www.openstreetmap.org/way/47184395",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "8f9c33f7-17e8-5721-bda8-0880df916fa2",
-      "slug": "kirha-korolevy-luizy",
-      "name": "Кирха памяти королевы Луизы",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Кирха у Центрального парка — удобный ориентир прогулки по Амалиенау. Внешний осмотр можно совместить с парком и соседними улицами.",
-      "practical": "Для представления или посещения внутри проверяйте афишу отдельно. Уличный маршрут не означает вход в здание.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4756043,
+      "hours": null,
+      "id": "8f9c33f7-17e8-5721-bda8-0880df916fa2",
       "lat": 54.7194543,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/103139996",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4756043,
+      "name": "Кирха памяти королевы Луизы",
       "osm_ref": "way/103139996",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Для представления или посещения внутри проверяйте афишу отдельно. Уличный маршрут не означает вход в здание.",
       "price": null,
-      "photos": []
+      "slug": "kirha-korolevy-luizy",
+      "source_url": "https://www.openstreetmap.org/way/103139996",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "9a837ecd-eeb3-5afb-addd-a70acb54a7ce",
-      "slug": "centralnyy-park",
-      "name": "Центральный парк",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "park",
       "category_name": "Парк",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Зелёная остановка рядом с кирхой памяти королевы Луизы. Здесь городской маршрут можно сделать спокойнее, оставив время на прогулку по аллеям.",
-      "practical": "Значок указывает центр территории. Для подхода выберите вход со стороны вашей предыдущей остановки.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4771904,
+      "hours": null,
+      "id": "9a837ecd-eeb3-5afb-addd-a70acb54a7ce",
       "lat": 54.717942,
-      "tags": [
-        "Парк",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/relation/1673215",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4771904,
+      "name": "Центральный парк",
       "osm_ref": "relation/1673215",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Значок указывает центр территории. Для подхода выберите вход со стороны вашей предыдущей остановки.",
       "price": null,
-      "photos": []
+      "slug": "centralnyy-park",
+      "source_url": "https://www.openstreetmap.org/relation/1673215",
+      "tags": [
+        "Парк",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "244d84a5-3a5f-5b63-a3a1-16a58bc43e8a",
-      "slug": "villa-shmidt",
-      "name": "Вилла Шмидт",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Один из архитектурных ориентиров Амалиенау. В маршруте по виллам интерес представляет внешний облик здания и улица вокруг него.",
-      "practical": "Осматривайте с публичной улицы. Карточка не обещает доступ во двор или внутрь частного здания.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4668985,
+      "hours": null,
+      "id": "244d84a5-3a5f-5b63-a3a1-16a58bc43e8a",
       "lat": 54.7160304,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/89404496",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4668985,
+      "name": "Вилла Шмидт",
       "osm_ref": "way/89404496",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Осматривайте с публичной улицы. Карточка не обещает доступ во двор или внутрь частного здания.",
       "price": null,
-      "photos": []
+      "slug": "villa-shmidt",
+      "source_url": "https://www.openstreetmap.org/way/89404496",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b100ba05-d048-5fe0-a605-c563afd7c6a9",
-      "slug": "villa-leo",
-      "name": "Вилла Лео",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Архитектурная остановка в районе Амалиенау, рядом с другими историческими виллами. Подходит для неспешного знакомства с кварталом пешком.",
-      "practical": "Не заходите на частную территорию ради фотографии. Следующая вилла рассматривается как часть общей прогулки.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4662322,
+      "hours": null,
+      "id": "b100ba05-d048-5fe0-a605-c563afd7c6a9",
       "lat": 54.7156713,
-      "tags": [
-        "Архитектура и история",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/4276394594",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.4662322,
+      "name": "Вилла Лео",
       "osm_ref": "node/4276394594",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Не заходите на частную территорию ради фотографии. Следующая вилла рассматривается как часть общей прогулки.",
       "price": null,
-      "photos": []
+      "slug": "villa-leo",
+      "source_url": "https://www.openstreetmap.org/node/4276394594",
+      "tags": [
+        "Архитектура и история",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "6f82b62d-6427-553a-b820-85e043ef9d2d",
-      "slug": "altes-haus",
-      "name": "Музей «Альтес Хаус»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в районе исторической городской застройки. Её можно добавить к архитектурной прогулке, если время посещения согласовано заранее.",
-      "practical": "Проверьте запись, сеансы и продолжительность. Остановка у адреса не заменяет бронирование посещения.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4744441,
+      "hours": null,
+      "id": "6f82b62d-6427-553a-b820-85e043ef9d2d",
       "lat": 54.7219683,
-      "tags": [
-        "Музей",
-        "Калининград"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/6710819187",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.4744441,
+      "name": "Музей «Альтес Хаус»",
       "osm_ref": "node/6710819187",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Проверьте запись, сеансы и продолжительность. Остановка у адреса не заменяет бронирование посещения.",
       "price": null,
-      "photos": []
+      "slug": "altes-haus",
+      "source_url": "https://www.openstreetmap.org/node/6710819187",
+      "tags": [
+        "Музей",
+        "Калининград"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "cf4abcb5-d144-5971-a963-fe5785d16f3c",
-      "slug": "kaliningradskiy-zoopark",
-      "name": "Калининградский зоопарк",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "park",
       "category_name": "Парк",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Большая территория для самостоятельного посещения в городе. Лучше выделить ей отдельную часть дня, чем считать короткой остановкой между музеями.",
-      "practical": "Проверьте часы входа и время закрытия. Протяжённость внутри зоопарка не входит в городской пеший маршрут.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4881704,
+      "hours": null,
+      "id": "cf4abcb5-d144-5971-a963-fe5785d16f3c",
       "lat": 54.7216721,
+      "lon": 20.4881704,
+      "name": "Калининградский зоопарк",
+      "osm_ref": "relation/8102913",
+      "photos": [],
+      "practical": "Проверьте часы входа и время закрытия. Протяжённость внутри зоопарка не входит в городской пеший маршрут.",
+      "price": null,
+      "slug": "kaliningradskiy-zoopark",
+      "source_url": "https://www.openstreetmap.org/relation/8102913",
       "tags": [
         "Парк",
         "Калининград"
       ],
-      "source_url": "https://www.openstreetmap.org/relation/8102913",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "relation/8102913",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "c0cc342d-b5d8-5bf3-ae7f-c6384e94b30c",
-      "slug": "pergola-korolevy-luizy",
-      "name": "Пергола королевы Луизы",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Небольшая архитектурная остановка в Центральном парке. Её удобно посмотреть после кирхи, оставаясь в зелёной части прогулки.",
-      "practical": "Сначала найдите подходящую аллею: прямая линия через территорию парка не всегда совпадает с дорожкой.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4773537,
+      "hours": null,
+      "id": "c0cc342d-b5d8-5bf3-ae7f-c6384e94b30c",
       "lat": 54.7196294,
+      "lon": 20.4773537,
+      "name": "Пергола королевы Луизы",
+      "osm_ref": "node/4465601636",
+      "photos": [],
+      "practical": "Сначала найдите подходящую аллею: прямая линия через территорию парка не всегда совпадает с дорожкой.",
+      "price": null,
+      "slug": "pergola-korolevy-luizy",
+      "source_url": "https://www.openstreetmap.org/node/4465601636",
       "tags": [
         "Архитектура и история",
         "Калининград"
       ],
-      "source_url": "https://www.openstreetmap.org/node/4465601636",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/4465601636",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "4e837bc0-c145-5a8b-8e9c-6fc1723f3bc3",
-      "slug": "promenad-zelenogradsk",
-      "name": "Променад Зеленоградска",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Прогулочная линия вдоль моря. Карта отмечает один участок променада; продолжительность прогулки зависит от выбранного начала и места разворота.",
-      "practical": "В ветреную погоду выбирайте одежду для открытого берега. Выход к воде не равен оборудованному месту для купания.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4808171,
+      "hours": null,
+      "id": "4e837bc0-c145-5a8b-8e9c-6fc1723f3bc3",
       "lat": 54.9635752,
-      "tags": [
-        "Архитектура и история",
-        "Зеленоградск"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/174038685",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4808171,
+      "name": "Променад Зеленоградска",
       "osm_ref": "way/174038685",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "В ветреную погоду выбирайте одежду для открытого берега. Выход к воде не равен оборудованному месту для купания.",
       "price": null,
-      "photos": []
+      "slug": "promenad-zelenogradsk",
+      "source_url": "https://www.openstreetmap.org/way/174038685",
+      "tags": [
+        "Архитектура и история",
+        "Зеленоградск"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "aafbe698-2c36-556c-9549-1a8fd5955416",
-      "slug": "kurortnyy-prospekt",
-      "name": "Курортный проспект",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Городская прогулочная улица, которую удобно соединить с выходом к морю. Фасады и небольшие остановки лучше смотреть пешком.",
-      "practical": "Заложите свободное время на городскую часть, а затем выберите выход к променаду на карте.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.477492,
+      "hours": null,
+      "id": "aafbe698-2c36-556c-9549-1a8fd5955416",
       "lat": 54.9605682,
-      "tags": [
-        "Архитектура и история",
-        "Зеленоградск"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/1026180027",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.477492,
+      "name": "Курортный проспект",
       "osm_ref": "way/1026180027",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Заложите свободное время на городскую часть, а затем выберите выход к променаду на карте.",
       "price": null,
-      "photos": []
+      "slug": "kurortnyy-prospekt",
+      "source_url": "https://www.openstreetmap.org/way/1026180027",
+      "tags": [
+        "Архитектура и история",
+        "Зеленоградск"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b6c85ddd-3fec-55ab-a847-f61c321964f3",
-      "slug": "murarium",
-      "name": "Музей «Мурариум»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейная точка в Зеленоградске, связанная с кошачьей темой города. Подходит как отдельное посещение внутри прогулки по центру.",
-      "practical": "Перед поездкой проверьте билет и режим работы. Учитывайте подъём и условия доступа для вашей группы.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4825381,
+      "hours": null,
+      "id": "b6c85ddd-3fec-55ab-a847-f61c321964f3",
       "lat": 54.959789,
-      "tags": [
-        "Музей",
-        "Зеленоградск"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/133724496",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.4825381,
+      "name": "Музей «Мурариум»",
       "osm_ref": "way/133724496",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Перед поездкой проверьте билет и режим работы. Учитывайте подъём и условия доступа для вашей группы.",
       "price": null,
-      "photos": []
+      "slug": "murarium",
+      "source_url": "https://www.openstreetmap.org/way/133724496",
+      "tags": [
+        "Музей",
+        "Зеленоградск"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "8924af44-83e6-5223-8081-9383079a25ab",
-      "slug": "muzej-zelenogradska",
-      "name": "Краеведческий музей Зеленоградска",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в городской части Зеленоградска. Её можно выбрать для знакомства с историей курорта перед прогулкой к морю.",
-      "practical": "Если день короткий, выберите один музей и оставьте время на побережье. Проверьте часы и выходной.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4733421,
+      "hours": null,
+      "id": "8924af44-83e6-5223-8081-9383079a25ab",
       "lat": 54.9597357,
+      "lon": 20.4733421,
+      "name": "Краеведческий музей Зеленоградска",
+      "osm_ref": "node/4360615389",
+      "photos": [],
+      "practical": "Если день короткий, выберите один музей и оставьте время на побережье. Проверьте часы и выходной.",
+      "price": null,
+      "slug": "muzej-zelenogradska",
+      "source_url": "https://www.openstreetmap.org/node/4360615389",
       "tags": [
         "Музей",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/node/4360615389",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/4360615389",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "c9360d28-7d5f-50a4-a817-509a346ac6d6",
-      "slug": "muzej-skeletov",
-      "name": "Музей черепов и скелетов",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Точка открытой карты",
       "description": "Тематический музей в Зеленоградске. Подходит для отдельного интереса к необычным коллекциям, а не как обязательная остановка любой поездки.",
-      "practical": "Перед посещением посмотрите описание экспозиции и оцените, подходит ли она детям вашей группы.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4828217,
+      "hours": null,
+      "id": "c9360d28-7d5f-50a4-a817-509a346ac6d6",
       "lat": 54.9598124,
+      "lon": 20.4828217,
+      "name": "Музей черепов и скелетов",
+      "osm_ref": "node/4360239991",
+      "photos": [],
+      "practical": "Перед посещением посмотрите описание экспозиции и оцените, подходит ли она детям вашей группы.",
+      "price": null,
+      "slug": "muzej-skeletov",
+      "source_url": "https://www.openstreetmap.org/node/4360239991",
       "tags": [
         "Музей",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/node/4360239991",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/4360239991",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "75454e84-d407-5e6b-821e-600c3a7e340d",
-      "slug": "kirha-svyatogo-adalberta",
-      "name": "Кирха Святого Адальберта",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Историческое здание в Зеленоградске. Его можно рассмотреть в городской части прогулки, до выхода на открытый морской берег.",
-      "practical": "Внешний осмотр и посещение действующего здания различаются. Проверяйте актуальный режим и соблюдайте правила места.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4846055,
+      "hours": null,
+      "id": "75454e84-d407-5e6b-821e-600c3a7e340d",
       "lat": 54.9603688,
-      "tags": [
-        "Архитектура и история",
-        "Зеленоградск"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/4434432992",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.4846055,
+      "name": "Кирха Святого Адальберта",
       "osm_ref": "node/4434432992",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Внешний осмотр и посещение действующего здания различаются. Проверяйте актуальный режим и соблюдайте правила места.",
       "price": null,
-      "photos": []
-    },
-    {
-      "id": "f30aeeda-e2a5-5166-8324-a59b7cc3e500",
-      "slug": "kurhaus-kranc",
-      "name": "Курхаус Кранц",
-      "area": "zelenogradsk",
-      "area_name": "Зеленоградск",
-      "category": "landmark",
-      "category_name": "Архитектура и история",
-      "description": "Историческое здание курортной гостиницы в центре Зеленоградска. Удобная архитектурная остановка на пути между городскими улицами и морем.",
-      "practical": "Для прогулки достаточно внешнего осмотра. Проживание, ресторан и доступ внутрь уточняйте отдельно.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4781469,
-      "lat": 54.9612879,
+      "slug": "kirha-svyatogo-adalberta",
+      "source_url": "https://www.openstreetmap.org/node/4434432992",
       "tags": [
         "Архитектура и история",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/116349827",
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
+    },
+    {
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "landmark",
+      "category_name": "Архитектура и история",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/116349827",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
+      "description": "Историческое здание курортной гостиницы в центре Зеленоградска. Удобная архитектурная остановка на пути между городскими улицами и морем.",
       "hours": null,
+      "id": "f30aeeda-e2a5-5166-8324-a59b7cc3e500",
+      "lat": 54.9612879,
+      "lon": 20.4781469,
+      "name": "Курхаус Кранц",
+      "osm_ref": "way/116349827",
+      "photos": [],
+      "practical": "Для прогулки достаточно внешнего осмотра. Проживание, ресторан и доступ внутрь уточняйте отдельно.",
       "price": null,
-      "photos": []
-    },
-    {
-      "id": "bcf8d09d-f8ae-5d8f-bdd6-319a67c98acc",
-      "slug": "byuvet-luizy",
-      "name": "Бювет королевы Луизы",
-      "area": "zelenogradsk",
-      "area_name": "Зеленоградск",
-      "category": "landmark",
-      "category_name": "Архитектура и история",
-      "description": "Небольшой ориентир у морской прогулочной части Зеленоградска. Его удобно включать по пути, не строя вокруг него отдельный день.",
-      "practical": "Для пользования бюветом проверяйте указания на месте. Карточка не подтверждает медицинские свойства воды.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.475574,
-      "lat": 54.9621167,
+      "slug": "kurhaus-kranc",
+      "source_url": "https://www.openstreetmap.org/way/116349827",
       "tags": [
         "Архитектура и история",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/node/6690576186",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/6690576186",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "70c93811-2440-5932-b79c-d8fb3e2cb319",
-      "slug": "skver-luizy",
-      "name": "Сквер королевы Луизы",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "landmark",
+      "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
+      "description": "Небольшой ориентир у морской прогулочной части Зеленоградска. Его удобно включать по пути, не строя вокруг него отдельный день.",
+      "hours": null,
+      "id": "bcf8d09d-f8ae-5d8f-bdd6-319a67c98acc",
+      "lat": 54.9621167,
+      "lon": 20.475574,
+      "name": "Бювет королевы Луизы",
+      "osm_ref": "node/6690576186",
+      "photos": [],
+      "practical": "Для пользования бюветом проверяйте указания на месте. Карточка не подтверждает медицинские свойства воды.",
+      "price": null,
+      "slug": "byuvet-luizy",
+      "source_url": "https://www.openstreetmap.org/node/6690576186",
+      "tags": [
+        "Архитектура и история",
+        "Зеленоградск"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
+    },
+    {
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "park",
       "category_name": "Парк",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Компактная зелёная остановка в центре Зеленоградска. Подходит для паузы между городской прогулкой и выходом к морю.",
-      "practical": "Метка обозначает центр сквера. Выбирайте подход со стороны вашей улицы и оставляйте проходы свободными.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4748368,
+      "hours": null,
+      "id": "70c93811-2440-5932-b79c-d8fb3e2cb319",
       "lat": 54.9594052,
+      "lon": 20.4748368,
+      "name": "Сквер королевы Луизы",
+      "osm_ref": "way/226050760",
+      "photos": [],
+      "practical": "Метка обозначает центр сквера. Выбирайте подход со стороны вашей улицы и оставляйте проходы свободными.",
+      "price": null,
+      "slug": "skver-luizy",
+      "source_url": "https://www.openstreetmap.org/way/226050760",
       "tags": [
         "Парк",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/226050760",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/226050760",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "837150d1-f4f7-52c8-9e5a-90e202f54beb",
-      "slug": "koshachiy-svetofor",
-      "name": "Кошачий светофор",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Точка открытой карты",
       "description": "Небольшая городская деталь кошачьей темы Зеленоградска. Её удобно заметить по пути, а не выделять как самостоятельную экскурсию.",
-      "practical": "Фотографируйте с безопасного места на тротуаре. Сначала переход и правила движения, затем кадр.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.4768647,
+      "hours": null,
+      "id": "837150d1-f4f7-52c8-9e5a-90e202f54beb",
       "lat": 54.9602769,
+      "lon": 20.4768647,
+      "name": "Кошачий светофор",
+      "osm_ref": "node/7556022851",
+      "photos": [],
+      "practical": "Фотографируйте с безопасного места на тротуаре. Сначала переход и правила движения, затем кадр.",
+      "price": null,
+      "slug": "koshachiy-svetofor",
+      "source_url": "https://www.openstreetmap.org/node/7556022851",
       "tags": [
         "Архитектура и история",
         "Зеленоградск"
       ],
-      "source_url": "https://www.openstreetmap.org/node/7556022851",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/7556022851",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "8b70dae5-d082-5363-a894-7e5e2cc1a0b8",
-      "slug": "tancuyushchiy-les",
-      "name": "Танцующий лес",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "nature",
       "category_name": "Природа",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Лесная остановка на Куршской косе с выделенными пешеходными дорожками. Это самостоятельная прогулка, до высоты Эфа требуется переезд.",
-      "practical": "Оставайтесь на разрешённой тропе, не трогайте деревья и проверьте сообщения парка о доступе.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.8625355,
+      "hours": null,
+      "id": "8b70dae5-d082-5363-a894-7e5e2cc1a0b8",
       "lat": 55.1801131,
-      "tags": [
-        "Природа",
-        "Куршская коса"
-      ],
-      "source_url": "https://www.openstreetmap.org/way/577868333",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
+      "lon": 20.8625355,
+      "name": "Танцующий лес",
       "osm_ref": "way/577868333",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Оставайтесь на разрешённой тропе, не трогайте деревья и проверьте сообщения парка о доступе.",
       "price": null,
-      "photos": []
+      "slug": "tancuyushchiy-les",
+      "source_url": "https://www.openstreetmap.org/way/577868333",
+      "tags": [
+        "Природа",
+        "Куршская коса"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "be1267ac-1eb3-58a0-b7c8-f0c693f5b348",
-      "slug": "vysota-efa",
-      "name": "Высота Эфа: начало тропы",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "nature",
       "category_name": "Природа",
+      "coordinate_note": "Точка открытой карты",
       "description": "Начало пешеходной прогулки к смотровым высоты Эфа. Планируйте время на подъём и возвращение к исходной точке.",
-      "practical": "Проходите по настилам и обозначенным тропам. Участок требует времени на ступени; не сокращайте путь через песок.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.8928888,
+      "hours": null,
+      "id": "be1267ac-1eb3-58a0-b7c8-f0c693f5b348",
       "lat": 55.2217564,
-      "tags": [
-        "Природа",
-        "Куршская коса"
-      ],
-      "source_url": "https://www.openstreetmap.org/node/5935616894",
-      "coordinate_note": "Точка открытой карты",
+      "lon": 20.8928888,
+      "name": "Высота Эфа: начало тропы",
       "osm_ref": "node/5935616894",
-      "verified_at": "2026-10-01",
-      "verification_status": "map_source_checked",
-      "hours": null,
+      "photos": [],
+      "practical": "Проходите по настилам и обозначенным тропам. Участок требует времени на ступени; не сокращайте путь через песок.",
       "price": null,
-      "photos": []
+      "slug": "vysota-efa",
+      "source_url": "https://www.openstreetmap.org/node/5935616894",
+      "tags": [
+        "Природа",
+        "Куршская коса"
+      ],
+      "verification_status": "map_source_checked",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "3a46649f-4513-5fe1-8d3d-53adfd4efec6",
-      "slug": "smotrovaya-efa",
-      "name": "Смотровая на высоте Эфа",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "viewpoint",
       "category_name": "Смотровая",
+      "coordinate_note": "Точка открытой карты",
       "description": "Смотровая точка в конце подъёма по маршруту высоты Эфа. До неё нужно пройти от начала тропы, затем вернуться по разрешённому пути.",
-      "practical": "Одежда должна подходить для ветра. Закладывайте время на остановку и обратный путь, не сходите с настила.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.9062899,
+      "hours": null,
+      "id": "3a46649f-4513-5fe1-8d3d-53adfd4efec6",
       "lat": 55.2211807,
+      "lon": 20.9062899,
+      "name": "Смотровая на высоте Эфа",
+      "osm_ref": "node/471830229",
+      "photos": [],
+      "practical": "Одежда должна подходить для ветра. Закладывайте время на остановку и обратный путь, не сходите с настила.",
+      "price": null,
+      "slug": "smotrovaya-efa",
+      "source_url": "https://www.openstreetmap.org/node/471830229",
       "tags": [
         "Смотровая",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/node/471830229",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/471830229",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "53235757-f83e-5e04-9da2-ee925842a2a9",
-      "slug": "vysota-myullera",
-      "name": "Высота Мюллера",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "viewpoint",
       "category_name": "Смотровая",
+      "coordinate_note": "Точка открытой карты",
       "description": "Смотровая на отдельном пешеходном маршруте Куршской косы. Её нельзя считать соседней остановкой озера Лебедь без расчёта переезда.",
-      "practical": "Для подъёма проверьте сообщения парка, состояние тропы и время на возвращение к началу.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.8119965,
+      "hours": null,
+      "id": "53235757-f83e-5e04-9da2-ee925842a2a9",
       "lat": 55.1484172,
+      "lon": 20.8119965,
+      "name": "Высота Мюллера",
+      "osm_ref": "node/1823288961",
+      "photos": [],
+      "practical": "Для подъёма проверьте сообщения парка, состояние тропы и время на возвращение к началу.",
+      "price": null,
+      "slug": "vysota-myullera",
+      "source_url": "https://www.openstreetmap.org/node/1823288961",
       "tags": [
         "Смотровая",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/node/1823288961",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/1823288961",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "2e0f8b7f-33dc-5b76-b58f-b440818dd39e",
-      "slug": "fringilla",
-      "name": "Станция «Фрингилла»",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "nature",
       "category_name": "Природа",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Станция кольцевания птиц на Куршской косе. Посещение зависит от работы станции и организации экскурсий.",
-      "practical": "Проверьте сезон, сеансы и запись до поездки. На карте отмечена территория станции, а не гарантированно открытый вход.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.73496,
+      "hours": null,
+      "id": "2e0f8b7f-33dc-5b76-b58f-b440818dd39e",
       "lat": 55.08949,
+      "lon": 20.73496,
+      "name": "Станция «Фрингилла»",
+      "osm_ref": "way/931117906",
+      "photos": [],
+      "practical": "Проверьте сезон, сеансы и запись до поездки. На карте отмечена территория станции, а не гарантированно открытый вход.",
+      "price": null,
+      "slug": "fringilla",
+      "source_url": "https://www.openstreetmap.org/way/931117906",
       "tags": [
         "Природа",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/way/931117906",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/931117906",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b0f7ebc7-2c28-5f67-817b-33cddbf13b45",
-      "slug": "korolevskiy-bor",
-      "name": "Королевский бор",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "nature",
       "category_name": "Природа",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Лесной туристский маршрут в южной части косы. Подходит для самостоятельной остановки до дальнейшего движения к северным тропам.",
-      "practical": "Посмотрите актуальные сообщения парка об открытии маршрута. Следуйте обозначенной дорожке.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.559903,
+      "hours": null,
+      "id": "b0f7ebc7-2c28-5f67-817b-33cddbf13b45",
       "lat": 54.9838887,
+      "lon": 20.559903,
+      "name": "Королевский бор",
+      "osm_ref": "relation/12010784",
+      "photos": [],
+      "practical": "Посмотрите актуальные сообщения парка об открытии маршрута. Следуйте обозначенной дорожке.",
+      "price": null,
+      "slug": "korolevskiy-bor",
+      "source_url": "https://www.openstreetmap.org/relation/12010784",
       "tags": [
         "Природа",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/relation/12010784",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "relation/12010784",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "394a0f96-a708-53e6-b63f-f792b9c843ca",
-      "slug": "plyazh-lesnoy",
-      "name": "Пляж у Лесного",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "beach",
       "category_name": "Пляж",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Морской берег рядом с посёлком Лесной. Выход к пляжу можно сочетать с остановкой в посёлке, не превращая его в переход по всей косе.",
-      "practical": "Для купания проверяйте условия на месте. Прогулка по берегу зависит от ветра, волн и разрешённых подходов.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.6093755,
+      "hours": null,
+      "id": "394a0f96-a708-53e6-b63f-f792b9c843ca",
       "lat": 55.0156818,
+      "lon": 20.6093755,
+      "name": "Пляж у Лесного",
+      "osm_ref": "way/80378238",
+      "photos": [],
+      "practical": "Для купания проверяйте условия на месте. Прогулка по берегу зависит от ветра, волн и разрешённых подходов.",
+      "price": null,
+      "slug": "plyazh-lesnoy",
+      "source_url": "https://www.openstreetmap.org/way/80378238",
       "tags": [
         "Пляж",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/way/80378238",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/80378238",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b9d12ffd-0a07-536e-a997-450324922a9d",
-      "slug": "mayak-lesnoy",
-      "name": "Маяк в Лесном",
+      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Ориентир морской стороны посёлка Лесной. Удобно рассматривать вместе с береговой прогулкой рядом с посёлком.",
-      "practical": "Доступ внутрь не подтверждён. Планируйте внешний осмотр и проверяйте правила территории на месте.",
-      "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
-      "lon": 20.612027,
+      "hours": null,
+      "id": "b9d12ffd-0a07-536e-a997-450324922a9d",
       "lat": 55.0162,
+      "lon": 20.612027,
+      "name": "Маяк в Лесном",
+      "osm_ref": "way/699218187",
+      "photos": [],
+      "practical": "Доступ внутрь не подтверждён. Планируйте внешний осмотр и проверяйте правила территории на месте.",
+      "price": null,
+      "slug": "mayak-lesnoy",
+      "source_url": "https://www.openstreetmap.org/way/699218187",
       "tags": [
         "Архитектура и история",
         "Куршская коса"
       ],
-      "source_url": "https://www.openstreetmap.org/way/699218187",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/699218187",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "ffc8f679-662e-5b02-9537-149fbe9a40db",
-      "slug": "promenad-svetlogorsk",
-      "name": "Променад Светлогорска",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Прогулочная линия у моря ниже городской части Светлогорска. При планировании учитывайте спуск и возвращение наверх.",
-      "practical": "Проверьте доступный спуск на дату поездки. Обратный подъём требует отдельного времени и сил.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.1545042,
+      "hours": null,
+      "id": "ffc8f679-662e-5b02-9537-149fbe9a40db",
       "lat": 54.9464826,
+      "lon": 20.1545042,
+      "name": "Променад Светлогорска",
+      "osm_ref": "way/69269473",
+      "photos": [],
+      "practical": "Проверьте доступный спуск на дату поездки. Обратный подъём требует отдельного времени и сил.",
+      "price": null,
+      "slug": "promenad-svetlogorsk",
+      "source_url": "https://www.openstreetmap.org/way/69269473",
       "tags": [
         "Архитектура и история",
         "Светлогорск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/69269473",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/69269473",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "b782ce75-1fa0-537e-8ed1-470d1507fc08",
-      "slug": "bashnya-svetlogorsk",
-      "name": "Водонапорная башня Светлогорска",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Архитектурный ориентир в верхней части Светлогорска. Его удобно смотреть до спуска на морской променад.",
-      "practical": "Внешний осмотр не означает доступ внутрь. Соединяйте остановку с ближайшими городскими улицами.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.1544557,
+      "hours": null,
+      "id": "b782ce75-1fa0-537e-8ed1-470d1507fc08",
       "lat": 54.9432796,
+      "lon": 20.1544557,
+      "name": "Водонапорная башня Светлогорска",
+      "osm_ref": "way/995725130",
+      "photos": [],
+      "practical": "Внешний осмотр не означает доступ внутрь. Соединяйте остановку с ближайшими городскими улицами.",
+      "price": null,
+      "slug": "bashnya-svetlogorsk",
+      "source_url": "https://www.openstreetmap.org/way/995725130",
       "tags": [
         "Архитектура и история",
         "Светлогорск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/995725130",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/995725130",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "8fec7eb5-eabd-59c2-88d8-27e92a2709f6",
-      "slug": "ozero-tihoe",
-      "name": "Озеро Тихое",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
       "category": "nature",
       "category_name": "Природа",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Озеро в городской части Светлогорска, в стороне от морского берега. Для спокойного дня можно выбрать прогулку у воды без спуска к морю.",
-      "practical": "Метка обозначает центр водоёма. Подход и прогулочную дорожку выбирайте по берегу, не по прямой линии через озеро.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.1531838,
+      "hours": null,
+      "id": "8fec7eb5-eabd-59c2-88d8-27e92a2709f6",
       "lat": 54.9376947,
+      "lon": 20.1531838,
+      "name": "Озеро Тихое",
+      "osm_ref": "way/131710672",
+      "photos": [],
+      "practical": "Метка обозначает центр водоёма. Подход и прогулочную дорожку выбирайте по берегу, не по прямой линии через озеро.",
+      "price": null,
+      "slug": "ozero-tihoe",
+      "source_url": "https://www.openstreetmap.org/way/131710672",
       "tags": [
         "Природа",
         "Светлогорск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/131710672",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/131710672",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "807c7e1b-b58d-5e4e-b01e-e5fde61b5273",
-      "slug": "solnechnye-chasy",
-      "name": "Солнечные часы «Зодиак»",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Городская деталь у морской прогулочной части Светлогорска. Удобна как остановка по пути вдоль променада.",
-      "practical": "Для подхода учтите спуск с городской части. Время прогулки зависит и от обратного подъёма.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 20.1544963,
+      "hours": null,
+      "id": "807c7e1b-b58d-5e4e-b01e-e5fde61b5273",
       "lat": 54.9464819,
+      "lon": 20.1544963,
+      "name": "Солнечные часы «Зодиак»",
+      "osm_ref": "way/995725092",
+      "photos": [],
+      "practical": "Для подхода учтите спуск с городской части. Время прогулки зависит и от обратного подъёма.",
+      "price": null,
+      "slug": "solnechnye-chasy",
+      "source_url": "https://www.openstreetmap.org/way/995725092",
       "tags": [
         "Архитектура и история",
         "Светлогорск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/995725092",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/995725092",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "faaab7ee-3244-5c9c-a31a-9501df74de19",
-      "slug": "baltiyskiy-mayak",
-      "name": "Балтийский маяк",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "baltiysk",
       "area_name": "Балтийск",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Морской ориентир Балтийска рядом с каналом. Его можно смотреть с городской стороны, отдельно от поездки на Балтийскую косу.",
-      "practical": "Доступ внутрь не подтверждён. Для парома и пограничных территорий проверяйте самостоятельные правила и расписание.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 19.8933299,
+      "hours": null,
+      "id": "faaab7ee-3244-5c9c-a31a-9501df74de19",
       "lat": 54.6388083,
+      "lon": 19.8933299,
+      "name": "Балтийский маяк",
+      "osm_ref": "way/223723630",
+      "photos": [],
+      "practical": "Доступ внутрь не подтверждён. Для парома и пограничных территорий проверяйте самостоятельные правила и расписание.",
+      "price": null,
+      "slug": "baltiyskiy-mayak",
+      "source_url": "https://www.openstreetmap.org/way/223723630",
       "tags": [
         "Архитектура и история",
         "Балтийск"
       ],
-      "source_url": "https://www.openstreetmap.org/way/223723630",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/223723630",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "95eb74e9-c9b9-53e4-b53a-9a7d598a3326",
-      "slug": "muzej-baltiyskogo-flota",
-      "name": "Музей Балтийского флота",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "baltiysk",
       "area_name": "Балтийск",
       "category": "museum",
       "category_name": "Музей",
+      "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в Балтийске. При поездке из Калининграда выделите время на городскую часть и возвращение.",
-      "practical": "Уточните часы и условия посещения музея. Городской маршрут не означает доступ к военным объектам.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 19.8911452,
+      "hours": null,
+      "id": "95eb74e9-c9b9-53e4-b53a-9a7d598a3326",
       "lat": 54.6406441,
+      "lon": 19.8911452,
+      "name": "Музей Балтийского флота",
+      "osm_ref": "node/4182734721",
+      "photos": [],
+      "practical": "Уточните часы и условия посещения музея. Городской маршрут не означает доступ к военным объектам.",
+      "price": null,
+      "slug": "muzej-baltiyskogo-flota",
+      "source_url": "https://www.openstreetmap.org/node/4182734721",
       "tags": [
         "Музей",
         "Балтийск"
       ],
-      "source_url": "https://www.openstreetmap.org/node/4182734721",
-      "coordinate_note": "Точка открытой карты",
-      "osm_ref": "node/4182734721",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "cd9f6dc3-9e5e-5c43-8ab5-00a856475279",
-      "slug": "plyazh-yantarny",
-      "name": "Центральный пляж Янтарного",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "yantarny",
       "area_name": "Янтарный",
       "category": "beach",
       "category_name": "Пляж",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Морской берег у центральной части Янтарного. Для спокойного дня его можно сочетать с променадом, оставив время на дорогу из других городов.",
-      "practical": "Проверяйте условия купания, ветер и доступные подходы. Актуальные сертификаты пляжа не подтверждены этой карточкой.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 19.9326279,
+      "hours": null,
+      "id": "cd9f6dc3-9e5e-5c43-8ab5-00a856475279",
       "lat": 54.8697043,
+      "lon": 19.9326279,
+      "name": "Центральный пляж Янтарного",
+      "osm_ref": "way/1535485560",
+      "photos": [],
+      "practical": "Проверяйте условия купания, ветер и доступные подходы. Актуальные сертификаты пляжа не подтверждены этой карточкой.",
+      "price": null,
+      "slug": "plyazh-yantarny",
+      "source_url": "https://www.openstreetmap.org/way/1535485560",
       "tags": [
         "Пляж",
         "Янтарный"
       ],
-      "source_url": "https://www.openstreetmap.org/way/1535485560",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/1535485560",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "88f12f47-2dd5-5cb2-8db0-4ca408e078d2",
-      "slug": "promenad-yantarny",
-      "name": "Променад Янтарного",
+      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "yantarny",
       "area_name": "Янтарный",
       "category": "landmark",
       "category_name": "Архитектура и история",
+      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Береговая прогулочная часть Янтарного. Удобна для соединения городского подхода с выходом к пляжу.",
-      "practical": "Метка показывает участок променада. Длину прогулки задайте началом и местом разворота, учитывая погоду.",
-      "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
-      "lon": 19.9332957,
+      "hours": null,
+      "id": "88f12f47-2dd5-5cb2-8db0-4ca408e078d2",
       "lat": 54.8719287,
+      "lon": 19.9332957,
+      "name": "Променад Янтарного",
+      "osm_ref": "way/290649451",
+      "photos": [],
+      "practical": "Метка показывает участок променада. Длину прогулки задайте началом и местом разворота, учитывая погоду.",
+      "price": null,
+      "slug": "promenad-yantarny",
+      "source_url": "https://www.openstreetmap.org/way/290649451",
       "tags": [
         "Архитектура и история",
         "Янтарный"
       ],
-      "source_url": "https://www.openstreetmap.org/way/290649451",
-      "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
-      "osm_ref": "way/290649451",
-      "verified_at": "2026-10-01",
       "verification_status": "map_source_checked",
-      "hours": null,
-      "price": null,
-      "photos": []
+      "verified_at": "2026-10-01"
     }
   ],
   "routes": [
     {
-      "id": "8c45a621-77c7-5851-babb-c64d2ef0c8fd",
-      "slug": "amalienau-2-hours",
-      "name": "Амалиенау: виллы и парк",
+      "access_note": "Виллы смотрим с улицы. Музей и спектакли бронируются отдельно.",
       "area": "kaliningrad",
       "area_name": "Калининград",
-      "description": "От вилл Лео и Шмидт к кирхе памяти королевы Луизы и аллеям Центрального парка. Два часа на архитектуру и прогулку; визит в «Альтес Хаус» планируйте отдельно.",
-      "minutes": 120,
+      "description": "У вилл Лео и Шмидт прогулка начинается с архитектуры, у кирхи памяти королевы Луизы переходит к аллеям Центрального парка. Два часа на этот путь; для «Альтес Хаус» добавьте отдельное время.",
       "distance_m": 1614,
-      "start_note": "Начните у виллы Лео. Городская прогулка без входа в частные дома.",
-      "access_note": "Виллы смотрим с улицы. Музей и спектакли бронируются отдельно.",
-      "mode": "walking",
-      "themes": [
-        "architecture",
-        "history"
-      ],
       "format": "express",
-      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             20.4660675,
@@ -1625,53 +2323,53 @@
             20.477254,
             54.7195928
           ]
-        ]
+        ],
+        "type": "LineString"
       },
+      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
+      "id": "8c45a621-77c7-5851-babb-c64d2ef0c8fd",
+      "minutes": 120,
+      "mode": "walking",
+      "name": "Амалиенау: виллы и парк",
+      "slug": "amalienau-2-hours",
+      "start_note": "Начните у виллы Лео. Городская прогулка без входа в частные дома.",
       "stops": [
         {
-          "poi": "villa-leo",
-          "note": "Не заходите на частную территорию ради фотографии. Следующая вилла рассматривается как часть общей прогулки."
+          "note": "Не заходите на частную территорию ради фотографии. Следующая вилла рассматривается как часть общей прогулки.",
+          "poi": "villa-leo"
         },
         {
-          "poi": "villa-shmidt",
-          "note": "Осматривайте с публичной улицы. Карточка не обещает доступ во двор или внутрь частного здания."
+          "note": "Осматривайте с публичной улицы. Карточка не обещает доступ во двор или внутрь частного здания.",
+          "poi": "villa-shmidt"
         },
         {
-          "poi": "altes-haus",
-          "note": "Проверьте запись, сеансы и продолжительность. Остановка у адреса не заменяет бронирование посещения."
+          "note": "Проверьте запись, сеансы и продолжительность. Остановка у адреса не заменяет бронирование посещения.",
+          "poi": "altes-haus"
         },
         {
-          "poi": "kirha-korolevy-luizy",
-          "note": "Для представления или посещения внутри проверяйте афишу отдельно. Уличный маршрут не означает вход в здание."
+          "note": "Для представления или посещения внутри проверяйте афишу отдельно. Уличный маршрут не означает вход в здание.",
+          "poi": "kirha-korolevy-luizy"
         },
         {
-          "poi": "pergola-korolevy-luizy",
-          "note": "Сначала найдите подходящую аллею: прямая линия через территорию парка не всегда совпадает с дорожкой."
+          "note": "Сначала найдите подходящую аллею: прямая линия через территорию парка не всегда совпадает с дорожкой.",
+          "poi": "pergola-korolevy-luizy"
         }
       ],
-      "verified_at": "2026-10-01",
-      "verification_status": "map_routed"
+      "themes": [
+        "architecture",
+        "history"
+      ],
+      "verification_status": "map_routed",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "f19f6c26-88f5-5294-b234-5bade71b6e6e",
-      "slug": "ostrov-kanta-naberezhnye",
-      "name": "Остров Канта и музейная набережная",
+      "access_note": "Время рассчитано для прогулки и коротких остановок. Посещение выставок и концерта добавьте отдельно.",
       "area": "kaliningrad",
       "area_name": "Калининград",
-      "description": "От Кафедрального собора через Медовый мост и Рыбную деревню к музейной набережной, «Витязю» и «Планете Океан». Три часа у Преголи; время внутри музеев добавьте отдельно.",
-      "minutes": 180,
+      "description": "Преголя ведёт от собора через Медовый мост и Рыбную деревню к музейной набережной. Здесь стоят «Витязь» и «Планета Океан». Три часа на прогулку; посещение музеев займёт дополнительное время.",
       "distance_m": 2302,
-      "start_note": "Начните у Кафедрального собора на острове Канта.",
-      "access_note": "Время рассчитано для прогулки и коротких остановок. Посещение выставок и концерта добавьте отдельно.",
-      "mode": "walking",
-      "themes": [
-        "history",
-        "museums"
-      ],
       "format": "half-day",
-      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             20.5114085,
@@ -2177,57 +2875,57 @@
             20.5022289,
             54.7066702
           ]
-        ]
+        ],
+        "type": "LineString"
       },
+      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
+      "id": "f19f6c26-88f5-5294-b234-5bade71b6e6e",
+      "minutes": 180,
+      "mode": "walking",
+      "name": "Остров Канта и музейная набережная",
+      "slug": "ostrov-kanta-naberezhnye",
+      "start_note": "Начните у Кафедрального собора на острове Канта.",
       "stops": [
         {
-          "poi": "kafedralny-sobor",
-          "note": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа."
+          "note": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа.",
+          "poi": "kafedralny-sobor"
         },
         {
-          "poi": "mogila-kanta",
-          "note": "На карте указана точка мемориала. Для музея и органного зала проверьте отдельные условия посещения."
+          "note": "На карте указана точка мемориала. Для музея и органного зала проверьте отдельные условия посещения.",
+          "poi": "mogila-kanta"
         },
         {
-          "poi": "medovyy-most",
-          "note": "На прогулке учитывайте, на какой берег вы выходите: собор и Рыбная деревня находятся по разные стороны перехода."
+          "note": "На прогулке учитывайте, на какой берег вы выходите: собор и Рыбная деревня находятся по разные стороны перехода.",
+          "poi": "medovyy-most"
         },
         {
-          "poi": "rybnaya-derevnya",
-          "note": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно."
+          "note": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно.",
+          "poi": "rybnaya-derevnya"
         },
         {
-          "poi": "sudno-vityaz",
-          "note": "Не пытайтесь вместить все музейные суда в короткую прогулку. Выберите одно посещение и проверьте билет."
+          "note": "Не пытайтесь вместить все музейные суда в короткую прогулку. Выберите одно посещение и проверьте билет.",
+          "poi": "sudno-vityaz"
         },
         {
-          "poi": "planeta-okean",
-          "note": "Уточните доступные сеансы и режим работы перед поездкой. Время внутри не включено автоматически в пеший трек."
+          "note": "Уточните доступные сеансы и режим работы перед поездкой. Время внутри не включено автоматически в пеший трек.",
+          "poi": "planeta-okean"
         }
       ],
-      "verified_at": "2026-10-01",
-      "verification_status": "map_routed"
+      "themes": [
+        "history",
+        "museums"
+      ],
+      "verification_status": "map_routed",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "49da5e64-194f-56e2-8221-d4b90c328cfa",
-      "slug": "vorota-i-reka",
-      "name": "От Королевских ворот к Преголе",
+      "access_note": "Маршрут проходит по городским улицам. Используйте переходы; экспозиции внутри ворот посещаются отдельно.",
       "area": "kaliningrad",
       "area_name": "Калининград",
-      "description": "Королевские и Закхаймские ворота, Рыбная деревня, остров Канта и музейная набережная в одной городской прогулке. Около 4,5 км от исторических ворот к реке.",
-      "minutes": 180,
+      "description": "От Королевских и Закхаймских ворот путь выходит к Рыбной деревне, острову Канта и музейной набережной. Около 4,5 км: городская архитектура постепенно уступает место реке.",
       "distance_m": 4450,
-      "start_note": "Начните у Королевских ворот и двигайтесь в сторону реки.",
-      "access_note": "Маршрут проходит по городским улицам. Используйте переходы; экспозиции внутри ворот посещаются отдельно.",
-      "mode": "walking",
-      "themes": [
-        "architecture",
-        "history"
-      ],
       "format": "half-day",
-      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             20.536116,
@@ -3153,52 +3851,53 @@
             20.4996662,
             54.7068826
           ]
-        ]
+        ],
+        "type": "LineString"
       },
+      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
+      "id": "49da5e64-194f-56e2-8221-d4b90c328cfa",
+      "minutes": 180,
+      "mode": "walking",
+      "name": "От Королевских ворот к Преголе",
+      "slug": "vorota-i-reka",
+      "start_note": "Начните у Королевских ворот и двигайтесь в сторону реки.",
       "stops": [
         {
-          "poi": "korolevskie-vorota",
-          "note": "Если продолжаете к Янтарному музею, проверьте весь путь, а не только расстояние между значками."
+          "note": "Если продолжаете к Янтарному музею, проверьте весь путь, а не только расстояние между значками.",
+          "poi": "korolevskie-vorota"
         },
         {
-          "poi": "zakhaymskie-vorota",
-          "note": "Сначала посмотрите внешний объём здания; мероприятия и доступ внутрь сверяйте на дату поездки."
+          "note": "Сначала посмотрите внешний объём здания; мероприятия и доступ внутрь сверяйте на дату поездки.",
+          "poi": "zakhaymskie-vorota"
         },
         {
-          "poi": "rybnaya-derevnya",
-          "note": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно."
+          "note": "Не закладывайте заведение только по виду фасада: меню, свободные столики и часы проверяйте отдельно.",
+          "poi": "rybnaya-derevnya"
         },
         {
-          "poi": "kafedralny-sobor",
-          "note": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа."
+          "note": "Если планируете концерт, сначала выберите сеанс, затем подстройте прогулку под время входа.",
+          "poi": "kafedralny-sobor"
         },
         {
-          "poi": "muzej-mirovogo-okeana",
-          "note": "На карте отмечен конкретный корпус. Проверьте, какие экспозиции входят в выбранный билет."
+          "note": "На карте отмечен конкретный корпус. Проверьте, какие экспозиции входят в выбранный билет.",
+          "poi": "muzej-mirovogo-okeana"
         }
       ],
-      "verified_at": "2026-10-01",
-      "verification_status": "map_routed"
+      "themes": [
+        "architecture",
+        "history"
+      ],
+      "verification_status": "map_routed",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "152beb71-5177-58b8-a9cf-6dc3b1abc602",
-      "slug": "tancuyushchiy-les",
-      "name": "Танцующий лес: прогулка по тропе",
+      "access_note": "На карте прогулочная линия по дорожкам OSM, а не полный перечень разрешённых участков парка. Проверяйте указатели и сообщения парка.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
-      "description": "Короткая самостоятельная прогулка по дорожкам Танцующего леса на Куршской косе. Около часа с остановками у сосен; до входа на тропу добираются транспортом.",
-      "minutes": 75,
+      "description": "Дорожки Танцующего леса ведут между соснами и возвращают к началу прогулки. Около часа с остановками; до входа на тропу нужно добраться транспортом. Высота Эфа — отдельная поездка.",
       "distance_m": 1069,
-      "start_note": "Начните у подхода к тропе со стороны парковки. До начала нужно добраться транспортом.",
-      "access_note": "На карте прогулочная линия по дорожкам OSM, а не полный перечень разрешённых участков парка. Проверяйте указатели и сообщения парка.",
-      "mode": "walking",
-      "themes": [
-        "nature"
-      ],
       "format": "express",
-      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             20.8593972,
@@ -3340,37 +4039,36 @@
             20.8593972,
             55.1826063
           ]
-        ]
+        ],
+        "type": "LineString"
       },
+      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
+      "id": "152beb71-5177-58b8-a9cf-6dc3b1abc602",
+      "minutes": 75,
+      "mode": "walking",
+      "name": "Танцующий лес: прогулка по тропе",
+      "slug": "tancuyushchiy-les",
+      "start_note": "Начните у подхода к тропе со стороны парковки. До начала нужно добраться транспортом.",
       "stops": [
         {
-          "poi": "tancuyushchiy-les",
-          "note": "Оставайтесь на разрешённой тропе, не трогайте деревья и проверьте сообщения парка о доступе."
+          "note": "Оставайтесь на разрешённой тропе, не трогайте деревья и проверьте сообщения парка о доступе.",
+          "poi": "tancuyushchiy-les"
         }
       ],
-      "verified_at": "2026-10-01",
-      "verification_status": "map_routed"
+      "themes": [
+        "nature"
+      ],
+      "verification_status": "map_routed",
+      "verified_at": "2026-10-01"
     },
     {
-      "id": "870e9f0a-2a1f-5632-bf88-1c60afa486ef",
-      "slug": "vysota-efa",
-      "name": "Высота Эфа: к дюнам и обратно",
+      "access_note": "Возвращение к началу включено в линию. Есть ступени; не сходите с разрешённого настила. Время переезда не включено.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
-      "description": "Подъём от входа на тропу к смотровой высоты Эфа и возвращение тем же разрешённым путём. Почти 2 км со ступенями и остановкой у дюн; переезд до тропы планируйте отдельно.",
-      "minutes": 100,
+      "description": "От входа на тропу путь поднимается к смотровой Эфа, затем возвращается по тому же разрешённому маршруту. Почти 2 км со ступенями и остановкой у дюн; дорогу до тропы рассчитайте отдельно.",
       "distance_m": 1908,
-      "start_note": "Начните у обозначенного входа на тропу. До входа добираются транспортом.",
-      "access_note": "Возвращение к началу включено в линию. Есть ступени; не сходите с разрешённого настила. Время переезда не включено.",
-      "mode": "walking",
-      "themes": [
-        "nature",
-        "photo"
-      ],
       "format": "express",
-      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             20.8928143,
@@ -3632,706 +4330,34 @@
             20.8928143,
             55.2217807
           ]
-        ]
+        ],
+        "type": "LineString"
       },
+      "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
+      "id": "870e9f0a-2a1f-5632-bf88-1c60afa486ef",
+      "minutes": 100,
+      "mode": "walking",
+      "name": "Высота Эфа: к дюнам и обратно",
+      "slug": "vysota-efa",
+      "start_note": "Начните у обозначенного входа на тропу. До входа добираются транспортом.",
       "stops": [
         {
-          "poi": "vysota-efa",
-          "note": "Проходите по настилам и обозначенным тропам. Участок требует времени на ступени; не сокращайте путь через песок."
+          "note": "Проходите по настилам и обозначенным тропам. Участок требует времени на ступени; не сокращайте путь через песок.",
+          "poi": "vysota-efa"
         },
         {
-          "poi": "smotrovaya-efa",
-          "note": "Одежда должна подходить для ветра. Закладывайте время на остановку и обратный путь, не сходите с настила."
+          "note": "Одежда должна подходить для ветра. Закладывайте время на остановку и обратный путь, не сходите с настила.",
+          "poi": "smotrovaya-efa"
         }
       ],
-      "verified_at": "2026-10-01",
-      "verification_status": "map_routed"
+      "themes": [
+        "nature",
+        "photo"
+      ],
+      "verification_status": "map_routed",
+      "verified_at": "2026-10-01"
     }
   ],
-  "collections": [
-    {
-      "path": "kaliningrad/chto-posmotret/",
-      "name": "Калининград: что посмотреть",
-      "intro": "Места для поездки в Калининград: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "kafedralny-sobor",
-        "mogila-kanta",
-        "ostrov-kanta",
-        "rybnaya-derevnya",
-        "bashnya-mayak",
-        "medovyy-most",
-        "sudno-vityaz",
-        "muzej-mirovogo-okeana",
-        "planeta-okean",
-        "mayak-irbenskiy",
-        "fridrihsburgskie-vorota",
-        "brandenburgskie-vorota",
-        "korolevskie-vorota",
-        "zakhaymskie-vorota",
-        "muzej-yantarya",
-        "rosgartenskie-vorota",
-        "kirha-svyatogo-semeystva",
-        "kirha-korolevy-luizy",
-        "centralnyy-park",
-        "villa-shmidt",
-        "villa-leo",
-        "altes-haus",
-        "kaliningradskiy-zoopark",
-        "pergola-korolevy-luizy"
-      ],
-      "featured": true
-    },
-    {
-      "path": "zelenogradsk/chto-posmotret/",
-      "name": "Зеленоградск: что посмотреть",
-      "intro": "Места для поездки в Зеленоградск: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "promenad-zelenogradsk",
-        "kurortnyy-prospekt",
-        "murarium",
-        "muzej-zelenogradska",
-        "muzej-skeletov",
-        "kirha-svyatogo-adalberta",
-        "kurhaus-kranc",
-        "byuvet-luizy",
-        "skver-luizy",
-        "koshachiy-svetofor"
-      ],
-      "featured": true
-    },
-    {
-      "path": "kurshskaya-kosa/chto-posmotret/",
-      "name": "Куршская коса: что посмотреть",
-      "intro": "Места на Куршской косе: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "smotrovaya-efa",
-        "vysota-myullera",
-        "fringilla",
-        "korolevskiy-bor",
-        "plyazh-lesnoy",
-        "mayak-lesnoy"
-      ],
-      "featured": true
-    },
-    {
-      "path": "svetlogorsk/chto-posmotret/",
-      "name": "Светлогорск: что посмотреть",
-      "intro": "Места для поездки в Светлогорск: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "promenad-svetlogorsk",
-        "bashnya-svetlogorsk",
-        "ozero-tihoe",
-        "solnechnye-chasy"
-      ],
-      "featured": true
-    },
-    {
-      "path": "baltiysk/chto-posmotret/",
-      "name": "Балтийск: что посмотреть",
-      "intro": "Места для поездки в Балтийск: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "baltiyskiy-mayak",
-        "muzej-baltiyskogo-flota"
-      ],
-      "featured": true
-    },
-    {
-      "path": "yantarny/chto-posmotret/",
-      "name": "Янтарный: что посмотреть",
-      "intro": "Места для поездки в Янтарный: выберите остановки и посмотрите их положение на карте.",
-      "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",
-      "poi": [
-        "plyazh-yantarny",
-        "promenad-yantarny"
-      ],
-      "featured": true
-    },
-    {
-      "path": "routes/",
-      "name": "Пешие маршруты по Балтике",
-      "intro": "Пять готовых прогулок по Калининграду и Куршской косе. Выберите место, оцените время и откройте остановки по порядку.",
-      "advice": "Время включает ходьбу и короткие остановки. Долгое посещение музеев, дорогу до начала и ожидание транспорта планируйте отдельно.",
-      "poi": [
-        "villa-leo",
-        "kafedralny-sobor",
-        "korolevskie-vorota",
-        "tancuyushchiy-les",
-        "vysota-efa"
-      ],
-      "featured": true
-    },
-    {
-      "path": "places/",
-      "name": "Места Калининградской области",
-      "intro": "Каталог остановок для вашей поездки: городские кварталы, музейные корпуса, прогулочные тропы и морской берег.",
-      "advice": "Отметки на карте помогают выбрать район, но не заменяют путь по улицам и разрешённым тропам.",
-      "poi": [
-        "kafedralny-sobor",
-        "mogila-kanta",
-        "ostrov-kanta",
-        "rybnaya-derevnya",
-        "bashnya-mayak",
-        "medovyy-most",
-        "sudno-vityaz",
-        "muzej-mirovogo-okeana",
-        "planeta-okean",
-        "mayak-irbenskiy",
-        "fridrihsburgskie-vorota",
-        "brandenburgskie-vorota",
-        "korolevskie-vorota",
-        "zakhaymskie-vorota",
-        "muzej-yantarya",
-        "rosgartenskie-vorota",
-        "kirha-svyatogo-semeystva",
-        "kirha-korolevy-luizy",
-        "centralnyy-park",
-        "villa-shmidt",
-        "villa-leo",
-        "altes-haus",
-        "kaliningradskiy-zoopark",
-        "pergola-korolevy-luizy",
-        "promenad-zelenogradsk",
-        "kurortnyy-prospekt",
-        "murarium",
-        "muzej-zelenogradska",
-        "muzej-skeletov",
-        "kirha-svyatogo-adalberta",
-        "kurhaus-kranc",
-        "byuvet-luizy",
-        "skver-luizy",
-        "koshachiy-svetofor",
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "smotrovaya-efa",
-        "vysota-myullera",
-        "fringilla",
-        "korolevskiy-bor",
-        "plyazh-lesnoy",
-        "mayak-lesnoy",
-        "promenad-svetlogorsk",
-        "bashnya-svetlogorsk",
-        "ozero-tihoe",
-        "solnechnye-chasy",
-        "baltiyskiy-mayak",
-        "muzej-baltiyskogo-flota",
-        "plyazh-yantarny",
-        "promenad-yantarny"
-      ],
-      "featured": true
-    },
-    {
-      "path": "museums/",
-      "name": "Музеи по пути",
-      "intro": "Музейные остановки в Калининграде, Зеленоградске и Балтийске. Выберите основную экспозицию дня и ближайшую прогулку.",
-      "advice": "Сначала уточните сеанс и билет. Затем подстройте маршрут; время внутри музея не равно времени перехода между точками.",
-      "poi": [
-        "sudno-vityaz",
-        "muzej-mirovogo-okeana",
-        "planeta-okean",
-        "mayak-irbenskiy",
-        "muzej-yantarya",
-        "altes-haus",
-        "murarium",
-        "muzej-zelenogradska",
-        "muzej-skeletov",
-        "muzej-baltiyskogo-flota"
-      ],
-      "featured": true
-    },
-    {
-      "path": "nature/",
-      "name": "Дюны, лес и вода",
-      "intro": "Природные остановки на Куршской косе и городские зелёные пространства. Посмотрите, где нужен транспорт до начала прогулки.",
-      "advice": "Для косы проверяйте правила национального парка. Погода и доступность дорожек важнее прямого расстояния между метками.",
-      "poi": [
-        "ostrov-kanta",
-        "centralnyy-park",
-        "kaliningradskiy-zoopark",
-        "skver-luizy",
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "fringilla",
-        "korolevskiy-bor",
-        "plyazh-lesnoy",
-        "ozero-tihoe",
-        "plyazh-yantarny"
-      ],
-      "featured": true
-    },
-    {
-      "path": "map/",
-      "name": "Карта мест и маршрутов",
-      "intro": "Все остановки стартового каталога на одной карте. Откройте карточку места или перейдите к готовой прогулке.",
-      "advice": "Обзорная карта показывает расположение объектов. Линии пяти пеших маршрутов доступны из их карточек.",
-      "poi": [
-        "kafedralny-sobor",
-        "mogila-kanta",
-        "ostrov-kanta",
-        "rybnaya-derevnya",
-        "bashnya-mayak",
-        "medovyy-most",
-        "sudno-vityaz",
-        "muzej-mirovogo-okeana",
-        "planeta-okean",
-        "mayak-irbenskiy",
-        "fridrihsburgskie-vorota",
-        "brandenburgskie-vorota",
-        "korolevskie-vorota",
-        "zakhaymskie-vorota",
-        "muzej-yantarya",
-        "rosgartenskie-vorota",
-        "kirha-svyatogo-semeystva",
-        "kirha-korolevy-luizy",
-        "centralnyy-park",
-        "villa-shmidt",
-        "villa-leo",
-        "altes-haus",
-        "kaliningradskiy-zoopark",
-        "pergola-korolevy-luizy",
-        "promenad-zelenogradsk",
-        "kurortnyy-prospekt",
-        "murarium",
-        "muzej-zelenogradska",
-        "muzej-skeletov",
-        "kirha-svyatogo-adalberta",
-        "kurhaus-kranc",
-        "byuvet-luizy",
-        "skver-luizy",
-        "koshachiy-svetofor",
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "smotrovaya-efa",
-        "vysota-myullera",
-        "fringilla",
-        "korolevskiy-bor",
-        "plyazh-lesnoy",
-        "mayak-lesnoy",
-        "promenad-svetlogorsk",
-        "bashnya-svetlogorsk",
-        "ozero-tihoe",
-        "solnechnye-chasy",
-        "baltiyskiy-mayak",
-        "muzej-baltiyskogo-flota",
-        "plyazh-yantarny",
-        "promenad-yantarny"
-      ],
-      "featured": true
-    },
-    {
-      "path": "kaliningrad/amalienau/",
-      "name": "Амалиенау пешком",
-      "intro": "Виллы, музей и Центральный парк в одном районе.",
-      "advice": "Начните у вилл и закончите в парке. Частные здания смотрите с улицы, посещение музея согласуйте заранее.",
-      "poi": [
-        "villa-leo",
-        "villa-shmidt",
-        "altes-haus",
-        "kirha-korolevy-luizy",
-        "pergola-korolevy-luizy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/naberezhnye/",
-      "name": "Набережные Калининграда",
-      "intro": "Прогулка у Преголи с переходом между берегами.",
-      "advice": "Выберите мост до перехода на следующий берег. Для музейной набережной оставьте свободное время, если решите зайти внутрь.",
-      "poi": [
-        "ostrov-kanta",
-        "rybnaya-derevnya",
-        "medovyy-most",
-        "sudno-vityaz",
-        "planeta-okean"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/vorota/",
-      "name": "Исторические ворота Калининграда",
-      "intro": "Архитектурные остановки в разных частях города.",
-      "advice": "Все ворота за одну короткую прогулку — длинный переход. Выберите южную или восточную группу, а остальные оставьте на другой день.",
-      "poi": [
-        "brandenburgskie-vorota",
-        "fridrihsburgskie-vorota",
-        "korolevskie-vorota",
-        "zakhaymskie-vorota",
-        "rosgartenskie-vorota"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/muzei-u-reki/",
-      "name": "Музеи у Преголи",
-      "intro": "Корпуса и суда на музейной набережной.",
-      "advice": "Выбирайте билет под конкретную экспозицию. Четыре метки рядом не означают четыре быстрых посещения.",
-      "poi": [
-        "sudno-vityaz",
-        "muzej-mirovogo-okeana",
-        "planeta-okean",
-        "mayak-irbenskiy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/organ-i-arhitektura/",
-      "name": "Орган и архитектура",
-      "intro": "Собор и исторические кирхи в разных районах города.",
-      "advice": "Концерт задаёт время дня. Кирха Святого Семейства находится на юге, кирха Луизы — у Центрального парка; между ними нужен отдельный переход.",
-      "poi": [
-        "kafedralny-sobor",
-        "kirha-svyatogo-semeystva",
-        "kirha-korolevy-luizy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/ostrov-kanta/",
-      "name": "Остров Канта и ближайшие остановки",
-      "intro": "Компактная прогулка вокруг собора и реки.",
-      "advice": "Если есть только часть дня, оставайтесь у острова. Добавляйте башню или музей лишь после проверки времени посещения.",
-      "poi": [
-        "kafedralny-sobor",
-        "mogila-kanta",
-        "medovyy-most",
-        "rybnaya-derevnya"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/s-detmi/",
-      "name": "Калининград с детьми",
-      "intro": "Несколько вариантов дня с разным темпом и продолжительностью.",
-      "advice": "Выберите один большой объект — зоопарк или музей — и короткую прогулку. Доступность, возрастные особенности и билеты уточните для вашей группы.",
-      "poi": [
-        "kaliningradskiy-zoopark",
-        "centralnyy-park",
-        "sudno-vityaz",
-        "planeta-okean"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/v-dozhd/",
-      "name": "Калининград в дождь",
-      "intro": "Музейные варианты для дня с плохой погодой.",
-      "advice": "Не рассчитывайте на вход без проверки: у мест разные часы и правила записи. Переходы между музеями остаются уличными.",
-      "poi": [
-        "muzej-yantarya",
-        "planeta-okean",
-        "muzej-mirovogo-okeana",
-        "altes-haus"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/zelenye-progulki/",
-      "name": "Зелёные прогулки в Калининграде",
-      "intro": "Парк и остров для спокойного городского дня.",
-      "advice": "Центральный парк и остров Канта — отдельные районы. Выберите один для короткой прогулки или учтите путь между ними.",
-      "poi": [
-        "centralnyy-park",
-        "pergola-korolevy-luizy",
-        "ostrov-kanta"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/smotrovye/",
-      "name": "Смотровая и речные виды",
-      "intro": "Разные способы посмотреть на Преголю: с берега, моста и башни.",
-      "advice": "Для подъёма уточните часы; береговая прогулка работает как отдельный вариант. Ветер и свет влияют на выбор остановки.",
-      "poi": [
-        "bashnya-mayak",
-        "medovyy-most",
-        "rybnaya-derevnya"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/bez-mashiny/",
-      "name": "Калининград без машины",
-      "intro": "Городские остановки для пешего знакомства.",
-      "advice": "Начните с готовой прогулки по набережным или воротам. Переходы между районами планируйте по реальному треку.",
-      "poi": [
-        "kafedralny-sobor",
-        "rybnaya-derevnya",
-        "muzej-mirovogo-okeana",
-        "korolevskie-vorota"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kaliningrad/yuzhnyy-bereg/",
-      "name": "Южный берег Калининграда",
-      "intro": "Ворота и кирха на южной стороне городского центра.",
-      "advice": "Это отдельный сценарий от Амалиенау. Учитывайте городские улицы и переходы; посещение зала добавляется по афише.",
-      "poi": [
-        "brandenburgskie-vorota",
-        "kirha-svyatogo-semeystva",
-        "fridrihsburgskie-vorota"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/za-odin-den/",
-      "name": "Зеленоградск за один день",
-      "intro": "Городская часть, музей по выбору и морской берег.",
-      "advice": "Сначала пройдите центр, затем выходите к морю. Один музей проще сочетать с берегом, чем несколько посещений подряд.",
-      "poi": [
-        "kurortnyy-prospekt",
-        "kurhaus-kranc",
-        "promenad-zelenogradsk",
-        "byuvet-luizy",
-        "murarium"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/muzei/",
-      "name": "Музеи Зеленоградска",
-      "intro": "Три тематически разных музейных остановки.",
-      "advice": "Выберите по интересу: история курорта, кошачья тема или необычная коллекция. Проверяйте билеты и часы каждого места отдельно.",
-      "poi": [
-        "murarium",
-        "muzej-zelenogradska",
-        "muzej-skeletov"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/arhitektura/",
-      "name": "Архитектура Зеленоградска",
-      "intro": "Исторические здания и прогулочная улица курортного города.",
-      "advice": "Осматривайте фасады с улицы. У гостиниц и действующих зданий собственные правила доступа.",
-      "poi": [
-        "kurhaus-kranc",
-        "kirha-svyatogo-adalberta",
-        "kurortnyy-prospekt"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/koshachiy-gorod/",
-      "name": "Кошачьи остановки Зеленоградска",
-      "intro": "Музей и городские детали кошачьей темы.",
-      "advice": "Не превращайте поиск деталей в гонку. Музей требует времени, а светофор — безопасного места для фотографии.",
-      "poi": [
-        "murarium",
-        "koshachiy-svetofor",
-        "kurortnyy-prospekt"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/u-morya/",
-      "name": "Зеленоградск у моря",
-      "intro": "Променад и городские остановки рядом с морской частью.",
-      "advice": "Для ветреного дня предусмотрите короткую береговую прогулку и возврат в центр. Береговая метка не гарантирует условия для купания.",
-      "poi": [
-        "promenad-zelenogradsk",
-        "byuvet-luizy",
-        "kurhaus-kranc"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/v-dozhd/",
-      "name": "Зеленоградск в дождь",
-      "intro": "Музеи как опора дня, когда открытый берег неудобен.",
-      "advice": "Сначала проверьте часы выбранного музея. Курхаус в подборке — архитектурный ориентир, а не обещание свободного входа.",
-      "poi": [
-        "muzej-zelenogradska",
-        "murarium",
-        "muzej-skeletov",
-        "kurhaus-kranc"
-      ],
-      "featured": false
-    },
-    {
-      "path": "zelenogradsk/spokoynyy-den/",
-      "name": "Неспешный день в Зеленоградске",
-      "intro": "Короткие остановки без плотной экскурсионной программы.",
-      "advice": "Задайте место разворота на променаде и оставьте паузу в сквере. Расписание обратного транспорта проверьте заранее.",
-      "poi": [
-        "skver-luizy",
-        "kurortnyy-prospekt",
-        "byuvet-luizy",
-        "promenad-zelenogradsk"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/marshruty/",
-      "name": "Пешие маршруты Куршской косы",
-      "intro": "Лес и дюны как самостоятельные прогулки с разными началами.",
-      "advice": "Между Танцующим лесом и Эфа нужен переезд. Линии каждой прогулки открываются отдельно; доступ сверяйте с сообщениями парка.",
-      "poi": [
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "smotrovaya-efa",
-        "korolevskiy-bor"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/smotrovye/",
-      "name": "Смотровые Куршской косы",
-      "intro": "Две разные тропы к смотровым.",
-      "advice": "Выберите одну тропу для короткой остановки. Между ними планируется транспорт, а на подъём и возвращение нужно время.",
-      "poi": [
-        "vysota-myullera",
-        "smotrovaya-efa"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/lesnye-tropy/",
-      "name": "Лесные тропы на косе",
-      "intro": "Разные лесные сценарии национального парка.",
-      "advice": "Следуйте официальным указателям. Лесная тропа не означает свободный проход через любую часть леса.",
-      "poi": [
-        "tancuyushchiy-les",
-        "korolevskiy-bor",
-        "vysota-myullera"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/lesnoy/",
-      "name": "Остановка в Лесном",
-      "intro": "Посёлок как точка выхода к морю на косе.",
-      "advice": "Проверьте доступный подход к берегу и возвращение к транспорту. Маяк рассматривайте снаружи, пока вход не подтверждён.",
-      "poi": [
-        "plyazh-lesnoy",
-        "mayak-lesnoy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/efa/",
-      "name": "Высота Эфа: вход и смотровая",
-      "intro": "Две точки одной прогулки: начало и цель подъёма.",
-      "advice": "Открывайте готовый маршрут, чтобы увидеть путь туда и обратно. Учитывайте ступени и не сокращайте путь по дюне.",
-      "poi": [
-        "vysota-efa",
-        "smotrovaya-efa"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/s-detmi/",
-      "name": "Коса с детьми: выбрать остановку",
-      "intro": "Лес, птицы и морской берег с разными условиями посещения.",
-      "advice": "Возраст и темп важнее количества точек. Станция зависит от сезона и сеансов; берег — от погоды; доступ к тропе проверяйте у парка.",
-      "poi": [
-        "tancuyushchiy-les",
-        "fringilla",
-        "plyazh-lesnoy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "kurshskaya-kosa/pervaya-poezdka/",
-      "name": "Первая поездка на Куршскую косу",
-      "intro": "Несколько вариантов остановок для знакомства с косой.",
-      "advice": "Не пытайтесь пройти косу пешком между всеми метками. Выберите две прогулки, рассчитайте переезды и проверьте билет в парк.",
-      "poi": [
-        "korolevskiy-bor",
-        "tancuyushchiy-les",
-        "vysota-efa",
-        "plyazh-lesnoy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "svetlogorsk/za-odin-den/",
-      "name": "Светлогорск за один день",
-      "intro": "Озеро, городская архитектура и морская часть.",
-      "advice": "Сначала решите, готовы ли вы к спуску и подъёму. Озеро и верхняя часть подходят для отдельного спокойного сценария.",
-      "poi": [
-        "ozero-tihoe",
-        "bashnya-svetlogorsk",
-        "promenad-svetlogorsk",
-        "solnechnye-chasy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "svetlogorsk/u-morya/",
-      "name": "Светлогорск у моря",
-      "intro": "Береговые остановки под городской частью Светлогорска.",
-      "advice": "Уточните действующий спуск на променад. Обратный подъём включайте в время дня, даже если расстояние на карте небольшое.",
-      "poi": [
-        "promenad-svetlogorsk",
-        "solnechnye-chasy"
-      ],
-      "featured": false
-    },
-    {
-      "path": "svetlogorsk/bez-spuska-k-moryu/",
-      "name": "Светлогорск без спуска к морю",
-      "intro": "Озеро и архитектура верхней части города.",
-      "advice": "Этот сценарий помогает оставить море для другого дня. Подход к озеру и переход к башне всё равно проверяются по карте.",
-      "poi": [
-        "ozero-tihoe",
-        "bashnya-svetlogorsk"
-      ],
-      "featured": false
-    },
-    {
-      "path": "baltiysk/morskoy-den/",
-      "name": "Морской день в Балтийске",
-      "intro": "Маяк и музей в городской поездке к морскому каналу.",
-      "advice": "Сначала проверьте посещение музея и обратный транспорт. Переправа на косу требует отдельного расписания и времени.",
-      "poi": [
-        "baltiyskiy-mayak",
-        "muzej-baltiyskogo-flota"
-      ],
-      "featured": false
-    },
-    {
-      "path": "yantarny/plyazh-i-promenad/",
-      "name": "Янтарный: пляж и променад",
-      "intro": "Береговой день с прогулкой у моря.",
-      "advice": "Задайте длину прогулки по погоде и своим силам. Статус оборудованных зон, купание и сезонные услуги проверяются на месте.",
-      "poi": [
-        "plyazh-yantarny",
-        "promenad-yantarny"
-      ],
-      "featured": false
-    },
-    {
-      "path": "poberezhe/",
-      "name": "Города балтийского побережья",
-      "intro": "Четыре разных городских сценария у моря.",
-      "advice": "Для одного дня выберите один город или учтите реальные переезды. Это обзор остановок, а не готовая непрерывная пешая линия.",
-      "poi": [
-        "promenad-zelenogradsk",
-        "promenad-svetlogorsk",
-        "baltiyskiy-mayak",
-        "plyazh-yantarny"
-      ],
-      "featured": false
-    },
-    {
-      "path": "pogoda/veter-u-morya/",
-      "name": "Морская прогулка в ветреный день",
-      "intro": "Открытые участки берега, для которых важны ветер и одежда.",
-      "advice": "Сверяйте прогноз перед выходом. При сильном ветре выбирайте короткий участок и вариант возврата в город; безопасность оценивается на месте.",
-      "poi": [
-        "promenad-zelenogradsk",
-        "plyazh-lesnoy",
-        "promenad-svetlogorsk",
-        "plyazh-yantarny"
-      ],
-      "featured": false
-    }
-  ]
+  "updated_at": "2026-10-01",
+  "version": 1
 }

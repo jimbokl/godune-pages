@@ -11,7 +11,7 @@
   });
   // Observe the rejection even when the visitor never opens an interactive tool.
   catalog.catch(() => {});
-  let lastFocus, activeRoute, map, mapReady, markers = [], routeFilter = 'all', timeFilter = 'all';
+  let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
     lastFocus = document.activeElement;
     $$('dialog[open]').forEach(d => d.close());
@@ -98,20 +98,13 @@
   $$('[data-open-search]').forEach(b => b.addEventListener('click', () => { open($('#search-dialog')); $('#search-input').focus(); loadWasm().then(search); search(); }));
   $('#search-input')?.addEventListener('input', search);
 
-  const saved = () => {
-    try {
-      const values = JSON.parse(localStorage.getItem('godune-routes') || '[]');
-      return Array.isArray(values) ? values.filter(value => typeof value === 'string') : [];
-    } catch { return []; }
-  };
-  $$('[data-save-route]').forEach(b => {
-    const id = b.dataset.saveRoute;
-    const refresh = () => { const on = saved().includes(id); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Маршрут сохранён' : 'Сохранить маршрут'; };
-    refresh(); b.addEventListener('click', () => {
-      const values = saved(), on = values.includes(id);
-      try { localStorage.setItem('godune-routes', JSON.stringify(on ? values.filter(v => v !== id) : [...values, id])); refresh(); }
-      catch { b.textContent = 'Браузер не разрешил сохранение'; }
-    });
+  Promise.all([catalog, import(url('workshop.mjs?v=1'))]).then(([data, {initWorkshop}]) => {
+    workshop = initWorkshop(data, base);
+    if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
+  }).catch(() => {
+    $$('[data-save-place], [data-save-route]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
+    const notice = $('#trip-storage');
+    if (notice) { notice.hidden = false; notice.textContent = 'Не удалось загрузить вашу поездку. Сохранённые данные не изменены. Попробуйте обновить страницу.'; }
   });
   if (document.body.dataset.route) {
     import(url('walk.mjs?v=1')).then(({initWalk}) => initWalk()).catch(() => {
@@ -152,29 +145,32 @@
   async function renderMap() {
     const version = ++mapVersion;
     const data = await catalog;
-    const route = data.routes.find(r => r.slug === activeRoute);
+    const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
-    const chosen = route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
+    const chosen = tripMap ? (workshop?.getState().places || []).map(id => data.poi.find(p => p.slug === id)) : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
     const points = chosen.filter(p => mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
-    $('#map-dialog-title').textContent = route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
+    $('#map-dialog-title').textContent = tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
     $('#map-places').replaceChildren(...points.map(p => { const li = document.createElement('li'), a = document.createElement('a'); a.href = navigatorLink(p); a.target = '_blank'; a.rel = 'noopener'; a.textContent = p.name; li.append(a); return li; }));
     try {
       const m = await initializeMap(); if (version !== mapVersion) return;
       m.resize(); markers.forEach(marker => marker.remove()); markers = [];
       points.forEach((p,i) => {
-        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.textContent = route ? String(i+1) : ''; btn.setAttribute('aria-label', p.name);
+        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.textContent = route || tripMap ? String(chosen.indexOf(p)+1) : ''; btn.setAttribute('aria-label', p.name);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
         title.textContent = p.name; link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
+        const save = document.createElement('button'), on = workshop?.getState().places.includes(p.slug);
+        save.type = 'button'; save.className = 'save-item'; save.dataset.savePlace = p.slug;
+        save.setAttribute('aria-pressed', String(Boolean(on))); save.textContent = on ? 'В моём маршруте ✓' : 'В мой маршрут +'; popup.append(document.createElement('br'), save);
         markers.push(new maplibregl.Marker({element:btn}).setLngLat([p.lon,p.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));
       });
       m.getSource('walk').setData(route ? {type:'FeatureCollection',features:[{type:'Feature',properties:{},geometry:route.geometry}]} : {type:'FeatureCollection',features:[]});
       if (points.length) { const bounds = new maplibregl.LngLatBounds(); points.forEach(p => bounds.extend([p.lon,p.lat])); route?.geometry.coordinates.forEach(c => bounds.extend(c)); m.fitBounds(bounds,{padding:50,maxZoom:15,duration:0}); }
-      $('#map-status').textContent = route ? `${points.length} остановок · Пеший путь по открытой карте` : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`;
+      $('#map-status').textContent = tripMap && !points.length ? 'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».' : route ? `${points.length} остановок · Пеший путь по открытой карте` : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`;
     } catch { $('#map-status').textContent = 'Интерактивная карта сейчас недоступна. Откройте остановку в навигаторе из списка ниже.'; }
   }
   $$('[data-open-map]').forEach(b => b.addEventListener('click', e => {
-    e.preventDefault(); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
+    e.preventDefault(); tripMap = b.hasAttribute('data-trip-map'); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
     $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.mapFilter === 'all')));
     open($('#map-dialog')); $('#map-status').textContent = 'Загружаем карту…'; renderMap().catch(() => { $('#map-status').textContent = 'Каталог недоступен. Попробуйте позже.'; });
   }));
