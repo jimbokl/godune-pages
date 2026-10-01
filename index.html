@@ -17,11 +17,13 @@
   <meta property="og:image:alt" content="Серебристое утро над дюнами и Балтийским морем">
   <link rel="icon" href="./assets/pine-branch.webp" type="image/webp">
   <link rel="preload" as="image" href="./assets/hero-dunes-1536.webp" imagesrcset="./assets/hero-dunes-960.webp 960w, ./assets/hero-dunes-1536.webp 1536w, ./assets/hero-dunes-1852.webp 1852w" imagesizes="100vw" fetchpriority="high">
-  <link rel="stylesheet" href="./assets/fonts.css">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fonts/noto-display-italic-300-cyrillic.woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/fonts.css?v=3">
+  <link rel="stylesheet" href="./styles.css?v=5">
   <link rel="stylesheet" href="./toolkit.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://godune.ru/#website","url":"https://godune.ru/","name":"Маршруты Балтики","inLanguage":"ru","publisher":{"@id":"https://godune.ru/#publisher"}},{"@type":"Organization","@id":"https://godune.ru/#publisher","name":"Маршруты Балтики","url":"https://godune.ru/"}]}</script>
   <script src="./app.js" defer></script>
+  <script src="./atmosphere.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -46,7 +48,8 @@
   <main id="main">
     <section id="top" class="hero" aria-labelledby="hero-title">
       <picture class="hero-picture"><img src="./assets/hero-dunes-1536.webp" srcset="./assets/hero-dunes-960.webp 960w, ./assets/hero-dunes-1536.webp 1536w, ./assets/hero-dunes-1852.webp 1852w" sizes="100vw" width="1852" height="849" alt="Сосны, песчаный гребень дюны и холодный горизонт Балтийского моря" fetchpriority="high"></picture>
-      <div class="atmosphere" aria-hidden="true"><img class="mist-layer" src="./assets/mist-layer.webp" width="2172" height="724" alt=""><img class="sand-layer" src="./assets/sand-layer.webp" width="2172" height="724" alt=""><img class="amber-layer" src="./assets/amber-layer.webp" width="2164" height="727" alt=""><img class="amber-layer echo" src="./assets/amber-layer.webp" width="2164" height="727" alt=""></div>
+      <canvas class="ocean-canvas" aria-hidden="true"></canvas>
+      <div class="atmosphere" aria-hidden="true"><img class="mist-layer" src="./assets/mist-layer.webp" width="2172" height="724" alt=""><img class="mist-layer far" src="./assets/mist-layer.webp" width="2172" height="724" alt=""><img class="sand-layer" src="./assets/sand-layer.webp" width="2172" height="724" alt=""><img class="amber-layer" src="./assets/amber-layer.webp" width="2164" height="727" alt=""><img class="amber-layer echo" src="./assets/amber-layer.webp" width="2164" height="727" alt=""><canvas class="wind-canvas"></canvas></div>
       <div class="hero-content">
         <h1 id="hero-title">Отдых начинается с Маршрута</h1>
         <p class="hero-subtitle">Туристические маршруты отобранные специально для вас</p>

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "name": "Серебряное утро на Балтике",
+  "photo": "../hero-dunes-1536.webp",
+  "wind": {"angle": 8, "speed": 1},
+  "water": {
+    "enabled": true, "angle": 85, "speed": 0.85, "wavelength": 0.035,
+    "amplitude": 0.0032, "horizon": 0.425, "near": 0.74, "perspective": 1.4,
+    "light": 0.047, "foam": 0.018, "foamThreshold": 0.65, "feather": 0.004,
+    "mask": {"polygons": [[[0.42,0.444],[1,0.444],[1,0.64],[0.84,0.59],[0.65,0.51]]]}
+  },
+  "clouds": {"enabled": true,"amplitude": 0.004,"speed": 0.65,"feather": 0.016,
+    "mask": {"polygons": [[[0,0],[1,0],[1,0.36],[0,0.36]]]}},
+  "pines": {"enabled": true,"amplitude": 0.0009,"speed": 1,"feather": 0.003,
+    "mask": {"polygons": [[[0,0.414],[0.05,0.385],[0.11,0.449],[0.195,0.522],[0.16,0.533],[0.02,0.509],[0,0.513]]]}},
+  "grass": {"enabled": true,"amplitude": 0.0018,"speed": 0.85,"feather": 0.002,
+    "mask": {"polygons": [[[0,0.57],[0.083,0.61],[0.092,0.702],[0.059,0.72],[0,0.661]],[[0.17,0.743],[0.219,0.776],[0.211,0.81],[0.155,0.805]],[[0.288,0.805],[0.36,0.814],[0.377,0.882],[0.284,0.858]]]}},
+  "sand": {"enabled": true,"strength": 0.8,"region": [0,0.54,1,0.91]},
+  "amber": {"enabled": true,"strength": 1.6,"region": [0.08,0.78,0.95,0.9]},
+  "fog": {"enabled": true,"strength": 1},
+  "gulls": {"enabled": true,"strength": 0.48,"count": 4,"region": [0.59,0.24,0.96,0.43]},
+  "live": {"enabled": false,"src": ""}
+}

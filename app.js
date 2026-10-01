@@ -177,11 +177,4 @@
   $$('[data-map-filter]').forEach(b => b.addEventListener('click', () => {
     mapSelection = b.dataset.mapFilter; $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderMap().catch(() => {});
   }));
-  const atmosphere = $('.atmosphere');
-  if (atmosphere && 'IntersectionObserver' in window) {
-    let onScreen = true;
-    const updateMotion = () => atmosphere.classList.toggle('motion-paused', !onScreen || document.hidden);
-    new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; updateMotion(); }).observe(atmosphere);
-    document.addEventListener('visibilitychange', updateMotion);
-  }
 })();
