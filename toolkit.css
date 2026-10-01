@@ -10,4 +10,88 @@
 
 @media(max-width:1400px){.hero-aside{color:#f6f5f1;border-color:#f6f5f1}}
 
-@media(min-width:561px) and (max-width:1080px){.hero-subtitle{padding:5px 14px;background:#f6f5f1db;width:fit-content;margin-inline:auto}}
+@media (min-width: 561px) and (max-width: 1080px) {
+  .hero-content { padding-top: 116px; }
+  .hero h1 { font-size: clamp(52px, 7.8vw, 82px); line-height: 1.08; max-width: none; }
+  .hero h1 span { display: block; }
+  .hero-subtitle {
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    line-height: 1.65; letter-spacing: .15px; max-width: 400px;
+    margin: 20px auto 0; padding: 0; background: none; text-wrap: balance;
+  }
+  .hero-actions { margin-top: 24px; }
+  .hero-aside { display: none; }
+}
+
+@media (max-width: 1080px) {
+  .quick-links > a { min-width: 0; gap: 16px; }
+  .quick-links > a > span { min-width: 0; flex: 1; }
+  .quick-links > a > img { flex-shrink: 0; }
+  .quick-links small { white-space: normal; line-height: 1.6; letter-spacing: 2px; }
+}
+
+/* The phone hero has its own composition, rather than a scaled desktop masthead. */
+@media (max-width: 560px) {
+  .hero {
+    height: 660px;
+    min-height: 660px;
+    max-height: none;
+  }
+  .hero-content { padding: 110px 20px 0; }
+  .hero h1 {
+    max-width: none;
+    padding: 0;
+    font-size: clamp(33px, 11vw, 50px);
+    line-height: 1.08;
+    letter-spacing: -1.3px;
+  }
+  .hero h1 span { display: block; }
+  .hero-subtitle {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: .15px;
+    max-width: 300px;
+    width: auto;
+    margin: 20px auto 0;
+    padding: 0;
+    background: none;
+    text-wrap: balance;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .hero-actions .button {
+    width: 240px;
+    min-height: 48px;
+    min-width: 228px;
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+  .hero-actions .button-outline { background: #f6f5f1e0; }
+  .hero-aside { display: none; }
+  .hero-footnotes { bottom: 22px; }
+  .hero-footnotes p { font-size: 7px; letter-spacing: 1.7px; }
+  .hero-footnotes p:last-child { max-width: 112px; }
+  .site-header { padding-top: max(15px, env(safe-area-inset-top)); }
+  .header-actions .icon-button { width: 42px; height: 44px; }
+  .destination h2 { font-size: clamp(31px, 8.5vw, 37px); }
+  .destination-copy { padding-top: 14px; }
+}
+@media (max-width: 370px) {
+  .hero { height: 620px; min-height: 620px; }
+  .hero-content { padding-top: 102px; }
+  .hero h1 { font-size: clamp(32px, 10.75vw, 39px); letter-spacing: -1px; }
+  .hero-subtitle { max-width: 258px; font-size: 12px; }
+  .hero-actions { margin-top: 21px; }
+  .hero-actions .button { min-width: 215px; }
+  .brand-name { font-size: 14px; letter-spacing: .65px; }
+  .brand { gap: 6px; }
+  .brand-mark { width: 27px; }
+  .site-header { padding-inline: 14px; }
+}

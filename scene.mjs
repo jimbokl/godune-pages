@@ -106,10 +106,13 @@ void main(){
  float luminance=dot(color,vec3(.2126,.7152,.0722));
  float foam=smoothstep(foamThreshold,min(1.0,foamThreshold+.12),luminance)*water.w*depth*(.5+.5*swell);
  color+=m.r*(color*shine+vec3(foam));
- gl_FragColor=vec4(color,max(max(m.r,m.g),max(m.b,m.a)));
+ float alpha=max(max(m.r,m.g),max(m.b,m.a));
+ // Explicit premultiplication keeps fully transparent pixels black on Safari
+ // as well as Chromium, including when the canvas is composited with opacity.
+ gl_FragColor=vec4(clamp(color,0.0,1.0)*alpha,alpha);
 }`;
 export async function createScene(surface, photo, input) {
-  const gl=surface.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false,depth:false});
+  const gl=surface.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,depth:false});
   if (!gl) return null;
   let profile=normalizeProfile(input), revision=0, disposed=false;
   const shaders=[], textures=[];

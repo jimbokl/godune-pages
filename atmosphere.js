@@ -136,7 +136,7 @@
     scene.dataset.engine = 'rust-wasm';
     paint(); update();
     try {
-      sceneModule = await import(new URL('scene.mjs?v=2',base));
+      sceneModule = await import(new URL('scene.mjs?v=3',base));
       profile = await sceneModule.loadProfile(new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base));
       await photo.decode();
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {
