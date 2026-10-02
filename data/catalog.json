@@ -49,7 +49,15 @@
         "kurhaus-kranc",
         "byuvet-luizy",
         "skver-luizy",
-        "koshachiy-svetofor"
+        "koshachiy-svetofor",
+        "restoran-telegraf",
+        "restoran-balt",
+        "kafe-skovorodka",
+        "restoran-oblaka",
+        "kafe-gnezdo",
+        "restoran-dolche-nonna",
+        "kofeynya-slou",
+        "restoran-zolotaya-milya"
       ]
     },
     {
@@ -174,7 +182,15 @@
         "baltiyskiy-mayak",
         "muzej-baltiyskogo-flota",
         "plyazh-yantarny",
-        "promenad-yantarny"
+        "promenad-yantarny",
+        "restoran-telegraf",
+        "restoran-balt",
+        "kafe-skovorodka",
+        "restoran-oblaka",
+        "kafe-gnezdo",
+        "restoran-dolche-nonna",
+        "kofeynya-slou",
+        "restoran-zolotaya-milya"
       ]
     },
     {
@@ -272,7 +288,15 @@
         "baltiyskiy-mayak",
         "muzej-baltiyskogo-flota",
         "plyazh-yantarny",
-        "promenad-yantarny"
+        "promenad-yantarny",
+        "restoran-telegraf",
+        "restoran-balt",
+        "kafe-skovorodka",
+        "restoran-oblaka",
+        "kafe-gnezdo",
+        "restoran-dolche-nonna",
+        "kofeynya-slou",
+        "restoran-zolotaya-milya"
       ]
     },
     {
@@ -3330,6 +3354,22 @@
       "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
+      "arrival_points": {
+        "car": {
+          "id": "parking-tancuyushchiy-les",
+          "kind": "parking",
+          "lat": 55.1827255,
+          "lon": 20.8593008,
+          "name": "Парковка у Танцующего леса",
+          "note": "Машина остаётся у начала тропы. Дальше идите пешком по обозначенному маршруту и вернитесь к парковке. Доступ и свободные места уточните на месте.",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/577868334",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "nature",
       "category_name": "Природа",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
@@ -3413,6 +3453,22 @@
       "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
+      "arrival_points": {
+        "car": {
+          "id": "parking-efa",
+          "kind": "parking",
+          "lat": 55.2217409,
+          "lon": 20.8910508,
+          "name": "Парковка у тропы Эфа",
+          "note": "Машина остаётся у дороги. К площадкам ведёт пешая тропа; обратный путь тоже входит в день. Доступ и свободные места уточните на месте.",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/577868338",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "nature",
       "category_name": "Природа",
       "coordinate_note": "Точка открытой карты",
@@ -3496,6 +3552,22 @@
       "access_note": "Проверьте билет и актуальные правила национального парка. Не сходите с обозначенных троп.",
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
+      "arrival_points": {
+        "car": {
+          "id": "parking-efa",
+          "kind": "parking",
+          "lat": 55.2217409,
+          "lon": 20.8910508,
+          "name": "Парковка у тропы Эфа",
+          "note": "Машина остаётся у дороги. К площадкам ведёт пешая тропа; обратный путь тоже входит в день. Доступ и свободные места уточните на месте.",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/577868338",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "viewpoint",
       "category_name": "Смотровая",
       "coordinate_note": "Точка открытой карты",
@@ -4471,6 +4543,594 @@
           "text": "Променад начинается у спуска к морю в парке Беккера. Его длина — около двух километров, из них 700 метров идут над водой бывшего карьера. Дорожка сделана из лиственницы."
         }
       ]
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "На Курортном проспекте Балтика становится обедом. На вывеске — «Телеграф», в снятом нами меню — килька и уха. Хорошая остановка между старым городом и морем.",
+      "gastronomy": {
+        "address": "Курортный проспект, 29",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 10:49:45",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8764",
+          "src": "assets/food/img_8764.webp",
+          "width": 1350
+        },
+        "cuisine": "Балтийская кухня",
+        "dishes": [
+          "Килька пряного посола",
+          "Балтийская уха",
+          "Литовские цеппелины"
+        ],
+        "extra": [],
+        "hours": "Ежедневно 12:00–23:00",
+        "lat": 54.95992833333333,
+        "lon": 20.47563,
+        "menu_url": "https://telegraph.rest/menu",
+        "menus": [
+          {
+            "captured_at": "2026:05:30 10:49:53",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_8765",
+            "src": "assets/food/img_8765.webp",
+            "width": 1350
+          }
+        ],
+        "name": "Телеграф",
+        "note": "На Курортном проспекте Балтика становится обедом. На вывеске — «Телеграф», в снятом нами меню — килька и уха. Хорошая остановка между старым городом и морем.",
+        "phone": "+79082905521",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal",
+          "dessert"
+        ],
+        "slug": "restoran-telegraf",
+        "source_url": "https://telegraph.rest/",
+        "themes": [
+          "fish",
+          "baltic"
+        ],
+        "visit": 60
+      },
+      "hours": null,
+      "id": "7a75a106-53dd-5f44-a3bc-1275731ccf8f",
+      "lat": 54.95992833333333,
+      "lon": 20.47563,
+      "name": "Телеграф",
+      "photos": [
+        "assets/food/img_8764.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-telegraf",
+      "source_url": "https://telegraph.rest/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Балтийская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "За вывеской Курхауса — другая сторона побережья: травы, лепёшки и балтийская кухня. Сюда можно свернуть с Курортного проспекта, оставив море на вторую половину прогулки.",
+      "gastronomy": {
+        "address": "Курортный проспект, 16",
+        "address_source": "https://balt.restoplace.ws/",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 10:56:06",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8820",
+          "src": "assets/food/img_8820.webp",
+          "width": 1350
+        },
+        "cuisine": "Современная балтийская кухня",
+        "dishes": [
+          "Куршская лепёшка с пятью балтийскими травами",
+          "Лепёшка со страчателлой и томатами",
+          "Лепёшка с томлёным козлёнком"
+        ],
+        "extra": [],
+        "hours": "Вс–чт 12:00–23:00 · пт–сб 12:00–00:00",
+        "lat": 54.960953333333336,
+        "lon": 20.478136666666668,
+        "menus": [
+          {
+            "captured_at": "2026:05:30 10:56:11",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_8821",
+            "src": "assets/food/img_8821.webp",
+            "width": 1350
+          }
+        ],
+        "name": "БАЛТ",
+        "note": "За вывеской Курхауса — другая сторона побережья: травы, лепёшки и балтийская кухня. Сюда можно свернуть с Курортного проспекта, оставив море на вторую половину прогулки.",
+        "phone": "+79062389974",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-balt",
+        "source_url": "https://domzn.ru/restaurants/balt/",
+        "themes": [
+          "fish",
+          "baltic"
+        ],
+        "visit": 60
+      },
+      "hours": null,
+      "id": "002dfdf0-3edf-5521-b454-1dbb065f470e",
+      "lat": 54.960953333333336,
+      "lon": 20.478136666666668,
+      "name": "БАЛТ",
+      "photos": [
+        "assets/food/img_8820.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-balt",
+      "source_url": "https://domzn.ru/restaurants/balt/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Современная балтийская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "У восточного конца Курортного проспекта день можно начать без спешки. На уличном меню — яичницы, пироги и блины. Дальше город постепенно уступает место парку и морю.",
+      "gastronomy": {
+        "address": "Курортный проспект, 3",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:02:25",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8882",
+          "src": "assets/food/img_8882.webp",
+          "width": 1350
+        },
+        "cuisine": "Домашняя кухня и завтраки",
+        "dishes": [
+          "Омлеты и яичницы",
+          "Куршские пироги",
+          "Блинные трубочки"
+        ],
+        "extra": [],
+        "lat": 54.961558333333336,
+        "lon": 20.481263333333334,
+        "menus": [
+          {
+            "captured_at": "2026:05:30 11:03:08",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_8885",
+            "src": "assets/food/img_8885.webp",
+            "width": 1350
+          }
+        ],
+        "name": "Сковородка",
+        "note": "У восточного конца Курортного проспекта день можно начать без спешки. На уличном меню — яичницы, пироги и блины. Дальше город постепенно уступает место парку и морю.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee",
+          "meal",
+          "dessert"
+        ],
+        "slug": "kafe-skovorodka",
+        "source_url": "https://visit-kaliningrad.ru/food/pitstseriya-skovorodka/",
+        "themes": [
+          "breakfast",
+          "coffee"
+        ],
+        "visit": 35
+      },
+      "hours": null,
+      "id": "56df04ef-39d2-59cb-95a6-4eac2d843cbc",
+      "lat": 54.961558333333336,
+      "lon": 20.481263333333334,
+      "name": "Сковородка",
+      "photos": [
+        "assets/food/img_8882.webp"
+      ],
+      "practical": "На остановку заложено около 35 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-skovorodka",
+      "source_url": "https://visit-kaliningrad.ru/food/pitstseriya-skovorodka/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Домашняя кухня и завтраки"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 35
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Здесь прогулка по набережной встречается с обедом. На фотографии — вход со стороны променада; за ним «Облака». Меню лучше открыть перед выходом, а после еды оставить время для моря.",
+      "gastronomy": {
+        "address": "Улица Гагарина, 2Г (2/1)",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:07:37",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9243",
+          "src": "assets/food/img_9243.webp",
+          "width": 1350
+        },
+        "cuisine": "Рыба и морепродукты",
+        "dishes": [],
+        "extra": [
+          {
+            "captured_at": "2026:05:30 12:07:39",
+            "height": 1800,
+            "kind": "extra",
+            "original_id": "IMG_9244",
+            "src": "assets/food/img_9244.webp",
+            "width": 1350
+          }
+        ],
+        "hours": "Ежедневно 12:00–23:00",
+        "lat": 54.960591666666666,
+        "lon": 20.470305,
+        "menu_url": "https://restoran-oblaka.ru/menu",
+        "menus": [],
+        "name": "Облака",
+        "note": "Здесь прогулка по набережной встречается с обедом. На фотографии — вход со стороны променада; за ним «Облака». Меню лучше открыть перед выходом, а после еды оставить время для моря.",
+        "phone": "+74012278927",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-oblaka",
+        "source_url": "https://restoran-oblaka.ru/",
+        "themes": [
+          "fish"
+        ],
+        "visit": 60
+      },
+      "hours": null,
+      "id": "822ad98a-04c8-5bd7-bef2-448c3591c6af",
+      "lat": 54.960591666666666,
+      "lon": 20.470305,
+      "name": "Облака",
+      "photos": [
+        "assets/food/img_9243.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-oblaka",
+      "source_url": "https://restoran-oblaka.ru/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Рыба и морепродукты"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "На западном пляже кафе стоит рядом с деревянным настилом и велосипедами. В снятом меню — скумбрия, судак и уха. Это остановка для длинной прогулки вдоль берега.",
+      "gastronomy": {
+        "address": "Улица Гагарина, 46 · западный пляж",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:53:04",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9091",
+          "src": "assets/food/img_9091.webp",
+          "width": 1350
+        },
+        "cuisine": "Рыба, гриль и мороженое",
+        "cuisine_source": "https://visit-kaliningrad.ru/food/gnezdo/",
+        "dishes": [
+          "Скумбрия на палке",
+          "Котлета из щуки",
+          "Балтийский судак",
+          "Уха"
+        ],
+        "extra": [],
+        "lat": 54.95184666666667,
+        "lon": 20.444428333333335,
+        "menus": [
+          {
+            "captured_at": "2026:05:30 11:54:16",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_9108",
+            "src": "assets/food/img_9108.webp",
+            "width": 1350
+          },
+          {
+            "captured_at": "2026:05:30 11:54:19",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_9109",
+            "src": "assets/food/img_9109.webp",
+            "width": 1350
+          }
+        ],
+        "name": "Гнездо",
+        "note": "На западном пляже кафе стоит рядом с деревянным настилом и велосипедами. В снятом меню — скумбрия, судак и уха. Это остановка для длинной прогулки вдоль берега.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal",
+          "dessert"
+        ],
+        "slug": "kafe-gnezdo",
+        "source_url": "https://gokaliningrad.com/cafe/1503-gnezdo",
+        "themes": [
+          "fish"
+        ],
+        "visit": 45
+      },
+      "hours": null,
+      "id": "1da56238-89de-5747-a71b-f77836106393",
+      "lat": 54.95184666666667,
+      "lon": 20.444428333333335,
+      "name": "Гнездо",
+      "photos": [
+        "assets/food/img_9091.webp"
+      ],
+      "practical": "На остановку заложено около 45 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-gnezdo",
+      "source_url": "https://gokaliningrad.com/cafe/1503-gnezdo",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Рыба, гриль и мороженое"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 45
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Между морем и улицей Пугачёва меняется вкус прогулки. На доске у входа — итальянское меню: пицца и паста. Можно остановиться здесь, а затем вернуться к променаду.",
+      "gastronomy": {
+        "address": "Улица Пугачёва, 8А",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:13:21",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8966",
+          "src": "assets/food/img_8966.webp",
+          "width": 1350
+        },
+        "cuisine": "Итальянская кухня",
+        "dishes": [
+          "Пицца",
+          "Паста"
+        ],
+        "extra": [],
+        "lat": 54.962775,
+        "lon": 20.478078333333332,
+        "menus": [
+          {
+            "captured_at": "2026:05:30 11:13:30",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_8967",
+            "src": "assets/food/img_8967.webp",
+            "width": 1350
+          }
+        ],
+        "name": "Дольче Нонна",
+        "note": "Между морем и улицей Пугачёва меняется вкус прогулки. На доске у входа — итальянское меню: пицца и паста. Можно остановиться здесь, а затем вернуться к променаду.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-dolche-nonna",
+        "source_url": "https://2gis.ru/zelenogradsk/branches/70000001074591130",
+        "themes": [
+          "italian"
+        ],
+        "visit": 50
+      },
+      "hours": null,
+      "id": "9811abf5-d32a-55f4-8ea3-b21a8fad0e9a",
+      "lat": 54.962775,
+      "lon": 20.478078333333332,
+      "name": "Дольче Нонна",
+      "photos": [
+        "assets/food/img_8966.webp"
+      ],
+      "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-dolche-nonna",
+      "source_url": "https://2gis.ru/zelenogradsk/branches/70000001074591130",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Итальянская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 50
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "У кирпичного здания тихий двор, зелень и столики. Кофейня «Слоу» — небольшой поворот с Московской улицы. Здесь удобно начать день перед тем, как выйти к Курортному проспекту.",
+      "gastronomy": {
+        "address": "Московская улица, 40В",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:40:10",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9338",
+          "src": "assets/food/img_9338.webp",
+          "width": 1350
+        },
+        "cuisine": "Кофейня",
+        "dishes": [],
+        "extra": [],
+        "hours_photo": "08:00–20:00 ежедневно · на табличке 30 мая",
+        "lat": 54.96102166666667,
+        "lon": 20.48568,
+        "menus": [],
+        "name": "Слоу",
+        "note": "У кирпичного здания тихий двор, зелень и столики. Кофейня «Слоу» — небольшой поворот с Московской улицы. Здесь удобно начать день перед тем, как выйти к Курортному проспекту.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee"
+        ],
+        "slug": "kofeynya-slou",
+        "source_url": "https://godune.ru/poi/kofeynya-slou/",
+        "themes": [
+          "coffee"
+        ],
+        "visit": 25
+      },
+      "hours": null,
+      "id": "ff4dc311-cf13-58eb-a7e0-1ac45486630b",
+      "lat": 54.96102166666667,
+      "lon": 20.48568,
+      "name": "Слоу",
+      "photos": [
+        "assets/food/img_9338.webp"
+      ],
+      "practical": "На остановку заложено около 25 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kofeynya-slou",
+      "source_url": "https://godune.ru/poi/kofeynya-slou/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Кофейня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 25
+    },
+    {
+      "access_note": "Меню на наших фотографиях снято 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Здание «Золотой мили» встречает на пути вдоль улицы Гагарина. Это ресторан при отеле: его можно отметить в поездке, а работу в нужный сезон уточнить отдельно.",
+      "gastronomy": {
+        "address": "Улица Гагарина, 12А",
+        "available": false,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:26:51",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9061",
+          "src": "assets/food/img_9061.webp",
+          "width": 1350
+        },
+        "cuisine": "Ресторан при отеле",
+        "dishes": [],
+        "extra": [],
+        "lat": 54.957825,
+        "lon": 20.46425,
+        "menus": [],
+        "name": "Золотая миля",
+        "note": "Здание «Золотой мили» встречает на пути вдоль улицы Гагарина. Это ресторан при отеле: его можно отметить в поездке, а работу в нужный сезон уточнить отдельно.",
+        "phone": "+74015051312",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "season_note": "На сайте отеля ресторан указан как летний. Уточните работу на дату поездки; в автоматические гастропрогулки он пока не входит.",
+        "slug": "restoran-zolotaya-milya",
+        "source_url": "https://goldenmile39.ru/ob-otele/",
+        "themes": [],
+        "visit": 60
+      },
+      "hours": null,
+      "id": "519f871c-abbb-5a26-9f3f-f645969212bc",
+      "lat": 54.957825,
+      "lon": 20.46425,
+      "name": "Золотая миля",
+      "photos": [
+        "assets/food/img_9061.webp"
+      ],
+      "practical": "На сайте отеля ресторан указан как летний. Уточните работу на дату поездки; в автоматические гастропрогулки он пока не входит.",
+      "price": null,
+      "slug": "restoran-zolotaya-milya",
+      "source_url": "https://goldenmile39.ru/ob-otele/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Ресторан при отеле"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
     }
   ],
   "routes": [

@@ -1,6 +1,6 @@
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=1';
-import {TRAVEL_MODES, resolveTravel} from './travel-estimates.mjs?v=1';
+import {TRAVEL_MODES, resolveTravel, resolveAccess} from './travel-estimates.mjs?v=2';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
@@ -29,9 +29,11 @@ export function planInput(trip, catalog, matrix) {
     const manual=stop?.window && stop.window.date === trip.date;
     const calendar=!manual && catalog ? resolveVisitCalendar(catalog.poi.find(place=>place.slug===id),trip.date,stop?.visit_fact) : null;
     const travel=resolveTravel({...trip,schedule:settings},id,catalog,matrix);
+    const access=resolveAccess({...trip,schedule:settings},id,catalog,matrix);
     return {id,visit:stop?.visit ?? 30,pause:stop?.pause ?? 0,
       travel:travel.minutes,
       ...(travel.origin==='estimate' ? {travel_needs_check:true} : {}),
+      ...(access ? {access:{approach:access.approach.minutes,return_minutes:access.back.minutes,needs_check:true}} : {}),
       opening:manual ? [{open:stop.window.open,close:stop.window.close}] : calendar?.windows ?? null,
       ...(calendar?.sessions !== null && calendar?.sessions !== undefined ? {sessions:calendar.sessions} : {}),
       ...(calendar?.needsCheck ? {opening_needs_check:true} : {})};

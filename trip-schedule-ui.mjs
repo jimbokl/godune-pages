@@ -1,7 +1,7 @@
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=3';
-import {loadScheduler} from './trip-scheduler.mjs?v=3';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=4';
+import {loadScheduler} from './trip-scheduler.mjs?v=4';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=1';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, loadTravelMatrix} from './travel-estimates.mjs?v=1';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTravelMatrix} from './travel-estimates.mjs?v=2';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -87,7 +87,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
       const place=catalog.poi.find(row=>row.slug===item.id), value=settings.stops[item.id] || {visit:30,pause:0,leg:null,window:null};
       const window=value.window?.date === trip.date ? value.window : null;
-      const travel=resolveTravel(trip,item.id,catalog,matrix), manual=manualLeg(trip,item.id);
+      const travel=resolveTravel(trip,item.id,catalog,matrix), manual=manualLeg(trip,item.id), access=resolveAccess(trip,item.id,catalog,matrix);
       const li=document.createElement('li');li.dataset.planPoint=item.id;
       li.dataset.travelOrigin=travel.origin;li.dataset.travelStatus=travel.status || '';li.dataset.travelMode=travel.mode;
       const header=document.createElement('div');header.className='trip-timeline-heading';
@@ -104,8 +104,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const road=document.createElement('div');road.className='trip-road-note';
         const text=document.createElement('p');
         if(travel.origin==='estimate') {
-          text.textContent=`${TRAVEL_MODES[travel.mode]} · ${(travel.distance_m/1000).toLocaleString('ru-RU',{maximumFractionDigits:1})} км по карте. `
-            +(travel.mode==='car'?'Без пробок, поиска парковки и пути от машины ко входу.':'Темп, покрытие и остановки могут изменить время. Вход может быть в стороне от дорожной привязки.');
+          text.textContent=`${TRAVEL_MODES[travel.leg_mode || travel.mode]} · ${(travel.distance_m/1000).toLocaleString('ru-RU',{maximumFractionDigits:1})} км по карте. `
+            +(travel.leg_mode==='foot' && travel.mode!=='foot'?'Машина остаётся на общей парковке.':travel.mode==='car'?'Без пробок и поиска свободного места. Для отмеченных парковок пеший участок учтён отдельно; у остальных мест подход ещё нужно сверить.':'Темп, покрытие и остановки могут изменить время. Вход может быть в стороне от дорожной привязки.');
           if(travel.snap_m?.some(m=>m>50))text.textContent+=` От дорожных привязок до меток — ${travel.snap_m[0]} и ${travel.snap_m[1]} м по прямой. Путь ко входу не учтён.`;
         }else if(travel.origin==='manual')text.textContent='Используем ваше время дороги для этого направления и способа передвижения.';
         else text.textContent={far_snap:'Дорога далеко от отмеченной точки. Уточните вход или парковку и задайте своё время.',
@@ -121,6 +121,19 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
           const license=document.createElement('a');license.href=new URL('assets/licenses/routing-data.txt',base);license.target='_blank';license.rel='noopener';license.textContent='Условия карты';road.append(source,' · ',license);
         }li.append(road);
       }
+      if(access) {
+        const card=document.createElement('div');card.className='trip-calendar-card trip-access-card';card.dataset.planAccess=item.id;
+        const title=document.createElement('p');title.className='trip-calendar-title';title.textContent=access.anchor.name;
+        const note=document.createElement('p');note.textContent=access.anchor.note;
+        const path=document.createElement('p');path.className='trip-timeline-detail';
+        path.textContent=(access.approach.origin==='shared'?'Переход от предыдущей точки уже учтён.':access.approach.minutes===null?'Время от парковки до места пока неизвестно.':`От парковки до места — около ${access.approach.minutes} мин пешком.`)
+          +' '+(access.back.origin==='shared'?'К машине вернётесь после следующей точки.':access.back.minutes===null?'Время возвращения к парковке пока неизвестно.':`Обратно — около ${access.back.minutes} мин.`);
+        const source=document.createElement('a');source.href=access.anchor.source.url;source.target='_blank';source.rel='noopener';source.textContent=`Точка на OpenStreetMap · проверена ${access.anchor.source.checked_at.split('-').reverse().join('.')}`;
+        const nav=document.createElement('a');nav.href=new URL(`?map=${access.anchor.id}`,base);nav.className='save-item';nav.textContent='Парковка на нашей карте ↗';
+        const evidence=document.createElement('p');evidence.className='trip-calendar-source';evidence.append(source);
+        const caution=document.createElement('p');caution.className='trip-calendar-source';caution.textContent='Подход оценён по карте. Ступени, настил и фактический вход сверьте перед поездкой.';
+        card.append(title,path,note,evidence,caution,nav);li.append(card);
+      }
       li.append(calendarCard(place,trip,value,window,item));
       if(item.issues.length) {
         const issues=document.createElement('ul');issues.className='trip-plan-issues';
@@ -129,6 +142,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
           line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:'Время входа ещё нужно сверить.',
             opening_needs_check:'Часы учтены. Осталось сверить дату и билеты с местом.',
             travel_needs_check:'Дорога учтена как оценка. Сверьте доступ и оставьте запас.',
+            unknown_approach:'Уточните пеший путь от парковки до места.',unknown_return:'Уточните время возвращения к парковке.',
+            access_needs_check:'Пеший участок учтён по карте. Доступ и темп нужно сверить.',
             closed:'По выбранному расписанию в этот день нет посещений.',window_missed:'Осмотр не помещается в часы работы или время последнего входа; подходящего сеанса тоже нет.',
             after_deadline:`Позже конца дня как минимум на ${issue.minutes} мин.`}[issue.code];
           if(['closed','window_missed','after_deadline'].includes(issue.code)) li.dataset.planConflict='true';
@@ -161,7 +176,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       renderSettings(settings);renderStops(trip,result,matrix);
       const summary=$('#trip-plan-summary');summary.dataset.planStatus=result.status;
       const intro={empty:'Сначала добавьте точки в свой маршрут.',fits:'По вашим оценкам, день складывается.',needs_check:'День складывается по оценкам. Сверьте дорогу и вход в выбранные места.',
-        incomplete:'Для точного плана нужно время дороги.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки, которые не помещаются в окно посещения.'}[result.status];
+        incomplete:'Для точного плана нужно время дороги и пеших участков.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки, которые не помещаются в окно посещения.'}[result.status];
       summary.textContent=intro+(result.stops.length ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До конца дня остаётся ${result.slack} мин.` : '');
       section.dataset.scheduleReady='true';

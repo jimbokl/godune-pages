@@ -1,6 +1,35 @@
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
+const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
+const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];
+const stable=value=>JSON.stringify(value,(_,v)=>v && typeof v==='object' && !Array.isArray(v)
+  ? Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])) : v);
+export function sameArrival(catalog,a,b,mode) {
+  const x=anchorFor(catalog,a,mode),y=anchorFor(catalog,b,mode);
+  return !!x && !!y && x.id===y.id && x.lat===y.lat && x.lon===y.lon;
+}
+function currentPoint(catalog,matrix,id) {
+  const a=placeFor(catalog,id),b=matrix?.points?.find(p=>p.slug===id);
+  return !!a && !!b && a.lat===b.lat && a.lon===b.lon
+    && stable(a.arrival_points||{})===stable(b.arrival_points||{});
+}
+export function resolveAccess(trip,id,catalog,matrix) {
+  const mode=travelMode(trip),anchor=anchorFor(catalog,id,mode);
+  if(!anchor)return null;
+  const index=trip.places.indexOf(id),previous=trip.places[index-1],next=trip.places[index+1];
+  if(index<0)return null;
+  const leg=direction=>{
+    const shared=direction==='approach'?sameArrival(catalog,previous,id,mode):sameArrival(catalog,id,next,mode);
+    if(shared)return {origin:'shared',minutes:0};
+    if(!matrix || matrix.version!==1 || !matrix.source?.id)return {origin:'unknown',status:'unavailable',minutes:null};
+    if(!currentPoint(catalog,matrix,id))return {origin:'unknown',status:'changed_point',minutes:null};
+    const row=matrix.access_legs?.[`${mode}/${id}/${direction}`];
+    return row?.status==='estimate' && Number.isInteger(row.minutes) && row.minutes>=0 && row.minutes<=1440
+      ? {...row,origin:'estimate'} : {...row,origin:'unknown',minutes:null};
+  };
+  return {anchor,mode,approach:leg('approach'),back:leg('return'),source:matrix?.source};
+}
 export function manualLeg(trip, id) {
   const leg=trip.schedule?.stops?.[id]?.leg, previous=trip.places[trip.places.indexOf(id)-1];
   if(!leg || !previous)return null;
@@ -12,16 +41,15 @@ export function resolveTravel(trip, id, catalog, matrix) {
   const manual=manualLeg(trip,id);
   if(manual)return {origin:'manual',minutes:manual.minutes,mode};
   if(!matrix || matrix.version!==1 || !matrix.source?.id)return {origin:'unknown',status:'unavailable',minutes:null,mode};
-  const current=slug=>catalog?.poi?.find(p=>p.slug===slug), cached=slug=>matrix.points?.find(p=>p.slug===slug);
   for(const slug of [previous,id]) {
-    const a=current(slug),b=cached(slug);
-    if(!a || !b || a.lat!==b.lat || a.lon!==b.lon)return {origin:'unknown',status:'changed_point',minutes:null,mode};
+    if(!currentPoint(catalog,matrix,slug))return {origin:'unknown',status:'changed_point',minutes:null,mode};
   }
-  const leg=matrix.legs?.[`${mode}/${previous}/${id}`];
+  const legMode=sameArrival(catalog,previous,id,mode)?'foot':mode;
+  const leg=matrix.legs?.[`${legMode}/${previous}/${id}`];
   if(!leg)return {origin:'unknown',status:'missing_pair',minutes:null,mode};
   if(leg.status!=='estimate' || !Number.isInteger(leg.minutes) || leg.minutes<0 || leg.minutes>1440)
     return {...leg,origin:'unknown',minutes:null,mode,source:matrix.source};
-  return {...leg,origin:'estimate',mode,source:matrix.source};
+  return {...leg,origin:'estimate',mode,leg_mode:legMode,source:matrix.source};
 }
 const matrices=new Map();
 export function loadTravelMatrix(base) {
@@ -63,12 +91,24 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
     const leg=resolveTravel(auto,to,catalog,matrix);
     if(leg.origin!=='estimate')return null;
     try {
-      const chunk=await loadGeometry(base,mode,from,matrix.source.id),path=chunk.legs[to];
+      const legMode=leg.leg_mode || mode;
+      const chunk=await loadGeometry(base,legMode,from,matrix.source.id),path=chunk.legs[to];
       if(!path)return null;
       const coordinates=decodePath(path.points);
       if(coordinates.length<2)return null;
-      return {type:'Feature',properties:{from,to,mode,minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};
+      return {type:'Feature',properties:{from,to,mode:legMode,kind:'travel',minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};
     }catch{return null;}
   }));
+  for(const id of visible) {
+    const access=resolveAccess(trip,id,catalog,matrix);
+    if(!access)continue;
+    for(const [kind,leg]of [['approach',access.approach],['return',access.back]]) {
+      if(leg.origin!=='estimate' || !leg.geometry)continue;
+      try {
+        const coordinates=decodePath(leg.geometry);if(coordinates.length<2)continue;
+        rows.push({type:'Feature',properties:{from:id,to:id,mode:'foot',kind,minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}});
+      }catch{}
+    }
+  }
   return {type:'FeatureCollection',features:rows.filter(Boolean)};
 }

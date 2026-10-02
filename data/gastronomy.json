@@ -1,0 +1,799 @@
+{
+  "legs": [
+    {
+      "from": "restoran-telegraf",
+      "meters": 199,
+      "minutes": 3,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 412,
+      "minutes": 5,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 398,
+      "minutes": 5,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 2279,
+      "minutes": 28,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 445,
+      "minutes": 6,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 729,
+      "minutes": 9,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 842,
+      "minutes": 11,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 199,
+      "minutes": 3,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 213,
+      "minutes": 3,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 597,
+      "minutes": 8,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 2478,
+      "minutes": 30,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 260,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 563,
+      "minutes": 7,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 1041,
+      "minutes": 13,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 412,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 213,
+      "minutes": 3,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 810,
+      "minutes": 10,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 2691,
+      "minutes": 33,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 306,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 350,
+      "minutes": 5,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 1253,
+      "minutes": 16,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 398,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 597,
+      "minutes": 8,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 810,
+      "minutes": 10,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 1961,
+      "minutes": 24,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 562,
+      "minutes": 7,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 1127,
+      "minutes": 14,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 554,
+      "minutes": 7,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2279,
+      "minutes": 28,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2478,
+      "minutes": 30,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2691,
+      "minutes": 33,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 1961,
+      "minutes": 24,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2523,
+      "minutes": 31,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 3009,
+      "minutes": 37,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 1438,
+      "minutes": 18,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 445,
+      "minutes": 6,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 260,
+      "minutes": 4,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 306,
+      "minutes": 4,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 562,
+      "minutes": 7,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 2523,
+      "minutes": 31,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 628,
+      "minutes": 8,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 1106,
+      "minutes": 14,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 729,
+      "minutes": 9,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 563,
+      "minutes": 7,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 350,
+      "minutes": 5,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 1127,
+      "minutes": 14,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 3009,
+      "minutes": 37,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 628,
+      "minutes": 8,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 1571,
+      "minutes": 19,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 842,
+      "minutes": 11,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1041,
+      "minutes": 13,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1253,
+      "minutes": 16,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 554,
+      "minutes": 7,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1438,
+      "minutes": 18,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1106,
+      "minutes": 14,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1571,
+      "minutes": 19,
+      "to": "kofeynya-slou"
+    }
+  ],
+  "photo_date": "2026-05-30",
+  "routing_source": {
+    "checked_at": "2026-10-02",
+    "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+    "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+    "elevation": false,
+    "engine": "GraphHopper",
+    "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+    "engine_version": "11.1",
+    "ferry_timetable": false,
+    "id": "kaliningrad-261001-gh-11-1-v1-d7840de0c1b5",
+    "license": "ODbL-1.0",
+    "license_url": "https://www.openstreetmap.org/copyright",
+    "max_snap_m": 230,
+    "name": "OpenStreetMap · Geofabrik",
+    "profile_sha256": {
+      "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+      "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+      "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+    },
+    "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+    "snapshot_at": "2026-10-01T20:22:06+00:00",
+    "traffic": false,
+    "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+  },
+  "tours": [
+    {
+      "distance_m": 412,
+      "places": [
+        "kafe-skovorodka",
+        "restoran-balt",
+        "restoran-telegraf"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 161,
+      "visit_minutes": 155,
+      "walking_minutes": 6
+    },
+    {
+      "distance_m": 751,
+      "places": [
+        "kafe-skovorodka",
+        "restoran-dolche-nonna",
+        "restoran-telegraf"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 155,
+      "visit_minutes": 145,
+      "walking_minutes": 10
+    },
+    {
+      "distance_m": 762,
+      "places": [
+        "kofeynya-slou",
+        "kafe-skovorodka",
+        "restoran-telegraf"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 130,
+      "visit_minutes": 120,
+      "walking_minutes": 10
+    },
+    {
+      "distance_m": 776,
+      "places": [
+        "kofeynya-slou",
+        "restoran-balt",
+        "kafe-skovorodka"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 130,
+      "visit_minutes": 120,
+      "walking_minutes": 10
+    },
+    {
+      "distance_m": 762,
+      "places": [
+        "kofeynya-slou",
+        "restoran-balt",
+        "restoran-telegraf"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 155,
+      "visit_minutes": 145,
+      "walking_minutes": 10
+    },
+    {
+      "distance_m": 934,
+      "places": [
+        "kofeynya-slou",
+        "restoran-dolche-nonna",
+        "kafe-skovorodka"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 122,
+      "visit_minutes": 110,
+      "walking_minutes": 12
+    }
+  ],
+  "updated_at": "2026-10-02",
+  "venues": [
+    {
+      "address": "Курортный проспект, 29",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 10:49:45",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8764",
+        "src": "assets/food/img_8764.webp",
+        "width": 1350
+      },
+      "cuisine": "Балтийская кухня",
+      "dishes": [
+        "Килька пряного посола",
+        "Балтийская уха",
+        "Литовские цеппелины"
+      ],
+      "extra": [],
+      "hours": "Ежедневно 12:00–23:00",
+      "lat": 54.95992833333333,
+      "lon": 20.47563,
+      "menu_url": "https://telegraph.rest/menu",
+      "menus": [
+        {
+          "captured_at": "2026:05:30 10:49:53",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_8765",
+          "src": "assets/food/img_8765.webp",
+          "width": 1350
+        }
+      ],
+      "name": "Телеграф",
+      "note": "На Курортном проспекте Балтика становится обедом. На вывеске — «Телеграф», в снятом нами меню — килька и уха. Хорошая остановка между старым городом и морем.",
+      "phone": "+79082905521",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal",
+        "dessert"
+      ],
+      "slug": "restoran-telegraf",
+      "source_url": "https://telegraph.rest/",
+      "themes": [
+        "fish",
+        "baltic"
+      ],
+      "visit": 60
+    },
+    {
+      "address": "Курортный проспект, 16",
+      "address_source": "https://balt.restoplace.ws/",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 10:56:06",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8820",
+        "src": "assets/food/img_8820.webp",
+        "width": 1350
+      },
+      "cuisine": "Современная балтийская кухня",
+      "dishes": [
+        "Куршская лепёшка с пятью балтийскими травами",
+        "Лепёшка со страчателлой и томатами",
+        "Лепёшка с томлёным козлёнком"
+      ],
+      "extra": [],
+      "hours": "Вс–чт 12:00–23:00 · пт–сб 12:00–00:00",
+      "lat": 54.960953333333336,
+      "lon": 20.478136666666668,
+      "menus": [
+        {
+          "captured_at": "2026:05:30 10:56:11",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_8821",
+          "src": "assets/food/img_8821.webp",
+          "width": 1350
+        }
+      ],
+      "name": "БАЛТ",
+      "note": "За вывеской Курхауса — другая сторона побережья: травы, лепёшки и балтийская кухня. Сюда можно свернуть с Курортного проспекта, оставив море на вторую половину прогулки.",
+      "phone": "+79062389974",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-balt",
+      "source_url": "https://domzn.ru/restaurants/balt/",
+      "themes": [
+        "fish",
+        "baltic"
+      ],
+      "visit": 60
+    },
+    {
+      "address": "Курортный проспект, 3",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:02:25",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8882",
+        "src": "assets/food/img_8882.webp",
+        "width": 1350
+      },
+      "cuisine": "Домашняя кухня и завтраки",
+      "dishes": [
+        "Омлеты и яичницы",
+        "Куршские пироги",
+        "Блинные трубочки"
+      ],
+      "extra": [],
+      "lat": 54.961558333333336,
+      "lon": 20.481263333333334,
+      "menus": [
+        {
+          "captured_at": "2026:05:30 11:03:08",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_8885",
+          "src": "assets/food/img_8885.webp",
+          "width": 1350
+        }
+      ],
+      "name": "Сковородка",
+      "note": "У восточного конца Курортного проспекта день можно начать без спешки. На уличном меню — яичницы, пироги и блины. Дальше город постепенно уступает место парку и морю.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee",
+        "meal",
+        "dessert"
+      ],
+      "slug": "kafe-skovorodka",
+      "source_url": "https://visit-kaliningrad.ru/food/pitstseriya-skovorodka/",
+      "themes": [
+        "breakfast",
+        "coffee"
+      ],
+      "visit": 35
+    },
+    {
+      "address": "Улица Гагарина, 2Г (2/1)",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:07:37",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9243",
+        "src": "assets/food/img_9243.webp",
+        "width": 1350
+      },
+      "cuisine": "Рыба и морепродукты",
+      "dishes": [],
+      "extra": [
+        {
+          "captured_at": "2026:05:30 12:07:39",
+          "height": 1800,
+          "kind": "extra",
+          "original_id": "IMG_9244",
+          "src": "assets/food/img_9244.webp",
+          "width": 1350
+        }
+      ],
+      "hours": "Ежедневно 12:00–23:00",
+      "lat": 54.960591666666666,
+      "lon": 20.470305,
+      "menu_url": "https://restoran-oblaka.ru/menu",
+      "menus": [],
+      "name": "Облака",
+      "note": "Здесь прогулка по набережной встречается с обедом. На фотографии — вход со стороны променада; за ним «Облака». Меню лучше открыть перед выходом, а после еды оставить время для моря.",
+      "phone": "+74012278927",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-oblaka",
+      "source_url": "https://restoran-oblaka.ru/",
+      "themes": [
+        "fish"
+      ],
+      "visit": 60
+    },
+    {
+      "address": "Улица Гагарина, 46 · западный пляж",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:53:04",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9091",
+        "src": "assets/food/img_9091.webp",
+        "width": 1350
+      },
+      "cuisine": "Рыба, гриль и мороженое",
+      "cuisine_source": "https://visit-kaliningrad.ru/food/gnezdo/",
+      "dishes": [
+        "Скумбрия на палке",
+        "Котлета из щуки",
+        "Балтийский судак",
+        "Уха"
+      ],
+      "extra": [],
+      "lat": 54.95184666666667,
+      "lon": 20.444428333333335,
+      "menus": [
+        {
+          "captured_at": "2026:05:30 11:54:16",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_9108",
+          "src": "assets/food/img_9108.webp",
+          "width": 1350
+        },
+        {
+          "captured_at": "2026:05:30 11:54:19",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_9109",
+          "src": "assets/food/img_9109.webp",
+          "width": 1350
+        }
+      ],
+      "name": "Гнездо",
+      "note": "На западном пляже кафе стоит рядом с деревянным настилом и велосипедами. В снятом меню — скумбрия, судак и уха. Это остановка для длинной прогулки вдоль берега.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal",
+        "dessert"
+      ],
+      "slug": "kafe-gnezdo",
+      "source_url": "https://gokaliningrad.com/cafe/1503-gnezdo",
+      "themes": [
+        "fish"
+      ],
+      "visit": 45
+    },
+    {
+      "address": "Улица Пугачёва, 8А",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:13:21",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8966",
+        "src": "assets/food/img_8966.webp",
+        "width": 1350
+      },
+      "cuisine": "Итальянская кухня",
+      "dishes": [
+        "Пицца",
+        "Паста"
+      ],
+      "extra": [],
+      "lat": 54.962775,
+      "lon": 20.478078333333332,
+      "menus": [
+        {
+          "captured_at": "2026:05:30 11:13:30",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_8967",
+          "src": "assets/food/img_8967.webp",
+          "width": 1350
+        }
+      ],
+      "name": "Дольче Нонна",
+      "note": "Между морем и улицей Пугачёва меняется вкус прогулки. На доске у входа — итальянское меню: пицца и паста. Можно остановиться здесь, а затем вернуться к променаду.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-dolche-nonna",
+      "source_url": "https://2gis.ru/zelenogradsk/branches/70000001074591130",
+      "themes": [
+        "italian"
+      ],
+      "visit": 50
+    },
+    {
+      "address": "Московская улица, 40В",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:40:10",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9338",
+        "src": "assets/food/img_9338.webp",
+        "width": 1350
+      },
+      "cuisine": "Кофейня",
+      "dishes": [],
+      "extra": [],
+      "hours_photo": "08:00–20:00 ежедневно · на табличке 30 мая",
+      "lat": 54.96102166666667,
+      "lon": 20.48568,
+      "menus": [],
+      "name": "Слоу",
+      "note": "У кирпичного здания тихий двор, зелень и столики. Кофейня «Слоу» — небольшой поворот с Московской улицы. Здесь удобно начать день перед тем, как выйти к Курортному проспекту.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee"
+      ],
+      "slug": "kofeynya-slou",
+      "source_url": "https://godune.ru/poi/kofeynya-slou/",
+      "themes": [
+        "coffee"
+      ],
+      "visit": 25
+    },
+    {
+      "address": "Улица Гагарина, 12А",
+      "available": false,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:26:51",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9061",
+        "src": "assets/food/img_9061.webp",
+        "width": 1350
+      },
+      "cuisine": "Ресторан при отеле",
+      "dishes": [],
+      "extra": [],
+      "lat": 54.957825,
+      "lon": 20.46425,
+      "menus": [],
+      "name": "Золотая миля",
+      "note": "Здание «Золотой мили» встречает на пути вдоль улицы Гагарина. Это ресторан при отеле: его можно отметить в поездке, а работу в нужный сезон уточнить отдельно.",
+      "phone": "+74015051312",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "season_note": "На сайте отеля ресторан указан как летний. Уточните работу на дату поездки; в автоматические гастропрогулки он пока не входит.",
+      "slug": "restoran-zolotaya-milya",
+      "source_url": "https://goldenmile39.ru/ob-otele/",
+      "themes": [],
+      "visit": 60
+    }
+  ],
+  "version": 1
+}
