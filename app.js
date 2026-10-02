@@ -5,7 +5,7 @@
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
-  const catalog = fetch(url('data/catalog.json')).then(r => {
+  const catalog = fetch(url('data/catalog.json'), {cache:'no-cache'}).then(r => {
     if (!r.ok) throw new Error('Каталог временно недоступен');
     return r.json();
   });
