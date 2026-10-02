@@ -2,7 +2,7 @@
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=1';
-import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=3';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=4';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)

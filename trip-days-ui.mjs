@@ -1,7 +1,9 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=3';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
-import {loadTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=3';
+import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=4';
+import {isPersonalPoint,baseName} from './personal-points.mjs?v=1';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=1';
 import {planInput} from './trip-schedule-state.mjs?v=6';
 import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=2';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
@@ -34,12 +36,14 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     for(const form of [bases,costs])form.dataset.day=day.id;
     bases.append(el('h4','Откуда выйдем, куда вернёмся'));
     for(const [name,caption] of [['start_at','Начать здесь'],['night_at','К ночи вернуться сюда']]) {
-      const wrapper=el('label',caption),select=el('select');select.name=name;const none=el('option','Пока не выбрано');none.value='';select.append(none);
+      const wrapper=el('div',undefined,'journey-base-field'),captionLabel=el('label',caption),select=el('select');select.name=name;select.id=`journey-${name}`;captionLabel.htmlFor=select.id;wrapper.append(captionLabel);const none=el('option','Пока не выбрано');none.value='';select.append(none);
       for(const place of catalog.poi) {const option=el('option',`${place.name} · ${place.area_name}`);option.value=place.slug;select.append(option);}
-      select.value=day[name] || '';wrapper.append(select);bases.append(wrapper);
+      if(isPersonalPoint(day[name])){const own=el('option',day[name].name);own.value='__personal__';select.prepend(own);}
+      select.value=isPersonalPoint(day[name])?'__personal__':day[name] || '';wrapper.append(select);
+      const pick=button(isPersonalPoint(day[name])?'Передвинуть свою точку на карте':'Выбрать свою точку на карте','personal',name);pick.className='journey-pick-point';wrapper.append(pick);bases.append(wrapper);
     }
     label(bases,'Адрес ночёвки или заметка для себя','note','textarea',day.note).rows=2;
-    bases.append(el('p','Выберите ближайший ориентир. Дорога считается до точки на карте; путь до двери и адрес ночёвки уточните сами. Заметка сохранится в файле и ссылке поездки.','journey-note'));
+    bases.append(el('p','Выберите ориентир или отметьте своё жильё на нашей карте. Дорога считается по ближайшим доступным улицам и тропам; вход и короткий путь до двери нужно сверить. Свои точки и заметка попадут в файл и ссылку поездки.','journey-note'));
     const saveBases=el('button','Сохранить начало и ночёвку','journey-save');saveBases.type='submit';bases.append(saveBases);
     costs.append(el('h4','Сколько взять с собой'));
     const people=label(costs,'Сколько вас','people','number',trip.itinerary?.people || 1);people.min='1';people.max='4294967295';people.step='1';people.required=true;
@@ -58,7 +62,8 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   async function renderTotals(trip,ticket) {
     $('#journey-total').textContent='Считаем…';
     try {
-      const [engine,matrix]=await Promise.all([loadScheduler(base),loadTravelMatrix(base).catch(()=>null)]);if(ticket!==sequence)return;
+      const engine=await loadScheduler(base);if(ticket!==sequence)return;
+      const matrices=await Promise.all(journeyDays(trip).map(day=>loadTripTravelMatrix(base,chooseTripDay(trip,day.id),catalog).catch(()=>null)));if(ticket!==sequence)return;
       const budget=engine.budget(budgetInput(trip));
       $('#journey-total').textContent=budget.total===null?`${rubles(budget.known)} известно · полный бюджет пока неизвестен`:`${rubles(budget.total)} на всех · ${rubles(budget.per_person)} на человека`;
       const active=budget.days.find(day=>day.id===selectedDay(trip).id),daySummary=$('#journey-budget-day');
@@ -70,13 +75,13 @@ export function initTripDays({mount,read,commit,base,catalog}) {
         const total=budget.days.find(row=>row.id===day.id);
         let text=`${stopsLabel(day.places.length)} · ${TRAVEL_MODES[travelMode(chooseTripDay(trip,day.id))]}`;
         if(day.places.length) {
-          const result=engine(planInput(chooseTripDay(trip,day.id),catalog,matrix));
+          const result=engine(planInput(chooseTripDay(trip,day.id),catalog,matrices[index]));
           text+=` · ${result.finish===null?'не раньше':'окончание около'} ${clock(result.earliest_finish)}`;
           if(['conflict','overrun'].includes(result.status))text+=' · не всё помещается';
           if(result.finish===null)text+=' · дорогу нужно уточнить';
         }else text+=' · выберите места';
         text+=total.total===null?` · ${rubles(total.known)} известно`:` · ${rubles(total.total)}`;summary.textContent=text;li.append(summary);
-        for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(day[field])li.append(el('p',`${caption}: ${catalog.poi.find(p=>p.slug===day[field]).name}`,'journey-day-note'));
+        for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(day[field])li.append(el('p',`${caption}: ${baseName(day[field],catalog)}`,'journey-day-note'));
         return li;
       }));
     }catch(error) {if(ticket!==sequence)return;section.dataset.budgetReady='error';$('#journey-overview-days').replaceChildren();$('#journey-total').textContent=error.message==='budget_overflow'?'Суммы слишком велики для расчёта. Проверьте цены и количество.':'Расчёт пока не открылся. Ваши суммы сохранены.';}
@@ -103,6 +108,14 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   section.addEventListener('click',async event=>{
     const node=event.target.closest('[data-journey-action]');if(!node)return;
     const action=node.dataset.journeyAction;
+    if(action==='personal'){
+      const day=selectedDay(read()),field=node.dataset.journeyId;
+      const before=JSON.stringify(day[field]);
+      const point=await pickPersonalPoint({base,initial:day[field],caption:field==='start_at'?'Откуда начнётся ваш день':'Куда вернёмся к ночи',focusPlace:catalog.poi.find(p=>p.slug===day.places[0])});
+      if(!point)return;let stale=false;
+      await commit(current=>{if(selectedDay(current).id!==day.id||JSON.stringify(selectedDay(current)[field])!==before){stale=true;return current;}return changeDayDetails(current,{[field]:point});},'Ваша точка сохранена.');
+      feedback(stale?'День или точка уже изменились. Откройте выбор точки ещё раз.':'Точка сохранена. Первый расчёт загрузит дорожный граф; следующие работают в браузере.');return;
+    }
     if(action==='choose')return choose(node.dataset.journeyId);
     if(action==='starter'){
       await commit(current=>addTripStarter(current,node.dataset.journeyId,catalog),'Готовый план стал частью вашей поездки.');
@@ -117,7 +130,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   section.addEventListener('submit',async event=>{
     event.preventDefault();const form=event.target,values=new FormData(form),day=form.dataset.day;let changes;
     try {
-      if(form.id==='journey-bases')changes={start_at:values.get('start_at') || null,night_at:values.get('night_at') || null,note:values.get('note')};
+      if(form.id==='journey-bases'){const current=selectedDay(read());changes={start_at:values.get('start_at')==='__personal__'?current.start_at:values.get('start_at') || null,night_at:values.get('night_at')==='__personal__'?current.night_at:values.get('night_at') || null,note:values.get('note')};}
       else {
         const costs=Object.fromEntries(Object.keys(COST_KINDS).map(kind=>[kind,{amount:parseKopecks(values.get(`${kind}-amount`)),quantity:Number(values.get(`${kind}-quantity`)),scope:values.get(`${kind}-scope`)}]));
         changes={people:Number(values.get('people')),costs};

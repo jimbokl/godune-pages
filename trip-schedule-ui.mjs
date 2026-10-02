@@ -1,10 +1,11 @@
+import {baseName} from './personal-points.mjs?v=1';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=3';
 import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=6';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=1';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=3';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=4';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -109,11 +110,11 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(item.id==='__day_origin' || item.id==='__day_night') {
         const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin';
         li.className='trip-day-anchor';li.dataset.planAnchor=origin?'start':'night';
-        const place=catalog.poi.find(row=>row.slug===(origin?bases.start_at:bases.night_at));
+        const day=trip.itinerary?.days.find(row=>row.id===trip.itinerary.active), placeName=baseName(origin?day?.start_at:day?.night_at,catalog);
         const header=document.createElement('div');header.className='trip-timeline-heading';
         const time=document.createElement('span');time.className='trip-timeline-time';time.textContent=blockedByReturn?'После возвращения':item.begins===null?`Не раньше ${clock(item.earliest_begin)}`:clock(item.begins);
-        const name=document.createElement('span');name.textContent=`${origin?'Начало':'К ночи'} · ${place.name}`;header.append(time,name);li.append(header);
-        const note=document.createElement('p');note.className='trip-timeline-detail';note.textContent=origin?'От этого ориентира начинается дорога.':'Дорога до этого ориентира включена в окончание дня.';
+        const name=document.createElement('span');name.textContent=`${origin?'Начало':'К ночи'} · ${placeName}`;header.append(time,name);li.append(header);
+        const note=document.createElement('p');note.className='trip-timeline-detail';note.textContent=origin?'Дорога начинается у ближайшего подходящего дорожного сегмента. Подход от двери до него ещё нужно сверить.':'Дорога к ближайшему дорожному сегменту включена в окончание дня. Подход к двери ещё нужно сверить.';
         if(item.issues.some(row=>['unknown_travel','unknown_approach','unknown_return'].includes(row.code)))note.textContent+=' Путь ещё нужно уточнить: точное время неизвестно.';
         if(item.issues.some(row=>row.code==='after_deadline')) {note.textContent+=' Позже выбранного конца дня.';li.dataset.planConflict='true';}
         li.append(note);return li;
@@ -216,7 +217,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
     try {
-      const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTravelMatrix(base).catch(()=>null)]);if(ticket!==sequence)return;
+      const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,trip,catalog).catch(()=>null)]);if(ticket!==sequence)return;
       const result=calculate(planInput(trip,catalog,matrix));
       let light=null;
       if(trip.date)try {light=calculate.light(lightInput(trip,catalog,result));}catch{/* Preserve the schedule when the optional light layer cannot be calculated. */}

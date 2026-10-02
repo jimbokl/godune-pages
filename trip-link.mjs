@@ -1,4 +1,5 @@
-import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=2';
+import {baseName} from './personal-points.mjs?v=1';
+import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=3';
 import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=7';
 import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=6';
 import {validSchedule} from './trip-schedule-state.mjs?v=6';
@@ -92,7 +93,7 @@ export function initTripSharing(catalog, base, workshop) {
           title.textContent=`День ${index+1}`+(day.date?` · ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(day.date+'T12:00:00Z'))}`:' · дата пока не выбрана');block.append(title);
           const list=document.createElement('ol');
           for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
-          for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${catalog.poi.find(p=>p.slug===day[key]).name}`;block.append(line);}
+          for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${baseName(day[key],catalog)}`;block.append(line);}
           if(day.note) {const line=document.createElement('p');line.textContent=day.note;block.append(line);}
           if(Object.keys(day.costs).length) {const line=document.createElement('p');line.textContent='Оценки расходов сохранены в этой поездке.';block.append(line);}dayGroup.append(block);
         });

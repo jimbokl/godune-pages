@@ -95,7 +95,7 @@ function clearPackages() {
     for (const job of active) job.controller.abort();
     await Promise.all(active.map(job=>job.done));
     await Promise.allSettled([...packageReads]);
-    for (const name of (await caches.keys()).filter(name=>name.startsWith(PREFIX))) await caches.delete(name);
+    for (const name of (await caches.keys()).filter(name=>name.startsWith(PREFIX)||name.startsWith('godune-routing:'))) await caches.delete(name);
     return true;
   })().finally(() => { clearing = undefined; });
   return clearing;
@@ -133,6 +133,8 @@ self.addEventListener('fetch', event => {
         const response=await caches.match(normalized(event.request.url),{cacheName:pack.cache,ignoreSearch:true});
         if(response) return response;
       }
+      const routing=await caches.match(event.request,{cacheName:'godune-routing:v1'});
+      if(routing)return routing;
       if(event.request.mode==='navigate') {
         const response=await (await caches.open(SHELL)).match(url('offline.html'));
         if(response) return response;

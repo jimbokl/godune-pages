@@ -9,7 +9,7 @@ export function initMemoryControls(catalog, base, workshop) {
   dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Ваш черновик на месте</p><button type="button" class="icon-button" id="trip-memory-close" aria-label="Закрыть память поездки">×</button></div>
     <h2 id="trip-memory-title"></h2><p id="trip-memory-intro"></p><div id="trip-history-list"></div>
     <div id="trip-revision-preview" hidden><h3>В этой версии</h3><p id="trip-revision-date"></p><ol id="trip-revision-places"></ol><ul id="trip-revision-routes"></ul><button id="trip-revision-restore" type="button" class="button button-dark">Восстановить эту версию</button></div>
-    <div id="trip-clear-confirm" hidden><p>Исчезнут черновик и его предыдущие версии, дата и настройки поездки, отметки на остановках, выбор города для погоды и загруженные прогулки.</p><p>Скачанные вами файлы поездки и отправленные ссылки останутся у вас и у получателей. Другие устройства это действие не затронет.</p><button id="trip-clear-do" type="button" class="button button-dark">Удалить данные в этом браузере</button></div>
+    <div id="trip-clear-confirm" hidden><p>Исчезнут черновик и его предыдущие версии, личные точки, дата и настройки поездки, отметки на остановках, выбор города для погоды, загруженные прогулки и дорожные графы.</p><p>Скачанные вами файлы поездки и отправленные ссылки останутся у вас и у получателей. Другие устройства это действие не затронет.</p><button id="trip-clear-do" type="button" class="button button-dark">Удалить данные в этом браузере</button></div>
     <p id="trip-memory-result" role="status" aria-live="polite"></p>`;
   document.body.append(dialog);
   const $ = selector => dialog.querySelector(selector);
@@ -74,11 +74,12 @@ export function initMemoryControls(catalog, base, workshop) {
   });
   $('#trip-clear-do').addEventListener('click', async () => {
     $('#trip-clear-do').disabled = true;
+    window.dispatchEvent(new Event('godune:memory-clearing'));
     let packagesRemoved = true;
     try {
       const registration = await navigator.serviceWorker?.getRegistration(new URL('.',base).href);
       if (registration?.active) await offlineAction(base, {type:'CLEAR'});
-      else if ('caches' in window) for (const name of (await caches.keys()).filter(name=>name.startsWith('godune-walk-offline:'))) await caches.delete(name);
+      else if ('caches' in window) for (const name of (await caches.keys()).filter(name=>name.startsWith('godune-walk-offline:')||name.startsWith('godune-routing:'))) await caches.delete(name);
     } catch { packagesRemoved = false; }
     const result = await workshop.clearMemory();
     selected = null; $('#trip-history-list').replaceChildren(); $('#trip-revision-places').replaceChildren(); $('#trip-revision-routes').replaceChildren();

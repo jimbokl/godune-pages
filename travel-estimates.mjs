@@ -1,7 +1,8 @@
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
+import {baseId,personalPoints} from './personal-points.mjs?v=1';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
-export const dayBases = trip => trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};
+export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};return {...day,start_at:baseId(day.start_at),night_at:baseId(day.night_at)};};
 export const previousPlace = (trip,id) => trip.places[trip.places.indexOf(id)-1] || (trip.places[0]===id ? dayBases(trip).start_at : null);
 const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];
@@ -12,6 +13,7 @@ export function sameArrival(catalog,a,b,mode) {
   return !!x && !!y && x.id===y.id && x.lat===y.lat && x.lon===y.lon;
 }
 function currentPoint(catalog,matrix,id) {
+  if(typeof id==='string'&&id.startsWith('@'))return matrix?.personal_points?.some(p=>p.slug===id&&`@${p.lon},${p.lat}`===id) || false;
   const a=placeFor(catalog,id),b=matrix?.points?.find(p=>p.slug===id);
   return !!a && !!b && a.lat===b.lat && a.lon===b.lon
     && stable(a.arrival_points||{})===stable(b.arrival_points||{});
@@ -72,6 +74,33 @@ export function loadTravelMatrix(base) {
   }).catch(error=>{matrices.delete(url);throw error;}));
   return matrices.get(url);
 }
+const personalLegs=new Map();
+globalThis.addEventListener?.('godune:memory-clearing',()=>personalLegs.clear());
+export function sameRoadSource(a,b){
+  if(!a?.id||!b?.id||typeof a.sha256!=='string'||typeof a.config_sha256!=='string'||!a.profile_sha256)return false;
+  // Matrix IDs additionally fingerprint catalogue entrances. Compare the actual
+  // pinned map, engine and profiles before combining either generation.
+  const {id:matrixId,...matrixSource}=a,{id:graphId,...graphSource}=b;
+  return stable(matrixSource)===stable(graphSource);
+}
+export async function loadTripTravelMatrix(base,trip,catalog){
+  const matrix=await loadTravelMatrix(base),points=personalPoints(trip);if(!points.length)return matrix;
+  const bases=dayBases(trip),mode=travelMode(trip),copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
+  const pairs=trip.places.flatMap(id=>[...(bases.start_at?.startsWith('@')?[[bases.start_at,id]]:[]),...(bases.night_at?.startsWith('@')?[[id,bases.night_at]]:[])]);
+  if(!pairs.length)return copy;
+  try{
+    const {loadBrowserRouter}=await import('./browser-router.mjs?v=1');const route=await loadBrowserRouter(base,mode);
+    if(!sameRoadSource(matrix.source,route.graph.source))return copy;
+    await Promise.all(pairs.map(async([from,to])=>{
+      const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);
+      if(!a||!b)return;const anchor=p=>p.arrival_points?.[mode] || p;
+      const x=anchor(a),y=anchor(b),cacheKey=`${new URL(base).href}/${matrix.source.id}/${key}/${x.lon},${x.lat}/${y.lon},${y.lat}`;
+      if(!personalLegs.has(cacheKey))personalLegs.set(cacheKey,route([x.lon,x.lat],[y.lon,y.lat]).catch(error=>{personalLegs.delete(cacheKey);throw error;}));
+      const result=await personalLegs.get(cacheKey);copy.legs[key]={...result,engine:'godune-route',dynamic:true};
+    }));
+  }catch{/* Static estimates remain usable; unresolved personal roads stay unknown. */}
+  return copy;
+}
 export function decodePath(text) {
   let at=0,lat=0,lon=0;const coordinates=[];
   const delta=()=>{let value=0,shift=0,b;
@@ -104,9 +133,8 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
     if(leg.origin!=='estimate')return null;
     try {
       const legMode=leg.leg_mode || mode;
-      const chunk=await loadGeometry(base,legMode,from,matrix.source.id),path=chunk.legs[to];
-      if(!path)return null;
-      const coordinates=decodePath(path.points);
+      let coordinates=leg.dynamic?leg.geometry:null;
+      if(!coordinates){const chunk=await loadGeometry(base,legMode,from,matrix.source.id),path=chunk.legs[to];if(!path)return null;coordinates=decodePath(path.points);}
       if(coordinates.length<2)return null;
       return {type:'Feature',properties:{from,to,mode:legMode,kind:'travel',minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};
     }catch{return null;}

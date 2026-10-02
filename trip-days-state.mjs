@@ -1,4 +1,5 @@
 import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=6';
+import {validBase,isPersonalPoint} from './personal-points.mjs?v=1';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
@@ -7,7 +8,7 @@ export function validJourney(journey) {
   if(!object(journey) || journey.version!==1 || !Array.isArray(journey.days) || !journey.days.length || !Number.isSafeInteger(journey.people) || journey.people<1 || journey.people>4294967295) return false;
   const ids=new Set();
   return journey.days.every(day=>{
-    if(!object(day) || typeof day.id!=='string' || !/^day-[1-9]\d*$/.test(day.id) || ids.has(day.id) || !(day.date===null || validTripDate(day.date)) || !Array.isArray(day.places) || !day.places.every(id=>typeof id==='string') || new Set(day.places).size!==day.places.length || Object.hasOwn(day,'schedule') && !validSchedule(day.schedule) || ![day.start_at,day.night_at].every(id=>id===null || typeof id==='string') || typeof day.note!=='string' || !object(day.costs))return false;
+    if(!object(day) || typeof day.id!=='string' || !/^day-[1-9]\d*$/.test(day.id) || ids.has(day.id) || !(day.date===null || validTripDate(day.date)) || !Array.isArray(day.places) || !day.places.every(id=>typeof id==='string') || new Set(day.places).size!==day.places.length || Object.hasOwn(day,'schedule') && !validSchedule(day.schedule) || ![day.start_at,day.night_at].every(validBase) || typeof day.note!=='string' || !object(day.costs))return false;
     ids.add(day.id);
     return Object.entries(day.costs).every(([kind,row])=>Object.hasOwn(COST_KINDS,kind) && object(row) && amount(row.amount) && Number.isSafeInteger(row.quantity) && row.quantity>0 && row.quantity<=4294967295 && ['group','person'].includes(row.scope));
   }) && ids.has(journey.active);
@@ -28,7 +29,7 @@ export function cleanJourney(value,trip,catalog) {
   const known=new Set(catalog.poi.map(p=>p.slug));
   const days=value.days.map(day=>{
     const places=day.places.filter(id=>known.has(id)), schedule=cleanSchedule(day.schedule,places);
-    return {...day,places,...(schedule?{schedule}:{}),start_at:known.has(day.start_at)?day.start_at:null,night_at:known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
+    return {...day,places,...(schedule?{schedule}:{}),start_at:isPersonalPoint(day.start_at)?structuredClone(day.start_at):known.has(day.start_at)?day.start_at:null,night_at:isPersonalPoint(day.night_at)?structuredClone(day.night_at):known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
   });
   const selected=days.find(day=>day.id===value.active);
   selected.date=trip.date;selected.places=[...trip.places];delete selected.schedule;

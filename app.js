@@ -128,7 +128,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=15'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=16'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
@@ -222,18 +222,20 @@
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
     const trip = foodPreview.length ? {places:foodPreview.filter(id=>data.poi.some(p=>p.slug===id)),schedule:{mode:'foot'}} : tripMap ? workshop?.getState() : null;
     const day = trip?.itinerary?.days.find(d => d.id === trip.itinerary.active);
+    const personal=await import(url('personal-points.mjs?v=1'));
+    const bases=day ? [day.start_at,day.night_at].filter(personal.isPersonalPoint).map(p=>({...p,slug:personal.baseId(p)})) : [];
     const tripPoints = trip ? [...new Set([day?.start_at,...trip.places,day?.night_at].filter(Boolean))] : [];
-    const chosen = tripMap ? tripPoints.map(id => data.poi.find(p => p.slug === id)).filter(Boolean) : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
+    const chosen = tripMap ? [...tripPoints.map(id => data.poi.find(p => p.slug === id)).filter(Boolean),...new Map(bases.map(p=>[p.slug,p])).values()] : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
     const pointNumber = p => tripMap ? trip.places.indexOf(p.slug)+1 : chosen.indexOf(p)+1;
-    const pointRole = p => [day?.start_at === p.slug ? 'Начало дня' : '',day?.night_at === p.slug ? 'Ночёвка' : ''].filter(Boolean).join(' · ');
-    let points = chosen.filter(p => mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
+    const pointRole = p => [personal.baseId(day?.start_at) === p.slug ? 'Начало дня' : '',personal.baseId(day?.night_at) === p.slug ? 'Ночёвка' : ''].filter(Boolean).join(' · ');
+    let points = chosen.filter(p => p.kind==='personal' || mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
     $('#map-dialog-title').textContent = foodPreview.length ? 'Ваша гастропрогулка' : tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
     function listPoints() {
       const focusId=document.activeElement?.dataset.savePlace;
       const rows=points.map(p=>{
         const li=document.createElement('li'),a=document.createElement('a');li.dataset.mapPlace=p.slug;
-        a.href=url(`poi/${p.slug}/`);a.textContent=((tripMap || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
-        if(inlineMap){
+        if(p.kind==='personal'){a.href='#map-dialog';a.addEventListener('click',e=>{e.preventDefault();map?.flyTo({center:[p.lon,p.lat],zoom:16});});}else a.href=url(`poi/${p.slug}/`);a.textContent=((tripMap || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
+        if(inlineMap && p.kind!=='personal'){
           const copy=document.createElement('div'),meta=document.createElement('small'),save=document.createElement('button');
           meta.textContent=`${p.area_name} · ${p.category_name}`;copy.append(a,meta);save.type='button';save.className='save-item';save.dataset.savePlace=p.slug;
           const on=workshop?.getState().places.includes(p.slug);save.setAttribute('aria-pressed',String(Boolean(on)));save.textContent=on?'В моём маршруте ✓':'В мой маршрут +';li.append(copy,save);
@@ -252,17 +254,17 @@
       if(version!==mapVersion)return;
       if(!navigator.onLine){
         const available=await offlineTools.then(({offlinePaths})=>offlinePaths(base));
-        points=points.filter(p=>available.has(new URL(`poi/${p.slug}/`,base).pathname) && p.lon>=local.bbox[0] && p.lon<=local.bbox[2] && p.lat>=local.bbox[1] && p.lat<=local.bbox[3]);
+        points=points.filter(p=>(p.kind==='personal' || available.has(new URL(`poi/${p.slug}/`,base).pathname)) && p.lon>=local.bbox[0] && p.lon<=local.bbox[2] && p.lat>=local.bbox[1] && p.lat<=local.bbox[3]);
         listPoints();
       }
       if(version!==mapVersion)return;
       const m = await initializeMap(local); if (version !== mapVersion) return;
       m.resize(); markers.forEach(marker => marker.remove()); markers = [];
       points.forEach((p,i) => {
-        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || tripMap ? pointNumber(p) ? String(pointNumber(p)) : day.start_at === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
+        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || tripMap ? pointNumber(p) ? String(pointNumber(p)) : personal.baseId(day?.start_at) === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
         if(pointRole(p))btn.dataset.mapBase = pointRole(p);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
-        title.textContent = p.name; link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
+        title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}markers.push(new maplibregl.Marker({element:btn}).setLngLat([p.lon,p.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));return;} link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
         if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}
         const save = document.createElement('button'), on = workshop?.getState().places.includes(p.slug);
         save.type = 'button'; save.className = 'save-item'; save.dataset.savePlace = p.slug;
@@ -271,8 +273,8 @@
       });
       let roads={type:'FeatureCollection',features:[]},modeLabel='',arrivals=[];
       if(trip) {
-        const travel=await import(url('travel-estimates.mjs?v=3'));
-        const matrix=await travel.loadTravelMatrix(base).catch(()=>null);
+        const travel=await import(url('travel-estimates.mjs?v=4'));
+        const matrix=await travel.loadTripTravelMatrix(base,trip,data).catch(()=>null);
         roads=await travel.tripRoadFeatures(trip,data,matrix,base,points.map(p=>p.slug));
         modeLabel=travel.TRAVEL_MODES[travel.travelMode(trip)];
         if(version!==mapVersion)return;
@@ -298,7 +300,7 @@
       if (points.length) { const bounds = new maplibregl.LngLatBounds(); points.forEach(p => bounds.extend([p.lon,p.lat])); arrivals.forEach(p=>bounds.extend([p.lon,p.lat])); route?.geometry.coordinates.forEach(c => bounds.extend(c)); roads.features.forEach(f=>f.geometry.coordinates.forEach(c=>bounds.extend(c))); m.fitBounds(bounds,{padding:50,maxZoom:15,duration:0}); }
       if(mapFocus){const focus=data.poi.find(p=>p.slug===mapFocus);const anchor=data.poi.flatMap(p=>Object.values(p.arrival_points||{})).find(a=>a.id===mapFocus);const target=anchor||focus;if(target)m.jumpTo({center:[target.lon,target.lat],zoom:16});}
       const travelCount=roads.features.filter(f=>f.properties.kind==='travel').length,accessCount=roads.features.length-travelCount;
-      const roadStops=trip ? [day?.start_at,...trip.places,day?.night_at].filter(Boolean) : [];
+      const roadStops=trip ? [personal.baseId(day?.start_at),...trip.places,personal.baseId(day?.night_at)].filter(Boolean) : [];
       const transitions=roadStops.slice(1).filter((id,index)=>id!==roadStops[index]).length;
       setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }

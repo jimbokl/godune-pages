@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "source": {
+    "id": "kaliningrad-261001-gh-11-1-v1",
+    "name": "OpenStreetMap · Geofabrik",
+    "url": "https://download.geofabrik.de/russia/kaliningrad.html",
+    "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+    "snapshot_at": "2026-10-01T20:22:06+00:00",
+    "checked_at": "2026-10-02",
+    "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+    "engine": "GraphHopper",
+    "engine_version": "11.1",
+    "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+    "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+    "license": "ODbL-1.0",
+    "license_url": "https://www.openstreetmap.org/copyright",
+    "max_snap_m": 230,
+    "elevation": false,
+    "traffic": false,
+    "ferry_timetable": false,
+    "profile_sha256": {
+      "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315",
+      "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+      "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3"
+    }
+  },
+  "exporter_sha256": "ab9877225a03340b88bbaed23ab26b4fc27079bc2d171fe16ad15218658f73be",
+  "profiles": {
+    "foot": {
+      "path": "data/routing-graph/foot.gdr.gz",
+      "bytes": 6674063,
+      "sha256": "37e9d1a898b2ab3defe01569d37877cc91c8ef68e16becf08d069371406650dd",
+      "raw_bytes": 12974208,
+      "raw_sha256": "c8f49e6073d48fd13200675cc148988ee94802b41439afd2adffe2668897cbd2"
+    },
+    "bike": {
+      "path": "data/routing-graph/bike.gdr.gz",
+      "bytes": 6564717,
+      "sha256": "72720978c1b30848aad5bbd79d6152282080dbaadb547113b978ba66bd84a6b2",
+      "raw_bytes": 13136467,
+      "raw_sha256": "0620653fc0a943d251e21b66a5fde1dfb5b5a387542c95724c592da88179befe"
+    },
+    "car": {
+      "path": "data/routing-graph/car.gdr.gz",
+      "bytes": 6320332,
+      "sha256": "f6d70c41b81c3f40c053efe27c0a79e772ed9b1568d5e1ab504b9b0e0246857b",
+      "raw_bytes": 14909108,
+      "raw_sha256": "4fcb805a5421defb19bc2f5bae0017708c44769adae9ba388f4501b037f7a6c9"
+    }
+  }
+}

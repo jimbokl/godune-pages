@@ -1,0 +1,6 @@
+Дорожные графы godune.ru производны от OpenStreetMap.
+© OpenStreetMap contributors · https://www.openstreetmap.org/copyright
+База данных: Open Database License 1.0 · https://opendatacommons.org/licenses/odbl/1-0/
+Источник, дата и контрольные суммы: manifest.json.
+Построено GraphHopper 11.1 (Apache-2.0); преобразование: scripts/routing/ExportBrowserGraph.java.
+Граф содержит оценки дороги, а не подтверждённые входы, пробки, перекрытия или расписание паромов.

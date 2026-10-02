@@ -1,4 +1,4 @@
-import {validJourneyProjection,tripHasPlaces,tripPlaceIds} from './trip-days-state.mjs?v=2';
+import {validJourneyProjection,tripHasPlaces,tripPlaceIds} from './trip-days-state.mjs?v=3';
 import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=7';
 import {validSchedule} from './trip-schedule-state.mjs?v=6';
 
