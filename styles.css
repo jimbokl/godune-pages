@@ -20,3 +20,37 @@ dialog{border:0;padding:32px 40px;background:#fbfaf7;color:var(--ink);max-width:
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.atmosphere img{will-change:auto}.sand-layer{opacity:.12}.mist-layer{opacity:.14}.amber-layer{opacity:.16}}
 
 .scene-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:-2;pointer-events:none}@media(max-width:560px){.scene-video{object-position:47% center}}
+/* Each day is a blue ribbon; all controls belong to the selected draft. */
+.trip-journey{margin-bottom:24px;padding:26px;background:#edf5f9;border:1px solid #bfd9e7;color:#203b4c}
+.journey-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.journey-heading .eyebrow{font-size:10px;margin:0 0 10px;color:#526c7c}
+.journey-heading h3{margin:0;font-family:var(--serif);font-size:clamp(28px,2.8vw,40px);line-height:1.15}
+.journey-count{white-space:nowrap;font-size:12px;color:#456579;border:1px solid #a8c8da;padding:8px 12px;border-radius:30px}
+.journey-days{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 10px;scroll-padding:4px;scrollbar-color:#9fc4d7 transparent}
+.journey-day{flex:1 0 144px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:106px;padding:16px;background:#fff;border:1px solid #c2d9e5;border-radius:5px;text-align:left;color:#28495e;cursor:pointer}
+.journey-day[aria-pressed="true"]{background:#bfd9e7;border-color:#5b8fae;box-shadow:inset 0 -3px #5487a6}
+.journey-day-number{font-size:16px;font-weight:650}.journey-day-date{font-size:12px}.journey-day-points{font-size:11px;color:#536e7d}
+.journey-tools{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.journey-button{min-height:44px;padding:10px 13px;border:1px solid #a7c9dc;background:#fff;color:#28495e;border-radius:4px;font:inherit;font-size:12px;cursor:pointer}
+.journey-button:hover,.journey-day:hover{border-color:#5788a7;background:#dcecf5}.journey-delete{margin-left:auto;border-color:transparent;background:transparent}
+.journey-details,.journey-overview{border-top:1px solid #bdd3df}
+.journey-details>summary,.journey-overview>summary{padding:16px 0;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;font-size:13px;list-style:none}
+.journey-details>summary::-webkit-details-marker,.journey-overview>summary::-webkit-details-marker{display:none}
+.journey-details-body{padding:0 0 24px}.journey-bases,.journey-costs{display:grid;gap:16px}.journey-costs{border-top:1px solid #bdd3df;margin-top:26px;padding-top:24px}
+.journey-bases h4,.journey-costs h4{font-family:var(--serif);font-weight:400;font-size:27px;margin:0}
+.journey-bases label,.journey-costs label,.trip-day-move{display:flex;flex-direction:column;gap:8px;font-size:11px;line-height:1.4;color:#456174}
+.journey-bases select,.journey-bases textarea,.journey-costs input,.journey-costs select,.trip-day-move select{width:100%;max-width:100%;min-width:0;min-height:44px;padding:10px;border:1px solid #adc9da;border-radius:4px;background:#fff;color:#203b4c;font:inherit;font-size:14px}
+.journey-bases textarea{resize:vertical}.journey-costs>label{max-width:180px}
+.journey-note,.journey-day-note{font-size:12px;line-height:1.65;color:#516977;margin:0}
+.journey-save{justify-self:start;min-height:46px;padding:12px 20px;border:1px solid #6c9cb8;border-radius:4px;background:#bfd9e7;color:#1f3e52;font:inherit;font-size:13px;cursor:pointer}
+.journey-cost-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(70px,.6fr) minmax(0,1fr);gap:10px;border:0;padding:10px 0;margin:0;min-width:0}
+.journey-cost-row legend{font-size:13px;font-weight:600;color:#28495e;padding:0 0 4px}
+.journey-cost-rows{display:grid;gap:6px}.journey-budget-day{margin:0;font-size:13px;color:#28495e;padding:12px;background:#dcebf4}
+#journey-total{font-size:11px;font-weight:400;text-align:right;line-height:1.6;max-width:65%}
+#journey-overview-days{padding:0;margin:12px 0 4px;list-style:none;display:grid;gap:12px}#journey-overview-days li{padding:14px;background:#fff;border:1px solid #c2d9e5;border-radius:4px}#journey-overview-days .journey-button{border:0;padding:0;min-height:44px;font-weight:600;background:transparent;text-align:left}#journey-overview-days p{margin-top:5px}
+#journey-feedback:empty{display:none}#journey-feedback{margin-top:12px}.trip-day-move{margin-top:12px;max-width:280px}.trip-day-move select{font-size:12px;padding:8px}
+.trip-day-anchor{background:#edf5f9;padding:14px;border:1px solid #bfd9e7}.trip-day-anchor .trip-timeline-heading>span:last-child{font-size:14px}
+.trip-link-day{border-top:1px solid #c2d9e5;margin-top:16px;padding-top:16px}.trip-link-day h3{font-size:24px}.trip-link-day p{font-size:12px;color:#516977;overflow-wrap:anywhere}
+.trip-journey :focus-visible{outline:2px solid #36749b;outline-offset:3px}
+@media(max-width:600px){.trip-journey{padding:18px 14px;margin-bottom:16px}.journey-heading{align-items:flex-start;gap:8px}.journey-heading h3{font-size:28px}.journey-count{font-size:10px;padding:7px 9px}.journey-day{flex-basis:138px}.journey-tools{gap:6px}.journey-button{font-size:11px;padding:10px}.journey-delete{margin-left:0}.journey-cost-row{grid-template-columns:minmax(0,1fr) minmax(64px,.55fr) minmax(0,.9fr);gap:8px}.journey-details>summary,.journey-overview>summary{font-size:12px}.journey-bases h4,.journey-costs h4{font-size:25px}.journey-costs input,.journey-costs select,.journey-bases textarea,.journey-bases select{font-size:16px}.journey-cost-row label{font-size:10px}.journey-day-anchor .trip-timeline-heading{display:block}.journey-day-anchor .trip-timeline-time{display:block;margin-bottom:7px}}
+.journey-starters{margin:16px 0;border:1px solid #c2d9e5;background:#fff;padding:0 14px;border-radius:4px}.journey-starters summary{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-size:14px}.journey-starters summary::marker{content:''}.journey-starters .journey-note{padding-bottom:14px}.journey-starter-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0 14px}.journey-starter{min-height:76px;padding:12px;text-align:left;color:#294c61;background:#edf6fb;border:1px solid #bfd9e7;border-radius:4px;font:600 16px var(--sans);cursor:pointer}.journey-starter span{display:block;font-size:12px;font-weight:400;margin-top:6px;line-height:1.5}.journey-starter:hover{background:#dbeef7}.journey-starter:focus-visible{outline:2px solid #5585a0;outline-offset:3px}@media(max-width:600px){.journey-starter-options{grid-template-columns:1fr}.journey-starter{min-height:64px}}

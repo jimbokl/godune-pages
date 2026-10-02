@@ -1,11 +1,13 @@
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=5';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=4';
-import {validSchedule} from './trip-schedule-state.mjs?v=4';
+import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=1';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=6';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=5';
+import {validSchedule} from './trip-schedule-state.mjs?v=5';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = cleanTrip(state, catalog);
   const payload = [1, trip.places, trip.routes, trip.month, trip.date, trip.filters.area, trip.filters.minutes];
-  if (trip.schedule) payload.push(trip.schedule);
+  if (trip.schedule || trip.itinerary) payload.push(trip.schedule || null);
+  if(trip.itinerary)payload.push(trip.itinerary);
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
   const encoded = btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join(''))
     .replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, '');
@@ -17,21 +19,23 @@ export function readTripLink(hash, catalog) {
   if (!hash.startsWith('#trip=')) return null;
   try {
     const encoded = hash.slice(6);
-    // A valid snapshot cannot be larger than the complete current catalog plus
-    // IDs removed since it was shared. Bound decoding before allocating bytes.
-    if (!encoded || encoded.length > 65536 || !/^[A-Za-z0-9_-]+$/.test(encoded)) throw Error();
+    // Use the existing trip-file byte budget; repeated places in distinct days are valid.
+    if (!encoded || encoded.length > Math.ceil(TRIP_FILE_BYTES*4/3) || !/^[A-Za-z0-9_-]+$/.test(encoded)) throw Error();
     const bytes = Uint8Array.from(atob(encoded.replaceAll('-', '+').replaceAll('_', '/')), char => char.charCodeAt(0));
+    if(bytes.length>TRIP_FILE_BYTES)throw Error();
     const data = JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(bytes));
     if (!Array.isArray(data) || data[0] !== 1) return {error: 'Эта ссылка создана в другой версии маршрута. Попросите новую ссылку.'};
-    const [version, places, routes, month, date, area, minutes, schedule] = data;
-    if (![7,8].includes(data.length) || data.length === 8 && !validSchedule(schedule) || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
+    const [version, places, routes, month, date, area, minutes, schedule, itinerary] = data;
+    if (![7,8,9].includes(data.length) || data.length === 8 && !validSchedule(schedule) || data.length === 9 && schedule!==null && !validSchedule(schedule) || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
       || !(month === null || Number.isInteger(month) && month >= 1 && month <= 12)
       || !(date === null || validTripDate(date)) || (date && Number(date.slice(5, 7)) !== month)
       || !TRIP_AREAS.includes(area) || !TRIP_TIMES.includes(minutes)) throw Error();
-    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule}, catalog);
-    const missing = new Set(places.filter(id => !state.places.includes(id))).size
+    if(data.length===9 && !validJourneyProjection({places,date,schedule,itinerary}))throw Error();
+    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule,...(itinerary?{itinerary}:{})}, catalog);
+    const original={places,date,schedule,itinerary,routes};
+    const missing = tripPlaceIds(original).filter(id => !tripPlaceIds(state).includes(id)).length
       + new Set(routes.filter(id => !state.routes.includes(id))).size;
-    if (!state.places.length && !state.routes.length) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
+    if (!tripHasPlaces(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
     return {state, missing};
   } catch { return {error: 'Не удалось прочитать маршрут. Возможно, ссылка скопировалась не целиком. Ваш черновик на месте.'}; }
 }
@@ -44,12 +48,12 @@ export function initTripSharing(catalog, base, workshop) {
   dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Ваша Балтика рядом</p><button type="button" class="icon-button" id="trip-link-close" aria-label="Закрыть поездку">×</button></div>
     <h2 id="trip-link-title">Возьмите маршрут с собой</h2><p id="trip-link-intro"></p>
     <div id="trip-link-preview"><p id="trip-link-date" class="trip-link-date"></p><p id="trip-link-filters"></p>
-    <div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div>
+    <div id="trip-link-days" hidden></div><div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div>
     <p id="trip-link-missing" hidden></p></div>
     <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
     <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
-    <p class="trip-link-note">Файл сохранит порядок точек, прогулки, дату и настройки. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
-    <p class="trip-link-note">В ссылке — выбранные места и настройки поездки. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
+    <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки и оценки расходов. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
+    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки и бюджет. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
     <div id="trip-link-import" hidden><div class="trip-link-actions"><button type="button" id="trip-link-merge" class="button button-dark">Добавить к моему</button><button type="button" id="trip-link-replace" class="button button-light">Заменить мой маршрут</button></div>
     <p class="trip-link-note" id="trip-link-import-note"></p></div>
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
@@ -80,11 +84,26 @@ export function initTripSharing(catalog, base, workshop) {
           link.textContent = item.name; li.append(link); return li;
         }));
       }
+      const dayGroup=$('#trip-link-days');dayGroup.hidden=!snapshot.itinerary;dayGroup.replaceChildren();
+      if(snapshot.itinerary) {
+        $('#trip-link-places').hidden=true;
+        journeyDays(snapshot).forEach((day,index)=>{
+          const block=document.createElement('section');block.className='trip-link-day';const title=document.createElement('h3');
+          title.textContent=`День ${index+1}`+(day.date?` · ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(day.date+'T12:00:00Z'))}`:' · дата пока не выбрана');block.append(title);
+          const list=document.createElement('ol');
+          for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
+          for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${catalog.poi.find(p=>p.slug===day[key]).name}`;block.append(line);}
+          if(day.note) {const line=document.createElement('p');line.textContent=day.note;block.append(line);}
+          if(Object.keys(day.costs).length) {const line=document.createElement('p');line.textContent='Оценки расходов сохранены в этой поездке.';block.append(line);}dayGroup.append(block);
+        });
+      }
       $('#trip-link-missing').hidden = !result.missing;
       $('#trip-link-missing').textContent = result.missing ? `Часть мест уже убрана из каталога (${result.missing}). Показаны доступные точки этой поездки.` : '';
-      $('#trip-link-url').value = tripLink(snapshot, catalog, base);
+      const link=tripLink(snapshot,catalog,base),transferable=new URL(link).hash.length-6<=Math.ceil(TRIP_FILE_BYTES*4/3);
+      $('#trip-link-url').value=transferable?link:'';$('#trip-link-copy').disabled=$('#trip-link-send').disabled=!transferable;
+      if(!transferable)message('Поездка слишком велика для ссылки. Сохраните её в файл: он сохранит все дни.');
       $('#trip-link-send').hidden = typeof navigator.share !== 'function';
-      $('#trip-link-import-note').textContent = '«Добавить к моему» оставит ваши точки первыми. «Заменить мой маршрут» возьмёт эту поездку целиком. В обоих случаях дата и подбор прогулок будут из этой поездки. Изменение можно отменить здесь.';
+      $('#trip-link-import-note').textContent = snapshot.itinerary || workshop.getState().itinerary ? '«Добавить к моему» сохранит ваши дни и добавит дни этой поездки следом. «Заменить мой маршрут» возьмёт всю поездку целиком. Изменение можно отменить здесь.' : '«Добавить к моему» оставит ваши точки первыми. «Заменить мой маршрут» возьмёт эту поездку целиком. В обоих случаях дата и подбор прогулок будут из этой поездки. Изменение можно отменить здесь.';
     }
     if (!dialog.open) {
       lastFocus = document.activeElement;
@@ -203,6 +222,7 @@ export function initTripSharing(catalog, base, workshop) {
     if (location.hash.startsWith('#trip=')) history.replaceState(null, '', location.pathname + location.search + '#my-trip');
     $('#trip-link-url').value = '';
     $('#trip-link-places ol').replaceChildren(); $('#trip-link-routes ul').replaceChildren();
+    $('#trip-link-days').replaceChildren();
     $('#trip-link-date').textContent = $('#trip-link-filters').textContent = '';
     if (dialog.open) dialog.close();
   });

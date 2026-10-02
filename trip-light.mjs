@@ -1,7 +1,7 @@
-import {planInput} from './trip-schedule-state.mjs?v=4';
+import {planInput} from './trip-schedule-state.mjs?v=5';
 export const prefersDaylight = place => ['nature','park','viewpoint','beach'].includes(place?.category);
 export function lightInput(trip,catalog,result) {
-  return {version:1,date:trip.date,stops:result.stops.map(item=>{
+  return {version:1,date:trip.date,stops:result.stops.filter(item=>catalog.poi.some(row=>row.slug===item.id)).map(item=>{
     const place=catalog.poi.find(row=>row.slug===item.id);
     return {id:item.id,lat:place.lat,lon:place.lon,
       begins:item.arrival===null?null:item.arrival-(item.approach_minutes || 0),leaves:item.leaves,
@@ -15,7 +15,8 @@ export function lightScore(light) {
     outside:rows.reduce((sum,row)=>sum+(row.outside_sun_minutes || 0),0)};
 }
 const conflicts = result => result.stops.flatMap(row=>row.issues).filter(row=>['closed','window_missed','after_deadline'].includes(row.code)).length;
-export const tripSignature = trip => JSON.stringify([trip.date,trip.places,trip.schedule ?? null]);
+export const tripSignature = trip => JSON.stringify([trip.itinerary?.active ?? null,trip.date,trip.places,trip.schedule ?? null,
+  trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.start_at ?? null,trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.night_at ?? null]);
 // Try moving a late outdoor stop earlier. Every option uses the actual directed road and visit calendar.
 // This is an explicit suggestion; it never silently sorts, deletes or saves the visitor's work.
 export async function lightAlternative(trip,catalog,matrix,engine,result,light,stillCurrent=()=>true) {

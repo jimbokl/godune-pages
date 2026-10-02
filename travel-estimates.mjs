@@ -1,6 +1,8 @@
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
+export const dayBases = trip => trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};
+export const previousPlace = (trip,id) => trip.places[trip.places.indexOf(id)-1] || (trip.places[0]===id ? dayBases(trip).start_at : null);
 const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];
 const stable=value=>JSON.stringify(value,(_,v)=>v && typeof v==='object' && !Array.isArray(v)
@@ -15,10 +17,13 @@ function currentPoint(catalog,matrix,id) {
     && stable(a.arrival_points||{})===stable(b.arrival_points||{});
 }
 export function resolveAccess(trip,id,catalog,matrix) {
+  const index=trip.places.indexOf(id);
+  if(index<0)return null;
+  return resolveAccessBetween(trip,id,previousPlace(trip,id),trip.places[index+1] || dayBases(trip).night_at,catalog,matrix);
+}
+export function resolveAccessBetween(trip,id,previous,next,catalog,matrix) {
   const mode=travelMode(trip),anchor=anchorFor(catalog,id,mode);
   if(!anchor)return null;
-  const index=trip.places.indexOf(id),previous=trip.places[index-1],next=trip.places[index+1];
-  if(index<0)return null;
   const leg=direction=>{
     const shared=direction==='approach'?sameArrival(catalog,previous,id,mode):sameArrival(catalog,id,next,mode);
     if(shared)return {origin:'shared',minutes:0};
@@ -31,15 +36,20 @@ export function resolveAccess(trip,id,catalog,matrix) {
   return {anchor,mode,approach:leg('approach'),back:leg('return'),source:matrix?.source};
 }
 export function manualLeg(trip, id) {
-  const leg=trip.schedule?.stops?.[id]?.leg, previous=trip.places[trip.places.indexOf(id)-1];
+  const leg=trip.schedule?.stops?.[id]?.leg, previous=previousPlace(trip,id);
   if(!leg || !previous)return null;
   return leg?.from===previous && (leg.mode ? leg.mode===travelMode(trip) : trip.schedule?.mode===undefined) ? leg : null;
 }
 export function resolveTravel(trip, id, catalog, matrix) {
-  const mode=travelMode(trip), previous=trip.places[trip.places.indexOf(id)-1];
+  const mode=travelMode(trip), previous=previousPlace(trip,id);
   if(!previous)return {origin:'start',minutes:0,mode};
   const manual=manualLeg(trip,id);
   if(manual)return {origin:'manual',minutes:manual.minutes,mode};
+  return resolvePair(trip,previous,id,catalog,matrix);
+}
+export function resolvePair(trip,previous,id,catalog,matrix) {
+  const mode=travelMode(trip);
+  if(previous===id && placeFor(catalog,id))return {origin:'same_place',minutes:0,mode};
   if(!matrix || matrix.version!==1 || !matrix.source?.id)return {origin:'unknown',status:'unavailable',minutes:null,mode};
   for(const slug of [previous,id]) {
     if(!currentPoint(catalog,matrix,slug))return {origin:'unknown',status:'changed_point',minutes:null,mode};
@@ -83,12 +93,14 @@ async function loadGeometry(base,mode,from,source) {
   return geometries.get(key);
 }
 export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.places) {
-  const auto={...trip,schedule:{...trip.schedule,stops:{}}}, mode=travelMode(trip);
-  const rows=await Promise.all(trip.places.slice(1).map(async (to,i)=>{
-    const from=trip.places[i];
-    if(!visible.includes(from) || !visible.includes(to))return null;
+  const auto={...trip,schedule:{...trip.schedule,stops:{}}}, mode=travelMode(trip), bases=dayBases(trip);
+  const shown=new Set(visible), pairs=trip.places.slice(1).map((to,i)=>[trip.places[i],to]);
+  if(trip.places.length && bases.start_at && shown.has(trip.places[0])) {pairs.unshift([bases.start_at,trip.places[0]]);shown.add(bases.start_at);}
+  if(trip.places.length && bases.night_at && shown.has(trip.places.at(-1))) {pairs.push([trip.places.at(-1),bases.night_at]);shown.add(bases.night_at);}
+  const rows=await Promise.all(pairs.map(async ([from,to])=>{
+    if(!shown.has(from) || !shown.has(to))return null;
     // A hand-entered time does not verify the path or change its geometry.
-    const leg=resolveTravel(auto,to,catalog,matrix);
+    const leg=resolvePair(auto,from,to,catalog,matrix);
     if(leg.origin!=='estimate')return null;
     try {
       const legMode=leg.leg_mode || mode;
@@ -99,11 +111,13 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
       return {type:'Feature',properties:{from,to,mode:legMode,kind:'travel',minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};
     }catch{return null;}
   }));
-  for(const id of visible) {
-    const access=resolveAccess(trip,id,catalog,matrix);
+  const accesses=visible.map(id=>[id,resolveAccess(trip,id,catalog,matrix),['approach','return']]);
+  if(bases.start_at && shown.has(bases.start_at))accesses.push([bases.start_at,resolveAccessBetween(trip,bases.start_at,null,trip.places[0],catalog,matrix),['return']]);
+  if(bases.night_at && shown.has(bases.night_at))accesses.push([bases.night_at,resolveAccessBetween(trip,bases.night_at,trip.places.at(-1),null,catalog,matrix),['approach']]);
+  for(const [id,access,kinds] of accesses) {
     if(!access)continue;
     for(const [kind,leg]of [['approach',access.approach],['return',access.back]]) {
-      if(leg.origin!=='estimate' || !leg.geometry)continue;
+      if(!kinds.includes(kind) || leg.origin!=='estimate' || !leg.geometry)continue;
       try {
         const coordinates=decodePath(leg.geometry);if(coordinates.length<2)continue;
         rows.push({type:'Feature',properties:{from:id,to:id,mode:'foot',kind,minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}});

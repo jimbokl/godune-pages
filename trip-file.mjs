@@ -1,5 +1,6 @@
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=5';
-import {validSchedule} from './trip-schedule-state.mjs?v=4';
+import {validJourneyProjection,tripHasPlaces,tripPlaceIds} from './trip-days-state.mjs?v=1';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=6';
+import {validSchedule} from './trip-schedule-state.mjs?v=5';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
 export function createTripFile(state, catalog, now = new Date()) {
@@ -18,11 +19,11 @@ export function readTripFile(text, catalog) {
       || !(trip.month === null || Number.isInteger(trip.month) && trip.month >= 1 && trip.month <= 12)
       || !(trip.date === null || validTripDate(trip.date)) || (trip.date && Number(trip.date.slice(5, 7)) !== trip.month)
       || !TRIP_AREAS.includes(trip.filters?.area) || !TRIP_TIMES.includes(trip.filters?.minutes)
-      || Object.hasOwn(trip,'schedule') && !validSchedule(trip.schedule)) throw Error();
+      || Object.hasOwn(trip,'schedule') && !validSchedule(trip.schedule) || Object.hasOwn(trip,'itinerary') && !validJourneyProjection(trip)) throw Error();
     const state = cleanTrip(trip, catalog);
-    const missing = new Set(trip.places.filter(id => !state.places.includes(id))).size
+    const missing = tripPlaceIds(trip).filter(id => !tripPlaceIds(state).includes(id)).length
       + new Set(trip.routes.filter(id => !state.routes.includes(id))).size;
-    if (!state.places.length && !state.routes.length) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест или прогулок.'};
+    if (!tripHasPlaces(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест или прогулок.'};
     return {state, missing};
   } catch { return {error: 'Не удалось прочитать файл поездки. Ваш черновик на месте. Попробуйте другую копию файла.'}; }
 }

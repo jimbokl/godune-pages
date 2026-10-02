@@ -1,15 +1,11 @@
-import {cleanSchedule} from './trip-schedule-state.mjs?v=4';
+import {validTripDate,cleanJourney,mergeJourney} from './trip-days-state.mjs?v=1';
+export {validTripDate} from './trip-days-state.mjs?v=1';
+import {cleanSchedule} from './trip-schedule-state.mjs?v=5';
 export const TRIP_KEY = 'godune-trip:v1';
 export const emptyTrip = () => ({version: 1, places: [], routes: [], month: null, date: null,
   filters: {area: 'all', minutes: 'all'}});
 export const TRIP_AREAS = ['all', 'kaliningrad', 'kurshskaya-kosa'];
 export const TRIP_TIMES = ['all', '120', '180'];
-
-export function validTripDate(value) {
-  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const parsed = new Date(value + 'T12:00:00Z');
-  return !Number.isNaN(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === value && !value.startsWith('0000');
-}
 
 export function cleanTrip(record, catalog) {
   if (!record || record.version !== 1) return emptyTrip();
@@ -24,6 +20,8 @@ export function cleanTrip(record, catalog) {
       minutes: TRIP_TIMES.includes(record.filters?.minutes) ? record.filters.minutes : 'all'}};
   const schedule = cleanSchedule(record.schedule, trip.places);
   if (schedule) trip.schedule = schedule;
+  const itinerary=cleanJourney(record.itinerary,trip,catalog);
+  if(itinerary)trip.itinerary=itinerary;
   return trip;
 }
 
@@ -31,6 +29,7 @@ export function mergeTrips(current, incoming, catalog) {
   const before = cleanTrip(current, catalog), next = cleanTrip(incoming, catalog);
   const merged = {...next, places: [...new Set([...before.places, ...next.places])],
     routes: [...new Set([...before.routes, ...next.routes])]};
+  if(before.itinerary || next.itinerary)return cleanTrip(mergeJourney(before,next,merged),catalog);
   const schedule = next.schedule || before.schedule;
   if (schedule) merged.schedule = {...schedule,stops:{...before.schedule?.stops,...next.schedule?.stops}};
   return cleanTrip(merged, catalog);

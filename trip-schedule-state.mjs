@@ -1,6 +1,6 @@
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=1';
-import {TRAVEL_MODES, resolveTravel, resolveAccess} from './travel-estimates.mjs?v=2';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=3';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
@@ -24,7 +24,8 @@ export function cleanSchedule(value, places) {
 }
 export function planInput(trip, catalog, matrix) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();
-  return {version:1,start:settings.start,end:settings.end,reserve:settings.reserve,stops:trip.places.map((id,index) => {
+  const configured={...trip,schedule:settings}, bases=dayBases(trip);
+  const stops=trip.places.map(id => {
     const stop = Object.hasOwn(settings.stops,id) ? settings.stops[id] : null;
     const manual=stop?.window && stop.window.date === trip.date;
     const calendar=!manual && catalog ? resolveVisitCalendar(catalog.poi.find(place=>place.slug===id),trip.date,stop?.visit_fact) : null;
@@ -37,7 +38,20 @@ export function planInput(trip, catalog, matrix) {
       opening:manual ? [{open:stop.window.open,close:stop.window.close}] : calendar?.windows ?? null,
       ...(calendar?.sessions !== null && calendar?.sessions !== undefined ? {sessions:calendar.sessions} : {}),
       ...(calendar?.needsCheck ? {opening_needs_check:true} : {})};
-  })};
+  });
+  if(stops.length && bases.start_at) {
+    const access=resolveAccessBetween(configured,bases.start_at,null,trip.places[0],catalog,matrix);
+    stops.unshift({id:'__day_origin',visit:0,pause:0,travel:0,opening:[{open:0,close:1440}],
+      ...(access?{access:{approach:0,return_minutes:access.back.minutes,needs_check:true}}:{})});
+  }
+  if(stops.length && trip.places.length && bases.night_at) {
+    const travel=resolvePair(configured,trip.places.at(-1),bases.night_at,catalog,matrix);
+    const access=resolveAccessBetween(configured,bases.night_at,trip.places.at(-1),null,catalog,matrix);
+    stops.push({id:'__day_night',visit:0,pause:0,travel:travel.minutes,opening:[{open:0,close:1440}],
+      ...(travel.origin==='estimate'?{travel_needs_check:true}:{}),
+      ...(access?{access:{approach:access.approach.minutes,return_minutes:0,needs_check:true}}:{})});
+  }
+  return {version:1,start:settings.start,end:settings.end,reserve:settings.reserve,stops};
 }
 export function updateSchedule(trip, field, value, id) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();
@@ -46,7 +60,7 @@ export function updateSchedule(trip, field, value, id) {
     const stop = Object.hasOwn(settings.stops,id) ? settings.stops[id] : {visit:30,pause:0,leg:null,window:null};
     if (['visit','pause'].includes(field)) stop[field] = value;
     else if (field === 'travel') {
-      const previous = trip.places[trip.places.indexOf(id)-1];
+      const previous = previousPlace(trip,id);
       stop.leg = previous && value !== null ? {from:previous, minutes:value,mode:settings.mode || 'foot'} : null;
     } else if (field === 'window') stop.window = value ? {...value,date:trip.date ?? null} : null;
     else if (field === 'visit_fact') {stop.visit_fact=value;stop.window=null;}

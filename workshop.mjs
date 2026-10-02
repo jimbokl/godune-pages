@@ -1,11 +1,13 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=5';
-import {initTripSharing} from './trip-link.mjs?v=6';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=6';
+import {initTripSharing} from './trip-link.mjs?v=7';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=3';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=3';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=6';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=5';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=7';
+import {initTripDays} from './trip-days-ui.mjs?v=1';
+import {tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=1';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=6';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -88,6 +90,7 @@ export async function initWorkshop(catalog, base) {
   const reorder = initTripReorder($('#my-places'), {announce, move: (id, anchor, side) =>
     commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
   const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
     const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item';
@@ -126,14 +129,15 @@ export async function initWorkshop(catalog, base) {
         const down = button('↓', `Опустить: ${item.name}`, 'down', kind, id);
         up.disabled = index === 0; down.disabled = index === state.places.length - 1;
         controls.append(drag, up, down);
+        const move=days.moveControl(id,item.name);if(move)copy.append(move);
       }
       controls.append(button('×', `Убрать: ${item.name}`, 'remove', kind, id)); li.append(controls); return li;
     }));
     $(kind === 'places' ? '#my-places-empty' : '#my-routes-empty').hidden = state[kind].length > 0;
   }
   function refresh() {
-    const hasTrip = state.places.length > 0 || state.routes.length > 0;
-    const draft = $('#trip-draft'); if (draft) draft.hidden = !hasTrip;
+    const hasTrip = tripHasPlaces(state);
+    const draft = $('#trip-draft'); if (draft) draft.hidden = !hasTrip && !state.itinerary;
     const starters = $('#trip-starters');
     if (starters && starterEmpty !== !hasTrip) { starters.open = !hasTrip; starterEmpty = !hasTrip; }
     const title = $('#my-trip-title'); if (title) title.textContent = hasTrip ? 'Ваша Балтика складывается' : 'С чего начнём?';
@@ -147,6 +151,7 @@ export async function initWorkshop(catalog, base) {
       node.textContent = done ? 'Уже в маршруте ✓' : hasTrip ? 'Добавить прогулку →' : 'Выбрать прогулку →';
     });
     schedule.render();
+    days.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';
@@ -156,12 +161,14 @@ export async function initWorkshop(catalog, base) {
     });
     const month = $('#trip-month'); if (month) month.value = state.month === null ? '' : String(state.month);
     const date = $('#trip-date'); if (date) date.value = state.date || '';
-    const share = $('#trip-share'); if (share) share.disabled = !state.places.length && !state.routes.length;
+    const share = $('#trip-share'); if (share) share.disabled = !hasTrip;
     const notice = $('#trip-storage'); if (notice) notice.hidden = available;
     document.querySelectorAll('[data-my-trip]').forEach(link => {
-      link.textContent = 'Мой маршрут' + (state.places.length + state.routes.length ? ` · ${state.places.length || state.routes.length}` : '');
+      const count=journeyDays(state).reduce((sum,day)=>sum+day.places.length,0);
+      link.textContent = 'Мой маршрут' + (count || state.routes.length ? ` · ${count || state.routes.length}` : '');
     });
     renderList('places'); renderList('routes');
+    if(state.itinerary && !state.places.length)$('#my-places-empty').textContent='Этот день ещё свободен. Добавьте места или выберите готовую прогулку.';
     document.querySelectorAll('[data-route-stops]').forEach(node => {
       const route = catalog.routes.find(row => row.slug === node.dataset.routeStops);
       const done = route?.stops.every(stop => state.places.includes(stop.poi));
