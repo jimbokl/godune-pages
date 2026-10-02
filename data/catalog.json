@@ -2198,7 +2198,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "promenade-levels",
+          "kind": "access",
+          "label": "Прогулка вдоль моря",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Зеленоградска",
+            "url": "https://visit-zelenogradsk.ru/museums/promenad-pirs",
+            "verification": "official_source"
+          },
+          "text": "Набережная тянется примерно на 2,5 км. Наверху — смотровые площадки, дорожки для бега и велосипеда; ниже — песчаный пляж. Пирс служит прогулочной площадкой."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2599,7 +2614,38 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "water-pavilion-entry",
+          "kind": "access",
+          "label": "Где набрать воду",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Зеленоградска",
+            "url": "https://visit-zelenogradsk.ru/museums/byuvet-korolevy-luizy",
+            "verification": "official_source"
+          },
+          "text": "Ищите круглую беседку у пересечения набережной и аллеи Дружбы, рядом с пирсом. Вода подаётся через четыре крана."
+        },
+        {
+          "amount": 0,
+          "currency": "RUB",
+          "id": "mineral-water",
+          "kind": "price",
+          "label": "Вода из бювета",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Зеленоградска",
+            "url": "https://visit-zelenogradsk.ru/museums/byuvet-korolevy-luizy",
+            "verification": "official_source"
+          },
+          "text": "Воду можно набрать бесплатно. Часы её подачи на странице турцентра не указаны.",
+          "unit": "water_collection"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3289,7 +3335,109 @@
         "Светлогорск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "central-stairs",
+          "kind": "access",
+          "label": "Спуск к морю",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/health/trails/marshrut-1/",
+            "verification": "official_source"
+          },
+          "text": "У центральной лестницы 265 ступеней. Солнечные часы стоят внизу, у променада; обратный путь потребует подъёма."
+        },
+        {
+          "id": "panorama-lift-entry",
+          "kind": "access",
+          "label": "Если лестница не подходит",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/lift-panorama-w-/",
+            "verification": "official_source"
+          },
+          "text": "К променаду можно спуститься на лифте «Панорама». Верхний вход — ул. Ленина, 11, нижний — Морской бульвар, 19. Турцентр сообщает об оснащении для людей с ограниченной подвижностью; детали уточняйте по телефону +7 (911) 450-26-82."
+        },
+        {
+          "id": "panorama-lift-hours",
+          "kind": "hours",
+          "label": "Когда работает лифт",
+          "schedule": [
+            {
+              "closes": "23:00",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "09:00"
+            }
+          ],
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/lift-panorama-w-/",
+            "verification": "official_source"
+          },
+          "text": "Лифт работает ежедневно, 09:00–23:00. Перед поездкой уточните, нет ли технического перерыва. Эти часы относятся к лифту."
+        },
+        {
+          "amount": 120,
+          "currency": "RUB",
+          "id": "panorama-lift-oneway",
+          "kind": "price",
+          "label": "Лифт: в одну сторону",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/lift-panorama-w-/",
+            "verification": "official_source"
+          },
+          "text": "Проезд в одном направлении — 120 ₽ с человека.",
+          "unit": "lift_one_way_per_person"
+        },
+        {
+          "amount": 200,
+          "currency": "RUB",
+          "id": "panorama-lift-return",
+          "kind": "price",
+          "label": "Лифт: туда и обратно",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/lift-panorama-w-/",
+            "verification": "official_source"
+          },
+          "text": "Проезд в двух направлениях — 200 ₽ с человека.",
+          "unit": "lift_return_per_person"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3382,7 +3530,22 @@
         "Светлогорск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "clocks-central-stairs",
+          "kind": "access",
+          "label": "Как подойти",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Светлогорска",
+            "url": "https://www.svetlogorsk-tourism.ru/health/trails/marshrut-1/",
+            "verification": "official_source"
+          },
+          "text": "Часы находятся у подножия центральной лестницы к морю. В ней 265 ступеней: учитывайте и спуск, и обратный подъём."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3551,7 +3714,48 @@
         "Янтарный"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "central-beach-descents",
+          "kind": "access",
+          "label": "Спуски из парка",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Центр культуры, развития и туризма «Янтарный»",
+            "url": "https://www.yantarkld.ru/tourist/plyazhi/tsentralnyy-plyazh/",
+            "verification": "official_source"
+          },
+          "text": "Из парка Беккера к Центральному пляжу ведут три спуска: центральная лестница с четырьмя маршами, спуск для колясок и лестница у липовых аллей. На пляже есть деревянные дорожки и оборудование для помощи маломобильным посетителям. Нужную помощь уточните у сотрудников."
+        },
+        {
+          "id": "central-beach-sea-access",
+          "kind": "access",
+          "label": "Доступ к морю",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Центр культуры, развития и туризма «Янтарный»",
+            "url": "https://www.yantarkld.ru/tourist/plyazhi/tsentralnyy-plyazh/",
+            "verification": "official_source"
+          },
+          "text": "По информации турцентра, доступ к морю открыт круглосуточно. Работа пляжных услуг — по отдельному расписанию."
+        },
+        {
+          "id": "central-beach-services-hours",
+          "kind": "hours",
+          "label": "Часы пляжных услуг",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Центр культуры, развития и туризма «Янтарный»",
+            "url": "https://www.yantarkld.ru/tourist/plyazhi/tsentralnyy-plyazh/",
+            "verification": "official_source"
+          },
+          "text": "На официальной странице указан режим пляжного комплекса 09:00–20:00 ежедневно. Даты работы в течение года не приведены; сверяйте сезонные услуги и их часы с информационными щитами на пляже."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3577,7 +3781,22 @@
         "Янтарный"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "wooden-boardwalk",
+          "kind": "access",
+          "label": "По деревянному настилу",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Центр культуры, развития и туризма «Янтарный»",
+            "url": "https://www.yantarkld.ru/tourist/mesta/promenad/",
+            "verification": "official_source"
+          },
+          "text": "Променад начинается у спуска к морю в парке Беккера. Его длина — около двух километров, из них 700 метров идут над водой бывшего карьера. Дорожка сделана из лиственницы."
+        }
+      ]
     }
   ],
   "routes": [
