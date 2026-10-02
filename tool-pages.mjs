@@ -12,7 +12,7 @@ export function initToolPages(workshop,catalog,base) {
   };
   render();window.addEventListener('godune:trip-change',render);
   let writing=false;
-  document.querySelectorAll('[data-plan-starter]').forEach(button=>button.addEventListener('click',async()=>{
+  document.querySelectorAll('[data-plan-starter]').forEach(button=>{button.addEventListener('click',async()=>{
     if(writing)return;writing=true;
     const buttons=[...document.querySelectorAll('[data-plan-starter]')],status=document.querySelector('#plan-starter-status');
     buttons.forEach(b=>b.disabled=true);status.textContent='Добавляем дни в вашу поездку…';
@@ -22,8 +22,9 @@ export function initToolPages(workshop,catalog,base) {
       if(result.saved){mount?.querySelector('a')?.focus({preventScroll:true});status.scrollIntoView({block:'nearest',behavior:'instant'});}
     } catch {status.textContent='Дни пока не добавились. Ваш прежний выбор сохранён. Попробуйте ещё раз.';}
     finally{writing=false;buttons.forEach(b=>b.disabled=false);}
-  }));
+  });button.disabled=false;});
   // A help link opens exactly the answer requested, including a collapsed section.
   function revealAnswer(){const target=document.getElementById(location.hash.slice(1));if(target?.matches('.help-answers details'))target.open=true;}
   revealAnswer();window.addEventListener('hashchange',revealAnswer);
+  document.documentElement.dataset.toolReady='true';
 }

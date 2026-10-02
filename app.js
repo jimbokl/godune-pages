@@ -132,7 +132,12 @@
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=1')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{});
+      import(url('tool-pages.mjs?v=2')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+        document.documentElement.dataset.toolReady='error';
+        $$('[data-plan-starter]').forEach(button=>button.disabled=true);
+        const status=$('#plan-starter-status');
+        if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
+      });
     }
     if (inlineMap) {
       tripMap = new URLSearchParams(location.search).get('view') === 'trip';
