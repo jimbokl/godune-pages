@@ -1,5 +1,6 @@
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=1';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=2';
+import {loadScheduler} from './trip-scheduler.mjs?v=2';
+import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=1';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -9,7 +10,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   if (!mount) return {render(){}};
   const section = document.createElement('section'); section.className='trip-schedule'; section.setAttribute('aria-labelledby','trip-plan-title');
   section.innerHTML=`<div class="trip-plan-heading"><div><p class="eyebrow">Оставьте время морю</p><h3 id="trip-plan-title">Ваш день, без спешки</h3><p>Осмотр, дорога и пауза у воды. Соберите день, в котором не придётся всё время спешить.</p></div><button type="button" class="button button-light" id="trip-plan-open" aria-expanded="false" aria-controls="trip-plan-body">Рассчитать время</button></div>
-  <div id="trip-plan-body" hidden><p class="trip-plan-note">Время дороги и окно посещения задаёте вы. Перед поездкой сверьте их с картой, билетом и расписанием. Если дорога неизвестна, точного времени дальше не будет.</p><form id="trip-day-settings" class="trip-day-settings"></form><p id="trip-plan-summary" role="status"></p><ol id="trip-plan-stops" class="trip-plan-stops"></ol><p id="trip-plan-feedback" role="status"></p></div>`;
+  <div id="trip-plan-body" hidden><p class="trip-plan-note">Выберите дату — учтём обычные часы работы и начало сеансов. Дорогу и паузы задаёте вы. Перед поездкой сверьте расписание и наличие билетов. Если дорога неизвестна, точного времени дальше не будет.</p><form id="trip-day-settings" class="trip-day-settings"></form><p id="trip-plan-summary" role="status"></p><ol id="trip-plan-stops" class="trip-plan-stops"></ol><p id="trip-plan-feedback" role="status"></p></div>`;
   mount.insertBefore(section, mount.querySelector('#trip-weather, #trip-utilities'));
   const $=selector=>section.querySelector(selector);
   let opened=false, sequence=0;
@@ -30,6 +31,50 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     input(form,'Запас на каждый переход, мин','reserve','number',settings.reserve);
     applyButton(form);
   }
+  function calendarCard(place, trip, value, manual, item) {
+    const calendar=resolveVisitCalendar(place,trip.date,value.visit_fact), facts=visitFacts(place);
+    const card=document.createElement('div');card.className='trip-visit-calendar';
+    card.dataset.visitOrigin=manual ? 'manual' : calendar.windows!==null || calendar.sessions!==null ? 'calendar' : 'unknown';
+    card.dataset.visitReason=calendar.reason || '';card.dataset.visitDate=trip.date || '';
+    if(facts.length>1 || !place.hours && facts.length) {
+      const label=document.createElement('label'), select=document.createElement('select');
+      label.textContent='Что хотите посетить';select.dataset.planCalendar=item.id;select.dataset.planField='visit_fact';select.dataset.planStop=item.id;
+      const automatic=document.createElement('option');automatic.value='';automatic.textContent=place.hours ? place.hours.label : 'Выберите посещение';select.append(automatic);
+      for(const fact of facts.filter(row=>row.id!==place.hours?.id)) {
+        const option=document.createElement('option');option.value=fact.id;option.textContent=fact.label;select.append(option);
+      }
+      if(value.visit_fact && !facts.some(row=>row.id===value.visit_fact)) {
+        const missing=document.createElement('option');missing.value=value.visit_fact;missing.textContent='Прежнее расписание больше не доступно';select.append(missing);
+      }
+      select.value=value.visit_fact || '';label.append(select);card.append(label);
+    }
+    const title=document.createElement('p');title.className='trip-calendar-title';
+    title.textContent=manual ? `Ваше время: ${clock(manual.open)}–${clock(manual.close)}` : calendar.fact?.label || 'Время посещения';card.append(title);
+    const note=document.createElement('p');
+    if(manual) note.textContent='Для этой даты расчёт использует ваше окно посещения.';
+    else if(calendar.reason==='closed') note.textContent='По обычному расписанию в этот день выходной.';
+    else if(calendar.windows?.length) {
+      note.textContent=calendar.windows.map(window=>`${clock(window.open)}–${clock(window.close)}`+(window.last_entry!==undefined ? ` · вход до ${clock(window.last_entry)}` : '')).join('; ')
+        +(calendar.rule?.cash_closes ? ` · касса до ${calendar.rule.cash_closes}` : '');
+    } else if(calendar.sessions?.length) {
+      note.textContent=`Сеанс занимает ${calendar.rule?.duration || calendar.sessions[0].duration} мин. Начало — строго по расписанию; наличие билетов нужно проверить.`;
+      const times=document.createElement('details'), summary=document.createElement('summary'), list=document.createElement('p');
+      summary.textContent='Все начала сеансов';list.textContent=calendar.sessions.map(row=>clock(row.start)).join(' · ');times.append(summary,list);card.append(times);
+    } else note.textContent={choose_date:'Укажите дату поездки, чтобы сверить день недели и сезон.',outside_validity:'Это расписание не действует на выбранную дату. Уточните новое у места.',
+      park_scope:'Часы территории парка не заменяют часы тропы или экскурсии.',cashdesk_scope:'Это часы кассы. Время концерта или спектакля выбирают по билету.',
+      unknown_day:'Для этого дня часов пока нет. Уточните их у места.',missing_fact:'Прежнее расписание больше не доступно. Выберите другое посещение.',
+      unknown_hours:'Точного окна для расчёта пока нет. Уточните его у места.'}[calendar.reason] || 'Часы на выбранную дату нужно уточнить.';
+    card.append(note);
+    if(calendar.fact) {
+      const source=document.createElement('p');source.className='trip-calendar-source';const link=document.createElement('a');
+      link.href=calendar.fact.source.url;link.target='_blank';link.rel='noopener';link.textContent=calendar.fact.source.name;
+      source.append(link,` · проверено ${calendar.fact.source.checked_at.split('-').reverse().join('.')}`);card.append(source);
+      if(!manual && calendar.needsCheck) {const caution=document.createElement('p');caution.className='trip-calendar-source';caution.textContent='Обычное расписание: праздники и изменения на дату поездки сверьте с местом.';card.append(caution);}
+    }
+    if(manual) {const reset=document.createElement('button');reset.type='button';reset.dataset.planReset=item.id;reset.className='save-item';reset.textContent='Вернуться к расписанию места';card.append(reset);}
+    if(calendar.reason==='choose_date' && !manual) {const choose=document.createElement('button');choose.type='button';choose.className='save-item';choose.textContent='Указать дату';choose.addEventListener('click',()=>document.querySelector('#trip-date')?.focus());card.append(choose);}
+    return card;
+  }
   function renderStops(trip, result) {
     const settings=trip.schedule || defaultSchedule();
     $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
@@ -42,16 +87,18 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const name=document.createElement('a');name.href=new URL(`poi/${item.id}/`,base).href;name.textContent=place.name;
       header.append(time,name);li.append(header);
       const timing=document.createElement('p');timing.className='trip-timeline-detail';
-      timing.textContent=`${value.visit} мин на осмотр`+(value.pause ? ` · ${value.pause} мин пауза` : '')
+      timing.textContent=`${item.visit_minutes} мин на осмотр`+(value.pause ? ` · ${value.pause} мин пауза` : '')
         +(item.wait ? ` · ${item.wait} мин ожидание` : '')
         +(index>0 && value.leg?.from===trip.places[index-1] ? ` · ${value.leg.minutes} мин дорога + ${settings.reserve} мин запас` : '');
       li.append(timing);
+      li.append(calendarCard(place,trip,value,window,item));
       if(item.issues.length) {
         const issues=document.createElement('ul');issues.className='trip-plan-issues';
         for(const issue of item.issues) {
           const line=document.createElement('li');line.dataset.planIssue=issue.code;
           line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:'Время входа ещё нужно сверить.',
-            closed:'В этот день место закрыто.',window_missed:'Осмотр целиком не помещается в окно посещения.',
+            opening_needs_check:'Часы учтены. Осталось сверить дату и билеты с местом.',
+            closed:'По выбранному расписанию в этот день нет посещений.',window_missed:'Осмотр не помещается в часы работы или время последнего входа; подходящего сеанса тоже нет.',
             after_deadline:`Позже конца дня как минимум на ${issue.minutes} мин.`}[issue.code];
           if(['closed','window_missed','after_deadline'].includes(issue.code)) li.dataset.planConflict='true';
           issues.append(line);
@@ -73,12 +120,12 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(!opened) return;
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop;
-    const expanded=[...section.querySelectorAll('details[open]')].map(node=>node.dataset.planEditor);
+      const expanded=[...section.querySelectorAll('details[data-plan-editor][open]')].map(node=>node.dataset.planEditor);
     section.dataset.scheduleReady='false';
     $('#trip-plan-summary').textContent='Раскладываем день…';
     try {
       const calculate=await loadScheduler(base);if(ticket!==sequence)return;
-      const result=calculate(planInput(trip));
+      const result=calculate(planInput(trip,catalog));
       renderSettings(settings);renderStops(trip,result);
       const summary=$('#trip-plan-summary');summary.dataset.planStatus=result.status;
       const intro={empty:'Сначала добавьте точки в свой маршрут.',fits:'По вашим оценкам, день складывается.',needs_check:'Время посчитано. Осталось сверить вход в выбранные места.',
@@ -86,7 +133,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       summary.textContent=intro+(result.stops.length ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До конца дня остаётся ${result.slack} мин.` : '');
       section.dataset.scheduleReady='true';
-      for(const details of section.querySelectorAll('details')) details.open=expanded.includes(details.dataset.planEditor);
+      for(const details of section.querySelectorAll('details[data-plan-editor]')) details.open=expanded.includes(details.dataset.planEditor);
       if(focused) [...section.querySelectorAll('[data-plan-field]')].find(node=>node.dataset.planField===focused && node.dataset.planStop===focusedStop)?.focus({preventScroll:true});
     } catch {
       if(ticket!==sequence)return;
@@ -98,6 +145,15 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     opened=!opened;$('#trip-plan-body').hidden=!opened;$('#trip-plan-open').setAttribute('aria-expanded',String(opened));
     $('#trip-plan-open').textContent=opened?'Свернуть план':'Рассчитать время';
     if(opened) render();else sequence++;
+  });
+  section.addEventListener('change',event=>{
+    const id=event.target.dataset.planCalendar;if(!id)return;
+    const fact=event.target.value || null;
+    commit(current=>updateSchedule(current,'visit_fact',fact,id),'Посещение выбрано.');
+  });
+  section.addEventListener('click',event=>{
+    const id=event.target.closest('[data-plan-reset]')?.dataset.planReset;if(!id)return;
+    commit(current=>updateSchedule(current,'window',null,id),'Вернулись к расписанию места.');
   });
   section.addEventListener('submit',async event=>{
     event.preventDefault();const form=event.target, values=new FormData(form), id=form.dataset.planEdit;

@@ -1,11 +1,11 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2';
-import {initTripSharing} from './trip-link.mjs?v=4';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=1';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=4';
+import {initTripSharing} from './trip-link.mjs?v=5';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=1';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=1';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=3';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=4';
 
 export function loadTrip(storage, catalog) {
   try {

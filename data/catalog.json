@@ -739,6 +739,11 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "cashdesk",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "cathedral-cash-hours",
           "kind": "hours",
           "label": "Касса у собора",
@@ -768,6 +773,44 @@
           "unit": "kant_museum_entry"
         },
         {
+          "calendar": {
+            "kind": "sessions",
+            "session_rules": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "duration": 45,
+                "months": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ],
+                "starts": [
+                  "12:00",
+                  "15:00",
+                  "17:00"
+                ]
+              }
+            ],
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "kant-museum-tour-times",
           "kind": "hours",
           "label": "Экскурсия в музей Канта",
@@ -1012,6 +1055,33 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно на набережной Мирового океана. Включайте его в прогулку вдоль реки, а внутреннюю экспозицию планируйте как отдельное посещение.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "vityaz-exhibition-hours",
         "kind": "hours",
         "label": "Экспозиция и палубы",
@@ -1070,9 +1140,38 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "continuous",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "vityaz-tuesday-decks",
           "kind": "hours",
           "label": "Во вторник — только палубы",
+          "schedule": [
+            {
+              "cash_closes": "17:30",
+              "closes": "18:00",
+              "days": [
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "10:00"
+            }
+          ],
           "scope": "service",
           "source": {
             "checked_at": "2026-10-02",
@@ -1093,6 +1192,32 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Экспозиционный корпус на музейной набережной. Рядом расположены другие корпуса и суда, поэтому здесь легко продлить городской маршрут.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "glubina-hours",
         "kind": "hours",
         "label": "Корпус «Глубина»",
@@ -1175,6 +1300,120 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Корпус Музея Мирового океана у Преголи. Его можно выбрать основной музейной остановкой дня и оставить набережную для прогулки до или после входа.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "sessions",
+          "session_rules": [
+            {
+              "days": [
+                3,
+                4,
+                5,
+                7
+              ],
+              "duration": 90,
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starts": [
+                "10:00",
+                "10:20",
+                "10:40",
+                "11:00",
+                "11:20",
+                "12:00",
+                "12:20",
+                "12:40",
+                "13:00",
+                "13:20",
+                "13:40",
+                "14:00",
+                "14:20",
+                "14:40",
+                "15:00",
+                "15:20",
+                "15:40",
+                "16:00",
+                "16:15",
+                "16:30"
+              ]
+            },
+            {
+              "days": [
+                6
+              ],
+              "duration": 90,
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starts": [
+                "10:00",
+                "10:20",
+                "10:40",
+                "11:00",
+                "11:20",
+                "12:00",
+                "12:20",
+                "12:40",
+                "13:00",
+                "13:20",
+                "13:40",
+                "14:00",
+                "14:20",
+                "14:40",
+                "15:00",
+                "15:20",
+                "15:40",
+                "16:00"
+              ]
+            }
+          ],
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "planeta-sessions",
         "kind": "hours",
         "label": "Выберите сеанс",
@@ -1256,6 +1495,33 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно у набережной Мирового океана. Хорошая точка для знакомства с устройством маяка в контексте прогулки по речному берегу.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "irbenskiy-hours",
         "kind": "hours",
         "label": "Когда подняться на борт",
@@ -1323,6 +1589,33 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Ворота у южного берега Преголи, в стороне от острова Канта. При включении в маршрут учитывайте переход через реку и подход по городским улицам.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "friedrichsburg-hours",
         "kind": "hours",
         "label": "Когда приходить",
@@ -1408,6 +1701,11 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "continuous",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "gate-marzipan-hours",
           "kind": "hours",
           "label": "Экспозиция марципана в воротах",
@@ -1480,6 +1778,33 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Исторические ворота на восточной стороне центральной части Калининграда. До острова Канта отсюда требуется самостоятельный городской переход.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "royal-gate-hours",
         "kind": "hours",
         "label": "Музей в воротах и «Потерна»",
@@ -1586,6 +1911,11 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "continuous",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "gallery-hours",
           "kind": "hours",
           "label": "Арт-пространство «Ворота»",
@@ -1654,6 +1984,27 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музей в историческом оборонительном сооружении у Верхнего озера. В одном районе можно соединить архитектуру, выставку и прогулку у воды.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "museum-hours",
         "kind": "hours",
         "label": "Когда приходить",
@@ -1812,6 +2163,11 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "cashdesk",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "philharmonic-cash-hours",
           "kind": "hours",
           "label": "Касса филармонии",
@@ -1914,6 +2270,11 @@
       "verified_at": "2026-10-01",
       "visit_conditions": [
         {
+          "calendar": {
+            "kind": "cashdesk",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "puppet-cash-hours",
           "kind": "hours",
           "label": "Касса театра кукол",
@@ -2111,6 +2472,71 @@
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в районе исторической городской застройки. Её можно добавить к архитектурной прогулке, если время посещения согласовано заранее.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "sessions",
+          "session_rules": [
+            {
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "duration": 50,
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starts": [
+                "10:00",
+                "11:00",
+                "12:00",
+                "13:00",
+                "14:00",
+                "15:00",
+                "16:00",
+                "17:00",
+                "18:00",
+                "19:00"
+              ]
+            }
+          ],
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "altes-sessions",
         "kind": "hours",
         "label": "Маленькие группы, точное время",
@@ -2370,6 +2796,11 @@
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейная точка в Зеленоградске, связанная с кошачьей темой города. Подходит как отдельное посещение внутри прогулки по центру.",
       "hours": {
+        "calendar": {
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "murarium-hours",
         "kind": "hours",
         "label": "Когда приходить",
@@ -2469,6 +2900,32 @@
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в городской части Зеленоградска. Её можно выбрать для знакомства с историей курорта перед прогулкой к морю.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "cranz-hours",
         "kind": "hours",
         "label": "Когда приходить",
@@ -2568,6 +3025,11 @@
       "coordinate_note": "Точка открытой карты",
       "description": "Тематический музей в Зеленоградске. Подходит для отдельного интереса к необычным коллекциям, а не как обязательная остановка любой поездки.",
       "hours": {
+        "calendar": {
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "skeleton-hours",
         "kind": "hours",
         "label": "Когда приходить",
@@ -3529,6 +3991,11 @@
           "text": "К променаду можно спуститься на лифте «Панорама». Верхний вход — ул. Ленина, 11, нижний — Морской бульвар, 19. Турцентр сообщает об оснащении для людей с ограниченной подвижностью; детали уточняйте по телефону +7 (911) 450-26-82."
         },
         {
+          "calendar": {
+            "kind": "continuous",
+            "timezone": "Europe/Kaliningrad",
+            "version": 1
+          },
           "id": "panorama-lift-hours",
           "kind": "hours",
           "label": "Когда работает лифт",
@@ -3777,6 +4244,33 @@
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в Балтийске. При поездке из Калининграда выделите время на городскую часть и возвращение.",
       "hours": {
+        "calendar": {
+          "closed": [
+            {
+              "days": [
+                1,
+                2
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            }
+          ],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
         "id": "fleet-hours",
         "kind": "hours",
         "label": "Когда приходить",
