@@ -106,6 +106,7 @@ export function initWorkshop(catalog, base) {
     $(kind === 'places' ? '#my-places-empty' : '#my-routes-empty').hidden = state[kind].length > 0;
   }
   function refresh() {
+    window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';
       const id = kind === 'places' ? node.dataset.savePlace : node.dataset.saveRoute, on = state[kind].includes(id);

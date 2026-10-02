@@ -484,3 +484,36 @@
   .place-intro .route-download,.collection-intro .route-download { justify-content: center; }
   .place-intro .button,.collection-intro .button { justify-content: space-between; }
 }
+
+/* A quiet forecast strip inside the trip workshop. */
+.trip-weather { border-top: 1px solid #ccd3cd; border-bottom: 1px solid #ccd3cd; padding: 25px 0 20px; margin: 30px 0 0; }
+.weather-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.weather-heading h3 { font: 300 32px/1.25 var(--serif); margin: 8px 0 0; }
+.weather-heading label { display: grid; gap: 7px; min-width: 190px; font: 10px/1.6 var(--sans); color: #53615e; }
+.weather-heading select { width: 100%; min-height: 44px; padding: 10px 13px; border: 1px solid #c9cfca; border-radius: 0; background: #faf9f5; color: #243837; font: 14px/1.5 var(--sans); }
+.weather-status { font: 12px/1.7 var(--sans); color: #596862; margin: 18px 0 0; }
+.weather-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 20px 0 16px; gap: 22px; }
+.weather-metrics > div { border-left: 1px solid #ccd3cd; padding-left: 22px; min-width: 0; }
+.weather-metrics > div:first-child { border-left: 0; padding-left: 0; }
+.weather-metrics dt { font: 11px/1.7 var(--sans); color: #64726a; }
+.weather-metrics dd { margin: 0; }
+.weather-metrics dd > span { display: block; font: 300 clamp(28px, 3vw, 44px)/1.4 var(--serif); color: #2e4944; white-space: nowrap; }
+.weather-metrics small { display: block; font: 11px/1.8 var(--sans); color: #596862; }
+.weather-trip-note { font: 11px/1.8 var(--sans); color: #745b3a; margin: 16px 0 0; }
+.weather-source { margin-top: 19px; max-width: 820px; font: 11px/1.8 var(--sans); color: #596862; }
+.weather-source summary { cursor: pointer; min-height: 32px; width: fit-content; }
+.weather-source p { margin-top: 10px; }
+.weather-source a { text-underline-offset: 3px; }
+#trip-weather [hidden] { display: none; }
+#trip-weather[data-weather-state="stale"] .weather-metrics dd > span { color: #857663; }
+#trip-weather[data-weather-state="stale"] .weather-status { color: #745b3a; }
+@media (max-width: 700px) {
+  .trip-weather { padding-top: 22px; margin: 24px 0 0; }
+  .weather-heading { align-items: start; flex-direction: column; gap: 18px; }
+  .weather-heading label { width: 100%; }
+  .weather-heading select { font-size: 16px; }
+  .weather-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+  .weather-metrics > div { padding-left: 18px; }
+  .weather-metrics > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .weather-metrics dd > span { font-size: 32px; }
+}

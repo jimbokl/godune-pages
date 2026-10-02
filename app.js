@@ -98,9 +98,12 @@
   $$('[data-open-search]').forEach(b => b.addEventListener('click', () => { open($('#search-dialog')); $('#search-input').focus(); loadWasm().then(search); search(); }));
   $('#search-input')?.addEventListener('input', search);
 
-  Promise.all([catalog, import(url('workshop.mjs?v=1'))]).then(([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=2'))]).then(([data, {initWorkshop}]) => {
     workshop = initWorkshop(data, base);
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
+    if ($('#trip-weather')) import(url('live-weather.mjs?v=1')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
+      $('#weather-status').textContent = 'Прогноз пока не загрузился. Ваш маршрут на месте.';
+    });
   }).catch(() => {
     $$('[data-save-place], [data-save-route]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
     const notice = $('#trip-storage');
