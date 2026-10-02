@@ -146,7 +146,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=3')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -168,6 +168,7 @@
     });
   }
   let mapFocus = new URLSearchParams(location.search).get('map');
+  let foodPreviewTrip = null;
   let foodPreview = (new URLSearchParams(location.search).get('foodtour') || '').split(',').filter(id=>/^[a-z0-9-]{1,128}$/.test(id)).slice(0,3);
   function loadMapLibrary() {
     if (window.maplibregl) return Promise.resolve();
@@ -220,7 +221,7 @@
     const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
-    const trip = foodPreview.length ? {places:foodPreview.filter(id=>data.poi.some(p=>p.slug===id)),schedule:{mode:'foot'}} : tripMap ? workshop?.getState() : null;
+    const trip = foodPreviewTrip || (foodPreview.length ? {places:foodPreview.filter(id=>data.poi.some(p=>p.slug===id)),schedule:{mode:'foot'}} : tripMap ? workshop?.getState() : null);
     const day = trip?.itinerary?.days.find(d => d.id === trip.itinerary.active);
     const personal=await import(url('personal-points.mjs?v=1'));
     const bases=day ? [day.start_at,day.night_at].filter(personal.isPersonalPoint).map(p=>({...p,slug:personal.baseId(p)})) : [];
@@ -229,7 +230,7 @@
     const pointNumber = p => tripMap ? trip.places.indexOf(p.slug)+1 : chosen.indexOf(p)+1;
     const pointRole = p => [personal.baseId(day?.start_at) === p.slug ? 'Начало дня' : '',personal.baseId(day?.night_at) === p.slug ? 'Ночёвка' : ''].filter(Boolean).join(' · ');
     let points = chosen.filter(p => p.kind==='personal' || mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
-    $('#map-dialog-title').textContent = foodPreview.length ? 'Ваша гастропрогулка' : tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
+    $('#map-dialog-title').textContent = (foodPreview.length || foodPreviewTrip) ? 'Ваша гастропрогулка' : tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
     function listPoints() {
       const focusId=document.activeElement?.dataset.savePlace;
       const rows=points.map(p=>{
@@ -305,8 +306,14 @@
       setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }
   }
+  window.addEventListener('godune:memory-clearing',()=>{foodPreviewTrip=null;foodPreview=[];mapVersion++;markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});$('#map-places')?.replaceChildren();});
+  window.addEventListener('godune:food-preview',event=>{
+    foodPreviewTrip=structuredClone(event.detail);foodPreview=[];tripMap=true;mapFocus=null;activeRoute=null;mapSelection='all';
+    $$('[data-map-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.mapFilter==='all')));
+    if(!inlineMap)open($('#map-dialog'));setMapStatus('Загружаем вашу гастропрогулку…');renderMap().catch(()=>setMapStatus('Карта пока не открылась. Остановки доступны в списке прогулки.'));
+  });
   $$('[data-open-map]').forEach(b => b.addEventListener('click', e => {
-    e.preventDefault(); foodPreview=[]; mapFocus = b.dataset.mapFocus || null; tripMap = b.hasAttribute('data-trip-map'); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
+    e.preventDefault(); foodPreview=[];foodPreviewTrip=null; mapFocus = b.dataset.mapFocus || null; tripMap = b.hasAttribute('data-trip-map'); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
     $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.mapFilter === 'all')));
     if(!inlineMap)open($('#map-dialog')); setMapStatus('Загружаем карту…'); renderMap().catch(() => { setMapStatus('Каталог недоступен. Попробуйте позже.'); });
   }));
@@ -315,7 +322,7 @@
     $$('[data-map-view]').forEach(button=>button.setAttribute('aria-pressed',String((button.dataset.mapView==='trip')===tripMap)));
   }
   $$('[data-map-view]').forEach(button=>button.addEventListener('click',()=>{
-    tripMap=button.dataset.mapView==='trip';activeRoute=null;foodPreview=[];mapFocus=null;syncMapViews();
+    tripMap=button.dataset.mapView==='trip';activeRoute=null;foodPreview=[];foodPreviewTrip=null;mapFocus=null;syncMapViews();
     const address=new URL(location.href);if(tripMap)address.searchParams.set('view','trip');else address.searchParams.delete('view');history.replaceState(null,'',address);
     renderMap().catch(()=>setMapStatus('Карта пока не открылась. Карточки доступны в списке.'));
   }));
