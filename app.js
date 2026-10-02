@@ -11,7 +11,7 @@
   });
   // Observe the rejection even when the visitor never opens an interactive tool.
   catalog.catch(() => {});
-  const offlineTools = import(url('offline.mjs?v=1'));
+  const offlineTools = import(url('offline.mjs?v=2'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
   import(url('offline-map.mjs?v=1')).then(module => { localStyle=module; }).catch(() => {});
@@ -106,19 +106,25 @@
   $$('[data-open-search]').forEach(b => b.addEventListener('click', () => { open($('#search-dialog')); $('#search-input').focus(); loadWasm().then(search); search(); }));
   $('#search-input')?.addEventListener('input', search);
 
+  let lastTripFilters;
   function restoreTripFilters() {
     if (!workshop) return;
     const filters = workshop.getState().filters;
+    const signature = JSON.stringify(filters);
+    if (signature === lastTripFilters) return;
+    lastTripFilters = signature;
     routeFilter = filters.area; timeFilter = filters.minutes;
     if ($('#trip-area')) $('#trip-area').value = routeFilter;
     if ($('#trip-time')) $('#trip-time').value = timeFilter;
     applyFilters();
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
-  Promise.all([catalog, import(url('workshop.mjs?v=4'))]).then(([data, {initWorkshop}]) => {
-    workshop = initWorkshop(data, base);
+  window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
+  Promise.all([catalog, import(url('workshop.mjs?v=5'))]).then(async ([data, {initWorkshop}]) => {
+    workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
+    document.documentElement.dataset.tripReady = 'true';
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
       $('#weather-status').textContent = 'Прогноз пока не загрузился. Ваш маршрут на месте.';
     });
@@ -128,7 +134,7 @@
     if (notice) { notice.hidden = false; notice.textContent = 'Не удалось загрузить вашу поездку. Сохранённые данные не изменены. Попробуйте обновить страницу.'; }
   });
   if (document.body.dataset.route) {
-    import(url('walk.mjs?v=1')).then(({initWalk}) => initWalk()).catch(() => {
+    import(url('walk.mjs?v=2')).then(({initWalk}) => initWalk()).catch(() => {
       const notice = $('#walk-storage');
       if (notice) {
         notice.hidden = false;

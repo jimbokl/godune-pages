@@ -1,6 +1,8 @@
-import {loadWalkProgress} from './walk.mjs?v=1';
+import {loadWalkProgress} from './walk.mjs?v=2';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=1';
-import {initTripSharing} from './trip-link.mjs?v=2';
+import {initTripSharing} from './trip-link.mjs?v=3';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=1';
+import {initMemoryControls} from './trip-memory-ui.mjs?v=1';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=1';
 
 export function loadTrip(storage, catalog) {
@@ -51,13 +53,15 @@ export function dailyDiscovery(items, catalog, date = new Date()) {
   return choices[((day % choices.length) + choices.length) % choices.length];
 }
 
-export function initWorkshop(catalog, base) {
+export async function initWorkshop(catalog, base) {
   const $ = selector => document.querySelector(selector);
   const url = path => new URL(path, base).href;
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
   const restored = loadTrip(storage, catalog);
-  let state = restored.state, available = restored.available;
+  const memory = createTripMemory(catalog, restored, storage);
+  await memory.ready;
+  let state = memory.get(), available = memory.saved, writes = 0;
   const status = document.createElement('p');
   status.className = 'save-feedback'; status.setAttribute('role', 'status'); status.hidden = true;
   document.body.append(status);
@@ -114,22 +118,30 @@ export function initWorkshop(catalog, base) {
     const summary = $('#my-trip-summary');
     if (summary) summary.textContent = state.places.length || state.routes.length ? 'Ваш черновик на месте. Продолжим?' : 'Начните с одного места. Остальное сложится по дороге.';
   }
-  function commit(next, message) {
-    state = cleanTrip(next, catalog); available = saveTrip(storage, state, catalog); refresh();
-    announce(available ? message : 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
-    return {saved: available};
+  async function commit(next, message, options = {}) {
+    writes++; document.documentElement.dataset.tripWriting = 'true';
+    try {
+      const result = await memory.change(current => typeof next === 'function' ? next(current) : next, {...options, label: message});
+      announce(result.conflict ? 'Черновик уже изменился. Показан свежий выбор.' : result.saved ? message : 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
+      return result;
+    } finally {
+      writes--; document.documentElement.dataset.tripWriting = String(writes > 0);
+    }
   }
-  document.addEventListener('click', event => {
+  memory.subscribe(result => {
+    state = result.state; available = result.saved;
+    if (result.cleared) window.dispatchEvent(new Event('godune:memory-cleared'));
+    refresh();
+  });
+  document.addEventListener('click', async event => {
     const save = event.target.closest('[data-save-place], [data-save-route]');
     if (save) {
       const kind = save.hasAttribute('data-save-place') ? 'places' : 'routes', id = kind === 'places' ? save.dataset.savePlace : save.dataset.saveRoute;
-      const next = toggleTripItem(state, kind, id, catalog);
-      commit(next, next[kind].includes(id) ? 'Добавлено в «Мой маршрут».' : 'Убрано из «Моего маршрута».'); return;
+      await commit(current => toggleTripItem(current, kind, id, catalog), 'Ваш маршрут обновлён.'); return;
     }
     const control = event.target.closest('[data-trip-action]'); if (!control) return;
     const {tripKind: kind, tripId: id, tripAction: action} = control.dataset;
-    const next = action === 'remove' ? toggleTripItem(state, kind, id, catalog) : moveTripPlace(state, id, action === 'up' ? -1 : 1, catalog);
-    commit(next, action === 'remove' ? 'Убрано из «Моего маршрута».' : 'Порядок точек изменён.');
+    await commit(current => action === 'remove' ? {...current, [kind]: current[kind].filter(value => value !== id)} : moveTripPlace(current, id, action === 'up' ? -1 : 1, catalog), action === 'remove' ? 'Убрано из «Моего маршрута».' : 'Порядок точек изменён.');
     const remaining = [...document.querySelectorAll('[data-trip-action]')];
     const focus = remaining.find(node => node.dataset.tripId === id && node.dataset.tripAction === action && !node.disabled)
       || remaining.find(node => node.dataset.tripId === id && !node.disabled)
@@ -138,16 +150,24 @@ export function initWorkshop(catalog, base) {
   });
   $('#trip-month')?.addEventListener('change', event => {
     const month = event.target.value ? Number(event.target.value) : null;
-    commit({...state, month, date: month === state.month ? state.date : null}, 'Месяц поездки сохранён.');
+    commit(current => ({...current, month, date: month === current.month ? current.date : null}), 'Месяц поездки сохранён.');
   });
-  $('#trip-date')?.addEventListener('change', event => commit({...state, date: event.target.value || null}, 'Дата поездки сохранена.'));
+  $('#trip-date')?.addEventListener('change', event => { const date = event.target.value || null; commit(current => ({...current, date}), 'Дата поездки сохранена.'); });
   window.addEventListener('storage', event => {
-    if (event.key === TRIP_KEY || event.key === null) { const loaded = loadTrip(storage, catalog); state = loaded.state; available = loaded.available; refresh(); }
+    if (event.key === TRIP_KEY || event.key === 'godune-memory-clock' || event.key === null) memory.sync();
   });
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
   const workshop = {getState: () => structuredClone(state), isSaved: () => available, setState: commit,
-    setFilters: (area, minutes) => commit({...state, filters: {area, minutes}}, 'Настройки прогулки сохранены.'), showDiscovery(items) {
+    getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
+    async clearMemory() {
+      const result = await memory.clear();
+      const localRemoved = result.saved && removeLocalMemory(storage);
+      window.dispatchEvent(new Event('godune:memory-cleared'));
+      refresh();
+      return {...result, localRemoved};
+    },
+    setFilters: (area, minutes) => commit(current => ({...current, filters: {area, minutes}}), 'Настройки прогулки сохранены.'), showDiscovery(items) {
     let lastDay;
     function update() {
       const day = kaliningradDay(); if (day === lastDay) return; lastDay = day;
@@ -164,5 +184,6 @@ export function initWorkshop(catalog, base) {
     setInterval(update, 60000);
   }};
   initTripSharing(catalog, base, workshop);
+  initMemoryControls(catalog, base, workshop);
   return workshop;
 }

@@ -59,6 +59,7 @@ export async function initOffline(base) {
     await refresh();
   } catch(error){if(status)status.textContent=error.message;return;}
   window.addEventListener('online',()=>readManifest().then(refresh).catch(()=>{}));
+  window.addEventListener('godune:memory-cleared',()=>refresh().catch(()=>{}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden && !busy)refresh().catch(()=>{});});
   button?.addEventListener('click',async()=>{
     if(busy)return;busy=true;id=crypto.randomUUID();button.disabled=true;remove.hidden=true;cancel.hidden=false;bar.hidden=false;bar.value=0;

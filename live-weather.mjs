@@ -122,6 +122,9 @@ export async function initWeather(base, workshop) {
     render();
   });
   window.addEventListener('godune:trip-change', render);
+  window.addEventListener('godune:memory-cleared', () => {
+    if (snapshot) { select.value = loadWeatherPlace(storage, snapshot.locations); render(); }
+  });
   window.addEventListener('storage', event => {
     if (event.key === WEATHER_KEY && snapshot) { select.value = loadWeatherPlace(storage, snapshot.locations); render(); }
   });

@@ -53,7 +53,7 @@ export function initTripSharing(catalog, base, workshop) {
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
   document.body.append(dialog);
   const $ = selector => dialog.querySelector(selector);
-  let snapshot, received = false, receivedFile = false, lastFocus, backup, imported;
+  let snapshot, received = false, receivedFile = false, lastFocus, backup, imported, importedRevision, busy = false;
   const message = text => { $('#trip-link-status').textContent = text; };
   const names = {all: 'Вся Балтика', kaliningrad: 'Калининград', 'kurshskaya-kosa': 'Куршская коса'};
   function show(result, incoming, source = 'link') {
@@ -168,23 +168,40 @@ export function initTripSharing(catalog, base, workshop) {
     try { await navigator.share({title: 'Моя поездка — Маршруты Балтики', url: $('#trip-link-url').value}); message('Поездка отправлена.'); }
     catch (error) { if (error.name !== 'AbortError') message('Не получилось открыть отправку. Скопируйте ссылку.'); }
   });
-  function importTrip(replace) {
-    if (!snapshot) return;
-    backup = workshop.getState();
-    const next = replace ? snapshot : mergeTrips(backup, snapshot, catalog);
-    const result = workshop.setState(next, replace ? 'Эта поездка стала вашим маршрутом.' : 'Точки добавлены к вашему маршруту.');
+  async function importTrip(replace) {
+    if (!snapshot || busy) return;
+    busy = true; $('#trip-link-merge').disabled = $('#trip-link-replace').disabled = true;
+    const incoming = snapshot;
+    let result;
+    try { result = await workshop.setState(current => replace ? incoming : mergeTrips(current, incoming, catalog), replace ? 'Эта поездка стала вашим маршрутом.' : 'Точки добавлены к вашему маршруту.'); }
+    finally {busy = false; $('#trip-link-merge').disabled = $('#trip-link-replace').disabled = false;}
+    if (result.conflict) {message('Черновик изменился. Посмотрите свежий выбор и попробуйте снова.'); return;}
+    backup = result.before; importedRevision = result.revision;
     imported = JSON.stringify(workshop.getState());
     $('#trip-link-import').hidden = true; $('#trip-link-undo').hidden = false;
     message(result.saved ? 'Поездка в вашем черновике. Здесь можно вернуть прежний выбор.' : receivedFile ? 'Поездка открыта в этой вкладке. Браузер не разрешил сохранение; файл поможет открыть её снова.' : 'Поездка открыта в этой вкладке. Браузер не разрешил сохранение; ссылка поможет открыть её снова.');
   }
   $('#trip-link-merge').addEventListener('click', () => importTrip(false));
   $('#trip-link-replace').addEventListener('click', () => importTrip(true));
-  $('#trip-link-undo').addEventListener('click', () => {
+  $('#trip-link-undo').addEventListener('click', async () => {
+    if (busy || !backup) return;
     if (JSON.stringify(workshop.getState()) !== imported) {
       message('Черновик уже изменился в другой вкладке. Прежний выбор не восстановлен, чтобы сохранить эти изменения.'); return;
     }
-    const result = workshop.setState(backup, 'Ваш прежний черновик восстановлен.');
+    busy = true; $('#trip-link-undo').disabled = true;
+    let result;
+    try { result = await workshop.setState(backup, 'Ваш прежний черновик восстановлен.', {expectedRevision: importedRevision}); }
+    finally {busy = false; $('#trip-link-undo').disabled = false;}
+    if (result.conflict) {message('Черновик уже изменился в другой вкладке. Прежний выбор не восстановлен, чтобы сохранить эти изменения.'); return;}
     backup = imported = null; $('#trip-link-undo').hidden = true; $('#trip-link-import').hidden = false;
     message(result.saved ? 'Ваш прежний черновик на месте.' : 'Прежний черновик открыт в этой вкладке. Браузер не разрешил сохранение; возьмите поездку в файл.');
+  });
+  window.addEventListener('godune:memory-cleared', () => {
+    snapshot = backup = imported = importedRevision = null; received = false;
+    if (location.hash.startsWith('#trip=')) history.replaceState(null, '', location.pathname + location.search + '#my-trip');
+    $('#trip-link-url').value = '';
+    $('#trip-link-places ol').replaceChildren(); $('#trip-link-routes ul').replaceChildren();
+    $('#trip-link-date').textContent = $('#trip-link-filters').textContent = '';
+    if (dialog.open) dialog.close();
   });
 }

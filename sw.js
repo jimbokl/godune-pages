@@ -4,6 +4,8 @@ const SHELL = 'godune-offline-shell:v1';
 const ROOT = self.registration.scope;
 const metadataURL = new URL('__godune_package__', ROOT).href;
 const jobs = new Map();
+const packageReads = new Set();
+let clearing;
 const url = path => new URL(path, ROOT).href;
 const normalized = value => {
   const u = new URL(value);
@@ -20,7 +22,14 @@ self.addEventListener('install', event => event.waitUntil((async()=>{
 })()));
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 
-async function packages() {
+function packages() {
+  if (clearing) return Promise.resolve([]);
+  const read = readPackages();
+  packageReads.add(read);
+  return read.finally(() => packageReads.delete(read));
+}
+
+async function readPackages() {
   const result = [];
   for (const name of (await caches.keys()).filter(n=>n.startsWith(PREFIX))) {
     const cache = await caches.open(name), response = await cache.match(metadataURL);
@@ -35,9 +44,12 @@ async function packages() {
 }
 
 async function download(slug, port, id) {
+  if (clearing) throw new Error('Память сайта очищается. Загрузите прогулку после удаления.');
   if (jobs.has(slug)) throw new Error('Эта прогулка уже загружается.');
   const controller = new AbortController();
-  jobs.set(slug, {controller, id});
+  let finish;
+  const done = new Promise(resolve => {finish=resolve;});
+  jobs.set(slug, {controller, id, done});
   let name;
   try {
     const manifestResponse = await fetch(url('offline-manifest.json'), {cache:'no-store',signal:controller.signal});
@@ -73,7 +85,20 @@ async function download(slug, port, id) {
     if (error.name==='AbortError') throw new Error('Загрузка отменена. Предыдущая прогулка сохранена.');
     if (error.name==='QuotaExceededError') throw new Error('На телефоне не хватило места. Удалите другую загруженную прогулку и попробуйте снова.');
     throw error;
-  } finally { jobs.delete(slug); }
+  } finally { jobs.delete(slug); finish(); }
+}
+
+function clearPackages() {
+  if (clearing) return clearing;
+  clearing = (async () => {
+    const active = [...jobs.values()];
+    for (const job of active) job.controller.abort();
+    await Promise.all(active.map(job=>job.done));
+    await Promise.allSettled([...packageReads]);
+    for (const name of (await caches.keys()).filter(name=>name.startsWith(PREFIX))) await caches.delete(name);
+    return true;
+  })().finally(() => { clearing = undefined; });
+  return clearing;
 }
 
 self.addEventListener('message', event => {
@@ -85,6 +110,7 @@ self.addEventListener('message', event => {
       if (type==='LIST') value = await packages();
       else if (type==='DOWNLOAD' && typeof slug==='string') value = await download(slug,port,id);
       else if (type==='CANCEL') { const job=jobs.get(slug); if(job && job.id===id) job.controller.abort(); value=true; }
+      else if (type==='CLEAR') value = await clearPackages();
       else if (type==='REMOVE' && typeof slug==='string') {
         jobs.get(slug)?.controller.abort();
         for (const name of (await caches.keys()).filter(n=>n.startsWith(PREFIX+slug+':'))) await caches.delete(name);
@@ -104,7 +130,7 @@ self.addEventListener('fetch', event => {
       const clientURL=client && normalized(client.url);
       if(clientURL) list.sort((a,b)=>Number(b.resources.some(r=>normalized(url(r.path))===clientURL))-Number(a.resources.some(r=>normalized(url(r.path))===clientURL)));
       for(const pack of list) {
-        const cache=await caches.open(pack.cache), response=await cache.match(normalized(event.request.url),{ignoreSearch:true});
+        const response=await caches.match(normalized(event.request.url),{cacheName:pack.cache,ignoreSearch:true});
         if(response) return response;
       }
       if(event.request.mode==='navigate') {

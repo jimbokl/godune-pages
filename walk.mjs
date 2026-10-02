@@ -70,5 +70,12 @@ export function initWalk() {
     target.scrollIntoView({block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   }));
   storageNotice(restored.available);
+  function restoreProgress() {
+    const progress = loadWalkProgress(storage, route, stopIds);
+    checks.forEach(input => { input.checked = progress.completed.includes(input.dataset.poi); });
+    storageNotice(progress.available); refresh();
+  }
+  window.addEventListener('storage', event => { if (event.key === key(route) || event.key === null) restoreProgress(); });
+  window.addEventListener('godune:memory-cleared', restoreProgress);
   refresh();
 }
