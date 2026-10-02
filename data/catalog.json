@@ -915,7 +915,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "fish-village-viewpoint-stairs",
+          "kind": "access",
+          "label": "Подъём на смотровую",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: маяки области",
+            "url": "https://visit-kaliningrad.ru/blog/mayaki-kaliningradskoy-oblasti/",
+            "verification": "official_source"
+          },
+          "text": "На открытую площадку ведут 133 ступени винтовой лестницы. Вход оплачивают в сувенирном киоске на первом этаже."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1345,7 +1360,71 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "gate-marzipan-hours",
+          "kind": "hours",
+          "label": "Экспозиция марципана в воротах",
+          "schedule": [
+            {
+              "closes": "21:00",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "10:00"
+            }
+          ],
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: экспозиция Музея марципана",
+            "url": "https://visit-kaliningrad.ru/events/vystavki/Postoyannaya_ekspozitsiya_v_Muzee_martsipana/",
+            "verification": "official_source"
+          },
+          "text": "Ежедневно, 10:00–21:00. На странице экспозиции это расписание указано до 31 декабря 2026 года.",
+          "valid_from": "2025-01-01",
+          "valid_until": "2026-12-31"
+        },
+        {
+          "amount": 0,
+          "currency": "RUB",
+          "id": "gate-marzipan-entry",
+          "kind": "price",
+          "label": "Вход на экспозицию марципана",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: экспозиция Музея марципана",
+            "url": "https://visit-kaliningrad.ru/events/vystavki/Postoyannaya_ekspozitsiya_v_Muzee_martsipana/",
+            "verification": "official_source"
+          },
+          "text": "Постоянную экспозицию в Бранденбургских воротах можно посмотреть бесплатно. Это условие выставки, указанное до конца 2026 года.",
+          "unit": "permanent_marzipan_exhibition_entry",
+          "valid_from": "2025-01-01",
+          "valid_until": "2026-12-31"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1459,7 +1538,67 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "gallery-hours",
+          "kind": "hours",
+          "label": "Арт-пространство «Ворота»",
+          "schedule": [
+            {
+              "closes": "21:00",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "09:00"
+            }
+          ],
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Арт-пространство «Ворота»: условия посещения",
+            "url": "https://vorotagallery.ru/about/faq/",
+            "verification": "official_source"
+          },
+          "text": "Ежедневно, 09:00–21:00, без перерыва. Отдельные события проходят по своей афише."
+        },
+        {
+          "amount": 0,
+          "currency": "RUB",
+          "id": "gallery-general-entry",
+          "kind": "price",
+          "label": "Обычный вход в арт-пространство",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Арт-пространство «Ворота»: условия посещения",
+            "url": "https://vorotagallery.ru/about/faq/",
+            "verification": "official_source"
+          },
+          "text": "В обычные дни вход свободный. Во время платного события бесплатно можно посетить только зону кафе; условия самого события смотри в афише.",
+          "unit": "general_gallery_entry"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1584,7 +1723,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "sun-stone-repair-notice",
+          "kind": "access",
+          "label": "Ресторан в воротах",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: «Солнечный камень»",
+            "url": "https://visit-kaliningrad.ru/food/solnechnyy-kamen/",
+            "verification": "official_source"
+          },
+          "text": "На странице ТИЦ ресторан «Солнечный камень» отмечен как закрытый на ремонт. Дата открытия не указана. Для прогулки выбирай осмотр ворот снаружи."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1610,7 +1764,83 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "philharmonic-cash-hours",
+          "kind": "hours",
+          "label": "Касса филармонии",
+          "schedule": [
+            {
+              "breaks": [
+                {
+                  "ends": "13:30",
+                  "starts": "13:00"
+                }
+              ],
+              "closes": "19:15",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "09:00"
+            },
+            {
+              "breaks": [
+                {
+                  "ends": "14:30",
+                  "starts": "14:00"
+                }
+              ],
+              "closes": "18:15",
+              "days": [
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "09:00"
+            }
+          ],
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Калининградская областная филармония",
+            "url": "https://filarmonia39.ru/kontakty/",
+            "verification": "official_source"
+          },
+          "text": "Понедельник — суббота, 09:00–19:15, перерыв 13:00–13:30. Воскресенье, 09:00–18:15, перерыв 14:00–14:30. Это часы кассы; начало концерта выбери в афише."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1636,7 +1866,73 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "puppet-cash-hours",
+          "kind": "hours",
+          "label": "Касса театра кукол",
+          "schedule": [
+            {
+              "closes": "17:00",
+              "days": [
+                5,
+                6,
+                7
+              ],
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "opens": "09:30"
+            }
+          ],
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Калининградский театр кукол: вопросы о посещении",
+            "url": "https://teatrkukol39.ru/item/1855369",
+            "verification": "official_source"
+          },
+          "text": "Пятница — воскресенье, 09:30–17:00, без перерыва. Время спектакля и цену билета смотри в афише."
+        },
+        {
+          "id": "puppet-each-spectator-ticket",
+          "kind": "access",
+          "label": "Билет каждому зрителю",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Калининградский театр кукол: вопросы о посещении",
+            "url": "https://teatrkukol39.ru/item/1855369",
+            "verification": "official_source"
+          },
+          "text": "Отдельный билет нужен каждому зрителю, в том числе ребёнку любого возраста. Для взрослого с ребёнком покупают два билета."
+        },
+        {
+          "id": "puppet-stair-assistance",
+          "kind": "access",
+          "label": "Помощь на лестнице",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Калининградский театр кукол: вопросы о посещении",
+            "url": "https://teatrkukol39.ru/item/1855369",
+            "verification": "official_source"
+          },
+          "text": "В театре есть лестничный подъёмник. Чтобы подготовить помощь при входе, заранее свяжись с театром: +7 (4012) 21-43-35."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3045,7 +3341,22 @@
         "Светлогорск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "quiet-lake-boat-hire",
+          "kind": "access",
+          "label": "Лодки и катамараны",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристический центр Светлогорска: лодки и катамараны",
+            "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/prokat-lodok-i-katamaranov/",
+            "verification": "official_source"
+          },
+          "text": "На озере есть прокат лодок и катамаранов. Перед поездкой уточни работу станции и стоимость по телефону +7 906 230-14-47."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3097,7 +3408,22 @@
         "Балтийск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "baltic-lighthouse-exterior",
+          "kind": "access",
+          "label": "Осмотр маяка",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: маяки области",
+            "url": "https://visit-kaliningrad.ru/blog/mayaki-kaliningradskoy-oblasti/",
+            "verification": "official_source"
+          },
+          "text": "Это действующий навигационный маяк. Туристов внутрь не пускают; включай его в прогулку для осмотра снаружи."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3107,7 +3433,48 @@
       "category_name": "Музей",
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в Балтийске. При поездке из Калининграда выделите время на городскую часть и возвращение.",
-      "hours": null,
+      "hours": {
+        "id": "fleet-hours",
+        "kind": "hours",
+        "label": "Когда приходить",
+        "schedule": [
+          {
+            "cash_closes": "17:15",
+            "closes": "18:00",
+            "days": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "last_entry": "17:15",
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Балтийского флота",
+          "url": "https://navalmuseum.ru/filials/baltic_fleet",
+          "verification": "official_source"
+        },
+        "text": "Среда — воскресенье, 10:00–18:00. Касса и вход — до 17:15. Понедельник и вторник — выходные."
+      },
       "id": "95eb74e9-c9b9-53e4-b53a-9a7d598a3326",
       "lat": 54.6406441,
       "lon": 19.8911452,
@@ -3115,7 +3482,23 @@
       "osm_ref": "node/4182734721",
       "photos": [],
       "practical": "Уточните часы и условия посещения музея. Городской маршрут не означает доступ к военным объектам.",
-      "price": null,
+      "price": {
+        "amount": 400,
+        "currency": "RUB",
+        "id": "fleet-main-ticket-eaes",
+        "kind": "price",
+        "label": "Билет на основную экспозицию",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Балтийского флота: тарифы с 1 января 2026",
+          "url": "https://navalmuseum.ru/Files/file/mbf_1.pdf",
+          "verification": "official_source"
+        },
+        "text": "Взрослый билет — 400 ₽ для граждан России и других стран ЕАЭС, а также приравненных к ним резидентов. Для остальных посетителей действует другой тариф. Временная выставка оплачивается отдельно.",
+        "unit": "adult_main_exhibition_eaes",
+        "valid_from": "2026-01-01"
+      },
       "slug": "muzej-baltiyskogo-flota",
       "source_url": "https://www.openstreetmap.org/node/4182734721",
       "tags": [
@@ -3123,7 +3506,26 @@
         "Балтийск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "amount": 500,
+          "currency": "RUB",
+          "id": "fleet-main-ticket-non-eaes",
+          "kind": "price",
+          "label": "Другой тариф основной экспозиции",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей Балтийского флота: тарифы с 1 января 2026",
+            "url": "https://navalmuseum.ru/Files/file/mbf_1.pdf",
+            "verification": "official_source"
+          },
+          "text": "Для посетителей, которые не относятся к гражданам ЕАЭС или приравненным к ним резидентам, билет на основную экспозицию — 500 ₽. Категорию билета уточни при покупке.",
+          "unit": "main_exhibition_non_eaes",
+          "valid_from": "2026-01-01"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
