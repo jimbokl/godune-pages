@@ -8,9 +8,9 @@ const minutes = text => /^\d{2}:\d{2}$/.test(text) ? Number(text.slice(0,2))*60+
 export function initTripSchedule({mount, read, commit, base, catalog}) {
   if (!mount) return {render(){}};
   const section = document.createElement('section'); section.className='trip-schedule'; section.setAttribute('aria-labelledby','trip-plan-title');
-  section.innerHTML=`<div class="trip-plan-heading"><div><p class="eyebrow">Оставьте время морю</p><h3 id="trip-plan-title">Сколько поместится в день</h3><p>Осмотр, дорога и пауза у воды. Соберите день, в котором не придётся всё время спешить.</p></div><button type="button" class="button button-light" id="trip-plan-open" aria-expanded="false" aria-controls="trip-plan-body">Разложить день</button></div>
+  section.innerHTML=`<div class="trip-plan-heading"><div><p class="eyebrow">Оставьте время морю</p><h3 id="trip-plan-title">Ваш день, без спешки</h3><p>Осмотр, дорога и пауза у воды. Соберите день, в котором не придётся всё время спешить.</p></div><button type="button" class="button button-light" id="trip-plan-open" aria-expanded="false" aria-controls="trip-plan-body">Рассчитать время</button></div>
   <div id="trip-plan-body" hidden><p class="trip-plan-note">Время дороги и окно посещения задаёте вы. Перед поездкой сверьте их с картой, билетом и расписанием. Если дорога неизвестна, точного времени дальше не будет.</p><form id="trip-day-settings" class="trip-day-settings"></form><p id="trip-plan-summary" role="status"></p><ol id="trip-plan-stops" class="trip-plan-stops"></ol><p id="trip-plan-feedback" role="status"></p></div>`;
-  mount.append(section);
+  mount.insertBefore(section, mount.querySelector('#trip-weather, #trip-utilities'));
   const $=selector=>section.querySelector(selector);
   let opened=false, sequence=0;
   function input(form, caption, name, type, value, stop) {
@@ -21,7 +21,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     label.append(field);form.append(label);return field;
   }
   const applyButton = form => {
-    const button=document.createElement('button');button.type='submit';button.className='save-item';button.textContent='Применить';form.append(button);
+    const button=document.createElement('button');button.type='submit';button.className='save-item';button.textContent='Сохранить время';form.append(button);
   };
   function renderSettings(settings) {
     const form=$('#trip-day-settings');form.replaceChildren();
@@ -69,6 +69,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     }));
   }
   async function render() {
+    section.hidden = read().places.length === 0;
     if(!opened) return;
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop;
@@ -95,7 +96,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   }
   $('#trip-plan-open').addEventListener('click',()=>{
     opened=!opened;$('#trip-plan-body').hidden=!opened;$('#trip-plan-open').setAttribute('aria-expanded',String(opened));
-    $('#trip-plan-open').textContent=opened?'Свернуть план':'Разложить день';
+    $('#trip-plan-open').textContent=opened?'Свернуть план':'Рассчитать время';
     if(opened) render();else sequence++;
   });
   section.addEventListener('submit',async event=>{

@@ -4,7 +4,7 @@ import {initTripSharing} from './trip-link.mjs?v=4';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=1';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=1';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=1';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=1';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2';
 
 export function loadTrip(storage, catalog) {
@@ -42,6 +42,13 @@ export function moveTripPlace(state, id, direction, catalog) {
   return next;
 }
 
+// One choice produces a usable draft; repeated choices never remove saved work.
+export function startTripRoute(state, slug, catalog) {
+  if (!catalog.routes.some(route => route.slug === slug)) return cleanTrip(state, catalog);
+  const next = addRouteStops(state, slug, catalog);
+  return cleanTrip({...next, routes: [...next.routes, slug]}, catalog);
+}
+
 export function kaliningradDay(date = new Date()) {
   const parts = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/Kaliningrad', year: 'numeric', month: '2-digit', day: '2-digit'}).formatToParts(date);
   const part = type => parts.find(value => value.type === type).value;
@@ -58,6 +65,7 @@ export function dailyDiscovery(items, catalog, date = new Date()) {
 export async function initWorkshop(catalog, base) {
   const $ = selector => document.querySelector(selector);
   const url = path => new URL(path, base).href;
+  let starterEmpty;
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
   const restored = loadTrip(storage, catalog);
@@ -124,20 +132,34 @@ export async function initWorkshop(catalog, base) {
     $(kind === 'places' ? '#my-places-empty' : '#my-routes-empty').hidden = state[kind].length > 0;
   }
   function refresh() {
+    const hasTrip = state.places.length > 0 || state.routes.length > 0;
+    const draft = $('#trip-draft'); if (draft) draft.hidden = !hasTrip;
+    const starters = $('#trip-starters');
+    if (starters && starterEmpty !== !hasTrip) { starters.open = !hasTrip; starterEmpty = !hasTrip; }
+    const title = $('#my-trip-title'); if (title) title.textContent = hasTrip ? 'Ваша Балтика складывается' : 'С чего начнём?';
+    const count = $('#trip-point-count'); if (count) count.textContent = `${state.places.length} ${state.places.length % 10 === 1 && state.places.length % 100 !== 11 ? 'точка' : [2,3,4].includes(state.places.length % 10) && ![12,13,14].includes(state.places.length % 100) ? 'точки' : 'точек'}`;
+    const savedWalks = $('#trip-saved-walks'); if (savedWalks) savedWalks.hidden = state.routes.length === 0;
+    const orderNote = $('#trip-order-note'); if (orderNote) orderNote.hidden = state.places.length < 2;
+    document.querySelectorAll('[data-start-route]').forEach(node => {
+      const route = catalog.routes.find(item => item.slug === node.dataset.startRoute);
+      const done = state.routes.includes(route?.slug) && route?.stops.every(stop => state.places.includes(stop.poi));
+      node.disabled = !!done;
+      node.textContent = done ? 'Уже в маршруте ✓' : hasTrip ? 'Добавить прогулку →' : 'Выбрать прогулку →';
+    });
     schedule.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';
       const id = kind === 'places' ? node.dataset.savePlace : node.dataset.saveRoute, on = state[kind].includes(id);
       node.setAttribute('aria-pressed', String(on));
-      node.textContent = on ? (kind === 'places' ? 'В моём маршруте ✓' : 'Маршрут сохранён ✓') : (kind === 'places' ? 'В мой маршрут +' : 'Сохранить маршрут +');
+      node.textContent = on ? (kind === 'places' ? 'В моём маршруте ✓' : 'Маршрут сохранён ✓') : (kind === 'places' ? (node.id === 'discovery-save' ? 'Добавить в маршрут +' : 'В мой маршрут +') : 'Сохранить маршрут +');
     });
     const month = $('#trip-month'); if (month) month.value = state.month === null ? '' : String(state.month);
     const date = $('#trip-date'); if (date) date.value = state.date || '';
     const share = $('#trip-share'); if (share) share.disabled = !state.places.length && !state.routes.length;
     const notice = $('#trip-storage'); if (notice) notice.hidden = available;
     document.querySelectorAll('[data-my-trip]').forEach(link => {
-      link.textContent = 'Мой маршрут' + (state.places.length + state.routes.length ? ` · ${state.places.length + state.routes.length}` : '');
+      link.textContent = 'Мой маршрут' + (state.places.length + state.routes.length ? ` · ${state.places.length || state.routes.length}` : '');
     });
     renderList('places'); renderList('routes');
     document.querySelectorAll('[data-route-stops]').forEach(node => {
@@ -147,7 +169,7 @@ export async function initWorkshop(catalog, base) {
       node.textContent = done ? 'Остановки добавлены ✓' : 'Добавить остановки в мой маршрут';
     });
     const summary = $('#my-trip-summary');
-    if (summary) summary.textContent = state.places.length || state.routes.length ? 'Ваш черновик на месте. Продолжим?' : 'Начните с одного места. Остальное сложится по дороге.';
+    if (summary) summary.textContent = hasTrip ? `${available ? 'Ваш выбор сохранён.' : 'Ваш выбор останется в этой вкладке.'} Добавьте остановку, поменяйте порядок или разложите день по времени.` : 'Выберите прогулку — её остановки появятся в вашем маршруте. Или начните с места, к которому хочется вернуться.';
   }
   async function commit(next, message, options = {}) {
     writes++; document.documentElement.dataset.tripWriting = 'true';
@@ -165,6 +187,14 @@ export async function initWorkshop(catalog, base) {
     refresh();
   });
   document.addEventListener('click', async event => {
+    const starter = event.target.closest('[data-start-route]');
+    if (starter && !starter.disabled) {
+      await commit(current => startTripRoute(current, starter.dataset.startRoute, catalog), 'Прогулка и её остановки сохранены. Ваш маршрут готов к изменениям.');
+      const starters = $('#trip-starters'); if (starters) starters.open = false;
+      const title = $('#my-trip-title'); title?.focus({preventScroll:true});
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) title?.scrollIntoView({block:'start',behavior:'smooth'});
+      return;
+    }
     const add = event.target.closest('[data-route-stops]');
     if (add && !add.disabled) {
       const id = add.dataset.routeStops;
