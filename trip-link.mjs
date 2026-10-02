@@ -1,4 +1,5 @@
 import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=1';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=1';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = cleanTrip(state, catalog);
@@ -44,21 +45,22 @@ export function initTripSharing(catalog, base, workshop) {
     <div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div>
     <p id="trip-link-missing" hidden></p></div>
     <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
-    <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button></div>
+    <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
+    <p class="trip-link-note">Файл сохранит порядок точек, прогулки, дату и настройки. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
     <p class="trip-link-note">В ссылке — выбранные места и настройки поездки. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
     <div id="trip-link-import" hidden><div class="trip-link-actions"><button type="button" id="trip-link-merge" class="button button-dark">Добавить к моему</button><button type="button" id="trip-link-replace" class="button button-light">Заменить мой маршрут</button></div>
     <p class="trip-link-note" id="trip-link-import-note"></p></div>
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
   document.body.append(dialog);
   const $ = selector => dialog.querySelector(selector);
-  let snapshot, received = false, lastFocus, backup, imported;
+  let snapshot, received = false, receivedFile = false, lastFocus, backup, imported;
   const message = text => { $('#trip-link-status').textContent = text; };
   const names = {all: 'Вся Балтика', kaliningrad: 'Калининград', 'kurshskaya-kosa': 'Куршская коса'};
-  function show(result, incoming) {
-    received = incoming; backup = imported = null;
+  function show(result, incoming, source = 'link') {
+    received = incoming; receivedFile = source === 'file'; backup = imported = null;
     snapshot = result.state;
     $('#trip-link-undo').hidden = true; message('');
-    $('#trip-link-title').textContent = result.error ? 'Маршрут не открылся' : incoming ? 'Поездка по этой ссылке' : 'Возьмите маршрут с собой';
+    $('#trip-link-title').textContent = result.error ? 'Маршрут не открылся' : incoming ? source === 'file' ? 'Поездка из файла' : 'Поездка по этой ссылке' : 'Возьмите маршрут с собой';
     $('#trip-link-intro').textContent = result.error || (incoming ? 'Посмотрите места. Затем добавьте их к своему черновику или возьмите эту поездку целиком.' : 'Откройте её на другом телефоне или отправьте тем, с кем едете.');
     $('#trip-link-preview').hidden = Boolean(result.error);
     $('#trip-link-export').hidden = Boolean(result.error) || incoming;
@@ -103,12 +105,54 @@ export function initTripSharing(catalog, base, workshop) {
   });
   dialog.addEventListener('close', () => {
     if (dialog.open) return;
-    if (received && document.querySelector('#my-trip-title')) {
+    if (received && !receivedFile && document.querySelector('#my-trip-title')) {
       const heading = document.querySelector('#my-trip-title'); heading.tabIndex = -1;
       heading.focus({preventScroll: true}); document.querySelector('#my-trip').scrollIntoView({block: 'start'});
     } else lastFocus?.focus({preventScroll: true});
   });
   trigger?.addEventListener('click', () => show({state: workshop.getState(), missing: 0}, false));
+  const fileOpen = document.querySelector('#trip-file-open');
+  if (fileOpen) {
+    const input = document.createElement('input'); input.id = 'trip-file-input'; input.type = 'file'; input.accept = '.json,application/json'; input.hidden = true;
+    document.body.append(input);
+    fileOpen.addEventListener('click', () => { input.value = ''; input.click(); });
+    input.addEventListener('change', async () => {
+      const file = input.files[0]; if (!file) return;
+      let result;
+      try { result = file.size > TRIP_FILE_BYTES ? {error: 'Этот файл слишком велик для поездки. Выберите файл, сохранённый на «Маршрутах Балтики». Ваш черновик на месте.'} : readTripFile(await file.text(), catalog); }
+      catch { result = {error: 'Файл пока не открылся. Попробуйте ещё раз. Ваш черновик на месте.'}; }
+      show(result, true, 'file'); lastFocus = fileOpen;
+    });
+    fileOpen.disabled = false;
+  }
+  $('#trip-file-save').addEventListener('click', () => {
+    if (!snapshot) return;
+    const now = new Date(), blob = new Blob([createTripFile(snapshot, catalog, now)], {type: 'application/json'});
+    const link = document.createElement('a'), objectURL = URL.createObjectURL(blob);
+    link.href = objectURL; link.download = 'Поездка-на-Балтику-' + (snapshot.date || now.toISOString().slice(0, 10)) + '.json';
+    document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(objectURL), 60000);
+    message('Файл подготовлен. Сохраните его в папку на телефоне или компьютере.');
+  });
+  const persistent = document.querySelector('#trip-persist'), memoryStatus = document.querySelector('#trip-memory-status');
+  if (persistent && memoryStatus) {
+    let currentResult = {supported: false, granted: false}, requested = false;
+    function memoryMessage(result, asked) {
+      currentResult = result; requested = asked;
+      persistent.hidden = !result.supported || result.granted;
+      memoryStatus.textContent = !workshop.isSaved() ? 'Браузер не разрешил запись. Файл поездки сохранит ваш выбор.'
+        : result.granted ? 'Браузер разрешил постоянное хранение для этого сайта. Файл поездки можно сохранить отдельно.'
+        : result.failed ? 'Не получилось проверить хранение. Сохраните файл поездки, чтобы открыть её снова.'
+        : asked ? 'Браузер не разрешил постоянное хранение. Сохраните файл поездки отдельно.'
+        : 'Выбор хранится в этом браузере. Файл поездки поможет перенести его на другое устройство.';
+    }
+    persistentStorage(navigator.storage).then(result => {memoryMessage(result, false); persistent.disabled = false;});
+    window.addEventListener('godune:trip-change', () => memoryMessage(currentResult, requested));
+    persistent.addEventListener('click', async () => {
+      persistent.disabled = true; memoryStatus.textContent = 'Проверяем, может ли браузер хранить поездку дольше…';
+      memoryMessage(await persistentStorage(navigator.storage, true), true); persistent.disabled = false;
+    });
+  }
   function fromHash() { const result = readTripLink(location.hash, catalog); if (result) show(result, true); }
   window.addEventListener('hashchange', fromHash); fromHash();
   $('#trip-link-copy').addEventListener('click', async () => {
@@ -131,7 +175,7 @@ export function initTripSharing(catalog, base, workshop) {
     const result = workshop.setState(next, replace ? 'Эта поездка стала вашим маршрутом.' : 'Точки добавлены к вашему маршруту.');
     imported = JSON.stringify(workshop.getState());
     $('#trip-link-import').hidden = true; $('#trip-link-undo').hidden = false;
-    message(result.saved ? 'Поездка в вашем черновике. Здесь можно вернуть прежний выбор.' : 'Поездка открыта в этой вкладке. Браузер не разрешил сохранение; ссылка поможет открыть её снова.');
+    message(result.saved ? 'Поездка в вашем черновике. Здесь можно вернуть прежний выбор.' : receivedFile ? 'Поездка открыта в этой вкладке. Браузер не разрешил сохранение; файл поможет открыть её снова.' : 'Поездка открыта в этой вкладке. Браузер не разрешил сохранение; ссылка поможет открыть её снова.');
   }
   $('#trip-link-merge').addEventListener('click', () => importTrip(false));
   $('#trip-link-replace').addEventListener('click', () => importTrip(true));
@@ -139,8 +183,8 @@ export function initTripSharing(catalog, base, workshop) {
     if (JSON.stringify(workshop.getState()) !== imported) {
       message('Черновик уже изменился в другой вкладке. Прежний выбор не восстановлен, чтобы сохранить эти изменения.'); return;
     }
-    workshop.setState(backup, 'Ваш прежний черновик восстановлен.');
+    const result = workshop.setState(backup, 'Ваш прежний черновик восстановлен.');
     backup = imported = null; $('#trip-link-undo').hidden = true; $('#trip-link-import').hidden = false;
-    message('Ваш прежний черновик на месте.');
+    message(result.saved ? 'Ваш прежний черновик на месте.' : 'Прежний черновик открыт в этой вкладке. Браузер не разрешил сохранение; возьмите поездку в файл.');
   });
 }

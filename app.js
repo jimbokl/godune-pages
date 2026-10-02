@@ -115,7 +115,7 @@
     applyFilters();
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
-  Promise.all([catalog, import(url('workshop.mjs?v=3'))]).then(([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=4'))]).then(([data, {initWorkshop}]) => {
     workshop = initWorkshop(data, base);
     restoreTripFilters();
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);

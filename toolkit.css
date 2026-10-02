@@ -306,6 +306,9 @@
 .month-choice input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 48px; padding: 12px 10px; border: 1px solid #c9cfca; border-radius: 0; background: #faf9f5; color: #243837; font: 14px/1.5 var(--sans); }
 .trip-share { width: 100%; justify-content: space-between; margin-top: 20px; font-size: 21px; }
 .trip-share:disabled { opacity: .55; cursor: default; }
+.trip-file-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.trip-file-actions .save-item { flex: 1; }
+#trip-memory-status { font: 10px/1.9 var(--sans); color: #596862; margin-top: 14px; }
 .trip-link-dialog { width: 670px; }
 .trip-link-dialog > p,.trip-link-dialog label,.trip-link-note,#trip-link-filters,#trip-link-missing { font: 12px/1.85 var(--sans); color: #53615e; }
 .trip-link-date { font: 24px/1.5 var(--serif); margin: 20px 0 6px; }
@@ -324,6 +327,7 @@
   .trip-dates { width: 100%; grid-template-columns: 1fr; max-width: none; }
   .month-choice input { font-size: 16px; }
   .trip-link-actions { flex-direction: column; }
+  .trip-file-actions { flex-direction: column; }
   .trip-link-actions .button { width: 100%; justify-content: center; padding-inline: 12px; font-size: 19px; }
   .trip-share { font-size: 20px; padding-inline: 12px; }
 }

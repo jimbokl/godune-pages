@@ -1,6 +1,6 @@
 import {loadWalkProgress} from './walk.mjs?v=1';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=1';
-import {initTripSharing} from './trip-link.mjs?v=1';
+import {initTripSharing} from './trip-link.mjs?v=2';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=1';
 
 export function loadTrip(storage, catalog) {
@@ -146,7 +146,7 @@ export function initWorkshop(catalog, base) {
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
   refresh();
-  const workshop = {getState: () => structuredClone(state), setState: commit,
+  const workshop = {getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     setFilters: (area, minutes) => commit({...state, filters: {area, minutes}}, 'Настройки прогулки сохранены.'), showDiscovery(items) {
     let lastDay;
     function update() {
