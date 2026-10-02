@@ -120,7 +120,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=9'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=10'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
@@ -151,7 +151,11 @@
     });
   }
   const russianMap = {'NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить','NavigationControl.ResetBearing':'Север наверху','AttributionControl.ToggleAttribution':'Источники карты','GeolocateControl.FindMyLocation':'Моё местоположение','GeolocateControl.LocationNotAvailable':'Местоположение недоступно','LogoControl.Title':'Открытая карта','Map.Title':'Карта маршрутов Балтики','Marker.Title':'Остановка маршрута','Popup.Close':'Закрыть'};
-  let mapContext;
+  let mapContext, mapBaseError = false, mapStatus = '';
+  function setMapStatus(message) {
+    mapStatus = message;
+    $('#map-status').textContent = message + (mapBaseError ? ' Подложка карты не загрузилась; линии и список остановок доступны.' : '');
+  }
   async function initializeMap(local) {
     const context=local?.route || 'region';
     if(mapReady && mapContext!==context){map?.remove();map=undefined;mapReady=undefined;markers=[];}
@@ -159,13 +163,14 @@
     mapContext=context;
     mapReady = (async () => {
       await loadMapLibrary();
+      mapBaseError = false;
       map = new maplibregl.Map({container:'interactive-map', center:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
         maxBounds:local ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
         style:local ? localStyle.localMapStyle(local) : {version:8, sources:{shore:{type:'raster',tiles:['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],tileSize:256,attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники открытой карты</a>'}},layers:[{id:'shore',type:'raster',source:'shore',paint:{'raster-saturation':-.76,'raster-contrast':-.08}}]}});
       if(local)map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:['local-roads','local-building','local-green','local-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
       map.addControl(new maplibregl.AttributionControl({compact:false}), 'bottom-right');
-      map.on('error', () => { $('#map-status').textContent = 'Подложка карты не загрузилась. Список остановок и ссылки в навигатор доступны ниже.'; });
+      map.on('error', () => { mapBaseError = true; setMapStatus(mapStatus); });
       await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(new Error('Карта загружается дольше обычного')), 20000); map.once('load', () => { clearTimeout(timer); resolve(); }); });
       map.addSource('walk',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
       map.addLayer({id:'walk-line',type:'line',source:'walk',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#986339','line-width':4,'line-opacity':.92}});
@@ -181,14 +186,15 @@
     const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
-    const chosen = tripMap ? (workshop?.getState().places || []).map(id => data.poi.find(p => p.slug === id)) : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
+    const trip = tripMap ? workshop?.getState() : null;
+    const chosen = tripMap ? (trip?.places || []).map(id => data.poi.find(p => p.slug === id)).filter(Boolean) : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
     let points = chosen.filter(p => mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
     $('#map-dialog-title').textContent = tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
     function listPoints() { $('#map-places').replaceChildren(...points.map(p => { const li = document.createElement('li'), a = document.createElement('a'); li.dataset.mapPlace = p.slug; a.href = navigator.onLine ? navigatorLink(p) : url(`poi/${p.slug}/`); if(navigator.onLine){a.target = '_blank'; a.rel = 'noopener';} a.textContent = (tripMap || route ? `${chosen.indexOf(p)+1}. ` : '') + p.name; li.append(a); return li; })); }
     listPoints();
     try {
-      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=1'));
-      const local=await localStyle.downloadedMap(base,route?.slug,here);
+      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=2'));
+      const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here);
       if(!navigator.onLine && !local)throw new Error('Нет загруженной карты');
       if(version!==mapVersion)return;
       if(!navigator.onLine){
@@ -208,15 +214,25 @@
         save.setAttribute('aria-pressed', String(Boolean(on))); save.textContent = on ? 'В моём маршруте ✓' : 'В мой маршрут +'; popup.append(document.createElement('br'), save);
         markers.push(new maplibregl.Marker({element:btn}).setLngLat([p.lon,p.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));
       });
-      m.getSource('walk').setData(route ? {type:'FeatureCollection',features:[{type:'Feature',properties:{},geometry:route.geometry}]} : {type:'FeatureCollection',features:[]});
-      if (points.length) { const bounds = new maplibregl.LngLatBounds(); points.forEach(p => bounds.extend([p.lon,p.lat])); route?.geometry.coordinates.forEach(c => bounds.extend(c)); m.fitBounds(bounds,{padding:50,maxZoom:15,duration:0}); }
-      $('#map-status').textContent = tripMap && !points.length ? 'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».' : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`;
-    } catch { $('#map-status').textContent = 'Интерактивная карта сейчас недоступна. Откройте остановку в навигаторе из списка ниже.'; }
+      let roads={type:'FeatureCollection',features:[]},modeLabel='';
+      if(trip) {
+        const travel=await import(url('travel-estimates.mjs?v=1'));
+        const matrix=await travel.loadTravelMatrix(base).catch(()=>null);
+        roads=await travel.tripRoadFeatures(trip,data,matrix,base,points.map(p=>p.slug));
+        modeLabel=travel.TRAVEL_MODES[travel.travelMode(trip)];
+        if(version!==mapVersion)return;
+      }
+      m.getSource('walk').setData(route ? {type:'FeatureCollection',features:[{type:'Feature',properties:{},geometry:route.geometry}]} : roads);
+      $('#map-dialog').dataset.roadSegments=String(roads.features.length);
+      $('#map-dialog').dataset.roadMode=trip?.schedule?.mode || 'foot';
+      if (points.length) { const bounds = new maplibregl.LngLatBounds(); points.forEach(p => bounds.extend([p.lon,p.lat])); route?.geometry.coordinates.forEach(c => bounds.extend(c)); roads.features.forEach(f=>f.geometry.coordinates.forEach(c=>bounds.extend(c))); m.fitBounds(bounds,{padding:50,maxZoom:15,duration:0}); }
+      setMapStatus(tripMap && !points.length ? 'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».' : trip ? `${modeLabel} · Переходов по дорогам: ${roads.features.length} из ${Math.max(0,chosen.length-1)}. Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
+    } catch { setMapStatus('Интерактивная карта сейчас недоступна. Откройте остановку в навигаторе из списка ниже.'); }
   }
   $$('[data-open-map]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault(); tripMap = b.hasAttribute('data-trip-map'); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
     $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.mapFilter === 'all')));
-    open($('#map-dialog')); $('#map-status').textContent = 'Загружаем карту…'; renderMap().catch(() => { $('#map-status').textContent = 'Каталог недоступен. Попробуйте позже.'; });
+    open($('#map-dialog')); setMapStatus('Загружаем карту…'); renderMap().catch(() => { setMapStatus('Каталог недоступен. Попробуйте позже.'); });
   }));
   $$('[data-map-filter]').forEach(b => b.addEventListener('click', () => {
     mapSelection = b.dataset.mapFilter; $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderMap().catch(() => {});

@@ -1,4 +1,4 @@
-import {cleanSchedule} from './trip-schedule-state.mjs?v=2';
+import {cleanSchedule} from './trip-schedule-state.mjs?v=3';
 export const TRIP_KEY = 'godune-trip:v1';
 export const emptyTrip = () => ({version: 1, places: [], routes: [], month: null, date: null,
   filters: {area: 'all', minutes: 'all'}});

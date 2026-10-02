@@ -1,0 +1,11 @@
+Дорожные данные godune.ru
+
+Матрица времени и геометрии дорог: © OpenStreetMap contributors.
+Производная база данных распространяется под Open Data Commons Open Database License (ODbL) 1.0.
+Условия и атрибуция: https://www.openstreetmap.org/copyright
+Текст лицензии: https://opendatacommons.org/licenses/odbl/1-0/
+
+Снимок, источник, версии профилей и даты проверки приведены в /data/travel-matrix.json.
+Геометрии: /data/travel-geometries/{foot,bike,car}/{slug}.json.
+
+Данные — оценка по дорожному графу. Входы, доступ и условия поездки требуют отдельной проверки.

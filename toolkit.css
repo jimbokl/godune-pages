@@ -303,6 +303,16 @@
 .trip-plan-heading .button { flex-shrink: 0; }
 .trip-day-settings, .trip-stop-settings { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; align-items: end; }
 .trip-day-settings { margin: 24px 0; }
+.trip-travel-modes { grid-column: 1/-1; padding: 0; margin: 0; border: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+.trip-travel-modes legend { margin-bottom: 12px; font: 600 13px var(--sans); }
+.trip-travel-modes label { position: relative; }
+#my-trip .trip-travel-modes input { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; opacity: 0; }
+.trip-travel-modes span { display: grid; place-items: center; min-height: 48px; padding: 8px; border: 1px solid #adc3d1; border-radius: 4px; background: white; text-align: center; cursor: pointer; }
+.trip-travel-modes input:checked + span { background: #bfd9e7; border-color: #537a92; color: #243f52; font-weight: 600; }
+.trip-travel-modes input:focus-visible + span { outline: 2px solid #243f52; outline-offset: 3px; }
+.trip-road-note { border-left: 3px solid #8cb6cc; margin: 12px 0; padding: 2px 14px; font: 13px/1.6 var(--sans); color: #385569; }
+.trip-road-note p { margin: 0 0 4px; }
+.trip-road-note a { font-size: 12px; text-underline-offset: 3px; }
 .trip-day-settings label, .trip-stop-settings label { display: grid; gap: 8px; font: 12px/1.5 var(--sans); color: #516573; min-width: 0; }
 .trip-day-settings input, .trip-stop-settings input { min-width: 0; width: 100%; box-sizing: border-box; min-height: 48px; padding: 10px 12px; border: 1px solid #bfced8; border-radius: 0; background: #fafbf8; font: 16px var(--sans); color: #223536; }
 .trip-day-settings .save-item, .trip-stop-settings .save-item { min-height: 44px; justify-self: start; }

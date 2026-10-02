@@ -20,6 +20,8 @@ export async function downloadedMap(base, route, point) {
   }
   if (navigator.onLine || !('caches' in window)) return null;
   const names = (await caches.keys()).filter(n=>n.startsWith('godune-walk-offline:v1:'));
+  const points = Array.isArray(point) ? point : null;
+  let best = null, bestScore = -1;
   for (const name of names.reverse()) {
     const cache = await caches.open(name);
     const metadata = await cache.match(new URL('__godune_package__',base));
@@ -30,7 +32,11 @@ export async function downloadedMap(base, route, point) {
     const response = await cache.match(new URL(`data/offline-maps/${record.slug}.geojson`,base));
     if (!response) continue;
     const data = await response.json();
-    if (!point || (point.lon>=data.bbox[0] && point.lon<=data.bbox[2] && point.lat>=data.bbox[1] && point.lat<=data.bbox[3])) return data;
+    const inside = p => p.lon>=data.bbox[0] && p.lon<=data.bbox[2] && p.lat>=data.bbox[1] && p.lat<=data.bbox[3];
+    if (points) {
+      const score = points.filter(inside).length;
+      if (score > bestScore) { best = data; bestScore = score; }
+    } else if (!point || inside(point)) return data;
   }
-  return null;
+  return best;
 }
