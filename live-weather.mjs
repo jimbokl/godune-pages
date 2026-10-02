@@ -44,6 +44,17 @@ export function loadWeatherPlace(storage, locations, fallback = 'zelenogradsk') 
   return locations.some(place => place.id === saved) ? saved : locations.some(place => place.id === fallback) ? fallback : locations[0]?.id;
 }
 
+export function tripWeatherNote(trip, now = new Date()) {
+  const today = localDay(now);
+  if (trip.date && trip.date !== today) {
+    const name = new Intl.DateTimeFormat('ru-RU', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'}).format(new Date(trip.date + 'T12:00:00Z'));
+    return `Вы выбрали ${name} Здесь — прогноз на ближайшие часы, а не на дату поездки.`;
+  }
+  if (!trip.month || trip.month === Number(today.slice(5, 7))) return '';
+  const name = new Intl.DateTimeFormat('ru-RU', {month: 'long', timeZone: ZONE}).format(new Date(Date.UTC(2026, trip.month - 1, 15)));
+  return `Для поездки на ${name} прогноз появится ближе к выезду. Здесь — ближайшие часы на Балтике.`;
+}
+
 export async function initWeather(base, workshop) {
   const root = document.querySelector('#trip-weather');
   if (!root) return;
@@ -75,13 +86,9 @@ export async function initWeather(base, workshop) {
     note.textContent = view.status === 'fresh' ? 'Прогноз для ближайшей прогулки' : 'Сохранённый прогноз устарел. Ожидаем обновление.';
     $('#weather-detail').hidden = false;
     set('#weather-updated', `Модель обновлена ${localDateTime(place.model_updated_at)}. Источник проверен ${localDateTime(place.checked_at)}. Это прогноз, а не замер на берегу.`);
-    const month = workshop.getState().month, currentMonth = Number(localDay(now).slice(5,7));
     const future = $('#weather-trip-note');
-    future.hidden = !month || month === currentMonth;
-    if (!future.hidden) {
-      const name = new Intl.DateTimeFormat('ru-RU', {month:'long', timeZone:ZONE}).format(new Date(Date.UTC(2026, month - 1, 15)));
-      future.textContent = `Для поездки на ${name} прогноз появится ближе к выезду. Здесь — ближайшие часы на Балтике.`;
-    }
+    future.textContent = tripWeatherNote(workshop.getState(), now);
+    future.hidden = !future.textContent;
   };
   const refresh = async () => {
     if (request) return request;

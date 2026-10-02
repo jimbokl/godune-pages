@@ -301,6 +301,32 @@
 .workshop-heading p:last-child { font: 12px/1.9 var(--sans); color: #53615e; }
 .month-choice { display: grid; gap: 9px; font: 10px/1.6 var(--sans); color: #53615e; min-width: 190px; }
 .month-choice select { appearance: auto; width: 100%; padding: 12px 14px; border: 1px solid #c9cfca; border-radius: 0; background: #faf9f5; color: #243837; font: 14px/1.5 var(--sans); min-height: 48px; }
+.trip-dates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 440px; }
+.trip-dates .month-choice { min-width: 0; }
+.month-choice input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 48px; padding: 12px 10px; border: 1px solid #c9cfca; border-radius: 0; background: #faf9f5; color: #243837; font: 14px/1.5 var(--sans); }
+.trip-share { width: 100%; justify-content: space-between; margin-top: 20px; font-size: 21px; }
+.trip-share:disabled { opacity: .55; cursor: default; }
+.trip-link-dialog { width: 670px; }
+.trip-link-dialog > p,.trip-link-dialog label,.trip-link-note,#trip-link-filters,#trip-link-missing { font: 12px/1.85 var(--sans); color: #53615e; }
+.trip-link-date { font: 24px/1.5 var(--serif); margin: 20px 0 6px; }
+.trip-link-dialog h3 { font: 28px/1.3 var(--serif); margin: 24px 0 12px; }
+.trip-link-dialog ol,.trip-link-dialog ul { padding-left: 22px; font: 18px/1.6 var(--serif); }
+.trip-link-dialog li { padding: 6px 0; }
+.trip-link-dialog li a { text-decoration: underline; text-underline-offset: 4px; }
+#trip-link-export { border-top: 1px solid #d3d4c9; margin-top: 24px; padding-top: 20px; }
+#trip-link-url { box-sizing: border-box; width: 100%; margin-top: 9px; padding: 14px 12px; border: 1px solid #c9cfca; background: #f3f1ea; color: #243837; font: 13px/1.5 var(--sans); }
+.trip-link-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 12px; }
+.trip-link-actions .button { font-size: 20px; min-height: 48px; }
+#trip-link-status { margin-top: 18px; }
+.trip-link-dialog [hidden] { display: none; }
+@media (max-width: 900px) { .workshop-heading { align-items: start; flex-direction: column; } }
+@media (max-width: 560px) {
+  .trip-dates { width: 100%; grid-template-columns: 1fr; max-width: none; }
+  .month-choice input { font-size: 16px; }
+  .trip-link-actions { flex-direction: column; }
+  .trip-link-actions .button { width: 100%; justify-content: center; padding-inline: 12px; font-size: 19px; }
+  .trip-share { font-size: 20px; padding-inline: 12px; }
+}
 .workshop-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 28px; align-items: start; }
 .trip-draft { background: #f3f1ea; border: 1px solid #dddcd2; padding: 30px 34px; }
 .trip-draft-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 1px solid #d3d4c9; padding-bottom: 18px; margin-bottom: 24px; }

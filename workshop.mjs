@@ -1,17 +1,7 @@
 import {loadWalkProgress} from './walk.mjs?v=1';
-
-export const TRIP_KEY = 'godune-trip:v1';
-const empty = () => ({version: 1, places: [], routes: [], month: null});
-
-export function cleanTrip(record, catalog) {
-  if (!record || record.version !== 1) return empty();
-  const valid = (values, rows) => {
-    const known = new Set(rows.map(row => row.slug));
-    return Array.isArray(values) ? [...new Set(values.filter(id => typeof id === 'string' && known.has(id)))] : [];
-  };
-  return {version: 1, places: valid(record.places, catalog.poi), routes: valid(record.routes, catalog.routes),
-    month: Number.isInteger(record.month) && record.month >= 1 && record.month <= 12 ? record.month : null};
-}
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=1';
+import {initTripSharing} from './trip-link.mjs?v=1';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=1';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -114,6 +104,8 @@ export function initWorkshop(catalog, base) {
       node.textContent = on ? (kind === 'places' ? 'В моём маршруте ✓' : 'Маршрут сохранён ✓') : (kind === 'places' ? 'В мой маршрут +' : 'Сохранить маршрут +');
     });
     const month = $('#trip-month'); if (month) month.value = state.month === null ? '' : String(state.month);
+    const date = $('#trip-date'); if (date) date.value = state.date || '';
+    const share = $('#trip-share'); if (share) share.disabled = !state.places.length && !state.routes.length;
     const notice = $('#trip-storage'); if (notice) notice.hidden = available;
     document.querySelectorAll('[data-my-trip]').forEach(link => {
       link.textContent = 'Мой маршрут' + (state.places.length + state.routes.length ? ` · ${state.places.length + state.routes.length}` : '');
@@ -125,6 +117,7 @@ export function initWorkshop(catalog, base) {
   function commit(next, message) {
     state = cleanTrip(next, catalog); available = saveTrip(storage, state, catalog); refresh();
     announce(available ? message : 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
+    return {saved: available};
   }
   document.addEventListener('click', event => {
     const save = event.target.closest('[data-save-place], [data-save-route]');
@@ -143,13 +136,18 @@ export function initWorkshop(catalog, base) {
       || remaining.find(node => node.dataset.tripKind === kind && !node.disabled) || $('#trip-month');
     focus?.focus({preventScroll: true});
   });
-  $('#trip-month')?.addEventListener('change', event => commit({...state, month: event.target.value ? Number(event.target.value) : null}, 'Месяц поездки сохранён.'));
+  $('#trip-month')?.addEventListener('change', event => {
+    const month = event.target.value ? Number(event.target.value) : null;
+    commit({...state, month, date: month === state.month ? state.date : null}, 'Месяц поездки сохранён.');
+  });
+  $('#trip-date')?.addEventListener('change', event => commit({...state, date: event.target.value || null}, 'Дата поездки сохранена.'));
   window.addEventListener('storage', event => {
     if (event.key === TRIP_KEY || event.key === null) { const loaded = loadTrip(storage, catalog); state = loaded.state; available = loaded.available; refresh(); }
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
   refresh();
-  return {getState: () => state, showDiscovery(items) {
+  const workshop = {getState: () => structuredClone(state), setState: commit,
+    setFilters: (area, minutes) => commit({...state, filters: {area, minutes}}, 'Настройки прогулки сохранены.'), showDiscovery(items) {
     let lastDay;
     function update() {
       const day = kaliningradDay(); if (day === lastDay) return; lastDay = day;
@@ -165,4 +163,6 @@ export function initWorkshop(catalog, base) {
     // Re-evaluate on an open page, including a tab left open past midnight.
     setInterval(update, 60000);
   }};
+  initTripSharing(catalog, base, workshop);
+  return workshop;
 }

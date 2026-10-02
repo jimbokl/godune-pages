@@ -42,10 +42,12 @@
   $$('[data-route-filter]').forEach(b => b.addEventListener('click', () => {
     routeFilter = b.dataset.routeFilter;
     if ($('#trip-area')) $('#trip-area').value = routeFilter;
+    workshop?.setFilters(routeFilter, timeFilter);
     applyFilters();
   }));
   $('#trip-picker')?.addEventListener('submit', e => {
-    e.preventDefault(); routeFilter = $('#trip-area').value; timeFilter = $('#trip-time').value; applyFilters();
+    e.preventDefault(); routeFilter = $('#trip-area').value; timeFilter = $('#trip-time').value;
+    workshop?.setFilters(routeFilter, timeFilter); applyFilters();
     $('#route-count').scrollIntoView({block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   });
 
@@ -98,10 +100,20 @@
   $$('[data-open-search]').forEach(b => b.addEventListener('click', () => { open($('#search-dialog')); $('#search-input').focus(); loadWasm().then(search); search(); }));
   $('#search-input')?.addEventListener('input', search);
 
-  Promise.all([catalog, import(url('workshop.mjs?v=2'))]).then(([data, {initWorkshop}]) => {
+  function restoreTripFilters() {
+    if (!workshop) return;
+    const filters = workshop.getState().filters;
+    routeFilter = filters.area; timeFilter = filters.minutes;
+    if ($('#trip-area')) $('#trip-area').value = routeFilter;
+    if ($('#trip-time')) $('#trip-time').value = timeFilter;
+    applyFilters();
+  }
+  window.addEventListener('godune:trip-change', restoreTripFilters);
+  Promise.all([catalog, import(url('workshop.mjs?v=3'))]).then(([data, {initWorkshop}]) => {
     workshop = initWorkshop(data, base);
+    restoreTripFilters();
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
-    if ($('#trip-weather')) import(url('live-weather.mjs?v=1')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
+    if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
       $('#weather-status').textContent = 'Прогноз пока не загрузился. Ваш маршрут на месте.';
     });
   }).catch(() => {
