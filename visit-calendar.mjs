@@ -3,7 +3,7 @@ export const validVisitDate = value => typeof value === 'string' && /^\d{4}-\d{2
   && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z'))
   && new Date(value+'T12:00:00Z').toISOString().slice(0,10) === value;
 const minute = time => Number(time.slice(0,2))*60+Number(time.slice(3));
-export const visitFacts = place => [place?.hours,...(place?.visit_conditions || [])].filter(fact => fact?.kind === 'hours');
+export const visitFacts = place => [place?.hours,...(place?.visit_conditions || [])].filter(fact => fact?.kind === 'hours' && fact.id!==place?.gastronomy?.kitchen_fact);
 export function resolveVisitCalendar(place, date, factId) {
   const facts=visitFacts(place), fact=factId ? facts.find(row=>row.id===factId) : place?.hours;
   const unknown=reason=>({fact:fact || null,windows:null,sessions:null,needsCheck:false,reason});

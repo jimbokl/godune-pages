@@ -2,6 +2,7 @@ import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignatu
 import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=6';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
+import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=1';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=3';
 
@@ -86,6 +87,21 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(calendar.reason==='choose_date' && !manual) {const choose=document.createElement('button');choose.type='button';choose.className='save-item';choose.textContent='Указать дату';choose.addEventListener('click',()=>document.querySelector('#trip-date')?.focus());card.append(choose);}
     return card;
   }
+  function kitchenCard(place, trip) {
+    const value=resolveKitchenCalendar(place,trip.date);if(!value)return null;
+    const card=document.createElement('div');card.className='trip-visit-calendar trip-kitchen-calendar';
+    card.dataset.kitchenReason=value.calendar.reason || '';
+    const title=document.createElement('p');title.className='trip-calendar-title';title.textContent='Когда можно заказать';card.append(title);
+    const note=document.createElement('p'), c=value.calendar;
+    note.textContent=c.windows===null ? 'Время последнего заказа ещё не подтверждено. Часы зала его не заменяют.' : !c.windows.length ? 'На выбранную дату заказы не принимают.' : c.windows.map(w=>`${clock(w.open)}–${clock(w.last_entry??w.close)}`).join('; ')+' · заказать нужно в это время; закончить еду можно позже, до закрытия зала.';
+    card.append(note);
+    if(c.fact) {
+      const evidence=c.source || c.fact.source, source=document.createElement('p'), link=document.createElement('a');source.className='trip-calendar-source';
+      link.href=evidence.url;link.target='_blank';link.rel='noopener';link.textContent=evidence.name;
+      source.append(link,` · проверено ${evidence.checked_at.split('-').reverse().join('.')}`);card.append(source);
+    }
+    return card;
+  }
   function renderStops(trip, result, matrix, light) {
     const settings=trip.schedule || defaultSchedule();
     $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
@@ -155,6 +171,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         card.append(title,path,note,evidence,caution,nav);li.append(card);
       }
       li.append(calendarCard(place,trip,value,window,item));
+      const kitchen=kitchenCard(place,trip);if(kitchen)li.append(kitchen);
       const transport=transportCard({trip,item,place,catalog,clock});if(transport)li.append(transport);
       if(item.issues.length) {
         const issues=document.createElement('ul');issues.className='trip-plan-issues';
@@ -162,6 +179,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
           const line=document.createElement('li');line.dataset.planIssue=issue.code;
           line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:'Время входа ещё нужно сверить.',
             opening_needs_check:'Часы учтены. Осталось сверить дату и билеты с местом.',
+            unknown_kitchen:'До какого часа принимают заказ — уточните у кафе.',kitchen_needs_check:'Приём заказов учтён. Время на выбранную дату нужно сверить.',
+            kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К началу остановки кухня уже не принимает заказ. Начните раньше или выберите другое кафе.',
             travel_needs_check:'Дорога учтена как оценка. Сверьте доступ и оставьте запас.',
             unknown_approach:'Уточните пеший путь от парковки до места.',unknown_return:'Уточните время возвращения к парковке.',
             access_needs_check:'Пеший участок учтён по карте. Доступ и темп нужно сверить.',
@@ -170,7 +189,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
             transport_conflict:'Переправа не складывается: рейсов нет или последний уже не подходит.',
             closed:'По выбранному расписанию в этот день нет посещений.',window_missed:'Осмотр не помещается в часы работы или время последнего входа; подходящего сеанса тоже нет.',
             after_deadline:`Позже конца дня как минимум на ${issue.minutes} мин.`}[issue.code];
-          if(['closed','window_missed','after_deadline','transport_conflict'].includes(issue.code)) li.dataset.planConflict='true';
+          if(['closed','window_missed','kitchen_closed','kitchen_window_missed','after_deadline','transport_conflict'].includes(issue.code)) li.dataset.planConflict='true';
           issues.append(line);
         }li.append(issues);
       }

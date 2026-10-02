@@ -1,5 +1,6 @@
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=2';
+import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=1';
 import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=3';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
@@ -34,6 +35,7 @@ export function planInput(trip, catalog, matrix) {
     const travel=resolveTravel({...trip,schedule:settings},id,catalog,matrix);
     const access=resolveAccess({...trip,schedule:settings},id,catalog,matrix);
     const excursion=resolveExcursion(configured,id,catalog);
+    const kitchen=resolveKitchenCalendar(catalog?.poi.find(place=>place.slug===id),trip.date);
     return {id,visit:stop?.visit ?? 30,pause:stop?.pause ?? 0,
       travel:travel.minutes,
       ...(travel.origin==='estimate' ? {travel_needs_check:true} : {}),
@@ -41,6 +43,7 @@ export function planInput(trip, catalog, matrix) {
       opening:manual ? [{open:stop.window.open,close:stop.window.close}] : calendar?.windows ?? null,
       ...(calendar?.sessions !== null && calendar?.sessions !== undefined ? {sessions:calendar.sessions} : {}),
       ...(calendar?.needsCheck ? {opening_needs_check:true} : {}),
+      ...(kitchen ? {kitchen:kitchen.input} : {}),
       ...(excursion ? {excursion:excursion.input} : {})};
   });
   if(stops.length && bases.start_at) {

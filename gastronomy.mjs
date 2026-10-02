@@ -1,5 +1,6 @@
-import {updateSchedule} from './trip-schedule-state.mjs';
+import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2';
+import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings) {
@@ -31,8 +32,9 @@ export function planRequest(food,settings) {
   const day=gastroDay(settings);
   return {venues:food.venues.map(v=>{
     const calendar=day?resolveVisitCalendar({hours:v.visit_hours},settings.date):null;
+    const kitchen=day?resolveKitchenCalendar({gastronomy:v,visit_conditions:v.visit_kitchen?[v.visit_kitchen]:[]},settings.date):null;
     return {id:v.slug,roles:v.roles,themes:v.themes,visit:v.visit,available:v.available,
-      ...(day?{opening:calendar.windows,opening_needs_check:calendar.needsCheck}:{})};
+      ...(day?{opening:calendar.windows,opening_needs_check:calendar.needsCheck,kitchen:kitchen.input}:{})};
   }),legs:food.legs,theme:settings.theme,max_minutes:Number(settings.max_minutes),stops:Number(settings.stops),start:settings.start||null,
     ...(day?{day}:{})};
 }
@@ -40,11 +42,12 @@ export function planRequest(food,settings) {
 export function appendTour(current,tour,food,settings={}) {
   let next={...current,places:[...new Set([...current.places,...tour.places])]};
   if(!current.places.length && !current.routes.length) {
-    next=updateSchedule(next,'mode','foot');
     const day=gastroDay(settings);
+    // Replace the day as a whole: changing its start before its end could
+    // temporarily make an evening interval invalid and retain the old start.
+    next={...next,schedule:{...(cleanSchedule(next.schedule,next.places)||defaultSchedule()),mode:'foot',...(day||{})}};
     if(day) {
       next={...next,date:settings.date,month:Number(settings.date.slice(5,7))};
-      for(const key of ['start','end','reserve'])next=updateSchedule(next,key,day[key]);
     }
   }
   for(const id of tour.places) {
@@ -88,8 +91,16 @@ export async function initGastronomy(base,workshop) {
           if(stop.wait)li.append(make('span',`До открытия — ${stop.wait} минут`,'food-stop-wait'));
           if(stop.issues.some(issue=>issue.code==='unknown_opening'))li.append(make('span','Часы ещё не подтверждены','food-hours-unknown'));
           else {
-            const source=make('a','По расписанию ресторана ↗','food-hours-source');source.href=v.visit_hours.source.url;source.target='_blank';source.rel='noopener';li.append(source);
+            const calendar=resolveVisitCalendar({hours:v.visit_hours},settings.date);
+            const source=make('a','По расписанию ресторана ↗','food-hours-source');source.href=calendar.source.url;source.target='_blank';source.rel='noopener';li.append(source);
             if(stop.issues.some(issue=>issue.code==='opening_needs_check'))li.append(make('span','Часы на выбранный день уточните перед выходом','food-hours-unknown'));
+          }
+          if(stop.issues.some(issue=>issue.code==='unknown_kitchen'))li.append(make('span','До какого часа принимают заказ — уточните у кафе','food-hours-unknown'));
+          else if(v.visit_kitchen) {
+            const kitchen=resolveKitchenCalendar({gastronomy:v,visit_conditions:[v.visit_kitchen]},settings.date).calendar;
+            const source=make('a',`Приём заказов: ${kitchen.windows.map(w=>`${clock(w.open)}–${clock(w.last_entry??w.close)}`).join('; ')} ↗`,'food-hours-source');
+            source.href=kitchen.source.url;source.target='_blank';source.rel='noopener';li.append(source);
+            if(kitchen.needsCheck)li.append(make('span','Последний заказ на дату прогулки стоит сверить','food-hours-unknown'));
           }
         }
         if(i<tour.places.length-1){const leg=food.legs.find(l=>l.from===id && l.to===tour.places[i+1]);li.append(make('small',`↓ ${leg.minutes} минут пешком${tour.schedule?' + 10 минут запаса':''}`,'food-tour-leg'));}

@@ -57,7 +57,19 @@
         "kafe-gnezdo",
         "restoran-dolche-nonna",
         "kofeynya-slou",
-        "restoran-zolotaya-milya"
+        "restoran-zolotaya-milya",
+        "pekarnya-khleb",
+        "kafe-amaliya",
+        "kafe-bufet",
+        "restoran-riviera",
+        "kafe-granat",
+        "rybnoe-kafe-na-pirse",
+        "restoran-koptilnyy-tsekh",
+        "restoran-sambiya",
+        "kafe-tunets",
+        "kafe-fanat",
+        "kafe-uksus",
+        "bistro-laba-dena"
       ]
     },
     {
@@ -190,7 +202,19 @@
         "kafe-gnezdo",
         "restoran-dolche-nonna",
         "kofeynya-slou",
-        "restoran-zolotaya-milya"
+        "restoran-zolotaya-milya",
+        "pekarnya-khleb",
+        "kafe-amaliya",
+        "kafe-bufet",
+        "restoran-riviera",
+        "kafe-granat",
+        "rybnoe-kafe-na-pirse",
+        "restoran-koptilnyy-tsekh",
+        "restoran-sambiya",
+        "kafe-tunets",
+        "kafe-fanat",
+        "kafe-uksus",
+        "bistro-laba-dena"
       ]
     },
     {
@@ -296,7 +320,19 @@
         "kafe-gnezdo",
         "restoran-dolche-nonna",
         "kofeynya-slou",
-        "restoran-zolotaya-milya"
+        "restoran-zolotaya-milya",
+        "pekarnya-khleb",
+        "kafe-amaliya",
+        "kafe-bufet",
+        "restoran-riviera",
+        "kafe-granat",
+        "rybnoe-kafe-na-pirse",
+        "restoran-koptilnyy-tsekh",
+        "restoran-sambiya",
+        "kafe-tunets",
+        "kafe-fanat",
+        "kafe-uksus",
+        "bistro-laba-dena"
       ]
     },
     {
@@ -5295,6 +5331,1177 @@
       "verification_status": "photo_geotag_and_source_checked",
       "verified_at": "2026-10-02",
       "visit_minutes": 60
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "У Курхауса есть короткая остановка для хлеба и кофе. На фасаде — вывеска ремесленной пекарни. Можно зайти здесь, прежде чем снова выйти на Курортный проспект.",
+      "gastronomy": {
+        "address": "Курортный проспект, 16",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 10:57:32",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8838",
+          "src": "assets/food/img_8838.webp",
+          "width": 1350
+        },
+        "cuisine": "Ремесленная пекарня",
+        "dishes": [],
+        "extra": [],
+        "lat": 54.960971666666666,
+        "lon": 20.478328333333337,
+        "menus": [],
+        "name": "Хлеб",
+        "note": "У Курхауса есть короткая остановка для хлеба и кофе. На фасаде — вывеска ремесленной пекарни. Можно зайти здесь, прежде чем снова выйти на Курортный проспект.",
+        "phone": "+79211048534",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee",
+          "dessert"
+        ],
+        "season_note": "В туристическом справочнике часы разделены на сезон и межсезонье, но граница сезонов не названа. Уточните время на свою дату.",
+        "slug": "pekarnya-khleb",
+        "source_url": "https://visit-kaliningrad.ru/food/xleb-khleb/",
+        "themes": [
+          "coffee",
+          "breakfast"
+        ],
+        "visit": 25
+      },
+      "hours": null,
+      "id": "37db525b-f749-55a6-8eb7-7974e232018d",
+      "lat": 54.960971666666666,
+      "lon": 20.478328333333337,
+      "name": "Хлеб",
+      "photos": [
+        "assets/food/img_8838.webp"
+      ],
+      "practical": "В туристическом справочнике часы разделены на сезон и межсезонье, но граница сезонов не названа. Уточните время на свою дату.",
+      "price": null,
+      "slug": "pekarnya-khleb",
+      "source_url": "https://visit-kaliningrad.ru/food/xleb-khleb/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Ремесленная пекарня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 25
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Под деревьями стоят столики, за ними — зелёный фасад «Амалии». Здесь можно сделать паузу на Курортном проспекте: позавтракать, а затем продолжить прогулку к воде.",
+      "gastronomy": {
+        "address": "Курортный проспект, 10",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:00:25",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8864",
+          "src": "assets/food/img_8864.webp",
+          "width": 1350
+        },
+        "cuisine": "Кафе и завтраки",
+        "dishes": [],
+        "extra": [],
+        "lat": 54.961375,
+        "lon": 20.480003333333332,
+        "menus": [],
+        "name": "Амалия",
+        "note": "Под деревьями стоят столики, за ними — зелёный фасад «Амалии». Здесь можно сделать паузу на Курортном проспекте: позавтракать, а затем продолжить прогулку к воде.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee",
+          "meal",
+          "dessert"
+        ],
+        "slug": "kafe-amaliya",
+        "source_url": "https://www.restoclub.ru/klng/place/amalija",
+        "themes": [
+          "breakfast",
+          "coffee"
+        ],
+        "visit": 40
+      },
+      "hours": null,
+      "id": "6b026d55-65d7-5c42-9281-5662970fc5e0",
+      "lat": 54.961375,
+      "lon": 20.480003333333332,
+      "name": "Амалия",
+      "photos": [
+        "assets/food/img_8864.webp"
+      ],
+      "practical": "На остановку заложено около 40 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-amaliya",
+      "source_url": "https://www.restoclub.ru/klng/place/amalija",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Кафе и завтраки"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 40
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Большой нарисованный кот встречает у входа в «Буфетъ». За ним — кафе в старом доме на Курортном проспекте. Для прогулки по центру это место, где можно задержаться за столом.",
+      "gastronomy": {
+        "address": "Курортный проспект, 6",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:01:38",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8873",
+          "src": "assets/food/img_8873.webp",
+          "width": 1350
+        },
+        "cuisine": "Европейская кухня и завтраки",
+        "dishes": [],
+        "extra": [],
+        "lat": 54.9616,
+        "lon": 20.480958333333337,
+        "menus": [],
+        "name": "Буфетъ",
+        "note": "Большой нарисованный кот встречает у входа в «Буфетъ». За ним — кафе в старом доме на Курортном проспекте. Для прогулки по центру это место, где можно задержаться за столом.",
+        "phone": "+79062300058",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee",
+          "meal",
+          "dessert"
+        ],
+        "slug": "kafe-bufet",
+        "source_url": "https://visit-zelenogradsk.ru/restaurants-cafes",
+        "themes": [
+          "breakfast",
+          "coffee"
+        ],
+        "visit": 40
+      },
+      "hours": null,
+      "id": "99e3e28f-6b2b-5355-a0c4-461f643949ae",
+      "lat": 54.9616,
+      "lon": 20.480958333333337,
+      "name": "Буфетъ",
+      "photos": [
+        "assets/food/img_8873.webp"
+      ],
+      "practical": "На остановку заложено около 40 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-bufet",
+      "source_url": "https://visit-zelenogradsk.ru/restaurants-cafes",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Европейская кухня и завтраки"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 40
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "От Курортного проспекта — короткий поворот на Пограничную. В снятом у входа меню «Ривьеры» море продолжается за столом: тунец, гребешок и копчёный угорь. После обеда можно вернуться к променаду.",
+      "gastronomy": {
+        "address": "Пограничная улица, 1",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:04:04",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8891",
+          "src": "assets/food/img_8891.webp",
+          "width": 1350
+        },
+        "cuisine": "Средиземноморская и европейская кухня",
+        "dishes": [
+          "Тартар из тунца",
+          "Гребешок с томлёной грушей",
+          "Салат с копчёным угрём"
+        ],
+        "extra": [],
+        "lat": 54.96174166666667,
+        "lon": 20.481875,
+        "menu_url": "https://riviera-restaurant.ru/#menu",
+        "menus": [
+          {
+            "captured_at": "2026:05:30 11:04:09",
+            "height": 1800,
+            "kind": "menus",
+            "original_id": "IMG_8892",
+            "src": "assets/food/img_8892.webp",
+            "width": 1350
+          }
+        ],
+        "name": "Ривьера",
+        "note": "От Курортного проспекта — короткий поворот на Пограничную. В снятом у входа меню «Ривьеры» море продолжается за столом: тунец, гребешок и копчёный угорь. После обеда можно вернуться к променаду.",
+        "phone": "+79632936543",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-riviera",
+        "source_url": "https://riviera-restaurant.ru/",
+        "themes": [
+          "fish",
+          "breakfast"
+        ],
+        "visit": 60
+      },
+      "hours": null,
+      "id": "aec9372b-5f2e-5e59-9dfd-93e23afafca6",
+      "lat": 54.96174166666667,
+      "lon": 20.481875,
+      "name": "Ривьера",
+      "photos": [
+        "assets/food/img_8891.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-riviera",
+      "source_url": "https://riviera-restaurant.ru/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Средиземноморская и европейская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "«Гранат» стоит на Крымской, в стороне от Курортного проспекта. Можно свернуть сюда на обед, оставив прогулку по берегу на потом. В меню заведения — рыба на гриле и пицца.",
+      "gastronomy": {
+        "address": "Крымская улица, 5",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:20:58",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9002",
+          "src": "assets/food/img_9002.webp",
+          "width": 1350
+        },
+        "cuisine": "Рыба на гриле, пицца и европейская кухня",
+        "dishes": [
+          "Рыба на гриле",
+          "Пицца"
+        ],
+        "extra": [],
+        "hours": "Ежедневно 11:00–22:00",
+        "lat": 54.961391666666664,
+        "lon": 20.472858333333335,
+        "menu_url": "https://granaat.qr-cafe.ru/catalog",
+        "menus": [],
+        "name": "Гранат",
+        "note": "«Гранат» стоит на Крымской, в стороне от Курортного проспекта. Можно свернуть сюда на обед, оставив прогулку по берегу на потом. В меню заведения — рыба на гриле и пицца.",
+        "phone": "+79212630104",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "kafe-granat",
+        "source_url": "https://granaat.qr-cafe.ru/catalog",
+        "themes": [
+          "fish"
+        ],
+        "visit": 50
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Гранат",
+          "url": "https://granaat.qr-cafe.ru/catalog",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 11:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "09ac9f24-bc0d-57da-afb5-243b315cfce7",
+      "lat": 54.961391666666664,
+      "lon": 20.472858333333335,
+      "name": "Гранат",
+      "photos": [
+        "assets/food/img_9002.webp"
+      ],
+      "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-granat",
+      "source_url": "https://granaat.qr-cafe.ru/catalog",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Рыба на гриле, пицца и европейская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 50
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "На вывеске — «Рыбное кафе на пирсе», на сайте — «Бранч на море». Это одна остановка у променада: завтрак или рыба, а дальше — линия берега. Перед выходом загляните в меню.",
+      "gastronomy": {
+        "address": "Улица Пугачёва, 4А",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:16:06",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9246",
+          "src": "assets/food/img_9246.webp",
+          "width": 1350
+        },
+        "cuisine": "Рыба, морепродукты и завтраки",
+        "dishes": [],
+        "extra": [],
+        "hours": "Ежедневно 09:00–21:00",
+        "lat": 54.96272166666667,
+        "lon": 20.477725,
+        "menu_url": "https://branchnamore.ru/",
+        "menus": [],
+        "name": "Рыбное кафе на пирсе",
+        "note": "На вывеске — «Рыбное кафе на пирсе», на сайте — «Бранч на море». Это одна остановка у променада: завтрак или рыба, а дальше — линия берега. Перед выходом загляните в меню.",
+        "phone": "+79052494091",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "rybnoe-kafe-na-pirse",
+        "source_url": "https://branchnamore.ru/",
+        "themes": [
+          "fish",
+          "breakfast"
+        ],
+        "visit": 50
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "21:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Рыбное кафе на пирсе",
+          "url": "https://branchnamore.ru/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 09:00–21:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "293ef023-01b1-5d0a-bb97-e4dda9f94ba4",
+      "lat": 54.96272166666667,
+      "lon": 20.477725,
+      "name": "Рыбное кафе на пирсе",
+      "photos": [
+        "assets/food/img_9246.webp"
+      ],
+      "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "rybnoe-kafe-na-pirse",
+      "source_url": "https://branchnamore.ru/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Рыба, морепродукты и завтраки"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 50
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "С променада видна вывеска «Коптильного цеха». За столом можно продолжить знакомство с балтийской рыбой; в кухне есть и мясные блюда. Заложите время на обед, прежде чем идти дальше вдоль моря.",
+      "gastronomy": {
+        "address": "Улица Володарского, 12А",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:19:16",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9249",
+          "src": "assets/food/img_9249.webp",
+          "width": 1350
+        },
+        "cuisine": "Копчёная рыба, мясо и бургеры",
+        "dishes": [],
+        "extra": [],
+        "hours": "Ежедневно 12:00–22:00",
+        "lat": 54.963786666666664,
+        "lon": 20.48167,
+        "menus": [],
+        "name": "Коптильный цех",
+        "note": "С променада видна вывеска «Коптильного цеха». За столом можно продолжить знакомство с балтийской рыбой; в кухне есть и мясные блюда. Заложите время на обед, прежде чем идти дальше вдоль моря.",
+        "phone": "+74012640150",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-koptilnyy-tsekh",
+        "source_url": "https://visit-kaliningrad.ru/food/koptilnyy-tsekh/",
+        "themes": [
+          "fish",
+          "baltic"
+        ],
+        "visit": 60
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Коптильный цех",
+          "url": "https://visit-kaliningrad.ru/food/koptilnyy-tsekh/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 12:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "90622ca8-22a2-527a-9ff8-ef4eb28ccdc7",
+      "lat": 54.963786666666664,
+      "lon": 20.48167,
+      "name": "Коптильный цех",
+      "photos": [
+        "assets/food/img_9249.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-koptilnyy-tsekh",
+      "source_url": "https://visit-kaliningrad.ru/food/koptilnyy-tsekh/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Копчёная рыба, мясо и бургеры"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "У восточной части променада стоит башенка «Самбии». Ресторан при отеле — остановка для обеда перед прогулкой к городскому парку. В кухне соседствуют русские и европейские блюда.",
+      "gastronomy": {
+        "address": "Улица Володарского, 20",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:21:03",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9252",
+          "src": "assets/food/img_9252.webp",
+          "width": 1350
+        },
+        "cuisine": "Русская и европейская кухня",
+        "dishes": [],
+        "extra": [],
+        "hours": "Вс–чт 12:00–22:00 · пт–сб 12:00–23:00",
+        "lat": 54.964375,
+        "lon": 20.483686666666667,
+        "menus": [],
+        "name": "Самбия",
+        "note": "У восточной части променада стоит башенка «Самбии». Ресторан при отеле — остановка для обеда перед прогулкой к городскому парку. В кухне соседствуют русские и европейские блюда.",
+        "phone": "+74015036461",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "restoran-sambiya",
+        "source_url": "https://visit-kaliningrad.ru/food/restoran-sambia-sambiya/",
+        "themes": [
+          "fish"
+        ],
+        "visit": 60
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          },
+          {
+            "closes": "23:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Самбия",
+          "url": "https://visit-kaliningrad.ru/food/restoran-sambia-sambiya/",
+          "verification": "official_source"
+        },
+        "text": "Вс–чт 12:00–22:00 · пт–сб 12:00–23:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "43aa7782-638c-5d4f-b5ca-2d58d4761131",
+      "lat": 54.964375,
+      "lon": 20.483686666666667,
+      "name": "Самбия",
+      "photos": [
+        "assets/food/img_9252.webp"
+      ],
+      "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "restoran-sambiya",
+      "source_url": "https://visit-kaliningrad.ru/food/restoran-sambia-sambiya/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Русская и европейская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 60
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "На Московской море меняет форму: здесь можно остановиться за суши и роллами. «Тунец» лежит восточнее центра, поэтому удобно добавить его к прогулке со стороны парка.",
+      "gastronomy": {
+        "address": "Московская улица, 66",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:33:44",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9331",
+          "src": "assets/food/img_9331.webp",
+          "width": 1350
+        },
+        "cuisine": "Суши, роллы и паназиатская кухня",
+        "dishes": [
+          "Суши и роллы"
+        ],
+        "extra": [],
+        "hours": "Ежедневно 11:00–22:00",
+        "lat": 54.963745,
+        "lon": 20.492528333333333,
+        "menu_url": "https://zelenogradsk.sushi-tunec.ru/",
+        "menus": [],
+        "name": "Тунец",
+        "note": "На Московской море меняет форму: здесь можно остановиться за суши и роллами. «Тунец» лежит восточнее центра, поэтому удобно добавить его к прогулке со стороны парка.",
+        "phone": "+79217106888",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "kafe-tunets",
+        "source_url": "https://zelenogradsk.sushi-tunec.ru/contacty/",
+        "themes": [
+          "fish"
+        ],
+        "visit": 45
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Тунец",
+          "url": "https://zelenogradsk.sushi-tunec.ru/contacty/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 11:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "26fa6200-dd0e-56f8-a538-16c5667ba89d",
+      "lat": 54.963745,
+      "lon": 20.492528333333333,
+      "name": "Тунец",
+      "photos": [
+        "assets/food/img_9331.webp"
+      ],
+      "practical": "На остановку заложено около 45 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-tunets",
+      "source_url": "https://zelenogradsk.sushi-tunec.ru/contacty/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Суши, роллы и паназиатская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 45
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Небольшая вывеска «Фанат» встречает на Московской улице. Это ещё одна остановка восточнее центра. Меню и время работы лучше уточнить перед прогулкой: снимка меню в нашем архиве пока нет.",
+      "gastronomy": {
+        "address": "Московская улица, 66",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:34:01",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9334",
+          "src": "assets/food/img_9334.webp",
+          "width": 1350
+        },
+        "cuisine": "Кафе",
+        "dishes": [],
+        "extra": [],
+        "lat": 54.96355,
+        "lon": 20.492271666666667,
+        "menus": [],
+        "name": "Фанат",
+        "note": "Небольшая вывеска «Фанат» встречает на Московской улице. Это ещё одна остановка восточнее центра. Меню и время работы лучше уточнить перед прогулкой: снимка меню в нашем архиве пока нет.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "kafe-fanat",
+        "source_url": "https://nz39.ru/catalog/1100-cafefanat",
+        "themes": [],
+        "visit": 40
+      },
+      "hours": null,
+      "id": "ddd69c12-a585-581e-80bd-d154748b9711",
+      "lat": 54.96355,
+      "lon": 20.492271666666667,
+      "name": "Фанат",
+      "photos": [
+        "assets/food/img_9334.webp"
+      ],
+      "practical": "На остановку заложено около 40 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-fanat",
+      "source_url": "https://nz39.ru/catalog/1100-cafefanat",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Кафе"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 40
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "На Саратовской у «Уксуса» стоит табличка с ранними завтраками. Кафе находится в центре «ПАРАDOX», рядом с музейной частью прогулки. Можно начать здесь день или вернуться на обед.",
+      "gastronomy": {
+        "address": "Саратовская улица, 2А · центр «ПАРАDOX»",
+        "address_source": "https://2doks.ru/kontakty",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 12:44:06",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_9347",
+          "src": "assets/food/img_9347.webp",
+          "width": 1350
+        },
+        "cuisine": "Завтраки, паста и десерты",
+        "dishes": [
+          "Завтраки",
+          "Паста",
+          "Десерты"
+        ],
+        "extra": [],
+        "hours": "Ежедневно 08:00–21:00",
+        "lat": 54.95957166666667,
+        "lon": 20.482855,
+        "menu_url": "https://uksuskafe.myresto.online/",
+        "menus": [],
+        "name": "Уксус",
+        "note": "На Саратовской у «Уксуса» стоит табличка с ранними завтраками. Кафе находится в центре «ПАРАDOX», рядом с музейной частью прогулки. Можно начать здесь день или вернуться на обед.",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "coffee",
+          "meal",
+          "dessert"
+        ],
+        "slug": "kafe-uksus",
+        "source_url": "https://2doks.ru/kafe",
+        "themes": [
+          "breakfast",
+          "coffee",
+          "italian"
+        ],
+        "visit": 45
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "21:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "08:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Уксус",
+          "url": "https://2doks.ru/kafe",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 08:00–21:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "8edffbd1-fc80-5aa6-b91c-c47657fcab4f",
+      "lat": 54.95957166666667,
+      "lon": 20.482855,
+      "name": "Уксус",
+      "photos": [
+        "assets/food/img_9347.webp"
+      ],
+      "practical": "На остановку заложено около 45 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "kafe-uksus",
+      "source_url": "https://2doks.ru/kafe",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Завтраки, паста и десерты"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 45
+    },
+    {
+      "access_note": "Наши фотографии сняты 30 мая 2026 года. Состав блюд, цены и часы работы могут измениться.",
+      "area": "zelenogradsk",
+      "area_name": "Зеленоградск",
+      "category": "restaurant",
+      "category_name": "Рестораны и кафе",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "description": "Ложки и тарелки на фасаде «Лаба Дены» подсказывают, что здесь важнее всего стол. В меню бистро — литовские цеппелины и холодный борщ. Пауза на Курортном проспекте с вкусом соседнего берега.",
+      "gastronomy": {
+        "address": "Курортный проспект, 7",
+        "available": true,
+        "checked_at": "2026-10-02",
+        "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+        "cover": {
+          "captured_at": "2026:05:30 11:00:40",
+          "height": 1800,
+          "kind": "cover",
+          "original_id": "IMG_8869",
+          "src": "assets/food/img_8869.webp",
+          "width": 1350
+        },
+        "cuisine": "Литовская кухня",
+        "dishes": [
+          "Цеппелины",
+          "Холодный борщ"
+        ],
+        "extra": [],
+        "hours": "Вс–чт 09:00–22:00 · пт–сб 09:00–23:00",
+        "lat": 54.961375,
+        "lon": 20.480155,
+        "menu_url": "https://labadiena.ru/#menu",
+        "menus": [],
+        "name": "Лаба Дена",
+        "note": "Ложки и тарелки на фасаде «Лаба Дены» подсказывают, что здесь важнее всего стол. В меню бистро — литовские цеппелины и холодный борщ. Пауза на Курортном проспекте с вкусом соседнего берега.",
+        "phone": "+79097852277",
+        "photo_date": "2026-05-30",
+        "roles": [
+          "meal"
+        ],
+        "slug": "bistro-laba-dena",
+        "source_url": "https://labadiena.ru/",
+        "themes": [
+          "baltic",
+          "breakfast"
+        ],
+        "visit": 50
+      },
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          },
+          {
+            "closes": "23:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Лаба Дена",
+          "url": "https://labadiena.ru/",
+          "verification": "official_source"
+        },
+        "text": "Вс–чт 09:00–22:00 · пт–сб 09:00–23:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      },
+      "id": "0795965a-0f83-57e5-96c2-e57ae996aad8",
+      "lat": 54.961375,
+      "lon": 20.480155,
+      "name": "Лаба Дена",
+      "photos": [
+        "assets/food/img_8869.webp"
+      ],
+      "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
+      "price": null,
+      "slug": "bistro-laba-dena",
+      "source_url": "https://labadiena.ru/",
+      "tags": [
+        "Еда",
+        "Зеленоградск",
+        "Литовская кухня"
+      ],
+      "verification_status": "photo_geotag_and_source_checked",
+      "verified_at": "2026-10-02",
+      "visit_minutes": 50
     }
   ],
   "routes": [

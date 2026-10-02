@@ -43,6 +43,78 @@
       "to": "restoran-zolotaya-milya"
     },
     {
+      "from": "restoran-telegraf",
+      "meters": 214,
+      "minutes": 3,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 325,
+      "minutes": 4,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 391,
+      "minutes": 5,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 452,
+      "minutes": 6,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 388,
+      "minutes": 5,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 412,
+      "minutes": 5,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 692,
+      "minutes": 9,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 768,
+      "minutes": 10,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 1268,
+      "minutes": 16,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 1241,
+      "minutes": 15,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 562,
+      "minutes": 7,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-telegraf",
+      "meters": 334,
+      "minutes": 5,
+      "to": "bistro-laba-dena"
+    },
+    {
       "from": "restoran-balt",
       "meters": 199,
       "minutes": 3,
@@ -83,6 +155,78 @@
       "meters": 1041,
       "minutes": 13,
       "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 15,
+      "minutes": 1,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 126,
+      "minutes": 2,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 192,
+      "minutes": 3,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 253,
+      "minutes": 4,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 558,
+      "minutes": 7,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 287,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 503,
+      "minutes": 7,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 569,
+      "minutes": 7,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 1102,
+      "minutes": 14,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 1075,
+      "minutes": 13,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 456,
+      "minutes": 6,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-balt",
+      "meters": 135,
+      "minutes": 2,
+      "to": "bistro-laba-dena"
     },
     {
       "from": "kafe-skovorodka",
@@ -127,6 +271,78 @@
       "to": "restoran-zolotaya-milya"
     },
     {
+      "from": "kafe-skovorodka",
+      "meters": 202,
+      "minutes": 3,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 86,
+      "minutes": 2,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 20,
+      "minutes": 1,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 48,
+      "minutes": 1,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 685,
+      "minutes": 9,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 332,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 359,
+      "minutes": 5,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 425,
+      "minutes": 6,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 889,
+      "minutes": 11,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 862,
+      "minutes": 11,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 336,
+      "minutes": 5,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-skovorodka",
+      "meters": 77,
+      "minutes": 1,
+      "to": "bistro-laba-dena"
+    },
+    {
       "from": "restoran-oblaka",
       "meters": 398,
       "minutes": 5,
@@ -167,6 +383,78 @@
       "meters": 554,
       "minutes": 7,
       "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 612,
+      "minutes": 8,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 723,
+      "minutes": 9,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 789,
+      "minutes": 10,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 850,
+      "minutes": 11,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 189,
+      "minutes": 3,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 541,
+      "minutes": 7,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 809,
+      "minutes": 10,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 953,
+      "minutes": 12,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 1666,
+      "minutes": 20,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 1639,
+      "minutes": 20,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 961,
+      "minutes": 12,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-oblaka",
+      "meters": 732,
+      "minutes": 9,
+      "to": "bistro-laba-dena"
     },
     {
       "from": "kafe-gnezdo",
@@ -211,6 +499,78 @@
       "to": "restoran-zolotaya-milya"
     },
     {
+      "from": "kafe-gnezdo",
+      "meters": 2493,
+      "minutes": 30,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2605,
+      "minutes": 32,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2670,
+      "minutes": 33,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2731,
+      "minutes": 33,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2150,
+      "minutes": 26,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2502,
+      "minutes": 31,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2770,
+      "minutes": 34,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2914,
+      "minutes": 35,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 3548,
+      "minutes": 43,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 3521,
+      "minutes": 43,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2842,
+      "minutes": 35,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-gnezdo",
+      "meters": 2614,
+      "minutes": 32,
+      "to": "bistro-laba-dena"
+    },
+    {
       "from": "restoran-dolche-nonna",
       "meters": 445,
       "minutes": 6,
@@ -251,6 +611,78 @@
       "meters": 1106,
       "minutes": 14,
       "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 250,
+      "minutes": 3,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 258,
+      "minutes": 4,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 285,
+      "minutes": 4,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 328,
+      "minutes": 4,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 379,
+      "minutes": 5,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 27,
+      "minutes": 1,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 267,
+      "minutes": 4,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 411,
+      "minutes": 5,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 1167,
+      "minutes": 15,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 1140,
+      "minutes": 14,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 548,
+      "minutes": 7,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-dolche-nonna",
+      "meters": 249,
+      "minutes": 3,
+      "to": "bistro-laba-dena"
     },
     {
       "from": "kofeynya-slou",
@@ -295,6 +727,78 @@
       "to": "restoran-zolotaya-milya"
     },
     {
+      "from": "kofeynya-slou",
+      "meters": 552,
+      "minutes": 7,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 436,
+      "minutes": 6,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 370,
+      "minutes": 5,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 326,
+      "minutes": 4,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 1007,
+      "minutes": 13,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 654,
+      "minutes": 8,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 460,
+      "minutes": 6,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 508,
+      "minutes": 7,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 548,
+      "minutes": 7,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 522,
+      "minutes": 7,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 373,
+      "minutes": 5,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kofeynya-slou",
+      "meters": 427,
+      "minutes": 6,
+      "to": "bistro-laba-dena"
+    },
+    {
       "from": "restoran-zolotaya-milya",
       "meters": 842,
       "minutes": 11,
@@ -335,6 +839,1446 @@
       "meters": 1571,
       "minutes": 19,
       "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1056,
+      "minutes": 13,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1167,
+      "minutes": 15,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1233,
+      "minutes": 15,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1294,
+      "minutes": 16,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 727,
+      "minutes": 9,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1085,
+      "minutes": 14,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1353,
+      "minutes": 17,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1497,
+      "minutes": 18,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 2110,
+      "minutes": 26,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 2083,
+      "minutes": 25,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1404,
+      "minutes": 17,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-zolotaya-milya",
+      "meters": 1176,
+      "minutes": 15,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 214,
+      "minutes": 3,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 15,
+      "minutes": 1,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 202,
+      "minutes": 3,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 612,
+      "minutes": 8,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 2493,
+      "minutes": 30,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 250,
+      "minutes": 3,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 552,
+      "minutes": 7,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 1056,
+      "minutes": 13,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 116,
+      "minutes": 2,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 182,
+      "minutes": 3,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 243,
+      "minutes": 3,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 547,
+      "minutes": 7,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 276,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 493,
+      "minutes": 6,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 558,
+      "minutes": 7,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 1091,
+      "minutes": 14,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 1064,
+      "minutes": 13,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 445,
+      "minutes": 6,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "pekarnya-khleb",
+      "meters": 125,
+      "minutes": 2,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 325,
+      "minutes": 4,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 126,
+      "minutes": 2,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 86,
+      "minutes": 2,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 723,
+      "minutes": 9,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 2605,
+      "minutes": 32,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 258,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 436,
+      "minutes": 6,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 1167,
+      "minutes": 15,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 116,
+      "minutes": 2,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 66,
+      "minutes": 1,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 127,
+      "minutes": 2,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 636,
+      "minutes": 8,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 284,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 377,
+      "minutes": 5,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 442,
+      "minutes": 6,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 975,
+      "minutes": 12,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 948,
+      "minutes": 12,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 329,
+      "minutes": 4,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-amaliya",
+      "meters": 9,
+      "minutes": 1,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 391,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 192,
+      "minutes": 3,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 20,
+      "minutes": 1,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 789,
+      "minutes": 10,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 2670,
+      "minutes": 33,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 285,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 370,
+      "minutes": 5,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 1233,
+      "minutes": 15,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 182,
+      "minutes": 3,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 66,
+      "minutes": 1,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 61,
+      "minutes": 1,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 664,
+      "minutes": 8,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 312,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 372,
+      "minutes": 5,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 438,
+      "minutes": 6,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 909,
+      "minutes": 11,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 882,
+      "minutes": 11,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 357,
+      "minutes": 5,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-bufet",
+      "meters": 57,
+      "minutes": 1,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 452,
+      "minutes": 6,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 253,
+      "minutes": 4,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 48,
+      "minutes": 1,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 850,
+      "minutes": 11,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 2731,
+      "minutes": 33,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 328,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 326,
+      "minutes": 4,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 1294,
+      "minutes": 16,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 243,
+      "minutes": 3,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 127,
+      "minutes": 2,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 61,
+      "minutes": 1,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 707,
+      "minutes": 9,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 355,
+      "minutes": 5,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 311,
+      "minutes": 4,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 377,
+      "minutes": 5,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 865,
+      "minutes": 11,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 838,
+      "minutes": 11,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 361,
+      "minutes": 5,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-riviera",
+      "meters": 118,
+      "minutes": 2,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 388,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 558,
+      "minutes": 7,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 685,
+      "minutes": 9,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 189,
+      "minutes": 3,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 2150,
+      "minutes": 26,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 379,
+      "minutes": 5,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 1007,
+      "minutes": 13,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 727,
+      "minutes": 9,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 547,
+      "minutes": 7,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 636,
+      "minutes": 8,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 664,
+      "minutes": 8,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 707,
+      "minutes": 9,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 359,
+      "minutes": 5,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 626,
+      "minutes": 8,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 770,
+      "minutes": 10,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 1546,
+      "minutes": 19,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 1519,
+      "minutes": 19,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 927,
+      "minutes": 12,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-granat",
+      "meters": 627,
+      "minutes": 8,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 412,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 287,
+      "minutes": 4,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 332,
+      "minutes": 4,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 541,
+      "minutes": 7,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 2502,
+      "minutes": 31,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 27,
+      "minutes": 1,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 654,
+      "minutes": 8,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 1085,
+      "minutes": 14,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 276,
+      "minutes": 4,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 284,
+      "minutes": 4,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 312,
+      "minutes": 4,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 355,
+      "minutes": 5,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 359,
+      "minutes": 5,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 281,
+      "minutes": 4,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 425,
+      "minutes": 6,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 1193,
+      "minutes": 15,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 1166,
+      "minutes": 14,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 575,
+      "minutes": 7,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "rybnoe-kafe-na-pirse",
+      "meters": 275,
+      "minutes": 4,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 692,
+      "minutes": 9,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 503,
+      "minutes": 7,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 359,
+      "minutes": 5,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 809,
+      "minutes": 10,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 2770,
+      "minutes": 34,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 267,
+      "minutes": 4,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 460,
+      "minutes": 6,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 1353,
+      "minutes": 17,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 493,
+      "minutes": 6,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 377,
+      "minutes": 5,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 372,
+      "minutes": 5,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 311,
+      "minutes": 4,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 626,
+      "minutes": 8,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 281,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 144,
+      "minutes": 2,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 952,
+      "minutes": 12,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 972,
+      "minutes": 12,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 646,
+      "minutes": 8,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-koptilnyy-tsekh",
+      "meters": 368,
+      "minutes": 5,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 768,
+      "minutes": 10,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 569,
+      "minutes": 7,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 425,
+      "minutes": 6,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 953,
+      "minutes": 12,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 2914,
+      "minutes": 35,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 411,
+      "minutes": 5,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 508,
+      "minutes": 7,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 1497,
+      "minutes": 18,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 558,
+      "minutes": 7,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 442,
+      "minutes": 6,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 438,
+      "minutes": 6,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 377,
+      "minutes": 5,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 770,
+      "minutes": 10,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 425,
+      "minutes": 6,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 144,
+      "minutes": 2,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 808,
+      "minutes": 10,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 835,
+      "minutes": 11,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 712,
+      "minutes": 9,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "restoran-sambiya",
+      "meters": 434,
+      "minutes": 6,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1268,
+      "minutes": 16,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1102,
+      "minutes": 14,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 889,
+      "minutes": 11,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1666,
+      "minutes": 20,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 3548,
+      "minutes": 43,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1167,
+      "minutes": 15,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 548,
+      "minutes": 7,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 2110,
+      "minutes": 26,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1091,
+      "minutes": 14,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 975,
+      "minutes": 12,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 909,
+      "minutes": 11,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 865,
+      "minutes": 11,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1546,
+      "minutes": 19,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 1193,
+      "minutes": 15,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 952,
+      "minutes": 12,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 808,
+      "minutes": 10,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 27,
+      "minutes": 1,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 912,
+      "minutes": 11,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-tunets",
+      "meters": 966,
+      "minutes": 12,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1241,
+      "minutes": 15,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1075,
+      "minutes": 13,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 862,
+      "minutes": 11,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1639,
+      "minutes": 20,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 3521,
+      "minutes": 43,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1140,
+      "minutes": 14,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 522,
+      "minutes": 7,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 2083,
+      "minutes": 25,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1064,
+      "minutes": 13,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 948,
+      "minutes": 12,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 882,
+      "minutes": 11,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 838,
+      "minutes": 11,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1519,
+      "minutes": 19,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 1166,
+      "minutes": 14,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 972,
+      "minutes": 12,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 835,
+      "minutes": 11,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 27,
+      "minutes": 1,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 885,
+      "minutes": 11,
+      "to": "kafe-uksus"
+    },
+    {
+      "from": "kafe-fanat",
+      "meters": 939,
+      "minutes": 12,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 562,
+      "minutes": 7,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 456,
+      "minutes": 6,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 336,
+      "minutes": 5,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 961,
+      "minutes": 12,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 2842,
+      "minutes": 35,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 548,
+      "minutes": 7,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 373,
+      "minutes": 5,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 1404,
+      "minutes": 17,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 445,
+      "minutes": 6,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 329,
+      "minutes": 4,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 357,
+      "minutes": 5,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 361,
+      "minutes": 5,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 927,
+      "minutes": 12,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 575,
+      "minutes": 7,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 646,
+      "minutes": 8,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 712,
+      "minutes": 9,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 912,
+      "minutes": 11,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 885,
+      "minutes": 11,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "kafe-uksus",
+      "meters": 320,
+      "minutes": 4,
+      "to": "bistro-laba-dena"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 334,
+      "minutes": 5,
+      "to": "restoran-telegraf"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 135,
+      "minutes": 2,
+      "to": "restoran-balt"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 77,
+      "minutes": 1,
+      "to": "kafe-skovorodka"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 732,
+      "minutes": 9,
+      "to": "restoran-oblaka"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 2614,
+      "minutes": 32,
+      "to": "kafe-gnezdo"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 249,
+      "minutes": 3,
+      "to": "restoran-dolche-nonna"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 427,
+      "minutes": 6,
+      "to": "kofeynya-slou"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 1176,
+      "minutes": 15,
+      "to": "restoran-zolotaya-milya"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 125,
+      "minutes": 2,
+      "to": "pekarnya-khleb"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 9,
+      "minutes": 1,
+      "to": "kafe-amaliya"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 57,
+      "minutes": 1,
+      "to": "kafe-bufet"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 118,
+      "minutes": 2,
+      "to": "restoran-riviera"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 627,
+      "minutes": 8,
+      "to": "kafe-granat"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 275,
+      "minutes": 4,
+      "to": "rybnoe-kafe-na-pirse"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 368,
+      "minutes": 5,
+      "to": "restoran-koptilnyy-tsekh"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 434,
+      "minutes": 6,
+      "to": "restoran-sambiya"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 966,
+      "minutes": 12,
+      "to": "kafe-tunets"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 939,
+      "minutes": 12,
+      "to": "kafe-fanat"
+    },
+    {
+      "from": "bistro-laba-dena",
+      "meters": 320,
+      "minutes": 4,
+      "to": "kafe-uksus"
     }
   ],
   "photo_date": "2026-05-30",
@@ -347,7 +2291,7 @@
     "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
     "engine_version": "11.1",
     "ferry_timetable": false,
-    "id": "kaliningrad-261001-gh-11-1-v1-d7840de0c1b5",
+    "id": "kaliningrad-261001-gh-11-1-v1-fdfba75eb6c5",
     "license": "ODbL-1.0",
     "license_url": "https://www.openstreetmap.org/copyright",
     "max_snap_m": 230,
@@ -364,76 +2308,76 @@
   },
   "tours": [
     {
-      "distance_m": 934,
-      "places": [
-        "kofeynya-slou",
-        "restoran-dolche-nonna",
-        "kafe-skovorodka"
-      ],
-      "theme_matches": 0,
-      "total_minutes": 122,
-      "visit_minutes": 110,
-      "walking_minutes": 12
-    },
-    {
-      "distance_m": 762,
+      "distance_m": 552,
       "places": [
         "kofeynya-slou",
         "kafe-skovorodka",
-        "restoran-telegraf"
+        "pekarnya-khleb"
       ],
       "theme_matches": 0,
-      "total_minutes": 130,
-      "visit_minutes": 120,
-      "walking_minutes": 10
+      "total_minutes": 93,
+      "visit_minutes": 85,
+      "walking_minutes": 8
     },
     {
-      "distance_m": 776,
+      "distance_m": 552,
       "places": [
         "kofeynya-slou",
-        "restoran-balt",
-        "kafe-skovorodka"
+        "kafe-amaliya",
+        "pekarnya-khleb"
       ],
       "theme_matches": 0,
-      "total_minutes": 130,
-      "visit_minutes": 120,
-      "walking_minutes": 10
+      "total_minutes": 98,
+      "visit_minutes": 90,
+      "walking_minutes": 8
     },
     {
-      "distance_m": 1141,
+      "distance_m": 552,
       "places": [
         "kofeynya-slou",
-        "restoran-telegraf",
-        "kafe-skovorodka"
+        "kafe-bufet",
+        "pekarnya-khleb"
       ],
       "theme_matches": 0,
-      "total_minutes": 134,
-      "visit_minutes": 120,
-      "walking_minutes": 14
+      "total_minutes": 98,
+      "visit_minutes": 90,
+      "walking_minutes": 8
     },
     {
-      "distance_m": 3041,
+      "distance_m": 222,
       "places": [
-        "kofeynya-slou",
+        "kafe-bufet",
         "kafe-skovorodka",
-        "kafe-gnezdo"
+        "pekarnya-khleb"
       ],
       "theme_matches": 0,
-      "total_minutes": 143,
-      "visit_minutes": 105,
-      "walking_minutes": 38
+      "total_minutes": 104,
+      "visit_minutes": 100,
+      "walking_minutes": 4
     },
     {
-      "distance_m": 1937,
+      "distance_m": 202,
       "places": [
-        "kofeynya-slou",
-        "restoran-oblaka",
-        "kafe-skovorodka"
+        "kafe-skovorodka",
+        "kafe-amaliya",
+        "pekarnya-khleb"
       ],
       "theme_matches": 0,
-      "total_minutes": 144,
-      "visit_minutes": 120,
-      "walking_minutes": 24
+      "total_minutes": 104,
+      "visit_minutes": 100,
+      "walking_minutes": 4
+    },
+    {
+      "distance_m": 202,
+      "places": [
+        "kafe-skovorodka",
+        "kafe-bufet",
+        "pekarnya-khleb"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 104,
+      "visit_minutes": 100,
+      "walking_minutes": 4
     }
   ],
   "updated_at": "2026-10-02",
@@ -965,6 +2909,841 @@
       "themes": [],
       "visit": 60,
       "visit_hours": null
+    },
+    {
+      "address": "Курортный проспект, 16",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 10:57:32",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8838",
+        "src": "assets/food/img_8838.webp",
+        "width": 1350
+      },
+      "cuisine": "Ремесленная пекарня",
+      "dishes": [],
+      "extra": [],
+      "lat": 54.960971666666666,
+      "lon": 20.478328333333337,
+      "menus": [],
+      "name": "Хлеб",
+      "note": "У Курхауса есть короткая остановка для хлеба и кофе. На фасаде — вывеска ремесленной пекарни. Можно зайти здесь, прежде чем снова выйти на Курортный проспект.",
+      "phone": "+79211048534",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee",
+        "dessert"
+      ],
+      "season_note": "В туристическом справочнике часы разделены на сезон и межсезонье, но граница сезонов не названа. Уточните время на свою дату.",
+      "slug": "pekarnya-khleb",
+      "source_url": "https://visit-kaliningrad.ru/food/xleb-khleb/",
+      "themes": [
+        "coffee",
+        "breakfast"
+      ],
+      "visit": 25,
+      "visit_hours": null
+    },
+    {
+      "address": "Курортный проспект, 10",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:00:25",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8864",
+        "src": "assets/food/img_8864.webp",
+        "width": 1350
+      },
+      "cuisine": "Кафе и завтраки",
+      "dishes": [],
+      "extra": [],
+      "lat": 54.961375,
+      "lon": 20.480003333333332,
+      "menus": [],
+      "name": "Амалия",
+      "note": "Под деревьями стоят столики, за ними — зелёный фасад «Амалии». Здесь можно сделать паузу на Курортном проспекте: позавтракать, а затем продолжить прогулку к воде.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee",
+        "meal",
+        "dessert"
+      ],
+      "slug": "kafe-amaliya",
+      "source_url": "https://www.restoclub.ru/klng/place/amalija",
+      "themes": [
+        "breakfast",
+        "coffee"
+      ],
+      "visit": 40,
+      "visit_hours": null
+    },
+    {
+      "address": "Курортный проспект, 6",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:01:38",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8873",
+        "src": "assets/food/img_8873.webp",
+        "width": 1350
+      },
+      "cuisine": "Европейская кухня и завтраки",
+      "dishes": [],
+      "extra": [],
+      "lat": 54.9616,
+      "lon": 20.480958333333337,
+      "menus": [],
+      "name": "Буфетъ",
+      "note": "Большой нарисованный кот встречает у входа в «Буфетъ». За ним — кафе в старом доме на Курортном проспекте. Для прогулки по центру это место, где можно задержаться за столом.",
+      "phone": "+79062300058",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee",
+        "meal",
+        "dessert"
+      ],
+      "slug": "kafe-bufet",
+      "source_url": "https://visit-zelenogradsk.ru/restaurants-cafes",
+      "themes": [
+        "breakfast",
+        "coffee"
+      ],
+      "visit": 40,
+      "visit_hours": null
+    },
+    {
+      "address": "Пограничная улица, 1",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:04:04",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8891",
+        "src": "assets/food/img_8891.webp",
+        "width": 1350
+      },
+      "cuisine": "Средиземноморская и европейская кухня",
+      "dishes": [
+        "Тартар из тунца",
+        "Гребешок с томлёной грушей",
+        "Салат с копчёным угрём"
+      ],
+      "extra": [],
+      "lat": 54.96174166666667,
+      "lon": 20.481875,
+      "menu_url": "https://riviera-restaurant.ru/#menu",
+      "menus": [
+        {
+          "captured_at": "2026:05:30 11:04:09",
+          "height": 1800,
+          "kind": "menus",
+          "original_id": "IMG_8892",
+          "src": "assets/food/img_8892.webp",
+          "width": 1350
+        }
+      ],
+      "name": "Ривьера",
+      "note": "От Курортного проспекта — короткий поворот на Пограничную. В снятом у входа меню «Ривьеры» море продолжается за столом: тунец, гребешок и копчёный угорь. После обеда можно вернуться к променаду.",
+      "phone": "+79632936543",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-riviera",
+      "source_url": "https://riviera-restaurant.ru/",
+      "themes": [
+        "fish",
+        "breakfast"
+      ],
+      "visit": 60,
+      "visit_hours": null
+    },
+    {
+      "address": "Крымская улица, 5",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:20:58",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9002",
+        "src": "assets/food/img_9002.webp",
+        "width": 1350
+      },
+      "cuisine": "Рыба на гриле, пицца и европейская кухня",
+      "dishes": [
+        "Рыба на гриле",
+        "Пицца"
+      ],
+      "extra": [],
+      "hours": "Ежедневно 11:00–22:00",
+      "lat": 54.961391666666664,
+      "lon": 20.472858333333335,
+      "menu_url": "https://granaat.qr-cafe.ru/catalog",
+      "menus": [],
+      "name": "Гранат",
+      "note": "«Гранат» стоит на Крымской, в стороне от Курортного проспекта. Можно свернуть сюда на обед, оставив прогулку по берегу на потом. В меню заведения — рыба на гриле и пицца.",
+      "phone": "+79212630104",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "kafe-granat",
+      "source_url": "https://granaat.qr-cafe.ru/catalog",
+      "themes": [
+        "fish"
+      ],
+      "visit": 50,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Гранат",
+          "url": "https://granaat.qr-cafe.ru/catalog",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 11:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Улица Пугачёва, 4А",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:16:06",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9246",
+        "src": "assets/food/img_9246.webp",
+        "width": 1350
+      },
+      "cuisine": "Рыба, морепродукты и завтраки",
+      "dishes": [],
+      "extra": [],
+      "hours": "Ежедневно 09:00–21:00",
+      "lat": 54.96272166666667,
+      "lon": 20.477725,
+      "menu_url": "https://branchnamore.ru/",
+      "menus": [],
+      "name": "Рыбное кафе на пирсе",
+      "note": "На вывеске — «Рыбное кафе на пирсе», на сайте — «Бранч на море». Это одна остановка у променада: завтрак или рыба, а дальше — линия берега. Перед выходом загляните в меню.",
+      "phone": "+79052494091",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "rybnoe-kafe-na-pirse",
+      "source_url": "https://branchnamore.ru/",
+      "themes": [
+        "fish",
+        "breakfast"
+      ],
+      "visit": 50,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "21:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Рыбное кафе на пирсе",
+          "url": "https://branchnamore.ru/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 09:00–21:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Улица Володарского, 12А",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:19:16",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9249",
+        "src": "assets/food/img_9249.webp",
+        "width": 1350
+      },
+      "cuisine": "Копчёная рыба, мясо и бургеры",
+      "dishes": [],
+      "extra": [],
+      "hours": "Ежедневно 12:00–22:00",
+      "lat": 54.963786666666664,
+      "lon": 20.48167,
+      "menus": [],
+      "name": "Коптильный цех",
+      "note": "С променада видна вывеска «Коптильного цеха». За столом можно продолжить знакомство с балтийской рыбой; в кухне есть и мясные блюда. Заложите время на обед, прежде чем идти дальше вдоль моря.",
+      "phone": "+74012640150",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-koptilnyy-tsekh",
+      "source_url": "https://visit-kaliningrad.ru/food/koptilnyy-tsekh/",
+      "themes": [
+        "fish",
+        "baltic"
+      ],
+      "visit": 60,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Коптильный цех",
+          "url": "https://visit-kaliningrad.ru/food/koptilnyy-tsekh/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 12:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Улица Володарского, 20",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:21:03",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9252",
+        "src": "assets/food/img_9252.webp",
+        "width": 1350
+      },
+      "cuisine": "Русская и европейская кухня",
+      "dishes": [],
+      "extra": [],
+      "hours": "Вс–чт 12:00–22:00 · пт–сб 12:00–23:00",
+      "lat": 54.964375,
+      "lon": 20.483686666666667,
+      "menus": [],
+      "name": "Самбия",
+      "note": "У восточной части променада стоит башенка «Самбии». Ресторан при отеле — остановка для обеда перед прогулкой к городскому парку. В кухне соседствуют русские и европейские блюда.",
+      "phone": "+74015036461",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "restoran-sambiya",
+      "source_url": "https://visit-kaliningrad.ru/food/restoran-sambia-sambiya/",
+      "themes": [
+        "fish"
+      ],
+      "visit": 60,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          },
+          {
+            "closes": "23:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Самбия",
+          "url": "https://visit-kaliningrad.ru/food/restoran-sambia-sambiya/",
+          "verification": "official_source"
+        },
+        "text": "Вс–чт 12:00–22:00 · пт–сб 12:00–23:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Московская улица, 66",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:33:44",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9331",
+        "src": "assets/food/img_9331.webp",
+        "width": 1350
+      },
+      "cuisine": "Суши, роллы и паназиатская кухня",
+      "dishes": [
+        "Суши и роллы"
+      ],
+      "extra": [],
+      "hours": "Ежедневно 11:00–22:00",
+      "lat": 54.963745,
+      "lon": 20.492528333333333,
+      "menu_url": "https://zelenogradsk.sushi-tunec.ru/",
+      "menus": [],
+      "name": "Тунец",
+      "note": "На Московской море меняет форму: здесь можно остановиться за суши и роллами. «Тунец» лежит восточнее центра, поэтому удобно добавить его к прогулке со стороны парка.",
+      "phone": "+79217106888",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "kafe-tunets",
+      "source_url": "https://zelenogradsk.sushi-tunec.ru/contacty/",
+      "themes": [
+        "fish"
+      ],
+      "visit": 45,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Тунец",
+          "url": "https://zelenogradsk.sushi-tunec.ru/contacty/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 11:00–22:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Московская улица, 66",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:34:01",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9334",
+        "src": "assets/food/img_9334.webp",
+        "width": 1350
+      },
+      "cuisine": "Кафе",
+      "dishes": [],
+      "extra": [],
+      "lat": 54.96355,
+      "lon": 20.492271666666667,
+      "menus": [],
+      "name": "Фанат",
+      "note": "Небольшая вывеска «Фанат» встречает на Московской улице. Это ещё одна остановка восточнее центра. Меню и время работы лучше уточнить перед прогулкой: снимка меню в нашем архиве пока нет.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "kafe-fanat",
+      "source_url": "https://nz39.ru/catalog/1100-cafefanat",
+      "themes": [],
+      "visit": 40,
+      "visit_hours": null
+    },
+    {
+      "address": "Саратовская улица, 2А · центр «ПАРАDOX»",
+      "address_source": "https://2doks.ru/kontakty",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 12:44:06",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_9347",
+        "src": "assets/food/img_9347.webp",
+        "width": 1350
+      },
+      "cuisine": "Завтраки, паста и десерты",
+      "dishes": [
+        "Завтраки",
+        "Паста",
+        "Десерты"
+      ],
+      "extra": [],
+      "hours": "Ежедневно 08:00–21:00",
+      "lat": 54.95957166666667,
+      "lon": 20.482855,
+      "menu_url": "https://uksuskafe.myresto.online/",
+      "menus": [],
+      "name": "Уксус",
+      "note": "На Саратовской у «Уксуса» стоит табличка с ранними завтраками. Кафе находится в центре «ПАРАDOX», рядом с музейной частью прогулки. Можно начать здесь день или вернуться на обед.",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "coffee",
+        "meal",
+        "dessert"
+      ],
+      "slug": "kafe-uksus",
+      "source_url": "https://2doks.ru/kafe",
+      "themes": [
+        "breakfast",
+        "coffee",
+        "italian"
+      ],
+      "visit": 45,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "21:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "08:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Уксус",
+          "url": "https://2doks.ru/kafe",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно 08:00–21:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
+    },
+    {
+      "address": "Курортный проспект, 7",
+      "available": true,
+      "checked_at": "2026-10-02",
+      "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
+      "cover": {
+        "captured_at": "2026:05:30 11:00:40",
+        "height": 1800,
+        "kind": "cover",
+        "original_id": "IMG_8869",
+        "src": "assets/food/img_8869.webp",
+        "width": 1350
+      },
+      "cuisine": "Литовская кухня",
+      "dishes": [
+        "Цеппелины",
+        "Холодный борщ"
+      ],
+      "extra": [],
+      "hours": "Вс–чт 09:00–22:00 · пт–сб 09:00–23:00",
+      "lat": 54.961375,
+      "lon": 20.480155,
+      "menu_url": "https://labadiena.ru/#menu",
+      "menus": [],
+      "name": "Лаба Дена",
+      "note": "Ложки и тарелки на фасаде «Лаба Дены» подсказывают, что здесь важнее всего стол. В меню бистро — литовские цеппелины и холодный борщ. Пауза на Курортном проспекте с вкусом соседнего берега.",
+      "phone": "+79097852277",
+      "photo_date": "2026-05-30",
+      "roles": [
+        "meal"
+      ],
+      "slug": "bistro-laba-dena",
+      "source_url": "https://labadiena.ru/",
+      "themes": [
+        "baltic",
+        "breakfast"
+      ],
+      "visit": 50,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "22:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          },
+          {
+            "closes": "23:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "09:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Лаба Дена",
+          "url": "https://labadiena.ru/",
+          "verification": "official_source"
+        },
+        "text": "Вс–чт 09:00–22:00 · пт–сб 09:00–23:00. Это часы заведения по опубликованному расписанию. Время последнего заказа и свободные столики уточните перед прогулкой."
+      }
     }
   ],
   "version": 1
