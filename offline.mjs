@@ -30,6 +30,7 @@ export async function offlinePaths(base) {
   catch{return new Set();}
 }
 export async function initOffline(base) {
+  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=1',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
   const panel=document.querySelector('[data-offline-route]'), list=document.querySelector('#trip-offline-list');
   const banner=document.createElement('p');banner.className='offline-network';banner.setAttribute('role','status');
   banner.textContent='Без сети. Загруженные прогулки и отметки остаются с вами.';
@@ -59,6 +60,7 @@ export async function initOffline(base) {
     await refresh();
   } catch(error){if(status)status.textContent=error.message;return;}
   window.addEventListener('online',()=>readManifest().then(refresh).catch(()=>{}));
+  window.addEventListener('godune:offline-change',()=>refresh().catch(()=>{}));
   window.addEventListener('godune:memory-cleared',()=>refresh().catch(()=>{}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden && !busy)refresh().catch(()=>{});});
   button?.addEventListener('click',async()=>{

@@ -11,10 +11,11 @@
   });
   // Observe the rejection even when the visitor never opens an interactive tool.
   catalog.catch(() => {});
-  const offlineTools = import(url('offline.mjs?v=2'));
+  const offlineTools = import(url('offline.mjs?v=3'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
   import(url('offline-map.mjs?v=3')).then(module => { localStyle=module; }).catch(() => {});
+  const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
     lastFocus = document.activeElement;
@@ -90,7 +91,14 @@
       const entries = [
         ...data.routes.map(r => ({title: r.name, description: 'Пеший маршрут · ' + r.area_name, path: `routes/${r.slug}/`, text: `${r.name} ${r.area_name} ${r.description}`})),
         ...data.poi.map(p => ({title: p.name, description: p.area_name + ' · ' + p.category_name, path: `poi/${p.slug}/`, text: `${p.name} ${p.area_name} ${p.category_name} ${p.tags.join(' ')}`})),
-        ...data.collections.map(c => ({title: c.name, description: 'Места и остановки на карте', path: c.path, text: `${c.name} ${c.intro}`})),
+        ...data.collections.filter(c=>!['map/','routes/'].includes(c.path)).map(c => ({title: c.name, description: 'Места и остановки на карте', path: c.path, text: `${c.name} ${c.intro}`})),
+        ...[
+          ['Планировщик поездки','Дни, время, ночёвка и бюджет','planner/','мой маршрут планировщик собрать поездку бюджет расходы дни'],
+          ['Карта мест и маршрутов','Своя карта Балтики и вашего дня','map/','карта дороги рестораны места маршрут точки'],
+          ['Готовые планы на 3, 5 и 7 дней','Своя копия поездки и пешие прогулки','routes/','готовые маршруты план три пять семь неделя'],
+          ['Прогулки без интернета','Скачать карты и остановки на телефон','offline/','офлайн без интернета скачать карту трек gpx'],
+          ['Помощь с поездкой','Память, файл, ссылка и карты','help/','помощь как сохранить поездку файл ссылка регистрация']
+        ].map(([title,description,path,text])=>({title,description,path,text})),
         {title: 'Куршская коса: билет, въезд и пограничная зона', description: 'Что проверить перед поездкой', path: 'kurshskaya-kosa/propusk/', text: 'пропуск билет въезд национальный парк куршская коса пограничная зона документы'}
       ];
       const available = navigator.onLine ? null : await offlineTools.then(({offlinePaths})=>offlinePaths(base)).catch(()=>new Set());
@@ -120,9 +128,17 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=13'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=14'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
+    if (document.body.dataset.tool) {
+      import(url('tool-pages.mjs?v=1')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{});
+    }
+    if (inlineMap) {
+      tripMap = new URLSearchParams(location.search).get('view') === 'trip';
+      syncMapViews();
+      renderMap().catch(()=>setMapStatus('Карта пока не открылась. Места доступны в списке ниже.'));
+    }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=1')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
@@ -132,7 +148,8 @@
       $('#weather-status').textContent = 'Прогноз пока не загрузился. Ваш маршрут на месте.';
     });
   }).catch(() => {
-    $$('[data-save-place], [data-save-route]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
+    $$('[data-save-place], [data-save-route], [data-plan-starter]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
+    if (inlineMap) setMapStatus('Карта пока не открылась. Места доступны в списке ниже.');
     const notice = $('#trip-storage');
     if (notice) { notice.hidden = false; notice.textContent = 'Не удалось загрузить вашу поездку. Сохранённые данные не изменены. Попробуйте обновить страницу.'; }
   });
@@ -206,7 +223,22 @@
     const pointRole = p => [day?.start_at === p.slug ? 'Начало дня' : '',day?.night_at === p.slug ? 'Ночёвка' : ''].filter(Boolean).join(' · ');
     let points = chosen.filter(p => mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
     $('#map-dialog-title').textContent = foodPreview.length ? 'Ваша гастропрогулка' : tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
-    function listPoints() { $('#map-places').replaceChildren(...points.map(p => { const li = document.createElement('li'), a = document.createElement('a'); li.dataset.mapPlace = p.slug; a.href = url(`poi/${p.slug}/`); a.textContent = ((tripMap || route) && pointNumber(p) ? `${pointNumber(p)}. ` : '') + p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''); li.append(a); return li; })); }
+    function listPoints() {
+      const focusId=document.activeElement?.dataset.savePlace;
+      const rows=points.map(p=>{
+        const li=document.createElement('li'),a=document.createElement('a');li.dataset.mapPlace=p.slug;
+        a.href=url(`poi/${p.slug}/`);a.textContent=((tripMap || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
+        if(inlineMap){
+          const copy=document.createElement('div'),meta=document.createElement('small'),save=document.createElement('button');
+          meta.textContent=`${p.area_name} · ${p.category_name}`;copy.append(a,meta);save.type='button';save.className='save-item';save.dataset.savePlace=p.slug;
+          const on=workshop?.getState().places.includes(p.slug);save.setAttribute('aria-pressed',String(Boolean(on)));save.textContent=on?'В моём маршруте ✓':'В мой маршрут +';li.append(copy,save);
+        }else li.append(a);
+        return li;
+      });
+      if(inlineMap && !rows.length){const li=document.createElement('li');li.className='map-list-empty';li.textContent=tripMap && !chosen.length?'В этом дне пока нет мест. Выберите «Все места» и добавьте первую остановку.':!navigator.onLine?'Эти остановки не входят в скачанную карту. Откройте загруженную прогулку или вернитесь к списку своего дня.':'С выбранным фильтром мест пока нет. Покажите все места.';rows.push(li);}
+      $('#map-places').replaceChildren(...rows);
+      if(inlineMap && focusId)$('#map-places').querySelector(`[data-save-place="${CSS.escape(focusId)}"]`)?.focus({preventScroll:true});
+    }
     listPoints();
     try {
       if(!localStyle)localStyle=await import(url('offline-map.mjs?v=3'));
@@ -263,19 +295,27 @@
       const travelCount=roads.features.filter(f=>f.properties.kind==='travel').length,accessCount=roads.features.length-travelCount;
       const roadStops=trip ? [day?.start_at,...trip.places,day?.night_at].filter(Boolean) : [];
       const transitions=roadStops.slice(1).filter((id,index)=>id!==roadStops[index]).length;
-      setMapStatus(tripMap && !points.length ? 'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
+      setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }
   }
   $$('[data-open-map]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault(); foodPreview=[]; mapFocus = b.dataset.mapFocus || null; tripMap = b.hasAttribute('data-trip-map'); activeRoute = b.dataset.routeMap || document.body.dataset.route || null; mapSelection = 'all';
     $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.mapFilter === 'all')));
-    open($('#map-dialog')); setMapStatus('Загружаем карту…'); renderMap().catch(() => { setMapStatus('Каталог недоступен. Попробуйте позже.'); });
+    if(!inlineMap)open($('#map-dialog')); setMapStatus('Загружаем карту…'); renderMap().catch(() => { setMapStatus('Каталог недоступен. Попробуйте позже.'); });
   }));
-  if(mapFocus || foodPreview.length){tripMap=foodPreview.length>0;open($('#map-dialog'));renderMap().catch(()=>setMapStatus('Карта пока не загрузилась. Карточки доступны ниже.'));}
+  if(!inlineMap && (mapFocus || foodPreview.length)){tripMap=foodPreview.length>0;open($('#map-dialog'));renderMap().catch(()=>setMapStatus('Карта пока не загрузилась. Карточки доступны ниже.'));}
+  function syncMapViews(){
+    $$('[data-map-view]').forEach(button=>button.setAttribute('aria-pressed',String((button.dataset.mapView==='trip')===tripMap)));
+  }
+  $$('[data-map-view]').forEach(button=>button.addEventListener('click',()=>{
+    tripMap=button.dataset.mapView==='trip';activeRoute=null;foodPreview=[];mapFocus=null;syncMapViews();
+    const address=new URL(location.href);if(tripMap)address.searchParams.set('view','trip');else address.searchParams.delete('view');history.replaceState(null,'',address);
+    renderMap().catch(()=>setMapStatus('Карта пока не открылась. Карточки доступны в списке.'));
+  }));
   $$('[data-map-filter]').forEach(b => b.addEventListener('click', () => {
     mapSelection = b.dataset.mapFilter; $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderMap().catch(() => {});
   }));
   window.addEventListener('godune:trip-change', () => {
-    if (tripMap && $('#map-dialog')?.open) renderMap().catch(() => {});
+    if ((inlineMap || $('#map-dialog')?.open) && (tripMap || inlineMap)) renderMap().catch(() => {});
   });
 })();

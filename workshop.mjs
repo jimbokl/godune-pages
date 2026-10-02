@@ -6,6 +6,7 @@ import {initMemoryControls} from './trip-memory-ui.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=3';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=7';
 import {initTripDays} from './trip-days-ui.mjs?v=1';
+import {addTripStarter} from './trip-starters.mjs?v=1';
 import {tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=1';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=6';
 
@@ -168,7 +169,8 @@ export async function initWorkshop(catalog, base) {
       link.textContent = 'Мой маршрут' + (count || state.routes.length ? ` · ${count || state.routes.length}` : '');
     });
     renderList('places'); renderList('routes');
-    if(state.itinerary && !state.places.length)$('#my-places-empty').textContent='Этот день ещё свободен. Добавьте места или выберите готовую прогулку.';
+    const emptyDay = $('#my-places-empty');
+    if(state.itinerary && !state.places.length && emptyDay)emptyDay.textContent='Этот день ещё свободен. Добавьте места или выберите готовую прогулку.';
     document.querySelectorAll('[data-route-stops]').forEach(node => {
       const route = catalog.routes.find(row => row.slug === node.dataset.routeStops);
       const done = route?.stops.every(stop => state.places.includes(stop.poi));
@@ -195,7 +197,7 @@ export async function initWorkshop(catalog, base) {
   });
   document.addEventListener('click', async event => {
     const starter = event.target.closest('[data-start-route]');
-    if (starter && !starter.disabled) {
+    if (starter?.dataset.startRoute && !starter.disabled) {
       await commit(current => startTripRoute(current, starter.dataset.startRoute, catalog), 'Прогулка и её остановки сохранены. Ваш маршрут готов к изменениям.');
       const starters = $('#trip-starters'); if (starters) starters.open = false;
       const title = $('#my-trip-title'); title?.focus({preventScroll:true});
@@ -233,7 +235,8 @@ export async function initWorkshop(catalog, base) {
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
-  const workshop = {getState: () => structuredClone(state), isSaved: () => available, setState: commit,
+  const workshop = {
+    addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
     async clearMemory() {
       const result = await memory.clear();
