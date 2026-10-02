@@ -863,7 +863,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "island-bridges",
+          "kind": "access",
+          "label": "Выход с острова",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр Калининградской области",
+            "url": "https://visit-kaliningrad.ru/blog/chem-zanyatsya-letom/",
+            "verification": "official_source"
+          },
+          "text": "Через Медовый мост выйдешь к Рыбной деревне. На противоположной стороне острова мост Философский ведёт в сторону Музея Мирового океана. Выбери мост под следующую остановку, чтобы не возвращаться через весь остров."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -889,7 +904,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "riverside-quarter",
+          "kind": "access",
+          "label": "Прогулка по набережной",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: Рыбная деревня",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/sightseeings/rybnaya-derevnya/",
+            "verification": "official_source"
+          },
+          "text": "Рыбная деревня занимает участок Октябрьской улицы, 2–14. Здесь можно пройти вдоль реки; подъём на башню «Маяк», прогулки на воде и посещение ресторанов — отдельные остановки со своими условиями. Их часы и цены эта карточка не подтверждает."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -956,7 +986,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "bridge-banks",
+          "kind": "access",
+          "label": "Два берега",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: Медовый мост",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/bridges/medovyj-most/",
+            "verification": "official_source"
+          },
+          "text": "Мост соединяет Октябрьскую улицу с улицей Канта на восточном берегу острова. От Рыбной деревни по нему идут к собору; в обратную сторону — к набережной с кафе."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1958,7 +2003,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "park-walk-and-services",
+          "kind": "access",
+          "label": "Прогулка по парку",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Дирекция ландшафтных парков Калининграда",
+            "url": "https://kldpark39.ru/centralnyj",
+            "verification": "official_source"
+          },
+          "text": "В парке есть дорожки для прогулки, аттракционы, летняя сцена и Театр кукол в бывшей кирхе королевы Луизы. Вход на спектакль и работа аттракционов зависят от отдельных расписаний; часы и цены этих услуг здесь пока не проверены."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1984,7 +2044,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "villa-exterior-kindergarten",
+          "kind": "access",
+          "label": "Вилла с улицы",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: вилла Шмидт",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/villa-shmidt/",
+            "verification": "official_source"
+          },
+          "text": "Адрес — проспект Победы, 24. Сейчас в вилле работает детский сад № 27. Для маршрута выбирай осмотр фасада с улицы; туристический вход во двор и внутрь здания не подтверждён."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2010,7 +2085,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "villa-exterior-kindergarten",
+          "kind": "access",
+          "label": "Вилла с улицы",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: вилла Лео",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/villa-leo/",
+            "verification": "official_source"
+          },
+          "text": "Вилла находится на Каштановой аллее, 16; сейчас здесь работает детский сад № 27. Фасад — остановка городской прогулки. Доступ во двор и внутрь для посетителей не подтверждён."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2172,7 +2262,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "pergola-park-location",
+          "kind": "access",
+          "label": "Внутри Центрального парка",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Администрация Калининграда: пергола королевы Луизы",
+            "url": "https://www.klgd.ru/city/tourism/sights_k/sculpture/detail.php?ID=71648661",
+            "verification": "official_source"
+          },
+          "text": "Пергола находится в Центральном парке, бывшем Луизенвале, у проспектов Победы и Мира. Включай её в прогулку по аллеям: это отдельная остановка внутри парка."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2239,7 +2344,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "pedestrian-street",
+          "kind": "access",
+          "label": "Пешеходная улица",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Зеленоградска",
+            "url": "https://visit-zelenogradsk.ru/excursions/zelenogradsk",
+            "verification": "official_source"
+          },
+          "text": "Курортный проспект — пешеходная улица старой части Зеленоградска. Вдоль неё стоят исторические здания, работают кафе и магазины. На городскую прогулку и остановки внутри заведений закладывай время отдельно: единого расписания у них нет."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2562,7 +2682,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "active-church-zelenogradsk",
+          "kind": "access",
+          "label": "Действующий храм",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: храм Преображения Господня",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/kirhi/hram-preobrazheniya-gospodnya-byvshaya-kirha-sv-adalberta/",
+            "verification": "official_source"
+          },
+          "text": "Зеленоградская кирха на Московской улице, 40а, сейчас — храм Преображения Господня. Для прогулки выбирай осмотр с улицы. Время служб и вход внутрь пока не проверены; это действующий храм, а не музей с экскурсионными сеансами."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2588,7 +2723,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "hotel-and-restaurant",
+          "kind": "access",
+          "label": "Отель на проспекте",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: «Курхаус Кранц»",
+            "url": "https://visit-kaliningrad.ru/accommodation/kurhaus-krants/",
+            "verification": "official_source"
+          },
+          "text": "Курхаус на Курортном проспекте, 16, работает как отель; на первом этаже находятся ресторан и пекарня. В городской маршрут можно включить фасад. Проживание, столик и доступ внутрь уточняй отдельно — часы и цены этих услуг здесь пока не проверены."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -2671,7 +2821,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "square-library",
+          "kind": "access",
+          "label": "Сквер и библиотека",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Информационно-туристический центр Зеленоградска: сквер королевы Луизы",
+            "url": "https://visit-zelenogradsk.ru/museums/skver-korolevy-luizy",
+            "verification": "official_source"
+          },
+          "text": "В сквере стоят бюст королевы Луизы и ротонда; здесь же находится городская библиотека. Летом в ротонде устраивают открытую библиотеку. Это сезонный формат: её нынешний режим, как и расписание библиотеки в здании, пока не проверен."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -3463,7 +3628,22 @@
         "Светлогорск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "sanatorium-tower-exterior",
+          "kind": "access",
+          "label": "Башня с улицы",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Туристский информационный центр: водонапорная башня Светлогорска",
+            "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/zdanie-s-vodonapornoj-bashnej/",
+            "verification": "official_source"
+          },
+          "text": "Башня на Октябрьской улице, 11, входит в комплекс водогрязелечебницы Светлогорского центрального военного санатория. Для городской прогулки выбирай внешний осмотр. Туристический подъём на башню и свободный вход в здание не подтверждены."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
