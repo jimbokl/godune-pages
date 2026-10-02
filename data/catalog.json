@@ -4602,7 +4602,55 @@
         ],
         "visit": 60
       },
-      "hours": null,
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «Телеграф»",
+          "url": "https://telegraph.rest/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 12:00–23:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      },
       "id": "7a75a106-53dd-5f44-a3bc-1275731ccf8f",
       "lat": 54.95992833333333,
       "lon": 20.47563,
@@ -4680,7 +4728,75 @@
         ],
         "visit": 60
       },
-      "hours": null,
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          },
+          {
+            "closes": "24:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «БАЛТ»",
+          "url": "https://domzn.ru/restaurants/balt/",
+          "verification": "official_source"
+        },
+        "text": "Воскресенье — четверг: 12:00–23:00. Пятница и суббота: 12:00–24:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      },
       "id": "002dfdf0-3edf-5521-b454-1dbb065f470e",
       "lat": 54.960953333333336,
       "lon": 20.478136666666668,
@@ -4830,7 +4946,55 @@
         ],
         "visit": 60
       },
-      "hours": null,
+      "hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «Облака»",
+          "url": "https://restoran-oblaka.ru/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 12:00–23:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      },
       "id": "822ad98a-04c8-5bd7-bef2-448c3591c6af",
       "lat": 54.960591666666666,
       "lon": 20.470305,

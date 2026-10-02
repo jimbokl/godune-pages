@@ -364,28 +364,16 @@
   },
   "tours": [
     {
-      "distance_m": 412,
+      "distance_m": 934,
       "places": [
-        "kafe-skovorodka",
-        "restoran-balt",
-        "restoran-telegraf"
-      ],
-      "theme_matches": 0,
-      "total_minutes": 161,
-      "visit_minutes": 155,
-      "walking_minutes": 6
-    },
-    {
-      "distance_m": 751,
-      "places": [
-        "kafe-skovorodka",
+        "kofeynya-slou",
         "restoran-dolche-nonna",
-        "restoran-telegraf"
+        "kafe-skovorodka"
       ],
       "theme_matches": 0,
-      "total_minutes": 155,
-      "visit_minutes": 145,
-      "walking_minutes": 10
+      "total_minutes": 122,
+      "visit_minutes": 110,
+      "walking_minutes": 12
     },
     {
       "distance_m": 762,
@@ -412,28 +400,40 @@
       "walking_minutes": 10
     },
     {
-      "distance_m": 762,
+      "distance_m": 1141,
       "places": [
         "kofeynya-slou",
-        "restoran-balt",
-        "restoran-telegraf"
-      ],
-      "theme_matches": 0,
-      "total_minutes": 155,
-      "visit_minutes": 145,
-      "walking_minutes": 10
-    },
-    {
-      "distance_m": 934,
-      "places": [
-        "kofeynya-slou",
-        "restoran-dolche-nonna",
+        "restoran-telegraf",
         "kafe-skovorodka"
       ],
       "theme_matches": 0,
-      "total_minutes": 122,
-      "visit_minutes": 110,
-      "walking_minutes": 12
+      "total_minutes": 134,
+      "visit_minutes": 120,
+      "walking_minutes": 14
+    },
+    {
+      "distance_m": 3041,
+      "places": [
+        "kofeynya-slou",
+        "kafe-skovorodka",
+        "kafe-gnezdo"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 143,
+      "visit_minutes": 105,
+      "walking_minutes": 38
+    },
+    {
+      "distance_m": 1937,
+      "places": [
+        "kofeynya-slou",
+        "restoran-oblaka",
+        "kafe-skovorodka"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 144,
+      "visit_minutes": 120,
+      "walking_minutes": 24
     }
   ],
   "updated_at": "2026-10-02",
@@ -486,7 +486,56 @@
         "fish",
         "baltic"
       ],
-      "visit": 60
+      "visit": 60,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «Телеграф»",
+          "url": "https://telegraph.rest/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 12:00–23:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      }
     },
     {
       "address": "Курортный проспект, 16",
@@ -535,7 +584,76 @@
         "fish",
         "baltic"
       ],
-      "visit": 60
+      "visit": 60,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          },
+          {
+            "closes": "24:00",
+            "days": [
+              5,
+              6
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «БАЛТ»",
+          "url": "https://domzn.ru/restaurants/balt/",
+          "verification": "official_source"
+        },
+        "text": "Воскресенье — четверг: 12:00–23:00. Пятница и суббота: 12:00–24:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      }
     },
     {
       "address": "Курортный проспект, 3",
@@ -583,7 +701,8 @@
         "breakfast",
         "coffee"
       ],
-      "visit": 35
+      "visit": 35,
+      "visit_hours": null
     },
     {
       "address": "Улица Гагарина, 2Г (2/1)",
@@ -627,7 +746,56 @@
       "themes": [
         "fish"
       ],
-      "visit": 60
+      "visit": 60,
+      "visit_hours": {
+        "calendar": {
+          "closed": [],
+          "exceptions": [],
+          "kind": "continuous",
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "id": "restaurant-hours",
+        "kind": "hours",
+        "label": "Когда прийти за столик",
+        "schedule": [
+          {
+            "closes": "23:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Ресторан «Облака»",
+          "url": "https://restoran-oblaka.ru/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 12:00–23:00. Это часы ресторана по его сайту. Время последнего заказа и свободные столики уточняйте перед прогулкой."
+      }
     },
     {
       "address": "Улица Гагарина, 46 · западный пляж",
@@ -683,7 +851,8 @@
       "themes": [
         "fish"
       ],
-      "visit": 45
+      "visit": 45,
+      "visit_hours": null
     },
     {
       "address": "Улица Пугачёва, 8А",
@@ -727,7 +896,8 @@
       "themes": [
         "italian"
       ],
-      "visit": 50
+      "visit": 50,
+      "visit_hours": null
     },
     {
       "address": "Московская улица, 40В",
@@ -760,7 +930,8 @@
       "themes": [
         "coffee"
       ],
-      "visit": 25
+      "visit": 25,
+      "visit_hours": null
     },
     {
       "address": "Улица Гагарина, 12А",
@@ -792,7 +963,8 @@
       "slug": "restoran-zolotaya-milya",
       "source_url": "https://goldenmile39.ru/ob-otele/",
       "themes": [],
-      "visit": 60
+      "visit": 60,
+      "visit_hours": null
     }
   ],
   "version": 1
