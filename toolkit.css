@@ -533,6 +533,23 @@
 #trip-weather [hidden] { display: none; }
 #trip-weather[data-weather-state="stale"] .weather-metrics dd > span { color: #857663; }
 #trip-weather[data-weather-state="stale"] .weather-status { color: #745b3a; }
+.offline-walk { padding: 26px 0 10px; margin-top: 26px; border-top: 1px solid #cdd3cc; }
+.offline-walk h3 { font: 300 29px/1.2 var(--serif); margin: 0 0 14px; }
+.offline-walk > p { font: 12px/1.8 var(--sans); color: #58665d; }
+.offline-walk .button { width: 100%; min-height: 48px; margin-top: 14px; justify-content: center; padding: 12px 17px; font-size: 15px; }
+.offline-walk .button:disabled { opacity: .55; cursor: default; }
+.offline-walk progress { display: block; width: 100%; height: 4px; margin: 20px 0 0; accent-color: #3a5650; border: 0; }
+.offline-walk progress::-webkit-progress-bar { background: #d9ddd4; }
+.offline-walk progress::-webkit-progress-value { background: #3a5650; }
+.offline-walk [data-offline-status] { min-height: 44px; margin-top: 14px; font-size: 11px; }
+.offline-controls { display: flex; flex-wrap: wrap; gap: 12px 22px; }
+.offline-controls button { min-height: 44px; padding: 6px 0; border: 0; border-bottom: 1px solid #a3afa3; background: transparent; color: #465c51; font: 11px/1.6 var(--sans); cursor: pointer; }
+.offline-walk [hidden],.trip-offline[hidden],.offline-network[hidden] { display: none; }
+.offline-network { margin: 0 auto 26px; padding: 13px 22px; width: fit-content; max-width: 100%; background: #e5eadd; border: 1px solid #c6d0bf; color: #3a5045; font: 12px/1.7 var(--sans); }
+.trip-offline { margin-top: 24px; padding-top: 22px; border-top: 1px solid #ccd3cd; }
+.trip-offline h4 { margin: 0 0 10px; font: 300 23px/1.4 var(--serif); }
+.trip-offline ul { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; padding: 0; list-style: none; }
+.trip-offline a { display: inline-block; min-height: 44px; padding: 10px 0; color: #496157; font: 12px/1.8 var(--sans); text-underline-offset: 4px; }
 @media (max-width: 700px) {
   .trip-weather { padding-top: 22px; margin: 24px 0 0; }
   .weather-heading { align-items: start; flex-direction: column; gap: 18px; }
