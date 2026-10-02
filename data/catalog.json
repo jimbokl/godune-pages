@@ -736,7 +736,67 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "cathedral-cash-hours",
+          "kind": "hours",
+          "label": "Касса у собора",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Кафедральный собор",
+            "url": "https://sobor39.ru/pages/faq/",
+            "verification": "official_source"
+          },
+          "text": "Касса напротив собора работает с 10:00 до 18:30. Это часы кассы; концерты и музейные экскурсии идут по своему расписанию."
+        },
+        {
+          "amount": 300,
+          "currency": "RUB",
+          "id": "kant-museum-ticket",
+          "kind": "price",
+          "label": "Музей Канта: самостоятельный осмотр",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Кафедральный собор",
+            "url": "https://sobor39.ru/tickets/",
+            "verification": "official_source"
+          },
+          "text": "Полный билет в музей Иммануила Канта — 300 ₽. Для концерта или экскурсии выберите отдельный вид билета.",
+          "unit": "kant_museum_entry"
+        },
+        {
+          "id": "kant-museum-tour-times",
+          "kind": "hours",
+          "label": "Экскурсия в музей Канта",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Кафедральный собор",
+            "url": "https://sobor39.ru/events/excursions/everyday/",
+            "verification": "official_source"
+          },
+          "text": "Ежедневные экскурсии начинаются в 12:00, 15:00 и 17:00. На знакомство с музеем оставьте 45 минут."
+        },
+        {
+          "amount": 700,
+          "currency": "RUB",
+          "id": "kant-museum-tour-ticket",
+          "kind": "price",
+          "label": "Билет с экскурсией",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Кафедральный собор",
+            "url": "https://sobor39.ru/tickets/",
+            "verification": "official_source"
+          },
+          "text": "Полный билет на экскурсию «Знакомство с музеем Иммануила Канта» — 700 ₽. Для льготного билета на входе нужен подтверждающий документ.",
+          "unit": "kant_museum_guided_visit"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -762,7 +822,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "kant-grave-location",
+          "kind": "access",
+          "label": "Где искать",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Кафедральный собор",
+            "url": "https://sobor39.ru/about/museum/",
+            "verification": "official_source"
+          },
+          "text": "Усыпальница Канта находится у северной стены собора, снаружи. Музей Канта расположен в башне: это отдельная точка посещения."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -876,7 +951,47 @@
       "category_name": "Музей",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно на набережной Мирового океана. Включайте его в прогулку вдоль реки, а внутреннюю экспозицию планируйте как отдельное посещение.",
-      "hours": null,
+      "hours": {
+        "id": "vityaz-exhibition-hours",
+        "kind": "hours",
+        "label": "Экспозиция и палубы",
+        "schedule": [
+          {
+            "cash_closes": "17:30",
+            "closes": "18:00",
+            "days": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Среда — воскресенье, 10:00–18:00: открыты экспозиция и верхние палубы. Понедельник — выходной. Касса закрывается в 17:30."
+      },
       "id": "e7de7430-fb2b-5624-a6e1-56a3e1f157ed",
       "lat": 54.7061531,
       "lon": 20.4999435,
@@ -892,7 +1007,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "vityaz-tuesday-decks",
+          "kind": "hours",
+          "label": "Во вторник — только палубы",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей Мирового океана",
+            "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+            "verification": "official_source"
+          },
+          "text": "Во вторник с 10:00 до 18:00 можно посетить только верхние палубы. Внутренняя экспозиция в этот день закрыта."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -902,7 +1032,48 @@
       "category_name": "Музей",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Экспозиционный корпус на музейной набережной. Рядом расположены другие корпуса и суда, поэтому здесь легко продлить городской маршрут.",
-      "hours": null,
+      "hours": {
+        "id": "glubina-hours",
+        "kind": "hours",
+        "label": "Корпус «Глубина»",
+        "schedule": [
+          {
+            "cash_closes": "17:30",
+            "closes": "18:00",
+            "days": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Вторник — воскресенье, 10:00–18:00; понедельник — выходной. Касса закрывается в 17:30. Расписание относится к корпусу «Глубина»."
+      },
       "id": "9accc422-2942-5b97-b474-b19bdd3faf7c",
       "lat": 54.7066321,
       "lon": 20.499947,
@@ -918,7 +1089,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "ocean-buildings",
+          "kind": "access",
+          "label": "Выберите объект перед поездкой",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей Мирового океана",
+            "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+            "verification": "official_source"
+          },
+          "text": "У судов и выставочных корпусов разные часы и билеты. «Глубина» и «Планета Океан» — два отдельных корпуса; для «Планеты Океан» нужен билет на сеанс."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -928,7 +1114,19 @@
       "category_name": "Музей",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Корпус Музея Мирового океана у Преголи. Его можно выбрать основной музейной остановкой дня и оставить набережную для прогулки до или после входа.",
-      "hours": null,
+      "hours": {
+        "id": "planeta-sessions",
+        "kind": "hours",
+        "label": "Выберите сеанс",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Центр работает со среды по воскресенье; понедельник и вторник — выходные. Самостоятельный осмотр длится полтора часа. Первый сеанс — в 10:00, последний — в 16:30; по субботам последний — в 16:00. Это время начала сеансов, а не закрытия корпуса."
+      },
       "id": "97de3752-4332-58a7-89a2-2360b4184e26",
       "lat": 54.7065081,
       "lon": 20.5022689,
@@ -936,7 +1134,22 @@
       "osm_ref": "way/853053301",
       "photos": [],
       "practical": "Уточните доступные сеансы и режим работы перед поездкой. Время внутри не включено автоматически в пеший трек.",
-      "price": null,
+      "price": {
+        "amount": 600,
+        "currency": "RUB",
+        "id": "planeta-self-visit-ticket",
+        "kind": "price",
+        "label": "Самостоятельный осмотр",
+        "scope": "service",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/events/pravila-pokupki-biletov-v-planetu-okean",
+          "verification": "official_source"
+        },
+        "text": "Взрослый билет на самостоятельный осмотр — 600 ₽. Экскурсии и концерты имеют отдельные тарифы; выбирайте нужный формат при покупке.",
+        "unit": "adult_self_visit"
+      },
       "slug": "planeta-okean",
       "source_url": "https://www.openstreetmap.org/way/853053301",
       "tags": [
@@ -944,7 +1157,35 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "planeta-booking",
+          "kind": "access",
+          "label": "Как поймать билет",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей Мирового океана",
+            "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+            "verification": "official_source"
+          },
+          "text": "Онлайн-продажа открывается каждый понедельник в 10:00 по калининградскому времени. В кассе со среды по воскресенье продают билеты на текущий день. Наличие мест проверьте перед выходом."
+        },
+        {
+          "id": "planeta-warm-layer",
+          "kind": "access",
+          "label": "Возьмите тёплый слой",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей Мирового океана",
+            "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+            "verification": "official_source"
+          },
+          "text": "В залах прохладно. Верхнюю одежду оставляют в гардеробе, поэтому музей советует взять кофту или свитер."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -954,7 +1195,47 @@
       "category_name": "Музей",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейное судно у набережной Мирового океана. Хорошая точка для знакомства с устройством маяка в контексте прогулки по речному берегу.",
-      "hours": null,
+      "hours": {
+        "id": "irbenskiy-hours",
+        "kind": "hours",
+        "label": "Когда подняться на борт",
+        "schedule": [
+          {
+            "cash_closes": "17:30",
+            "closes": "18:00",
+            "days": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Среда — воскресенье, 10:00–18:00; понедельник и вторник — выходные. Касса закрывается в 17:30."
+      },
       "id": "873647de-4cc0-55a1-b7fb-82c1f6554244",
       "lat": 54.7060816,
       "lon": 20.5034586,
@@ -970,7 +1251,8 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": []
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -980,7 +1262,47 @@
       "category_name": "Архитектура и история",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Ворота у южного берега Преголи, в стороне от острова Канта. При включении в маршрут учитывайте переход через реку и подход по городским улицам.",
-      "hours": null,
+      "hours": {
+        "id": "friedrichsburg-hours",
+        "kind": "hours",
+        "label": "Когда приходить",
+        "schedule": [
+          {
+            "cash_closes": "17:30",
+            "closes": "18:00",
+            "days": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Среда — воскресенье, 10:00–18:00; понедельник и вторник — выходные. Касса закрывается в 17:30."
+      },
       "id": "a6b371e3-13e5-53fc-ab95-b64b5b627e94",
       "lat": 54.704504,
       "lon": 20.493601,
@@ -996,7 +1318,8 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": []
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1032,7 +1355,68 @@
       "category_name": "Архитектура и история",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Исторические ворота на восточной стороне центральной части Калининграда. До острова Канта отсюда требуется самостоятельный городской переход.",
-      "hours": null,
+      "hours": {
+        "id": "royal-gate-hours",
+        "kind": "hours",
+        "label": "Музей в воротах и «Потерна»",
+        "schedule": [
+          {
+            "cash_closes": "18:30",
+            "closes": "19:00",
+            "days": [
+              3,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          },
+          {
+            "cash_closes": "19:30",
+            "closes": "20:00",
+            "days": [
+              4
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "12:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей Мирового океана",
+          "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+          "verification": "official_source"
+        },
+        "text": "Среда и пятница — воскресенье: 11:00–19:00. В четверг: 12:00–20:00. Понедельник и вторник — выходные. Касса закрывается за полчаса до окончания работы. Это расписание музейных залов."
+      },
       "id": "e00243c1-ec39-5c32-be71-534fa75de14a",
       "lat": 54.7137124,
       "lon": 20.5359816,
@@ -1048,7 +1432,8 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": []
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1339,7 +1724,19 @@
       "category_name": "Музей",
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в районе исторической городской застройки. Её можно добавить к архитектурной прогулке, если время посещения согласовано заранее.",
-      "hours": null,
+      "hours": {
+        "id": "altes-sessions",
+        "kind": "hours",
+        "label": "Маленькие группы, точное время",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей-квартира «Альтес Хаус»",
+          "url": "https://alteshaus.ru/about/",
+          "verification": "official_source"
+        },
+        "text": "Понедельник — суббота: сеансы в начале каждого часа, с 10:00 до 19:00. Каждый длится 50 минут. Воскресенье — выходной; количество мест на сеансе ограничено."
+      },
       "id": "6f82b62d-6427-553a-b820-85e043ef9d2d",
       "lat": 54.7219683,
       "lon": 20.4744441,
@@ -1347,7 +1744,22 @@
       "osm_ref": "node/6710819187",
       "photos": [],
       "practical": "Проверьте запись, сеансы и продолжительность. Остановка у адреса не заменяет бронирование посещения.",
-      "price": null,
+      "price": {
+        "amount": 1200,
+        "currency": "RUB",
+        "id": "altes-session-ticket",
+        "kind": "price",
+        "label": "Билет на сеанс",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей-квартира «Альтес Хаус»",
+          "url": "https://alteshaus.ru/about/",
+          "verification": "official_source"
+        },
+        "text": "Сеансы с 11:00 до 19:00 — 1 200 ₽; сеанс в 10:00 — 1 400 ₽. Дети младше семи лет проходят бесплатно с взрослым.",
+        "unit": "session_11_to_19"
+      },
       "slug": "altes-haus",
       "source_url": "https://www.openstreetmap.org/node/6710819187",
       "tags": [
@@ -1355,7 +1767,22 @@
         "Калининград"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "altes-booking",
+          "kind": "access",
+          "label": "До входа в квартиру",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей-квартира «Альтес Хаус»",
+            "url": "https://alteshaus.ru/about/",
+            "verification": "official_source"
+          },
+          "text": "Музей советует купить билет заранее: онлайн или в кафетерии «Густав Гроссманн». Там же предъявляют электронные билеты. Верхнюю одежду и сумки перед экскурсией оставляют в гардеробе."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1511,7 +1938,50 @@
       "category_name": "Музей",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
       "description": "Музейная точка в Зеленоградске, связанная с кошачьей темой города. Подходит как отдельное посещение внутри прогулки по центру.",
-      "hours": null,
+      "hours": {
+        "id": "murarium-hours",
+        "kind": "hours",
+        "label": "Когда приходить",
+        "schedule": [
+          {
+            "cash_closes": "18:30",
+            "closes": "19:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "last_entry": "18:30",
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей «Мурариум»",
+          "url": "https://murarium.ru/kontakty/",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 10:00–19:00. Вход и продажа билетов заканчиваются в 18:30."
+      },
       "id": "b6c85ddd-3fec-55ab-a847-f61c321964f3",
       "lat": 54.959789,
       "lon": 20.4825381,
@@ -1519,7 +1989,22 @@
       "osm_ref": "way/133724496",
       "photos": [],
       "practical": "Перед поездкой проверьте билет и режим работы. Учитывайте подъём и условия доступа для вашей группы.",
-      "price": null,
+      "price": {
+        "amount": 500,
+        "currency": "RUB",
+        "id": "murarium-ticket",
+        "kind": "price",
+        "label": "Билет в башню",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей «Мурариум»",
+          "url": "https://murarium.ru/kontakty/",
+          "verification": "official_source"
+        },
+        "text": "Полный билет — 500 ₽. Льготный — 400 ₽, социальный — 100 ₽; категории посетителей перечислены на сайте музея.",
+        "unit": "adult_entry"
+      },
       "slug": "murarium",
       "source_url": "https://www.openstreetmap.org/way/133724496",
       "tags": [
@@ -1527,7 +2012,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "murarium-lift",
+          "kind": "access",
+          "label": "На верхние уровни",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей «Мурариум»",
+            "url": "https://murarium.ru/kontakty/",
+            "verification": "official_source"
+          },
+          "text": "В башне есть лифт: на нём можно подняться на все уровни музея."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1537,7 +2037,47 @@
       "category_name": "Музей",
       "coordinate_note": "Точка открытой карты",
       "description": "Музейная остановка в городской части Зеленоградска. Её можно выбрать для знакомства с историей курорта перед прогулкой к морю.",
-      "hours": null,
+      "hours": {
+        "id": "cranz-hours",
+        "kind": "hours",
+        "label": "Когда приходить",
+        "schedule": [
+          {
+            "closes": "18:00",
+            "days": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "10:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Зеленоградский краеведческий музей",
+          "url": "https://cranz-muzeum.ru/info/grafik-raboty/",
+          "verification": "official_source"
+        },
+        "text": "Вторник — воскресенье, 10:00–18:00; понедельник — выходной."
+      },
       "id": "8924af44-83e6-5223-8081-9383079a25ab",
       "lat": 54.9597357,
       "lon": 20.4733421,
@@ -1545,7 +2085,22 @@
       "osm_ref": "node/4360615389",
       "photos": [],
       "practical": "Если день короткий, выберите один музей и оставьте время на побережье. Проверьте часы и выходной.",
-      "price": null,
+      "price": {
+        "amount": 300,
+        "currency": "RUB",
+        "id": "cranz-ticket",
+        "kind": "price",
+        "label": "Входной билет",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Зеленоградский краеведческий музей",
+          "url": "https://cranz-muzeum.ru/info/stoimost-biletov/",
+          "verification": "official_source"
+        },
+        "text": "Взрослый билет — 300 ₽. Можно заплатить наличными или картой.",
+        "unit": "adult_entry"
+      },
       "slug": "muzej-zelenogradska",
       "source_url": "https://www.openstreetmap.org/node/4360615389",
       "tags": [
@@ -1553,7 +2108,25 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "amount": 200,
+          "currency": "RUB",
+          "id": "cranz-tour-supplement",
+          "kind": "price",
+          "label": "Если хотите экскурсию",
+          "scope": "service",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Зеленоградский краеведческий музей",
+            "url": "https://cranz-muzeum.ru/info/stoimost-biletov/",
+            "verification": "official_source"
+          },
+          "text": "Экскурсионное обслуживание для взрослого — ещё 200 ₽ к входному билету. Аудиогид также стоит 200 ₽.",
+          "unit": "adult_guided_visit_supplement"
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
@@ -1563,7 +2136,50 @@
       "category_name": "Музей",
       "coordinate_note": "Точка открытой карты",
       "description": "Тематический музей в Зеленоградске. Подходит для отдельного интереса к необычным коллекциям, а не как обязательная остановка любой поездки.",
-      "hours": null,
+      "hours": {
+        "id": "skeleton-hours",
+        "kind": "hours",
+        "label": "Когда приходить",
+        "schedule": [
+          {
+            "cash_closes": "17:30",
+            "closes": "18:00",
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "last_entry": "17:30",
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "opens": "11:00"
+          }
+        ],
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей черепов и скелетов",
+          "url": "https://m-ch-s.ru/kontakty",
+          "verification": "official_source"
+        },
+        "text": "Ежедневно, 11:00–18:00. Вход и продажа билетов заканчиваются в 17:30."
+      },
       "id": "c9360d28-7d5f-50a4-a817-509a346ac6d6",
       "lat": 54.9598124,
       "lon": 20.4828217,
@@ -1571,7 +2187,22 @@
       "osm_ref": "node/4360239991",
       "photos": [],
       "practical": "Перед посещением посмотрите описание экспозиции и оцените, подходит ли она детям вашей группы.",
-      "price": null,
+      "price": {
+        "amount": 450,
+        "currency": "RUB",
+        "id": "skeleton-ticket",
+        "kind": "price",
+        "label": "Входной билет",
+        "scope": "place",
+        "source": {
+          "checked_at": "2026-10-02",
+          "name": "Музей черепов и скелетов",
+          "url": "https://m-ch-s.ru/kontakty",
+          "verification": "official_source"
+        },
+        "text": "Полный билет — 450 ₽. Льготный — 350 ₽, социальный — 100 ₽; условия льгот указаны на сайте музея.",
+        "unit": "adult_entry"
+      },
       "slug": "muzej-skeletov",
       "source_url": "https://www.openstreetmap.org/node/4360239991",
       "tags": [
@@ -1579,7 +2210,22 @@
         "Зеленоградск"
       ],
       "verification_status": "map_source_checked",
-      "verified_at": "2026-10-01"
+      "verified_at": "2026-10-01",
+      "visit_conditions": [
+        {
+          "id": "skeleton-children",
+          "kind": "access",
+          "label": "Если идёте с детьми",
+          "scope": "place",
+          "source": {
+            "checked_at": "2026-10-02",
+            "name": "Музей черепов и скелетов",
+            "url": "https://m-ch-s.ru/",
+            "verification": "official_source"
+          },
+          "text": "Музей не рекомендует посещение детям младше шести лет. Дети от шести до тринадцати лет проходят только с взрослым."
+        }
+      ]
     },
     {
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
