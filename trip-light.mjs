@@ -1,10 +1,10 @@
-import {planInput} from './trip-schedule-state.mjs?v=5';
+import {planInput} from './trip-schedule-state.mjs?v=6';
 export const prefersDaylight = place => ['nature','park','viewpoint','beach'].includes(place?.category);
 export function lightInput(trip,catalog,result) {
   return {version:1,date:trip.date,stops:result.stops.filter(item=>catalog.poi.some(row=>row.slug===item.id)).map(item=>{
     const place=catalog.poi.find(row=>row.slug===item.id);
     return {id:item.id,lat:place.lat,lon:place.lon,
-      begins:item.arrival===null?null:item.arrival-(item.approach_minutes || 0),leaves:item.leaves,
+      begins:item.arrival===null?null:item.arrival-(item.approach_minutes || 0),leaves:item.excursion ? item.excursion.start : item.leaves,
       outdoor:prefersDaylight(place)};
   })};
 }
@@ -14,7 +14,7 @@ export function lightScore(light) {
     dark:rows.reduce((sum,row)=>sum+(row.dark_minutes || 0),0),
     outside:rows.reduce((sum,row)=>sum+(row.outside_sun_minutes || 0),0)};
 }
-const conflicts = result => result.stops.flatMap(row=>row.issues).filter(row=>['closed','window_missed','after_deadline'].includes(row.code)).length;
+const conflicts = result => result.stops.flatMap(row=>row.issues).filter(row=>['closed','window_missed','after_deadline','transport_conflict'].includes(row.code)).length;
 export const tripSignature = trip => JSON.stringify([trip.itinerary?.active ?? null,trip.date,trip.places,trip.schedule ?? null,
   trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.start_at ?? null,trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.night_at ?? null]);
 // Try moving a late outdoor stop earlier. Every option uses the actual directed road and visit calendar.

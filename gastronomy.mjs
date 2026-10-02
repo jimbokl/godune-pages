@@ -1,5 +1,5 @@
 import {updateSchedule} from './trip-schedule-state.mjs';
-import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=1';
+import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings) {

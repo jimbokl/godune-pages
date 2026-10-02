@@ -1,9 +1,9 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=1';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=6';
+import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {loadTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=3';
-import {planInput} from './trip-schedule-state.mjs?v=5';
-import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=1';
+import {planInput} from './trip-schedule-state.mjs?v=6';
+import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=2';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

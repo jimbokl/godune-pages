@@ -829,3 +829,23 @@
 #my-trip .trip-light-proposal-title { font-weight: 700; }
 #my-trip .trip-light .save-item { min-height: 48px; padding: 12px 18px; border: 1px solid #83aac3; background: #bfd9e7; color: #253b51; font: 600 14px/1.5 var(--sans); border-radius: 4px; }
 @media(max-width:600px) { #my-trip .trip-light { padding: 20px 16px; } #my-trip .trip-light-times { grid-template-columns:repeat(2,minmax(0,1fr)); } #my-trip .trip-light .save-item { width:100%; } }
+
+/* A crossing remains part of the day, with both shores visible. */
+.trip-transport{margin-top:1.5rem;padding:clamp(1rem,3vw,1.65rem);background:linear-gradient(135deg,#eef6fa,#f7fafb);border:1px solid #bed3df;border-left:4px solid #79a9c1;border-radius:12px}
+.trip-transport h4{font-family:var(--serif);font-size:clamp(1.4rem,2.8vw,1.85rem);line-height:1.18;margin:0 0 .75rem;color:#243f51}
+.trip-transport p{line-height:1.6;overflow-wrap:anywhere}
+.trip-transport-timeline{list-style:none!important;padding:0!important;margin:1.25rem 0!important;counter-reset:crossing}
+.trip-transport-timeline li{counter-increment:crossing;position:relative;padding:.55rem 0 .55rem 2.2rem;border-bottom:1px solid #d3e2ea;line-height:1.55}
+.trip-transport-timeline li:before{content:counter(crossing);position:absolute;left:0;top:.55rem;width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;background:#dcebf3;color:#294f66;font-size:.8rem;font-weight:600}
+.trip-transport .trip-transport-last{padding:.8rem 1rem;background:#dfedf4;border-radius:8px;color:#22475c;font-weight:600}
+.trip-transport .trip-transport-warning{padding:.7rem 1rem;border-left:3px solid #b98e51;background:#fbf6ec;color:#645031;font-size:.9rem}
+.trip-transport[data-transport-status="conflict"]{border-left-color:#b98e51}
+.trip-transport details{margin:1.2rem 0;border-top:1px solid #c8dce7;padding-top:.8rem}
+.trip-transport summary{cursor:pointer;font-weight:600;color:#2d5269;line-height:1.5;padding:.4rem 0}
+.trip-transport-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.trip-transport-settings label{display:grid;gap:.45rem;align-content:start;font-size:.85rem;line-height:1.45;min-width:0;color:#344e5e}
+.trip-transport-settings input{width:100%;min-width:0;box-sizing:border-box;background:#fff;border:1px solid #adc9d9;border-radius:7px;padding:.7rem .8rem;color:#253b49;font:inherit;font-size:1rem}
+.trip-transport-settings input:focus-visible{outline:2px solid #477e9d;outline-offset:2px}
+.trip-transport-settings .trip-plan-note{grid-column:1/-1;margin:0}
+.trip-transport .button,.trip-transport .save-item{max-width:100%;white-space:normal;line-height:1.4}
+@media(max-width:600px){.trip-transport-settings{grid-template-columns:minmax(0,1fr)}.trip-transport-timeline li{font-size:.88rem}.trip-transport .button,.trip-transport .save-item{width:100%;padding:.8rem 1rem}}

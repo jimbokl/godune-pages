@@ -9,14 +9,15 @@ export function resolveVisitCalendar(place, date, factId) {
   const unknown=reason=>({fact:fact || null,windows:null,sessions:null,needsCheck:false,reason});
   if(!validVisitDate(date)) return unknown('choose_date');
   if(!fact) return unknown(factId ? 'missing_fact' : 'unknown_hours');
-  if(fact.valid_from && date < fact.valid_from || fact.valid_until && date > fact.valid_until) return unknown('outside_validity');
   const calendar=fact.calendar;
+  const exception=calendar?.exceptions?.find(rule=>rule.date===date);
+  if(!exception && (fact.valid_from && date < fact.valid_from || fact.valid_until && date > fact.valid_until)) return unknown('outside_validity');
   if(!calendar || calendar.version!==1 || calendar.timezone!=='Europe/Kaliningrad') return unknown(fact.scope==='park' ? 'park_scope' : 'unknown_hours');
   if(calendar.kind==='cashdesk') return unknown('cashdesk_scope');
   const day=new Date(date+'T12:00:00Z'), month=day.getUTCMonth()+1, weekday=day.getUTCDay() || 7;
   const matches=rule=>rule.months.includes(month) && rule.days.includes(weekday);
-  const exception=calendar.exceptions?.find(rule=>rule.date===date);
-  const common={fact,needsCheck:fact.source.verification!=='field_checked' || fact.source.checked_at!==date,
+  const source=exception?.source || fact.source;
+  const common={fact,source,exceptionDate:exception?.date || null,needsCheck:source.verification!=='field_checked' || source.checked_at!==date,
     reason:null,rule:null,windows:null,sessions:null};
   if(calendar.kind==='sessions') {
     const rule=calendar.session_rules?.find(matches);
@@ -37,7 +38,7 @@ export function resolveVisitCalendar(place, date, factId) {
         if(open < close) intervals.push({open,close});
         return intervals.filter(window=>entry===null || window.open<=entry).map(window=>entry===null ? window : {...window,last_entry:Math.min(entry,window.close)});
       });
-      return {...common,rule,windows,reason:!windows.length ? 'closed' : exception ? 'exception' : 'continuous'};
+      return {...common,rule:exception?null:rule,windows,reason:!windows.length ? 'closed' : exception ? 'exception' : 'continuous'};
     }
   }
   if(calendar.closed?.some(matches)) return {...common,windows:[],reason:'closed'};

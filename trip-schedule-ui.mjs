@@ -1,7 +1,8 @@
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=2';
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=5';
-import {loadScheduler} from './trip-scheduler.mjs?v=6';
-import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=1';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=3';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=6';
+import {loadScheduler} from './trip-scheduler.mjs?v=7';
+import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=1';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=3';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
@@ -15,6 +16,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   <div id="trip-plan-body" hidden><p class="trip-plan-note">Выберите, как будете перемещаться. Оценим дорогу по открытой карте; осмотр и паузы можно подстроить под себя. Дата добавит часы работы и сеансы. Перед поездкой сверьте вход, парковку и билеты. Если путь ещё неясен, время дальше останется неполным.</p><form id="trip-day-settings" class="trip-day-settings"></form><section id="trip-light" class="trip-light" aria-label="Свет выбранного дня"></section><p id="trip-plan-summary" role="status"></p><ol id="trip-plan-stops" class="trip-plan-stops"></ol><p id="trip-plan-feedback" role="status"></p></div>`;
   mount.insertBefore(section, mount.querySelector('#trip-weather, #trip-utilities'));
   const $=selector=>section.querySelector(selector);
+  bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
   let opened=false, sequence=0;
   function input(form, caption, name, type, value, stop) {
     const label=document.createElement('label'), field=document.createElement('input');
@@ -60,7 +62,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     title.textContent=manual ? `Ваше время: ${clock(manual.open)}–${clock(manual.close)}` : calendar.fact?.label || 'Время посещения';card.append(title);
     const note=document.createElement('p');
     if(manual) note.textContent='Для этой даты расчёт использует ваше окно посещения.';
-    else if(calendar.reason==='closed') note.textContent='По обычному расписанию в этот день выходной.';
+    else if(calendar.reason==='closed') note.textContent=calendar.exceptionDate?'В изменении на эту дату указано, что посещений нет.':'По обычному расписанию в этот день выходной.';
     else if(calendar.windows?.length) {
       note.textContent=calendar.windows.map(window=>`${clock(window.open)}–${clock(window.close)}`+(window.last_entry!==undefined ? ` · вход до ${clock(window.last_entry)}` : '')).join('; ')
         +(calendar.rule?.cash_closes ? ` · касса до ${calendar.rule.cash_closes}` : '');
@@ -75,9 +77,10 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     card.append(note);
     if(calendar.fact) {
       const source=document.createElement('p');source.className='trip-calendar-source';const link=document.createElement('a');
-      link.href=calendar.fact.source.url;link.target='_blank';link.rel='noopener';link.textContent=calendar.fact.source.name;
-      source.append(link,` · проверено ${calendar.fact.source.checked_at.split('-').reverse().join('.')}`);card.append(source);
-      if(!manual && calendar.needsCheck) {const caution=document.createElement('p');caution.className='trip-calendar-source';caution.textContent='Обычное расписание: праздники и изменения на дату поездки сверьте с местом.';card.append(caution);}
+      const evidence=calendar.source || calendar.fact.source;
+      link.href=evidence.url;link.target='_blank';link.rel='noopener';link.textContent=evidence.name;
+      source.append(link,` · проверено ${evidence.checked_at.split('-').reverse().join('.')}`);card.append(source);
+      if(!manual && calendar.needsCheck) {const caution=document.createElement('p');caution.className='trip-calendar-source';caution.textContent=calendar.exceptionDate ? 'Изменение на выбранную дату. Билеты и работу места перед поездкой сверьте с ним.' : 'Обычное расписание: праздники и изменения на дату поездки сверьте с местом.';card.append(caution);}
     }
     if(manual) {const reset=document.createElement('button');reset.type='button';reset.dataset.planReset=item.id;reset.className='save-item';reset.textContent='Вернуться к расписанию места';card.append(reset);}
     if(calendar.reason==='choose_date' && !manual) {const choose=document.createElement('button');choose.type='button';choose.className='save-item';choose.textContent='Указать дату';choose.addEventListener('click',()=>document.querySelector('#trip-date')?.focus());card.append(choose);}
@@ -86,12 +89,13 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   function renderStops(trip, result, matrix, light) {
     const settings=trip.schedule || defaultSchedule();
     $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
+      const blockedByReturn=result.stops.slice(0,index).some(row=>row.excursion?.conflict);
       if(item.id==='__day_origin' || item.id==='__day_night') {
         const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin';
         li.className='trip-day-anchor';li.dataset.planAnchor=origin?'start':'night';
         const place=catalog.poi.find(row=>row.slug===(origin?bases.start_at:bases.night_at));
         const header=document.createElement('div');header.className='trip-timeline-heading';
-        const time=document.createElement('span');time.className='trip-timeline-time';time.textContent=item.begins===null?`Не раньше ${clock(item.earliest_begin)}`:clock(item.begins);
+        const time=document.createElement('span');time.className='trip-timeline-time';time.textContent=blockedByReturn?'После возвращения':item.begins===null?`Не раньше ${clock(item.earliest_begin)}`:clock(item.begins);
         const name=document.createElement('span');name.textContent=`${origin?'Начало':'К ночи'} · ${place.name}`;header.append(time,name);li.append(header);
         const note=document.createElement('p');note.className='trip-timeline-detail';note.textContent=origin?'От этого ориентира начинается дорога.':'Дорога до этого ориентира включена в окончание дня.';
         if(item.issues.some(row=>['unknown_travel','unknown_approach','unknown_return'].includes(row.code)))note.textContent+=' Путь ещё нужно уточнить: точное время неизвестно.';
@@ -105,7 +109,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       li.dataset.travelOrigin=travel.origin;li.dataset.travelStatus=travel.status || '';li.dataset.travelMode=travel.mode;
       const header=document.createElement('div');header.className='trip-timeline-heading';
       const time=document.createElement('span');time.className='trip-timeline-time';
-      time.textContent=item.begins === null ? `Не раньше ${clock(item.earliest_begin)}` : clock(item.begins);
+      time.textContent=blockedByReturn?'После возвращения':item.begins === null ? `Не раньше ${clock(item.earliest_begin)}` : clock(item.begins);
       const name=document.createElement('a');name.href=new URL(`poi/${item.id}/`,base).href;name.textContent=place.name;
       header.append(time,name);li.append(header);
       const timing=document.createElement('p');timing.className='trip-timeline-detail';
@@ -151,6 +155,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         card.append(title,path,note,evidence,caution,nav);li.append(card);
       }
       li.append(calendarCard(place,trip,value,window,item));
+      const transport=transportCard({trip,item,place,catalog,clock});if(transport)li.append(transport);
       if(item.issues.length) {
         const issues=document.createElement('ul');issues.className='trip-plan-issues';
         for(const issue of item.issues) {
@@ -160,9 +165,12 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
             travel_needs_check:'Дорога учтена как оценка. Сверьте доступ и оставьте запас.',
             unknown_approach:'Уточните пеший путь от парковки до места.',unknown_return:'Уточните время возвращения к парковке.',
             access_needs_check:'Пеший участок учтён по карте. Доступ и темп нужно сверить.',
+            transport_needs_check:'Переправа учтена по расписанию и оценкам. Рейсы на дату поездки нужно сверить.',
+            transport_incomplete:'Для точного дня не хватает расписания или времени переправы и пути к причалу.',
+            transport_conflict:'Переправа не складывается: рейсов нет или последний уже не подходит.',
             closed:'По выбранному расписанию в этот день нет посещений.',window_missed:'Осмотр не помещается в часы работы или время последнего входа; подходящего сеанса тоже нет.',
             after_deadline:`Позже конца дня как минимум на ${issue.minutes} мин.`}[issue.code];
-          if(['closed','window_missed','after_deadline'].includes(issue.code)) li.dataset.planConflict='true';
+          if(['closed','window_missed','after_deadline','transport_conflict'].includes(issue.code)) li.dataset.planConflict='true';
           issues.append(line);
         }li.append(issues);
       }
@@ -184,6 +192,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop, focusedMode=document.activeElement?.type==='radio'?document.activeElement.value:null;
       const expanded=[...section.querySelectorAll('details[data-plan-editor][open]')].map(node=>node.dataset.planEditor);
+      const transportExpanded=[...section.querySelectorAll('details[data-transport-editor][open]')].map(node=>node.dataset.transportEditor);
     section.dataset.scheduleReady='false';
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
@@ -204,14 +213,16 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       renderLightView($('#trip-light'),trip,catalog,light,null,applyLight);
       const summary=$('#trip-plan-summary');summary.dataset.planStatus=result.status;
       const intro={empty:'Сначала добавьте точки в свой маршрут.',fits:'По вашим оценкам, день складывается.',needs_check:'День складывается по оценкам. Сверьте дорогу и вход в выбранные места.',
-        incomplete:'Для точного плана нужно время дороги и пеших участков.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки, которые не помещаются в окно посещения.'}[result.status];
-      summary.textContent=intro+(result.stops.length ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
+        incomplete:'Для точного плана нужно время дороги, пеших участков или переправы.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки или рейсы, которые не помещаются в этот день.'}[result.status];
+      const noReturn=result.stops.some(row=>row.excursion?.conflict);
+      summary.textContent=intro+(result.stops.length && !noReturn ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До конца дня остаётся ${result.slack} мин.` : '');
       section.dataset.scheduleReady='true';
       if(light) lightAlternative(trip,catalog,matrix,calculate,result,light,()=>ticket===sequence && tripSignature(read())===tripSignature(trip)).then(alternative=>{
         if(ticket===sequence && alternative)renderLightView($('#trip-light'),trip,catalog,light,alternative,applyLight);
       }).catch(()=>{});
       for(const details of section.querySelectorAll('details[data-plan-editor]')) details.open=expanded.includes(details.dataset.planEditor);
+      for(const details of section.querySelectorAll('details[data-transport-editor]')) details.open=transportExpanded.includes(details.dataset.transportEditor);
       if(focused) [...section.querySelectorAll('[data-plan-field]')].find(node=>node.dataset.planField===focused && node.dataset.planStop===focusedStop && (!focusedMode || node.value===focusedMode))?.focus({preventScroll:true});
     } catch {
       if(ticket!==sequence)return;
@@ -235,6 +246,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     commit(current=>updateSchedule(current,'window',null,id),'Вернулись к расписанию места.');
   });
   section.addEventListener('submit',async event=>{
+    if(event.target.closest('[data-transport-edit]'))return;
     event.preventDefault();const form=event.target, values=new FormData(form), id=form.dataset.planEdit;
     const feedback=$('#trip-plan-feedback');feedback.textContent='';
     let fields;
