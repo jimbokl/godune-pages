@@ -120,7 +120,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=5'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=7'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
@@ -184,7 +184,7 @@
     const chosen = tripMap ? (workshop?.getState().places || []).map(id => data.poi.find(p => p.slug === id)) : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
     let points = chosen.filter(p => mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
     $('#map-dialog-title').textContent = tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
-    function listPoints() { $('#map-places').replaceChildren(...points.map(p => { const li = document.createElement('li'), a = document.createElement('a'); a.href = navigator.onLine ? navigatorLink(p) : url(`poi/${p.slug}/`); if(navigator.onLine){a.target = '_blank'; a.rel = 'noopener';} a.textContent = p.name; li.append(a); return li; })); }
+    function listPoints() { $('#map-places').replaceChildren(...points.map(p => { const li = document.createElement('li'), a = document.createElement('a'); li.dataset.mapPlace = p.slug; a.href = navigator.onLine ? navigatorLink(p) : url(`poi/${p.slug}/`); if(navigator.onLine){a.target = '_blank'; a.rel = 'noopener';} a.textContent = (tripMap || route ? `${chosen.indexOf(p)+1}. ` : '') + p.name; li.append(a); return li; })); }
     listPoints();
     try {
       if(!localStyle)localStyle=await import(url('offline-map.mjs?v=1'));
@@ -200,7 +200,7 @@
       const m = await initializeMap(local); if (version !== mapVersion) return;
       m.resize(); markers.forEach(marker => marker.remove()); markers = [];
       points.forEach((p,i) => {
-        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.textContent = route || tripMap ? String(chosen.indexOf(p)+1) : ''; btn.setAttribute('aria-label', p.name);
+        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || tripMap ? String(chosen.indexOf(p)+1) : ''; btn.setAttribute('aria-label', p.name);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
         title.textContent = p.name; link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
         const save = document.createElement('button'), on = workshop?.getState().places.includes(p.slug);
@@ -221,4 +221,7 @@
   $$('[data-map-filter]').forEach(b => b.addEventListener('click', () => {
     mapSelection = b.dataset.mapFilter; $$('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderMap().catch(() => {});
   }));
+  window.addEventListener('godune:trip-change', () => {
+    if (tripMap && $('#map-dialog')?.open) renderMap().catch(() => {});
+  });
 })();

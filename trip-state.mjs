@@ -1,3 +1,4 @@
+import {cleanSchedule} from './trip-schedule-state.mjs?v=1';
 export const TRIP_KEY = 'godune-trip:v1';
 export const emptyTrip = () => ({version: 1, places: [], routes: [], month: null, date: null,
   filters: {area: 'all', minutes: 'all'}});
@@ -17,14 +18,20 @@ export function cleanTrip(record, catalog) {
     return Array.isArray(values) ? [...new Set(values.filter(id => typeof id === 'string' && known.has(id)))] : [];
   };
   const date = validTripDate(record.date) ? record.date : null;
-  return {version: 1, places: valid(record.places, catalog.poi), routes: valid(record.routes, catalog.routes),
+  const trip = {version: 1, places: valid(record.places, catalog.poi), routes: valid(record.routes, catalog.routes),
     month: date ? Number(date.slice(5, 7)) : Number.isInteger(record.month) && record.month >= 1 && record.month <= 12 ? record.month : null,
     date, filters: {area: TRIP_AREAS.includes(record.filters?.area) ? record.filters.area : 'all',
       minutes: TRIP_TIMES.includes(record.filters?.minutes) ? record.filters.minutes : 'all'}};
+  const schedule = cleanSchedule(record.schedule, trip.places);
+  if (schedule) trip.schedule = schedule;
+  return trip;
 }
 
 export function mergeTrips(current, incoming, catalog) {
   const before = cleanTrip(current, catalog), next = cleanTrip(incoming, catalog);
-  return {...next, places: [...new Set([...before.places, ...next.places])],
+  const merged = {...next, places: [...new Set([...before.places, ...next.places])],
     routes: [...new Set([...before.routes, ...next.routes])]};
+  const schedule = next.schedule || before.schedule;
+  if (schedule) merged.schedule = {...schedule,stops:{...before.schedule?.stops,...next.schedule?.stops}};
+  return cleanTrip(merged, catalog);
 }

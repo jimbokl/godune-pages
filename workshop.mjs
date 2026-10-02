@@ -1,9 +1,11 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=1';
-import {initTripSharing} from './trip-link.mjs?v=3';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2';
+import {initTripSharing} from './trip-link.mjs?v=4';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=1';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=1';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=1';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=1';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=1';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -75,31 +77,54 @@ export async function initWorkshop(catalog, base) {
     node.setAttribute('aria-label', label); node.dataset.tripAction = action; node.dataset.tripKind = kind; node.dataset.tripId = id;
     return node;
   };
+  const reorder = initTripReorder($('#my-places'), {announce, move: (id, anchor, side) =>
+    commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
+  const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
+  if (routeSave) {
+    const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item';
+    add.dataset.routeStops = document.body.dataset.route; routeSave.parentElement.append(add);
+  }
   function renderList(kind) {
     const list = $(kind === 'places' ? '#my-places' : '#my-routes');
     if (!list) return;
     const rows = kind === 'places' ? catalog.poi : catalog.routes;
+    if (kind === 'places') reorder.cancel();
     list.replaceChildren(...state[kind].map((id, index) => {
       const item = rows.find(row => row.slug === id), li = document.createElement('li'), copy = document.createElement('div');
       const link = document.createElement('a'); link.href = url(`${kind === 'places' ? 'poi' : 'routes'}/${id}/`); link.textContent = item.name;
+      if (kind === 'places') {
+        li.dataset.tripPlace = id; copy.className = 'trip-place-copy';
+        const number = document.createElement('span'); number.className = 'trip-point-number';
+        number.textContent = String(index + 1).padStart(2, '0'); number.setAttribute('aria-hidden', 'true'); copy.append(number);
+      }
       const meta = document.createElement('small');
       if (kind === 'routes') {
         const progress = loadWalkProgress(storage, id, item.stops.map(stop => stop.poi));
         meta.textContent = `${item.area_name} · ≈ ${item.minutes} минут` + (progress.completed.length ? ` · пройдено ${progress.completed.length} из ${item.stops.length}` : '');
       } else meta.textContent = `${item.area_name} · ${item.category_name}`;
       copy.append(link, meta); li.append(copy);
+      if (kind === 'routes') {
+        const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item trip-add-stops';
+        add.dataset.routeStops = id; copy.append(add);
+      }
       const controls = document.createElement('div'); controls.className = 'trip-item-actions';
       if (kind === 'places') {
+        const drag = document.createElement('button'); drag.type = 'button'; drag.className = 'trip-reorder-handle';
+        drag.dataset.tripReorder = id; drag.setAttribute('aria-label', `Переставить: ${item.name}`);
+        drag.setAttribute('aria-pressed', 'false'); drag.setAttribute('aria-describedby', 'trip-order-note');
+        drag.title = 'Потяните за ручку или нажмите, чтобы выбрать место стрелками'; drag.textContent = '⠿';
         const up = button('↑', `Поднять: ${item.name}`, 'up', kind, id);
         const down = button('↓', `Опустить: ${item.name}`, 'down', kind, id);
         up.disabled = index === 0; down.disabled = index === state.places.length - 1;
-        controls.append(up, down);
+        controls.append(drag, up, down);
       }
       controls.append(button('×', `Убрать: ${item.name}`, 'remove', kind, id)); li.append(controls); return li;
     }));
     $(kind === 'places' ? '#my-places-empty' : '#my-routes-empty').hidden = state[kind].length > 0;
   }
   function refresh() {
+    schedule.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';
@@ -115,6 +140,12 @@ export async function initWorkshop(catalog, base) {
       link.textContent = 'Мой маршрут' + (state.places.length + state.routes.length ? ` · ${state.places.length + state.routes.length}` : '');
     });
     renderList('places'); renderList('routes');
+    document.querySelectorAll('[data-route-stops]').forEach(node => {
+      const route = catalog.routes.find(row => row.slug === node.dataset.routeStops);
+      const done = route?.stops.every(stop => state.places.includes(stop.poi));
+      node.disabled = !route || done;
+      node.textContent = done ? 'Остановки добавлены ✓' : 'Добавить остановки в мой маршрут';
+    });
     const summary = $('#my-trip-summary');
     if (summary) summary.textContent = state.places.length || state.routes.length ? 'Ваш черновик на месте. Продолжим?' : 'Начните с одного места. Остальное сложится по дороге.';
   }
@@ -134,6 +165,13 @@ export async function initWorkshop(catalog, base) {
     refresh();
   });
   document.addEventListener('click', async event => {
+    const add = event.target.closest('[data-route-stops]');
+    if (add && !add.disabled) {
+      const id = add.dataset.routeStops;
+      await commit(current => addRouteStops(current, id, catalog), 'Остановки добавлены. Уже выбранные точки остались на своих местах.');
+      ([...document.querySelectorAll('[data-route-stops]')].find(node => node.dataset.routeStops === id && !node.disabled)
+        || $('#my-places a') || routeSave)?.focus({preventScroll: true}); return;
+    }
     const save = event.target.closest('[data-save-place], [data-save-route]');
     if (save) {
       const kind = save.hasAttribute('data-save-place') ? 'places' : 'routes', id = kind === 'places' ? save.dataset.savePlace : save.dataset.saveRoute;

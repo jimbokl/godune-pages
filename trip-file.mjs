@@ -1,4 +1,5 @@
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=1';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2';
+import {validSchedule} from './trip-schedule-state.mjs?v=1';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
 export function createTripFile(state, catalog, now = new Date()) {
@@ -16,7 +17,8 @@ export function readTripFile(text, catalog) {
     if (!trip || trip.version !== 1 || ![trip.places, trip.routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
       || !(trip.month === null || Number.isInteger(trip.month) && trip.month >= 1 && trip.month <= 12)
       || !(trip.date === null || validTripDate(trip.date)) || (trip.date && Number(trip.date.slice(5, 7)) !== trip.month)
-      || !TRIP_AREAS.includes(trip.filters?.area) || !TRIP_TIMES.includes(trip.filters?.minutes)) throw Error();
+      || !TRIP_AREAS.includes(trip.filters?.area) || !TRIP_TIMES.includes(trip.filters?.minutes)
+      || Object.hasOwn(trip,'schedule') && !validSchedule(trip.schedule)) throw Error();
     const state = cleanTrip(trip, catalog);
     const missing = new Set(trip.places.filter(id => !state.places.includes(id))).size
       + new Set(trip.routes.filter(id => !state.routes.includes(id))).size;

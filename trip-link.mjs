@@ -1,9 +1,11 @@
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=1';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=1';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=2';
+import {validSchedule} from './trip-schedule-state.mjs?v=1';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = cleanTrip(state, catalog);
   const payload = [1, trip.places, trip.routes, trip.month, trip.date, trip.filters.area, trip.filters.minutes];
+  if (trip.schedule) payload.push(trip.schedule);
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
   const encoded = btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join(''))
     .replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, '');
@@ -21,12 +23,12 @@ export function readTripLink(hash, catalog) {
     const bytes = Uint8Array.from(atob(encoded.replaceAll('-', '+').replaceAll('_', '/')), char => char.charCodeAt(0));
     const data = JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(bytes));
     if (!Array.isArray(data) || data[0] !== 1) return {error: 'Эта ссылка создана в другой версии маршрута. Попросите новую ссылку.'};
-    const [version, places, routes, month, date, area, minutes] = data;
-    if (data.length !== 7 || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
+    const [version, places, routes, month, date, area, minutes, schedule] = data;
+    if (![7,8].includes(data.length) || data.length === 8 && !validSchedule(schedule) || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
       || !(month === null || Number.isInteger(month) && month >= 1 && month <= 12)
       || !(date === null || validTripDate(date)) || (date && Number(date.slice(5, 7)) !== month)
       || !TRIP_AREAS.includes(area) || !TRIP_TIMES.includes(minutes)) throw Error();
-    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}}, catalog);
+    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule}, catalog);
     const missing = new Set(places.filter(id => !state.places.includes(id))).size
       + new Set(routes.filter(id => !state.routes.includes(id))).size;
     if (!state.places.length && !state.routes.length) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
