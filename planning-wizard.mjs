@@ -1,5 +1,5 @@
-import {applyWizardDay,dayIsOccupied,prepareWizardDay,wizardDefaults,wizardRoutes} from './planning-wizard-state.mjs?v=1';
-import {selectedDay} from './trip-days-state.mjs?v=12';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardStarters} from './planning-wizard-state.mjs?v=2';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=12';
 import {planInput} from './trip-schedule-state.mjs?v=9';
 import {baseName} from './personal-points.mjs?v=3';
 
@@ -8,8 +8,8 @@ const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:'
 const dateLabel=value=>value?new Intl.DateTimeFormat('ru',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z')):'Дата пока не выбрана';
 const minute=value=>/^\d\d:\d\d$/.test(value)?Number(value.slice(0,2))*60+Number(value.slice(3)):null;
 const stopLabel=count=>`${count} ${count%100>=11&&count%100<=14?'остановок':count%10===1?'остановка':count%10>=2&&count%10<=4?'остановки':'остановок'}`;
-const titles=['Где хочется провести день?','Какая прогулка Вам ближе?','Ваш день складывается'];
-const leads=['Выберите прогулку. Посмотрим, как складывается день, и сохраним его в Вашей поездке.',
+const titles=['Что планируем на Балтике?','Какая прогулка Вам ближе?','Ваш день складывается'];
+const leads=['Одна прогулка или несколько дней у моря — выберите, с чего начать.',
   'У каждой прогулки своё начало. Выберите одну — посмотрим остановки и время на дорогу.',
   'Остановки идут по порядку. До сохранения поездка остаётся как была.'];
 const issueText={
@@ -35,6 +35,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   let answers=wizardDefaults(workshop.getState(),catalog),step=1,proposal=null,revision=null,sequence=0,saving=false;
   const node=(tag,text,className)=>{const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;};
   const point=id=>catalog.poi.find(row=>row.slug===id);
+  const multi=()=>answers.area==='whole-trip';
   const announce=text=>{status.textContent=text;};
   const focusTitle=()=>{$('[data-wizard-title]').focus({preventScroll:true});mount.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
 
@@ -44,17 +45,23 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   }
 
   function routes() {
-    const rows=wizardRoutes(catalog).filter(route=>route.area===answers.area);
-    if(!rows.some(route=>route.slug===answers.route))answers.route=rows[0]?.slug || null;
+    const rows=multi()?wizardStarters(catalog):wizardRoutes(catalog).filter(route=>route.area===answers.area);
+    const key=multi()?'starter':'route',id=row=>multi()?row.id:row.slug;
+    if(!rows.some(row=>id(row)===answers[key]))answers[key]=rows[0]?id(rows[0]):null;
     const choices=rows.map(route=>{
       const label=node('label',undefined,'wizard-choice wizard-route'),radio=node('input'),copy=node('span');
-      radio.type='radio';radio.name='wizard_route';radio.value=route.slug;radio.required=true;radio.checked=route.slug===answers.route;
-      copy.append(node('strong',route.name),node('small',`${route.minutes?`Около ${duration(route.minutes)} · `:''}${stopLabel(route.stops.length)}`));
-      copy.append(node('span',route.start_note,'wizard-choice-note'));const mark=node('span','→','wizard-choice-mark');mark.setAttribute('aria-hidden','true');label.append(radio,copy,mark);return label;
+      radio.type='radio';radio.name=multi()?'wizard_starter':'wizard_route';radio.value=id(route);radio.required=true;radio.checked=id(route)===answers[key];
+      copy.append(node('strong',route.name),node('small',multi()?route.description:`${route.minutes?`Около ${duration(route.minutes)} · `:''}${stopLabel(route.stops.length)}`));
+      copy.append(node('span',multi()?'Калининград · Зеленоградск · Куршская коса. На косе — на машине.':route.start_note,'wizard-choice-note'));const mark=node('span','→','wizard-choice-mark');mark.setAttribute('aria-hidden','true');label.append(radio,copy,mark);return label;
     });
     $('[data-wizard-routes]').replaceChildren(...choices);
-    const separate=dayIsOccupied(workshop.getState());
-    $('[data-wizard-placement]').textContent=separate?'Выбранный день уже занят. Эта прогулка станет отдельным днём — проверьте её дату.':'Прогулка заполнит свободный выбранный день.';
+    const separate=(multi()?journeyIsOccupied:dayIsOccupied)(workshop.getState());
+    $('[data-wizard-placement]').textContent=multi()?(separate?'У Вас уже есть планы. Добавим все новые дни рядом с ними — проверьте первую дату.':'Начнём новую поездку. Каждый день потом можно изменить.'):
+      separate?'Выбранный день уже занят. Эта прогулка станет отдельным днём — проверьте её дату.':'Прогулка заполнит свободный выбранный день.';
+    $('[data-wizard-date-label]').textContent=multi()?'Первый день, если знаете дату':'Дата, если знаете';
+    $('[data-wizard-start-label]').textContent=multi()?'Начало каждого дня':'Начало прогулки';
+    $('[data-wizard-settings-note]').textContent=multi()?'Время задаётся для каждого дня. Переезды между городами, жильё и билеты добавьте в поездку отдельно.':'Если в поездке указано место ночёвки, учтём дорогу от него. Билеты, обед и долгие остановки можно добавить после сохранения.';
+    $('[data-wizard-preview-label]').textContent=multi()?'Посмотреть план →':'Посмотреть день →';
     $('[data-wizard-settings]').open=separate;
     form.elements.wizard_date.value=answers.date || '';
     form.elements.wizard_start.value=answers.start===null?'':clock(answers.start);
@@ -67,20 +74,23 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     all('[data-wizard-step]').forEach(panel=>{panel.hidden=Number(panel.dataset.wizardStep)!==step;});
     all('[data-wizard-progress]').forEach(item=>{const current=Number(item.dataset.wizardProgress)===step;item.toggleAttribute('data-current',current);if(current)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});
     $('[data-wizard-title]').textContent=titles[step-1];$('[data-wizard-lead]').textContent=leads[step-1];
+    if(multi() && step>1){$('[data-wizard-title]').textContent=step===2?'Сколько дней у Вас есть?':'Ваша поездка по дням';$('[data-wizard-lead]').textContent=step===2?'В плане будут город, море и дюны. Выберите длину поездки — затем посмотрим каждый день.':'Откройте день, чтобы увидеть остановки и расчёт времени. Любую часть плана можно изменить после сохранения.';}
+    all('[data-wizard-progress-label]').forEach((label,index)=>{label.textContent=(multi()?['Выбор','Дни','План']:['Место','Прогулка','Ваш день'])[index];});
+    $('[data-wizard-change-label]').textContent=multi()?'← Изменить план':'← Изменить прогулку';
     $('[data-wizard-saved]').hidden=true;save.disabled=false;
     if(step===2)routes();
     if(step===3)preview();
     if(focus)focusTitle();
   }
 
-  function orderedStops(schedule=null) {
+  function orderedStops(schedule=null,trip=proposal.trip,route=proposal.route) {
     const list=node('ol',undefined,'wizard-timeline');list.dataset.wizardTimeline='';
-    for(const [index,id]of proposal.trip.places.entries()) {
+    for(const [index,id]of trip.places.entries()) {
       const place=point(id),row=schedule?.stops.find(stop=>stop.id===id),li=node('li'),time=node('span',undefined,'wizard-time');
       time.textContent=row?row.begins===null?`Не раньше ${clock(row.earliest_begin)}`:clock(row.begins):String(index+1).padStart(2,'0');
       const copy=node('div'),link=node('a',place.name);link.href=new URL(`poi/${id}/`,base).href;
-      copy.append(link,node('p',`${proposal.trip.schedule.stops[id].visit} мин. на остановку`,'wizard-stop-duration'));
-      const note=proposal.route.stops.find(stop=>stop.poi===id)?.note;if(note)copy.append(node('p',note,'wizard-stop-note'));
+      copy.append(link,node('p',`${trip.schedule.stops[id].visit} мин. на остановку`,'wizard-stop-duration'));
+      const note=route?.stops.find(stop=>stop.poi===id)?.note;if(note)copy.append(node('p',note,'wizard-stop-note'));
       if(row?.issues.length) {
         const issues=node('ul',undefined,'wizard-issues');
         for(const issue of row.issues){const text=issueText[issue.code] || 'Этот участок требует уточнения.';const line=node('li',text);line.dataset.wizardIssue=issue.code;issues.append(line);}copy.append(issues);
@@ -91,6 +101,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   }
 
   function renderResult(schedule=null,error=false) {
+    if(proposal.kind==='journey'){renderJourney(schedule,error);return;}
     const day=selectedDay(proposal.trip),heading=node('h3',proposal.route.name,'wizard-result-title');
     const meta=node('p',`${proposal.placement==='separate'?'Отдельный день':'Выбранный день'} · ${dateLabel(day.date)} · начало в ${clock(answers.start)}`,'wizard-result-meta');
     const brief=node('p',proposal.route.description,'wizard-result-copy');
@@ -113,16 +124,41 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     save.textContent=proposal.placement==='separate'?'Добавить отдельный день':'Сохранить день в поездке';
   }
 
+  function renderJourney(schedules=null,error=false) {
+    const introduction=node('div',undefined,'wizard-journey-intro');
+    introduction.append(node('p',dateLabel(answers.date),'wizard-result-meta'),node('h3',`${proposal.starter.name} на Балтике`,'wizard-result-title'),node('p',proposal.starter.description,'wizard-result-copy'));
+    introduction.append(node('p','На Куршской косе нужна машина: эти дни начинаются и заканчиваются у променада Зеленоградска. Переезды между городами и ночёвки пока не входят в план.','wizard-access-note'));
+    const days=proposal.targetIds.map((id,index)=>{
+      const trip=chooseTripDay(proposal.trip,id),day=selectedDay(trip),schedule=schedules?.get(id),card=node('details',undefined,'wizard-day');
+      card.dataset.wizardDay=id;card.open=index===0;
+      const heading=node('summary'),number=node('span',String(index+1).padStart(2,'0'),'wizard-day-number'),copy=node('span');
+      const areas=[...new Set(day.places.map(place=>point(place).area_name).filter(Boolean))];
+      copy.append(node('strong',areas.join(' · ') || point(day.places[0]).name),node('small',`${dateLabel(day.date)} · ${day.schedule.mode==='car'?'На машине':'Пешком'} · ${stopLabel(day.places.length)}`));
+      heading.append(number,copy,node('span','+','wizard-day-toggle'));card.append(heading);
+      const body=node('div',undefined,'wizard-day-body'),timing=node('p',undefined,'wizard-calculation');timing.dataset.wizardCalculation=schedule?.status || 'pending';
+      if(schedule){const lower=schedule.finish===null;timing.textContent=`${lower?'Окончание не раньше':'По расчёту — до'} ${clock(lower?schedule.earliest_finish:schedule.finish)}. ${['overrun','conflict'].includes(schedule.status)?'День не помещается в выбранное время. Его можно сократить или начать раньше.':lower?'Для точного времени не хватает данных о дороге.':'Перед выходом сверьте проход, часы и билеты.'}`;}
+      else timing.textContent=error?'Время сейчас не рассчиталось. Сохраните остановки и уточните план позже.':'Считаем дорогу и остановки…';
+      body.append(timing,orderedStops(schedule,trip,null));
+      const bases=day.start_at?`Старт и возвращение: ${baseName(day.start_at,catalog)}.`:'Начало у первой остановки. Дорога до неё и от конца прогулки здесь не рассчитана.';
+      body.append(node('p',bases,'wizard-access-note'));card.append(body);return card;
+    });
+    const evidence=node('details',undefined,'wizard-evidence');evidence.append(node('summary','Как рассчитан план'),node('p','Дорога каждого дня оценена по общей карте маршрутов. Время посещения берём из карточек; где оценки нет — оставляем 30 минут. Между остановками добавлен запас 10 минут. Всё это можно изменить в поездке.'),node('p','Часы работы на будущую дату, билеты, питание и переезды между днями требуют отдельной проверки. Расчёт не подтверждает бронь или доступ на тропу.'));
+    result.replaceChildren(introduction,...days,evidence,node('p',proposal.placement==='separate'?'Ваши прежние дни, записи и расходы останутся целиком. Добавим этот план отдельными днями.':'Все дни сохранятся в этом браузере. Регистрация не нужна.','wizard-save-note'));
+    save.textContent=proposal.placement==='separate'?`Добавить ${proposal.starter.name} к поездке`:'Сохранить всю поездку';
+  }
+
   async function preview() {
     const ticket=sequence;
-    try {proposal=prepareWizardDay(workshop.getState(),answers,catalog);revision=workshop.getRevision();}
+    try {proposal=prepareWizardPlan(workshop.getState(),answers,catalog);revision=workshop.getRevision();}
     catch {proposal=null;save.disabled=true;result.replaceChildren();announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
       const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=13'),import('./travel-estimates.mjs?v=6')]);
-      const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,proposal.trip,catalog).catch(()=>null)]);
+      const calculate=await loadScheduler(base);
+      const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
+      const schedules=await Promise.all(trips.map(async trip=>{const matrix=await loadTripTravelMatrix(base,trip,catalog).catch(()=>null);return calculate(planInput(trip,catalog,matrix));}));
       if(ticket!==sequence || step!==3)return;
-      renderResult(calculate(planInput(proposal.trip,catalog,matrix)));
+      renderResult(proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,schedules[index]])):schedules[0]);
     } catch {
       if(ticket!==sequence || step!==3)return;
       renderResult(null,true);
@@ -150,14 +186,14 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(step!==2)return;
     form.elements.wizard_end.setCustomValidity('');
     for(const field of [form.elements.wizard_date,form.elements.wizard_start,form.elements.wizard_end])if(!field.checkValidity()){$('[data-wizard-settings]').open=true;field.reportValidity();return;}
-    const route=form.querySelector('input[name="wizard_route"]:checked');
-    answers={...answers,route:route?.value || null,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
+    const route=form.querySelector('input[name="wizard_route"]:checked'),starter=form.querySelector('input[name="wizard_starter"]:checked');
+    answers={...answers,route:route?.value || answers.route,starter:starter?.value || answers.starter,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
     if(answers.start>=answers.end){form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
-    try {prepareWizardDay(workshop.getState(),answers,catalog);show(3);}catch {announce('Проверьте прогулку, дату и время.');}
+    try {prepareWizardPlan(workshop.getState(),answers,catalog);show(3);}catch {announce('Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
   });
   form.addEventListener('input',()=>{
     form.elements.wizard_end.setCustomValidity('');
-    if(step===2)answers={...answers,route:form.querySelector('input[name="wizard_route"]:checked')?.value || null,
+    if(step===2)answers={...answers,route:form.querySelector('input[name="wizard_route"]:checked')?.value || answers.route,starter:form.querySelector('input[name="wizard_starter"]:checked')?.value || answers.starter,
       date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
     summary();
   });
@@ -166,12 +202,15 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(saving || save.disabled || !proposal)return;
     saving=true;save.disabled=true;mount.setAttribute('aria-busy','true');let intent;
     try {
-      const committed=await workshop.setState(current=>{intent=applyWizardDay(current,proposal,catalog,{separate:proposal.placement==='separate'});return intent.state;},'Прогулка сохранена в поездке.',{expectedRevision:revision});
+      const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate'});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
       if(committed.conflict || !intent?.applied){announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
       $('[data-wizard-form]').hidden=true;$('[data-wizard-progress="3"]').setAttribute('aria-current','step');
       $('[data-wizard-saved]').hidden=false;
-      announce(committed.saved?'День сохранён в этом браузере. Можно открыть его в дороге.':'День открыт в этой вкладке, но браузер не сохранил его. В настройках поездки скачайте файл, прежде чем закрывать страницу.');
-      $('[data-wizard-title]').textContent='Ваш день готов';$('[data-wizard-saved] a').focus({preventScroll:true});
+      $('[data-wizard-saved-travel]').textContent=multi()?'Открыть поездку в дороге →':'Открыть день в дороге →';
+      $('[data-wizard-saved-editor]').textContent=multi()?'Настроить дни подробнее':'Настроить день подробнее';
+      $('[data-wizard-again]').textContent=multi()?'Собрать ещё план':'Собрать ещё день';
+      announce(committed.saved?`${multi()?'Поездка сохранена':'День сохранён'} в этом браузере. Можно открыть ${multi()?'первый день':'его'} в дороге.`:'План открыт в этой вкладке, но браузер не сохранил его. В настройках поездки скачайте файл, прежде чем закрывать страницу.');
+      $('[data-wizard-title]').textContent=multi()?'Ваша поездка готова':'Ваш день готов';$('[data-wizard-saved] a').focus({preventScroll:true});
     } catch {announce('Не удалось сохранить день. Ответы здесь — попробуйте ещё раз.');}
     finally {saving=false;mount.removeAttribute('aria-busy');save.disabled=false;changed();}
   });

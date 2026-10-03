@@ -163,7 +163,7 @@
   Promise.all([catalog, import(url('workshop.mjs?v=34'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
-    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=1')).then(({initPlanningWizard})=>
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=2')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
     if (document.body.dataset.tool) {

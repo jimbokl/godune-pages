@@ -26,6 +26,50 @@
   light.addColorStop(1,'rgba(221,149,54,0)');
   g.fillStyle = light; g.fillRect(0,0,48,48);
 
+  function amberShard(x,y,radius,depth,alpha,strength,night) {
+    const stone = radius * 1.65;
+    const angle = depth * 2, cosine = Math.cos(angle), sine = Math.sin(angle);
+    const taper = .86 + depth * .18;
+    const polygon = points => {
+      ctx.beginPath();
+      points.forEach(([px,py],index) => {
+        const dx = px * stone, dy = py * stone * taper;
+        const sx = x + dx*cosine-dy*sine, sy = y + dx*sine+dy*cosine;
+        if (index) ctx.lineTo(sx,sy); else ctx.moveTo(sx,sy);
+      });
+      ctx.closePath();ctx.fill();
+    };
+    const body = Math.min(1,strength * (night ? .72 : .94) * Math.min(1,alpha/.9));
+    // The lower, uneven rim gives each small shard thickness. Even this rim
+    // follows the Rust pulse: no stone remains visible between reflections.
+    ctx.globalAlpha = body;
+    ctx.fillStyle = '#814110';
+    polygon([[-1,.02],[-.76,-.48],[-.15,-.68],[.51,-.5],[.99,-.07],[.72,.47],[.01,.63],[-.73,.42]]);
+    if (alpha <= 0) return;
+    // The bright centre stays inside the amber. The external halo below keeps
+    // its previous diameter and strength instead of spreading across the sand.
+    const colour = ctx.createRadialGradient(x-stone*.22,y-stone*.2,0,x,y,stone*1.1);
+    colour.addColorStop(0,'#ffe399');
+    colour.addColorStop(.35,'#f4bc4f');
+    colour.addColorStop(.76,'#ce7d20');
+    colour.addColorStop(1,'#9d5115');
+    ctx.globalAlpha = body * .78;
+    ctx.fillStyle = colour;
+    polygon([[-.86,-.01],[-.64,-.42],[-.14,-.56],[.42,-.42],[.84,-.09],[.6,.32],[0,.46],[-.62,.3]]);
+    ctx.globalAlpha = body * .6;ctx.fillStyle = '#a65c16';
+    polygon([[-.02,-.23],[.76,-.06],[.52,.31],[.06,.43]]);
+    ctx.globalAlpha = body * .9;ctx.fillStyle = '#f8c75f';
+    polygon([[-.65,-.34],[-.12,-.52],[.4,-.31],[-.04,-.08]]);
+    ctx.globalAlpha = body * .56;ctx.fillStyle = '#e99a29';
+    polygon([[-.6,-.13],[-.04,-.08],[.08,.43],[-.52,.26]]);
+    ctx.globalAlpha = Math.min(1,alpha * strength * 1.55) * (night ? .72/.94 : 1);
+    ctx.fillStyle = '#fff0bd';
+    polygon([[-.34,-.35],[-.06,-.46],[.14,-.26],[-.13,-.08]]);
+    ctx.globalAlpha = Math.min(1,alpha * strength * 1.2) * (night ? .35 : 1);
+    const size = radius * 6 * (night ? .8 : 1);
+    ctx.drawImage(glow,x-size/2,y-size/2,size,size);
+  }
+
   function resize() {
     const rect = scene.getBoundingClientRect();
     width = rect.width; height = rect.height;
@@ -74,25 +118,7 @@
       const alpha = type === 'amber' ? engine.amber_glint(amberIndex++,amberCount,f[8]) : f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
-        const strength = settings?.strength ?? 1;
-        // Both the pebble and its reflection fade to zero between flashes.
-        // A warm body and a bright facet read as amber, even on pale sand.
-        // Keep the halo small; increase the light within the stone instead.
-        const stone = radius * 1.3;
-        ctx.globalAlpha = Math.min(1,strength * (night ? .72 : .94) * Math.min(1,alpha/.9));
-        ctx.fillStyle = '#b76613';
-        ctx.beginPath();ctx.ellipse(x,y,stone*.95,stone*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle = '#efb544';
-        ctx.beginPath();ctx.ellipse(x-stone*.18,y-stone*.15,stone*.68,stone*.38,f[i+7]*2,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle = '#ffe19a';
-        ctx.beginPath();ctx.moveTo(x-stone*.5,y-stone*.25);ctx.lineTo(x+stone*.27,y-stone*.4);ctx.lineTo(x-stone*.1,y+stone*.08);ctx.closePath();ctx.fill();
-        if (alpha > 0) {
-          ctx.globalAlpha = Math.min(1,alpha * strength * 1.2) * (night ? .35 : 1);
-          const size = radius * 6 * (night ? .8 : 1);
-          ctx.drawImage(glow,x-size/2,y-size/2,size,size);
-          ctx.fillStyle = '#fff0be';
-          ctx.fillRect(x-stone*.25,y-stone*.3,stone*.7,stone*.4);
-        }
+        amberShard(x,y,radius,f[i+7],alpha,settings?.strength ?? 1,night);
       } else {
         // Short, warm streaks follow the slope. They read as wind-blown sand.
         ctx.lineWidth = radius;
