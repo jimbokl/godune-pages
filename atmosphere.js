@@ -65,14 +65,11 @@
       if (x < 0 || x > width || y < 0 || y > height) continue;
       grains.push({i,type,settings,x,y});
     }
-    // Keep one in three stones, spread across the visible sand from left to
-    // right. Sand keeps its density; amber stays put between reflections.
-    const amber = grains.filter(p => p.type === 'amber').sort((a,b) => a.x-b.x);
-    const selectedAmber = new Set(amber.filter((p,index) => index % 3 === 0));
-    const sparseGrains = grains.filter(p => p.type !== 'amber' || selectedAmber.has(p));
-    const amberCount = selectedAmber.size;
+    // Every visible stone takes a turn. Rust limits the simultaneous flashes;
+    // the shared pulse still makes inactive stones completely transparent.
+    const amberCount = grains.filter(p => p.type === 'amber').length;
     let amberIndex = 0;
-    for (const {i,type,settings,x,y} of sparseGrains) {
+    for (const {i,type,settings,x,y} of grains) {
       const radius = f[i+2] * scale;
       const alpha = type === 'amber' ? engine.amber_glint(amberIndex++,amberCount,f[8]) : f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
