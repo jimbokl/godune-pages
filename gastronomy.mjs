@@ -3,7 +3,7 @@ import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 import {foodTrip,anchorRequest} from './gastro-day.mjs?v=1';
-import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=7';
+import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=8';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=1';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=4';
 

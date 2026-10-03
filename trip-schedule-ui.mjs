@@ -1,7 +1,7 @@
 import {baseName} from './personal-points.mjs?v=1';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=3';
 import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=6';
-import {loadScheduler} from './trip-scheduler.mjs?v=8';
+import {loadScheduler} from './trip-scheduler.mjs?v=9';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=1';

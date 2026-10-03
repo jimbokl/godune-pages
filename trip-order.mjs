@@ -1,4 +1,4 @@
-import {cleanTrip} from './trip-state.mjs?v=11';
+import {cleanTrip} from './trip-state.mjs?v=12';
 
 // Apply an intent to the latest draft, rather than saving the order seen at drag start.
 export function reorderTripPlace(state, id, anchor, side, catalog) {
