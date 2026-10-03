@@ -1,11 +1,12 @@
-import {baseName} from './personal-points.mjs?v=1';
-import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=8';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=12';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=11';
-import {validSchedule} from './trip-schedule-state.mjs?v=6';
+import {publicBookingTrip} from './trip-bookings-state.mjs?v=1';
+import {baseName} from './personal-points.mjs?v=2';
+import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=9';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=13';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=12';
+import {validSchedule} from './trip-schedule-state.mjs?v=7';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
-  const trip = cleanTrip(state, catalog);
+  const trip = publicBookingTrip(cleanTrip(state, catalog));
   const payload = [1, trip.places, trip.routes, trip.month, trip.date, trip.filters.area, trip.filters.minutes];
   if (trip.schedule || trip.itinerary) payload.push(trip.schedule || null);
   if(trip.itinerary)payload.push(trip.itinerary);
@@ -37,7 +38,7 @@ export function readTripLink(hash, catalog) {
     const missing = tripPlaceIds(original).filter(id => !tripPlaceIds(state).includes(id)).length
       + new Set(routes.filter(id => !state.routes.includes(id))).size;
     if (!tripHasDraft(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
-    return {state, missing};
+    return {state:publicBookingTrip(state), missing};
   } catch { return {error: 'Не удалось прочитать маршрут. Возможно, ссылка скопировалась не целиком. Ваш черновик на месте.'}; }
 }
 
@@ -53,8 +54,8 @@ export function initTripSharing(catalog, base, workshop) {
     <p id="trip-link-missing" hidden></p></div>
     <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
     <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
-    <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки, план расходов, оплаты и полученные возвраты. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
-    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки, источники цен, оплаты и полученные возвраты. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
+    <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки, план расходов, оплаты и полученные возвраты. Откройте его здесь на другом телефоне. Номера брони и личные заметки записей тоже входят в файл: передавайте его тем, кому доверяете. Карты для прогулок без сети скачиваются отдельно.</p>
+    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки, источники цен, оплаты и полученные возвраты. Любой, у кого она есть, увидит эту поездку. Названия записей, даты, время и адреса тоже видны. Номера брони и личные заметки записей остаются у вас. Ссылка останется такой, какой вы её отправили.</p></div>
     <div id="trip-link-import" hidden><div class="trip-link-actions"><button type="button" id="trip-link-merge" class="button button-dark">Добавить к моему</button><button type="button" id="trip-link-replace" class="button button-light">Заменить мой маршрут</button></div>
     <p class="trip-link-note" id="trip-link-import-note"></p></div>
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
@@ -94,6 +95,7 @@ export function initTripSharing(catalog, base, workshop) {
           const list=document.createElement('ol');
           for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
           for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${baseName(day[key],catalog)}`;block.append(line);}
+          for(const row of day.bookings||[]){const line=document.createElement('p');line.textContent=`${row.name} · ${row.date||'дата не выбрана'} · ${row.status==='cancelled'?'отменено':row.status==='booked'?'вы отметили бронь':'планируете'}`;block.append(line);}
           if(day.note) {const line=document.createElement('p');line.textContent=day.note;block.append(line);}
           if(Object.keys(day.costs).length) {const line=document.createElement('p');line.textContent='План расходов, источники цен, оплаты и полученные возвраты сохранены.';block.append(line);}dayGroup.append(block);
         });

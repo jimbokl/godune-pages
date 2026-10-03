@@ -1,7 +1,7 @@
 let engine;
 // Every caller uses Rust. A failed WASM load never silently switches to different maths.
 export function loadScheduler(base) {
-  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=9',base)).then(async response => {
+  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=10',base)).then(async response => {
     if (!response.ok) throw Error('Не удалось загрузить расчёт дня.');
     const {instance} = await WebAssembly.instantiate(await response.arrayBuffer());
     const plan = input => calculate(instance.exports,input);

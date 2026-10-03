@@ -1,6 +1,7 @@
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
 // A price belongs to the saved directed journey, never to an inferred tariff.
-import {isPersonalPoint} from './personal-points.mjs?v=1';
-import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=4';
+import {isPersonalPoint} from './personal-points.mjs?v=2';
+import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=5';
 const object=value=>!!value && typeof value==='object' && !Array.isArray(value);
 const keys=(value,list)=>Object.keys(value).every(key=>list.includes(key));
 const text=value=>typeof value==='string' && !!value.trim();
@@ -21,6 +22,7 @@ const point=(base,mode,catalog)=>{
   return validTransferPoint(result)?result:null;
 };
 export function dayTransfers(day,catalog) {
+  day=effectiveBookingDay(day);
   const mode=day.schedule?.mode || 'foot',stops=day.places,result=[];
   const add=(from,to,role)=>{
     const a=point(from,mode,catalog),b=point(to,mode,catalog);if(!a || !b)return;

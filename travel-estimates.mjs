@@ -1,8 +1,9 @@
+import {bookingEffects} from './trip-bookings-state.mjs?v=1';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
-import {baseId,personalPoints} from './personal-points.mjs?v=1';
+import {baseId,personalPoints} from './personal-points.mjs?v=2';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
-export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};return {...day,start_at:baseId(day.start_at),night_at:baseId(day.night_at)};};
+export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return {...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at)};};
 export const previousPlace = (trip,id) => trip.places[trip.places.indexOf(id)-1] || (trip.places[0]===id ? dayBases(trip).start_at : null);
 const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];

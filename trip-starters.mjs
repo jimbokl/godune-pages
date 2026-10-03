@@ -1,5 +1,5 @@
-import {defaultSchedule} from './trip-schedule-state.mjs?v=6';
-import {nextDate,mergeJourney,tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=8';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=7';
+import {nextDate,mergeJourney,tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=9';
 // Editorial starting points, not promised bookings or verified tours.
 const river={places:['ostrov-kanta','rybnaya-derevnya','muzej-mirovogo-okeana'],mode:'foot',start_at:null,night_at:null};
 const villas={places:['villa-leo','villa-shmidt','kirha-korolevy-luizy','pergola-korolevy-luizy'],mode:'foot',start_at:null,night_at:null};

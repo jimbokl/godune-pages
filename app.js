@@ -128,11 +128,11 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=25'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=26'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=8')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+      import(url('tool-pages.mjs?v=9')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
         $$('[data-plan-starter]').forEach(button=>button.disabled=true);
         const status=$('#plan-starter-status');
@@ -146,7 +146,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=11')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=12')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -224,8 +224,10 @@
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
     const trip = foodPreviewTrip || (foodPreview.length ? {places:foodPreview.filter(id=>data.poi.some(p=>p.slug===id)),schedule:{mode:'foot'}} : tripMap ? workshop?.getState() : null);
-    const day = trip?.itinerary?.days.find(d => d.id === trip.itinerary.active);
-    const personal=await import(url('personal-points.mjs?v=1'));
+    const rawDay = trip?.itinerary?.days.find(d => d.id === trip.itinerary.active);
+    const bookingState=await import(url('trip-bookings-state.mjs?v=1'));
+    const day = rawDay ? bookingState.effectiveBookingDay(rawDay) : null;
+    const personal=await import(url('personal-points.mjs?v=2'));
     const bases=day ? [day.start_at,day.night_at].filter(personal.isPersonalPoint).map(p=>({...p,slug:personal.baseId(p)})) : [];
     const tripPoints = trip ? [...new Set([day?.start_at,...trip.places,day?.night_at].filter(Boolean))] : [];
     const chosen = tripMap ? [...tripPoints.map(id => data.poi.find(p => p.slug === id)).filter(Boolean),...new Map(bases.map(p=>[p.slug,p])).values()] : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
@@ -284,7 +286,7 @@
       });
       let roads={type:'FeatureCollection',features:[]},modeLabel='',arrivals=[];
       if(trip) {
-        const travel=await import(url('travel-estimates.mjs?v=4'));
+        const travel=await import(url('travel-estimates.mjs?v=5'));
         const matrix=await travel.loadTripTravelMatrix(base,trip,data).catch(()=>null);
         roads=await travel.tripRoadFeatures(trip,data,matrix,base,points.map(p=>p.slug));
         modeLabel=travel.TRAVEL_MODES[travel.travelMode(trip)];

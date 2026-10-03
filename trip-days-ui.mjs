@@ -1,12 +1,14 @@
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=5';
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=8';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=1';
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=6';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=9';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=9';
-import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=4';
-import {isPersonalPoint,baseName} from './personal-points.mjs?v=1';
-import {pickPersonalPoint} from './personal-point-picker.mjs?v=4';
-import {planInput} from './trip-schedule-state.mjs?v=6';
-import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=7';
+import {loadScheduler} from './trip-scheduler.mjs?v=10';
+import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=5';
+import {isPersonalPoint,baseName} from './personal-points.mjs?v=2';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=5';
+import {planInput} from './trip-schedule-state.mjs?v=7';
+import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=8';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -24,6 +26,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     <details class="journey-overview" id="journey-overview"><summary>Вся поездка <span id="journey-total" role="status"></span></summary><p class="journey-note">Время зависит от выбранных остановок, дороги и часов работы. Цены — ваши оценки; пока есть пустые суммы, полный бюджет неизвестен.</p><ol id="journey-overview-days"></ol></details><p id="journey-feedback" class="journey-note" role="status"></p>`;
   (mount.querySelector('.workshop-main') || mount).prepend(section);
   const $=selector=>section.querySelector(selector);let sequence=0;
+  const bookings=initTripBookings({section,read,commit,base,catalog});
   const expenses=initTripExpenses({section,read,commit,base,catalog});
   $('#journey-starters').replaceChildren(...TRIP_STARTERS.map(starter=>{
     const b=button(starter.name,'starter',starter.id);b.className='journey-starter';b.append(el('span',starter.description));return b;
@@ -82,13 +85,15 @@ export function initTripDays({mount,read,commit,base,catalog}) {
         const total=budget.days.find(row=>row.id===day.id);
         let text=`${stopsLabel(day.places.length)} · ${TRAVEL_MODES[travelMode(chooseTripDay(trip,day.id))]}`;
         if(day.places.length) {
-          const result=engine(planInput(chooseTripDay(trip,day.id),catalog,matrices[index]));
-          text+=` · ${result.finish===null?'не раньше':'окончание около'} ${clock(result.earliest_finish)}`;
-          if(['conflict','overrun'].includes(result.status))text+=' · не всё помещается';
-          if(result.finish===null)text+=' · дорогу нужно уточнить';
+          try {
+            const result=engine(planInput(chooseTripDay(trip,day.id),catalog,matrices[index]));
+            text+=` · ${result.finish===null?'не раньше':'окончание около'} ${clock(result.earliest_finish)}`;
+            if(['conflict','overrun'].includes(result.status))text+=' · не всё помещается';
+            if(result.finish===null)text+=' · дорогу нужно уточнить';
+          }catch(error){if(error.message!=='arrival_after_day')throw error;text+=' · прибытие позже конца дня';}
         }else text+=' · выберите места';
         text+=total.total===null?` · ${rubles(total.known)} известно`:` · ${rubles(total.total)}`;summary.textContent=text;li.append(summary);
-        for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(day[field])li.append(el('p',`${caption}: ${baseName(day[field],catalog)}`,'journey-day-note'));
+        for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(effectiveBookingDay(day)[field])li.append(el('p',`${caption}: ${baseName(effectiveBookingDay(day)[field],catalog)}`,'journey-day-note'));
         return li;
       }));
     }catch(error) {if(ticket!==sequence)return;section.dataset.budgetReady='error';expenses.error();$('#journey-overview-days').replaceChildren();$('#journey-total').textContent=error.message==='budget_overflow'?'Суммы слишком велики для расчёта. Проверьте цены и количество.':'Расчёт пока не открылся. Ваши суммы сохранены.';}
@@ -103,7 +108,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       b.append(el('span',`День ${index+1}`,'journey-day-number'),el('span',dateLabel(row.date),'journey-day-date'),el('span',stopsLabel(row.places.length),'journey-day-points'));return b;
     }));
     section.querySelector('[data-journey-action="remove"]').hidden=days.length===1;
-    renderForms(trip);expenses.render(trip);expenses.pending();section.dataset.budgetReady='false';
+    renderForms(trip);bookings.render(trip);expenses.render(trip);expenses.pending();section.dataset.budgetReady='false';
     renderTotals(trip,ticket);
     if(focused) {const field=[...section.querySelectorAll('[name]')].find(el=>el.name===focused);field?.focus({preventScroll:true});if(selection!==null)field?.setSelectionRange(selection,selection);}
   }
@@ -130,7 +135,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     }
     const currentId=selectedDay(read()).id;
     if(action==='remove' && !window.confirm('Удалить этот день вместе с остановками, заметкой и оценками расходов? Другие дни останутся.'))return;
-    await commit(current=>action==='add'?addTripDay(current):action==='copy'?addTripDay(current,true):removeTripDay(current,currentId),action==='remove'?'День удалён.':action==='copy'?'План дня скопирован. Оплаченные суммы не переносятся.':'Новый день открыт.');
+    await commit(current=>action==='add'?addTripDay(current):action==='copy'?addTripDay(current,true):removeTripDay(current,currentId),action==='remove'?'День удалён.':action==='copy'?'План дня скопирован. Оплаты, номера брони и связь записей с расписанием не переносятся.':'Новый день открыт.');
     section.querySelector(`[data-journey-id="${selectedDay(read()).id}"]`)?.focus({preventScroll:true});
   });
   section.addEventListener('submit',async event=>{

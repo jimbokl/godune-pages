@@ -5,4 +5,4 @@ export const isPersonalPoint=value=>!!value && typeof value==='object' && !Array
 export const validBase=value=>value===null || typeof value==='string' || isPersonalPoint(value);
 export const baseId=value=>isPersonalPoint(value)?`@${value.lon},${value.lat}`:value;
 export const baseName=(value,catalog)=>isPersonalPoint(value)?value.name:catalog?.poi?.find(p=>p.slug===value)?.name || 'Точка поездки';
-export const personalPoints=trip=>[...new Map((trip.itinerary?.days || []).flatMap(day=>[day.start_at,day.night_at]).filter(isPersonalPoint).map(point=>[baseId(point),{...point,slug:baseId(point)}])).values()];
+export const personalPoints=trip=>[...new Map((trip.itinerary?.days || []).flatMap(day=>[day.start_at,day.night_at,...(day.bookings||[]).map(row=>row.location)]).filter(isPersonalPoint).map(point=>[baseId(point),{...point,slug:baseId(point)}])).values()];

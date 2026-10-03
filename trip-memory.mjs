@@ -1,4 +1,4 @@
-import {TRIP_KEY, cleanTrip, emptyTrip} from './trip-state.mjs?v=12';
+import {TRIP_KEY, cleanTrip, emptyTrip} from './trip-state.mjs?v=13';
 
 export const MEMORY_DB = 'godune-trip-memory';
 const STORE = 'draft', HISTORY = 'revisions', META = 'meta';

@@ -1,8 +1,9 @@
+import {bookingEffects} from './trip-bookings-state.mjs?v=1';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=1';
-import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=4';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=5';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
@@ -27,7 +28,7 @@ export function cleanSchedule(value, places) {
 }
 export function planInput(trip, catalog, matrix) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();
-  const configured={...trip,schedule:settings}, bases=dayBases(trip);
+  const configured={...trip,schedule:settings}, bases=dayBases(trip),bookings=bookingEffects(trip);
   const stops=trip.places.map(id => {
     const stop = Object.hasOwn(settings.stops,id) ? settings.stops[id] : null;
     const manual=stop?.window && stop.window.date === trip.date;
@@ -37,6 +38,7 @@ export function planInput(trip, catalog, matrix) {
     const excursion=resolveExcursion(configured,id,catalog);
     const kitchen=resolveKitchenCalendar(catalog?.poi.find(place=>place.slug===id),trip.date);
     return {id,visit:stop?.visit ?? 30,pause:stop?.pause ?? 0,
+      ...(bookings.stops[id]?{appointment:{start:bookings.stops[id].time,duration:bookings.stops[id].duration}}:{}),
       travel:travel.minutes,
       ...(travel.origin==='estimate' ? {travel_needs_check:true} : {}),
       ...(access ? {access:{approach:access.approach.minutes,return_minutes:access.back.minutes,needs_check:true}} : {}),
@@ -54,11 +56,13 @@ export function planInput(trip, catalog, matrix) {
   if(stops.length && trip.places.length && bases.night_at) {
     const travel=resolvePair(configured,trip.places.at(-1),bases.night_at,catalog,matrix);
     const access=resolveAccessBetween(configured,bases.night_at,trip.places.at(-1),null,catalog,matrix);
-    stops.push({id:'__day_night',visit:0,pause:0,travel:travel.minutes,opening:[{open:0,close:1440}],
+    stops.push({id:'__day_night',visit:0,pause:0,travel:travel.minutes,opening:[{open:bookings.night?.time??0,close:1440}],
       ...(travel.origin==='estimate'?{travel_needs_check:true}:{}),
       ...(access?{access:{approach:access.approach.minutes,return_minutes:0,needs_check:true}}:{})});
   }
-  return {version:1,start:settings.start,end:settings.end,reserve:settings.reserve,stops};
+  const start=Math.max(settings.start,bookings.start?bookings.start.time+bookings.start.buffer:0);
+  if(start>=settings.end)throw new Error('arrival_after_day');
+  return {version:1,start,end:settings.end,reserve:settings.reserve,stops};
 }
 export function updateSchedule(trip, field, value, id) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();

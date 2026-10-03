@@ -1,11 +1,11 @@
-import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=6';
+import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=7';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
-import {foodTrip,anchorRequest} from './gastro-day.mjs?v=1';
-import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=8';
-import {baseName,isPersonalPoint} from './personal-points.mjs?v=1';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=4';
+import {foodTrip,anchorRequest} from './gastro-day.mjs?v=2';
+import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=9';
+import {baseName,isPersonalPoint} from './personal-points.mjs?v=2';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=5';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings,anchored=false) {
@@ -129,7 +129,7 @@ export async function initGastronomy(base,workshop) {
     button.disabled=false;button.addEventListener('click',async()=>{
       button.disabled=true;const field=button.dataset.foodPersonal,dayId=selectedDay(workshop.getState()).id;
       try {
-        const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=4');
+        const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=5');
         const chosen=await pickPersonalPoint({base,initial:selectedDay(workshop.getState())[field],focusPlace:catalog.poi.find(p=>p.slug===food.venues[0].slug),caption:field==='start_at'?'Где начнём прогулку?':'Куда вернёмся после прогулки?'});
         if(chosen && selectedDay(workshop.getState()).id===dayId)await setBases({[field]:chosen});
         else if(chosen)status.textContent='Вы выбрали другой день. Отметьте жильё для него ещё раз.';
