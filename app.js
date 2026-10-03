@@ -2,6 +2,9 @@
   'use strict';
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
+  if (document.querySelector('[data-author-video]')) {
+    import(url('author-media.mjs?v=1')).then(({initAuthorVideo}) => initAuthorVideo()).catch(() => {});
+  }
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();

@@ -2323,18 +2323,6 @@
       "distance_m": 552,
       "places": [
         "kofeynya-slou",
-        "kafe-amaliya",
-        "pekarnya-khleb"
-      ],
-      "theme_matches": 0,
-      "total_minutes": 98,
-      "visit_minutes": 90,
-      "walking_minutes": 8
-    },
-    {
-      "distance_m": 552,
-      "places": [
-        "kofeynya-slou",
         "kafe-bufet",
         "pekarnya-khleb"
       ],
@@ -2359,7 +2347,7 @@
       "distance_m": 202,
       "places": [
         "kafe-skovorodka",
-        "kafe-amaliya",
+        "kafe-bufet",
         "pekarnya-khleb"
       ],
       "theme_matches": 0,
@@ -2370,9 +2358,21 @@
     {
       "distance_m": 202,
       "places": [
-        "kafe-skovorodka",
+        "pekarnya-khleb",
         "kafe-bufet",
-        "pekarnya-khleb"
+        "kafe-skovorodka"
+      ],
+      "theme_matches": 0,
+      "total_minutes": 104,
+      "visit_minutes": 100,
+      "walking_minutes": 4
+    },
+    {
+      "distance_m": 222,
+      "places": [
+        "pekarnya-khleb",
+        "kafe-skovorodka",
+        "kafe-bufet"
       ],
       "theme_matches": 0,
       "total_minutes": 104,
@@ -2742,9 +2742,9 @@
       }
     },
     {
-      "address": "Улица Гагарина, 46 · западный пляж",
+      "address": "Улица Гагарина, 62 · западный пляж",
       "available": true,
-      "checked_at": "2026-10-02",
+      "checked_at": "2026-10-03",
       "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
       "cover": {
         "captured_at": "2026:05:30 11:53:04",
@@ -2791,7 +2791,7 @@
         "dessert"
       ],
       "slug": "kafe-gnezdo",
-      "source_url": "https://gokaliningrad.com/cafe/1503-gnezdo",
+      "source_url": "https://yandex.ru/maps/org/gnezdo/92250255928/",
       "themes": [
         "fish"
       ],
@@ -2949,8 +2949,8 @@
     },
     {
       "address": "Курортный проспект, 10",
-      "available": true,
-      "checked_at": "2026-10-02",
+      "available": false,
+      "checked_at": "2026-10-03",
       "coordinate_note": "Координаты места съёмки из оригинального снимка. Точка показывает окрестность входа; точность GPS зависит от телефона.",
       "cover": {
         "captured_at": "2026:05:30 11:00:25",
@@ -2967,7 +2967,14 @@
       "lon": 20.480003333333332,
       "menus": [],
       "name": "Амалия",
-      "note": "Под деревьями стоят столики, за ними — зелёный фасад «Амалии». Здесь можно сделать паузу на Курортном проспекте: позавтракать, а затем продолжить прогулку к воде.",
+      "note": "Кафе на Курортном проспекте. В Яндекс Картах отмечено «Больше не работает»; проверено 3 октября 2026 года. Наши фотографии от 30 мая остаются здесь как часть истории места.",
+      "operational_status": {
+        "label": "Больше не работает",
+        "observed_at": "2026-10-03",
+        "source_name": "Яндекс Карты",
+        "source_url": "https://yandex.ru/maps/org/39311789240/",
+        "status": "permanently_closed"
+      },
       "photo_date": "2026-05-30",
       "roles": [
         "coffee",
@@ -2975,7 +2982,7 @@
         "dessert"
       ],
       "slug": "kafe-amaliya",
-      "source_url": "https://www.restoclub.ru/klng/place/amalija",
+      "source_url": "https://yandex.ru/maps/org/39311789240/",
       "themes": [
         "breakfast",
         "coffee"
