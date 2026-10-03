@@ -1,4 +1,5 @@
 // Prices are snapshots. Plans and actual group payments are independent.
+import {validTransfer} from './trip-transfer-costs.mjs?v=1';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const amount=v=>v===null || Number.isSafeInteger(v) && v>=0;
 const date=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !v.startsWith('0000') && Number.isFinite(Date.parse(v+'T12:00:00Z')) && new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;
@@ -9,7 +10,7 @@ export function validPriceSource(source) {
   return source===null || object(source) && keys(source,['label','href','observed_at','quoted_amount','catalog_id']) && typeof source.label==='string' && !!source.label.trim() && validSourceHref(source.href) && (source.observed_at===null || date(source.observed_at)) && amount(source.quoted_amount) && (source.catalog_id===null || typeof source.catalog_id==='string' && !!source.catalog_id);
 }
 export function validExpense(item) {
-  return object(item) && keys(item,['id','label','poi','amount','quantity','scope','paid','source']) && typeof item.id==='string' && !!item.id && typeof item.label==='string' && !!item.label.trim() && (item.poi===null || typeof item.poi==='string' && !!item.poi) && amount(item.amount) && Number.isSafeInteger(item.quantity) && item.quantity>0 && item.quantity<=4294967295 && ['group','person'].includes(item.scope) && amount(item.paid) && validPriceSource(item.source);
+  return object(item) && keys(item,['id','label','poi','amount','quantity','scope','paid','source','transfer']) && typeof item.id==='string' && !!item.id && typeof item.label==='string' && !!item.label.trim() && (item.poi===null || typeof item.poi==='string' && !!item.poi) && amount(item.amount) && Number.isSafeInteger(item.quantity) && item.quantity>0 && item.quantity<=4294967295 && ['group','person'].includes(item.scope) && amount(item.paid) && validPriceSource(item.source) && (!Object.hasOwn(item,'transfer') || item.transfer===null || item.poi===null && validTransfer(item.transfer));
 }
 export function validCosts(costs,kinds) {
   if(!object(costs))return false;

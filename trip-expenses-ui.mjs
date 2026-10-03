@@ -1,7 +1,9 @@
-import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=4';
-import {emptyCost,putExpense,removeExpense,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=1';
+import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=5';
+import {emptyCost,putExpense,removeExpense,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=2';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
+import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=1';
+import {TRAVEL_MODES} from './travel-estimates.mjs?v=4';
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const button=(text,action)=>{const node=el('button',text,'expense-button');node.type='button';node.dataset.expenseAction=action;return node;};
 const basis=row=>row?.basis || 'summary';
@@ -11,6 +13,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   const panel=el('section',undefined,'trip-expenses');panel.setAttribute('aria-labelledby','expense-title');
   panel.innerHTML='<div class="expense-heading"><div><p class="eyebrow">Обед, билет, ночь у моря</p><h4 id="expense-title">Расходы этого дня</h4></div><button type="button" class="expense-add" data-expense-action="add">+ Добавить расход</button></div><div class="expense-totals"><p>План на всех<strong id="expense-planned">Ещё не заполнен</strong><small id="expense-plan-note"></small></p><p>Оплачено на всех<strong id="expense-paid">Ещё не заполнено</strong><small id="expense-paid-note"></small></p></div><p id="expense-difference" class="journey-note"></p><details id="expense-categories"><summary>Разобрать по категориям <span aria-hidden="true">+</span></summary><div id="expense-rows"></div></details><p class="journey-note">Цена может меняться. Сохраните источник и дату, а после поездки — сколько заплатили. Пустая сумма означает, что вы её ещё не знаете.</p><p id="expense-status" class="journey-note" role="status" aria-live="polite"></p>';
   section.querySelector('#journey-details').after(panel);
+  const roads=el('details',undefined,'expense-roads');roads.id='expense-roads';roads.innerHTML='<summary>Дорога этого дня <span aria-hidden="true">+</span></summary><p class="journey-note">Билет, такси или топливо можно связать с конкретным переездом. Цена — ваша оценка; после изменения маршрута проверьте её снова.</p><ol id="expense-road-list"></ol>';panel.querySelector('#expense-categories').before(roads);
   const dialog=el('dialog',undefined,'expense-dialog');dialog.id='expense-dialog';dialog.setAttribute('aria-labelledby','expense-editor-title');
   dialog.innerHTML='<div class="expense-dialog-top"><p class="eyebrow">Часть вашего дня</p><button type="button" class="expense-close" aria-label="Закрыть расход">×</button></div><h2 id="expense-editor-title">Добавить расход</h2><form id="expense-form"><div class="expense-fields"></div><details class="expense-source-details"><summary>Источник и дата цены <span aria-hidden="true">+</span></summary><div class="expense-source-fields"></div></details><p id="expense-basis-note" class="journey-note"></p><div class="expense-editor-actions"><button type="submit" class="expense-save">Сохранить расход</button><button type="button" class="expense-cancel">Отмена</button></div><p id="expense-editor-status" class="journey-note" role="status" aria-live="polite"></p></form>';
   document.body.append(dialog);
@@ -24,7 +27,10 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   function option(select,value,text) {const node=el('option',text);node.value=value;select.append(node);}
   const fields=dialog.querySelector('.expense-fields'),sources=dialog.querySelector('.expense-source-fields');
   const kindField=label(fields,'Что оплачиваем','kind','select');Object.entries(COST_KINDS).forEach(([id,name])=>option(kindField,id,name));
+  const binding=label(fields,'К чему относится расход','binding','select');for(const [value,text]of [['place','К остановке'],['transfer','К переезду'],['general','К дню целиком']])option(binding,value,text);
   label(fields,'Остановка','poi','select');
+  const transferField=label(fields,'За какой переезд','transfer','select');transferField.closest('label').classList.add('expense-field-wide');
+  const transferPreview=el('div',undefined,'expense-transfer-preview');transferPreview.setAttribute('aria-live','polite');fields.append(transferPreview);
   const observation=label(fields,'Взять цену из нашего снимка меню','observation','select');option(observation,'','Своя оценка');
   observation.closest('label').classList.add('expense-field-wide');
   const evidence=el('figure',undefined,'expense-evidence'),evidenceLink=el('a');evidenceLink.target='_blank';evidenceLink.rel='noopener noreferrer';evidenceLink.setAttribute('aria-label','Рассмотреть снимок меню');evidenceLink.append(el('img'));evidence.hidden=true;evidence.append(evidenceLink,el('figcaption'));fields.append(evidence);
@@ -58,24 +64,45 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     const row=selectedDay(read()).costs[field('kind').value];
     dialog.querySelector('#expense-basis-note').textContent=basis(row)==='summary' && row?.amount!==null && row?.amount!==undefined?'Список расходов заменит общую оценку этой категории. Она останется в настройках: к ней можно вернуться.':'План категории будет считаться по списку расходов. Для полного бюджета проверьте и остальные категории.';
   }
-  async function open(kind='food',id=null) {
+  function chosenTransfer() {
+    return transferField.value==='saved'?editing?.savedTransfer:editing?.transfers[Number(transferField.value)];
+  }
+  function updateBinding() {
+    const linked=binding.value==='transfer',place=binding.value==='place';
+    field('poi').closest('label').hidden=!place;transferField.closest('label').hidden=!linked;
+    observation.closest('label').hidden=!place;transferPreview.hidden=!linked;transferPreview.replaceChildren();
+    if(!place)showEvidence(null);else fillObservations(editing?.source);
+    const transfer=linked && transferField.value!==''?chosenTransfer():null;
+    if(transfer) {
+      transferPreview.append(el('span',transferRole(transfer),'expense-transfer-role'),el('strong',transferTitle(transfer)),el('p',`${TRAVEL_MODES[transfer.leg_mode]} · ${dateLabel(transfer.date)}${transfer.leg_mode!==transfer.mode?' · между местами с общей парковкой':''}`));
+      const state=transferStatus(transfer,selectedDay(read()),catalog);transferPreview.dataset.current=String(state.current);transferPreview.append(el('p',state.reason));
+    } else if(linked)transferPreview.append(el('p',editing?.transfers.length?'Выберите направление. Сумму можно оставить пустой, пока не узнаете цену.':'Добавьте остановки, начало или ночёвку: здесь появится дорога вашего дня.'));
+    planned.closest('label').firstChild.textContent=linked?'План за один переезд или билет, ₽':'План за одну порцию, билет или ночь, ₽';
+  }
+  async function open(kind='food',id=null,preferred=null) {
     const day=selectedDay(read()),item=day.costs[kind]?.items?.find(item=>item.id===id);
     lastFocus=document.activeElement;
-    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null};
+    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null,savedTransfer:item?.transfer || null,transfers:dayTransfers(day,catalog),context:transferContext(day,catalog)};
     const ticket=editing;form.reset();kindField.value=kind;kindField.disabled=!!item;
     const select=field('poi');select.replaceChildren();option(select,'','Без остановки');
     for(const place of [...catalog.poi.filter(p=>day.places.includes(p.slug)),...catalog.poi.filter(p=>!day.places.includes(p.slug))])option(select,place.slug,`${day.places.includes(place.slug)?'В этом дне · ':''}${place.name}`);
     if(item?.poi && !catalog.poi.some(p=>p.slug===item.poi))option(select,item.poi,'Сохранённое место вне каталога');
     select.value=item?.poi || day.places.find(id=>catalog.poi.find(p=>p.slug===id)?.gastronomy) || '';
-    name.value=item?.label || '';planned.value=costText(item?.amount ?? null);qty.value=item?.quantity || 1;scope.value=item?.scope || 'person';paid.value=costText(item?.paid ?? null);
-    sourceFields(item?.source);fillObservations(item?.source);dialog.querySelector('h2').textContent=item?'Изменить расход':'Добавить расход';editorStatus('');updateBasisNote();dialog.showModal();name.focus();
+    transferField.replaceChildren();option(transferField,'','Выберите переезд');
+    if(item?.transfer)option(transferField,'saved',`Сохранённый · ${transferTitle(item.transfer)}`);
+    editing.transfers.forEach((transfer,index)=>option(transferField,String(index),`${transferRole(transfer)} · ${transferTitle(transfer)} · ${TRAVEL_MODES[transfer.leg_mode]}`));
+    transferField.value=item?.transfer?'saved':preferred?String(editing.transfers.findIndex(transfer=>transferKey(transfer)===transferKey(preferred))):'';
+    binding.value=item?.transfer || preferred || !item && kind==='travel'?'transfer':item && !item.poi?'general':'place';
+    name.value=item?.label || '';planned.value=costText(item?.amount ?? null);qty.value=item?.quantity || 1;scope.value=item?.scope || (kind==='travel'?'group':'person');paid.value=costText(item?.paid ?? null);
+    sourceFields(item?.source);fillObservations(item?.source);updateBinding();dialog.querySelector('h2').textContent=item?'Изменить расход':'Добавить расход';editorStatus('');updateBasisNote();dialog.showModal();name.focus();
     const rows=await loadPrices();if(editing!==ticket || !dialog.open)return;
-    fillObservations(editing.source);if(!rows.length)editorStatus('Снимки цен пока не открылись. Свою оценку можно сохранить.');
+    updateBinding();if(!rows.length && binding.value==='place')editorStatus('Снимки цен пока не открылись. Свою оценку можно сохранить.');
   }
   function close() {editing=null;dialog.close();lastFocus?.isConnected && lastFocus.focus({preventScroll:true});}
   dialog.querySelector('.expense-close').addEventListener('click',close);dialog.querySelector('.expense-cancel').addEventListener('click',close);
   dialog.addEventListener('cancel',event=>{event.preventDefault();close();});window.addEventListener('godune:memory-cleared',()=>{if(dialog.open)close();});
   field('poi').addEventListener('change',()=>{editing.source=null;sourceFields(null);fillObservations();});
+  binding.addEventListener('change',updateBinding);transferField.addEventListener('change',updateBinding);
   kindField.addEventListener('change',()=>{editing.kind=kindField.value;editing.before=structuredClone(selectedDay(read()).costs[editing.kind]);updateBasisNote();});
   observation.addEventListener('change',()=>{
     const row=prices.find(row=>row.id===observation.value && row.poi===field('poi').value);if(!row){editing.source=null;sourceFields(null);showEvidence(null);return;}
@@ -86,6 +113,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     const result=await commit(current=>{
       const day=selectedDay(current);
       if(day.id!==dayId || !same(day.costs[kind],before) || editor && editing!==editor){error='День или расходы уже изменились. Закройте редактор и откройте его заново — свежий выбор сохранён.';return current;}
+      if(editor?.checkTransfer && editor.context!==transferContext(day,catalog)){error='Дорога изменилась, пока расход был открыт. Закройте редактор и выберите переезд заново. Суммы и новый маршрут сохранены.';return current;}
       const costs=transform(day.costs);if(!validCosts(costs,COST_KINDS)){error='Проверьте название, цену, источник и количество.';return current;}
       const next=changeDayDetails(current,{costs});
       try {engine.budget(budgetInput(next));}catch{error='Сумма слишком велика для расчёта. Проверьте цену, количество и число путешественников.';return current;}
@@ -100,7 +128,10 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
       const values=new FormData(form),sourceLabel=String(values.get('source-label')).trim(),href=String(values.get('source-href')).trim() || null,observed_at=values.get('source-date') || null,quoted_amount=parseKopecks(values.get('source-amount'));
       let source=sourceLabel || href || observed_at || quoted_amount!==null?{label:sourceLabel || 'Ваш источник',href,observed_at,quoted_amount,catalog_id:null}:null;
       if(source && ticket.source && same({...source,catalog_id:ticket.source.catalog_id},ticket.source))source=ticket.source;
-      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('poi') || null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source};
+      const linked=values.get('binding')==='transfer',transfer=linked && values.get('transfer')!==''?chosenTransfer():null;
+      if(linked && !transfer)throw Error('Выберите, за какой переезд платите. Общий расход можно сохранить для дня целиком.');
+      ticket.checkTransfer=linked;
+      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('binding')==='place'?values.get('poi') || null:null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source,...(transfer?{transfer:structuredClone(transfer)}:{})};
       if(!validExpense(item))throw Error('Проверьте название, цену, источник и количество.');
       const error=await guardedChange(ticket.day,ticket.kind,ticket.before,costs=>putExpense(costs,ticket.kind,item),'Расход сохранён в этом дне.',ticket);
       if(error)editorStatus(error);else {$('#expense-categories').open=true;close();}
@@ -109,6 +140,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   panel.addEventListener('click',async event=>{
     const node=event.target.closest('[data-expense-action]');if(!node)return;const day=selectedDay(read()),kind=node.dataset.expenseKind || 'food',id=node.dataset.expenseId;
     if(node.dataset.expenseAction==='add')return open(kind);
+    if(node.dataset.expenseAction==='road')return open('travel',null,dayTransfers(day,catalog)[Number(node.dataset.transferIndex)]);
     if(node.dataset.expenseAction==='edit')return open(kind,id);
     if(node.dataset.expenseAction==='summary'){const details=section.querySelector('#journey-details');details.open=true;section.querySelector(`[name="${kind}-amount"]`)?.focus();return;}
     if(node.dataset.expenseAction==='delete'){
@@ -118,6 +150,14 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   function render(trip) {
     const day=selectedDay(trip),hasItems=Object.values(day.costs).some(row=>row.items?.length);
     if(!panel.dataset.rendered && hasItems)$('#expense-categories').open=true;panel.dataset.rendered='true';
+    const transfers=dayTransfers(day,catalog);
+    $('#expense-road-list').replaceChildren(...transfers.map((transfer,index)=>{
+      const row=el('li',undefined,'expense-road'),text=el('div');text.append(el('span',`${index+1} · ${transferRole(transfer)}`,'expense-transfer-role'),el('strong',transferTitle(transfer)),el('p',TRAVEL_MODES[transfer.leg_mode]));
+      const count=Object.values(day.costs).flatMap(cost=>cost.items || []).filter(item=>item.transfer && transferKey(item.transfer)===transferKey(transfer)).length;
+      if(count)text.append(el('small',`Сохранено расходов: ${count}`));
+      const add=button('+ Расход дороги','road');add.dataset.transferIndex=String(index);row.append(text,add);return row;
+    }));
+    if(!transfers.length)$('#expense-road-list').append(el('li','Выберите остановки и, если нужно, начало и ночёвку. Здесь появятся переезды вашего дня.','journey-note'));
     $('#expense-rows').replaceChildren(...Object.entries(COST_KINDS).map(([kind,caption])=>{
       const row=day.costs[kind] || emptyCost(),block=el('section',undefined,'expense-category');block.dataset.expenseKind=kind;
       const heading=el('div',undefined,'expense-category-heading');heading.append(el('h5',caption),el('span',basis(row)==='items'?'По списку':'Общая оценка'));block.append(heading);
@@ -127,6 +167,10 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
         card.append(el('h6',item.label));
         const place=catalog.poi.find(p=>p.slug===item.poi);
         if(item.poi)card.append(el('p',`${place?.name || 'Место вне каталога'}${day.places.includes(item.poi)?'':' · вне остановок этого дня'}`,'expense-place'));
+        if(item.transfer) {
+          const state=transferStatus(item.transfer,day,catalog),link=el('div',undefined,'expense-transfer-link');link.dataset.current=String(state.current);
+          link.append(el('span',transferRole(item.transfer),'expense-transfer-role'),el('strong',transferTitle(item.transfer)),el('p',`${TRAVEL_MODES[item.transfer.leg_mode]} · ${dateLabel(item.transfer.date)}`),el('p',state.reason));card.append(link);
+        }
         card.append(el('p',`План: ${item.amount===null?'ещё неизвестен':`${rubles(item.amount)} × ${item.quantity} · ${item.scope==='person'?'на человека':'на всех'}`}`));
         card.append(el('p',`Оплачено на всех: ${item.paid===null?'ещё не записано':rubles(item.paid)}`));
         if(item.source) {

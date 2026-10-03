@@ -1,7 +1,7 @@
 import {baseName} from './personal-points.mjs?v=1';
-import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=4';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=8';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=7';
+import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=5';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=9';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=8';
 import {validSchedule} from './trip-schedule-state.mjs?v=6';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
