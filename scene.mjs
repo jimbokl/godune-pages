@@ -3,6 +3,31 @@
 export const LAYERS = ['water', 'clouds', 'pines', 'grass'];
 const number = (value, fallback, min, max) => Number.isFinite(Number(value))
   ? Math.max(min, Math.min(max, Number(value))) : fallback;
+function normalizeMask(mask = {}) {
+  return {...mask, polygons: (Array.isArray(mask.polygons) ? mask.polygons : [])
+    .filter(Array.isArray).map(poly => poly.filter(point => Array.isArray(point) && point.length >= 2 && point.slice(0,2).every(Number.isFinite))
+      .map(([x,y]) => [number(x,0,0,1),number(y,0,0,1)]))
+    .filter(poly => poly.length >= 3)};
+}
+export function pointInMask(x, y, mask) {
+  const polygons = mask?.polygons;
+  if (!polygons?.length) return true;
+  return polygons.some(poly => {
+    let inside = false;
+    for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      const [xi,yi] = poly[i], [xj,yj] = poly[j];
+      if ((yi > y) !== (yj > y) && x < (xj-xi)*(y-yi)/(yj-yi)+xi) inside = !inside;
+    }
+    return inside;
+  });
+}
+export function particleSourcePoint(x, y, kind, settings) {
+  // Amber stones use the whole region. Wind-blown grains retain their slope.
+  const localY = kind === 'amber' ? y : (y-.49)/.4;
+  const r = settings?.region || [0,.55,1,.9];
+  const sx = r[0]+x*(r[2]-r[0]), sy = r[1]+localY*(r[3]-r[1]);
+  return pointInMask(sx,sy,settings?.mask) ? [sx,sy] : null;
+}
 export function normalizeProfile(input = {}) {
   const p = structuredClone(input);
   p.version = 1;
@@ -18,8 +43,7 @@ export function normalizeProfile(input = {}) {
       light: number(a.light, .035, 0, .3), foam: number(a.foam, .014, 0, .2),
       foamThreshold: number(a.foamThreshold, .66, 0, 1),
       feather: number(a.feather, .004, 0, .04)};
-    p[name].mask.polygons = (p[name].mask.polygons || []).filter(poly => Array.isArray(poly) && poly.length >= 3)
-      .map(poly => poly.map(([x,y]) => [number(x,0,0,1), number(y,0,0,1)]));
+    p[name].mask = normalizeMask(p[name].mask);
   }
   for (const name of ['sand','amber','fog','gulls']) {
     p[name] = {...p[name], enabled: p[name]?.enabled !== false,
@@ -31,6 +55,7 @@ export function normalizeProfile(input = {}) {
     const r = p[name].region || fallback;
     p[name].region = fallback.map((v,i)=>number(r[i],v,0,1));
     if(p[name].region[2]<=p[name].region[0] || p[name].region[3]<=p[name].region[1]) p[name].region=fallback;
+    p[name].mask = normalizeMask(p[name].mask);
   }
   return p;
 }

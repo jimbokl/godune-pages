@@ -7,6 +7,34 @@
   }
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
+  // Open the saved editor before native fragment navigation and restore it
+  // after asynchronous trip rendering. Same-fragment clicks also work.
+  function revealPlannerTrip(hash, {scroll=false, focus=false}={}) {
+    if (!$('#planner-trip-settings')) return;
+    let id;
+    try { id=decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target=document.getElementById(id);
+    if (!target?.closest('#planner-trip-settings')) return;
+    for (let parent=target; parent; parent=parent.parentElement) {
+      if (parent.matches('details')) parent.open=true;
+    }
+    if (scroll || focus) requestAnimationFrame(() => {
+      if (focus) {
+        const heading=target.matches('details')?target.querySelector('summary'):target.querySelector('h2,h3,summary') || target;
+        if (!heading.hasAttribute('tabindex')) heading.tabIndex=-1;
+        heading.focus({preventScroll:true});
+      }
+      if (scroll) target.scrollIntoView({block:'start',behavior:'instant'});
+    });
+  }
+  revealPlannerTrip(location.hash);
+  window.addEventListener('hashchange',()=>revealPlannerTrip(location.hash,{scroll:true,focus:true}));
+  document.addEventListener('click',event=>{
+    const link=event.target.closest?.('a[href]');
+    if (!link || event.defaultPrevented || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
+    const target=new URL(link.href,location.href);
+    if (target.origin===location.origin && target.pathname===location.pathname && target.search===location.search && target.hash) revealPlannerTrip(target.hash,{scroll:true,focus:true});
+  });
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
   const catalog = fetch(url('data/catalog.json'), {cache:'no-cache'}).then(r => {
     if (!r.ok) throw new Error('Каталог временно недоступен');
@@ -135,6 +163,9 @@
   Promise.all([catalog, import(url('workshop.mjs?v=34'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=1')).then(({initPlanningWizard})=>
+      initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
+    ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=13')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
@@ -154,15 +185,16 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    // Restore direct entry after the trip and document layout are ready.
-    // Native fragment scrolling can happen before the stored day is rendered.
-    if (location.hash === '#trip-bookings') {
-      const reachBookings = () => requestAnimationFrame(() => {
-        if (location.hash === '#trip-bookings') $('#trip-bookings')?.scrollIntoView({block:'start',behavior:'instant'});
-      });
-      if (document.readyState === 'complete') reachBookings();
-      else window.addEventListener('load', reachBookings, {once:true});
-    }
+    // Stored days and their sections may finish rendering after native scrolling.
+    const restoreTripEntry=()=>{
+      if ($('#planner-trip-settings')) revealPlannerTrip(location.hash,{scroll:true,focus:true});
+      else if (location.hash==='#trip-bookings') {
+        const target=$('#trip-bookings');
+        if (target) { for(let parent=target;parent;parent=parent.parentElement) if(parent.matches('details')) parent.open=true; target.scrollIntoView({block:'start'}); }
+      }
+    };
+    if (document.readyState==='complete') restoreTripEntry();
+    else window.addEventListener('load',restoreTripEntry,{once:true});
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=15')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });

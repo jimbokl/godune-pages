@@ -1,6 +1,6 @@
 /* Explicit complete packages. Normal browsing stays network-first. */
 importScripts('offline-archive.js?v=2');
-const PREFIX='godune-walk-offline:v1:',SHELL='godune-offline-shell:v1',ROOT=self.registration.scope;
+const PREFIX='godune-walk-offline:v1:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const jobs=new Map(),removals=new Map(),packageReads=new Set();
 let clearing,snapshot,reading,epoch=0;
@@ -11,7 +11,7 @@ const normalized=value=>{const u=new URL(value);u.search='';u.hash='';if(u.pathn
 const invalidate=()=>{snapshot=undefined;epoch++;};
 const abortCheck=signal=>{if(signal.aborted)throw new DOMException('Cancelled','AbortError');};
 self.addEventListener('install',event=>event.waitUntil((async()=>{const response=await fetch(url('offline.html'),{cache:'no-store'});if(!response.ok)throw new Error('Offline page unavailable');await (await caches.open(SHELL)).put(url('offline.html'),response);await self.skipWaiting();})()));
-self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{await caches.delete('godune-offline-shell:v1');await self.clients.claim();})()));
 function packages(force=false){
   if(clearing)return Promise.resolve([]);
   if(force)invalidate();

@@ -163,6 +163,28 @@
 .route-location { fill: #547f99; }
 .route-pin-circle { fill: #f7f5ef; stroke: #547f99; stroke-width: 1.2px; }
 .route-pin text { font-family: var(--sans); font-size: 11px; fill: #2d4c63; font-weight: 500; }
+/* Geographic context is baked from the same local OSM data as the full map. */
+.route-plate-mapped { background:var(--sea-soft);border-color:var(--sea-line); }
+.route-plate-mapped .route-diagram { overflow:hidden;border:1px solid var(--line);border-radius:3px; }
+.route-context { --context-sea:#d0e1e9;--context-land:#f3f3ec;--context-green:#e2e9dd;--context-sand:#ece3d1;--context-water:#c8dee8;--context-road:#d8dcd8;--context-major:#c3cdd0;--context-coast:#a9c2ce;--context-rail:#c5cac5; }
+.context-sea { fill:var(--context-sea); }
+.context-land { fill:var(--context-land); }
+.context-green { fill:var(--context-green); }
+.context-sand { fill:var(--context-sand); }
+.context-water { fill:var(--context-water); }
+.context-road,.context-major-road,.context-rail,.context-coastline,.context-waterline { fill:none;stroke-linecap:round;stroke-linejoin:round; }
+.context-road { stroke:var(--context-road);stroke-width:.65px; }
+.context-major-road { stroke:var(--context-major);stroke-width:1.4px; }
+.context-rail { stroke:var(--context-rail);stroke-width:.7px;stroke-dasharray:2 3; }
+.context-coastline { stroke:var(--context-coast);stroke-width:1px; }
+.context-waterline { stroke:var(--context-water);stroke-width:2px; }
+.route-context-source { margin:0 0 16px;font-size:9px;line-height:1.5;color:var(--muted); }
+.route-context-source a { text-underline-offset:2px; }
+:root[data-theme=night] .route-plate-mapped { background:#142b3b; }
+:root[data-theme=night] .route-context { --context-sea:#152f42;--context-land:#26343a;--context-green:#2a3b39;--context-sand:#393b36;--context-water:#1e4255;--context-road:#34434b;--context-major:#43545d;--context-coast:#426075;--context-rail:#3a484d; }
+:root[data-theme=night] .route-plate-mapped .route-line-halo { stroke:#0e2433;stroke-width:8px; }
+:root[data-theme=night] .route-plate-mapped .route-line { stroke:#b4d4e9;stroke-width:3px; }
+:root[data-theme=night] .route-plate-mapped .route-pin-circle { fill:#e4eef3;stroke:#90b5ce; }
 .route-legend {
   list-style: none;
   display: grid;

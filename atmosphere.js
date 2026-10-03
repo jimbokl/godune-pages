@@ -14,14 +14,14 @@
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
   let sceneModule;
   const photo = scene.parentElement.querySelector('.hero-picture img');
-  const count = innerWidth < 600 ? 138 : 276;
+  const count = innerWidth < 600 ? 207 : 276;
   const glow = document.createElement('canvas');
   glow.width = glow.height = 48;
   const g = glow.getContext('2d');
   const light = g.createRadialGradient(24,24,0,24,24,24);
-  light.addColorStop(0,'rgba(255,244,196,.95)');
-  light.addColorStop(.15,'rgba(246,192,101,.75)');
-  light.addColorStop(.4,'rgba(221,149,54,.23)');
+  light.addColorStop(0,'rgba(246,212,157,.8)');
+  light.addColorStop(.15,'rgba(235,184,105,.5)');
+  light.addColorStop(.4,'rgba(211,146,64,.14)');
   light.addColorStop(1,'rgba(221,149,54,0)');
   g.fillStyle = light; g.fillRect(0,0,48,48);
 
@@ -32,7 +32,8 @@
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    if (ocean) { ocean.resize(width,height,dpr); crop = sceneModule.photoCrop(photo,width,height); }
+    if (ocean) ocean.resize(width,height,dpr);
+    if (sceneModule && photo.complete && photo.naturalWidth) crop = sceneModule.photoCrop(photo,width,height);
     if (engine) paint();
   }
   function paint() {
@@ -49,20 +50,23 @@
     if (ocean) ocean.draw(f[8],f[9]);
     ctx.clearRect(0,0,width,height);
     const scale = width < 600 ? .8 : 1;
+    const night = document.documentElement.dataset.theme === 'night';
     for (let i = header; i < f.length; i += 8) {
       const type = f[i+6] ? 'amber' : 'sand';
       const settings = profile?.[type];
       if (settings?.enabled === false) continue;
-      let sx = f[i], sy = (f[i+1]-.49)/.4;
-      if (settings) { const r=settings.region; sx=r[0]+sx*(r[2]-r[0]); sy=r[1]+sy*(r[3]-r[1]); }
+      const point = sceneModule?.particleSourcePoint(f[i],f[i+1],type,settings);
+      if (sceneModule && !point) continue;
+      const [sx,sy] = point || [f[i], type === 'amber' ? .53+f[i+1]*.4 : f[i+1]];
       const x = crop ? (sx-crop[2])/crop[0]*width : sx*width;
       const y = crop ? (sy-crop[3])/crop[1]*height : sy*height;
       const radius = f[i+2] * scale, alpha = f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
-        const size = radius * 17;
+        ctx.globalAlpha *= night ? .245 : .7;
+        const size = radius * 8 * (night ? .85 : 1);
         ctx.drawImage(glow,x-size/2,y-size/2,size,size);
-        ctx.fillStyle = '#f4b64d';
+        ctx.fillStyle = '#e6b46d';
         ctx.fillRect(x-radius*.5,y-radius*.5,radius,radius*.7);
       } else {
         // Short, warm streaks follow the slope. They read as wind-blown sand.
@@ -119,12 +123,13 @@
   }
   new ResizeObserver(resize).observe(scene);
   document.addEventListener('visibilitychange', update);
+  addEventListener('godune:theme-change', () => { if (engine) paint(); });
   reduced.addEventListener('change', update);
   addEventListener('pagehide', () => { cancelAnimationFrame(raf); raf = 0; });
   addEventListener('pageshow', update);
   resize();
   async function start() {
-    const response = await fetch(new URL('assets/atmosphere.wasm?v=3',base));
+    const response = await fetch(new URL('assets/atmosphere.wasm?v=4',base));
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
     const {instance} = await WebAssembly.instantiate(await response.arrayBuffer(),{});
     engine = instance.exports;
@@ -136,8 +141,10 @@
     scene.dataset.engine = 'rust-wasm';
     paint(); update();
     try {
-      sceneModule = await import(new URL('scene.mjs?v=4',base));
-      profile = await sceneModule.loadProfile(new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base));
+      sceneModule = await import(new URL('scene.mjs?v=5',base));
+      const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
+      profileURL.searchParams.set('v','2');
+      profile = await sceneModule.loadProfile(profileURL);
       await photo.decode();
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {
         liveVideo=document.createElement('video');liveVideo.className='scene-video';
@@ -149,7 +156,7 @@
         for (const name of sceneModule.LAYERS) profile[name].enabled=false;
       }
       ocean = await sceneModule.createScene(scene.parentElement.querySelector('.ocean-canvas'),photo,profile);
-      if (ocean) { resize(); paint(); }
+      resize(); paint();
       update();
     } catch (error) { scene.dataset.sceneError = error.message; }
 
