@@ -1,4 +1,4 @@
-import {offlineAction} from './offline.mjs?v=4';
+import {offlineAction} from './offline.mjs?v=5';
 import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=4';
 export function localMapStyle(data,base=new URL('.',import.meta.url)) {
   const polygon = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'Polygon']];

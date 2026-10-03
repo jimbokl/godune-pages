@@ -9,6 +9,9 @@ export function initTripRail({mount,read,commit,base,catalog}) {
  if(!mount)return {render(){}};
  const panel=mount.querySelector('#trip-rail') || el('section',undefined,'trip-rail');panel.id='trip-rail';panel.setAttribute('aria-labelledby','rail-title');
  panel.innerHTML=`<div class="rail-heading"><div><p class="eyebrow">Море ближе, чем кажется</p><h3 id="rail-title">К морю на электричке</h3><p>От вокзала до Зеленоградска — и обратно. Оставьте время на прогулку и дорогу к поезду.</p></div><button class="button button-dark" type="button" data-rail-open>Выбрать электрички</button></div><p class="rail-season">Летом рейсов больше. У «Морского экспресса» своя станция — Зеленоградск-2. Выбирайте её отдельно от центрального вокзала.</p><div class="rail-plan"></div><p class="rail-feedback" role="status"></p>`;
+ const beachWalk=el('a','От Зеленоградска-2 к пляжу и обратно →','rail-beach-walk');
+ beachWalk.href=new URL('routes/zelenogradsk-2-k-moryu/',base).href;
+ panel.querySelector('.rail-season').append(' ',beachWalk);
  mount.insertBefore(panel,mount.querySelector('.trip-schedule, #trip-weather, #trip-utilities'));
  const dialog=el('dialog',undefined,'rail-dialog');dialog.id='rail-dialog';dialog.setAttribute('aria-labelledby','rail-dialog-title');
  dialog.innerHTML=`<form id="rail-form"><div class="rail-dialog-heading"><div><p class="eyebrow">День у моря</p><h3 id="rail-dialog-title">Уехать. Погулять. Вернуться.</h3></div><button type="button" data-rail-close aria-label="Закрыть выбор электричек">×</button></div><div class="rail-fields"></div><p class="rail-source"></p><p class="rail-form-note">Выбираете рейсы для своего плана. Это не покупка билета. Время дороги от станции и обратно — ваша оценка; входы и расписание перед поездкой нужно сверить.</p><p class="rail-error" role="alert"></p><div class="rail-dialog-actions"><button type="submit" class="button button-dark">Учитывать в моём дне</button><button type="button" data-rail-close class="button button-light">Вернуться к плану</button></div></form>`;
@@ -21,7 +24,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   const table=railTable(catalog,$('[name=service]').value,$('[name=date]').value);
   if(destination && destination!==table.service?.to)for(const name of ['after_arrival','before_return'])$(`[name=${name}]`).value='';
   destination=table.service?.to;
-  for(const direction of ['outward','inbound']) {
+   for(const direction of ['outward','inbound']) {
    const select=$(`[name=${direction}]`),old=select.value;select.replaceChildren();
    for(const row of table[direction] || []){const ride=rideSnapshot(row),option=el('option',`${row.departure} → ${row.arrival} · ${ride.arrival-ride.departure} мин`);option.value=row.id;select.append(option);}
    if([...select.options].some(o=>o.value===old))select.value=old;

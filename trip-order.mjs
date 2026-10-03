@@ -1,4 +1,6 @@
 import {cleanTrip} from './trip-state.mjs?v=14';
+import {selectedDay, changeDayDetails} from './trip-days-state.mjs?v=10';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=8';
 
 // Apply an intent to the latest draft, rather than saving the order seen at drag start.
 export function reorderTripPlace(state, id, anchor, side, catalog) {
@@ -12,7 +14,23 @@ export function reorderTripPlace(state, id, anchor, side, catalog) {
 export function addRouteStops(state, slug, catalog) {
   const next = cleanTrip(state, catalog), route = catalog.routes.find(row => row.slug === slug);
   if (!route) return next;
-  return cleanTrip({...next, places: [...next.places, ...route.stops.map(stop => stop.poi)]}, catalog);
+  let added = cleanTrip({...next, places: [...next.places, ...route.stops.map(stop => stop.poi)]}, catalog);
+  const day = selectedDay(next);
+  // A ready return walk seeds a fresh day only. Existing bases and bookings
+  // belong to the traveller, including those changed in another tab.
+  if (route.return_to && catalog.poi.some(p => p.slug === route.return_to)
+      && !day.places.length && !day.start_at && !day.night_at && !day.bookings?.length) {
+    const settings = structuredClone(added.schedule || defaultSchedule());
+    settings.mode ??= {walking:'foot', cycling:'bike', driving:'car'}[route.mode] || 'foot';
+    for (const stop of route.stops) {
+      const visit = catalog.poi.find(p => p.slug === stop.poi)?.visit_minutes;
+      if (!settings.stops[stop.poi] && Number.isInteger(visit) && visit > 0 && visit <= 1440) {
+        settings.stops[stop.poi] = {visit, pause: 0, leg: null, window: null};
+      }
+    }
+    added = cleanTrip(changeDayDetails({...added, schedule: settings}, {night_at: route.return_to}), catalog);
+  }
+  return added;
 }
 
 export function initTripReorder(list, {move, announce}) {

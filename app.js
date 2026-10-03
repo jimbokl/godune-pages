@@ -11,10 +11,10 @@
   });
   // Observe the rejection even when the visitor never opens an interactive tool.
   catalog.catch(() => {});
-  const offlineTools = import(url('offline.mjs?v=4'));
+  const offlineTools = import(url('offline.mjs?v=5'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
-  import(url('offline-map.mjs?v=6')).then(module => { localStyle=module; }).catch(() => {});
+  import(url('offline-map.mjs?v=7')).then(module => { localStyle=module; }).catch(() => {});
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
@@ -128,7 +128,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=29'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=30'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
@@ -253,7 +253,7 @@
     }
     listPoints();
     try {
-      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=6'));
+      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=7'));
       const maps=await localStyle.availableMaps(base);
       const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here,maps);
       if(version!==mapVersion)return;
@@ -316,7 +316,7 @@
       const travelCount=roads.features.filter(f=>f.properties.kind==='travel').length,accessCount=roads.features.length-travelCount;
       const roadStops=trip ? [personal.baseId(day?.start_at),...trip.places,personal.baseId(day?.night_at)].filter(Boolean) : [];
       const transitions=roadStops.slice(1).filter((id,index)=>id!==roadStops[index]).length;
-      setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?` Без сети: ${local?.kind==='region'?local.name:'окрестности загруженной прогулки'}.`:''}` : route ? `${points.length} остановок · ${local.kind==='region'?local.name:'Окрестности прогулки'} · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? `${navigator.onLine?'Скачанная карта':'Без сети'} · ${local.kind==='region'?local.name:'окрестности загруженной прогулки'}. Покрытие можно сменить над картой.` : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
+      setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?` Без сети: ${local?.kind==='region'?local.name:'окрестности загруженной прогулки'}.`:''}` : route ? `${points.length} остановок · ${local.kind==='region'?local.name:'Окрестности прогулки'} · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}${!navigator.onLine?' · Без сети':''}` : local ? `${navigator.onLine?'Скачанная карта':'Без сети'} · ${local.kind==='region'?local.name:'окрестности загруженной прогулки'}. Покрытие можно сменить над картой.` : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }
   }
   for(const event of ['online','offline','godune:offline-change','godune:memory-cleared'])window.addEventListener(event,()=>{if(inlineMap || $('#map-dialog')?.open)renderMap().catch(()=>{});});

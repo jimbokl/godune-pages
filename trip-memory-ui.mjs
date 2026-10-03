@@ -1,4 +1,4 @@
-import {offlineAction} from './offline.mjs?v=2';
+import {offlineAction} from './offline.mjs?v=5';
 
 export function initMemoryControls(catalog, base, workshop) {
   const historyButton = document.querySelector('#trip-history'), clearButton = document.querySelector('#trip-clear');
