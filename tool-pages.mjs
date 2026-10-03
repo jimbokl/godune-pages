@@ -1,4 +1,4 @@
-import {journeyDays, selectedDay} from './trip-days-state.mjs?v=11';
+import {journeyDays, selectedDay} from './trip-days-state.mjs?v=12';
 export function initToolPages(workshop,catalog,base) {
   document.querySelector('.tool-nav [aria-current="page"]')?.scrollIntoView({inline:'nearest',block:'nearest',behavior:'instant'});
   const mount=document.querySelector('[data-tool-trip]');

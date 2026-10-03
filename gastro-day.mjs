@@ -1,8 +1,8 @@
 // One captured food day, shared by preview, road calculation and trip storage.
-import {defaultSchedule} from './trip-schedule-state.mjs?v=8';
-import {resolvePair,resolveAccessBetween} from './travel-estimates.mjs?v=5';
-import {validRail} from './trip-rail-state.mjs?v=1';
-import {baseId} from './personal-points.mjs?v=2';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=9';
+import {resolvePair,resolveAccessBetween} from './travel-estimates.mjs?v=6';
+import {validRail} from './trip-rail-state.mjs?v=2';
+import {baseId} from './personal-points.mjs?v=3';
 export function foodTrip(food,settings,places=food.venues.map(v=>v.slug)) {
   const date=settings.date || null, start=Number(settings.time?.slice(0,2) || 12)*60+Number(settings.time?.slice(3) || 0);
   const schedule={...defaultSchedule(),mode:'foot',start,end:Math.min(1440,start+Number(settings.max_minutes)),reserve:10};

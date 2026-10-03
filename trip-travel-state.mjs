@@ -1,6 +1,6 @@
-import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=11';
-import {effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
-import {isPersonalPoint} from './personal-points.mjs?v=2';
+import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=12';
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
+import {isPersonalPoint} from './personal-points.mjs?v=3';
 
 // An intent belongs to the displayed day, date and order. Other visited marks can merge.
 export const travelContext=trip=>{const day=selectedDay(trip);return JSON.stringify([day.id,trip.date,trip.places]);};
@@ -21,9 +21,9 @@ export function travelSnapshot(trip,catalog){
 }
 export function travelCoverage(trip,catalog,paths,maps,base){
   const day=effectiveBookingDay(selectedDay(trip));
-  const ids=[...new Set([...trip.places,day.start_at,day.night_at].filter(id=>typeof id==='string'))];
+  const ids=[...new Set([...trip.places,day.start_at,day.night_at,day.end_at].filter(id=>typeof id==='string'))];
   const points=ids.map(id=>catalog.poi.find(p=>p.slug===id)).filter(Boolean);
-  for(const value of [day.start_at,day.night_at])if(isPersonalPoint(value))points.push(value);
+  for(const value of [day.start_at,day.night_at,day.end_at])if(isPersonalPoint(value))points.push(value);
   const inside=(p,b)=>Array.isArray(b)&&p.lon>=b[0]&&p.lon<=b[2]&&p.lat>=b[1]&&p.lat<=b[3];
   const has=path=>paths.has(new URL(path,base).pathname);
   return {page:has('travel/'),cards:ids.filter(id=>has(`poi/${id}/`)).length,total:ids.length,

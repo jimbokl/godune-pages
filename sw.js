@@ -1,5 +1,5 @@
 /* Explicit complete packages. Normal browsing stays network-first. */
-importScripts('offline-archive.js?v=1');
+importScripts('offline-archive.js?v=2');
 const PREFIX='godune-walk-offline:v1:',SHELL='godune-offline-shell:v1',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const jobs=new Map(),removals=new Map(),packageReads=new Set();

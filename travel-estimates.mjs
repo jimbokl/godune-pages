@@ -1,9 +1,9 @@
-import {bookingEffects} from './trip-bookings-state.mjs?v=1';
+import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
-import {baseId,personalPoints} from './personal-points.mjs?v=2';
+import {baseId,personalPoints} from './personal-points.mjs?v=3';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
-export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return {...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at)};};
+export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return {...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)};};
 export const previousPlace = (trip,id) => trip.places[trip.places.indexOf(id)-1] || (trip.places[0]===id ? dayBases(trip).start_at : null);
 const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];
@@ -22,7 +22,8 @@ function currentPoint(catalog,matrix,id) {
 export function resolveAccess(trip,id,catalog,matrix) {
   const index=trip.places.indexOf(id);
   if(index<0)return null;
-  return resolveAccessBetween(trip,id,previousPlace(trip,id),trip.places[index+1] || dayBases(trip).night_at,catalog,matrix);
+  const bases=dayBases(trip);
+  return resolveAccessBetween(trip,id,previousPlace(trip,id),trip.places[index+1] || bases.night_at || bases.end_at,catalog,matrix);
 }
 export function resolveAccessBetween(trip,id,previous,next,catalog,matrix) {
   const mode=travelMode(trip),anchor=anchorFor(catalog,id,mode);
@@ -88,9 +89,11 @@ export async function loadTripTravelMatrix(base,trip,catalog){
   const matrix=await loadTravelMatrix(base),points=personalPoints(trip);if(!points.length)return matrix;
   const bases=dayBases(trip),mode=travelMode(trip),copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
   const pairs=trip.places.flatMap(id=>[...(bases.start_at?.startsWith('@')?[[bases.start_at,id]]:[]),...(bases.night_at?.startsWith('@')?[[id,bases.night_at]]:[])]);
+  if(bases.end_at?.startsWith('@') && trip.places.length)pairs.push([bases.night_at||trip.places.at(-1),bases.end_at]);
+  if(bases.night_at?.startsWith('@') && bases.end_at && !bases.end_at.startsWith('@'))pairs.push([bases.night_at,bases.end_at]);
   if(!pairs.length)return copy;
   try{
-    const {loadBrowserRouter}=await import('./browser-router.mjs?v=1');const route=await loadBrowserRouter(base,mode);
+    const {loadBrowserRouter}=await import('./browser-router.mjs?v=2');const route=await loadBrowserRouter(base,mode);
     if(!sameRoadSource(matrix.source,route.graph.source))return copy;
     await Promise.all(pairs.map(async([from,to])=>{
       const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);
@@ -127,6 +130,7 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
   const shown=new Set(visible), pairs=trip.places.slice(1).map((to,i)=>[trip.places[i],to]);
   if(trip.places.length && bases.start_at && shown.has(trip.places[0])) {pairs.unshift([bases.start_at,trip.places[0]]);shown.add(bases.start_at);}
   if(trip.places.length && bases.night_at && shown.has(trip.places.at(-1))) {pairs.push([trip.places.at(-1),bases.night_at]);shown.add(bases.night_at);}
+  if(trip.places.length && bases.end_at && shown.has(trip.places.at(-1))){pairs.push([bases.night_at||trip.places.at(-1),bases.end_at]);shown.add(bases.end_at);}
   const rows=await Promise.all(pairs.map(async ([from,to])=>{
     if(!shown.has(from) || !shown.has(to))return null;
     // A hand-entered time does not verify the path or change its geometry.
@@ -142,7 +146,8 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
   }));
   const accesses=visible.map(id=>[id,resolveAccess(trip,id,catalog,matrix),['approach','return']]);
   if(bases.start_at && shown.has(bases.start_at))accesses.push([bases.start_at,resolveAccessBetween(trip,bases.start_at,null,trip.places[0],catalog,matrix),['return']]);
-  if(bases.night_at && shown.has(bases.night_at))accesses.push([bases.night_at,resolveAccessBetween(trip,bases.night_at,trip.places.at(-1),null,catalog,matrix),['approach']]);
+  if(bases.night_at && shown.has(bases.night_at))accesses.push([bases.night_at,resolveAccessBetween(trip,bases.night_at,trip.places.at(-1),bases.end_at,catalog,matrix),bases.end_at?['approach','return']:['approach']]);
+  if(bases.end_at && shown.has(bases.end_at))accesses.push([bases.end_at,resolveAccessBetween(trip,bases.end_at,bases.night_at||trip.places.at(-1),null,catalog,matrix),['approach']]);
   for(const [id,access,kinds] of accesses) {
     if(!access)continue;
     for(const [kind,leg]of [['approach',access.approach],['return',access.back]]) {

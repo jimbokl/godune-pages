@@ -1,4 +1,4 @@
-import {validVisitDate} from './visit-calendar.mjs?v=2';
+import {validVisitDate} from './visit-calendar.mjs?v=3';
 
 const minute=n=>Number.isInteger(n) && n>=0 && n<=1440;
 const times=rows=>rows===null || Array.isArray(rows) && rows.every((n,i)=>minute(n) && n<1440 && (!i || rows[i-1]<n));

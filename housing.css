@@ -1,0 +1,63 @@
+/* Morning blue, paper and a warm edge. The traveller chooses the base. */
+.housing-engine{margin-top:48px}
+.housing-workbench{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,64px);padding:clamp(22px,4vw,48px);background:var(--sea-soft);border:1px solid var(--sea-line);border-radius:18px}
+.housing-start h2{font:clamp(32px,4vw,52px)/1.08 var(--serif);margin:15px 0 22px}
+.housing-start>p:not(.eyebrow){max-width:46ch;line-height:1.8}
+.housing-start .button{margin:18px 0 5px;background:var(--sea);color:#183347;border:1px solid var(--sea-line)}
+.housing-caption{font:12px/1.7 var(--sans);color:var(--muted)}
+.housing-day-picker{min-width:0;align-self:center}
+.housing-day-picker fieldset{border:0;padding:0;margin:0 0 20px}
+.housing-day-picker legend{font:600 15px/1.5 var(--sans);padding:0;margin-bottom:14px}
+#housing-days{display:grid;gap:8px;max-height:330px;overflow:auto;overscroll-behavior:contain;padding:3px}
+.housing-day{display:flex;gap:12px;align-items:center;min-height:64px;padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:var(--paper);cursor:pointer}
+.housing-day:has(input:checked){border-color:var(--sea-muted);box-shadow:inset 3px 0 var(--sea-muted)}
+.housing-day input,.housing-changes input{width:20px;height:20px;flex:none;accent-color:#547e98}
+.housing-day strong{font:600 13px/1.6 var(--sans);display:block}
+.housing-day small{font:12px/1.5 var(--sans);color:var(--muted);display:block}
+.housing-day-picker>a{display:block;width:fit-content;min-height:44px;padding-top:17px;font:13px/1.6 var(--sans);text-decoration:underline;text-underline-offset:4px}
+.housing-status{padding:20px 24px;margin:24px 0;background:var(--sand);border-left:3px solid var(--sea-muted);font:14px/1.8 var(--sans)}
+.housing-explanation{display:flex;gap:26px;align-items:center;padding:8px 0 32px;color:var(--muted)}
+.housing-explanation>span{white-space:nowrap;color:var(--sea-muted);font:25px/1.4 var(--serif)}
+.housing-explanation p{font:13px/1.8 var(--sans);max-width:95ch;margin:0}
+.housing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.housing-card{border:1px solid var(--line);background:var(--paper);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.housing-card figure{margin:0;position:relative;background:var(--sand)}
+.housing-card img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
+.housing-card figcaption{position:absolute;bottom:12px;left:12px;right:12px;width:fit-content;padding:5px 8px;background:#102535bf;color:#fff;font:10px/1.5 var(--sans);border-radius:3px}
+.housing-card-body{padding:clamp(20px,2.2vw,30px);display:flex;flex-direction:column;flex:1;min-width:0}
+.housing-card .eyebrow{font-size:10px;letter-spacing:1.3px}
+.housing-card h2{font:30px/1.15 var(--serif);margin:12px 0 18px}
+.housing-card-body>p:not(.eyebrow):not(.housing-road){font:13px/1.8 var(--sans);color:var(--muted);flex:1}
+.housing-road{font:600 14px/1.7 var(--sans);padding:13px 15px;background:var(--sea-soft);border-radius:7px;margin:18px 0 5px}
+[data-housing-least=true] .housing-road{box-shadow:inset 3px 0 #b58b50}
+.housing-card summary,.housing-personal summary{font:13px/1.6 var(--sans);cursor:pointer;min-height:44px;padding:14px 0}
+.housing-breakdown{padding-left:18px;font:12px/1.8 var(--sans);color:var(--muted)}
+.housing-breakdown li{margin-bottom:10px}
+.housing-card .button{margin:8px 0;width:100%;font:600 12px/1.5 var(--sans);white-space:normal;padding:14px 10px;min-height:48px;background:var(--sea);color:var(--sea-ink);border-color:var(--sea-line)}
+.housing-anchor{font:12px/1.6 var(--sans);padding:10px 0;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.housing-personal{margin:0 0 28px;padding:28px;background:var(--sea-soft);border:1px solid var(--sea-line);border-radius:12px;max-width:800px;overflow-wrap:anywhere}
+.housing-personal h3{font:32px/1.2 var(--serif);margin:14px 0}
+.housing-arrival{display:flex;gap:36px;align-items:center;justify-content:space-between;margin:50px 0 20px;padding:32px;background:var(--sand);border:1px solid var(--line);border-radius:12px}
+.housing-arrival h2{font:32px/1.2 var(--serif);margin:14px 0}
+.housing-arrival p:not(.eyebrow){font:14px/1.8 var(--sans);max-width:62ch;color:var(--muted)}
+.housing-arrival .button{flex:none;font:600 12px/1.6 var(--sans);white-space:normal;max-width:260px}
+.housing-disclosure{font:12px/1.8 var(--sans);color:var(--muted);max-width:100ch}
+.housing-dialog{width:min(680px,calc(100vw - 24px));max-height:calc(100dvh - 32px);padding:clamp(20px,4vw,36px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:14px;overflow:auto}
+.housing-dialog::backdrop{background:#10253596;backdrop-filter:blur(5px)}
+.housing-dialog h2{font:clamp(30px,4vw,42px)/1.15 var(--serif);margin:14px 0 20px;overflow-wrap:anywhere}
+.housing-dialog .icon-button{min-width:44px;min-height:44px;font-size:26px}
+.housing-preview-note{font:13px/1.8 var(--sans);color:var(--muted)}
+.housing-changes{display:grid;gap:16px;margin:24px 0}
+.housing-changes fieldset{padding:12px 16px;border:1px solid var(--line);border-radius:8px;min-width:0}
+.housing-changes legend{font:600 12px/1.7 var(--sans);padding:0 6px}
+.housing-changes label{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 0;font:13px/1.7 var(--sans);overflow-wrap:anywhere;cursor:pointer}
+.housing-changes label:has(input:disabled){color:var(--muted);cursor:default}
+.housing-error{color:var(--night-amber,#815523);font:13px/1.8 var(--sans)}
+.housing-actions{display:flex;gap:10px;flex-wrap:wrap}
+.housing-actions .button{font:600 12px/1.6 var(--sans);min-height:48px;white-space:normal}
+.booking-flight-summary:empty{display:none}
+.booking-flight-summary{padding:16px 20px;background:var(--paper);border:1px solid var(--sea-line);border-radius:8px;margin:20px 0;font:13px/1.8 var(--sans)}
+.booking-heading a{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1050px){.housing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.housing-arrival{align-items:flex-start;flex-direction:column;gap:10px}.housing-arrival .button{max-width:100%}}
+@media(max-width:650px){.housing-workbench{grid-template-columns:1fr;gap:30px}.housing-engine{margin-top:28px}.housing-grid{grid-template-columns:1fr;gap:22px}.housing-explanation{align-items:flex-start;gap:14px}.housing-explanation>span{font-size:18px}.housing-status{padding:16px 18px}.housing-arrival{padding:24px}.housing-personal{padding:22px}.housing-actions .button{width:100%}.housing-start .button,.housing-day-picker .button{width:100%;font-size:12px}.housing-start h2{font-size:36px}}
+@media(prefers-reduced-motion:no-preference){.housing-card{transition:border-color .2s,box-shadow .2s}.housing-card:hover{border-color:var(--sea-line);box-shadow:0 12px 28px #1025350a}}

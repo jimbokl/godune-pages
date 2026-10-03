@@ -1,12 +1,12 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=11';
-import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=2';
-import {baseName,baseId} from './personal-points.mjs?v=2';
-import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=12';
-import {planInput} from './trip-schedule-state.mjs?v=8';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=5';
-import {offlinePaths} from './offline.mjs?v=5';
-import {availableMaps} from './offline-map.mjs?v=8';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=12';
+import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=3';
+import {baseName,baseId} from './personal-points.mjs?v=3';
+import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';
+import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {planInput} from './trip-schedule-state.mjs?v=9';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
+import {offlinePaths} from './offline.mjs?v=6';
+import {availableMaps} from './offline-map.mjs?v=9';
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const date=value=>value?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'Europe/Kaliningrad'}).format(new Date(value+'T12:00:00Z')):'Дата пока не выбрана';
 const node=(tag,text,className)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el;};
@@ -54,7 +54,7 @@ export function initTravel(workshop,catalog,base){
       button.setAttribute('aria-pressed',String(visited));button.setAttribute('aria-label',`${visited?'Снять отметку':'Отметить посещение'}: ${place.name}`);li.append(button);return li;
     }));
     if(focused)Array.from($('travel-stops').querySelectorAll('button')).find(b=>b.dataset.travelVisited===focused)?.focus({preventScroll:true});
-    $('travel-bases').textContent=[day.start_at?`Начало: ${baseName(day.start_at,catalog)}.`:'',day.night_at?`К ночи: ${baseName(day.night_at,catalog)}.`:'Возвращение пока не выбрано. Добавьте его в планировщике.'].filter(Boolean).join(' ');
+    $('travel-bases').textContent=[day.start_at?`Начало: ${baseName(day.start_at,catalog)}.`:'',day.night_at?`К ночи: ${baseName(day.night_at,catalog)}.`:day.end_at?'':'Возвращение пока не выбрано. Добавьте его в планировщике.',day.end_at?`Вылет / отъезд: ${baseName(day.end_at,catalog)}.`:''].filter(Boolean).join(' ');
     const notes=$('travel-day-note');notes.textContent=raw.note;notes.hidden=!raw.note;
     $('travel-bookings').replaceChildren(...(raw.bookings||[]).map(row=>{const li=node('li');
       li.append(node('strong',`${BOOKING_KINDS[row.kind]} · ${row.name}`),node('p',`${BOOKING_STATUSES[row.status]} · ${date(row.date)}${row.time===null?'':` · ${clock(row.time)}`}${row.location?` · ${baseName(row.location,catalog)}`:''}`));
@@ -75,7 +75,7 @@ export function initTravel(workshop,catalog,base){
       $('travel-when').textContent=next?messages.get(next.slug)||'Время ещё нужно уточнить.':'Отметки сохраняют ваш путь. Время возвращения проверьте по плану.';
       root.dataset.planReady='true';
     }).catch(error=>{if(ticket!==sequence)return;
-      const message=error.message?.includes('arrival_after_day')?'Прибытие позже конца выбранного дня. Измените время в планировщике.':'Расчёт времени пока недоступен. Остановки и отметки работают; проверьте время в планировщике.';
+      const message=error.message?.includes('departure_before_day')?'Вылет с запасом не оставляет времени этому дню. Измените время в планировщике.':error.message?.includes('arrival_after_day')?'Прибытие позже конца выбранного дня. Измените время в планировщике.':'Расчёт времени пока недоступен. Остановки и отметки работают; проверьте время в планировщике.';
       $('travel-when').textContent=message;root.querySelectorAll('[data-travel-time]').forEach(el=>el.textContent='Время пока неизвестно.');root.dataset.planReady='error';
     });
   }

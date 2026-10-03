@@ -32,7 +32,7 @@ export async function offlinePaths(base) {
   catch{return new Set();}
 }
 export async function initOffline(base) {
-  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=3',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
+  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=4',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
   const panel=document.querySelector('[data-offline-route]'), list=document.querySelector('#trip-offline-list');
   const banner=document.createElement('p');banner.className='offline-network';banner.setAttribute('role','status');
   banner.textContent='Без сети. Скачанные карты, прогулки и ваши отметки остаются с вами.';

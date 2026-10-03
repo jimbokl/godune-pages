@@ -1,13 +1,15 @@
 let engine;
 // Every caller uses Rust. A failed WASM load never silently switches to different maths.
 export function loadScheduler(base) {
-  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=12',base)).then(async response => {
+  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=13',base)).then(async response => {
     if (!response.ok) throw Error('Не удалось загрузить расчёт дня.');
     const {instance} = await WebAssembly.instantiate(await response.arrayBuffer());
     const plan = input => calculate(instance.exports,input);
     plan.light = input => calculateLight(instance.exports,input);
     plan.budget = input => calculateBudget(instance.exports,input);
     plan.offers = input => calculateOffers(instance.exports,input);
+    plan.housing = input => calculateHousing(instance.exports,input);
+    plan.arrival = input => calculateArrival(instance.exports,input);
     return plan;
   }).catch(error => {engine=null;throw error;});
   return engine;
@@ -16,6 +18,8 @@ export const calculate = (wasm,input) => invoke(wasm,input,'trip_plan','schedule
 export const calculateLight = (wasm,input) => invoke(wasm,input,'trip_light','light');
 export const calculateBudget = (wasm,input) => invoke(wasm,input,'trip_budget','budget');
 export const calculateOffers = (wasm,input) => invoke(wasm,input,'trip_offers','offers');
+export const calculateHousing = (wasm,input) => invoke(wasm,input,'trip_housing','housing');
+export const calculateArrival = (wasm,input) => invoke(wasm,input,'trip_arrival','arrival');
 function invoke(wasm, input, method, key) {
   const bytes = new TextEncoder().encode(JSON.stringify(input));
   const pointer = wasm.trip_alloc(bytes.length); let output, length;

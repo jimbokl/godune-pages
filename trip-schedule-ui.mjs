@@ -1,12 +1,12 @@
-import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
-import {baseName} from './personal-points.mjs?v=2';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=5';
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=8';
-import {loadScheduler} from './trip-scheduler.mjs?v=12';
-import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
+import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
+import {baseName} from './personal-points.mjs?v=3';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=6';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=9';
+import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=3';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=5';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=4';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -108,16 +108,16 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     const settings=trip.schedule || defaultSchedule();
     $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
       const blockedByReturn=result.stops.slice(0,index).some(row=>row.excursion?.conflict);
-      if(item.id==='__day_origin' || item.id==='__day_night') {
-        const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin';
-        li.className='trip-day-anchor';li.dataset.planAnchor=origin?'start':'night';
-        const rawDay=trip.itinerary?.days.find(row=>row.id===trip.itinerary.active),day=rawDay?effectiveBookingDay(rawDay):null, placeName=baseName(origin?day?.start_at:day?.night_at,catalog);
+      if(item.id==='__day_origin' || item.id==='__day_night' || item.id==='__day_departure') {
+        const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin', departure=item.id==='__day_departure';
+        li.className='trip-day-anchor';li.dataset.planAnchor=origin?'start':departure?'end':'night';
+        const rawDay=trip.itinerary?.days.find(row=>row.id===trip.itinerary.active),day=rawDay?effectiveBookingDay(rawDay):null, placeName=baseName(origin?day?.start_at:departure?bookingEffects(trip).end?.location:day?.night_at,catalog);
         const header=document.createElement('div');header.className='trip-timeline-heading';
         const time=document.createElement('span');time.className='trip-timeline-time';time.textContent=blockedByReturn?'После возвращения':item.begins===null?`Не раньше ${clock(item.earliest_begin)}`:clock(item.begins);
-        const name=document.createElement('span');name.textContent=`${origin?'Начало':'К ночи'} · ${placeName}`;header.append(time,name);li.append(header);
+        const name=document.createElement('span');name.textContent=`${origin?'Начало':departure?'К вылету / отъезду':'К ночи'} · ${placeName}`;header.append(time,name);li.append(header);
         const note=document.createElement('p');note.className='trip-timeline-detail';note.textContent=origin?'Дорога начинается у ближайшего подходящего дорожного сегмента. Подход от двери до него ещё нужно сверить.':'Дорога к ближайшему дорожному сегменту включена в окончание дня. Подход к двери ещё нужно сверить.';
         if(item.issues.some(row=>['unknown_travel','unknown_approach','unknown_return'].includes(row.code)))note.textContent+=' Путь ещё нужно уточнить: точное время неизвестно.';
-        if(item.issues.some(row=>row.code==='after_deadline')) {note.textContent+=' Позже выбранного конца дня.';li.dataset.planConflict='true';}
+        if(item.issues.some(row=>row.code==='after_deadline')) {note.textContent+=' Позже границы дня или времени возвращения к отъезду.';li.dataset.planConflict='true';}
         li.append(note);return li;
       }
       const place=catalog.poi.find(row=>row.slug===item.id), value=settings.stops[item.id] || {visit:30,pause:0,leg:null,window:null};
@@ -254,9 +254,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     } catch (error) {
       if(ticket!==sequence)return;
       renderSettings(settings);$('#trip-plan-stops').replaceChildren();
-      $('#trip-plan-summary').textContent=error.message==='arrival_after_day'?'Прибытие с запасом позже конца дня. Продлите день или перенесите прогулку на следующую дату.':'Расчёт дня сейчас не открылся. Ваш маршрут сохранён; попробуйте ещё раз.';
-      section.dataset.scheduleReady=error.message==='arrival_after_day'?'true':'error';
-      $('#trip-plan-summary').dataset.planStatus=error.message==='arrival_after_day'?'conflict':'error';
+      $('#trip-plan-summary').textContent=error.message==='departure_before_day'?'Время возвращения к отъезду раньше начала дня. Перенесите остановки или измените дату записи.':error.message==='arrival_after_day'?'Прибытие с запасом позже конца дня. Продлите день или перенесите прогулку на следующую дату.':'Расчёт дня сейчас не открылся. Ваш маршрут сохранён; попробуйте ещё раз.';
+      section.dataset.scheduleReady=['arrival_after_day','departure_before_day'].includes(error.message)?'true':'error';
+      $('#trip-plan-summary').dataset.planStatus=['arrival_after_day','departure_before_day'].includes(error.message)?'conflict':'error';
     }
   }
   $('#trip-plan-open').addEventListener('click',()=>{

@@ -1,4 +1,4 @@
-import {invokeRoute} from './browser-router.mjs?v=1';
+import {invokeRoute} from './browser-router.mjs?v=2';
 let wasm;
 const hex=buffer=>[...new Uint8Array(buffer)].map(n=>n.toString(16).padStart(2,'0')).join('');
 const sha=bytes=>crypto.subtle.digest('SHA-256',bytes).then(hex);
@@ -26,7 +26,7 @@ async function initialise(base,mode){
   if(!graph)await cache.put(graphURL,new Response(bytes,{headers:{'Content-Type':'application/gzip'}})).catch(()=>{});
   await cache.put(moduleURL,moduleCopy).catch(()=>{});
   await cache.put(manifestURL,new Response(JSON.stringify(manifest),{headers:{'Content-Type':'application/json'}})).catch(()=>{});
-  for(const path of ['routing-worker.mjs?v=1','browser-router.mjs?v=1'])try{const target=new URL(path,base),response=await fetch(target);if(response.ok)await cache.put(target,response);}catch{/* The road can still be used for this visit. */}
+  for(const path of ['routing-worker.mjs?v=2','browser-router.mjs?v=2'])try{const target=new URL(path,base),response=await fetch(target);if(response.ok)await cache.put(target,response);}catch{/* The road can still be used for this visit. */}
   return facts;
 }
 self.onmessage=async event=>{

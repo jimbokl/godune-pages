@@ -1,5 +1,5 @@
-import {offlineAction} from './offline.mjs?v=5';
-import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=5';
+import {offlineAction} from './offline.mjs?v=6';
+import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=6';
 export function localMapStyle(data,base=new URL('.',import.meta.url)) {
   const polygon = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'Polygon']];
   const line = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'LineString']];

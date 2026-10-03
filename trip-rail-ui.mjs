@@ -1,7 +1,7 @@
-import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=1';
-import {planInput} from './trip-schedule-state.mjs?v=8';
-import {loadScheduler} from './trip-scheduler.mjs?v=12';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=5';
+import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=2';
+import {planInput} from './trip-schedule-state.mjs?v=9';
+import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const messages={unpublished_year:'Расписание на этот год ещё не добавлено. Летние рейсы и «Морской экспресс» проверяем отдельно — осеннее время сюда не подставляем.',choose_date:'Выберите дату, чтобы открыть расписание.',stale_date:'Дата дня изменилась. Выберите электрички заново — прежние рейсы сохранены, но сейчас не меняют день.',missing_service:'Прежнего направления сейчас нет в каталоге. Выберите другое.',outside_validity:'Это расписание не действует на дату поездки.',unknown_timetable:'На эту дату расписание ещё не опубликовано.',cancelled:'В изменении на эту дату указана отмена рейсов.',changed_timetable:'Расписание изменилось. Выберите рейсы заново — прежнее время больше не применяется.'};

@@ -1,8 +1,8 @@
-import {bindMapTheme} from './map-theme.mjs?v=1';
-import {regionMapStyle} from './region-map.mjs?v=5';
-import {isPersonalPoint} from './personal-points.mjs?v=2';
-import {addressPicker} from './address-picker.mjs?v=1';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=8';
+import {bindMapTheme} from './map-theme.mjs?v=2';
+import {regionMapStyle} from './region-map.mjs?v=6';
+import {isPersonalPoint} from './personal-points.mjs?v=3';
+import {addressPicker} from './address-picker.mjs?v=2';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=9';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){
@@ -18,7 +18,7 @@ function mapLibrary(base){
     else {script=element('script');script.src=url;script.onload=done;script.onerror=failed;document.head.append(script);}
   }).catch(error=>{library=null;throw error;});return library;
 }
-export function pickPersonalPoint({base,initial,caption,focusPlace}){
+export function pickPersonalPoint({base,initial,caption,focusPlace,saveLabel,privacyText}){
   return new Promise(resolve=>{
     const lastFocus=document.activeElement,dialog=element('dialog',undefined,'personal-point-dialog');dialog.setAttribute('aria-labelledby','personal-point-title');
     const head=element('div',undefined,'dialog-top'),intro=element('div'),kicker=element('p','От вашей двери — к морю','eyebrow'),title=element('h2',caption);title.id='personal-point-title';intro.append(kicker,title);
@@ -33,9 +33,9 @@ export function pickPersonalPoint({base,initial,caption,focusPlace}){
     const lonLabel=element('label','Долгота'),latLabel=element('label','Широта'),lon=element('input'),lat=element('input');
     for(const [input,value,min,max]of [[lon,position[0],-180,180],[lat,position[1],-90,90]]){input.type='number';input.step='any';input.min=String(min);input.max=String(max);input.required=true;input.value=String(value);}
     lon.name='point-lon';lat.name='point-lat';lonLabel.append(lon);latLabel.append(lat);fields.append(lonLabel,latLabel);
-    const privacy=element('p','Точка сохранится в этом браузере. Она попадёт в файл и ссылку, если вы решите поделиться поездкой.','personal-point-privacy');
+    const privacy=element('p',privacyText||'Точка сохранится в этом браузере. Она попадёт в файл и ссылку, если вы решите поделиться поездкой.','personal-point-privacy');
     const picker=addressPicker({base,near:()=>[Number(lon.value),Number(lat.value)],onSelect:point=>{setPosition([point.lon,point.lat]);name.value=point.title.slice(0,120);name.setCustomValidity('');if(inCoverage([point.lon,point.lat]))map?.jumpTo({center:[point.lon,point.lat],zoom:point.precision==='settlement'?12:point.precision==='street'?14:16});else status.textContent+=' Адрес вне скачанной карты. Координаты сохранены в полях; скачайте нужную территорию.';}});
-    const actions=element('div',undefined,'personal-point-actions'),cancel=element('button','Отмена','journey-button'),save=element('button','Сохранить эту точку →','journey-save');cancel.type='button';save.type='submit';actions.append(cancel,save);form.append(nameLabel,detail,privacy,actions);dialog.append(head,note,picker.root,frame,status,form);document.body.append(dialog);
+    const actions=element('div',undefined,'personal-point-actions'),cancel=element('button','Отмена','journey-button'),save=element('button',saveLabel||'Сохранить эту точку →','journey-save');cancel.type='button';save.type='submit';actions.append(cancel,save);form.append(nameLabel,detail,privacy,actions);dialog.append(head,note,picker.root,frame,status,form);document.body.append(dialog);
     let map,mapCoverage,result=null,closed=false;
     const inCoverage=p=>!mapCoverage || p[0]>=mapCoverage[0] && p[0]<=mapCoverage[2] && p[1]>=mapCoverage[1] && p[1]<=mapCoverage[3];
     const setPosition=p=>{lon.value=p[0].toFixed(6);lat.value=p[1].toFixed(6);status.textContent=`Выбрано: ${Number(lat.value).toFixed(5)}, ${Number(lon.value).toFixed(5)}. Дорога рассчитается после сохранения. Подход от двери до ближайшей дороги пока не учтён.`;};

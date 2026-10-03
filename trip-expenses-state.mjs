@@ -1,6 +1,6 @@
 // Prices are snapshots. Plans and actual group payments are independent.
-import {validTransfer,validTransferPoint} from './trip-transfer-costs.mjs?v=2';
-import {validOfferSource} from './trip-offers-state.mjs?v=1';
+import {validTransfer,validTransferPoint} from './trip-transfer-costs.mjs?v=3';
+import {validOfferSource} from './trip-offers-state.mjs?v=2';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const amount=v=>v===null || Number.isSafeInteger(v) && v>=0;
 const date=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !v.startsWith('0000') && Number.isFinite(Date.parse(v+'T12:00:00Z')) && new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;

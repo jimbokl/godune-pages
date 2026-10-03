@@ -1,7 +1,7 @@
-import {effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 // A price belongs to the saved directed journey, never to an inferred tariff.
-import {isPersonalPoint} from './personal-points.mjs?v=2';
-import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=5';
+import {isPersonalPoint} from './personal-points.mjs?v=3';
+import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=6';
 const object=value=>!!value && typeof value==='object' && !Array.isArray(value);
 const keys=(value,list)=>Object.keys(value).every(key=>list.includes(key));
 const text=value=>typeof value==='string' && !!value.trim();
@@ -12,7 +12,7 @@ export function validTransferPoint(value) {
   return isPersonalPoint(value) || object(value) && keys(value,['kind','id','name','lon','lat','arrival']) && value.kind==='catalog' && text(value.id) && text(value.name) && position(value) && arrival(value.arrival);
 }
 export function validTransfer(value) {
-  return object(value) && keys(value,['version','role','date','mode','leg_mode','from','to']) && value.version===1 && ['start','between','return'].includes(value.role) && date(value.date) && Object.hasOwn(TRAVEL_MODES,value.mode) && Object.hasOwn(TRAVEL_MODES,value.leg_mode) && (value.leg_mode===value.mode || value.leg_mode==='foot') && validTransferPoint(value.from) && validTransferPoint(value.to);
+  return object(value) && keys(value,['version','role','date','mode','leg_mode','from','to']) && value.version===1 && ['start','between','return','departure'].includes(value.role) && date(value.date) && Object.hasOwn(TRAVEL_MODES,value.mode) && Object.hasOwn(TRAVEL_MODES,value.leg_mode) && (value.leg_mode===value.mode || value.leg_mode==='foot') && validTransferPoint(value.from) && validTransferPoint(value.to);
 }
 const point=(base,mode,catalog)=>{
   if(isPersonalPoint(base))return structuredClone(base);
@@ -32,6 +32,7 @@ export function dayTransfers(day,catalog) {
   if(stops.length && day.start_at)add(day.start_at,stops[0],'start');
   for(let i=1;i<stops.length;i++)add(stops[i-1],stops[i],'between');
   if(stops.length && day.night_at)add(stops.at(-1),day.night_at,'return');
+  if(stops.length && day.end_at)add(day.night_at||stops.at(-1),day.end_at,'departure');
   return result;
 }
 const identity=point=>point.kind==='personal'?['personal',point.lon,point.lat]:['catalog',point.id,point.lon,point.lat,point.arrival===null?null:[point.arrival.id,point.arrival.lon,point.arrival.lat]];
@@ -39,7 +40,7 @@ const direction=transfer=>JSON.stringify([transfer.role,identity(transfer.from),
 export const transferKey=transfer=>JSON.stringify([transfer.date,transfer.mode,transfer.leg_mode,direction(transfer)]);
 export const transferContext=(day,catalog)=>JSON.stringify([day.date,day.schedule?.mode || 'foot',day.places,day.start_at,day.night_at,dayTransfers(day,catalog)]);
 export const transferTitle=transfer=>`${transfer.from.name} → ${transfer.to.name}`;
-export const transferRole=transfer=>({start:'От начала дня',between:'Между остановками',return:'К ночёвке'})[transfer.role];
+export const transferRole=transfer=>({start:'От начала дня',between:'Между остановками',return:'К ночёвке',departure:'К вылету / отъезду'})[transfer.role];
 export function transferStatus(saved,day,catalog) {
   const current=dayTransfers(day,catalog),mode=day.schedule?.mode || 'foot';
   if(current.some(row=>transferKey(row)===transferKey(saved)))return {current:true,reason:'Этот переезд в плане дня.'};

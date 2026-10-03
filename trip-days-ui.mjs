@@ -1,14 +1,14 @@
-import {initTripBookings} from './trip-bookings-ui.mjs?v=3';
-import {effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=8';
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=11';
-import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=12';
-import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=5';
-import {isPersonalPoint,baseName} from './personal-points.mjs?v=2';
-import {pickPersonalPoint} from './personal-point-picker.mjs?v=5';
-import {planInput} from './trip-schedule-state.mjs?v=8';
-import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=10';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=5';
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=9';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=12';
+import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
+import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=6';
+import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
+import {planInput} from './trip-schedule-state.mjs?v=9';
+import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=11';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -90,7 +90,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
             text+=` · ${result.finish===null?'не раньше':'окончание около'} ${clock(result.earliest_finish)}`;
             if(['conflict','overrun'].includes(result.status))text+=' · не всё помещается';
             if(result.finish===null)text+=' · дорогу нужно уточнить';
-          }catch(error){if(error.message!=='arrival_after_day')throw error;text+=' · прибытие позже конца дня';}
+          }catch(error){if(error.message==='departure_before_day')text+=' · отъезд не оставляет времени этому дню';else if(error.message==='arrival_after_day')text+=' · прибытие позже конца дня';else throw error;}
         }else text+=' · выберите места';
         text+=total.total===null?` · ${rubles(total.known)} известно`:` · ${rubles(total.total)}`;summary.textContent=text;li.append(summary);
         for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(effectiveBookingDay(day)[field])li.append(el('p',`${caption}: ${baseName(effectiveBookingDay(day)[field],catalog)}`,'journey-day-note'));

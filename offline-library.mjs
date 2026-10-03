@@ -1,4 +1,4 @@
-import {offlineAction,offlineWorker} from './offline.mjs?v=5';
+import {offlineAction,offlineWorker} from './offline.mjs?v=6';
 const size=bytes=>`${(bytes/1048576).toLocaleString('ru-RU',{maximumFractionDigits:1})} МБ`;
 export async function initOfflineLibrary(base) {
   const root=document.querySelector('[data-offline-library]');if(!root)return;
