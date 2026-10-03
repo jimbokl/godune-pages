@@ -7,6 +7,10 @@ if(root) {
   const toggle=root.querySelector('[data-dining-map-toggle]'),panel=root.querySelector('#dining-map-panel');
   const mapStatus=root.querySelector('[data-dining-map-status]'),base=new URL('./',import.meta.url);
   const normalize=value=>value.toLocaleLowerCase('ru').replaceAll('ё','е').normalize('NFKC');
+  const searchText=new Map(cards.map(card=>{
+    const d=card.dataset,items=[...card.querySelectorAll('.food-item-name')].map(item=>item.textContent);
+    return [card,normalize([d.name,d.address,d.cuisine,d.category,...items].join(' '))];
+  }));
   let map,library,markers=[],popup;
   function libraryReady() {
     if(window.maplibregl)return Promise.resolve();
@@ -50,7 +54,7 @@ if(root) {
     const query=normalize(form.elements.q.value.trim()),category=form.elements.category.value;
     const words=query.split(/\s+/).filter(Boolean);
     cards.forEach(card=>{
-      const d=card.dataset,text=normalize([d.name,d.address,d.cuisine,d.category].join(' '));
+      const d=card.dataset,text=searchText.get(card);
       card.hidden=!!((category&&!d.category.split(' · ').includes(category)) || (form.elements.photos.checked&&d.photo!=='true') || (form.elements.menu.checked&&Number(d.menu)===0) || !words.every(word=>text.includes(word)));
     });
     const count=cards.filter(card=>!card.hidden).length;status.textContent=`Найдено: ${count}`;empty.hidden=count>0;redraw();
