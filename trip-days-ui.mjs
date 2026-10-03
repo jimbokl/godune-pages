@@ -1,4 +1,4 @@
-import {initTripBookings} from './trip-bookings-ui.mjs?v=5';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=6';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=9';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=12';

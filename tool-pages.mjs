@@ -1,6 +1,12 @@
 import {journeyDays, selectedDay} from './trip-days-state.mjs?v=12';
 export function initToolPages(workshop,catalog,base) {
-  document.querySelector('.tool-nav [aria-current="page"]')?.scrollIntoView({inline:'nearest',block:'nearest',behavior:'instant'});
+  const currentLink=document.querySelector('.tool-nav [aria-current="page"]');
+  const nav=currentLink?.closest('.tool-nav');
+  if(nav&&currentLink){
+    const link=currentLink.getBoundingClientRect(),frame=nav.getBoundingClientRect();
+    if(link.left<frame.left)nav.scrollLeft-=frame.left-link.left;
+    else if(link.right>frame.right)nav.scrollLeft+=link.right-frame.right;
+  }
   const mount=document.querySelector('[data-tool-trip]');
   const render=()=>{
     if(!mount)return;

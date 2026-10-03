@@ -129,11 +129,11 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=32'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=34'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=12')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+      import(url('tool-pages.mjs?v=13')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
         $$('[data-plan-starter]').forEach(button=>button.disabled=true);
         const status=$('#plan-starter-status');
@@ -151,6 +151,15 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
+    // Restore direct entry after the trip and document layout are ready.
+    // Native fragment scrolling can happen before the stored day is rendered.
+    if (location.hash === '#trip-bookings') {
+      const reachBookings = () => requestAnimationFrame(() => {
+        if (location.hash === '#trip-bookings') $('#trip-bookings')?.scrollIntoView({block:'start',behavior:'instant'});
+      });
+      if (document.readyState === 'complete') reachBookings();
+      else window.addEventListener('load', reachBookings, {once:true});
+    }
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=15')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
