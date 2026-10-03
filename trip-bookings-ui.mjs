@@ -1,5 +1,5 @@
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingRows,bookingEffects,bookingProblem,saveBooking,deleteBooking,nextBookingId} from './trip-bookings-state.mjs?v=1';
-import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=9';
+import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=10';
 import {baseName} from './personal-points.mjs?v=2';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=5';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

@@ -1,6 +1,6 @@
 import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
 import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=6';
-import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=7';
+import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=8';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=2';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
@@ -44,7 +44,7 @@ export const journeyDays=trip=>trip.itinerary?.days || [snapshot(trip)];
 export const selectedDay=trip=>trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || snapshot(trip);
 export const tripHasPlaces=trip=>journeyDays(trip).some(day=>day.places.length) || !!trip.routes.length;
 export const tripHasExpenses=trip=>journeyDays(trip).some(day=>Object.values(day.costs).some(row=>row.items?.length || row.amount!==null && row.amount!==undefined || row.paid!==null && row.paid!==undefined));
-export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.bookings?.length);
+export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.bookings?.length || day.schedule?.rail);
 export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...day.places,day.start_at,day.night_at,...(day.bookings||[]).flatMap(row=>[row.location,row.target])]).filter(id=>typeof id==='string'))];
 export function ensureJourney(trip) {
   if(trip.itinerary)return structuredClone(trip);
@@ -67,7 +67,7 @@ export function nextDate(value) {
 }
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
-  if(copy){day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);}
+  if(copy){day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(day.schedule?.rail)day.schedule.rail.date=null;}
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=effectiveBookingDay(current).night_at;day.night_at=effectiveBookingDay(current).night_at;}
   next.itinerary.days.push(day);return project(next,day);

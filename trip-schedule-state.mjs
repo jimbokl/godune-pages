@@ -1,4 +1,5 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=1';
+import {validRail,resolveRail} from './trip-rail-state.mjs?v=1';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
@@ -10,7 +11,7 @@ const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2
   && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10) === value;
 export function validSchedule(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value) || !minute(value.start) || !minute(value.end)
-    || value.start >= value.end || !minute(value.reserve) || value.mode!==undefined && !Object.hasOwn(TRAVEL_MODES,value.mode) || !value.stops || typeof value.stops !== 'object' || Array.isArray(value.stops)) return false;
+    || value.start >= value.end || !minute(value.reserve) || value.mode!==undefined && !Object.hasOwn(TRAVEL_MODES,value.mode) || value.rail!==undefined && !validRail(value.rail) || !value.stops || typeof value.stops !== 'object' || Array.isArray(value.stops)) return false;
   return Object.entries(value.stops).every(([id, stop]) => id && stop && typeof stop === 'object' && !Array.isArray(stop)
     && minute(stop.visit) && minute(stop.pause) && (stop.excursion===undefined || stop.excursion===null || validExcursion(stop.excursion))
     && (stop.visit_fact === undefined || stop.visit_fact === null || typeof stop.visit_fact === 'string' && /^[a-z0-9][a-z0-9-]{0,127}$/.test(stop.visit_fact))
@@ -24,7 +25,7 @@ export function cleanSchedule(value, places) {
       window:stop.window ? {open:stop.window.open,close:stop.window.close,date:stop.window.date} : null,
       ...(stop.visit_fact !== undefined ? {visit_fact:stop.visit_fact} : {}),
       ...(stop.excursion!==undefined ? {excursion:stop.excursion===null?null:structuredClone(stop.excursion)} : {})}]));
-  return {start:value.start,end:value.end,reserve:value.reserve,stops,...(value.mode!==undefined?{mode:value.mode}:{})};
+  return {start:value.start,end:value.end,reserve:value.reserve,stops,...(value.mode!==undefined?{mode:value.mode}:{}),...(value.rail?{rail:structuredClone(value.rail)}:{})};
 }
 export function planInput(trip, catalog, matrix) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();
@@ -62,7 +63,8 @@ export function planInput(trip, catalog, matrix) {
   }
   const start=Math.max(settings.start,bookings.start?bookings.start.time+bookings.start.buffer:0);
   if(start>=settings.end)throw new Error('arrival_after_day');
-  return {version:1,start,end:settings.end,reserve:settings.reserve,stops};
+  const rail=resolveRail(configured,catalog)?.input;
+  return {version:1,start,end:settings.end,reserve:settings.reserve,stops,...(rail?{rail}:{})};
 }
 export function updateSchedule(trip, field, value, id) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();

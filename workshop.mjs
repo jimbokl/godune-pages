@@ -1,16 +1,17 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=13';
-import {initTripSharing} from './trip-link.mjs?v=15';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=10';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=14';
+import {initTripSharing} from './trip-link.mjs?v=16';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=11';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=3';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=10';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=12';
-import {initTripDays} from './trip-days-ui.mjs?v=12';
-import {addTripStarter} from './trip-starters.mjs?v=8';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=9';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=4';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=6';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=13';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=11';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=13';
+import {initTripDays} from './trip-days-ui.mjs?v=13';
+import {addTripStarter} from './trip-starters.mjs?v=9';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=10';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=5';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=7';
+import {initTripRail} from './trip-rail-ui.mjs?v=2';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=14';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -93,6 +94,7 @@ export async function initWorkshop(catalog, base) {
   const reorder = initTripReorder($('#my-places'), {announce, move: (id, anchor, side) =>
     commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
   const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const rail = initTripRail({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const cancellation = initTripCancellation({read:()=>state,commit,catalog});
   const replacement = initTripReplacement({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
@@ -157,6 +159,7 @@ export async function initWorkshop(catalog, base) {
       node.textContent = done ? 'Уже в маршруте ✓' : hasTrip ? 'Добавить прогулку →' : 'Выбрать прогулку →';
     });
     schedule.render();
+    rail.render();
     days.render();
     replacement.render();
     cancellation.render();

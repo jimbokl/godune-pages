@@ -1,9 +1,10 @@
-import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=7';
+import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=8';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
-import {foodTrip,anchorRequest} from './gastro-day.mjs?v=2';
-import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=9';
+import {resolveRail} from './trip-rail-state.mjs?v=1';
+import {foodTrip,anchorRequest} from './gastro-day.mjs?v=3';
+import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=10';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=2';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=5';
 
@@ -35,6 +36,8 @@ export function calculate(wasm,input) {
 }
 export function planRequest(food,settings,context={}) {
   const day=gastroDay(settings,!!(settings.anchors?.start_at || settings.anchors?.night_at));
+  const rail=resolveRail(foodTrip(food,settings),context.catalog);
+  if(day && rail?.input)day.rail=rail.input;
   const dated=!!settings.date;
   return {venues:food.venues.map(v=>{
     const calendar=dated?resolveVisitCalendar({hours:v.visit_hours},settings.date):null;
@@ -46,7 +49,7 @@ export function planRequest(food,settings,context={}) {
 }
 // Existing points keep their order. Food stops join the same durable trip draft.
 export function appendTour(current,tour,food,settings={}) {
-  if(!current.places.length && !current.routes.length && settings.anchors)return saveTourDay(current,tour,food,settings);
+  if(!current.places.length && !current.routes.length && (settings.anchors || settings.rail))return saveTourDay(current,tour,food,settings);
   let next={...current,places:[...new Set([...current.places,...tour.places])]};
   if(!current.places.length && !current.routes.length) {
     const day=gastroDay(settings);
@@ -82,7 +85,7 @@ export async function initGastronomy(base,workshop) {
   const form=document.querySelector('#gastro-form');if(!form)return;
   const status=document.querySelector('#gastro-status'),results=document.querySelector('#gastro-results');
   const [response,catalogResponse,wasmResponse]=await Promise.all([
-    fetch(new URL('data/gastronomy.json',base)),fetch(new URL('data/catalog.json',base)),fetch(new URL('assets/gastro.wasm',base))
+    fetch(new URL('data/gastronomy.json',base)),fetch(new URL('data/catalog.json',base)),fetch(new URL('assets/gastro.wasm?v=1',base))
   ]);
   if(!response.ok||!catalogResponse.ok||!wasmResponse.ok)throw Error('food_engine');
   const [food,catalog,{instance}]=await Promise.all([response.json(),catalogResponse.json(),wasmResponse.arrayBuffer().then(b=>WebAssembly.instantiate(b))]);
@@ -182,6 +185,7 @@ export async function initGastronomy(base,workshop) {
         if(leg)li.append(make('small',`↓ ${road(leg)}`,'food-tour-leg'));
       });
       anchor('night_at','__day_night','Возвращение');
+      if(tour.schedule?.rail)card.append(make('p',`Электричка обратно в ${clock(tour.schedule.rail.inbound_departure)} · у станции с запасом к ${clock(tour.schedule.rail.earliest_ready)}`,'food-tour-facts'));
       function saveButton(text,exact) {
         const save=make('button',text,`button ${exact?'food-day-save':'food-append'}`);save.type='button';save.dataset[exact?'gastroDaySave':'gastroSave']=String(index);
         save.addEventListener('click',async()=>{save.disabled=true;ownSaving=true;
@@ -209,6 +213,7 @@ export async function initGastronomy(base,workshop) {
   async function submit() {
     const captured=++revision,settings=Object.fromEntries(new FormData(form)),day=selectedDay(workshop.getState());
     settings.anchors=structuredClone({start_at:day.start_at,night_at:day.night_at});
+    settings.rail=day.date===settings.date?structuredClone(day.schedule?.rail || null):null;
     const anchored=!!(day.start_at||day.night_at),submit=form.querySelector('[type=submit]');
     form.setAttribute('aria-busy','true');submit.disabled=true;results.replaceChildren();
     status.textContent=anchored?'Считаем дорогу от начала прогулки до столиков и обратно…':'Подбираем остановки…';
@@ -225,7 +230,7 @@ export async function initGastronomy(base,workshop) {
     } catch {if(captured===revision)status.textContent='Проверьте дату и время начала прогулки.';}
     finally{if(captured===revision){form.setAttribute('aria-busy','false');submit.disabled=false;}}
   }
-  function tourTiming(settings,anchored) {return settings.date?'Время показано по Калининграду. Часы кухни и столик уточните перед выходом.':anchored?'Время показано по Калининграду. Выберите дату, чтобы сверить часы ресторанов.':'Выберите дату, чтобы увидеть время каждой остановки.';}
+  function tourTiming(settings,anchored) {const rail=resolveRail(foodTrip(food,settings),catalog);if(rail?.input)return 'Время электричек, путь от станции и запас на возвращение учтены. Расписание и столики уточните перед выходом.';return settings.date?'Время показано по Калининграду. Часы кухни и столик уточните перед выходом.':anchored?'Время показано по Калининграду. Выберите дату, чтобы сверить часы ресторанов.':'Выберите дату, чтобы увидеть время каждой остановки.';}
   form.addEventListener('submit',event=>{event.preventDefault();submit();});
   form.addEventListener('change',event=>{
     if(!['origin','destination'].includes(event.target.name))invalidate('Выбор изменился. Нажмите «Найти мою прогулку», чтобы пересчитать день.');

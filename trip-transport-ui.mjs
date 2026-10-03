@@ -1,5 +1,5 @@
 import {defaultExcursion,parseDepartures,transportOptions,resolveExcursion,validExcursion} from './trip-transport-state.mjs?v=1';
-import {updateSchedule} from './trip-schedule-state.mjs?v=7';
+import {updateSchedule} from './trip-schedule-state.mjs?v=8';
 
 const line = (text,cls) => {const node=document.createElement('p');node.textContent=text;if(cls)node.className=cls;return node;};
 const time = (value,clock) => value===null || value===undefined ? 'время пока неизвестно' : clock(value);

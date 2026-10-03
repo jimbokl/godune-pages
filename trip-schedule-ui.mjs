@@ -1,11 +1,11 @@
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=1';
 import {baseName} from './personal-points.mjs?v=2';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=4';
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=7';
-import {loadScheduler} from './trip-scheduler.mjs?v=10';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=5';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=8';
+import {loadScheduler} from './trip-scheduler.mjs?v=11';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=2';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=3';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=5';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
@@ -242,7 +242,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         incomplete:'Для точного плана нужно время дороги, пеших участков или переправы.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки или рейсы, которые не помещаются в этот день.'}[result.status];
       const noReturn=result.stops.some(row=>row.excursion?.conflict);
       summary.textContent=intro+(result.stops.length && !noReturn ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
-        +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До конца дня остаётся ${result.slack} мин.` : '');
+        +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До ${result.rail?'границы дня с обратным поездом':'конца дня'} остаётся ${result.slack} мин.` : '')
+        +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
       section.dataset.scheduleReady='true';
       if(light) lightAlternative(trip,catalog,matrix,calculate,result,light,()=>ticket===sequence && tripSignature(read())===tripSignature(trip)).then(alternative=>{
         if(ticket===sequence && alternative)renderLightView($('#trip-light'),trip,catalog,light,alternative,applyLight);
