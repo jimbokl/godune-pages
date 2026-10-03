@@ -178,6 +178,7 @@
     });
   }
   const russianMap = {'NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить','NavigationControl.ResetBearing':'Север наверху','AttributionControl.ToggleAttribution':'Источники карты','GeolocateControl.FindMyLocation':'Моё местоположение','GeolocateControl.LocationNotAvailable':'Местоположение недоступно','LogoControl.Title':'Открытая карта','Map.Title':'Карта маршрутов Балтики','Marker.Title':'Остановка маршрута','Popup.Close':'Закрыть'};
+  let mapNavigation;
   let mapContext, mapBaseError = false, mapStatus = '';
   function setMapStatus(message) {
     mapStatus = message;
@@ -185,7 +186,7 @@
   }
   async function initializeMap(local) {
     const context=local?.route || 'region';
-    if(mapReady && mapContext!==context){map?.remove();map=undefined;mapReady=undefined;markers=[];}
+    if(mapReady && mapContext!==context){mapNavigation?.destroy();mapNavigation=undefined;map?.remove();map=undefined;mapReady=undefined;markers=[];}
     if (mapReady) return mapReady;
     mapContext=context;
     mapReady = (async () => {
@@ -209,9 +210,10 @@
       }
       map.addSource('walk',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
       map.addLayer({id:'walk-line',type:'line',source:'walk',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#986339','line-width':4,'line-opacity':.92}});
+      mapNavigation=(await import(url('map-navigation.mjs?v=1'))).initMapNavigation({map,root:$('#map-dialog'),bbox:local?.bbox || [19.58,54.42,22.87,55.29],local:Boolean(local)});
       return map;
     })();
-    mapReady.catch(() => { mapReady = undefined; map?.remove(); map = undefined; });
+    mapReady.catch(() => { mapReady = undefined; mapNavigation?.destroy();mapNavigation=undefined;map?.remove(); map = undefined; });
     return mapReady;
   }
   let mapSelection = 'all', mapVersion = 0;
@@ -260,17 +262,22 @@
       }
       if(version!==mapVersion)return;
       const m = await initializeMap(local); if (version !== mapVersion) return;
-      m.resize(); markers.forEach(marker => marker.remove()); markers = [];
+      m.resize();mapNavigation?.setEntries([]); markers.forEach(marker => marker.remove()); markers = [];
+      const mapEntries=[];
+      function addMarker(point,btn,content,meta='') {
+        const marker=new maplibregl.Marker({element:btn}).setLngLat([point.lon,point.lat]).addTo(m);
+        markers.push(marker);mapEntries.push({id:point.slug||point.id,point,element:btn,content,meta});
+      }
       points.forEach((p,i) => {
         const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || tripMap ? pointNumber(p) ? String(pointNumber(p)) : personal.baseId(day?.start_at) === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
         if(pointRole(p))btn.dataset.mapBase = pointRole(p);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
-        title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}markers.push(new maplibregl.Marker({element:btn}).setLngLat([p.lon,p.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));return;} link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
+        title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}addMarker(p,btn,popup,pointRole(p));return;} link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
         if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}
         const save = document.createElement('button'), on = workshop?.getState().places.includes(p.slug);
         save.type = 'button'; save.className = 'save-item'; save.dataset.savePlace = p.slug;
         save.setAttribute('aria-pressed', String(Boolean(on))); save.textContent = on ? 'В моём маршруте ✓' : 'В мой маршрут +'; popup.append(document.createElement('br'), save);
-        markers.push(new maplibregl.Marker({element:btn}).setLngLat([p.lon,p.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));
+        addMarker(p,btn,popup,pointRole(p)||`${p.area_name} · ${p.category_name}`);
       });
       let roads={type:'FeatureCollection',features:[]},modeLabel='',arrivals=[];
       if(trip) {
@@ -289,11 +296,12 @@
           const popup=document.createElement('div'),title=document.createElement('strong'),note=document.createElement('p'),link=document.createElement('a');
           title.textContent=anchor.name;note.textContent=anchor.note;link.textContent='Парковка на этой карте';
           link.href='#map-dialog';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[anchor.lon,anchor.lat],zoom:16});});popup.append(title,note,link);
-          markers.push(new maplibregl.Marker({element:btn}).setLngLat([anchor.lon,anchor.lat]).setPopup(new maplibregl.Popup({offset:18}).setDOMContent(popup)).addTo(m));
+          addMarker(anchor,btn,popup,'Парковка · начало пешего участка');
           const li=document.createElement('li'),a=document.createElement('a');li.dataset.mapArrival=anchor.id;
           a.textContent=anchor.name;a.href=link.href;a.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[anchor.lon,anchor.lat],zoom:16});});li.append(a);$('#map-places').append(li);
         });
       }
+      mapNavigation?.setEntries(mapEntries);
       m.getSource('walk').setData(route ? {type:'FeatureCollection',features:[{type:'Feature',properties:{},geometry:route.geometry}]} : roads);
       $('#map-dialog').dataset.roadSegments=String(roads.features.length);
       $('#map-dialog').dataset.arrivalPoints=String(arrivals.length);
@@ -306,7 +314,7 @@
       setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }
   }
-  window.addEventListener('godune:memory-clearing',()=>{foodPreviewTrip=null;foodPreview=[];mapVersion++;markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});$('#map-places')?.replaceChildren();});
+  window.addEventListener('godune:memory-clearing',()=>{foodPreviewTrip=null;foodPreview=[];mapVersion++;mapNavigation?.setEntries([]);markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});$('#map-places')?.replaceChildren();});
   window.addEventListener('godune:food-preview',event=>{
     foodPreviewTrip=structuredClone(event.detail);foodPreview=[];tripMap=true;mapFocus=null;activeRoute=null;mapSelection='all';
     $$('[data-map-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.mapFilter==='all')));
