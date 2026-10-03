@@ -1,7 +1,7 @@
-import {regionMapStyle} from './region-map.mjs?v=3';
+import {regionMapStyle} from './region-map.mjs?v=4';
 import {isPersonalPoint} from './personal-points.mjs?v=1';
 import {addressPicker} from './address-picker.mjs?v=1';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=5';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){
