@@ -75,6 +75,7 @@
 :root[data-theme=night] .map-surface .map-dot.map-arrival:before{background:#a4c8df}
 :root[data-theme=night] .region-city-label{color:#dce8ee;text-shadow:0 1px 3px #081724,0 0 5px #081724}
 :root[data-theme=night] :is(.maplibregl-popup-content,.maplibregl-ctrl-group,.maplibregl-ctrl-attrib){background:#152c3e;color:#dce8ee}
+:root[data-theme=night] .maplibregl-ctrl-attrib a{color:inherit}
 :root[data-theme=night] .maplibregl-popup-tip{border-top-color:#152c3e;border-bottom-color:#152c3e}
 :root[data-theme=night] .maplibregl-ctrl-icon{filter:invert(.9)}
 :root[data-theme=night] :is(a,button,input,select,summary):focus-visible{outline-color:#e6b877}
