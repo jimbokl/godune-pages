@@ -65,17 +65,22 @@
       if (x < 0 || x > width || y < 0 || y > height) continue;
       grains.push({i,type,settings,x,y});
     }
-    const amberCount = grains.filter(p => p.type === 'amber').length;
+    // Keep one in three stones, spread across the visible sand from left to
+    // right. Sand keeps its density; amber stays put between reflections.
+    const amber = grains.filter(p => p.type === 'amber').sort((a,b) => a.x-b.x);
+    const selectedAmber = new Set(amber.filter((p,index) => index % 3 === 0));
+    const sparseGrains = grains.filter(p => p.type !== 'amber' || selectedAmber.has(p));
+    const amberCount = selectedAmber.size;
     let amberIndex = 0;
-    for (const {i,type,settings,x,y} of grains) {
+    for (const {i,type,settings,x,y} of sparseGrains) {
       const radius = f[i+2] * scale;
       const alpha = type === 'amber' ? engine.amber_glint(amberIndex++,amberCount,f[8]) : f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
         const strength = settings?.strength ?? 1;
-        // A small honey-coloured pebble, then its changing reflection. Keeping
-        // the stone separate from the glow makes it legible on pale sand.
-        ctx.globalAlpha = Math.min(1,strength * (night ? .52 : .64));
+        // Both the pebble and its reflection fade to zero between flashes.
+        // Preserve the peak colour while the Rust pulse controls visibility.
+        ctx.globalAlpha = Math.min(1,strength * (night ? .52 : .64) * Math.min(1,alpha/.9));
         ctx.fillStyle = '#a7632c';
         ctx.beginPath();ctx.ellipse(x,y,radius*.95,radius*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
         ctx.fillStyle = '#d59a4c';
