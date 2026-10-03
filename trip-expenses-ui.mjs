@@ -1,10 +1,10 @@
 import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=12';
 import {emptyCost,putExpense,removeExpense,cancelExpense,putRefund,removeRefund,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=7';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {loadScheduler} from './trip-scheduler.mjs?v=14';
 import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=3';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=6';
-import {initTripOffers} from './trip-offers-ui.mjs?v=5';
+import {initTripOffers} from './trip-offers-ui.mjs?v=6';
 import {offerSource,offerContext,offerStatusText,retainedSource} from './trip-offers-state.mjs?v=2';
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const button=(text,action)=>{const node=el('button',text,'expense-button');node.type='button';node.dataset.expenseAction=action;return node;};
@@ -36,7 +36,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   const transferPreview=el('div',undefined,'expense-transfer-preview');transferPreview.setAttribute('aria-live','polite');fields.append(transferPreview);
   const observation=label(fields,'Взять цену из нашего снимка меню','observation','select');option(observation,'','Своя оценка');
   observation.closest('label').classList.add('expense-field-wide');
-  const evidence=el('figure',undefined,'expense-evidence'),evidenceLink=el('a');evidenceLink.target='_blank';evidenceLink.rel='noopener noreferrer';evidenceLink.setAttribute('aria-label','Рассмотреть снимок меню');evidenceLink.append(el('img'));evidence.hidden=true;evidence.append(evidenceLink,el('figcaption'));fields.append(evidence);
+  const evidence=el('figure',undefined,'expense-evidence'),evidenceImage=el('img');let evidenceLink=null;evidence.hidden=true;evidence.append(evidenceImage,el('figcaption'));fields.append(evidence);
   const name=label(fields,'Название расхода','label');name.required=true;name.placeholder='Например, обед у моря';name.closest('label').classList.add('expense-field-wide');
   const planned=label(fields,'План за одну порцию, билет или ночь, ₽','amount');planned.inputMode='decimal';planned.placeholder='Ещё не знаю';
   const qty=label(fields,'Сколько раз оплачиваем','quantity','number');qty.min='1';qty.max='4294967295';qty.step='1';qty.required=true;
@@ -55,8 +55,9 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     if(source?.offer){const q=source.offer;quoteNote.append(el('strong',`${q.label} · ${q.unit} · ${q.amount===null?'Цена ещё неизвестна':rubles(q.amount)}`));const link=el('a',`${q.source_label} · ${dateLabel(q.observed_at)} ↗`);link.href=new URL(q.source_href,base);link.target='_blank';link.rel='noopener noreferrer';quoteNote.append(link,el('span','Это цена из источника. Ваш план и фактическая оплата сохраняются отдельно.'));}
   }
   function showEvidence(row) {
-    evidence.hidden=!row;if(!row){evidence.querySelector('img').removeAttribute('src');return;}
-    const image=evidence.querySelector('img');image.src=new URL(row.photo,base);evidenceLink.href=image.src;image.alt=`Меню у входа · ${catalog.poi.find(p=>p.slug===row.poi)?.name || 'Зеленоградск'}`;
+    evidence.hidden=!row;if(!row){evidenceImage.removeAttribute('src');if(evidenceLink){evidenceLink.replaceWith(evidenceImage);evidenceLink=null;}return;}
+    const image=evidenceImage;image.src=new URL(row.photo,base);image.alt=`Меню у входа · ${catalog.poi.find(p=>p.slug===row.poi)?.name || 'Зеленоградск'}`;
+    if(!evidenceLink){evidenceLink=el('a');evidenceLink.target='_blank';evidenceLink.rel='noopener noreferrer';evidenceLink.setAttribute('aria-label','Рассмотреть снимок меню');image.replaceWith(evidenceLink);evidenceLink.append(image);}evidenceLink.href=image.src;
     evidence.querySelector('figcaption').textContent=`${row.label} · ${row.unit} · ${row.amount===null?'Цена ещё неизвестна':rubles(row.amount)} на снимке ${dateLabel(row.observed_at)}. Нажмите на снимок, чтобы рассмотреть. Сегодняшнюю цену уточните перед заказом.`;
   }
   function fillObservations(source=null) {

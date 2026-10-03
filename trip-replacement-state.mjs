@@ -1,4 +1,4 @@
-import {cleanTrip} from './trip-state.mjs?v=16';
+import {cleanTrip} from './trip-state.mjs?v=17';
 import {selectedDay} from './trip-days-state.mjs?v=12';
 import {dayTransfers,transferKey,transferStatus,validTransferPoint} from './trip-transfer-costs.mjs?v=3';
 

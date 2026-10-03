@@ -1,5 +1,10 @@
 (() => {
   'use strict';
+  const perfMark = (name, detail) => {
+    if (window.godunePerformance?.mark) return window.godunePerformance.mark(name, detail);
+    try { performance.mark(`godune:${name}`, detail == null ? undefined : {detail: String(detail).slice(0, 160)}); } catch {}
+  };
+  perfMark('app-start');
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
   if (document.querySelector('[data-author-video]')) {
@@ -36,18 +41,49 @@
     if (target.origin===location.origin && target.pathname===location.pathname && target.search===location.search && target.hash) revealPlannerTrip(target.hash,{scroll:true,focus:true});
   });
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
-  const catalog = fetch(url('data/catalog.json'), {cache:'no-cache'}).then(r => {
-    if (!r.ok) throw new Error('Каталог временно недоступен');
-    return r.json();
-  });
-  // Observe the rejection even when the visitor never opens an interactive tool.
-  catalog.catch(() => {});
+  let catalog;
+  function loadCatalog() {
+    if (!catalog) {
+      perfMark('catalog-start');
+      catalog = fetch(url('data/catalog.json'), {cache:'no-cache'}).then(r => {
+        if (!r.ok) throw new Error('Каталог временно недоступен');
+        return r.json();
+      }).then(data => { perfMark('catalog-ready'); return data; });
+      catalog.catch(() => {});
+    }
+    return catalog;
+  }
   const offlineTools = import(url('offline.mjs?v=6'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
-  import(url('offline-map.mjs?v=9')).then(module => { localStyle=module; }).catch(() => {});
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
+  // The first screen keeps its own small animation engine. The full trip editor
+  // starts near its section or on intent; direct tool pages start immediately.
+  const homeHero = Boolean($('#top.hero'));
+  let wakeWorkshop, workshopObserver;
+  const workshopNeeded = new Promise(resolve => {
+    wakeWorkshop = reason => {
+      workshopObserver?.disconnect();
+      perfMark('workshop-needed', reason);
+      resolve();
+      wakeWorkshop = () => {};
+    };
+    const section = $('#my-trip');
+    if (!homeHero || location.hash || !section || !('IntersectionObserver' in window)) wakeWorkshop('direct');
+    else {
+      document.documentElement.dataset.tripReady = 'deferred';
+      workshopObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) wakeWorkshop('visible');
+      }, {rootMargin: '0px'});
+      workshopObserver.observe(section.querySelector('.workshop-main') || section);
+      section.addEventListener('focusin', () => wakeWorkshop('focus'), {once:true});
+      window.addEventListener('hashchange', () => wakeWorkshop('anchor'), {once:true});
+      document.addEventListener('pointerover', event => {
+        if (event.target.closest?.('[data-save-place],[data-save-route],[data-trip-map],a[href="#my-trip"]')) wakeWorkshop('intent');
+      }, {passive:true});
+    }
+  });
   function open(dialog) {
     lastFocus = document.activeElement;
     $$('dialog[open]').forEach(d => d.close());
@@ -97,6 +133,7 @@
   function loadWasm() {
     if (wasmAttempt) return wasmAttempt;
     wasmAttempt = (async () => {
+      perfMark('search-wasm-start');
       const response = await fetch(url('assets/search.wasm'));
       if (!response.ok) throw new Error('WASM unavailable');
       const {instance} = await WebAssembly.instantiate(await response.arrayBuffer());
@@ -110,14 +147,15 @@
           return e.text_score(ap, a.length, bp, b.length);
         } finally { e.dealloc(ap, a.length); e.dealloc(bp, b.length); }
       };
-    })().catch(() => { wasmScore = fallbackScore; });
+      perfMark('search-wasm-ready');
+    })().catch(error => { wasmScore = fallbackScore; perfMark('search-wasm-failure', error?.name || 'unknown'); perfMark('search-wasm-fallback'); });
     return wasmAttempt;
   }
   let searchVersion = 0;
   async function search() {
     const version = ++searchVersion, query = normalize($('#search-input').value);
     try {
-      const data = await catalog;
+      const data = await loadCatalog();
       if (version !== searchVersion) return;
       const entries = [
         ...data.routes.map(r => ({title: r.name, description: 'Пеший маршрут · ' + r.area_name, path: `routes/${r.slug}/`, text: `${r.name} ${r.area_name} ${r.description}`})),
@@ -160,10 +198,12 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=34'))]).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=38'))])).then(async ([data, {initWorkshop}]) => {
+    perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
-    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=2')).then(({initPlanningWizard})=>
+    if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=3')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
     if (document.body.dataset.tool) {
@@ -174,8 +214,9 @@
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=1')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
     if ($('#housing-engine')) import(url('housing-ui.mjs?v=2')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
-    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=3')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=4')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
     });
     if (inlineMap) {
@@ -185,6 +226,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
+    perfMark('trip-ready');
     // Stored days and their sections may finish rendering after native scrolling.
     const restoreTripEntry=()=>{
       if ($('#planner-trip-settings')) revealPlannerTrip(location.hash,{scroll:true,focus:true});
@@ -208,6 +250,15 @@
     const notice = $('#trip-storage');
     if (notice) { notice.hidden = false; notice.textContent = 'Не удалось загрузить вашу поездку. Сохранённые данные не изменены. Попробуйте обновить страницу.'; }
   });
+  // A fast keyboard/touch activation may arrive before the modules. Preserve
+  // that action and replay it after the normal editor handlers are installed.
+  document.addEventListener('click', event => {
+    const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter]');
+    if (!homeHero || workshop || !button || button.disabled) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    wakeWorkshop('action');
+    workshopReady.then(() => { if (workshop && button.isConnected && !button.disabled) button.click(); });
+  }, true);
   if (document.body.dataset.route) {
     import(url('walk.mjs?v=3')).then(({initWalk}) => initWalk()).catch(() => {
       const notice = $('#walk-storage');
@@ -271,7 +322,8 @@
   let mapSelection = 'all', mapVersion = 0;
   async function renderMap() {
     const version = ++mapVersion;
-    const data = await catalog;
+    if (homeHero && tripMap) { wakeWorkshop('map'); await workshopReady; }
+    const data = await loadCatalog();
     const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);

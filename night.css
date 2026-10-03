@@ -48,7 +48,7 @@
 :root[data-theme=night] .hero-picture img{filter:brightness(.45) saturate(.7)}
 :root[data-theme=night] :is(.ocean-canvas,.scene-video){filter:brightness(.45) saturate(.7)}
 :root[data-theme=night] .hero{background:#10263b}
-:root[data-theme=night] .hero-picture:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0c1c2b38 0%,#18344c16 50%,#0c1c2b 100%);pointer-events:none}
+:root[data-theme=night] .hero:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0c1c2b38 0%,#18344c16 50%,#0c1c2b 100%);pointer-events:none}
 :root[data-theme=night] .hero h1{color:#e4edf0;text-shadow:0 4px 32px #08172455}
 :root[data-theme=night] .hero-subtitle{background:transparent;color:#c6dbe5;text-shadow:0 1px 12px #08172470}
 :root[data-theme=night] .hero-aside,:root[data-theme=night] .hero-footnotes{color:#bfd0da}

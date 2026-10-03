@@ -1,15 +1,16 @@
 import {publicBookingTrip} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
 import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=12';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=16';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=15';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=17';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=16';
 import {validSchedule} from './trip-schedule-state.mjs?v=9';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = publicBookingTrip(cleanTrip(state, catalog));
   const payload = [1, trip.places, trip.routes, trip.month, trip.date, trip.filters.area, trip.filters.minutes];
-  if (trip.schedule || trip.itinerary) payload.push(trip.schedule || null);
-  if(trip.itinerary)payload.push(trip.itinerary);
+  if (trip.schedule || trip.itinerary || trip.dreams) payload.push(trip.schedule || null);
+  if (trip.itinerary || trip.dreams) payload.push(trip.itinerary || null);
+  if (trip.dreams) payload.push(trip.dreams);
   const bytes = new TextEncoder().encode(JSON.stringify(payload));
   const encoded = btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join(''))
     .replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, '');
@@ -27,17 +28,20 @@ export function readTripLink(hash, catalog) {
     if(bytes.length>TRIP_FILE_BYTES)throw Error();
     const data = JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(bytes));
     if (!Array.isArray(data) || data[0] !== 1) return {error: 'Эта ссылка создана в другой версии маршрута. Попросите новую ссылку.'};
-    const [version, places, routes, month, date, area, minutes, schedule, itinerary] = data;
-    if (![7,8,9].includes(data.length) || data.length === 8 && !validSchedule(schedule) || data.length === 9 && schedule!==null && !validSchedule(schedule) || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
+    const [version, places, routes, month, date, area, minutes, schedule, itinerary, dreams] = data;
+    if (![7,8,9,10].includes(data.length) || data.length === 8 && !validSchedule(schedule) || data.length >= 9 && schedule!==null && !validSchedule(schedule)
+      || data.length === 10 && !(Array.isArray(dreams) && dreams.every(id => typeof id === 'string'))
+      || ![places, routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
       || !(month === null || Number.isInteger(month) && month >= 1 && month <= 12)
       || !(date === null || validTripDate(date)) || (date && Number(date.slice(5, 7)) !== month)
       || !TRIP_AREAS.includes(area) || !TRIP_TIMES.includes(minutes)) throw Error();
-    if(data.length===9 && !validJourneyProjection({places,date,schedule,itinerary}))throw Error();
-    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule,...(itinerary?{itinerary}:{})}, catalog);
+    if((data.length===9 || data.length===10 && itinerary!==null) && !validJourneyProjection({places,date,schedule,itinerary}))throw Error();
+    const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule,...(itinerary?{itinerary}:{}),...(dreams?{dreams}:{})}, catalog);
     const original={places,date,schedule,itinerary,routes};
     const missing = tripPlaceIds(original).filter(id => !tripPlaceIds(state).includes(id)).length
-      + new Set(routes.filter(id => !state.routes.includes(id))).size;
-    if (!tripHasDraft(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
+      + new Set(routes.filter(id => !state.routes.includes(id))).size
+      + new Set((dreams || []).filter(id => !state.dreams?.includes(id))).size;
+    if (!tripHasDraft(state) && !state.dreams?.length) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этой ссылке пока нет мест или прогулок.'};
     return {state:publicBookingTrip(state), missing};
   } catch { return {error: 'Не удалось прочитать маршрут. Возможно, ссылка скопировалась не целиком. Ваш черновик на месте.'}; }
 }
@@ -50,7 +54,7 @@ export function initTripSharing(catalog, base, workshop) {
   dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Ваша Балтика рядом</p><button type="button" class="icon-button" id="trip-link-close" aria-label="Закрыть поездку">×</button></div>
     <h2 id="trip-link-title">Возьмите маршрут с собой</h2><p id="trip-link-intro"></p>
     <div id="trip-link-preview"><p id="trip-link-date" class="trip-link-date"></p><p id="trip-link-filters"></p>
-    <div id="trip-link-days" hidden></div><div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div>
+    <div id="trip-link-days" hidden></div><div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div><div id="trip-link-dreams" hidden><h3>Места, куда хочется</h3><ul></ul></div>
     <p id="trip-link-missing" hidden></p></div>
     <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
     <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
@@ -77,12 +81,12 @@ export function initTripSharing(catalog, base, workshop) {
       const month = snapshot.month ? new Intl.DateTimeFormat('ru-RU', {month: 'long'}).format(new Date(2027, snapshot.month - 1, 1)) : null;
       $('#trip-link-date').textContent = snapshot.date ? 'Дата поездки: ' + new Intl.DateTimeFormat('ru-RU', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'}).format(new Date(snapshot.date + 'T12:00:00Z')) : month ? 'Месяц поездки: ' + month : 'Дата пока не выбрана';
       $('#trip-link-filters').textContent = 'Подбор прогулок: ' + names[snapshot.filters.area] + ' · ' + (snapshot.filters.minutes === 'all' ? 'без спешки' : 'до ' + (Number(snapshot.filters.minutes) / 60) + ' часов');
-      for (const kind of ['places', 'routes']) {
-        const group = $('#trip-link-' + kind), rows = kind === 'places' ? catalog.poi : catalog.routes;
-        group.hidden = !snapshot[kind].length;
-        group.querySelector('ol, ul').replaceChildren(...snapshot[kind].map(id => {
+      for (const kind of ['places', 'routes', 'dreams']) {
+        const group = $('#trip-link-' + kind), rows = kind === 'routes' ? catalog.routes : catalog.poi;
+        group.hidden = !snapshot[kind]?.length;
+        group.querySelector('ol, ul').replaceChildren(...(snapshot[kind] || []).map(id => {
           const item = rows.find(row => row.slug === id), li = document.createElement('li'), link = document.createElement('a');
-          link.href = new URL(`${kind === 'places' ? 'poi' : 'routes'}/${id}/`, base).href;
+          link.href = new URL(`${kind === 'routes' ? 'routes' : 'poi'}/${id}/`, base).href;
           link.textContent = item.name; li.append(link); return li;
         }));
       }
@@ -226,6 +230,7 @@ export function initTripSharing(catalog, base, workshop) {
     if (location.hash.startsWith('#trip=')) history.replaceState(null, '', location.pathname + location.search + '#my-trip');
     $('#trip-link-url').value = '';
     $('#trip-link-places ol').replaceChildren(); $('#trip-link-routes ul').replaceChildren();
+    $('#trip-link-dreams ul').replaceChildren(); $('#trip-link-dreams').hidden = true;
     $('#trip-link-days').replaceChildren();
     $('#trip-link-date').textContent = $('#trip-link-filters').textContent = '';
     if (dialog.open) dialog.close();

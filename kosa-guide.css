@@ -1,0 +1,137 @@
+/* This guide owns its layout; the shared site supplies type, theme and map colours. */
+.kosa-guide { --kosa-blue: var(--sea-soft, #e9f2f5); max-width: 1240px; margin-inline: auto; padding-bottom: 32px; }
+.kosa-guide *, .kosa-guide *::before, .kosa-guide *::after { box-sizing: border-box; }
+.kosa-guide :is(h1, h2, h3, p, dl, figure) { margin-top: 0; }
+.kosa-guide :is(section, aside) { scroll-margin-top: 96px; }
+.kosa-guide a { text-underline-offset: 3px; }
+.kosa-guide :is(a, button, summary):focus-visible { outline: 3px solid var(--sea, #547d90); outline-offset: 4px; }
+.kosa-guide .kosa-eyebrow { margin-bottom: 12px; color: var(--sea-ink, #345e72); font-family: var(--font-ui, sans-serif); font-size: 12px; font-weight: 650; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
+.kosa-hero { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 42px; padding: 32px 0 24px; }
+.kosa-guide .kosa-hero h1 { margin-bottom: 24px; font-size: clamp(38px, 4.8vw, 68px); line-height: 1.04; letter-spacing: -.035em; }
+.kosa-guide .kosa-lead { max-width: 40em; margin-bottom: 26px; color: var(--muted, #5c6b72); font-size: 19px; line-height: 1.7; }
+.kosa-hero-art { overflow: hidden; border: 1px solid var(--line, #dedbd4); border-radius: 18px 18px 3px 3px; background: var(--sand, #f1ebdf); }
+.kosa-hero-art img { display: block; width: 100%; height: clamp(260px, 27vw, 390px); object-fit: cover; }
+.kosa-hero-art figcaption { padding: 12px 16px; color: var(--muted, #5c6b72); font-size: 12px; line-height: 1.55; }
+.kosa-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.kosa-guide .kosa-button { display: inline-flex; min-height: 46px; justify-content: center; align-items: center; padding: 12px 17px; border: 1px solid var(--sea-ink, #345e72); border-radius: 5px; background: var(--sea-ink, #345e72); color: var(--paper, #fffaf2); font: inherit; font-size: 14px; line-height: 1.4; text-decoration: none; cursor: pointer; }
+.kosa-guide .kosa-button:hover { filter: brightness(1.08); }
+.kosa-guide .kosa-button-secondary { background: transparent; color: var(--sea-ink, #345e72); }
+.kosa-guide .kosa-button[aria-pressed=true] { background: var(--kosa-blue); color: var(--sea-ink, #345e72); }
+.kosa-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 12px 0 0; border-block: 1px solid var(--line, #dedbd4); }
+.kosa-summary > div { padding: 21px 20px; }
+.kosa-summary > div:first-child { padding-left: 0; }
+.kosa-summary > div + div { border-left: 1px solid var(--line, #dedbd4); }
+.kosa-summary dt { color: var(--muted, #5c6b72); font-size: 12px; margin-bottom: 7px; }
+.kosa-summary dd { margin: 0; font-size: 19px; font-weight: 600; line-height: 1.35; }
+.kosa-summary small { display: block; margin-top: 5px; color: var(--muted, #5c6b72); font-size: 12px; font-weight: 400; }
+.kosa-page-nav { display: flex; gap: 12px 24px; flex-wrap: wrap; padding: 18px 0; font-size: 13px; }
+.kosa-planner { padding: 26px 30px; margin: 24px 0 8px; background: var(--kosa-blue); border: 1px solid var(--sea-line, #b6d1dc); border-radius: 8px; }
+.kosa-guide .kosa-planner h2 { margin-bottom: 10px; font-size: 26px; line-height: 1.2; }
+.kosa-planner p:last-child { margin-bottom: 0; line-height: 1.7; }
+.kosa-section { margin-top: 60px; }
+.kosa-section-head { max-width: 790px; margin-bottom: 26px; }
+.kosa-guide .kosa-section-head h2, .kosa-guide .kosa-schedule-note h2 { margin-bottom: 15px; font-size: clamp(27px, 3.2vw, 40px); line-height: 1.18; letter-spacing: -.02em; }
+.kosa-section-head > p:last-child { color: var(--muted, #5c6b72); line-height: 1.75; }
+.kosa-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 0; margin: 0; list-style: none; }
+.kosa-steps > li { display: flex; gap: 14px; border-top: 2px solid var(--sea-line, #b6d1dc); padding-top: 20px; }
+.kosa-steps > li > span { color: var(--sea-ink, #345e72); font-size: 14px; }
+.kosa-guide .kosa-steps h3 { font-size: 21px; line-height: 1.3; margin-bottom: 14px; }
+.kosa-steps p { margin-bottom: 12px; font-size: 15px; line-height: 1.75; }
+.kosa-schedule-note { margin-top: 42px; padding: 25px 30px; background: var(--sand, #f1ebdf); border-left: 3px solid var(--sea-line, #b6d1dc); }
+.kosa-guide .kosa-schedule-note h2 { font-size: 25px; max-width: 32em; }
+.kosa-schedule-note > p { max-width: 850px; line-height: 1.7; }
+.kosa-source-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; font-size: 14px; }
+.kosa-guide .kosa-small { margin-top: 12px; font-size: 13px; line-height: 1.65; color: var(--muted, #5c6b72); }
+.kosa-timeline { padding: 0; margin: 0; list-style: none; }
+.kosa-timeline > li { display: grid; grid-template-columns: 145px 1fr; gap: 24px; padding: 23px 0; border-top: 1px solid var(--line, #dedbd4); }
+.kosa-timeline > li:last-child { border-bottom: 1px solid var(--line, #dedbd4); }
+.kosa-time { font-size: 27px; font-weight: 650; line-height: 1.2; color: var(--sea-ink, #345e72); }
+.kosa-time small { display: block; margin-top: 7px; font-size: 12px; font-weight: 400; color: var(--muted, #5c6b72); }
+.kosa-guide .kosa-timeline h3 { margin-bottom: 10px; font-size: 24px; line-height: 1.35; }
+.kosa-timeline p { max-width: 850px; margin-bottom: 0; font-size: 16px; line-height: 1.75; }
+.kosa-timeline-walk > div { padding-left: 18px; border-left: 2px solid var(--sea-line, #b6d1dc); }
+.kosa-plan-caption { margin: 18px 0 0; max-width: 920px; font-size: 14px; line-height: 1.75; color: var(--muted, #5c6b72); }
+.kosa-second-plan { padding: 28px 30px; background: var(--kosa-blue); border: 1px solid var(--sea-line, #b6d1dc); border-radius: 8px; }
+.kosa-two-details summary { padding: 14px 0; cursor: pointer; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.kosa-two-details summary span { display: inline-block; margin-left: 6px; }
+.kosa-two-details[open] summary span { transform: rotate(180deg); }
+.kosa-two-content { margin-top: 12px; }
+.kosa-two-content > p:first-child { line-height: 1.75; }
+.kosa-walks { display: grid; gap: 30px; }
+.kosa-walk { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 20px 40px; padding: 30px; border: 1px solid var(--line, #dedbd4); border-radius: 8px; background: var(--paper, #fffaf2); }
+.kosa-guide .kosa-walk h3 { margin-bottom: 16px; font-size: 32px; line-height: 1.2; }
+.kosa-walk-copy > p { line-height: 1.75; }
+.kosa-walk-facts { display: flex; flex-wrap: wrap; gap: 8px 17px; color: var(--sea-ink, #345e72); font-size: 13px; }
+.kosa-walk-copy .kosa-actions { margin-top: 22px; }
+.kosa-walk-map { min-width: 0; }
+.kosa-guide .kosa-walk-map .route-plate { max-width: 100%; margin: 0; }
+.kosa-guide .kosa-walk-map svg { display: block; width: 100%; height: auto; }
+.kosa-downloads { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px 22px; padding-top: 19px; border-top: 1px solid var(--line, #dedbd4); font-size: 13px; line-height: 1.6; }
+.kosa-downloads > span { color: var(--muted, #5c6b72); }
+.kosa-budget { padding: 30px; background: var(--sand, #f1ebdf); border: 1px solid var(--line, #dedbd4); border-radius: 8px; }
+.kosa-budget-row { display: grid; grid-template-columns: 1fr 1.35fr; gap: 28px; padding: 20px 0; border-top: 1px solid var(--line, #dedbd4); }
+.kosa-budget-row dt { font-size: 17px; line-height: 1.5; }
+.kosa-budget-row dd { margin: 0; }
+.kosa-budget-row dd > strong { font-size: 21px; color: var(--sea-ink, #345e72); }
+.kosa-budget-row p { margin: 9px 0 0; font-size: 14px; line-height: 1.75; color: var(--muted, #5c6b72); }
+.kosa-budget-row p > span { display: block; margin-top: 6px; }
+.kosa-budget-total { margin-bottom: 0; padding-top: 15px; border-top: 1px solid var(--line, #dedbd4); font-size: 15px; line-height: 1.75; }
+.kosa-plan-b-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.kosa-plan-b-grid > article { padding-left: 18px; border-left: 2px solid var(--sea-line, #b6d1dc); }
+.kosa-guide .kosa-plan-b-grid h3 { font-size: 23px; line-height: 1.25; }
+.kosa-plan-b-grid p, .kosa-plan-b > p { font-size: 15px; line-height: 1.75; }
+.kosa-faq { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
+.kosa-faq-item { padding: 23px 0; border-top: 1px solid var(--line, #dedbd4); }
+.kosa-guide .kosa-faq-item h3 { font-size: 23px; line-height: 1.3; margin-bottom: 15px; }
+.kosa-faq-item p { margin-bottom: 0; color: var(--muted, #5c6b72); font-size: 15px; line-height: 1.75; }
+.kosa-sources { padding-top: 30px; border-top: 1px solid var(--line, #dedbd4); }
+.kosa-sources ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 40px; padding-left: 20px; font-size: 14px; }
+.kosa-sources li { min-width: 0; padding-left: 4px; }
+.kosa-sources li > p { margin: 8px 0 0; color: var(--muted, #5c6b72); font-size: 13px; line-height: 1.7; }
+:root[data-theme=night] .kosa-guide .kosa-button:not(.kosa-button-secondary) { background: var(--sea, #a4c8df); color: var(--paper, #0c1c2b); border-color: var(--sea, #a4c8df); }
+:root[data-theme=night] .kosa-guide .kosa-hero-art img { filter: brightness(.78); }
+@media (max-width: 1000px) {
+  .kosa-hero { gap: 28px; }
+  .kosa-guide .kosa-lead { font-size: 17px; }
+  .kosa-planner { align-items: flex-start; flex-direction: column; }
+  .kosa-steps, .kosa-plan-b-grid { gap: 20px; }
+  .kosa-walk { gap: 20px 26px; padding: 25px; }
+}
+@media (max-width: 760px) {
+  .kosa-hero { grid-template-columns: 1fr; gap: 24px; padding-top: 20px; }
+  .kosa-guide .kosa-hero h1 { font-size: clamp(40px, 8.5vw, 59px); }
+  .kosa-hero-art img { height: auto; min-height: 180px; max-height: 330px; }
+  .kosa-summary dd { font-size: 16px; }
+  .kosa-summary > div { padding: 18px 12px; }
+  .kosa-steps, .kosa-plan-b-grid { grid-template-columns: 1fr; gap: 22px; }
+  .kosa-steps > li { gap: 15px; }
+  .kosa-section { margin-top: 44px; }
+  .kosa-timeline > li { grid-template-columns: 100px 1fr; gap: 18px; }
+  .kosa-time { font-size: 23px; }
+  .kosa-guide .kosa-timeline h3 { font-size: 21px; }
+  .kosa-walk { grid-template-columns: 1fr; }
+  .kosa-walk-map { max-width: 540px; }
+  .kosa-faq, .kosa-sources ul { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .kosa-guide .kosa-hero h1 { font-size: 40px; }
+  .kosa-guide .kosa-lead { font-size: 16px; }
+  .kosa-hero-art figcaption { font-size: 11px; padding: 10px 12px; }
+  .kosa-summary { grid-template-columns: 1fr; }
+  .kosa-summary > div, .kosa-summary > div:first-child { display: grid; grid-template-columns: 106px 1fr; gap: 10px; padding: 15px 0; }
+  .kosa-summary > div + div { border-left: 0; border-top: 1px solid var(--line, #dedbd4); }
+  .kosa-summary dt { margin: 2px 0 0; }
+  .kosa-summary small { margin-top: 3px; }
+  .kosa-page-nav { gap: 12px 18px; }
+  .kosa-planner, .kosa-schedule-note, .kosa-second-plan, .kosa-walk, .kosa-budget { padding: 20px 18px; }
+  .kosa-guide .kosa-planner h2 { font-size: 25px; }
+  .kosa-timeline > li { grid-template-columns: 1fr; gap: 13px; padding: 20px 0; }
+  .kosa-time small { display: inline; margin-left: 12px; }
+  .kosa-timeline-walk > div { padding-left: 12px; }
+  .kosa-guide .kosa-section-head h2 { font-size: 28px; }
+  .kosa-guide .kosa-walk h3 { font-size: 29px; }
+  .kosa-budget-row { grid-template-columns: 1fr; gap: 10px; }
+  .kosa-guide :is(.kosa-faq-item h3, .kosa-plan-b-grid h3) { font-size: 22px; }
+  .kosa-actions .kosa-button { flex: 1 1 auto; }
+  .kosa-guide .kosa-downloads a { min-height: 36px; display: inline-flex; align-items: center; }
+}

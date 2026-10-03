@@ -1,9 +1,9 @@
-import {initTripBookings} from './trip-bookings-ui.mjs?v=6';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=7';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=9';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=11';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=12';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {loadScheduler} from './trip-scheduler.mjs?v=14';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=6';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
@@ -15,6 +15,13 @@ const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!=
 const button=(text,action,id)=>{const b=el('button',text,'journey-button');b.type='button';b.dataset.journeyAction=action;if(id)b.dataset.journeyId=id;return b;};
 const plural=(n,one,few,many)=>n%100>=11&&n%100<=14?many:n%10===1?one:n%10>=2&&n%10<=4?few:many;
 const stopsLabel=n=>`${n} ${plural(n,'остановка','остановки','остановок')}`;
+// The overview calculates a route only for days with stops. Empty days still
+// retain their dates, bases, bookings and budget without downloading road data.
+export function loadJourneyTravelMatrices(base,trip,catalog) {
+  return Promise.all(journeyDays(trip).map(day=>day.places.length
+    ? loadTripTravelMatrix(base,chooseTripDay(trip,day.id),catalog).catch(()=>null)
+    : null));
+}
 export function initTripDays({mount,read,commit,base,catalog}) {
   if(!mount)return {render(){},moveControl(){return null;}};
   const section=el('section',undefined,'trip-journey');section.setAttribute('aria-labelledby','journey-title');
@@ -78,7 +85,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       const active=budget.days.find(day=>day.id===selectedDay(trip).id),daySummary=$('#journey-budget-day');
       daySummary.textContent=active.total===null?`Этот день: ${rubles(active.known)} известно. ${Object.values(selectedDay(trip).costs).some(row=>row.basis==='items')?'Неизвестных сумм':'Не заполнено категорий'}: ${active.unknown}.`:`Оценка этого дня: ${rubles(active.total)} на всех.`;
       section.dataset.budgetReady='true';
-      const matrices=await Promise.all(journeyDays(trip).map(day=>loadTripTravelMatrix(base,chooseTripDay(trip,day.id),catalog).catch(()=>null)));if(ticket!==sequence)return;
+      const matrices=await loadJourneyTravelMatrices(base,trip,catalog);if(ticket!==sequence)return;
       $('#journey-overview-days').replaceChildren(...journeyDays(trip).map((day,index)=>{
         const li=el('li'),select=button(`День ${index+1} · ${dateLabel(day.date)}`,'choose',day.id);li.append(select);
         const summary=el('p',undefined,'journey-day-note');

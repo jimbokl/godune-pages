@@ -18,6 +18,8 @@ export function cleanTrip(record, catalog) {
     month: date ? Number(date.slice(5, 7)) : Number.isInteger(record.month) && record.month >= 1 && record.month <= 12 ? record.month : null,
     date, filters: {area: TRIP_AREAS.includes(record.filters?.area) ? record.filters.area : 'all',
       minutes: TRIP_TIMES.includes(record.filters?.minutes) ? record.filters.minutes : 'all'}};
+  const dreams = valid(record.dreams, catalog.poi);
+  if (dreams.length) trip.dreams = dreams;
   const schedule = cleanSchedule(record.schedule, trip.places);
   if (schedule) trip.schedule = schedule;
   const itinerary=cleanJourney(record.itinerary,trip,catalog);
@@ -29,6 +31,12 @@ export function mergeTrips(current, incoming, catalog) {
   const before = cleanTrip(current, catalog), next = cleanTrip(incoming, catalog);
   const merged = {...next, places: [...new Set([...before.places, ...next.places])],
     routes: [...new Set([...before.routes, ...next.routes])]};
+  const dreams = [...new Set([...(before.dreams || []), ...(next.dreams || [])])];
+  if (dreams.length) merged.dreams = dreams;
+  // A photo selection has no new day to append to an existing journey.
+  const selectionOnly = trip => trip.dreams?.length && !trip.places.length && !trip.routes.length && !trip.itinerary && !trip.schedule && !trip.date && trip.month === null;
+  if (selectionOnly(next)) return cleanTrip({...before, dreams}, catalog);
+  if (selectionOnly(before)) return cleanTrip({...next, dreams}, catalog);
   if(before.itinerary || next.itinerary)return cleanTrip(mergeJourney(before,next,merged),catalog);
   const schedule = next.schedule || before.schedule;
   if (schedule) merged.schedule = {...schedule,stops:{...before.schedule?.stops,...next.schedule?.stops}};

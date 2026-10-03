@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "valid_from": "2026-05-01",
+  "valid_until": null,
+  "checked_at": "2026-10-04",
+  "source_url": "https://zelenogradsk.com/transport/bus/",
+  "image_url": "https://xn--80afebak0adtkxo.xn--p1ai/upload/medialibrary/e8a/yrs87vlvnnpbxgj7qk2xis62e9624nti.png",
+  "image_sha256": "508ed07d45c217e8f671d7274b2b5008e5292494e45287b565891fc3a9a58c44",
+  "note": "Опубликованная таблица с 1 мая 2026 года. Срок окончания и календарь движения не указаны. Каждый выбранный рейс требует проверки на дату поездки; наличие мест неизвестно.",
+  "outward": [
+    {
+      "id": "out-1",
+      "departure": 400,
+      "arrival": 455,
+      "via": null
+    },
+    {
+      "id": "out-2",
+      "departure": 481,
+      "arrival": 535,
+      "via": null
+    },
+    {
+      "id": "out-3",
+      "departure": 535,
+      "arrival": 590,
+      "via": null
+    },
+    {
+      "id": "out-4",
+      "departure": 580,
+      "arrival": 635,
+      "via": null
+    },
+    {
+      "id": "out-5",
+      "departure": 650,
+      "arrival": 710,
+      "via": null
+    },
+    {
+      "id": "out-6",
+      "departure": 690,
+      "arrival": 745,
+      "via": null
+    },
+    {
+      "id": "out-7",
+      "departure": 735,
+      "arrival": 785,
+      "via": null
+    },
+    {
+      "id": "out-8",
+      "departure": 775,
+      "arrival": 830,
+      "via": null
+    },
+    {
+      "id": "out-9",
+      "departure": 815,
+      "arrival": 875,
+      "via": null
+    },
+    {
+      "id": "out-10",
+      "departure": 865,
+      "arrival": 920,
+      "via": null
+    },
+    {
+      "id": "out-11",
+      "departure": 920,
+      "arrival": 980,
+      "via": null
+    },
+    {
+      "id": "out-12",
+      "departure": 960,
+      "arrival": 1015,
+      "via": null
+    },
+    {
+      "id": "out-13",
+      "departure": 1030,
+      "arrival": 1085,
+      "via": null
+    },
+    {
+      "id": "out-14",
+      "departure": 1070,
+      "arrival": 1125,
+      "via": null
+    },
+    {
+      "id": "out-15",
+      "departure": 1125,
+      "arrival": 1180,
+      "via": null
+    }
+  ],
+  "inward": [
+    {
+      "id": "in-1",
+      "departure": 470,
+      "via": 475,
+      "arrival": 525
+    },
+    {
+      "id": "in-2",
+      "departure": 570,
+      "via": 575,
+      "arrival": 625
+    },
+    {
+      "id": "in-3",
+      "departure": 620,
+      "via": 625,
+      "arrival": 675
+    },
+    {
+      "id": "in-4",
+      "departure": 670,
+      "via": 675,
+      "arrival": 725
+    },
+    {
+      "id": "in-5",
+      "departure": 730,
+      "via": 735,
+      "arrival": 785
+    },
+    {
+      "id": "in-6",
+      "departure": 790,
+      "via": 795,
+      "arrival": 845
+    },
+    {
+      "id": "in-7",
+      "departure": 845,
+      "via": 850,
+      "arrival": 900
+    },
+    {
+      "id": "in-8",
+      "departure": 890,
+      "via": 895,
+      "arrival": 945
+    },
+    {
+      "id": "in-9",
+      "departure": 945,
+      "via": 950,
+      "arrival": 1000
+    },
+    {
+      "id": "in-10",
+      "departure": 985,
+      "via": 990,
+      "arrival": 1040
+    },
+    {
+      "id": "in-11",
+      "departure": 1020,
+      "via": 1025,
+      "arrival": 1080
+    },
+    {
+      "id": "in-12",
+      "departure": 1060,
+      "via": 1065,
+      "arrival": 1115
+    },
+    {
+      "id": "in-13",
+      "departure": 1130,
+      "via": 1135,
+      "arrival": 1185
+    },
+    {
+      "id": "in-14",
+      "departure": 1180,
+      "via": 1185,
+      "arrival": 1235
+    },
+    {
+      "id": "in-15",
+      "departure": 1220,
+      "via": 1225,
+      "arrival": 1275
+    }
+  ]
+}

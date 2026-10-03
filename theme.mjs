@@ -1,4 +1,4 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=13';
+import {loadSunClock} from './sun-clock.mjs?v=1';
 import {THEME_KEY,LIGHT_KEY,validMode,balticTime,themeAppearance,lightClock,lightLocation,validSun} from './theme-state.mjs?v=2';
 const root=document.documentElement,base=new URL('.',import.meta.url),control=document.querySelector('[data-theme-control]');
 const system=matchMedia('(prefers-color-scheme: dark)');
@@ -37,13 +37,13 @@ function render() {
 async function refresh() {
   const ticket=++revision,now=balticTime();
   try {
-    if(!catalog) {const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('catalog');catalog=await response.json();}
+    if(!catalog) {const response=await fetch(new URL('data/light-locations.json',base));if(!response.ok)throw Error('catalog');catalog=await response.json();}
     const next=lightLocation(catalog,locationPath(),trip());
     if(date===now.date && next.lat===location.lat && next.lon===location.lon && sun){render();return;}
-    engine=engine || await loadScheduler(base);
-    const result=engine.light({version:1,date:now.date,stops:[{id:'site-light',lat:next.lat,lon:next.lon,begins:null,leaves:null,outdoor:true}]});
+    engine=engine || await loadSunClock(base);
+    const nextSun=engine(now.date,next.lat,next.lon);
     if(ticket!==revision)return;
-    location=next;date=now.date;sun=result.stops[0]?.sun;
+    location=next;date=now.date;sun=nextSun;
     if(validSun(sun))remember(LIGHT_KEY,JSON.stringify({date,location,sun}));
   }catch{if(ticket!==revision)return;sun=null;date='';}
   render();
@@ -62,4 +62,11 @@ window.addEventListener('godune:memory-cleared',()=>{mode='auto';sun=null;date='
 system.addEventListener('change',render);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 setInterval(()=>{if(!document.hidden)refresh();},60000);
-render();refresh();
+render();
+if(document.querySelector('#top.hero')) {
+  const schedule=()=> typeof requestIdleCallback==='function'
+    ? requestIdleCallback(refresh,{timeout:2000}) : setTimeout(refresh,0);
+  if(document.readyState==='complete')schedule();
+  else window.addEventListener('load',schedule,{once:true});
+  control?.addEventListener('toggle',()=>{if(control.open)refresh();});
+} else refresh();

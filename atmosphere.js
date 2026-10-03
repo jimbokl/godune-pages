@@ -12,6 +12,9 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = true, raf = 0, previous = 0, elapsed = 0, frames = 0;
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
+  let resolutionLimit = navigator.connection?.saveData || innerWidth < 700 ? 1 : 1.5;
+  let sampleCost = 0, sampleFrames = 0, sampleLag = 0, fps = 30;
+  scene.dataset.quality = String(resolutionLimit);
   let sceneModule;
   const photo = scene.parentElement.querySelector('.hero-picture img');
   // Source-space density stays constant when a phone crops the photograph.
@@ -72,13 +75,18 @@
 
   function resize() {
     const rect = scene.getBoundingClientRect();
-    width = rect.width; height = rect.height;
-    dpr = Math.min(devicePixelRatio || 1, 1.5);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    if (ocean) ocean.resize(width,height,dpr);
-    if (sceneModule && photo.complete && photo.naturalWidth) crop = sceneModule.photoCrop(photo,width,height);
+    const nextDpr = Math.min(devicePixelRatio || 1, resolutionLimit);
+    const changed = width !== rect.width || height !== rect.height || dpr !== nextDpr;
+    width = rect.width; height = rect.height; dpr = nextDpr;
+    // Read photo styling before canvas writes; one crop serves GPU and particles.
+    if (sceneModule && photo.complete && photo.naturalWidth && (changed || !crop))
+      crop = sceneModule.photoCrop(photo,width,height);
+    if (changed) {
+      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    scene.dataset.quality = String(dpr);
+    if (ocean) ocean.resize(width,height,dpr,crop);
     if (engine) paint();
   }
   function paint() {
@@ -116,6 +124,7 @@
     for (const {i,type,settings,x,y} of grains) {
       const radius = f[i+2] * scale;
       const alpha = type === 'amber' ? engine.amber_glint(amberIndex++,amberCount,f[8]) : f[i+3];
+      if (alpha <= 0) continue;
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
         amberShard(x,y,radius,f[i+7],alpha,settings?.strength ?? 1,night);
@@ -151,10 +160,32 @@
   }
   function tick(now) {
     raf = requestAnimationFrame(tick);
-    if (now - previous < 1000/30) return;
-    elapsed += Math.min((now - previous)/1000,.06);
+    const interval = now - previous;
+    if (interval < 1000/fps) return;
+    elapsed += Math.min(interval/1000,.1);
     previous = now;
+    const began = performance.now();
     paint();
+    // GPU commands can return before the GPU finishes. Measure both drawing
+    // time and the following frame interval, including software GPU overload.
+    // Adapt within the first second instead of waiting for four seconds of lag.
+    if (frames > 12) {
+      sampleCost += performance.now() - began;
+      sampleLag += interval;
+      if (++sampleFrames === 12) {
+        const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > 65;
+        if (overloaded && dpr > .75) {
+          resolutionLimit = dpr > 1 ? 1 : .75;
+          resize();
+          performance.mark('godune:scene-quality', {detail:String(dpr)});
+        } else if (overloaded && fps > 15) {
+          fps = fps === 30 ? 20 : 15;
+          scene.dataset.fps = String(fps);
+          performance.mark('godune:scene-fps', {detail:String(fps)});
+        }
+        sampleCost = 0; sampleFrames = 0; sampleLag = 0;
+      }
+    }
   }
   function update() {
     const running = engine && visible && !document.hidden && !reduced.matches;
@@ -166,6 +197,7 @@
     }
     if (raf) cancelAnimationFrame(raf);
     raf = 0;
+    sampleCost = 0; sampleFrames = 0; sampleLag = 0;
     if (engine && reduced.matches) paint();
     if (running) { previous = performance.now(); raf = requestAnimationFrame(tick); }
   }
@@ -179,10 +211,30 @@
   addEventListener('pagehide', () => { cancelAnimationFrame(raf); raf = 0; });
   addEventListener('pageshow', update);
   resize();
-  async function start() {
+  // Fetch and compile while the photograph is loading. Only visible work waits
+  // for its first paint; a busy planner must not postpone the scene's requests.
+  performance.mark('godune:atmosphere-start');
+  const wasmReady = (async () => {
+    performance.mark('godune:atmosphere-wasm-start');
     const response = await fetch(new URL('assets/atmosphere.wasm?v=6',base));
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
-    const {instance} = await WebAssembly.instantiate(await response.arrayBuffer(),{});
+    const backup = response.clone();
+    let result;
+    try { result = await WebAssembly.instantiateStreaming(response,{}); }
+    catch { result = await WebAssembly.instantiate(await backup.arrayBuffer(),{}); }
+    performance.mark('godune:atmosphere-wasm-ready');
+    return result;
+  })();
+  const sceneReady = import(new URL('scene.mjs?v=9',base)).then(async module => {
+    const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
+    profileURL.searchParams.set('v','3');
+    return {module,profile:await module.loadProfile(profileURL)};
+  });
+  // A failed optional layer must not produce an unhandled rejection while the
+  // photograph is still loading. start() handles each result below.
+  wasmReady.catch(()=>{}); sceneReady.catch(()=>{});
+  async function start() {
+    const {instance} = await wasmReady;
     engine = instance.exports;
     header = engine.frame_header_size();
     pointer = engine.alloc_frame(count);
@@ -192,11 +244,7 @@
     scene.dataset.engine = 'rust-wasm';
     paint(); update();
     try {
-      sceneModule = await import(new URL('scene.mjs?v=6',base));
-      const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
-      profileURL.searchParams.set('v','3');
-      profile = await sceneModule.loadProfile(profileURL);
-      await photo.decode();
+      ({module:sceneModule,profile} = await sceneReady);
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {
         liveVideo=document.createElement('video');liveVideo.className='scene-video';
         liveVideo.muted=true;liveVideo.loop=true;liveVideo.playsInline=true;liveVideo.preload='none';
@@ -207,11 +255,18 @@
         for (const name of sceneModule.LAYERS) profile[name].enabled=false;
       }
       ocean = await sceneModule.createScene(scene.parentElement.querySelector('.ocean-canvas'),photo,profile);
-      resize(); paint();
+      resize();
       update();
+      performance.mark('godune:atmosphere-ready');
     } catch (error) { scene.dataset.sceneError = error.message; }
 
   }
   // Generated layers remain visible if WASM or canvas is unavailable.
-  start().catch(() => { scene.dataset.engine = 'css-fallback'; scene.classList.remove('motion-paused'); });
+  async function afterPhotoPaint() {
+    await photo.decode().catch(()=>{});
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    performance.mark('godune:atmosphere-photo-painted');
+    return start();
+  }
+  afterPhotoPaint().catch(() => { scene.dataset.engine = 'css-fallback'; scene.classList.remove('motion-paused'); });
 })();

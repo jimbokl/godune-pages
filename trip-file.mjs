@@ -1,5 +1,5 @@
 import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=12';
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=16';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=17';
 import {validSchedule} from './trip-schedule-state.mjs?v=9';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
@@ -19,11 +19,13 @@ export function readTripFile(text, catalog) {
       || !(trip.month === null || Number.isInteger(trip.month) && trip.month >= 1 && trip.month <= 12)
       || !(trip.date === null || validTripDate(trip.date)) || (trip.date && Number(trip.date.slice(5, 7)) !== trip.month)
       || !TRIP_AREAS.includes(trip.filters?.area) || !TRIP_TIMES.includes(trip.filters?.minutes)
+      || Object.hasOwn(trip,'dreams') && !(Array.isArray(trip.dreams) && trip.dreams.every(id => typeof id === 'string'))
       || Object.hasOwn(trip,'schedule') && !validSchedule(trip.schedule) || Object.hasOwn(trip,'itinerary') && !validJourneyProjection(trip)) throw Error();
     const state = cleanTrip(trip, catalog);
     const missing = tripPlaceIds(trip).filter(id => !tripPlaceIds(state).includes(id)).length
-      + new Set(trip.routes.filter(id => !state.routes.includes(id))).size;
-    if (!tripHasDraft(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест, расходов или записей поездки.'};
+      + new Set(trip.routes.filter(id => !state.routes.includes(id))).size
+      + new Set((trip.dreams || []).filter(id => !state.dreams?.includes(id))).size;
+    if (!tripHasDraft(state) && !state.dreams?.length) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест, расходов или записей поездки.'};
     return {state, missing};
   } catch { return {error: 'Не удалось прочитать файл поездки. Ваш черновик на месте. Попробуйте другую копию файла.'}; }
 }

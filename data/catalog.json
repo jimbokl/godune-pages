@@ -1,4 +1,290 @@
 {
+  "atmosphere": {
+    "items": [
+      {
+        "cover": {
+          "alt": "Солнечный променад Зеленоградска, белая терраса и волны у берега",
+          "date": "2026-10-03",
+          "height": 4284,
+          "variants": [
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-640.avif",
+              "width": 640
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-640.jpg",
+              "width": 640
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-640.webp",
+              "width": 640
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-800.avif",
+              "width": 800
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-800.jpg",
+              "width": 800
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-800.webp",
+              "width": 800
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1280.avif",
+              "width": 1280
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1280.jpg",
+              "width": 1280
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1280.webp",
+              "width": 1280
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1920.avif",
+              "width": 1920
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1920.jpg",
+              "width": 1920
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/promenade-1920.webp",
+              "width": 1920
+            }
+          ],
+          "width": 5712
+        },
+        "id": "sea-promenade",
+        "moods": [
+          "sea"
+        ],
+        "name": "Променад Зеленоградска",
+        "note": "Белая терраса, волны у берега и большое небо. Здесь можно начать прогулку вдоль моря — и никуда не торопиться.",
+        "poi": "promenad-zelenogradsk",
+        "title": "Остаться у воды"
+      },
+      {
+        "cover": {
+          "alt": "Телеграф — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_8764.webp",
+          "width": 1350
+        },
+        "id": "telegraf",
+        "moods": [
+          "taste",
+          "streets"
+        ],
+        "name": "Телеграф",
+        "note": "На Курортном проспекте — «Телеграф». В снятом нами меню есть килька и уха. Сохраните остановку для обеда между городом и морем.",
+        "poi": "restoran-telegraf",
+        "title": "Балтика за столиком"
+      },
+      {
+        "cover": {
+          "alt": "Курортный проспект Зеленоградска в солнечный день, ветви сосны на переднем плане",
+          "date": "2026-10-03",
+          "height": 3024,
+          "variants": [
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-640.avif",
+              "width": 640
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-640.jpg",
+              "width": 640
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-640.webp",
+              "width": 640
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-800.avif",
+              "width": 800
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-800.jpg",
+              "width": 800
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-800.webp",
+              "width": 800
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1280.avif",
+              "width": 1280
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1280.jpg",
+              "width": 1280
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1280.webp",
+              "width": 1280
+            },
+            {
+              "format": "avif",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1920.avif",
+              "width": 1920
+            },
+            {
+              "format": "jpg",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1920.jpg",
+              "width": 1920
+            },
+            {
+              "format": "webp",
+              "path": "assets/author/zelenogradsk-2026-10-03/prospekt-1920.webp",
+              "width": 1920
+            }
+          ],
+          "width": 4032
+        },
+        "id": "prospekt",
+        "moods": [
+          "streets"
+        ],
+        "name": "Курортный проспект",
+        "note": "За ветвями сосны открывается Курортный проспект. От моря сюда ведёт другая прогулка: по пешеходной улице, мимо фасадов и небольших кафе.",
+        "poi": "kurortnyy-prospekt",
+        "title": "Повернуть к городу"
+      },
+      {
+        "cover": {
+          "alt": "Слоу — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_9338.webp",
+          "width": 1350
+        },
+        "id": "slou",
+        "moods": [
+          "taste",
+          "streets"
+        ],
+        "name": "Слоу",
+        "note": "У кирпичного здания — зелень и столики. «Слоу» можно найти на Московской улице, прежде чем выйти к Курортному проспекту.",
+        "poi": "kofeynya-slou",
+        "title": "Кофе в тихом дворе"
+      },
+      {
+        "cover": {
+          "alt": "Гнездо — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_9091.webp",
+          "width": 1350
+        },
+        "id": "gnezdo",
+        "moods": [
+          "taste",
+          "sea"
+        ],
+        "name": "Гнездо",
+        "note": "На западном пляже «Гнездо» стоит рядом с деревянным настилом. В снятом меню — скумбрия, судак и уха. Остановка для длинной прогулки у воды.",
+        "poi": "kafe-gnezdo",
+        "title": "Обед после берега"
+      },
+      {
+        "cover": {
+          "alt": "БАЛТ — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_8820.webp",
+          "width": 1350
+        },
+        "id": "balt",
+        "moods": [
+          "taste",
+          "streets"
+        ],
+        "name": "БАЛТ",
+        "note": "За вывеской Курхауса — ресторан «БАЛТ». В авторской подборке его меню — травы, лепёшки и балтийская кухня. Море можно оставить на вторую половину дня.",
+        "poi": "restoran-balt",
+        "title": "Свернуть к Курхаусу"
+      },
+      {
+        "cover": {
+          "alt": "Дольче Нонна — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_8966.webp",
+          "width": 1350
+        },
+        "id": "dolche-nonna",
+        "moods": [
+          "taste"
+        ],
+        "name": "Дольче Нонна",
+        "note": "На доске у входа в «Дольче Нонну» — пицца и паста. Между улицей Пугачёва и морем можно сделать паузу, а после вернуться на променад.",
+        "poi": "restoran-dolche-nonna",
+        "title": "Итальянская остановка"
+      },
+      {
+        "cover": {
+          "alt": "Облака — вход и вывеска на авторской фотографии",
+          "date": "2026-05-30",
+          "height": 1800,
+          "src": "assets/food/img_9243.webp",
+          "width": 1350
+        },
+        "id": "oblaka",
+        "moods": [
+          "taste",
+          "sea"
+        ],
+        "name": "Облака",
+        "note": "На фотографии — вход в «Облака» со стороны набережной. Отметьте ресторан в своей подборке; меню и адрес откроются в карточке.",
+        "poi": "restoran-oblaka",
+        "title": "Встретиться у променада"
+      }
+    ],
+    "moods": [
+      {
+        "id": "all",
+        "name": "Всё, что зовёт"
+      },
+      {
+        "id": "sea",
+        "name": "К морю"
+      },
+      {
+        "id": "streets",
+        "name": "По тихим улицам"
+      },
+      {
+        "id": "taste",
+        "name": "За столиком"
+      }
+    ],
+    "version": 1
+  },
   "collections": [
     {
       "advice": "Начните с одного района. Уточните дорогу к первой остановке и возвращение; часы и условия входа проверяются отдельно.",

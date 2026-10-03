@@ -1,4 +1,4 @@
-import {cleanTrip} from './trip-state.mjs?v=16';
+import {cleanTrip} from './trip-state.mjs?v=17';
 import {addTripDay,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=12';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=9';
 import {TRIP_STARTERS} from './trip-starters.mjs?v=1';
