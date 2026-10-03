@@ -10,6 +10,7 @@ export function validJourney(journey) {
   const ids=new Set();
   return journey.days.every(day=>{
     if(!object(day))return false;
+    if(Object.hasOwn(day,'visited')&&(!Array.isArray(day.visited)||!day.visited.every(id=>typeof id==='string')||new Set(day.visited).size!==day.visited.length))return false;
     if(Object.hasOwn(day,'bookings')&&!validBookings(day.bookings))return false;
     if(!object(day) || typeof day.id!=='string' || !/^day-[1-9]\d*$/.test(day.id) || ids.has(day.id) || !(day.date===null || validTripDate(day.date)) || !Array.isArray(day.places) || !day.places.every(id=>typeof id==='string') || new Set(day.places).size!==day.places.length || Object.hasOwn(day,'schedule') && !validSchedule(day.schedule) || ![day.start_at,day.night_at].every(validBase) || typeof day.note!=='string' || !object(day.costs))return false;
     ids.add(day.id);
@@ -18,6 +19,7 @@ export function validJourney(journey) {
 }
 export function validJourneyProjection(trip) {
   if(!validJourney(trip.itinerary))return false;
+  if(trip.itinerary.days.some(day=>day.visited?.some(id=>!day.places.includes(id))))return false;
   const day=trip.itinerary.days.find(d=>d.id===trip.itinerary.active);
   const canonical=value=>{
     const schedule=cleanSchedule(value,day.places);
@@ -33,10 +35,11 @@ export function cleanJourney(value,trip,catalog) {
   const days=value.days.map(day=>{
     const places=day.places.filter(id=>known.has(id)), schedule=cleanSchedule(day.schedule,places);
     const bookings=day.bookings?.map(row=>{const missingLocation=typeof row.location==='string'&&!known.has(row.location),missingTarget=row.target&&!known.has(row.target);return {...structuredClone(row),location:missingLocation?null:row.location,target:missingTarget?null:row.target,binding:missingLocation||missingTarget?'none':row.binding};});
-    return {...day,...(bookings?{bookings}:{}),places,...(schedule?{schedule}:{}),start_at:isPersonalPoint(day.start_at)?structuredClone(day.start_at):known.has(day.start_at)?day.start_at:null,night_at:isPersonalPoint(day.night_at)?structuredClone(day.night_at):known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
+    return {...day,...(day.visited?{visited:places.filter(id=>day.visited.includes(id))}:{}),...(bookings?{bookings}:{}),places,...(schedule?{schedule}:{}),start_at:isPersonalPoint(day.start_at)?structuredClone(day.start_at):known.has(day.start_at)?day.start_at:null,night_at:isPersonalPoint(day.night_at)?structuredClone(day.night_at):known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
   });
   const selected=days.find(day=>day.id===value.active);
   selected.date=trip.date;selected.places=[...trip.places];delete selected.schedule;
+  if(selected.visited)selected.visited=selected.places.filter(id=>selected.visited.includes(id));
   if(trip.schedule)selected.schedule=structuredClone(trip.schedule);
   return {version:1,active:value.active,people:value.people,days};
 }
@@ -67,7 +70,7 @@ export function nextDate(value) {
 }
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
-  if(copy){day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(day.schedule?.rail)day.schedule.rail.date=null;}
+  if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(day.schedule?.rail)day.schedule.rail.date=null;}
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=effectiveBookingDay(current).night_at;day.night_at=effectiveBookingDay(current).night_at;}
   next.itinerary.days.push(day);return project(next,day);

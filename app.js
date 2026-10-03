@@ -94,6 +94,7 @@
         ...data.collections.filter(c=>!['map/','routes/'].includes(c.path)).map(c => ({title: c.name, description: 'Места и остановки на карте', path: c.path, text: `${c.name} ${c.intro}`})),
         ...[
           ['Планировщик поездки','Дни, время, ночёвка и бюджет','planner/','мой маршрут планировщик собрать поездку бюджет расходы дни'],
+          ['В дороге','Следующая остановка, ваш день и отметки','travel/','в дороге прогресс остановки следующий мой день'],
           ['Карта мест и маршрутов','Своя карта Балтики и вашего дня','map/','карта дороги рестораны места маршрут точки'],
           ['Готовые планы на 3, 5 и 7 дней','Своя копия поездки и пешие прогулки','routes/','готовые маршруты план три пять семь неделя'],
           ['Прогулки без интернета','Скачать карты и остановки на телефон','offline/','офлайн без интернета скачать карту трек gpx'],
@@ -128,17 +129,20 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=30'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=31'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=10')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+      import(url('tool-pages.mjs?v=11')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
         $$('[data-plan-starter]').forEach(button=>button.disabled=true);
         const status=$('#plan-starter-status');
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+      $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
+    });
     if (inlineMap) {
       tripMap = new URLSearchParams(location.search).get('view') === 'trip';
       syncMapViews();
@@ -146,7 +150,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=13')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=14')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -154,6 +158,7 @@
     });
   }).catch(() => {
     $$('[data-save-place], [data-save-route], [data-plan-starter]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
+    if ($('#travel-status')) $('#travel-status').textContent='Поездка пока не открылась. Обновите страницу или откройте свой план.';
     if (inlineMap) setMapStatus('Карта пока не открылась. Места доступны в списке ниже.');
     const notice = $('#trip-storage');
     if (notice) { notice.hidden = false; notice.textContent = 'Не удалось загрузить вашу поездку. Сохранённые данные не изменены. Попробуйте обновить страницу.'; }
@@ -312,7 +317,7 @@
       $('#map-dialog').dataset.arrivalPoints=String(arrivals.length);
       $('#map-dialog').dataset.roadMode=trip?.schedule?.mode || 'foot';
       if (points.length) { const bounds = new maplibregl.LngLatBounds(); points.forEach(p => bounds.extend([p.lon,p.lat])); arrivals.forEach(p=>bounds.extend([p.lon,p.lat])); route?.geometry.coordinates.forEach(c => bounds.extend(c)); roads.features.forEach(f=>f.geometry.coordinates.forEach(c=>bounds.extend(c))); m.fitBounds(bounds,{padding:50,maxZoom:15,duration:0}); }
-      if(mapFocus){const focus=data.poi.find(p=>p.slug===mapFocus);const anchor=data.poi.flatMap(p=>Object.values(p.arrival_points||{})).find(a=>a.id===mapFocus);const target=anchor||focus;if(target)m.jumpTo({center:[target.lon,target.lat],zoom:16});}
+      if(mapFocus){const focus=points.find(p=>p.slug===mapFocus)||data.poi.find(p=>p.slug===mapFocus);const anchor=data.poi.flatMap(p=>Object.values(p.arrival_points||{})).find(a=>a.id===mapFocus);const target=anchor||focus;if(target)m.jumpTo({center:[target.lon,target.lat],zoom:16});}
       const travelCount=roads.features.filter(f=>f.properties.kind==='travel').length,accessCount=roads.features.length-travelCount;
       const roadStops=trip ? [personal.baseId(day?.start_at),...trip.places,personal.baseId(day?.night_at)].filter(Boolean) : [];
       const transitions=roadStops.slice(1).filter((id,index)=>id!==roadStops[index]).length;

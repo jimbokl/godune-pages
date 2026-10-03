@@ -1,8 +1,8 @@
 import {publicBookingTrip} from './trip-bookings-state.mjs?v=1';
 import {baseName} from './personal-points.mjs?v=2';
-import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=10';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=14';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=13';
+import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=11';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=15';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=14';
 import {validSchedule} from './trip-schedule-state.mjs?v=8';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
@@ -94,6 +94,7 @@ export function initTripSharing(catalog, base, workshop) {
           title.textContent=`День ${index+1}`+(day.date?` · ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(day.date+'T12:00:00Z'))}`:' · дата пока не выбрана');block.append(title);
           const list=document.createElement('ol');
           for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
+          if(day.visited){const line=document.createElement('p');line.textContent=`Посещено остановок: ${day.visited.length} из ${day.places.length}. Отметки войдут в файл и ссылку.`;block.append(line);}
           for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${baseName(day[key],catalog)}`;block.append(line);}
           for(const row of day.bookings||[]){const line=document.createElement('p');line.textContent=`${row.name} · ${row.date||'дата не выбрана'} · ${row.status==='cancelled'?'отменено':row.status==='booked'?'вы отметили бронь':'планируете'}`;block.append(line);}
           if(day.note) {const line=document.createElement('p');line.textContent=day.note;block.append(line);}
