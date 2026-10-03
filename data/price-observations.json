@@ -1,0 +1,131 @@
+{
+  "observations": [
+    {
+      "amount": 79000,
+      "id": "img_8765-1",
+      "label": "Строганина из пеламиды",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8765.webp",
+      "poi": "restoran-telegraf",
+      "unit": "Порция"
+    },
+    {
+      "amount": 87000,
+      "id": "img_8765-2",
+      "label": "Кёнигсбергские клопсы",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8765.webp",
+      "poi": "restoran-telegraf",
+      "unit": "Порция"
+    },
+    {
+      "amount": 66000,
+      "id": "img_8765-3",
+      "label": "Балтийская уха",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8765.webp",
+      "poi": "restoran-telegraf",
+      "unit": "Порция"
+    },
+    {
+      "amount": 98000,
+      "id": "img_8765-4",
+      "label": "Судак",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8765.webp",
+      "poi": "restoran-telegraf",
+      "unit": "Порция"
+    },
+    {
+      "amount": 76500,
+      "id": "img_8821-1",
+      "label": "Строганина из пеламиды",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8821.webp",
+      "poi": "restoran-balt",
+      "unit": "Порция"
+    },
+    {
+      "amount": 84500,
+      "id": "img_8821-2",
+      "label": "Судак с цветной капустой",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8821.webp",
+      "poi": "restoran-balt",
+      "unit": "Порция"
+    },
+    {
+      "amount": 59500,
+      "id": "img_8821-3",
+      "label": "Сливочный рыбный суп",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8821.webp",
+      "poi": "restoran-balt",
+      "unit": "Порция"
+    },
+    {
+      "amount": 22500,
+      "id": "img_8821-4",
+      "label": "Лепёшка с балтийскими травами",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8821.webp",
+      "poi": "restoran-balt",
+      "unit": "Порция"
+    },
+    {
+      "amount": 38000,
+      "id": "img_9108-1",
+      "label": "Уха классическая",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_9108.webp",
+      "poi": "kafe-gnezdo",
+      "unit": "400 г"
+    },
+    {
+      "amount": 19000,
+      "id": "img_9108-2",
+      "label": "Латте",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_9108.webp",
+      "poi": "kafe-gnezdo",
+      "unit": "300 мл"
+    },
+    {
+      "amount": 12000,
+      "id": "img_9108-3",
+      "label": "Чай",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_9108.webp",
+      "poi": "kafe-gnezdo",
+      "unit": "300 мл"
+    },
+    {
+      "amount": 50000,
+      "id": "img_8885-1",
+      "label": "Солянка мясная",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8885.webp",
+      "poi": "kafe-skovorodka",
+      "unit": "250 г"
+    },
+    {
+      "amount": 45000,
+      "id": "img_8885-2",
+      "label": "Суп-пюре тыквенный",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8885.webp",
+      "poi": "kafe-skovorodka",
+      "unit": "300 г"
+    },
+    {
+      "amount": 55000,
+      "id": "img_8885-3",
+      "label": "Уха дня",
+      "observed_at": "2026-05-30",
+      "photo": "assets/food/img_8885.webp",
+      "poi": "kafe-skovorodka",
+      "unit": "250 г"
+    }
+  ],
+  "version": 1
+}

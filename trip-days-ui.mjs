@@ -1,11 +1,12 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=3';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=1';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=4';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=4';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=1';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=1';
 import {planInput} from './trip-schedule-state.mjs?v=6';
-import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=2';
+import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=3';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -23,6 +24,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     <details class="journey-overview" id="journey-overview"><summary>Вся поездка <span id="journey-total" role="status"></span></summary><p class="journey-note">Время зависит от выбранных остановок, дороги и часов работы. Цены — ваши оценки; пока есть пустые суммы, полный бюджет неизвестен.</p><ol id="journey-overview-days"></ol></details><p id="journey-feedback" class="journey-note" role="status"></p>`;
   (mount.querySelector('.workshop-main') || mount).prepend(section);
   const $=selector=>section.querySelector(selector);let sequence=0;
+  const expenses=initTripExpenses({section,read,commit,base,catalog});
   $('#journey-starters').replaceChildren(...TRIP_STARTERS.map(starter=>{
     const b=button(starter.name,'starter',starter.id);b.className='journey-starter';b.append(el('span',starter.description));return b;
   }));
@@ -33,7 +35,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   }
   function renderForms(trip) {
     const day=selectedDay(trip),bases=$('#journey-bases'),costs=$('#journey-costs');bases.replaceChildren();costs.replaceChildren();
-    for(const form of [bases,costs])form.dataset.day=day.id;
+    for(const form of [bases,costs])form.dataset.day=day.id;costs._snapshot=JSON.stringify(day.costs);costs._people=trip.itinerary?.people || 1;
     bases.append(el('h4','Откуда выйдем, куда вернёмся'));
     for(const [name,caption] of [['start_at','Начать здесь'],['night_at','К ночи вернуться сюда']]) {
       const wrapper=el('div',undefined,'journey-base-field'),captionLabel=el('label',caption),select=el('select');select.name=name;select.id=`journey-${name}`;captionLabel.htmlFor=select.id;wrapper.append(captionLabel);const none=el('option','Пока не выбрано');none.value='';select.append(none);
@@ -53,7 +55,11 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       const money=label(row,'Сумма, ₽',`${kind}-amount`,'text',costText(cost?.amount ?? null));money.inputMode='decimal';money.placeholder='Ещё не знаю';
       const qty=label(row,'Количество',`${kind}-quantity`,'number',cost?.quantity || 1);qty.min='1';qty.max='4294967295';qty.step='1';qty.required=true;
       const wrapper=el('label','Эта сумма'),scope=el('select');scope.name=`${kind}-scope`;
-      for(const [value,text]of [['group','На всех'],['person','На человека']]) {const option=el('option',text);option.value=value;scope.append(option);}scope.value=cost?.scope || 'group';wrapper.append(scope);row.append(wrapper);rows.append(row);
+      for(const [value,text]of [['group','На всех'],['person','На человека']]) {const option=el('option',text);option.value=value;scope.append(option);}scope.value=cost?.scope || 'group';wrapper.append(scope);row.append(wrapper);
+      const basisLabel=el('label','Считать категорию'),basis=el('select');basis.name=`${kind}-basis`;
+      for(const [value,text]of [['summary','По общей оценке'],['items','По списку расходов']]){const option=el('option',text);option.value=value;basis.append(option);}basis.value=cost?.basis || 'summary';basisLabel.append(basis);row.append(basisLabel);
+      const paid=label(row,'Уже оплачено на всех, ₽',`${kind}-paid`,'text',costText(cost?.paid ?? null));paid.inputMode='decimal';paid.placeholder='Ещё не записано';
+      if(basis.value==='items'){const note=el('p','Сейчас считаем по списку расходов. Общая сумма и оплата выше сохранены, но в итог не входят.','journey-note');note.style.gridColumn='1 / -1';row.append(note);}rows.append(row);
     }costs.append(rows);
     costs.append(el('p','Укажите цену и сколько раз её оплачиваете. Пусто — расход ещё неизвестен. Ноль — бесплатно. Все суммы относятся к выбранному дню.','journey-note'));
     const save=el('button','Сохранить оценки','journey-save');save.type='submit';costs.append(save);
@@ -63,12 +69,13 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     $('#journey-total').textContent='Считаем…';
     try {
       const engine=await loadScheduler(base);if(ticket!==sequence)return;
-      const matrices=await Promise.all(journeyDays(trip).map(day=>loadTripTravelMatrix(base,chooseTripDay(trip,day.id),catalog).catch(()=>null)));if(ticket!==sequence)return;
       const budget=engine.budget(budgetInput(trip));
+      expenses.totals(budget);
       $('#journey-total').textContent=budget.total===null?`${rubles(budget.known)} известно · полный бюджет пока неизвестен`:`${rubles(budget.total)} на всех · ${rubles(budget.per_person)} на человека`;
       const active=budget.days.find(day=>day.id===selectedDay(trip).id),daySummary=$('#journey-budget-day');
-      daySummary.textContent=active.total===null?`Этот день: ${rubles(active.known)} известно. Не заполнено категорий: ${active.unknown}.`:`Оценка этого дня: ${rubles(active.total)} на всех.`;
+      daySummary.textContent=active.total===null?`Этот день: ${rubles(active.known)} известно. ${Object.values(selectedDay(trip).costs).some(row=>row.basis==='items')?'Неизвестных сумм':'Не заполнено категорий'}: ${active.unknown}.`:`Оценка этого дня: ${rubles(active.total)} на всех.`;
       section.dataset.budgetReady='true';
+      const matrices=await Promise.all(journeyDays(trip).map(day=>loadTripTravelMatrix(base,chooseTripDay(trip,day.id),catalog).catch(()=>null)));if(ticket!==sequence)return;
       $('#journey-overview-days').replaceChildren(...journeyDays(trip).map((day,index)=>{
         const li=el('li'),select=button(`День ${index+1} · ${dateLabel(day.date)}`,'choose',day.id);li.append(select);
         const summary=el('p',undefined,'journey-day-note');
@@ -84,7 +91,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
         for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(day[field])li.append(el('p',`${caption}: ${baseName(day[field],catalog)}`,'journey-day-note'));
         return li;
       }));
-    }catch(error) {if(ticket!==sequence)return;section.dataset.budgetReady='error';$('#journey-overview-days').replaceChildren();$('#journey-total').textContent=error.message==='budget_overflow'?'Суммы слишком велики для расчёта. Проверьте цены и количество.':'Расчёт пока не открылся. Ваши суммы сохранены.';}
+    }catch(error) {if(ticket!==sequence)return;section.dataset.budgetReady='error';expenses.error();$('#journey-overview-days').replaceChildren();$('#journey-total').textContent=error.message==='budget_overflow'?'Суммы слишком велики для расчёта. Проверьте цены и количество.':'Расчёт пока не открылся. Ваши суммы сохранены.';}
   }
   function render() {
     const trip=read(),days=journeyDays(trip),day=selectedDay(trip),ticket=++sequence;
@@ -96,9 +103,8 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       b.append(el('span',`День ${index+1}`,'journey-day-number'),el('span',dateLabel(row.date),'journey-day-date'),el('span',stopsLabel(row.places.length),'journey-day-points'));return b;
     }));
     section.querySelector('[data-journey-action="remove"]').hidden=days.length===1;
-    renderForms(trip);section.dataset.budgetReady='false';
-    if(trip.itinerary || $('#journey-details').open || $('#journey-overview').open)renderTotals(trip,ticket);
-    else {section.dataset.budgetReady='true';$('#journey-total').textContent='Бюджет ещё не заполнен';}
+    renderForms(trip);expenses.render(trip);expenses.pending();section.dataset.budgetReady='false';
+    renderTotals(trip,ticket);
     if(focused) {const field=[...section.querySelectorAll('[name]')].find(el=>el.name===focused);field?.focus({preventScroll:true});if(selection!==null)field?.setSelectionRange(selection,selection);}
   }
   for(const id of ['#journey-details','#journey-overview'])$(id).addEventListener('toggle',()=>{
@@ -124,21 +130,21 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     }
     const currentId=selectedDay(read()).id;
     if(action==='remove' && !window.confirm('Удалить этот день вместе с остановками, заметкой и оценками расходов? Другие дни останутся.'))return;
-    await commit(current=>action==='add'?addTripDay(current):action==='copy'?addTripDay(current,true):removeTripDay(current,currentId),action==='remove'?'День удалён.':'Новый день открыт.');
+    await commit(current=>action==='add'?addTripDay(current):action==='copy'?addTripDay(current,true):removeTripDay(current,currentId),action==='remove'?'День удалён.':action==='copy'?'План дня скопирован. Оплаченные суммы не переносятся.':'Новый день открыт.');
     section.querySelector(`[data-journey-id="${selectedDay(read()).id}"]`)?.focus({preventScroll:true});
   });
   section.addEventListener('submit',async event=>{
-    event.preventDefault();const form=event.target,values=new FormData(form),day=form.dataset.day;let changes;
+    const form=event.target;if(!['journey-bases','journey-costs'].includes(form.id))return;event.preventDefault();const values=new FormData(form),day=form.dataset.day,snapshot=form._snapshot,people=form._people;let changes;
     try {
       if(form.id==='journey-bases'){const current=selectedDay(read());changes={start_at:values.get('start_at')==='__personal__'?current.start_at:values.get('start_at') || null,night_at:values.get('night_at')==='__personal__'?current.night_at:values.get('night_at') || null,note:values.get('note')};}
       else {
-        const costs=Object.fromEntries(Object.keys(COST_KINDS).map(kind=>[kind,{amount:parseKopecks(values.get(`${kind}-amount`)),quantity:Number(values.get(`${kind}-quantity`)),scope:values.get(`${kind}-scope`)}]));
+        const costs=Object.fromEntries(Object.keys(COST_KINDS).map(kind=>[kind,{...selectedDay(read()).costs[kind],amount:parseKopecks(values.get(`${kind}-amount`)),quantity:Number(values.get(`${kind}-quantity`)),scope:values.get(`${kind}-scope`),basis:values.get(`${kind}-basis`),paid:parseKopecks(values.get(`${kind}-paid`))}]));
         changes={people:Number(values.get('people')),costs};
       }
     }catch(error){feedback(error.message);return;}
     let stale=false;
-    await commit(current=>{if(selectedDay(current).id!==day){stale=true;return current;}return changeDayDetails(current,changes);},'Настройки дня сохранены.');
-    feedback(stale?'В другой вкладке уже выбран другой день. Откройте нужный и сохраните ещё раз.':form.id==='journey-costs'?'Ваши оценки сохранены.':'Начало, ночёвка и заметка сохранены.');
+    await commit(current=>{if(selectedDay(current).id!==day || form.id==='journey-costs' && (JSON.stringify(selectedDay(current).costs)!==snapshot || (current.itinerary?.people || 1)!==people)){stale=true;return current;}return changeDayDetails(current,changes);},'Настройки дня сохранены.');
+    feedback(stale?'День или расходы уже изменились. Проверьте свежие значения и сохраните ещё раз.':form.id==='journey-costs'?'Ваши оценки сохранены.':'Начало, ночёвка и заметка сохранены.');
   });
   function moveControl(id,name) {
     const days=journeyDays(read()),source=selectedDay(read()).id;if(days.length<2)return null;

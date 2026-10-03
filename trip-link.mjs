@@ -1,7 +1,7 @@
 import {baseName} from './personal-points.mjs?v=1';
-import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=3';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=7';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=6';
+import {validJourneyProjection,tripHasPlaces,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=4';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=8';
+import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=7';
 import {validSchedule} from './trip-schedule-state.mjs?v=6';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
@@ -53,8 +53,8 @@ export function initTripSharing(catalog, base, workshop) {
     <p id="trip-link-missing" hidden></p></div>
     <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
     <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
-    <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки и оценки расходов. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
-    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки и бюджет. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
+    <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки, план расходов и оплаченные суммы. Откройте его здесь на другом телефоне. Карты для прогулок без сети скачиваются отдельно.</p>
+    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки, источники цен и оплаченные суммы. Любой, у кого она есть, увидит эту поездку. Ссылка останется такой, какой вы её отправили.</p></div>
     <div id="trip-link-import" hidden><div class="trip-link-actions"><button type="button" id="trip-link-merge" class="button button-dark">Добавить к моему</button><button type="button" id="trip-link-replace" class="button button-light">Заменить мой маршрут</button></div>
     <p class="trip-link-note" id="trip-link-import-note"></p></div>
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
@@ -95,7 +95,7 @@ export function initTripSharing(catalog, base, workshop) {
           for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
           for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${baseName(day[key],catalog)}`;block.append(line);}
           if(day.note) {const line=document.createElement('p');line.textContent=day.note;block.append(line);}
-          if(Object.keys(day.costs).length) {const line=document.createElement('p');line.textContent='Оценки расходов сохранены в этой поездке.';block.append(line);}dayGroup.append(block);
+          if(Object.keys(day.costs).length) {const line=document.createElement('p');line.textContent='План расходов, источники цен и оплаченные суммы сохранены.';block.append(line);}dayGroup.append(block);
         });
       }
       $('#trip-link-missing').hidden = !result.missing;

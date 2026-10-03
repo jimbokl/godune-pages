@@ -1,16 +1,16 @@
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=1';
 import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=6';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=1';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
-const amount=v=>v===null || Number.isSafeInteger(v) && v>=0;
 export function validJourney(journey) {
   if(!object(journey) || journey.version!==1 || !Array.isArray(journey.days) || !journey.days.length || !Number.isSafeInteger(journey.people) || journey.people<1 || journey.people>4294967295) return false;
   const ids=new Set();
   return journey.days.every(day=>{
     if(!object(day) || typeof day.id!=='string' || !/^day-[1-9]\d*$/.test(day.id) || ids.has(day.id) || !(day.date===null || validTripDate(day.date)) || !Array.isArray(day.places) || !day.places.every(id=>typeof id==='string') || new Set(day.places).size!==day.places.length || Object.hasOwn(day,'schedule') && !validSchedule(day.schedule) || ![day.start_at,day.night_at].every(validBase) || typeof day.note!=='string' || !object(day.costs))return false;
     ids.add(day.id);
-    return Object.entries(day.costs).every(([kind,row])=>Object.hasOwn(COST_KINDS,kind) && object(row) && amount(row.amount) && Number.isSafeInteger(row.quantity) && row.quantity>0 && row.quantity<=4294967295 && ['group','person'].includes(row.scope));
+    return validCosts(day.costs,COST_KINDS);
   }) && ids.has(journey.active);
 }
 export function validJourneyProjection(trip) {
@@ -61,6 +61,7 @@ export function nextDate(value) {
 }
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
+  if(copy)day.costs=unpaidCopy(day.costs);
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=current.night_at;day.night_at=current.night_at;}
   next.itinerary.days.push(day);return project(next,day);
@@ -89,7 +90,7 @@ export function changeDayDetails(trip,changes) {
   return validJourney(next.itinerary)?next:trip;
 }
 export function budgetInput(trip) {
-  return {version:1,people:trip.itinerary?.people || 1,days:journeyDays(trip).map(day=>({id:day.id,costs:Object.keys(COST_KINDS).map(kind=>({kind,amount:day.costs[kind]?.amount ?? null,quantity:day.costs[kind]?.quantity || 1,scope:day.costs[kind]?.scope || 'group'}))}))};
+  return {version:1,people:trip.itinerary?.people || 1,days:journeyDays(trip).map(day=>({id:day.id,costs:Object.keys(COST_KINDS).map(kind=>expenseCostInput(kind,day.costs[kind]))}))};
 }
 export function mergeJourney(before,incoming,merged) {
   const days=structuredClone(journeyDays(before));
