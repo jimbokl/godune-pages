@@ -20,9 +20,9 @@
   glow.width = glow.height = 48;
   const g = glow.getContext('2d');
   const light = g.createRadialGradient(24,24,0,24,24,24);
-  light.addColorStop(0,'rgba(246,212,157,.8)');
-  light.addColorStop(.15,'rgba(235,184,105,.5)');
-  light.addColorStop(.4,'rgba(211,146,64,.14)');
+  light.addColorStop(0,'rgba(255,231,158,1)');
+  light.addColorStop(.15,'rgba(255,188,65,.78)');
+  light.addColorStop(.4,'rgba(230,142,25,.28)');
   light.addColorStop(1,'rgba(221,149,54,0)');
   g.fillStyle = light; g.fillRect(0,0,48,48);
 
@@ -76,18 +76,22 @@
       if (f[i+6] === 1) {
         const strength = settings?.strength ?? 1;
         // Both the pebble and its reflection fade to zero between flashes.
-        // Preserve the peak colour while the Rust pulse controls visibility.
-        ctx.globalAlpha = Math.min(1,strength * (night ? .52 : .64) * Math.min(1,alpha/.9));
-        ctx.fillStyle = '#a7632c';
-        ctx.beginPath();ctx.ellipse(x,y,radius*.95,radius*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
-        ctx.fillStyle = '#d59a4c';
-        ctx.beginPath();ctx.ellipse(x-radius*.18,y-radius*.15,radius*.68,radius*.38,f[i+7]*2,0,Math.PI*2);ctx.fill();
+        // A warm body and a bright facet read as amber, even on pale sand.
+        // Keep the halo small; increase the light within the stone instead.
+        const stone = radius * 1.3;
+        ctx.globalAlpha = Math.min(1,strength * (night ? .72 : .94) * Math.min(1,alpha/.9));
+        ctx.fillStyle = '#b76613';
+        ctx.beginPath();ctx.ellipse(x,y,stone*.95,stone*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle = '#efb544';
+        ctx.beginPath();ctx.ellipse(x-stone*.18,y-stone*.15,stone*.68,stone*.38,f[i+7]*2,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle = '#ffe19a';
+        ctx.beginPath();ctx.moveTo(x-stone*.5,y-stone*.25);ctx.lineTo(x+stone*.27,y-stone*.4);ctx.lineTo(x-stone*.1,y+stone*.08);ctx.closePath();ctx.fill();
         if (alpha > 0) {
-          ctx.globalAlpha = Math.min(1,alpha * strength) * (night ? .287 : .82);
+          ctx.globalAlpha = Math.min(1,alpha * strength * 1.2) * (night ? .35 : 1);
           const size = radius * 6 * (night ? .8 : 1);
           ctx.drawImage(glow,x-size/2,y-size/2,size,size);
-          ctx.fillStyle = '#f5d7a0';
-          ctx.fillRect(x-radius*.25,y-radius*.3,radius*.7,radius*.4);
+          ctx.fillStyle = '#fff0be';
+          ctx.fillRect(x-stone*.25,y-stone*.3,stone*.7,stone*.4);
         }
       } else {
         // Short, warm streaks follow the slope. They read as wind-blown sand.
