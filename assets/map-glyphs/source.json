@@ -1,0 +1,32 @@
+{
+  "font": "Manrope Regular",
+  "font_license": "OFL-1.1",
+  "builder": "@mapbox/tiny-sdf@2.2.0",
+  "files": [
+    {
+      "range": "0-255",
+      "bytes": 87710,
+      "sha256": "865da972f47acf587ed37f87f4747c002e3afa5fd93e1c34d20d30b484f05b57"
+    },
+    {
+      "range": "256-511",
+      "bytes": 137629,
+      "sha256": "f9cf25887a3232a68fc04ce1784ab34acec220d61024271f71d9f01c042ad3c6"
+    },
+    {
+      "range": "1024-1279",
+      "bytes": 133049,
+      "sha256": "800069c97c3a56c3c2412309ced937dbde23aa0862eb9e2e3b254ad89776c201"
+    },
+    {
+      "range": "8192-8447",
+      "bytes": 86848,
+      "sha256": "0e9fdc72c1d0f8e186751b54d1f88642327ed7e6eebe85f19f8dc352c05d7d20"
+    },
+    {
+      "range": "8448-8703",
+      "bytes": 126025,
+      "sha256": "63e7fcc243ed7e4d4921b485c71712991e70398dabfb39e78f6662342d0f6944"
+    }
+  ]
+}

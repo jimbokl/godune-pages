@@ -1,14 +1,16 @@
-export function localMapStyle(data) {
+import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=2';
+export function localMapStyle(data,base=new URL('.',import.meta.url)) {
   const polygon = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'Polygon']];
   const line = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'LineString']];
-  return {version:8,sources:{local:{type:'geojson',data,attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>'}},layers:[
+  return {version:8,glyphs:mapGlyphs(base),sources:{local:{type:'geojson',data,attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>'}},layers:[
     {id:'paper',type:'background',paint:{'background-color':'#f3f0e7'}},
     ...[['green','#dbe3d3'],['sand','#e8dcc4'],['water','#adc3c8'],['building','#d4cec0']].map(([kind,color])=>({id:`local-${kind}`,type:'fill',source:'local',filter:polygon(kind),paint:{'fill-color':color,'fill-opacity':kind==='building'?.86:1}})),
     {id:'local-road-halo',type:'line',source:'local',filter:line('road'),paint:{'line-color':'#c9c3b7','line-width':['interpolate',['linear'],['zoom'],12,1,17,9]}},
     {id:'local-roads',type:'line',source:'local',filter:line('road'),paint:{'line-color':['match',['get','highway'],['footway','path','steps'],'#a2a78f','#fffdfa'],'line-width':['interpolate',['linear'],['zoom'],12,.7,17,6]}},
     {id:'local-waterlines',type:'line',source:'local',filter:line('waterline'),paint:{'line-color':'#adc3c8','line-width':3}},
     {id:'local-coast',type:'line',source:'local',filter:line('coastline'),paint:{'line-color':'#90aab2','line-width':2}},
-    {id:'local-rail',type:'line',source:'local',filter:line('rail'),paint:{'line-color':'#a5a7a1','line-width':1,'line-dasharray':[2,2]}}
+    {id:'local-rail',type:'line',source:'local',filter:line('rail'),paint:{'line-color':'#a5a7a1','line-width':1,'line-dasharray':[2,2]}},
+    {id:'local-street-labels',type:'symbol',source:'local',minzoom:13,filter:['all',line('road'),['has','name']],layout:roadLabelLayout,paint:roadLabelPaint}
   ]};
 }
 

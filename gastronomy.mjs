@@ -129,7 +129,7 @@ export async function initGastronomy(base,workshop) {
     button.disabled=false;button.addEventListener('click',async()=>{
       button.disabled=true;const field=button.dataset.foodPersonal,dayId=selectedDay(workshop.getState()).id;
       try {
-        const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=1');
+        const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=2');
         const chosen=await pickPersonalPoint({base,initial:selectedDay(workshop.getState())[field],focusPlace:catalog.poi.find(p=>p.slug===food.venues[0].slug),caption:field==='start_at'?'Где начнём прогулку?':'Куда вернёмся после прогулки?'});
         if(chosen && selectedDay(workshop.getState()).id===dayId)await setBases({[field]:chosen});
         else if(chosen)status.textContent='Вы выбрали другой день. Отметьте жильё для него ещё раз.';

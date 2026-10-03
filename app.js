@@ -14,7 +14,7 @@
   const offlineTools = import(url('offline.mjs?v=3'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
-  import(url('offline-map.mjs?v=3')).then(module => { localStyle=module; }).catch(() => {});
+  import(url('offline-map.mjs?v=4')).then(module => { localStyle=module; }).catch(() => {});
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
@@ -128,7 +128,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=17'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=18'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
@@ -146,7 +146,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=4')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=5')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -193,14 +193,14 @@
       mapBaseError = false;
       map = new maplibregl.Map({container:'interactive-map', center:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
         maxBounds:local ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
-        style:local ? localStyle.localMapStyle(local) : (await import(url('region-map.mjs?v=1'))).regionMapStyle(base)});
+        style:local ? localStyle.localMapStyle(local) : (await import(url('region-map.mjs?v=2'))).regionMapStyle(base)});
       map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:local?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
       map.addControl(new maplibregl.AttributionControl({compact:false}), 'bottom-right');
       map.on('error', () => { mapBaseError = true; setMapStatus(mapStatus); });
       await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(new Error('Карта загружается дольше обычного')), 20000); map.once('load', () => { clearTimeout(timer); resolve(); }); });
       if(!local){
-        const {mapCities}=await import(url('region-map.mjs?v=1'));
+        const {mapCities}=await import(url('region-map.mjs?v=2'));
         const labels=mapCities.map(([name,lon,lat])=>{
           const el=document.createElement('span');el.className='region-city-label';el.textContent=name;
           new maplibregl.Marker({element:el}).setLngLat([lon,lat]).addTo(map);return el;
@@ -249,7 +249,7 @@
     }
     listPoints();
     try {
-      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=3'));
+      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=4'));
       const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here);
       if(!navigator.onLine && !local)throw new Error('Нет загруженной карты');
       if(version!==mapVersion)return;
