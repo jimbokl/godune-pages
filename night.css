@@ -35,8 +35,13 @@
 :root[data-theme=night] .travel-day{--travel-ink:#e2edf2;--travel-sky:#193346}
 :root[data-theme=night] .site-header{color:var(--ink)}
 :root[data-theme=night] .brand-mark{filter:brightness(0) invert(.88)}
-:root[data-theme=night] .header-actions>button img,
-:root[data-theme=night] .quick-link>img{filter:brightness(0) invert(.87)}
+:root[data-theme=night] .icon-button img,
+:root[data-theme=night] .button-outline img,
+:root[data-theme=night] .quick-links>a>img,
+:root[data-theme=night] summary img,
+:root[data-theme=night] .destination .destination-arrow,
+:root[data-theme=night] .route-link img{filter:brightness(0) invert(.87)}
+:root[data-theme=night] .dialog-top .icon-button{width:44px;height:44px;min-width:44px;min-height:44px}
 :root[data-theme=night] .theme-panel{box-shadow:0 18px 60px #030b13a6}
 :root[data-theme=night] .theme-icon{color:var(--night-amber)}
 :root[data-theme=night] .hero-picture img{filter:brightness(.45) saturate(.7)}
