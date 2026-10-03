@@ -64,7 +64,7 @@ export function renderLightView(mount,trip,catalog,light,alternative,onApply) {
   caption.textContent=`${place.name} · ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(trip.date+'T12:00:00Z'))} · время Калининграда`;
   const clock=minute=>minute===null?'—':`${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
   const sun=row.sun;mount.append(title,caption);
-  if(Object.values(sun).every(value=>value!==null)) {
+  if(['dawn','sunrise','sunset','dusk'].every(key=>sun[key]!==null)) {
     const scale=document.createElement('div');scale.className='trip-light-scale';scale.setAttribute('aria-hidden','true');
     const p=value=>`${value/14.4}%`;
     scale.style.background=`linear-gradient(to right, #253b51 0%, #253b51 ${p(sun.dawn)}, #d4a65c ${p(sun.dawn)}, #d4a65c ${p(sun.sunrise)}, #d9e7ea ${p(sun.sunrise)}, #d9e7ea ${p(sun.sunset)}, #d4a65c ${p(sun.sunset)}, #d4a65c ${p(sun.dusk)}, #253b51 ${p(sun.dusk)}, #253b51 100%)`;

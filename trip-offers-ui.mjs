@@ -1,6 +1,6 @@
 import {selectedDay,COST_KINDS} from './trip-days-state.mjs?v=11';
 import {validOffers,offerInput,offerContext,offerBlocked,offerStatusText,snapshotNotice} from './trip-offers-state.mjs?v=1';
-import {loadScheduler} from './trip-scheduler.mjs?v=11';
+import {loadScheduler} from './trip-scheduler.mjs?v=12';
 import {rubles} from './trip-budget-state.mjs?v=1';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const money=amount=>amount===null?'Цена ещё неизвестна':rubles(amount);

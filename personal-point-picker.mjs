@@ -1,7 +1,8 @@
-import {regionMapStyle} from './region-map.mjs?v=4';
+import {bindMapTheme} from './map-theme.mjs?v=1';
+import {regionMapStyle} from './region-map.mjs?v=5';
 import {isPersonalPoint} from './personal-points.mjs?v=2';
 import {addressPicker} from './address-picker.mjs?v=1';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=7';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=8';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){
@@ -53,6 +54,7 @@ export function pickPersonalPoint({base,initial,caption,focusPlace}){
       const entered=[Number(lon.value),Number(lat.value)],center=isPersonalPoint({kind:'personal',name:'Точка',lon:entered[0],lat:entered[1]})?entered:position;
       const local=await downloadedMap(base,null,{lon:center[0],lat:center[1]},undefined,true);if(closed)return;if(!navigator.onLine && !local)throw new Error('Нет скачанной карты');mapCoverage=local?.bbox;
       map=new maplibregl.Map({container:canvas,center:[Number(lon.value),Number(lat.value)],zoom:15,maxBounds:local?[[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]]:undefined,style:local && local.kind!=='region'?localMapStyle(local,base):regionMapStyle(base,local || {}),attributionControl:false,locale:{'NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить','AttributionControl.ToggleAttribution':'Источники карты'}});
+      bindMapTheme(map);
       map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');map.addControl(new maplibregl.AttributionControl({compact:false}));
       map.on('moveend',()=>{const p=map.getCenter();setPosition([p.lng,p.lat]);});map.on('click',event=>map.jumpTo({center:event.lngLat}));map.on('load',()=>{canvas.dataset.mapReady='true';const p=map.getCenter();setPosition([p.lng,p.lat]);});
       map.on('error',()=>{status.textContent='Часть подложки не загрузилась. Координаты можно указать вручную.';});

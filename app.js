@@ -14,7 +14,7 @@
   const offlineTools = import(url('offline.mjs?v=5'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
-  import(url('offline-map.mjs?v=7')).then(module => { localStyle=module; }).catch(() => {});
+  import(url('offline-map.mjs?v=8')).then(module => { localStyle=module; }).catch(() => {});
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
@@ -199,14 +199,15 @@
       mapBaseError = false;
       map = new maplibregl.Map({container:'interactive-map', center:local?[(local.bbox[0]+local.bbox[2])/2,(local.bbox[1]+local.bbox[3])/2]:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
         maxBounds:local ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
-        style:vector ? (await import(url('region-map.mjs?v=4'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
+        style:vector ? (await import(url('region-map.mjs?v=5'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
+      const applyMapTheme=(await import(url('map-theme.mjs?v=1'))).bindMapTheme(map);
       map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:!vector?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
       map.addControl(new maplibregl.AttributionControl({compact:false}), 'bottom-right');
       map.on('error', () => { mapBaseError = true; setMapStatus(mapStatus); });
       await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(new Error('Карта загружается дольше обычного')), 20000); map.once('load', () => { clearTimeout(timer); resolve(); }); });
       if(vector){
-        const {mapCities}=await import(url('region-map.mjs?v=4'));
+        const {mapCities}=await import(url('region-map.mjs?v=5'));
         const labels=mapCities.filter(([,lon,lat])=>!local || lon>=local.bbox[0] && lon<=local.bbox[2] && lat>=local.bbox[1] && lat<=local.bbox[3]).map(([name,lon,lat])=>{
           const el=document.createElement('span');el.className='region-city-label';el.textContent=name;
           new maplibregl.Marker({element:el}).setLngLat([lon,lat]).addTo(map);return el;
@@ -215,6 +216,7 @@
       }
       map.addSource('walk',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
       map.addLayer({id:'walk-line',type:'line',source:'walk',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#986339','line-width':4,'line-opacity':.92}});
+      applyMapTheme();
       mapNavigation=(await import(url('map-navigation.mjs?v=1'))).initMapNavigation({map,root:$('#map-dialog'),bbox:local?.bbox || [19.58,54.42,22.87,55.29],local:Boolean(local)});
       return map;
     })();
@@ -258,7 +260,7 @@
     }
     listPoints();
     try {
-      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=7'));
+      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=8'));
       const maps=await localStyle.availableMaps(base);
       const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here,maps);
       if(version!==mapVersion)return;

@@ -1,0 +1,82 @@
+/* Baltic light: deep water, silver type, a small warm edge. Daytime fallbacks
+   live beside their original declarations in the component stylesheets. */
+.theme-control{position:relative;flex:none;font:12px/1.5 var(--sans);color:var(--ink)}
+.theme-control summary{display:flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:8px 10px;list-style:none;cursor:pointer;border:1px solid transparent;border-radius:24px;white-space:nowrap}
+.theme-control summary::-webkit-details-marker{display:none}
+.theme-control summary:hover,.theme-control[open] summary{background:var(--sea-soft);border-color:var(--sea-line)}
+.theme-icon{width:21px;height:21px;flex:none}
+.theme-panel{position:absolute;top:calc(100% + 12px);right:0;width:310px;padding:23px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 55px #12273924;z-index:40;text-align:left}
+.theme-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:16px 0 20px;padding:4px;border:1px solid var(--line);border-radius:7px;background:var(--sand)}
+.theme-choices button{min-height:44px;padding:8px;border-radius:4px;background:transparent;color:var(--muted);font:500 13px var(--sans)}
+.theme-choices [aria-pressed=true]{background:var(--sea);color:#183347;box-shadow:0 2px 6px #12273912}
+.theme-place{font:500 12px/1.6 var(--sans);color:var(--ink);overflow-wrap:anywhere}
+.theme-times{margin:13px 0 16px;font-size:12px}
+.theme-times div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+.theme-times dt{color:var(--muted)}
+.theme-times dd{margin:0;color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.theme-note{font:11px/1.7 var(--sans);color:var(--muted);margin-top:8px}
+.theme-evening{display:flex;justify-content:space-between;align-items:center;min-height:44px;margin-top:12px;font-weight:600;color:var(--sea-muted);border-top:1px solid var(--line);padding-top:10px}
+.header-note{display:none}.header-actions{align-items:center}
+@media(min-width:801px) and (max-width:1100px){.desktop-nav{gap:15px;font-size:12px}.brand-name{font-size:20px;letter-spacing:1.5px}.site-header{gap:12px}.header-actions{gap:4px}.theme-control summary span{display:none}}
+@media(max-width:800px){.theme-control summary{width:44px;padding:9px}.theme-control summary span{display:none}.header-actions{gap:0}.theme-panel{position:fixed;right:16px;top:84px;width:min(320px,calc(100vw - 32px));max-height:calc(100dvh - 105px);overflow-y:auto}}
+@media(max-width:560px){.site-header{padding-inline:14px}.brand-name{font-size:16px;letter-spacing:1px}.brand-mark{width:28px}.brand{gap:7px}.header-actions .icon-button{width:44px;height:44px}.site-header{gap:6px}.brand-caption{letter-spacing:.6px}}
+@media(max-width:360px){.brand-name{font-size:12px;letter-spacing:0}.brand-caption{font-size:5px}.brand-mark{width:22px}.site-header{padding-inline:10px;gap:3px}}
+
+:root[data-theme=night]{
+ color-scheme:dark;
+ --paper:#0c1c2b;--sand:#14293a;--ink:#e2edf2;--muted:#a7beca;
+ --sea:#a4c8df;--sea-ink:#d0e3ef;--sea-hover:#b6d7e9;--sea-line:#3d6179;
+ --sea-soft:#183449;--sea-muted:#a7c4d6;--line:#304759;
+ --night-surface:#14293a;--night-panel:#193346;--night-warm:#342d27;
+ --night-ink:#e2edf2;--night-muted:#a7beca;--night-amber:#e6b877;--night-line:#3d566b;
+}
+:root[data-theme=day]{color-scheme:light}
+:root[data-theme=night] #my-trip{--trip-paper:#14293a;--trip-blue:#25485f}
+:root[data-theme=night] .travel-day{--travel-ink:#e2edf2;--travel-sky:#193346}
+:root[data-theme=night] .site-header{color:var(--ink)}
+:root[data-theme=night] .brand-mark{filter:brightness(0) invert(.88)}
+:root[data-theme=night] .header-actions>button img,
+:root[data-theme=night] .quick-link>img{filter:brightness(0) invert(.87)}
+:root[data-theme=night] .theme-panel{box-shadow:0 18px 60px #030b13a6}
+:root[data-theme=night] .theme-icon{color:var(--night-amber)}
+:root[data-theme=night] .hero-picture img{filter:brightness(.45) saturate(.7)}
+:root[data-theme=night] :is(.ocean-canvas,.scene-video){filter:brightness(.45) saturate(.7)}
+:root[data-theme=night] .hero{background:#10263b}
+:root[data-theme=night] .hero-picture:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0c1c2b38 0%,#18344c16 50%,#0c1c2b 100%);pointer-events:none}
+:root[data-theme=night] .hero h1{color:#e4edf0;text-shadow:0 4px 32px #08172455}
+:root[data-theme=night] .hero-subtitle{background:transparent;color:#c6dbe5;text-shadow:0 1px 12px #08172470}
+:root[data-theme=night] .hero-aside,:root[data-theme=night] .hero-footnotes{color:#bfd0da}
+:root[data-theme=night] .hero-actions .button-outline{background:#132b3da6;color:#d8e7ef;border-color:#69879b}
+:root[data-theme=night] .hero:after{background:linear-gradient(0deg,var(--paper),transparent)}
+:root[data-theme=night] .destination{background:var(--paper)}
+:root[data-theme=night] .destination img{filter:brightness(.74) saturate(.85)}
+:root[data-theme=night] .destination-copy{color:var(--ink)}
+:root[data-theme=night] .destination:after{background:linear-gradient(0deg,var(--paper),transparent 75%)}
+:root[data-theme=night] :is(.button-primary,.button-dark,.journey-save,.expense-save,.expense-add,.journey-day[aria-pressed=true],.tool-nav a[aria-current=page],.map-view-switch [aria-pressed=true],.region-map-page .map-filters [aria-pressed=true],.travel-check[aria-pressed=true]){background:var(--sea);color:#183347;border-color:#a4c8df}
+:root[data-theme=night] :is(.trip-amber,.trip-offer-add){background:#e6b877;color:#302518;border-color:#d4a365}
+:root[data-theme=night] :is(.trip-travel-modes input:checked+span,.save-item[aria-pressed=true]){background:#335870;color:#e2edf2}
+:root[data-theme=night] :is(.trip-bookings,.trip-rail){background:linear-gradient(135deg,#162f43,#122738)}
+:root[data-theme=night] :is(.rail-ride,.food-card-copy){background:var(--night-surface)}
+:root[data-theme=night] :is(.trip-dates,.food-card-photo span,.button-outline){background:var(--night-surface)}
+:root[data-theme=night] #my-trip .trip-point-number{color:#302518}
+:root[data-theme=night] #my-trip :is(.trip-day-settings,.trip-stop-settings) .save-item{color:#302518}
+:root[data-theme=night] #my-trip .daily-discovery{background:var(--night-panel)}
+:root[data-theme=night] #my-trip .daily-discovery figure:after{background:linear-gradient(transparent,var(--night-panel))}
+:root[data-theme=night] .food-filters button[aria-pressed=true]{color:#183347}
+:root[data-theme=night] .map-dot{background:#c99c69;color:#122536;border-color:#efd1a6;box-shadow:0 0 0 4px #d6b0711c,0 3px 12px #02080da6}
+:root[data-theme=night] .map-dot.map-arrival{background:#a4c8df}
+:root[data-theme=night] .map-surface .map-dot{background:transparent;box-shadow:none;color:#182c39}
+:root[data-theme=night] .map-surface .map-dot:before{background:#c99c69;border-color:#efd1a6;box-shadow:0 0 0 4px #d6b0711c,0 3px 12px #02080da6}
+:root[data-theme=night] .map-surface .map-dot.map-arrival:before{background:#a4c8df}
+:root[data-theme=night] .region-city-label{color:#dce8ee;text-shadow:0 1px 3px #081724,0 0 5px #081724}
+:root[data-theme=night] :is(.maplibregl-popup-content,.maplibregl-ctrl-group,.maplibregl-ctrl-attrib){background:#152c3e;color:#dce8ee}
+:root[data-theme=night] .maplibregl-popup-tip{border-top-color:#152c3e;border-bottom-color:#152c3e}
+:root[data-theme=night] .maplibregl-ctrl-icon{filter:invert(.9)}
+:root[data-theme=night] :is(a,button,input,select,summary):focus-visible{outline-color:#e6b877}
+:root[data-light-phase=twilight] .hero-picture img{filter:brightness(.58) saturate(.85)}
+:root[data-light-phase=twilight] :is(.ocean-canvas,.scene-video){filter:brightness(.58) saturate(.85)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{
+ .theme-control{display:none}
+ :root[data-theme=night]{--paper:white;--sand:#f5f2ec;--ink:#202c32;--muted:#586469;--sea:#bfd9e7;--sea-ink:#243f52;--sea-soft:#edf4f8;--line:#d6d8d5;--night-surface:white;--night-panel:#edf4f8;--night-ink:#202c32;--night-muted:#586469;--night-warm:#f5f2ec;--night-amber:#805b25;--night-line:#d6d8d5;color-scheme:light}
+}
