@@ -1,4 +1,4 @@
-import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=3';
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=4';
 import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=6';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=1';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
@@ -39,6 +39,8 @@ export function cleanJourney(value,trip,catalog) {
 export const journeyDays=trip=>trip.itinerary?.days || [snapshot(trip)];
 export const selectedDay=trip=>trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || snapshot(trip);
 export const tripHasPlaces=trip=>journeyDays(trip).some(day=>day.places.length) || !!trip.routes.length;
+export const tripHasExpenses=trip=>journeyDays(trip).some(day=>Object.values(day.costs).some(row=>row.items?.length || row.amount!==null && row.amount!==undefined || row.paid!==null && row.paid!==undefined));
+export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip);
 export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...day.places,day.start_at,day.night_at]).filter(id=>typeof id==='string'))];
 export function ensureJourney(trip) {
   if(trip.itinerary)return structuredClone(trip);

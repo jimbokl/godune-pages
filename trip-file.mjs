@@ -1,5 +1,5 @@
-import {validJourneyProjection,tripHasPlaces,tripPlaceIds} from './trip-days-state.mjs?v=6';
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=10';
+import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=7';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=11';
 import {validSchedule} from './trip-schedule-state.mjs?v=6';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
@@ -23,7 +23,7 @@ export function readTripFile(text, catalog) {
     const state = cleanTrip(trip, catalog);
     const missing = tripPlaceIds(trip).filter(id => !tripPlaceIds(state).includes(id)).length
       + new Set(trip.routes.filter(id => !state.routes.includes(id))).size;
-    if (!tripHasPlaces(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест или прогулок.'};
+    if (!tripHasDraft(state)) return {error: missing ? 'Мест из этой поездки уже нет в каталоге. Ваш черновик на месте.' : 'В этом файле пока нет мест или прогулок.'};
     return {state, missing};
   } catch { return {error: 'Не удалось прочитать файл поездки. Ваш черновик на месте. Попробуйте другую копию файла.'}; }
 }

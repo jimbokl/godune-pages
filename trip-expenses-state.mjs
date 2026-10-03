@@ -10,19 +10,35 @@ export function validPriceSource(source) {
   return source===null || object(source) && keys(source,['label','href','observed_at','quoted_amount','catalog_id']) && typeof source.label==='string' && !!source.label.trim() && validSourceHref(source.href) && (source.observed_at===null || date(source.observed_at)) && amount(source.quoted_amount) && (source.catalog_id===null || typeof source.catalog_id==='string' && !!source.catalog_id);
 }
 export function validExpense(item) {
-  return object(item) && keys(item,['id','label','poi','amount','quantity','scope','paid','source','transfer','previous_bindings']) && typeof item.id==='string' && !!item.id && typeof item.label==='string' && !!item.label.trim() && (item.poi===null || typeof item.poi==='string' && !!item.poi) && amount(item.amount) && Number.isSafeInteger(item.quantity) && item.quantity>0 && item.quantity<=4294967295 && ['group','person'].includes(item.scope) && amount(item.paid) && validPriceSource(item.source) && (!Object.hasOwn(item,'transfer') || item.transfer===null || item.poi===null && validTransfer(item.transfer)) && (!Object.hasOwn(item,'previous_bindings') || validExpenseBindings(item.previous_bindings));
+  return object(item) && keys(item,['id','label','poi','amount','quantity','scope','paid','source','transfer','previous_bindings','cancelled','refunds']) && typeof item.id==='string' && !!item.id && typeof item.label==='string' && !!item.label.trim() && (item.poi===null || typeof item.poi==='string' && !!item.poi) && amount(item.amount) && Number.isSafeInteger(item.quantity) && item.quantity>0 && item.quantity<=4294967295 && ['group','person'].includes(item.scope) && amount(item.paid) && validPriceSource(item.source) && (!Object.hasOwn(item,'transfer') || item.transfer===null || item.poi===null && validTransfer(item.transfer)) && (!Object.hasOwn(item,'previous_bindings') || validExpenseBindings(item.previous_bindings)) && (!Object.hasOwn(item,'cancelled') || typeof item.cancelled==='boolean') && (!Object.hasOwn(item,'refunds') || validRefunds(item.refunds));
+}
+export function validRefunds(value) {
+  const ids=new Set();return Array.isArray(value) && value.every(row=>object(row) && keys(row,['id','amount','date','note']) && typeof row.id==='string' && !!row.id && !ids.has(row.id) && !!ids.add(row.id) && Number.isSafeInteger(row.amount) && row.amount>=0 && (row.date===null || date(row.date)) && typeof row.note==='string');
+}
+export function cancelExpense(costs,kind,id,cancelled=true) {
+  const next=structuredClone(costs),item=next[kind]?.items?.find(item=>item.id===id);
+  if(item)item.cancelled=cancelled;return next;
+}
+export function putRefund(costs,kind,id,refund) {
+  const next=structuredClone(costs),item=next[kind]?.items?.find(item=>item.id===id);
+  if(!item)return next;item.refunds ||= [];const index=item.refunds.findIndex(row=>row.id===refund.id);
+  if(index<0)item.refunds.push(structuredClone(refund));else item.refunds[index]=structuredClone(refund);return next;
+}
+export function removeRefund(costs,kind,id,refundId) {
+  const next=structuredClone(costs),item=next[kind]?.items?.find(item=>item.id===id);
+  if(item?.refunds)item.refunds=item.refunds.filter(row=>row.id!==refundId);return next;
 }
 export function validExpenseBindings(value) {
   return Array.isArray(value) && value.every(row=>object(row) && keys(row,['date','place','transfer','source']) && (!Object.hasOwn(row,'source') || validPriceSource(row.source)) && (row.date===null || date(row.date)) && (row.place!==null && row.transfer===null && validTransferPoint(row.place) && row.place.kind==='catalog' || row.place===null && validTransfer(row.transfer) && row.date===row.transfer.date));
 }
 export function validCosts(costs,kinds) {
   if(!object(costs))return false;
-  const ids=new Set();
-  return Object.entries(costs).every(([kind,row])=>Object.hasOwn(kinds,kind) && object(row) && keys(row,['amount','quantity','scope','basis','paid','items']) && amount(row.amount) && Number.isSafeInteger(row.quantity) && row.quantity>0 && row.quantity<=4294967295 && ['group','person'].includes(row.scope) && (!Object.hasOwn(row,'basis') || ['summary','items'].includes(row.basis)) && (!Object.hasOwn(row,'paid') || amount(row.paid)) && (!Object.hasOwn(row,'items') || Array.isArray(row.items) && row.items.every(item=>{if(!validExpense(item)||ids.has(item.id))return false;ids.add(item.id);return true;})));
+  const ids=new Set(),refundIds=new Set();
+  return Object.entries(costs).every(([kind,row])=>Object.hasOwn(kinds,kind) && object(row) && keys(row,['amount','quantity','scope','basis','paid','items']) && amount(row.amount) && Number.isSafeInteger(row.quantity) && row.quantity>0 && row.quantity<=4294967295 && ['group','person'].includes(row.scope) && (!Object.hasOwn(row,'basis') || ['summary','items'].includes(row.basis)) && (!Object.hasOwn(row,'paid') || amount(row.paid)) && (!Object.hasOwn(row,'items') || Array.isArray(row.items) && row.items.every(item=>{if(!validExpense(item)||ids.has(item.id))return false;ids.add(item.id);for(const refund of item.refunds || []){if(refundIds.has(refund.id))return false;refundIds.add(refund.id);}return true;})));
 }
 export function expenseCostInput(kind,row) {
   const cost=row || emptyCost();
-  return {kind,amount:cost.amount,quantity:cost.quantity,scope:cost.scope,...(cost.basis?{basis:cost.basis}:{}),...(Object.hasOwn(cost,'paid')?{paid:cost.paid}:{}),...(cost.items?{items:cost.items.map(({id,amount,quantity,scope,paid})=>({id,amount,quantity,scope,paid}))}:{})};
+  return {kind,amount:cost.amount,quantity:cost.quantity,scope:cost.scope,...(cost.basis?{basis:cost.basis}:{}),...(Object.hasOwn(cost,'paid')?{paid:cost.paid}:{}),...(cost.items?{items:cost.items.map(({id,amount,quantity,scope,paid,cancelled,refunds})=>({id,amount,quantity,scope,paid,...(cancelled!==undefined?{cancelled}:{}),...(refunds?{refunds:refunds.map(({id,amount})=>({id,amount}))}:{})}))}:{})};
 }
 export function putExpense(costs,kind,item) {
   const next=structuredClone(costs),row=next[kind] ||= emptyCost();row.items ||= [];
@@ -39,7 +55,7 @@ export function unpaidCopy(costs) {
   const next=structuredClone(costs);
   for(const row of Object.values(next)) {
     if(Object.hasOwn(row,'paid'))row.paid=null;
-    for(const item of row.items || [])item.paid=null;
+    for(const item of row.items || []){item.paid=null;if(item.refunds)item.refunds=[];}
   }
   return next;
 }

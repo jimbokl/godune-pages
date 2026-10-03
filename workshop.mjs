@@ -1,15 +1,16 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=10';
-import {initTripSharing} from './trip-link.mjs?v=12';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=7';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=11';
+import {initTripSharing} from './trip-link.mjs?v=13';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=8';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=3';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=7';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=9';
-import {initTripDays} from './trip-days-ui.mjs?v=9';
-import {addTripStarter} from './trip-starters.mjs?v=5';
-import {tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=6';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=3';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=10';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=8';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=10';
+import {initTripDays} from './trip-days-ui.mjs?v=10';
+import {addTripStarter} from './trip-starters.mjs?v=6';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=7';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=4';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=11';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -93,6 +94,7 @@ export async function initWorkshop(catalog, base) {
     commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
   const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const cancellation = initTripCancellation({read:()=>state,commit,catalog});
   const replacement = initTripReplacement({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
@@ -157,6 +159,7 @@ export async function initWorkshop(catalog, base) {
     schedule.render();
     days.render();
     replacement.render();
+    cancellation.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';
@@ -166,7 +169,7 @@ export async function initWorkshop(catalog, base) {
     });
     const month = $('#trip-month'); if (month) month.value = state.month === null ? '' : String(state.month);
     const date = $('#trip-date'); if (date) date.value = state.date || '';
-    const share = $('#trip-share'); if (share) share.disabled = !hasTrip;
+    const share = $('#trip-share'); if (share) share.disabled = !tripHasDraft(state);
     const notice = $('#trip-storage'); if (notice) notice.hidden = available;
     document.querySelectorAll('[data-my-trip]').forEach(link => {
       const count=journeyDays(state).reduce((sum,day)=>sum+day.places.length,0);
@@ -218,10 +221,12 @@ export async function initWorkshop(catalog, base) {
     const save = event.target.closest('[data-save-place], [data-save-route]');
     if (save) {
       const kind = save.hasAttribute('data-save-place') ? 'places' : 'routes', id = kind === 'places' ? save.dataset.savePlace : save.dataset.saveRoute;
+      if(kind==='places' && state.places.includes(id)){await cancellation.open(id);return;}
       await commit(current => toggleTripItem(current, kind, id, catalog), 'Ваш маршрут обновлён.'); return;
     }
     const control = event.target.closest('[data-trip-action]'); if (!control) return;
     const {tripKind: kind, tripId: id, tripAction: action} = control.dataset;
+    if(kind==='places' && action==='remove'){await cancellation.open(id);return;}
     await commit(current => action === 'remove' ? {...current, [kind]: current[kind].filter(value => value !== id)} : moveTripPlace(current, id, action === 'up' ? -1 : 1, catalog), action === 'remove' ? 'Убрано из «Моего маршрута».' : 'Порядок точек изменён.');
     const remaining = [...document.querySelectorAll('[data-trip-action]')];
     const focus = remaining.find(node => node.dataset.tripId === id && node.dataset.tripAction === action && !node.disabled)
