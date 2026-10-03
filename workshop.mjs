@@ -1,14 +1,15 @@
 import {loadWalkProgress} from './walk.mjs?v=2';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=9';
-import {initTripSharing} from './trip-link.mjs?v=11';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=6';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=10';
+import {initTripSharing} from './trip-link.mjs?v=12';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=7';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=3';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=6';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=7';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=9';
-import {initTripDays} from './trip-days-ui.mjs?v=8';
-import {addTripStarter} from './trip-starters.mjs?v=4';
-import {tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=5';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=9';
+import {initTripDays} from './trip-days-ui.mjs?v=9';
+import {addTripStarter} from './trip-starters.mjs?v=5';
+import {tripHasPlaces,journeyDays} from './trip-days-state.mjs?v=6';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=3';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=10';
 
 export function loadTrip(storage, catalog) {
   try {
@@ -92,6 +93,7 @@ export async function initWorkshop(catalog, base) {
     commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
   const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const replacement = initTripReplacement({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
     const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item';
@@ -130,6 +132,7 @@ export async function initWorkshop(catalog, base) {
         const down = button('↓', `Опустить: ${item.name}`, 'down', kind, id);
         up.disabled = index === 0; down.disabled = index === state.places.length - 1;
         controls.append(drag, up, down);
+        copy.append(replacement.control(id,item.name));
         const move=days.moveControl(id,item.name);if(move)copy.append(move);
       }
       controls.append(button('×', `Убрать: ${item.name}`, 'remove', kind, id)); li.append(controls); return li;
@@ -153,6 +156,7 @@ export async function initWorkshop(catalog, base) {
     });
     schedule.render();
     days.render();
+    replacement.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';

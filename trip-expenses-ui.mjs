@@ -1,5 +1,5 @@
-import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=5';
-import {emptyCost,putExpense,removeExpense,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=2';
+import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=6';
+import {emptyCost,putExpense,removeExpense,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=3';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=1';
@@ -82,7 +82,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   async function open(kind='food',id=null,preferred=null) {
     const day=selectedDay(read()),item=day.costs[kind]?.items?.find(item=>item.id===id);
     lastFocus=document.activeElement;
-    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null,savedTransfer:item?.transfer || null,transfers:dayTransfers(day,catalog),context:transferContext(day,catalog)};
+    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null,savedTransfer:item?.transfer || null,previousBindings:item?.previous_bindings?structuredClone(item.previous_bindings):null,transfers:dayTransfers(day,catalog),context:transferContext(day,catalog)};
     const ticket=editing;form.reset();kindField.value=kind;kindField.disabled=!!item;
     const select=field('poi');select.replaceChildren();option(select,'','Без остановки');
     for(const place of [...catalog.poi.filter(p=>day.places.includes(p.slug)),...catalog.poi.filter(p=>!day.places.includes(p.slug))])option(select,place.slug,`${day.places.includes(place.slug)?'В этом дне · ':''}${place.name}`);
@@ -131,7 +131,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
       const linked=values.get('binding')==='transfer',transfer=linked && values.get('transfer')!==''?chosenTransfer():null;
       if(linked && !transfer)throw Error('Выберите, за какой переезд платите. Общий расход можно сохранить для дня целиком.');
       ticket.checkTransfer=linked;
-      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('binding')==='place'?values.get('poi') || null:null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source,...(transfer?{transfer:structuredClone(transfer)}:{})};
+      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('binding')==='place'?values.get('poi') || null:null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source,...(transfer?{transfer:structuredClone(transfer)}:{}),...(ticket.previousBindings?{previous_bindings:ticket.previousBindings}:{})};
       if(!validExpense(item))throw Error('Проверьте название, цену, источник и количество.');
       const error=await guardedChange(ticket.day,ticket.kind,ticket.before,costs=>putExpense(costs,ticket.kind,item),'Расход сохранён в этом дне.',ticket);
       if(error)editorStatus(error);else {$('#expense-categories').open=true;close();}
@@ -173,6 +173,15 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
         }
         card.append(el('p',`План: ${item.amount===null?'ещё неизвестен':`${rubles(item.amount)} × ${item.quantity} · ${item.scope==='person'?'на человека':'на всех'}`}`));
         card.append(el('p',`Оплачено на всех: ${item.paid===null?'ещё не записано':rubles(item.paid)}`));
+        if(item.previous_bindings?.length) {
+          const history=el('details',undefined,'expense-binding-history'),list=el('ol');history.append(el('summary',`Прежние связи · ${item.previous_bindings.length}`));
+          for(const row of item.previous_bindings) {
+            const entry=el('li',`${row.place?.name || transferTitle(row.transfer)} · ${dateLabel(row.date)}`);
+            if(row.source){const text=`${row.source.label} · ${dateLabel(row.source.observed_at)}${row.source.quoted_amount===null?'':` · ${rubles(row.source.quoted_amount)}`}`,source=el(row.source.href?'a':'span',text);if(row.source.href){source.href=new URL(row.source.href,base);source.target='_blank';source.rel='noopener noreferrer';}entry.append(el('br'),source);}list.append(entry);
+          }history.append(list);card.append(history);
+          const previous=item.previous_bindings.at(-1);
+          if(item.source && (!Object.hasOwn(previous,'source') || same(previous.source,item.source)))card.append(el('p','Сохранённый источник относится к прежней связи. Цену нового места проверьте отдельно.','expense-binding-warning'));
+        }
         if(item.source) {
           const source=el('p',undefined,'expense-source');const text=`${item.source.label} · ${dateLabel(item.source.observed_at)}${item.source.quoted_amount===null?'':` · в источнике ${rubles(item.source.quoted_amount)}`}`;
           if(item.source.href){const link=el('a',text);link.href=new URL(item.source.href,base);link.target='_blank';link.rel='noopener noreferrer';source.append(link);}else source.textContent=text;
