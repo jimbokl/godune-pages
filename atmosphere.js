@@ -14,7 +14,8 @@
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
   let sceneModule;
   const photo = scene.parentElement.querySelector('.hero-picture img');
-  const count = innerWidth < 600 ? 207 : 276;
+  // Source-space density stays constant when a phone crops the photograph.
+  const count = 390;
   const glow = document.createElement('canvas');
   glow.width = glow.height = 48;
   const g = glow.getContext('2d');
@@ -49,7 +50,7 @@
     farMist.style.opacity = f[5] * (profile?.fog.enabled === false ? 0 : profile?.fog.strength ?? 1);
     if (ocean) ocean.draw(f[8],f[9]);
     ctx.clearRect(0,0,width,height);
-    const scale = width < 600 ? .8 : 1;
+    const scale = width < 600 ? .9 : 1;
     const night = document.documentElement.dataset.theme === 'night';
     for (let i = header; i < f.length; i += 8) {
       const type = f[i+6] ? 'amber' : 'sand';
@@ -63,11 +64,19 @@
       const radius = f[i+2] * scale, alpha = f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
-        ctx.globalAlpha *= night ? .245 : .7;
-        const size = radius * 8 * (night ? .85 : 1);
+        const strength = settings?.strength ?? 1;
+        // A small honey-coloured pebble, then its changing reflection. Keeping
+        // the stone separate from the glow makes it legible on pale sand.
+        ctx.globalAlpha = Math.min(1,strength * (night ? .52 : .64));
+        ctx.fillStyle = '#a7632c';
+        ctx.beginPath();ctx.ellipse(x,y,radius*.95,radius*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle = '#d59a4c';
+        ctx.beginPath();ctx.ellipse(x-radius*.18,y-radius*.15,radius*.68,radius*.38,f[i+7]*2,0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha = Math.min(1,alpha * strength) * (night ? .287 : .82);
+        const size = radius * 6 * (night ? .8 : 1);
         ctx.drawImage(glow,x-size/2,y-size/2,size,size);
-        ctx.fillStyle = '#e6b46d';
-        ctx.fillRect(x-radius*.5,y-radius*.5,radius,radius*.7);
+        ctx.fillStyle = '#f5d7a0';
+        ctx.fillRect(x-radius*.25,y-radius*.3,radius*.7,radius*.4);
       } else {
         // Short, warm streaks follow the slope. They read as wind-blown sand.
         ctx.lineWidth = radius;
@@ -129,7 +138,7 @@
   addEventListener('pageshow', update);
   resize();
   async function start() {
-    const response = await fetch(new URL('assets/atmosphere.wasm?v=4',base));
+    const response = await fetch(new URL('assets/atmosphere.wasm?v=5',base));
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
     const {instance} = await WebAssembly.instantiate(await response.arrayBuffer(),{});
     engine = instance.exports;
@@ -141,9 +150,9 @@
     scene.dataset.engine = 'rust-wasm';
     paint(); update();
     try {
-      sceneModule = await import(new URL('scene.mjs?v=5',base));
+      sceneModule = await import(new URL('scene.mjs?v=6',base));
       const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
-      profileURL.searchParams.set('v','2');
+      profileURL.searchParams.set('v','3');
       profile = await sceneModule.loadProfile(profileURL);
       await photo.decode();
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {

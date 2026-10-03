@@ -172,6 +172,7 @@
 .context-green { fill:var(--context-green); }
 .context-sand { fill:var(--context-sand); }
 .context-water { fill:var(--context-water); }
+.context-building { fill:var(--context-building,#dde0d9);stroke:var(--context-building-line,#ccd3d0);stroke-width:.3px; }
 .context-road,.context-major-road,.context-rail,.context-coastline,.context-waterline { fill:none;stroke-linecap:round;stroke-linejoin:round; }
 .context-road { stroke:var(--context-road);stroke-width:.65px; }
 .context-major-road { stroke:var(--context-major);stroke-width:1.4px; }
@@ -182,6 +183,19 @@
 .route-context-source a { text-underline-offset:2px; }
 :root[data-theme=night] .route-plate-mapped { background:#142b3b; }
 :root[data-theme=night] .route-context { --context-sea:#152f42;--context-land:#26343a;--context-green:#2a3b39;--context-sand:#393b36;--context-water:#1e4255;--context-road:#34434b;--context-major:#43545d;--context-coast:#426075;--context-rail:#3a484d; }
+:root[data-theme=night] .route-context { --context-building:#35464d;--context-building-line:#42535b; }
+.place-plate-mapped,.venue-plate-mapped { background:var(--sea-soft); }
+.venue-plate-mapped { margin:0 0 28px;padding:20px;min-width:0; }
+.venue-plate-mapped .route-diagram { display:block;width:100%;height:auto; }
+.venue-plate-mapped .card-map-night { display:none; }
+:root[data-theme=night] .venue-plate-mapped .card-map-day { display:none; }
+:root[data-theme=night] .venue-plate-mapped .card-map-night { display:block; }
+.venue-plate-mapped .route-plate-heading { margin-bottom:16px; }
+.venue-plate-mapped .place-plate-focus { font-size:15px; }
+.venue-plate-mapped .route-map-button { margin:0 -20px -20px;padding:16px 20px; }
+.food-card-map,.dining-card-map { border-top:1px solid var(--line);margin-top:16px; }
+.food-card-map > summary,.dining-card-map > summary { padding:14px 0;min-height:44px;cursor:pointer;color:var(--ink);font-size:14px; }
+.food-card-map .venue-plate-mapped,.dining-card-map .venue-plate-mapped { margin:0 0 16px; }
 :root[data-theme=night] .route-plate-mapped .route-line-halo { stroke:#0e2433;stroke-width:8px; }
 :root[data-theme=night] .route-plate-mapped .route-line { stroke:#b4d4e9;stroke-width:3px; }
 :root[data-theme=night] .route-plate-mapped .route-pin-circle { fill:#e4eef3;stroke:#90b5ce; }
