@@ -52,6 +52,7 @@
     ctx.clearRect(0,0,width,height);
     const scale = width < 600 ? .9 : 1;
     const night = document.documentElement.dataset.theme === 'night';
+    const grains = [];
     for (let i = header; i < f.length; i += 8) {
       const type = f[i+6] ? 'amber' : 'sand';
       const settings = profile?.[type];
@@ -61,7 +62,14 @@
       const [sx,sy] = point || [f[i], type === 'amber' ? .53+f[i+1]*.4 : f[i+1]];
       const x = crop ? (sx-crop[2])/crop[0]*width : sx*width;
       const y = crop ? (sy-crop[3])/crop[1]*height : sy*height;
-      const radius = f[i+2] * scale, alpha = f[i+3];
+      if (x < 0 || x > width || y < 0 || y > height) continue;
+      grains.push({i,type,settings,x,y});
+    }
+    const amberCount = grains.filter(p => p.type === 'amber').length;
+    let amberIndex = 0;
+    for (const {i,type,settings,x,y} of grains) {
+      const radius = f[i+2] * scale;
+      const alpha = type === 'amber' ? engine.amber_glint(amberIndex++,amberCount,f[8]) : f[i+3];
       ctx.globalAlpha = Math.min(1,alpha * (settings?.strength ?? 1));
       if (f[i+6] === 1) {
         const strength = settings?.strength ?? 1;
@@ -72,11 +80,13 @@
         ctx.beginPath();ctx.ellipse(x,y,radius*.95,radius*.55,f[i+7]*2,0,Math.PI*2);ctx.fill();
         ctx.fillStyle = '#d59a4c';
         ctx.beginPath();ctx.ellipse(x-radius*.18,y-radius*.15,radius*.68,radius*.38,f[i+7]*2,0,Math.PI*2);ctx.fill();
-        ctx.globalAlpha = Math.min(1,alpha * strength) * (night ? .287 : .82);
-        const size = radius * 6 * (night ? .8 : 1);
-        ctx.drawImage(glow,x-size/2,y-size/2,size,size);
-        ctx.fillStyle = '#f5d7a0';
-        ctx.fillRect(x-radius*.25,y-radius*.3,radius*.7,radius*.4);
+        if (alpha > 0) {
+          ctx.globalAlpha = Math.min(1,alpha * strength) * (night ? .287 : .82);
+          const size = radius * 6 * (night ? .8 : 1);
+          ctx.drawImage(glow,x-size/2,y-size/2,size,size);
+          ctx.fillStyle = '#f5d7a0';
+          ctx.fillRect(x-radius*.25,y-radius*.3,radius*.7,radius*.4);
+        }
       } else {
         // Short, warm streaks follow the slope. They read as wind-blown sand.
         ctx.lineWidth = radius;
@@ -138,7 +148,7 @@
   addEventListener('pageshow', update);
   resize();
   async function start() {
-    const response = await fetch(new URL('assets/atmosphere.wasm?v=5',base));
+    const response = await fetch(new URL('assets/atmosphere.wasm?v=6',base));
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
     const {instance} = await WebAssembly.instantiate(await response.arrayBuffer(),{});
     engine = instance.exports;
