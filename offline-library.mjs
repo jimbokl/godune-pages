@@ -1,4 +1,4 @@
-import {offlineAction,offlineWorker} from './offline.mjs?v=3';
+import {offlineAction,offlineWorker} from './offline.mjs?v=4';
 const size=bytes=>`${(bytes/1048576).toLocaleString('ru-RU',{maximumFractionDigits:1})} МБ`;
 export async function initOfflineLibrary(base) {
   const root=document.querySelector('[data-offline-library]');if(!root)return;
@@ -11,16 +11,17 @@ export async function initOfflineLibrary(base) {
   }
   function render(){
     for(const panel of panels){
-      const slug=panel.dataset.offlinePackage,pack=packs.find(p=>p.slug===slug),current=manifest?.routes.find(p=>p.slug===slug),busy=job?.slug===slug;
+      const slug=panel.dataset.offlinePackage,pack=packs.find(p=>p.slug===slug),current=[...(manifest?.routes || []),...(manifest?.regions || [])].find(p=>p.slug===slug),busy=job?.slug===slug;
       panel.dataset.packageReady=String(Boolean(pack));
       const button=$(panel,'[data-package-download]'),remove=$(panel,'[data-package-remove]'),cancel=$(panel,'[data-package-cancel]'),bar=$(panel,'progress');
       button.disabled=!ready || Boolean(job) || !navigator.onLine;
-      button.textContent=busy?'Скачиваем…':pack?current && pack.version!==current.version?'Обновить прогулку':'Проверить обновления':'Скачать прогулку';
+      const regional=panel.dataset.packageKind==='region';
+      button.textContent=busy?'Скачиваем…':pack?current && pack.version!==current.version?regional?'Обновить карту':'Обновить прогулку':'Проверить обновления':regional?'Скачать карту':'Скачать прогулку';
       remove.hidden=!pack || busy;remove.disabled=Boolean(job);cancel.hidden=!busy;bar.hidden=!busy;
-      if(busy)continue;
-      $(panel,'[data-package-status]').textContent=pack?`Готова без сети · ${size(pack.bytes)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}.`:!navigator.onLine?'Ещё не загружена. Скачайте, когда вернётся связь.':current?`Около ${size(current.bytes)} · карта, остановки и фотографии.`:'Размер пока неизвестен. Попробуйте скачать при устойчивой связи.';
+      if(busy){$(panel,'[data-package-status]').textContent=job.id?'Скачиваем файлы…':'Удаляем загрузку…';continue;}
+      $(panel,'[data-package-status]').textContent=pack?`Готова без сети · ${size(pack.bytes)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}.`:!navigator.onLine?'Ещё не загружена. Скачайте, когда вернётся связь.':current?regional?`${size(current.download_bytes)} по сети · ${size(current.bytes)} в браузере. Карта, адреса и три способа передвижения.`:`Около ${size(current.bytes)} · карта, остановки и фотографии.`:'Размер пока неизвестен. Попробуйте скачать при устойчивой связи.';
     }
-    status.textContent=job?'Загружаем прогулку. Можно отменить; прежняя версия останется.':packs.length?`Готово без сети: ${packs.length} из ${panels.length}. Откройте скачанную прогулку по её названию.`:navigator.onLine?'Выберите прогулку и дождитесь окончания загрузки.':'Загруженных прогулок пока нет. Для скачивания нужна связь.';
+    status.textContent=job?'Сохраняем карту. Можно отменить; прежняя версия останется.':packs.length?`Готово без сети: ${packs.length} из ${panels.length}. Карты территорий открываются на общей карте, прогулки — по названию.`:navigator.onLine?'Выберите территорию или прогулку и дождитесь конца загрузки.':'Скачанных карт пока нет. Для загрузки нужна связь.';
   }
   async function refresh(){const ticket=++generation;const value=await offlineAction(base,{type:'LIST'});if(ticket!==generation)return;packs=value;render();}
   try{await offlineWorker(base);await readManifest();ready=true;await refresh();root.dataset.libraryReady='true';}
@@ -32,7 +33,7 @@ export async function initOfflineLibrary(base) {
       try{
         await offlineAction(base,{type:'DOWNLOAD',slug,id},value=>{
           $(panel,'progress').value=value.bytes/value.total;
-          $(panel,'[data-package-status]').textContent=`Скачиваем карту и остановки · ${Math.floor(value.bytes/value.total*100)}%`;
+          $(panel,'[data-package-status]').textContent=value.phase==='archive'?`Скачиваем фрагменты карты · ${size(value.received)} из ${size(value.archiveBytes)}`:value.phase==='unpack'?`Сохраняем карту на устройстве · ${Math.floor(value.bytes/value.total*100)}%`:`Скачиваем карту и остановки · ${Math.floor(value.bytes/value.total*100)}%`;
         });
         job=null;await refresh();window.dispatchEvent(new Event('godune:offline-change'));
       }catch(error){job=null;await refresh().catch(()=>render());$(panel,'[data-package-status]').textContent=error.message;}
@@ -48,7 +49,7 @@ export async function initOfflineLibrary(base) {
   }
   function renderControls(){for(const panel of panels){$(panel,'[data-package-download]').disabled=!ready || Boolean(job) || !navigator.onLine;$(panel,'[data-package-remove]').disabled=Boolean(job);if(!job){$(panel,'progress').hidden=true;$(panel,'[data-package-cancel]').hidden=true;}}}
   window.addEventListener('online',()=>readManifest().then(refresh).catch(()=>{}));
-  window.addEventListener('offline',renderControls);
+  window.addEventListener('offline',render);
   window.addEventListener('godune:memory-cleared',()=>refresh().catch(()=>{}));
   window.addEventListener('godune:offline-change',()=>refresh().catch(()=>{}));
   document.addEventListener('visibilitychange',()=>{if(!document.hidden && !job)refresh().catch(()=>{});});

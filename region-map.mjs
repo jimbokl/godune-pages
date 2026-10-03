@@ -2,11 +2,11 @@ export const mapGlyphs=base=>new URL('assets/map-glyphs/{fontstack}/{range}.pbf'
 export const roadLabelLayout={'symbol-placement':'line','text-field':['get','name'],'text-font':['Manrope Regular'],'text-size':['interpolate',['linear'],['zoom'],13,11,17,14],'text-max-angle':35,'symbol-spacing':300,'text-padding':4};
 export const roadLabelPaint={'text-color':'#405c6a','text-halo-color':'#fffdfa','text-halo-width':1.5};
 // Every map tile comes from godune.ru. No external raster, font or routing API.
-export function regionMapStyle(base) {
+export function regionMapStyle(base,coverage={}) {
   const source='baltic', layer=(id,type,sourceLayer,paint,filter,minzoom=5)=>({id,type,source,'source-layer':sourceLayer,paint,...(filter?{filter}:{}),minzoom});
   const kind=x=>['==',['get','kind'],x];
   const road=['==',['get','kind'],'road'];
-  return {version:8,glyphs:mapGlyphs(base),sources:{baltic:{type:'vector',tiles:[new URL('data/region-map/{z}/{x}/{y}.pbf',base).href.replaceAll('%7B','{').replaceAll('%7D','}')],minzoom:5,maxzoom:13,bounds:[19.58,54.42,22.87,55.29],attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a> · Карта: Маршруты Балтики'}},layers:[
+  return {version:8,glyphs:mapGlyphs(base),sources:{baltic:{type:'vector',tiles:[new URL('data/region-map/{z}/{x}/{y}.pbf',base).href.replaceAll('%7B','{').replaceAll('%7D','}')],minzoom:5,maxzoom:13,bounds:coverage.bbox || [19.58,54.42,22.87,55.29],attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a> · Карта: Маршруты Балтики'}},layers:[
     {id:'sea',type:'background',paint:{'background-color':'#b9d5e3'}},
     layer('region-land','fill','land',{'fill-color':'#f2efe6'}),
     layer('region-green','fill','areas',{'fill-color':'#dce3d7','fill-opacity':.85},kind('green'),8),

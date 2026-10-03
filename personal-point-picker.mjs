@@ -1,7 +1,7 @@
-import {regionMapStyle} from './region-map.mjs?v=2';
+import {regionMapStyle} from './region-map.mjs?v=3';
 import {isPersonalPoint} from './personal-points.mjs?v=1';
 import {addressPicker} from './address-picker.mjs?v=1';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=4';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=5';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){
@@ -33,9 +33,10 @@ export function pickPersonalPoint({base,initial,caption,focusPlace}){
     for(const [input,value,min,max]of [[lon,position[0],-180,180],[lat,position[1],-90,90]]){input.type='number';input.step='any';input.min=String(min);input.max=String(max);input.required=true;input.value=String(value);}
     lon.name='point-lon';lat.name='point-lat';lonLabel.append(lon);latLabel.append(lat);fields.append(lonLabel,latLabel);
     const privacy=element('p','Точка сохранится в этом браузере. Она попадёт в файл и ссылку, если вы решите поделиться поездкой.','personal-point-privacy');
-    const picker=addressPicker({base,near:()=>[Number(lon.value),Number(lat.value)],onSelect:point=>{setPosition([point.lon,point.lat]);name.value=point.title.slice(0,120);name.setCustomValidity('');map?.jumpTo({center:[point.lon,point.lat],zoom:point.precision==='settlement'?12:point.precision==='street'?14:16});}});
+    const picker=addressPicker({base,near:()=>[Number(lon.value),Number(lat.value)],onSelect:point=>{setPosition([point.lon,point.lat]);name.value=point.title.slice(0,120);name.setCustomValidity('');if(inCoverage([point.lon,point.lat]))map?.jumpTo({center:[point.lon,point.lat],zoom:point.precision==='settlement'?12:point.precision==='street'?14:16});else status.textContent+=' Адрес вне скачанной карты. Координаты сохранены в полях; скачайте нужную территорию.';}});
     const actions=element('div',undefined,'personal-point-actions'),cancel=element('button','Отмена','journey-button'),save=element('button','Сохранить эту точку →','journey-save');cancel.type='button';save.type='submit';actions.append(cancel,save);form.append(nameLabel,detail,privacy,actions);dialog.append(head,note,picker.root,frame,status,form);document.body.append(dialog);
-    let map,result=null,closed=false;
+    let map,mapCoverage,result=null,closed=false;
+    const inCoverage=p=>!mapCoverage || p[0]>=mapCoverage[0] && p[0]<=mapCoverage[2] && p[1]>=mapCoverage[1] && p[1]<=mapCoverage[3];
     const setPosition=p=>{lon.value=p[0].toFixed(6);lat.value=p[1].toFixed(6);status.textContent=`Выбрано: ${Number(lat.value).toFixed(5)}, ${Number(lon.value).toFixed(5)}. Дорога рассчитается после сохранения. Подход от двери до ближайшей дороги пока не учтён.`;};
     setPosition(position);dialog.showModal();picker.input.focus();
     close.onclick=cancel.onclick=()=>dialog.close();
@@ -46,12 +47,12 @@ export function pickPersonalPoint({base,initial,caption,focusPlace}){
       if(!isPersonalPoint(candidate)){detail.open=true;status.textContent='Проверьте широту и долготу.';return;}
       result=candidate;dialog.close();
     });name.oninput=()=>name.setCustomValidity('');
-    const coordinatesChanged=()=>{if(!lon.value||!lat.value||!lon.validity.valid||!lat.validity.valid)return;const p=[Number(lon.value),Number(lat.value)];if(isPersonalPoint({kind:'personal',name:'Точка',lon:p[0],lat:p[1]}))map?.jumpTo({center:p});};lon.onchange=lat.onchange=coordinatesChanged;
+    const coordinatesChanged=()=>{if(!lon.value||!lat.value||!lon.validity.valid||!lat.validity.valid)return;const p=[Number(lon.value),Number(lat.value)];if(isPersonalPoint({kind:'personal',name:'Точка',lon:p[0],lat:p[1]}) && inCoverage(p))map?.jumpTo({center:p});};lon.onchange=lat.onchange=coordinatesChanged;
     mapLibrary(base).then(async()=>{
       if(closed)return;
       const entered=[Number(lon.value),Number(lat.value)],center=isPersonalPoint({kind:'personal',name:'Точка',lon:entered[0],lat:entered[1]})?entered:position;
-      const local=await downloadedMap(base,null,{lon:center[0],lat:center[1]});if(closed)return;
-      map=new maplibregl.Map({container:canvas,center:[Number(lon.value),Number(lat.value)],zoom:15,style:local?localMapStyle(local,base):regionMapStyle(base),attributionControl:false,locale:{'NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить','AttributionControl.ToggleAttribution':'Источники карты'}});
+      const local=await downloadedMap(base,null,{lon:center[0],lat:center[1]},undefined,true);if(closed)return;if(!navigator.onLine && !local)throw new Error('Нет скачанной карты');mapCoverage=local?.bbox;
+      map=new maplibregl.Map({container:canvas,center:[Number(lon.value),Number(lat.value)],zoom:15,maxBounds:local?[[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]]:undefined,style:local && local.kind!=='region'?localMapStyle(local,base):regionMapStyle(base,local || {}),attributionControl:false,locale:{'NavigationControl.ZoomIn':'Приблизить','NavigationControl.ZoomOut':'Отдалить','AttributionControl.ToggleAttribution':'Источники карты'}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');map.addControl(new maplibregl.AttributionControl({compact:false}));
       map.on('moveend',()=>{const p=map.getCenter();setPosition([p.lng,p.lat]);});map.on('click',event=>map.jumpTo({center:event.lngLat}));map.on('load',()=>{canvas.dataset.mapReady='true';const p=map.getCenter();setPosition([p.lng,p.lat]);});
       map.on('error',()=>{status.textContent='Часть подложки не загрузилась. Координаты можно указать вручную.';});

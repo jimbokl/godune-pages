@@ -4,7 +4,7 @@ import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=7';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=4';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=1';
-import {pickPersonalPoint} from './personal-point-picker.mjs?v=2';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=3';
 import {planInput} from './trip-schedule-state.mjs?v=6';
 import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=3';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';

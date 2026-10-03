@@ -30,10 +30,10 @@ export async function offlinePaths(base) {
   catch{return new Set();}
 }
 export async function initOffline(base) {
-  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=1',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
+  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=2',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
   const panel=document.querySelector('[data-offline-route]'), list=document.querySelector('#trip-offline-list');
   const banner=document.createElement('p');banner.className='offline-network';banner.setAttribute('role','status');
-  banner.textContent='Без сети. Загруженные прогулки и отметки остаются с вами.';
+  banner.textContent='Без сети. Скачанные карты, прогулки и ваши отметки остаются с вами.';
   document.querySelector('main')?.prepend(banner);
   const network=()=>{banner.hidden=navigator.onLine;if(panel) button.disabled=busy || !initialized || !navigator.onLine;};
   const button=panel?.querySelector('[data-offline-download]'), remove=panel?.querySelector('[data-offline-remove]'), cancel=panel?.querySelector('[data-offline-cancel]'), status=panel?.querySelector('[data-offline-status]'), bar=panel?.querySelector('progress');
@@ -41,7 +41,7 @@ export async function initOffline(base) {
   network();window.addEventListener('online',network);window.addEventListener('offline',network);
   async function refresh() {
     packs=await offlineAction(base,{type:'LIST'});
-    if(list){list.replaceChildren(...packs.map(p=>{const li=document.createElement('li'),a=document.createElement('a');a.href=new URL(`routes/${p.slug}/`,base);a.textContent=p.name;li.append(a);return li;}));list.closest('.trip-offline').hidden=!packs.length;}
+    if(list){list.replaceChildren(...packs.map(p=>{const li=document.createElement('li'),a=document.createElement('a');a.href=new URL(p.kind==='region'?'map/':`routes/${p.slug}/`,base);a.textContent=p.name;li.append(a);return li;}));list.closest('.trip-offline').hidden=!packs.length;}
     if(panel){
       const slug=panel.dataset.offlineRoute,pack=packs.find(p=>p.slug===slug),current=manifest?.routes.find(p=>p.slug===slug);
       remove.hidden=!pack;

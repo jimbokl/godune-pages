@@ -11,10 +11,10 @@
   });
   // Observe the rejection even when the visitor never opens an interactive tool.
   catalog.catch(() => {});
-  const offlineTools = import(url('offline.mjs?v=3'));
+  const offlineTools = import(url('offline.mjs?v=4'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
-  import(url('offline-map.mjs?v=4')).then(module => { localStyle=module; }).catch(() => {});
+  import(url('offline-map.mjs?v=5')).then(module => { localStyle=module; }).catch(() => {});
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   function open(dialog) {
@@ -128,7 +128,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  Promise.all([catalog, import(url('workshop.mjs?v=18'))]).then(async ([data, {initWorkshop}]) => {
+  Promise.all([catalog, import(url('workshop.mjs?v=19'))]).then(async ([data, {initWorkshop}]) => {
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     if (document.body.dataset.tool) {
@@ -146,7 +146,7 @@
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
     document.documentElement.dataset.tripReady = 'true';
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=5')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=6')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -185,24 +185,24 @@
     $('#map-status').textContent = message + (mapBaseError ? ' Подложка карты не загрузилась; линии и список остановок доступны.' : '');
   }
   async function initializeMap(local) {
-    const context=local?.route || 'region';
+    const context=local ? `${local.route}:${local.version || ''}` : 'region',vector=!local || local.kind==='region';
     if(mapReady && mapContext!==context){mapNavigation?.destroy();mapNavigation=undefined;map?.remove();map=undefined;mapReady=undefined;markers=[];}
     if (mapReady) return mapReady;
     mapContext=context;
     mapReady = (async () => {
       await loadMapLibrary();
       mapBaseError = false;
-      map = new maplibregl.Map({container:'interactive-map', center:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
+      map = new maplibregl.Map({container:'interactive-map', center:local?[(local.bbox[0]+local.bbox[2])/2,(local.bbox[1]+local.bbox[3])/2]:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
         maxBounds:local ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
-        style:local ? localStyle.localMapStyle(local) : (await import(url('region-map.mjs?v=2'))).regionMapStyle(base)});
-      map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:local?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
+        style:vector ? (await import(url('region-map.mjs?v=3'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
+      map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:!vector?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
       map.addControl(new maplibregl.AttributionControl({compact:false}), 'bottom-right');
       map.on('error', () => { mapBaseError = true; setMapStatus(mapStatus); });
       await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(new Error('Карта загружается дольше обычного')), 20000); map.once('load', () => { clearTimeout(timer); resolve(); }); });
-      if(!local){
-        const {mapCities}=await import(url('region-map.mjs?v=2'));
-        const labels=mapCities.map(([name,lon,lat])=>{
+      if(vector){
+        const {mapCities}=await import(url('region-map.mjs?v=3'));
+        const labels=mapCities.filter(([,lon,lat])=>!local || lon>=local.bbox[0] && lon<=local.bbox[2] && lat>=local.bbox[1] && lat<=local.bbox[3]).map(([name,lon,lat])=>{
           const el=document.createElement('span');el.className='region-city-label';el.textContent=name;
           new maplibregl.Marker({element:el}).setLngLat([lon,lat]).addTo(map);return el;
         });
@@ -251,8 +251,11 @@
     }
     listPoints();
     try {
-      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=4'));
-      const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here);
+      if(!localStyle)localStyle=await import(url('offline-map.mjs?v=5'));
+      const maps=await localStyle.availableMaps(base);
+      const local=await localStyle.downloadedMap(base,route?.slug,trip ? chosen : here,maps);
+      if(version!==mapVersion)return;
+      localStyle.mapCoverage($('#map-dialog'),base,maps,local,()=>{setMapStatus('Открываем выбранную карту…');renderMap().catch(()=>{});});
       if(!navigator.onLine && !local)throw new Error('Нет загруженной карты');
       if(version!==mapVersion)return;
       if(!navigator.onLine){
@@ -311,9 +314,10 @@
       const travelCount=roads.features.filter(f=>f.properties.kind==='travel').length,accessCount=roads.features.length-travelCount;
       const roadStops=trip ? [personal.baseId(day?.start_at),...trip.places,personal.baseId(day?.night_at)].filter(Boolean) : [];
       const transitions=roadStops.slice(1).filter((id,index)=>id!==roadStops[index]).length;
-      setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?' Без сети видны окрестности загруженной прогулки.':''}` : route ? `${points.length} остановок · Окрестности прогулки · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? 'Без сети · Показана карта окрестностей загруженной прогулки. Другие районы появятся при подключении.' : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
+      setMapStatus(tripMap && !points.length ? !chosen.length?'Здесь появятся ваши точки. Добавьте первое место в «Мой маршрут».':!navigator.onLine?'Без сети: выбранные остановки вне скачанной карты. Черновик дня доступен в планировщике.':'Остановки этого дня скрыты фильтром. Выберите «Все».' : trip ? `${modeLabel} · Переходов по дорогам: ${travelCount} из ${transitions}.${accessCount?` Пеших участков у парковок: ${accessCount}.`:''} Линии — оценка по OpenStreetMap; доступ и входы нужно сверить.${!navigator.onLine?` Без сети: ${local?.kind==='region'?local.name:'окрестности загруженной прогулки'}.`:''}` : route ? `${points.length} остановок · ${local.kind==='region'?local.name:'Окрестности прогулки'} · Сверено по карте ${new Date(local.checked_at+'T12:00:00').toLocaleDateString('ru-RU')}` : local ? `${navigator.onLine?'Скачанная карта':'Без сети'} · ${local.kind==='region'?local.name:'окрестности загруженной прогулки'}. Покрытие можно сменить над картой.` : `На карте мест: ${points.length}. Выберите точку, чтобы открыть карточку.`);
     } catch { setMapStatus('Интерактивная карта сейчас недоступна. Карточки остановок доступны в списке ниже.'); }
   }
+  for(const event of ['online','offline','godune:offline-change','godune:memory-cleared'])window.addEventListener(event,()=>{if(inlineMap || $('#map-dialog')?.open)renderMap().catch(()=>{});});
   window.addEventListener('godune:memory-clearing',()=>{foodPreviewTrip=null;foodPreview=[];mapVersion++;mapNavigation?.setEntries([]);markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});$('#map-places')?.replaceChildren();});
   window.addEventListener('godune:food-preview',event=>{
     foodPreviewTrip=structuredClone(event.detail);foodPreview=[];tripMap=true;mapFocus=null;activeRoute=null;mapSelection='all';

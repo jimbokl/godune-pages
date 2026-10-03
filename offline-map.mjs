@@ -1,4 +1,5 @@
-import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=2';
+import {offlineAction} from './offline.mjs?v=4';
+import {mapGlyphs,roadLabelLayout,roadLabelPaint} from './region-map.mjs?v=3';
 export function localMapStyle(data,base=new URL('.',import.meta.url)) {
   const polygon = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'Polygon']];
   const line = kind => ['all',['==',['get','kind'],kind],['==',['geometry-type'],'LineString']];
@@ -14,31 +15,46 @@ export function localMapStyle(data,base=new URL('.',import.meta.url)) {
   ]};
 }
 
-export async function downloadedMap(base, route, point) {
-  if (route) {
-    const response = await fetch(new URL(`data/offline-maps/${route}.geojson`,base));
-    if (!response.ok) throw new Error('Карта прогулки недоступна');
-    return response.json();
+let selected='';
+export function chooseMap(slug){selected=slug;}
+const inside=(p,b)=>p.lon>=b[0] && p.lon<=b[2] && p.lat>=b[1] && p.lat<=b[3];
+export async function availableMaps(base){
+  try{
+    const packs=await offlineAction(base,{type:'MAPS'});
+    // Packages saved before regional downloads have their bounds in the local map.
+    for(const pack of packs)if(!pack.bbox){const r=await fetch(new URL(`data/offline-maps/${pack.slug}.geojson`,base));if(r.ok)pack.bbox=(await r.json()).bbox;}
+    return packs.filter(p=>Array.isArray(p.bbox)).map(p=>({...p,route:p.slug}));
+  }catch{return [];}
+}
+export async function downloadedMap(base,route,point,maps,ignoreSelection=false){
+  maps=maps || await availableMaps(base);
+  if(selected && !maps.some(p=>p.slug===selected))selected='';
+  let choice=ignoreSelection?null:maps.find(p=>p.slug===selected);
+  if(!choice && !navigator.onLine){
+    const points=Array.isArray(point)?point:point?[point]:[];
+    const scored=maps.map(p=>({p,score:points.filter(x=>inside(x,p.bbox)).length}));
+    scored.sort((a,b)=>b.score-a.score || Number(b.p.kind==='region')-Number(a.p.kind==='region') || (b.p.bbox[2]-b.p.bbox[0])*(b.p.bbox[3]-b.p.bbox[1])-(a.p.bbox[2]-a.p.bbox[0])*(a.p.bbox[3]-a.p.bbox[1]));
+    // A selected walk keeps its detailed local map unless a region covers its stops.
+    choice=scored[0]?.p;
+    if(route && choice?.kind!=='region')choice=maps.find(p=>p.slug===route) || choice;
   }
-  if (navigator.onLine || !('caches' in window)) return null;
-  const names = (await caches.keys()).filter(n=>n.startsWith('godune-walk-offline:v1:'));
-  const points = Array.isArray(point) ? point : null;
-  let best = null, bestScore = -1;
-  for (const name of names.reverse()) {
-    const cache = await caches.open(name);
-    const metadata = await cache.match(new URL('__godune_package__',base));
-    if (!metadata) continue;
-    const record = await metadata.json();
-    const stored = new Set((await cache.keys()).map(r=>r.url));
-    if (!record.resources.every(r=>stored.has(new URL(r.path,base).href))) continue;
-    const response = await cache.match(new URL(`data/offline-maps/${record.slug}.geojson`,base));
-    if (!response) continue;
-    const data = await response.json();
-    const inside = p => p.lon>=data.bbox[0] && p.lon<=data.bbox[2] && p.lat>=data.bbox[1] && p.lat<=data.bbox[3];
-    if (points) {
-      const score = points.filter(inside).length;
-      if (score > bestScore) { best = data; bestScore = score; }
-    } else if (!point || inside(point)) return data;
+  if(choice?.kind==='region')return choice;
+  const walk=choice?.slug || route;
+  if(walk){const r=await fetch(new URL(`data/offline-maps/${walk}.geojson`,base));if(!r.ok)throw new Error('Карта прогулки недоступна');return r.json();}
+  return null;
+}
+export function mapCoverage(root,base,maps,current,onChange){
+  let panel=root.querySelector('[data-map-coverage]');
+  if(!panel){
+    panel=document.createElement('div');panel.className='map-coverage';panel.dataset.mapCoverage='';
+    const label=document.createElement('label'),text=document.createElement('span'),select=document.createElement('select'),link=document.createElement('a');
+    text.textContent='Карта с собой';select.setAttribute('aria-label','Покрытие скачанной карты');label.append(text,select);link.href=new URL('offline/',base);link.textContent='Скачать другую территорию →';panel.append(label,link);root.querySelector('#map-status').before(panel);
+    select.addEventListener('change',()=>{chooseMap(select.value);onChange();});
   }
-  return best;
+  const select=panel.querySelector('select');select.replaceChildren();
+  const option=(value,name)=>{const o=document.createElement('option');o.value=value;o.textContent=name;select.append(o);};
+  option('',navigator.onLine?'Вся область · онлайн':'Выбрать автоматически');
+  for(const pack of maps)option(pack.slug,pack.kind==='region'?pack.name:`Прогулка: ${pack.name}`);
+  select.value=selected || '';select.disabled=!maps.length;panel.dataset.coverage=current?.route || 'online';
+  panel.hidden=navigator.onLine && !maps.length;
 }
