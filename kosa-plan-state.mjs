@@ -1,7 +1,7 @@
 import {cleanTrip,emptyTrip} from './trip-state.mjs?v=17';
-import {mergeJourney,tripHasDraft,validTripDate} from './trip-days-state.mjs?v=12';
+import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=12';
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=1';
-import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2';
+import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
@@ -45,7 +45,9 @@ export function kosaNote(answers,day,table,catalog,interchanges) {
   const selected=selectKosaInterchanges(answers,interchanges);
   if(selected){
     const walking=assessKosaWalking(answers,selected);
-    rows.push(...walking.checks.map(check=>check.text),`Переходы: ${selected.source.name} · карта от ${selected.source.snapshot_at}. Площадка № 210 и последние метры ещё не проверены на месте.`);
+    rows.push(...walking.checks.map(check=>check.text),...walking.checks.filter(check=>check.trail).map(check=>
+      `${check.trail.name}: длина тропы — ${check.trail.source_url} · сверено ${check.trail.checked_at}. Темп ${check.trail.pace_kmh} км/ч и паузы — выбранная оценка, не полевое измерение.`),
+      `Переходы: ${selected.source.name} · карта от ${selected.source.snapshot_at}. Площадка № 210 и последние метры ещё не проверены на месте.`);
   }else rows.push('Время переходов пока не сопоставлено с картой. Уточните его перед поездкой.');
   rows.push(`Источник: ${table.source_url} · таблица с ${table.valid_from} · сверена ${table.checked_at}.`,
     'Рейсы на дату поездки не подтверждены. Это план по опубликованной таблице, а не билет или бронь.',
@@ -53,7 +55,7 @@ export function kosaNote(answers,day,table,catalog,interchanges) {
     'Карты и PDF каждой тропы скачайте отдельно на godune.ru/kurshskaya-kosa/bez-mashiny/. Между тропами нет общего пешего трека.');
   return rows.join('\n');
 }
-export function addKosaDay(current,answers,day,table,catalog,interchanges) {
+export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
   const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);
   const routes=answers.walks==='two'?['vysota-efa','tancuyushchiy-les']:['vysota-efa'];
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
@@ -63,6 +65,15 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges) {
     && Object.entries(metadata).every(([key,value])=>d.kosa_plan[key]===value));
   // Saving and then exporting the same proposal must not create a second day.
   if(same)return cleanTrip({...before,routes:[...new Set([...before.routes,...routes])]},catalog);
+  // Replace only the exact generated day this form previously saved or restored.
+  // A changed date, another active day or a concurrent edit keeps the append path.
+  const target=before.itinerary?.days.find(d=>d.id===before.itinerary.active);
+  if(editingDay?.kosa_plan?.version===1&&target?.id===editingDay.id&&target.date===answers.date
+    &&JSON.stringify(target)===JSON.stringify(editingDay)){
+    const updated={...target,note,kosa_plan:metadata};
+    return cleanTrip(chooseTripDay({...before,routes:[...new Set([...before.routes,...routes])],
+      itinerary:{...before.itinerary,days:before.itinerary.days.map(d=>d.id===target.id?updated:d)}},target.id),catalog);
+  }
   const entry={id:'day-1',date:answers.date,places:[],start_at:null,night_at:null,note,costs:{},kosa_plan:metadata};
   const incoming={...emptyTrip(),date:answers.date,month:Number(answers.date.slice(5,7)),routes,
     itinerary:{version:1,active:entry.id,people:before.itinerary?.people || 1,days:[entry]}};

@@ -1,5 +1,5 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=6';
-import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=7';
+import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog,interchanges){
@@ -41,7 +41,8 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
     if(row.title==='Пора к обратной остановке')row.map_id=atForest?'forest-forest-out':'efa-efa-out';
     const field={'Пересадка на автобус':'to_bus','Снова в Зеленоградске':'to_train','Дюны и высокий горизонт':'first_visit','Сосны и короткая тропа':'second_visit'}[row.title];
     const check=walking.checks.find(c=>c.field===field);
-    if(check&&check.state!=='within_estimate'){row.walking_check=check;row.text+=' '+check.text;}
+    if(check?.trail){row.trail_budget=check.trail;row.text+=' '+check.text;}
+    if(check&&check.state!=='within_estimate'){row.walking_check=check;if(!check.trail)row.text+=' '+check.text;}
   }
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:rail?rail.home_finish-rail.home_start:day.finish-day.outward.departure,finish:rail?rail.home_finish:day.finish,timeline,...(rail?{rail,origin:answers.origin||'home'}:{}),

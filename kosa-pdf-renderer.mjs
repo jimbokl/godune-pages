@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=6';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=7';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');
@@ -72,7 +72,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   page.drawText(clock(snapshot.finish),{x:margin+12,y:y-42,font:title,size:24,color:ink});y-=77;
   paragraph(snapshot.walks.length===2?'Дюны Эфа и Танцующий лес. Между тропами - автобус.':'Высота Эфа. Настил, смотровые и возвращение к началу тропы.');
   paragraph('Это ваш план по опубликованной таблице № 210. Рейсы на дату поездки и наличие мест ещё нужно подтвердить.',{size:bodySize,color:muted});
-  if(snapshot.walking?.status==='too_short')paragraph('В плане есть слишком короткие переходы. Увеличьте их время перед поездкой. Подробности отмечены в ритме дня.',{size:bodySize});
+  if(snapshot.walking?.status==='too_short')paragraph('В плане есть слишком короткие переходы или прогулки. Увеличьте их время перед поездкой. Подробности отмечены в ритме дня.',{size:bodySize});
   else if(snapshot.walking&&snapshot.walking.status!=='within_estimate')paragraph('Время переходов пока не сопоставлено с картой. Уточните его перед поездкой.',{size:bodySize});
   paragraph(walkingMaps.length?'Внутри - ваш день, запасной вариант, карты переходов и троп. Всё читается без связи.':'Внутри - расписание вашего дня, запасной вариант и автономные карты троп.',{space:0});
   start();heading('Ритм вашего дня');
@@ -98,6 +98,20 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph(`Таблица с ${snapshot.publication.valid_from}. Сверена ${snapshot.publication.checked_at}.`,{size:9,color:muted});
   paragraph(snapshot.publication.source_url,{size:9,color:muted});
   if(snapshot.rail){heading('Источник электричек');paragraph(snapshot.rail.publication.name,{size:10});paragraph('Сверено '+snapshot.rail.publication.checked_at,{size:9,color:muted});paragraph(snapshot.rail.publication.url,{size:9,color:muted});}
+  for(const check of snapshot.walking?.checks||[])if(check.trail){
+    const name=check.trail.name+' — время на тропу';
+    const source=check.trail.source_name+' · длина сверена '+check.trail.checked_at;
+    const titleSize=phone?23:30,urlSize=phone?8:9;
+    const blockHeight=lines(name,title,titleSize).length*titleSize*1.18+16
+      +lines(check.text,ui,bodySize).length*bodySize*1.48+12
+      +lines(source,ui,9).length*9*1.48+12
+      +lines(check.trail.source_url,ui,urlSize).length*urlSize*1.48+12;
+    if(y-blockHeight<49)start();
+    heading(name);
+    paragraph(check.text,{size:bodySize,color:muted});
+    paragraph(source,{size:9,color:muted});
+    paragraph(check.trail.source_url,{size:urlSize,color:muted});
+  }
   const interchangePages=[];
   for(const {walk,bytes}of walkingMaps){
     start();const begins=doc.getPageCount();heading(walk.title);
