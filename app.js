@@ -12,6 +12,19 @@
   }
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
+  const kosaOffline = $('[data-kosa-offline]');
+  if (kosaOffline) {
+    let opening;
+    const openOffline = () => {
+      if (!kosaOffline.open || opening) return;
+      opening = import(url('kosa-offline.mjs?v=1')).then(({initKosaOffline}) => initKosaOffline(base)).catch(() => {
+        opening = undefined;
+        kosaOffline.querySelector('[data-kosa-offline-status]').textContent = 'Загрузки пока не открылись. Закройте и откройте этот блок, чтобы попробовать снова. Готовые PDF обеих троп доступны ниже.';
+      });
+    };
+    kosaOffline.addEventListener('toggle', openOffline);
+    openOffline();
+  }
   // Open the saved editor before native fragment navigation and restore it
   // after asynchronous trip rendering. Same-fragment clicks also work.
   function revealPlannerTrip(hash, {scroll=false, focus=false}={}) {
