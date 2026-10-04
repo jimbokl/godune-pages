@@ -252,12 +252,13 @@
   performance.mark('godune:atmosphere-start');
   const wasmReady = (async () => {
     performance.mark('godune:atmosphere-wasm-start');
-    const response = await fetch(new URL('assets/atmosphere.wasm?v=6',base));
+    const [response,{instantiateWasm}] = await Promise.all([
+      fetch(new URL('assets/atmosphere.wasm?v=6',base)),
+      import(new URL('wasm-loader.mjs?v=1',base)),
+    ]);
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
-    const backup = response.clone();
-    let result;
-    try { result = await WebAssembly.instantiateStreaming(response,{}); }
-    catch { result = await WebAssembly.instantiate(await backup.arrayBuffer(),{}); }
+    const result = await instantiateWasm(response,{name:'atmosphere'});
+    scene.dataset.compiler = result.compiler;
     performance.mark('godune:atmosphere-wasm-ready');
     return result;
   })();

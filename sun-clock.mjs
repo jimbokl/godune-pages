@@ -1,3 +1,4 @@
+import {instantiateWasm} from './wasm-loader.mjs?v=1';
 const events=['dawn','sunrise','sunset','dusk','nautical_dawn','nautical_dusk','astronomical_dawn','astronomical_dusk'];
 let engine;
 export function calculateSun(wasm,date,lat,lon) {
@@ -12,7 +13,7 @@ export function calculateSun(wasm,date,lat,lon) {
 export function loadSunClock(base) {
   if(!engine)engine=fetch(new URL('assets/sun.wasm?v=1',base)).then(async response=>{
     if(!response.ok)throw Error('Не удалось рассчитать часы солнца.');
-    const {instance}=await WebAssembly.instantiate(await response.arrayBuffer());
+    const {instance}=await instantiateWasm(response,{name:'sun'});
     return (date,lat,lon)=>calculateSun(instance.exports,date,lat,lon);
   }).catch(error=>{engine=null;throw error;});
   return engine;

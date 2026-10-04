@@ -1,4 +1,4 @@
-import {loadSunClock} from './sun-clock.mjs?v=1';
+import {loadSunClock} from './sun-clock.mjs?v=2';
 import {THEME_KEY,LIGHT_KEY,validMode,balticTime,themeAppearance,lightClock,lightLocation,validSun} from './theme-state.mjs?v=2';
 const root=document.documentElement,base=new URL('.',import.meta.url),control=document.querySelector('[data-theme-control]');
 const system=matchMedia('(prefers-color-scheme: dark)');

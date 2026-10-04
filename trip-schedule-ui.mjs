@@ -2,7 +2,7 @@ import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2'
 import {baseName} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=6';
 import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=9';
-import {loadScheduler} from './trip-scheduler.mjs?v=14';
+import {loadScheduler} from './trip-scheduler.mjs?v=15';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=4';

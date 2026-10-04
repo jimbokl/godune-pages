@@ -1,6 +1,7 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=14';
+import {loadScheduler} from './trip-scheduler.mjs?v=15';
 import {kosaInput,kosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=1';
 import {createTripFile} from './trip-file.mjs?v=16';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=1';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -10,7 +11,7 @@ const download=(body,name,type)=>{const a=el('a');a.href=URL.createObjectURL(new
 export async function initKosaPlanner({workshop,catalog,base}) {
   const form=document.querySelector('#kosa-form'),result=document.querySelector('#kosa-result'),status=document.querySelector('#kosa-status');
   if(!form || !result)return;
-  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise;
+  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise,exportAbort;
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kaliningrad',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const part=type=>today.find(p=>p.type===type).value;
   form.elements.date.value=`${part('year')}-${part('month')}-${part('day')}`;
@@ -26,6 +27,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   function row(list,time,title,text){const item=el('li'),timeNode=el('time',clock(time)),copy=el('div');timeNode.dateTime=clock(time);copy.append(el('h4',title),el('p',text));item.append(timeNode,copy);list.append(item);}
   async function calculate({focus=false}={}) {
     if(!form.reportValidity())return;
+    exportAbort?.abort();
     const ticket=++sequence,answers=read();result.hidden=true;
     status.textContent='Подбираем рейсы из опубликованной таблицы…';
     try {
@@ -48,20 +50,39 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         if(answers.walks==='two' && day.validity==='needs_date_check')actions.append(action('Оставить только дюны',()=>{form.elements.walks.value='one';calculate();}));
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
+        const roadbook=kosaRoadbook(answers,day,publication);
         const summary=el('div',undefined,'kosa-result-summary');
         for(const [label,value]of [['От автобуса до возвращения',duration(day.finish-day.outward.departure)],['Обратно в Зеленоградске',clock(day.finish)],['Отдельных прогулок',answers.walks==='two'?'Две':'Одна']]){const box=el('div');box.append(el('small',label),el('strong',value));summary.append(box);}result.append(summary);
         const list=el('ol',undefined,'kosa-plan-timeline');
-        row(list,day.outward.departure,'Из Зеленоградска — к Эфе',`Автобус № 210. У остановки к ${clock(day.outward.departure-answers.boarding)}. Прибытие к тропе по таблице — ${clock(day.outward.arrival)}.`);
-        row(list,day.outward.arrival,'Дюны и высокий горизонт',`${answers.first_visit} мин на подход, настил, смотровые и возвращение к автобусу. Это ваш запас; темп, погоду и доступ проверьте на месте.`);
-        if(day.transfer){row(list,day.transfer.departure,'От Эфы — к Танцующему лесу',`Переезд на автобусе № 210. По таблице — у леса в ${clock(day.transfer.via)}. Между тропами пешком этот план не ведёт.`);row(list,day.transfer.via,'Сосны и короткая тропа',`${answers.second_visit} мин вместе с возвращением к остановке. Если первый автобус задержался, второй осмотр можно пропустить.`);}
-        row(list,day.board_by,'Пора к обратной остановке',`По таблице автобус в ${clock(answers.walks==='two'?day.inward.via:day.inward.departure)}. Запас ${answers.boarding} мин до посадки. Свободные места неизвестны — это нужно проверить заранее.`);
-        row(list,day.finish,'Снова в Зеленоградске','Электричка или автобус до вашего жилья — отдельная часть дня. Оставьте запас до последнего подходящего рейса.');
+        for(const item of roadbook.timeline)row(list,item.time,item.title,item.text);
         result.append(list);
-        if(day.backup)result.append(el('p',`Следующий обратный рейс в таблице — ${clock(answers.walks==='two'?day.backup.via:day.backup.departure)}, в Зеленоградске — ${clock(day.backup.arrival)}. Это ещё один вариант для проверки, а не гарантия посадки.`,'kosa-plan-warning'));
+        result.append(el('p',roadbook.fallback,'kosa-plan-warning'));
         const efa=catalog.poi.find(p=>p.slug==='vysota-efa');
         const light=engine.light({version:1,date:answers.date,stops:[{id:'efa',lat:efa.lat,lon:efa.lon,begins:day.outward.arrival,leaves:day.transfer?day.transfer.departure:day.inward.departure,outdoor:true}]});
         const sun=light.stops[0];if(sun?.sun?.sunset!==null && sun?.sun?.sunset!==undefined)result.append(el('p',`Закат у Эфы по астрономическому расчёту — ${clock(sun.sun.sunset)}. ${['dark','twilight'].includes(sun.state)?'Часть осмотра или ожидания приходится на сумерки. Выберите более ранний день или меньше времени на тропе.':'Расчёт света не подтверждает погоду или освещение настилов.'}`));
         const actions=el('div',undefined,'kosa-result-actions'),saveStatus=el('p','План с автобусами сохранится в записи дня. Пешие прогулки останутся раздельными.','kosa-save-status');saveStatus.setAttribute('role','status');
+        const guide=el('section',undefined,'kosa-personal-guide');guide.setAttribute('aria-labelledby','kosa-pdf-title');
+        const guideTitle=el('h4','Этот день - с собой');guideTitle.id='kosa-pdf-title';
+        const guideCopy=el('p','Один PDF: ваш план, возвращение и карты выбранных троп. Сохраните его в телефоне, чтобы открыть без связи.');
+        const formatLabel=el('label','Формат путеводителя'),format=el('select');format.id='kosa-pdf-format';formatLabel.htmlFor=format.id;
+        for(const [value,text]of [['phone','Для телефона'],['print','Для печати - A4']]){const option=el('option',text);option.value=value;format.append(option);}
+        const pdfStatus=el('p','Файл собирается по кнопке. Ваш план остаётся в браузере.','kosa-pdf-status');pdfStatus.setAttribute('role','status');
+        const pdfCancel=action('Отменить сборку',()=>exportAbort?.abort());pdfCancel.hidden=true;
+        const pdf=action('Скачать мой день - PDF',async()=>{
+          const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
+          pdfStatus.textContent='Загружаем карты для вашего дня…';
+          try{
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=1');abort.signal.throwIfAborted();
+            const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
+            abort.signal.throwIfAborted();if(ticket!==sequence)return;
+            download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
+            pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Сохраните его в «Файлы» и проверьте без интернета.`;
+            try{performance.mark('godune:kosa-pdf-ready',{detail:{pages:output.pages,bytes:output.bytes.length}});}catch{}
+          }catch(error){if(ticket===sequence)pdfStatus.textContent=abort.signal.aborted?'Сборка отменена. План дня на месте.':`${error.message} План дня на месте; можно повторить попытку.`;}
+          finally{pdf.disabled=false;pdfCancel.hidden=true;format.disabled=false;if(exportAbort===abort)exportAbort=null;}
+        },'kosa-pdf-download');
+        const pdfControls=el('div',undefined,'kosa-pdf-controls');pdfControls.append(formatLabel,format,pdf,pdfCancel);
+        guide.append(guideTitle,guideCopy,pdfControls,pdfStatus);result.append(guide);
         const save=action('Сохранить день и прогулки',async()=>{
           save.disabled=true;saveStatus.textContent='Сохраняем поездку в этом браузере…';
           try{const outcome=await workshop.setState(current=>addKosaDay(current,answers,day,publication,catalog),'День на Куршской косе сохранён.');
@@ -78,6 +99,6 @@ export async function initKosaPlanner({workshop,catalog,base}) {
     }catch(error){if(ticket!==sequence)return;status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.hidden=true;}
   }
   form.addEventListener('submit',event=>{event.preventDefault();calculate({focus:true});});
-  form.addEventListener('change',()=>{sequence++;result.hidden=true;status.textContent='Настройки изменились. Нажмите «Подобрать мой день», чтобы обновить рейсы.';});
+  form.addEventListener('change',()=>{exportAbort?.abort();sequence++;result.hidden=true;status.textContent='Настройки изменились. Нажмите «Подобрать мой день», чтобы обновить рейсы.';});
   form.dataset.kosaReady='true';submit.disabled=false;status.textContent='Расчёт начнётся по кнопке. Дорогу до Зеленоградска выбирайте отдельно.';
 }
