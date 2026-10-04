@@ -69,6 +69,9 @@ export function dailyDiscovery(items, catalog, date = new Date()) {
 }
 
 export async function initWorkshop(catalog, base) {
+  const yieldTask = () => globalThis.scheduler?.yield?.() || new Promise(resolve => setTimeout(resolve, 0));
+  let finishInitialization;
+  const initialized = new Promise(resolve => { finishInitialization = resolve; });
   const $ = selector => document.querySelector(selector);
   const url = path => new URL(path, base).href;
   let starterEmpty;
@@ -93,11 +96,17 @@ export async function initWorkshop(catalog, base) {
   };
   const reorder = initTripReorder($('#my-places'), {announce, move: (id, anchor, side) =>
     commit(current => reorderTripPlace(current, id, anchor, side, catalog), 'Порядок точек сохранён.')});
+  await yieldTask();
   const schedule = initTripSchedule({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  await yieldTask();
   const rail = initTripRail({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  await yieldTask();
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  await yieldTask();
   const cancellation = initTripCancellation({read:()=>state,commit,catalog});
+  await yieldTask();
   const replacement = initTripReplacement({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  await yieldTask();
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
     const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item';
@@ -191,6 +200,9 @@ export async function initWorkshop(catalog, base) {
     if (summary) summary.textContent = hasTrip ? `${available ? 'Ваш выбор сохранён.' : 'Ваш выбор останется в этой вкладке.'} Добавьте остановку, поменяйте порядок или разложите день по времени.` : 'Выберите прогулку — её остановки появятся в вашем маршруте. Или начните с места, к которому хочется вернуться.';
   }
   async function commit(next, message, options = {}) {
+    // Controls installed in earlier tasks may receive input while later panels
+    // are still being prepared. Keep that edit until every renderer exists.
+    await initialized;
     writes++; document.documentElement.dataset.tripWriting = 'true';
     try {
       const result = await memory.change(current => typeof next === 'function' ? next(current) : next, {...options, label: message});
@@ -275,5 +287,6 @@ export async function initWorkshop(catalog, base) {
   }};
   initTripSharing(catalog, base, workshop);
   initMemoryControls(catalog, base, workshop);
+  finishInitialization();
   return workshop;
 }

@@ -12,7 +12,10 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = true, raf = 0, previous = 0, elapsed = 0, frames = 0;
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
-  let resolutionLimit = navigator.connection?.saveData || innerWidth < 700 ? 1 : 1.5;
+  const resolutionCeiling = navigator.connection?.saveData || innerWidth < 700 ? 1 : 1.5;
+  // Start gently. Higher pixel density is earned by fast measured frames,
+  // instead of making every desktop (including software GPUs) pay for it first.
+  let resolutionLimit = 1, qualityRaised = false, qualityReduced = false;
   let sampleCost = 0, sampleFrames = 0, sampleLag = 0, fps = 30;
   scene.dataset.quality = String(resolutionLimit);
   let sceneModule;
@@ -175,14 +178,22 @@
       sampleLag += interval;
       if (++sampleFrames === (frames < 30 ? 3 : 12)) {
         const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > 65;
+        const comfortable = sampleCost / sampleFrames < 6 && sampleLag / sampleFrames < 45;
         if (overloaded && dpr > .75) {
+          qualityReduced = true;
           resolutionLimit = dpr > 1 ? 1 : .75;
           resize();
           performance.mark('godune:scene-quality', {detail:String(dpr)});
         } else if (overloaded && fps > 15) {
+          qualityReduced = true;
           fps = fps === 30 ? 20 : 15;
           scene.dataset.fps = String(fps);
           performance.mark('godune:scene-fps', {detail:String(fps)});
+        } else if (comfortable && frames >= 30 && !qualityRaised && !qualityReduced && resolutionCeiling > 1) {
+          qualityRaised = true;
+          resolutionLimit = resolutionCeiling;
+          resize();
+          performance.mark('godune:scene-quality', {detail:String(dpr)});
         }
         sampleCost = 0; sampleFrames = 0; sampleLag = 0;
       }
@@ -226,7 +237,7 @@
     performance.mark('godune:atmosphere-wasm-ready');
     return result;
   })();
-  const sceneReady = import(new URL('scene.mjs?v=9',base)).then(async module => {
+  const sceneReady = import(new URL('scene.mjs?v=10',base)).then(async module => {
     const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
     profileURL.searchParams.set('v','3');
     return {module,profile:await module.loadProfile(profileURL)};

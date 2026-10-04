@@ -61,9 +61,10 @@
   // The first screen keeps its own small animation engine. The full trip editor
   // starts near its section or on intent; direct tool pages start immediately.
   const homeHero = Boolean($('#top.hero'));
-  let wakeWorkshop, workshopObserver;
+  let wakeWorkshop, workshopObserver, workshopAwake = false;
   const workshopNeeded = new Promise(resolve => {
     wakeWorkshop = reason => {
+      workshopAwake = true;
       workshopObserver?.disconnect();
       perfMark('workshop-needed', reason);
       resolve();
@@ -74,9 +75,17 @@
     else {
       document.documentElement.dataset.tripReady = 'deferred';
       workshopObserver = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) wakeWorkshop('visible');
-      }, {rootMargin: '0px'});
-      workshopObserver.observe(section.querySelector('.workshop-main') || section);
+        // A border at the bottom of the first screen is not an editor in use.
+        // Wait until some of its controls are visible, or an explicit action.
+        if (entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .1)) wakeWorkshop('visible');
+      }, {rootMargin: '0px', threshold: [.1]});
+      const observe = () => requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (!workshopAwake) workshopObserver.observe(section.querySelector('.workshop-main') || section);
+      }));
+      // Visibility is meaningful after the deferred layout cascade settles.
+      if (document.documentElement.dataset.fullStyles === 'loading')
+        window.addEventListener('godune:full-styles-ready', observe, {once:true});
+      else observe();
       section.addEventListener('focusin', () => wakeWorkshop('focus'), {once:true});
       window.addEventListener('hashchange', () => wakeWorkshop('anchor'), {once:true});
       document.addEventListener('pointerover', event => {
@@ -198,7 +207,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=38'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=39'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();

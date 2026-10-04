@@ -120,8 +120,11 @@ void main(){
  gl_FragColor=vec4(clamp(color,0.0,1.0)*alpha,alpha);
 }`;
 export async function createScene(surface, photo, input) {
+  const yieldTask = () => globalThis.scheduler?.yield?.() || new Promise(resolve => setTimeout(resolve, 0));
+  await yieldTask();
   const gl=surface.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,depth:false});
   if (!gl) return null;
+  await yieldTask();
   let profile=normalizeProfile(input), revision=0, disposed=false;
   const shaders=[], textures=[], masks=createSceneMaskBuilder();
   const mw=Math.min(1024,photo.naturalWidth), mh=Math.round(mw*photo.naturalHeight/photo.naturalWidth);
@@ -148,6 +151,7 @@ export async function createScene(surface, photo, input) {
   else await new Promise(resolve=>setTimeout(resolve,0));
   if(!gl.getProgramParameter(program,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
   mark('scene-shader-ready');
+  await yieldTask();
   gl.useProgram(program);
   const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
@@ -160,9 +164,11 @@ export async function createScene(surface, photo, input) {
       gl.texParameteri(gl.TEXTURE_2D,key,value);
   }
   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,textures[0]);
+  await yieldTask();
   mark('scene-photo-upload-start');
   gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,photo);
   mark('scene-photo-upload-ready');
+  await yieldTask();
   gl.uniform1i(u.photograph,0);gl.uniform1i(u.regions,1);
   async function setProfile(value,prepared) {
     const next=normalizeProfile(value), ticket=++revision;
