@@ -15,6 +15,8 @@ export function kosaInput(answers,table,catalog) {
   const input={version:1,date:answers.date,valid_from:table.valid_from,valid_until:table.valid_until,checked_at:table.checked_at,
     ready_at:answers.ready,boarding:answers.boarding,first_visit:answers.first_visit,
     second_visit:answers.walks==='two'?answers.second_visit:null,outward:table.outward,inward:table.inward};
+  const location=slug=>{const point=catalog?.poi?.find(p=>p.slug===slug);return point&&Number.isFinite(point.lat)&&Number.isFinite(point.lon)?{lat:point.lat,lon:point.lon}:null;};
+  const first=location('vysota-efa');if(first)input.visit_light={first,second:location('tancuyushchiy-les')};
   const rail=kosaRailTable(answers,catalog);
   if(rail){
     if(!rail.service || (rail.reason && !['unpublished_year','outside_validity'].includes(rail.reason)) || !rail.reason && (!rail.outward || !rail.inbound))throw Error('Нет проверенной таблицы электричек на эту дату.');

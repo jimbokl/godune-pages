@@ -2,7 +2,7 @@ import {selectedDay} from './trip-days-state.mjs?v=12';
 import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=9';
 import {transferTitle} from './trip-transfer-costs.mjs?v=3';
 import {rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=16';
+import {loadScheduler} from './trip-scheduler.mjs?v=17';
 import {planInput} from './trip-schedule-state.mjs?v=9';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 

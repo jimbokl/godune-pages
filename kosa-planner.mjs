@@ -1,5 +1,5 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=16';
-import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=8';
+import {loadScheduler} from './trip-scheduler.mjs?v=17';
+import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=9';
 import {createTripFile} from './trip-file.mjs?v=17';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=8';
 import {assessKosa} from './day-readiness.mjs?v=3';
@@ -64,11 +64,12 @@ export async function initKosaPlanner({workshop,catalog,base}) {
     try {
       const [publication,engine,interchanges]=await Promise.all([table(),loadScheduler(base),maps()]);
       if(ticket!==sequence)return;
-      const started=performance.now(),day=engine.transitDay(kosaInput(answers,publication,catalog));
+      const started=performance.now(),input=kosaInput(answers,publication,catalog),day=engine.transitDay(input);
+      const alternatives=day.state==='candidate'?[]:engine.transitAdvice(input);
       const elapsed=performance.now()-started;
       try{performance.mark('godune:kosa-plan-ready',{detail:{calculation_ms:elapsed,state:day.state}});}catch{}
       result.dataset.calculationMs=elapsed.toFixed(3);result.dataset.kosaState=day.state;result.dataset.kosaValidity=day.validity;
-      result.replaceChildren();result.hidden=false;result.classList.remove('kosa-updating');result.setAttribute('aria-busy','false');result.dataset.kosaDate=answers.date;result.dataset.kosaReadyAt=answers.ready;result.dataset.kosaWalks=answers.walks;result.dataset.kosaOrigin=answers.origin||'bus';
+      result.replaceChildren();result.hidden=false;result.classList.remove('kosa-updating');result.setAttribute('aria-busy','false');result.dataset.kosaDate=answers.date;result.dataset.kosaReadyAt=answers.ready;result.dataset.kosaWalks=answers.walks;result.dataset.kosaOrigin=answers.origin||'bus';result.dataset.kosaCity=answers.city;result.dataset.kosaStation=answers.station||'';
       const title=el('h3',day.state==='candidate'?'Ваш день у дюн складывается':'Для этого дня нужен другой план');title.id='kosa-result-title';title.tabIndex=-1;result.append(title,el('p',answers.city==='kaliningrad'&&answers.origin==='station'?'Начало и возвращение — у выбранного вокзала. Дорога от жилья в этот план не входит.':cityNote[answers.city]));
       const warning=el('p','Часы — из опубликованной таблицы. Перед выездом подтвердите рейсы на свою дату.','kosa-plan-warning');result.append(warning);
       if(day.state!=='candidate') {
@@ -81,8 +82,31 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           'После выбранной прогулки в таблице не находится обратный рейс с вашим запасом. Попробуйте приехать раньше, сократить осмотр или выбрать только дюны.';
         result.append(el('p',reason,'kosa-plan-warning'));const actions=el('div',undefined,'kosa-result-actions');
         if(day.state==='unknown_approach')actions.append(action('Указать дорогу до вокзала',()=>{homeFields.hidden=false;form.elements.to_station.focus();}));
-        else if(day.validity==='needs_date_check')actions.append(action('Попробовать раньше',()=>{form.elements.ready.value=answers.city==='kaliningrad'?'07:30':'09:00';calculate();}));
-        if(answers.walks==='two' && day.validity==='needs_date_check')actions.append(action('Оставить только дюны',()=>{form.elements.walks.value='one';calculate();}));
+        if(alternatives.length){
+          const proposals=el('div',undefined,'kosa-alternatives');
+          proposals.append(el('h4','Вот что можно изменить'),el('p','Варианты рассчитаны по той же таблице. Время на дюны и дорогу остаётся вашим. Выберите подходящий — поездка сама не изменится.'));
+          for(const option of alternatives){
+            const proposed={...answers,ready:option.ready_at,walks:option.second_visit===null?'one':'two'},preview=kosaRoadbook(proposed,option.day,publication,catalog,interchanges);
+            const card=el('div',undefined,'kosa-alternative');card.dataset.kosaAlternative=option.kind;card.dataset.readyAt=option.ready_at;card.dataset.finish=preview.finish;
+            const earlier=option.ready_at<answers.ready,dunesOnly=option.kind==='dunes_only';
+            card.append(el('h4',dunesOnly?'Только дюны Эфы':answers.walks==='two'?'Начать раньше, сохранить обе прогулки':'Начать раньше, сохранить прогулку'));
+            const startLabel=option.day.rail?(answers.origin==='station'?'Начало у вокзала':'Выход из дома'):'У автобуса в Зеленоградске';
+            const finishLabel=option.day.rail?(answers.origin==='station'?'Снова у вокзала':'К жилью, по вашей оценке'):'Снова в Зеленоградске';
+            const times=el('dl');for(const [label,value]of [[startLabel,clock(option.day.rail?.home_start??option.ready_at)],[finishLabel,clock(preview.finish)]])times.append(el('dt',label),el('dd',value));card.append(times);
+            card.append(el('p',`Автобус к Эфе в ${clock(option.day.outward.departure)}.${dunesOnly?' Танцующий лес в этот вариант не входит.':''}${earlier?` Начало вместо ${clock(answers.ready)} — в ${clock(option.ready_at)}.`:' Начало остаётся прежним.'}`));
+            const short=preview.walking.checks.filter(check=>check.trail&&check.state==='too_short');
+            if(short.length)card.append(el('p','Рейсы складываются, но на полную тропу пока не хватает выбранного времени. После выбора увеличьте время на прогулку.','kosa-plan-warning'));
+            const efa=catalog.poi.find(p=>p.slug==='vysota-efa'),forest=catalog.poi.find(p=>p.slug==='tancuyushchiy-les');
+            const lightStops=[{id:'efa',lat:efa.lat,lon:efa.lon,begins:option.day.outward.arrival,leaves:option.day.transfer?.departure??option.day.inward.departure,outdoor:true}];
+            if(option.day.transfer&&forest)lightStops.push({id:'forest',lat:forest.lat,lon:forest.lon,begins:option.day.transfer.via,leaves:option.day.inward.via,outdoor:true});
+            if(option.daylight===true)card.append(el('p','Осмотр и ожидание автобуса на косе — при дневном свете, по расчёту солнца.'));
+            const afterLight=engine.light({version:1,date:answers.date,stops:lightStops}).stops.find(stop=>['dark','twilight'].includes(stop.state));
+            if(afterLight)card.append(el('p',`Часть осмотра или ожидания — в сумерках. Закат по расчёту: ${clock(afterLight.sun.sunset)}. Для прогулки при дневном свете начните ещё раньше.`,'kosa-plan-warning'));
+            card.append(action(dunesOnly?(earlier?`Только дюны, начать в ${clock(option.ready_at)}`:'Выбрать только дюны'):`Начать в ${clock(option.ready_at)}`,()=>{if(ticket!==sequence)return;form.elements.ready.value=clock(option.ready_at);form.elements.walks.value=proposed.walks;calculate({focus:true});}));
+            proposals.append(card);
+          }
+          result.append(proposals);
+        } else if(day.validity==='needs_date_check'&&day.state!=='unknown_approach')result.append(el('p','Подходящий вариант с вашим временем на прогулки не найден. Измените время осмотра или проверьте другой способ возвращения.'));
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
         const roadbook=kosaRoadbook(answers,day,publication,catalog,interchanges);

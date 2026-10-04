@@ -1,6 +1,6 @@
 import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=2';
 import {planInput} from './trip-schedule-state.mjs?v=9';
-import {loadScheduler} from './trip-scheduler.mjs?v=16';
+import {loadScheduler} from './trip-scheduler.mjs?v=17';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
