@@ -42,10 +42,11 @@ export function kosaNote(answers,day,table,catalog,interchanges) {
     if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
     rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
   }
-  if(interchanges){
-    const selected=selectKosaInterchanges(answers,interchanges),walking=assessKosaWalking(answers,selected);
+  const selected=selectKosaInterchanges(answers,interchanges);
+  if(selected){
+    const walking=assessKosaWalking(answers,selected);
     rows.push(...walking.checks.map(check=>check.text),`Переходы: ${selected.source.name} · карта от ${selected.source.snapshot_at}. Площадка № 210 и последние метры ещё не проверены на месте.`);
-  }
+  }else rows.push('Время переходов пока не сопоставлено с картой. Уточните его перед поездкой.');
   rows.push(`Источник: ${table.source_url} · таблица с ${table.valid_from} · сверена ${table.checked_at}.`,
     'Рейсы на дату поездки не подтверждены. Это план по опубликованной таблице, а не билет или бронь.',
     'Перед поездкой: билет категории «пешком», копия билета и расписания, вода, запасной вариант возвращения.',
