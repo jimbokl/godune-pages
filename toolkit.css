@@ -212,6 +212,7 @@
 .route-legend span { font-size: 9px; color: var(--night-amber,#8b6d47); }
 .route-legend a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .route-plate-caption { font-size: 9px; color: var(--night-muted,#5f7382); margin: 16px 0 20px; }
+.route-plate-mapped .route-plate-caption { color: var(--sea-ink,#243f52); }
 .route-map-button {
   display: flex;
   align-items: center;

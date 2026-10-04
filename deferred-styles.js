@@ -8,7 +8,7 @@
   const firstPaint = new Promise(resolve => {
     if (document.hidden) setTimeout(resolve, 0);
     else {
-      const photo = document.querySelector('#top.hero .hero-picture img');
+      const photo = document.querySelector('#top.hero .hero-picture img, img[data-critical-image]');
       let settled = false;
       const events = ['pointerdown', 'keydown', 'scroll'];
       const painted = () => {
