@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=2';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=3';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');

@@ -32,13 +32,14 @@ export function kosaNote(answers,day,table,catalog) {
   if(day.transfer)rows.push(`Переезд: Эфа ${kosaClock(day.transfer.departure)} → Танцующий лес ${kosaClock(day.transfer.via)}. На тропу: ${answers.second_visit} мин.`);
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);
+  else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
   if(day.rail){
     const rail=kosaRailTable(answers,catalog),r=day.rail;
     rows.splice(2,0,`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин по вашей оценке; у поезда к ${kosaClock(r.station_by)}.`,
       `${rail.service.from}: поезд № ${r.outward.id} ${kosaClock(r.outward.departure)} → ${rail.service.to} ${kosaClock(r.outward.arrival)}. От станции до автобуса ${r.to_bus} мин по вашей оценке.`,
       `Обратно: от автобуса до поезда ${r.to_train} мин по вашей оценке; у поезда к ${kosaClock(r.train_by)}. Поезд № ${r.inward.id} ${kosaClock(r.inward.departure)} → ${rail.service.from} ${kosaClock(r.inward.arrival)}. До жилья ${r.from_station} мин; вернуться около ${kosaClock(r.home_finish)}.`);
-    rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.',
-      `Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
+    if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
+    rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
   }
   rows.push(`Источник: ${table.source_url} · таблица с ${table.valid_from} · сверена ${table.checked_at}.`,
     'Рейсы на дату поездки не подтверждены. Это план по опубликованной таблице, а не билет или бронь.',

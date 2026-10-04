@@ -1,4 +1,4 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=3';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog){
@@ -32,7 +32,7 @@ export function kosaRoadbook(answers,day,table,catalog){
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:rail?rail.home_finish-rail.home_start:day.finish-day.outward.departure,finish:rail?rail.home_finish:day.finish,timeline,...(rail?{rail}:{}),
     return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
-    fallback:fallback+(rail?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
+    fallback:fallback+(rail&&backup?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
     before:[rail?'Подтвердите электрички и автобусы на выбранную дату. Проверьте путь от жилья, выход со станции и обе пересадки.':'Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',
       'Оформите разрешение национального парка. Сохраните билет и его код в телефоне.',
       'Возьмите воду, одежду от ветра и заряженный телефон. Сохраните номер заранее согласованного водителя, если он будет вашим запасным вариантом.',
