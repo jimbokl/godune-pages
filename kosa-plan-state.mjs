@@ -35,9 +35,9 @@ export function kosaNote(answers,day,table,catalog) {
   else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
   if(day.rail){
     const rail=kosaRailTable(answers,catalog),r=day.rail;
-    rows.splice(2,0,`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин по вашей оценке; у поезда к ${kosaClock(r.station_by)}.`,
+    rows.splice(2,0,answers.origin==='station'?`Начало у вокзала ${rail.service.from} в ${kosaClock(r.home_start)}; у поезда к ${kosaClock(r.station_by)}. Дорога от жилья не включена.`:`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин по вашей оценке; у поезда к ${kosaClock(r.station_by)}.`,
       `${rail.service.from}: поезд № ${r.outward.id} ${kosaClock(r.outward.departure)} → ${rail.service.to} ${kosaClock(r.outward.arrival)}. От станции до автобуса ${r.to_bus} мин по вашей оценке.`,
-      `Обратно: от автобуса до поезда ${r.to_train} мин по вашей оценке; у поезда к ${kosaClock(r.train_by)}. Поезд № ${r.inward.id} ${kosaClock(r.inward.departure)} → ${rail.service.from} ${kosaClock(r.inward.arrival)}. До жилья ${r.from_station} мин; вернуться около ${kosaClock(r.home_finish)}.`);
+      `Обратно: от автобуса до поезда ${r.to_train} мин по вашей оценке; у поезда к ${kosaClock(r.train_by)}. Поезд № ${r.inward.id} ${kosaClock(r.inward.departure)} → ${rail.service.from} ${kosaClock(r.inward.arrival)}. ${answers.origin==='station'?'Дальнейшая дорога до жилья не включена.':`До жилья ${r.from_station} мин; вернуться около ${kosaClock(r.home_finish)}.`}`);
     if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
     rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
   }

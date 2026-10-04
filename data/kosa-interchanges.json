@@ -1,0 +1,532 @@
+{
+  "version": 1,
+  "source": {
+    "name": "OpenStreetMap · Geofabrik",
+    "url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+    "snapshot_at": "2026-10-01",
+    "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "gpkg_sha256": "b5c39118978f8e4d80f65662d349bc9439e87c73a6c4c2911e50ff0a641409c8"
+  },
+  "verification": {
+    "field_checked": false,
+    "bus_210_bay_checked": false,
+    "direction_basis": "OSM platforms and the stop sequences of relations 13157961 / 13157962 (593); not proof of service 210 boarding",
+    "note": "Остановки отмечены по карте. Сторону посадки № 210 и последние метры уточните на месте."
+  },
+  "anchors": {
+    "station": {
+      "name": "Вход вокзала Зеленоградск-Новый",
+      "osm_id": "node/13688339964",
+      "lon": 20.4726972,
+      "lat": 54.9587707,
+      "kind": "station_entrance"
+    },
+    "bus": {
+      "name": "Автостанция Зеленоградска",
+      "osm_id": "node/1596553120",
+      "lon": 20.4733744,
+      "lat": 54.9585056,
+      "kind": "bus_station_area"
+    },
+    "efa-in": {
+      "name": "Остановка к Морскому",
+      "osm_id": "node/9056119117",
+      "lon": 20.8909757,
+      "lat": 55.2216584,
+      "kind": "bus_platform"
+    },
+    "efa-out": {
+      "name": "Остановка к Зеленоградску",
+      "osm_id": "node/9056119017",
+      "lon": 20.890664,
+      "lat": 55.221642,
+      "kind": "bus_platform"
+    },
+    "efa": {
+      "name": "Начало тропы Эфа",
+      "source": "catalog:route/vysota-efa",
+      "lon": 20.8928143,
+      "lat": 55.2217807,
+      "kind": "trail_start"
+    },
+    "efa-crossing": {
+      "name": "Переход на карте",
+      "osm_id": "node/5538830024",
+      "lon": 20.8915415,
+      "lat": 55.2222394,
+      "kind": "mapped_crossing"
+    },
+    "forest-in": {
+      "name": "Остановка к Морскому",
+      "osm_id": "node/5784199555",
+      "lon": 20.8550242,
+      "lat": 55.1842064,
+      "kind": "bus_platform"
+    },
+    "forest-out": {
+      "name": "Остановка к Зеленоградску",
+      "osm_id": "node/7253656229",
+      "lon": 20.854389,
+      "lat": 55.1838697,
+      "kind": "bus_platform"
+    },
+    "forest": {
+      "name": "Начало тропы Танцующий лес",
+      "source": "catalog:route/tancuyushchiy-les",
+      "lon": 20.8593972,
+      "lat": 55.1826063,
+      "kind": "trail_start"
+    }
+  },
+  "walks": [
+    {
+      "id": "station-bus",
+      "title": "От вокзала к автобусу",
+      "from": "station",
+      "to": "bus",
+      "via": [],
+      "note": "Площадку посадки № 210 уточните у водителя. Выход с вашей платформы может быть с другой стороны.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.472565,
+            54.958846
+          ],
+          [
+            20.472949,
+            54.959069
+          ],
+          [
+            20.473033,
+            54.959031
+          ],
+          [
+            20.473085,
+            54.958621
+          ],
+          [
+            20.473207,
+            54.958623
+          ],
+          [
+            20.473242,
+            54.958535
+          ],
+          [
+            20.473277,
+            54.958484
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.472565,
+          54.958846
+        ],
+        [
+          20.473277,
+          54.958484
+        ]
+      ],
+      "anchor_gaps_m": [
+        11.9,
+        6.7
+      ],
+      "distance_m": 111,
+      "estimated_minutes": 2,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/station-bus.png",
+          "bytes": 39955,
+          "sha256": "2d09797b3542b93b106648816fcabeadb8f83d5a2a500a4d1cfa695761817ce9",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/station-bus.webp",
+          "bytes": 37446,
+          "sha256": "93f04b6a2a2ac31daed671831a21fcc2ae68d43efb131b9e4afaa128cbf4dde9",
+          "width": 900,
+          "height": 620
+        }
+      }
+    },
+    {
+      "id": "bus-station",
+      "title": "От автобуса к электричке",
+      "from": "bus",
+      "to": "station",
+      "via": [],
+      "note": "Карта ведёт к входу вокзала. Нужную платформу и время посадки уточните на месте.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.473277,
+            54.958484
+          ],
+          [
+            20.473242,
+            54.958535
+          ],
+          [
+            20.473207,
+            54.958623
+          ],
+          [
+            20.473085,
+            54.958621
+          ],
+          [
+            20.473033,
+            54.959031
+          ],
+          [
+            20.472949,
+            54.959069
+          ],
+          [
+            20.472565,
+            54.958846
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.473277,
+          54.958484
+        ],
+        [
+          20.472565,
+          54.958846
+        ]
+      ],
+      "anchor_gaps_m": [
+        6.7,
+        11.9
+      ],
+      "distance_m": 111,
+      "estimated_minutes": 2,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/bus-station.png",
+          "bytes": 39956,
+          "sha256": "af629e5bbe81d2327ee0e1fe62458538f1a2c15282f4c7fc62f1af1e037ab59d",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/bus-station.webp",
+          "bytes": 37664,
+          "sha256": "5c5832924b30244dd0416d81e1c71156c4c889ae93f44aeafffec45d24bb8e6b",
+          "width": 900,
+          "height": 620
+        }
+      }
+    },
+    {
+      "id": "efa-in-efa",
+      "title": "От автобуса к дюнам Эфа",
+      "from": "efa-in",
+      "to": "efa",
+      "via": [],
+      "note": "Начало тропы — у дороги. Дальше держитесь настила и указателей парка.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.890997,
+            55.221694
+          ],
+          [
+            20.89107,
+            55.22168
+          ],
+          [
+            20.891154,
+            55.221772
+          ],
+          [
+            20.891683,
+            55.222189
+          ],
+          [
+            20.892434,
+            55.221923
+          ],
+          [
+            20.892814,
+            55.221781
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.890997,
+          55.221694
+        ],
+        [
+          20.892814,
+          55.221781
+        ]
+      ],
+      "anchor_gaps_m": [
+        4.2,
+        0.0
+      ],
+      "distance_m": 159,
+      "estimated_minutes": 2,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/efa-in-efa.png",
+          "bytes": 12202,
+          "sha256": "8b4c51753678320629b05fb3a693f9ec857463afd4ed4811b3a707cab4954f3d",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/efa-in-efa.webp",
+          "bytes": 10706,
+          "sha256": "2b371b0c82f75635cebb1deacaaf5bd792aa0e9eedc442ba6438af35ea803325",
+          "width": 900,
+          "height": 620
+        }
+      }
+    },
+    {
+      "id": "efa-efa-out",
+      "title": "От дюн к обратному автобусу",
+      "from": "efa",
+      "to": "efa-out",
+      "via": [
+        "efa-crossing"
+      ],
+      "note": "Обратная остановка — на другой стороне дороги. На карте путь идёт через отмеченный переход.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.892814,
+            55.221781
+          ],
+          [
+            20.892434,
+            55.221923
+          ],
+          [
+            20.891542,
+            55.222239
+          ],
+          [
+            20.891683,
+            55.222189
+          ],
+          [
+            20.891154,
+            55.221772
+          ],
+          [
+            20.89107,
+            55.22168
+          ],
+          [
+            20.890882,
+            55.221717
+          ],
+          [
+            20.890759,
+            55.221607
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.892814,
+          55.221781
+        ],
+        [
+          20.891542,
+          55.222239
+        ],
+        [
+          20.890759,
+          55.221607
+        ]
+      ],
+      "anchor_gaps_m": [
+        0.0,
+        0.1,
+        7.2
+      ],
+      "distance_m": 202,
+      "estimated_minutes": 3,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/efa-efa-out.png",
+          "bytes": 12518,
+          "sha256": "0c4f4de037dbf520fd6603fd9d36ac944e26abe881e8164c2d65a14a35836716",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/efa-efa-out.webp",
+          "bytes": 11010,
+          "sha256": "1bf9a42c699239aa8c609de31e8e1ab0ade0843b943be499f2c4c8a9dba8d479",
+          "width": 900,
+          "height": 620
+        }
+      }
+    },
+    {
+      "id": "forest-in-forest",
+      "title": "От автобуса к Танцующему лесу",
+      "from": "forest-in",
+      "to": "forest",
+      "via": [],
+      "note": "Карта ведёт к началу отдельной тропы. Переезд от Эфы — на автобусе.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.854967,
+            55.184223
+          ],
+          [
+            20.854936,
+            55.184189
+          ],
+          [
+            20.855223,
+            55.183954
+          ],
+          [
+            20.856201,
+            55.183977
+          ],
+          [
+            20.856646,
+            55.183827
+          ],
+          [
+            20.859397,
+            55.182606
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.854967,
+          55.184223
+        ],
+        [
+          20.859397,
+          55.182606
+        ]
+      ],
+      "anchor_gaps_m": [
+        4.1,
+        0.0
+      ],
+      "distance_m": 352,
+      "estimated_minutes": 5,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/forest-in-forest.png",
+          "bytes": 9840,
+          "sha256": "5b921c713a6b6108ce56cd060a68a76f04b6b7c38a6014bfed56edff4ea7769e",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/forest-in-forest.webp",
+          "bytes": 9474,
+          "sha256": "c2e546c196e8030b6842906ecdcac96a7b42a8fabfe46a9338966a7a2ce29ca1",
+          "width": 900,
+          "height": 620
+        }
+      }
+    },
+    {
+      "id": "forest-forest-out",
+      "title": "От леса к обратному автобусу",
+      "from": "forest",
+      "to": "forest-out",
+      "via": [],
+      "note": "Обратная остановка — на другой стороне дороги. Место перехода уточните до прогулки.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            20.859397,
+            55.182606
+          ],
+          [
+            20.856646,
+            55.183827
+          ],
+          [
+            20.856201,
+            55.183977
+          ],
+          [
+            20.855223,
+            55.183954
+          ],
+          [
+            20.854888,
+            55.183922
+          ],
+          [
+            20.854507,
+            55.183886
+          ],
+          [
+            20.854448,
+            55.183843
+          ]
+        ]
+      },
+      "snapped_waypoints": [
+        [
+          20.859397,
+          55.182606
+        ],
+        [
+          20.854448,
+          55.183843
+        ]
+      ],
+      "anchor_gaps_m": [
+        0.0,
+        4.8
+      ],
+      "distance_m": 368,
+      "estimated_minutes": 5,
+      "images": {
+        "png": {
+          "path": "assets/transit/interchanges/forest-forest-out.png",
+          "bytes": 9904,
+          "sha256": "09e805478cf49cd841943dfe9117a8cae3a883c7fcae30fb03390698035737f4",
+          "width": 900,
+          "height": 620
+        },
+        "webp": {
+          "path": "assets/transit/interchanges/forest-forest-out.webp",
+          "bytes": 9662,
+          "sha256": "811ebceae19f31cb55b5a2b231bf49e869fa7f9e1ae4ee26ea7e402a2b055ee3",
+          "width": 900,
+          "height": 620
+        }
+      }
+    }
+  ],
+  "definition_sha256": "882272949365c242611e29a2e661cb6832d0d495fdd8b947880d1c99dd7ab581",
+  "routing": {
+    "profile": "foot",
+    "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+    "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855"
+  }
+}

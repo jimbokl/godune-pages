@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=3';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=4';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');
@@ -24,6 +24,14 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     const source=await PDFDocument.load(bytes);
     if(source.getPageCount()!==entry.pages)throw Error('Число страниц карты не совпало. Повторите скачивание.');
     chapters.push({source,entry});
+  }
+  const walkingMaps=[];
+  for(const walk of snapshot.interchanges?.walks||[]){
+    const image=walk.images?.png;
+    if(!image || image.path!==`assets/transit/interchanges/${walk.id}.png` || !/^[0-9a-f]{64}$/.test(image.sha256))throw Error('Версия карты перехода не согласована. Обновите страницу при связи.');
+    const bytes=await fetchBytes(image.path);
+    if(bytes.length!==image.bytes || await hash(bytes)!==image.sha256)throw Error('Карта перехода загрузилась не полностью. Обновите страницу при связи.');
+    walkingMaps.push({walk,bytes});
   }
   signal?.throwIfAborted();
   onProgress('Собираем ваш день и возвращение…');
@@ -60,13 +68,13 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph('Ваш день у дюн.',{font:title,size:phone?35:49,space:28});
   paragraph(snapshot.date.split('-').reverse().join('.')+' · '+snapshot.city,{size:13,space:22});
   page.drawRectangle({x:margin,y:y-54,width,height:54,color:blue});
-  page.drawText(snapshot.rail?'Вернуться к жилью, по вашей оценке':'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});
+  page.drawText(snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью, по вашей оценке'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});
   page.drawText(clock(snapshot.finish),{x:margin+12,y:y-42,font:title,size:24,color:ink});y-=77;
   paragraph(snapshot.walks.length===2?'Дюны Эфа и Танцующий лес. Между тропами - автобус.':'Высота Эфа. Настил, смотровые и возвращение к началу тропы.');
   paragraph('Это ваш план по опубликованной таблице № 210. Рейсы на дату поездки и наличие мест ещё нужно подтвердить.',{size:bodySize,color:muted});
-  paragraph('Внутри - расписание вашего дня, запасной вариант и автономные карты троп.',{space:0});
+  paragraph(walkingMaps.length?'Внутри - ваш день, запасной вариант, карты переходов и троп. Всё читается без связи.':'Внутри - расписание вашего дня, запасной вариант и автономные карты троп.',{space:0});
   start();heading('Ритм вашего дня');
-  paragraph(snapshot.rail?'Расчёт связывает жильё, электричку, автобус и возвращение. Время подходов и запас заданы вами. Рейсы требуют проверки на дату поездки.':'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
+  paragraph(snapshot.rail?(snapshot.origin==='station'?'Начало и возвращение у вокзала. Дорога от жилья не включена; рейсы требуют проверки на дату поездки.':'Расчёт связывает жильё, электричку, автобус и возвращение. Время подходов и запас заданы вами. Рейсы требуют проверки на дату поездки.'):'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
   for(const row of snapshot.timeline){
     const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20;
     if(y-height<49)start();
@@ -77,7 +85,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   start();heading('Вернуться с косы');
   paragraph('Остановка: '+snapshot.return.stop,{size:13});
   paragraph(`Будьте у остановки к ${clock(snapshot.return.board_by)}. Автобус по таблице - ${clock(snapshot.return.departure)}; в Зеленоградске - ${clock(snapshot.return.arrival)}.`);
-  if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`);}
+  if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. ${snapshot.origin==='station'?'Дальнейшая дорога до жилья не включена.':`Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`}`);}
   paragraph('Если автобус ушёл или полон',{font:title,size:phone?19:23,space:12});
   paragraph(snapshot.fallback);
   for(const text of snapshot.limits.slice(1))paragraph(text,{color:muted});
@@ -88,13 +96,29 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph(`Таблица с ${snapshot.publication.valid_from}. Сверена ${snapshot.publication.checked_at}.`,{size:9,color:muted});
   paragraph(snapshot.publication.source_url,{size:9,color:muted});
   if(snapshot.rail){heading('Источник электричек');paragraph(snapshot.rail.publication.name,{size:10});paragraph('Сверено '+snapshot.rail.publication.checked_at,{size:9,color:muted});paragraph(snapshot.rail.publication.url,{size:9,color:muted});}
+  const interchangePages=[];
+  for(const {walk,bytes}of walkingMaps){
+    start();const begins=doc.getPageCount();heading(walk.title);
+    paragraph(`Около ${walk.distance_m} м · ${walk.estimated_minutes} мин по расчёту карты`,{size:10,color:muted,space:10});
+    const image=await doc.embedPng(bytes),mapHeight=width*620/900;
+    if(y-mapHeight<90)start();
+    page.drawImage(image,{x:margin,y:y-mapHeight,width,height:mapHeight});y-=mapHeight+12;
+    for(const [i,id]of [walk.from,walk.to].entries()){
+      const anchor=snapshot.interchanges.anchors[id];
+      paragraph(`${i+1}. ${anchor.name} · ${anchor.lat.toFixed(5)}, ${anchor.lon.toFixed(5)}`,{size:phone?8.5:10,space:6});
+    }
+    paragraph(walk.note,{size:phone?9:11,space:10});
+    paragraph(snapshot.interchanges.verification.note,{size:phone?8.5:10,color:muted,space:6});
+    paragraph(`OpenStreetMap · ${snapshot.interchanges.source.snapshot_at} · ODbL 1.0`,{size:8,color:muted,space:0});
+    interchangePages.push({id:walk.id,begins,pages:doc.getPageCount()-begins+1,image_sha256:walk.images.png.sha256});
+  }
   const chapterPages=[];
   for(const {source,entry}of chapters){
     const begins=doc.getPageCount()+1;
     const copies=await doc.copyPages(source,source.getPageIndices());for(const copy of copies)doc.addPage(copy);
     chapterPages.push({route:entry.route,begins,pages:entry.pages,snapshot_sha256:entry.snapshot_sha256,pdf_sha256:entry.sha256});
   }
-  const fullSnapshot={...snapshot,format,chapters:chapterPages},snapshotBytes=new TextEncoder().encode(JSON.stringify(fullSnapshot)),snapshotSha=await hash(snapshotBytes),pages=doc.getPages();
+  const fullSnapshot={...snapshot,format,interchange_pages:interchangePages,chapters:chapterPages},snapshotBytes=new TextEncoder().encode(JSON.stringify(fullSnapshot)),snapshotSha=await hash(snapshotBytes),pages=doc.getPages();
   // Every copied chapter retains its map, GPS, source dates and QR. Replace only
   // the old page footer so numbering follows this complete personal document.
   pages.forEach((p,i)=>{
