@@ -19,16 +19,6 @@
       "model_updated_at": "2026-10-04T06:30:58Z",
       "hours": [
         {
-          "time": "2026-10-04T06:00:00Z",
-          "temperature_c": 11.8,
-          "wind_ms": 1.9,
-          "wind_from_degrees": 188.0,
-          "cloud_percent": 100.0,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
-        {
           "time": "2026-10-04T07:00:00Z",
           "temperature_c": 13.3,
           "wind_ms": 4.7,
@@ -579,13 +569,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-04T06:33:45.114839Z",
-      "checked_at": "2026-10-04T06:33:45.114839Z",
+      "received_at": "2026-10-04T07:06:17.963602Z",
+      "checked_at": "2026-10-04T07:06:17.963602Z",
       "sun": {
         "date": "2026-10-04",
         "sunrise": "2026-10-04T04:45:00Z",
         "sunset": "2026-10-04T16:06:00Z",
-        "received_at": "2026-10-04T06:33:45.114839Z"
+        "received_at": "2026-10-04T07:06:17.963602Z"
       }
     },
     {
@@ -594,18 +584,8 @@
       "poi": "vysota-efa",
       "lat": 55.2217,
       "lon": 20.8928,
-      "model_updated_at": "2026-10-04T06:30:58Z",
+      "model_updated_at": "2026-10-04T06:30:43Z",
       "hours": [
-        {
-          "time": "2026-10-04T06:00:00Z",
-          "temperature_c": 14.1,
-          "wind_ms": 1.6,
-          "wind_from_degrees": 269.0,
-          "cloud_percent": 100.0,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-04T07:00:00Z",
           "temperature_c": 14.4,
@@ -1157,13 +1137,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-04T06:33:45.114839Z",
-      "checked_at": "2026-10-04T06:33:45.114839Z",
+      "received_at": "2026-10-04T07:06:17.963602Z",
+      "checked_at": "2026-10-04T07:06:17.963602Z",
       "sun": {
         "date": "2026-10-04",
         "sunrise": "2026-10-04T04:44:00Z",
         "sunset": "2026-10-04T16:04:00Z",
-        "received_at": "2026-10-04T06:33:45.114839Z"
+        "received_at": "2026-10-04T07:06:17.963602Z"
       }
     },
     {
@@ -1172,18 +1152,8 @@
       "poi": "promenad-svetlogorsk",
       "lat": 54.9464,
       "lon": 20.1545,
-      "model_updated_at": "2026-10-04T06:30:58Z",
+      "model_updated_at": "2026-10-04T06:30:43Z",
       "hours": [
-        {
-          "time": "2026-10-04T06:00:00Z",
-          "temperature_c": 13.0,
-          "wind_ms": 2.7,
-          "wind_from_degrees": 238.0,
-          "cloud_percent": 100.0,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-04T07:00:00Z",
           "temperature_c": 14.5,
@@ -1735,13 +1705,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-04T06:33:45.114839Z",
-      "checked_at": "2026-10-04T06:33:45.114839Z",
+      "received_at": "2026-10-04T07:06:17.963602Z",
+      "checked_at": "2026-10-04T07:06:17.963602Z",
       "sun": {
         "date": "2026-10-04",
         "sunrise": "2026-10-04T04:47:00Z",
         "sunset": "2026-10-04T16:07:00Z",
-        "received_at": "2026-10-04T06:33:45.114839Z"
+        "received_at": "2026-10-04T07:06:17.963602Z"
       }
     },
     {
@@ -1752,16 +1722,6 @@
       "lon": 20.5114,
       "model_updated_at": "2026-10-04T06:30:58Z",
       "hours": [
-        {
-          "time": "2026-10-04T06:00:00Z",
-          "temperature_c": 13.2,
-          "wind_ms": 1.8,
-          "wind_from_degrees": 226.0,
-          "cloud_percent": 99.0,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-04T07:00:00Z",
           "temperature_c": 14.1,
@@ -2313,13 +2273,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-04T06:33:45.114839Z",
-      "checked_at": "2026-10-04T06:33:45.114839Z",
+      "received_at": "2026-10-04T07:06:17.963602Z",
+      "checked_at": "2026-10-04T07:06:17.963602Z",
       "sun": {
         "date": "2026-10-04",
         "sunrise": "2026-10-04T04:45:00Z",
         "sunset": "2026-10-04T16:06:00Z",
-        "received_at": "2026-10-04T06:33:45.114839Z"
+        "received_at": "2026-10-04T07:06:17.963602Z"
       }
     }
   ]

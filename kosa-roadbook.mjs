@@ -1,8 +1,8 @@
-import {kosaClock as clock,kosaNote} from './kosa-plan-state.mjs?v=1';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
-export function kosaRoadbook(answers,day,table){
-  kosaNote(answers,day,table); // Reject a proposal without a return.
+export function kosaRoadbook(answers,day,table,catalog){
+  kosaNote(answers,day,table,catalog); // Reject a proposal without a return.
   const atForest=answers.walks==='two',returnTime=atForest?day.inward.via:day.inward.departure;
   const timeline=[
     {time:day.outward.departure,title:'Из Зеленоградска - к Эфе',text:`Автобус № 210. У остановки к ${clock(day.outward.departure-answers.boarding)}. Прибытие к тропе по таблице - ${clock(day.outward.arrival)}.`},
@@ -18,11 +18,22 @@ export function kosaRoadbook(answers,day,table){
   const fallback=backup
     ?`Следующий рейс по таблице: ${clock(backup.departure)}, в Зеленоградске - ${clock(backup.arrival)}. Подтвердите, что он идёт в день поездки. Посадка не гарантирована.`
     :'После выбранного рейса в этой таблице другого нет. Запасной способ возвращения нужно договорить до поездки.';
+  const railTable=kosaRailTable(answers,catalog),rail=day.rail?{...structuredClone(day.rail),from:railTable.service.from,to:railTable.service.to,publication:structuredClone(railTable.source)}:null;
+  if(rail){
+    timeline.unshift(
+      {time:rail.home_start,title:'От жилья - к вокзалу',text:`До ${rail.from} - ${rail.to_station} мин по вашей оценке. У поезда к ${clock(rail.station_by)}. Выход и платформу уточните на месте.`},
+      {time:rail.outward.departure,title:'Электричка к морю',text:`Поезд № ${rail.outward.id}: ${rail.from} → ${rail.to}. По таблице прибытие в ${clock(rail.outward.arrival)}.`},
+      {time:rail.outward.arrival,title:'Пересадка на автобус',text:`${rail.to_bus} мин от станции до остановки по вашей оценке, ещё ${answers.boarding} мин до посадки. Оставшееся время - ожидание автобуса.`});
+    timeline[timeline.length-1].text=`От остановки до поезда - ${rail.to_train} мин по вашей оценке. У поезда к ${clock(rail.train_by)}.`;
+    timeline.push(
+      {time:rail.inward.departure,title:'Электричка обратно',text:`Поезд № ${rail.inward.id} до ${rail.from}. Прибытие по таблице в ${clock(rail.inward.arrival)}.`},
+      {time:rail.home_finish,title:'Вернуться к жилью',text:`После поезда ещё ${rail.from_station} мин по вашей оценке. Это расчёт с вашим запасом, а не проверенное время от двери до двери.`});
+  }
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
-    duration:day.finish-day.outward.departure,finish:day.finish,timeline,
+    duration:rail?rail.home_finish-rail.home_start:day.finish-day.outward.departure,finish:rail?rail.home_finish:day.finish,timeline,...(rail?{rail}:{}),
     return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
-    fallback,publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
-    before:['Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',
+    fallback:fallback+(rail?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
+    before:[rail?'Подтвердите электрички и автобусы на выбранную дату. Проверьте путь от жилья, выход со станции и обе пересадки.':'Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',
       'Оформите разрешение национального парка. Сохраните билет и его код в телефоне.',
       'Возьмите воду, одежду от ветра и заряженный телефон. Сохраните номер заранее согласованного водителя, если он будет вашим запасным вариантом.',
       'Откройте скачанный PDF без интернета до выхода. В нём должны быть план дня и карты всех выбранных троп.'],

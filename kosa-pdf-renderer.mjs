@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=1';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=2';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');
@@ -60,13 +60,13 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph('Ваш день у дюн.',{font:title,size:phone?35:49,space:28});
   paragraph(snapshot.date.split('-').reverse().join('.')+' · '+snapshot.city,{size:13,space:22});
   page.drawRectangle({x:margin,y:y-54,width,height:54,color:blue});
-  page.drawText('Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});
+  page.drawText(snapshot.rail?'Вернуться к жилью, по вашей оценке':'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});
   page.drawText(clock(snapshot.finish),{x:margin+12,y:y-42,font:title,size:24,color:ink});y-=77;
   paragraph(snapshot.walks.length===2?'Дюны Эфа и Танцующий лес. Между тропами - автобус.':'Высота Эфа. Настил, смотровые и возвращение к началу тропы.');
   paragraph('Это ваш план по опубликованной таблице № 210. Рейсы на дату поездки и наличие мест ещё нужно подтвердить.',{size:bodySize,color:muted});
   paragraph('Внутри - расписание вашего дня, запасной вариант и автономные карты троп.',{space:0});
   start();heading('Ритм вашего дня');
-  paragraph('Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
+  paragraph(snapshot.rail?'Расчёт связывает жильё, электричку, автобус и возвращение. Время подходов и запас заданы вами. Рейсы требуют проверки на дату поездки.':'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
   for(const row of snapshot.timeline){
     const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20;
     if(y-height<49)start();
@@ -77,6 +77,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   start();heading('Вернуться с косы');
   paragraph('Остановка: '+snapshot.return.stop,{size:13});
   paragraph(`Будьте у остановки к ${clock(snapshot.return.board_by)}. Автобус по таблице - ${clock(snapshot.return.departure)}; в Зеленоградске - ${clock(snapshot.return.arrival)}.`);
+  if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`);}
   paragraph('Если автобус ушёл или полон',{font:title,size:phone?19:23,space:12});
   paragraph(snapshot.fallback);
   for(const text of snapshot.limits.slice(1))paragraph(text,{color:muted});
@@ -86,6 +87,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph(snapshot.publication.note,{color:muted});
   paragraph(`Таблица с ${snapshot.publication.valid_from}. Сверена ${snapshot.publication.checked_at}.`,{size:9,color:muted});
   paragraph(snapshot.publication.source_url,{size:9,color:muted});
+  if(snapshot.rail){heading('Источник электричек');paragraph(snapshot.rail.publication.name,{size:10});paragraph('Сверено '+snapshot.rail.publication.checked_at,{size:9,color:muted});paragraph(snapshot.rail.publication.url,{size:9,color:muted});}
   const chapterPages=[];
   for(const {source,entry}of chapters){
     const begins=doc.getPageCount()+1;
