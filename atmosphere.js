@@ -180,8 +180,8 @@
     // Three measured frames are enough to step down under real overload. A long
     // warm-up otherwise makes a weak device pay for 24 heavy initial frames.
     if (frames > 3) {
-      sampleCost += performance.now() - began;
-      sampleLag += interval;
+      sampleCost += Math.max(performance.now() - began, ocean?.frameCost || 0);
+      sampleLag += Math.max(interval, ocean?.frameLag || 0);
       if (++sampleFrames === (frames < 30 ? 3 : 12)) {
         const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > Math.max(65,1000/fps*1.8);
         // Raising detail reallocates GPU buffers. Require sustained spare time
@@ -261,7 +261,7 @@
     performance.mark('godune:atmosphere-wasm-ready');
     return result;
   })();
-  const sceneReady = import(new URL('scene.mjs?v=11',base)).then(async module => {
+  const sceneReady = import(new URL('scene.mjs?v=12',base)).then(async module => {
     const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
     profileURL.searchParams.set('v','3');
     return {module,profile:await module.loadProfile(profileURL)};

@@ -94,161 +94,51 @@ export async function loadProfile(url) {
   if (p.live?.src) p.live.src = new URL(p.live.src,url).href;
   return p;
 }
-const vertex = `attribute vec2 position; varying vec2 screen;
-void main(){screen=vec2((position.x+1.0)*.5,(1.0-position.y)*.5);gl_Position=vec4(position,0.0,1.0);}`;
-const fragment = `precision highp float;
-uniform sampler2D photograph, regions; uniform vec4 crop, sourceWindow, water, optics, cloud, pine, grass;
-uniform vec2 direction, windDirection; uniform float time, wind, foamThreshold;
-varying vec2 screen;
-void main(){
- vec2 uv=crop.zw+screen*crop.xy; vec4 m=texture2D(regions,uv);
- float alpha=max(max(m.r,m.g),max(m.b,m.a));
- // Most of the photograph stays still. Do not calculate waves, tree sway or
- // lighting for those pixels, or run every layer's trigonometry everywhere.
- if(alpha==0.0){gl_FragColor=vec4(0.0);return;}
- vec2 drift=vec2(0.0); float depth=0.0; float swell=0.0; float ripple=0.0;
- if(m.r>0.0){
-   float y=clamp((uv.y-optics.x)/max(.01,optics.y-optics.x),0.0,1.0);
-   depth=pow(y,optics.z);
-   float projectedY=log(1.0+9.0*y)/log(10.0);
-   float phase=dot(vec2(uv.x,optics.x+projectedY*(optics.y-optics.x)),direction)*6.283185/water.z;
-   swell=sin(phase-time*water.y*1.6);
-   ripple=sin(phase*2.7+uv.x*31.0-time*water.y*2.1);
-   drift+=(direction*(swell+.26*ripple)+vec2(direction.y,-direction.x)*sin(phase*.79-time*water.y)*.3)
-     *water.x*depth*wind*m.r;
- }
- if(m.g>0.0)drift+=(windDirection*sin(time*cloud.y*.11)*cloud.x+vec2(0.0,cos(time*cloud.y*.09)*cloud.x*.22))*m.g;
- if(m.b>0.0)drift+=(windDirection*(sin(time*pine.y*.83+uv.y*15.0)+.32*sin(time*pine.y*1.79+uv.x*29.0))*pine.x
-     +vec2(0.0,sin(time*pine.y*.68+uv.x*12.0)*pine.x*.15))*m.b;
- if(m.a>0.0)drift+=windDirection*sin(time*grass.y*2.4+uv.x*44.0)*grass.x*wind*m.a;
- vec3 color=texture2D(photograph,(uv+drift-sourceWindow.zw)/sourceWindow.xy).rgb;
- if(m.r>0.0){
-   float shine=(swell*.65+ripple*.35)*optics.w*depth;
-   float luminance=dot(color,vec3(.2126,.7152,.0722));
-   float foam=smoothstep(foamThreshold,min(1.0,foamThreshold+.12),luminance)*water.w*depth*(.5+.5*swell);
-   color+=m.r*(color*shine+vec3(foam));
- }
- // Explicit premultiplication keeps fully transparent pixels black on Safari
- // as well as Chromium, including when the canvas is composited with opacity.
- gl_FragColor=vec4(clamp(color,0.0,1.0)*alpha,alpha);
-}`;
+// Prefer the worker on capable browsers; keep the same renderer as a fallback.
 export async function createScene(surface, photo, input) {
-  const yieldTask = () => globalThis.scheduler?.yield?.() || new Promise(resolve => setTimeout(resolve, 0));
-  await yieldTask();
-  const gl=surface.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,depth:false});
-  if (!gl) return null;
-  await yieldTask();
-  let profile=normalizeProfile(input), revision=0, disposed=false;
-  const shaders=[], textures=[], masks=createSceneMaskBuilder();
+  const {createSceneWorker} = await import('./scene-worker-client.mjs');
+  return createSceneWorker(surface,photo,input,createSceneMain,{normalizeProfile,photoCrop,photoSourceWindow,LAYERS});
+}
+export async function createSceneMain(surface, photo, input) {
+  const {createSceneRenderer} = await import('./scene-renderer.mjs');
+  const yieldTask=()=>globalThis.scheduler?.yield?.()||new Promise(resolve=>setTimeout(resolve,0));
+  let profile=normalizeProfile(input),revision=0,disposed=false,photoRevision=0,photoSrc='',viewport;
+  const masks=createSceneMaskBuilder();
   const sourceWindow=photoSourceWindow(photo);
   const mw=Math.round(Math.min(1024,photo.naturalWidth/sourceWindow[0]));
   const mh=Math.round(mw*(photo.naturalHeight/sourceWindow[1])/(photo.naturalWidth/sourceWindow[0]));
-  const prepareMask=async value=>{
-    mark('scene-mask-start');
-    const pixels=await masks.render(value,mw,mh);
-    mark('scene-mask-ready');
-    return pixels;
-  };
-  // The worker and GPU compiler are independent. Do not make mask preparation
-  // wait for the shader or for the photograph's texture upload.
-  const initialMask=prepareMask(profile);initialMask.catch(()=>{});
-  mark('scene-shader-start');
-  const compile=(type,source)=>{
-    const s=gl.createShader(type); shaders.push(s); gl.shaderSource(s,source);gl.compileShader(s);
-    return s;
-  };
-  const program=gl.createProgram();
-  gl.attachShader(program,compile(gl.VERTEX_SHADER,vertex)); gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fragment));
-  gl.linkProgram(program);
-  const parallel=gl.getExtension('KHR_parallel_shader_compile');
-  if(parallel) while(!gl.getProgramParameter(program,parallel.COMPLETION_STATUS_KHR))
-    await new Promise(resolve=>setTimeout(resolve,0));
-  else await new Promise(resolve=>setTimeout(resolve,0));
-  if(!gl.getProgramParameter(program,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
-  mark('scene-shader-ready');
-  await yieldTask();
-  gl.useProgram(program);
-  const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
-  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
-  const position=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
-  const u=Object.fromEntries(['photograph','regions','crop','sourceWindow','water','optics','cloud','pine','grass','direction','windDirection','time','wind','foamThreshold']
-    .map(k=>[k,gl.getUniformLocation(program,k)]));
-  for (let unit=0;unit<2;unit++) {
-    const t=gl.createTexture(); textures.push(t);gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,t);
-    for(const [key,value] of [[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE],[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR]])
-      gl.texParameteri(gl.TEXTURE_2D,key,value);
-  }
-  let photoRevision=0, photoSrc='', viewport;
-  function resize(w,h,dpr=1,crop=photoCrop(photo,w,h)) {
-    viewport=[w,h,dpr];
-    const sw=Math.round(w*dpr),sh=Math.round(h*dpr);
-    if(surface.width!==sw || surface.height!==sh){surface.width=sw;surface.height=sh;}
-    gl.useProgram(program);gl.viewport(0,0,sw,sh);gl.uniform4fv(u.crop,crop);
-    if(photoSrc && photoSrc!==(photo.currentSrc || photo.src)) surface.style.opacity='0';
-  }
-  async function uploadPhoto() {
-    const ticket=++photoRevision;
-    await photo.decode();
-    await yieldTask();
-    if(disposed || ticket!==photoRevision)return;
-    gl.useProgram(program);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,textures[0]);
-    mark('scene-photo-upload-start');
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,photo);
-    gl.uniform4fv(u.sourceWindow,photoSourceWindow(photo));
-    photoSrc=photo.currentSrc || photo.src;
-    if(viewport)resize(...viewport);
-    surface.style.removeProperty('opacity');
-    surface.dataset.photoSource=new URL(photoSrc).pathname.split('/').pop();
-    mark('scene-photo-upload-ready');
-  }
-  const photoLoaded=()=>{
-    surface.style.opacity='0';
-    uploadPhoto().catch(()=>{surface.dataset.engine='static-fallback';});
-  };
-  photo.addEventListener('load',photoLoaded);
-  await uploadPhoto();
-  await yieldTask();
-  gl.uniform1i(u.photograph,0);gl.uniform1i(u.regions,1);
-  async function setProfile(value,prepared) {
-    const next=normalizeProfile(value), ticket=++revision;
-    const pixels=await (prepared || prepareMask(next));
-    if(disposed || ticket!==revision) return;
-    profile=next;gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,textures[1]);
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,mw,mh,0,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
-  }
-  await setProfile(profile,initialMask);
-  mark('scene-ready');
+  const prepareMask=async value=>{mark('scene-mask-start');const pixels=await masks.render(value,mw,mh);mark('scene-mask-ready');return pixels;};
   const lost=()=>{surface.style.opacity='0';surface.dataset.engine='static-fallback';disposed=true;masks.dispose();};
-  surface.addEventListener('webglcontextlost',lost);
-  surface.dataset.engine='webgl-scene';surface.dataset.layers=LAYERS.filter(k=>profile[k].enabled).join(',');
-  let uniformProfile;
+  const initialMask=prepareMask(profile);initialMask.catch(()=>{});
+  let renderer;
+  try{renderer=await createSceneRenderer(surface,lost);}catch(error){masks.dispose();throw error;}
+  if(!renderer){masks.dispose();return null;}
+  function resize(w,h,dpr=1,crop=photoCrop(photo,w,h)){
+    viewport=[w,h,dpr,crop];renderer.resize(...viewport);
+    if(photoSrc&&photoSrc!==(photo.currentSrc||photo.src))surface.style.opacity='0';
+  }
+  async function uploadPhoto(){
+    const ticket=++photoRevision;await photo.decode();await yieldTask();
+    if(disposed||ticket!==photoRevision)return;
+    renderer.uploadPhoto(photo,photoSourceWindow(photo));photoSrc=photo.currentSrc||photo.src;
+    if(viewport)resize(viewport[0],viewport[1],viewport[2]);
+    surface.style.removeProperty('opacity');surface.dataset.photoSource=new URL(photoSrc).pathname.split('/').pop();
+  }
+  const photoLoaded=()=>{surface.style.opacity='0';uploadPhoto().catch(lost);};
+  photo.addEventListener('load',photoLoaded);
+  async function setProfile(value,prepared){
+    const next=normalizeProfile(value),ticket=++revision,pixels=await(prepared||prepareMask(next));
+    if(disposed||ticket!==revision)return;profile=next;renderer.setMask(pixels,mw,mh);
+    surface.dataset.layers=LAYERS.filter(k=>profile[k].enabled).join(',');
+  }
+  try{
+    await uploadPhoto();await yieldTask();await setProfile(profile,initialMask);mark('scene-ready');
+    surface.dataset.engine='webgl-scene';surface.dataset.renderer='main';
+  }catch(error){renderer.dispose();masks.dispose();photo.removeEventListener('load',photoLoaded);throw error;}
   return {
     get profile(){return profile;},setProfile,
-    setParameters(value){profile=normalizeProfile(value);},
-    resize,
-    draw(t,wind=1){
-      if(disposed || photoSrc!==(photo.currentSrc || photo.src))return;gl.useProgram(program);
-      gl.uniform1f(u.time,t);gl.uniform1f(u.wind,wind);
-      if(uniformProfile!==profile){
-        const a=profile.water,rad=a.angle*Math.PI/180,windRad=profile.wind.angle*Math.PI/180;
-        gl.uniform2f(u.direction,Math.cos(rad),Math.sin(rad));
-        gl.uniform2f(u.windDirection,Math.cos(windRad),Math.sin(windRad));
-        gl.uniform4f(u.water,a.enabled?a.amplitude:0,a.speed,a.wavelength,a.foam);
-        gl.uniform4f(u.optics,a.horizon,a.near,a.perspective,a.light);
-        gl.uniform1f(u.foamThreshold,a.foamThreshold);
-        for(const [key,layer] of [['cloud',profile.clouds],['pine',profile.pines],['grass',profile.grass]])
-          gl.uniform4f(u[key],layer.enabled?layer.amplitude:0,layer.speed,0,0);
-        uniformProfile=profile;
-      }
-      // The full-screen triangles overwrite every pixel, including transparent
-      // land. A preceding clear would repeat the same full-buffer write.
-      gl.drawArrays(gl.TRIANGLES,0,6);
-    },
-    dispose(){
-      disposed=true;masks.dispose();surface.removeEventListener('webglcontextlost',lost);
-      photo.removeEventListener('load',photoLoaded);
-      textures.forEach(t=>gl.deleteTexture(t));shaders.forEach(s=>gl.deleteShader(s));
-      gl.deleteBuffer(buffer);gl.deleteProgram(program);gl.clear(gl.COLOR_BUFFER_BIT);
-    }
+    setParameters(value){profile=normalizeProfile(value);},resize,
+    draw(t,wind=1){if(!disposed&&photoSrc===(photo.currentSrc||photo.src))renderer.draw(t,wind,profile);},
+    dispose(){disposed=true;masks.dispose();photo.removeEventListener('load',photoLoaded);renderer.dispose();}
   };
 }
