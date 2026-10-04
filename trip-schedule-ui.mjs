@@ -1,3 +1,7 @@
+import {selectedDay} from './trip-days-state.mjs?v=14';
+import {resolveRail} from './trip-rail-state.mjs?v=3';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=1';
+import {journeyRow} from './day-journey-ui.mjs?v=1';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=7';
@@ -5,7 +9,7 @@ import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=5';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=6';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 
@@ -119,7 +123,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   }
   function renderStops(trip, result, matrix, light) {
     const settings=trip.schedule || defaultSchedule();
-    $('#trip-plan-stops').replaceChildren(...result.stops.map((item,index)=>{
+    const rail=compact?railJourney(resolveRail(trip,catalog),result.rail):{before:[],after:[]};
+    $('#trip-plan-stops').replaceChildren(...rail.before.map(journeyRow),...result.stops.map((item,index)=>{
       const blockedByReturn=result.stops.slice(0,index).some(row=>row.excursion?.conflict);
       if(item.id==='__day_origin' || item.id==='__day_night' || item.id==='__day_departure') {
         const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin', departure=item.id==='__day_departure';
@@ -162,9 +167,16 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       }
       const timing=document.createElement('p');timing.className='trip-timeline-detail';
       timing.textContent=`${item.visit_minutes} мин на осмотр`+(value.pause ? ` · ${value.pause} мин пауза` : '')
-        +(item.wait ? ` · ${item.wait} мин ожидание` : '')
-        +(previousPlace(trip,item.id) && travel.minutes!==null ? ` · ${travel.origin==='estimate'?'около ':''}${travel.minutes} мин дорога + ${settings.reserve} мин запас` : '');
+        +(!compact && item.wait ? ` · ${item.wait} мин ожидание` : '')
+        +(!compact && previousPlace(trip,item.id) && travel.minutes!==null ? ` · ${travel.origin==='estimate'?'около ':''}${travel.minutes} мин дорога + ${settings.reserve} мин запас` : '');
       li.append(timing);
+      if(compact) {
+        const previous=previousPlace(trip,item.id);
+        const steps=[];
+        if(previous)steps.push(roadJourney(item,travel,settings.reserve,baseName(previous,catalog),blockedByReturn));
+        const wait=waitJourney(item,!!booking);if(wait)steps.push(wait);
+        if(steps.length){const path=document.createElement('ol');path.className='day-stop-journey';path.setAttribute('aria-label','Дорога к остановке');path.append(...steps.map(journeyRow));header.closest('.day-stop-lead').before(path);}
+      }
       if(booking){const note=document.createElement('p');note.className='trip-booking-timing';note.textContent=`${booking.name}: ${clock(booking.time)} · ${booking.duration} мин · время записано вами`;li.append(note);}
       const lightRow=light?.stops.find(row=>row.id===item.id),lightText=lightRow && lightMessage(lightRow);
       if(lightText) {const note=document.createElement('p');note.className='trip-light-note';note.dataset.lightState=lightRow.state;note.textContent=lightText;li.append(note);}
@@ -253,10 +265,12 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       input(form,'Закончить осмотр до, если знаете','close','time',timeInput(window?.close ?? null),item.id);
       if(value.window && !window) {const note=document.createElement('p');note.className='trip-plan-note';note.textContent='Окно посещения было задано для другой даты. Уточните его заново.';form.append(note);}
       applyButton(form);li.append(details);return li;
-    }));
+    }),...rail.after.map(journeyRow));
   }
   async function render() {
-    section.hidden = read().places.length === 0;
+    const generated=compact && selectedDay(read()).kosa_plan;
+    section.hidden = !generated && read().places.length === 0 && !read().schedule?.rail;
+    if(compact)$('#trip-timing-settings').hidden=!!generated;
     if(!opened) return;
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop, focusedMode=document.activeElement?.type==='radio'?document.activeElement.value:null;
@@ -268,6 +282,17 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
     try {
+      if(generated) {
+        $('#trip-plan-stops').replaceChildren();
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=1')]);
+        const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
+        const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':'incomplete';
+        $('#trip-plan-stops').append(...view.rows.map(journeyRow));
+        if(trip.places.length)$('#trip-plan-stops').append(journeyRow({id:'kosa-extra',kind:'notice',time:null,title:'Дополнительные места пока вне расчёта',text:`Вы добавили ещё ${trip.places.length} мест. Время поездки на косу их не учитывает. Они сохранены в списке «Изменить порядок и остановки».`,state:'unknown'}));
+        const link=document.createElement('a');link.href=new URL('kurshskaya-kosa/bez-mashiny/#kosa-planner',base);link.className='day-kosa-edit';link.textContent='Изменить поездку на косу →';
+        const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);
+        section.dataset.scheduleReady='true';return;
+      }
       const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,trip,catalog).catch(()=>null)]);if(ticket!==sequence)return;
       const result=calculate(planInput(trip,catalog,matrix));
       let light=null;
@@ -302,6 +327,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(ticket!==sequence)return;
       renderSettings(settings);$('#trip-plan-stops').replaceChildren();
       $('#trip-plan-summary').textContent=error.message==='departure_before_day'?'Время возвращения к отъезду раньше начала дня. Перенесите остановки или измените дату записи.':error.message==='arrival_after_day'?'Прибытие с запасом позже конца дня. Продлите день или перенесите прогулку на следующую дату.':'Расчёт дня сейчас не открылся. Ваш маршрут сохранён; попробуйте ещё раз.';
+      if(generated){const link=document.createElement('a');link.href=new URL('kurshskaya-kosa/bez-mashiny/#kosa-planner',base);link.className='day-kosa-edit';link.textContent='Открыть сохранённую поездку на косу →';const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);}
       section.dataset.scheduleReady=['arrival_after_day','departure_before_day'].includes(error.message)?'true':'error';
       $('#trip-plan-summary').dataset.planStatus=['arrival_after_day','departure_before_day'].includes(error.message)?'conflict':'error';
     }

@@ -1,8 +1,9 @@
+import {excursionJourney} from './day-journey-view.mjs?v=1';
+import {journeyRow} from './day-journey-ui.mjs?v=1';
 import {defaultExcursion,parseDepartures,transportOptions,resolveExcursion,validExcursion} from './trip-transport-state.mjs?v=3';
 import {updateSchedule} from './trip-schedule-state.mjs?v=10';
 
 const line = (text,cls) => {const node=document.createElement('p');node.textContent=text;if(cls)node.className=cls;return node;};
-const time = (value,clock) => value===null || value===undefined ? 'время пока неизвестно' : clock(value);
 export function transportCard({trip,item,place,catalog,clock}) {
   const options=transportOptions(catalog,item.id), saved=trip.schedule?.stops[item.id]?.excursion;
   if(!options.length && !saved)return null;
@@ -21,12 +22,7 @@ export function transportCard({trip,item,place,catalog,clock}) {
   if(resolved.service?.pier_address)card.append(line(`Причал: ${resolved.service.pier_address}. Путь от «${place.name}» к причалу и обратно задайте по своей прогулке.`));
   if(result) {
     const list=document.createElement('ol');list.className='trip-transport-timeline';
-    const texts=[`К причалу — ${result.approach===null?'время пути нужно уточнить':result.approach+' мин'}.`,
-      `Из Балтийска: ${time(result.outward.departure,clock)}. Прибыть к причалу минимум за ${saved.boarding} мин до рейса — ваш запас на посадку.`,
-      `На косе — ${result.shore} мин, включая возвращение к её причалу.`,
-      `С косы: ${time(result.inbound.departure,clock)}.`,
-      `Вернуться к «${place.name}»: ${time(result.finish,clock)}.`];
-    for(const text of texts){const li=document.createElement('li');li.textContent=text;list.append(li);}card.append(list);
+    list.append(...excursionJourney(resolved,result,place.name).map(journeyRow));card.append(list);
     if(result.inbound.last_departure!==null) {
       const deadline=result.inbound.latest_ready===null?'Запас на посадку больше оставшегося времени.':`У её причала — до ${clock(result.inbound.latest_ready)} с вашим запасом.`;
       card.append(line(`Последний обратный рейс по ${resolved.origins.inbound==='manual'?'вашему расписанию':'источнику'}: ${clock(result.inbound.last_departure)}. ${deadline}`,'trip-transport-last'));

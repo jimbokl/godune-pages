@@ -123,3 +123,21 @@
 }
 
 .day-guide-link{display:inline-flex;min-height:44px;align-items:center;margin-bottom:18px;color:var(--sea-muted);font:600 15px/1.5 var(--sans)}
+
+/* A quiet, shared thread for transfers and returning home. */
+.day-journey-step{list-style:none;min-width:0;margin:12px 0;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--sand);font:14px/1.6 var(--sans)}
+.day-journey-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.day-journey-kind{color:var(--sea-muted);font-weight:650;font-size:12px}
+.day-journey-heading time{font:650 16px/1.4 var(--sans);color:var(--ink)}
+.day-journey-step h4{font:650 16px/1.5 var(--sans);margin:0 0 5px;overflow-wrap:anywhere}
+.day-journey-step p{font:14px/1.65 var(--sans);margin:4px 0;overflow-wrap:anywhere;color:var(--muted)}
+.day-journey-step details>summary{font:13px/1.5 var(--sans);min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--sea-muted)}
+.day-journey-step details a{display:inline-flex;align-items:center;min-height:44px;overflow-wrap:anywhere;text-decoration:underline}
+.day-journey-step[data-journey-state=conflict]{border-color:#ad754f;border-left-width:4px}
+.day-journey-step[data-journey-state=unknown]{border-left:3px solid var(--sea-muted)}
+.day-planner .trip-plan-stops>.day-journey-step{padding:18px;background:var(--sand)}
+.day-stop-journey,.trip-transport-timeline{list-style:none;padding:0;margin:0 0 16px}
+.day-stop-journey>.day-journey-step{border:0;border-left:2px solid var(--sea-line);border-radius:0;padding:8px 14px;background:transparent;margin:0 0 10px}
+.day-kosa-edit{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;color:var(--sea-muted);font:600 15px/1.5 var(--sans)}
+.day-planner .trip-plan-stops>.day-journey-action{padding:0;border:0;background:transparent}
+@media(max-width:480px){.day-journey-heading{gap:8px}.day-journey-step{padding:14px}.day-journey-step h4{font-size:15px}}

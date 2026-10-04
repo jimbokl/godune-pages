@@ -68,12 +68,15 @@ export function isGeneratedKosaNote(note,answers,day,table,catalog,interchanges)
   return [{},{boarding:false},{light:false},{boarding:false,light:false}]
     .some(options=>note===kosaNote(answers,day,table,catalog,interchanges,options));
 }
+// Bind the two chosen trains as well as the transcribed bus publication.
+export const kosaRailSnapshot=day=>day.rail?JSON.stringify([day.rail.outward,day.rail.inward]):null;
+export const kosaBusSnapshot=day=>JSON.stringify([day.outward,day.transfer,day.inward]);
 export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
   const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);
   const routes=answers.walks==='two'?['vysota-efa','tancuyushchiy-les']:['vysota-efa'];
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
   // Bus legs are a dated roadbook; they are never converted to a foot route.
-  const metadata={version:1,...answers,source_sha256:transitTable(table,answers.date).publication.image_sha256};
+  const metadata={version:1,...answers,source_sha256:transitTable(table,answers.date).publication.image_sha256,rail_snapshot:kosaRailSnapshot(day),bus_snapshot:kosaBusSnapshot(day)};
   const same=before.itinerary?.days.some(d=>d.note===note && d.kosa_plan?.version===1
     && Object.entries(metadata).every(([key,value])=>d.kosa_plan[key]===value));
   // Saving and then exporting the same proposal must not create a second day.
