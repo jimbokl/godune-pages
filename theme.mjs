@@ -13,6 +13,10 @@ try {
     if(typeof cached.location?.label==='string' && Number.isFinite(cached.location?.lat)&&Number.isFinite(cached.location?.lon))location=cached.location;
   }
 }catch{/* A damaged record is replaced by the next Rust calculation. */}
+const initial=root.__goduneInitialLight;
+if(!sun && initial?.date===balticTime().date && validSun(initial.sun)){
+  date=initial.date;sun=initial.sun;location=initial.location;
+}
 function render() {
   const now=balticTime(),phase=themeAppearance(mode,date===now.date?sun:null,now.minute,system.matches),theme=phase==='day'?'day':'night';
   const changed=root.dataset.theme!==theme;
@@ -24,7 +28,7 @@ function render() {
     control.querySelector('[data-theme-name]').textContent=name;
     control.querySelector('summary').setAttribute('aria-label',`Свет на сайте: ${name}. Выбрать режим`);
     control.querySelector('[data-theme-place]').textContent=`Сегодня · ${location.label}`;
-    const ready=date===now.date && validSun(sun);
+    const ready=date===now.date && validSun(sun) && Object.hasOwn(sun,'astronomical_dusk');
     control.querySelector('[data-theme-times]').hidden=!ready;
     for(const key of ['sunset','dusk','astronomical_dusk'])control.querySelector(`[data-theme-event=${key}]`).textContent=lightClock(ready?sun[key]:null);
     control.querySelector('[data-theme-note]').textContent=ready?'Часы солнца по открытому горизонту. Облака, фонари и доступ на тропы проверяйте отдельно.':
@@ -39,13 +43,13 @@ async function refresh() {
   try {
     if(!catalog) {const response=await fetch(new URL('data/light-locations.json',base));if(!response.ok)throw Error('catalog');catalog=await response.json();}
     const next=lightLocation(catalog,locationPath(),trip());
-    if(date===now.date && next.lat===location.lat && next.lon===location.lon && sun){render();return;}
+    if(date===now.date && next.lat===location.lat && next.lon===location.lon && sun && Object.hasOwn(sun,'astronomical_dusk')){render();return;}
     engine=engine || await loadSunClock(base);
     const nextSun=engine(now.date,next.lat,next.lon);
     if(ticket!==revision)return;
     location=next;date=now.date;sun=nextSun;
     if(validSun(sun))remember(LIGHT_KEY,JSON.stringify({date,location,sun}));
-  }catch{if(ticket!==revision)return;sun=null;date='';}
+  }catch{if(ticket!==revision)return;/* Keep valid first-paint light when the network is unavailable. */}
   render();
 }
 function locationPath(){return window.location.pathname;}
