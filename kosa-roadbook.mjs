@@ -1,5 +1,5 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=4';
-import {selectKosaInterchanges} from './kosa-interchanges.mjs?v=1';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=5';
+import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog,interchanges){
@@ -31,6 +31,7 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
       {time:rail.home_finish,title:answers.origin==='station'?'Снова у вокзала':'Вернуться к жилью',text:answers.origin==='station'?`${rail.from}. Дорогу от вокзала до жилья выберите отдельно.`:`После поезда ещё ${rail.from_station} мин по вашей оценке. Это расчёт с вашим запасом, а не проверенное время от двери до двери.`});
   }
   const selected=selectKosaInterchanges(answers,interchanges);
+  const walking=assessKosaWalking(answers,selected);
   for(const row of timeline){
     if(row.title==='Пересадка на автобус')row.map_id='station-bus';
     if(row.title==='Снова в Зеленоградске'&&rail)row.map_id='bus-station';
@@ -38,10 +39,13 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
     if(row.title==='От Эфы - к Танцующему лесу')row.map_id='efa-efa-out';
     if(row.title==='Сосны и короткая тропа')row.map_id='forest-in-forest';
     if(row.title==='Пора к обратной остановке')row.map_id=atForest?'forest-forest-out':'efa-efa-out';
+    const field={'Пересадка на автобус':'to_bus','Снова в Зеленоградске':'to_train','Дюны и высокий горизонт':'first_visit','Сосны и короткая тропа':'second_visit'}[row.title];
+    const check=walking.checks.find(c=>c.field===field);
+    if(check&&check.state!=='within_estimate'){row.walking_check=check;row.text+=' '+check.text;}
   }
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:rail?rail.home_finish-rail.home_start:day.finish-day.outward.departure,finish:rail?rail.home_finish:day.finish,timeline,...(rail?{rail,origin:answers.origin||'home'}:{}),
-    ...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
+    walking,...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
     fallback:fallback+(rail&&backup?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
     before:[rail?'Подтвердите электрички и автобусы на выбранную дату. Проверьте путь от жилья, выход со станции и обе пересадки.':'Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',
       'Оформите разрешение национального парка. Сохраните билет и его код в телефоне.',

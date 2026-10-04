@@ -2,7 +2,7 @@
 // dates of travel, coordinates, or network requests belong in this record.
 export const PLANNING_PROGRESS_KEY='godune-planning-progress:v1';
 const sources=new Set(['wizard','kosa']);
-const reasons=new Set(['calculated','conflict','transport','travel','hours','not_calculated']);
+const reasons=new Set(['calculated','conflict','transport','travel','hours','walking_allowance','walking_unknown','not_calculated']);
 const empty=()=>({version:1,attempts:{}});
 const finiteTime=value=>Number.isSafeInteger(value)&&value>=0;
 function read(storage) {

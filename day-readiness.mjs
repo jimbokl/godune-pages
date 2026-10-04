@@ -21,9 +21,10 @@ export function assessSchedule(schedule) {
   return assessment(['fits','needs_check'].includes(schedule.status),'calculated',evidence);
 }
 
-export function assessKosa(day,answers) {
+export function assessKosa(day,answers,walking) {
   if(day?.state!=='candidate')return assessment(false,day?.state==='unknown_approach'?'travel':'transport');
   if(answers.city==='svetlogorsk')return assessment(false,'travel');
+  if(walking&&walking.status!=='within_estimate')return assessment(false,walking.status==='too_short'?'walking_allowance':'walking_unknown',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
   return assessment(true,'calculated',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
 }
 
@@ -34,6 +35,8 @@ export function readinessCopy(results,saved) {
     const next={conflict:'День не помещается в выбранное время. Начните раньше или сократите прогулку.',
       transport:'Остановки сохранены. Для поездки ещё нужно уточнить рейсы туда и обратно.',
       travel:'Остановки сохранены. Время части дороги пока неизвестно — уточните его в настройках дня.',
+      walking_allowance:'День сохранён. На пеший переход оставлено меньше времени, чем даёт оценка по карте. Увеличьте время перед поездкой.',
+      walking_unknown:'День сохранён. Время переходов пока не сопоставлено с картой — уточните его перед поездкой.',
       hours:'Остановки сохранены. Перед выходом уточните часы посещения: без них весь день ещё не рассчитан.',
       not_calculated:'Остановки сохранены. Расчёт времени пока не завершён; его можно повторить в настройках дня.'}[incomplete.reason];
     return {title:'План сохранён — осталось уточнить',next};

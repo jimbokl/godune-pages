@@ -2,7 +2,7 @@ import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizard
 import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=12';
 import {planInput} from './trip-schedule-state.mjs?v=9';
 import {baseName} from './personal-points.mjs?v=3';
-import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=1';
+import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=2';
 import {downloadTripFile} from './trip-file.mjs?v=17';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;

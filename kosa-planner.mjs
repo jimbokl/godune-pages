@@ -1,8 +1,8 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=16';
-import {kosaInput,kosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=4';
+import {kosaInput,kosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=5';
 import {createTripFile} from './trip-file.mjs?v=17';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=4';
-import {assessKosa} from './day-readiness.mjs?v=1';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=5';
+import {assessKosa} from './day-readiness.mjs?v=2';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -90,11 +90,20 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const list=el('ol',undefined,'kosa-plan-timeline');
         for(const item of roadbook.timeline){
           const copy=row(list,item.time,item.title,item.text,previous);
+          if(item.walking_check){
+            copy.classList.add('kosa-walking-alert');
+            const field=item.walking_check.field;
+            copy.append(action(['first_visit','second_visit'].includes(field)?'Изменить время прогулки':'Изменить время перехода',()=>{
+              const input=form.elements[field];
+              for(let parent=input.parentElement;parent&&parent!==form;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
+              input.focus({preventScroll:true});input.scrollIntoView({block:'center',behavior:'instant'});input.select();
+            },'kosa-walking-fix'));
+          }
           const map=roadbook.interchanges?.walks.find(m=>m.id===item.map_id);
           if(map){const details=el('details',undefined,'kosa-step-map');details.append(el('summary',`Переход на карте · около ${Math.round(map.distance_m/10)*10} м`));
             const image=el('img');image.src=new URL(map.images.webp.path,base).href;image.width=900;image.height=620;image.loading='lazy';image.alt=map.title+': линия пути и два ориентира';
             const legend=el('ol');for(const id of [map.from,map.to])legend.append(el('li',roadbook.interchanges.anchors[id].name));
-            details.append(image,legend,el('p',map.note),el('small','По OpenStreetMap, 1 октября 2026. Сторону посадки № 210 и последние метры уточните на месте.'));copy.append(details);
+            details.append(image,legend,el('p',map.note),el('small',`${Number.isInteger(map.estimated_minutes)&&map.estimated_minutes>0?`Около ${map.estimated_minutes} мин пешком по карте. `:''}По OpenStreetMap, 1 октября 2026. Сторону посадки № 210 и последние метры уточните на месте.`));copy.append(details);
           }
         }
         result.append(list);
@@ -115,7 +124,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=4');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=5');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
@@ -129,19 +138,19 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const save=action('Сохранить день и прогулки',async()=>{
           begin();
           save.disabled=true;saveStatus.textContent='Сохраняем поездку в этом браузере…';
-          try{const outcome=await workshop.setState(current=>addKosaDay(current,answers,day,publication,catalog),'День на Куршской косе сохранён.');
+          try{const outcome=await workshop.setState(current=>addKosaDay(current,answers,day,publication,catalog,roadbook.interchanges),'День на Куршской косе сохранён.');
             if(outcome.conflict){saveStatus.textContent='Поездка уже изменилась. Попробуйте сохранить ещё раз.';save.disabled=false;return;}
-            workshop.progress?.saved(attempt,assessKosa(day,answers),outcome.saved);
-            saveStatus.textContent=outcome.saved?'День сохранён в этом браузере. Карты и PDF скачайте отдельно ниже.':'Браузер не разрешил запись. План остался в этой вкладке — скачайте файл поездки.';
+            workshop.progress?.saved(attempt,assessKosa(day,answers,roadbook.walking),outcome.saved);
+            saveStatus.textContent=outcome.saved?(roadbook.walking.status==='too_short'?'День сохранён в этом браузере. Перед поездкой увеличьте время отмеченных переходов.':roadbook.walking.status!=='within_estimate'?'День сохранён в этом браузере. Время переходов ещё нужно уточнить.':'День сохранён в этом браузере. Карты и PDF скачайте отдельно ниже.'):'Браузер не разрешил запись. План остался в этой вкладке — скачайте файл поездки.';
             save.textContent=outcome.saved?'День сохранён ✓':'План в этой вкладке';
           }catch{saveStatus.textContent='Запись не завершилась. Ваш прежний план на месте; скачайте текст этого дня.';save.disabled=false;}
         },'kosa-save');
         const more=el('details',undefined,'kosa-more-actions');more.append(el('summary','Перенести поездку или сохранить текст'));const extra=el('div',undefined,'kosa-result-actions');
-        extra.append(action('План дня — текстовый файл',()=>download(kosaNote(answers,day,publication,catalog),'godune-kosa-'+answers.date+'.txt','text/plain;charset=utf-8')),
-          action('Файл поездки для другого устройства',()=>{const draft=addKosaDay(workshop.getState(),answers,day,publication,catalog);download(createTripFile(draft,catalog),'godune-kosa-'+answers.date+'.json','application/json');}),link('Открыть мою поездку','planner/#my-trip'));more.append(extra);actions.append(save);
+        extra.append(action('План дня — текстовый файл',()=>download(kosaNote(answers,day,publication,catalog,roadbook.interchanges),'godune-kosa-'+answers.date+'.txt','text/plain;charset=utf-8')),
+          action('Файл поездки для другого устройства',()=>{const draft=addKosaDay(workshop.getState(),answers,day,publication,catalog,roadbook.interchanges);download(createTripFile(draft,catalog),'godune-kosa-'+answers.date+'.json','application/json');}),link('Открыть мою поездку','planner/#my-trip'));more.append(extra);actions.append(save);
         const sources=el('details',undefined,'kosa-plan-sources');sources.append(el('summary','Расписание и условия расчёта'),el('p',publication.note));
         if(day.rail)sources.append(link('Источник расписания электричек',roadbook.rail.publication.url,'kosa-source-link'));
-        sources.append(link('Оригинал таблицы № 210','assets/transit/kosa-bus-210-2026-05.png','kosa-source-link'));result.append(actions,saveStatus,more,sources);status.textContent='Подобран план по опубликованной таблице. Перед поездкой подтвердите рейсы на свою дату.';
+        sources.append(link('Оригинал таблицы № 210','assets/transit/kosa-bus-210-2026-05.png','kosa-source-link'));result.append(actions,saveStatus,more,sources);status.textContent=roadbook.walking.status==='too_short'?'План рассчитан, но на отмеченные переходы оставлено слишком мало времени. Измените время в плане ниже.':'Подобран план по опубликованной таблице. Перед поездкой подтвердите рейсы на свою дату.';
       }
       if(focus){title.focus({preventScroll:true});result.scrollIntoView({block:'start',behavior:'instant'});}
     }catch(error){if(ticket!==sequence)return;status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.setAttribute('aria-busy','false');result.classList.add('kosa-updating');form.classList.add('kosa-load-failed');}

@@ -1,6 +1,7 @@
 import {cleanTrip,emptyTrip} from './trip-state.mjs?v=17';
 import {mergeJourney,tripHasDraft,validTripDate} from './trip-days-state.mjs?v=12';
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=1';
+import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
@@ -23,7 +24,7 @@ export function kosaInput(answers,table,catalog) {
   }
   return input;
 }
-export function kosaNote(answers,day,table,catalog) {
+export function kosaNote(answers,day,table,catalog,interchanges) {
   if(day.state!=='candidate')throw Error('Для этого дня ещё нет обратного рейса.');
   const rows=[`Куршская коса без машины · ${answers.date}`,
     `Город начала: ${{kaliningrad:'Калининград',zelenogradsk:'Зеленоградск',svetlogorsk:'Светлогорск'}[answers.city]}.${day.rail?'':' Дорогу до пересадки в Зеленоградске нужно проверить отдельно.'}`,
@@ -41,14 +42,18 @@ export function kosaNote(answers,day,table,catalog) {
     if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
     rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
   }
+  if(interchanges){
+    const selected=selectKosaInterchanges(answers,interchanges),walking=assessKosaWalking(answers,selected);
+    rows.push(...walking.checks.map(check=>check.text),`Переходы: ${selected.source.name} · карта от ${selected.source.snapshot_at}. Площадка № 210 и последние метры ещё не проверены на месте.`);
+  }
   rows.push(`Источник: ${table.source_url} · таблица с ${table.valid_from} · сверена ${table.checked_at}.`,
     'Рейсы на дату поездки не подтверждены. Это план по опубликованной таблице, а не билет или бронь.',
     'Перед поездкой: билет категории «пешком», копия билета и расписания, вода, запасной вариант возвращения.',
     'Карты и PDF каждой тропы скачайте отдельно на godune.ru/kurshskaya-kosa/bez-mashiny/. Между тропами нет общего пешего трека.');
   return rows.join('\n');
 }
-export function addKosaDay(current,answers,day,table,catalog) {
-  const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog);
+export function addKosaDay(current,answers,day,table,catalog,interchanges) {
+  const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);
   const routes=answers.walks==='two'?['vysota-efa','tancuyushchiy-les']:['vysota-efa'];
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
   // Bus legs are a dated roadbook; they are never converted to a foot route.
