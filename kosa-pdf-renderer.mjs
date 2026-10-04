@@ -1,6 +1,7 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=7';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=8';
+import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');
@@ -78,11 +79,14 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   start();heading('Ритм вашего дня');
   paragraph(snapshot.rail?(snapshot.origin==='station'?'Начало и возвращение у вокзала. Дорога от жилья не включена; рейсы требуют проверки на дату поездки.':'Расчёт связывает жильё, электричку, автобус и возвращение. Время подходов и запас заданы вами. Рейсы требуют проверки на дату поездки.'):'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
   for(const row of snapshot.timeline){
-    const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20;
+    const boarding=row.boarding?kosaBoardingText(row.boarding):Object.hasOwn(row,'boarding')?'Названия остановок пока не загружены. Уточните их до поездки.':null;
+    const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20
+      +(boarding?lines(boarding,ui,bodySize).length*bodySize*1.48+20:0);
     if(y-height<49)start();
     paragraph(clock(row.time),{font:title,size:22,color:ink,space:5});
     paragraph(row.title,{size:phone?12:14,space:6});
-    paragraph(row.text,{color:muted,space:20});
+    paragraph(row.text,{color:muted,space:boarding?10:20});
+    if(boarding)paragraph(boarding,{space:20});
   }
   start();heading('Вернуться с косы');
   paragraph('Остановка: '+snapshot.return.stop,{size:13});

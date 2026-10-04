@@ -1,7 +1,7 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=16';
-import {kosaInput,kosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=7';
+import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=8';
 import {createTripFile} from './trip-file.mjs?v=17';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=7';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=8';
 import {assessKosa} from './day-readiness.mjs?v=3';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
@@ -86,7 +86,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
         const roadbook=kosaRoadbook(answers,day,publication,catalog,interchanges);
-        if(!editingDay&&savedDay?.note===kosaNote(answers,day,publication,catalog,roadbook.interchanges)
+        if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,publication,catalog,roadbook.interchanges)
           &&Object.entries(answers).every(([key,value])=>saved?.[key]===value))editingDay=structuredClone(savedDay);
         if(roadbook.walking.checks.some(check=>check.trail&&check.state==='too_short'))title.textContent='Для прогулки нужно больше времени';
         const summary=el('div',undefined,'kosa-result-summary');
@@ -94,6 +94,15 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const list=el('ol',undefined,'kosa-plan-timeline');
         for(const item of roadbook.timeline){
           const copy=row(list,item.time,item.title,item.text,previous);
+          if(item.boarding){
+            const leg=item.boarding,card=el('div',undefined,'kosa-boarding');
+            card.dataset.boarding=leg.id;
+            card.append(el('strong',`№ ${leg.route} · в сторону ${leg.direction_label||leg.direction}`));
+            const stops=el('dl');
+            for(const [label,value]of [['Сесть',leg.from],['Выйти',leg.to]])stops.append(el('dt',label),el('dd',value));
+            card.append(stops,el('p',`Спросите водителя: «${leg.question}»`),el('small',leg.note));
+            copy.append(card);
+          }else if(Object.hasOwn(item,'boarding'))copy.append(el('p','Названия остановок пока не загружены. Уточните их до поездки.','kosa-plan-warning'));
           if(item.walking_check){
             copy.classList.add('kosa-walking-alert');
             const field=item.walking_check.field;
@@ -136,7 +145,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=7');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=8');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');

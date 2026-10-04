@@ -2,6 +2,7 @@ import {cleanTrip,emptyTrip} from './trip-state.mjs?v=17';
 import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=12';
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=1';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
+import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
@@ -24,7 +25,7 @@ export function kosaInput(answers,table,catalog) {
   }
   return input;
 }
-export function kosaNote(answers,day,table,catalog,interchanges) {
+export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   if(day.state!=='candidate')throw Error('Для этого дня ещё нет обратного рейса.');
   const rows=[`Куршская коса без машины · ${answers.date}`,
     `Город начала: ${{kaliningrad:'Калининград',zelenogradsk:'Зеленоградск',svetlogorsk:'Светлогорск'}[answers.city]}.${day.rail?'':' Дорогу до пересадки в Зеленоградске нужно проверить отдельно.'}`,
@@ -34,6 +35,11 @@ export function kosaNote(answers,day,table,catalog,interchanges) {
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);
   else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
+  if(options.boarding!==false){
+    const boarding=kosaBoarding(table,answers);
+    if(boarding)rows.push(...boarding.legs.map(kosaBoardingText));
+    else rows.push('Названия остановок посадки пока не загружены. Уточните их до поездки.');
+  }
   if(day.rail){
     const rail=kosaRailTable(answers,catalog),r=day.rail;
     rows.splice(2,0,answers.origin==='station'?`Начало у вокзала ${rail.service.from} в ${kosaClock(r.home_start)}; у поезда к ${kosaClock(r.station_by)}. Дорога от жилья не включена.`:`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин по вашей оценке; у поезда к ${kosaClock(r.station_by)}.`,
@@ -54,6 +60,10 @@ export function kosaNote(answers,day,table,catalog,interchanges) {
     'Перед поездкой: билет категории «пешком», копия билета и расписания, вода, запасной вариант возвращения.',
     'Карты и PDF каждой тропы скачайте отдельно на godune.ru/kurshskaya-kosa/bez-mashiny/. Между тропами нет общего пешего трека.');
   return rows.join('\n');
+}
+export function isGeneratedKosaNote(note,answers,day,table,catalog,interchanges){
+  return note===kosaNote(answers,day,table,catalog,interchanges)
+    || note===kosaNote(answers,day,table,catalog,interchanges,{boarding:false});
 }
 export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
   const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);

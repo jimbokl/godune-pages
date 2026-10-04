@@ -7,6 +7,17 @@
   "image_url": "https://xn--80afebak0adtkxo.xn--p1ai/upload/medialibrary/e8a/yrs87vlvnnpbxgj7qk2xis62e9624nti.png",
   "image_sha256": "508ed07d45c217e8f671d7274b2b5008e5292494e45287b565891fc3a9a58c44",
   "note": "Опубликованная таблица с 1 мая 2026 года. Срок окончания и календарь движения не указаны. Каждый выбранный рейс требует проверки на дату поездки; наличие мест неизвестно.",
+  "boarding": {
+    "version": 1,
+    "route": "210",
+    "outward_direction": "Морское",
+    "inward_direction": "Зеленоградск",
+    "stops": {
+      "zelenogradsk": "Зеленоградск",
+      "efa": "Дюна «Эфа»",
+      "forest": "Танцующий лес"
+    }
+  },
   "outward": [
     {
       "id": "out-1",
