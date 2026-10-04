@@ -885,3 +885,5 @@
 .trip-transport-settings .trip-plan-note{grid-column:1/-1;margin:0}
 .trip-transport .button,.trip-transport .save-item{max-width:100%;white-space:normal;line-height:1.4}
 @media(max-width:600px){.trip-transport-settings{grid-template-columns:minmax(0,1fr)}.trip-transport-timeline li{font-size:.88rem}.trip-transport .button,.trip-transport .save-item{width:100%;padding:.8rem 1rem}}
+
+.trip-starter-photo picture,.daily-discovery figure picture{display:contents}
