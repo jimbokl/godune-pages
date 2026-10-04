@@ -1,6 +1,7 @@
 // Service snapshots are separate from personal walk/boarding allowances.
+import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
-const date=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !v.startsWith('0000') && Number.isFinite(Date.parse(v+'T12:00:00Z')) && new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;
+const date=validServiceDate;
 const minute=v=>Number.isInteger(v) && v>=0 && v<=1440;
 const ride=v=>object(v) && Object.keys(v).length===3 && typeof v.id==='string' && /^[a-z0-9][a-z0-9-]*$/.test(v.id) && minute(v.departure) && minute(v.arrival) && v.departure<v.arrival && v.arrival<1440;
 export function validRail(v) {
@@ -12,15 +13,7 @@ const toMinute=v=>Number(v.slice(0,2))*60+Number(v.slice(3));
 export const rideSnapshot=v=>({id:v.id,departure:toMinute(v.departure),arrival:toMinute(v.arrival)});
 export function railTable(catalog,id,day) {
   const service=catalog?.rail_services?.find(s=>s.id===id);
-  if(!service)return {service:null,reason:'missing_service',outward:null,inbound:null};
-  if(!date(day))return {service,source:service.source,reason:'choose_date',outward:null,inbound:null};
-  const exception=service.exceptions.find(e=>e.date===day),source=exception?.source || service.source;
-  // A dated publication does not establish next year's seasonal calendar.
-  if(!exception && Number(day.slice(0,4))!==service.publication_year)return {service,source,reason:'unpublished_year',outward:null,inbound:null};
-  if(!exception && (day<service.valid_from || service.valid_until && day>service.valid_until))return {service,source,reason:'outside_validity',outward:null,inbound:null};
-  const weekday=new Date(day+'T12:00:00Z').getUTCDay() || 7;
-  const rows=direction=>exception?exception[direction]:service[direction]?.filter(r=>r.days.includes(weekday))??null;
-  return {service,source,reason:null,exception:!!exception,outward:rows('outward'),inbound:rows('inbound')};
+  return serviceDay(service,day);
 }
 export function resolveRail(trip,catalog) {
   const saved=trip.schedule?.rail;if(!saved)return null;

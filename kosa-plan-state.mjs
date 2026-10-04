@@ -1,9 +1,10 @@
-import {cleanTrip,emptyTrip} from './trip-state.mjs?v=17';
-import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=12';
-import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=1';
+import {cleanTrip,emptyTrip} from './trip-state.mjs?v=18';
+import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=13';
+import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=3';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
+import {datedTransitInput,transitTable} from './transport-day.mjs?v=1';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
@@ -13,11 +14,8 @@ export function kosaRailTable(answers,catalog) {
 export function kosaInput(answers,table,catalog) {
   if(!validTripDate(answers.date) || !['zelenogradsk','kaliningrad','svetlogorsk'].includes(answers.city)
     || !['one','two'].includes(answers.walks)) throw Error('Выберите дату, город и прогулку.');
-  const input={version:1,date:answers.date,valid_from:table.valid_from,valid_until:table.valid_until,checked_at:table.checked_at,
-    ready_at:answers.ready,boarding:answers.boarding,first_visit:answers.first_visit,
-    second_visit:answers.walks==='two'?answers.second_visit:null,outward:table.outward,inward:table.inward};
   const location=slug=>{const point=catalog?.poi?.find(p=>p.slug===slug);return point&&Number.isFinite(point.lat)&&Number.isFinite(point.lon)?{lat:point.lat,lon:point.lon}:null;};
-  const first=location('vysota-efa');if(first)input.visit_light={first,second:location('tancuyushchiy-les')};
+  const input=datedTransitInput({...answers,second_visit:answers.walks==='two'?answers.second_visit:null},table,{first:location('vysota-efa'),second:location('tancuyushchiy-les')});
   const rail=kosaRailTable(answers,catalog);
   if(rail){
     if(!rail.service || (rail.reason && !['unpublished_year','outside_validity'].includes(rail.reason)) || !rail.reason && (!rail.outward || !rail.inbound))throw Error('Нет проверенной таблицы электричек на эту дату.');
@@ -30,6 +28,7 @@ export function kosaInput(answers,table,catalog) {
 }
 export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   if(day.state!=='candidate')throw Error('Для этого дня ещё нет обратного рейса.');
+  table=transitTable(table,answers.date).publication;
   const rows=[`Куршская коса без машины · ${answers.date}`,
     `Город начала: ${{kaliningrad:'Калининград',zelenogradsk:'Зеленоградск',svetlogorsk:'Светлогорск'}[answers.city]}.${day.rail?'':' Дорогу до пересадки в Зеленоградске нужно проверить отдельно.'}`,
     `По таблице № 210: Зеленоградск ${kosaClock(day.outward.departure)} → Эфа ${kosaClock(day.outward.arrival)}.`,
@@ -74,7 +73,7 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges,editin
   const routes=answers.walks==='two'?['vysota-efa','tancuyushchiy-les']:['vysota-efa'];
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
   // Bus legs are a dated roadbook; they are never converted to a foot route.
-  const metadata={version:1,...answers,source_sha256:table.image_sha256};
+  const metadata={version:1,...answers,source_sha256:transitTable(table,answers.date).publication.image_sha256};
   const same=before.itinerary?.days.some(d=>d.note===note && d.kosa_plan?.version===1
     && Object.entries(metadata).every(([key,value])=>d.kosa_plan[key]===value));
   // Saving and then exporting the same proposal must not create a second day.

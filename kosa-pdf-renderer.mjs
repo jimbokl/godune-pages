@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=10';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=11';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
@@ -68,7 +68,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   function heading(text){if(y<140)start();paragraph(text,{font:title,size:phone?23:30,space:16});}
   start();
   paragraph('Куршская коса',{size:11,color:muted,space:13});
-  paragraph('Ваш день у дюн.',{font:title,size:phone?35:49,space:28});
+  paragraph('День на волне.',{font:title,size:phone?35:49,space:28});
   paragraph(snapshot.date.split('-').reverse().join('.')+' · '+snapshot.city,{size:13,space:22});
   page.drawRectangle({x:margin,y:y-54,width,height:54,color:blue});
   page.drawText(snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью, по вашей оценке'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});

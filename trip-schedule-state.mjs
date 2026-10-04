@@ -1,9 +1,9 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {validRail,resolveRail} from './trip-rail-state.mjs?v=2';
+import {validRail,resolveRail} from './trip-rail-state.mjs?v=3';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=2';
+import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=6';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;

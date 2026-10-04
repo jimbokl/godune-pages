@@ -1,11 +1,11 @@
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=6';
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=9';
-import {loadScheduler} from './trip-scheduler.mjs?v=18';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=7';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=10';
+import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=4';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=5';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 
 export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;

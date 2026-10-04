@@ -1,8 +1,8 @@
-import {housingContext,housingInput,applyHousing,housingLock,housingMode} from './housing-state.mjs?v=2';
-import {journeyDays} from './trip-days-state.mjs?v=12';
+import {housingContext,housingInput,applyHousing,housingLock,housingMode} from './housing-state.mjs?v=3';
+import {journeyDays} from './trip-days-state.mjs?v=13';
 import {baseName} from './personal-points.mjs?v=3';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=6';
-import {loadScheduler} from './trip-scheduler.mjs?v=18';
+import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const minutes=n=>n===null?'Путь ещё нужно уточнить':n<60?`${n} мин`:`${Math.floor(n/60)} ч${n%60?` ${n%60} мин`:''}`;

@@ -1,10 +1,12 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=10';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=11';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding} from './kosa-boarding.mjs?v=1';
+import {transitTable} from './transport-day.mjs?v=1';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog,interchanges){
+  table=transitTable(table,answers.date).publication;
   kosaNote(answers,day,table,catalog); // Reject a proposal without a return.
   const atForest=answers.walks==='two',returnTime=atForest?day.inward.via:day.inward.departure;
   const timeline=[

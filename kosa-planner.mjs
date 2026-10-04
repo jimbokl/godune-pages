@@ -1,7 +1,8 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=18';
-import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=10';
-import {createTripFile} from './trip-file.mjs?v=17';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=9';
+import {transitTable} from './transport-day.mjs?v=1';
+import {loadScheduler} from './trip-scheduler.mjs?v=19';
+import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=11';
+import {createTripFile} from './trip-file.mjs?v=18';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=10';
 import {assessKosa} from './day-readiness.mjs?v=4';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
@@ -62,18 +63,18 @@ export async function initKosaPlanner({workshop,catalog,base}) {
     result.setAttribute('aria-busy','true');result.classList.add('kosa-updating');result.querySelectorAll('button,select').forEach(n=>n.disabled=true);
     status.textContent='Подбираем рейсы из опубликованной таблицы…';
     try {
-      const [publication,engine,interchanges]=await Promise.all([table(),loadScheduler(base),maps()]);
+      const [rawPublication,engine,interchanges]=await Promise.all([table(),loadScheduler(base),maps()]);
       if(ticket!==sequence)return;
-      const started=performance.now(),input=kosaInput(answers,publication,catalog),day=engine.transitDay(input);
+      const started=performance.now(),calendar=transitTable(rawPublication,answers.date),publication=calendar.publication,input=kosaInput(answers,rawPublication,catalog),day=engine.transitDay(input);
       const alternatives=day.state==='candidate'?[]:engine.transitAdvice(input);
       const elapsed=performance.now()-started;
       try{performance.mark('godune:kosa-plan-ready',{detail:{calculation_ms:elapsed,state:day.state}});}catch{}
-      result.dataset.calculationMs=elapsed.toFixed(3);result.dataset.kosaState=day.state;result.dataset.kosaValidity=day.validity;
+      result.dataset.calendarException=String(calendar.exception);result.dataset.calendarSource=publication.source_url;result.dataset.calendarCheckedAt=publication.checked_at;result.dataset.calculationMs=elapsed.toFixed(3);result.dataset.kosaState=day.state;result.dataset.kosaValidity=day.validity;
       result.replaceChildren();result.hidden=false;result.classList.remove('kosa-updating');result.setAttribute('aria-busy','false');result.dataset.kosaDate=answers.date;result.dataset.kosaReadyAt=answers.ready;result.dataset.kosaWalks=answers.walks;result.dataset.kosaOrigin=answers.origin||'bus';result.dataset.kosaCity=answers.city;result.dataset.kosaStation=answers.station||'';
       const title=el('h3',day.state==='candidate'?'Ваш день у дюн складывается':'Для этого дня нужен другой план');title.id='kosa-result-title';title.tabIndex=-1;result.append(title,el('p',answers.city==='kaliningrad'&&answers.origin==='station'?'Начало и возвращение — у выбранного вокзала. Дорога от жилья в этот план не входит.':cityNote[answers.city]));
-      const warning=el('p','Часы — из опубликованной таблицы. Перед выездом подтвердите рейсы на свою дату.','kosa-plan-warning');result.append(warning);
+      const warning=el('p',calendar.exception?`На ${answers.date.split('-').reverse().join('.')} опубликовано отдельное изменение. Сверено ${publication.checked_at.split('-').reverse().join('.')}. Перед выездом подтвердите рейсы.`:'Часы — из опубликованной таблицы. Перед выездом подтвердите рейсы на свою дату.','kosa-plan-warning');result.append(warning);
       if(day.state!=='candidate') {
-        const reason=day.validity==='unpublished_calendar'?'Расписание на этот год ещё не подтверждено. Точные часы не подставляем из прежнего сезона. Ниже можно выбрать тропу и скачать её карту.':
+        const reason=day.validity==='unpublished_timetable'?'Расписание в одну из сторон на эту дату пока не опубликовано. Время возвращения станет известно после уточнения; прежние рейсы не подставляем. Карты троп доступны ниже.':day.validity==='unpublished_calendar'?'Расписание на этот год ещё не подтверждено. Точные часы не подставляем из прежнего сезона. Ниже можно выбрать тропу и скачать её карту.':
           day.validity==='outside_publication'?'Эта дата не входит в период опубликованной таблицы. Проверьте транспорт отдельно; карты троп доступны ниже.':
           day.state==='unknown_approach'?'Укажите время от жилья до вокзала и обратно. Неизвестную дорогу не заменяем нулём.':
           day.state==='no_outward_train'?'После выбранного времени не находится электричка к Зеленоградску. Попробуйте начать день раньше.':
@@ -86,7 +87,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const proposals=el('div',undefined,'kosa-alternatives');
           proposals.append(el('h4','Вот что можно изменить'),el('p','Варианты рассчитаны по той же таблице. Время на дюны и дорогу остаётся вашим. Выберите подходящий — поездка сама не изменится.'));
           for(const option of alternatives){
-            const proposed={...answers,ready:option.ready_at,walks:option.second_visit===null?'one':'two'},preview=kosaRoadbook(proposed,option.day,publication,catalog,interchanges);
+            const proposed={...answers,ready:option.ready_at,walks:option.second_visit===null?'one':'two'},preview=kosaRoadbook(proposed,option.day,rawPublication,catalog,interchanges);
             const card=el('div',undefined,'kosa-alternative');card.dataset.kosaAlternative=option.kind;card.dataset.readyAt=option.ready_at;card.dataset.finish=preview.finish;
             const earlier=option.ready_at<answers.ready,dunesOnly=option.kind==='dunes_only';
             card.append(el('h4',dunesOnly?'Только дюны Эфы':answers.walks==='two'?'Начать раньше, сохранить обе прогулки':'Начать раньше, сохранить прогулку'));
@@ -104,8 +105,8 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         } else if(day.validity==='needs_date_check'&&day.state!=='unknown_approach')result.append(el('p','Подходящий вариант с вашим временем на прогулки не найден. Измените время осмотра или проверьте другой способ возвращения.'));
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
-        const roadbook=kosaRoadbook(answers,day,publication,catalog,interchanges);
-        if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,publication,catalog,roadbook.interchanges)
+        const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges);
+        if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,rawPublication,catalog,roadbook.interchanges)
           &&Object.entries(answers).every(([key,value])=>saved?.[key]===value))editingDay=structuredClone(savedDay);
         if(roadbook.walking.checks.some(check=>check.trail&&check.state==='too_short'))title.textContent='Для прогулки нужно больше времени';
         if(roadbook.light.state==='outside_daylight')title.textContent='Для прогулки нужно больше дневного света';
@@ -165,7 +166,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=9');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=10');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
