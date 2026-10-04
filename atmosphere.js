@@ -4,34 +4,35 @@
   if (!scene) return;
   const base = new URL('.', document.currentScript.src);
   const canvas = scene.querySelector('canvas');
-  const ctx = canvas.getContext('2d', {alpha: true});
-  if (!ctx) return;
+  let ctx, glow;
   const mist = scene.querySelector('.mist-layer');
   const farMist = scene.querySelector('.mist-layer.far');
   const sand = scene.querySelector('.sand-layer');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = true, raf = 0, previous = 0, elapsed = 0, frames = 0;
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
-  const resolutionCeiling = navigator.connection?.saveData || innerWidth < 700 ? 1 : 1.5;
+  const resolutionCeiling = navigator.connection?.saveData || matchMedia('(max-width: 699px)').matches ? 1 : 1.5;
   // The sharp photograph remains a separate image. Start moving overlays light
   // on every screen; measured spare time earns detail before an expensive frame.
-  let resolutionLimit = navigator.connection?.saveData ? 1 : .5;
+  let resolutionLimit = .5;
   let qualityReduced = false;
   let sampleCost = 0, sampleFrames = 0, sampleLag = 0, comfortableFrames = 0, fps = 30;
   scene.dataset.quality = String(resolutionLimit);
-  let sceneModule;
+  let sceneModule, cropDirty = true;
   const photo = scene.parentElement.querySelector('.hero-picture img');
   // Source-space density stays constant when a phone crops the photograph.
   const count = 390;
-  const glow = document.createElement('canvas');
-  glow.width = glow.height = 48;
-  const g = glow.getContext('2d');
-  const light = g.createRadialGradient(24,24,0,24,24,24);
-  light.addColorStop(0,'rgba(255,231,158,1)');
-  light.addColorStop(.15,'rgba(255,188,65,.78)');
-  light.addColorStop(.4,'rgba(230,142,25,.28)');
-  light.addColorStop(1,'rgba(221,149,54,0)');
-  g.fillStyle = light; g.fillRect(0,0,48,48);
+  function prepareGlow() {
+    glow = document.createElement('canvas');
+    glow.width = glow.height = 48;
+    const g = glow.getContext('2d');
+    const light = g.createRadialGradient(24,24,0,24,24,24);
+    light.addColorStop(0,'rgba(255,231,158,1)');
+    light.addColorStop(.15,'rgba(255,188,65,.78)');
+    light.addColorStop(.4,'rgba(230,142,25,.28)');
+    light.addColorStop(1,'rgba(221,149,54,0)');
+    g.fillStyle = light; g.fillRect(0,0,48,48);
+  }
 
   function amberShard(x,y,radius,depth,alpha,strength,night) {
     const stone = radius * 1.65;
@@ -78,17 +79,21 @@
   }
 
   function resize() {
-    const rect = scene.getBoundingClientRect();
+    // ResizeObserver supplies geometry after layout. Reading it synchronously
+    // here used to force the whole document to lay out during script startup.
+    if (!ctx || !width || !height) return;
     const nextDpr = Math.min(devicePixelRatio || 1, resolutionLimit);
-    const changed = width !== rect.width || height !== rect.height || dpr !== nextDpr;
-    width = rect.width; height = rect.height; dpr = nextDpr;
+    dpr = nextDpr;
     // Read photo styling before canvas writes; one crop serves GPU and particles.
-    if (sceneModule && photo.complete && photo.naturalWidth && (changed || !crop))
+    if (sceneModule && photo.complete && photo.naturalWidth && cropDirty) {
       crop = sceneModule.photoCrop(photo,width,height);
-    if (changed) {
-      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr,0,0,dpr,0,0);
+      cropDirty = false;
     }
+    const sw = Math.round(width * dpr), sh = Math.round(height * dpr);
+    if (canvas.width !== sw || canvas.height !== sh) {
+      canvas.width = sw; canvas.height = sh;
+    }
+    ctx.setTransform(dpr,0,0,dpr,0,0);
     scene.dataset.quality = String(dpr);
     if (ocean) ocean.resize(width,height,dpr,crop);
     if (engine) paint();
@@ -220,14 +225,28 @@
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }).observe(scene);
   }
-  new ResizeObserver(resize).observe(scene);
-  photo.addEventListener('load', () => { crop = null; resize(); });
+  const geometryReady = new Promise(resolve => {
+    let ready = false;
+    new ResizeObserver(([entry]) => {
+      const rect = entry.contentRect;
+      if (!rect.width || !rect.height) return;
+      if (width !== rect.width || height !== rect.height) {
+        width = rect.width; height = rect.height; cropDirty = true;
+        resize();
+      }
+      if (!ready) {
+        ready = true;
+        performance.mark('godune:atmosphere-geometry-ready');
+        resolve();
+      }
+    }).observe(scene);
+  });
+  photo.addEventListener('load', () => { cropDirty = true; resize(); });
   document.addEventListener('visibilitychange', update);
   addEventListener('godune:theme-change', () => { if (engine) paint(); });
   reduced.addEventListener('change', update);
   addEventListener('pagehide', () => { cancelAnimationFrame(raf); raf = 0; });
   addEventListener('pageshow', update);
-  resize();
   // Fetch and compile while the photograph is loading. Only visible work waits
   // for its first paint; a busy planner must not postpone the scene's requests.
   performance.mark('godune:atmosphere-start');
@@ -251,7 +270,15 @@
   // photograph is still loading. start() handles each result below.
   wasmReady.catch(()=>{}); sceneReady.catch(()=>{});
   async function start() {
-    const {instance} = await wasmReady;
+    const [{instance}] = await Promise.all([wasmReady, geometryReady]);
+    const yieldTask = () => globalThis.scheduler?.yield?.() || new Promise(resolve => setTimeout(resolve, 0));
+    await yieldTask();
+    performance.mark('godune:atmosphere-particles-start');
+    ctx = canvas.getContext('2d', {alpha: true});
+    if (!ctx) throw new Error('Графический слой недоступен');
+    prepareGlow();
+    resize();
+    await yieldTask();
     engine = instance.exports;
     header = engine.frame_header_size();
     pointer = engine.alloc_frame(count);
@@ -260,6 +287,7 @@
     scene.classList.add('wasm-atmosphere');
     scene.dataset.engine = 'rust-wasm';
     paint(); update();
+    performance.mark('godune:atmosphere-particles-ready');
     try {
       ({module:sceneModule,profile} = await sceneReady);
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {
