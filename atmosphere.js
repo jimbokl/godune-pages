@@ -17,7 +17,7 @@
   // on every screen; measured spare time earns detail before an expensive frame.
   let resolutionLimit = navigator.connection?.saveData ? 1 : .5;
   let qualityReduced = false;
-  let sampleCost = 0, sampleFrames = 0, sampleLag = 0, fps = 30;
+  let sampleCost = 0, sampleFrames = 0, sampleLag = 0, comfortableFrames = 0, fps = 30;
   scene.dataset.quality = String(resolutionLimit);
   let sceneModule;
   const photo = scene.parentElement.querySelector('.hero-picture img');
@@ -179,10 +179,13 @@
       sampleLag += interval;
       if (++sampleFrames === (frames < 30 ? 3 : 12)) {
         const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > Math.max(65,1000/fps*1.8);
-        const comfortable = sampleCost / sampleFrames < 6 && sampleLag / sampleFrames < 45;
-        if (overloaded && dpr > .5) {
+        // Raising detail reallocates GPU buffers. Require sustained spare time
+        // after the ocean is ready, not a few cheap particle-only frames.
+        const comfortable = ocean && sampleCost / sampleFrames < 4 && sampleLag / sampleFrames < 1000/fps*1.2;
+        comfortableFrames = comfortable ? comfortableFrames + sampleFrames : 0;
+        if (overloaded && dpr > .25) {
           qualityReduced = true;
-          resolutionLimit = dpr > 1 ? 1 : dpr > .75 ? .75 : .5;
+          resolutionLimit = dpr > 1 ? 1 : dpr > .75 ? .75 : dpr > .5 ? .5 : dpr > .35 ? .35 : .25;
           resize();
           performance.mark('godune:scene-quality', {detail:String(dpr)});
         } else if (overloaded && fps > 15) {
@@ -190,8 +193,9 @@
           fps = fps === 30 ? 20 : 15;
           scene.dataset.fps = String(fps);
           performance.mark('godune:scene-fps', {detail:String(fps)});
-        } else if (comfortable && frames >= 12 && !qualityReduced && dpr < resolutionCeiling) {
+        } else if (comfortableFrames >= 90 && !qualityReduced && dpr < resolutionCeiling) {
           resolutionLimit = dpr < .75 ? .75 : dpr < 1 ? 1 : resolutionCeiling;
+          comfortableFrames = 0;
           resize();
           performance.mark('godune:scene-quality', {detail:String(dpr)});
         }
@@ -209,7 +213,7 @@
     }
     if (raf) cancelAnimationFrame(raf);
     raf = 0;
-    sampleCost = 0; sampleFrames = 0; sampleLag = 0;
+    sampleCost = 0; sampleFrames = 0; sampleLag = 0; comfortableFrames = 0;
     if (engine && reduced.matches) paint();
     if (running) { previous = performance.now(); raf = requestAnimationFrame(tick); }
   }
