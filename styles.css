@@ -113,3 +113,29 @@ dialog{border:0;padding:32px 40px;background:var(--night-surface,#fbfaf7);color:
 .rail-beach-walk{display:block;min-height:44px;width:fit-content;max-width:100%;padding:12px 0 6px;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:5px}.rail-beach-walk:focus-visible{outline:2px solid var(--night-line,#517d99);outline-offset:4px}
 
 @media(min-width:1081px){.hero h1{white-space:nowrap}}
+
+/* Keep complete HTML available while the browser paints nearby home sections.
+   Remember measured heights after a section is visited; estimates only reserve
+   space before its first layout. The hero and all other pages stay immediate. */
+@supports(content-visibility:auto){
+  [data-home-page] #main>section:not(#top):not(.destinations){content-visibility:auto;contain-intrinsic-block-size:auto var(--home-block-size,800px)}
+  [data-home-page] #main>.trip-workshop{--home-block-size:1720px}
+  [data-home-page] #main>.city-rubric{--home-block-size:480px}
+  [data-home-page] #main>.author-shore{--home-block-size:780px}
+  [data-home-page] #main>.routes{--home-block-size:1210px}
+  [data-home-page] #main>.planning{--home-block-size:430px}
+  [data-home-page] #main>.home-food{--home-block-size:990px}
+  [data-home-page] #main>.map-section{--home-block-size:430px}
+  [data-home-page] #main>.home-directory{--home-block-size:630px}
+  @media(max-width:700px){
+    [data-home-page] #main>.trip-workshop{--home-block-size:2880px}
+    [data-home-page] #main>.city-rubric{--home-block-size:1160px}
+    [data-home-page] #main>.author-shore{--home-block-size:640px}
+    [data-home-page] #main>.routes{--home-block-size:2910px}
+    [data-home-page] #main>.planning{--home-block-size:750px}
+    [data-home-page] #main>.home-food{--home-block-size:2260px}
+    [data-home-page] #main>.map-section{--home-block-size:680px}
+    [data-home-page] #main>.home-directory{--home-block-size:1320px}
+  }
+  @media print{[data-home-page] #main>section:not(#top):not(.destinations){content-visibility:visible;contain-intrinsic-block-size:none}}
+}
