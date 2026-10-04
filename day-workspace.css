@@ -1,0 +1,106 @@
+/* The day is the workspace; supporting tools disclose their detail on demand. */
+[data-day-workspace] .workshop-grid,[data-day-workspace] .workshop-inspiration{align-items:start}
+.day-disclosure{border:1px solid var(--line);border-radius:14px;background:var(--paper);margin:12px 0;min-width:0}
+.day-disclosure>summary{font:600 15px/1.5 var(--sans);min-height:52px;padding:16px 20px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.day-disclosure>summary::after{content:'＋';color:var(--sea-muted)}
+.day-disclosure[open]>summary::after{content:'−'}
+.day-disclosure>summary::-webkit-details-marker{display:none}
+.day-disclosure>section,.day-disclosure>div,.day-disclosure>form,.day-disclosure>p{margin:0;padding:20px;border:0;min-width:0}
+.day-disclosure[open]>summary{border-bottom:1px solid var(--line)}
+.day-planner .tool-nav,.day-planner #planner-trip-settings>summary,.day-planner .workshop-heading,.day-planner .workshop-step{display:none}
+.day-planner .wizard-page-intro{margin:24px 0 28px;padding:0;text-align:left}
+.day-planner .wizard-page-intro h1{font-size:clamp(36px,4vw,60px);margin:8px 0 12px}
+.day-planner .wizard-page-intro>p:not(.eyebrow){font-size:18px;color:var(--muted)}
+.planner-new-day{border:1px solid var(--line);border-radius:16px;margin-bottom:24px}
+.planner-new-day>summary{font:600 16px/1.5 var(--sans);padding:18px 24px;cursor:pointer;display:flex;justify-content:space-between;list-style:none}
+.planner-new-day>summary::-webkit-details-marker{display:none}
+.planner-new-day .planning-wizard{margin:0;border:0}
+.day-planner .planner-trip-settings{border:0;margin:0;padding:0;background:transparent}
+.day-planner .trip-workshop{padding:0;margin:0;border:0;width:100%;max-width:none;background:transparent}
+.day-planner .workshop-grid{display:block}
+.day-planner .workshop-main{border:0;padding:0;background:transparent}
+.day-planner .trip-journey{margin:0;padding:0;border:0;background:transparent}
+.day-planner .journey-heading{display:none}
+.day-planner .journey-starters{margin:0 0 16px}
+.day-planner .journey-days{display:flex;gap:10px;overflow:auto;padding:0 0 12px;max-width:100%}
+.day-planner .journey-days>button{flex:0 0 auto;min-width:150px;max-width:220px;min-height:72px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--sand);text-align:left}
+.day-planner .journey-days>button[aria-pressed=true]{background:var(--sea);border-color:var(--sea-line);color:var(--sea-ink)}
+.day-planner .journey-days>button strong{font-size:17px}
+.day-planner .journey-days>button span{font-size:13px;line-height:1.4}
+.day-toolbar{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:8px 0 24px}
+.day-planner .trip-dates{display:flex;gap:12px;margin:0;max-width:none}
+.day-planner .trip-dates>label:first-child{display:none}
+.day-planner .trip-dates label{font-size:13px}
+.day-planner .trip-dates input{min-height:44px;padding:10px 12px;border-radius:8px;min-width:170px}
+.day-name{font-size:15px;color:var(--muted)}
+.day-main-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.day-main-actions .button{font:600 16px/1.4 var(--sans);padding:14px 20px;border-radius:10px;min-height:48px;width:auto;background:var(--sea);color:var(--sea-ink)}
+.day-add-place{font:600 15px/1.5 var(--sans);min-height:44px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+.day-workspace{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;align-items:start}
+.day-thread{min-width:0}
+.day-view-tabs{display:none}
+.day-map-panel{position:sticky;top:24px;align-self:start;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--sand);min-width:0}
+.day-map-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px}
+.day-map-heading h3{font-size:28px}
+.day-map-heading a{font:600 13px/1.5 var(--sans);text-decoration:underline;text-underline-offset:4px}
+.day-map-canvas{height:clamp(340px,48vw,560px);width:100%;background:var(--sea-soft)}
+.day-map-status{font:13px/1.6 var(--sans);padding:16px 20px;color:var(--muted)}
+.day-map-retry{margin:0 20px 16px;background:transparent;text-decoration:underline;min-height:44px;font-size:13px}
+.day-map-dot{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--sea-line);border-radius:50%;background:var(--paper);color:var(--ink);font:700 16px/1 var(--sans);box-shadow:0 2px 10px #0002}
+.day-empty{padding:32px;border:1px solid var(--line);border-radius:16px;background:var(--sand)}
+.day-empty h3{font-size:34px;margin:12px 0}
+.day-empty p{margin-bottom:20px}
+.day-planner .trip-schedule{padding:0;border:0;margin:0;background:transparent}
+.day-planner .trip-plan-heading>div>p{display:none}
+.day-planner .trip-plan-heading h3{font-size:32px;margin:0 0 18px}
+.day-planner #trip-plan-summary{font:15px/1.7 var(--sans);padding:16px 20px;margin:16px 0;border-radius:12px;background:var(--sea-soft)}
+.day-planner .trip-plan-stops{padding:0;list-style:none;margin:0}
+.day-planner .trip-plan-stops>li{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:22px;margin:14px 0;min-width:0}
+.day-planner .trip-plan-stops>li::before{display:none}
+.day-planner .trip-timeline-heading{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.day-planner .trip-timeline-time{font:600 16px/1.4 var(--sans);color:var(--sea-muted)}
+.day-planner .trip-timeline-heading a{font:400 27px/1.2 var(--serif);text-decoration:none}
+.day-planner .trip-timeline-detail{font:14px/1.6 var(--sans);color:var(--muted);margin:12px 0}
+.day-planner .day-road-details{font:13px/1.6 var(--sans);margin:14px 0}
+.day-planner .day-road-details>summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--sea-muted)}
+.day-planner .trip-plan-issues{font-size:14px}
+.day-planner .trip-plan-stops>li[data-plan-conflict=true]{border-color:#bb845b}
+.day-planner #trip-draft{padding:20px;border:0;margin:0;background:transparent}
+.day-planner #trip-draft>.trip-draft-heading,.day-planner #trip-draft>h3{display:none}
+.day-planner #my-places{margin:0}
+.day-planner .day-extras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px;align-items:start}
+.day-planner .day-extras>details{margin:0;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.day-planner .day-extras>details[open]{grid-column:1/-1}
+.day-planner .day-extras>details>summary{min-height:56px;padding:16px 20px;font:600 15px/1.5 var(--sans);cursor:pointer}
+.day-planner .day-extras>details>section{border:0;margin:0;padding:24px}
+.day-planner .day-extras h3{font-size:30px}
+.day-planner .day-more>section{border:0;margin:0}
+.day-planner .day-explore .workshop-inspiration{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.day-planner .day-explore #trip-starters{margin:0}
+.day-planner .tool-footnote{font-size:13px;color:var(--muted);margin:20px 0}
+.day-planner #my-trip .trip-schedule{padding:0;border:0;margin:0;background:transparent;box-shadow:none}
+.day-planner #my-trip .trip-dates{padding:0;border:0;background:transparent}
+.day-planner #my-trip .trip-timeline-time{padding:0;min-width:0;background:transparent;border:0}
+.day-planner #my-trip .day-main-actions .button{background:var(--sea);color:#173447;border-color:var(--sea-line)}
+.day-planner #my-trip .journey-days>button[aria-pressed=true]{background:var(--sea);color:#173447}
+.day-planner #my-trip .day-empty[hidden]{display:none}
+.day-planner .day-visit-details{font:13px/1.6 var(--sans);margin:12px 0}
+.day-planner .day-visit-details>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--sea-muted)}
+.day-planner .day-visit-details .trip-visit-calendar{margin:0}
+.day-planner #my-trip [data-plan-point][data-day-selected=true]{border-color:var(--sea-muted);box-shadow:0 0 0 2px var(--sea-line)}
+.day-map-dot[aria-pressed=true]{background:var(--sea);color:#173447;border-color:var(--sea-muted)}
+.day-planner #trip-storage:not([hidden]){padding:20px;border:1px solid #bb845b;background:var(--sand);margin:16px 0}
+@media(min-width:1700px){.day-planner .inner-main{max-width:1740px;width:calc(100% - 96px)}}
+@media(max-width:800px){
+ .day-workspace{display:block}.day-view-tabs{display:flex;gap:6px;background:var(--sand);border:1px solid var(--line);border-radius:12px;padding:5px;margin:0 0 18px;position:sticky;top:8px;z-index:2}
+ .day-view-tabs button{flex:1;min-height:44px;border-radius:8px;background:transparent;font:600 16px/1.5 var(--sans)}
+ .day-view-tabs button[aria-pressed=true]{background:var(--sea);color:#173447}
+ .day-workspace[data-view=list] .day-map-panel,.day-workspace[data-view=map] .day-thread{display:none}
+ .day-map-panel{position:static}.day-map-canvas{height:440px;max-height:60vh}
+ .day-planner .day-extras{grid-template-columns:1fr}.day-toolbar{gap:14px;align-items:flex-start}.day-name{width:100%;order:-1}
+ .day-main-actions{width:100%;justify-content:space-between;gap:8px}.day-main-actions .button{font-size:14px;padding:12px 16px}.day-add-place{font-size:13px}
+ .day-planner .day-explore .workshop-inspiration{display:block}.day-planner .trip-plan-stops>li{padding:18px}
+ .day-planner .trip-timeline-heading a{font-size:25px}.day-planner .wizard-page-intro{margin:16px 0 24px}
+ .day-planner .journey-days>button{min-width:140px;max-width:175px}.day-planner .journey-details-body{padding:18px}
+ .day-planner .day-extras>details>section,.day-disclosure>section,.day-disclosure>div,.day-disclosure>form{padding:18px}
+}

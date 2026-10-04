@@ -5,8 +5,9 @@ import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=15';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=6';
 import {createPlanningProgress} from './planning-progress.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=16';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=16';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=17';
 import {initTripDays} from './trip-days-ui.mjs?v=20';
+import {initDayWorkspace} from './day-workspace.mjs?v=1';
 import {addTripStarter} from './trip-starters.mjs?v=12';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=13';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=9';
@@ -107,6 +108,7 @@ export async function initWorkshop(catalog, base) {
   const cancellation = initTripCancellation({read:()=>state,commit,catalog});
   await yieldTask();
   const replacement = initTripReplacement({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
+  const workspace=initDayWorkspace({mount:$('#my-trip'),read:()=>state,base,catalog});
   await yieldTask();
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
@@ -173,6 +175,7 @@ export async function initWorkshop(catalog, base) {
     days.render();
     replacement.render();
     cancellation.render();
+    workspace.render();
     window.dispatchEvent(new CustomEvent('godune:trip-change'));
     document.querySelectorAll('[data-save-place], [data-save-route]').forEach(node => {
       const kind = node.hasAttribute('data-save-place') ? 'places' : 'routes';

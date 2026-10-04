@@ -14,13 +14,25 @@ const minutes = text => /^\d{2}:\d{2}$/.test(text) ? Number(text.slice(0,2))*60+
 
 export function initTripSchedule({mount, read, commit, base, catalog}) {
   if (!mount) return {render(){}};
+  const compact=document.body.dataset.tool==='planner';
   const section = document.createElement('section'); section.className='trip-schedule'; section.setAttribute('aria-labelledby','trip-plan-title');
   section.innerHTML=`<div class="trip-plan-heading"><div><p class="eyebrow">Оставьте время морю</p><h3 id="trip-plan-title">Ваш день, без спешки</h3><p>Осмотр, дорога и пауза у воды. Соберите день, в котором не придётся всё время спешить.</p></div><button type="button" class="button button-light" id="trip-plan-open" aria-expanded="false" aria-controls="trip-plan-body">Рассчитать время</button></div>
   <div id="trip-plan-body" hidden><p class="trip-plan-note">Выберите, как будете перемещаться. Оценим дорогу по открытой карте; осмотр и паузы можно подстроить под себя. Дата добавит часы работы и сеансы. Перед поездкой сверьте вход, парковку и билеты. Если путь ещё неясен, время дальше останется неполным.</p><form id="trip-day-settings" class="trip-day-settings"></form><section id="trip-light" class="trip-light" aria-label="Свет выбранного дня"></section><p id="trip-plan-summary" role="status"></p><ol id="trip-plan-stops" class="trip-plan-stops"></ol><p id="trip-plan-feedback" role="status"></p></div>`;
   mount.insertBefore(section, mount.querySelector('#trip-weather, #trip-utilities'));
+  if(compact) {
+    section.classList.add('day-timeline');
+    section.querySelector('#trip-plan-title').textContent='Один шаг за другим';
+    const body=section.querySelector('#trip-plan-body');body.hidden=false;
+    const timing=document.createElement('details');timing.id='trip-timing-settings';timing.className='day-disclosure';
+    const caption=document.createElement('summary');caption.textContent='Время и транспорт';timing.append(caption);
+    body.prepend(timing);timing.append(section.querySelector('.trip-plan-note'),section.querySelector('#trip-day-settings'));
+    const light=document.createElement('details');light.className='day-disclosure day-light-details';
+    const title=document.createElement('summary');title.textContent='Свет и закат';light.append(title,section.querySelector('#trip-light'));body.append(light);
+    const open=section.querySelector('#trip-plan-open');open.hidden=true;open.setAttribute('aria-expanded','true');
+  }
   const $=selector=>section.querySelector(selector);
   bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
-  let opened=false, sequence=0;
+  let opened=compact, sequence=0;
   function input(form, caption, name, type, value, stop) {
     const label=document.createElement('label'), field=document.createElement('input');
     label.textContent=caption;field.type=type;field.name=name;field.value=value;field.dataset.planField=name;
@@ -158,7 +170,10 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         if(travel.source) {
           const source=document.createElement('a');source.href=travel.source.url;source.target='_blank';source.rel='noopener';source.textContent=`OpenStreetMap · карта на ${travel.source.snapshot_at.slice(0,10).split('-').reverse().join('.')}`;
           const license=document.createElement('a');license.href=new URL('assets/licenses/routing-data.txt',base);license.target='_blank';license.rel='noopener';license.textContent='Условия карты';road.append(source,' · ',license);
-        }li.append(road);
+        }
+        if(compact && travel.origin==='estimate') {
+          const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Как рассчитана дорога';details.className='day-road-details';details.append(summary,road);li.append(details);
+        }else li.append(road);
       }
       if(access) {
         const card=document.createElement('div');card.className='trip-calendar-card trip-access-card';card.dataset.planAccess=item.id;
@@ -173,7 +188,14 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const caution=document.createElement('p');caution.className='trip-calendar-source';caution.textContent='Подход оценён по карте. Ступени, настил и фактический вход сверьте перед поездкой.';
         card.append(title,path,note,evidence,caution,nav);li.append(card);
       }
-      li.append(calendarCard(place,trip,value,window,item));
+      const calendar=calendarCard(place,trip,value,window,item);
+      if(compact) {
+        const details=document.createElement('details'),summary=document.createElement('summary');
+        details.className='day-visit-details';details.dataset.dayVisit=item.id;
+        const reason=calendar.dataset.visitReason;
+        summary.textContent=reason==='closed'?'В этот день закрыто':reason==='choose_date'?'Часы посещения · укажите дату':calendar.dataset.visitOrigin==='unknown'?'Часы посещения · нужно уточнить':calendar.querySelector('.trip-calendar-title')?.textContent || 'Часы посещения';
+        details.append(summary,calendar);li.append(details);
+      }else li.append(calendar);
       const kitchen=kitchenCard(place,trip);if(kitchen)li.append(kitchen);
       const transport=transportCard({trip,item,place,catalog,clock});if(transport)li.append(transport);
       if(item.issues.length) {
@@ -219,6 +241,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop, focusedMode=document.activeElement?.type==='radio'?document.activeElement.value:null;
       const expanded=[...section.querySelectorAll('details[data-plan-editor][open]')].map(node=>node.dataset.planEditor);
       const transportExpanded=[...section.querySelectorAll('details[data-transport-editor][open]')].map(node=>node.dataset.transportEditor);
+      const visitsExpanded=[...section.querySelectorAll('details[data-day-visit][open]')].map(node=>node.dataset.dayVisit);
     section.dataset.scheduleReady='false';
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
@@ -228,6 +251,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       let light=null;
       if(trip.date)try {light=calculate.light(lightInput(trip,catalog,result));}catch{/* Preserve the schedule when the optional light layer cannot be calculated. */}
       renderSettings(settings);renderStops(trip,result,matrix,light);
+      for(const id of visitsExpanded){const node=[...section.querySelectorAll('[data-day-visit]')].find(row=>row.dataset.dayVisit===id);if(node)node.open=true;}
       const applyLight = async alternative => {
         let applied=false;
         await commit(current=>{

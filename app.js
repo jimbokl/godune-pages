@@ -28,17 +28,18 @@
   // Open the saved editor before native fragment navigation and restore it
   // after asynchronous trip rendering. Same-fragment clicks also work.
   function revealPlannerTrip(hash, {scroll=false, focus=false}={}) {
-    if (!$('#planner-trip-settings')) return;
+    const editor=$('#planner-trip-settings') || $('#my-trip');
+    if (!editor) return;
     let id;
     try { id=decodeURIComponent(hash.slice(1)); } catch { return; }
     const target=document.getElementById(id);
-    if (!target?.closest('#planner-trip-settings')) return;
+    if (!target || !editor.contains(target)) return;
     for (let parent=target; parent; parent=parent.parentElement) {
       if (parent.matches('details')) parent.open=true;
     }
     if (scroll || focus) requestAnimationFrame(() => {
       if (focus) {
-        const heading=target.matches('details')?target.querySelector('summary'):target.querySelector('h2,h3,summary') || target;
+        const heading=target.matches('details')?target.querySelector('summary'):[...target.querySelectorAll('h2,h3,summary')].find(node=>node.getClientRects().length) || target;
         if (!heading.hasAttribute('tabindex')) heading.tabIndex=-1;
         heading.focus({preventScroll:true});
       }
@@ -220,7 +221,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=43'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=44'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
@@ -247,15 +248,12 @@
       renderMap().catch(()=>setMapStatus('Карта пока не открылась. Места доступны в списке ниже.'));
     }
     if ($('#discovery-name')) workshop.showDiscovery(data.discoveries || []);
+    revealPlannerTrip(location.hash);
     document.documentElement.dataset.tripReady = 'true';
     perfMark('trip-ready');
     // Stored days and their sections may finish rendering after native scrolling.
     const restoreTripEntry=()=>{
-      if ($('#planner-trip-settings')) revealPlannerTrip(location.hash,{scroll:true,focus:true});
-      else if (location.hash==='#trip-bookings') {
-        const target=$('#trip-bookings');
-        if (target) { for(let parent=target;parent;parent=parent.parentElement) if(parent.matches('details')) parent.open=true; target.scrollIntoView({block:'start'}); }
-      }
+      revealPlannerTrip(location.hash,{scroll:true,focus:true});
     };
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
