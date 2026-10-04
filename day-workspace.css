@@ -104,3 +104,5 @@
  .day-planner .journey-days>button{min-width:140px;max-width:175px}.day-planner .journey-details-body{padding:18px}
  .day-planner .day-extras>details>section,.day-disclosure>section,.day-disclosure>div,.day-disclosure>form{padding:18px}
 }
+
+.day-guide-link{display:inline-flex;min-height:44px;align-items:center;margin-bottom:18px;color:var(--sea-muted);font:600 15px/1.5 var(--sans)}

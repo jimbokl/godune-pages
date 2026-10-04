@@ -4,7 +4,7 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 import {resolveRail} from './trip-rail-state.mjs?v=3';
 import {foodTrip,anchorRequest} from './gastro-day.mjs?v=5';
-import {selectedDay,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=13';
+import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=14';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 
@@ -75,8 +75,9 @@ export function saveTourDay(current,tour,food,settings) {
     && JSON.stringify(current.schedule)===JSON.stringify(prepared.schedule)
     && JSON.stringify(selected.start_at)===JSON.stringify(settings.anchors?.start_at || null)
     && JSON.stringify(selected.night_at)===JSON.stringify(settings.anchors?.night_at || null))return current;
-  let next=current.places.length || current.routes.length ? addTripDay(current) : ensureJourney(current);
-  next=changeDayDetails(next,{start_at:settings.anchors?.start_at || null,night_at:settings.anchors?.night_at || null});
+  let next=dayHasContent(current) || current.routes.length ? addTripDay(current) : ensureJourney(current);
+  next=changeDayDetails(next,{start_at:settings.anchors?.start_at || null,night_at:settings.anchors?.night_at || null,
+    wave:{version:1,theme:'gastro',pace:'full',recipe:null}});
   const day=selectedDay(next);
   Object.assign(day,{date:prepared.date,places:[...prepared.places],schedule:structuredClone(prepared.schedule)});
   return {...next,date:prepared.date,month:prepared.month,places:[...prepared.places],schedule:structuredClone(prepared.schedule)};

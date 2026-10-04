@@ -1,4 +1,4 @@
-import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=13';
+import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=14';
 import {emptyCost,putExpense,removeExpense,cancelExpense,putRefund,removeRefund,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=7';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';

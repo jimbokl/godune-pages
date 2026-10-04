@@ -1,7 +1,8 @@
-import {cleanTrip} from './trip-state.mjs?v=18';
-import {addTripDay,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=13';
+import {cleanTrip} from './trip-state.mjs?v=19';
+import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=14';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=10';
 import {TRIP_STARTERS} from './trip-starters.mjs?v=12';
+import {validDayWave,waveChoices,waveSchedule} from './day-wave.mjs?v=1';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -15,8 +16,10 @@ export function wizardRoutes(catalog) {
 }
 
 export function wizardAreas(catalog) {
-  return [...new Map(wizardRoutes(catalog).map(route=>[route.area,{id:route.area,name:route.area_name || route.area}])).values()];
+  return [...new Map(wizardChoices(catalog).map(route=>[route.area,{id:route.area,name:route.area_name || route.area}])).values()];
 }
+
+export const wizardChoices=(catalog,theme='mixed')=>waveChoices(catalog,wizardRoutes(catalog),theme);
 
 export function wizardStarters(catalog) {
   const known=new Set((catalog?.poi || []).map(point=>point.slug));
@@ -27,15 +30,7 @@ export function wizardStarters(catalog) {
 export const journeyIsOccupied=trip=>journeyDays(trip).length>1 || dayIsOccupied(trip) || !!trip.routes.length;
 
 // A date alone is a useful default, not permission to replace meaningful work.
-export function dayIsOccupied(trip) {
-  const day=selectedDay(trip);
-  if(day.places.length || day.start_at || day.night_at || day.note?.trim()
-    || Object.keys(day.costs || {}).length || day.bookings?.length || day.visited?.length)return true;
-  const schedule=day.schedule || trip.schedule;
-  if(!schedule)return false;
-  const {mode,...settings}=schedule;
-  return mode!==undefined && mode!=='foot' || stable(settings)!==stable(defaultSchedule());
-}
+export const dayIsOccupied=dayHasContent;
 
 export function wizardDefaults(trip,catalog) {
   const day=selectedDay(trip),occupied=dayIsOccupied(trip),routes=wizardRoutes(catalog);
@@ -47,24 +42,26 @@ export function wizardDefaults(trip,catalog) {
 }
 
 export function prepareWizardDay(current,answers,catalog) {
-  const route=wizardRoutes(catalog).find(row=>row.slug===answers.route && row.area===answers.area);
+  if(answers.wave!==undefined && !validDayWave(answers.wave))throw Error('wizard_invalid_wave');
+  const route=wizardChoices(catalog,answers.wave?.theme || 'mixed').find(row=>row.slug===answers.route && row.area===answers.area);
   if(!route)throw new Error('wizard_unknown_route');
   if(!(answers.date===null || validTripDate(answers.date)))throw new Error('wizard_invalid_date');
   if(!minute(answers.start) || !minute(answers.end) || answers.start>=answers.end)throw new Error('wizard_invalid_time');
   const occupied=dayIsOccupied(current),next=occupied?addTripDay(current):ensureJourney(current);
   const day=selectedDay(next),places=[...new Set(route.stops.map(stop=>stop.poi))];
-  const schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end};
+  let schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end};
   for(const id of places) {
     const point=catalog.poi.find(row=>row.slug===id);
     const visit=Number.isInteger(point.visit_minutes) && point.visit_minutes>0 && point.visit_minutes<=1440
       ? point.visit_minutes : places.length===1 && Number.isInteger(route.minutes) && route.minutes>0 && route.minutes<=1440 ? route.minutes : 30;
     schedule.stops[id]={visit,pause:0,leg:null,window:null};
   }
+  if(answers.wave){day.wave={...answers.wave,theme:route.wave_theme,recipe:route.slug};schedule=waveSchedule(schedule,day.wave);}
   day.date=answers.date;day.places=places;day.schedule=clone(schedule);
   if(!day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
   next.date=day.date;next.month=day.date?Number(day.date.slice(5,7)):next.month;
   next.places=[...places];next.schedule=schedule;
-  next.routes=[...new Set([...current.routes,route.slug])];
+  next.routes=[...new Set([...current.routes,...(route.wave_recipe?[]:[route.slug])])];
   return {trip:cleanTrip(next,catalog),route,answers:clone(answers),placement:occupied?'separate':'current',
     sourceSignature:stable(current),targetId:day.id};
 }
@@ -84,6 +81,7 @@ export function applyWizardDay(current,proposal,catalog,{separate=false}={}) {
 }
 
 export function prepareWizardTrip(current,answers,catalog) {
+  if(answers.wave!==undefined && (!validDayWave(answers.wave) || answers.wave.theme!=='mixed'))throw Error('wizard_invalid_wave');
   const starter=wizardStarters(catalog).find(row=>row.id===answers.starter);
   if(answers.area!=='whole-trip' || !starter)throw new Error('wizard_unknown_starter');
   if(!(answers.date===null || validTripDate(answers.date)))throw new Error('wizard_invalid_date');
@@ -91,12 +89,14 @@ export function prepareWizardTrip(current,answers,catalog) {
   let date=answers.date;
   const days=starter.days.map((template,index)=>{
     if(answers.date!==null && !validTripDate(date))throw new Error('wizard_date_overflow');
-    const schedule={...defaultSchedule(),mode:template.mode,start:answers.start,end:answers.end};
+    let schedule={...defaultSchedule(),mode:template.mode,start:answers.start,end:answers.end};
     for(const id of template.places) {
       const visit=catalog.poi.find(point=>point.slug===id).visit_minutes;
       schedule.stops[id]={visit:Number.isInteger(visit)&&visit>0&&visit<=1440?visit:30,pause:0,leg:null,window:null};
     }
-    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,start_at:template.start_at,
+    const wave=answers.wave?{...answers.wave,theme:template.places.every(id=>catalog.poi.find(row=>row.slug===id).gastronomy)?'gastro':'mixed',recipe:null}:null;
+    if(wave)schedule=waveSchedule(schedule,wave);
+    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(wave?{wave}:{}),start_at:template.start_at,
       night_at:template.night_at,note:'',costs:{}};
     date=nextDate(date);return day;
   });

@@ -1,9 +1,10 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=13';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=14';
 import {tripSignature} from './trip-light.mjs?v=7';
 import {regionMapStyle} from './region-map.mjs?v=6';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=6';
+import {waveLabel} from './day-wave.mjs?v=1';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};
 function disclose(node,title,id) {
@@ -13,7 +14,7 @@ function disclose(node,title,id) {
 }
 export function workspaceSummary(trip) {
   const days=journeyDays(trip),day=selectedDay(trip);
-  return {days:days.length,stops:trip.places.length,hasTrip:tripHasDraft(trip),name:day.name || `День ${Math.max(0,days.findIndex(row=>row.id===day.id))+1}`};
+  return {days:days.length,stops:trip.places.length,hasTrip:tripHasDraft(trip),name:day.name || waveLabel(day.wave) || `День ${Math.max(0,days.findIndex(row=>row.id===day.id))+1}`};
 }
 let library;
 function mapLibrary(base) {
@@ -87,6 +88,7 @@ function initDayMap({mount,read,base,catalog,onSelect}) {
 }
 
 export function initDayWorkspace({mount,read,base,catalog}) {
+  const guideLink=el('a','day-guide-link','Открыть гида по этому дню →');guideLink.href=new URL('guide/',base);
   if(!mount)return {render(){}};
   const planner=document.body.dataset.tool==='planner',journey=mount.querySelector('.trip-journey');
   if(!journey)return {render(){}};
@@ -109,7 +111,7 @@ export function initDayWorkspace({mount,read,base,catalog}) {
   const header=el('div','day-toolbar'),name=el('p','day-name');name.id='day-workspace-name';
   const actions=el('div','day-main-actions'),share=mount.querySelector('#trip-share');if(share){share.textContent='Взять с собой ↗';actions.append(share);}
   const add=el('a','day-add-place','＋ Добавить место');add.href=new URL('map/',base);actions.append(add);
-  header.append(name,actions);journey.querySelector('#journey-days').after(header);
+  actions.append(guideLink);header.append(name,actions);journey.querySelector('#journey-days').after(header);
   const dates=mount.querySelector('.trip-dates');if(dates)header.prepend(dates);
   header.after(tabs,work);work.dataset.view='list';work.append(thread,aside);
   const empty=el('div','day-empty');empty.innerHTML='<p class="eyebrow">Впереди целый день</p><h3>С чего начнём?</h3><p>Выберите готовую прогулку или добавьте свои места.</p><button class="button button-dark" type="button" data-day-start>Выбрать прогулку →</button>';thread.append(empty);

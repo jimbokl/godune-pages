@@ -1,7 +1,7 @@
 import {transitTable} from './transport-day.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=11';
-import {createTripFile} from './trip-file.mjs?v=18';
+import {createTripFile} from './trip-file.mjs?v=19';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=10';
 import {assessKosa} from './day-readiness.mjs?v=4';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};

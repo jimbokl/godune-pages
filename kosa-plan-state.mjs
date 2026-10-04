@@ -1,5 +1,5 @@
-import {cleanTrip,emptyTrip} from './trip-state.mjs?v=18';
-import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=13';
+import {cleanTrip,emptyTrip} from './trip-state.mjs?v=19';
+import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=14';
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=3';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';

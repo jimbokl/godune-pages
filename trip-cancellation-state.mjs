@@ -1,5 +1,5 @@
-import {cleanTrip} from './trip-state.mjs?v=18';
-import {selectedDay} from './trip-days-state.mjs?v=13';
+import {cleanTrip} from './trip-state.mjs?v=19';
+import {selectedDay} from './trip-days-state.mjs?v=14';
 import {replacementContext} from './trip-replacement-state.mjs?v=10';
 
 export function previewStopCancellation(trip,id,catalog) {

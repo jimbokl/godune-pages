@@ -1,4 +1,4 @@
-import {selectedDay,COST_KINDS} from './trip-days-state.mjs?v=13';
+import {selectedDay,COST_KINDS} from './trip-days-state.mjs?v=14';
 import {validOffers,offerInput,offerContext,offerBlocked,offerStatusText,snapshotNotice} from './trip-offers-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {rubles} from './trip-budget-state.mjs?v=2';
