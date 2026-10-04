@@ -60,6 +60,23 @@
 .day-planner .trip-timeline-heading{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
 .day-planner .trip-timeline-time{font:600 16px/1.4 var(--sans);color:var(--sea-muted)}
 .day-planner .trip-timeline-heading a{font:400 27px/1.2 var(--serif);text-decoration:none}
+.day-stop-lead{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:start}
+.day-stop-lead[data-has-photo=true]{grid-template-columns:minmax(0,1fr) 144px}
+.day-planner .day-stop-lead .trip-timeline-heading{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.day-time-caption{font:500 12px/1.5 var(--sans);color:var(--muted)}
+.day-planner .day-stop-lead .trip-timeline-time{font-size:20px;color:var(--ink)}
+.day-planner .trip-plan-stops>li[data-day-timing=fixed] .day-time-caption{color:var(--sea-muted);font-weight:700}
+.day-planner .day-stop-name{margin-top:5px;overflow-wrap:anywhere;min-height:44px;display:flex;align-items:center}
+.day-stop-photo{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:10px;background:var(--sand)}
+.day-stop-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.day-arrival-note{font:14px/1.6 var(--sans);color:var(--muted);margin:12px 0}
+.day-before-leaving{font:14px/1.6 var(--sans);margin-top:12px;border-top:1px solid var(--line)}
+.day-before-leaving>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--sea-muted);list-style:none}
+.day-before-leaving>summary::after{content:'＋'}
+.day-before-leaving[open]>summary::after{content:'−'}
+.day-before-leaving>summary::-webkit-details-marker{display:none}
+.day-before-leaving .trip-plan-issues{margin-bottom:8px}
+@media(max-width:480px){.day-stop-lead[data-has-photo=true]{grid-template-columns:minmax(0,1fr) 88px;gap:12px}.day-planner .day-stop-name{font-size:24px}}
 .day-planner .trip-timeline-detail{font:14px/1.6 var(--sans);color:var(--muted);margin:12px 0}
 .day-planner .day-road-details{font:13px/1.6 var(--sans);margin:14px 0}
 .day-planner .day-road-details>summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--sea-muted)}

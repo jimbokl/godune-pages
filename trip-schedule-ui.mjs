@@ -7,8 +7,9 @@ import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=5';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
+import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 
-export const clock = minute => `${minute >= 1440 ? `+${Math.floor(minute/1440)} дн. ` : ''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
+export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
 const minutes = text => /^\d{2}:\d{2}$/.test(text) ? Number(text.slice(0,2))*60+Number(text.slice(3)) : null;
 
@@ -137,17 +138,34 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const travel=resolveTravel(trip,item.id,catalog,matrix), manual=manualLeg(trip,item.id), access=resolveAccess(trip,item.id,catalog,matrix);
       const li=document.createElement('li');li.dataset.planPoint=item.id;
       li.dataset.travelOrigin=travel.origin;li.dataset.travelStatus=travel.status || '';li.dataset.travelMode=travel.mode;
+      const booking=bookingEffects(trip).stops[item.id];
       const header=document.createElement('div');header.className='trip-timeline-heading';
       const time=document.createElement('span');time.className='trip-timeline-time';
       time.textContent=blockedByReturn?'После возвращения':item.begins === null ? `Не раньше ${clock(item.earliest_begin)}` : clock(item.begins);
       const name=document.createElement('a');name.href=new URL(`poi/${item.id}/`,base).href;name.textContent=place.name;
       header.append(time,name);li.append(header);
+      if(compact) {
+        const view=stopTimeView(item,booking,blockedByReturn);li.dataset.dayTiming=view.kind;
+        const lead=document.createElement('div');lead.className='day-stop-lead';header.before(lead);lead.append(header);
+        const caption=document.createElement('span');caption.className='day-time-caption';caption.textContent=view.label;
+        time.before(caption);time.textContent=view.time;name.className='day-stop-name';
+        const photo=ownPointPhoto(place);
+        if(photo) {
+          const link=document.createElement('a');link.href=name.href;link.className='day-stop-photo';
+          link.setAttribute('aria-label',`Открыть ${place.name}`);
+          const image=document.createElement('img');image.src=new URL(photo,base);image.alt='';
+          image.width=192;image.height=144;image.loading='lazy';image.decoding='async';image.fetchPriority='low';
+          image.addEventListener('error',()=>{link.remove();lead.dataset.hasPhoto='false';},{once:true});
+          link.append(image);lead.append(link);lead.dataset.hasPhoto='true';
+        }
+        if(view.note){const note=document.createElement('p');note.className='day-arrival-note';note.textContent=view.note;li.append(note);}
+      }
       const timing=document.createElement('p');timing.className='trip-timeline-detail';
       timing.textContent=`${item.visit_minutes} мин на осмотр`+(value.pause ? ` · ${value.pause} мин пауза` : '')
         +(item.wait ? ` · ${item.wait} мин ожидание` : '')
         +(previousPlace(trip,item.id) && travel.minutes!==null ? ` · ${travel.origin==='estimate'?'около ':''}${travel.minutes} мин дорога + ${settings.reserve} мин запас` : '');
       li.append(timing);
-      const booking=bookingEffects(trip).stops[item.id];if(booking){const note=document.createElement('p');note.className='trip-booking-timing';note.textContent=`${booking.name}: ${clock(booking.time)} · ${booking.duration} мин · время записано вами`;li.append(note);}
+      if(booking){const note=document.createElement('p');note.className='trip-booking-timing';note.textContent=`${booking.name}: ${clock(booking.time)} · ${booking.duration} мин · время записано вами`;li.append(note);}
       const lightRow=light?.stops.find(row=>row.id===item.id),lightText=lightRow && lightMessage(lightRow);
       if(lightText) {const note=document.createElement('p');note.className='trip-light-note';note.dataset.lightState=lightRow.state;note.textContent=lightText;li.append(note);}
       if(previousPlace(trip,item.id)) {
@@ -200,6 +218,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const transport=transportCard({trip,item,place,catalog,clock});if(transport)li.append(transport);
       if(item.issues.length) {
         const issues=document.createElement('ul');issues.className='trip-plan-issues';
+        const routine=document.createElement('ul');routine.className='trip-plan-issues';
         for(const issue of item.issues) {
           const line=document.createElement('li');line.dataset.planIssue=issue.code;
           line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:'Время входа ещё нужно сверить.',
@@ -218,8 +237,10 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
             appointment_venue_conflict:'Время билета не совпадает с известными часами или сеансами. Сверьте запись с местом.',
             after_deadline:`Позже конца дня как минимум на ${issue.minutes} мин.`}[issue.code];
           if(['closed','window_missed','kitchen_closed','kitchen_window_missed','after_deadline','transport_conflict','appointment_missed','appointment_venue_conflict'].includes(issue.code)) li.dataset.planConflict='true';
-          issues.append(line);
-        }li.append(issues);
+          (compact && routineStopIssue(issue) ? routine : issues).append(line);
+        }
+        if(issues.children.length)li.append(issues);
+        if(routine.children.length){const details=document.createElement('details'),summary=document.createElement('summary');details.className='day-before-leaving';details.dataset.dayChecks=item.id;summary.textContent=`Перед выходом · ${routine.children.length}`;details.append(summary,routine);li.append(details);}
       }
       const details=document.createElement('details'), summary=document.createElement('summary'), form=document.createElement('form');
       details.dataset.planEditor=item.id;summary.textContent='Настроить остановку';form.dataset.planEdit=item.id;form.dataset.planFrom=previousPlace(trip,item.id) || '';form.dataset.planDayId=trip.itinerary?.active || '';form.dataset.planDay=trip.date || '';form.dataset.planMode=travelMode(trip);form.className='trip-stop-settings';details.append(summary,form);
@@ -242,6 +263,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const expanded=[...section.querySelectorAll('details[data-plan-editor][open]')].map(node=>node.dataset.planEditor);
       const transportExpanded=[...section.querySelectorAll('details[data-transport-editor][open]')].map(node=>node.dataset.transportEditor);
       const visitsExpanded=[...section.querySelectorAll('details[data-day-visit][open]')].map(node=>node.dataset.dayVisit);
+      const checksExpanded=[...section.querySelectorAll('details[data-day-checks][open]')].map(node=>node.dataset.dayChecks);
     section.dataset.scheduleReady='false';
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
@@ -252,6 +274,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(trip.date)try {light=calculate.light(lightInput(trip,catalog,result));}catch{/* Preserve the schedule when the optional light layer cannot be calculated. */}
       renderSettings(settings);renderStops(trip,result,matrix,light);
       for(const id of visitsExpanded){const node=[...section.querySelectorAll('[data-day-visit]')].find(row=>row.dataset.dayVisit===id);if(node)node.open=true;}
+      for(const id of checksExpanded){const node=[...section.querySelectorAll('[data-day-checks]')].find(row=>row.dataset.dayChecks===id);if(node)node.open=true;}
       const applyLight = async alternative => {
         let applied=false;
         await commit(current=>{
