@@ -218,6 +218,7 @@
     new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }).observe(scene);
   }
   new ResizeObserver(resize).observe(scene);
+  photo.addEventListener('load', () => { crop = null; resize(); });
   document.addEventListener('visibilitychange', update);
   addEventListener('godune:theme-change', () => { if (engine) paint(); });
   reduced.addEventListener('change', update);
@@ -238,7 +239,7 @@
     performance.mark('godune:atmosphere-wasm-ready');
     return result;
   })();
-  const sceneReady = import(new URL('scene.mjs?v=10',base)).then(async module => {
+  const sceneReady = import(new URL('scene.mjs?v=11',base)).then(async module => {
     const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
     profileURL.searchParams.set('v','3');
     return {module,profile:await module.loadProfile(profileURL)};

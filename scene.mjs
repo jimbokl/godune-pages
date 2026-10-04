@@ -67,11 +67,24 @@ export function coverCrop(iw, ih, w, h, position = [.5,.5]) {
   const x = w / (iw * scale), y = h / (ih * scale);
   return [x, y, (1-x)*position[0], (1-y)*position[1]];
 }
+// A responsive picture may omit source pixels hidden outside the viewport.
+// Masks, wind, water perspective and particles still use the original frame.
+export function photoSourceWindow(photo) {
+  const identity = [1,1,0,0], data = photo.dataset;
+  if (!data?.sourceWindow || !data.sourceWindowMatch ||
+      !(photo.currentSrc || photo.src || '').includes(data.sourceWindowMatch)) return identity;
+  const r = data.sourceWindow.trim().split(/\s+/).map(Number);
+  if (r.length !== 4 || !r.every(Number.isFinite) || r[0] <= 0 || r[1] <= 0 ||
+      r[2] < 0 || r[3] < 0 || r[0]+r[2] > 1 || r[1]+r[3] > 1) return identity;
+  return r;
+}
 export function photoCrop(photo, w, h) {
   const tokens = getComputedStyle(photo).objectPosition.split(' ');
   const fraction = (v, axis) => ({left:0,top:0,center:.5,right:1,bottom:1}[v] ??
     (v?.endsWith('%') ? parseFloat(v)/100 : .5));
-  return coverCrop(photo.naturalWidth,photo.naturalHeight,w,h,tokens.map(fraction));
+  const local = coverCrop(photo.naturalWidth,photo.naturalHeight,w,h,tokens.map(fraction));
+  const r = photoSourceWindow(photo);
+  return [local[0]*r[0],local[1]*r[1],r[2]+local[2]*r[0],r[3]+local[3]*r[1]];
 }
 export async function loadProfile(url) {
   const r = await fetch(url);
@@ -84,7 +97,7 @@ export async function loadProfile(url) {
 const vertex = `attribute vec2 position; varying vec2 screen;
 void main(){screen=vec2((position.x+1.0)*.5,(1.0-position.y)*.5);gl_Position=vec4(position,0.0,1.0);}`;
 const fragment = `precision highp float;
-uniform sampler2D photograph, regions; uniform vec4 crop, water, optics, cloud, pine, grass;
+uniform sampler2D photograph, regions; uniform vec4 crop, sourceWindow, water, optics, cloud, pine, grass;
 uniform vec2 direction, windDirection; uniform float time, wind, foamThreshold;
 varying vec2 screen;
 void main(){
@@ -108,7 +121,7 @@ void main(){
  if(m.b>0.0)drift+=(windDirection*(sin(time*pine.y*.83+uv.y*15.0)+.32*sin(time*pine.y*1.79+uv.x*29.0))*pine.x
      +vec2(0.0,sin(time*pine.y*.68+uv.x*12.0)*pine.x*.15))*m.b;
  if(m.a>0.0)drift+=windDirection*sin(time*grass.y*2.4+uv.x*44.0)*grass.x*wind*m.a;
- vec3 color=texture2D(photograph,uv+drift).rgb;
+ vec3 color=texture2D(photograph,(uv+drift-sourceWindow.zw)/sourceWindow.xy).rgb;
  if(m.r>0.0){
    float shine=(swell*.65+ripple*.35)*optics.w*depth;
    float luminance=dot(color,vec3(.2126,.7152,.0722));
@@ -127,7 +140,9 @@ export async function createScene(surface, photo, input) {
   await yieldTask();
   let profile=normalizeProfile(input), revision=0, disposed=false;
   const shaders=[], textures=[], masks=createSceneMaskBuilder();
-  const mw=Math.min(1024,photo.naturalWidth), mh=Math.round(mw*photo.naturalHeight/photo.naturalWidth);
+  const sourceWindow=photoSourceWindow(photo);
+  const mw=Math.round(Math.min(1024,photo.naturalWidth/sourceWindow[0]));
+  const mh=Math.round(mw*(photo.naturalHeight/sourceWindow[1])/(photo.naturalWidth/sourceWindow[0]));
   const prepareMask=async value=>{
     mark('scene-mask-start');
     const pixels=await masks.render(value,mw,mh);
@@ -156,18 +171,42 @@ export async function createScene(surface, photo, input) {
   const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
   const position=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
-  const u=Object.fromEntries(['photograph','regions','crop','water','optics','cloud','pine','grass','direction','windDirection','time','wind','foamThreshold']
+  const u=Object.fromEntries(['photograph','regions','crop','sourceWindow','water','optics','cloud','pine','grass','direction','windDirection','time','wind','foamThreshold']
     .map(k=>[k,gl.getUniformLocation(program,k)]));
   for (let unit=0;unit<2;unit++) {
     const t=gl.createTexture(); textures.push(t);gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,t);
     for(const [key,value] of [[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE],[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR]])
       gl.texParameteri(gl.TEXTURE_2D,key,value);
   }
-  gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,textures[0]);
-  await yieldTask();
-  mark('scene-photo-upload-start');
-  gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,photo);
-  mark('scene-photo-upload-ready');
+  let photoRevision=0, photoSrc='', viewport;
+  function resize(w,h,dpr=1,crop=photoCrop(photo,w,h)) {
+    viewport=[w,h,dpr];
+    const sw=Math.round(w*dpr),sh=Math.round(h*dpr);
+    if(surface.width!==sw || surface.height!==sh){surface.width=sw;surface.height=sh;}
+    gl.useProgram(program);gl.viewport(0,0,sw,sh);gl.uniform4fv(u.crop,crop);
+    if(photoSrc && photoSrc!==(photo.currentSrc || photo.src)) surface.style.opacity='0';
+  }
+  async function uploadPhoto() {
+    const ticket=++photoRevision;
+    await photo.decode();
+    await yieldTask();
+    if(disposed || ticket!==photoRevision)return;
+    gl.useProgram(program);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,textures[0]);
+    mark('scene-photo-upload-start');
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,photo);
+    gl.uniform4fv(u.sourceWindow,photoSourceWindow(photo));
+    photoSrc=photo.currentSrc || photo.src;
+    if(viewport)resize(...viewport);
+    surface.style.removeProperty('opacity');
+    surface.dataset.photoSource=new URL(photoSrc).pathname.split('/').pop();
+    mark('scene-photo-upload-ready');
+  }
+  const photoLoaded=()=>{
+    surface.style.opacity='0';
+    uploadPhoto().catch(()=>{surface.dataset.engine='static-fallback';});
+  };
+  photo.addEventListener('load',photoLoaded);
+  await uploadPhoto();
   await yieldTask();
   gl.uniform1i(u.photograph,0);gl.uniform1i(u.regions,1);
   async function setProfile(value,prepared) {
@@ -186,13 +225,9 @@ export async function createScene(surface, photo, input) {
   return {
     get profile(){return profile;},setProfile,
     setParameters(value){profile=normalizeProfile(value);},
-    resize(w,h,dpr=1,crop=photoCrop(photo,w,h)){
-      const sw=Math.round(w*dpr),sh=Math.round(h*dpr);
-      if(surface.width!==sw || surface.height!==sh){surface.width=sw;surface.height=sh;}
-      gl.viewport(0,0,sw,sh);gl.uniform4fv(u.crop,crop);
-    },
+    resize,
     draw(t,wind=1){
-      if(disposed)return;gl.useProgram(program);
+      if(disposed || photoSrc!==(photo.currentSrc || photo.src))return;gl.useProgram(program);
       gl.uniform1f(u.time,t);gl.uniform1f(u.wind,wind);
       if(uniformProfile!==profile){
         const a=profile.water,rad=a.angle*Math.PI/180,windRad=profile.wind.angle*Math.PI/180;
@@ -211,6 +246,7 @@ export async function createScene(surface, photo, input) {
     },
     dispose(){
       disposed=true;masks.dispose();surface.removeEventListener('webglcontextlost',lost);
+      photo.removeEventListener('load',photoLoaded);
       textures.forEach(t=>gl.deleteTexture(t));shaders.forEach(s=>gl.deleteShader(s));
       gl.deleteBuffer(buffer);gl.deleteProgram(program);gl.clear(gl.COLOR_BUFFER_BIT);
     }
