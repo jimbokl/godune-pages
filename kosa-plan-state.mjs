@@ -3,6 +3,7 @@ import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=1';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
+import {kosaLightSummary} from './kosa-light.mjs?v=1';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
@@ -37,6 +38,7 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);
   else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
+  if(options.light!==false)rows.push(...kosaLightSummary(day.light).rows.map(row=>row.text));
   if(options.boarding!==false){
     const boarding=kosaBoarding(table,answers);
     if(boarding)rows.push(...boarding.legs.map(kosaBoardingText));
@@ -64,8 +66,8 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   return rows.join('\n');
 }
 export function isGeneratedKosaNote(note,answers,day,table,catalog,interchanges){
-  return note===kosaNote(answers,day,table,catalog,interchanges)
-    || note===kosaNote(answers,day,table,catalog,interchanges,{boarding:false});
+  return [{},{boarding:false},{light:false},{boarding:false,light:false}]
+    .some(options=>note===kosaNote(answers,day,table,catalog,interchanges,options));
 }
 export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
   const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);

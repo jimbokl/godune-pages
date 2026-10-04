@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=9';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=10';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
@@ -58,9 +58,11 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     }
     if(line)result.push(line);return result;
   }
-  function paragraph(text,{font=ui,size=bodySize,color=ink,space=12}={}){
+  function paragraph(text,{font=ui,size=bodySize,color=ink,space=12,keepTogether=false}={}){
     const leading=size*(font===title?1.18:1.48);
-    for(const line of lines(text,font,size)){if(y-leading<49)start();y-=leading;page.drawText(line,{x:margin,y,font,size,color});}
+    const wrapped=lines(text,font,size);
+    if(keepTogether&&wrapped.length*leading<=h-margin-85&&y-wrapped.length*leading<49)start();
+    for(const line of wrapped){if(y-leading<49)start();y-=leading;page.drawText(line,{x:margin,y,font,size,color});}
     y-=space;
   }
   function heading(text){if(y<140)start();paragraph(text,{font:title,size:phone?23:30,space:16});}
@@ -94,6 +96,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. ${snapshot.origin==='station'?'Дальнейшая дорога до жилья не включена.':`Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`}`);}
   paragraph('Если автобус ушёл или полон',{font:title,size:phone?19:23,space:12});
   paragraph(snapshot.fallback);
+  if(snapshot.light){heading('Свет на тропах и у остановки');for(const row of snapshot.light.rows)paragraph(row.text,{color:row.warning?ink:muted,keepTogether:true});}
   for(const text of snapshot.limits.slice(1))paragraph(text,{color:muted});
   start();heading('Перед выходом');
   for(const [i,text]of snapshot.before.entries())paragraph(String(i+1).padStart(2,'0')+'  '+text,{space:19});

@@ -24,6 +24,8 @@ export function assessSchedule(schedule) {
 export function assessKosa(day,answers,walking) {
   if(day?.state!=='candidate')return assessment(false,day?.state==='unknown_approach'?'travel':'transport');
   if(answers.city==='svetlogorsk')return assessment(false,'travel');
+  if(day.light?.daylight===false)return assessment(false,'light',{estimated:true,conditions_pending:true});
+  if(day.light&&day.light.daylight===null)return assessment(false,'light_unknown',{estimated:true,conditions_pending:true});
   if(walking&&walking.status!=='within_estimate')return assessment(false,walking.status==='too_short'?'walking_allowance':'walking_unknown',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
   return assessment(true,'calculated',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
 }
@@ -37,6 +39,8 @@ export function readinessCopy(results,saved) {
       travel:'Остановки сохранены. Время части дороги пока неизвестно — уточните его в настройках дня.',
       walking_allowance:'День сохранён. На переход или прогулку оставлено меньше времени, чем даёт оценка. Увеличьте время перед поездкой.',
       walking_unknown:'День сохранён. Время переходов пока не сопоставлено с картой — уточните его перед поездкой.',
+      light:'День сохранён. Часть осмотра или ожидания автобуса — до восхода или после заката. Начните раньше или оставьте одну прогулку.',
+      light_unknown:'День сохранён. Дневной свет у всех троп пока не рассчитан — уточните восход и закат перед поездкой.',
       hours:'Остановки сохранены. Перед выходом уточните часы посещения: без них весь день ещё не рассчитан.',
       not_calculated:'Остановки сохранены. Расчёт времени пока не завершён; его можно повторить в настройках дня.'}[incomplete.reason];
     return {title:'План сохранён — осталось уточнить',next};

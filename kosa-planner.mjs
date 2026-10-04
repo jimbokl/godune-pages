@@ -1,8 +1,8 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=17';
-import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=9';
+import {loadScheduler} from './trip-scheduler.mjs?v=18';
+import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=10';
 import {createTripFile} from './trip-file.mjs?v=17';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=8';
-import {assessKosa} from './day-readiness.mjs?v=3';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=9';
+import {assessKosa} from './day-readiness.mjs?v=4';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -96,12 +96,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
             card.append(el('p',`Автобус к Эфе в ${clock(option.day.outward.departure)}.${dunesOnly?' Танцующий лес в этот вариант не входит.':''}${earlier?` Начало вместо ${clock(answers.ready)} — в ${clock(option.ready_at)}.`:' Начало остаётся прежним.'}`));
             const short=preview.walking.checks.filter(check=>check.trail&&check.state==='too_short');
             if(short.length)card.append(el('p','Рейсы складываются, но на полную тропу пока не хватает выбранного времени. После выбора увеличьте время на прогулку.','kosa-plan-warning'));
-            const efa=catalog.poi.find(p=>p.slug==='vysota-efa'),forest=catalog.poi.find(p=>p.slug==='tancuyushchiy-les');
-            const lightStops=[{id:'efa',lat:efa.lat,lon:efa.lon,begins:option.day.outward.arrival,leaves:option.day.transfer?.departure??option.day.inward.departure,outdoor:true}];
-            if(option.day.transfer&&forest)lightStops.push({id:'forest',lat:forest.lat,lon:forest.lon,begins:option.day.transfer.via,leaves:option.day.inward.via,outdoor:true});
-            if(option.daylight===true)card.append(el('p','Осмотр и ожидание автобуса на косе — при дневном свете, по расчёту солнца.'));
-            const afterLight=engine.light({version:1,date:answers.date,stops:lightStops}).stops.find(stop=>['dark','twilight'].includes(stop.state));
-            if(afterLight)card.append(el('p',`Часть осмотра или ожидания — в сумерках. Закат по расчёту: ${clock(afterLight.sun.sunset)}. Для прогулки при дневном свете начните ещё раньше.`,'kosa-plan-warning'));
+            card.append(el('p',preview.light.rows[0].text,preview.light.rows[0].warning?'kosa-plan-warning':undefined));
             card.append(action(dunesOnly?(earlier?`Только дюны, начать в ${clock(option.ready_at)}`:'Выбрать только дюны'):`Начать в ${clock(option.ready_at)}`,()=>{if(ticket!==sequence)return;form.elements.ready.value=clock(option.ready_at);form.elements.walks.value=proposed.walks;calculate({focus:true});}));
             proposals.append(card);
           }
@@ -113,6 +108,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,publication,catalog,roadbook.interchanges)
           &&Object.entries(answers).every(([key,value])=>saved?.[key]===value))editingDay=structuredClone(savedDay);
         if(roadbook.walking.checks.some(check=>check.trail&&check.state==='too_short'))title.textContent='Для прогулки нужно больше времени';
+        if(roadbook.light.state==='outside_daylight')title.textContent='Для прогулки нужно больше дневного света';
         const summary=el('div',undefined,'kosa-result-summary');
         for(const [label,value]of [[day.rail?(answers.origin==='station'?'От вокзала и обратно':'От жилья и обратно'):'От автобуса до возвращения',duration(roadbook.duration)],[day.rail?(answers.origin==='station'?'Обратно у вокзала':'У жилья, по вашей оценке'):'Обратно в Зеленоградске',clock(roadbook.finish)],['Отдельных прогулок',answers.walks==='two'?'Две':'Одна']]){const box=el('div');box.append(el('small',label),el('strong',value));summary.append(box);}result.append(summary);
         const list=el('ol',undefined,'kosa-plan-timeline');
@@ -153,9 +149,9 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         }
         result.append(list);
         result.append(el('p',roadbook.fallback,'kosa-plan-warning'));
-        const efa=catalog.poi.find(p=>p.slug==='vysota-efa');
-        const light=engine.light({version:1,date:answers.date,stops:[{id:'efa',lat:efa.lat,lon:efa.lon,begins:day.outward.arrival,leaves:day.transfer?day.transfer.departure:day.inward.departure,outdoor:true}]});
-        const sun=light.stops[0];if(sun?.sun?.sunset!==null && sun?.sun?.sunset!==undefined)result.append(el('p',`Закат у Эфы по астрономическому расчёту — ${clock(sun.sun.sunset)}. ${['dark','twilight'].includes(sun.state)?'Часть осмотра или ожидания приходится на сумерки. Выберите более ранний день или меньше времени на тропе.':'Расчёт света не подтверждает погоду или освещение настилов.'}`));
+        const light=el('section',undefined,'kosa-light');light.dataset.kosaLight=roadbook.light.state;
+        light.append(el('h4','Свет на тропах и у остановки'));
+        for(const row of roadbook.light.rows)light.append(el('p',row.text,row.warning?'kosa-plan-warning':undefined));result.append(light);
         const actions=el('div',undefined,'kosa-result-actions'),saveStatus=el('p','План с автобусами сохранится в записи дня. Пешие прогулки останутся раздельными.','kosa-save-status');saveStatus.setAttribute('role','status');
         const guide=el('section',undefined,'kosa-personal-guide');guide.setAttribute('aria-labelledby','kosa-pdf-title');
         const guideTitle=el('h4','Этот день - с собой');guideTitle.id='kosa-pdf-title';
@@ -169,7 +165,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=8');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=9');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
