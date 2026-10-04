@@ -7,7 +7,26 @@
   root.dataset.fullStyles = 'loading';
   const firstPaint = new Promise(resolve => {
     if (document.hidden) setTimeout(resolve, 0);
-    else requestAnimationFrame(() => requestAnimationFrame(resolve));
+    else {
+      const photo = document.querySelector('#top.hero .hero-picture img');
+      let settled = false;
+      const events = ['pointerdown', 'keydown', 'scroll'];
+      const painted = () => {
+        if (settled) return;
+        settled = true;
+        events.forEach(name => window.removeEventListener(name, painted));
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          try { performance.mark('godune:critical-screen-painted'); } catch { /* optional measurement */ }
+          resolve();
+        }));
+      };
+      // Preserve the critical photo's first frame before another full layout.
+      // A visitor can reach the rest of the page while that photo is in flight.
+      if (photo) {
+        events.forEach(name => window.addEventListener(name, painted, {once:true, passive:true}));
+        photo.decode().catch(() => {}).then(painted);
+      } else painted();
+    }
   });
   const hasLoadedSheet = link => {
     if (!link.sheet) return false;
