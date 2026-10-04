@@ -2,6 +2,8 @@ import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizard
 import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=12';
 import {planInput} from './trip-schedule-state.mjs?v=9';
 import {baseName} from './personal-points.mjs?v=3';
+import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=1';
+import {downloadTripFile} from './trip-file.mjs?v=17';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -32,7 +34,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const $=selector=>mount.querySelector(selector),all=selector=>[...mount.querySelectorAll(selector)];
   const form=$('[data-wizard-form]'),status=$('[data-wizard-status]'),result=$('[data-wizard-result]');
   const save=$('[data-wizard-save]');
-  let answers=wizardDefaults(workshop.getState(),catalog),step=1,proposal=null,revision=null,sequence=0,saving=false;
+  let answers=wizardDefaults(workshop.getState(),catalog),step=1,proposal=null,revision=null,sequence=0,saving=false,attempt=null,assessments=[];
   const node=(tag,text,className)=>{const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;};
   const point=id=>catalog.poi.find(row=>row.slug===id);
   const multi=()=>answers.area==='whole-trip';
@@ -149,6 +151,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
 
   async function preview() {
     const ticket=sequence;
+    assessments=[assessSchedule(null)];
     try {proposal=prepareWizardPlan(workshop.getState(),answers,catalog);revision=workshop.getRevision();}
     catch {proposal=null;save.disabled=true;result.replaceChildren();announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
@@ -158,6 +161,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const schedules=await Promise.all(trips.map(async trip=>{const matrix=await loadTripTravelMatrix(base,trip,catalog).catch(()=>null);return calculate(planInput(trip,catalog,matrix));}));
       if(ticket!==sequence || step!==3)return;
+      assessments=schedules.map(assessSchedule);
       renderResult(proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,schedules[index]])):schedules[0]);
     } catch {
       if(ticket!==sequence || step!==3)return;
@@ -181,6 +185,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(step===1) {
       const field=form.querySelector('input[name="wizard_area"]:checked');
       if(!field){announce('Выберите место прогулки.');form.querySelector('input[name="wizard_area"]')?.focus();return;}
+      attempt ||= workshop.progress?.begin('wizard');
       answers.area=field.value;show(2);return;
     }
     if(step!==2)return;
@@ -204,23 +209,33 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     try {
       const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate'});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
       if(committed.conflict || !intent?.applied){announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
+      const readiness=readinessCopy(assessments,committed.saved);
+      workshop.progress?.saved(attempt,assessments.find(row=>row.calculated)||assessments[0],committed.saved);
       $('[data-wizard-form]').hidden=true;$('[data-wizard-progress="3"]').setAttribute('aria-current','step');
       $('[data-wizard-saved]').hidden=false;
+      $('[data-wizard-lead]').textContent=committed.saved?'Остановки уже в Вашей поездке. Их можно переставить, дополнить или взять с собой.':'Остановки остаются в этой вкладке. Файл поездки поможет перенести их на другой телефон.';
+      $('[data-wizard-saved-travel]').hidden=!committed.saved;
+      $('[data-wizard-download]').hidden=committed.saved;
       $('[data-wizard-saved-travel]').textContent=multi()?'Открыть поездку в дороге →':'Открыть день в дороге →';
       $('[data-wizard-saved-editor]').textContent=multi()?'Настроить дни подробнее':'Настроить день подробнее';
       $('[data-wizard-again]').textContent=multi()?'Собрать ещё план':'Собрать ещё день';
-      announce(committed.saved?`${multi()?'Поездка сохранена':'День сохранён'} в этом браузере. Можно открыть ${multi()?'первый день':'его'} в дороге.`:'План открыт в этой вкладке, но браузер не сохранил его. В настройках поездки скачайте файл, прежде чем закрывать страницу.');
-      $('[data-wizard-title]').textContent=multi()?'Ваша поездка готова':'Ваш день готов';$('[data-wizard-saved] a').focus({preventScroll:true});
+      announce(readiness.next);
+      $('[data-wizard-title]').textContent=readiness.title;
+      (committed.saved?$('[data-wizard-saved-travel]'):$('[data-wizard-download]')).focus({preventScroll:true});
     } catch {announce('Не удалось сохранить день. Ответы здесь — попробуйте ещё раз.');}
     finally {saving=false;mount.removeAttribute('aria-busy');save.disabled=false;changed();}
   });
 
   function reset() {
-    sequence++;proposal=null;answers=wizardDefaults(workshop.getState(),catalog);form.hidden=false;
+    sequence++;proposal=null;attempt=null;assessments=[];answers=wizardDefaults(workshop.getState(),catalog);form.hidden=false;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     announce('');show(1);
   }
   $('[data-wizard-again]').addEventListener('click',reset);
+  $('[data-wizard-download]').addEventListener('click',()=>{
+    try {downloadTripFile(workshop.getState(),catalog);announce('Файл подготовлен. Сохраните его на телефоне или компьютере — потом его можно открыть в поездке.');}
+    catch {announce('Браузер не подготовил файл. Попробуйте ещё раз — Ваш план открыт здесь.');}
+  });
   const cleared=()=>{reset();announce('Память поездки очищена. Можно выбрать новую прогулку.');};
   window.addEventListener('godune:trip-change',changed);window.addEventListener('godune:memory-cleared',cleared);
   all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});

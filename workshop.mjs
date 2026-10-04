@@ -1,8 +1,9 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=17';
-import {initTripSharing} from './trip-link.mjs?v=19';
+import {initTripSharing} from './trip-link.mjs?v=20';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=14';
-import {initMemoryControls} from './trip-memory-ui.mjs?v=5';
+import {initMemoryControls} from './trip-memory-ui.mjs?v=6';
+import {createPlanningProgress} from './planning-progress.mjs?v=1';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=15';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=15';
 import {initTripDays} from './trip-days-ui.mjs?v=19';
@@ -260,6 +261,7 @@ export async function initWorkshop(catalog, base) {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
   const workshop = {
+    progress: createPlanningProgress(storage),
     addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
     async clearMemory() {

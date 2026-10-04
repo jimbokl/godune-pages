@@ -2,7 +2,7 @@ import {publicBookingTrip} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
 import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=12';
 import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=17';
-import {createTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=16';
+import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=17';
 import {validSchedule} from './trip-schedule-state.mjs?v=9';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
@@ -156,11 +156,7 @@ export function initTripSharing(catalog, base, workshop) {
   }
   $('#trip-file-save').addEventListener('click', () => {
     if (!snapshot) return;
-    const now = new Date(), blob = new Blob([createTripFile(snapshot, catalog, now)], {type: 'application/json'});
-    const link = document.createElement('a'), objectURL = URL.createObjectURL(blob);
-    link.href = objectURL; link.download = 'Поездка-на-Балтику-' + (snapshot.date || now.toISOString().slice(0, 10)) + '.json';
-    document.body.append(link); link.click(); link.remove();
-    setTimeout(() => URL.revokeObjectURL(objectURL), 60000);
+    downloadTripFile(snapshot, catalog);
     message('Файл подготовлен. Сохраните его в папку на телефоне или компьютере.');
   });
   const persistent = document.querySelector('#trip-persist'), memoryStatus = document.querySelector('#trip-memory-status');

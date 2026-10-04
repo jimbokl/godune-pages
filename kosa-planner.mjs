@@ -1,7 +1,8 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=16';
 import {kosaInput,kosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=4';
-import {createTripFile} from './trip-file.mjs?v=16';
+import {createTripFile} from './trip-file.mjs?v=17';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=4';
+import {assessKosa} from './day-readiness.mjs?v=1';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -11,7 +12,9 @@ const download=(body,name,type)=>{const a=el('a');a.href=URL.createObjectURL(new
 export async function initKosaPlanner({workshop,catalog,base}) {
   const form=document.querySelector('#kosa-form'),result=document.querySelector('#kosa-result'),status=document.querySelector('#kosa-status');
   if(!form || !result)return;
-  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise,mapPromise,exportAbort,recalculateTimer,lastParams;
+  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise,mapPromise,exportAbort,recalculateTimer,lastParams,attempt;
+  const begin=()=>{attempt ||= workshop.progress?.begin('kosa');};
+  window.addEventListener('godune:memory-cleared',()=>{attempt=null;});
   const homeFields=form.querySelector('#kosa-home-fields');
   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kaliningrad',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const part=type=>today.find(p=>p.type===type).value;
@@ -108,6 +111,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const pdfStatus=el('p','Файл собирается по кнопке. Ваш план остаётся в браузере.','kosa-pdf-status');pdfStatus.setAttribute('role','status');
         const pdfCancel=action('Отменить сборку',()=>exportAbort?.abort());pdfCancel.hidden=true;
         const pdf=action('Скачать мой день - PDF',async()=>{
+          begin();
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
@@ -123,9 +127,11 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const pdfControls=el('div',undefined,'kosa-pdf-controls');pdfControls.append(formatLabel,format,pdf,pdfCancel);
         guide.append(guideTitle,guideCopy,pdfControls,pdfStatus);result.append(guide);
         const save=action('Сохранить день и прогулки',async()=>{
+          begin();
           save.disabled=true;saveStatus.textContent='Сохраняем поездку в этом браузере…';
           try{const outcome=await workshop.setState(current=>addKosaDay(current,answers,day,publication,catalog),'День на Куршской косе сохранён.');
             if(outcome.conflict){saveStatus.textContent='Поездка уже изменилась. Попробуйте сохранить ещё раз.';save.disabled=false;return;}
+            workshop.progress?.saved(attempt,assessKosa(day,answers),outcome.saved);
             saveStatus.textContent=outcome.saved?'День сохранён в этом браузере. Карты и PDF скачайте отдельно ниже.':'Браузер не разрешил запись. План остался в этой вкладке — скачайте файл поездки.';
             save.textContent=outcome.saved?'День сохранён ✓':'План в этой вкладке';
           }catch{saveStatus.textContent='Запись не завершилась. Ваш прежний план на месте; скачайте текст этого дня.';save.disabled=false;}
@@ -140,9 +146,10 @@ export async function initKosaPlanner({workshop,catalog,base}) {
       if(focus){title.focus({preventScroll:true});result.scrollIntoView({block:'start',behavior:'instant'});}
     }catch(error){if(ticket!==sequence)return;status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.setAttribute('aria-busy','false');result.classList.add('kosa-updating');form.classList.add('kosa-load-failed');}
   }
-  form.addEventListener('submit',event=>{event.preventDefault();if(form.reportValidity())calculate({focus:true});});
-  form.addEventListener('input',schedule);
+  form.addEventListener('submit',event=>{event.preventDefault();begin();if(form.reportValidity())calculate({focus:true});});
+  form.addEventListener('input',()=>{begin();schedule();});
   form.addEventListener('change',event=>{
+    begin();
     if(event.target.name==='station'){form.elements.to_station.value='';form.elements.from_station.value='';}
     schedule();
     form.dispatchEvent(new CustomEvent('TripParamsChanged',{bubbles:true,detail:{city:form.elements.city.value}}));
