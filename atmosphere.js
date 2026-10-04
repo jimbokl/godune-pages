@@ -18,7 +18,7 @@
   let qualityReduced = false;
   let sampleCost = 0, sampleFrames = 0, sampleLag = 0, comfortableFrames = 0, fps = 30;
   scene.dataset.quality = String(resolutionLimit);
-  let sceneModule, cropDirty = true;
+  let sceneModule, cropSource, cropDirty = true;
   const photo = scene.parentElement.querySelector('.hero-picture img');
   // Source-space density stays constant when a phone crops the photograph.
   const count = 390;
@@ -87,6 +87,7 @@
     // Read photo styling before canvas writes; one crop serves GPU and particles.
     if (sceneModule && photo.complete && photo.naturalWidth && cropDirty) {
       crop = sceneModule.photoCrop(photo,width,height);
+      cropSource = photo.currentSrc;
       cropDirty = false;
     }
     const sw = Math.round(width * dpr), sh = Math.round(height * dpr);
@@ -114,15 +115,19 @@
     const scale = width < 600 ? .9 : 1;
     const night = document.documentElement.dataset.theme === 'night';
     const grains = [];
-    for (let i = header; i < f.length; i += 8) {
+    // The mask uses the original photograph's coordinates. Never substitute
+    // viewport coordinates while it loads or a responsive picture changes.
+    const particlesReady = sceneModule && profile && crop && !cropDirty &&
+      photo.complete && photo.naturalWidth && cropSource === photo.currentSrc;
+    for (let i = header; particlesReady && i < f.length; i += 8) {
       const type = f[i+6] ? 'amber' : 'sand';
-      const settings = profile?.[type];
+      const settings = profile[type];
       if (settings?.enabled === false) continue;
-      const point = sceneModule?.particleSourcePoint(f[i],f[i+1],type,settings);
-      if (sceneModule && !point) continue;
-      const [sx,sy] = point || [f[i], type === 'amber' ? .53+f[i+1]*.4 : f[i+1]];
-      const x = crop ? (sx-crop[2])/crop[0]*width : sx*width;
-      const y = crop ? (sy-crop[3])/crop[1]*height : sy*height;
+      const point = sceneModule.particleSourcePoint(f[i],f[i+1],type,settings);
+      if (!point) continue;
+      const [sx,sy] = point;
+      const x = (sx-crop[2])/crop[0]*width;
+      const y = (sy-crop[3])/crop[1]*height;
       if (x < 0 || x > width || y < 0 || y > height) continue;
       grains.push({i,type,settings,x,y});
     }
@@ -242,6 +247,16 @@
     }).observe(scene);
   });
   photo.addEventListener('load', () => { cropDirty = true; resize(); });
+  addEventListener('resize', () => {
+    // The picture/CSS can change before ResizeObserver delivers new geometry.
+    // Remove the old frame immediately and wait for that layout to settle.
+    cropDirty = true;
+    ctx?.clearRect(0,0,width,height);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      // Height-only viewport changes may leave the hero's box unchanged.
+      if (cropDirty) resize();
+    }));
+  });
   document.addEventListener('visibilitychange', update);
   addEventListener('godune:theme-change', () => { if (engine) paint(); });
   reduced.addEventListener('change', update);
@@ -291,6 +306,10 @@
     performance.mark('godune:atmosphere-particles-ready');
     try {
       ({module:sceneModule,profile} = await sceneReady);
+      // Align masked particles as soon as the profile arrives; compiling the
+      // optional sea renderer must not leave them using an unfinished crop.
+      cropDirty = true;
+      resize();
       if (profile.live?.enabled && profile.live.src && !navigator.connection?.saveData && !reduced.matches) {
         liveVideo=document.createElement('video');liveVideo.className='scene-video';
         liveVideo.muted=true;liveVideo.loop=true;liveVideo.playsInline=true;liveVideo.preload='none';
