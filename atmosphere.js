@@ -13,10 +13,10 @@
   let visible = true, raf = 0, previous = 0, elapsed = 0, frames = 0;
   let width = 0, height = 0, dpr = 1, engine, pointer, values, header = 12, ocean, profile, crop, birdPointer, birdValues, liveVideo;
   const resolutionCeiling = navigator.connection?.saveData || innerWidth < 700 ? 1 : 1.5;
-  // The sharp photograph remains a separate image. Only moving overlays start
-  // smaller on a wide screen; measured spare time earns their extra pixels.
-  let resolutionLimit = innerWidth >= 700 && !navigator.connection?.saveData ? .75 : 1;
-  let qualityRaised = false, qualityReduced = false;
+  // The sharp photograph remains a separate image. Start moving overlays light
+  // on every screen; measured spare time earns detail before an expensive frame.
+  let resolutionLimit = navigator.connection?.saveData ? 1 : .5;
+  let qualityReduced = false;
   let sampleCost = 0, sampleFrames = 0, sampleLag = 0, fps = 30;
   scene.dataset.quality = String(resolutionLimit);
   let sceneModule;
@@ -178,7 +178,7 @@
       sampleCost += performance.now() - began;
       sampleLag += interval;
       if (++sampleFrames === (frames < 30 ? 3 : 12)) {
-        const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > 65;
+        const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > Math.max(65,1000/fps*1.8);
         const comfortable = sampleCost / sampleFrames < 6 && sampleLag / sampleFrames < 45;
         if (overloaded && dpr > .5) {
           qualityReduced = true;
@@ -190,9 +190,8 @@
           fps = fps === 30 ? 20 : 15;
           scene.dataset.fps = String(fps);
           performance.mark('godune:scene-fps', {detail:String(fps)});
-        } else if (comfortable && frames >= 30 && !qualityRaised && !qualityReduced && resolutionCeiling > 1) {
-          qualityRaised = true;
-          resolutionLimit = resolutionCeiling;
+        } else if (comfortable && frames >= 12 && !qualityReduced && dpr < resolutionCeiling) {
+          resolutionLimit = dpr < .75 ? .75 : dpr < 1 ? 1 : resolutionCeiling;
           resize();
           performance.mark('godune:scene-quality', {detail:String(dpr)});
         }
