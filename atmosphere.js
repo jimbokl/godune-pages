@@ -168,11 +168,12 @@
     paint();
     // GPU commands can return before the GPU finishes. Measure both drawing
     // time and the following frame interval, including software GPU overload.
-    // Adapt within the first second instead of waiting for four seconds of lag.
-    if (frames > 12) {
+    // Three measured frames are enough to step down under real overload. A long
+    // warm-up otherwise makes a weak device pay for 24 heavy initial frames.
+    if (frames > 3) {
       sampleCost += performance.now() - began;
       sampleLag += interval;
-      if (++sampleFrames === 12) {
+      if (++sampleFrames === (frames < 30 ? 3 : 12)) {
         const overloaded = sampleCost / sampleFrames > 12 || sampleLag / sampleFrames > 65;
         if (overloaded && dpr > .75) {
           resolutionLimit = dpr > 1 ? 1 : .75;
@@ -261,11 +262,20 @@
     } catch (error) { scene.dataset.sceneError = error.message; }
 
   }
-  // Generated layers remain visible if WASM or canvas is unavailable.
+  // Fetch/compile above remains parallel. Rendering starts after the document's
+  // resources and fonts settle, so GPU work cannot delay the first photograph
+  // or compete with a font-driven relayout. No device/benchmark detection.
   async function afterPhotoPaint() {
     await photo.decode().catch(()=>{});
     await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
     performance.mark('godune:atmosphere-photo-painted');
+    if (document.readyState !== 'complete') {
+      await new Promise(resolve=>addEventListener('load',resolve,{once:true}));
+    }
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    if (document.fonts) await document.fonts.ready;
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    performance.mark('godune:atmosphere-stable-paint');
     return start();
   }
   afterPhotoPaint().catch(() => { scene.dataset.engine = 'css-fallback'; scene.classList.remove('motion-paused'); });
