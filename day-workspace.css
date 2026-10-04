@@ -141,3 +141,15 @@
 .day-kosa-edit{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;color:var(--sea-muted);font:600 15px/1.5 var(--sans)}
 .day-planner .trip-plan-stops>.day-journey-action{padding:0;border:0;background:transparent}
 @media(max-width:480px){.day-journey-heading{gap:8px}.day-journey-step{padding:14px}.day-journey-step h4{font-size:15px}}
+
+/* One portable guide first; sharing and editable files stay secondary. */
+.trip-guide-download{padding:18px 0 20px;border-bottom:1px solid var(--sea-line);margin-bottom:16px}
+.trip-guide-download>p:first-child{font:400 17px/1.6 var(--sans);color:var(--ink)}
+.trip-guide-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.trip-guide-options label{display:grid;gap:8px;font:600 15px/1.5 var(--sans);color:var(--ink)}
+.trip-guide-options select{width:100%;min-width:0;min-height:48px;padding:10px;border:1px solid var(--sea-line);border-radius:8px;background:var(--sand);color:var(--ink);font:400 16px/1.5 var(--sans)}
+.trip-guide-download .button{min-height:48px;margin:0 8px 8px 0}
+.trip-guide-download .button-dark{font:600 18px/1.4 var(--sans);padding:15px 20px}
+#trip-link-dialog summary{min-height:48px;cursor:pointer;padding:12px 0;font:600 15px/1.6 var(--sans);color:var(--ink)}
+#trip-guide-status:not(:empty){padding:12px;background:var(--sea-pale);border-radius:8px;line-height:1.6}
+@media(max-width:420px){.trip-guide-options{grid-template-columns:1fr}.trip-guide-download .button{width:100%}}

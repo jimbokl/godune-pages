@@ -65,7 +65,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     for(const line of wrapped){if(y-leading<49)start();y-=leading;page.drawText(line,{x:margin,y,font,size,color});}
     y-=space;
   }
-  function heading(text){if(y<140)start();paragraph(text,{font:title,size:phone?23:30,space:16});}
+  function heading(text,following=''){const size=phone?23:30,height=lines(text,title,size).length*size*1.18+16,follow=lines(following,ui,bodySize).length*bodySize*1.48+12;if(y-height-Math.min(follow,h-margin-110)<49)start();paragraph(text,{font:title,size,space:16});}
   start();
   paragraph('Куршская коса',{size:11,color:muted,space:13});
   paragraph('День на волне.',{font:title,size:phone?35:49,space:28});
@@ -96,15 +96,17 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. ${snapshot.origin==='station'?'Дальнейшая дорога до жилья не включена.':`Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`}`);}
   paragraph('Если автобус ушёл или полон',{font:title,size:phone?19:23,space:12});
   paragraph(snapshot.fallback);
-  if(snapshot.light){heading('Свет на тропах и у остановки');for(const row of snapshot.light.rows)paragraph(row.text,{color:row.warning?ink:muted,keepTogether:true});}
+  if(snapshot.light){heading('Свет на тропах и у остановки',snapshot.light.rows[0]?.text);for(const row of snapshot.light.rows)paragraph(row.text,{color:row.warning?ink:muted,keepTogether:true});}
   for(const text of snapshot.limits.slice(1))paragraph(text,{color:muted});
   start();heading('Перед выходом');
   for(const [i,text]of snapshot.before.entries())paragraph(String(i+1).padStart(2,'0')+'  '+text,{space:19});
-  heading('Источник расписания');
+  const publicationHeight=lines('Источник расписания',title,phone?23:30).length*(phone?23:30)*1.18+16+lines(snapshot.publication.note,ui,bodySize).length*bodySize*1.48+12+lines(`Таблица с ${snapshot.publication.valid_from}. Сверена ${snapshot.publication.checked_at}.`,ui,9).length*9*1.48+12+lines(snapshot.publication.source_url,ui,9).length*9*1.48+12;
+  if(publicationHeight<h-margin-85&&y-publicationHeight<49)start();
+  heading('Источник расписания',snapshot.publication.note);
   paragraph(snapshot.publication.note,{color:muted});
   paragraph(`Таблица с ${snapshot.publication.valid_from}. Сверена ${snapshot.publication.checked_at}.`,{size:9,color:muted});
   paragraph(snapshot.publication.source_url,{size:9,color:muted});
-  if(snapshot.rail){heading('Источник электричек');paragraph(snapshot.rail.publication.name,{size:10});paragraph('Сверено '+snapshot.rail.publication.checked_at,{size:9,color:muted});paragraph(snapshot.rail.publication.url,{size:9,color:muted});}
+  if(snapshot.rail){const p=snapshot.rail.publication,total=lines('Источник электричек',title,phone?23:30).length*(phone?23:30)*1.18+16+lines(p.name,ui,10).length*10*1.48+12+lines('Сверено '+p.checked_at,ui,9).length*9*1.48+12+lines(p.url,ui,9).length*9*1.48+12;if(y-total<49)start();heading('Источник электричек',p.name);paragraph(p.name,{size:10});paragraph('Сверено '+p.checked_at,{size:9,color:muted});paragraph(p.url,{size:9,color:muted});}
   for(const check of snapshot.walking?.checks||[])if(check.trail){
     const name=check.trail.name+' — время на тропу';
     const source=check.trail.source_name+' · длина сверена '+check.trail.checked_at;

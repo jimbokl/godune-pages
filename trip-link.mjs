@@ -53,27 +53,34 @@ export function initTripSharing(catalog, base, workshop) {
   dialog.setAttribute('aria-labelledby', 'trip-link-title');
   dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Ваша Балтика рядом</p><button type="button" class="icon-button" id="trip-link-close" aria-label="Закрыть поездку">×</button></div>
     <h2 id="trip-link-title">Возьмите маршрут с собой</h2><p id="trip-link-intro"></p>
-    <div id="trip-link-preview"><p id="trip-link-date" class="trip-link-date"></p><p id="trip-link-filters"></p>
+    <details id="trip-link-preview"><summary>Что входит в поездку</summary><p id="trip-link-date" class="trip-link-date"></p><p id="trip-link-filters"></p>
     <div id="trip-link-days" hidden></div><div id="trip-link-places"><h3>Точки по порядку</h3><ol></ol></div><div id="trip-link-routes"><h3>Готовые прогулки</h3><ul></ul></div><div id="trip-link-dreams" hidden><h3>Места, куда хочется</h3><ul></ul></div>
-    <p id="trip-link-missing" hidden></p></div>
-    <div id="trip-link-export"><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
+    <p id="trip-link-missing" hidden></p></details>
+    <div id="trip-link-export"><div class="trip-guide-download"><p>План по шагам, карты и заметки гида - в одном PDF. Он открывается без сети.</p>
+    <div class="trip-guide-options"><label for="trip-guide-scope">Что взять<select id="trip-guide-scope"><option value="day">Выбранный день</option><option value="trip">Всю поездку</option></select></label><label for="trip-guide-format">Как читать<select id="trip-guide-format"><option value="phone">На телефоне</option><option value="print">На бумаге · A4</option></select></label></div>
+    <button type="button" id="trip-guide-save" class="button button-dark">Скачать путеводитель ↓</button><button type="button" id="trip-guide-cancel" class="button button-light" hidden>Отменить сборку</button>
+    <p class="trip-link-note">Ваши адреса, номера брони и заметки войдут в PDF. Сохраните файл в телефоне и откройте в авиарежиме до выхода.</p><p id="trip-guide-status" role="status" aria-live="polite"></p></div>
+    <details><summary>Отправить ссылку или сохранить план для редактирования</summary><label for="trip-link-url">Ссылка на эту поездку</label><input id="trip-link-url" type="url" readonly spellcheck="false">
     <div class="trip-link-actions"><button type="button" id="trip-link-copy" class="button button-dark">Скопировать ссылку</button><button type="button" id="trip-link-send" class="button button-light" hidden>Отправить</button><button type="button" id="trip-file-save" class="button button-light">Сохранить файл поездки</button></div>
     <p class="trip-link-note">Файл сохранит все дни, места, ночёвки, заметки, план расходов, оплаты и полученные возвраты. Откройте его здесь на другом телефоне. Номера брони и личные заметки записей тоже входят в файл: передавайте его тем, кому доверяете. Карты для прогулок без сети скачиваются отдельно.</p>
-    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки, источники цен, оплаты и полученные возвраты. Любой, у кого она есть, увидит эту поездку. Названия записей, даты, время и адреса тоже видны. Номера брони и личные заметки записей остаются у вас. Ссылка останется такой, какой вы её отправили.</p></div>
+    <p class="trip-link-note">В ссылке — все дни и настройки, включая ваши заметки, источники цен, оплаты и полученные возвраты. Любой, у кого она есть, увидит эту поездку. Названия записей, даты, время и адреса тоже видны. Номера брони и личные заметки записей остаются у вас. Ссылка останется такой, какой вы её отправили.</p></details></div>
     <div id="trip-link-import" hidden><div class="trip-link-actions"><button type="button" id="trip-link-merge" class="button button-dark">Добавить к моему</button><button type="button" id="trip-link-replace" class="button button-light">Заменить мой маршрут</button></div>
     <p class="trip-link-note" id="trip-link-import-note"></p></div>
     <p id="trip-link-status" role="status" aria-live="polite"></p><button type="button" id="trip-link-undo" class="save-item" hidden>Вернуть мой черновик</button>`;
   document.body.append(dialog);
+  dialog.querySelector('#trip-link-preview').before(dialog.querySelector('#trip-link-export'));
   const $ = selector => dialog.querySelector(selector);
   let snapshot, received = false, receivedFile = false, lastFocus, backup, imported, importedRevision, busy = false;
+  let guideController;
   const message = text => { $('#trip-link-status').textContent = text; };
   const names = {all: 'Вся Балтика', kaliningrad: 'Калининград', 'kurshskaya-kosa': 'Куршская коса'};
   function show(result, incoming, source = 'link') {
     received = incoming; receivedFile = source === 'file'; backup = imported = null;
     snapshot = result.state;
+    guideController?.abort();guideController=null;$('#trip-guide-save').disabled=false;$('#trip-guide-cancel').hidden=true;$('#trip-guide-status').textContent='';$('#trip-link-preview').open=incoming;
     $('#trip-link-undo').hidden = true; message('');
     $('#trip-link-title').textContent = result.error ? 'Маршрут не открылся' : incoming ? source === 'file' ? 'Поездка из файла' : 'Поездка по этой ссылке' : 'Возьмите маршрут с собой';
-    $('#trip-link-intro').textContent = result.error || (incoming ? 'Посмотрите места. Затем добавьте их к своему черновику или возьмите эту поездку целиком.' : 'Откройте её на другом телефоне или отправьте тем, с кем едете.');
+    $('#trip-link-intro').textContent = result.error || (incoming ? 'Посмотрите места. Затем добавьте их к своему черновику или возьмите эту поездку целиком.' : 'Сохраните день или всю поездку в телефоне. Карты и заметки откроются без интернета.');
     $('#trip-link-preview').hidden = Boolean(result.error);
     $('#trip-link-export').hidden = Boolean(result.error) || incoming;
     $('#trip-link-import').hidden = Boolean(result.error) || !incoming;
@@ -121,6 +128,7 @@ export function initTripSharing(catalog, base, workshop) {
     $('#trip-link-close').focus();
   }
   function close() {
+    guideController?.abort();
     // Update the address synchronously. A delayed native close event must not
     // remove a new trip hash opened immediately after the previous dialog.
     if (received && location.hash.startsWith('#trip=')) history.replaceState(null, '', location.pathname + location.search + '#my-trip');
@@ -140,6 +148,18 @@ export function initTripSharing(catalog, base, workshop) {
     } else lastFocus?.focus({preventScroll: true});
   });
   trigger?.addEventListener('click', () => show({state: workshop.getState(), missing: 0}, false));
+  $('#trip-guide-cancel').addEventListener('click',()=>guideController?.abort());
+  $('#trip-guide-save').addEventListener('click',async()=>{
+    if(!snapshot || guideController)return;
+    const controller=new AbortController();guideController=controller;const signature=JSON.stringify(workshop.getState());
+    const status=$('#trip-guide-status');$('#trip-guide-save').disabled=true;$('#trip-guide-cancel').hidden=false;
+    const message=text=>{if(guideController===controller)status.textContent=text;};
+    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=1');
+      const result=await downloadPersonalGuide({trip:snapshot,catalog,base,scope:$('#trip-guide-scope').value,format:$('#trip-guide-format').value,signal:controller.signal,onProgress:message,stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
+      message(`PDF подготовлен: ${result.pages} стр., карты мест: ${result.map_count}. Сохраните файл в папку на телефоне.${result.warnings.length?' '+result.warnings.join(' '):''}`);
+    }catch(error){message(controller.signal.aborted?'Сборка отменена. Поездка на месте.':error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Откройте «Взять с собой» заново и скачайте свежий план.':'Путеводитель не собрался целиком. Повторите при связи; ваш план на месте.');}
+    finally{if(guideController===controller){guideController=null;$('#trip-guide-save').disabled=false;$('#trip-guide-cancel').hidden=true;}}
+  });
   const fileOpen = document.querySelector('#trip-file-open');
   if (fileOpen) {
     const input = document.createElement('input'); input.id = 'trip-file-input'; input.type = 'file'; input.accept = '.json,application/json'; input.hidden = true;
