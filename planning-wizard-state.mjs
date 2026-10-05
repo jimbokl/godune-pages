@@ -1,7 +1,7 @@
-import {cleanTrip} from './trip-state.mjs?v=20';
-import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=15';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=12';
-import {tripStarterChoices} from './trip-starters.mjs?v=14';
+import {cleanTrip} from './trip-state.mjs?v=21';
+import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=16';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=13';
+import {tripStarterChoices} from './trip-starters.mjs?v=15';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 
 const clone=value=>structuredClone(value);

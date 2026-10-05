@@ -1,7 +1,7 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
-import {journeyKinds} from './day-journey-view.mjs?v=2';
+import {journeyKinds} from './day-journey-view.mjs?v=3';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -49,7 +49,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){need(60);text(`${row.time===null?'Время нужно уточнить':clock(row.time)} · ${journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);if(row.source)source(row.source);}
     heading('Если день пошёл иначе',false,day.planB);text(day.planB);
-    if(day.record.note){heading('Ваши заметки',false,day.record.note);text(day.record.note);}
+    if(day.record.note){const prior=day.record.kosa_plan && day.record.schedule?.progress;heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это запись до отметки времени у остановки. Текущий остаток дня показан выше; прежний час возвращения после опоздания не подтверждён.',{color:muted});text(day.record.note);}
     if(day.bookings.length){heading('Билеты и ночёвки');for(const b of day.bookings){need(65);text(`${b.kindLabel} · ${b.name}`,{size:phone?12:14,space:5});text(`${b.statusLabel} · ${date(b.date)}${Number.isInteger(b.time)?' · '+clock(b.time):''}${b.location?' · '+b.locationLabel:''}`);if(b.problem)text('Время этой записи сейчас не закрепляет день. Проверьте дату и привязку.',{color:muted});if(b.private?.reference)text('Номер брони: '+b.private.reference);if(b.private?.note)text(b.private.note);}}
     for(const [i,p]of day.stops.entries()){
       start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:16});heading(p.name,true);
@@ -63,7 +63,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       need(tail);source(placeSource);
       await qrCard(media.qrs?.[p.id],`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`);
     }
-    if(day.kosa){onProgress('Добавляем карты троп и пересадок косы…');const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=13');const result=await renderKosaPdf({snapshot:day.kosa,base,format},{signal,onProgress});const part=await PDFDocument.load(result.bytes);for(const copy of await doc.copyPages(part,part.getPageIndices()))doc.addPage(copy);}
+    if(day.kosa){onProgress('Добавляем карты троп и пересадок косы…');const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=14');const result=await renderKosaPdf({snapshot:day.kosa,base,format},{signal,onProgress});const part=await PDFDocument.load(result.bytes);for(const copy of await doc.copyPages(part,part.getPageIndices()))doc.addPage(copy);}
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
   chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');text('Карты, фото и координаты встроены в документ. Ваш план и источники также вложены в plan.json: часть PDF-приложений показывает вложения только на компьютере.');

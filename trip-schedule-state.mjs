@@ -1,6 +1,6 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {validRail,resolveRail} from './trip-rail-state.mjs?v=4';
-import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=1';
+import {validRail,resolveRail} from './trip-rail-state.mjs?v=5';
+import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=2';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';

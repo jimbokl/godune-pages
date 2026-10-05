@@ -1,4 +1,4 @@
-import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=3';
+import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=4';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};

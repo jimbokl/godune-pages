@@ -1,5 +1,5 @@
-import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=15';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=13';
+import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=16';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=14';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2';
 

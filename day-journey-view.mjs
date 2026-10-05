@@ -42,8 +42,8 @@ export function excursionJourney(resolved,result,name) {
 export function roadbookJourney(book) {
   const source={name:'Расписание автобуса № 210',url:book.publication.source_url,checked_at:book.publication.checked_at};
   return book.timeline.flatMap((item,index)=>{
-    const step=row(`roadbook-${index}`,item.kind || 'visit',known(item.time),item.title,item.text,item.walking_check?.state==='too_short'?'conflict':['rail','bus'].includes(item.kind)?'timetable':'estimate',item.kind==='rail'?book.rail?.publication:item.kind==='bus'?source:null);
+    const step=row(`roadbook-${index}`,item.kind || 'visit',known(item.time),item.title,item.text,item.state || (item.walking_check?.state==='too_short'?'conflict':['rail','bus'].includes(item.kind)?'timetable':'estimate'),item.kind==='rail'?book.rail?.publication:item.kind==='bus'?source:null);
     if(item.poi)step.poi=item.poi;
-    return item.kind==='boarding'?[step,row('roadbook-return-bus','bus',book.return.departure,`${book.return.stop} → Зеленоградск`,`Автобус № 210. Прибытие по таблице — ${clock(book.return.arrival)}. Наличие мест неизвестно.`,'timetable',source)]:[step];
+    return item.kind==='boarding'?[step,row('roadbook-return-bus','bus',book.return.blocked?null:book.return.departure,`${book.return.stop} → Зеленоградск`,book.return.blocked?`Выбранный автобус был в ${clock(book.return.departure)}. Подходящее возвращение теперь нужно подтвердить заново.`:`Автобус № 210. Прибытие по таблице — ${clock(book.return.arrival)}. Наличие мест неизвестно.`,book.return.blocked?'conflict':'timetable',source)]:[step];
   });
 }

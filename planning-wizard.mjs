@@ -1,10 +1,10 @@
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=7';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=15';
-import {planInput} from './trip-schedule-state.mjs?v=12';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=8';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=16';
+import {planInput} from './trip-schedule-state.mjs?v=13';
 import {baseName} from './personal-points.mjs?v=3';
 import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=4';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
-import {downloadTripFile} from './trip-file.mjs?v=20';
+import {downloadTripFile} from './trip-file.mjs?v=21';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';

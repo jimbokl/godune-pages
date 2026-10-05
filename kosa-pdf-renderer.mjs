@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=13';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=14';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
@@ -71,8 +71,8 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph('День на волне.',{font:title,size:phone?35:49,space:28});
   paragraph(snapshot.date.split('-').reverse().join('.')+' · '+snapshot.city,{size:13,space:22});
   page.drawRectangle({x:margin,y:y-54,width,height:54,color:blue});
-  page.drawText(snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью, по вашей оценке'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:10,color:ink});
-  page.drawText(clock(snapshot.finish),{x:margin+12,y:y-42,font:title,size:24,color:ink});y-=77;
+  page.drawText(snapshot.continuation?'Возвращение после отметки у остановки':snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью, по вашей оценке'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:phone?9:10,color:ink});
+  page.drawText(Number.isInteger(snapshot.finish)?clock(snapshot.finish):'Время уточнить',{x:margin+12,y:y-42,font:title,size:Number.isInteger(snapshot.finish)?24:phone?20:24,color:ink});y-=77;
   paragraph(snapshot.walks.length===2?'Дюны Эфа и Танцующий лес. Между тропами - автобус.':'Высота Эфа. Настил, смотровые и возвращение к началу тропы.');
   paragraph('Это ваш план по опубликованной таблице № 210. Рейсы на дату поездки и наличие мест ещё нужно подтвердить.',{size:bodySize,color:muted});
   if(snapshot.walking?.status==='too_short')paragraph('В плане есть слишком короткие переходы или прогулки. Увеличьте их время перед поездкой. Подробности отмечены в ритме дня.',{size:bodySize});
@@ -85,15 +85,16 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20
       +(boarding?lines(boarding,ui,bodySize).length*bodySize*1.48+20:0);
     if(y-height<49)start();
-    paragraph(clock(row.time),{font:title,size:22,color:ink,space:5});
+    paragraph(Number.isInteger(row.time)?clock(row.time):'Время уточнить',{font:title,size:22,color:ink,space:5});
     paragraph(row.title,{size:phone?12:14,space:6});
     paragraph(row.text,{color:muted,space:boarding?10:20});
     if(boarding)paragraph(boarding,{space:20});
   }
   start();heading('Вернуться с косы');
   paragraph('Остановка: '+snapshot.return.stop,{size:13});
-  paragraph(`Будьте у остановки к ${clock(snapshot.return.board_by)}. Автобус по таблице - ${clock(snapshot.return.departure)}; в Зеленоградске - ${clock(snapshot.return.arrival)}.`);
-  if(snapshot.rail){const r=snapshot.rail;paragraph(`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. ${snapshot.origin==='station'?'Дальнейшая дорога до жилья не включена.':`Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`}`);}
+  if(snapshot.return.blocked)paragraph(`Прежний автобус по таблице - ${clock(snapshot.return.departure)}. После задержки этот путь домой не подтверждён. Время возвращения неизвестно; сначала выберите и проверьте другой вариант.`);
+  else paragraph(`Будьте у остановки к ${clock(snapshot.return.board_by)}. Автобус по таблице - ${clock(snapshot.return.departure)}; в Зеленоградске - ${clock(snapshot.return.arrival)}.`);
+  if(snapshot.rail){const r=snapshot.rail;paragraph(snapshot.return.blocked?`Выбран поезд № ${r.inward.id} до ${r.from}, отправление ${clock(r.inward.departure)}. После пропущенного автобуса пересадка не подтверждена. Время прибытия домой пока неизвестно.`:`Затем электричка до ${r.from}: у поезда к ${clock(r.train_by)}, отправление ${clock(r.inward.departure)}, прибытие ${clock(r.inward.arrival)}. ${snapshot.origin==='station'?'Дальнейшая дорога до жилья не включена.':`Ещё ${r.from_station} мин до жилья по вашей оценке; вернуться около ${clock(r.home_finish)}.`}`);}
   paragraph('Если автобус ушёл или полон',{font:title,size:phone?19:23,space:12});
   paragraph(snapshot.fallback);
   if(snapshot.light){heading('Свет на тропах и у остановки',snapshot.light.rows[0]?.text);for(const row of snapshot.light.rows)paragraph(row.text,{color:row.warning?ink:muted,keepTogether:true});}

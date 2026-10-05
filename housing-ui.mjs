@@ -1,5 +1,5 @@
-import {housingContext,housingInput,applyHousing,housingLock,housingMode} from './housing-state.mjs?v=4';
-import {journeyDays} from './trip-days-state.mjs?v=15';
+import {housingContext,housingInput,applyHousing,housingLock,housingMode} from './housing-state.mjs?v=5';
+import {journeyDays} from './trip-days-state.mjs?v=16';
 import {baseName} from './personal-points.mjs?v=3';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=6';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';

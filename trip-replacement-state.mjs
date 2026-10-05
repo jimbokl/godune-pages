@@ -1,5 +1,5 @@
-import {cleanTrip} from './trip-state.mjs?v=20';
-import {selectedDay} from './trip-days-state.mjs?v=15';
+import {cleanTrip} from './trip-state.mjs?v=21';
+import {selectedDay} from './trip-days-state.mjs?v=16';
 import {dayTransfers,transferKey,transferStatus,validTransferPoint} from './trip-transfer-costs.mjs?v=3';
 
 const stable=value=>JSON.stringify(value,(_,item)=>item && typeof item==='object' && !Array.isArray(item)?Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))):item);

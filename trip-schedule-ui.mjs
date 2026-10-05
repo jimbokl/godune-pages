@@ -1,23 +1,24 @@
-import {selectedDay} from './trip-days-state.mjs?v=15';
-import {resolveRail} from './trip-rail-state.mjs?v=4';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=2';
-import {journeyRow} from './day-journey-ui.mjs?v=2';
+import {selectedDay} from './trip-days-state.mjs?v=16';
+import {resolveRail} from './trip-rail-state.mjs?v=5';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=3';
+import {journeyRow} from './day-journey-ui.mjs?v=3';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=8';
-import {defaultSchedule, planInput, planTravel, updateSchedule} from './trip-schedule-state.mjs?v=12';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=9';
+import {defaultSchedule, planInput, planTravel, updateSchedule} from './trip-schedule-state.mjs?v=13';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=7';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=8';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=3';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=4';
-import {initDayProgress} from './day-progress-ui.mjs?v=1';
-import {progressMessages} from './day-progress-advice.mjs?v=1';
-import {currentProgress,remainingTrip} from './day-progress.mjs?v=1';
-import {flexSignature} from './day-flex-advice.mjs?v=4';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=4';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=5';
+import {initDayProgress} from './day-progress-ui.mjs?v=2';
+import {progressMessages} from './day-progress-advice.mjs?v=2';
+import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
+import {flexSignature} from './day-flex-advice.mjs?v=5';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=6';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -305,10 +306,23 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=3')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
-        const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':'incomplete';
-        $('#trip-plan-stops').append(...view.rows.map(journeyRow));
+        const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
+        const visited=selectedDay(trip).visited || [],context=travelContext(trip);
+        for(const row of view.rows){
+          const node=journeyRow(row);
+          if(row.kind==='visit' && row.poi){
+            const button=document.createElement('button');button.type='button';button.className='save-item';button.dataset.kosaVisited=row.poi;button.textContent='Осмотр закончен';
+            button.onclick=async()=>{button.disabled=true;try{
+              const outcome=await commit(value=>markVisited(value,row.poi,true,context),'');
+              $('#trip-plan-feedback').textContent=outcome?.conflict?'День изменился. Посмотрите свежий план.':outcome?.saved?'Отметка сохранена. Укажите время у остановки в «Продолжить день после тропы».':'Отметка показана в этой вкладке. Сохранение не завершилось; скачайте файл поездки.';
+            }catch{$('#trip-plan-feedback').textContent='Сохранение не завершилось. Попробуйте ещё раз.';}finally{if(button.isConnected)button.disabled=false;}};
+            if(!visited.includes(row.poi))node.append(button);
+          }
+          $('#trip-plan-stops').append(node);
+        }
+        progress.render({trip,catalog,matrix:null,engine:calculate,kosaContext:view.context,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
         if(trip.places.length)$('#trip-plan-stops').append(journeyRow({id:'kosa-extra',kind:'notice',time:null,title:'Дополнительные места пока вне расчёта',text:`Вы добавили ещё ${trip.places.length} мест. Время поездки на косу их не учитывает. Они сохранены в списке «Изменить порядок и остановки».`,state:'unknown'}));
         const link=document.createElement('a');link.href=new URL('kurshskaya-kosa/bez-mashiny/#kosa-planner',base);link.className='day-kosa-edit';link.textContent='Изменить поездку на косу →';
         const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);

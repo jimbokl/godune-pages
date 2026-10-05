@@ -1,4 +1,4 @@
-import {journeyDays, selectedDay} from './trip-days-state.mjs?v=15';
+import {journeyDays, selectedDay} from './trip-days-state.mjs?v=16';
 export function initToolPages(workshop,catalog,base) {
   const currentLink=document.querySelector('.tool-nav [aria-current="page"]');
   const nav=currentLink?.closest('.tool-nav');

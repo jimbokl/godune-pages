@@ -1,5 +1,5 @@
 // Service snapshots are separate from personal walk/boarding allowances.
-import {remainingTrip} from './day-progress.mjs?v=1';
+import {remainingTrip} from './day-progress.mjs?v=2';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
 const date=validServiceDate;
