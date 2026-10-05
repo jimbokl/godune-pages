@@ -1,4 +1,4 @@
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=6';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=7';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -13,7 +13,7 @@ export function initFlexAdvice({mount,commit,feedback}) {
     mount.hidden=false;mount.dataset.flexAdvice='idle';
     const summary=el('summary','','Подстроить день'),note=el('p','',trip.schedule?.progress?'Пошёл дождь, устали или хочется сократить прогулку. Уже пройденные места и время начала останутся. День изменится после вашего выбора.':'Пошёл дождь, устали или хочется выйти позже. Сравните варианты — день изменится после вашего выбора.');
     const form=el('form','day-flex-form'),label=el('label','','Что изменим'),select=el('select');select.name='flex';select.dataset.flexRequest='true';
-    for(const [value,text]of [['later:15','Выйти на 15 минут позже'],['later:30','Выйти на 30 минут позже'],['later:60','Выйти на час позже'],['rain:0','Пошёл дождь — меньше открытых мест'],['fatigue:0','Устали — меньше ходьбы'],['breathing_room:30','Оставить ещё полчаса'],['breathing_room:60','Оставить ещё час']]) {
+    for(const [value,text]of [['later:15','Выйти на 15 минут позже'],['later:30','Выйти на 30 минут позже'],['later:60','Выйти на час позже'],['rain:0','Пошёл дождь — под крышу или короче'],['fatigue:0','Устали — меньше ходьбы'],['breathing_room:30','Оставить ещё полчаса'],['breathing_room:60','Оставить ещё час']]) {
       if(trip.schedule?.progress && value.startsWith('later:'))continue;
       const option=el('option','',text);option.value=value;select.append(option);
     }label.append(select);
@@ -33,12 +33,14 @@ export function initFlexAdvice({mount,commit,feedback}) {
         if(['rain','fatigue'].includes(kind) && result.rail)status.textContent+=' Подходы к электричкам остаются прежними.';
         const name=id=>catalog.poi.find(p=>p.slug===id)?.name || id;
         for(const option of advice.options) {
-          const moved=flexOmissions(option),key=moved.join(',') || 'whole';
+          const moved=flexOmissions(option),replacements=option.replacements || [],key=replacements.length?replacements.map(r=>`${r.from}>${r.to}`).join(','):moved.join(',') || 'whole';
           const card=el('article','day-advice-option');card.dataset.flexOption=key;card.dataset.flexMoved=String(moved.length);
+          card.dataset.flexReplaced=String(replacements.length);
           if(option.railChange)card.dataset.flexRail=option.railChange.after.id;
-          const title=el('h4','',moved.length>1?`${moved.length} ${placesWord(moved.length)} — на другой раз`:moved.length?`«${name(moved[0])}» — на другой раз`:'Все остановки остаются');
+          const title=el('h4','',replacements.length?'Осмотр под крышей':moved.length>1?`${moved.length} ${placesWord(moved.length)} — на другой раз`:moved.length?`«${name(moved[0])}» — на другой раз`:'Все остановки остаются');
           const movedList=el('ul','day-advice-moved');
           for(const id of moved) {const row=el('li','',name(id));row.dataset.flexMovedPlace=id;movedList.append(row);}
+          for(const replacement of replacements){const row=el('li','',`${name(replacement.from)} → `),link=el('a','',name(replacement.to));link.href=`/poi/${encodeURIComponent(replacement.to)}/`;row.dataset.flexReplacement=replacement.to;row.append(link);movedList.append(row);}
           const times=el('dl','day-advice-times');
           const rows=[];
           if(option.effort){
@@ -57,18 +59,26 @@ export function initFlexAdvice({mount,commit,feedback}) {
           if(option.railChange){const row=el('div');row.append(el('dt','','Обратная электричка'),el('dd','',`${clock(option.railChange.inbound.departure)} → ${clock(option.railChange.inbound.arrival)} · без изменений`));times.append(row);}
           const order=el('details','day-advice-order'),caption=el('summary','','Как пойдёт день'),list=el('ol');
           for(const stop of option.result.stops)if(catalog.poi.some(p=>p.slug===stop.id))list.append(el('li','',`${clock(stop.begins)} · ${name(stop.id)}`));order.append(caption,list);
-          const note=el('p','',moved.length?moved.length===1?'Место останется в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':'Эти места останутся в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':option.railChange?'Время прогулки пересчитано для другой электрички. Перед поездкой сверьте расписание и условия своего билета.':'Часы посещения и время в пути пересчитаны с новым выходом.');
+          const note=el('p','',replacements.length?'Прежние места останутся на другой раз. Расходы и билеты сохранятся у прежних мест. Для музея может понадобиться новый билет — проверьте вход перед выходом.':moved.length?moved.length===1?'Место останется в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':'Эти места останутся в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':option.railChange?'Время прогулки пересчитано для другой электрички. Перед поездкой сверьте расписание и условия своего билета.':'Часы посещения и время в пути пересчитаны с новым выходом.');
+          for(const replacement of replacements){
+            const block=el('div','day-advice-shelter');block.dataset.flexShelter=replacement.to;
+            block.append(el('p','',name(replacement.to)),el('p','',replacement.shelter.fact.text),el('p','',replacement.shelter.hours.text));
+            const facts=[['Осмотр',replacement.shelter.fact],['Часы',replacement.shelter.hours]];
+            if(replacement.price && (!replacement.price.valid_from || trip.date>=replacement.price.valid_from) && (!replacement.price.valid_until || trip.date<=replacement.price.valid_until)){block.append(el('p','',replacement.price.text));facts.push(['Билет',replacement.price]);}
+            for(const [label,fact]of facts){const source=el('p','day-advice-source',`${label} · проверено ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(fact.source.checked_at+'T12:00:00Z'))}. `),link=el('a','','У музея');link.href=fact.source.url;link.target='_blank';link.rel='noopener noreferrer';source.append(link);block.append(source);}
+            order.append(block);
+          }
           if(option.railChange){const source=el('p','day-advice-source',`Расписание проверено ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(option.railChange.source.checked_at+'T12:00:00Z'))}. `),link=el('a','','Открыть у перевозчика');link.href=option.railChange.source.url;link.target='_blank';link.rel='noopener noreferrer';source.append(link);order.append(source);}
           const apply=el('button','save-item','Выбрать этот вариант');apply.type='button';apply.dataset.flexApply=key;
           apply.onclick=async()=>{
             apply.disabled=true;let changed=false,error='';
             try {
-              const saved=await commit(value=>{const proposed=applyFlexAdvice(value,option);changed=!proposed.error;error=proposed.error;return proposed.trip;},'');
-              feedback.textContent=saved?.conflict || error || !changed?'День уже изменился. Проверьте свежий расчёт перед выбором.':saved?.saved?moved.length?moved.length===1?`Новый день сохранён. «${name(moved[0])}» оставили на другой раз; расходы и билеты сохранены.`:`Новый день сохранён. На другой раз оставили ${moved.length} ${placesWord(moved.length)} — они в подборке «Места, куда хочется». Расходы и билеты сохранены.`:option.railChange?'Новая электричка и день сохранены. Обратный рейс остался прежним.':'Поздний выход сохранён. Дорога и возвращение пересчитаны.':'Новый день показан в этой вкладке. Браузер не разрешил сохранение; скачайте файл поездки.';
+              const saved=await commit(value=>{const proposed=applyFlexAdvice(value,option,catalog);changed=!proposed.error;error=proposed.error;return proposed.trip;},'');
+              feedback.textContent=saved?.conflict || error || !changed?'День уже изменился. Проверьте свежий расчёт перед выбором.':saved?.saved?replacements.length?'Новый день сохранён. Осмотр перенесён под крышу; прежние места оставили на другой раз. Расходы и билеты сохранили у прежних мест.':moved.length?moved.length===1?`Новый день сохранён. «${name(moved[0])}» оставили на другой раз; расходы и билеты сохранены.`:`Новый день сохранён. На другой раз оставили ${moved.length} ${placesWord(moved.length)} — они в подборке «Места, куда хочется». Расходы и билеты сохранены.`:option.railChange?'Новая электричка и день сохранены. Обратный рейс остался прежним.':'Поздний выход сохранён. Дорога и возвращение пересчитаны.':'Новый день показан в этой вкладке. Браузер не разрешил сохранение; скачайте файл поездки.';
             }catch {feedback.textContent='Сохранение не подтвердилось. Проверьте день и скачайте файл поездки.';}
             finally {if(apply.isConnected)apply.disabled=false;feedback.tabIndex=-1;feedback.focus({preventScroll:true});}
           };
-          card.append(title);if(moved.length>1)card.append(movedList);card.append(times,order,note,apply);cards.append(card);
+          card.append(title);if(moved.length>1 || replacements.length)card.append(movedList);card.append(times,order,note,apply);cards.append(card);
         }
       }catch {if(isCurrent()){mount.dataset.flexAdvice='error';status.textContent='Варианты пока не рассчитались. День на месте; попробуйте ещё раз.';}}
       finally {if(isCurrent()){search.disabled=false;mount.removeAttribute('aria-busy');}}

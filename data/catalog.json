@@ -3486,6 +3486,23 @@
             "verification": "official_source"
           },
           "text": "В башне есть лифт: на нём можно подняться на все уровни музея."
+        },
+        {
+          "id": "murarium-indoor",
+          "kind": "access",
+          "label": "Осмотр под крышей",
+          "scope": "place",
+          "shelter": {
+            "hours_fact": "murarium-hours",
+            "kind": "indoor"
+          },
+          "source": {
+            "checked_at": "2026-10-05",
+            "name": "Музей «Мурариум»",
+            "url": "https://murarium.ru/kontakty/",
+            "verification": "official_source"
+          },
+          "text": "Коллекция кошек размещена внутри водонапорной башни. Под крышей — осмотр экспозиции; дорога до музея остаётся на улице."
         }
       ]
     },
@@ -3611,6 +3628,23 @@
           },
           "text": "Экскурсионное обслуживание для взрослого — ещё 200 ₽ к входному билету. Аудиогид также стоит 200 ₽.",
           "unit": "adult_guided_visit_supplement"
+        },
+        {
+          "id": "cranz-indoor",
+          "kind": "access",
+          "label": "Осмотр под крышей",
+          "scope": "place",
+          "shelter": {
+            "hours_fact": "cranz-hours",
+            "kind": "indoor"
+          },
+          "source": {
+            "checked_at": "2026-10-05",
+            "name": "Зеленоградский краеведческий музей",
+            "url": "https://cranz-muzeum.ru/meropriyatiya/ekspozitsii/",
+            "verification": "official_source"
+          },
+          "text": "Экспозиции истории города находятся в залах музея на улице Ленина, 6. Под крышей — осмотр залов; путь до здания остаётся на улице."
         }
       ]
     },
@@ -5007,6 +5041,23 @@
           "text": "Для посетителей, которые не относятся к гражданам ЕАЭС или приравненным к ним резидентам, билет на основную экспозицию — 500 ₽. Категорию билета уточни при покупке.",
           "unit": "main_exhibition_non_eaes",
           "valid_from": "2026-01-01"
+        },
+        {
+          "id": "fleet-indoor",
+          "kind": "access",
+          "label": "Осмотр под крышей",
+          "scope": "place",
+          "shelter": {
+            "hours_fact": "fleet-hours",
+            "kind": "indoor"
+          },
+          "source": {
+            "checked_at": "2026-10-05",
+            "name": "Музей Балтийского флота",
+            "url": "https://navalmuseum.ru/filials/baltic_fleet",
+            "verification": "official_source"
+          },
+          "text": "Основная экспозиция размещена в залах музея. Под крышей — осмотр экспозиции; путь до входа остаётся на улице."
         }
       ]
     },

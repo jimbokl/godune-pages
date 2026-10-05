@@ -3,6 +3,7 @@ import {selectedDay} from './trip-days-state.mjs?v=16';
 import {tripSignature} from './trip-light.mjs?v=9';
 import {timingTrial} from './day-timing-advice.mjs?v=4';
 import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=5';
+import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=1';
 
 // Planning proposals, not a reconstruction of time already spent on the road.
 // The shared Rust calculation remains the sole clock for every candidate.
@@ -77,10 +78,12 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
   const rank=(a,b)=>(scenario?b.effort.saved[request.kind==='rain'?'outdoor':'walking']-a.effort.saved[request.kind==='rain'?'outdoor':'walking']:0)
     || b.result.slack-a.result.slack || snapshot.places.indexOf(flexOmissions(a)[0])-snapshot.places.indexOf(flexOmissions(b)[0]);
   let trials=0;
-  async function test(change,places,omittedIds=[]) {
+  async function test(change,places,omittedIds=[],replacements=[]) {
     if(++trials%8===0)await new Promise(resolve=>setTimeout(resolve,0));
     if(!stillCurrent())return null;
-    const candidate={...snapshot,places,schedule:{...settings,start:change.start,
+    const replaced=replacements.length?withShelterReplacements(snapshot,replacements,catalog):snapshot;
+    if(!replaced)return null;
+    const candidate={...replaced,places,schedule:{...(replaced.schedule || settings),start:change.start,
       ...(change.outward?{rail:{...settings.rail,outward:change.outward}}:{})}},tested=trial.evaluate(candidate);
     if(!tested)return null;
     if(request.kind==='later' && tested.result.stops[0]?.arrival<(result.stops[0]?.arrival??previousStart)+request.minutes)return null;
@@ -94,7 +97,30 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
       inbound:structuredClone(settings.rail.inbound),source:structuredClone(rail.source),service:rail.service.id}:null;
     return {signature,kind:request.kind,minutes:request.minutes,previousStart,start:change.start,
       displayStart:tested.scheduleStart,railChange,places:[...places],
-      omitted:omittedIds.length===1?omittedIds[0]:null,omittedIds:[...omittedIds],freed,...(effort?{effort}:{}),...tested};
+      omitted:omittedIds.length===1?omittedIds[0]:null,omittedIds:[...omittedIds],
+      ...(replacements.length?{replacements:structuredClone(replacements)}:{}),freed,...(effort?{effort}:{}),...tested};
+  }
+  if(request.kind==='rain') {
+    const outside=optional.filter(id=>{
+      const place=catalog.poi.find(p=>p.slug===id);
+      return ['nature','park','viewpoint','beach'].includes(place?.category) || settings.stops[id]?.visit_scope==='outside';
+    });
+    const targets=catalog.poi.filter(place=>!snapshot.places.includes(place.slug)).flatMap(place=>{
+      const shelter=visitShelter(place,snapshot.date);
+      return shelter?[{to:place.slug,shelter,price:structuredClone(place.price || null)}]:[];
+    });
+    for(let count=1;count<=Math.min(outside.length,targets.length);count++) {
+      const sheltered=[];
+      for(const ids of omissions(outside,count))for(const replacements of shelterAssignments(ids,targets)) {
+        if(!stillCurrent())return {state:'stale',options:[]};
+        const changes=new Map(replacements.map(row=>[row.from,row.to]));
+        const candidate=await test(starts[0],snapshot.places.map(id=>changes.get(id) || id),[],replacements);
+        if(candidate){sheltered.push(candidate);sheltered.sort(rank);sheltered.splice(2);}
+      }
+      if(sheltered.length){options.push(...sheltered);break;}
+    }
+    // One indoor day and one shorter walk make the trade-off visible.
+    if(options.length>1)options.splice(1);
   }
   let chosen=null;
   if(request.kind==='later') {
@@ -121,19 +147,21 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
       options.push(...shorter.slice(0,2-options.length));
       // Never move more places if a smaller change already works. A full walk
       // is already an answer; don't invent a multiple-omission alternative.
-      if(options.length)break;
+      if(shorter.length || !scenario && options.length)break;
     }
     if(options.length)break;
   }
   return stillCurrent()?{state:options.length?'ready':'no_option',options,trials}:{state:'stale',options:[]};
 }
 
-export function applyFlexAdvice(trip,option) {
+export function applyFlexAdvice(trip,option,catalog) {
   if(flexSignature(trip)!==option.signature)return {trip,error:'stale'};
   if(!['later','breathing_room','rain','fatigue'].includes(option.kind))return {trip,error:'unknown_option'};
   // Keep up-to-date notes, money and other days. The existing cleaner projects
   // only this day's new stop list and discards obsolete directed leg settings.
-  const next={...trip,places:[...option.places],schedule:{...(trip.schedule || defaultSchedule()),start:option.start}};
+  const replaced=option.replacements?.length && catalog?withShelterReplacements(trip,option.replacements,catalog):trip;
+  if(!replaced || option.replacements?.length && !catalog)return {trip,error:'stale'};
+  const next={...replaced,places:[...option.places],schedule:{...(replaced.schedule || defaultSchedule()),start:option.start}};
   if(option.railChange)next.schedule.rail={...trip.schedule.rail,outward:structuredClone(option.railChange.after)};
   const moved=trip.places.filter(id=>!option.places.includes(id));
   if(moved.length)next.dreams=[...new Set([...(trip.dreams || []),...moved])];
