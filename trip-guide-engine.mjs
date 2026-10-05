@@ -7,7 +7,7 @@ import {baseName,personalPoints} from './personal-points.mjs?v=3';
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=6';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=1';
-import {buildGuide} from './virtual-guide-engine.mjs?v=1';
+import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=1';
 

@@ -1,4 +1,5 @@
 // Editorial guidance is separate from timing, bookings and visited-place records.
+import {guideProvenance,guideProvenanceTranscript,guideSourceUrl} from './guide-provenance.mjs?v=1';
 export const GUIDE_VERSION=1;
 const slug=value=>typeof value==='string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 const unique=values=>[...new Set(values)];
@@ -17,6 +18,8 @@ export function guidePlaces(catalog,request={}) {
   } else {
     const trip=request.trip;
     ids=Array.isArray(trip?.places)?trip.places:[];
+    const saved=trip?.itinerary?.days?.find(day=>day.id===trip.itinerary.active)?.kosa_plan;
+    if(saved)ids=['vysota-efa',...(saved.walks==='two'?['tancuyushchiy-les']:[]),...ids];
     if(ids.some(id=>!known.has(id)))throw Error('guide_unknown_point');
     title='Ваш день';context=`day:${slug(trip?.itinerary?.active)?trip.itinerary.active:'current'}`;
   }
@@ -32,8 +35,9 @@ export function buildGuide(catalog,request={}) {
     return {id:point.slug,name:point.name,area:point.area_name,lat:point.lat,lon:point.lon,
       story:hasStory?authored.story.map(cleanText):[cleanText(point.description)].filter(Boolean),
       focus:hasStory?cleanText(authored.focus):'',practical:cleanText(point.access_note || point.practical),
-      source:cleanText(point.source_url),checkedAt:cleanText(point.verified_at),
+      source:guideSourceUrl(point.source_url),checkedAt:cleanText(point.verified_at),
       kind:hasStory?'field_note':'place_card',
+      provenance:guideProvenance(registry,hasStory?authored:null),
       photo:(point.photos || []).find(path=>typeof path==='string' && /^assets\/[a-zA-Z0-9_./-]+$/.test(path) && !path.includes('..')) || null};
   });
   return {version:GUIDE_VERSION,title,context,stops};
@@ -53,6 +57,7 @@ export function guideTranscript(guide) {
   guide.stops.forEach((stop,index)=>{
     lines.push(`${String(index+1).padStart(2,'0')} · ${stop.name}`,`${stop.lat}, ${stop.lon}`,...stop.story.map(text=>text+'\n'));
     if(stop.focus)lines.push('Посмотрите вокруг: '+stop.focus);
+    lines.push(...guideProvenanceTranscript(stop));
     if(stop.practical)lines.push('Перед выходом: '+stop.practical);
     lines.push(`Карточка: https://godune.ru/poi/${stop.id}/`);
     if(stop.source)lines.push('Источник карточки: '+stop.source);

@@ -1,12 +1,8 @@
 // Device coordinates remain in this module's memory, never in trip state.
-const earth = 6371008.8, rad = Math.PI / 180;
+import {readPosition,EARTH_METERS as earth} from './device-position.mjs?v=1';
+export {readPosition} from './device-position.mjs?v=1';
+const rad = Math.PI / 180;
 const empty = () => ({type:'FeatureCollection',features:[]});
-export function readPosition(position) {
-  const {longitude:lon,latitude:lat,accuracy} = position?.coords || {};
-  const timestamp = position?.timestamp;
-  if (![lon,lat,accuracy,timestamp].every(Number.isFinite) || Math.abs(lon)>180 || Math.abs(lat)>90 || accuracy<0 || timestamp<=0) return null;
-  return {lon,lat,accuracy,timestamp};
-}
 export function accuracyArea(fix) {
   if (!fix || fix.accuracy>=Math.PI*earth) return empty();
   const phi=fix.lat*rad, lambda=fix.lon*rad, d=fix.accuracy/earth, ring=[];
