@@ -3,7 +3,7 @@ import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-
 import {transferTitle} from './trip-transfer-costs.mjs?v=3';
 import {rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
-import {planInput} from './trip-schedule-state.mjs?v=10';
+import {planInput} from './trip-schedule-state.mjs?v=11';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

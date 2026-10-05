@@ -1,6 +1,6 @@
 // A read-only view of the same snapshot used by the personal PDF.
 // Rust, service calendars and the saved transport bindings own every time.
-import {collectTripGuide} from './trip-guide-engine.mjs?v=2';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 import {savedKosaJourney} from './day-kosa-journey.mjs?v=1';

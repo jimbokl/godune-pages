@@ -3,7 +3,7 @@ import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage}
 import {baseName,baseId} from './personal-points.mjs?v=3';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
-import {planInput} from './trip-schedule-state.mjs?v=10';
+import {planInput} from './trip-schedule-state.mjs?v=11';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 import {offlinePaths} from './offline.mjs?v=6';
 import {availableMaps} from './offline-map.mjs?v=9';

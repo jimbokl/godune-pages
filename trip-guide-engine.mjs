@@ -1,6 +1,6 @@
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
 import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=14';
-import {planInput,defaultSchedule} from './trip-schedule-state.mjs?v=10';
+import {planInput,defaultSchedule} from './trip-schedule-state.mjs?v=11';
 import {resolveRail} from './trip-rail-state.mjs?v=3';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
@@ -9,7 +9,7 @@ import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=1';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
-import {waveLabel} from './day-wave.mjs?v=1';
+import {waveLabel} from './day-wave.mjs?v=2';
 
 const notes={unknown_travel:'Время дороги ещё неизвестно.',unknown_opening:'Часы входа ещё нужно сверить.',opening_needs_check:'Часы учтены; дату и билеты нужно сверить.',unknown_kitchen:'Уточните время последнего заказа.',kitchen_needs_check:'Время приёма заказов нужно сверить.',kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К этому времени кухня уже не принимает заказ.',travel_needs_check:'Дорога учтена по оценке; доступ нужно сверить.',unknown_approach:'Неизвестно время подхода ко входу.',unknown_return:'Неизвестно время возвращения к парковке.',access_needs_check:'Пеший участок учтён по карте; темп и доступ нужно сверить.',transport_needs_check:'Переправу нужно сверить на дату поездки.',transport_incomplete:'Не хватает времени пути или расписания переправы.',transport_conflict:'Возвращение с переправы не складывается.',closed:'По выбранным часам в этот день посещений нет.',window_missed:'Осмотр не помещается в часы входа или сеанс.',appointment_needs_check:'Без времени дороги прибытие к билету нельзя подтвердить.',appointment_venue_conflict:'Время билета не совпадает с известными часами посещения.'};
 export function guideIssue(issue) {
@@ -26,7 +26,8 @@ export function guideDayRows(trip,catalog,result,matrix) {
   const rail=railJourney(resolveRail(trip,catalog),result.rail),rows=[...rail.before];
   result.stops.forEach((item,index)=>{
     const blocked=result.stops.slice(0,index).some(stop=>stop.excursion?.conflict);
-    const issues=item.issues.map(guideIssue),state=issues.length?'needs_check':'estimate';
+    const outside=settings.stops[item.id]?.visit_scope==='outside';
+    const issues=item.issues.map(issue=>outside && issue.code==='unknown_opening'?'Доступ к месту снаружи ещё нужно сверить.':guideIssue(issue)),state=issues.length?'needs_check':'estimate';
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
       const title={start:'Начало',night:'К ночи',end:'К вылету / отъезду'}[role];
@@ -38,7 +39,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
     const booking=bookings.stops[item.id],wait=waitJourney(item,!!booking);if(wait&&!blocked)rows.push(wait);
     const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0,access=resolveAccess(trip,item.id,catalog,matrix);
     rows.push({id:item.id,poi:item.id,kind:'visit',time:blocked?null:item.begins,title:place.name,
-      text:`${view.label}: ${view.time}. ${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.`+(view.note?' '+view.note:'')
+      text:`${view.label}: ${view.time}. ${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.${outside?' Осмотр снаружи, без входа внутрь.':''}`+(view.note?' '+view.note:'')
         +(access?` Подход: ${access.approach.minutes===null?'неизвестно':access.approach.minutes+' мин'}. Обратно к парковке: ${access.back.minutes===null?'неизвестно':access.back.minutes+' мин'}.`:'')+(issues.length?' '+issues.join(' '):''),state});
     const excursion=resolveExcursion(trip,item.id,catalog);if(excursion&&item.excursion)rows.push(...excursionJourney(excursion,item.excursion,place.name));
   });
@@ -56,7 +57,8 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const matrix=generated?null:await matrixFor(current),result=generated?null:calculate(planInput(current,catalog,matrix));
     const roads=generated?{type:'FeatureCollection',features:[]}:await roadsFor(current,matrix);
     const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:guideDayRows(current,catalog,result,matrix);
-    out.push({id:record.id,name:record.name || (generated?'День на куршской волне':waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
+    const recipe=catalog.day_waves?.recipes?.find(row=>row.slug===record.wave?.recipe);
+    out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),status:generated?kosa.state:result.status,summary:generated?kosa.message:guidePlanStatus[result.status],
       finish:generated?(kosa.book?.rail?.home_finish ?? kosa.book?.return.arrival ?? null):result.finish,earliest_finish:result?.earliest_finish ?? null,slack:result?.slack ?? null,
       rows,roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,

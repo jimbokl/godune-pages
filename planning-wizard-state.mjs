@@ -1,8 +1,8 @@
 import {cleanTrip} from './trip-state.mjs?v=19';
 import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=14';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=10';
-import {TRIP_STARTERS} from './trip-starters.mjs?v=12';
-import {validDayWave,waveChoices,waveSchedule} from './day-wave.mjs?v=1';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=11';
+import {tripStarterChoices} from './trip-starters.mjs?v=13';
+import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -22,9 +22,7 @@ export function wizardAreas(catalog) {
 export const wizardChoices=(catalog,theme='mixed')=>waveChoices(catalog,wizardRoutes(catalog),theme);
 
 export function wizardStarters(catalog) {
-  const known=new Set((catalog?.poi || []).map(point=>point.slug));
-  return TRIP_STARTERS.filter(starter=>starter.days.every(day=>
-    [...day.places,day.start_at,day.night_at].every(id=>id===null || known.has(id))));
+  return tripStarterChoices(catalog);
 }
 
 export const journeyIsOccupied=trip=>journeyDays(trip).length>1 || dayIsOccupied(trip) || !!trip.routes.length;
@@ -49,15 +47,10 @@ export function prepareWizardDay(current,answers,catalog) {
   if(!minute(answers.start) || !minute(answers.end) || answers.start>=answers.end)throw new Error('wizard_invalid_time');
   const occupied=dayIsOccupied(current),next=occupied?addTripDay(current):ensureJourney(current);
   const day=selectedDay(next),places=[...new Set(route.stops.map(stop=>stop.poi))];
-  let schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end};
-  for(const id of places) {
-    const point=catalog.poi.find(row=>row.slug===id);
-    const visit=Number.isInteger(point.visit_minutes) && point.visit_minutes>0 && point.visit_minutes<=1440
-      ? point.visit_minutes : places.length===1 && Number.isInteger(route.minutes) && route.minutes>0 && route.minutes<=1440 ? route.minutes : 30;
-    schedule.stops[id]={visit,pause:0,leg:null,window:null};
-  }
+  let schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end,stops:waveStopSettings(route,catalog)};
   if(answers.wave){day.wave={...answers.wave,theme:route.wave_theme,recipe:route.slug};schedule=waveSchedule(schedule,day.wave);}
   day.date=answers.date;day.places=places;day.schedule=clone(schedule);
+  if(route.wave_recipe && route.access_note)day.note=route.access_note;
   if(!day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
   next.date=day.date;next.month=day.date?Number(day.date.slice(5,7)):next.month;
   next.places=[...places];next.schedule=schedule;
@@ -94,10 +87,12 @@ export function prepareWizardTrip(current,answers,catalog) {
       const visit=catalog.poi.find(point=>point.slug===id).visit_minutes;
       schedule.stops[id]={visit:Number.isInteger(visit)&&visit>0&&visit<=1440?visit:30,pause:0,leg:null,window:null};
     }
-    const wave=answers.wave?{...answers.wave,theme:template.places.every(id=>catalog.poi.find(row=>row.slug===id).gastronomy)?'gastro':'mixed',recipe:null}:null;
+    if(template.recipe)schedule.stops=waveStopSettings(template.recipe,catalog);
+    const theme=template.recipe?.theme || (template.places.every(id=>catalog.poi.find(row=>row.slug===id).gastronomy)?'gastro':'mixed');
+    const wave=(answers.wave || template.recipe)?{...(answers.wave || {version:1,pace:'full'}),theme,recipe:template.recipe?.slug || null}:null;
     if(wave)schedule=waveSchedule(schedule,wave);
     const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(wave?{wave}:{}),start_at:template.start_at,
-      night_at:template.night_at,note:'',costs:{}};
+      night_at:template.night_at,note:template.recipe?.access_note || '',costs:{}};
     date=nextDate(date);return day;
   });
   const incoming={...clone(current),places:[...days[0].places],date:days[0].date,schedule:clone(days[0].schedule),

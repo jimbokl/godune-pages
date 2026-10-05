@@ -7,8 +7,8 @@ import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=6';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
-import {planInput} from './trip-schedule-state.mjs?v=10';
-import {TRIP_STARTERS,addTripStarter} from './trip-starters.mjs?v=12';
+import {planInput} from './trip-schedule-state.mjs?v=11';
+import {tripStarterChoices,addTripStarter} from './trip-starters.mjs?v=13';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -35,7 +35,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   const $=selector=>section.querySelector(selector);let sequence=0;
   const bookings=initTripBookings({section,read,commit,base,catalog});
   const expenses=initTripExpenses({section,read,commit,base,catalog});
-  $('#journey-starters').replaceChildren(...TRIP_STARTERS.map(starter=>{
+  $('#journey-starters').replaceChildren(...tripStarterChoices(catalog).map(starter=>{
     const b=button(starter.name,'starter',starter.id);b.className='journey-starter';b.append(el('span',starter.description));return b;
   }));
   const feedback=text=>{$('#journey-feedback').textContent=text;};

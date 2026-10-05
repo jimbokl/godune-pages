@@ -1,4 +1,4 @@
-import {validVisitDate} from './visit-calendar.mjs?v=3';
+import {validVisitDate} from './visit-calendar.mjs?v=4';
 import {serviceDay} from './service-calendar.mjs?v=1';
 
 const minute=n=>Number.isInteger(n) && n>=0 && n<=1440;

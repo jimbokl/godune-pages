@@ -1,4 +1,4 @@
-import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=10';
+import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=11';
 import {tripSignature, lightInput} from './trip-light.mjs?v=7';
 
 // This is a proposal search, not a second clock. Every trial uses the shared

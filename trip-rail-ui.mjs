@@ -1,5 +1,5 @@
 import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=3';
-import {planInput} from './trip-schedule-state.mjs?v=10';
+import {planInput} from './trip-schedule-state.mjs?v=11';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

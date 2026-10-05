@@ -5,9 +5,9 @@ import {journeyRow} from './day-journey-ui.mjs?v=1';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=7';
-import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=10';
+import {defaultSchedule, planInput, updateSchedule} from './trip-schedule-state.mjs?v=11';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
-import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=3';
+import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=6';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
@@ -66,26 +66,28 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     applyButton(form);
   }
   function calendarCard(place, trip, value, manual, item) {
-    const calendar=resolveVisitCalendar(place,trip.date,value.visit_fact), facts=visitFacts(place);
+    const calendar=resolveVisitCalendar(place,trip.date,value.visit_fact,value.visit_scope), facts=visitFacts(place);
     const card=document.createElement('div');card.className='trip-visit-calendar';
     card.dataset.visitOrigin=manual ? 'manual' : calendar.windows!==null || calendar.sessions!==null ? 'calendar' : 'unknown';
     card.dataset.visitReason=calendar.reason || '';card.dataset.visitDate=trip.date || '';
-    if(facts.length>1 || !place.hours && facts.length) {
+    if(facts.length || value.visit_scope==='outside') {
       const label=document.createElement('label'), select=document.createElement('select');
       label.textContent='Что хотите посетить';select.dataset.planCalendar=item.id;select.dataset.planField='visit_fact';select.dataset.planStop=item.id;
       const automatic=document.createElement('option');automatic.value='';automatic.textContent=place.hours ? place.hours.label : 'Выберите посещение';select.append(automatic);
+      const outside=document.createElement('option');outside.value='__outside';outside.textContent='Посмотреть снаружи';select.append(outside);
       for(const fact of facts.filter(row=>row.id!==place.hours?.id)) {
         const option=document.createElement('option');option.value=fact.id;option.textContent=fact.label;select.append(option);
       }
       if(value.visit_fact && !facts.some(row=>row.id===value.visit_fact)) {
         const missing=document.createElement('option');missing.value=value.visit_fact;missing.textContent='Прежнее расписание больше не доступно';select.append(missing);
       }
-      select.value=value.visit_fact || '';label.append(select);card.append(label);
+      select.value=value.visit_scope==='outside'?'__outside':value.visit_fact || '';label.append(select);card.append(label);
     }
     const title=document.createElement('p');title.className='trip-calendar-title';
-    title.textContent=manual ? `Ваше время: ${clock(manual.open)}–${clock(manual.close)}` : calendar.fact?.label || 'Время посещения';card.append(title);
+    title.textContent=manual ? `Ваше время: ${clock(manual.open)}–${clock(manual.close)}` : calendar.reason==='outside'?'Осмотр снаружи':calendar.fact?.label || 'Время посещения';card.append(title);
     const note=document.createElement('p');
     if(manual) note.textContent='Для этой даты расчёт использует ваше окно посещения.';
+    else if(calendar.reason==='outside')note.textContent='Без входа внутрь. Музейные сеансы и часы помещений не применяются. Доступ с улицы нужно сверить перед выходом.';
     else if(calendar.reason==='closed') note.textContent=calendar.exceptionDate?'В изменении на эту дату указано, что посещений нет.':'По обычному расписанию в этот день выходной.';
     else if(calendar.windows?.length) {
       note.textContent=calendar.windows.map(window=>`${clock(window.open)}–${clock(window.close)}`+(window.last_entry!==undefined ? ` · вход до ${clock(window.last_entry)}` : '')).join('; ')
@@ -227,7 +229,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const details=document.createElement('details'),summary=document.createElement('summary');
         details.className='day-visit-details';details.dataset.dayVisit=item.id;
         const reason=calendar.dataset.visitReason;
-        summary.textContent=reason==='closed'?'В этот день закрыто':reason==='choose_date'?'Часы посещения · укажите дату':calendar.dataset.visitOrigin==='unknown'?'Часы посещения · нужно уточнить':calendar.querySelector('.trip-calendar-title')?.textContent || 'Часы посещения';
+        summary.textContent=reason==='outside'?'Посмотреть снаружи':reason==='closed'?'В этот день закрыто':reason==='choose_date'?'Часы посещения · укажите дату':calendar.dataset.visitOrigin==='unknown'?'Часы посещения · нужно уточнить':calendar.querySelector('.trip-calendar-title')?.textContent || 'Часы посещения';
         details.append(summary,calendar);li.append(details);
       }else li.append(calendar);
       const kitchen=kitchenCard(place,trip);if(kitchen)li.append(kitchen);
@@ -237,7 +239,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const routine=document.createElement('ul');routine.className='trip-plan-issues';
         for(const issue of item.issues) {
           const line=document.createElement('li');line.dataset.planIssue=issue.code;
-          line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:'Время входа ещё нужно сверить.',
+          line.textContent={unknown_travel:'Сколько займёт дорога от предыдущей точки?',unknown_opening:value.visit_scope==='outside'?'Доступ к месту снаружи ещё нужно сверить.':'Время входа ещё нужно сверить.',
             opening_needs_check:'Часы учтены. Осталось сверить дату и билеты с местом.',
             unknown_kitchen:'До какого часа принимают заказ — уточните у кафе.',kitchen_needs_check:'Приём заказов учтён. Время на выбранную дату нужно сверить.',
             kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К началу остановки кухня уже не принимает заказ. Начните раньше или выберите другое кафе.',
@@ -347,7 +349,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(event.target.name==='mode') {commit(current=>updateSchedule(current,'mode',event.target.value),'Способ передвижения выбран.');return;}
     const id=event.target.dataset.planCalendar;if(!id)return;
     const fact=event.target.value || null;
-    commit(current=>updateSchedule(current,'visit_fact',fact,id),'Посещение выбрано.');
+    commit(current=>updateSchedule(current,fact==='__outside'?'visit_scope':'visit_fact',fact==='__outside'?'outside':fact,id),'Посещение выбрано.');
   });
   section.addEventListener('click',event=>{
     const id=event.target.closest('[data-plan-reset]')?.dataset.planReset;if(!id)return;

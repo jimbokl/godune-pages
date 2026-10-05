@@ -1,7 +1,7 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 import {validRail,resolveRail} from './trip-rail-state.mjs?v=3';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
-import {resolveVisitCalendar} from './visit-calendar.mjs?v=3';
+import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace} from './travel-estimates.mjs?v=6';
@@ -15,6 +15,7 @@ export function validSchedule(value) {
   return Object.entries(value.stops).every(([id, stop]) => id && stop && typeof stop === 'object' && !Array.isArray(stop)
     && minute(stop.visit) && minute(stop.pause) && (stop.excursion===undefined || stop.excursion===null || validExcursion(stop.excursion))
     && (stop.visit_fact === undefined || stop.visit_fact === null || typeof stop.visit_fact === 'string' && /^[a-z0-9][a-z0-9-]{0,127}$/.test(stop.visit_fact))
+    && (stop.visit_scope === undefined || stop.visit_scope === 'outside')
     && (stop.leg === null || stop.leg && typeof stop.leg.from === 'string' && minute(stop.leg.minutes) && (stop.leg.mode===undefined || Object.hasOwn(TRAVEL_MODES,stop.leg.mode)))
     && (stop.window === null || stop.window && minute(stop.window.open) && minute(stop.window.close) && stop.window.open < stop.window.close && day(stop.window.date)));
 }
@@ -24,6 +25,7 @@ export function cleanSchedule(value, places) {
     {visit:stop.visit, pause:stop.pause, leg:stop.leg ? {from:stop.leg.from,minutes:stop.leg.minutes,...(stop.leg.mode!==undefined?{mode:stop.leg.mode}:{})} : null,
       window:stop.window ? {open:stop.window.open,close:stop.window.close,date:stop.window.date} : null,
       ...(stop.visit_fact !== undefined ? {visit_fact:stop.visit_fact} : {}),
+      ...(stop.visit_scope !== undefined ? {visit_scope:stop.visit_scope} : {}),
       ...(stop.excursion!==undefined ? {excursion:stop.excursion===null?null:structuredClone(stop.excursion)} : {})}]));
   return {start:value.start,end:value.end,reserve:value.reserve,stops,...(value.mode!==undefined?{mode:value.mode}:{}),...(value.rail?{rail:structuredClone(value.rail)}:{})};
 }
@@ -33,7 +35,7 @@ export function planInput(trip, catalog, matrix) {
   const stops=trip.places.map(id => {
     const stop = Object.hasOwn(settings.stops,id) ? settings.stops[id] : null;
     const manual=stop?.window && stop.window.date === trip.date;
-    const calendar=!manual && catalog ? resolveVisitCalendar(catalog.poi.find(place=>place.slug===id),trip.date,stop?.visit_fact) : null;
+    const calendar=!manual && catalog ? resolveVisitCalendar(catalog.poi.find(place=>place.slug===id),trip.date,stop?.visit_fact,stop?.visit_scope) : null;
     const travel=resolveTravel({...trip,schedule:settings},id,catalog,matrix);
     const access=resolveAccess({...trip,schedule:settings},id,catalog,matrix);
     const excursion=resolveExcursion(configured,id,catalog);
@@ -83,7 +85,12 @@ export function updateSchedule(trip, field, value, id) {
       const previous = previousPlace(trip,id);
       stop.leg = previous && value !== null ? {from:previous, minutes:value,mode:settings.mode || 'foot'} : null;
     } else if (field === 'window') stop.window = value ? {...value,date:trip.date ?? null} : null;
-    else if (field === 'visit_fact') {stop.visit_fact=value;stop.window=null;}
+    else if (field === 'visit_fact') {stop.visit_fact=value;delete stop.visit_scope;stop.window=null;}
+    else if (field === 'visit_scope') {
+      if(value!==null && value!=='outside')return trip;
+      if(value===null)delete stop.visit_scope;else stop.visit_scope=value;
+      delete stop.visit_fact;stop.window=null;
+    }
     else if (field === 'excursion') stop.excursion=value===null?null:structuredClone(value);
     else return trip;
     settings.stops[id] = stop;
