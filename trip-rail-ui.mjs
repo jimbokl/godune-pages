@@ -1,6 +1,7 @@
-import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=3';
-import {planInput} from './trip-schedule-state.mjs?v=11';
-import {loadScheduler} from './trip-scheduler.mjs?v=19';
+import {remainingTrip} from './day-progress.mjs?v=1';
+import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=4';
+import {planInput} from './trip-schedule-state.mjs?v=12';
+import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 import {preferredRailService,railStation} from './rail-destinations.mjs?v=1';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -48,7 +49,10 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   const date=field('Дата этого дня','date','date',trip.date||'');date.required=true;
   select('Вокзал Калининграда ↔ станция у моря','service',(catalog.rail_services||[]).map(s=>[s.id,`${s.from.replace(/^Калининград-/, '')} ↔ ${s.to}`]),preferredRailService(trip,catalog));
   select('В Зеленоградск · отправление → прибытие','outward',[],null);select('В Калининград · отправление → прибытие','inbound',[],null);
-  for(const [caption,name,value]of [['От станции до начала вашего дня, мин','after_arrival',saved?.after_arrival],['От конца дня обратно до станции, мин','before_return',saved?.before_return],['Прийти до отправления за, мин','boarding',saved?.boarding??10]]){const input=field(caption,name,'number',value??'');input.min='0';input.max='1440';input.step='1';if(name==='boarding')input.required=true;}
+  let end=trip.places.at(-1);try{end=remainingTrip(trip).places.at(-1);}catch {}
+  const returnChanged=trip.schedule?.progress && end!==(trip.schedule.progress.return_from || trip.places.at(-1));
+  const returnCaption=trip.schedule?.progress?`Обратно до станции от «${catalog.poi.find(p=>p.slug===end)?.name || end}», мин`:'От конца дня обратно до станции, мин';
+  for(const [caption,name,value]of [['От станции до начала вашего дня, мин','after_arrival',saved?.after_arrival],[returnCaption,'before_return',returnChanged?null:saved?.before_return],['Прийти до отправления за, мин','boarding',saved?.boarding??10]]){const input=field(caption,name,'number',value??'');input.min='0';input.max='1440';input.step='1';if(name==='boarding')input.required=true;}
   refreshTable();for(const direction of ['outward','inbound'])if(saved?.[direction]&&[...$(`[name=${direction}]`).options].some(o=>o.value===saved[direction].id))$(`[name=${direction}]`).value=saved[direction].id;
   dialog.showModal();date.focus();
  }

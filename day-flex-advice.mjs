@@ -1,8 +1,8 @@
-import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=11';
-import {selectedDay} from './trip-days-state.mjs?v=14';
-import {tripSignature} from './trip-light.mjs?v=7';
-import {timingTrial} from './day-timing-advice.mjs?v=2';
-import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=3';
+import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=12';
+import {selectedDay} from './trip-days-state.mjs?v=15';
+import {tripSignature} from './trip-light.mjs?v=8';
+import {timingTrial} from './day-timing-advice.mjs?v=3';
+import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=4';
 
 // Planning proposals, not a reconstruction of time already spent on the road.
 // The shared Rust calculation remains the sole clock for every candidate.
@@ -35,6 +35,7 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
   if(!canFlexDay(trip))return {state:'not_available',options:[]};
   if(!request || !['later','breathing_room'].includes(request.kind) || !Number.isInteger(request.minutes) || request.minutes<=0 || request.minutes>=1440)
     return {state:'invalid_request',options:[]};
+  if(trip.schedule?.progress && request.kind==='later')return {state:'already_started',options:[]};
   const snapshot=structuredClone(trip),settings=snapshot.schedule || defaultSchedule(),signature=flexSignature(snapshot);
   if(request.kind==='breathing_room' && result.finish===null)return {state:'incomplete',options:[]};
   // An unresolved saved train must not disappear from a proposed walking day.

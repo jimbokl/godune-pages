@@ -186,3 +186,9 @@
 #trip-link-dialog summary{min-height:48px;cursor:pointer;padding:12px 0;font:600 15px/1.6 var(--sans);color:var(--ink)}
 #trip-guide-status:not(:empty){padding:12px;background:var(--sea-pale);border-radius:8px;line-height:1.6}
 @media(max-width:420px){.trip-guide-options{grid-template-columns:1fr}.trip-guide-download .button{width:100%}}
+
+#my-trip .day-progress-form input[type=time]{min-height:48px;width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--sea-line);border-radius:8px;background:var(--paper);color:var(--ink);padding:10px 12px;font:inherit}
+
+#my-trip .day-progress>summary{min-height:48px;cursor:pointer;font:600 16px/1.5 var(--sans);color:var(--ink)}
+#my-trip .day-progress:not([open]){padding-block:8px}
+#my-trip .day-progress :is(input,select,button,summary):focus-visible{outline:3px solid var(--sea-muted);outline-offset:3px}

@@ -1,6 +1,6 @@
 import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=7';
-import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=11';
+import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=12';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=3';
 import {validDayWave} from './day-wave.mjs?v=2';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
@@ -82,6 +82,7 @@ export function nextDate(value) {
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
   if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(day.schedule?.rail)day.schedule.rail.date=null;}
+  if(day.schedule)delete day.schedule.progress;
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=effectiveBookingDay(current).night_at;day.night_at=effectiveBookingDay(current).night_at;}
   next.itinerary.days.push(day);return project(next,day);

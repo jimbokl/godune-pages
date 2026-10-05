@@ -7,12 +7,12 @@ export function railJourney(resolved,result) {
   if(!resolved)return {before:[],after:[]};
   if(!resolved.input || !result)return {before:[row('rail-check','notice',null,'Электрички нужно выбрать заново',resolved.reason==='choose_date'?'Выберите дату дня.':resolved.reason==='stale_date'?'Дата изменилась. Прежние рейсы сохранены, но сейчас не учитываются.':'Расписание на этот день изменилось или ещё не опубликовано. Прежние рейсы сохранены; точное время нужно уточнить.','unknown')],after:[]};
   const r=result,s=resolved.saved,service=resolved.service,source=resolved.source;
-  const conflict=['missed','no_time'].includes(r.state);
-  return {before:[
+  const conflict=['missed','no_time'].includes(r.state),unknownReturn=r.itinerary_deadline===null;
+  return {before:r.resume_at!==undefined?[]:[
     row('rail-outward','rail',r.outward_departure,`${service.from} → ${service.to}`,`Прибытие по таблице — ${clock(r.outward_arrival)}. Перед выездом подтвердите рейс и платформу.`,'timetable',source),
     row('rail-arrival-walk','walk',r.outward_arrival,'От станции к началу дня',s.after_arrival===null?'Время пути ещё нужно задать. Точное начало дня неизвестно.':`${s.after_arrival} мин по вашей оценке. Начало прогулки не раньше ${clock(r.earliest_start)}.`,s.after_arrival===null?'unknown':'estimate')
   ],after:[
-    row('rail-return-walk','walk',null,'Обратно к станции',s.before_return===null?'Время пути ещё нужно задать. Прибытие к поезду пока неизвестно.':`${s.before_return} мин по вашей оценке + ${s.boarding} мин до отправления. ${r.itinerary_deadline===null?'Окончание прогулки ещё нужно уточнить.':`Закончить прогулку до ${clock(r.itinerary_deadline)}.`}`,s.before_return===null?'unknown':'estimate'),
+    row('rail-return-walk','walk',null,'Обратно к станции',unknownReturn?'Время пути от текущего конца прогулки к станции ещё нужно задать. Прибытие к поезду пока неизвестно.':`${s.before_return} мин по вашей оценке + ${s.boarding} мин до отправления. ${r.itinerary_deadline===null?'Окончание прогулки ещё нужно уточнить.':`Закончить прогулку до ${clock(r.itinerary_deadline)}.`}`,unknownReturn?'unknown':'estimate'),
     row('rail-inbound','rail',r.inbound_departure,`${service.to} → ${service.from}`,conflict?`На этот поезд по плану не успеваете${r.missed_by?` как минимум на ${r.missed_by} мин`:''}. Выберите другой рейс или сократите день.`:r.state==='incomplete'?'Рейс выбран, но возвращение пока не складывается полностью: уточните неизвестные участки.':`После дороги и запаса до посадки остаётся ${r.wait} мин. Прибытие по таблице — ${clock(r.inbound_arrival)}.`,conflict?'conflict':r.state==='incomplete'?'unknown':'timetable',source)
   ]};
 }

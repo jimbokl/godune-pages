@@ -1,4 +1,5 @@
 // Service snapshots are separate from personal walk/boarding allowances.
+import {remainingTrip} from './day-progress.mjs?v=1';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
 const date=validServiceDate;
@@ -32,7 +33,9 @@ export function resolveRail(trip,catalog) {
 export function saveRail(trip,value) {
   if(value!==null && !validRail(value))return trip;
   const next=structuredClone(trip);next.schedule ||= {start:540,end:1080,reserve:10,stops:{}};
-  if(value===null)delete next.schedule.rail;else next.schedule.rail=structuredClone(value);
+  if(value===null)delete next.schedule.rail;else {next.schedule.rail=structuredClone(value);
+    if(next.schedule.progress)try{next.schedule.progress.return_from=remainingTrip(trip).places.at(-1);}catch {/* A stale observation needs a new explicit location/time before calculation. */}
+  }
   return next;
 }
 // Include all time/geography bindings: an old form cannot change another tab's day.

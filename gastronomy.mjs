@@ -1,10 +1,10 @@
-import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=11';
+import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=12';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
-import {resolveRail} from './trip-rail-state.mjs?v=3';
-import {foodTrip,anchorRequest} from './gastro-day.mjs?v=5';
-import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=14';
+import {resolveRail} from './trip-rail-state.mjs?v=4';
+import {foodTrip,anchorRequest} from './gastro-day.mjs?v=6';
+import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=15';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 

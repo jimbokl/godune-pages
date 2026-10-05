@@ -1,4 +1,4 @@
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=3';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=4';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -11,9 +11,10 @@ export function initFlexAdvice({mount,commit,feedback}) {
     reset();if(!canFlexDay(trip))return;
     const ticket=revision,current=()=>ticket===revision && stillCurrent();
     mount.hidden=false;mount.dataset.flexAdvice='idle';
-    const summary=el('summary','','Подстроить день'),note=el('p','','Если хочется выйти позже или гулять спокойнее. Сравните варианты — день изменится только после вашего выбора.');
+    const summary=el('summary','','Подстроить день'),note=el('p','',trip.schedule?.progress?'Если хочется сократить оставшуюся прогулку. Уже пройденные места и время начала останутся. Сравните варианты — день изменится только после вашего выбора.':'Если хочется выйти позже или гулять спокойнее. Сравните варианты — день изменится только после вашего выбора.');
     const form=el('form','day-flex-form'),label=el('label','','Что изменим'),select=el('select');select.name='flex';select.dataset.flexRequest='true';
     for(const [value,text]of [['later:15','Выйти на 15 минут позже'],['later:30','Выйти на 30 минут позже'],['later:60','Выйти на час позже'],['breathing_room:30','Оставить ещё полчаса'],['breathing_room:60','Оставить ещё час']]) {
+      if(trip.schedule?.progress && value.startsWith('later:'))continue;
       const option=el('option','',text);option.value=value;select.append(option);
     }label.append(select);
     const search=el('button','save-item','Посмотреть варианты');search.type='submit';search.dataset.flexSearch='true';form.append(label,search);
@@ -40,7 +41,7 @@ export function initFlexAdvice({mount,commit,feedback}) {
           const times=el('dl','day-advice-times');
           const rows=[];
           if(option.railChange)rows.push(['Электричка туда',`${clock(option.railChange.before.departure)} → ${clock(option.railChange.before.arrival)}`,`${clock(option.railChange.after.departure)} → ${clock(option.railChange.after.arrival)}`]);
-          rows.push([option.result.rail?'Начало прогулки':'Выход',clock(option.result.rail?option.before.stops[0]?.arrival:option.previousStart),clock(option.result.rail?option.result.stops[0]?.arrival:option.displayStart)],['Окончание',finish(option.before),finish(option.result)],[option.result.rail?'Запас до обратного поезда':'Запас до конца дня',option.before.slack===null?'Пока неизвестно':`${option.before.slack} мин`,`${option.result.slack} мин`]);
+          rows.push([trip.schedule?.progress?'Продолжение прогулки':option.result.rail?'Начало прогулки':'Выход',clock(option.result.rail?option.before.stops[0]?.arrival:option.previousStart),clock(option.result.rail?option.result.stops[0]?.arrival:option.displayStart)],['Окончание',finish(option.before),finish(option.result)],[option.result.rail?'Запас до обратного поезда':'Запас до конца дня',option.before.slack===null?'Пока неизвестно':`${option.before.slack} мин`,`${option.result.slack} мин`]);
           for(const [caption,before,after]of rows) {
             const row=el('div'),dd=el('dd');
             if(caption==='Электричка туда'){

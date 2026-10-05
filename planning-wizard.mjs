@@ -1,10 +1,10 @@
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=6';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=14';
-import {planInput} from './trip-schedule-state.mjs?v=11';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=7';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=15';
+import {planInput} from './trip-schedule-state.mjs?v=12';
 import {baseName} from './personal-points.mjs?v=3';
 import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=4';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
-import {downloadTripFile} from './trip-file.mjs?v=19';
+import {downloadTripFile} from './trip-file.mjs?v=20';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -176,7 +176,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     catch {proposal=null;save.disabled=true;result.replaceChildren();announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=19'),import('./travel-estimates.mjs?v=6')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=20'),import('./travel-estimates.mjs?v=6')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const schedules=await Promise.all(trips.map(async trip=>{const matrix=await loadTripTravelMatrix(base,trip,catalog).catch(()=>null);return calculate(planInput(trip,catalog,matrix));}));

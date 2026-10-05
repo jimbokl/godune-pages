@@ -1,4 +1,4 @@
-import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=2';
+import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=3';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -7,7 +7,7 @@ export function initTimingAdvice({mount,commit,feedback}) {
   let revision=0;
   function reset(){revision++;mount.hidden=true;mount.replaceChildren();mount.removeAttribute('aria-busy');}
   function render({trip,catalog,matrix,engine,result,stillCurrent}) {
-    reset();if(!needsTimingHelp(result))return;
+    reset();if(trip.schedule?.progress || !needsTimingHelp(result))return;
     const ticket=revision,current=()=>ticket===revision && stillCurrent();
     mount.hidden=false;mount.dataset.timingAdvice='idle';
     const heading=el('h4','','Оставим дню время'),note=el('p','','Проверим, поможет ли ранний выход или другой порядок остановок. Билеты, паузы и запас останутся в расчёте.');

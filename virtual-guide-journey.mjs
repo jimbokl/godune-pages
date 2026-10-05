@@ -1,9 +1,9 @@
 // A read-only view of the same snapshot used by the personal PDF.
 // Rust, service calendars and the saved transport bindings own every time.
-import {collectTripGuide} from './trip-guide-engine.mjs?v=4';
-import {loadScheduler} from './trip-scheduler.mjs?v=19';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=5';
+import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=1';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=2';
 import {clock} from './day-stop-view.mjs?v=1';
 
 export async function collectVirtualJourney({trip,catalog,base,calculate,matrixFor,kosaFor}) {
@@ -20,6 +20,7 @@ export function chapterJourney(guide,day,index) {
   const stop=guide.stops[index];
   if(!stop)return null;
   const rows=day.rows || [],anchor=rows.findIndex(row=>row.kind==='visit' && row.poi===stop.id);
+  if(day.record?.schedule?.progress?.completed.includes(stop.id))return {state:'completed',summary:day.summary,note:'Вы уже отметили это место. Оно осталось в путеводителе; новый расчёт начинается после осмотра. Время посещения не записано.',before:[],visit:null,after:[],planB:day.planB};
   if(anchor<0)return {state:'unavailable',summary:day.summary,
     note:day.record?.kosa_plan && !['stale','incomplete'].includes(day.status)
       ?'Это дополнительное место. Время поездки на косу его не учитывает.'

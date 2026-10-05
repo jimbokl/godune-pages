@@ -1,5 +1,5 @@
-import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=11';
-import {tripSignature, lightInput} from './trip-light.mjs?v=7';
+import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=12';
+import {tripSignature, lightInput} from './trip-light.mjs?v=8';
 
 // This is a proposal search, not a second clock. Every trial uses the shared
 // Rust scheduler, including directed roads, calendars, tickets and the return.
@@ -48,7 +48,7 @@ export function timingTrial(trip,catalog,matrix,engine,result) {
 }
 
 export async function timingAdvice(trip,catalog,matrix,engine,result,stillCurrent=()=>true) {
-  if(!needsTimingHelp(result) || !trip.places.length || trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.kosa_plan)
+  if(trip.schedule?.progress || !needsTimingHelp(result) || !trip.places.length || trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.kosa_plan)
     return {state:'not_needed',options:[]};
   const snapshot=structuredClone(trip),signature=tripSignature(snapshot),settings=snapshot.schedule || defaultSchedule();
   const trial=timingTrial(snapshot,catalog,matrix,engine,result),options=[];

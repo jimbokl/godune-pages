@@ -1,12 +1,12 @@
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=14';
-import {planInput,defaultSchedule} from './trip-schedule-state.mjs?v=11';
-import {resolveRail} from './trip-rail-state.mjs?v=3';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=15';
+import {planInput,planTravel,defaultSchedule} from './trip-schedule-state.mjs?v=12';
+import {resolveRail} from './trip-rail-state.mjs?v=4';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=6';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=1';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=2';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -28,21 +28,23 @@ export function guideDayRows(trip,catalog,result,matrix) {
     const blocked=result.stops.slice(0,index).some(stop=>stop.excursion?.conflict);
     const outside=settings.stops[item.id]?.visit_scope==='outside';
     const issues=item.issues.map(issue=>outside && issue.code==='unknown_opening'?'Доступ к месту снаружи ещё нужно сверить.':guideIssue(issue)),state=issues.length?'needs_check':'estimate';
+    if(item.id==='__day_checkpoint'){rows.push({id:item.id,kind:'notice',time:settings.progress.at,title:`Снова в пути · ${name(settings.progress.after)}`,text:'Вы указали время после осмотра. Ниже — оставшийся день; пройденные места сохранены без выдуманного времени посещения.',state:'estimate'});return;}
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
       const title={start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
       rows.push({id:item.id,kind:'return',time:blocked?null:item.begins,title:`${title} · ${baseName(namedBases[role+'_at'],catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:'Время по расчёту дня. Подход к двери ещё нужно сверить.')+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
-    const previous=previousPlace(trip,item.id),travel=resolveTravel(trip,item.id,catalog,matrix);
+    const {projected,travel,access}=planTravel(trip,item.id,catalog,matrix),previous=previousPlace(projected,item.id);
     if(previous)rows.push(roadJourney(item,travel,settings.reserve,name(previous),blocked));
     const booking=bookings.stops[item.id],wait=waitJourney(item,!!booking);if(wait&&!blocked)rows.push(wait);
-    const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0,access=resolveAccess(trip,item.id,catalog,matrix);
+    const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0;
     rows.push({id:item.id,poi:item.id,kind:'visit',time:blocked?null:item.begins,title:place.name,
       text:`${view.label}: ${view.time}. ${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.${outside?' Осмотр снаружи, без входа внутрь.':''}`+(view.note?' '+view.note:'')
         +(access?` Подход: ${access.approach.minutes===null?'неизвестно':access.approach.minutes+' мин'}. Обратно к парковке: ${access.back.minutes===null?'неизвестно':access.back.minutes+' мин'}.`:'')+(issues.length?' '+issues.join(' '):''),state});
     const excursion=resolveExcursion(trip,item.id,catalog);if(excursion&&item.excursion)rows.push(...excursionJourney(excursion,item.excursion,place.name));
   });
+  if(settings.progress)rows.push({id:'completed-places',kind:'notice',time:null,title:'Уже были',text:settings.progress.completed.map(name).join(' · ')+'. Время посещения не записано.',state:'estimate'});
   return [...rows,...rail.after];
 }
 
@@ -59,10 +61,10 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:guideDayRows(current,catalog,result,matrix);
     const recipe=catalog.day_waves?.recipes?.find(row=>row.slug===record.wave?.recipe);
     out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
-      record:structuredClone(record),status:generated?kosa.state:result.status,summary:generated?kosa.message:guidePlanStatus[result.status],
+      record:structuredClone(record),status:generated?kosa.state:result.status,summary:generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:generated?(kosa.book?.rail?.home_finish ?? kosa.book?.return.arrival ?? null):result.finish,earliest_finish:result?.earliest_finish ?? null,slack:result?.slack ?? null,
       rows,roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,
-      stops:guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};}),
+      stops:guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};}),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
       planB:generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
   }

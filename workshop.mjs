@@ -1,19 +1,19 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=19';
-import {initTripSharing} from './trip-link.mjs?v=24';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=15';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=20';
+import {initTripSharing} from './trip-link.mjs?v=25';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=16';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=6';
 import {createPlanningProgress} from './planning-progress.mjs?v=2';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=16';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=24';
-import {initTripDays} from './trip-days-ui.mjs?v=21';
-import {initDayWorkspace} from './day-workspace.mjs?v=3';
-import {addTripStarter} from './trip-starters.mjs?v=13';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=14';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=9';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=12';
-import {initTripRail} from './trip-rail-ui.mjs?v=8';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=19';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=17';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=25';
+import {initTripDays} from './trip-days-ui.mjs?v=22';
+import {initDayWorkspace} from './day-workspace.mjs?v=4';
+import {addTripStarter} from './trip-starters.mjs?v=14';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=15';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=10';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=13';
+import {initTripRail} from './trip-rail-ui.mjs?v=9';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=20';
 
 export function loadTrip(storage, catalog) {
   try {

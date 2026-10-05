@@ -1,9 +1,9 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=14';
-import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=4';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=15';
+import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=5';
 import {baseName,baseId} from './personal-points.mjs?v=3';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=19';
-import {planInput} from './trip-schedule-state.mjs?v=11';
+import {loadScheduler} from './trip-scheduler.mjs?v=20';
+import {planInput} from './trip-schedule-state.mjs?v=12';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
 import {offlinePaths} from './offline.mjs?v=6';
 import {availableMaps} from './offline-map.mjs?v=9';
@@ -15,6 +15,7 @@ export function initTravel(workshop,catalog,base){
   const root=document.querySelector('#travel-day');if(!root)return;
   const $=id=>root.querySelector(`#${id}`),status=$('travel-status');let sequence=0,busy=false,currentContext='';
   const announce=message=>{status.textContent=message;};
+  const resume=node('a','Уточнить остаток дня →','day-kosa-edit');resume.href=new URL('planner/#day-progress',base).href;resume.hidden=true;$('travel-when').after(resume);
   async function intent(id,value,context){
     if(busy)return;busy=true;let applied=false;
     try{await workshop.setState(trip=>{const next=markVisited(trip,id,value,context);applied=next!==trip;return next;},value?'Остановка отмечена.':'Отметка снята.');
@@ -42,6 +43,7 @@ export function initTravel(workshop,catalog,base){
     $('travel-note').textContent=next?.description||'Остановки пройдены. Проверьте дорогу к поезду или к месту ночёвки.';
     const mark=$('travel-mark');mark.hidden=!next;mark.disabled=busy;mark.dataset.point=next?.slug||'';mark.dataset.context=context;
     const map=$('travel-map');map.dataset.mapFocus=next?.slug||baseId(day.night_at)||'';
+    resume.hidden=!snapshot.visited.size;
     $('travel-when').textContent=places.length?'Считаем время вашего плана…':'';
     const focused=document.activeElement?.dataset.travelVisited;
     $('travel-stops').replaceChildren(...places.map((place,index)=>{
@@ -71,11 +73,11 @@ export function initTravel(workshop,catalog,base){
         messages.set(item.id,[time,...warnings].join(' '));
         if(item.excursion?.conflict)blocked=true;
       }
-      for(const el of root.querySelectorAll('[data-travel-time]'))el.textContent=messages.get(el.dataset.travelTime)||'Время ещё нужно уточнить.';
+      for(const el of root.querySelectorAll('[data-travel-time]'))el.textContent=messages.get(el.dataset.travelTime)||(trip.schedule?.progress?.completed.includes(el.dataset.travelTime)?'Уже были. Время посещения не записано.':'Время ещё нужно уточнить.');
       $('travel-when').textContent=next?messages.get(next.slug)||'Время ещё нужно уточнить.':'Отметки сохраняют ваш путь. Время возвращения проверьте по плану.';
       root.dataset.planReady='true';
     }).catch(error=>{if(ticket!==sequence)return;
-      const message=error.message?.includes('departure_before_day')?'Вылет с запасом не оставляет времени этому дню. Измените время в планировщике.':error.message?.includes('arrival_after_day')?'Прибытие позже конца выбранного дня. Измените время в планировщике.':'Расчёт времени пока недоступен. Остановки и отметки работают; проверьте время в планировщике.';
+      const message=error.message?.startsWith('progress_')?'Время или отметки изменились. Откройте «Продолжить с этого места» в планировщике и уточните остаток дня.':error.message?.includes('departure_before_day')?'Вылет с запасом не оставляет времени этому дню. Измените время в планировщике.':error.message?.includes('arrival_after_day')?'Прибытие позже конца выбранного дня. Измените время в планировщике.':'Расчёт времени пока недоступен. Остановки и отметки работают; проверьте время в планировщике.';
       $('travel-when').textContent=message;root.querySelectorAll('[data-travel-time]').forEach(el=>el.textContent='Время пока неизвестно.');root.dataset.planReady='error';
     });
   }

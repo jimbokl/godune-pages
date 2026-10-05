@@ -1,9 +1,9 @@
 import {publicBookingTrip} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
-import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=14';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=19';
-import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=19';
-import {validSchedule} from './trip-schedule-state.mjs?v=11';
+import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=15';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=20';
+import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=20';
+import {validSchedule} from './trip-schedule-state.mjs?v=12';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = publicBookingTrip(cleanTrip(state, catalog));
@@ -154,7 +154,7 @@ export function initTripSharing(catalog, base, workshop) {
     const controller=new AbortController();guideController=controller;const signature=JSON.stringify(workshop.getState());
     const status=$('#trip-guide-status');$('#trip-guide-save').disabled=true;$('#trip-guide-cancel').hidden=false;
     const message=text=>{if(guideController===controller)status.textContent=text;};
-    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=4');
+    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=5');
       const result=await downloadPersonalGuide({trip:snapshot,catalog,base,scope:$('#trip-guide-scope').value,format:$('#trip-guide-format').value,signal:controller.signal,onProgress:message,stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       message(`PDF подготовлен: ${result.pages} стр., карты мест: ${result.map_count}. Сохраните файл в папку на телефоне.${result.warnings.length?' '+result.warnings.join(' '):''}`);
     }catch(error){message(controller.signal.aborted?'Сборка отменена. Поездка на месте.':error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Откройте «Взять с собой» заново и скачайте свежий план.':'Путеводитель не собрался целиком. Повторите при связи; ваш план на месте.');}
