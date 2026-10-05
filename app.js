@@ -7,6 +7,16 @@
   perfMark('app-start');
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
+  // Preserve bookmarks to the tools that used to live on the homepage.
+  if(document.body.hasAttribute('data-home-page')) {
+    const params=new URLSearchParams(location.search),hash=location.hash;
+    let destination;
+    if(params.has('map') || params.has('foodtour'))destination='map/';
+    else if(hash==='#my-trip' || /^#(?:trip-|day-|journey-|planner-)/.test(hash))destination='planner/';
+    else destination={'#food':'food/zelenogradsk/','#map':'map/','#places':'cities/','#stay':'stay/'}[hash];
+    if(destination){location.replace(url(destination)+location.search+hash);return;}
+    import(url('home-showcase.mjs?v=1')).then(({initShowcase})=>initShowcase()).catch(()=>{});
+  }
   if (document.querySelector('[data-author-video]')) {
     import(url('author-media.mjs?v=1')).then(({initAuthorVideo}) => initAuthorVideo()).catch(() => {});
   }
@@ -85,6 +95,7 @@
       wakeWorkshop = () => {};
     };
     const section = $('#my-trip');
+    if(homeHero && !section) { document.documentElement.dataset.tripReady='separate-page'; return; }
     if (!homeHero || location.hash || !section || !('IntersectionObserver' in window)) wakeWorkshop('direct');
     else {
       document.documentElement.dataset.tripReady = 'deferred';
@@ -124,7 +135,8 @@
   function closeMenu() { if (mobile) mobile.hidden = true; menu?.setAttribute('aria-expanded', 'false'); }
   menu?.addEventListener('click', () => { mobile.hidden = !mobile.hidden; menu.setAttribute('aria-expanded', String(!mobile.hidden)); });
   mobile?.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); for(const panel of $$('.nav-tools[open]')) { panel.open=false; panel.querySelector('summary').focus(); } } });
+  document.addEventListener('click',e=>{ for(const panel of $$('.nav-tools[open]'))if(!panel.contains(e.target))panel.open=false; });
   function applyFilters() {
     let count = 0;
     $$('.route-row[data-area]').forEach(row => {
@@ -260,6 +272,8 @@
     };
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
+    if ($('#budget-page')) import(url('budget-ui.mjs?v=1')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=1')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=17')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });

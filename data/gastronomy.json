@@ -1,4 +1,17 @@
 {
+  "fish_tour": {
+    "distance_m": 688,
+    "meal": "rybnoe-kafe-na-pirse",
+    "places": [
+      "pekarnya-khleb",
+      "rybnoe-kafe-na-pirse",
+      "restoran-telegraf"
+    ],
+    "theme_matches": 2,
+    "total_minutes": 144,
+    "visit_minutes": 135,
+    "walking_minutes": 9
+  },
   "legs": [
     {
       "from": "restoran-telegraf",
