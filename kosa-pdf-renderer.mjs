@@ -2,6 +2,7 @@ import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {kosaClock as clock} from './kosa-plan-state.mjs?v=15';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
+import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');
@@ -14,26 +15,9 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     return new Uint8Array(await r.arrayBuffer());
   };
   onProgress('Загружаем карты и шрифты для PDF…');
-  const [manifestBytes,uiBytes,titleBytes]=await Promise.all([
-    fetchBytes('guides/manifest.json'),fetchBytes('assets/vendor/pdf/Manrope-Regular.ttf'),fetchBytes('assets/vendor/pdf/NotoSerifDisplay-Regular.ttf')]);
-  const manifest=JSON.parse(new TextDecoder().decode(manifestBytes)),chapters=[];
-  for(const slug of snapshot.walks){
-    const entry=manifest.guides.find(g=>g.route===slug&&g.format===format);
-    if(!entry || entry.path!==`guides/${slug}-${format}.pdf` || !/^[0-9a-f]{64}$/.test(entry.sha256))throw Error('Версии карт не согласованы. Обновите страницу при связи.');
-    const bytes=await fetchBytes(entry.path);
-    if(bytes.length!==entry.bytes || await hash(bytes)!==entry.sha256)throw Error('Карта загрузилась не полностью или её версия изменилась. Обновите страницу при связи.');
-    const source=await PDFDocument.load(bytes);
-    if(source.getPageCount()!==entry.pages)throw Error('Число страниц карты не совпало. Повторите скачивание.');
-    chapters.push({source,entry});
-  }
-  const walkingMaps=[];
-  for(const walk of snapshot.interchanges?.walks||[]){
-    const image=walk.images?.png;
-    if(!image || image.path!==`assets/transit/interchanges/${walk.id}.png` || !/^[0-9a-f]{64}$/.test(image.sha256))throw Error('Версия карты перехода не согласована. Обновите страницу при связи.');
-    const bytes=await fetchBytes(image.path);
-    if(bytes.length!==image.bytes || await hash(bytes)!==image.sha256)throw Error('Карта перехода загрузилась не полностью. Обновите страницу при связи.');
-    walkingMaps.push({walk,bytes});
-  }
+  const [assets,uiBytes,titleBytes]=await Promise.all([
+    loadKosaGuideAssets({snapshot,base,format},{signal,onProgress}),fetchBytes('assets/vendor/pdf/Manrope-Regular.ttf'),fetchBytes('assets/vendor/pdf/NotoSerifDisplay-Regular.ttf')]);
+  const {chapters,walkingMaps}=assets;
   signal?.throwIfAborted();
   onProgress('Собираем ваш день и возвращение…');
   const doc=await PDFDocument.create();doc.registerFontkit(globalThis.fontkit);

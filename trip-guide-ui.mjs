@@ -1,6 +1,6 @@
 import {collectTripGuide} from './trip-guide-engine.mjs?v=6';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=1';
-import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=4';
+import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=5';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=6';
 import {savedKosaJourney} from './day-kosa-journey.mjs?v=4';

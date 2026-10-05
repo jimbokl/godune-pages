@@ -2,6 +2,8 @@ import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
 import {journeyKinds} from './day-journey-view.mjs?v=3';
+import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
+import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -29,6 +31,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
   const sourceHeight=s=>s?textHeight(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
   const source=(s)=>{if(!s)return;need(sourceHeight(s));text(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8});};
+  function notes(day){if(!day.record.note)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
   start();text('GODUNE · МАРШРУТЫ БАЛТИКИ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
   const first=snapshot.days.flatMap(d=>d.stops).find(p=>media.photos[p.id]);
@@ -37,21 +40,37 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   else if(media.overview[snapshot.days[0].id])await image(media.overview[snapshot.days[0].id],coverHeight);
   text('Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
-  const chapters=[];
+  const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
   for(const [index,day]of snapshot.days.entries()){
+    const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
     text(date(day.date),{size:phone?12:15,color:muted});text(day.summary);
     text(`${plural(day.stops.length,['место','места','мест'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
-    for(const [i,p]of day.stops.entries())text(`${String(i+1).padStart(2,'0')} · ${p.name} · GPS ${gps(p)}`,{size:phone?9.5:11,space:8});
+    for(const [i,p]of day.stops.entries())text(`${String(i+1).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''} · GPS ${gps(p)}`,{size:phone?9.5:11,space:8});
     heading('По шагам');
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
-    for(const row of day.rows){need(60);text(`${row.time===null?'Время нужно уточнить':clock(row.time)} · ${journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);if(row.source)source(row.source);}
+    for(const row of day.rows){
+      need(60);text(`${row.time===null?'Время нужно уточнить':clock(row.time)} · ${journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
+      const detail=day.kosa?.timeline.find(item=>item.title===row.title&&item.kind===row.kind&&item.time===row.time) || row;
+      if(Object.hasOwn(detail,'boarding'))text(detail.boarding?kosaBoardingText(detail.boarding):'Названия остановок пока не загружены. Уточните их до поездки.');
+      if(row.source&&!day.kosa)source(row.source);
+    }
     heading('Если день пошёл иначе',false,day.planB);text(day.planB);
-    if(day.record.note){const prior=day.record.kosa_plan && (day.record.schedule?.progress||day.record.kosa_plan.fixed_transport);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
+    if(day.kosa){
+      const k=day.kosa;
+      if(k.light){heading('Свет на тропах и у остановки',false,k.light.rows[0]?.text);for(const row of k.light.rows)text(row.text,{color:row.warning?ink:muted});}
+      for(const value of k.limits)text(value,{color:muted});
+      heading('Источник расписания',false,k.publication.note);text(k.publication.note,{color:muted});
+      source({name:'Таблица автобуса № 210 с '+k.publication.valid_from,url:k.publication.source_url,checked_at:k.publication.checked_at});
+      if(k.rail)source(k.rail.publication);
+      for(const value of k.before)preparation.add(value);
+    }
+    if(!kosaAssets)notes(day);
     if(day.bookings.length){heading('Билеты и ночёвки');for(const b of day.bookings){need(65);text(`${b.kindLabel} · ${b.name}`,{size:phone?12:14,space:5});text(`${b.statusLabel} · ${date(b.date)}${Number.isInteger(b.time)?' · '+clock(b.time):''}${b.location?' · '+b.locationLabel:''}`);if(b.problem)text('Время этой записи сейчас не закрепляет день. Проверьте дату и привязку.',{color:muted});if(b.private?.reference)text('Номер брони: '+b.private.reference);if(b.private?.note)text(b.private.note);}}
     for(const [i,p]of day.stops.entries()){
+      if(kosaAssets?.chapters.some(c=>c.entry.route===p.id))continue;
       start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:16});heading(p.name,true);
       if(p.completed)text('Уже были. Время осмотра не записывали.',{size:phone?10:12,color:muted,space:10});
       text('GPS '+gps(p),{size:phone?12:14,space:16});if(media.photos[p.id]){await image(media.photos[p.id],phone?165:270);text('Авторский снимок',{size:8,color:muted});}
@@ -63,10 +82,29 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       need(tail);source(placeSource);
       await qrCard(media.qrs?.[p.id],`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`);
     }
-    if(day.kosa){onProgress('Добавляем карты троп и пересадок косы…');const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=15');const result=await renderKosaPdf({snapshot:day.kosa,base,format},{signal,onProgress});const part=await PDFDocument.load(result.bytes);for(const copy of await doc.copyPages(part,part.getPageIndices()))doc.addPage(copy);}
+    if(kosaAssets){
+      for(const {walk,bytes}of kosaAssets.walkingMaps){
+        start();const begins=doc.getPageCount();heading(walk.title,true);
+        text(`Около ${walk.distance_m} м · ${walk.estimated_minutes} мин по расчёту карты`,{color:muted});
+        await image({bytes,kind:'png',width:900,height:620},phone?180:300);
+        for(const [i,id]of [walk.from,walk.to].entries()){const a=day.kosa.interchanges.anchors[id];text(`${i+1}. ${a.name} · GPS ${gps(a)}`,{size:phone?9.5:11});}
+        text(walk.note);text(day.kosa.interchanges.verification.note,{color:muted});
+        source({name:'OpenStreetMap · ODbL 1.0',url:day.kosa.interchanges.source.url,checked_at:day.kosa.interchanges.source.snapshot_at});
+        interchangePages.push({day:day.id,id:walk.id,begins,pages:doc.getPageCount()-begins+1,image_sha256:walk.images.png.sha256});
+      }
+      for(const c of kosaAssets.chapters){
+        for(const section of c.sections){
+          const begins=doc.getPageCount()+1;
+          for(const copy of await doc.copyPages(c.source,section.pages))doc.addPage(copy);
+          trailSections.push({day:day.id,route:c.entry.route,role:section.role,...(section.id?{id:section.id}:{}),begins,pages:section.pages.length,source_pages:section.pages,pdf_sha256:c.entry.sha256,snapshot_sha256:c.entry.snapshot_sha256,manifest_sha256:kosaAssets.manifest_sha256});
+        }
+      }
+      if(day.record.note){start();notes(day);}
+    }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
   chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');text('Карты, фото и координаты встроены в документ. Ваш план и источники также вложены в plan.json: часть PDF-приложений показывает вложения только на компьютере.');
+  for(const value of preparation)text(value);
   text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Это снимок плана: он сам не обновляет рейсы, цены или погоду.`);
   text('Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
   text('В этом файле могут быть ваши адреса, номера брони и личные заметки. Передавайте его тем, кому доверяете.');
@@ -74,7 +112,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   for(const warning of media.warnings)text(warning,{color:muted});source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
   text('Печатная версия: A4, RGB, для обычного принтера. Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
-  const full={...snapshot,format,chapters,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
+  const full={...snapshot,format,chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
   pages.forEach((p,i)=>{const {width:pw}=p.getSize();p.drawRectangle({x:0,y:0,width:pw,height:35,color:paper});p.drawLine({start:{x:m,y:33},end:{x:pw-m,y:33},thickness:.6,color:blue});p.drawText('godune.ru · '+sha.slice(0,8),{x:m,y:21,font:ui,size:7.5,color:muted});const n=`${i+1} / ${pages.length}`;p.drawText(n,{x:pw-m-ui.widthOfTextAtSize(n,7.5),y:21,font:ui,size:7.5,color:muted});});
   await doc.attach(snapshotBytes,'plan.json',{mimeType:'application/json',description:'Личный план и версии встроенных карт'});doc.setTitle(snapshot.title);doc.setAuthor('Маршруты Балтики · godune.ru');doc.setSubject('Личный путеводитель · '+sha);signal?.throwIfAborted();onProgress('Готовим файл для сохранения…');
   return {bytes:await doc.save(),pages:pages.length,format,snapshot_sha256:sha,chapters,map_count:Object.keys(media.maps).length,photo_count:Object.keys(media.photos).length,warnings:media.warnings};

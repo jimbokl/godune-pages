@@ -27,7 +27,7 @@
     let opening;
     const openOffline = () => {
       if (!kosaOffline.open || opening) return;
-      opening = import(url('kosa-offline.mjs?v=2')).then(({initKosaOffline}) => initKosaOffline(base)).catch(() => {
+      opening = import(url('kosa-offline.mjs?v=3')).then(({initKosaOffline}) => initKosaOffline(base)).catch(() => {
         opening = undefined;
         kosaOffline.querySelector('[data-kosa-offline-status]').textContent = 'Загрузки пока не открылись. Закройте и откройте этот блок, чтобы попробовать снова. Готовые PDF обеих троп доступны ниже.';
       });
@@ -233,7 +233,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=61'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=62'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
@@ -252,7 +252,7 @@
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=17')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=18')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
     if ($('#housing-engine')) import(url('housing-ui.mjs?v=5')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
     if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=7')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';

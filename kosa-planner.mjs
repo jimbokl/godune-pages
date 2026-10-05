@@ -169,7 +169,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=15');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=16');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
