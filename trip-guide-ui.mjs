@@ -1,4 +1,4 @@
-import {collectTripGuide} from './trip-guide-engine.mjs?v=3';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=4';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=1';
 import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=1';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';

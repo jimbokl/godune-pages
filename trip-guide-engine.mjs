@@ -30,7 +30,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
     const issues=item.issues.map(issue=>outside && issue.code==='unknown_opening'?'Доступ к месту снаружи ещё нужно сверить.':guideIssue(issue)),state=issues.length?'needs_check':'estimate';
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
-      const title={start:'Начало',night:'К ночи',end:'К вылету / отъезду'}[role];
+      const title={start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
       rows.push({id:item.id,kind:'return',time:blocked?null:item.begins,title:`${title} · ${baseName(namedBases[role+'_at'],catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:'Время по расчёту дня. Подход к двери ещё нужно сверить.')+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
