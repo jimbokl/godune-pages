@@ -1,4 +1,4 @@
-import {flexAdvice,applyFlexAdvice,canFlexDay} from './day-flex-advice.mjs?v=1';
+import {flexAdvice,applyFlexAdvice,canFlexDay} from './day-flex-advice.mjs?v=2';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -26,25 +26,35 @@ export function initFlexAdvice({mount,commit,feedback}) {
         const advice=await flexAdvice(trip,catalog,matrix,engine,result,{kind,minutes:Number(minutes)},isCurrent);
         if(!isCurrent())return;
         mount.dataset.flexAdvice=advice.state;
-        if(!advice.options.length){status.textContent=advice.state==='light_unavailable'?'Свет прогулки пока не рассчитан. Вариант не предложен.':advice.state==='incomplete'?'Сначала уточните неизвестную дорогу. Тогда сможем сравнить время.':'Такой вариант пока не складывается. Билеты, обед, посещённые места и выбранные поезда сохранили в расчёте. Можно изменить время вручную или перенести часть дня.';return;}
+        if(!advice.options.length){status.textContent=advice.state==='rail_unavailable'?'Сначала сверим электрички на выбранную дату. Откройте «Поездка на электричке» и выберите рейсы из доступного расписания.':advice.state==='light_unavailable'?'Свет прогулки пока не рассчитан. Вариант не предложен.':advice.state==='incomplete'?'Сначала уточните неизвестную дорогу. Тогда сможем сравнить время.':'Такой вариант пока не складывается. Билеты, обед, посещённые места и возвращение остались в расчёте. Можно изменить время вручную или перенести часть дня.';return;}
         status.textContent='Билеты, обед, паузы и возвращение учтены. Дорогу и доступ к местам перед выходом нужно сверить.';
         const name=id=>catalog.poi.find(p=>p.slug===id)?.name || id;
         for(const option of advice.options) {
           const card=el('article','day-advice-option');card.dataset.flexOption=option.omitted || 'whole';
+          if(option.railChange)card.dataset.flexRail=option.railChange.after.id;
           const title=el('h4','',option.omitted?`«${name(option.omitted)}» — на другой раз`:'Все остановки остаются');
           const times=el('dl','day-advice-times');
-          for(const [caption,before,after]of [['Выход',clock(option.previousStart),clock(option.displayStart)],['Окончание',finish(option.before),finish(option.result)],[option.result.rail?'Запас до обратного поезда':'Запас до конца дня',option.before.slack===null?'Пока неизвестно':`${option.before.slack} мин`,`${option.result.slack} мин`]]) {
-            const row=el('div'),dd=el('dd');dd.append(el('span','',before),el('span','day-advice-arrow','→'),el('strong','',after));row.append(el('dt','',caption),dd);times.append(row);
+          const rows=[];
+          if(option.railChange)rows.push(['Электричка туда',`${clock(option.railChange.before.departure)} → ${clock(option.railChange.before.arrival)}`,`${clock(option.railChange.after.departure)} → ${clock(option.railChange.after.arrival)}`]);
+          rows.push([option.result.rail?'Начало прогулки':'Выход',clock(option.result.rail?option.before.stops[0]?.arrival:option.previousStart),clock(option.result.rail?option.result.stops[0]?.arrival:option.displayStart)],['Окончание',finish(option.before),finish(option.result)],[option.result.rail?'Запас до обратного поезда':'Запас до конца дня',option.before.slack===null?'Пока неизвестно':`${option.before.slack} мин`,`${option.result.slack} мин`]);
+          for(const [caption,before,after]of rows) {
+            const row=el('div'),dd=el('dd');
+            if(caption==='Электричка туда'){
+              row.className='day-advice-rail-times';dd.append(el('span','',`Сейчас: ${before}`),el('strong','',`Вариант: ${after}`));
+            }else dd.append(el('span','',before),el('span','day-advice-arrow','→'),el('strong','',after));
+            row.append(el('dt','',caption),dd);times.append(row);
           }
+          if(option.railChange){const row=el('div');row.append(el('dt','','Обратная электричка'),el('dd','',`${clock(option.railChange.inbound.departure)} → ${clock(option.railChange.inbound.arrival)} · без изменений`));times.append(row);}
           const order=el('details','day-advice-order'),caption=el('summary','','Как пойдёт день'),list=el('ol');
           for(const stop of option.result.stops)if(catalog.poi.some(p=>p.slug===stop.id))list.append(el('li','',`${clock(stop.begins)} · ${name(stop.id)}`));order.append(caption,list);
-          const note=el('p','',option.omitted?'Место останется в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':'Часы посещения и время в пути пересчитаны с новым выходом.');
+          const note=el('p','',option.omitted?'Место останется в подборке «Места, куда хочется». Расходы и записи билетов сохранятся.':option.railChange?'Время прогулки пересчитано для другой электрички. Перед поездкой сверьте расписание и условия своего билета.':'Часы посещения и время в пути пересчитаны с новым выходом.');
+          if(option.railChange){const source=el('p','day-advice-source',`Расписание проверено ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(option.railChange.source.checked_at+'T12:00:00Z'))}. `),link=el('a','','Открыть у перевозчика');link.href=option.railChange.source.url;link.target='_blank';link.rel='noopener noreferrer';source.append(link);order.append(source);}
           const apply=el('button','save-item','Выбрать этот вариант');apply.type='button';apply.dataset.flexApply=option.omitted || 'whole';
           apply.onclick=async()=>{
             apply.disabled=true;let changed=false,error='';
             try {
               const saved=await commit(value=>{const proposed=applyFlexAdvice(value,option);changed=!proposed.error;error=proposed.error;return proposed.trip;},'');
-              feedback.textContent=saved?.conflict || error || !changed?'День уже изменился. Проверьте свежий расчёт перед выбором.':saved?.saved?option.omitted?`Новый день сохранён. «${name(option.omitted)}» оставили на другой раз; расходы и билеты сохранены.`:'Поздний выход сохранён. Дорога и возвращение пересчитаны.':'Новый день показан в этой вкладке. Браузер не разрешил сохранение; скачайте файл поездки.';
+              feedback.textContent=saved?.conflict || error || !changed?'День уже изменился. Проверьте свежий расчёт перед выбором.':saved?.saved?option.omitted?`Новый день сохранён. «${name(option.omitted)}» оставили на другой раз; расходы и билеты сохранены.`:option.railChange?'Новая электричка и день сохранены. Обратный рейс остался прежним.':'Поздний выход сохранён. Дорога и возвращение пересчитаны.':'Новый день показан в этой вкладке. Браузер не разрешил сохранение; скачайте файл поездки.';
             }catch {feedback.textContent='Сохранение не подтвердилось. Проверьте день и скачайте файл поездки.';}
             finally {if(apply.isConnected)apply.disabled=false;feedback.tabIndex=-1;feedback.focus({preventScroll:true});}
           };
