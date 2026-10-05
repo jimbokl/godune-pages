@@ -3,6 +3,8 @@
   const decoder=new TextDecoder('utf-8',{fatal:true});
   const safePath=path=>typeof path==='string' && path.length>0 && !/^[/.]|[\\?#%\x00-\x1f]|:/.test(path) && !path.split('/').some(part=>!part || part==='.' || part==='..');
   const digest=async body=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',body))].map(n=>n.toString(16).padStart(2,'0')).join('');
+  const contentType=path=>({html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',mjs:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json',geojson:'application/geo+json',svg:'image/svg+xml',pbf:'application/x-protobuf',wasm:'application/wasm',woff2:'font/woff2',pdf:'application/pdf',gpx:'application/gpx+xml',txt:'text/plain; charset=utf-8',gz:'application/gzip',webp:'image/webp',avif:'image/avif',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',mp4:'video/mp4'}[path.split('.').pop().toLowerCase()] || 'application/octet-stream');
+  const preferArchive=(archive,missing)=>missing.length>0 && archive.bytes<missing.reduce((sum,r)=>sum+r.bytes,0);
   async function unpack(compressed,expected,onFile,{signal}={}) {
     if(typeof DecompressionStream!=='function')throw new Error('Этот браузер пока не распаковывает карту. Обновите браузер или скачайте отдельную прогулку.');
     const files=new Map(expected.map(r=>[r.path,r])),seen=new Set();
@@ -37,6 +39,6 @@
       }
     } finally {await reader.cancel().catch(()=>{});}
   }
-  scope.GoduneArchive={safePath,digest,unpack};
+  scope.GoduneArchive={safePath,digest,unpack,contentType,preferArchive};
   if(typeof module!=='undefined')module.exports=scope.GoduneArchive;
 })(globalThis);

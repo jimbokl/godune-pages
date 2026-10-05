@@ -1,5 +1,5 @@
 /* Explicit complete packages. Normal browsing stays network-first. */
-importScripts('offline-archive.js?v=2');
+importScripts('offline-archive.js?v=3');
 importScripts('offline-fetch.js?v=1');
 const PREFIX='godune-walk-offline:v1:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
@@ -36,9 +36,9 @@ function validate(pack){
   const paths=new Map();
   for(const r of pack.resources){if(!GoduneArchive.safePath(r.path) || !Number.isSafeInteger(r.bytes) || r.bytes<0 || !/^[a-f0-9]{64}$/.test(r.sha256) || paths.has(r.path))throw new Error('Не удалось проверить файл карты.');paths.set(r.path,r);}
   if(pack.bytes!==pack.resources.reduce((sum,r)=>sum+r.bytes,0))throw new Error('Размер пакета изменился.');
-  const archived=new Set();
-  for(const a of pack.archives || []){if(!GoduneArchive.safePath(a.path) || !Number.isSafeInteger(a.bytes) || a.bytes<=0 || !/^[a-f0-9]{64}$/.test(a.sha256) || !Array.isArray(a.resources))throw new Error('Не удалось проверить архив карты.');for(const path of a.resources){if(!paths.has(path) || archived.has(path) || !/^data\/region-map\/\d+\/\d+\/\d+\.pbf$/.test(path))throw new Error('Не удалось проверить состав карты.');archived.add(path);}}
-  if(pack.kind==='region' && (!Array.isArray(pack.bbox) || pack.bbox.length!==4 || !pack.bbox.every(Number.isFinite) || pack.bbox[0]>=pack.bbox[2] || pack.bbox[1]>=pack.bbox[3] || pack.minzoom!==5 || pack.maxzoom!==13 || !archived.size))throw new Error('Границы карты изменились.');
+  const archived=new Set(),archivePaths=new Set();let mapTiles=0;
+  for(const a of pack.archives || []){if(!GoduneArchive.safePath(a.path) || paths.has(a.path) || archivePaths.has(a.path) || !Number.isSafeInteger(a.bytes) || a.bytes<=0 || !/^[a-f0-9]{64}$/.test(a.sha256) || !Array.isArray(a.resources) || !a.resources.length || a.kind!==undefined && a.kind!=='files')throw new Error('Не удалось проверить архив карты.');archivePaths.add(a.path);for(const path of a.resources){const tile=/^data\/region-map\/\d+\/\d+\/\d+\.pbf$/.test(path);if(!paths.has(path) || archived.has(path) || a.kind!=='files' && !tile)throw new Error('Не удалось проверить состав карты.');archived.add(path);if(tile)mapTiles++;}}
+  if(pack.kind==='region' && (!Array.isArray(pack.bbox) || pack.bbox.length!==4 || !pack.bbox.every(Number.isFinite) || pack.bbox[0]>=pack.bbox[2] || pack.bbox[1]>=pack.bbox[3] || pack.minzoom!==5 || pack.maxzoom!==13 || !mapTiles))throw new Error('Границы карты изменились.');
   return {paths,archived};
 }
 async function readDrafts(){
@@ -89,7 +89,7 @@ async function download(slug,port,id){
         const from=source===name?cache:await caches.open(source),response=await from.match(url(resource.path));if(!response)continue;
         const body=new Uint8Array(await response.arrayBuffer());abortCheck(controller.signal);
         if(body.byteLength!==resource.bytes || await GoduneArchive.digest(body)!==resource.sha256){if(source===name)await cache.delete(url(resource.path));continue;}
-        abortCheck(controller.signal);if(source!==name)await cache.put(url(resource.path),new Response(body,{headers:response.headers}));
+        abortCheck(controller.signal);if(source!==name){await cache.put(url(resource.path),new Response(body,{headers:response.headers}));ownPaths.add(normalized(url(resource.path)));}
         return {body,headers:response.headers};
       }
     }
@@ -100,13 +100,20 @@ async function download(slug,port,id){
     }});
     const run=async tasks=>{const settled=await Promise.allSettled(tasks.map(task=>task.catch(error=>{controller.abort();throw error;}))),failed=settled.find(r=>r.status==='rejected' && r.reason.name!=='AbortError') || settled.find(r=>r.status==='rejected');if(failed)throw failed.reason;};
     await run(scans);progress('files');
-    const ordinary=pack.resources.filter(r=>!archived.has(r.path) && !verified.has(r.path));let next=0;
-    const tasks=Array.from({length:Math.min(4,ordinary.length)},async()=>{while(next<ordinary.length){const r=ordinary[next++],{body,headers}=await get(r);abortCheck(controller.signal);await cache.put(url(r.path),new Response(body,{status:200,headers}));bytes+=body.byteLength;count++;progress('files');}});
+    const ordinary=pack.resources.filter(r=>!archived.has(r.path) && !verified.has(r.path)),selected=[];
+    for(const archive of pack.archives || []){
+      const missing=archive.resources.filter(path=>!verified.has(path)).map(path=>paths.get(path));if(!missing.length)continue;
+      const canUnpack=typeof DecompressionStream==='function';
+      const saved=canUnpack && (ownPaths.has(normalized(url(archive.path))) || archiveCopies.has(archive.path))?await cached(archive,archiveCopies.get(archive.path)):undefined;
+      if(canUnpack && (saved || GoduneArchive.preferArchive(archive,missing)))selected.push(archive);else ordinary.push(...missing);
+    }
+    let next=0;
+    const tasks=Array.from({length:Math.min(4,ordinary.length)},async()=>{while(next<ordinary.length){const r=ordinary[next++],{body,headers}=await get(r);abortCheck(controller.signal);await cache.put(url(r.path),new Response(body,{status:200,headers}));verified.add(r.path);bytes+=body.byteLength;count++;progress('files');}});
     await run(tasks);
-    for(const archive of pack.archives || []){if(archive.resources.every(path=>verified.has(path)))continue;
-      let saved=await cached(archive,archiveCopies.get(archive.path));if(!saved){saved=await get(archive,true);await cache.put(url(archive.path),new Response(saved.body,{headers:saved.headers}));}
+    for(const archive of selected){if(archive.resources.every(path=>verified.has(path)))continue;
+      let saved=await cached(archive,archiveCopies.get(archive.path));if(!saved){saved=await get(archive,true);await cache.put(url(archive.path),new Response(saved.body,{headers:saved.headers}));ownPaths.add(normalized(url(archive.path)));}
       await GoduneArchive.unpack(saved.body,archive.resources.map(path=>paths.get(path)),async(resource,body)=>{abortCheck(controller.signal);if(verified.has(resource.path))return;
-        await cache.put(url(resource.path),new Response(body,{headers:{'Content-Type':'application/x-protobuf'}}));verified.add(resource.path);bytes+=body.byteLength;count++;progress('unpack');},{signal:controller.signal});}
+        await cache.put(url(resource.path),new Response(body,{headers:{'Content-Type':GoduneArchive.contentType(resource.path)}}));verified.add(resource.path);bytes+=body.byteLength;count++;progress('unpack');},{signal:controller.signal});}
     abortCheck(controller.signal);if(bytes!==pack.bytes || count!==pack.resources.length)throw new Error('Не все файлы карты сохранены.');
     const record={...pack,saved_at:new Date().toISOString()};await cache.put(metadataURL,new Response(JSON.stringify(record),{headers:{'Content-Type':'application/json'}}));abortCheck(controller.signal);job.committed=true;
     // No event can abort a committed version after this point: removals wait for done.
