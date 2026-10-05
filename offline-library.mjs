@@ -1,4 +1,4 @@
-import {offlineAction,offlineWorker,offlineProgressText} from './offline.mjs?v=8';
+import {offlineAction,offlineWorker,offlineProgressText,offlineDeviceSize} from './offline.mjs?v=9';
 const size=bytes=>`${(bytes/1048576).toLocaleString('ru-RU',{maximumFractionDigits:1})} МБ`;
 export async function initOfflineLibrary(base) {
   const root=document.querySelector('[data-offline-library]');if(!root)return;
@@ -20,7 +20,7 @@ export async function initOfflineLibrary(base) {
       button.textContent=busy?'Скачиваем…':draft?'Продолжить загрузку':pack?current && pack.version!==current.version?regional?'Обновить карту':'Обновить прогулку':'Проверить обновления':regional?'Скачать карту':'Скачать прогулку';
       remove.hidden=(!pack && !draft) || busy;remove.disabled=Boolean(job);cancel.hidden=!busy;bar.hidden=!busy;
       if(busy){$(panel,'[data-package-status]').textContent=job.message || (job.id?'Скачиваем файлы…':'Удаляем загрузку…');continue;}
-      $(panel,'[data-package-status]').textContent=draft?`${pack?'Прежняя карта готова без сети. ':''}Новая загрузка не закончена · ${size(draft.bytes)} сохранено. Продолжите, когда будет связь.`:pack?`Готова без сети · ${size(pack.bytes)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}.`:!navigator.onLine?'Ещё не загружена. Скачайте, когда вернётся связь.':current?regional?`${size(current.download_bytes)} по сети · ${size(current.bytes)} в браузере. Карта, адреса и три способа передвижения.`:`${size(current.download_bytes ?? current.bytes)} по сети · ${size(current.bytes)} в браузере. Карта, остановки и фотографии.`:'Размер пока неизвестен. Попробуйте скачать при устойчивой связи.';
+      $(panel,'[data-package-status]').textContent=draft?`${pack?'Прежняя карта готова без сети. ':''}Новая загрузка не закончена · ${draft.count} из ${draft.files} файлов сохранено. Продолжите, когда будет связь.`:pack?`Готова без сети · ${offlineDeviceSize(pack)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}.`:!navigator.onLine?'Ещё не загружена. Скачайте, когда вернётся связь.':current?regional?`${size(current.download_bytes)} по сети · ${offlineDeviceSize(current)} в браузере. Карта, адреса и три способа передвижения.`:`${size(current.download_bytes ?? current.bytes)} по сети · ${offlineDeviceSize(current)} в браузере. Карта, остановки и фотографии.`:'Размер пока неизвестен. Попробуйте скачать при устойчивой связи.';
     }
     status.textContent=job?'Сохраняем карту. Можно отменить; прежняя версия останется.':packs.length?`Готово без сети: ${packs.length} из ${panels.length}. Карты территорий открываются на общей карте, прогулки — по названию.`:navigator.onLine?'Выберите территорию или прогулку и дождитесь конца загрузки.':'Скачанных карт пока нет. Для загрузки нужна связь.';
   }

@@ -1,4 +1,9 @@
 const size = bytes => `${(bytes/1048576).toLocaleString('ru-RU',{maximumFractionDigits:1})} МБ`;
+export function offlineStoredBytes(pack){
+  if(Number.isSafeInteger(pack.stored_bytes))return pack.stored_bytes;
+  return typeof CompressionStream==='function' && typeof DecompressionStream==='function' && Number.isSafeInteger(pack.storage_bytes)?pack.storage_bytes:pack.bytes;
+}
+export const offlineDeviceSize=pack=>`${Number.isSafeInteger(pack.stored_bytes)?'':'около '}${size(offlineStoredBytes(pack))} для файлов`;
 let ready;
 export async function offlineWorker(base) {
   if (!ready) ready=(async()=>{
@@ -39,7 +44,7 @@ export async function offlinePaths(base) {
   catch{return new Set();}
 }
 export async function initOffline(base) {
-  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=6',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
+  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=7',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
   const panel=document.querySelector('[data-offline-route]'), list=document.querySelector('#trip-offline-list');
   const banner=document.createElement('p');banner.className='offline-network';banner.setAttribute('role','status');
   banner.textContent='Без сети. Скачанные карты, прогулки и ваши отметки остаются с вами.';
@@ -55,9 +60,9 @@ export async function initOffline(base) {
       const slug=panel.dataset.offlineRoute,pack=packs.find(p=>p.slug===slug),draft=partial.find(p=>p.slug===slug),current=manifest?.routes.find(p=>p.slug===slug);
       remove.hidden=!pack && !draft;
       button.textContent=draft?'Продолжить загрузку':pack ? current && pack.version!==current.version ? 'Обновить прогулку' : 'Проверить обновления' : 'Скачать прогулку';
-      if(draft)status.textContent=`${pack?'Прежняя прогулка готова без сети. ':''}Новая загрузка не закончена · ${size(draft.bytes)} сохранено. Продолжите, когда будет связь.`;
-      else if(pack) status.textContent=`Готова без сети · ${size(pack.bytes)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}. Условия посещения проверяйте перед выходом.`;
-      else status.textContent=current ? `${size(current.download_bytes ?? current.bytes)} по сети · ${size(current.bytes)} на телефоне. Загружайте перед выходом, пока есть связь.` : navigator.onLine ? 'Подготовим карту и остановки перед выходом.' : 'Эта прогулка ещё не загружена. Подключитесь к сети, чтобы взять её с собой.';
+      if(draft)status.textContent=`${pack?'Прежняя прогулка готова без сети. ':''}Новая загрузка не закончена · ${draft.count} из ${draft.files} файлов сохранено. Продолжите, когда будет связь.`;
+      else if(pack) status.textContent=`Готова без сети · ${offlineDeviceSize(pack)}. Загружена ${new Date(pack.saved_at).toLocaleDateString('ru-RU')}. Условия посещения проверяйте перед выходом.`;
+      else status.textContent=current ? `${size(current.download_bytes ?? current.bytes)} по сети · ${offlineDeviceSize(current)} на телефоне. Загружайте перед выходом, пока есть связь.` : navigator.onLine ? 'Подготовим карту и остановки перед выходом.' : 'Эта прогулка ещё не загружена. Подключитесь к сети, чтобы взять её с собой.';
     }
     network();
   }

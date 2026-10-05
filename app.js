@@ -67,7 +67,7 @@
     }
     return catalog;
   }
-  const offlineTools = import(url('offline.mjs?v=8'));
+  const offlineTools = import(url('offline.mjs?v=9'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;
   const inlineMap = document.body.hasAttribute('data-map-page');
