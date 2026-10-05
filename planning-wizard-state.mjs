@@ -3,6 +3,8 @@ import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate
 import {defaultSchedule} from './trip-schedule-state.mjs?v=13';
 import {tripStarterChoices} from './trip-starters.mjs?v=15';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
+import {isPersonalPoint} from './personal-points.mjs?v=3';
+import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -30,16 +32,29 @@ export const journeyIsOccupied=trip=>journeyDays(trip).length>1 || dayIsOccupied
 // A date alone is a useful default, not permission to replace meaningful work.
 export const dayIsOccupied=dayHasContent;
 
+export function wizardBase(trip) {
+  const day=effectiveBookingDay(selectedDay(trip));
+  return clone(dayIsOccupied(trip)?day.night_at:day.start_at || day.night_at);
+}
+
+function checkedBase(answers,catalog) {
+  if(answers.base===undefined)return undefined; // Previously saved wizard intents keep their meaning.
+  if(answers.base===null)return null;
+  if(isPersonalPoint(answers.base) || typeof answers.base==='string' && catalog.poi.some(point=>point.slug===answers.base))return clone(answers.base);
+  throw Error('wizard_invalid_base');
+}
+
 export function wizardDefaults(trip,catalog) {
   const day=selectedDay(trip),occupied=dayIsOccupied(trip),routes=wizardRoutes(catalog);
   const area=routes.some(route=>route.area===trip.filters?.area)?trip.filters.area:routes[0]?.area || null;
-  return {area,route:routes.find(route=>route.area===area)?.slug || null,starter:wizardStarters(catalog)[0]?.id || null,
+  return {area,route:routes.find(route=>route.area===area)?.slug || null,starter:wizardStarters(catalog)[0]?.id || null,base:wizardBase(trip),
     date:journeyIsOccupied(trip)?nextDate(trip.itinerary?.days.at(-1)?.date || trip.date):day.date,
     start:occupied?defaultSchedule().start:trip.schedule?.start ?? defaultSchedule().start,
     end:occupied?defaultSchedule().end:trip.schedule?.end ?? defaultSchedule().end};
 }
 
 export function prepareWizardDay(current,answers,catalog) {
+  const base=checkedBase(answers,catalog);
   if(answers.wave!==undefined && !validDayWave(answers.wave))throw Error('wizard_invalid_wave');
   const route=wizardChoices(catalog,answers.wave?.theme || 'mixed').find(row=>row.slug===answers.route && row.area===answers.area);
   if(!route)throw new Error('wizard_unknown_route');
@@ -52,6 +67,7 @@ export function prepareWizardDay(current,answers,catalog) {
   day.date=answers.date;day.places=places;day.schedule=clone(schedule);
   if(route.wave_recipe && route.access_note)day.note=route.access_note;
   if(!day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
+  if(base!==undefined){day.start_at=clone(base);day.night_at=clone(base || route.return_to || null);}
   next.date=day.date;next.month=day.date?Number(day.date.slice(5,7)):next.month;
   next.places=[...places];next.schedule=schedule;
   next.routes=[...new Set([...current.routes,...(route.wave_recipe?[]:[route.slug])])];
@@ -74,6 +90,7 @@ export function applyWizardDay(current,proposal,catalog,{separate=false}={}) {
 }
 
 export function prepareWizardTrip(current,answers,catalog) {
+  const base=checkedBase(answers,catalog);
   if(answers.wave!==undefined && (!validDayWave(answers.wave) || answers.wave.theme!=='mixed'))throw Error('wizard_invalid_wave');
   const starter=wizardStarters(catalog).find(row=>row.id===answers.starter);
   if(answers.area!=='whole-trip' || !starter)throw new Error('wizard_unknown_starter');
@@ -91,8 +108,8 @@ export function prepareWizardTrip(current,answers,catalog) {
     const theme=template.recipe?.theme || (template.places.every(id=>catalog.poi.find(row=>row.slug===id).gastronomy)?'gastro':'mixed');
     const wave=(answers.wave || template.recipe)?{...(answers.wave || {version:1,pace:'full'}),theme,recipe:template.recipe?.slug || null}:null;
     if(wave)schedule=waveSchedule(schedule,wave);
-    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(wave?{wave}:{}),start_at:template.start_at,
-      night_at:template.night_at,note:template.recipe?.access_note || '',costs:{}};
+    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(wave?{wave}:{}),start_at:clone(base || template.start_at),
+      night_at:clone(base || template.night_at),note:template.recipe?.access_note || '',costs:{}};
     date=nextDate(date);return day;
   });
   const incoming={...clone(current),places:[...days[0].places],date:days[0].date,schedule:clone(days[0].schedule),

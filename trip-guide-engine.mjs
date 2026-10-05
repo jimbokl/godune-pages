@@ -3,10 +3,10 @@ import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=16'
 import {planInput,planTravel,defaultSchedule} from './trip-schedule-state.mjs?v=13';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
-import {baseName,personalPoints} from './personal-points.mjs?v=3';
+import {baseName,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=6';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=3';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=4';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -22,7 +22,8 @@ export const guidePlanStatus={empty:'Остановок пока нет.',fits:'
 export function guideDayRows(trip,catalog,result,matrix) {
   const settings=trip.schedule || defaultSchedule(),bookings=bookingEffects(trip),bases=dayBases(trip);
   const namedBases=effectiveBookingDay(selectedDay(trip));
-  const name=id=>baseName(personalPoints(trip).find(p=>p.slug===id) || id,catalog);
+  // Indexed personal points include a slug; they are not the strict saved base shape.
+  const points=personalPoints(trip),name=id=>points.find(p=>p.slug===id)?.name || baseName(id,catalog);
   const rail=railJourney(resolveRail(trip,catalog),result.rail),rows=[...rail.before];
   result.stops.forEach((item,index)=>{
     const blocked=result.stops.slice(0,index).some(stop=>stop.excursion?.conflict);
@@ -32,7 +33,9 @@ export function guideDayRows(trip,catalog,result,matrix) {
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
       const title={start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
-      rows.push({id:item.id,kind:'return',time:blocked?null:item.begins,title:`${title} · ${baseName(namedBases[role+'_at'],catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:'Время по расчёту дня. Подход к двери ещё нужно сверить.')+(issues.length?' '+issues.join(' '):''),state});return;
+      const anchor=namedBases[role+'_at'],point=isPersonalPoint(anchor)?anchor:catalog.poi.find(p=>p.slug===anchor);
+      const gps=Number.isFinite(point?.lat)&&Number.isFinite(point?.lon)?` GPS: ${point.lat.toFixed(5)}, ${point.lon.toFixed(5)}.`:'';
+      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?'Начало дня по выбранному времени.':'Время по расчёту дня. Подход к двери ещё нужно сверить.')+gps+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
     const {projected,travel,access}=planTravel(trip,item.id,catalog,matrix),previous=previousPlace(projected,item.id);

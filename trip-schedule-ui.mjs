@@ -3,7 +3,7 @@ import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=3';
 import {journeyRow} from './day-journey-ui.mjs?v=3';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {baseName} from './personal-points.mjs?v=3';
+import {baseName,personalPoints} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=9';
 import {defaultSchedule, planInput, planTravel, updateSchedule} from './trip-schedule-state.mjs?v=13';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
@@ -194,7 +194,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(compact) {
         const previous=previousPlace(projected,item.id);
         const steps=[];
-        if(previous)steps.push(roadJourney(item,travel,settings.reserve,baseName(previous,catalog),blockedByReturn));
+        if(previous)steps.push(roadJourney(item,travel,settings.reserve,personalPoints(trip).find(point=>point.slug===previous)?.name || baseName(previous,catalog),blockedByReturn));
         const wait=waitJourney(item,!!booking);if(wait)steps.push(wait);
         if(steps.length){const path=document.createElement('ol');path.className='day-stop-journey';path.setAttribute('aria-label','Дорога к остановке');path.append(...steps.map(journeyRow));header.closest('.day-stop-lead').before(path);}
       }
