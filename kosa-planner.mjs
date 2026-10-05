@@ -1,8 +1,8 @@
-import {transitTable} from './transport-day.mjs?v=1';
+import {transitTable} from './transport-day.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
-import {kosaInput,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=14';
+import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=15';
 import {createTripFile} from './trip-file.mjs?v=21';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=13';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=14';
 import {assessKosa} from './day-readiness.mjs?v=4';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
@@ -13,7 +13,7 @@ const download=(body,name,type)=>{const a=el('a');a.href=URL.createObjectURL(new
 export async function initKosaPlanner({workshop,catalog,base}) {
   const form=document.querySelector('#kosa-form'),result=document.querySelector('#kosa-result'),status=document.querySelector('#kosa-status');
   if(!form || !result)return;
-  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise,mapPromise,exportAbort,recalculateTimer,lastParams,attempt,editingDay=null;
+  const submit=form.querySelector('[type=submit]');let sequence=0,tablePromise,mapPromise,exportAbort,recalculateTimer,lastParams,attempt,editingDay=null,releaseSelectedRides=false;
   const begin=()=>{attempt ||= workshop.progress?.begin('kosa');};
   window.addEventListener('godune:memory-cleared',()=>{attempt=null;editingDay=null;});
   const homeFields=form.querySelector('#kosa-home-fields');
@@ -36,11 +36,13 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   }
   cityFields();
   const number=name=>form.elements[name].value===''?null:Number(form.elements[name].value);
-  const read=()=>({city:form.elements.city.value,date:form.elements.date.value,ready:Number(form.elements.ready.value.slice(0,2))*60+Number(form.elements.ready.value.slice(3)),
+  const readFields=()=>({city:form.elements.city.value,date:form.elements.date.value,ready:Number(form.elements.ready.value.slice(0,2))*60+Number(form.elements.ready.value.slice(3)),
     walks:form.elements.walks.value,pace:form.elements.pace.value,first_visit:Number(form.elements.first_visit.value),second_visit:Number(form.elements.second_visit.value),boarding:Number(form.elements.boarding.value),...(form.elements.city.value==='kaliningrad'?{station:form.elements.station.value,origin:form.elements.origin.value,to_station:form.elements.origin.value==='station'?0:number('to_station'),from_station:form.elements.origin.value==='station'?0:number('from_station'),to_bus:number('to_bus'),to_train:number('to_train'),rail_boarding:number('rail_boarding')}:{})});
+  const read=()=>releaseSelectedRides?readFields():kosaPinnedAnswers(readFields(),saved);
   const table=()=>tablePromise ||= fetch(new URL('data/kosa-bus-210.json',base)).then(r=>{if(!r.ok)throw Error('Таблица пока не загрузилась.');return r.json();}).catch(e=>{tablePromise=null;throw e;});
   const maps=()=>mapPromise ||= fetch(new URL('data/kosa-interchanges.json',base)).then(r=>{if(!r.ok)throw Error('maps');return r.json();}).catch(()=>{mapPromise=null;return null;});
   function action(text,fn,className){const b=el('button',text,className);b.type='button';b.addEventListener('click',fn);return b;}
+  function freshTransport(){const button=action('Подобрать рейсы заново',()=>{releaseSelectedRides=true;calculate();},'save-item');button.dataset.kosaFreshTransport='true';return button;}
   function link(text,path,className){const a=el('a',text,className);a.href=new URL(path,base).href;return a;}
   function row(list,time,title,text,previous){const item=el('li'),timeNode=el('time',clock(time)),copy=el('div');timeNode.dateTime=clock(time);copy.append(el('h4',title),el('p',text));if(previous.has(title)&&previous.get(title)!==clock(time))timeNode.classList.add('kosa-time-changed');item.append(timeNode,copy);list.append(item);return copy;}
   function invalidate(){exportAbort?.abort();sequence++;result.setAttribute('aria-busy','true');result.classList.add('kosa-updating');result.querySelectorAll('button,select').forEach(n=>n.disabled=true);}
@@ -106,6 +108,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
         const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges);
+        if(answers.fixed_transport)result.append(el('p','Выбранные рейсы сохранены. Поменяйте дату или время, чтобы искать другой день.','kosa-plan-warning'),freshTransport());
         if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,rawPublication,catalog,roadbook.interchanges)
           &&Object.entries(answers).every(([key,value])=>saved?.[key]===value))editingDay=structuredClone(savedDay);
         if(roadbook.walking.checks.some(check=>check.trail&&check.state==='too_short'))title.textContent='Для прогулки нужно больше времени';
@@ -166,7 +169,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=14');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=15');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
@@ -196,7 +199,12 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         sources.append(link('Оригинал таблицы № 210','assets/transit/kosa-bus-210-2026-05.png','kosa-source-link'));result.append(actions,saveStatus,more,sources);status.textContent=roadbook.walking.status==='too_short'?'План рассчитан, но на отмеченные переходы или прогулки оставлено слишком мало времени. Измените время в плане ниже.':'Подобран план по опубликованной таблице. Перед поездкой подтвердите рейсы на свою дату.';
       }
       if(focus){title.focus({preventScroll:true});result.scrollIntoView({block:'start',behavior:'instant'});}
-    }catch(error){if(ticket!==sequence)return;status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.setAttribute('aria-busy','false');result.classList.add('kosa-updating');form.classList.add('kosa-load-failed');}
+    }catch(error){if(ticket!==sequence)return;
+      if(error.message==='transport_selection_changed'){
+        result.replaceChildren(el('h3','Сохранённые рейсы нужно проверить'),el('p','Опубликованная таблица изменилась. Прежний день остаётся в вашей поездке. Подберите рейсы заново и сравните время возвращения.'),freshTransport());
+        result.hidden=false;result.dataset.kosaState='stale';result.classList.remove('kosa-updating');status.textContent='Время сохранённого дня больше не совпадает с таблицей.';
+      }else{status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.classList.add('kosa-updating');form.classList.add('kosa-load-failed');}
+      result.setAttribute('aria-busy','false');}
   }
   form.addEventListener('submit',event=>{event.preventDefault();begin();if(form.reportValidity())calculate({focus:true});});
   form.addEventListener('input',()=>{begin();schedule();});

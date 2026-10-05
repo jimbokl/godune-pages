@@ -15,6 +15,7 @@ import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-v
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=4';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=7';
 import {initDayProgress} from './day-progress-ui.mjs?v=2';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=1';
 import {progressMessages} from './day-progress-advice.mjs?v=2';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
 import {flexSignature} from './day-flex-advice.mjs?v=7';
@@ -49,6 +50,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   const flexMount=document.createElement('details');flexMount.className='day-flex-advice day-timing-advice';flexMount.hidden=true;
   $('#trip-plan-stops').after(flexMount);
   const flex=initFlexAdvice({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
+  const kosaFlex=initKosaFlex({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
   const progressMount=document.createElement('details');progressMount.id='day-progress';progressMount.className='day-progress day-timing-advice';progressMount.hidden=true;
   $('#trip-plan-summary').after(progressMount);
   const progress=initDayProgress({mount:progressMount,commit,feedback:$('#trip-plan-feedback')});
@@ -289,7 +291,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   }
   async function render() {
     advice.reset();
-    flex.reset();progress.reset();section.querySelector('[data-progress-history]')?.remove();
+    flex.reset();kosaFlex.reset();progress.reset();section.querySelector('[data-progress-history]')?.remove();
     const generated=compact && selectedDay(read()).kosa_plan;
     section.hidden = !generated && read().places.length === 0 && !read().schedule?.rail;
     if(compact)$('#trip-timing-settings').hidden=!!generated;
@@ -306,7 +308,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=3')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=4')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);
@@ -323,6 +325,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
           $('#trip-plan-stops').append(node);
         }
         progress.render({trip,catalog,matrix:null,engine:calculate,kosaContext:view.context,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
+        kosaFlex.render({trip,catalog,engine:calculate,context:view.context,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
         if(trip.places.length)$('#trip-plan-stops').append(journeyRow({id:'kosa-extra',kind:'notice',time:null,title:'Дополнительные места пока вне расчёта',text:`Вы добавили ещё ${trip.places.length} мест. Время поездки на косу их не учитывает. Они сохранены в списке «Изменить порядок и остановки».`,state:'unknown'}));
         const link=document.createElement('a');link.href=new URL('kurshskaya-kosa/bez-mashiny/#kosa-planner',base);link.className='day-kosa-edit';link.textContent='Изменить поездку на косу →';
         const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);

@@ -4,8 +4,17 @@ import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=5';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
-import {datedTransitInput,transitTable} from './transport-day.mjs?v=1';
+import {datedTransitInput,transitTable,pinTransitSelection} from './transport-day.mjs?v=2';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
+const kosaDefaults=value=>({...value,pace:value.pace||'gentle',...(value.city==='kaliningrad'?{origin:value.origin||'home'}:{})});
+// Reopening the same form must replay the traveller's selected train. A real
+// preference change starts a new search, rather than carrying unrelated rides.
+export function kosaPinnedAnswers(answers,saved){
+  if(!saved?.fixed_transport)return answers;
+  const selected=kosaDefaults(saved),fields=kosaDefaults(answers);
+  if(!Object.entries(fields).every(([key,value])=>selected[key]===value))return answers;
+  return {...answers,fixed_transport:true,source_sha256:saved.source_sha256,bus_snapshot:saved.bus_snapshot,rail_snapshot:saved.rail_snapshot??null};
+}
 export function kosaRailTable(answers,catalog) {
   if(answers.city!=='kaliningrad')return null;
   if(!['kaliningrad-north-zelenogradsk','kaliningrad-south-zelenogradsk'].includes(answers.station))throw Error('Выберите вокзал Калининграда.');
@@ -24,7 +33,9 @@ export function kosaInput(answers,table,catalog) {
       to_station:answers.to_station??null,from_station:answers.from_station??null,to_bus:answers.to_bus,to_train:answers.to_train,boarding:answers.rail_boarding,
       outward:(rail.outward||[]).map(r=>({...rideSnapshot(r),via:null})),inward:(rail.inbound||[]).map(r=>({...rideSnapshot(r),via:null}))};
   }
-  return input;
+  if(answers.fixed_transport!==undefined && answers.fixed_transport!==true)throw Error('transport_selection_changed');
+  if(answers.fixed_transport&&answers.source_sha256!==transitTable(table,answers.date).publication.image_sha256)throw Error('transport_selection_changed');
+  return answers.fixed_transport?pinTransitSelection(input,answers.bus_snapshot,answers.rail_snapshot??null):input;
 }
 export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   if(day.state!=='candidate')throw Error('Для этого дня ещё нет обратного рейса.');
@@ -77,6 +88,8 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges,editin
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
   // Bus legs are a dated roadbook; they are never converted to a foot route.
   const metadata={version:1,...answers,source_sha256:transitTable(table,answers.date).publication.image_sha256,rail_snapshot:kosaRailSnapshot(day),bus_snapshot:kosaBusSnapshot(day)};
+  const active=before.itinerary?.days.find(d=>d.id===before.itinerary.active);
+  if(answers.fixed_transport&&active?.kosa_plan?.fixed_transport&&Object.entries(kosaDefaults(metadata)).every(([key,value])=>kosaDefaults(active.kosa_plan)[key]===value))return before;
   const same=before.itinerary?.days.some(d=>d.note===note && d.kosa_plan?.version===1
     && Object.entries(metadata).every(([key,value])=>d.kosa_plan[key]===value));
   // Saving and then exporting the same proposal must not create a second day.

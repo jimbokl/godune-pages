@@ -25,3 +25,23 @@ export function datedTransitInput(preferences,publication,locations=null){
   if(locations?.first)input.visit_light=locations;
   return input;
 }
+
+// Constrain a dated publication to explicitly selected rides. Keep later buses
+// as backups, but never invent a stop time or substitute a changed service.
+export function pinTransitSelection(input,busSnapshot,railSnapshot=null){
+  const equal=(a,b)=>a && b && ['id','departure','arrival','via'].every(key=>a[key]===b[key]);
+  const find=(rows,ride)=>{const found=rows.find(row=>equal(row,ride));if(!found)throw Error('transport_selection_changed');return found;};
+  let bus,rail;
+  try {bus=JSON.parse(busSnapshot);rail=railSnapshot===null?null:JSON.parse(railSnapshot);}catch {throw Error('transport_selection_changed');}
+  if(!Array.isArray(bus)||bus.length!==3||!bus[0]||!bus[2]||!!bus[1]!==!!input.second_visit)throw Error('transport_selection_changed');
+  const next=structuredClone(input),out=find(input.outward,bus[0]),back=find(input.inward,bus[2]);
+  const transfer=bus[1]?find(input.inward,bus[1]):null;
+  if(transfer && transfer.departure>=back.departure)throw Error('transport_selection_changed');
+  next.outward=[out];
+  next.inward=input.inward.filter(row=>equal(row,transfer)||equal(row,back)||row.departure>back.departure);
+  if(input.rail){
+    if(!Array.isArray(rail)||rail.length!==2)throw Error('transport_selection_changed');
+    next.rail.outward=[find(input.rail.outward,rail[0])];next.rail.inward=[find(input.rail.inward,rail[1])];
+  }else if(rail!==null)throw Error('transport_selection_changed');
+  return next;
+}

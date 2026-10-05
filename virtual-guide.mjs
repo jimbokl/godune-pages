@@ -137,7 +137,7 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     if(personal)journeyState='loading';proximity.setPoints(guide?.stops);render();
     if(personal){
       const trip=structuredClone(workshop.getState());
-      import('./virtual-guide-journey.mjs?v=5').then(async module=>{
+      import('./virtual-guide-journey.mjs?v=6').then(async module=>{
         const day=await module.collectVirtualJourney({trip,catalog,base});
         if(current!==revision)return;journeyModule=module;journey=day;journeyState='ready';renderJourney();
       }).catch(()=>{if(current===revision){journeyState='unavailable';renderJourney();}});
