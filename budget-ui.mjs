@@ -1,4 +1,5 @@
-import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=16';
+import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
+import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=17';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=14';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2';
@@ -70,7 +71,9 @@ export async function initBudget({workshop,catalog,base}) {
       return option;
     }));
     select.value=active.id;
-    if(document.activeElement!==people)people.value=trip.itinerary?.people || 1;
+    if(document.activeElement!==people)people.value=dayPeople(active,trip.itinerary?.people || 1);
+    let note=section.querySelector('[data-budget-party-note]');if(!note){note=document.createElement('p');note.dataset.budgetPartyNote='';note.className='budget-memory-note';section.querySelector(".budget-controls").after(note);}
+    note.textContent=active.party?`${partyLabel(active.party)}. Число относится к выбранному дню. Детские билеты с другой ценой внесите отдельным расходом на всех.`:'Это число используется в днях, где ещё не указан отдельный состав группы.';
     estimates.render(trip);
     ledger.render(trip);
     try {ledger.totals(engine.budget(budgetInput(trip)));}

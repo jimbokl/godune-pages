@@ -1,4 +1,4 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=16';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=17';
 import {tripSignature} from './trip-light.mjs?v=9';
 import {regionMapStyle} from './region-map.mjs?v=6';
 import {bindMapTheme} from './map-theme.mjs?v=2';

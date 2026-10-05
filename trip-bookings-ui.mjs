@@ -1,6 +1,6 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingRows,bookingEffects,bookingProblem,saveBooking,deleteBooking,nextBookingId} from './trip-bookings-state.mjs?v=2';
-import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=16';
+import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=17';
 import {baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

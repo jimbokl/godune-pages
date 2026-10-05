@@ -44,7 +44,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
-    text(date(day.date),{size:phone?12:15,color:muted});text(day.summary);
+    text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});text(day.summary);
     text(`${plural(day.stops.length,['место','места','мест'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}

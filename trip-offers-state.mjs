@@ -1,4 +1,5 @@
 // The quote is a durable source snapshot. Changing a plan never changes a payment.
+import {dayPeople} from './trip-party.mjs?v=1';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const keys=(v,allowed)=>Object.keys(v).every(k=>allowed.includes(k));
 const text=v=>typeof v==='string' && !!v.trim();
@@ -29,9 +30,9 @@ export function retainedSource(source,previous) {
   return Object.entries(common).every(([k,v])=>({...source,catalog_id:previous.catalog_id})[k]===v)?structuredClone(previous):source;
 }
 export function offerInput(offers,day,people=1,quantity=1,scope=null) {
-  return {version:1,date:day.date,people,offers:offers.map(row=>({id:row.id,amount:row.amount,quantity,scope:scope || row.scope,observed_at:row.observed_at,valid_from:row.valid_from,valid_until:row.valid_until,weekdays:row.weekdays,min_people:row.min_people,max_people:row.max_people}))};
+  return {version:1,date:day.date,people:dayPeople(day,people),offers:offers.map(row=>({id:row.id,amount:row.amount,quantity,scope:scope || row.scope,observed_at:row.observed_at,valid_from:row.valid_from,valid_until:row.valid_until,weekdays:row.weekdays,min_people:row.min_people,max_people:row.max_people}))};
 }
-export const offerContext=(day,people)=>JSON.stringify([day.id,day.date,day.places,people]);
+export const offerContext=(day,people)=>JSON.stringify([day.id,day.date,day.places,dayPeople(day,people)]);
 export const offerBlocked=row=>['outside_period','weekday_mismatch','people_mismatch'].includes(row?.state);
 export function offerStatusText(row) {
   return ({date_unknown:'Выберите дату: условия для вашего дня ещё не проверены.',observed_later:'Цена проверена позже выбранного дня. Используйте её как ориентир.',outside_period:'Выбранная дата вне указанного срока.',weekday_mismatch:'Для этого дня недели предложение не действует.',people_mismatch:'Число путешественников не подходит под условия.',within_period:'Дата попадает в указанный срок. Наличие уточните перед поездкой.',period_unknown:'Срок этой цены не указан. Уточните её перед поездкой.'})[row?.state] || 'Условия пока не удалось проверить. Сохранённая сумма остаётся.';

@@ -1,5 +1,5 @@
-import {cleanTrip,emptyTrip} from './trip-state.mjs?v=21';
-import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay} from './trip-days-state.mjs?v=16';
+import {cleanTrip,emptyTrip} from './trip-state.mjs?v=22';
+import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay,selectedDay} from './trip-days-state.mjs?v=17';
 import {railTable,rideSnapshot} from './trip-rail-state.mjs?v=5';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
@@ -103,7 +103,8 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges,editin
     return cleanTrip(chooseTripDay({...before,routes:[...new Set([...before.routes,...routes])],
       itinerary:{...before.itinerary,days:before.itinerary.days.map(d=>d.id===target.id?updated:d)}},target.id),catalog);
   }
-  const entry={id:'day-1',date:answers.date,places:[],start_at:null,night_at:null,note,costs:{},kosa_plan:metadata};
+  const party=selectedDay(before).party;
+  const entry={id:'day-1',date:answers.date,places:[],start_at:null,night_at:null,note,costs:{},kosa_plan:metadata,...(party?{party:structuredClone(party)}:{})};
   const incoming={...emptyTrip(),date:answers.date,month:Number(answers.date.slice(5,7)),routes,
     itinerary:{version:1,active:entry.id,people:before.itinerary?.people || 1,days:[entry]}};
   const merged={...before,routes:[...new Set([...before.routes,...routes])]};

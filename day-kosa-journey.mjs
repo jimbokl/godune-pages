@@ -1,5 +1,5 @@
-import {selectedDay} from './trip-days-state.mjs?v=16';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot} from './kosa-plan-state.mjs?v=15';
+import {selectedDay} from './trip-days-state.mjs?v=17';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot} from './kosa-plan-state.mjs?v=16';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=14';
 import {transitTable} from './transport-day.mjs?v=2';
 import {roadbookJourney} from './day-journey-view.mjs?v=3';

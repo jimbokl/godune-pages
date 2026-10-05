@@ -1,5 +1,5 @@
 import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=13';
-import {selectedDay} from './trip-days-state.mjs?v=16';
+import {selectedDay} from './trip-days-state.mjs?v=17';
 import {tripSignature} from './trip-light.mjs?v=9';
 import {timingTrial} from './day-timing-advice.mjs?v=4';
 import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=5';

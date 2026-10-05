@@ -1,11 +1,11 @@
-import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=16';
+import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=17';
 import {emptyCost,putExpense,removeExpense,cancelExpense,putRefund,removeRefund,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=7';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=3';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=6';
 import {initTripOffers} from './trip-offers-ui.mjs?v=9';
-import {offerSource,offerContext,offerStatusText,retainedSource} from './trip-offers-state.mjs?v=2';
+import {offerSource,offerContext,offerStatusText,retainedSource} from './trip-offers-state.mjs?v=3';
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const button=(text,action)=>{const node=el('button',text,'expense-button');node.type='button';node.dataset.expenseAction=action;return node;};
 const basis=row=>row?.basis || 'summary';
@@ -241,7 +241,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   }
   function totals(budget) {
     const day=budget.days.find(row=>row.id===selectedDay(read()).id);if(!day)return;
-    $('#expense-planned').textContent=rubles(day.known);$('#expense-plan-note').textContent=day.total===null?`Известная часть · неизвестных сумм: ${day.unknown}`:`Весь день · вас ${budget.people}`;
+    $('#expense-planned').textContent=rubles(day.known);$('#expense-plan-note').textContent=day.total===null?`Известная часть · неизвестных сумм: ${day.unknown}`:`Весь день · вас ${day.people ?? budget.people}`;
     $('#expense-paid').textContent=rubles(day.paid_known);$('#expense-paid-note').textContent=day.paid_total===null?`Записанная часть · не заполнено: ${day.paid_unknown}`:'Все расходы этого дня записаны';
     $('#expense-refunded').textContent=rubles(day.refunded);$('#expense-net').textContent=rubles(day.net_known);$('#expense-net-note').textContent=day.net_known<0?'Возвратов больше записанных оплат. Проверьте, все ли оплаты внесены.':day.net_total===null?'Записанная часть · не все оплаты заполнены':'Оплаты за вычетом полученных возвратов';
     $('#expense-difference').textContent=day.difference_overflow?'Разница выходит за пределы точного расчёта. Суммы сохранены.':day.difference===null?'Разница появится, когда план и оплаты будут заполнены целиком. Полученные возвраты уже вычтены.':day.difference===0?'Потратили ровно столько, сколько планировали.':`${day.difference>0?'Больше':'Меньше'} плана на ${rubles(Math.abs(day.difference))}.`;

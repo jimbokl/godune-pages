@@ -1,5 +1,5 @@
-import {selectedDay,COST_KINDS} from './trip-days-state.mjs?v=16';
-import {validOffers,offerInput,offerContext,offerBlocked,offerStatusText,snapshotNotice} from './trip-offers-state.mjs?v=2';
+import {selectedDay,COST_KINDS} from './trip-days-state.mjs?v=17';
+import {validOffers,offerInput,offerContext,offerBlocked,offerStatusText,snapshotNotice} from './trip-offers-state.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {rubles} from './trip-budget-state.mjs?v=2';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};

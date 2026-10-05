@@ -1,4 +1,4 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=16';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=17';
 import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=6';
 import {baseName,baseId} from './personal-points.mjs?v=3';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';

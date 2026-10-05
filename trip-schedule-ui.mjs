@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=16';
+import {selectedDay} from './trip-days-state.mjs?v=17';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=3';
 import {journeyRow} from './day-journey-ui.mjs?v=3';

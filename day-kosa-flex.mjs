@@ -1,7 +1,7 @@
-import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=16';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=17';
 import {tripSignature} from './trip-light.mjs?v=9';
 import {currentProgress} from './day-progress.mjs?v=2';
-import {kosaInput,kosaBusSnapshot,kosaRailSnapshot} from './kosa-plan-state.mjs?v=15';
+import {kosaInput,kosaBusSnapshot,kosaRailSnapshot} from './kosa-plan-state.mjs?v=16';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=14';
 import {kosaProgressInput} from './day-kosa-progress.mjs?v=1';
 

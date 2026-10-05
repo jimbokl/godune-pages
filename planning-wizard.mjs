@@ -1,10 +1,11 @@
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=9';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=16';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=10';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=17';
 import {planInput} from './trip-schedule-state.mjs?v=13';
 import {baseName} from './personal-points.mjs?v=3';
 import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=4';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
-import {downloadTripFile} from './trip-file.mjs?v=21';
+import {downloadTripFile} from './trip-file.mjs?v=22';
+import {partyLabel,validParty} from './trip-party.mjs?v=1';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -62,6 +63,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       :'Добавьте адрес, если знаете, где будете жить. Посчитаем дорогу до прогулки и возвращение. Без адреса день начинается у первой остановки.';
   }
 
+  function group() {
+    const adults=Number(form.elements.wizard_adults.value),children=Number(form.elements.wizard_children.value);
+    answers.party={version:1,adults,children};
+    $('[data-wizard-party-summary]').textContent=validParty(answers.party)?`Кто едет: ${partyLabel(answers.party)} · изменить`:'Кто едет · проверьте число путешественников';
+  }
+
   function routes({refreshSettings=true}={}) {
     const themeMount=$('[data-wizard-waves]'),paceMount=$('[data-wizard-pace]');
     const themes=[['mixed','Все прогулки'],['beach','У моря'],['gastro','За вкусом'],['history','Город и история']].filter(([id])=>id==='mixed' || wizardChoices(catalog,id).some(row=>row.area===answers.area));
@@ -92,6 +99,8 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     origin();
     $('[data-wizard-preview-label]').textContent=multi()?'Посмотреть план →':'Посмотреть день →';
     if(!refreshSettings)return;
+    form.elements.wizard_adults.value=answers.party.adults;
+    form.elements.wizard_children.value=answers.party.children;group();
     $('[data-wizard-settings]').open=separate;
     form.elements.wizard_date.value=answers.date || '';
     form.elements.wizard_start.value=answers.start===null?'':clock(answers.start);
@@ -148,6 +157,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(proposal.kind==='journey'){renderJourney(schedule,error);return;}
     const day=selectedDay(proposal.trip),heading=node('h3',proposal.route.name,'wizard-result-title');
     const meta=node('p',`${proposal.placement==='separate'?'Отдельный день':'Выбранный день'} · ${dateLabel(day.date)} · начало в ${clock(answers.start)}`,'wizard-result-meta');
+    const party=node('p',partyLabel(day.party) || '', 'wizard-party-note');
     const brief=node('p',proposal.route.description,'wizard-result-copy');
     const timing=node('p',undefined,'wizard-calculation');timing.dataset.wizardCalculation='';
     if(schedule) {
@@ -164,13 +174,14 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(bases.length)assumptions.append(node('p',bases.join(' ')));
     else assumptions.append(node('p','Начало у первой остановки. Дорога до неё и от конца прогулки здесь не рассчитана.'));
     const protection=node('p',proposal.placement==='separate'?'В выбранном дне уже есть Ваши планы. Сохраним их целиком, а прогулку добавим отдельным днём.':'Сохраним этот день в общей поездке. Регистрация не нужна.','wizard-save-note');
-    result.replaceChildren(meta,heading,brief,timing,orderedStops(schedule),access,assumptions,protection);
+    result.replaceChildren(meta,heading,party,brief,timing,orderedStops(schedule),access,assumptions,protection);
     save.textContent=proposal.placement==='separate'?'Добавить отдельный день':'Сохранить день в поездке';
   }
 
   function renderJourney(schedules=null,error=false) {
     const introduction=node('div',undefined,'wizard-journey-intro');
     introduction.append(node('p',dateLabel(answers.date),'wizard-result-meta'),node('h3',proposal.starter.geography?proposal.starter.name:`${proposal.starter.name} на Балтике`,'wizard-result-title'),node('p',proposal.starter.description,'wizard-result-copy'));
+    introduction.append(node('p',partyLabel(answers.party) || '', 'wizard-party-note'));
     introduction.append(node('p',proposal.starter.access_note || 'На Куршской косе нужна машина. Пешие дни считаем пешком; электричку, автобус и смену жилья можно добавить после сохранения.','wizard-access-note'));
     if(answers.base)introduction.append(node('p',`Каждый новый день начинается и заканчивается здесь: ${baseName(answers.base,catalog)}. Дорога входит в расчёт; способ передвижения показан у каждого дня.`,'wizard-access-note'));
     const days=proposal.targetIds.map((id,index)=>{
@@ -236,6 +247,10 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     }
     if(step!==2)return;
     form.elements.wizard_end.setCustomValidity('');
+    form.elements.wizard_adults.setCustomValidity('');form.elements.wizard_children.setCustomValidity('');
+    for(const field of [form.elements.wizard_adults,form.elements.wizard_children])if(!field.checkValidity()){$('[data-wizard-party]').open=true;field.reportValidity();return;}
+    group();
+    if(!validParty(answers.party)){$('[data-wizard-party]').open=true;form.elements.wizard_adults.setCustomValidity(answers.party.adults+answers.party.children<1?'Укажите хотя бы одного путешественника.':'Проверьте число взрослых и детей.');form.elements.wizard_adults.reportValidity();return;}
     for(const field of [form.elements.wizard_date,form.elements.wizard_start,form.elements.wizard_end])if(!field.checkValidity()){$('[data-wizard-settings]').open=true;field.reportValidity();return;}
     const route=form.querySelector('input[name="wizard_route"]:checked'),starter=form.querySelector('input[name="wizard_starter"]:checked');
     answers={...answers,route:route?.value || answers.route,starter:starter?.value || answers.starter,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
@@ -244,6 +259,8 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   });
   form.addEventListener('input',event=>{
     form.elements.wizard_end.setCustomValidity('');
+    form.elements.wizard_adults.setCustomValidity('');form.elements.wizard_children.setCustomValidity('');
+    if(event.target.name==='wizard_adults' || event.target.name==='wizard_children')group();
     if(step===2)answers={...answers,route:form.querySelector('input[name="wizard_route"]:checked')?.value || answers.route,starter:form.querySelector('input[name="wizard_starter"]:checked')?.value || answers.starter,
       date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
     if(event.target.name==='wizard_theme' || event.target.name==='wizard_pace'){

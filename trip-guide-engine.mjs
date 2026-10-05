@@ -1,5 +1,6 @@
+import {partyLabel} from './trip-party.mjs?v=1';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=16';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=17';
 import {planInput,planTravel,defaultSchedule} from './trip-schedule-state.mjs?v=13';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
@@ -64,7 +65,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:guideDayRows(current,catalog,result,matrix);
     const recipe=catalog.day_waves?.recipes?.find(row=>row.slug===record.wave?.recipe);
     out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
-      record:structuredClone(record),status:generated?kosa.state:result.status,summary:generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
+      record:structuredClone(record),party_label:partyLabel(record.party),status:generated?kosa.state:result.status,summary:generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:generated?(kosa.book?.finish ?? null):result.finish,earliest_finish:result?.earliest_finish ?? null,slack:generated?(kosa.book?.continuation?.slack ?? null):result?.slack ?? null,
       rows,roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,
       stops:guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};}),
