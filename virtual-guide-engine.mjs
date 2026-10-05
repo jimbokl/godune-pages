@@ -1,5 +1,5 @@
 // Editorial guidance is separate from timing, bookings and visited-place records.
-import {guideProvenance,guideProvenanceTranscript,guideSourceUrl} from './guide-provenance.mjs?v=1';
+import {guideProvenance,guideProvenanceTranscript,guideSourceUrl} from './guide-provenance.mjs?v=2';
 export const GUIDE_VERSION=1;
 const slug=value=>typeof value==='string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 const unique=values=>[...new Set(values)];

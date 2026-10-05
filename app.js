@@ -231,7 +231,7 @@
     if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=8')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=4')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=6')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=14')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';

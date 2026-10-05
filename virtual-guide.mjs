@@ -1,5 +1,7 @@
-import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=3';
-import {guideNarration} from './guide-provenance.mjs?v=1';
+import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=4';
+import {guideNarration} from './guide-provenance.mjs?v=2';
+import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2';
+import {initGuideOffline} from './guide-offline.mjs?v=1';
 import {clock} from './day-stop-view.mjs?v=1';
 import {initGuideLocation} from './guide-location.mjs?v=1';
 
@@ -11,13 +13,35 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
   const $=selector=>mount.querySelector(selector),select=$('[data-guide-select]'),body=$('[data-guide-body]'),status=$('[data-guide-status]');
   const params=new URL(location.href).searchParams;
   let request=params.has('point')?{point:params.get('point')}:params.has('route')?{route:params.get('route')}:{};
-  let guide,index=0,voice=null,paused=false,speaking=false,utterance;
+  let guide,index=0,voice=null,paused=false,speaking=false,utterance,audioRevision=0;
   let revision=0,journey=null,journeyModule=null,journeyState='idle';
   const speech=globalThis.speechSynthesis;
   const proximity=initGuideLocation({mount:$('[data-guide-location]'),current:()=>guide?.stops[index]?.id,onOpen:id=>go(guide?.stops.findIndex(stop=>stop.id===id))});
   const speakButton=$('[data-guide-speak]'),stopButton=$('[data-guide-stop]');
-  function stopSpeech(){utterance=null;speaking=false;paused=false;speech?.cancel();speakButton.textContent='Послушать рассказ';stopButton.hidden=true;}
-  function voices(){voice=speech?.getVoices().find(row=>/^ru(?:-|_)/i.test(row.lang)) || null;speakButton.disabled=!voice || !globalThis.SpeechSynthesisUtterance;}
+  const voiceNote=$('[data-guide-voice-note]'),audioDownload=$('[data-guide-audio-download]');
+  const player=createGuideAudioPlayer({onChange:({state})=>{
+    if(!player?.record)return;
+    speakButton.textContent=state==='loading'?'Пауза':state==='playing'?'Пауза':state==='paused'?'Продолжить рассказ':'Послушать рассказ';
+    stopButton.hidden=!['loading','playing','paused'].includes(state);
+    if(voiceNote)voiceNote.textContent=state==='error'?'Не удалось открыть звук. Попробуйте ещё раз, когда появится связь. Рассказ можно прочитать ниже.':state==='loading'?'Открываем звук. Можно поставить на паузу.':recordedVoiceNote();
+  }});
+  const savedFiles=initGuideOffline({mount:$('[data-guide-offline]'),base,onChange:()=>{
+    if(voiceNote && player.record && !['error','loading'].includes(player.state))voiceNote.textContent=recordedVoiceNote();
+  }});
+  function recordedVoiceNote(){return savedFiles?.state?.audio?'Записанный голос сохранён в браузере. Можно слушать без связи.':'Записанный голос. Скачайте звук, чтобы послушать без связи.';}
+  function stopSpeech(){utterance=null;speaking=false;paused=false;speech?.cancel();player.stop();speakButton.textContent=player.record?'Послушать рассказ':'Послушать голосом телефона';stopButton.hidden=true;}
+  function voices(){voice=speech?.getVoices().find(row=>/^ru(?:-|_)/i.test(row.lang)) || null;speakButton.disabled=!player.record&&(!voice || !globalThis.SpeechSynthesisUtterance);
+    if(voiceNote&&!player.record)voiceNote.textContent=speakButton.disabled?'Рассказ можно прочитать ниже. Русский голос на этом устройстве недоступен.':'Для этой главы доступен голос телефона. Рассказ также можно прочитать ниже.';}
+  function chapterAudio(stop){
+    const current=++audioRevision;savedFiles.reset();player.select(null);voices();speakButton.textContent='Послушать голосом телефона';
+    if(audioDownload){audioDownload.hidden=true;audioDownload.removeAttribute('href');}
+    guideAudioRecord(catalog.virtual_guide?.audio,stop,base).then(record=>{
+      if(current!==audioRevision)return;player.select(record);voices();
+      if(record){speakButton.textContent='Послушать рассказ';if(voiceNote)voiceNote.textContent=recordedVoiceNote();
+        if(audioDownload){audioDownload.href=record.url;audioDownload.download=`godune-${stop.id}.mp3`;audioDownload.hidden=false;}}
+      savedFiles.update(stop,record);
+    });
+  }
   voices();speech?.addEventListener('voiceschanged',voices);
   const choices=[...catalog.routes.filter(row=>row.mode==='walking'),...(catalog.day_waves?.recipes || [])];
   select.replaceChildren(new Option('Мой выбранный день','day'),...choices.map(row=>new Option(`${row.area_name} · ${row.name}`,`route:${row.slug}`)));
@@ -63,10 +87,11 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     const link=element('a','Открыть мой день →');link.href=new URL('planner/#trip-rail',base);slot.append(link);
   }
   function render({focus=false}={}) {
-    stopSpeech();body.replaceChildren();
+    stopSpeech();audioRevision++;body.replaceChildren();
     const active=guide?.stops.length>0;mount.dataset.guideReady='true';$('[data-guide-active]').hidden=!active;$('[data-guide-empty]').hidden=active;
     if(!active)return;
     const stop=guide.stops[index];$('[data-guide-title]').textContent=guide.title;
+    chapterAudio(stop);
     $('[data-guide-count]').textContent=`${index+1} из ${guide.stops.length}`;
     const heading=element('h2',stop.name);heading.tabIndex=-1;heading.dataset.guidePoint=stop.id;
     body.append(element('p',stop.area,'eyebrow'),heading);
@@ -123,6 +148,7 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     const url=new URL(location.href);url.searchParams.delete('route');url.searchParams.delete('point');for(const [key,value] of Object.entries(request))url.searchParams.set(key,value);history.replaceState(null,'',url);load();});
   $('[data-guide-prev]').addEventListener('click',()=>go(index-1));$('[data-guide-next]').addEventListener('click',()=>go(index+1));
   speakButton.addEventListener('click',()=>{
+    if(player.record){player.toggle();return;}
     if(speaking){paused=!paused;if(paused)speech.pause();else speech.resume();speakButton.textContent=paused?'Продолжить рассказ':'Пауза';return;}
     voices();if(!voice || !guide?.stops[index])return;
     const stop=guide.stops[index];const current=new SpeechSynthesisUtterance(guideNarration(stop));

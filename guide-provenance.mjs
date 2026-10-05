@@ -33,7 +33,8 @@ export function guideProvenance(registry,chapter) {
   return {author,reviewedAt,rights:'original_text',observations:complete(observations)?observations:[],facts};
 }
 export function guideNarration(stop) {
-  return [stop.name,...stop.story,...(stop.provenance?.facts || []).map(row=>(row.kind==='legend'?'Городская легенда. ':'')+row.text),stop.focus?'Посмотрите вокруг. '+stop.focus:''].filter(Boolean).join(' ');
+  const title=text(stop.name);
+  return [title&&!/[.!?…]$/.test(title)?title+'.':title,...stop.story,...(stop.provenance?.facts || []).map(row=>(row.kind==='legend'?'Городская легенда. ':'')+row.text),stop.focus?'Посмотрите вокруг. '+stop.focus:''].filter(Boolean).join(' ');
 }
 export function guideProvenanceTranscript(stop) {
   const p=stop.provenance,lines=[];

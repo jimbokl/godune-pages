@@ -2,6 +2,7 @@
 importScripts('offline-archive.js?v=3');
 importScripts('offline-fetch.js?v=1');
 importScripts('offline-storage.js?v=1');
+importScripts('offline-media.js?v=1');
 const LEGACY='godune-walk-offline:v1:',PREFIX='godune-walk-offline:v2:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const draftURL=new URL('__godune_download__',ROOT).href;
@@ -157,7 +158,7 @@ self.addEventListener('fetch',event=>{
   event.respondWith((async()=>{try{return await fetch(event.request);}catch{
     const list=await packages(),client=event.clientId && await self.clients.get(event.clientId),clientURL=client && normalized(client.url);
     if(clientURL)list.sort((a,b)=>Number(pathsOf(b).has(clientURL))-Number(pathsOf(a).has(clientURL)));
-    const target=normalized(event.request.url);for(const pack of list){if(!pathsOf(pack).has(target))continue;const response=await caches.match(target,{cacheName:pack.cache,ignoreSearch:true});if(response){try{return await GoduneStorage.restore(response,pathsOf(pack).get(target),GoduneArchive.digest);}catch{/* Try another complete package; never expose internal gzip bytes. */}}}
+    const target=normalized(event.request.url);for(const pack of list){if(!pathsOf(pack).has(target))continue;const response=await caches.match(target,{cacheName:pack.cache,ignoreSearch:true});if(response){try{const restored=await GoduneStorage.restore(response,pathsOf(pack).get(target),GoduneArchive.digest);return target.endsWith('.mp3')?await GoduneMedia.range(restored,event.request.headers.get('Range')):restored;}catch{/* Try another complete package; never expose internal gzip bytes. */}}}
     const path=decodeURIComponent(new URL(target).pathname.slice(new URL(ROOT).pathname.length));
     if(list.some(pack=>emptyTile(pack,path)))return new Response(new Uint8Array(),{headers:{'Content-Type':'application/x-protobuf'}});
     const routing=await caches.match(event.request,{cacheName:'godune-routing:v1'});if(routing)return routing;
