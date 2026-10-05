@@ -1,7 +1,9 @@
 /* Explicit complete packages. Normal browsing stays network-first. */
 importScripts('offline-archive.js?v=2');
+importScripts('offline-fetch.js?v=1');
 const PREFIX='godune-walk-offline:v1:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
+const draftURL=new URL('__godune_download__',ROOT).href;
 const jobs=new Map(),removals=new Map(),packageReads=new Set();
 let clearing,snapshot,reading,epoch=0;
 const pathIndexes=new WeakMap();
@@ -39,50 +41,92 @@ function validate(pack){
   if(pack.kind==='region' && (!Array.isArray(pack.bbox) || pack.bbox.length!==4 || !pack.bbox.every(Number.isFinite) || pack.bbox[0]>=pack.bbox[2] || pack.bbox[1]>=pack.bbox[3] || pack.minzoom!==5 || pack.maxzoom!==13 || !archived.size))throw new Error('Границы карты изменились.');
   return {paths,archived};
 }
+async function readDrafts(){
+  const result=[];
+  for(const name of (await caches.keys()).filter(n=>n.startsWith(PREFIX))){
+    const cache=await caches.open(name);if(await cache.match(metadataURL))continue;
+    try{const response=await cache.match(draftURL);if(!response)continue;
+      const record=await response.json();if(record.schema!==1 || typeof record.created_at!=='string')continue;
+      validate(record.pack);const stored=new Set((await cache.keys()).map(r=>normalized(r.url))),resources=record.pack.resources.filter(r=>stored.has(normalized(url(r.path))));
+      result.push({...record,cache:name,count:resources.length,bytes:resources.reduce((sum,r)=>sum+r.bytes,0)});
+    }catch{/* An unrecognised draft never becomes a ready package. */}
+  }
+  return result.sort((a,b)=>b.created_at.localeCompare(a.created_at));
+}
+async function drafts(){
+  if(clearing)return [];
+  const read=readDrafts();packageReads.add(read);
+  try{return (await read).map(({pack,created_at,count,bytes})=>({slug:pack.slug,name:pack.name,version:pack.version,created_at,count,bytes,total:pack.bytes,files:pack.resources.length}));}
+  finally{packageReads.delete(read);}
+}
 async function download(slug,port,id){
   if(clearing)throw new Error('Память сайта очищается. Загрузите карту после удаления.');
   if(removals.has(slug))throw new Error('Эта карта удаляется. Дождитесь конца удаления.');
   if(jobs.has(slug))throw new Error('Этот пакет уже загружается.');
   const controller=new AbortController();let finish;const done=new Promise(resolve=>{finish=resolve;}),job={controller,id,done,committed:false};jobs.set(slug,job);let name;
   try{
-    const response=await fetch(url('offline-manifest.json'),{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error('Не удалось получить список файлов. Попробуйте ещё раз.');
-    const manifest=await response.json(),pack=manifest.version===1 && [...manifest.routes,...(manifest.regions || [])].find(p=>p.slug===slug);if(!pack)throw new Error('Этот пакет пока нельзя загрузить.');
-    const {paths,archived}=validate(pack),existing=(await packages(true)).find(p=>p.slug===slug && p.version===pack.version);if(existing)return existing;
-    name=PREFIX+slug+':'+pack.version+':'+crypto.randomUUID();job.cache=name;const cache=await caches.open(name);
-    let bytes=0,count=0,last=0;
-    const progress=(phase,extra={})=>{const now=Date.now();if(now-last<100 && count<pack.resources.length && phase==='unpack')return;last=now;port.postMessage({type:'progress',bytes,total:pack.bytes,count,files:pack.resources.length,phase,...extra});};
+    const retry=extra=>{abortCheck(controller.signal);port.postMessage({type:'progress',phase:'retry',bytes,total:totalBytes,count,files:totalFiles,...extra});};
+    let totalBytes=0,totalFiles=0,bytes=0,count=0;
+    const manifest=await GoduneOfflineFetch.manifest(url('offline-manifest.json'),{signal:controller.signal,retry});
+    const pack=manifest.version===1 && [...manifest.routes,...(manifest.regions || [])].find(p=>p.slug===slug);if(!pack)throw new Error('Этот пакет пока нельзя загрузить.');
+    const {paths,archived}=validate(pack),complete=await packages(true),existing=complete.find(p=>p.slug===slug && p.version===pack.version);if(existing)return existing;
+    const partial=await readDrafts(),resume=partial.find(d=>d.pack.slug===slug && JSON.stringify(d.pack)===JSON.stringify(pack));
+    abortCheck(controller.signal);name=resume?.cache || PREFIX+slug+':'+pack.version+':'+crypto.randomUUID();job.cache=name;const cache=await caches.open(name);
+    if(!resume)await cache.put(draftURL,new Response(JSON.stringify({schema:1,pack,created_at:new Date().toISOString()}),{headers:{'Content-Type':'application/json'}}));
+    totalBytes=pack.bytes;totalFiles=pack.resources.length;
+    const verified=new Set(),ownPaths=new Set((await cache.keys()).map(r=>normalized(r.url))),sources=[...complete,...partial.map(d=>({...d.pack,cache:d.cache}))].filter(p=>p.cache!==name),copies=new Map(),archiveCopies=new Map();
+    for(const source of sources){for(const [records,destination,current] of [[source.resources,copies,paths],[source.archives || [],archiveCopies,new Map((pack.archives || []).map(a=>[a.path,a]))]]){
+      for(const resource of records){const wanted=current.get(resource.path);if(wanted && wanted.bytes===resource.bytes && wanted.sha256===resource.sha256){if(!destination.has(resource.path))destination.set(resource.path,[]);destination.get(resource.path).push(source.cache);}}
+    }}
+    let last=0;
+    const progress=(phase,extra={})=>{const now=Date.now();if(now-last<100 && count<pack.resources.length && (phase==='unpack' || phase==='verify'))return;last=now;port.postMessage({type:'progress',bytes,total:pack.bytes,count,files:pack.resources.length,phase,...extra});};
     async function get(resource,archive=false){
-      abortCheck(controller.signal);const response=await fetch(url(resource.path),{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error('Не все файлы загрузились. Прежняя загрузка сохранена.');
-      let body;
-      if(archive && response.body){const reader=response.body.getReader(),chunks=[];let received=0;try{while(true){abortCheck(controller.signal);const {value,done}=await reader.read();if(done)break;received+=value.length;if(received>resource.bytes)throw new Error('Размер архива изменился.');chunks.push(value);progress('archive',{received,archiveBytes:resource.bytes});}body=new Uint8Array(received);let offset=0;for(const part of chunks){body.set(part,offset);offset+=part.length;}}finally{await reader.cancel().catch(()=>{});}}
-      else body=new Uint8Array(await response.arrayBuffer());
-      abortCheck(controller.signal);if(body.byteLength!==resource.bytes || await GoduneArchive.digest(body)!==resource.sha256)throw new Error('Сайт обновился во время загрузки. Попробуйте ещё раз; прежняя загрузка сохранена.');
-      return {body,headers:response.headers};
+      return GoduneOfflineFetch.request(url(resource.path),{signal:controller.signal,resource,digest:GoduneArchive.digest,retry,progress:archive?received=>progress('archive',{received,archiveBytes:resource.bytes}):undefined});
     }
-    const ordinary=pack.resources.filter(r=>!archived.has(r.path));let next=0;
+    async function cached(resource,candidates=[]){
+      for(const source of [name,...candidates]){
+        abortCheck(controller.signal);if(source===name && !ownPaths.has(normalized(url(resource.path))))continue;
+        const from=source===name?cache:await caches.open(source),response=await from.match(url(resource.path));if(!response)continue;
+        const body=new Uint8Array(await response.arrayBuffer());abortCheck(controller.signal);
+        if(body.byteLength!==resource.bytes || await GoduneArchive.digest(body)!==resource.sha256){if(source===name)await cache.delete(url(resource.path));continue;}
+        abortCheck(controller.signal);if(source!==name)await cache.put(url(resource.path),new Response(body,{headers:response.headers}));
+        return {body,headers:response.headers};
+      }
+    }
+    // Re-check every reused byte; an interrupted or altered cache is never trusted.
+    let scan=0,checked=0;const scans=Array.from({length:4},async()=>{while(scan<pack.resources.length){const r=pack.resources[scan++];
+      if(await cached(r,copies.get(r.path))){verified.add(r.path);bytes+=r.bytes;count++;}
+      checked++;progress('verify',{checked,reusedBytes:bytes});
+    }});
+    const run=async tasks=>{const settled=await Promise.allSettled(tasks.map(task=>task.catch(error=>{controller.abort();throw error;}))),failed=settled.find(r=>r.status==='rejected' && r.reason.name!=='AbortError') || settled.find(r=>r.status==='rejected');if(failed)throw failed.reason;};
+    await run(scans);progress('files');
+    const ordinary=pack.resources.filter(r=>!archived.has(r.path) && !verified.has(r.path));let next=0;
     const tasks=Array.from({length:Math.min(4,ordinary.length)},async()=>{while(next<ordinary.length){const r=ordinary[next++],{body,headers}=await get(r);abortCheck(controller.signal);await cache.put(url(r.path),new Response(body,{status:200,headers}));bytes+=body.byteLength;count++;progress('files');}});
-    const settled=await Promise.allSettled(tasks.map(task=>task.catch(error=>{controller.abort();throw error;})));const failed=settled.find(r=>r.status==='rejected' && r.reason.name!=='AbortError') || settled.find(r=>r.status==='rejected');if(failed)throw failed.reason;
-    for(const archive of pack.archives || []){const {body}=await get(archive,true);await GoduneArchive.unpack(body,archive.resources.map(path=>paths.get(path)),async(resource,body)=>{abortCheck(controller.signal);await cache.put(url(resource.path),new Response(body,{headers:{'Content-Type':'application/x-protobuf'}}));bytes+=body.byteLength;count++;progress('unpack');},{signal:controller.signal});}
+    await run(tasks);
+    for(const archive of pack.archives || []){if(archive.resources.every(path=>verified.has(path)))continue;
+      let saved=await cached(archive,archiveCopies.get(archive.path));if(!saved){saved=await get(archive,true);await cache.put(url(archive.path),new Response(saved.body,{headers:saved.headers}));}
+      await GoduneArchive.unpack(saved.body,archive.resources.map(path=>paths.get(path)),async(resource,body)=>{abortCheck(controller.signal);if(verified.has(resource.path))return;
+        await cache.put(url(resource.path),new Response(body,{headers:{'Content-Type':'application/x-protobuf'}}));verified.add(resource.path);bytes+=body.byteLength;count++;progress('unpack');},{signal:controller.signal});}
     abortCheck(controller.signal);if(bytes!==pack.bytes || count!==pack.resources.length)throw new Error('Не все файлы карты сохранены.');
     const record={...pack,saved_at:new Date().toISOString()};await cache.put(metadataURL,new Response(JSON.stringify(record),{headers:{'Content-Type':'application/json'}}));abortCheck(controller.signal);job.committed=true;
     // No event can abort a committed version after this point: removals wait for done.
-    await Promise.allSettled((await caches.keys()).filter(n=>n.startsWith(PREFIX+slug+':') && n!==name).map(old=>caches.delete(old)));
+    await Promise.allSettled([cache.delete(draftURL),...(pack.archives || []).map(archive=>cache.delete(url(archive.path))),...(await caches.keys()).filter(n=>n.startsWith(PREFIX+slug+':') && n!==name).map(old=>caches.delete(old))]);
     invalidate();return {...record,cache:name};
-  }catch(error){if(name)await caches.delete(name);invalidate();if(error.name==='AbortError')throw new Error('Загрузка отменена. Прежняя загрузка сохранена.');if(error.name==='QuotaExceededError')throw new Error('На телефоне не хватило места. Удалите другой пакет и попробуйте снова.');throw error;}
+  }catch(error){if(name && (job.cancelled || error.name!=='OfflineNetworkError'))await caches.delete(name);invalidate();if(error.name==='AbortError')throw new Error('Загрузка отменена. Прежняя загрузка сохранена.');if(error.name==='QuotaExceededError')throw new Error('На телефоне не хватило места. Удалите другой пакет и попробуйте снова.');throw error;}
   finally{jobs.delete(slug);finish();}
 }
 function clearPackages(){
   if(clearing)return clearing;
-  clearing=(async()=>{const active=[...jobs.values()];for(const job of active)job.controller.abort();await Promise.all(active.map(job=>job.done));await Promise.allSettled([...removals.values(),...packageReads]);for(const name of (await caches.keys()).filter(name=>name.startsWith(PREFIX)||name.startsWith('godune-routing:')))await caches.delete(name);invalidate();return true;})().finally(()=>{clearing=undefined;});return clearing;
+  clearing=(async()=>{const active=[...jobs.values()];for(const job of active){job.cancelled=true;job.controller.abort();}await Promise.all(active.map(job=>job.done));await Promise.allSettled([...removals.values(),...packageReads]);for(const name of (await caches.keys()).filter(name=>name.startsWith(PREFIX)||name.startsWith('godune-routing:')))await caches.delete(name);invalidate();return true;})().finally(()=>{clearing=undefined;});return clearing;
 }
 function removePackage(slug){
   if(removals.has(slug))return removals.get(slug);
-  const operation=(async()=>{const job=jobs.get(slug);job?.controller.abort();if(job)await job.done;await Promise.allSettled([...packageReads]);for(const name of (await caches.keys()).filter(n=>n.startsWith(PREFIX+slug+':')))await caches.delete(name);invalidate();return true;})().finally(()=>removals.delete(slug));
+  const operation=(async()=>{const job=jobs.get(slug);if(job){job.cancelled=true;job.controller.abort();}if(job)await job.done;await Promise.allSettled([...packageReads]);for(const name of (await caches.keys()).filter(n=>n.startsWith(PREFIX+slug+':')))await caches.delete(name);invalidate();return true;})().finally(()=>removals.delete(slug));
   removals.set(slug,operation);return operation;
 }
 self.addEventListener('message',event=>{
   const port=event.ports[0],{type,slug,id}=event.data || {};if(!port)return;
-  event.waitUntil((async()=>{try{let value;if(type==='LIST')value=await packages(true);else if(type==='MAPS')value=(await packages(true)).map(({slug,name,kind,bbox,version,checked_at})=>({slug,name,kind,bbox,version,checked_at}));else if(type==='DOWNLOAD' && typeof slug==='string')value=await download(slug,port,id);else if(type==='CANCEL'){const job=jobs.get(slug);if(job && job.id===id && !job.committed)job.controller.abort();value=true;}else if(type==='CLEAR')value=await clearPackages();else if(type==='REMOVE' && /^[a-z0-9-]+$/.test(slug))value=await removePackage(slug);else throw new Error('Не удалось выполнить действие.');port.postMessage({type:'done',value});}catch(error){port.postMessage({type:'error',message:error.message || 'Загрузка не удалась. Попробуйте снова.'});}})());
+  event.waitUntil((async()=>{try{let value;if(type==='LIST')value=await packages(true);else if(type==='DRAFTS')value=await drafts();else if(type==='MAPS')value=(await packages(true)).map(({slug,name,kind,bbox,version,checked_at})=>({slug,name,kind,bbox,version,checked_at}));else if(type==='DOWNLOAD' && typeof slug==='string')value=await download(slug,port,id);else if(type==='CANCEL'){const job=jobs.get(slug);if(job && job.id===id && !job.committed){job.cancelled=true;job.controller.abort();}value=true;}else if(type==='CLEAR')value=await clearPackages();else if(type==='REMOVE' && /^[a-z0-9-]+$/.test(slug))value=await removePackage(slug);else throw new Error('Не удалось выполнить действие.');port.postMessage({type:'done',value});}catch(error){port.postMessage({type:'error',message:error.message || 'Загрузка не удалась. Попробуйте снова.'});}})());
 });
 function emptyTile(pack,path){
   if(pack.kind!=='region' || pathsOf(pack).has(normalized(url(path))))return false;
