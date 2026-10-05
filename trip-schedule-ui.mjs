@@ -12,6 +12,7 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=6';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=1';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -36,6 +37,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     const open=section.querySelector('#trip-plan-open');open.hidden=true;open.setAttribute('aria-expanded','true');
   }
   const $=selector=>section.querySelector(selector);
+  const adviceMount=document.createElement('section');adviceMount.className='day-timing-advice';adviceMount.hidden=true;
+  $('#trip-plan-summary').after(adviceMount);
+  const advice=initTimingAdvice({mount:adviceMount,commit,feedback:$('#trip-plan-feedback')});
   bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
   let opened=compact, sequence=0;
   function input(form, caption, name, type, value, stop) {
@@ -268,6 +272,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     }),...rail.after.map(journeyRow));
   }
   async function render() {
+    advice.reset();
     const generated=compact && selectedDay(read()).kosa_plan;
     section.hidden = !generated && read().places.length === 0 && !read().schedule?.rail;
     if(compact)$('#trip-timing-settings').hidden=!!generated;
@@ -317,6 +322,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До ${result.rail?'границы дня с обратным поездом':'конца дня'} остаётся ${result.slack} мин.` : '')
         +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
       section.dataset.scheduleReady='true';
+      advice.render({trip,catalog,matrix,engine:calculate,result,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
       if(light) lightAlternative(trip,catalog,matrix,calculate,result,light,()=>ticket===sequence && tripSignature(read())===tripSignature(trip)).then(alternative=>{
         if(ticket===sequence && alternative)renderLightView($('#trip-light'),trip,catalog,light,alternative,applyLight);
       }).catch(()=>{});

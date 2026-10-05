@@ -124,6 +124,28 @@
 
 .day-guide-link{display:inline-flex;min-height:44px;align-items:center;margin-bottom:18px;color:var(--sea-muted);font:600 15px/1.5 var(--sans)}
 
+/* A small, explicit choice appears only when the calculated day has a conflict. */
+#my-trip .day-timing-advice{border:1px solid var(--sea-line);border-radius:14px;background:var(--paper);margin:16px 0 24px;padding:20px;font:15px/1.65 var(--sans);min-width:0}
+#my-trip .day-timing-advice[hidden]{display:none}
+#my-trip .day-timing-advice h4{font:400 30px/1.15 var(--serif);margin:0 0 10px}
+#my-trip .day-timing-advice p{margin:10px 0;color:var(--muted)}
+#my-trip .day-timing-advice .save-item{min-height:48px;border-radius:8px;padding:12px 16px;font:600 15px/1.5 var(--sans);white-space:normal;background:var(--sea);color:#243f52;border:1px solid var(--sea-line)}
+#my-trip .day-advice-options{display:grid;gap:14px;min-width:0}
+#my-trip .day-advice-option{border:1px solid var(--line);background:var(--sand);border-radius:12px;padding:18px;min-width:0}
+#my-trip .day-advice-option h5{font:400 27px/1.2 var(--serif);margin:0 0 16px;overflow-wrap:anywhere}
+#my-trip .day-advice-times{display:grid;gap:10px;margin:0 0 12px}
+#my-trip .day-advice-times>div{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+#my-trip .day-advice-times dt{font-size:13px;color:var(--muted)}
+#my-trip .day-advice-times dd{display:flex;gap:10px;flex-wrap:wrap;margin:0;font-size:16px}
+#my-trip .day-advice-times dd>span:first-child{color:var(--muted)}
+#my-trip .day-advice-times strong{font-weight:650}
+#my-trip .day-advice-arrow{color:var(--sea-muted)}
+#my-trip .day-advice-order{margin:12px 0}
+#my-trip .day-advice-order>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--sea-muted);text-decoration:underline;text-underline-offset:4px}
+#my-trip .day-advice-order ol{padding-left:22px;margin:8px 0 14px;font-size:14px}
+#my-trip .day-advice-status:empty{display:none}
+@media(max-width:400px){#my-trip .day-timing-advice{padding:16px}#my-trip .day-advice-option{padding:14px}#my-trip .day-timing-advice .save-item{width:100%}}
+
 /* A quiet, shared thread for transfers and returning home. */
 .day-journey-step{list-style:none;min-width:0;margin:12px 0;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--sand);font:14px/1.6 var(--sans)}
 .day-journey-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
