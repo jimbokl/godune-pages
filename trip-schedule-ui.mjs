@@ -13,11 +13,11 @@ import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=8';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=4';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=5';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=6';
 import {initDayProgress} from './day-progress-ui.mjs?v=2';
 import {progressMessages} from './day-progress-advice.mjs?v=2';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=5';
+import {flexSignature} from './day-flex-advice.mjs?v=6';
 import {markVisited,travelContext} from './trip-travel-state.mjs?v=6';
 
 export {clock} from './day-stop-view.mjs?v=1';

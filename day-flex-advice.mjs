@@ -10,6 +10,18 @@ export const flexSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay
 export const canFlexDay=trip=>trip.places.length>0 && !selectedDay(trip).kosa_plan;
 export const flexOmissions=option=>option.omittedIds || (option.omitted?[option.omitted]:[]);
 
+// Compare the remaining walk using the shared Rust result. This is not a new
+// clock or a claim about shelter: waiting and unspecified landmark interiors
+// are not counted as outdoor visits. Station approaches remain unchanged.
+export function flexEffort(trip,catalog,result) {
+  const outdoor=result.stops.reduce((minutes,row)=>{
+    const place=catalog.poi.find(p=>p.slug===row.id),stop=trip.schedule?.stops[row.id];
+    return minutes+(['nature','park','viewpoint','beach'].includes(place?.category) || stop?.visit_scope==='outside'
+      ?row.visit_minutes+(stop?.pause || 0):0);
+  },0);
+  return {walking:(trip.schedule?.mode && trip.schedule.mode!=='foot'?0:result.travel_minutes)+result.access_minutes,outdoor};
+}
+
 // Search by the number of moved places, keeping the remaining order intact.
 // Lazy combinations avoid allocating the power set; each calculation yields
 // regularly so changing the request or day can cancel a long search.
@@ -33,11 +45,16 @@ export function protectedFlexStops(trip,catalog) {
 
 export async function flexAdvice(trip,catalog,matrix,engine,result,request,stillCurrent=()=>true) {
   if(!canFlexDay(trip))return {state:'not_available',options:[]};
-  if(!request || !['later','breathing_room'].includes(request.kind) || !Number.isInteger(request.minutes) || request.minutes<=0 || request.minutes>=1440)
+  const scenario=['rain','fatigue'].includes(request?.kind);
+  if(!request || !['later','breathing_room','rain','fatigue'].includes(request.kind) || !Number.isInteger(request.minutes)
+    || (scenario?request.minutes!==0:request.minutes<=0 || request.minutes>=1440))
     return {state:'invalid_request',options:[]};
   if(trip.schedule?.progress && request.kind==='later')return {state:'already_started',options:[]};
   const snapshot=structuredClone(trip),settings=snapshot.schedule || defaultSchedule(),signature=flexSignature(snapshot);
-  if(request.kind==='breathing_room' && result.finish===null)return {state:'incomplete',options:[]};
+  if((request.kind==='breathing_room' || scenario) && result.finish===null)return {state:'incomplete',options:[]};
+  const beforeEffort=scenario?flexEffort(snapshot,catalog,result):null;
+  if(request.kind==='rain' && !beforeEffort.outdoor)return {state:'no_outdoor',options:[]};
+  if(request.kind==='fatigue' && !beforeEffort.walking)return {state:'no_walking',options:[]};
   // An unresolved saved train must not disappear from a proposed walking day.
   let rail=null;
   if(settings.rail) {
@@ -57,6 +74,8 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
   if(trial.error)return {state:trial.error,options:[]};
   const protectedIds=protectedFlexStops(snapshot,catalog),options=[];
   const optional=snapshot.places.filter(id=>!protectedIds.has(id));
+  const rank=(a,b)=>(scenario?b.effort.saved[request.kind==='rain'?'outdoor':'walking']-a.effort.saved[request.kind==='rain'?'outdoor':'walking']:0)
+    || b.result.slack-a.result.slack || snapshot.places.indexOf(flexOmissions(a)[0])-snapshot.places.indexOf(flexOmissions(b)[0]);
   let trials=0;
   async function test(change,places,omittedIds=[]) {
     if(++trials%8===0)await new Promise(resolve=>setTimeout(resolve,0));
@@ -67,11 +86,15 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
     if(request.kind==='later' && tested.result.stops[0]?.arrival<(result.stops[0]?.arrival??previousStart)+request.minutes)return null;
     const freed=result.finish===null?null:result.finish-tested.result.finish;
     if(request.kind==='breathing_room' && freed<request.minutes)return null;
+    const afterEffort=scenario?flexEffort(candidate,catalog,tested.result):null;
+    const effort=scenario?{before:beforeEffort,after:afterEffort,saved:{walking:beforeEffort.walking-afterEffort.walking,outdoor:beforeEffort.outdoor-afterEffort.outdoor}}:null;
+    if(request.kind==='rain' && (effort.saved.outdoor<=0 || effort.saved.walking<0))return null;
+    if(request.kind==='fatigue' && effort.saved.walking<=0)return null;
     const railChange=change.outward?{before:structuredClone(settings.rail.outward),after:structuredClone(change.outward),
       inbound:structuredClone(settings.rail.inbound),source:structuredClone(rail.source),service:rail.service.id}:null;
     return {signature,kind:request.kind,minutes:request.minutes,previousStart,start:change.start,
       displayStart:tested.scheduleStart,railChange,places:[...places],
-      omitted:omittedIds.length===1?omittedIds[0]:null,omittedIds:[...omittedIds],freed,...tested};
+      omitted:omittedIds.length===1?omittedIds[0]:null,omittedIds:[...omittedIds],freed,...(effort?{effort}:{}),...tested};
   }
   let chosen=null;
   if(request.kind==='later') {
@@ -89,13 +112,12 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
         if(!stillCurrent())return {state:'stale',options:[]};
         const removed=new Set(moved);
         const candidate=await test(change,snapshot.places.filter(id=>!removed.has(id)),moved);
-        if(candidate)shorter.push(candidate);
-        // Two comparisons are enough for the existing compact UI. For a single
-        // omission keep its established ranking; for several, stop as soon as
-        // the comparisons are ready rather than enumerate unnecessary subsets.
-        if(count>1 && shorter.length>=2-options.length)break;
+        if(candidate){shorter.push(candidate);if(scenario){shorter.sort(rank);shorter.splice(2);}}
+        // Time requests keep their established search. Weather and fatigue
+        // compare every change of the same size to find the actual benefit.
+        if(!scenario && count>1 && shorter.length>=2-options.length)break;
       }
-      shorter.sort((a,b)=>b.result.slack-a.result.slack || snapshot.places.indexOf(flexOmissions(a)[0])-snapshot.places.indexOf(flexOmissions(b)[0]));
+      shorter.sort(rank);
       options.push(...shorter.slice(0,2-options.length));
       // Never move more places if a smaller change already works. A full walk
       // is already an answer; don't invent a multiple-omission alternative.
@@ -108,7 +130,7 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
 
 export function applyFlexAdvice(trip,option) {
   if(flexSignature(trip)!==option.signature)return {trip,error:'stale'};
-  if(!['later','breathing_room'].includes(option.kind))return {trip,error:'unknown_option'};
+  if(!['later','breathing_room','rain','fatigue'].includes(option.kind))return {trip,error:'unknown_option'};
   // Keep up-to-date notes, money and other days. The existing cleaner projects
   // only this day's new stop list and discards obsolete directed leg settings.
   const next={...trip,places:[...option.places],schedule:{...(trip.schedule || defaultSchedule()),start:option.start}};

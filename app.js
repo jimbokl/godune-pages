@@ -233,7 +233,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=58'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=59'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();

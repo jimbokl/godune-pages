@@ -1,4 +1,4 @@
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=5';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=6';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -11,9 +11,9 @@ export function initFlexAdvice({mount,commit,feedback}) {
     reset();if(!canFlexDay(trip))return;
     const ticket=revision,current=()=>ticket===revision && stillCurrent();
     mount.hidden=false;mount.dataset.flexAdvice='idle';
-    const summary=el('summary','','Подстроить день'),note=el('p','',trip.schedule?.progress?'Если хочется сократить оставшуюся прогулку. Уже пройденные места и время начала останутся. Сравните варианты — день изменится только после вашего выбора.':'Если хочется выйти позже или гулять спокойнее. Сравните варианты — день изменится только после вашего выбора.');
+    const summary=el('summary','','Подстроить день'),note=el('p','',trip.schedule?.progress?'Пошёл дождь, устали или хочется сократить прогулку. Уже пройденные места и время начала останутся. День изменится после вашего выбора.':'Пошёл дождь, устали или хочется выйти позже. Сравните варианты — день изменится после вашего выбора.');
     const form=el('form','day-flex-form'),label=el('label','','Что изменим'),select=el('select');select.name='flex';select.dataset.flexRequest='true';
-    for(const [value,text]of [['later:15','Выйти на 15 минут позже'],['later:30','Выйти на 30 минут позже'],['later:60','Выйти на час позже'],['breathing_room:30','Оставить ещё полчаса'],['breathing_room:60','Оставить ещё час']]) {
+    for(const [value,text]of [['later:15','Выйти на 15 минут позже'],['later:30','Выйти на 30 минут позже'],['later:60','Выйти на час позже'],['rain:0','Пошёл дождь — меньше открытых мест'],['fatigue:0','Устали — меньше ходьбы'],['breathing_room:30','Оставить ещё полчаса'],['breathing_room:60','Оставить ещё час']]) {
       if(trip.schedule?.progress && value.startsWith('later:'))continue;
       const option=el('option','',text);option.value=value;select.append(option);
     }label.append(select);
@@ -28,8 +28,9 @@ export function initFlexAdvice({mount,commit,feedback}) {
         const advice=await flexAdvice(trip,catalog,matrix,engine,result,{kind,minutes:Number(minutes)},isCurrent);
         if(!isCurrent())return;
         mount.dataset.flexAdvice=advice.state;
-        if(!advice.options.length){status.textContent=advice.state==='rail_unavailable'?'Сначала сверим электрички на выбранную дату. Откройте «Поездка на электричке» и выберите рейсы из доступного расписания.':advice.state==='light_unavailable'?'Свет прогулки пока не рассчитан. Вариант не предложен.':advice.state==='incomplete'?'Сначала уточните неизвестную дорогу. Тогда сможем сравнить время.':'Такой вариант пока не складывается. Билеты, обед, посещённые места и возвращение остались в расчёте. Можно изменить время вручную или перенести часть дня.';return;}
-        status.textContent='Билеты, обед, паузы и возвращение учтены. Дорогу и доступ к местам перед выходом нужно сверить.';
+        if(!advice.options.length){status.textContent=advice.state==='rail_unavailable'?'Сначала сверим электрички на выбранную дату. Откройте «Поездка на электричке» и выберите рейсы из доступного расписания.':advice.state==='light_unavailable'?'Свет прогулки пока не рассчитан. Вариант не предложен.':advice.state==='incomplete'?'Сначала уточните неизвестную дорогу. Тогда сможем сравнить время.':advice.state==='no_outdoor'?'В оставшемся расчёте нет осмотра открытых мест. Переходы и ожидание всё ещё могут проходить на улице.':advice.state==='no_walking'?'В оставшемся расчёте нет пеших переходов. Можно выбрать «Оставить ещё полчаса» и сократить осмотр.':kind==='rain'?'Сократить открытые места с сохранением билетов, обеда и возвращения пока не удалось. День остался прежним.':kind==='fatigue'?'Пеший путь не стал короче. Билеты, обед и возвращение остались в расчёте; можно оставить больше свободного времени.':'Такой вариант пока не складывается. Билеты, обед, посещённые места и возвращение остались в расчёте. Можно изменить время вручную или перенести часть дня.';return;}
+        status.textContent=kind==='rain'?'Осмотр на открытом воздухе короче, пеший путь не увеличился. Переходы и ожидание могут оставаться на улице. Билеты, обед и возвращение учтены.':kind==='fatigue'?'Пешие переходы стали короче. Билеты, обед и возвращение учтены. Перед выходом сверьте дорогу и доступ к местам.':'Билеты, обед, паузы и возвращение учтены. Дорогу и доступ к местам перед выходом нужно сверить.';
+        if(['rain','fatigue'].includes(kind) && result.rail)status.textContent+=' Подходы к электричкам остаются прежними.';
         const name=id=>catalog.poi.find(p=>p.slug===id)?.name || id;
         for(const option of advice.options) {
           const moved=flexOmissions(option),key=moved.join(',') || 'whole';
@@ -40,6 +41,10 @@ export function initFlexAdvice({mount,commit,feedback}) {
           for(const id of moved) {const row=el('li','',name(id));row.dataset.flexMovedPlace=id;movedList.append(row);}
           const times=el('dl','day-advice-times');
           const rows=[];
+          if(option.effort){
+            if(kind==='rain')rows.push(['Осмотр открытых мест',`${option.effort.before.outdoor} мин`,`${option.effort.after.outdoor} мин`]);
+            rows.push(['Пешие переходы',`${option.effort.before.walking} мин`,`${option.effort.after.walking} мин`]);
+          }
           if(option.railChange)rows.push(['Электричка туда',`${clock(option.railChange.before.departure)} → ${clock(option.railChange.before.arrival)}`,`${clock(option.railChange.after.departure)} → ${clock(option.railChange.after.arrival)}`]);
           rows.push([trip.schedule?.progress?'Продолжение прогулки':option.result.rail?'Начало прогулки':'Выход',clock(option.result.rail?option.before.stops[0]?.arrival:option.previousStart),clock(option.result.rail?option.result.stops[0]?.arrival:option.displayStart)],['Окончание',finish(option.before),finish(option.result)],[option.result.rail?'Запас до обратного поезда':'Запас до конца дня',option.before.slack===null?'Пока неизвестно':`${option.before.slack} мин`,`${option.result.slack} мин`]);
           for(const [caption,before,after]of rows) {
