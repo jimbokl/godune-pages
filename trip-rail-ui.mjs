@@ -2,28 +2,34 @@ import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from 
 import {planInput} from './trip-schedule-state.mjs?v=11';
 import {loadScheduler} from './trip-scheduler.mjs?v=19';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=6';
+import {preferredRailService,railStation} from './rail-destinations.mjs?v=1';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const messages={unpublished_year:'Расписание на этот год ещё не добавлено. Летние рейсы и «Морской экспресс» проверяем отдельно — осеннее время сюда не подставляем.',choose_date:'Выберите дату, чтобы открыть расписание.',stale_date:'Дата дня изменилась. Выберите электрички заново — прежние рейсы сохранены, но сейчас не меняют день.',missing_service:'Прежнего направления сейчас нет в каталоге. Выберите другое.',outside_validity:'Это расписание не действует на дату поездки.',unknown_timetable:'На эту дату расписание ещё не опубликовано.',cancelled:'В изменении на эту дату указана отмена рейсов.',changed_timetable:'Расписание изменилось. Выберите рейсы заново — прежнее время больше не применяется.'};
 export function initTripRail({mount,read,commit,base,catalog}) {
  if(!mount)return {render(){}};
  const panel=mount.querySelector('#trip-rail') || el('section',undefined,'trip-rail');panel.id='trip-rail';panel.setAttribute('aria-labelledby','rail-title');
- panel.innerHTML=`<div class="rail-heading"><div><p class="eyebrow">Море ближе, чем кажется</p><h3 id="rail-title">К морю на электричке</h3><p>От вокзала до Зеленоградска — и обратно. Оставьте время на прогулку и дорогу к поезду.</p></div><button class="button button-dark" type="button" data-rail-open>Выбрать электрички</button></div><p class="rail-season">Летом рейсов больше. У «Морского экспресса» своя станция — Зеленоградск-2. Выбирайте её отдельно от центрального вокзала.</p><div class="rail-plan"></div><p class="rail-feedback" role="status"></p>`;
+ panel.innerHTML=`<div class="rail-heading"><div><p class="eyebrow">Море ближе, чем кажется</p><h3 id="rail-title">К морю на электричке</h3><p>До Зеленоградска или Светлогорска — и обратно. Оставьте время на прогулку и дорогу к поезду.</p></div><button class="button button-dark" type="button" data-rail-open>Выбрать электрички</button></div><details class="rail-season"><summary>Летние рейсы и Зеленоградск-2</summary><p>Летом рейсов больше. У «Морского экспресса» своя станция — Зеленоградск-2. Выбирайте её отдельно от центрального вокзала.</p></details><div class="rail-plan"></div><p class="rail-feedback" role="status"></p>`;
  const beachWalk=el('a','От Зеленоградска-2 к пляжу и обратно →','rail-beach-walk');
  beachWalk.href=new URL('routes/zelenogradsk-2-k-moryu/',base).href;
- panel.querySelector('.rail-season').append(' ',beachWalk);
+ panel.querySelector('.rail-season p').append(' ',beachWalk);
  mount.insertBefore(panel,mount.querySelector('.trip-schedule, #trip-weather, #trip-utilities'));
  const dialog=el('dialog',undefined,'rail-dialog');dialog.id='rail-dialog';dialog.setAttribute('aria-labelledby','rail-dialog-title');
- dialog.innerHTML=`<form id="rail-form"><div class="rail-dialog-heading"><div><p class="eyebrow">День у моря</p><h3 id="rail-dialog-title">Уехать. Погулять. Вернуться.</h3></div><button type="button" data-rail-close aria-label="Закрыть выбор электричек">×</button></div><div class="rail-fields"></div><p class="rail-source"></p><p class="rail-form-note">Выбираете рейсы для своего плана. Это не покупка билета. Время дороги от станции и обратно — ваша оценка; входы и расписание перед поездкой нужно сверить.</p><p class="rail-error" role="alert"></p><div class="rail-dialog-actions"><button type="submit" class="button button-dark">Учитывать в моём дне</button><button type="button" data-rail-close class="button button-light">Вернуться к плану</button></div></form>`;
+ dialog.innerHTML=`<form id="rail-form"><div class="rail-dialog-heading"><div><p class="eyebrow">День у моря</p><h3 id="rail-dialog-title">Уехать. Погулять. Вернуться.</h3></div><button type="button" data-rail-close aria-label="Закрыть выбор электричек">×</button></div><div class="rail-fields"></div><div class="rail-station rail-form-note" hidden></div><p class="rail-source"></p><p class="rail-form-note">Выбираете рейсы для своего плана. Это не покупка билета. Время дороги от станции и обратно — ваша оценка; входы и расписание перед поездкой нужно сверить.</p><p class="rail-error" role="alert"></p><div class="rail-dialog-actions"><button type="submit" class="button button-dark">Учитывать в моём дне</button><button type="button" data-rail-close class="button button-light">Вернуться к плану</button></div></form>`;
  document.body.append(dialog);
  const $=s=>dialog.querySelector(s),feedback=t=>panel.querySelector('.rail-feedback').textContent=t;
  let expected,focus,destination,sequence=0;
  function field(caption,name,type,value){const label=el('label',caption),input=el('input');input.name=name;input.type=type;input.value=value;label.append(input);$('.rail-fields').append(label);return input;}
- function select(caption,name,options,value){const label=el('label',caption),input=el('select');input.name=name;for(const [id,title]of options){const o=el('option',title);o.value=id;input.append(o);}if([...input.options].some(o=>o.value===value))input.value=value;label.append(input);$('.rail-fields').append(label);return input;}
+ function select(caption,name,options,value){const label=el('label'),text=el('span',caption),input=el('select');text.dataset.railCaption=name;label.append(text);input.name=name;for(const [id,title]of options){const o=el('option',title);o.value=id;input.append(o);}if([...input.options].some(o=>o.value===value))input.value=value;label.append(input);$('.rail-fields').append(label);return input;}
  function refreshTable() {
   const table=railTable(catalog,$('[name=service]').value,$('[name=date]').value);
   if(destination && destination!==table.service?.to)for(const name of ['after_arrival','before_return'])$(`[name=${name}]`).value='';
   destination=table.service?.to;
+  $('[data-rail-caption=outward]').textContent=`В ${destination||'город у моря'} · отправление → прибытие`;
+  $('[data-rail-caption=inbound]').textContent=`В ${table.service?.from||'Калининград'} · отправление → прибытие`;
+  const {station,route}=railStation(table.service,catalog),help=$('.rail-station');help.replaceChildren();help.hidden=!station;
+  if(station){const link=el('a',`${station.name} · наша карта →`,'rail-beach-walk');link.href=new URL(`poi/${station.slug}/`,base).href;help.append(link,el('p',station.coordinate_note));
+   if(route){const walk=el('a','Прогулка от вокзала к морю и обратно →','rail-beach-walk');walk.href=new URL(`routes/${route.slug}/`,base).href;help.append(walk);}}
    for(const direction of ['outward','inbound']) {
    const select=$(`[name=${direction}]`),old=select.value;select.replaceChildren();
    for(const row of table[direction] || []){const ride=rideSnapshot(row),option=el('option',`${row.departure} → ${row.arrival} · ${ride.arrival-ride.departure} мин`);option.value=row.id;select.append(option);}
@@ -40,7 +46,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   const trip=read(),saved=trip.schedule?.rail;expected=railContext(trip);focus=document.activeElement;destination=null;
   $('.rail-fields').replaceChildren();
   const date=field('Дата этого дня','date','date',trip.date||'');date.required=true;
-  select('Вокзал Калининграда ↔ станция у моря','service',(catalog.rail_services||[]).map(s=>[s.id,`${s.from.replace(/^Калининград-/, '')} ↔ ${s.to}`]),saved?.service);
+  select('Вокзал Калининграда ↔ станция у моря','service',(catalog.rail_services||[]).map(s=>[s.id,`${s.from.replace(/^Калининград-/, '')} ↔ ${s.to}`]),preferredRailService(trip,catalog));
   select('В Зеленоградск · отправление → прибытие','outward',[],null);select('В Калининград · отправление → прибытие','inbound',[],null);
   for(const [caption,name,value]of [['От станции до начала вашего дня, мин','after_arrival',saved?.after_arrival],['От конца дня обратно до станции, мин','before_return',saved?.before_return],['Прийти до отправления за, мин','boarding',saved?.boarding??10]]){const input=field(caption,name,'number',value??'');input.min='0';input.max='1440';input.step='1';if(name==='boarding')input.required=true;}
   refreshTable();for(const direction of ['outward','inbound'])if(saved?.[direction]&&[...$(`[name=${direction}]`).options].some(o=>o.value===saved[direction].id))$(`[name=${direction}]`).value=saved[direction].id;
@@ -57,20 +63,21 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   const value={service:f.get('service'),date:f.get('date'),outward:rideSnapshot(outward),inbound:rideSnapshot(inbound),after_arrival:number('after_arrival'),before_return:number('before_return'),boarding:number('boarding')};
   if(!validRail(value)){$('.rail-error').textContent='Проверьте целые минуты дороги и запаса на посадку.';return;}
   let stale=false;const button=$('[type=submit]');button.disabled=true;
-  try {await commit(current=>{if(railContext(current)!==expected){stale=true;return current;}return saveRail({...current,date:value.date,month:Number(value.date.slice(5,7))},value);},'Электрички сохранены в вашем дне.');
-   if(stale){$('.rail-error').textContent='День изменился в другой вкладке. Закройте форму и откройте её заново.';return;}close();feedback('Два рейса сохранены. Время прогулки пересчитано.');
+  try {const outcome=await commit(current=>{if(railContext(current)!==expected){stale=true;return current;}return saveRail({...current,date:value.date,month:Number(value.date.slice(5,7))},value);},'Электрички сохранены в вашем дне.');
+   if(stale||outcome?.conflict){$('.rail-error').textContent='День изменился в другой вкладке. Закройте форму и откройте её заново.';return;}close();feedback(outcome?.saved?'Два рейса сохранены. Время прогулки пересчитано.':'Выбор рейсов остался в этой вкладке. Браузер не разрешил сохранение — скачайте файл поездки, чтобы забрать его с собой.');
+  }catch{$('.rail-error').textContent='Не получилось записать выбор рейсов. Попробуйте ещё раз или скачайте файл поездки.';
   }finally{button.disabled=false;}
  });
  panel.addEventListener('click',async e=>{
   if(e.target.closest('[data-rail-open]'))return open();
-  if(e.target.closest('[data-rail-remove]')){const context=railContext(read());let stale=false;await commit(current=>{if(railContext(current)!==context){stale=true;return current;}return saveRail(current,null);},'Электрички убраны из расчёта.');feedback(stale?'День уже изменился. Проверьте свежую версию.':'Ручное время дня снова действует без электричек.');panel.querySelector('[data-rail-open]').focus({preventScroll:true});}
+  if(e.target.closest('[data-rail-remove]')){const context=railContext(read());let stale=false;const outcome=await commit(current=>{if(railContext(current)!==context){stale=true;return current;}return saveRail(current,null);},'Электрички убраны из расчёта.');feedback(stale||outcome?.conflict?'День уже изменился. Проверьте свежую версию.':outcome?.saved?'Ручное время дня снова действует без электричек.':'Электрички убраны в этой вкладке. Браузер не разрешил сохранение — скачайте файл поездки.');panel.querySelector('[data-rail-open]').focus({preventScroll:true});}
  });
  async function render(){
   const ticket=++sequence,trip=read(),resolved=resolveRail(trip,catalog),body=panel.querySelector('.rail-plan');body.replaceChildren();panel.dataset.railReady='true';
   panel.querySelector('[data-rail-open]').textContent=resolved?'Изменить электрички':'Выбрать электрички';
   if(!resolved){panel.dataset.railState='empty';body.append(el('p','Сначала выберите рейсы. Прогулку можно собрать следом.','rail-empty'));return;}
   const strip=el('div',undefined,'rail-rides');
-  for(const [direction,caption]of [['outward','К морю'],['inbound','Домой']]){const ride=resolved.saved[direction],card=el('div',undefined,'rail-ride');card.append(el('span',caption,'eyebrow'),el('strong',`${clock(ride.departure)} → ${clock(ride.arrival)}`),el('span',direction==='outward'?`${resolved.service?.from||'Калининград'} → ${resolved.service?.to||'Зеленоградск'}`:`${resolved.service?.to||'Зеленоградск'} → ${resolved.service?.from||'Калининград'}`));strip.append(card);}body.append(strip);
+  for(const [direction,caption]of [['outward','К морю'],['inbound','Домой']]){const ride=resolved.saved[direction],card=el('div',undefined,'rail-ride');card.append(el('span',caption,'eyebrow'),el('strong',`${clock(ride.departure)} → ${clock(ride.arrival)}`),el('span',direction==='outward'?`${resolved.service?.from||'Калининград'} → ${resolved.service?.to||'Станция у моря'}`:`${resolved.service?.to||'Станция у моря'} → ${resolved.service?.from||'Калининград'}`));strip.append(card);}body.append(strip);
   const status=el('p',undefined,'rail-result');status.setAttribute('role','status');body.append(status);
   const remove=el('button','Убрать электрички из расчёта','rail-remove');remove.type='button';remove.dataset.railRemove='true';body.append(remove);
   const evidence=el('p',undefined,'rail-evidence');if(resolved.source){const link=el('a',resolved.source.name);link.href=resolved.source.url;link.target='_blank';link.rel='noopener';evidence.append(link,el('span',` · проверено ${resolved.source.checked_at}`));}body.append(evidence);

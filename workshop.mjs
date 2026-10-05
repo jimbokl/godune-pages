@@ -12,7 +12,7 @@ import {addTripStarter} from './trip-starters.mjs?v=13';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=14';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=9';
 import {initTripReplacement} from './trip-replacement-ui.mjs?v=12';
-import {initTripRail} from './trip-rail-ui.mjs?v=7';
+import {initTripRail} from './trip-rail-ui.mjs?v=8';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=19';
 
 export function loadTrip(storage, catalog) {

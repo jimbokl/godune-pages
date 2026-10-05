@@ -139,3 +139,5 @@ dialog{border:0;padding:32px 40px;background:var(--night-surface,#fbfaf7);color:
   }
   @media print{[data-home-page] #main>section:not(#top):not(.destinations){content-visibility:visible;contain-intrinsic-block-size:none}}
 }
+/* Keep seasonal detail out of the everyday train choice. */
+.rail-season summary{display:flex;align-items:center;min-height:44px;cursor:pointer;text-decoration:underline;text-underline-offset:4px}.rail-season summary:focus-visible{outline:2px solid var(--night-line,#517d99);outline-offset:4px}.rail-station p{margin:4px 0 0}.rail-station .rail-beach-walk{margin:0}
