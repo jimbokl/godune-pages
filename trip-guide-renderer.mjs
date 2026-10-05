@@ -27,7 +27,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const textHeight=(value,font=ui,size=body,space=10)=>lines(value,font,size).length*size*(font===title?1.2:1.48)+space;
   function heading(value,large=false,following='',extra=0){const size=large?(phone?32:43):(phone?24:30),head=textHeight(value,title,size,16),follow=textHeight(following)+extra;need(head+(head+follow<h-2*m-90?follow:body*3));text(value,{font:title,size,space:16});}
   async function image(value,maxHeight){if(!value)return;let img=embedded.get(value);if(!img){img=await (value.kind==='jpeg'?doc.embedJpg(value.bytes):doc.embedPng(value.bytes));embedded.set(value,img);}const iw=Math.min(width,maxHeight*value.width/value.height),ih=iw*value.height/value.width;need(ih+15);page.drawImage(img,{x:m+(width-iw)/2,y:y-ih,width:iw,height:ih});y-=ih+14;}
-  async function qrCard(value,caption){if(!value)return;const size=phone?52:68,img=await doc.embedPng(value.bytes),wrapped=lines(caption,ui,phone?9:11,width-size-12),leading=phone?13:16,height=Math.max(size,wrapped.length*leading);need(height+18);page.drawImage(img,{x:m,y:y-size,width:size,height:size});wrapped.forEach((line,i)=>page.drawText(line,{x:m+size+12,y:y-leading*(i+1),font:ui,size:phone?9:11,color:muted}));y-=height+18;}
+  function qrLayout(caption){const size=phone?52:68,wrapped=lines(caption,ui,phone?9:11,width-size-12),leading=phone?13:16;return {size,wrapped,leading,height:Math.max(size,wrapped.length*leading)+18};}
+  async function qrCard(value,caption){if(!value)return;const img=await doc.embedPng(value.bytes),{size,wrapped,leading,height}=qrLayout(caption);need(height);page.drawImage(img,{x:m,y:y-size,width:size,height:size});wrapped.forEach((line,i)=>page.drawText(line,{x:m+size+12,y:y-leading*(i+1),font:ui,size:phone?9:11,color:muted}));y-=height;}
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
   const sourceHeight=s=>s?textHeight(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
   const source=(s)=>{if(!s)return;need(sourceHeight(s));text(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8});};
@@ -45,6 +46,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
     text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});text(day.summary);
+    if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes)text(note,{size:phone?10:12});}
     text(`${plural(day.stops.length,['место','места','мест'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
@@ -74,13 +76,18 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:16});heading(p.name,true);
       if(p.completed)text('Уже были. Время осмотра не записывали.',{size:phone?10:12,color:muted,space:10});
       text('GPS '+gps(p),{size:phone?12:14,space:16});if(media.photos[p.id]){await image(media.photos[p.id],phone?165:270);text('Авторский снимок',{size:8,color:muted});}
-      await image(media.maps[p.id],phone?180:260);
-      text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}. Ромб - ваше место.`,{size:8,color:muted});
+      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},qrCaption=`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`,tail=sourceHeight(placeSource)+(media.qrs?.[p.id]?qrLayout(qrCaption).height:0);
+      const mapCaption=`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}. Ромб - ваше место.`;
+      const sectionHeight=value=>textHeight(value,title,phone?24:30,16);
+      const afterMap=textHeight(mapCaption,ui,8)+sectionHeight('На месте')+p.story.reduce((sum,paragraph)=>sum+textHeight(paragraph),0)+(p.focus?textHeight(p.focus):0)+(p.practical?textHeight(p.practical):0)+(p.conditions.length?sectionHeight('Перед входом'):0)+p.conditions.reduce((sum,c)=>sum+textHeight(c.text)+sourceHeight(c.source),0)+tail;
+      // Keep a readable map while fitting the complete short place card on one page.
+      const mapHeight=Math.max(phone?135:180,Math.min(phone?180:260,y-51-afterMap-14));
+      await image(media.maps[p.id],mapHeight);
+      text(mapCaption,{size:8,color:muted});
       heading('На месте',false,p.story[0]);for(const paragraph of p.story)text(paragraph);if(p.focus)text(p.focus);if(p.practical)text(p.practical);
-      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},tail=sourceHeight(placeSource)+(phone?70:86);
       if(p.conditions.length){const first=p.conditions[0];heading('Перед входом',false,first.text,sourceHeight(first.source)+(p.conditions.length===1?tail:0));for(const [ci,c]of p.conditions.entries()){const block=textHeight(c.text)+sourceHeight(c.source)+(ci===p.conditions.length-1?tail:0);if(block<h-2*m-90)need(block);text(c.text);source(c.source);}}
       need(tail);source(placeSource);
-      await qrCard(media.qrs?.[p.id],`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`);
+      await qrCard(media.qrs?.[p.id],qrCaption);
     }
     if(kosaAssets){
       for(const {walk,bytes}of kosaAssets.walkingMaps){

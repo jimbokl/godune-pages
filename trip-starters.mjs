@@ -1,5 +1,6 @@
 import {defaultSchedule} from './trip-schedule-state.mjs?v=13';
-import {nextDate,mergeJourney,tripHasPlaces,journeyDays,selectedDay} from './trip-days-state.mjs?v=17';
+import {hasPreferences} from './day-preferences.mjs?v=1';
+import {nextDate,mergeJourney,tripHasPlaces,journeyDays,selectedDay} from './trip-days-state.mjs?v=18';
 import {waveChoices,waveStopSettings} from './day-wave.mjs?v=2';
 // Editorial starting points, not promised bookings or verified tours.
 const river={places:['ostrov-kanta','rybnaya-derevnya','muzej-mirovogo-okeana'],mode:'foot',start_at:null,night_at:null};
@@ -35,16 +36,16 @@ export function addTripStarter(trip,id,catalog) {
  const starter=tripStarterChoices(catalog).find(row=>row.id===id);if(!starter)return trip;
  const known=new Set(catalog.poi.map(p=>p.slug));
  if(starter.days.some(day=>[...day.places,day.start_at,day.night_at].some(place=>place && !known.has(place))))return trip;
- let date=trip.date;const party=selectedDay(trip).party;
+ let date=trip.date;const {party,preferences}=selectedDay(trip);
  const days=starter.days.map((day,index)=>{
   const current=date;date=nextDate(date);
   return {id:`day-${index+1}`,date:current,places:[...day.places],schedule:{...defaultSchedule(),mode:day.mode,
    ...(day.recipe?{stops:waveStopSettings(day.recipe,catalog)}:{})},start_at:day.start_at,night_at:day.night_at,
    ...(day.recipe?{wave:{version:1,theme:day.recipe.theme,pace:'full',recipe:day.recipe.slug}}:{}),
-   ...(party?{party:structuredClone(party)}:{}),note:day.recipe?.access_note || '',costs:{}};
+   ...(party?{party:structuredClone(party)}:{}),...(preferences?{preferences:structuredClone(preferences)}:{}),note:day.recipe?.access_note || '',costs:{}};
  });
  const incoming={...trip,places:[...days[0].places],date:days[0].date,schedule:structuredClone(days[0].schedule),itinerary:{version:1,active:'day-1',people:trip.itinerary?.people || 1,days}};
  // A blank first screen is a placeholder; a populated draft is preserved.
- const hasDraft=tripHasPlaces(trip) || journeyDays(trip).some(day=>day.start_at || day.night_at || day.note || day.party || Object.keys(day.costs).length);
+ const hasDraft=tripHasPlaces(trip) || journeyDays(trip).some(day=>day.start_at || day.night_at || day.note || day.party || hasPreferences(day.preferences) || Object.keys(day.costs).length);
  return hasDraft?mergeJourney(trip,incoming,{...trip}):incoming;
 }

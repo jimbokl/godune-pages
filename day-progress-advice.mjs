@@ -2,7 +2,7 @@ import {visitedPlaces,validProgress} from './day-progress.mjs?v=2';
 import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=13';
 import {tripSignature,lightInput} from './trip-light.mjs?v=9';
 import {generatedDayPoints,dayPointIds} from './day-points.mjs?v=1';
-import {kosaProgressInput} from './day-kosa-progress.mjs?v=1';
+import {kosaProgressInput} from './day-kosa-progress.mjs?v=2';
 
 export function progressCandidate(trip,request) {
   const day=trip.itinerary?.days.find(d=>d.id===trip.itinerary.active),generated=generatedDayPoints(day),points=day?dayPointIds(day):trip.places;

@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=17';
+import {selectedDay} from './trip-days-state.mjs?v=18';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=3';
 import {journeyRow} from './day-journey-ui.mjs?v=3';
@@ -13,13 +13,13 @@ import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=8';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=4';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=7';
-import {initDayProgress} from './day-progress-ui.mjs?v=2';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=1';
-import {progressMessages} from './day-progress-advice.mjs?v=2';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=8';
+import {initDayProgress} from './day-progress-ui.mjs?v=3';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2';
+import {progressMessages} from './day-progress-advice.mjs?v=3';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=7';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=6';
+import {flexSignature} from './day-flex-advice.mjs?v=8';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=7';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -308,7 +308,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=4')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=5')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

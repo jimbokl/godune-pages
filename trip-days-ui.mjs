@@ -1,15 +1,16 @@
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
-import {initTripBookings} from './trip-bookings-ui.mjs?v=10';
+import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=1';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=11';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=14';
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=17';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=15';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=18';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=6';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
 import {planInput} from './trip-schedule-state.mjs?v=13';
-import {tripStarterChoices,addTripStarter} from './trip-starters.mjs?v=16';
+import {tripStarterChoices,addTripStarter} from './trip-starters.mjs?v=17';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -30,6 +31,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     <details class="journey-starters"><summary>Взять готовый план на 3, 5 или 7 дней <span aria-hidden="true">+</span></summary><div id="journey-starters" class="journey-starter-options"></div><p class="journey-note">Калининград, Зеленоградск и коса. Это основа для вашей поездки: остановки, дни и транспорт можно менять. Дни добавятся к вашему черновику. Переезд между городами в начале дня, адрес жилья, билеты и часы работы уточните отдельно.</p></details>
     <nav id="journey-days" class="journey-days" aria-label="Выбрать день поездки"></nav>
     <div class="journey-tools"><button class="journey-button" type="button" data-journey-action="add">+ Ещё день</button><button class="journey-button" type="button" data-journey-action="copy">Скопировать этот день</button><button class="journey-button journey-delete" type="button" data-journey-action="remove">Удалить день</button></div>
+    <details class="wizard-settings wizard-preferences-settings" id="journey-preferences"><summary data-journey-preferences-summary>Интересы и прогулка · выбрать</summary><form id="journey-preferences-form"></form></details>
     <details class="journey-details" id="journey-details"><summary>Начало, ночёвка и бюджет <span aria-hidden="true">+</span></summary><div class="journey-details-body"><form id="journey-bases" class="journey-bases"></form><form id="journey-costs" class="journey-costs"></form></div></details>
     <details class="journey-overview" id="journey-overview"><summary>Вся поездка <span id="journey-total" role="status"></span></summary><p class="journey-note">Время зависит от выбранных остановок, дороги и часов работы. Цены — ваши оценки; пока есть пустые суммы, полный бюджет неизвестен.</p><ol id="journey-overview-days"></ol></details><p id="journey-feedback" class="journey-note" role="status"></p>`;
   (mount.querySelector('.workshop-main') || mount).prepend(section);
@@ -46,6 +48,14 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   }
   function renderForms(trip) {
     const day=selectedDay(trip),bases=$('#journey-bases'),costs=$('#journey-costs');bases.replaceChildren();costs.replaceChildren();
+    const preferences=day.preferences || emptyPreferences(),preferenceForm=$('#journey-preferences-form');preferenceForm.replaceChildren();preferenceForm.dataset.day=day.id;preferenceForm._snapshot=JSON.stringify(day.preferences ?? null);
+    $('[data-journey-preferences-summary]').textContent=preferencesLabel(preferences)?`Вам важно: ${preferencesLabel(preferences)} · изменить`:'Интересы и прогулка · выбрать';
+    for(const [name,values,title,key]of [['interest',DAY_INTERESTS,'Что хочется увидеть?','interests'],['need',DAY_NEEDS,'Что важно в прогулке?','needs']]) {
+      const field=el('fieldset',undefined,'wizard-chips wizard-preference-chips');field.append(el('legend',title));
+      for(const [value,text]of Object.entries(values)){const wrapper=el('label'),input=el('input');input.type='checkbox';input.name=name;input.value=value;input.checked=preferences[key].includes(value);wrapper.append(input,el('span',text));field.append(wrapper);}preferenceForm.append(field);
+    }
+    preferenceForm.append(el('p','Пожелания помогут выбрать следующую прогулку. Сохранённые остановки останутся на месте. Проход без лестниц и с коляской на всём пути ещё нужно проверить.','journey-note'));
+    const savePreferences=el('button','Сохранить пожелания','journey-save');savePreferences.type='submit';preferenceForm.append(savePreferences);
     for(const form of [bases,costs])form.dataset.day=day.id;costs._snapshot=JSON.stringify(day.costs);costs._people=dayPeople(day,trip.itinerary?.people || 1);
     bases.append(el('h4','Откуда выйдем, куда вернёмся'));
     for(const [name,caption] of [['start_at','Начать здесь'],['night_at','К ночи вернуться сюда']]) {
@@ -148,17 +158,18 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     section.querySelector(`[data-journey-id="${selectedDay(read()).id}"]`)?.focus({preventScroll:true});
   });
   section.addEventListener('submit',async event=>{
-    const form=event.target;if(!['journey-bases','journey-costs'].includes(form.id))return;event.preventDefault();const values=new FormData(form),day=form.dataset.day,snapshot=form._snapshot,people=form._people;let changes;
+    const form=event.target;if(!['journey-bases','journey-costs','journey-preferences-form'].includes(form.id))return;event.preventDefault();const values=new FormData(form),day=form.dataset.day,snapshot=form._snapshot,people=form._people;let changes;
     try {
-      if(form.id==='journey-bases'){const current=selectedDay(read());changes={start_at:values.get('start_at')==='__personal__'?current.start_at:values.get('start_at') || null,night_at:values.get('night_at')==='__personal__'?current.night_at:values.get('night_at') || null,note:values.get('note')};}
+      if(form.id==='journey-preferences-form')changes={preferences:{...(selectedDay(read()).preferences || emptyPreferences()),interests:values.getAll('interest'),needs:values.getAll('need')}};
+      else if(form.id==='journey-bases'){const current=selectedDay(read());changes={start_at:values.get('start_at')==='__personal__'?current.start_at:values.get('start_at') || null,night_at:values.get('night_at')==='__personal__'?current.night_at:values.get('night_at') || null,note:values.get('note')};}
       else {
         const costs=Object.fromEntries(Object.keys(COST_KINDS).map(kind=>[kind,{...selectedDay(read()).costs[kind],amount:parseKopecks(values.get(`${kind}-amount`)),quantity:Number(values.get(`${kind}-quantity`)),scope:values.get(`${kind}-scope`),basis:values.get(`${kind}-basis`),paid:parseKopecks(values.get(`${kind}-paid`))}]));
         changes={people:Number(values.get('people')),costs};
       }
     }catch(error){feedback(error.message);return;}
     let stale=false;
-    await commit(current=>{if(selectedDay(current).id!==day || form.id==='journey-costs' && (JSON.stringify(selectedDay(current).costs)!==snapshot || dayPeople(selectedDay(current),current.itinerary?.people || 1)!==people)){stale=true;return current;}return changeDayDetails(current,changes);},'Настройки дня сохранены.');
-    feedback(stale?'День или расходы уже изменились. Проверьте свежие значения и сохраните ещё раз.':form.id==='journey-costs'?'Ваши оценки сохранены.':'Начало, ночёвка и заметка сохранены.');
+    await commit(current=>{if(selectedDay(current).id!==day || form.id==='journey-preferences-form' && JSON.stringify(selectedDay(current).preferences ?? null)!==snapshot || form.id==='journey-costs' && (JSON.stringify(selectedDay(current).costs)!==snapshot || dayPeople(selectedDay(current),current.itinerary?.people || 1)!==people)){stale=true;return current;}return changeDayDetails(current,changes);},'Настройки дня сохранены.');
+    feedback(stale?'День или настройки уже изменились. Проверьте свежие значения и сохраните ещё раз.':form.id==='journey-preferences-form'?'Ваши пожелания сохранены.':form.id==='journey-costs'?'Ваши оценки сохранены.':'Начало, ночёвка и заметка сохранены.');
   });
   function moveControl(id,name) {
     const days=journeyDays(read()),source=selectedDay(read()).id;if(days.length<2)return null;

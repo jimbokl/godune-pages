@@ -1,5 +1,5 @@
-import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=17';
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=22';
+import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=18';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=23';
 import {validSchedule} from './trip-schedule-state.mjs?v=13';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;

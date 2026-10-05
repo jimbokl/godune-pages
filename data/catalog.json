@@ -1584,6 +1584,12 @@
           "id": "fish-village-viewpoint-stairs",
           "kind": "access",
           "label": "Подъём на смотровую",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "present",
+            "stroller": "unknown",
+            "version": 1
+          },
           "scope": "service",
           "source": {
             "checked_at": "2026-10-02",
@@ -4145,6 +4151,12 @@
           "id": "efa-access",
           "kind": "access",
           "label": "Подход к первым площадкам",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "none",
+            "stroller": "passable",
+            "version": 1
+          },
           "scope": "place",
           "source": {
             "checked_at": "2026-10-02",
@@ -4244,6 +4256,12 @@
           "id": "efa-access",
           "kind": "access",
           "label": "Подход к первым площадкам",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "none",
+            "stroller": "passable",
+            "version": 1
+          },
           "scope": "place",
           "source": {
             "checked_at": "2026-10-02",
@@ -4648,6 +4666,12 @@
           "id": "central-stairs",
           "kind": "access",
           "label": "Спуск к морю",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "present",
+            "stroller": "unknown",
+            "version": 1
+          },
           "scope": "place",
           "source": {
             "checked_at": "2026-10-02",
@@ -4661,6 +4685,12 @@
           "id": "panorama-lift-entry",
           "kind": "access",
           "label": "Если лестница не подходит",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "version": 1
+          },
           "scope": "service",
           "source": {
             "checked_at": "2026-10-02",
@@ -5091,6 +5121,12 @@
           "id": "central-beach-descents",
           "kind": "access",
           "label": "Спуски из парка",
+          "mobility": {
+            "extent": "segment",
+            "stairs": "present",
+            "stroller": "passable",
+            "version": 1
+          },
           "scope": "place",
           "source": {
             "checked_at": "2026-10-02",
@@ -10318,6 +10354,22 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "8c45a621-77c7-5851-babb-c64d2ef0c8fd",
       "minutes": 120,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/998471064",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          998471064
+        ]
+      },
       "mode": "walking",
       "name": "Амалиенау: виллы и парк",
       "slug": "amalienau-2-hours",
@@ -10870,6 +10922,24 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "f19f6c26-88f5-5294-b234-5bade71b6e6e",
       "minutes": 180,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/172879470",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          172879470,
+          1088943370,
+          172879468
+        ]
+      },
       "mode": "walking",
       "name": "Остров Канта и музейная набережная",
       "slug": "ostrov-kanta-naberezhnye",
@@ -11846,6 +11916,24 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "49da5e64-194f-56e2-8221-d4b90c328cfa",
       "minutes": 180,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/172879470",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          172879470,
+          1088943370,
+          172879468
+        ]
+      },
       "mode": "walking",
       "name": "От Королевских ворот к Преголе",
       "slug": "vorota-i-reka",
@@ -12325,6 +12413,23 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "870e9f0a-2a1f-5632-bf88-1c60afa486ef",
       "minutes": 100,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/1335775057",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          1335775057,
+          1335775058
+        ]
+      },
       "mode": "walking",
       "name": "Высота Эфа: к дюнам и обратно",
       "slug": "vysota-efa",
@@ -12805,6 +12910,23 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "3d35f986-2fe0-598a-a00a-852fcf1592f5",
       "minutes": 60,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/721242228",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          721242228,
+          1320226545
+        ]
+      },
       "mode": "walking",
       "name": "Зеленоградск-2: от поезда к морю",
       "return_to": "zelenogradsk-2",
@@ -13157,6 +13279,26 @@
       "geometry_source": "Линия рассчитана по пешеходной сети OSM; полевой проход ещё не выполнен.",
       "id": "80f119c0-ed93-5db7-947c-51ab63a4fc12",
       "minutes": 90,
+      "mobility": {
+        "extent": "route",
+        "source": {
+          "checked_at": "2026-10-01",
+          "name": "Пешеходная сеть OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/71505086",
+          "verification": "map_estimate"
+        },
+        "stairs": "present",
+        "stroller": "unknown",
+        "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+        "version": 1,
+        "way_ids": [
+          71505086,
+          71505093,
+          71505089,
+          71505090,
+          71505082
+        ]
+      },
       "mode": "walking",
       "name": "Светлогорск: от поезда к морю",
       "return_to": "svetlogorsk-2",

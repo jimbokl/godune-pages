@@ -1,5 +1,5 @@
-import {selectedDay} from './trip-days-state.mjs?v=17';
-import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=12';
+import {selectedDay} from './trip-days-state.mjs?v=18';
+import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=13';
 import {transferTitle} from './trip-transfer-costs.mjs?v=3';
 import {rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';

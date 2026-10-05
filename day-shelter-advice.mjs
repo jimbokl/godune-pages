@@ -1,5 +1,5 @@
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=4';
-import {previewStopReplacement} from './trip-replacement-state.mjs?v=1';
+import {previewStopReplacement} from './trip-replacement-state.mjs?v=13';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=13';
 
 // An indoor visit is a sourced access fact, never a guess from a POI category.

@@ -1,5 +1,5 @@
-import {previewStopCancellation,cancelTripStop} from './trip-cancellation-state.mjs?v=11';
-import {replacementContext} from './trip-replacement-state.mjs?v=12';
+import {previewStopCancellation,cancelTripStop} from './trip-cancellation-state.mjs?v=12';
+import {replacementContext} from './trip-replacement-state.mjs?v=13';
 import {transferTitle} from './trip-transfer-costs.mjs?v=3';
 import {rubles} from './trip-budget-state.mjs?v=2';
 const el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
