@@ -8,6 +8,17 @@ import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=3';
 // The shared Rust calculation remains the sole clock for every candidate.
 export const flexSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).visited || []]);
 export const canFlexDay=trip=>trip.places.length>0 && !selectedDay(trip).kosa_plan;
+export const flexOmissions=option=>option.omittedIds || (option.omitted?[option.omitted]:[]);
+
+// Search by the number of moved places, keeping the remaining order intact.
+// Lazy combinations avoid allocating the power set; each calculation yields
+// regularly so changing the request or day can cancel a long search.
+function* omissions(ids,count,from=0,chosen=[]) {
+  if(chosen.length===count){yield [...chosen];return;}
+  for(let i=from;i<=ids.length-(count-chosen.length);i++) {
+    chosen.push(ids[i]);yield* omissions(ids,count,i+1,chosen);chosen.pop();
+  }
+}
 export function protectedFlexStops(trip,catalog) {
   const day=selectedDay(trip),ids=new Set(day.visited || []);
   for(const row of day.bookings || [])if(row.status!=='cancelled' && row.target)ids.add(row.target);
@@ -44,8 +55,9 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
   const trial=timingTrial(snapshot,catalog,matrix,engine,result);
   if(trial.error)return {state:trial.error,options:[]};
   const protectedIds=protectedFlexStops(snapshot,catalog),options=[];
+  const optional=snapshot.places.filter(id=>!protectedIds.has(id));
   let trials=0;
-  async function test(change,places,omitted=null) {
+  async function test(change,places,omittedIds=[]) {
     if(++trials%8===0)await new Promise(resolve=>setTimeout(resolve,0));
     if(!stillCurrent())return null;
     const candidate={...snapshot,places,schedule:{...settings,start:change.start,
@@ -57,7 +69,8 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
     const railChange=change.outward?{before:structuredClone(settings.rail.outward),after:structuredClone(change.outward),
       inbound:structuredClone(settings.rail.inbound),source:structuredClone(rail.source),service:rail.service.id}:null;
     return {signature,kind:request.kind,minutes:request.minutes,previousStart,start:change.start,
-      displayStart:tested.scheduleStart,railChange,places:[...places],omitted,freed,...tested};
+      displayStart:tested.scheduleStart,railChange,places:[...places],
+      omitted:omittedIds.length===1?omittedIds[0]:null,omittedIds:[...omittedIds],freed,...tested};
   }
   let chosen=null;
   if(request.kind==='later') {
@@ -69,15 +82,24 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
     }
   }
   for(const change of chosen?[chosen]:starts) {
-    const shorter=[];
-    if(snapshot.places.length>1)for(const id of snapshot.places) {
-      if(!stillCurrent())return {state:'stale',options:[]};
-      if(protectedIds.has(id))continue;
-      const candidate=await test(change,snapshot.places.filter(value=>value!==id),id);
-      if(candidate)shorter.push(candidate);
+    for(let count=1;count<=Math.min(optional.length,snapshot.places.length-1);count++) {
+      const shorter=[];
+      for(const moved of omissions(optional,count)) {
+        if(!stillCurrent())return {state:'stale',options:[]};
+        const removed=new Set(moved);
+        const candidate=await test(change,snapshot.places.filter(id=>!removed.has(id)),moved);
+        if(candidate)shorter.push(candidate);
+        // Two comparisons are enough for the existing compact UI. For a single
+        // omission keep its established ranking; for several, stop as soon as
+        // the comparisons are ready rather than enumerate unnecessary subsets.
+        if(count>1 && shorter.length>=2-options.length)break;
+      }
+      shorter.sort((a,b)=>b.result.slack-a.result.slack || snapshot.places.indexOf(flexOmissions(a)[0])-snapshot.places.indexOf(flexOmissions(b)[0]));
+      options.push(...shorter.slice(0,2-options.length));
+      // Never move more places if a smaller change already works. A full walk
+      // is already an answer; don't invent a multiple-omission alternative.
+      if(options.length)break;
     }
-    shorter.sort((a,b)=>b.result.slack-a.result.slack || snapshot.places.indexOf(a.omitted)-snapshot.places.indexOf(b.omitted));
-    options.push(...shorter.slice(0,2-options.length));
     if(options.length)break;
   }
   return stillCurrent()?{state:options.length?'ready':'no_option',options,trials}:{state:'stale',options:[]};
@@ -90,6 +112,7 @@ export function applyFlexAdvice(trip,option) {
   // only this day's new stop list and discards obsolete directed leg settings.
   const next={...trip,places:[...option.places],schedule:{...(trip.schedule || defaultSchedule()),start:option.start}};
   if(option.railChange)next.schedule.rail={...trip.schedule.rail,outward:structuredClone(option.railChange.after)};
-  if(option.omitted)next.dreams=[...new Set([...(trip.dreams || []),option.omitted])];
+  const moved=trip.places.filter(id=>!option.places.includes(id));
+  if(moved.length)next.dreams=[...new Set([...(trip.dreams || []),...moved])];
   return {trip:next,error:null};
 }

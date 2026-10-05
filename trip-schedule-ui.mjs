@@ -13,8 +13,8 @@ import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=6';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=2';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=3';
+import {flexSignature} from './day-flex-advice.mjs?v=3';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
