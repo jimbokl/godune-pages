@@ -12,7 +12,9 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=6';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=1';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=1';
+import {flexSignature} from './day-flex-advice.mjs?v=1';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -40,6 +42,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   const adviceMount=document.createElement('section');adviceMount.className='day-timing-advice';adviceMount.hidden=true;
   $('#trip-plan-summary').after(adviceMount);
   const advice=initTimingAdvice({mount:adviceMount,commit,feedback:$('#trip-plan-feedback')});
+  const flexMount=document.createElement('details');flexMount.className='day-flex-advice day-timing-advice';flexMount.hidden=true;
+  $('#trip-plan-stops').after(flexMount);
+  const flex=initFlexAdvice({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
   bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
   let opened=compact, sequence=0;
   function input(form, caption, name, type, value, stop) {
@@ -275,6 +280,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   }
   async function render() {
     advice.reset();
+    flex.reset();
     const generated=compact && selectedDay(read()).kosa_plan;
     section.hidden = !generated && read().places.length === 0 && !read().schedule?.rail;
     if(compact)$('#trip-timing-settings').hidden=!!generated;
@@ -325,6 +331,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
       section.dataset.scheduleReady='true';
       advice.render({trip,catalog,matrix,engine:calculate,result,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
+      flex.render({trip,catalog,matrix,engine:calculate,result,stillCurrent:()=>ticket===sequence && flexSignature(read())===flexSignature(trip)});
       if(light) lightAlternative(trip,catalog,matrix,calculate,result,light,()=>ticket===sequence && tripSignature(read())===tripSignature(trip)).then(alternative=>{
         if(ticket===sequence && alternative)renderLightView($('#trip-light'),trip,catalog,light,alternative,applyLight);
       }).catch(()=>{});
@@ -356,7 +363,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     commit(current=>updateSchedule(current,'window',null,id),'Вернулись к расписанию места.');
   });
   section.addEventListener('submit',async event=>{
-    if(event.target.closest('[data-transport-edit]'))return;
+    if(event.target.closest('[data-transport-edit]') || event.target.matches('.day-flex-form'))return;
     event.preventDefault();const form=event.target, values=new FormData(form), id=form.dataset.planEdit;
     const feedback=$('#trip-plan-feedback');feedback.textContent='';
     let fields;

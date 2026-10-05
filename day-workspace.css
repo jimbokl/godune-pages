@@ -144,6 +144,12 @@
 #my-trip .day-advice-order>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--sea-muted);text-decoration:underline;text-underline-offset:4px}
 #my-trip .day-advice-order ol{padding-left:22px;margin:8px 0 14px;font-size:14px}
 #my-trip .day-advice-status:empty{display:none}
+#my-trip .day-flex-advice>summary{min-height:48px;cursor:pointer;font:600 16px/1.5 var(--sans);color:var(--ink)}
+#my-trip .day-flex-advice:not([open]){padding-block:8px}
+#my-trip .day-flex-form{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:18px 0}
+#my-trip .day-flex-form label{display:grid;gap:6px;flex:1 1 220px;min-width:0;color:var(--ink)}
+#my-trip .day-flex-form select{min-height:48px;width:100%;min-width:0;border:1px solid var(--sea-line);border-radius:8px;background:var(--paper);color:var(--ink);padding:10px 12px;font:inherit}
+#my-trip .day-flex-advice :is(select,button,summary):focus-visible{outline:3px solid var(--sea-muted);outline-offset:3px}
 @media(max-width:400px){#my-trip .day-timing-advice{padding:16px}#my-trip .day-advice-option{padding:14px}#my-trip .day-timing-advice .save-item{width:100%}}
 
 /* A quiet, shared thread for transfers and returning home. */

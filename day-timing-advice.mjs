@@ -24,31 +24,41 @@ function daylightDoesNotWorsen(before, after) {
   });
 }
 
+// Both repair and shortening proposals use this one acceptance contract.
+// A shorter list must still have known roads and must not move nature into darkness.
+export function timingTrial(trip,catalog,matrix,engine,result) {
+  const missing=unknownKeys(result);
+  const outdoor=trip.places.some(id=>['nature','park','viewpoint','beach'].includes(catalog.poi.find(place=>place.slug===id)?.category));
+  let beforeLight=null;
+  if(outdoor && trip.date) {
+    try {beforeLight=engine.light(lightInput(trip,catalog,result));}catch {return {error:'light_unavailable'};}
+  }
+  return {evaluate(candidate) {
+    try {
+      const input=planInput(candidate,catalog,matrix),schedule=engine(input);
+      if(!fits(schedule) || [...unknownKeys(schedule)].some(key=>!missing.has(key)))return null;
+      let light=null;
+      if(outdoor && trip.date) {
+        light=engine.light(lightInput(candidate,catalog,schedule));
+        if(!daylightDoesNotWorsen(beforeLight,light))return null;
+      }
+      return {before:result,result:schedule,light,scheduleStart:input.start,needsCheck:issues(schedule).length>0};
+    }catch {return null;}
+  }};
+}
+
 export async function timingAdvice(trip,catalog,matrix,engine,result,stillCurrent=()=>true) {
   if(!needsTimingHelp(result) || !trip.places.length || trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.kosa_plan)
     return {state:'not_needed',options:[]};
   const snapshot=structuredClone(trip),signature=tripSignature(snapshot),settings=snapshot.schedule || defaultSchedule();
-  const missing=unknownKeys(result),options=[];
-  const outdoor=snapshot.places.some(id=>['nature','park','viewpoint','beach'].includes(catalog.poi.find(place=>place.slug===id)?.category));
-  let beforeLight=null;
-  if(outdoor && snapshot.date) {
-    try {beforeLight=engine.light(lightInput(snapshot,catalog,result));}catch {return {state:'light_unavailable',options:[]};}
-  }
+  const trial=timingTrial(snapshot,catalog,matrix,engine,result),options=[];
+  if(trial.error)return {state:trial.error,options:[]};
   let trials=0;
   async function test(candidate,change) {
     if(++trials%12===0)await new Promise(resolve=>setTimeout(resolve,0));
     if(!stillCurrent())return null;
-    try {
-      const schedule=engine(planInput(candidate,catalog,matrix));
-      if(!fits(schedule) || [...unknownKeys(schedule)].some(key=>!missing.has(key)))return null;
-      let light=null;
-      if(outdoor && snapshot.date) {
-        light=engine.light(lightInput(candidate,catalog,schedule));
-        if(!daylightDoesNotWorsen(beforeLight,light))return null;
-      }
-      return {signature,...change,places:[...candidate.places],start:candidate.schedule?.start ?? settings.start,
-        before:result,result:schedule,light,needsCheck:issues(schedule).length>0};
-    }catch {return null;}
+    const tested=trial.evaluate(candidate);
+    return tested?{signature,...change,places:[...candidate.places],start:candidate.schedule?.start ?? settings.start,...tested}:null;
   }
   // One-minute trials find the smallest earlier start. Calendar breaks and
   // departures make a binary search unsafe: feasibility need not be monotonic.
