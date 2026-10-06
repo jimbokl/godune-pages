@@ -1,5 +1,5 @@
 import {selectedDay} from './trip-days-state.mjs?v=22';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot} from './kosa-plan-state.mjs?v=22';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=22';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=20';
 import {transitTable} from './transport-day.mjs?v=3';
 import {roadbookJourney} from './day-journey-view.mjs?v=6';
@@ -23,6 +23,8 @@ export async function savedKosaJourney(trip,catalog,base,calculate) {
   if(saved.bus_snapshot!==kosaBusSnapshot(result))return {state:'stale',message:'Выбранные автобусы изменились. Прежний план сохранён; откройте поездку на косу и подберите рейсы заново.',rows:[]};
   if(result.rail && saved.rail_snapshot===undefined)return {state:'stale',message:'Этот день был сохранён без отметки выбранных электричек. Прежний план на месте; откройте поездку на косу и подтвердите рейсы.',rows:[]};
   if(saved.rail_snapshot!==undefined && saved.rail_snapshot!==kosaRailSnapshot(result))return {state:'stale',message:'Выбранные электрички изменились. Прежний план сохранён; откройте поездку на косу и подберите рейсы заново.',rows:[]};
+  let generated_note=false;
+  try{generated_note=isGeneratedKosaNote(selectedDay(trip).note,saved,result,table,catalog,maps);}catch{/* Unrecognized notes remain visible. */}
   const effective={...saved,...(input.home?{home:input.home}:{}),...(input.rail?{to_station:input.rail.to_station,from_station:input.rail.from_station}:{})};
   const original=kosaRoadbook(effective,result,table,catalog,maps),context={input,table,maps,result,plan:JSON.stringify(saved),
     times:{'vysota-efa':result.outward.arrival+saved.first_visit,...(result.transfer?{'tancuyushchiy-les':result.transfer.via+saved.second_visit}:{})}};
@@ -31,6 +33,6 @@ export async function savedKosaJourney(trip,catalog,base,calculate) {
     progress=currentProgress(trip);
     if(progress)book=continueKosaRoadbook(original,calculate.transitDay(kosaProgressInput(trip,context)),progress);
   }catch(error){return {state:'stale',message:'Отметки дня изменились. Обновите место и время у остановки перед новым расчётом.',rows:[],context,error:error.message};}
-  return {state:book.continuation?.state==='conflict'||book.home?.state==='late_home'?'conflict':book.continuation?.state==='incomplete'||book.home&&book.home.state!=='fits'?'incomplete':'ready',context,
+  return {generated_note,state:book.continuation?.state==='conflict'||book.home?.state==='late_home'?'conflict':book.continuation?.state==='incomplete'||book.home&&book.home.state!=='fits'?'incomplete':'ready',context,
     message:(book.continuation?kosaContinuationMessage(book.continuation):[book.home?transitHomeCopy(book.home,book.home_known??true):'','Электрички и автобусы — по опубликованной таблице. Рейсы и посадку на дату поездки подтвердите перед выходом.'].filter(Boolean).join(' '))+(book.walking.status==='unavailable'?' Карта переходов не загрузилась: время пеших участков ещё нужно сверить.':''),rows:roadbookJourney(book),book};
 }

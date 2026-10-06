@@ -32,7 +32,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
   const sourceHeight=s=>s?textHeight(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
   const source=(s)=>{if(!s)return;need(sourceHeight(s));text(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8});};
-  function notes(day){if(!day.record.note)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
+  function notes(day){if(!day.record.note||day.generated_note===true)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
   start();text('GODUNE · МАРШРУТЫ БАЛТИКИ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
   const first=snapshot.days.flatMap(d=>d.stops).find(p=>media.photos[p.id]);
@@ -106,7 +106,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
           trailSections.push({day:day.id,route:c.entry.route,role:section.role,...(section.id?{id:section.id}:{}),begins,pages:section.pages.length,source_pages:section.pages,pdf_sha256:c.entry.sha256,snapshot_sha256:c.entry.snapshot_sha256,manifest_sha256:kosaAssets.manifest_sha256});
         }
       }
-      if(day.record.note){start();notes(day);}
+      if(day.record.note&&day.generated_note!==true){start();notes(day);}
     }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }

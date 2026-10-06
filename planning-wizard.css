@@ -26,3 +26,17 @@
 .wizard-fields select{width:100%;min-width:0;min-height:48px;padding:10px;background:var(--paper);border:1px solid var(--sea-line);border-radius:4px;font-size:16px;color:var(--ink)}.wizard-rail>fieldset{min-width:0;margin:18px 0;padding:16px;border:1px solid var(--sea-line);border-radius:8px}.wizard-rail legend{padding:0 8px;font-size:16px;font-weight:600}.wizard-rail p{font-size:14px;line-height:1.65}.wizard-rail a{text-decoration:underline;text-underline-offset:3px}
 
 .wizard-rail .wizard-rail-select{grid-column:1/-1}.wizard-return-suggestion{margin:18px 0 24px}.wizard-return-suggestion p{font-size:15px;line-height:1.6;color:var(--muted);margin-bottom:12px}.wizard-return-suggestion button{white-space:normal;text-align:left}
+
+/* Road estimates are optional detail; unresolved home travel stays visible. */
+.wizard-access-settings{margin:18px 0 14px;border-top:1px solid var(--sea-line);border-bottom:1px solid var(--sea-line)}
+.wizard-access-settings>summary{display:block;position:relative;min-height:64px;padding:14px 28px 14px 0;cursor:pointer;list-style:none}
+.wizard-access-settings>summary::-webkit-details-marker{display:none}
+.wizard-access-settings>summary::after{content:'+';position:absolute;right:0;top:14px;font-size:24px;color:var(--sea-muted)}
+.wizard-access-settings[open]>summary::after{content:'−'}
+.wizard-access-settings>summary:focus-visible{outline:2px solid var(--sea-line);outline-offset:4px}
+.wizard-access-settings>summary strong{display:block;font:600 16px/1.5 var(--sans)}
+.wizard-access-status{display:block;margin-top:4px;font:14px/1.5 var(--sans);color:var(--sea-muted);overflow-wrap:anywhere}
+.wizard-access-settings .wizard-access-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
+.wizard-access-fields label{font-size:14px;line-height:1.5}
+.wizard-access-settings>p{color:var(--muted);margin:16px 0}
+@media(max-width:700px){.wizard-access-settings .wizard-access-fields{grid-template-columns:1fr}.wizard-access-fields label:first-child{grid-column:auto}}

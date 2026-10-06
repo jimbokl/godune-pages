@@ -1,6 +1,6 @@
-import {initWizardBus} from './wizard-bus-ui.mjs?v=1';
+import {initWizardBus} from './wizard-bus-ui.mjs?v=2';
 import {wizardBusChoices,wizardBusTargets} from './wizard-bus.mjs?v=1';
-import {initWizardRail} from './wizard-rail-ui.mjs?v=1';
+import {initWizardRail} from './wizard-rail-ui.mjs?v=2';
 import {earlierWizardReturn} from './wizard-rail.mjs?v=1';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
@@ -75,6 +75,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     $('[data-wizard-start-label]').textContent=known?(multi()?'Выход из жилья каждый день':'Выход из жилья'):(multi()?'Начало каждого дня':'Начало прогулки');
     $('[data-wizard-base-note]').textContent=answers.transport==='bus'
       ?known?'Начнём и закончим здесь. Укажите время до первой посадки и от последней остановки до жилья — добавим его к поездке.':'Можно добавить жильё и время дороги до посадки. Без адреса посчитаем день от станции или автостанции.'
+      :answers.transport==='rail'?'Для электрички укажите время до вокзала и после обратного поезда в блоке «Дорога и запас времени». Неизвестную дорогу оставим открытым вопросом.'
       :known?'Начнём и закончим здесь. Учтём дорогу по карте; проход от двери и на месте нужно проверить.'
       :'Добавьте адрес, если знаете, где будете жить. Посчитаем дорогу до прогулки и возвращение. Без адреса день начинается у первой остановки.';
   }
@@ -380,7 +381,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     const route=form.querySelector('input[name="wizard_route"]:checked'),starter=form.querySelector('input[name="wizard_starter"]:checked');
     answers={...answers,route:route?.value || answers.route,starter:starter?.value || answers.starter,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
     if(answers.start>=answers.end){form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
-    if(answers.transport==='bus'){for(const input of $('[data-wizard-bus]').querySelectorAll('input'))if(!input.checkValidity()){$('[data-wizard-transport]').open=true;input.reportValidity();return;}}
+    if(['bus','rail'].includes(answers.transport)){for(const input of $(`[data-wizard-${answers.transport}]`).querySelectorAll('input'))if(!input.checkValidity()){$('[data-wizard-transport]').open=true;input.reportValidity();return;}}
     const ticket=++sequence;
     try {busContext=answers.transport==='bus'?await busForm.context():null;if(ticket!==sequence||step!==2)return;prepareWizardPlan(workshop.getState(),answers,catalog,busContext);show(3);}catch(error) {announce(error.message.startsWith('wizard_bus_')?'Выберите дату с опубликованным расписанием и поездку к дюнам. Если рейсы не складываются, начните раньше или оставьте одну тропу.':error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
   });
