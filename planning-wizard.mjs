@@ -5,7 +5,7 @@ import {earlierWizardReturn} from './wizard-rail.mjs?v=3';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=3';
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=17';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=18';
 import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=23';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=17';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=7';
@@ -15,7 +15,9 @@ import {assessSchedule,assessKosa,readinessCopy} from './day-readiness.mjs?v=6';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
 import {downloadTripFile} from './trip-file.mjs?v=27';
 import {partyLabel,validParty} from './trip-party.mjs?v=1';
-import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=5';
+import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=6';
+import {tripAccessProfile} from './route-access.mjs?v=1';
+import {routeAccessDetails} from './route-access-ui.mjs?v=1';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -119,10 +121,11 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   }
 
   function preferenceResult(trip,matrix=null) {
-    const assessment=assessDayPreferences(trip,catalog,matrix);if(!assessment.label)return null;
-    const details=node('details',undefined,'wizard-evidence wizard-preference-result');details.dataset.wizardPreferenceResult='';details.open=assessment.access==='barriers';
-    details.append(node('summary',`Вам важно: ${assessment.label}`));
-    for(const note of assessment.notes)details.append(node('p',note));
+    const assessment=assessDayPreferences(trip,catalog,matrix),profile=tripAccessProfile(trip,catalog);
+    const details=routeAccessDetails(profile,{open:assessment.access==='barriers'});details.classList.add('wizard-preference-result');details.dataset.wizardPreferenceResult='';
+    if(assessment.label){details.insertBefore(node('p',`Вам важно: ${assessment.label}`),details.querySelector('summary').nextSibling);
+      // Access facts already have sources below; keep interests and walking length once.
+      for(const note of assessment.notes.filter(note=>!profile.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))details.append(node('p',note));}
     return details;
   }
 

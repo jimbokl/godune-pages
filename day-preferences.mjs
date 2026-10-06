@@ -1,4 +1,5 @@
 import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=11';
+import {routeAccessProfile,tripAccessProfile} from './route-access.mjs?v=1';
 
 // Preferences describe the traveller's intent. They never certify a path.
 export const DAY_INTERESTS={sea:'Море',nature:'Лес и парки',history:'Архитектура и история',museums:'Музеи',food:'Кофе и еда'};
@@ -20,19 +21,9 @@ const pointsFor=(choice,catalog)=>{
   const known=new Map(catalog.poi.map(point=>[point.slug,point]));
   return [...new Set(ids)].map(id=>known.get(id)).filter(Boolean);
 };
-const evidenceValid=value=>object(value) && value.version===1 && ['present','none','unknown'].includes(value.stairs)
-  && ['passable','blocked','unknown'].includes(value.stroller) && ['segment','place','route'].includes(value.extent);
 function mobilityFacts(choice,catalog) {
   if(choice.days)return choice.days.flatMap(day=>mobilityFacts({...(day.recipe || {}),places:day.places,stops:day.recipe?.stops || day.places.map(poi=>({poi,visit_scope:day.schedule?.stops?.[poi]?.visit_scope}))},catalog));
-  const points=pointsFor(choice,catalog),facts=[];
-  if(evidenceValid(choice.mobility))facts.push({name:choice.name,...choice.mobility,text:choice.mobility.text || choice.access_note,source:choice.mobility.source});
-  for(const point of points)for(const condition of point.visit_conditions || []) {
-    // Looking at a building outside does not imply climbing its viewing tower.
-    const outside=choice.stops?.find(stop=>stop.poi===point.slug)?.visit_scope==='outside';
-    if(outside && condition.scope==='service')continue;
-    if(condition.kind==='access' && evidenceValid(condition.mobility))facts.push({name:point.name,...condition.mobility,text:condition.text,source:condition.source});
-  }
-  return facts;
+  return routeAccessProfile(choice,catalog).entries;
 }
 const metres=value=>Number.isFinite(value) && value>=0;
 const lengthLabel=value=>value<1000?`${Math.round(value)} м`:`${(value/1000).toLocaleString('ru',{maximumFractionDigits:1})} км`;
@@ -89,7 +80,7 @@ export function assessDayPreferences(trip,catalog,matrix=null) {
   const route=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===day.wave?.recipe);
   const places=[...new Set([...(day.kosa_plan?['vysota-efa',...(day.kosa_plan.walks==='two'?['tancuyushchiy-les']:[])]:[]),...trip.places])];
   // Route-specific evidence only applies while its exact stop order is retained.
-  const sameRoute=route && JSON.stringify(route.stops.map(stop=>stop.poi))===JSON.stringify(places);
+  const sameRoute=route && tripAccessProfile(trip,catalog).route_id===route.slug;
   const choice={...(sameRoute?route:{}),places,stops:places.map(id=>({poi:id,visit_scope:trip.schedule?.stops?.[id]?.visit_scope})),name:sameRoute?route.name:'Ваш день'};
   const assessed=assessPreferenceChoice(choice,catalog,preferences,{matrix}),notes=assessed.notes.filter(note=>!note.startsWith('Пешая линия') && !note.startsWith('Длина пешего'));
   let distance=null,unknownLegs=0;

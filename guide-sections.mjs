@@ -1,13 +1,13 @@
 // The generator labels whole sections, including their overflow pages.
 // Select by purpose; page numbers alone never decide what a traveller loses.
 export function personalGuideSections(entry) {
-  const roles = new Set(['cover','overview','wayfinding','place','preparation','sources']);
+  const roles = new Set(['cover','overview','wayfinding','access','place','preparation','sources']);
   if (!Number.isInteger(entry?.pages) || entry.pages < 1 || !Array.isArray(entry.sections)) throw Error('guide_sections_invalid');
   const seen = new Set(), places = new Set(), counts = new Map();
   let nextPage = 0;
   for (const section of entry.sections) {
     if (!section || !roles.has(section.role) || !Array.isArray(section.pages) || !section.pages.length
-      || (section.role === 'place' && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(section.id))) throw Error('guide_sections_invalid');
+      || (section.role === 'place' && (typeof section.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(section.id)))) throw Error('guide_sections_invalid');
     if (section.role === 'place') {
       if (places.has(section.id)) throw Error('guide_sections_invalid');
       places.add(section.id);
@@ -21,7 +21,9 @@ export function personalGuideSections(entry) {
   if (seen.size !== entry.pages || !counts.get('place')
     || ['cover','overview','wayfinding','preparation','sources'].some(role => counts.get(role) !== 1)) throw Error('guide_sections_invalid');
   const order = entry.sections.map(section => section.role).join(',');
-  if (!/^cover,overview,wayfinding,(?:place,)+preparation,sources$/.test(order)) throw Error('guide_sections_invalid');
+  if (!/^cover,overview,wayfinding,(?:access,)?(?:place,)+preparation,sources$/.test(order)) throw Error('guide_sections_invalid');
+  // The personal guide has a current-day profile already. Keep the static
+  // chapter in standalone guides without repeating it in the personal day.
   return entry.sections.filter(section => ['overview','wayfinding','place','sources'].includes(section.role));
 }
 

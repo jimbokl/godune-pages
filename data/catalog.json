@@ -11573,6 +11573,177 @@
   "routes": [
     {
       "access_note": "Виллы смотрим с улицы. Музей и спектакли бронируются отдельно.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "Амалиенау: виллы и парк",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/998471064",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              998471064
+            ]
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Вилла Лео",
+                "poi": "villa-leo"
+              }
+            ],
+            "extent": "place",
+            "id": "villa-leo:villa-exterior-kindergarten",
+            "label": "Вилла с улицы",
+            "name": "Вилла Лео",
+            "poi": "villa-leo",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: вилла Лео",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/villa-leo/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Вилла находится на Каштановой аллее, 16; сейчас здесь работает детский сад № 27. Фасад — остановка городской прогулки. Доступ во двор и внутрь для посетителей не подтверждён."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Вилла Шмидт",
+                "poi": "villa-shmidt"
+              }
+            ],
+            "extent": "place",
+            "id": "villa-shmidt:villa-exterior-kindergarten",
+            "label": "Вилла с улицы",
+            "name": "Вилла Шмидт",
+            "poi": "villa-shmidt",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: вилла Шмидт",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/villa-shmidt/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Адрес — проспект Победы, 24. Сейчас в вилле работает детский сад № 27. Для маршрута выбирай осмотр фасада с улицы; туристический вход во двор и внутрь здания не подтверждён."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Музей «Альтес Хаус»",
+                "poi": "altes-haus"
+              }
+            ],
+            "extent": "place",
+            "id": "altes-haus:altes-booking",
+            "label": "До входа в квартиру",
+            "name": "Музей «Альтес Хаус»",
+            "poi": "altes-haus",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Музей-квартира «Альтес Хаус»",
+              "url": "https://alteshaus.ru/about/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Музей советует купить билет заранее: онлайн или в кафетерии «Густав Гроссманн». Там же предъявляют электронные билеты. Верхнюю одежду и сумки перед экскурсией оставляют в гардеробе."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Кирха памяти королевы Луизы",
+                "poi": "kirha-korolevy-luizy"
+              }
+            ],
+            "extent": "place",
+            "id": "kirha-korolevy-luizy:puppet-each-spectator-ticket",
+            "label": "Билет каждому зрителю",
+            "name": "Кирха памяти королевы Луизы",
+            "poi": "kirha-korolevy-luizy",
+            "scope": "service",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Калининградский театр кукол: вопросы о посещении",
+              "url": "https://teatrkukol39.ru/item/1855369",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Отдельный билет нужен каждому зрителю, в том числе ребёнку любого возраста. Для взрослого с ребёнком покупают два билета."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Кирха памяти королевы Луизы",
+                "poi": "kirha-korolevy-luizy"
+              }
+            ],
+            "extent": "place",
+            "id": "kirha-korolevy-luizy:puppet-stair-assistance",
+            "label": "Помощь на лестнице",
+            "name": "Кирха памяти королевы Луизы",
+            "poi": "kirha-korolevy-luizy",
+            "scope": "service",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Калининградский театр кукол: вопросы о посещении",
+              "url": "https://teatrkukol39.ru/item/1855369",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "В театре есть лестничный подъёмник. Чтобы подготовить помощь при входе, заранее свяжись с театром: +7 (4012) 21-43-35."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Пергола королевы Луизы",
+                "poi": "pergola-korolevy-luizy"
+              }
+            ],
+            "extent": "place",
+            "id": "pergola-korolevy-luizy:pergola-park-location",
+            "label": "Внутри Центрального парка",
+            "name": "Пергола королевы Луизы",
+            "poi": "pergola-korolevy-luizy",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Администрация Калининграда: пергола королевы Луизы",
+              "url": "https://www.klgd.ru/city/tourism/sights_k/sculpture/detail.php?ID=71648661",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Пергола находится в Центральном парке, бывшем Луизенвале, у проспектов Победы и Мира. Включай её в прогулку по аллеям: это отдельная остановка внутри парка."
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "amalienau-2-hours",
+        "stairs": "present",
+        "stroller": "unknown",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "kaliningrad",
       "area_name": "Калининград",
       "description": "У вилл Лео и Шмидт прогулка начинается с архитектуры, у кирхи памяти королевы Луизы переходит к аллеям Центрального парка. Два часа на этот путь; для «Альтес Хаус» добавьте отдельное время.",
@@ -11937,6 +12108,156 @@
     },
     {
       "access_note": "Время рассчитано для прогулки и коротких остановок. Посещение выставок и концерта добавьте отдельно.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "Остров Канта и музейная набережная",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/172879470",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              172879470,
+              1088943370,
+              172879468
+            ]
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Могила Иммануила Канта",
+                "poi": "mogila-kanta"
+              }
+            ],
+            "extent": "place",
+            "id": "mogila-kanta:kant-grave-location",
+            "label": "Где искать",
+            "name": "Могила Иммануила Канта",
+            "poi": "mogila-kanta",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Кафедральный собор",
+              "url": "https://sobor39.ru/about/museum/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Усыпальница Канта находится у северной стены собора, снаружи. Музей Канта расположен в башне: это отдельная точка посещения."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Медовый мост",
+                "poi": "medovyy-most"
+              }
+            ],
+            "extent": "place",
+            "id": "medovyy-most:bridge-banks",
+            "label": "Два берега",
+            "name": "Медовый мост",
+            "poi": "medovyy-most",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: Медовый мост",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/bridges/medovyj-most/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Мост соединяет Октябрьскую улицу с улицей Канта на восточном берегу острова. От Рыбной деревни по нему идут к собору; в обратную сторону — к набережной с кафе."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Рыбная деревня",
+                "poi": "rybnaya-derevnya"
+              }
+            ],
+            "extent": "place",
+            "id": "rybnaya-derevnya:riverside-quarter",
+            "label": "Прогулка по набережной",
+            "name": "Рыбная деревня",
+            "poi": "rybnaya-derevnya",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: Рыбная деревня",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/sightseeings/rybnaya-derevnya/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Рыбная деревня занимает участок Октябрьской улицы, 2–14. Здесь можно пройти вдоль реки; подъём на башню «Маяк», прогулки на воде и посещение ресторанов — отдельные остановки со своими условиями. Их часы и цены эта карточка не подтверждает."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "«Планета Океан»",
+                "poi": "planeta-okean"
+              }
+            ],
+            "extent": "place",
+            "id": "planeta-okean:planeta-booking",
+            "label": "Как поймать билет",
+            "name": "«Планета Океан»",
+            "poi": "planeta-okean",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Музей Мирового океана",
+              "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Онлайн-продажа открывается каждый понедельник в 10:00 по калининградскому времени. В кассе со среды по воскресенье продают билеты на текущий день. Наличие мест проверьте перед выходом."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "«Планета Океан»",
+                "poi": "planeta-okean"
+              }
+            ],
+            "extent": "place",
+            "id": "planeta-okean:planeta-warm-layer",
+            "label": "Возьмите тёплый слой",
+            "name": "«Планета Океан»",
+            "poi": "planeta-okean",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Музей Мирового океана",
+              "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "В залах прохладно. Верхнюю одежду оставляют в гардеробе, поэтому музей советует взять кофту или свитер."
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "ostrov-kanta-naberezhnye",
+        "stairs": "present",
+        "stroller": "unknown",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "kaliningrad",
       "area_name": "Калининград",
       "description": "Преголя ведёт от собора через Медовый мост и Рыбную деревню к музейной набережной. Здесь стоят «Витязь» и «Планета Океан». Три часа на прогулку; посещение музеев займёт дополнительное время.",
@@ -12511,6 +12832,87 @@
     },
     {
       "access_note": "Маршрут проходит по городским улицам. Используйте переходы; экспозиции внутри ворот посещаются отдельно.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "От Королевских ворот к Преголе",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/172879470",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              172879470,
+              1088943370,
+              172879468
+            ]
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Рыбная деревня",
+                "poi": "rybnaya-derevnya"
+              }
+            ],
+            "extent": "place",
+            "id": "rybnaya-derevnya:riverside-quarter",
+            "label": "Прогулка по набережной",
+            "name": "Рыбная деревня",
+            "poi": "rybnaya-derevnya",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: Рыбная деревня",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/sightseeings/rybnaya-derevnya/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Рыбная деревня занимает участок Октябрьской улицы, 2–14. Здесь можно пройти вдоль реки; подъём на башню «Маяк», прогулки на воде и посещение ресторанов — отдельные остановки со своими условиями. Их часы и цены эта карточка не подтверждает."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Музей Мирового океана: «Глубина»",
+                "poi": "muzej-mirovogo-okeana"
+              }
+            ],
+            "extent": "place",
+            "id": "muzej-mirovogo-okeana:ocean-buildings",
+            "label": "Выберите объект перед поездкой",
+            "name": "Музей Мирового океана: «Глубина»",
+            "poi": "muzej-mirovogo-okeana",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Музей Мирового океана",
+              "url": "https://www.world-ocean.ru/posetitelyam/vremya-raboty",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "У судов и выставочных корпусов разные часы и билеты. «Глубина» и «Планета Океан» — два отдельных корпуса; для «Планеты Океан» нужен билет на сеанс."
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "vorota-i-reka",
+        "stairs": "present",
+        "stroller": "unknown",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "kaliningrad",
       "area_name": "Калининград",
       "description": "От Королевских и Закхаймских ворот путь выходит к Рыбной деревне, острову Канта и музейной набережной. Около 4,5 км: городская архитектура постепенно уступает место реке.",
@@ -13501,6 +13903,65 @@
     },
     {
       "access_note": "На карте прогулочная линия по дорожкам OSM, а не полный перечень разрешённых участков парка. Проверяйте указатели и сообщения парка.",
+      "access_profile": {
+        "entries": [
+          {
+            "applies_to": [
+              {
+                "name": "Танцующий лес",
+                "poi": "tancuyushchiy-les"
+              }
+            ],
+            "extent": "place",
+            "id": "tancuyushchiy-les:park-entry",
+            "label": "Как получить разрешение",
+            "name": "Танцующий лес",
+            "poi": "tancuyushchiy-les",
+            "scope": "park",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Национальный парк «Куршская коса»",
+              "url": "https://www.park-kosa.ru/stoimost-uslug-i-lgotyi",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Разрешение можно оформить на КПП № 1 или № 2, либо на сайте kkosa.ru. Оно относится к посещению национального парка. Пограничный пропуск и платные экскурсии — отдельные вопросы."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Танцующий лес",
+                "poi": "tancuyushchiy-les"
+              }
+            ],
+            "extent": "place",
+            "id": "tancuyushchiy-les:forest-access",
+            "label": "Настил без ступеней",
+            "name": "Танцующий лес",
+            "poi": "tancuyushchiy-les",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Национальный парк «Куршская коса»",
+              "url": "https://www.park-kosa.ru/tantsuyuschiy-les-28ekologicheskaya-tropa29",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "После реконструкции 2022 года парк описывает маршрут как настил шириной два метра, без лестниц. По этому описанию тропа доступна с коляской и на инвалидной коляске."
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "tancuyushchiy-les",
+        "stairs": "unknown",
+        "stroller": "unknown",
+        "summary": "Проход на всём пути ещё не проверен",
+        "version": 1
+      },
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "description": "Дорожки Танцующего леса ведут между соснами и возвращают к началу прогулки. Около часа с остановками; до входа на тропу нужно добраться транспортом. Высота Эфа — отдельная поездка.",
@@ -13672,6 +14133,95 @@
     },
     {
       "access_note": "Возвращение к началу включено в линию. Есть ступени; не сходите с разрешённого настила. Время переезда не включено.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "Высота Эфа: к дюнам и обратно",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/1335775057",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              1335775057,
+              1335775058
+            ]
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Высота Эфа: начало тропы",
+                "poi": "vysota-efa"
+              },
+              {
+                "name": "Смотровая на высоте Эфа",
+                "poi": "smotrovaya-efa"
+              }
+            ],
+            "extent": "place",
+            "id": "vysota-efa:park-entry",
+            "label": "Как получить разрешение",
+            "name": "Высота Эфа: начало тропы; Смотровая на высоте Эфа",
+            "poi": "vysota-efa",
+            "scope": "park",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Национальный парк «Куршская коса»",
+              "url": "https://www.park-kosa.ru/stoimost-uslug-i-lgotyi",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Разрешение можно оформить на КПП № 1 или № 2, либо на сайте kkosa.ru. Оно относится к посещению национального парка. Пограничный пропуск и платные экскурсии — отдельные вопросы."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Высота Эфа: начало тропы",
+                "poi": "vysota-efa"
+              },
+              {
+                "name": "Смотровая на высоте Эфа",
+                "poi": "smotrovaya-efa"
+              }
+            ],
+            "extent": "segment",
+            "id": "vysota-efa:efa-access",
+            "label": "Подход к первым площадкам",
+            "name": "Высота Эфа: начало тропы; Смотровая на высоте Эфа",
+            "poi": "vysota-efa",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Национальный парк «Куршская коса»",
+              "url": "https://www.park-kosa.ru/vysota-efa-28ekologicheskaya-tropa29",
+              "verification": "official_source"
+            },
+            "stairs": "none",
+            "stroller": "passable",
+            "text": "По данным парка, от парковки до первых смотровых площадок есть пандусы: здесь можно пройти с детской коляской или на инвалидной коляске с сопровождающим. Это описание первого участка, а не всей тропы.",
+            "version": 1
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "vysota-efa",
+        "stairs": "present",
+        "stroller": "partial",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "kurshskaya-kosa",
       "area_name": "Куршская коса",
       "description": "От входа на тропу путь поднимается к смотровой Эфа, затем возвращается по тому же разрешённому маршруту. Почти 2 км со ступенями и остановкой у дюн; дорогу до тропы рассчитайте отдельно.",
@@ -13985,6 +14535,40 @@
     },
     {
       "access_note": "Путь к пляжу и обратно к той же станции включён в линию. На спуске в OSM отмечены 64 ступени без пандуса. ТИЦ указывает около 600 м от платформы до широкого пляжа. Долгое купание и запас на поезд добавьте отдельно; расписание и проход сверяйте перед выходом.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "Зеленоградск-2: от поезда к морю",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/721242228",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              721242228,
+              1320226545
+            ]
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "zelenogradsk-2-k-moryu",
+        "stairs": "present",
+        "stroller": "unknown",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
       "description": "Небольшой день у моря: от западной станции к широкому пляжу и обратно к поезду. В линии учтены оба пеших подхода, в остановках — полчаса у воды.",
@@ -14490,6 +15074,114 @@
     },
     {
       "access_note": "Башня, морской берег и возвращение к тому же вокзалу входят в прогулку. Между городом и променадом есть перепад высоты; на пути есть ступени. Это не проверенный безбарьерный маршрут. Купание, обед и запас на посадку добавьте отдельно. Перед выходом сверяйте доступность проходов и рейс обратно.",
+      "access_profile": {
+        "entries": [
+          {
+            "extent": "route",
+            "id": "route-line",
+            "label": "По карте маршрута",
+            "name": "Светлогорск: от поезда к морю",
+            "poi": null,
+            "source": {
+              "checked_at": "2026-10-01",
+              "name": "Пешеходная сеть OpenStreetMap",
+              "url": "https://www.openstreetmap.org/way/71505086",
+              "verification": "map_estimate"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "На выбранной линии OpenStreetMap отмечены ступени. Обход без лестниц и проход с коляской ещё не проверены.",
+            "version": 1,
+            "way_ids": [
+              71505086,
+              71505093,
+              71505089,
+              71505090,
+              71505082
+            ]
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Водонапорная башня Светлогорска",
+                "poi": "bashnya-svetlogorsk"
+              }
+            ],
+            "extent": "place",
+            "id": "bashnya-svetlogorsk:sanatorium-tower-exterior",
+            "label": "Башня с улицы",
+            "name": "Водонапорная башня Светлогорска",
+            "poi": "bashnya-svetlogorsk",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: водонапорная башня Светлогорска",
+              "url": "https://visit-kaliningrad.ru/entertainment/sights/gorodskie-zdaniya/zdanie-s-vodonapornoj-bashnej/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Башня на Октябрьской улице, 11, входит в комплекс водогрязелечебницы Светлогорского центрального военного санатория. Для городской прогулки выбирай внешний осмотр. Туристический подъём на башню и свободный вход в здание не подтверждены."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Променад Светлогорска",
+                "poi": "promenad-svetlogorsk"
+              }
+            ],
+            "extent": "segment",
+            "id": "promenad-svetlogorsk:central-stairs",
+            "label": "Спуск к морю",
+            "name": "Променад Светлогорска",
+            "poi": "promenad-svetlogorsk",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Информационно-туристический центр Светлогорска",
+              "url": "https://www.svetlogorsk-tourism.ru/health/trails/marshrut-1/",
+              "verification": "official_source"
+            },
+            "stairs": "present",
+            "stroller": "unknown",
+            "text": "У центральной лестницы 265 ступеней. Солнечные часы стоят внизу, у променада; обратный путь потребует подъёма.",
+            "version": 1
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Променад Светлогорска",
+                "poi": "promenad-svetlogorsk"
+              }
+            ],
+            "extent": "segment",
+            "id": "promenad-svetlogorsk:panorama-lift-entry",
+            "label": "Если лестница не подходит",
+            "name": "Променад Светлогорска",
+            "poi": "promenad-svetlogorsk",
+            "scope": "service",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Информационно-туристический центр Светлогорска",
+              "url": "https://www.svetlogorsk-tourism.ru/activities/entertainment/lift-panorama-w-/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "К променаду можно спуститься на лифте «Панорама». Верхний вход — ул. Ленина, 11, нижний — Морской бульвар, 19. Турцентр сообщает об оснащении для людей с ограниченной подвижностью; детали уточняйте по телефону +7 (911) 450-26-82.",
+            "version": 1
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "svetlogorsk-ot-poezda-k-moryu",
+        "stairs": "present",
+        "stroller": "unknown",
+        "summary": "Есть сведения о лестницах",
+        "version": 1
+      },
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
       "description": "От вокзала через курортный город к морю. Башня и променад связаны пешим путём с возвращением на поезд.",
@@ -14867,6 +15559,65 @@
     },
     {
       "access_note": "Возвращение к вокзалу включено в линию и время прогулки. Маяк смотрим с городской стороны; доступ внутрь не подтверждён. Если хотите зайти в музей, проверьте часы и добавьте время на экспозицию. Перед поездкой выберите обратный рейс на сайте КППК и оставьте запас на посадку.",
+      "access_profile": {
+        "entries": [
+          {
+            "applies_to": [
+              {
+                "name": "Музей Балтийского флота",
+                "poi": "muzej-baltiyskogo-flota"
+              }
+            ],
+            "extent": "place",
+            "id": "muzej-baltiyskogo-flota:fleet-indoor",
+            "label": "Осмотр под крышей",
+            "name": "Музей Балтийского флота",
+            "poi": "muzej-baltiyskogo-flota",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-05",
+              "name": "Музей Балтийского флота",
+              "url": "https://navalmuseum.ru/filials/baltic_fleet",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Основная экспозиция размещена в залах музея. Под крышей — осмотр экспозиции; путь до входа остаётся на улице."
+          },
+          {
+            "applies_to": [
+              {
+                "name": "Балтийский маяк",
+                "poi": "baltiyskiy-mayak"
+              }
+            ],
+            "extent": "place",
+            "id": "baltiyskiy-mayak:baltic-lighthouse-exterior",
+            "label": "Осмотр маяка",
+            "name": "Балтийский маяк",
+            "poi": "baltiyskiy-mayak",
+            "scope": "place",
+            "source": {
+              "checked_at": "2026-10-02",
+              "name": "Туристский информационный центр: маяки области",
+              "url": "https://visit-kaliningrad.ru/blog/mayaki-kaliningradskoy-oblasti/",
+              "verification": "official_source"
+            },
+            "stairs": "unknown",
+            "stroller": "unknown",
+            "text": "Это действующий навигационный маяк. Туристов внутрь не пускают; включай его в прогулку для осмотра снаружи."
+          }
+        ],
+        "gaps": [
+          "Проход без лестниц и с коляской на всём пути ещё не проверен.",
+          "Покрытие, уклон и места для отдыха по всей линии ещё нужно уточнить."
+        ],
+        "route_id": "baltiysk-ot-vokzala-k-mayaku",
+        "stairs": "unknown",
+        "stroller": "unknown",
+        "summary": "Проход на всём пути ещё не проверен",
+        "version": 1
+      },
       "area": "baltiysk",
       "area_name": "Балтийск",
       "description": "Короткая прогулка по Балтийску: от вокзала к Музею Балтийского флота и маяку у канала, затем обратно к станции. Переправа на косу и время внутри музея в этот путь не входят.",

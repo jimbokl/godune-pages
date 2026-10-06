@@ -22,6 +22,8 @@ import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
 import {flexSignature} from './day-flex-advice.mjs?v=12';
 import {markVisited,travelContext} from './trip-travel-state.mjs?v=11';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=3';
+import {tripAccessProfile} from './route-access.mjs?v=1';
+import {routeAccessDetails} from './route-access-ui.mjs?v=1';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -314,6 +316,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(compact)$('#trip-timing-settings').hidden=!!generated;
     if(!opened) return;
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
+    const oldAccess=section.querySelector('[data-route-access]'),accessOpen=oldAccess?.open || false;
+    oldAccess?.remove();$('#trip-plan-summary').after(routeAccessDetails(tripAccessProfile(trip,catalog),{open:accessOpen}));
     let parking=section.querySelector('[data-day-parking]');
     if(!parking) {parking=document.createElement('p');parking.className='trip-plan-note';parking.dataset.dayParking='';$('#trip-plan-summary').after(parking);}
     const arrival=vehicleArrival(trip,catalog);parking.hidden=!arrival;

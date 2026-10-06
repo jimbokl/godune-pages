@@ -3,8 +3,8 @@ import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
 import {journeyKinds} from './day-journey-view.mjs?v=7';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
-import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
-const {PDFDocument,rgb}=globalThis.PDFLib;
+import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
+const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 const date=value=>value?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z')):'Дата ещё не выбрана';
@@ -23,7 +23,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   function start(){page=doc.addPage([w,h]);page.drawRectangle({x:0,y:0,width:w,height:h,color:paper});page.drawText(clean(chapter,ui).slice(0,60),{x:m,y:h-m-9,font:ui,size:8,color:muted});y=h-m-38;}
   const need=n=>{if(y-n<51)start();};
   function lines(text,font,size,max=width){const out=[];let line='';for(const word of clean(text,font).split(/\s+/)){const next=line?line+' '+word:word;if(font.widthOfTextAtSize(next,size)<=max){line=next;continue;}if(line){out.push(line);line='';}for(const letter of word){if(line&&font.widthOfTextAtSize(line+letter,size)>max){out.push(line);line='';}line+=letter;}}if(line)out.push(line);return out;}
-  function text(value,{font=ui,size=body,color=ink,space=10,max=width,x=m}={}){const leading=size*(font===title?1.2:1.48),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});}y-=space;}
+  function text(value,{font=ui,size=body,color=ink,space=10,max=width,x=m,link}={}){const leading=size*(font===title?1.2:1.48),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});if(link)page.node.addAnnot(doc.context.register(doc.context.obj({Type:'Annot',Subtype:'Link',Rect:[x,y-2,x+font.widthOfTextAtSize(line,size),y+size],Border:[0,0,0],A:{Type:'Action',S:'URI',URI:PDFString.of(link)}})));}y-=space;}
   const textHeight=(value,font=ui,size=body,space=10)=>lines(value,font,size).length*size*(font===title?1.2:1.48)+space;
   function heading(value,large=false,following='',extra=0){const size=large?(phone?32:43):(phone?24:30),head=textHeight(value,title,size,16),follow=textHeight(following)+extra;need(head+(head+follow<h-2*m-90?follow:body*3));text(value,{font:title,size,space:16});}
   async function image(value,maxHeight){if(!value)return;let img=embedded.get(value);if(!img){img=await (value.kind==='jpeg'?doc.embedJpg(value.bytes):doc.embedPng(value.bytes));embedded.set(value,img);}const iw=Math.min(width,maxHeight*value.width/value.height),ih=iw*value.height/value.width;need(ih+15);page.drawImage(img,{x:m+(width-iw)/2,y:y-ih,width:iw,height:ih});y-=ih+14;}
@@ -31,7 +31,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   async function qrCard(value,caption){if(!value)return;const img=await doc.embedPng(value.bytes),{size,wrapped,leading,height}=qrLayout(caption);need(height);page.drawImage(img,{x:m,y:y-size,width:size,height:size});wrapped.forEach((line,i)=>page.drawText(line,{x:m+size+12,y:y-leading*(i+1),font:ui,size:phone?9:11,color:muted}));y-=height;}
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
   const sourceHeight=s=>s?textHeight(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
-  const source=(s)=>{if(!s)return;need(sourceHeight(s));text(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8});};
+  const source=(s)=>{if(!s)return;need(sourceHeight(s));text(`${s.name || 'Источник'} · проверено ${s.checked_at || 'дата не указана'}`,{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8,link:s.url});};
   function notes(day){if(!day.record.note||day.generated_note===true)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
   start();text('GODUNE · МАРШРУТЫ БАЛТИКИ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
@@ -50,7 +50,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(home?.kind==='personal')text(`Начало: ${home.name} · GPS ${gps(home)}`,{size:phone?9.5:11});
     if(night?.kind==='personal')text(`Возвращение: ${night.name} · GPS ${gps(night)}`,{size:phone?9.5:11});
     text(day.summary);
-    if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes)text(note,{size:phone?10:12});}
+    if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     text(`${plural(day.stops.length,['место','места','мест'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
@@ -64,6 +64,12 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       if(row.source&&!day.kosa)source(row.source);
     }
     heading('Если день пошёл иначе',false,day.planB);text(day.planB);
+    if(day.access){
+      const first=day.access.entries[0];
+      // Keep the chapter title with the first evidence label and its opening lines.
+      heading('Лестницы и проход',false,'',first?textHeight(first.name+' · '+first.label,ui,phone?11:13)+body*3:textHeight(day.access.gaps[0]));
+      for(const row of day.access.entries){const label=row.name+' · '+row.label;need(textHeight(label,ui,phone?11:13)+body*3);text(label,{size:phone?11:13});text(({route:'Линия прогулки',segment:'Отдельный участок',place:'На месте'}[row.extent] || 'На месте')+' · '+row.text,{size:phone?10:12});source(row.source);}for(const gap of day.access.gaps)text(gap,{size:phone?10:12,color:muted});
+    }
     if(day.kosa){
       const k=day.kosa;
       if(k.light){heading('Свет на тропах и у остановки',false,k.light.rows[0]?.text);for(const row of k.light.rows)text(row.text,{color:row.warning?ink:muted});}
