@@ -1,4 +1,4 @@
-import {wizardBusTargets,wizardBusChoice} from './wizard-bus.mjs?v=3';
+import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=4';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
 import {transitTable} from './transport-day.mjs?v=3';
 
@@ -9,7 +9,7 @@ import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-ro
 export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
   let pending=null,loaded=null,failed=false;
   const access=wizardAccessUI();
-  const roads=stationRoadDraft({base,catalog,changed(){if(getAnswers().transport!=='bus')return;const active=document.activeElement,key=active?.dataset.wizardBusField,day=active?.closest('[data-wizard-bus-day]')?.dataset.wizardBusDay;render();if(key&&day!==undefined)mount.querySelector(`[data-wizard-bus-day="${day}"] [data-wizard-bus-field="${key}"]`)?.focus({preventScroll:true});}});
+  const roads=stationRoadDraft({base,catalog,changed(){if(!wizardBusActive(catalog,getAnswers()))return;const active=document.activeElement,key=active?.dataset.wizardBusField,day=active?.closest('[data-wizard-bus-day]')?.dataset.wizardBusDay;render();if(key&&day!==undefined)mount.querySelector(`[data-wizard-bus-day="${day}"] [data-wizard-bus-field="${key}"]`)?.focus({preventScroll:true});}});
   const node=(tag,text)=>{const value=document.createElement(tag);if(text!==undefined)value.textContent=text;return value;};
   async function context(){
     if(!pending)pending=(async()=>{
@@ -20,7 +20,7 @@ export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
     return pending;
   }
   function render(){
-    const answers=getAnswers();access.remember(mount);mount.replaceChildren();mount.hidden=answers.transport!=='bus';if(mount.hidden)return;
+    const answers=getAnswers();access.remember(mount);mount.replaceChildren();mount.hidden=!wizardBusActive(catalog,answers);if(mount.hidden)return;
     const targets=wizardBusTargets(catalog,answers);
     answers.bus_days=targets.map(target=>wizardBusChoice(answers,target));
     if(!targets.length){mount.append(node('p','Автобусный день пока собран для дюн Эфа и Танцующего леса. Выберите Куршскую косу или поездку, в которой есть эти тропы.'));return;}
@@ -67,7 +67,7 @@ export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
       }else card.append(node('p',failed?'Не удалось загрузить расписание. Повторите просмотр дня — Ваши ответы здесь.':'Загружаем таблицу рейсов…'));
       mount.append(card);
     }
-    if(!loaded&&!pending&&!failed)context().then(()=>{if(getAnswers().transport==='bus')render();}).catch(()=>{if(getAnswers().transport==='bus')render();});
+    if(!loaded&&!pending&&!failed)context().then(()=>{if(wizardBusActive(catalog,getAnswers()))render();}).catch(()=>{if(wizardBusActive(catalog,getAnswers()))render();});
   }
   return {render,context,prepare:()=>roads.prepare()};
 }

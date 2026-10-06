@@ -1,9 +1,9 @@
-import {wizardBusChoices,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=3';
+import {wizardBusChoices,wizardBusTargets,wizardBusActive,attachWizardBus} from './wizard-bus.mjs?v=4';
 import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=3';
 import {cleanTrip} from './trip-state.mjs?v=27';
 import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=23';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=17';
-import {tripStarterChoices} from './trip-starters.mjs?v=21';
+import {tripStarterChoices} from './trip-starters.mjs?v=22';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
@@ -140,8 +140,9 @@ export function prepareWizardTrip(current,answers,catalog,context=null) {
   if(!minute(answers.start) || !minute(answers.end) || answers.start>=answers.end)throw new Error('wizard_invalid_time');
   const railTargets=transport==='rail'?wizardRailTargets(catalog,answers):[];
   if(transport==='rail' && !railTargets.length)throw Error('wizard_rail_unavailable');
-  const busTargets=transport==='bus'?wizardBusTargets(catalog,answers):[],busRows=new Map();
+  const busTargets=wizardBusActive(catalog,answers)?wizardBusTargets(catalog,answers):[],busRows=new Map();
   if(transport==='bus'&&!busTargets.length)throw Error('wizard_bus_unavailable');
+  if(transport===null && starter.days.some((day,index)=>day.transport==='bus' && !busTargets.some(row=>row.index===index)))throw Error('wizard_bus_unavailable');
   let date=answers.date;
   const days=starter.days.map((template,index)=>{
     if(answers.date!==null && !validTripDate(date))throw new Error('wizard_date_overflow');

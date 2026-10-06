@@ -1,7 +1,7 @@
 // The shared wizard attaches the existing dated bus roadbook. It never turns
 // distant trails into walking segments or creates its own service calendar.
 import {waveVisit} from './day-wave.mjs?v=2';
-import {tripStarterChoices} from './trip-starters.mjs?v=21';
+import {tripStarterChoices} from './trip-starters.mjs?v=22';
 import {nextDate} from './trip-days-state.mjs?v=23';
 import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=24';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=22';
@@ -21,11 +21,17 @@ export function wizardBusTargets(catalog,answers){
   const route=wizardBusChoices(catalog).find(row=>row.slug===answers.route);
   const templates=answers.area==='whole-trip'?tripStarterChoices(catalog).find(row=>row.id===answers.starter)?.days||[]:route?[{places:route.stops.map(row=>row.poi)}]:[];
   let date=answers.date;
-  return templates.flatMap((row,index)=>{const today=date;date=nextDate(date);return compatible(row.places)?[{index,date:today,walks:row.places.includes('tancuyushchiy-les')?'two':'one'}]:[];});
+  return templates.flatMap((row,index)=>{const today=date;date=nextDate(date);return compatible(row.places)
+    && (!(answers.transport==='auto' || answers.transport===undefined) || row.transport==='bus')
+    ?[{index,date:today,walks:row.places.includes('tancuyushchiy-les')?'two':'one',...(row.transport_origin?{origin:row.transport_origin}:{})}]:[];});
+}
+export function wizardBusActive(catalog,answers){
+  return answers.transport==='bus' || (answers.transport==='auto' || answers.transport===undefined) && answers.area==='whole-trip'
+    && !!tripStarterChoices(catalog).find(row=>row.id===answers.starter)?.days.some(day=>day.transport==='bus');
 }
 export function wizardBusChoice(answers,target){
   const old=answers.bus_days?.find(row=>row.day_index===target.index)?.plan;
-  const city=old?.city==='kaliningrad'?'kaliningrad':'zelenogradsk',station=city==='kaliningrad'?(old?.station||'kaliningrad-north-zelenogradsk'):null;
+  const city=(old?.city || target.origin)==='kaliningrad'?'kaliningrad':'zelenogradsk',station=city==='kaliningrad'?(old?.station||'kaliningrad-north-zelenogradsk'):null;
   const location=answers.base||null;
   const same=old?.home_access?.city===city&&old.home_access.station===station&&stable(old.home_access.start_at)===stable(location)&&stable(old.home_access.return_at)===stable(location);
   const approach=same?old.home.approach:location?null:0,back=same?old.home.return_minutes:location?null:0;
@@ -53,6 +59,7 @@ export function boundBusInput(trip,saved,input){
   return next;
 }
 export function attachWizardBus(day,catalog,answers,index,target,context){
+  if(!day.date)throw Error('wizard_bus_date');
   const plan=answers.bus_days?.find(row=>row.day_index===index)?.plan;
   if(!target||!plan||plan.date!==day.date||plan.walks!==target.walks||plan.ready!==answers.start||plan.home?.end_by!==answers.end
     ||!validTransitAccess(plan.home_access,plan)||stable(plan.home_access.start_at)!==stable(day.start_at)||stable(plan.home_access.return_at)!==stable(day.night_at))throw Error('wizard_bus_changed');

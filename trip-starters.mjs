@@ -24,16 +24,21 @@ export function tripStarterChoices(catalog) {
  const editorial=(catalog?.day_waves?.version===1?catalog.day_waves.itineraries || []:[]).flatMap(row=>{
   if(!row || typeof row.id!=='string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(row.id) || ids.has(row.id)
     || typeof row.name!=='string' || !row.name || !Array.isArray(row.days) || !row.days.length
-    || row.days.some(day=>!recipes.has(day?.recipe)))return [];
+    || row.days.some(day=>!recipes.has(day?.recipe)
+      || day.transport!==undefined && !['foot','car','bus'].includes(day.transport)
+      || day.transport_origin!==undefined && (day.transport!=='bus' || !['kaliningrad','zelenogradsk'].includes(day.transport_origin))))return [];
   ids.add(row.id);
   return [{...row,days:row.days.map(day=>{const recipe=recipes.get(day.recipe);return {
-   places:recipe.stops.map(stop=>stop.poi),mode:'foot',start_at:null,night_at:recipe.return_to || null,recipe
+   places:recipe.stops.map(stop=>stop.poi),mode:day.transport==='car'?'car':'foot',start_at:null,night_at:recipe.return_to || null,recipe,
+   ...(day.transport?{transport:day.transport}:{}),...(day.transport_origin?{transport_origin:day.transport_origin}:{})
   };})}];
  });
  return [...existing,...editorial];
 }
 export function addTripStarter(trip,id,catalog) {
  const starter=tripStarterChoices(catalog).find(row=>row.id===id);if(!starter)return trip;
+ // A dated transport day needs the wizard's real timetable and confirmed preview.
+ if(starter.days.some(day=>day.transport==='bus'))return trip;
  const known=new Set(catalog.poi.map(p=>p.slug));
  if(starter.days.some(day=>[...day.places,day.start_at,day.night_at].some(place=>place && !known.has(place))))return trip;
  let date=trip.date;const {party,preferences}=selectedDay(trip);

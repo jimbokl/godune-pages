@@ -2,7 +2,7 @@
 // timetable after the traveller previews and explicitly applies the plan.
 import {waveChoices} from './day-wave.mjs?v=2';
 import {nextDate} from './trip-days-state.mjs?v=23';
-import {tripStarterChoices} from './trip-starters.mjs?v=21';
+import {tripStarterChoices} from './trip-starters.mjs?v=22';
 import {railTable,rideSnapshot,validRail,resolveRail} from './trip-rail-state.mjs?v=6';
 import {railStation} from './rail-destinations.mjs?v=1';
 import {planInput} from './trip-schedule-state.mjs?v=17';
