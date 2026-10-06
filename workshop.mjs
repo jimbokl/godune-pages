@@ -1,13 +1,13 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=27';
-import {initTripSharing} from './trip-link.mjs?v=42';
+import {initTripSharing} from './trip-link.mjs?v=43';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=22';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=6';
 import {createPlanningProgress} from './planning-progress.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=23';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=40';
 import {initTripDays} from './trip-days-ui.mjs?v=32';
-import {initDayWorkspace} from './day-workspace.mjs?v=12';
+import {initDayWorkspace} from './day-workspace.mjs?v=13';
 import {addTripStarter} from './trip-starters.mjs?v=24';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=23';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=16';

@@ -14,7 +14,7 @@ export function initGuideOffline({mount,base,onChange=()=>{},readPackages=()=>of
       add('text',value.text?'Текст этой главы сохранён.':'Эта версия рассказа ещё не сохранена. Можно скачать текст отдельным файлом.',value.text);
       add('map',value.map?`Карта вокруг точки сохранена: ${value.map.name}.`:'Карта вокруг точки ещё не скачана.',Boolean(value.map));
       const mb=value.audioBytes?(value.audioBytes/1048576).toLocaleString('ru-RU',{maximumFractionDigits:1}):'';
-      add('audio',record?value.audio?`Записанный голос сохранён · ${mb} МБ.`:'Записанный голос ещё не сохранён. Скачайте прогулку или звук отдельным файлом.':'Записи этой главы пока нет. Голос телефона может требовать связь.',value.audio);
+      add('audio',record?value.audio?`Записанный голос сохранён · ${mb} МБ.`:'Записанный голос ещё не сохранён. Скачайте звук отдельным файлом.':'Записи этой главы пока нет. Голос телефона может требовать связь.',value.audio);
     }
     onChange(value);
   }

@@ -6,7 +6,7 @@ import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {planInput} from './trip-schedule-state.mjs?v=17';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
 import {offlinePaths} from './offline.mjs?v=6';
-import {availableMaps} from './offline-map.mjs?v=9';
+import {availableMaps} from './offline-map.mjs?v=10';
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const date=value=>value?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'Europe/Kaliningrad'}).format(new Date(value+'T12:00:00Z')):'Дата пока не выбрана';
 const node=(tag,text,className)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el;};
@@ -86,9 +86,9 @@ export function initTravel(workshop,catalog,base){
     $('travel-offline-status').textContent='Проверяем скачанные карту и карточки…';
     const [paths,maps]=await Promise.all([offlinePaths(base),availableMaps(base)]);if(ticket!==sequence)return;
     const c=travelCoverage(trip,catalog,paths,maps,base);
-    $('travel-offline-status').textContent=!c.points?'Перед поездкой скачайте территорию, по которой поедете.':
+    $('travel-offline-status').textContent=!c.points?'Выберите места и сохраните PDF своего дня в планировщике.':
       c.page&&c.cards===c.total&&c.covered===c.points?'Экран, карточки и карта ваших точек скачаны. Дороги и входы проверьте на карте перед выходом.':
-      `Скачано карточек: ${c.cards} из ${c.total}. Карта покрывает ${c.covered} из ${c.points} точек.${c.page?'':' Этот экран ещё не скачан.'} Выберите нужную территорию в разделе «Без сети».`;
+      `Скачано карточек: ${c.cards} из ${c.total}. Карта покрывает ${c.covered} из ${c.points} точек.${c.page?'':' Этот экран ещё не скачан.'} Возьмите PDF своего дня в планировщике: карты и координаты уже внутри.`;
     root.dataset.coverageReady='true';
   }
   for(const name of ['godune:trip-change','godune:memory-cleared','godune:offline-change','online','offline'])window.addEventListener(name,render);

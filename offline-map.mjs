@@ -48,7 +48,7 @@ export function mapCoverage(root,base,maps,current,onChange){
   if(!panel){
     panel=document.createElement('div');panel.className='map-coverage';panel.dataset.mapCoverage='';
     const label=document.createElement('label'),text=document.createElement('span'),select=document.createElement('select'),link=document.createElement('a');
-    text.textContent='Карта с собой';select.setAttribute('aria-label','Покрытие скачанной карты');label.append(text,select);link.href=new URL('offline/',base);link.textContent='Скачать другую территорию →';panel.append(label,link);root.querySelector('#map-status').before(panel);
+    text.textContent='Карта с собой';select.setAttribute('aria-label','Покрытие скачанной карты');label.append(text,select);link.href=new URL('offline/',base);link.textContent='Скачать PDF-буклет →';panel.append(label,link);root.querySelector('#map-status').before(panel);
     select.addEventListener('change',()=>{chooseMap(select.value);onChange();});
   }
   const select=panel.querySelector('select');select.replaceChildren();

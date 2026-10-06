@@ -13,7 +13,7 @@ import {baseName} from './personal-points.mjs?v=3';
 import {previousPlace,dayBases} from './travel-estimates.mjs?v=11';
 import {assessSchedule,assessKosa,readinessCopy} from './day-readiness.mjs?v=6';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
-import {downloadTripFile} from './trip-file.mjs?v=27';
+import {downloadTripFile} from './trip-file.mjs?v=28';
 import {partyLabel,validParty} from './trip-party.mjs?v=1';
 import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=6';
 import {tripAccessProfile} from './route-access.mjs?v=1';
@@ -461,7 +461,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   $('[data-wizard-base-pick]').addEventListener('click',async()=>{
     const button=$('[data-wizard-base-pick]'),ticket=sequence;button.disabled=true;
     try {
-      const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=4');
+      const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=5');
       const route=wizardChoices(catalog).find(row=>row.slug===answers.route && row.area===answers.area);
       const starter=wizardStarters(catalog).find(row=>row.id===answers.starter);
       const focus=point(multi()?starter?.days[0]?.places[0]:route?.stops[0]?.poi);
@@ -477,6 +477,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     try {
       const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate',context:busContext});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
       if(committed.conflict || !intent?.applied){announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
+      if(committed.saved)document.dispatchEvent(new CustomEvent('godune:useful-action',{detail:'plan_saved'}));
       const readiness=readinessCopy(assessments,committed.saved);
       workshop.progress?.saved(attempt,assessments.find(row=>row.calculated)||assessments[0],committed.saved);
       $('[data-wizard-form]').hidden=true;$('[data-wizard-progress="3"]').setAttribute('aria-current','step');

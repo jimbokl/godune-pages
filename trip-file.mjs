@@ -14,6 +14,7 @@ export function downloadTripFile(state, catalog, now = new Date()) {
   link.href = objectURL; link.download = 'Поездка-на-Балтику-' + (state.date || now.toISOString().slice(0,10)) + '.json';
   document.body.append(link); link.click(); link.remove();
   setTimeout(() => URL.revokeObjectURL(objectURL), 60000);
+  document.dispatchEvent(new CustomEvent('godune:useful-action',{detail:'trip_file_ready'}));
 }
 
 export function readTripFile(text, catalog) {
