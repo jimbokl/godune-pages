@@ -40,3 +40,17 @@
 .wizard-access-fields label{font-size:14px;line-height:1.5}
 .wizard-access-settings>p{color:var(--muted);margin:16px 0}
 @media(max-width:700px){.wizard-access-settings .wizard-access-fields{grid-template-columns:1fr}.wizard-access-fields label:first-child{grid-column:auto}}
+
+/* The chosen walk stays in view; alternatives open only when requested. */
+.wizard-selection{margin:8px 0 24px;border:1px solid var(--sea-line);border-radius:8px;background:var(--sea-soft);overflow:hidden}
+.wizard-selection>summary{display:flex;align-items:center;gap:18px;padding:20px;cursor:pointer;list-style:none;min-height:104px}
+.wizard-selection>summary::-webkit-details-marker{display:none}
+.wizard-selection>summary:focus-visible{outline:3px solid var(--sea-muted);outline-offset:-4px}
+.wizard-selection-copy{flex:1;min-width:0;display:grid;gap:8px}
+.wizard-selection-copy>small{font:500 12px/1.5 var(--sans);color:var(--muted)}
+.wizard-selection-copy>strong{font:600 20px/1.35 var(--sans);color:var(--ink);overflow-wrap:anywhere}
+.wizard-selection-copy>span{font:14px/1.55 var(--sans);color:var(--muted)}
+.wizard-selection-action{flex:none;max-width:160px;font:600 14px/1.5 var(--sans);color:var(--sea-muted);text-decoration:underline;text-underline-offset:4px}
+.wizard-selection[open]>summary{border-bottom:1px solid var(--sea-line)}
+.wizard-selection>.wizard-choices{padding:16px;background:var(--paper)}
+@media(max-width:700px){.wizard-selection>summary{align-items:stretch;flex-direction:column;gap:14px;padding:18px}.wizard-selection-action{max-width:none;align-self:flex-start;min-height:32px;display:flex;align-items:center}.wizard-selection-copy>strong{font-size:18px}.wizard-selection>.wizard-choices{padding:12px}}

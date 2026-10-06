@@ -240,9 +240,9 @@
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=27')).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=28')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
-    ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
+    ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
     if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=20')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=21')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
@@ -267,9 +267,9 @@
     document.documentElement.dataset.tripReady = 'true';
     perfMark('trip-ready');
     // Stored days and their sections may finish rendering after native scrolling.
-    const restoreTripEntry=()=>{
+    const restoreTripEntry=()=>plannerWizardReady.then(()=>{
       revealPlannerTrip(location.hash,{scroll:true,focus:true});
-    };
+    });
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
     if ($('#budget-page')) import(url('budget-ui.mjs?v=8')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });

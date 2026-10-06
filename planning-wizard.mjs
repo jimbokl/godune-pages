@@ -53,7 +53,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const save=$('[data-wizard-save]');
   const defaults=()=>({...wizardDefaults(workshop.getState(),catalog),wave:{version:1,theme:'mixed',pace:'calm',recipe:null}});
   let answers=defaults(),step=1,proposal=null,revision=null,sequence=0,saving=false,attempt=null,assessments=[],preferenceMatrix=null,preferenceLoading=null;
-  let returnOptions=new Map(),departureOptions=new Map(),busContext=null;
+  let returnOptions=new Map(),departureOptions=new Map(),busContext=null,selectionMade=false;
   const node=(tag,text,className)=>{const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;};
   const point=id=>catalog.poi.find(row=>row.slug===id);
   const multi=()=>answers.area==='whole-trip';
@@ -131,6 +131,16 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     return details;
   }
 
+  function selectedPlan(rows=null) {
+    const selected=rows?.find(row=>(multi()?row.id:row.slug)===answers[multi()?'starter':'route'])
+      || (multi()?wizardStarters(catalog):answers.transport==='bus'?wizardBusChoices(catalog):wizardChoices(catalog)).find(row=>(multi()?row.id:row.slug)===answers[multi()?'starter':'route']);
+    const details=$('[data-wizard-selection]');
+    $('[data-wizard-selection-caption]').textContent=multi()?'Ваша поездка':'Ваша прогулка';
+    $('[data-wizard-selection-name]').textContent=selected?.name || 'Выберите прогулку';
+    $('[data-wizard-selection-note]').textContent=selected?(multi()?selected.geography || 'Калининградская область':answers.transport==='bus'?selected.description:`${selected.minutes?`Около ${duration(selected.minutes)} · `:''}${stopLabel(selected.stops.length)}`):'Готовые варианты ниже';
+    $('[data-wizard-selection-action]').textContent=details.open?'Свернуть варианты':multi()?'Выбрать другую поездку':'Выбрать другую прогулку';
+  }
+
   function routes({refreshSettings=true}={}) {
     if(refreshSettings)void preferenceDistances();
     const themeMount=$('[data-wizard-waves]'),paceMount=$('[data-wizard-pace]');
@@ -161,7 +171,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       if(notes.length){const note=node('span',notes.join('. '),'wizard-preference-match');note.dataset.wizardPreferenceMatch='';copy.append(note);}
       const mark=node('span','→','wizard-choice-mark');mark.setAttribute('aria-hidden','true');label.append(radio,copy,mark);return label;
     });
-    $('[data-wizard-routes]').replaceChildren(...choices);
+    $('[data-wizard-routes]').replaceChildren(...choices);selectedPlan(rows);
     const separate=(multi()?journeyIsOccupied:dayIsOccupied)(workshop.getState());
     $('[data-wizard-placement]').textContent=multi()?(separate?'У Вас уже есть планы. Добавим все новые дни рядом с ними — проверьте первую дату.':'Начнём новую поездку. Каждый день потом можно изменить.'):
       separate?'Выбранный день уже занят. Эта прогулка станет отдельным днём — проверьте её дату.':'Прогулка заполнит свободный выбранный день.';
@@ -189,7 +199,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     all('[data-wizard-progress-label]').forEach((label,index)=>{label.textContent=(multi()?['Выбор','Дни','План']:['Место','Прогулка','Ваш день'])[index];});
     $('[data-wizard-change-label]').textContent=multi()?'← Изменить план':'← Изменить прогулку';
     $('[data-wizard-saved]').hidden=true;save.disabled=false;
-    if(step===2)routes();
+    if(step===2){$('[data-wizard-selection]').open=!selectionMade;routes();}
     if(step===3)preview();
     if(focus)focusTitle();
   }
@@ -422,7 +432,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     for(const field of [form.elements.wizard_date,form.elements.wizard_start,form.elements.wizard_end])if(!field.checkValidity()){$('[data-wizard-settings]').open=true;field.reportValidity();return;}
     const route=form.querySelector('input[name="wizard_route"]:checked'),starter=form.querySelector('input[name="wizard_starter"]:checked');
     answers={...answers,route:route?.value || answers.route,starter:starter?.value || answers.starter,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
-    if(answers.start>=answers.end){form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
+    if(answers.start>=answers.end){$('[data-wizard-settings]').open=true;form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
     for(const [kind,active]of [['bus',busActive()],['rail',railActive()]])if(active){for(const input of $(`[data-wizard-${kind}]`).querySelectorAll('input'))if(!input.checkValidity()){$('[data-wizard-transport]').open=true;input.reportValidity();return;}}
     const ticket=++sequence;
     try {await prepareTransport();if(ticket!==sequence||step!==2)return;prepareWizardPlan(workshop.getState(),answers,catalog,busContext);show(3);}catch(error) {announce(error.message.startsWith('wizard_bus_')?'Выберите дату с опубликованным расписанием и поездку к дюнам. Если рейсы не складываются, начните раньше или оставьте одну тропу.':error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
@@ -442,9 +452,11 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(event.target.name==='wizard_theme' || event.target.name==='wizard_pace'){
       answers.wave={...answers.wave,[event.target.name==='wizard_theme'?'theme':'pace']:event.target.value};routes({refreshSettings:false});
     }
+    if(['wizard_route','wizard_starter'].includes(event.target.name)){selectionMade=true;$('[data-wizard-selection]').open=false;selectedPlan();$('[data-wizard-selection-summary]').focus();}
     summary();
     if(['wizard_date','wizard_start','wizard_end','wizard_route','wizard_starter'].includes(event.target.name)){origin();transport();railForm.render();busForm.render();}
   });
+  $('[data-wizard-selection]').addEventListener('toggle',()=>selectedPlan());
   all('[data-wizard-back]').forEach(button=>button.addEventListener('click',()=>show(step-1)));
   $('[data-wizard-base-pick]').addEventListener('click',async()=>{
     const button=$('[data-wizard-base-pick]'),ticket=sequence;button.disabled=true;
@@ -483,7 +495,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   });
 
   function reset() {
-    sequence++;proposal=null;attempt=null;assessments=[];answers=defaults();form.hidden=false;
+    sequence++;proposal=null;attempt=null;assessments=[];answers=defaults();selectionMade=false;form.hidden=false;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     announce('');show(1);
   }
@@ -499,7 +511,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   show(1,{focus:false});
   const requested=new URL(location.href).searchParams.get('starter');
   if(requested && wizardStarters(catalog).some(row=>row.id===requested)) {
-    answers={...answers,area:'whole-trip',starter:requested};
+    answers={...answers,area:'whole-trip',starter:requested};selectionMade=true;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     show(2,{focus:false});
   }
