@@ -21,12 +21,16 @@ export function validateEvents(data,catalog,today){
  const text=(v)=>typeof v==='string'&&!!v.trim();const time=v=>typeof v==='string'&&/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(v);
  for(const e of data.events){
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(e.id)||ids.has(e.id))throw new TypeError('Duplicate/invalid event id');ids.add(e.id);
-  for(const k of ['title','city','city_name','venue','description','admission','kind'])if(!text(e[k]))throw new TypeError('Missing event '+k);
+  for(const k of ['title','city','city_name','venue','description','kind'])if(!text(e[k]))throw new TypeError('Missing event '+k);
+  if(e.admission!==null&&!text(e.admission))throw new TypeError('Invalid admission');
   if(cities.has(e.city)&&cities.get(e.city)!==e.city_name)throw new TypeError('Inconsistent city');cities.set(e.city,e.city_name);
   if(!calendarDate(e.date)||!time(e.starts)||!(e.ends===null||(time(e.ends)&&e.ends>e.starts)))throw new TypeError('Invalid event time');
   if(!['scheduled','cancelled','postponed'].includes(e.status))throw new TypeError('Invalid event status');
   if(!(e.price===null||(typeof e.price==='number'&&Number.isFinite(e.price)&&e.price>=0&&e.currency==='RUB')))throw new TypeError('Unknown price is not zero');
-  if(e.poi&&!places.has(e.poi)||e.route&&!routes.has(e.route))throw new TypeError('Unknown event link');
+ if(e.poi&&!places.has(e.poi)||e.route&&!routes.has(e.route))throw new TypeError('Unknown event link');
+  const image=e.image;
+  const localImage=v=>typeof v==='string'&&/^assets\/[a-z0-9/_-]+\.(?:webp|avif|jpe?g|png)$/.test(v);
+  if(!image||!localImage(image.src)||!localImage(image.src_small)||!text(image.alt)||!['photo','illustration'].includes(image.kind)||![image.width,image.height].every(v=>Number.isSafeInteger(v)&&v>0))throw new TypeError('Missing or invalid event image');
   const s=data.sources[e.source];if(!s||!text(s.name)||!calendarDate(s.checked_at)||s.checked_at>today||!/^[a-f0-9]{64}$/.test(s.sha256))throw new TypeError('Missing source evidence');
   for(const url of [s.url,s.organizer?.url]){const u=new URL(url);if(u.protocol!=='https:'||u.username||u.password)throw new TypeError('Invalid source URL');}
   if(!text(s.organizer?.name))throw new TypeError('Missing organizer');
