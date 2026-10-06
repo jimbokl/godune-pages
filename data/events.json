@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-06",
+  "sources": {
+    "ocean-space-week-2026": {
+      "name": "Музей Мирового океана · Всемирная неделя космоса",
+      "url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "checked_at": "2026-10-06",
+      "sha256": "c86a2a90f85063d87b14dc60092fc73244b73ee46333b40afa008d33e52896b6",
+      "private_capture": "runtime/visit-sources/100e7c6e6619e2af.html",
+      "organizer": {
+        "name": "Музей Мирового океана",
+        "url": "https://world-ocean.ru/"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "cosmic-visitors-2026",
+      "title": "Космические пришельцы",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-07",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Лекция",
+      "venue": "Образовательный центр ОКЕАНиЯ",
+      "description": "Астроном Валерий Сыткин расскажет о метеоритах в истории Солнечной системы.",
+      "admission": "Бесплатно · по регистрации.",
+      "price": 0,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-meteorite-960.webp",
+        "src_small": "assets/editorial/events-meteorite-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Метеорит в боковом свете",
+        "kind": "illustration"
+      }
+    },
+    {
+      "id": "star-projector-afternoon-2026",
+      "title": "Звёздный проектор",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Планетарий",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Занятие в планетарии историко-культурного центра. В группе — до 15 человек.",
+      "admission": "По билетам.",
+      "price": null,
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-star-projector-960.webp",
+        "src_small": "assets/editorial/events-star-projector-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Звёздный проектор под куполом планетария",
+        "kind": "illustration"
+      }
+    },
+    {
+      "id": "bessel-astronomer-2026",
+      "title": "Ф. В. Бессель — великий астроном",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Лекция",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Лекция Юлии Степанчук, заведующей отделом истории Музея Мирового океана.",
+      "admission": "Бесплатно · по регистрации.",
+      "price": 0,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-astronomy-960.webp",
+        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Старинный телескоп и звёздный атлас",
+        "kind": "illustration"
+      }
+    },
+    {
+      "id": "star-projector-evening-2026",
+      "title": "Звёздный проектор · вечерний сеанс",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Планетарий",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Вечернее занятие в планетарии историко-культурного центра. В группе — до 15 человек.",
+      "admission": "По билетам.",
+      "price": null,
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-star-projector-960.webp",
+        "src_small": "assets/editorial/events-star-projector-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Звёздный проектор под куполом планетария",
+        "kind": "illustration"
+      }
+    },
+    {
+      "id": "become-cosmonaut-2026",
+      "title": "Как стать космонавтом",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-09",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Встреча",
+      "venue": "Выставочный центр «Пакгауз»",
+      "poi": "pakgauz",
+      "route": "kaliningrad-kosmicheskaya-volna",
+      "description": "Встреча с заслуженным испытателем космодромов России Николаем Кузнецовым.",
+      "admission": "Бесплатно · по регистрации.",
+      "price": 0,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-cosmonaut-960.webp",
+        "src_small": "assets/editorial/events-cosmonaut-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Космический шлем и перчатки",
+        "kind": "illustration"
+      }
+    },
+    {
+      "id": "sea-space-awards-2026",
+      "title": "Море и космос",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-10",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Награждение",
+      "venue": "Корпус «Глубина» · конгресс-холл",
+      "poi": "muzej-mirovogo-okeana",
+      "description": "Подведение итогов детского творческого конкурса и награждение победителей.",
+      "admission": null,
+      "price": null,
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Балтийское море под вечерним небом",
+        "kind": "illustration"
+      }
+    }
+  ]
+}

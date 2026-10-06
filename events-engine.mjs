@@ -12,8 +12,8 @@ export function eventPeriod(event,today){
  if(!calendarDate(today))throw new TypeError('Invalid calendar date');
  return event.date<today?'past':'upcoming';
 }
-export function eventMatches(event,{today,date='',city='',period='upcoming'}){
- return eventPeriod(event,today)===period&&(!date||event.date===date)&&(!city||event.city===city);
+export function eventMatches(event,{today,date='',city='',period='upcoming',saved=false}){
+ return (period==='saved'?saved:eventPeriod(event,today)===period)&&(!date||event.date===date)&&(!city||event.city===city);
 }
 export function validateEvents(data,catalog,today){
  if(!calendarDate(today)||data.version!==1||!calendarDate(data.checked_at)||data.checked_at>today||!Array.isArray(data.events))throw new TypeError('Invalid event registry');

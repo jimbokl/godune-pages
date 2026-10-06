@@ -16,18 +16,8 @@
       "poi": "promenad-zelenogradsk",
       "lat": 54.9635,
       "lon": 20.4808,
-      "model_updated_at": "2026-10-06T18:30:22Z",
+      "model_updated_at": "2026-10-06T18:30:24Z",
       "hours": [
-        {
-          "time": "2026-10-06T18:00:00Z",
-          "temperature_c": 15.3,
-          "wind_ms": 8.9,
-          "wind_from_degrees": 278.0,
-          "cloud_percent": 80.4,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-06T19:00:00Z",
           "temperature_c": 15.3,
@@ -579,13 +569,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-06T18:47:26.761015Z",
-      "checked_at": "2026-10-06T18:47:26.761015Z",
+      "received_at": "2026-10-06T19:28:51.351693Z",
+      "checked_at": "2026-10-06T19:28:51.351693Z",
       "sun": {
         "date": "2026-10-06",
         "sunrise": "2026-10-06T04:49:00Z",
         "sunset": "2026-10-06T16:01:00Z",
-        "received_at": "2026-10-06T18:47:26.761015Z"
+        "received_at": "2026-10-06T19:28:51.351693Z"
       }
     },
     {
@@ -596,16 +586,6 @@
       "lon": 20.8928,
       "model_updated_at": "2026-10-06T18:30:08Z",
       "hours": [
-        {
-          "time": "2026-10-06T18:00:00Z",
-          "temperature_c": 14.9,
-          "wind_ms": 8.9,
-          "wind_from_degrees": 280.0,
-          "cloud_percent": 67.4,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-06T19:00:00Z",
           "temperature_c": 15.0,
@@ -1157,13 +1137,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-06T18:47:26.761015Z",
-      "checked_at": "2026-10-06T18:47:26.761015Z",
+      "received_at": "2026-10-06T19:28:51.351693Z",
+      "checked_at": "2026-10-06T19:28:51.351693Z",
       "sun": {
         "date": "2026-10-06",
         "sunrise": "2026-10-06T04:48:00Z",
         "sunset": "2026-10-06T15:59:00Z",
-        "received_at": "2026-10-06T18:47:26.761015Z"
+        "received_at": "2026-10-06T19:28:51.351693Z"
       }
     },
     {
@@ -1172,18 +1152,8 @@
       "poi": "promenad-svetlogorsk",
       "lat": 54.9464,
       "lon": 20.1545,
-      "model_updated_at": "2026-10-06T18:30:22Z",
+      "model_updated_at": "2026-10-06T18:30:09Z",
       "hours": [
-        {
-          "time": "2026-10-06T18:00:00Z",
-          "temperature_c": 15.0,
-          "wind_ms": 7.0,
-          "wind_from_degrees": 276.0,
-          "cloud_percent": 82.1,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-06T19:00:00Z",
           "temperature_c": 15.1,
@@ -1735,13 +1705,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-06T18:47:26.761015Z",
-      "checked_at": "2026-10-06T18:47:26.761015Z",
+      "received_at": "2026-10-06T19:28:51.351693Z",
+      "checked_at": "2026-10-06T19:28:51.351693Z",
       "sun": {
         "date": "2026-10-06",
         "sunrise": "2026-10-06T04:51:00Z",
         "sunset": "2026-10-06T16:02:00Z",
-        "received_at": "2026-10-06T18:47:26.761015Z"
+        "received_at": "2026-10-06T19:28:51.351693Z"
       }
     },
     {
@@ -1750,18 +1720,8 @@
       "poi": "kafedralny-sobor",
       "lat": 54.7064,
       "lon": 20.5114,
-      "model_updated_at": "2026-10-06T18:30:09Z",
+      "model_updated_at": "2026-10-06T18:30:22Z",
       "hours": [
-        {
-          "time": "2026-10-06T18:00:00Z",
-          "temperature_c": 14.4,
-          "wind_ms": 3.8,
-          "wind_from_degrees": 285.0,
-          "cloud_percent": 74.5,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-06T19:00:00Z",
           "temperature_c": 14.3,
@@ -2313,13 +2273,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-06T18:47:26.761015Z",
-      "checked_at": "2026-10-06T18:47:26.761015Z",
+      "received_at": "2026-10-06T19:28:51.351693Z",
+      "checked_at": "2026-10-06T19:28:51.351693Z",
       "sun": {
         "date": "2026-10-06",
         "sunrise": "2026-10-06T04:49:00Z",
         "sunset": "2026-10-06T16:01:00Z",
-        "received_at": "2026-10-06T18:47:26.761015Z"
+        "received_at": "2026-10-06T19:28:51.351693Z"
       }
     }
   ]
