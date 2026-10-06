@@ -5,6 +5,7 @@ import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
 import {waveLabel} from './day-wave.mjs?v=2';
+import {vehicleArrival} from './day-mobility.mjs?v=3';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};
 function disclose(node,title,id) {
@@ -21,6 +22,12 @@ export function workspacePoints(trip,catalog) {
   const stops=saved&&['one','two'].includes(saved.walks)?['vysota-efa',...(saved.walks==='two'?['tancuyushchiy-les']:[]),...trip.places]:trip.places;
   return [...new Set(stops)].map(id=>catalog.poi.find(p=>p.slug===id)).filter(Boolean);
 }
+export function workspaceVehiclePoint(trip,catalog) {
+  const arrival=vehicleArrival(trip,catalog),anchor=arrival?.anchor;
+  if(!anchor || !Number.isFinite(anchor.lat) || !Number.isFinite(anchor.lon)
+    || Math.abs(anchor.lat)>90 || Math.abs(anchor.lon)>180)return null;
+  return {...anchor,mode:arrival.vehicle.mode,via:arrival.vehicle.via};
+}
 let library;
 function mapLibrary(base) {
   if(window.maplibregl)return Promise.resolve(window.maplibregl);
@@ -34,26 +41,35 @@ function mapLibrary(base) {
 
 function initDayMap({mount,read,base,catalog,onSelect}) {
   const frame=mount.querySelector('.day-map-canvas'),status=mount.querySelector('.day-map-status');
-  let map,markers=[],context='',signature='',revision=0,visible=false,loading=false,failed=false;
+  let map,markers=[],parkingDetail,parkingButton,context='',signature='',revision=0,visible=false,loading=false,failed=false;
   const setStatus=text=>{status.textContent=text;};
+  const closeParking=(restoreFocus=true)=>{
+    parkingDetail?.remove();parkingDetail=null;
+    parkingButton?.setAttribute('aria-expanded','false');
+    if(restoreFocus&&parkingButton?.isConnected)parkingButton.focus();
+    parkingButton=null;
+  };
   async function render(force=false) {
     if(!visible || loading)return;
     const trip=read(),next=tripSignature(trip);if(next===signature&&!force)return;
     signature=next;const ticket=++revision;
-    const points=workspacePoints(trip,catalog),generated=!!selectedDay(trip).kosa_plan;
-    if(!points.length){markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});setStatus(selectedDay(trip).kosa_plan?'Карты троп и пересадки — в поездке на косу. Автобусные участки не рисуем как пешую прогулку.':'Добавьте место — оно появится на карте.');return;}
+    mount.dataset.mapReady='false';delete mount.dataset.mapFailure;
+    closeParking(false);
+    const points=workspacePoints(trip,catalog),parking=workspaceVehiclePoint(trip,catalog),mapPoints=[...points,...(parking?[parking]:[])],generated=!!selectedDay(trip).kosa_plan;
+    if(!mapPoints.length){markers.forEach(m=>m.remove());markers=[];map?.getSource('walk')?.setData({type:'FeatureCollection',features:[]});setStatus(selectedDay(trip).kosa_plan?'Карты троп и пересадки — в поездке на косу. Автобусные участки не рисуем как пешую прогулку.':'Добавьте место — оно появится на карте.');return;}
     setStatus('Открываем карту дня…');loading=true;
     try {
       const lib=await mapLibrary(base);
       if(typeof lib.supported==='function'&&!lib.supported())throw new Error('webgl_unavailable');
-      const local=await downloadedMap(base,null,points).catch(()=>null);
+      const local=await downloadedMap(base,null,mapPoints).catch(()=>null);
       const key=local?.route || 'region';
       if(map && context!==key){map.remove();map=null;markers=[];}
       if(!map) {
         context=key;failed=false;
-        map=new lib.Map({container:frame,style:local && local.kind!=='region'?localMapStyle(local):regionMapStyle(base,local || {}),center:[points[0].lon,points[0].lat],zoom:13,attributionControl:false});
+        map=new lib.Map({container:frame,style:local && local.kind!=='region'?localMapStyle(local):regionMapStyle(base,local || {}),center:[mapPoints[0].lon,mapPoints[0].lat],zoom:13,attributionControl:false});
         map.addControl(new lib.NavigationControl({showCompass:false}),'top-right');
         map.addControl(new lib.AttributionControl({compact:false}),'bottom-right');
+        map.on('idle',()=>{mount.dataset.mapTheme=document.documentElement.dataset.theme;});
         map.on('error',()=>{failed=true;setStatus('Подложка не загрузилась полностью. Остановки доступны в списке.');});
         await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('map_timeout')),15000);map.once('load',()=>{clearTimeout(timer);resolve();});});
         map.addSource('walk',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
@@ -71,11 +87,34 @@ function initDayMap({mount,read,base,catalog,onSelect}) {
         });
         markers.push(new lib.Marker({element:button}).setLngLat([point.lon,point.lat]).addTo(map));
       });
-      const bounds=new lib.LngLatBounds();points.forEach(point=>bounds.extend([point.lon,point.lat]));map.fitBounds(bounds,{padding:55,maxZoom:15,duration:0});
+      if(parking) {
+        const label=parking.mode==='car'?'Машина':'Велосипед',button=el('button','day-map-parking');button.type='button';
+        button.dataset.dayMapParking=parking.via;button.dataset.lon=String(parking.lon);button.dataset.lat=String(parking.lat);
+        button.append(el('span','day-map-parking-symbol','P'),el('span','day-map-parking-label',label));
+        button.setAttribute('aria-label',`${label}: ${parking.name}. Парковка в вашем плане`);button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls','day-parking-detail');
+        button.addEventListener('click',event=>{
+          event.stopPropagation();
+          if(button.getAttribute('aria-expanded')==='true'){closeParking();return;}
+          closeParking(false);parkingButton=button;
+          const detail=el('section','day-parking-detail');detail.id='day-parking-detail';detail.tabIndex=-1;detail.setAttribute('aria-labelledby','day-parking-title');
+          const heading=el('div','day-parking-heading'),title=el('h4','','Парковка в вашем плане');title.id='day-parking-title';
+          const close=el('button','day-parking-close','×');close.type='button';close.setAttribute('aria-label','Закрыть подробности парковки');close.addEventListener('click',()=>closeParking());
+          heading.append(title,close);detail.append(heading,el('p','day-parking-name',parking.name),el('p','',`GPS: ${parking.lat.toFixed(5)}, ${parking.lon.toFixed(5)}`));
+          if(parking.note)detail.append(el('p','',parking.note));
+          if(parking.source)detail.append(el('p','day-parking-source',`${parking.source.name}. Проверено: ${parking.source.checked_at}.`));
+          frame.after(detail);parkingDetail=detail;
+          button.setAttribute('aria-expanded','true');
+          detail.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();closeParking();}});
+          detail.focus({preventScroll:true});
+          detail.scrollIntoView({block:'nearest',behavior:'auto'});
+        });
+        markers.push(new lib.Marker({element:button,anchor:'bottom',offset:[0,-20]}).setLngLat([parking.lon,parking.lat]).addTo(map));
+      }
+      const bounds=new lib.LngLatBounds();mapPoints.forEach(point=>bounds.extend([point.lon,point.lat]));map.fitBounds(bounds,{padding:parking?{top:140,bottom:65,left:65,right:65}:55,maxZoom:15,duration:0});
       const matrix=generated?null:await loadTripTravelMatrix(base,trip,catalog).catch(()=>null),roads=generated?{type:'FeatureCollection',features:[]}:await tripRoadFeatures(trip,catalog,matrix,base);
       if(ticket!==revision || next!==tripSignature(read()))return;
       map.getSource('walk').setData(roads);
-      if(!failed)setStatus(generated?'Метки — Эфа и выбранные места. Карты троп и пересадки — в поездке на косу; автобусные участки здесь не соединены пешей линией.':roads.features.length?'Линии — рассчитанные участки по открытой карте. Входы и доступ сверьте перед выходом.':'Показаны остановки. Дорога между ними ещё не уточнена.');
+      if(!failed)setStatus((generated?'Метки — Эфа и выбранные места. Карты троп и пересадки — в поездке на косу; автобусные участки здесь не соединены пешей линией.':roads.features.length?'Линии — рассчитанные участки по открытой карте. Входы и доступ сверьте перед выходом.':'Показаны остановки. Дорога между ними ещё не уточнена.')+(parking?` Метка «${parking.mode==='car'?'Машина':'Велосипед'}» — парковка в вашем плане.`:''));
       mount.dataset.mapReady='true';
     } catch(error) {
       mount.dataset.mapFailure=error?.message || 'map_error';
