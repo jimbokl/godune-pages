@@ -1,15 +1,17 @@
+import {initWizardBus} from './wizard-bus-ui.mjs?v=1';
+import {wizardBusChoices,wizardBusTargets} from './wizard-bus.mjs?v=1';
 import {initWizardRail} from './wizard-rail-ui.mjs?v=1';
 import {earlierWizardReturn} from './wizard-rail.mjs?v=1';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
 import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=2';
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=15';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=21';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=16';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=22';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=16';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=6';
 import {baseName} from './personal-points.mjs?v=3';
 import {previousPlace,dayBases} from './travel-estimates.mjs?v=9';
-import {assessSchedule,readinessCopy} from './day-readiness.mjs?v=5';
+import {assessSchedule,assessKosa,readinessCopy} from './day-readiness.mjs?v=6';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
 import {downloadTripFile} from './trip-file.mjs?v=26';
 import {partyLabel,validParty} from './trip-party.mjs?v=1';
@@ -49,7 +51,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const save=$('[data-wizard-save]');
   const defaults=()=>({...wizardDefaults(workshop.getState(),catalog),wave:{version:1,theme:'mixed',pace:'calm',recipe:null}});
   let answers=defaults(),step=1,proposal=null,revision=null,sequence=0,saving=false,attempt=null,assessments=[],preferenceMatrix=null,preferenceLoading=null;
-  let returnOptions=new Map();
+  let returnOptions=new Map(),busContext=null;
   const node=(tag,text,className)=>{const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;};
   const point=id=>catalog.poi.find(row=>row.slug===id);
   const multi=()=>answers.area==='whole-trip';
@@ -57,6 +59,8 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const focusTitle=()=>{$('[data-wizard-title]').focus({preventScroll:true});mount.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
 
   const railForm=initWizardRail({mount:$('[data-wizard-rail]'),catalog,getAnswers:()=>answers,chooseDate(){const settings=$('[data-wizard-settings]');settings.open=true;form.elements.wizard_date.focus();}});
+
+  const busForm=initWizardBus({mount:$('[data-wizard-bus]'),catalog,base,getAnswers:()=>answers,chooseDate(){const settings=$('[data-wizard-settings]');settings.open=true;form.elements.wizard_date.focus();}});
 
   function summary() {
     const date=form.elements.wizard_date.value || null;
@@ -69,8 +73,9 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     $('[data-wizard-base-pick]').textContent=known?'Изменить место проживания':'Добавить место проживания';
     $('[data-wizard-base-clear]').hidden=!known;
     $('[data-wizard-start-label]').textContent=known?(multi()?'Выход из жилья каждый день':'Выход из жилья'):(multi()?'Начало каждого дня':'Начало прогулки');
-    $('[data-wizard-base-note]').textContent=known
-      ?'Начнём и закончим здесь. Учтём дорогу по карте; проход от двери и на месте нужно проверить.'
+    $('[data-wizard-base-note]').textContent=answers.transport==='bus'
+      ?known?'Начнём и закончим здесь. Укажите время до первой посадки и от последней остановки до жилья — добавим его к поездке.':'Можно добавить жильё и время дороги до посадки. Без адреса посчитаем день от станции или автостанции.'
+      :known?'Начнём и закончим здесь. Учтём дорогу по карте; проход от двери и на месте нужно проверить.'
       :'Добавьте адрес, если знаете, где будете жить. Посчитаем дорогу до прогулки и возвращение. Без адреса день начинается у первой остановки.';
   }
 
@@ -83,11 +88,11 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   function transport() {
     const field=$('[data-wizard-transport]');if(!field)return;
     for(const radio of field.querySelectorAll('input[name=wizard_transport]'))radio.checked=radio.value===answers.transport;
-    const label={auto:'Транспорт по готовому плану',foot:'Пешком',car:'На машине',rail:'На электричке'}[answers.transport];
+    const label={auto:'Транспорт по готовому плану',foot:'Пешком',car:'На машине',rail:'На электричке',bus:'На косу без машины'}[answers.transport];
     $('[data-wizard-transport-summary]').textContent=`Как добираетесь: ${label} · изменить`;
     $('[data-wizard-transport-note]').textContent=answers.transport==='car'
       ?'В городе оставим машину у начала прогулки и пойдём пешком. На косе доедем до каждой остановки. Парковку и проход ко входу нужно проверить.'
-      :answers.transport==='rail'?'Выберите рейсы к морю и обратно. Пеший путь от станции включим в прогулку; жильё останется началом и концом всей поездки.':answers.transport==='foot'?'Дорогу между местами и от жилья посчитаем пешком. Посмотрите время: далеко разнесённые остановки могут не поместиться в один день.'
+      :answers.transport==='bus'?'Подберём автобус к дюнам и обратно; из Калининграда добавим электричку. Дорога до первой посадки и после возвращения требует Вашей оценки.':answers.transport==='rail'?'Выберите рейсы к морю и обратно. Пеший путь от станции включим в прогулку; жильё останется началом и концом всей поездки.':answers.transport==='foot'?'Дорогу между местами и от жилья посчитаем пешком. Посмотрите время: далеко разнесённые остановки могут не поместиться в один день.'
       :'Сохраним способ передвижения из выбранного плана. В городе — пешком, в готовых поездках к разнесённым остановкам косы — на машине.';
   }
 
@@ -130,18 +135,19 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       for(const [value,text] of items){const label=node('label'),radio=node('input');radio.type='radio';radio.name=name;radio.value=value;radio.checked=value===selected;label.append(radio,node('span',text));field.append(label);}
       mount.replaceChildren(field);
     }
-    if(themeMount){themeMount.hidden=multi() || themes.length<2;chips(themeMount,'wizard_theme','Как проведём день?',themes,answers.wave.theme);}
+    if(themeMount){themeMount.hidden=multi() || answers.transport==='bus' || themes.length<2;chips(themeMount,'wizard_theme','Как проведём день?',themes,answers.wave.theme);}
     if(paceMount){chips(paceMount,'wizard_pace','В каком темпе?',Object.entries(WAVE_PACES).map(([id,row])=>[id,row.name]),answers.wave.pace);paceMount.append(node('p',answers.wave.pace==='calm'?'Больше времени на остановки и паузы между ними.':'Время на остановки и короткий запас между ними.','wizard-pace-note'));}
     preferences({refresh:refreshSettings});
     const options={matrix:preferenceMatrix};
-    const rows=multi()?wizardStarters(catalog,answers.preferences,options):wizardChoices(catalog,answers.wave.theme,answers.preferences,options).filter(route=>route.area===answers.area);
+    const rows=multi()?wizardStarters(catalog,answers.preferences,options).filter(row=>answers.transport!=='bus'||wizardBusTargets(catalog,{...answers,starter:row.id}).length):(answers.transport==='bus'?wizardBusChoices(catalog):wizardChoices(catalog,answers.wave.theme,answers.preferences,options)).filter(route=>route.area===answers.area);
     const key=multi()?'starter':'route',id=row=>multi()?row.id:row.slug;
     if(!rows.some(row=>id(row)===answers[key]))answers[key]=rows[0]?id(rows[0]):null;
     const choices=rows.map(route=>{
       const label=node('label',undefined,'wizard-choice wizard-route'),radio=node('input'),copy=node('span');
       radio.type='radio';radio.name=multi()?'wizard_starter':'wizard_route';radio.value=id(route);radio.required=true;radio.checked=id(route)===answers[key];
-      copy.append(node('strong',route.name),node('small',multi()?route.description:`${route.minutes?`Около ${duration(route.minutes)} · `:''}${stopLabel(route.stops.length)}`));
-      copy.append(node('span',multi()?route.geography || 'Калининград · Зеленоградск · Куршская коса.':route.start_note,'wizard-choice-note'));
+      const bus=answers.transport==='bus'&&!multi();
+      copy.append(node('strong',route.name),node('small',multi()?route.description:bus?route.stops.length===1?'Одна тропа · дюны Эфа':'Две тропы · дюны и лес':`${route.minutes?`Около ${duration(route.minutes)} · `:''}${stopLabel(route.stops.length)}`));
+      copy.append(node('span',multi()?route.geography || 'Калининград · Зеленоградск · Куршская коса.':bus?route.description:route.start_note,'wizard-choice-note'));
       const match=assessPreferenceChoice(route,catalog,answers.preferences,options),notes=[];
       if(match.matched.length)notes.push(match.matched.map(id=>DAY_INTERESTS[id]).join(' · '));
       if(answers.preferences.needs.includes('short_walks'))notes.push(match.distance===null?'Длина пути пока неизвестна':`${(match.distance/1000).toLocaleString('ru',{maximumFractionDigits:1})} км по карте · от жилья отдельно`);
@@ -155,8 +161,8 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       separate?'Выбранный день уже занят. Эта прогулка станет отдельным днём — проверьте её дату.':'Прогулка заполнит свободный выбранный день.';
     $('[data-wizard-date-label]').textContent=multi()?'Первый день, если знаете дату':'Дата, если знаете';
     $('[data-wizard-start-label]').textContent=multi()?'Начало каждого дня':'Начало прогулки';
-    $('[data-wizard-settings-note]').textContent=multi()?(answers.transport==='foot'?'Все дороги считаем пешком. Длинные переходы на косе нужно проверить.':'Транспорт показан у каждого дня. Время задаётся для каждого дня отдельно.')+(answers.transport==='rail'?' Рейсы показаны ниже отдельно для каждого дня у моря.':' Автобус или смену жилья можно добавить после сохранения.'):'Билеты, обед и долгие остановки можно добавить после сохранения.';
-    origin();transport();railForm.render();
+    $('[data-wizard-settings-note]').textContent=multi()?(answers.transport==='foot'?'Все дороги считаем пешком. Длинные переходы на косе нужно проверить.':'Транспорт показан у каждого дня. Время задаётся для каждого дня отдельно.')+(answers.transport==='rail'?' Рейсы показаны ниже отдельно для каждого дня у моря.':answers.transport==='bus'?' Рейсы дня на косе подберём по выбранной дате.':' Автобус или смену жилья можно добавить после сохранения.'):'Билеты, обед и долгие остановки можно добавить после сохранения.';
+    origin();transport();railForm.render();busForm.render();
     $('[data-wizard-preview-label]').textContent=multi()?'Посмотреть план →':'Посмотреть день →';
     if(!refreshSettings)return;
     form.elements.wizard_adults.value=answers.party.adults;
@@ -238,8 +244,29 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     });card.append(button);return card;
   }
 
+  function busContent(snapshot){
+    const {book,result:day}=snapshot,body=node('div',undefined,'wizard-bus-result');body.dataset.wizardBusResult='';
+    const timing=node('p',book.finish===null?'Полное возвращение пока не рассчитано.':`По расчёту — до ${clock(book.finish)}.`,'wizard-calculation');
+    timing.dataset.wizardCalculation=day.home?.state||'candidate';
+    const last=book.timeline.at(-1);if(last?.text)timing.append(' '+last.text);
+    const list=node('ol',undefined,'wizard-timeline');list.dataset.wizardTimeline='';
+    for(const [index,row]of book.timeline.entries()){
+      const li=node('li');li.dataset.wizardBusRow=row.poi||`${row.kind}-${index}`;
+      const copy=node('div');copy.append(node('strong',row.title),node('p',row.text,'wizard-stop-note'));
+      if(row.poi){const link=node('a','Фото и место на карте →');link.href=new URL(`poi/${row.poi}/`,base).href;copy.append(link);}
+      li.append(node('span',row.time===null?'Уточнить':clock(row.time),'wizard-time'),copy);list.append(li);
+    }
+    const fallback=node('details',undefined,'wizard-evidence');fallback.dataset.wizardBusBackup='';fallback.append(node('summary','План Б · если не сели в автобус'),node('p',book.fallback));
+    const evidence=node('details',undefined,'wizard-evidence');evidence.append(node('summary','Перед выходом · билеты, тропы и рейсы'));
+    for(const text of book.before)evidence.append(node('p',text));
+    for(const text of book.limits)evidence.append(node('p',text));
+    const source=node('a',`Расписание № 210 · проверено ${book.publication.checked_at}`);source.href=book.publication.source_url;source.target='_blank';source.rel='noopener';evidence.append(source);
+    body.append(timing,list,fallback,evidence);return body;
+  }
+
   function renderResult(schedule=null,error=false,matrices=null) {
     if(proposal.kind==='journey'){renderJourney(schedule,error,matrices);return;}
+    if(proposal.bus?.[proposal.targetId]){result.replaceChildren(node('h3',proposal.route.name,'wizard-result-title'),node('p',dateLabel(answers.date),'wizard-result-meta'),busContent(proposal.bus[proposal.targetId]),node('p',proposal.placement==='separate'?'Прежний день останется целиком. Добавим этот план отдельным днём.':'Сохраним этот день в Вашей поездке. Регистрация не нужна.','wizard-save-note'));save.textContent=proposal.placement==='separate'?'Добавить отдельный день':'Сохранить день в поездке';return;}
     const day=selectedDay(proposal.trip),heading=node('h3',proposal.route.name,'wizard-result-title');
     const meta=node('p',`${proposal.placement==='separate'?'Отдельный день':'Выбранный день'} · ${dateLabel(day.date)} · начало в ${clock(answers.start)}`,'wizard-result-meta');
     const party=node('p',partyLabel(day.party) || '', 'wizard-party-note');
@@ -272,11 +299,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     const introduction=node('div',undefined,'wizard-journey-intro');
     introduction.append(node('p',dateLabel(answers.date),'wizard-result-meta'),node('h3',proposal.starter.geography?proposal.starter.name:`${proposal.starter.name} на Балтике`,'wizard-result-title'),node('p',proposal.starter.description,'wizard-result-copy'));
     introduction.append(node('p',partyLabel(answers.party) || '', 'wizard-party-note'));
-    introduction.append(node('p',answers.transport==='auto' && proposal.starter.access_note || (answers.transport==='rail'?'В дни у моря учтены выбранные электрички туда и обратно. В остальных днях транспорт показан отдельно.':answers.transport==='foot'?'Все дороги посчитаны пешком. Проверьте время длинных переходов на косе. Рейсы общественного транспорта в этот расчёт не входят.':'Способ передвижения показан у каждого дня. Электричку, автобус и смену жилья можно добавить после сохранения.'),'wizard-access-note'));
+    introduction.append(node('p',answers.transport==='auto' && proposal.starter.access_note || (answers.transport==='bus'?'В день на дюнах учтены автобусы и нужные электрички. В остальных днях транспорт показан отдельно.':answers.transport==='rail'?'В дни у моря учтены выбранные электрички туда и обратно. В остальных днях транспорт показан отдельно.':answers.transport==='foot'?'Все дороги посчитаны пешком. Проверьте время длинных переходов на косе. Рейсы общественного транспорта в этот расчёт не входят.':'Способ передвижения показан у каждого дня. Электричку, автобус и смену жилья можно добавить после сохранения.'),'wizard-access-note'));
     if(answers.base)introduction.append(node('p',`Каждый новый день начинается и заканчивается здесь: ${baseName(answers.base,catalog)}. Дорога входит в расчёт; способ передвижения показан у каждого дня.`,'wizard-access-note'));
     const days=proposal.targetIds.map((id,index)=>{
       const trip=chooseTripDay(proposal.trip,id),day=selectedDay(trip),schedule=schedules?.get(id),card=node('details',undefined,'wizard-day');
       card.dataset.wizardDay=id;card.open=index===0;
+      if(proposal.bus?.[id]){const summary=node('summary');summary.append(node('span',String(index+1).padStart(2,'0'),'wizard-day-number'),node('strong','День на Куршской косе без машины'),node('small',dateLabel(day.date)));card.append(summary,busContent(proposal.bus[id]));return card;}
       const heading=node('summary'),number=node('span',String(index+1).padStart(2,'0'),'wizard-day-number'),copy=node('span');
       const areas=[...new Set(day.places.map(place=>point(place).area_name).filter(Boolean))];
       const recipe=proposal.starter.days[index].recipe;
@@ -303,18 +331,19 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     const ticket=sequence;
     returnOptions=new Map();
     assessments=[assessSchedule(null)];
-    try {proposal=prepareWizardPlan(workshop.getState(),answers,catalog);revision=workshop.getRevision();}
-    catch {proposal=null;save.disabled=true;result.replaceChildren();announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
+    save.disabled=true;mount.dataset.wizardCalculating='true';
+    try {busContext=answers.transport==='bus'?await busForm.context():null;if(ticket!==sequence||step!==3)return;proposal=prepareWizardPlan(workshop.getState(),answers,catalog,busContext);revision=workshop.getRevision();}
+    catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=21'),import('./travel-estimates.mjs?v=9')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=22'),import('./travel-estimates.mjs?v=9')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
-      const matrices=await Promise.all(trips.map(trip=>loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));
-      const schedules=trips.map((trip,index)=>calculate(planInput(trip,catalog,matrices[index])));
+      const matrices=await Promise.all(trips.map(trip=>proposal.bus?.[selectedDay(trip).id]?null:loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));
+      const schedules=trips.map((trip,index)=>proposal.bus?.[selectedDay(trip).id]?null:calculate(planInput(trip,catalog,matrices[index])));
       if(ticket!==sequence || step!==3)return;
-      trips.forEach((trip,index)=>{const option=earlierWizardReturn(trip,catalog,matrices[index],schedules[index],calculate);if(option)returnOptions.set(selectedDay(trip).id,option);});
-      assessments=schedules.map(assessSchedule);
+      trips.forEach((trip,index)=>{if(proposal.bus?.[selectedDay(trip).id])return;const option=earlierWizardReturn(trip,catalog,matrices[index],schedules[index],calculate);if(option)returnOptions.set(selectedDay(trip).id,option);});
+      assessments=schedules.map((schedule,index)=>{const bus=proposal.bus?.[selectedDay(trips[index]).id];return bus?assessKosa(bus.result,bus.answers,bus.book.walking):assessSchedule(schedule);});
       renderResult(proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,schedules[index]])):schedules[0],false,proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,matrices[index]])):matrices[0]);
     } catch {
       if(ticket!==sequence || step!==3)return;
@@ -333,7 +362,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     }
   }
 
-  form.addEventListener('submit',event=>{
+  form.addEventListener('submit',async event=>{
     event.preventDefault();announce('');
     if(step===1) {
       const field=form.querySelector('input[name="wizard_area"]:checked');
@@ -351,10 +380,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     const route=form.querySelector('input[name="wizard_route"]:checked'),starter=form.querySelector('input[name="wizard_starter"]:checked');
     answers={...answers,route:route?.value || answers.route,starter:starter?.value || answers.starter,date:form.elements.wizard_date.value || null,start:minute(form.elements.wizard_start.value),end:minute(form.elements.wizard_end.value)};
     if(answers.start>=answers.end){form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
-    try {prepareWizardPlan(workshop.getState(),answers,catalog);show(3);}catch(error) {announce(error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
+    if(answers.transport==='bus'){for(const input of $('[data-wizard-bus]').querySelectorAll('input'))if(!input.checkValidity()){$('[data-wizard-transport]').open=true;input.reportValidity();return;}}
+    const ticket=++sequence;
+    try {busContext=answers.transport==='bus'?await busForm.context():null;if(ticket!==sequence||step!==2)return;prepareWizardPlan(workshop.getState(),answers,catalog,busContext);show(3);}catch(error) {announce(error.message.startsWith('wizard_bus_')?'Выберите дату с опубликованным расписанием и поездку к дюнам. Если рейсы не складываются, начните раньше или оставьте одну тропу.':error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
   });
   form.addEventListener('input',event=>{
-    if(event.target.name==='wizard_transport'){answers.transport=event.target.value;routes({refreshSettings:false});return;}
+    if(event.target.name==='wizard_transport'){answers.transport=event.target.value;if(answers.transport==='bus')answers.wave.theme='mixed';routes({refreshSettings:false});return;}
     form.elements.wizard_end.setCustomValidity('');
     form.elements.wizard_adults.setCustomValidity('');form.elements.wizard_children.setCustomValidity('');
     if(event.target.name==='wizard_adults' || event.target.name==='wizard_children')group();
@@ -368,7 +399,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       answers.wave={...answers.wave,[event.target.name==='wizard_theme'?'theme':'pace']:event.target.value};routes({refreshSettings:false});
     }
     summary();
-    if(['wizard_date','wizard_start','wizard_end','wizard_route','wizard_starter'].includes(event.target.name))railForm.render();
+    if(['wizard_date','wizard_start','wizard_end','wizard_route','wizard_starter'].includes(event.target.name)){railForm.render();busForm.render();}
   });
   all('[data-wizard-back]').forEach(button=>button.addEventListener('click',()=>show(step-1)));
   $('[data-wizard-base-pick]').addEventListener('click',async()=>{
@@ -379,22 +410,22 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       const starter=wizardStarters(catalog).find(row=>row.id===answers.starter);
       const focus=point(multi()?starter?.days[0]?.places[0]:route?.stops[0]?.poi);
       const chosen=await pickPersonalPoint({base,initial:answers.base,focusPlace:focus,caption:'Где будете жить?',saveLabel:'Использовать в этом плане →',privacyText:'Пока адрес только в мастере. В поездку он попадёт после сохранения плана; в файл и ссылку — если Вы решите поделиться.'});
-      if(chosen && ticket===sequence && step===2){answers.base=chosen;origin();railForm.render();announce('Место выбрано. Посмотрите план с дорогой туда и обратно.');}
+      if(chosen && ticket===sequence && step===2){answers.base=chosen;origin();railForm.render();busForm.render();announce('Место выбрано. Посмотрите план с дорогой туда и обратно.');}
     } catch {if(ticket===sequence)announce('Не удалось открыть выбор адреса. Ответы сохранились; попробуйте ещё раз.');}
     finally {button.disabled=false;if(ticket===sequence && step===2 && button.isConnected)button.focus({preventScroll:true});}
   });
-  $('[data-wizard-base-clear]').addEventListener('click',()=>{answers.base=null;origin();railForm.render();announce('Начнём у прогулки. Дорога от жилья в этот план не входит.');});
+  $('[data-wizard-base-clear]').addEventListener('click',()=>{answers.base=null;origin();railForm.render();busForm.render();announce('Начнём у прогулки. Дорога от жилья в этот план не входит.');});
   save.addEventListener('click',async()=>{
     if(saving || save.disabled || !proposal)return;
     saving=true;save.disabled=true;mount.setAttribute('aria-busy','true');let intent;
     try {
-      const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate'});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
+      const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate',context:busContext});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
       if(committed.conflict || !intent?.applied){announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
       const readiness=readinessCopy(assessments,committed.saved);
       workshop.progress?.saved(attempt,assessments.find(row=>row.calculated)||assessments[0],committed.saved);
       $('[data-wizard-form]').hidden=true;$('[data-wizard-progress="3"]').setAttribute('aria-current','step');
       $('[data-wizard-saved]').hidden=false;
-      $('[data-wizard-lead]').textContent=committed.saved?'Остановки уже в Вашей поездке. Их можно переставить, дополнить или взять с собой.':'Остановки остаются в этой вкладке. Файл поездки поможет перенести их на другой телефон.';
+      $('[data-wizard-lead]').textContent=committed.saved?(proposal.bus&&Object.keys(proposal.bus).length?'День сохранён вместе с рейсами. Время прогулок и возвращения можно уточнить в настройках; путеводитель — взять с собой.':'Остановки уже в Вашей поездке. Их можно переставить, дополнить или взять с собой.'):'Остановки остаются в этой вкладке. Файл поездки поможет перенести их на другой телефон.';
       $('[data-wizard-saved-travel]').hidden=!committed.saved;
       $('[data-wizard-download]').hidden=committed.saved;
       $('[data-wizard-saved-travel]').textContent=multi()?'Открыть поездку в дороге →':'Открыть день в дороге →';

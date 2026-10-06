@@ -61,10 +61,10 @@ export function dayHasContent(trip) {
   const {mode,...settings}=schedule;
   return mode!==undefined && mode!=='foot' || stable(settings)!==stable(defaultSchedule());
 }
-export const tripHasPlaces=trip=>journeyDays(trip).some(day=>day.places.length) || !!trip.routes.length;
+export const tripHasPlaces=trip=>journeyDays(trip).some(day=>dayPointIds(day).length) || !!trip.routes.length;
 export const tripHasExpenses=trip=>journeyDays(trip).some(day=>Object.values(day.costs).some(row=>row.items?.length || row.amount!==null && row.amount!==undefined || row.paid!==null && row.paid!==undefined));
 export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.bookings?.length || day.schedule?.rail || hasPreferences(day.preferences));
-export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...day.places,day.start_at,day.night_at,...(day.bookings||[]).flatMap(row=>[row.location,row.target])]).filter(id=>typeof id==='string'))];
+export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...dayPointIds(day),day.start_at,day.night_at,...(day.bookings||[]).flatMap(row=>[row.location,row.target])]).filter(id=>typeof id==='string'))];
 export function ensureJourney(trip) {
   if(trip.itinerary)return structuredClone(trip);
   return {...structuredClone(trip),itinerary:{version:1,active:'day-1',people:1,days:[snapshot(trip)]}};

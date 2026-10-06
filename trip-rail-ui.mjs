@@ -3,7 +3,7 @@ import {railProblem} from './day-journey-view.mjs?v=6';
 import {remainingTrip} from './day-progress.mjs?v=2';
 import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=6';
 import {planInput} from './trip-schedule-state.mjs?v=16';
-import {loadScheduler} from './trip-scheduler.mjs?v=21';
+import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
 import {preferredRailService,railStation} from './rail-destinations.mjs?v=1';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

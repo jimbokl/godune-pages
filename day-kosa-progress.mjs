@@ -1,7 +1,8 @@
 import {currentProgress} from './day-progress.mjs?v=2';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {selectedDay} from './trip-days-state.mjs?v=21';
+import {selectedDay} from './trip-days-state.mjs?v=22';
 import {clock} from './day-stop-view.mjs?v=1';
+import {transitHomeCopy} from './transport-home.mjs?v=1';
 
 // Continue only the verified, saved rides. Observations never choose new transport.
 export function kosaProgressInput(trip,context) {
@@ -18,10 +19,15 @@ export function continueKosaRoadbook(original,result,progress) {
   if(!next || !progress)throw Error('progress_unavailable');
   const book=structuredClone(original),index=book.timeline.findIndex(row=>row.poi===progress.after);
   if(index<0)throw Error('progress_unknown_walk');
-  const blocked=next.state==='conflict',missedTransfer=next.issues.includes('missed_transfer');
+  const blocked=next.issues.some(code=>['missed_transfer','missed_return'].includes(code)),missedTransfer=next.issues.includes('missed_transfer');
   const warning=missedTransfer?'На выбранный автобус между тропами уже не успеваете.':'На выбранный обратный автобус уже не успеваете.';
   const timeline=book.timeline.slice(index+1).map(row=>{
-    if(!blocked)return row;
+    if(!blocked){
+      if(result.home&&row.kind==='return'&&row===book.timeline.at(-1))return {...row,
+        time:result.home.finish??(row.time===null?null:result.home.earliest_finish),
+        text:transitHomeCopy(result.home,book.home_known??true),state:result.home.state==='fits'?'estimate':result.home.state==='late_home'?'conflict':'unknown'};
+      return row;
+    }
     const chosen=Number.isInteger(row.time)?` В прежнем плане — ${clock(row.time)}.`:'';
     return {...row,time:null,state:['bus','boarding'].includes(row.kind)?'conflict':'unknown',
       text:row.kind==='rail'?`Выбран поезд № ${book.rail.inward.id} в ${clock(book.rail.inward.departure)}. После пропущенного автобуса пересадка не подтверждена.`:
@@ -32,7 +38,9 @@ export function continueKosaRoadbook(original,result,progress) {
   book.timeline=[{kind:'notice',time:progress.at,title:'Снова у остановки после тропы',
     text:`Осмотр закончен. Уже были: ${progress.completed.filter(id=>book.walks.includes(id)).map(id=>id==='vysota-efa'?'Высота Эфа':'Танцующий лес').join(' · ')}. Время прошлых посещений не записано.`,state:'estimate'},...timeline];
   book.continuation=structuredClone(next);
+  if(result.home)book.home=structuredClone(result.home);
   book.finish=next.finish;
+  if(book.home)book.earliest_finish=blocked?null:book.home.earliest_finish;
   book.duration=next.finish===null?null:next.finish-progress.at;
   book.return.blocked=blocked;
   if(blocked){book.return.arrival=null;book.fallback='Откройте сохранённый план косы и подтвердите другой автобус вместе с электричкой, если она нужна. Прежний запасной рейс ещё не подтверждает возвращение с этой остановки и в это время. Если места в автобусе нет, воспользуйтесь заранее согласованным запасным транспортом.';}
@@ -43,6 +51,8 @@ export function continueKosaRoadbook(original,result,progress) {
 }
 
 export function kosaContinuationMessage(next) {
+  if(next.issues.includes('late_home')&&!next.issues.some(code=>['missed_transfer','missed_return'].includes(code)))return `На выбранный автобус в ${clock(next.next_departure)} успеваете, но к жилью вернётесь позже выбранного времени. Начните раньше или сократите прогулку.`;
   if(next.state==='conflict')return (next.issues.includes('missed_transfer')?'На выбранный автобус между тропами уже не успеваете.':'На выбранный обратный автобус уже не успеваете.')+' Время возвращения неизвестно. Откройте план косы и подтвердите другой вариант.';
+  if(next.finish===null)return `До выбранного автобуса в ${clock(next.next_departure)}: ${next.slack} мин сверх запаса на посадку. Дорогу от остановки до жилья ещё нужно уточнить.`;
   return `До выбранного автобуса в ${clock(next.next_departure)}: ${next.slack} мин сверх запаса на посадку. Ориентир возвращения — ${clock(next.finish)}. Рейс и наличие мест подтвердите на месте.`;
 }

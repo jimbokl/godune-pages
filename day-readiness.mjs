@@ -24,11 +24,12 @@ export function assessSchedule(schedule) {
 
 export function assessKosa(day,answers,walking) {
   if(day?.state!=='candidate')return assessment(false,day?.state==='unknown_approach'?'travel':'transport');
+  if(day.home&&day.home.state!=='fits')return assessment(false,day.home.state==='late_home'||day.home.state==='missed_outward'?'conflict':'travel',{estimated:true,user_estimated:true,conditions_pending:true});
   if(answers.city==='svetlogorsk')return assessment(false,'travel');
   if(day.light?.daylight===false)return assessment(false,'light',{estimated:true,conditions_pending:true});
   if(day.light&&day.light.daylight===null)return assessment(false,'light_unknown',{estimated:true,conditions_pending:true});
   if(walking&&walking.status!=='within_estimate')return assessment(false,walking.status==='too_short'?'walking_allowance':'walking_unknown',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
-  return assessment(true,'calculated',{estimated:true,user_estimated:answers.city==='kaliningrad',conditions_pending:true});
+  return assessment(true,'calculated',{estimated:true,user_estimated:answers.city==='kaliningrad'||!!day.home,conditions_pending:true});
 }
 
 export function readinessCopy(results,saved) {

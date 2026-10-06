@@ -1,9 +1,10 @@
-import {transitTable} from './transport-day.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=21';
-import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay} from './kosa-plan-state.mjs?v=20';
+import {transitTable} from './transport-day.mjs?v=3';
+import {loadScheduler} from './trip-scheduler.mjs?v=22';
+import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=22';
 import {createTripFile} from './trip-file.mjs?v=26';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=18';
-import {assessKosa} from './day-readiness.mjs?v=5';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=20';
+import {assessKosa} from './day-readiness.mjs?v=6';
+import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=1';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -27,24 +28,27 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   if(saved?.version===1 && ['one','two'].includes(saved.walks))form.elements.walks.value=saved.walks;
   if(saved?.version===1 && ['slow','gentle','brisk'].includes(saved.pace))form.elements.pace.value=saved.pace;
   const railFields=form.querySelector('#kosa-rail-fields');
+  const homeEditor=initKosaHomeEditor({form,trip:initial,saved,getTrip:()=>workshop.getState()});
+  if(homeEditor.active)editingDay=structuredClone(savedDay);
   function cityFields(){
-    const rail=form.elements.city.value==='kaliningrad',home=rail&&form.elements.origin.value==='home';
-    railFields.hidden=!rail;railFields.disabled=!rail;homeFields.hidden=!home;homeFields.disabled=!home;
-    document.querySelector('#kosa-ready-label').textContent=rail?(home?'Выйду из жилья не раньше':'Буду у вокзала не раньше'):'Начну у автобуса не раньше';
-    document.querySelector('#kosa-ready-help').textContent=rail?(home?'Подберём поезд с учётом вашей дороги до вокзала.':'Начало и возвращение — у выбранного вокзала. Дорогу от жилья можно добавить.'):
+    const rail=form.elements.city.value==='kaliningrad',home=homeEditor.active?!!homeEditor.read(readFields()).home_access.start_at:rail&&form.elements.origin.value==='home';
+    railFields.hidden=!rail;railFields.disabled=!rail;homeFields.hidden=!home||homeEditor.active;homeFields.disabled=!home||homeEditor.active;
+    form.elements.origin.disabled=homeEditor.active;
+    document.querySelector('#kosa-ready-label').textContent=home?'Выйду из жилья не раньше':rail?'Буду у вокзала не раньше':'Начну у автобуса не раньше';
+    document.querySelector('#kosa-ready-help').textContent=homeEditor.active?'Начало, пересадки и возвращение считаются вместе. Время дороги можно уточнить ниже.':rail?(home?'Подберём поезд с учётом вашей дороги до вокзала.':'Начало и возвращение — у выбранного вокзала. Дорогу от жилья можно добавить.'):
       form.elements.city.value==='svetlogorsk'?'До Зеленоградска нужно добраться отдельно. Ниже — день от его автостанции.':'План начинается у автостанции Зеленоградска.';
   }
-  cityFields();
   const number=name=>form.elements[name].value===''?null:Number(form.elements[name].value);
   const readFields=()=>({city:form.elements.city.value,date:form.elements.date.value,ready:Number(form.elements.ready.value.slice(0,2))*60+Number(form.elements.ready.value.slice(3)),
     walks:form.elements.walks.value,pace:form.elements.pace.value,first_visit:Number(form.elements.first_visit.value),second_visit:Number(form.elements.second_visit.value),boarding:Number(form.elements.boarding.value),...(form.elements.city.value==='kaliningrad'?{station:form.elements.station.value,origin:form.elements.origin.value,to_station:form.elements.origin.value==='station'?0:number('to_station'),from_station:form.elements.origin.value==='station'?0:number('from_station'),to_bus:number('to_bus'),to_train:number('to_train'),rail_boarding:number('rail_boarding')}:{})});
-  const read=()=>releaseSelectedRides?readFields():kosaPinnedAnswers(readFields(),saved);
+  const read=()=>{const fields=homeEditor.read(readFields());return releaseSelectedRides?fields:kosaPinnedAnswers(fields,saved);};
+  cityFields();
   const table=()=>tablePromise ||= fetch(new URL('data/kosa-bus-210.json',base)).then(r=>{if(!r.ok)throw Error('Таблица пока не загрузилась.');return r.json();}).catch(e=>{tablePromise=null;throw e;});
   const maps=()=>mapPromise ||= fetch(new URL('data/kosa-interchanges.json',base)).then(r=>{if(!r.ok)throw Error('maps');return r.json();}).catch(()=>{mapPromise=null;return null;});
   function action(text,fn,className){const b=el('button',text,className);b.type='button';b.addEventListener('click',fn);return b;}
   function freshTransport(){const button=action('Подобрать рейсы заново',()=>{releaseSelectedRides=true;calculate();},'save-item');button.dataset.kosaFreshTransport='true';return button;}
   function link(text,path,className){const a=el('a',text,className);a.href=new URL(path,base).href;return a;}
-  function row(list,time,title,text,previous){const item=el('li'),timeNode=el('time',clock(time)),copy=el('div');timeNode.dateTime=clock(time);copy.append(el('h4',title),el('p',text));if(previous.has(title)&&previous.get(title)!==clock(time))timeNode.classList.add('kosa-time-changed');item.append(timeNode,copy);list.append(item);return copy;}
+  function row(list,time,title,text,previous){const known=Number.isInteger(time),label=known?clock(time):'Уточнить',item=el('li'),timeNode=el('time',label),copy=el('div');if(known)timeNode.dateTime=label;copy.append(el('h4',title),el('p',text));if(previous.has(title)&&previous.get(title)!==label)timeNode.classList.add('kosa-time-changed');item.append(timeNode,copy);list.append(item);return copy;}
   function invalidate(){exportAbort?.abort();sequence++;result.setAttribute('aria-busy','true');result.classList.add('kosa-updating');result.querySelectorAll('button,select').forEach(n=>n.disabled=true);}
   function schedule(){
     cityFields();const params=JSON.stringify(read());if(params===lastParams)return;lastParams=params;
@@ -73,7 +77,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
       try{performance.mark('godune:kosa-plan-ready',{detail:{calculation_ms:elapsed,state:day.state}});}catch{}
       result.dataset.calendarException=String(calendar.exception);result.dataset.calendarSource=publication.source_url;result.dataset.calendarCheckedAt=publication.checked_at;result.dataset.calculationMs=elapsed.toFixed(3);result.dataset.kosaState=day.state;result.dataset.kosaValidity=day.validity;
       result.replaceChildren();result.hidden=false;result.classList.remove('kosa-updating');result.setAttribute('aria-busy','false');result.dataset.kosaDate=answers.date;result.dataset.kosaReadyAt=answers.ready;result.dataset.kosaWalks=answers.walks;result.dataset.kosaOrigin=answers.origin||'bus';result.dataset.kosaCity=answers.city;result.dataset.kosaStation=answers.station||'';
-      const title=el('h3',day.state==='candidate'?'Ваш день у дюн складывается':'Для этого дня нужен другой план');title.id='kosa-result-title';title.tabIndex=-1;result.append(title,el('p',answers.city==='kaliningrad'&&answers.origin==='station'?'Начало и возвращение — у выбранного вокзала. Дорога от жилья в этот план не входит.':cityNote[answers.city]));
+      const title=el('h3',day.state==='candidate'?'Ваш день у дюн складывается':'Для этого дня нужен другой план');title.id='kosa-result-title';title.tabIndex=-1;result.append(title,el('p',answers.home_access?(answers.home_access.start_at||answers.home_access.return_at?'Дорога от жилья, рейсы и возвращение — в одном плане. Время на подходы — ваша оценка.':'Начало и возвращение — у транспорта. Дорога до жилья не включена.'):answers.city==='kaliningrad'&&answers.origin==='station'?'Начало и возвращение — у выбранного вокзала. Дорога от жилья в этот план не входит.':cityNote[answers.city]));
       const warning=el('p',calendar.exception?`На ${answers.date.split('-').reverse().join('.')} опубликовано отдельное изменение. Сверено ${publication.checked_at.split('-').reverse().join('.')}. Перед выездом подтвердите рейсы.`:'Часы — из опубликованной таблицы. Перед выездом подтвердите рейсы на свою дату.','kosa-plan-warning');result.append(warning);
       if(day.state!=='candidate') {
         const reason=day.validity==='unpublished_timetable'?'Расписание в одну из сторон на эту дату пока не опубликовано. Время возвращения станет известно после уточнения; прежние рейсы не подставляем. Карты троп доступны ниже.':day.validity==='unpublished_calendar'?'Расписание на этот год ещё не подтверждено. Точные часы не подставляем из прежнего сезона. Ниже можно выбрать тропу и скачать её карту.':
@@ -89,12 +93,12 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const proposals=el('div',undefined,'kosa-alternatives');
           proposals.append(el('h4','Вот что можно изменить'),el('p','Варианты рассчитаны по той же таблице. Время на дюны и дорогу остаётся вашим. Выберите подходящий — поездка сама не изменится.'));
           for(const option of alternatives){
-            const proposed={...answers,ready:option.ready_at,walks:option.second_visit===null?'one':'two'},preview=kosaRoadbook(proposed,option.day,rawPublication,catalog,interchanges);
+            const proposed={...answers,ready:option.ready_at,...(answers.home?{home:{...answers.home,ready_at:option.ready_at}}:{}),walks:option.second_visit===null?'one':'two'},preview=kosaRoadbook(proposed,option.day,rawPublication,catalog,interchanges);
             const card=el('div',undefined,'kosa-alternative');card.dataset.kosaAlternative=option.kind;card.dataset.readyAt=option.ready_at;card.dataset.finish=preview.finish;
             const earlier=option.ready_at<answers.ready,dunesOnly=option.kind==='dunes_only';
             card.append(el('h4',dunesOnly?'Только дюны Эфы':answers.walks==='two'?'Начать раньше, сохранить обе прогулки':'Начать раньше, сохранить прогулку'));
-            const startLabel=option.day.rail?(answers.origin==='station'?'Начало у вокзала':'Выход из дома'):'У автобуса в Зеленоградске';
-            const finishLabel=option.day.rail?(answers.origin==='station'?'Снова у вокзала':'К жилью, по вашей оценке'):'Снова в Зеленоградске';
+            const startLabel=answers.home_access?.start_at?'Выход из жилья':option.day.rail?(answers.origin==='station'?'Начало у вокзала':'Выход из дома'):'У автобуса в Зеленоградске';
+            const finishLabel=answers.home_access?.return_at?'К жилью, по вашей оценке':option.day.rail?(answers.origin==='station'?'Снова у вокзала':'К жилью, по вашей оценке'):'Снова в Зеленоградске';
             const times=el('dl');for(const [label,value]of [[startLabel,clock(option.day.rail?.home_start??option.ready_at)],[finishLabel,clock(preview.finish)]])times.append(el('dt',label),el('dd',value));card.append(times);
             card.append(el('p',`Автобус к Эфе в ${clock(option.day.outward.departure)}.${dunesOnly?' Танцующий лес в этот вариант не входит.':''}${earlier?` Начало вместо ${clock(answers.ready)} — в ${clock(option.ready_at)}.`:' Начало остаётся прежним.'}`));
             const short=preview.walking.checks.filter(check=>check.trail&&check.state==='too_short');
@@ -110,11 +114,11 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges);
         if(answers.fixed_transport)result.append(el('p','Выбранные рейсы сохранены. Поменяйте дату или время, чтобы искать другой день.','kosa-plan-warning'),freshTransport());
         if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,rawPublication,catalog,roadbook.interchanges)
-          &&Object.entries(answers).every(([key,value])=>saved?.[key]===value))editingDay=structuredClone(savedDay);
+          &&Object.entries(answers).every(([key,value])=>sameKosaAnswer(key,value,saved?.[key])))editingDay=structuredClone(savedDay);
         if(roadbook.walking.checks.some(check=>check.trail&&check.state==='too_short'))title.textContent='Для прогулки нужно больше времени';
         if(roadbook.light.state==='outside_daylight')title.textContent='Для прогулки нужно больше дневного света';
         const summary=el('div',undefined,'kosa-result-summary');
-        for(const [label,value]of [[day.rail?(answers.origin==='station'?'От вокзала и обратно':'От жилья и обратно'):'От автобуса до возвращения',duration(roadbook.duration)],[day.rail?(answers.origin==='station'?'Обратно у вокзала':'У жилья, по вашей оценке'):'Обратно в Зеленоградске',clock(roadbook.finish)],['Отдельных прогулок',answers.walks==='two'?'Две':'Одна']]){const box=el('div');box.append(el('small',label),el('strong',value));summary.append(box);}result.append(summary);
+        for(const [label,value]of [[day.home?(roadbook.home_known?'От жилья и обратно':'От транспорта и обратно'):day.rail?(answers.origin==='station'?'От вокзала и обратно':'От жилья и обратно'):'От автобуса до возвращения',roadbook.duration===null?'Уточнить':duration(roadbook.duration)],[day.home?(roadbook.home_known?'У жилья, по вашей оценке':day.rail?'Обратно у вокзала':'Обратно у автобуса'):day.rail?(answers.origin==='station'?'Обратно у вокзала':'У жилья, по вашей оценке'):'Обратно в Зеленоградске',roadbook.finish===null?'Уточнить':clock(roadbook.finish)],['Отдельных прогулок',answers.walks==='two'?'Две':'Одна']]){const box=el('div');box.append(el('small',label),el('strong',value));summary.append(box);}result.append(summary);
         const list=el('ol',undefined,'kosa-plan-timeline');
         for(const item of roadbook.timeline){
           const copy=row(list,item.time,item.title,item.text,previous);

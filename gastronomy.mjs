@@ -4,7 +4,7 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {foodTrip,anchorRequest} from './gastro-day.mjs?v=10';
-import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=21';
+import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=22';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
 

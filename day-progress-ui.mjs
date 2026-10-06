@@ -3,7 +3,7 @@ import {previewProgress,applyProgress,clearProgress,progressMessages} from './da
 import {tripSignature,lightMessage} from './trip-light.mjs?v=12';
 import {clock} from './day-stop-view.mjs?v=1';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=5';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=6';
 import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
 import {railProblem} from './day-journey-view.mjs?v=6';
 

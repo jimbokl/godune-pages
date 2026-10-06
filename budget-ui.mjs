@@ -1,7 +1,7 @@
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
-import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=21';
+import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=22';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=18';
-import {loadScheduler} from './trip-scheduler.mjs?v=21';
+import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2';
 
 // The same cost model is used by the planner and the standalone budget.

@@ -1,4 +1,5 @@
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
+import {transitHomeInput} from './transport-home.mjs?v=1';
 
 // Legacy bus publications are adapted at the boundary, not inside the calendar.
 export function transitTable(publication,day){
@@ -23,6 +24,7 @@ export function datedTransitInput(preferences,publication,locations=null){
     outward:nativeRides(table.outward),inward:nativeRides(table.inward)};
   if(!selected.reason&&(table.outward===null||table.inward===null))input.timetable_known=false;
   if(locations?.first)input.visit_light=locations;
+  const home=transitHomeInput(preferences);if(home)input.home=home;
   return input;
 }
 
@@ -41,7 +43,9 @@ export function pinTransitSelection(input,busSnapshot,railSnapshot=null){
   next.inward=input.inward.filter(row=>equal(row,transfer)||equal(row,back)||row.departure>back.departure);
   if(input.rail){
     if(!Array.isArray(rail)||rail.length!==2)throw Error('transport_selection_changed');
-    next.rail.outward=[find(input.rail.outward,rail[0])];next.rail.inward=[find(input.rail.inward,rail[1])];
+    next.rail.outward=[find(input.rail.outward,rail[0])];
+    const homeTrain=find(input.rail.inward,rail[1]);
+    next.rail.inward=input.home?input.rail.inward.filter(row=>equal(row,homeTrain)||row.departure>homeTrain.departure):[homeTrain];
   }else if(rail!==null)throw Error('transport_selection_changed');
   return next;
 }
