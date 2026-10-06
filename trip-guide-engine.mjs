@@ -1,5 +1,5 @@
 import {partyLabel} from './trip-party.mjs?v=1';
-import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=3';
+import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {assessDayPreferences} from './day-preferences.mjs?v=6';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
@@ -11,7 +11,7 @@ import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_
 import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=11';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=7';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=8';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -47,7 +47,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
         const inbound=planBaseTravel(trip,role,catalog,matrix);
         if(inbound)rows.push(roadJourney(item,inbound.travel,settings.reserve,name(inbound.from),blocked,name));
       }
-      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?(stationAccess?'Начало прогулки после прибытия электрички.':'Начало дня по выбранному времени.'):'Время по расчёту дня. Подход к двери ещё нужно сверить.')+` ${mobilityLabel(trip)}.`+(vehicle && (role==='night'||role==='end'&&!bases.night_at) && trip.places.length && baseId(anchor)!==vehicle.via?` Сначала вернитесь к оставленному транспорту: ${name(vehicle.via)}. Парковку и проход нужно сверить.`:'')+gps+(issues.length?' '+issues.join(' '):''),state});return;
+      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?(stationAccess?'Начало прогулки после прибытия поезда.':'Начало дня по выбранному времени.'):'Время по расчёту дня. Подход к двери ещё нужно сверить.')+` ${mobilityLabel(trip)}.`+(vehicle && (role==='night'||role==='end'&&!bases.night_at) && trip.places.length && baseId(anchor)!==vehicle.via?` Сначала вернитесь к оставленному транспорту: ${name(vehicle.via)}. Парковку и проход нужно сверить.`:'')+gps+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
     const {projected,travel,access}=planTravel(trip,item.id,catalog,matrix),previous=previousPlace(projected,item.id);

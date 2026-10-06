@@ -1,7 +1,7 @@
 export async function makeTripGuidePdf(input,{signal,onProgress=()=>{}}={}) {
   signal?.throwIfAborted();let worker;
-  try{if(typeof Worker!=='undefined')worker=new Worker(new URL('./trip-guide-worker.mjs?v=15',import.meta.url),{type:'module'});}catch{}
-  if(!worker){const {renderTripGuide}=await import('./trip-guide-renderer.mjs?v=15');return renderTripGuide(input,{signal,onProgress});}
+  try{if(typeof Worker!=='undefined')worker=new Worker(new URL('./trip-guide-worker.mjs?v=16',import.meta.url),{type:'module'});}catch{}
+  if(!worker){const {renderTripGuide}=await import('./trip-guide-renderer.mjs?v=16');return renderTripGuide(input,{signal,onProgress});}
   try{return await new Promise((resolve,reject)=>{
     const cleanup=()=>signal?.removeEventListener('abort',cancel),cancel=()=>{cleanup();reject(signal.reason || new DOMException('Отменено','AbortError'));};
     signal?.addEventListener('abort',cancel,{once:true});worker.onmessage=({data})=>{if(data.progress)onProgress(data.progress);else{cleanup();data.error?reject(Error(data.error)):resolve(data.result);}};

@@ -7,7 +7,7 @@ import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlace
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=11';
-import {mobilityLabel} from './day-mobility.mjs?v=3';
+import {mobilityLabel} from './day-mobility.mjs?v=4';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
 import {planInput} from './trip-schedule-state.mjs?v=17';

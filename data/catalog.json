@@ -7403,7 +7403,7 @@
       "name": "Вокзал Балтийск",
       "osm_ref": "node/2001287734",
       "photos": [],
-      "practical": "Выберите обратный рейс до выхода со станции. Расписание Калининград — Балтийск опубликовано на сайте КППК; время отправления в нашем расчёте пока не подтверждено.",
+      "practical": "Поезда из Калининграда-Южного и обратно выбираются на дату поездки в нашем мастере. Дневные рейсы есть по вторникам, четвергам, выходным и праздникам; в другие рабочие дни для прогулки одним днём нужна другая дорога. Перед выходом выберите возвращение и оставьте время на посадку.",
       "price": null,
       "slug": "vokzal-baltiysk",
       "source_url": "https://www.openstreetmap.org/node/2001287734",
@@ -11617,6 +11617,290 @@
       },
       "timezone": "Europe/Kaliningrad",
       "to": "Светлогорск-2",
+      "valid_from": "2026-10-01",
+      "valid_until": null
+    },
+    {
+      "arrival_poi": "vokzal-baltiysk",
+      "arrival_route": "baltiysk-ot-vokzala-k-mayaku",
+      "exceptions": [
+        {
+          "date": "2026-11-04",
+          "inbound": [
+            {
+              "arrival": "10:55",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "09:49",
+              "id": "6406"
+            },
+            {
+              "arrival": "17:25",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:20",
+              "id": "6416"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "09:17",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:10",
+              "id": "6403"
+            },
+            {
+              "arrival": "14:13",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:05",
+              "id": "6409"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-06",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+                "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+                "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+              }
+            ],
+            "name": "КППК · дни курсирования и календарь Роструда 2026",
+            "url": "https://www.kppk39.ru/raspisanie/kaliningrad-baltiysk/",
+            "verification": "official"
+          }
+        },
+        {
+          "date": "2026-12-31",
+          "inbound": [
+            {
+              "arrival": "10:55",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "09:49",
+              "id": "6406"
+            },
+            {
+              "arrival": "17:25",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:20",
+              "id": "6416"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "09:17",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:10",
+              "id": "6403"
+            },
+            {
+              "arrival": "14:13",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:05",
+              "id": "6409"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-06",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+                "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+                "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+              }
+            ],
+            "name": "КППК · дни курсирования и календарь Роструда 2026",
+            "url": "https://www.kppk39.ru/raspisanie/kaliningrad-baltiysk/",
+            "verification": "official"
+          }
+        }
+      ],
+      "from": "Калининград-Южный",
+      "id": "kaliningrad-south-baltiysk",
+      "inbound": [
+        {
+          "arrival": "07:38",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "06:34",
+          "id": "6400"
+        },
+        {
+          "arrival": "10:55",
+          "days": [
+            2,
+            4,
+            6,
+            7
+          ],
+          "departure": "09:49",
+          "id": "6406"
+        },
+        {
+          "arrival": "17:25",
+          "days": [
+            2,
+            4,
+            6,
+            7
+          ],
+          "departure": "16:20",
+          "id": "6416"
+        }
+      ],
+      "note": "Дневные поезда — по вторникам, четвергам, выходным и праздникам. В остальные рабочие дни поезд из Калининграда идёт вечером, а обратно — утром: для прогулки одним днём такая пара не подходит. На этой линии ходит рельсовый автобус РА-2. Переправа на Балтийскую косу в расчёт не входит.",
+      "outward": [
+        {
+          "arrival": "09:17",
+          "days": [
+            2,
+            4,
+            6,
+            7
+          ],
+          "departure": "08:10",
+          "id": "6403"
+        },
+        {
+          "arrival": "14:13",
+          "days": [
+            2,
+            4,
+            6,
+            7
+          ],
+          "departure": "13:05",
+          "id": "6409"
+        },
+        {
+          "arrival": "18:48",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "17:45",
+          "id": "6417"
+        }
+      ],
+      "publication_year": 2026,
+      "source": {
+        "calendar_source": {
+          "checked_at": "2026-10-06",
+          "name": "Роструд · календарь 2026",
+          "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+          "verification": "official"
+        },
+        "checked_at": "2026-10-06",
+        "documents": [
+          {
+            "direction": "outward",
+            "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+            "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+          },
+          {
+            "direction": "inbound",
+            "sha256": "633dcabb5f5cb28d4fe2cfee858ac841dad3bc80f76d43acecd794a7e19ab044",
+            "url": "https://www.kppk39.ru/upload/medialibrary/828/vlwimc3826hc9yjr44fiizy70ywtjkmw.png"
+          }
+        ],
+        "name": "КППК · Калининград — Балтийск, с 1 октября 2026",
+        "url": "https://www.kppk39.ru/raspisanie/kaliningrad-baltiysk/",
+        "verification": "official"
+      },
+      "timezone": "Europe/Kaliningrad",
+      "to": "Балтийск",
       "valid_from": "2026-10-01",
       "valid_until": null
     }

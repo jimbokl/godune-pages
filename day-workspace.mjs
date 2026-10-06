@@ -5,7 +5,7 @@ import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
 import {waveLabel} from './day-wave.mjs?v=2';
-import {vehicleArrival} from './day-mobility.mjs?v=3';
+import {vehicleArrival} from './day-mobility.mjs?v=4';
 import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};

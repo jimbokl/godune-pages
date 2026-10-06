@@ -63,3 +63,24 @@ export function earlierWizardReturn(trip,catalog,matrix,schedule,calculate) {
   }
   return null;
 }
+
+// A missed return can sometimes be avoided by leaving earlier. Prove the whole
+// day with the same calculator; never shorten the walk or its reserve to fit.
+export function earlierWizardDeparture(trip,catalog,matrix,schedule,calculate) {
+  const rail=trip.schedule?.rail;
+  if(!rail?.access || schedule?.rail?.state!=='missed'
+    || !Number.isInteger(rail.access.to_station) || !Number.isInteger(rail.access.from_station))return null;
+  const table=railTable(catalog,rail.service,trip.date);if(table.reason)return null;
+  for(const row of [...(table.outward || [])].reverse()) {
+    const ride=rideSnapshot(row);
+    if(ride.departure>=rail.outward.departure)continue;
+    const latestStart=ride.departure-rail.access.to_station-rail.boarding;
+    if(latestStart<0)continue;
+    const start=Math.min(trip.schedule.start,latestStart),candidate=clone(trip);
+    candidate.schedule.start=start;candidate.schedule.rail.outward=ride;
+    const result=calculate(planInput(candidate,catalog,matrix));
+    if(result.rail?.state==='fits' && Number.isInteger(result.rail.home?.finish)
+      && !['conflict','overrun'].includes(result.status))return {ride,start,result};
+  }
+  return null;
+}

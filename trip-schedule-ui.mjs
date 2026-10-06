@@ -1,8 +1,8 @@
 import {selectedDay} from './trip-days-state.mjs?v=23';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=7';
-import {journeyRow} from './day-journey-ui.mjs?v=5';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=8';
+import {journeyRow} from './day-journey-ui.mjs?v=6';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=13';
@@ -15,13 +15,13 @@ import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadT
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=8';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=12';
-import {initDayProgress} from './day-progress-ui.mjs?v=7';
+import {initDayProgress} from './day-progress-ui.mjs?v=8';
 import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=6';
 import {progressMessages} from './day-progress-advice.mjs?v=7';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
 import {flexSignature} from './day-flex-advice.mjs?v=12';
 import {markVisited,travelContext} from './trip-travel-state.mjs?v=11';
-import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=3';
+import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 import {routeAccessDetails} from './route-access-ui.mjs?v=1';
 

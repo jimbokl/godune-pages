@@ -1,4 +1,4 @@
-import {wizardRailTargets,wizardRailChoice} from './wizard-rail.mjs?v=3';
+import {wizardRailTargets,wizardRailChoice} from './wizard-rail.mjs?v=4';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
 import {rideSnapshot} from './trip-rail-state.mjs?v=6';
 import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2';
@@ -12,7 +12,7 @@ export function initWizardRail({mount,catalog,base,getAnswers,chooseDate}) {
     const answers=getAnswers();access.remember(mount);mount.replaceChildren();mount.hidden=answers.transport!=='rail';if(mount.hidden)return;
     const targets=wizardRailTargets(catalog,answers),selections=targets.map(target=>wizardRailChoice(catalog,answers,target));
     answers.rail_days=selections.map(({target,rail})=>({day_index:target.index,rail}));
-    if(!targets.length){mount.append(node('p','Для этой прогулки пока нет связанного железнодорожного направления. Выберите прогулку в Зеленоградске или Светлогорске; дорогу на косу добавим отдельно.'));return;}
+    if(!targets.length){mount.append(node('p','Для этой прогулки пока нет связанного железнодорожного направления. Выберите прогулку в Зеленоградске, Светлогорске или Балтийске.'));return;}
     if(!answers.date){const button=node('button','Выбрать дату →');button.type='button';button.className='wizard-secondary';button.addEventListener('click',chooseDate);mount.append(button);}
     if(answers.area==='whole-trip')mount.append(node('p','Электрички учтём в дни у моря. В остальных днях оставим транспорт из готового плана — он подписан у каждого дня.'));
     for(const {target,table,rail,available} of selections) {
@@ -48,8 +48,10 @@ export function initWizardRail({mount,catalog,base,getAnswers,chooseDate}) {
         note:'Дорогу от жилья до транспортной точки и обратно оценим по карте. Здесь можно поправить минуты. Вход и платформу сверьте перед поездкой.',
         status:()=>roads.state(binding)==='loading'?'Считаем дорогу от жилья…':!available?'Сначала выберите дату с расписанием':current().access.to_station===null||current().access.from_station===null?'Дорога до вокзала и обратно требует уточнения':`${current().access.to_station} мин до вокзала ${stationRoadOrigin(current().access.road,'to')} · ${current().access.from_station} мин обратно ${stationRoadOrigin(current().access.road,'back')}`}));
       if(rail.access.road){const proof=node('p'),link=node('a',rail.access.road.anchor.name+' · OpenStreetMap');link.href=rail.access.road.anchor.url;link.target='_blank';link.rel='noopener';proof.dataset.stationRoadSource='true';proof.append(link,` · карта от ${rail.access.road.source.snapshot_at.slice(0,10)}. До транспортной точки; платформа и ожидание — отдельно.`);card.append(proof);}
-      const note=node('p',available?'Пеший путь от станции к остановкам и обратно посчитаем по карте.':messages[table.reason] || (!table.outward?.length || !table.inbound?.length?'На эту дату двух рейсов в таблице нет. Выберите другое направление или дату.':'Расписание пока неизвестно.'));
+      const noDayPair=available && table.outward.every(out=>table.inbound.every(back=>rideSnapshot(out).arrival>=rideSnapshot(back).departure));
+      const note=node('p',noDayPair?'На эту дату поезд прибывает после отправления обратного. Для поездки одним днём выберите другую дату или транспорт.':available?'Пеший путь от станции к остановкам и обратно посчитаем по карте.':messages[table.reason] || (!table.outward?.length || !table.inbound?.length?'На эту дату двух рейсов в таблице нет. Выберите другое направление или дату.':'Расписание пока неизвестно.'));
       note.className='wizard-stop-note';card.append(note);
+      if(table.service.note){const detail=node('details'),summary=node('summary','О рейсах на этом направлении');detail.append(summary,node('p',table.service.note));card.append(detail);}
       if(table.source){const source=node('p'),link=node('a',table.source.name);link.href=table.source.url;link.target='_blank';link.rel='noopener';source.append(link,` · проверено ${table.source.checked_at}. Билеты и платформу сверьте перед выходом.`);card.append(source);}
       mount.append(card);
     }

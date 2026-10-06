@@ -1,5 +1,5 @@
 import {clock} from './day-stop-view.mjs?v=1';
-import {journeyKinds} from './day-journey-view.mjs?v=7';
+import {journeyKinds} from './day-journey-view.mjs?v=8';
 export function journeyRow(row) {
   const li=document.createElement('li');li.className='day-journey-step';li.dataset.journeyStep=row.id;li.dataset.journeyKind=row.kind;li.dataset.journeyState=row.state;
   if(row.poi)li.dataset.journeyPoi=row.poi;

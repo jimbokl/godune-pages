@@ -233,17 +233,17 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=80'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=81'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=24')).then(({initPlanningWizard})=>
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=25')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; });
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=18')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=19')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=21')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';

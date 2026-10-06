@@ -5,7 +5,7 @@ import {clock} from './day-stop-view.mjs?v=1';
 import {generatedDayPoints} from './day-points.mjs?v=1';
 import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=7';
 import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
-import {railProblem} from './day-journey-view.mjs?v=7';
+import {railProblem} from './day-journey-view.mjs?v=8';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 function regionalNow() {

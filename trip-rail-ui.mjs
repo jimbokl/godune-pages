@@ -1,5 +1,5 @@
 import {railHomeLocations,railHomeInput} from './rail-access.mjs?v=2';
-import {railProblem} from './day-journey-view.mjs?v=7';
+import {railProblem} from './day-journey-view.mjs?v=8';
 import {remainingTrip} from './day-progress.mjs?v=2';
 import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=6';
 import {planInput} from './trip-schedule-state.mjs?v=17';

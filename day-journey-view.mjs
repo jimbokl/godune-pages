@@ -1,12 +1,12 @@
 // Read-only adapters. Rust owns time; this module only names its results.
 import {clock} from './day-stop-view.mjs?v=1';
 import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
-export const journeyKinds={start:'Выход',walk:'Пешком',car:'На машине',bike:'На велосипеде',mixed:'Пешком и транспорт',rail:'Электричка',bus:'Автобус',ferry:'Переправа',wait:'Ожидание',visit:'Прогулка',return:'Возвращение',boarding:'До посадки',notice:'Проверьте перед выходом'};
+export const journeyKinds={start:'Выход',walk:'Пешком',car:'На машине',bike:'На велосипеде',mixed:'Пешком и транспорт',rail:'Поезд',bus:'Автобус',ferry:'Переправа',wait:'Ожидание',visit:'Прогулка',return:'Возвращение',boarding:'До посадки',notice:'Проверьте перед выходом'};
 const row=(id,kind,time,title,text,state='estimate',source=null)=>({id,kind,time,title,text,state,source});
 const known=n=>Number.isInteger(n)&&n>=0?n:null;
 export function railJourney(resolved,result) {
   if(!resolved)return {before:[],after:[]};
-  if(!resolved.input || !result)return {before:[row('rail-check','notice',null,'Электрички нужно выбрать заново',resolved.reason==='choose_date'?'Выберите дату дня.':resolved.reason==='stale_date'?'Дата изменилась. Прежние рейсы сохранены, но сейчас не учитываются.':'Расписание на этот день изменилось или ещё не опубликовано. Прежние рейсы сохранены; точное время нужно уточнить.','unknown')],after:[]};
+  if(!resolved.input || !result)return {before:[row('rail-check','notice',null,'Поезда нужно выбрать заново',resolved.reason==='choose_date'?'Выберите дату дня.':resolved.reason==='stale_date'?'Дата изменилась. Прежние рейсы сохранены, но сейчас не учитываются.':'Расписание на этот день изменилось или ещё не опубликовано. Прежние рейсы сохранены; точное время нужно уточнить.','unknown')],after:[]};
   const r=result,s=resolved.saved,service=resolved.service,source=resolved.source;
   const conflict=['missed','no_time','missed_outward','late_home'].includes(r.state),unknownReturn=r.itinerary_deadline===null;
   if(s.access) {
