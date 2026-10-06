@@ -331,7 +331,9 @@
       await loadMapLibrary();
       mapBaseError = false;
       map = new maplibregl.Map({container:'interactive-map', center:local?[(local.bbox[0]+local.bbox[2])/2,(local.bbox[1]+local.bbox[3])/2]:[20.57,54.99], zoom:8, locale:russianMap, attributionControl:false,
-        maxBounds:local ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
+        // A small fragment must allow padding around a walk on wide screens.
+        // GPS coverage is still checked against the original data bounds.
+        maxBounds:local?.kind==='region' ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
         style:vector ? (await import(url('region-map.mjs?v=6'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
       const applyMapTheme=(await import(url('map-theme.mjs?v=2'))).bindMapTheme(map);
       map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:!vector?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
