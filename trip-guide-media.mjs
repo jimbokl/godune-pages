@@ -5,8 +5,13 @@ export const guideHash=async bytes=>Array.from(new Uint8Array(await crypto.subtl
 export function overviewSvg(day,land,water={routes:{}}) {
   const points=day.stops.filter(p=>Number.isFinite(p.lon)&&Number.isFinite(p.lat));
   if(!points.length)return null;
-  const w=1000,h=700,margin=80,cos=Math.cos(points.reduce((n,p)=>n+p.lat,0)/points.length*Math.PI/180);
-  const xs=points.map(p=>p.lon*cos),ys=points.map(p=>p.lat),xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
+  // Include the actual approach and return roads. Framing only visits crops a
+  // long car journey to a few metres around the dune and hides the homeward leg.
+  const roadCoordinates=(day.roads?.features || []).filter(f=>f.geometry?.type==='LineString').flatMap(f=>f.geometry.coordinates)
+    .filter(c=>Array.isArray(c)&&Number.isFinite(c[0])&&Number.isFinite(c[1]));
+  const extent=[...points.map(p=>[p.lon,p.lat]),...roadCoordinates];
+  const w=1000,h=700,margin=80,cos=Math.cos(extent.reduce((n,p)=>n+p[1],0)/extent.length*Math.PI/180);
+  const xs=extent.map(p=>p[0]*cos),ys=extent.map(p=>p[1]),xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
   const scale=Math.min((w-2*margin)/Math.max(xmax-xmin,.006*cos),(h-2*margin)/Math.max(ymax-ymin,.006));
   const center=[(xmin+xmax)/2,(ymin+ymax)/2],xy=([lon,lat])=>[w/2+(lon*cos-center[0])*scale,h/2-(lat-center[1])*scale];
   const path=ring=>ring.map((c,i)=>{const [x,y]=xy(c);return `${i?'L':'M'}${x.toFixed(1)},${y.toFixed(1)}`;}).join('');

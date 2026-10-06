@@ -1,14 +1,15 @@
 import {partyLabel} from './trip-party.mjs?v=1';
-import {assessDayPreferences} from './day-preferences.mjs?v=1';
+import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=1';
+import {assessDayPreferences} from './day-preferences.mjs?v=3';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=18';
-import {planInput,planTravel,defaultSchedule} from './trip-schedule-state.mjs?v=13';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=20';
+import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=15';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
-import {baseName,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
-import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=6';
+import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
+import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=8';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=4';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=5';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -37,11 +38,16 @@ export function guideDayRows(trip,catalog,result,matrix) {
       const title={start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
       const anchor=namedBases[role+'_at'],point=isPersonalPoint(anchor)?anchor:catalog.poi.find(p=>p.slug===anchor);
       const gps=Number.isFinite(point?.lat)&&Number.isFinite(point?.lon)?` GPS: ${point.lat.toFixed(5)}, ${point.lon.toFixed(5)}.`:'';
-      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?'Начало дня по выбранному времени.':'Время по расчёту дня. Подход к двери ещё нужно сверить.')+gps+(issues.length?' '+issues.join(' '):''),state});return;
+      const vehicle=baseTransport(trip);
+      if(role!=='start') {
+        const inbound=planBaseTravel(trip,role,catalog,matrix);
+        if(inbound)rows.push(roadJourney(item,inbound.travel,settings.reserve,name(inbound.from),blocked,name));
+      }
+      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?'Начало дня по выбранному времени.':'Время по расчёту дня. Подход к двери ещё нужно сверить.')+` ${mobilityLabel(trip)}.`+(vehicle && (role==='night'||role==='end'&&!bases.night_at) && trip.places.length && baseId(anchor)!==vehicle.via?` Сначала вернитесь к оставленному транспорту: ${name(vehicle.via)}. Парковку и проход нужно сверить.`:'')+gps+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
     const {projected,travel,access}=planTravel(trip,item.id,catalog,matrix),previous=previousPlace(projected,item.id);
-    if(previous)rows.push(roadJourney(item,travel,settings.reserve,name(previous),blocked));
+    if(previous)rows.push(roadJourney(item,travel,settings.reserve,name(previous),blocked,name));
     const booking=bookings.stops[item.id],wait=waitJourney(item,!!booking);if(wait&&!blocked)rows.push(wait);
     const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0;
     rows.push({id:item.id,poi:item.id,kind:'visit',time:blocked?null:item.begins,title:place.name,

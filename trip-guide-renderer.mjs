@@ -1,7 +1,7 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
-import {journeyKinds} from './day-journey-view.mjs?v=4';
+import {journeyKinds} from './day-journey-view.mjs?v=5';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;

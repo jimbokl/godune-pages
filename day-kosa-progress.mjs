@@ -1,6 +1,6 @@
 import {currentProgress} from './day-progress.mjs?v=2';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {selectedDay} from './trip-days-state.mjs?v=18';
+import {selectedDay} from './trip-days-state.mjs?v=20';
 import {clock} from './day-stop-view.mjs?v=1';
 
 // Continue only the verified, saved rides. Observations never choose new transport.

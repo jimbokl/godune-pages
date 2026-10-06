@@ -1,12 +1,12 @@
-import {cleanTrip} from './trip-state.mjs?v=23';
-import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=18';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=13';
-import {tripStarterChoices} from './trip-starters.mjs?v=17';
+import {cleanTrip} from './trip-state.mjs?v=25';
+import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=20';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=15';
+import {tripStarterChoices} from './trip-starters.mjs?v=19';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {validParty} from './trip-party.mjs?v=1';
-import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=1';
+import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=3';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -52,6 +52,17 @@ function checkedParty(answers) {
   return clone(answers.party);
 }
 
+function checkedTransport(answers) {
+  if(answers.transport===undefined || answers.transport==='auto')return null;
+  if(!['foot','car'].includes(answers.transport))throw Error('wizard_invalid_transport');
+  return answers.transport;
+}
+function transportSchedule(schedule,places,area,transport) {
+  if(!transport)return schedule;
+  if(transport==='car' && (['kosa','kurshskaya-kosa'].includes(area) || schedule.mode==='car'))return {...schedule,mode:'car'};
+  return {...schedule,mode:'foot',...(transport==='car'?{base_transport:{version:1,mode:'car',via:places[0]}}:{})};
+}
+
 function checkedPreferences(answers,current) {
   if(answers.preferences===undefined)return undefined;
   if(!validPreferences(answers.preferences))throw Error('wizard_invalid_preferences');
@@ -65,12 +76,13 @@ export function wizardDefaults(trip,catalog) {
   const day=selectedDay(trip),occupied=dayIsOccupied(trip),routes=wizardRoutes(catalog);
   const area=routes.some(route=>route.area===trip.filters?.area)?trip.filters.area:routes[0]?.area || null;
   return {area,route:routes.find(route=>route.area===area)?.slug || null,starter:wizardStarters(catalog)[0]?.id || null,base:wizardBase(trip),party:clone(day.party || {version:1,adults:trip.itinerary?.people || 1,children:0}),
-    preferences:clone(day.preferences || emptyPreferences()),date:journeyIsOccupied(trip)?nextDate(trip.itinerary?.days.at(-1)?.date || trip.date):day.date,
+    preferences:clone(day.preferences || emptyPreferences()),transport:day.schedule?.base_transport?.mode==='car' || day.schedule?.mode==='car'?'car':'auto',date:journeyIsOccupied(trip)?nextDate(trip.itinerary?.days.at(-1)?.date || trip.date):day.date,
     start:occupied?defaultSchedule().start:trip.schedule?.start ?? defaultSchedule().start,
     end:occupied?defaultSchedule().end:trip.schedule?.end ?? defaultSchedule().end};
 }
 
 export function prepareWizardDay(current,answers,catalog) {
+  const transport=checkedTransport(answers);
   const base=checkedBase(answers,catalog);
   const party=checkedParty(answers);
   const preferences=checkedPreferences(answers,current);
@@ -82,6 +94,7 @@ export function prepareWizardDay(current,answers,catalog) {
   const occupied=dayIsOccupied(current),next=occupied?addTripDay(current):ensureJourney(current);
   const day=selectedDay(next),places=[...new Set(route.stops.map(stop=>stop.poi))];
   let schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end,stops:waveStopSettings(route,catalog)};
+  schedule=transportSchedule(schedule,places,route.area,transport);
   if(answers.wave){day.wave={...answers.wave,theme:route.wave_theme,recipe:route.slug};schedule=waveSchedule(schedule,day.wave);}
   day.date=answers.date;day.places=places;day.schedule=clone(schedule);
   if(party)day.party=party;
@@ -111,6 +124,7 @@ export function applyWizardDay(current,proposal,catalog,{separate=false}={}) {
 }
 
 export function prepareWizardTrip(current,answers,catalog) {
+  const transport=checkedTransport(answers);
   const base=checkedBase(answers,catalog);
   const party=checkedParty(answers);
   const preferences=checkedPreferences(answers,current);
@@ -123,6 +137,7 @@ export function prepareWizardTrip(current,answers,catalog) {
   const days=starter.days.map((template,index)=>{
     if(answers.date!==null && !validTripDate(date))throw new Error('wizard_date_overflow');
     let schedule={...defaultSchedule(),mode:template.mode,start:answers.start,end:answers.end};
+    schedule=transportSchedule(schedule,template.places,template.recipe?.area,transport);
     for(const id of template.places) {
       const visit=catalog.poi.find(point=>point.slug===id).visit_minutes;
       schedule.stops[id]={visit:Number.isInteger(visit)&&visit>0&&visit<=1440?visit:30,pause:0,leg:null,window:null};

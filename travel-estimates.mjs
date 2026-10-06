@@ -1,6 +1,7 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 import {baseId,personalPoints} from './personal-points.mjs?v=3';
+import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=1';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
 export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return {...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)};};
@@ -26,9 +27,11 @@ export function resolveAccess(trip,id,catalog,matrix) {
   return resolveAccessBetween(trip,id,previousPlace(trip,id),trip.places[index+1] || bases.night_at || bases.end_at,catalog,matrix);
 }
 export function resolveAccessBetween(trip,id,previous,next,catalog,matrix) {
-  const mode=travelMode(trip),anchor=anchorFor(catalog,id,mode);
+  const profiles=accessModes(trip,id,previous,next,dayBases(trip));
+  const mode=profiles.approach!=='foot'?profiles.approach:profiles.return,anchor=anchorFor(catalog,id,mode);
   if(!anchor)return null;
   const leg=direction=>{
+    if(profiles[direction]==='foot')return {origin:'shared',minutes:0};
     const shared=direction==='approach'?sameArrival(catalog,previous,id,mode):sameArrival(catalog,id,next,mode);
     if(shared)return {origin:'shared',minutes:0};
     if(!matrix || matrix.version!==1 || !matrix.source?.id)return {origin:'unknown',status:'unavailable',minutes:null};
@@ -42,17 +45,35 @@ export function resolveAccessBetween(trip,id,previous,next,catalog,matrix) {
 export function manualLeg(trip, id) {
   const leg=trip.schedule?.stops?.[id]?.leg, previous=previousPlace(trip,id);
   if(!leg || !previous)return null;
-  return leg?.from===previous && (leg.mode ? leg.mode===travelMode(trip) : trip.schedule?.mode===undefined) ? leg : null;
+  const mode=mobilitySegments(trip,previous,id,dayBases(trip))[0].mode;
+  return leg?.from===previous && (leg.mode ? leg.mode===mode : trip.schedule?.mode===undefined)
+    && (leg.via || null)===travelVia(trip,previous,id,dayBases(trip)) ? leg : null;
 }
 export function resolveTravel(trip, id, catalog, matrix) {
   const mode=travelMode(trip), previous=previousPlace(trip,id);
   if(!previous)return {origin:'start',minutes:0,mode};
   const manual=manualLeg(trip,id);
-  if(manual)return {origin:'manual',minutes:manual.minutes,mode};
+  if(manual)return {origin:'manual',minutes:manual.minutes,mode:manual.mode || mode};
   return resolvePair(trip,previous,id,catalog,matrix);
 }
 export function resolvePair(trip,previous,id,catalog,matrix) {
-  const mode=travelMode(trip);
+  const segments=mobilitySegments(trip,previous,id,dayBases(trip));
+  if(segments.length===1)return resolveRoadPair(previous,id,catalog,matrix,segments[0].mode);
+  const parts=segments.map(part=>{
+    if(part.kind==='travel')return {...resolveRoadPair(part.from,part.to,catalog,matrix,part.mode),...part};
+    if(!anchorFor(catalog,part.from,part.mode))return {...part,origin:'unknown',status:'parking_unverified',minutes:null};
+    const row=matrix?.version===1 && matrix.source?.id && currentPoint(catalog,matrix,part.from)?matrix.access_legs?.[`${part.mode}/${part.from}/${part.kind}`]:null;
+    const known=row?.status==='estimate' && Number.isInteger(row.minutes) && row.minutes>=0 && row.minutes<=1440;
+    return {...row,...part,origin:known?'estimate':'unknown',minutes:known?row.minutes:null,leg_mode:'foot'};
+  });
+  const resolved=parts.every(part=>part.origin==='estimate' || part.origin==='same_place');
+  const minutes=resolved?parts.reduce((sum,part)=>sum+part.minutes,0):null,complete=resolved && minutes<=1440;
+  return {origin:complete?'estimate':'unknown',status:complete?'estimate':resolved?'long_leg':'incomplete_journey',mode:baseTransport(trip).mode,
+    minutes:complete?minutes:null,
+    distance_m:complete && parts.every(part=>part.origin==='same_place' || Number.isFinite(part.distance_m))?parts.reduce((sum,part)=>sum+(part.distance_m || 0),0):null,
+    parts,source:matrix?.source};
+}
+function resolveRoadPair(previous,id,catalog,matrix,mode) {
   if(previous===id && placeFor(catalog,id))return {origin:'same_place',minutes:0,mode};
   if(!matrix || matrix.version!==1 || !matrix.source?.id)return {origin:'unknown',status:'unavailable',minutes:null,mode};
   for(const slug of [previous,id]) {
@@ -87,22 +108,24 @@ export function sameRoadSource(a,b){
 }
 export async function loadTripTravelMatrix(base,trip,catalog){
   const matrix=await loadTravelMatrix(base),points=personalPoints(trip);if(!points.length)return matrix;
-  const bases=dayBases(trip),mode=travelMode(trip),copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
+  const bases=dayBases(trip),copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
   const pairs=trip.places.flatMap(id=>[...(bases.start_at?.startsWith('@')?[[bases.start_at,id]]:[]),...(bases.night_at?.startsWith('@')?[[id,bases.night_at]]:[])]);
   if(bases.end_at?.startsWith('@') && trip.places.length)pairs.push([bases.night_at||trip.places.at(-1),bases.end_at]);
   if(bases.night_at?.startsWith('@') && bases.end_at && !bases.end_at.startsWith('@'))pairs.push([bases.night_at,bases.end_at]);
-  if(!pairs.length)return copy;
-  try{
+  const segments=pairs.flatMap(([from,to])=>mobilitySegments(trip,from,to,bases)).filter(part=>part.kind==='travel' && (part.from?.startsWith('@') || part.to?.startsWith('@')));
+  if(!segments.length)return copy;
+  const profiles=[...new Set(segments.map(part=>part.mode))];
+  await Promise.all(profiles.map(async mode=>{try{
     const {loadBrowserRouter}=await import('./browser-router.mjs?v=2');const route=await loadBrowserRouter(base,mode);
-    if(!sameRoadSource(matrix.source,route.graph.source))return copy;
-    await Promise.all(pairs.map(async([from,to])=>{
+    if(!sameRoadSource(matrix.source,route.graph.source))return;
+    await Promise.all(segments.filter(part=>part.mode===mode).map(async({from,to})=>{
       const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);
       if(!a||!b)return;const anchor=p=>p.arrival_points?.[mode] || p;
       const x=anchor(a),y=anchor(b),cacheKey=`${new URL(base).href}/${matrix.source.id}/${key}/${x.lon},${x.lat}/${y.lon},${y.lat}`;
       if(!personalLegs.has(cacheKey))personalLegs.set(cacheKey,route([x.lon,x.lat],[y.lon,y.lat]).catch(error=>{personalLegs.delete(cacheKey);throw error;}));
       const result=await personalLegs.get(cacheKey);copy.legs[key]={...result,engine:'godune-route',dynamic:true};
     }));
-  }catch{/* Static estimates remain usable; unresolved personal roads stay unknown. */}
+  }catch{/* Failure of one profile does not erase another resolved road. */}}));
   return copy;
 }
 export function decodePath(text) {
@@ -131,10 +154,16 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
   if(trip.places.length && bases.start_at && shown.has(trip.places[0])) {pairs.unshift([bases.start_at,trip.places[0]]);shown.add(bases.start_at);}
   if(trip.places.length && bases.night_at && shown.has(trip.places.at(-1))) {pairs.push([trip.places.at(-1),bases.night_at]);shown.add(bases.night_at);}
   if(trip.places.length && bases.end_at && shown.has(trip.places.at(-1))){pairs.push([bases.night_at||trip.places.at(-1),bases.end_at]);shown.add(bases.end_at);}
-  const rows=await Promise.all(pairs.map(async ([from,to])=>{
-    if(!shown.has(from) || !shown.has(to))return null;
+  const segments=pairs.flatMap(([from,to])=>shown.has(from) && shown.has(to)?mobilitySegments(auto,from,to,bases):[]);
+  const rows=await Promise.all(segments.map(async ({from,to,mode:profile,kind})=>{
+    if(kind!=='travel') {
+      if(matrix?.version!==1 || !matrix.source?.id || !currentPoint(catalog,matrix,from))return null;
+      const access=matrix?.access_legs?.[`${profile}/${from}/${kind}`];
+      if(access?.status!=='estimate' || !access.geometry)return null;
+      try {const coordinates=decodePath(access.geometry);if(coordinates.length<2)return null;return {type:'Feature',properties:{from,to,mode:'foot',kind,minutes:access.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};}catch{return null;}
+    }
     // A hand-entered time does not verify the path or change its geometry.
-    const leg=resolvePair(auto,from,to,catalog,matrix);
+    const leg=resolveRoadPair(from,to,catalog,matrix,profile);
     if(leg.origin!=='estimate')return null;
     try {
       const legMode=leg.leg_mode || mode;

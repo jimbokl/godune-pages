@@ -1,7 +1,8 @@
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 // A price belongs to the saved directed journey, never to an inferred tariff.
 import {isPersonalPoint} from './personal-points.mjs?v=3';
-import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=6';
+import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=8';
+import {mobilitySegments} from './day-mobility.mjs?v=1';
 const object=value=>!!value && typeof value==='object' && !Array.isArray(value);
 const keys=(value,list)=>Object.keys(value).every(key=>list.includes(key));
 const text=value=>typeof value==='string' && !!value.trim();
@@ -24,10 +25,14 @@ const point=(base,mode,catalog)=>{
 export function dayTransfers(day,catalog) {
   day=effectiveBookingDay(day);
   const mode=day.schedule?.mode || 'foot',stops=day.places,result=[];
-  const add=(from,to,role)=>{
+  const addRoad=(from,to,role,mode)=>{
     const a=point(from,mode,catalog),b=point(to,mode,catalog);if(!a || !b)return;
     const leg_mode=typeof from==='string' && typeof to==='string' && sameArrival(catalog,from,to,mode)?'foot':mode;
     result.push({version:1,role,date:day.date,mode,leg_mode,from:a,to:b});
+  };
+  const trip={places:stops,schedule:day.schedule};
+  const add=(from,to,role)=>{
+    for(const part of mobilitySegments(trip,from,to,day))if(part.kind==='travel')addRoad(part.from,part.to,role,part.mode);
   };
   if(stops.length && day.start_at)add(day.start_at,stops[0],'start');
   for(let i=1;i<stops.length;i++)add(stops[i-1],stops[i],'between');

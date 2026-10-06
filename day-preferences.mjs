@@ -1,4 +1,4 @@
-import {dayBases,resolvePair} from './travel-estimates.mjs?v=6';
+import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=8';
 
 // Preferences describe the traveller's intent. They never certify a path.
 export const DAY_INTERESTS={sea:'Море',nature:'Лес и парки',history:'Архитектура и история',museums:'Музеи',food:'Кофе и еда'};
@@ -98,12 +98,26 @@ export function assessDayPreferences(trip,catalog,matrix=null) {
       distance=assessed.distance;
       notes.push(`Линия выбранной прогулки — ${lengthLabel(distance)} по карте. Дорога от жилья и возвращение к нему считаются отдельно.`);
     } else if(!day.kosa_plan && (trip.schedule?.mode || 'foot')==='foot') {
-      const bases=dayBases(trip),ids=[bases.start_at,...trip.places,bases.night_at || bases.end_at].filter(Boolean);
+      const bases=dayBases(trip),ids=[bases.start_at,...trip.places,bases.night_at,bases.end_at].filter(Boolean);
       let total=0,measured=0;
       for(let index=1;index<ids.length;index++) {
         const leg=resolvePair(trip,ids[index-1],ids[index],catalog,matrix);
         if(leg.origin==='same_place')continue;
-        if(leg.origin==='estimate' && metres(leg.distance_m)){total+=leg.distance_m;measured++;}else unknownLegs++;
+        if(leg.parts) {
+          for(const part of leg.parts.filter(part=>(part.leg_mode || part.mode)==='foot')) {
+            if(part.origin==='same_place')continue;
+            if(part.origin==='estimate' && metres(part.distance_m)){total+=part.distance_m;measured++;}else unknownLegs++;
+          }
+        } else if((leg.leg_mode || leg.mode)==='foot' && leg.origin==='estimate' && metres(leg.distance_m)){total+=leg.distance_m;measured++;}
+        else if((leg.leg_mode || leg.mode)==='foot')unknownLegs++;
+      }
+      const accesses=trip.places.map(id=>resolveAccess(trip,id,catalog,matrix)).filter(Boolean).flatMap(access=>[access.approach,access.back]);
+      if(bases.start_at)accesses.push(resolveAccessBetween(trip,bases.start_at,null,trip.places[0],catalog,matrix)?.back);
+      if(bases.night_at){const access=resolveAccessBetween(trip,bases.night_at,trip.places.at(-1),bases.end_at,catalog,matrix);accesses.push(access?.approach,...(bases.end_at?[access?.back]:[]));}
+      if(bases.end_at)accesses.push(resolveAccessBetween(trip,bases.end_at,bases.night_at || trip.places.at(-1),null,catalog,matrix)?.approach);
+      for(const access of accesses.filter(Boolean)){
+        if(access.origin==='shared')continue;
+        if(access.origin==='estimate' && metres(access.distance_m)){total+=access.distance_m;measured++;}else unknownLegs++;
       }
       if(measured && !unknownLegs)distance=total;
       notes.push(!measured?'Длина пешего пути ещё неизвестна.':unknownLegs?`Известная часть дороги между остановками — ${lengthLabel(total)}; ${unknownLegs===1?'один участок без оценки':`${unknownLegs} участков без оценки`}.`:`Между остановками — ${lengthLabel(total)} по карте.`);

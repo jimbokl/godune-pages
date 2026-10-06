@@ -1,9 +1,9 @@
 import {visitedPlaces} from './day-progress.mjs?v=2';
-import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=3';
-import {tripSignature,lightMessage} from './trip-light.mjs?v=9';
+import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=5';
+import {tripSignature,lightMessage} from './trip-light.mjs?v=11';
 import {clock} from './day-stop-view.mjs?v=1';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=2';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=4';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 function regionalNow() {

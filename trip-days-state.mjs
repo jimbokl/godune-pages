@@ -1,11 +1,11 @@
 import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=7';
-import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=13';
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=9';
+import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=15';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=3';
 import {validDayWave} from './day-wave.mjs?v=2';
 import {dayPointIds} from './day-points.mjs?v=1';
 import {validParty,dayPeople,partyWithCount} from './trip-party.mjs?v=1';
-import {validPreferences,hasPreferences} from './day-preferences.mjs?v=1';
+import {validPreferences,hasPreferences} from './day-preferences.mjs?v=3';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);

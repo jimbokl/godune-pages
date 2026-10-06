@@ -1,4 +1,4 @@
-import {planInput} from './trip-schedule-state.mjs?v=13';
+import {planInput} from './trip-schedule-state.mjs?v=15';
 export const prefersDaylight = place => ['nature','park','viewpoint','beach'].includes(place?.category);
 export function lightInput(trip,catalog,result) {
   return {version:1,date:trip.date,stops:result.stops.filter(item=>catalog.poi.some(row=>row.slug===item.id)).map(item=>{

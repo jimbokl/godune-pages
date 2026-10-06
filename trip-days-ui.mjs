@@ -1,16 +1,17 @@
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
-import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=1';
-import {initTripBookings} from './trip-bookings-ui.mjs?v=11';
+import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=3';
+import {initTripBookings} from './trip-bookings-ui.mjs?v=13';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=15';
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=18';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=17';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=20';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
-import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=6';
+import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=8';
+import {mobilityLabel} from './day-mobility.mjs?v=1';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
-import {planInput} from './trip-schedule-state.mjs?v=13';
-import {tripStarterChoices,addTripStarter} from './trip-starters.mjs?v=17';
+import {planInput} from './trip-schedule-state.mjs?v=15';
+import {tripStarterChoices,addTripStarter} from './trip-starters.mjs?v=19';
 const dateLabel=date=>date?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')):'Дата пока не выбрана';
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -102,7 +103,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
         const li=el('li'),select=button(`День ${index+1} · ${dateLabel(day.date)}`,'choose',day.id);li.append(select);
         const summary=el('p',undefined,'journey-day-note');
         const total=budget.days.find(row=>row.id===day.id);
-        let text=`${partyLabel(day.party)?partyLabel(day.party)+' · ':''}${stopsLabel(day.places.length)} · ${TRAVEL_MODES[travelMode(chooseTripDay(trip,day.id))]}`;
+        let text=`${partyLabel(day.party)?partyLabel(day.party)+' · ':''}${stopsLabel(day.places.length)} · ${mobilityLabel(chooseTripDay(trip,day.id))}`;
         if(day.places.length) {
           try {
             const result=engine(planInput(chooseTripDay(trip,day.id),catalog,matrices[index]));

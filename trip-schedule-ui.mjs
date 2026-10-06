@@ -1,25 +1,26 @@
-import {selectedDay} from './trip-days-state.mjs?v=18';
+import {selectedDay} from './trip-days-state.mjs?v=20';
 import {resolveRail} from './trip-rail-state.mjs?v=5';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=3';
-import {journeyRow} from './day-journey-ui.mjs?v=3';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=5';
+import {journeyRow} from './day-journey-ui.mjs?v=4';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=9';
-import {defaultSchedule, planInput, planTravel, updateSchedule} from './trip-schedule-state.mjs?v=13';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=11';
+import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=15';
 import {loadScheduler} from './trip-scheduler.mjs?v=20';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=8';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=6';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=10';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=8';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=4';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=8';
-import {initDayProgress} from './day-progress-ui.mjs?v=3';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2';
-import {progressMessages} from './day-progress-advice.mjs?v=3';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=6';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=10';
+import {initDayProgress} from './day-progress-ui.mjs?v=5';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=4';
+import {progressMessages} from './day-progress-advice.mjs?v=5';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=8';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=7';
+import {flexSignature} from './day-flex-advice.mjs?v=10';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=9';
+import {mobilitySegments} from './day-mobility.mjs?v=1';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -68,12 +69,19 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   };
   function renderSettings(settings) {
     const form=$('#trip-day-settings');form.replaceChildren();form.dataset.planDayId=read().itinerary?.active || '';
-    const modes=document.createElement('fieldset'), legend=document.createElement('legend');modes.className='trip-travel-modes';legend.textContent='Как перемещаемся';modes.append(legend);
+    const modes=document.createElement('fieldset'), legend=document.createElement('legend');modes.className='trip-travel-modes';legend.textContent='Между остановками';modes.append(legend);
     for(const [mode,caption]of Object.entries(TRAVEL_MODES)) {
       const label=document.createElement('label'), radio=document.createElement('input'), text=document.createElement('span');
       radio.type='radio';radio.name='mode';radio.value=mode;radio.checked=mode===(settings.mode || 'foot');radio.dataset.planField='mode';
       text.textContent=caption;label.append(radio,text);modes.append(label);
     }form.append(modes);
+    if((settings.mode || 'foot')==='foot' && read().places.length) {
+      const field=document.createElement('fieldset'),title=document.createElement('legend');field.className='trip-travel-modes';title.textContent='До прогулки и обратно';field.append(title);
+      for(const [mode,caption]of Object.entries(TRAVEL_MODES)) {
+        const label=document.createElement('label'),radio=document.createElement('input'),text=document.createElement('span');radio.type='radio';radio.name='base_mode';radio.value=mode;radio.dataset.planField='base_mode';radio.checked=mode===(settings.base_transport?.mode || 'foot');text.textContent=caption;label.append(radio,text);field.append(label);
+      }
+      form.append(field);const note=document.createElement('p');note.textContent='В городе идём пешком. Перед дорогой обратно вернёмся к оставленной машине или велосипеду. Парковку и проход нужно проверить.';form.append(note);
+    }
     input(form,'Начать в','start','time',timeInput(settings.start)).required=true;
     input(form,'Закончить до','end','time',timeInput(settings.end)).required=true;
     input(form,'Запас на каждый переход, мин','reserve','number',settings.reserve);
@@ -143,6 +151,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   }
   function renderStops(trip, result, matrix, light) {
     const settings=trip.schedule || defaultSchedule(),observed=currentProgress(trip);
+    const points=personalPoints(trip),placeNameFor=id=>points.find(point=>point.slug===id)?.name || baseName(id,catalog);
     const rail=compact?railJourney(resolveRail(trip,catalog),result.rail):{before:[],after:[]};
     $('#trip-plan-stops').replaceChildren(...rail.before.map(journeyRow),...result.stops.map((item,index)=>{
       const blockedByReturn=result.stops.slice(0,index).some(row=>row.excursion?.conflict);
@@ -157,7 +166,15 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const note=document.createElement('p');note.className='trip-timeline-detail';note.textContent=origin?'Дорога начинается у ближайшего подходящего дорожного сегмента. Подход от двери до него ещё нужно сверить.':'Дорога к ближайшему дорожному сегменту включена в окончание дня. Подход к двери ещё нужно сверить.';
         if(item.issues.some(row=>['unknown_travel','unknown_approach','unknown_return'].includes(row.code)))note.textContent+=' Путь ещё нужно уточнить: точное время неизвестно.';
         if(item.issues.some(row=>row.code==='after_deadline')) {note.textContent+=' Позже границы дня или времени возвращения к отъезду.';li.dataset.planConflict='true';}
-        li.append(note);return li;
+        li.append(note);
+        if(!origin) {
+          const inbound=planBaseTravel(trip,departure?'end':'night',catalog,matrix);
+          if(inbound) {
+            const road=roadJourney(item,inbound.travel,settings.reserve,placeNameFor(inbound.from),blockedByReturn,placeNameFor);
+            const detail=document.createElement('p');detail.className='trip-timeline-detail';detail.dataset.dayBaseRoad=departure?'end':'night';detail.textContent=road.text;li.append(detail);
+          }
+        }
+        return li;
       }
       const place=catalog.poi.find(row=>row.slug===item.id), value=settings.stops[item.id] || {visit:30,pause:0,leg:null,window:null};
       const window=value.window?.date === trip.date ? value.window : null;
@@ -194,7 +211,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(compact) {
         const previous=previousPlace(projected,item.id);
         const steps=[];
-        if(previous)steps.push(roadJourney(item,travel,settings.reserve,personalPoints(trip).find(point=>point.slug===previous)?.name || baseName(previous,catalog),blockedByReturn));
+        if(previous)steps.push(roadJourney(item,travel,settings.reserve,placeNameFor(previous),blockedByReturn,placeNameFor));
         const wait=waitJourney(item,!!booking);if(wait)steps.push(wait);
         if(steps.length){const path=document.createElement('ol');path.className='day-stop-journey';path.setAttribute('aria-label','Дорога к остановке');path.append(...steps.map(journeyRow));header.closest('.day-stop-lead').before(path);}
       }
@@ -276,7 +293,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         if(routine.children.length){const details=document.createElement('details'),summary=document.createElement('summary');details.className='day-before-leaving';details.dataset.dayChecks=item.id;summary.textContent=`Перед выходом · ${routine.children.length}`;details.append(summary,routine);li.append(details);}
       }
       const details=document.createElement('details'), summary=document.createElement('summary'), form=document.createElement('form');
-      details.dataset.planEditor=item.id;summary.textContent='Настроить остановку';form.dataset.planEdit=item.id;form.dataset.planFrom=previousPlace(projected,item.id) || '';form.dataset.planDayId=trip.itinerary?.active || '';form.dataset.planDay=trip.date || '';form.dataset.planMode=travelMode(trip);form.className='trip-stop-settings';details.append(summary,form);
+      details.dataset.planEditor=item.id;summary.textContent='Настроить остановку';form.dataset.planEdit=item.id;form.dataset.planFrom=previousPlace(projected,item.id) || '';form.dataset.planDayId=trip.itinerary?.active || '';form.dataset.planDay=trip.date || '';form.dataset.planMode=JSON.stringify(mobilitySegments(projected,previousPlace(projected,item.id),item.id,dayBases(projected)));form.className='trip-stop-settings';details.append(summary,form);
       const visitField=input(form,booking?'Длительность из записи, мин':'На осмотр, мин','visit','number',booking?.duration??value.visit,item.id);
       if(booking){visitField.disabled=true;const note=document.createElement('p');note.className='trip-plan-note';note.textContent='Длительность и фиксированное время меняются в карточке билета выше.';form.append(note);}
       input(form,'Пауза после осмотра, мин','pause','number',value.pause,item.id);
@@ -308,7 +325,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=5')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=7')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);
@@ -379,7 +396,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(opened) render();else sequence++;
   });
   section.addEventListener('change',event=>{
-    if(event.target.name==='mode') {commit(current=>updateSchedule(current,'mode',event.target.value),'Способ передвижения выбран.');return;}
+    if(['mode','base_mode'].includes(event.target.name)) {commit(current=>updateSchedule(current,event.target.name,event.target.value),'Способ передвижения выбран.');return;}
     const id=event.target.dataset.planCalendar;if(!id)return;
     const fact=event.target.value || null;
     commit(current=>updateSchedule(current,fact==='__outside'?'visit_scope':'visit_fact',fact==='__outside'?'outside':fact,id),'Посещение выбрано.');
@@ -410,7 +427,8 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       // Apply related fields together, so a temporarily invalid start/end cannot lose a user's edit.
       if(!id) return {...current,schedule:{...(current.schedule||defaultSchedule()),...Object.fromEntries(fields)}};
       return fields.reduce((next,[field,value])=>{
-        if(field==='travel' && ((previousPlace(remainingTrip(current),id) || '')!==from || travelMode(current)!==mode) || field==='window' && (current.date || '')!==day) {changedContext=true;return next;}
+        const projected=remainingTrip(current),previous=previousPlace(projected,id);
+        if(field==='travel' && ((previous || '')!==from || JSON.stringify(mobilitySegments(projected,previous,id,dayBases(projected)))!==mode) || field==='window' && (current.date || '')!==day) {changedContext=true;return next;}
         return updateSchedule(next,field,value,id);
       },current);
     },'План дня сохранён.');
