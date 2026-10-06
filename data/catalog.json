@@ -7336,10 +7336,673 @@
   "rail_services": [
     {
       "arrival_poi": "zelenogradsk-novyy",
-      "exceptions": [],
+      "exceptions": [
+        {
+          "date": "2026-11-04",
+          "inbound": [
+            {
+              "arrival": "08:28",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "07:45",
+              "id": "6802"
+            },
+            {
+              "arrival": "11:59",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:15",
+              "id": "6952-6804"
+            },
+            {
+              "arrival": "12:46",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:12",
+              "id": "7108"
+            },
+            {
+              "arrival": "14:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:16",
+              "id": "6954-6806"
+            },
+            {
+              "arrival": "16:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:17",
+              "id": "6942-6808"
+            },
+            {
+              "arrival": "16:26",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:51",
+              "id": "7118"
+            },
+            {
+              "arrival": "18:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:18",
+              "id": "6810"
+            },
+            {
+              "arrival": "19:41",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:56",
+              "id": "6812"
+            },
+            {
+              "arrival": "20:49",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:03",
+              "id": "6958-6814"
+            },
+            {
+              "arrival": "21:48",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "21:03",
+              "id": "6816"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "07:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "06:37",
+              "id": "6801"
+            },
+            {
+              "arrival": "08:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:00",
+              "id": "6803-6951"
+            },
+            {
+              "arrival": "11:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "10:15",
+              "id": "6805-6953"
+            },
+            {
+              "arrival": "11:44",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:12",
+              "id": "7107"
+            },
+            {
+              "arrival": "13:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:16",
+              "id": "6807-6941"
+            },
+            {
+              "arrival": "15:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "14:17",
+              "id": "6809"
+            },
+            {
+              "arrival": "17:05",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:18",
+              "id": "6811"
+            },
+            {
+              "arrival": "17:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:15",
+              "id": "7125-6957"
+            },
+            {
+              "arrival": "18:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:55",
+              "id": "6813"
+            },
+            {
+              "arrival": "19:36",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:49",
+              "id": "6815"
+            },
+            {
+              "arrival": "20:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "19:55",
+              "id": "6817-6961"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-04",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+                "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+                "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+              }
+            ],
+            "name": "КППК · ежедневные рейсы в нерабочий день",
+            "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
+            "verification": "official"
+          }
+        },
+        {
+          "date": "2026-12-31",
+          "inbound": [
+            {
+              "arrival": "08:28",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "07:45",
+              "id": "6802"
+            },
+            {
+              "arrival": "11:59",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:15",
+              "id": "6952-6804"
+            },
+            {
+              "arrival": "12:46",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:12",
+              "id": "7108"
+            },
+            {
+              "arrival": "14:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:16",
+              "id": "6954-6806"
+            },
+            {
+              "arrival": "16:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:17",
+              "id": "6942-6808"
+            },
+            {
+              "arrival": "16:26",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:51",
+              "id": "7118"
+            },
+            {
+              "arrival": "18:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:18",
+              "id": "6810"
+            },
+            {
+              "arrival": "19:41",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:56",
+              "id": "6812"
+            },
+            {
+              "arrival": "20:49",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:03",
+              "id": "6958-6814"
+            },
+            {
+              "arrival": "21:48",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "21:03",
+              "id": "6816"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "07:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "06:37",
+              "id": "6801"
+            },
+            {
+              "arrival": "08:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:00",
+              "id": "6803-6951"
+            },
+            {
+              "arrival": "11:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "10:15",
+              "id": "6805-6953"
+            },
+            {
+              "arrival": "11:44",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:12",
+              "id": "7107"
+            },
+            {
+              "arrival": "13:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:16",
+              "id": "6807-6941"
+            },
+            {
+              "arrival": "15:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "14:17",
+              "id": "6809"
+            },
+            {
+              "arrival": "17:05",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:18",
+              "id": "6811"
+            },
+            {
+              "arrival": "17:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:15",
+              "id": "7125-6957"
+            },
+            {
+              "arrival": "18:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:55",
+              "id": "6813"
+            },
+            {
+              "arrival": "19:36",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:49",
+              "id": "6815"
+            },
+            {
+              "arrival": "20:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "19:55",
+              "id": "6817-6961"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-04",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+                "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+                "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+              }
+            ],
+            "name": "КППК · ежедневные рейсы в нерабочий день",
+            "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
+            "verification": "official"
+          }
+        }
+      ],
       "from": "Калининград-Южный",
       "id": "kaliningrad-south-zelenogradsk",
       "inbound": [
+        {
+          "arrival": "07:25",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "06:42",
+          "id": "6950-6800"
+        },
         {
           "arrival": "08:28",
           "days": [
@@ -7353,6 +8016,18 @@
           ],
           "departure": "07:45",
           "id": "6802"
+        },
+        {
+          "arrival": "08:46",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "08:15",
+          "id": "7142"
         },
         {
           "arrival": "11:59",
@@ -7481,7 +8156,7 @@
           "id": "6816"
         }
       ],
-      "note": "Ежедневные рейсы. Два утренних поезда из Зеленоградска по рабочим дням здесь не включены. Возможны отдельные изменения перевозчика.",
+      "note": "Расписание с 1 октября 2026 года. Утром есть два рейса только по рабочим дням. Перед поездкой проверьте изменения КППК.",
       "outward": [
         {
           "arrival": "07:21",
@@ -7640,7 +8315,25 @@
       ],
       "publication_year": 2026,
       "source": {
-        "checked_at": "2026-10-03",
+        "calendar_source": {
+          "checked_at": "2026-10-06",
+          "name": "Роструд · календарь 2026",
+          "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+          "verification": "official"
+        },
+        "checked_at": "2026-10-04",
+        "documents": [
+          {
+            "direction": "outward",
+            "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+            "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+          },
+          {
+            "direction": "inbound",
+            "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+            "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+          }
+        ],
         "name": "АО «КППК» · расписание с 1 октября 2026",
         "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
         "verification": "official"
@@ -7652,10 +8345,701 @@
     },
     {
       "arrival_poi": "zelenogradsk-novyy",
-      "exceptions": [],
+      "exceptions": [
+        {
+          "date": "2026-11-04",
+          "inbound": [
+            {
+              "arrival": "08:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "07:45",
+              "id": "6802"
+            },
+            {
+              "arrival": "09:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "09:07",
+              "id": "6834"
+            },
+            {
+              "arrival": "11:52",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:15",
+              "id": "6952-6804"
+            },
+            {
+              "arrival": "12:39",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:12",
+              "id": "7108"
+            },
+            {
+              "arrival": "13:54",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:16",
+              "id": "6954-6806"
+            },
+            {
+              "arrival": "15:55",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:17",
+              "id": "6942-6808"
+            },
+            {
+              "arrival": "16:19",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:51",
+              "id": "7118"
+            },
+            {
+              "arrival": "17:57",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:18",
+              "id": "6810"
+            },
+            {
+              "arrival": "19:34",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:56",
+              "id": "6812"
+            },
+            {
+              "arrival": "20:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:03",
+              "id": "6958-6814"
+            },
+            {
+              "arrival": "21:41",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "21:03",
+              "id": "6816"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "07:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "06:45",
+              "id": "6801"
+            },
+            {
+              "arrival": "08:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:09",
+              "id": "6803-6951"
+            },
+            {
+              "arrival": "11:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "10:24",
+              "id": "6805-6953"
+            },
+            {
+              "arrival": "11:44",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:21",
+              "id": "7107"
+            },
+            {
+              "arrival": "13:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:25",
+              "id": "6807-6941"
+            },
+            {
+              "arrival": "15:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "14:26",
+              "id": "6809"
+            },
+            {
+              "arrival": "17:05",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:27",
+              "id": "6811"
+            },
+            {
+              "arrival": "17:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:24",
+              "id": "7125-6957"
+            },
+            {
+              "arrival": "18:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:04",
+              "id": "6813"
+            },
+            {
+              "arrival": "19:36",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:58",
+              "id": "6815"
+            },
+            {
+              "arrival": "20:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:04",
+              "id": "6817-6961"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-04",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+                "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+                "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+              }
+            ],
+            "name": "КППК · ежедневные рейсы в нерабочий день",
+            "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
+            "verification": "official"
+          }
+        },
+        {
+          "date": "2026-12-31",
+          "inbound": [
+            {
+              "arrival": "08:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "07:45",
+              "id": "6802"
+            },
+            {
+              "arrival": "09:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "09:07",
+              "id": "6834"
+            },
+            {
+              "arrival": "11:52",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:15",
+              "id": "6952-6804"
+            },
+            {
+              "arrival": "12:39",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:12",
+              "id": "7108"
+            },
+            {
+              "arrival": "13:54",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "13:16",
+              "id": "6954-6806"
+            },
+            {
+              "arrival": "15:55",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:17",
+              "id": "6942-6808"
+            },
+            {
+              "arrival": "16:19",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "15:51",
+              "id": "7118"
+            },
+            {
+              "arrival": "17:57",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:18",
+              "id": "6810"
+            },
+            {
+              "arrival": "19:34",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:56",
+              "id": "6812"
+            },
+            {
+              "arrival": "20:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:03",
+              "id": "6958-6814"
+            },
+            {
+              "arrival": "21:41",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "21:03",
+              "id": "6816"
+            }
+          ],
+          "outward": [
+            {
+              "arrival": "07:21",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "06:45",
+              "id": "6801"
+            },
+            {
+              "arrival": "08:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "08:09",
+              "id": "6803-6951"
+            },
+            {
+              "arrival": "11:02",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "10:24",
+              "id": "6805-6953"
+            },
+            {
+              "arrival": "11:44",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "11:21",
+              "id": "7107"
+            },
+            {
+              "arrival": "13:01",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "12:25",
+              "id": "6807-6941"
+            },
+            {
+              "arrival": "15:04",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "14:26",
+              "id": "6809"
+            },
+            {
+              "arrival": "17:05",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:27",
+              "id": "6811"
+            },
+            {
+              "arrival": "17:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "17:24",
+              "id": "7125-6957"
+            },
+            {
+              "arrival": "18:42",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:04",
+              "id": "6813"
+            },
+            {
+              "arrival": "19:36",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "18:58",
+              "id": "6815"
+            },
+            {
+              "arrival": "20:43",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "20:04",
+              "id": "6817-6961"
+            }
+          ],
+          "source": {
+            "calendar_source": {
+              "checked_at": "2026-10-06",
+              "name": "Роструд · календарь 2026",
+              "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+              "verification": "official"
+            },
+            "checked_at": "2026-10-04",
+            "documents": [
+              {
+                "direction": "outward",
+                "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+                "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+              },
+              {
+                "direction": "inbound",
+                "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+                "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+              }
+            ],
+            "name": "КППК · ежедневные рейсы в нерабочий день",
+            "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
+            "verification": "official"
+          }
+        }
+      ],
       "from": "Калининград-Северный",
       "id": "kaliningrad-north-zelenogradsk",
       "inbound": [
+        {
+          "arrival": "07:18",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "06:42",
+          "id": "6950-6800"
+        },
         {
           "arrival": "08:21",
           "days": [
@@ -7669,6 +9053,18 @@
           ],
           "departure": "07:45",
           "id": "6802"
+        },
+        {
+          "arrival": "08:39",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "departure": "08:15",
+          "id": "7142"
         },
         {
           "arrival": "09:43",
@@ -7811,7 +9207,7 @@
           "id": "6816"
         }
       ],
-      "note": "Ежедневные рейсы. Два утренних поезда из Зеленоградска по рабочим дням здесь не включены. Возможны отдельные изменения перевозчика.",
+      "note": "Расписание с 1 октября 2026 года. Утром есть два рейса только по рабочим дням. Перед поездкой проверьте изменения КППК.",
       "outward": [
         {
           "arrival": "07:21",
@@ -7970,7 +9366,25 @@
       ],
       "publication_year": 2026,
       "source": {
-        "checked_at": "2026-10-03",
+        "calendar_source": {
+          "checked_at": "2026-10-06",
+          "name": "Роструд · календарь 2026",
+          "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
+          "verification": "official"
+        },
+        "checked_at": "2026-10-04",
+        "documents": [
+          {
+            "direction": "outward",
+            "sha256": "b2a1081ac0d705589517544934d0a97be882b46606a445c59ad6825d59e65dd3",
+            "url": "https://kppk39.ru/upload/medialibrary/616/451opgid63ryo0gy6ur49x279sb6aaos.png"
+          },
+          {
+            "direction": "inbound",
+            "sha256": "d59ec9bd3e9049b66e09a0ab4adc50e7dff239e793210c35b92aed51247ce2e5",
+            "url": "https://kppk39.ru/upload/medialibrary/012/njm2l2x3ene64bhril3x4442a3cynqah.png"
+          }
+        ],
         "name": "АО «КППК» · расписание с 1 октября 2026",
         "url": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
         "verification": "official"
