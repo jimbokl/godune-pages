@@ -1,14 +1,14 @@
 import {partyLabel} from './trip-party.mjs?v=1';
-import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=2';
-import {assessDayPreferences} from './day-preferences.mjs?v=4';
+import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=3';
+import {assessDayPreferences} from './day-preferences.mjs?v=5';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=22';
-import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=16';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=23';
+import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=17';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
 import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
-import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=10';
+import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=11';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=7';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
@@ -29,6 +29,8 @@ export function guideDayRows(trip,catalog,result,matrix) {
   // Indexed personal points include a slug; they are not the strict saved base shape.
   const points=personalPoints(trip),name=id=>points.find(p=>p.slug===id)?.name || baseName(id,catalog);
   const rail=railJourney(resolveRail(trip,catalog),result.rail),rows=[...rail.before];
+  const parking=vehicleParkingNote(trip,catalog);
+  if(parking)rows.push({id:'vehicle-parking',kind:'notice',time:null,title:'Где оставлен транспорт',text:parking,state:'needs_check'});
   result.stops.forEach((item,index)=>{
     const blocked=result.stops.slice(0,index).some(stop=>stop.excursion?.conflict);
     const outside=settings.stops[item.id]?.visit_scope==='outside';
@@ -53,7 +55,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
     const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0;
     rows.push({id:item.id,poi:item.id,kind:'visit',time:blocked?null:item.begins,title:place.name,
       text:`${view.label}: ${view.time}. ${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.${outside?' Осмотр снаружи, без входа внутрь.':''}`+(view.note?' '+view.note:'')
-        +(access?` Подход: ${access.approach.minutes===null?'неизвестно':access.approach.minutes+' мин'}. Обратно к парковке: ${access.back.minutes===null?'неизвестно':access.back.minutes+' мин'}.`:'')+(issues.length?' '+issues.join(' '):''),state});
+        +(access?' '+parkingAccessNote(access):'')+(issues.length?' '+issues.join(' '):''),state});
     const excursion=resolveExcursion(trip,item.id,catalog);if(excursion&&item.excursion)rows.push(...excursionJourney(excursion,item.excursion,place.name));
   });
   if(settings.progress)rows.push({id:'completed-places',kind:'notice',time:null,title:'Уже были',text:settings.progress.completed.map(name).join(' · ')+'. Время посещения не записано.',state:'estimate'});

@@ -6,8 +6,8 @@ import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=2';
-import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=10';
+import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=3';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=11';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)

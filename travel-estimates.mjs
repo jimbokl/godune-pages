@@ -2,7 +2,7 @@ import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 import {railWalkBases} from './rail-access.mjs?v=2';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 import {baseId,personalPoints} from './personal-points.mjs?v=3';
-import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=2';
+import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=3';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
 export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return railWalkBases(trip,{...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)});};
@@ -59,6 +59,9 @@ export function resolveTravel(trip, id, catalog, matrix) {
 }
 export function resolvePair(trip,previous,id,catalog,matrix) {
   const segments=mobilitySegments(trip,previous,id,dayBases(trip));
+  const vehicle=baseTransport(trip);
+  if(vehicle && segments.some(part=>part.kind==='travel' && part.mode===vehicle.mode && (part.from===vehicle.via || part.to===vehicle.via)) && !anchorFor(catalog,vehicle.via,vehicle.mode))
+    return {origin:'unknown',status:'parking_unverified',mode:vehicle.mode,minutes:null};
   if(segments.length===1)return resolveRoadPair(previous,id,catalog,matrix,segments[0].mode);
   const parts=segments.map(part=>{
     if(part.kind==='travel')return {...resolveRoadPair(part.from,part.to,catalog,matrix,part.mode),...part};

@@ -1,9 +1,9 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=22';
-import {tripSignature} from './trip-light.mjs?v=12';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=23';
+import {tripSignature} from './trip-light.mjs?v=13';
 import {regionMapStyle} from './region-map.mjs?v=6';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
-import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=10';
+import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
 import {waveLabel} from './day-wave.mjs?v=2';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};

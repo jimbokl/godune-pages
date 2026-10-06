@@ -1,27 +1,27 @@
-import {selectedDay} from './trip-days-state.mjs?v=22';
+import {selectedDay} from './trip-days-state.mjs?v=23';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=7';
 import {journeyRow} from './day-journey-ui.mjs?v=5';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=12';
-import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=16';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=13';
+import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=17';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=11';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=10';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=12';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=11';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=7';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=11';
-import {initDayProgress} from './day-progress-ui.mjs?v=6';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=5';
-import {progressMessages} from './day-progress-advice.mjs?v=6';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=8';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=12';
+import {initDayProgress} from './day-progress-ui.mjs?v=7';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=6';
+import {progressMessages} from './day-progress-advice.mjs?v=7';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=11';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=10';
-import {mobilitySegments} from './day-mobility.mjs?v=2';
+import {flexSignature} from './day-flex-advice.mjs?v=12';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=11';
+import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=3';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -81,7 +81,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       for(const [mode,caption]of Object.entries(TRAVEL_MODES)) {
         const label=document.createElement('label'),radio=document.createElement('input'),text=document.createElement('span');radio.type='radio';radio.name='base_mode';radio.value=mode;radio.dataset.planField='base_mode';radio.checked=mode===(settings.base_transport?.mode || 'foot');text.textContent=caption;label.append(radio,text);field.append(label);
       }
-      form.append(field);const note=document.createElement('p');note.textContent='В городе идём пешком. Перед дорогой обратно вернёмся к оставленной машине или велосипеду. Парковку и проход нужно проверить.';form.append(note);
+      form.append(field);const note=document.createElement('p');note.textContent=vehicleParkingNote(read(),catalog) || 'В городе идём пешком. Если приедете на машине или велосипеде, после прогулки вернитесь к оставленному транспорту.';form.append(note);
     }
     input(form,'Начать в','start','time',timeInput(settings.start)).required=true;
     input(form,'Закончить до','end','time',timeInput(settings.end)).required=true;
@@ -249,8 +249,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const title=document.createElement('p');title.className='trip-calendar-title';title.textContent=access.anchor.name;
         const note=document.createElement('p');note.textContent=access.anchor.note;
         const path=document.createElement('p');path.className='trip-timeline-detail';
-        path.textContent=(access.approach.origin==='shared'?'Переход от предыдущей точки уже учтён.':access.approach.minutes===null?'Время от парковки до места пока неизвестно.':`От парковки до места — около ${access.approach.minutes} мин пешком.`)
-          +' '+(access.back.origin==='shared'?'К машине вернётесь после следующей точки.':access.back.minutes===null?'Время возвращения к парковке пока неизвестно.':`Обратно — около ${access.back.minutes} мин.`);
+        path.textContent=parkingAccessNote(access);
         const source=document.createElement('a');source.href=access.anchor.source.url;source.target='_blank';source.rel='noopener';source.textContent=`Точка на OpenStreetMap · проверена ${access.anchor.source.checked_at.split('-').reverse().join('.')}`;
         const nav=document.createElement('a');nav.href=new URL(`?map=${access.anchor.id}`,base);nav.className='save-item';nav.textContent='Парковка на нашей карте ↗';
         const evidence=document.createElement('p');evidence.className='trip-calendar-source';evidence.append(source);
@@ -315,6 +314,10 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     if(compact)$('#trip-timing-settings').hidden=!!generated;
     if(!opened) return;
     const ticket=++sequence, trip=read(), settings=trip.schedule || defaultSchedule();
+    let parking=section.querySelector('[data-day-parking]');
+    if(!parking) {parking=document.createElement('p');parking.className='trip-plan-note';parking.dataset.dayParking='';$('#trip-plan-summary').after(parking);}
+    const arrival=vehicleArrival(trip,catalog);parking.hidden=!arrival;
+    parking.textContent=arrival?.anchor?`${arrival.vehicle.mode==='car'?'Машина':'Велосипед'} остаётся: ${arrival.anchor.name}. После прогулки вернитесь сюда.`:vehicleParkingNote(trip,catalog) || '';
     const focused=document.activeElement?.dataset.planField, focusedStop=document.activeElement?.dataset.planStop, focusedMode=document.activeElement?.type==='radio'?document.activeElement.value:null;
       const expanded=[...section.querySelectorAll('details[data-plan-editor][open]')].map(node=>node.dataset.planEditor);
       const transportExpanded=[...section.querySelectorAll('details[data-transport-editor][open]')].map(node=>node.dataset.transportEditor);
@@ -326,7 +329,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=11')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=12')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

@@ -1,14 +1,14 @@
-import {wizardBusChoices,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=2';
-import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=2';
-import {cleanTrip} from './trip-state.mjs?v=26';
-import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=22';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=16';
-import {tripStarterChoices} from './trip-starters.mjs?v=20';
+import {wizardBusChoices,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=3';
+import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=3';
+import {cleanTrip} from './trip-state.mjs?v=27';
+import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=23';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=17';
+import {tripStarterChoices} from './trip-starters.mjs?v=21';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {validParty} from './trip-party.mjs?v=1';
-import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=4';
+import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=5';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)

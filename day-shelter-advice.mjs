@@ -1,6 +1,6 @@
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=4';
-import {previewStopReplacement} from './trip-replacement-state.mjs?v=16';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=16';
+import {previewStopReplacement} from './trip-replacement-state.mjs?v=17';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=17';
 
 // An indoor visit is a sourced access fact, never a guess from a POI category.
 export function visitShelter(place,date) {

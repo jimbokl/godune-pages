@@ -1,9 +1,9 @@
 // A read-only view of the same snapshot used by the personal PDF.
 // Rust, service calendars and the saved transport bindings own every time.
-import {collectTripGuide} from './trip-guide-engine.mjs?v=14';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=15';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=11';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=12';
 import {clock} from './day-stop-view.mjs?v=1';
 
 export async function collectVirtualJourney({trip,catalog,base,calculate,matrixFor,kosaFor}) {
@@ -37,7 +37,7 @@ export function virtualJourneyTranscript(day) {
   const lines=['Ваш план дня',day.date || 'Дата не выбрана',day.summary,
     'Время по сохранённому плану. Этот файл сам не обновляется.',''];
   for(const row of day.rows || []) {
-    lines.push(`${Number.isInteger(row.time)?clock(row.time)+' · ':''}${row.title}`,row.text);
+    lines.push(`${Number.isInteger(row.time)?`${row.timeLabel?row.timeLabel+' · ':''}${clock(row.time)} · `:''}${row.title}`,row.text);
     if(row.source?.checked_at)lines.push('Дата проверки: '+row.source.checked_at);
     if(/^https?:\/\//.test(row.source?.url || ''))lines.push('Источник: '+row.source.url);
     lines.push('');

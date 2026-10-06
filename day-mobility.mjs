@@ -10,6 +10,28 @@ export function validBaseTransport(value) {
 export const baseTransport=trip=>(trip.schedule?.mode || 'foot')==='foot' && validBaseTransport(trip.schedule?.base_transport)?trip.schedule.base_transport:null;
 export const baseTravelMode=trip=>baseTransport(trip)?.mode || trip.schedule?.mode || 'foot';
 
+// The POI id is the stable vehicle reference; its arrival anchor supplies the
+// actual parking coordinates, independently of the first remaining visit.
+export function vehicleArrival(trip,catalog) {
+  const vehicle=baseTransport(trip);
+  if(!vehicle)return null;
+  const place=catalog?.poi?.find(point=>point.slug===vehicle.via);
+  return {vehicle,place,anchor:place?.arrival_points?.[vehicle.mode] || null};
+}
+export function vehicleParkingNote(trip,catalog) {
+  const arrival=vehicleArrival(trip,catalog);if(!arrival)return null;
+  const {vehicle,place,anchor}=arrival;
+  if(!anchor)return `Место для ${vehicle.mode==='car'?'машины':'велосипеда'} у ${place?.name || vehicle.via} пока не проверено. Время дороги и возвращения ещё нужно уточнить.`;
+  return `${vehicle.mode==='car'?'Машина':'Велосипед'} остаётся здесь: ${anchor.name}. GPS: ${anchor.lat.toFixed(5)}, ${anchor.lon.toFixed(5)}. ${anchor.note} Источник: ${anchor.source.name}, проверен ${anchor.source.checked_at}.`;
+}
+
+export function parkingAccessNote(access) {
+  if(!access)return '';
+  const approach=access.approach.origin==='shared'?'Переход от предыдущей точки уже учтён.':access.approach.minutes===null?'Время от парковки до места пока неизвестно.':`От парковки до места — около ${access.approach.minutes} мин пешком.`;
+  const back=access.back.origin==='shared'?`К ${access.mode==='bike'?'велосипеду':'машине'} вернётесь после прогулки.`:access.back.minutes===null?'Время возвращения к парковке пока неизвестно.':`Обратно — около ${access.back.minutes} мин.`;
+  return approach+' '+back;
+}
+
 // Declarative, directed legs are shared by time, geometry and expenses.
 // Access legs have their own measured geometry between a POI and its parking.
 export function mobilitySegments(trip,from,to,bases) {

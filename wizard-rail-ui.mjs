@@ -1,7 +1,7 @@
-import {wizardRailTargets,wizardRailChoice} from './wizard-rail.mjs?v=2';
+import {wizardRailTargets,wizardRailChoice} from './wizard-rail.mjs?v=3';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
 import {rideSnapshot} from './trip-rail-state.mjs?v=6';
-import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=1';
+import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2';
 import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';
 const messages={choose_date:'Выберите дату: по ней подберём электрички.',unpublished_year:'Расписание на этот год ещё не добавлено. Прежние рейсы сюда не переносим.',outside_validity:'Добавленная таблица не действует на эту дату.'};
 export function initWizardRail({mount,catalog,base,getAnswers,chooseDate}) {

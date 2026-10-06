@@ -1,8 +1,8 @@
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 // A price belongs to the saved directed journey, never to an inferred tariff.
 import {isPersonalPoint} from './personal-points.mjs?v=3';
-import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=10';
-import {mobilitySegments} from './day-mobility.mjs?v=2';
+import {sameArrival,TRAVEL_MODES} from './travel-estimates.mjs?v=11';
+import {mobilitySegments} from './day-mobility.mjs?v=3';
 const object=value=>!!value && typeof value==='object' && !Array.isArray(value);
 const keys=(value,list)=>Object.keys(value).every(key=>list.includes(key));
 const text=value=>typeof value==='string' && !!value.trim();

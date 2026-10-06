@@ -1306,6 +1306,23 @@
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
+      "arrival_points": {
+        "car": {
+          "id": "parking-honey-bridge",
+          "kind": "parking",
+          "lat": 54.705947,
+          "lon": 20.514313,
+          "name": "Парковка у Медового моста",
+          "note": "После прогулки вернитесь к этой парковке. Место отмечено на карте от 1 октября 2026 года; въезд, оплату и свободные места уточните перед поездкой.",
+          "source": {
+            "checked_at": "2026-10-06",
+            "map_date": "2026-10-01",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/159826328",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "landmark",
       "category_name": "Архитектура и история",
       "coordinate_note": "Точка открытой карты",
@@ -2369,6 +2386,23 @@
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
+      "arrival_points": {
+        "car": {
+          "id": "parking-royal-gates",
+          "kind": "parking",
+          "lat": 54.7127764,
+          "lon": 20.5367758,
+          "name": "Парковка рядом с Королевскими воротами",
+          "note": "После прогулки вернитесь к этой парковке. Место отмечено на карте от 1 октября 2026 года; въезд, оплату и свободные места уточните перед поездкой.",
+          "source": {
+            "checked_at": "2026-10-06",
+            "map_date": "2026-10-01",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/node/1156467769",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "landmark",
       "category_name": "Архитектура и история",
       "coordinate_note": "Условный центр объекта; вход может находиться в другом месте",
@@ -3022,6 +3056,23 @@
       "access_note": "Режим работы, цены и доступ внутрь уточняйте перед поездкой.",
       "area": "kaliningrad",
       "area_name": "Калининград",
+      "arrival_points": {
+        "car": {
+          "id": "parking-amalienau",
+          "kind": "parking",
+          "lat": 54.7162622,
+          "lon": 20.4624666,
+          "name": "Парковка у начала прогулки по Амалиенау",
+          "note": "После прогулки вернитесь к этой парковке. Место отмечено на карте от 1 октября 2026 года; въезд, оплату и свободные места уточните перед поездкой.",
+          "source": {
+            "checked_at": "2026-10-06",
+            "map_date": "2026-10-01",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/360798824",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "landmark",
       "category_name": "Архитектура и история",
       "coordinate_note": "Точка открытой карты",
@@ -7167,6 +7218,23 @@
       "access_note": "Это отдельная станция, не Зеленоградск-Новый. Выход с платформы и весь пеший подход ещё нужно пройти на месте; не идите вдоль путей.",
       "area": "zelenogradsk",
       "area_name": "Зеленоградск",
+      "arrival_points": {
+        "car": {
+          "id": "parking-zelenogradsk-2",
+          "kind": "parking",
+          "lat": 54.9508193,
+          "lon": 20.4512227,
+          "name": "Парковка рядом со станцией Зеленоградск-2",
+          "note": "После прогулки вернитесь к этой парковке. Место отмечено на карте от 1 октября 2026 года; въезд, оплату и свободные места уточните перед поездкой.",
+          "source": {
+            "checked_at": "2026-10-06",
+            "map_date": "2026-10-01",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/529906843",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "transport",
       "category_name": "Транспорт",
       "coordinate_note": "Метка остановки в датированном OSM, 1 октября 2026. Точный выход с платформы пока неизвестен.",
@@ -7223,6 +7291,23 @@
       "access_note": "На карте отмечено здание вокзала. Выход с платформы и доступность для коляски на месте ещё не проверены. Между городом и морем есть перепад высоты; оставьте время на подъём обратно.",
       "area": "svetlogorsk",
       "area_name": "Светлогорск",
+      "arrival_points": {
+        "car": {
+          "id": "parking-svetlogorsk-2",
+          "kind": "parking",
+          "lat": 54.9457013,
+          "lon": 20.1470663,
+          "name": "Парковка к северу от станции Светлогорск-2",
+          "note": "После прогулки вернитесь к этой парковке. Место отмечено на карте от 1 октября 2026 года; въезд, оплату и свободные места уточните перед поездкой.",
+          "source": {
+            "checked_at": "2026-10-06",
+            "map_date": "2026-10-01",
+            "name": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/way/995726379",
+            "verification": "map_source_checked"
+          }
+        }
+      },
       "category": "transport",
       "category_name": "Транспорт",
       "coordinate_note": "Центр контура здания вокзала в OSM, снимок 1 октября 2026. Это ориентир для прогулки, а не проверенный выход с платформы.",
@@ -13400,7 +13485,7 @@
       "timezone": "Europe/Kaliningrad"
     }
   ],
-  "updated_at": "2026-10-05",
+  "updated_at": "2026-10-06",
   "version": 1,
   "virtual_guide": {
     "audio": {

@@ -1,12 +1,12 @@
-import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=16';
+import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=17';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 import {resolveRail} from './trip-rail-state.mjs?v=6';
-import {foodTrip,anchorRequest} from './gastro-day.mjs?v=10';
-import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=22';
+import {foodTrip,anchorRequest} from './gastro-day.mjs?v=11';
+import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=23';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings,anchored=false) {

@@ -1,21 +1,21 @@
-import {initWizardBus} from './wizard-bus-ui.mjs?v=3';
-import {wizardBusChoices,wizardBusTargets} from './wizard-bus.mjs?v=2';
-import {initWizardRail} from './wizard-rail-ui.mjs?v=3';
-import {earlierWizardReturn} from './wizard-rail.mjs?v=2';
+import {initWizardBus} from './wizard-bus-ui.mjs?v=4';
+import {wizardBusChoices,wizardBusTargets} from './wizard-bus.mjs?v=3';
+import {initWizardRail} from './wizard-rail-ui.mjs?v=4';
+import {earlierWizardReturn} from './wizard-rail.mjs?v=3';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
-import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=2';
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=16';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=22';
-import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=16';
+import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=3';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=17';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=23';
+import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=17';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=7';
 import {baseName} from './personal-points.mjs?v=3';
-import {previousPlace,dayBases} from './travel-estimates.mjs?v=10';
+import {previousPlace,dayBases} from './travel-estimates.mjs?v=11';
 import {assessSchedule,assessKosa,readinessCopy} from './day-readiness.mjs?v=6';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2';
-import {downloadTripFile} from './trip-file.mjs?v=26';
+import {downloadTripFile} from './trip-file.mjs?v=27';
 import {partyLabel,validParty} from './trip-party.mjs?v=1';
-import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=4';
+import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=5';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -112,7 +112,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
 
   async function preferenceDistances() {
     if(preferenceMatrix || preferenceLoading || !answers.preferences.needs.includes('short_walks'))return;
-    preferenceLoading=import('./travel-estimates.mjs?v=10').then(({loadTravelMatrix})=>loadTravelMatrix(base));
+    preferenceLoading=import('./travel-estimates.mjs?v=11').then(({loadTravelMatrix})=>loadTravelMatrix(base));
     try {preferenceMatrix=await preferenceLoading;if(step===2)routes({refreshSettings:false});}
     catch { /* Missing road evidence remains visible; a preference can still be saved. */ }
     finally {preferenceLoading=null;}
@@ -285,12 +285,19 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(proposal.route.verified_at)assumptions.append(node('p',`Данные маршрута: ${dateLabel(proposal.route.verified_at)}.`));
     assumptions.append(node('p',timeEvidence(proposal.route)+' '+waveEvidence(day.wave)+' После сохранения это можно изменить.'));
     assumptions.append(node('p',mobilityLabel(proposal.trip)+'.'));
-    const vehicle=baseTransport(proposal.trip);if(vehicle)assumptions.append(node('p',`Перед дорогой обратно сначала вернёмся к месту начала прогулки: ${baseName(vehicle.via,catalog)}. Парковку и проход нужно проверить.`));
+    const arrival=vehicleArrival(proposal.trip,catalog);
+    const parkingSummary=arrival?node('p',arrival.anchor?`${arrival.vehicle.mode==='car'?'Машина':'Велосипед'} остаётся: ${arrival.anchor.name}. После прогулки вернитесь сюда.`:vehicleParkingNote(proposal.trip,catalog),'wizard-access-note'):null;
+    if(parkingSummary)parkingSummary.dataset.wizardParking='';
+    if(arrival) {
+      const parking=node('p',vehicleParkingNote(proposal.trip,catalog));assumptions.append(parking);
+      if(arrival.anchor?.source?.url){const source=node('a','Парковка на карте · источник');source.href=arrival.anchor.source.url;source.target='_blank';source.rel='noopener';assumptions.append(source);}
+    }
     const bases=[];if(day.start_at)bases.push(`Начало дня: ${baseName(day.start_at,catalog)}.`);if(day.night_at)bases.push(`Возвращение: ${baseName(day.night_at,catalog)}.`);
     if(bases.length)assumptions.append(node('p',bases.join(' ')));
     else assumptions.append(node('p','Начало у первой остановки. Дорога до неё и от конца прогулки здесь не рассчитана.'));
     const protection=node('p',proposal.placement==='separate'?'В выбранном дне уже есть Ваши планы. Сохраним их целиком, а прогулку добавим отдельным днём.':'Сохраним этот день в общей поездке. Регистрация не нужна.','wizard-save-note');
     result.replaceChildren(meta,heading,party,brief,timing,orderedStops(schedule,proposal.trip,proposal.route,matrices),access,assumptions,protection);
+    if(parkingSummary)access.after(parkingSummary);
     const preference=preferenceResult(proposal.trip,matrices);if(preference)timing.before(preference);
     const returning=returnSuggestion(proposal.trip,schedule);if(returning)timing.after(returning);
     save.textContent=proposal.placement==='separate'?'Добавить отдельный день':'Сохранить день в поездке';
@@ -337,7 +344,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=22'),import('./travel-estimates.mjs?v=10')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=22'),import('./travel-estimates.mjs?v=11')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const matrices=await Promise.all(trips.map(trip=>proposal.bus?.[selectedDay(trip).id]?null:loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));

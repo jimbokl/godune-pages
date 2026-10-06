@@ -1,4 +1,4 @@
-import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=22';
+import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=23';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {dayPointIds} from './day-points.mjs?v=1';

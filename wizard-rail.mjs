@@ -1,11 +1,11 @@
 // Dated rail choices for the shared wizard. Suggestions only become a saved
 // timetable after the traveller previews and explicitly applies the plan.
 import {waveChoices} from './day-wave.mjs?v=2';
-import {nextDate} from './trip-days-state.mjs?v=22';
-import {tripStarterChoices} from './trip-starters.mjs?v=20';
+import {nextDate} from './trip-days-state.mjs?v=23';
+import {tripStarterChoices} from './trip-starters.mjs?v=21';
 import {railTable,rideSnapshot,validRail,resolveRail} from './trip-rail-state.mjs?v=6';
 import {railStation} from './rail-destinations.mjs?v=1';
-import {planInput} from './trip-schedule-state.mjs?v=16';
+import {planInput} from './trip-schedule-state.mjs?v=17';
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(k=>[k,row[k]])):row);
 export function wizardRailTargets(catalog,answers) {
