@@ -1,7 +1,7 @@
 // The shared wizard attaches the existing dated bus roadbook. It never turns
 // distant trails into walking segments or creates its own service calendar.
 import {waveVisit} from './day-wave.mjs?v=2';
-import {tripStarterChoices} from './trip-starters.mjs?v=22';
+import {tripStarterChoices} from './trip-starters.mjs?v=24';
 import {nextDate} from './trip-days-state.mjs?v=23';
 import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=24';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=22';

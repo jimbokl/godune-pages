@@ -1,9 +1,9 @@
-import {collectTripGuide} from './trip-guide-engine.mjs?v=17';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=18';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=2';
 import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=16';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=12';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=13';
 export async function downloadPersonalGuide({trip,catalog,base,scope,format,signal,onProgress,stillCurrent}) {
   // URL objects lose their prototype across the worker boundary; send a plain URL.
   base=new URL('.',base).href;

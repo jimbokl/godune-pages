@@ -2,7 +2,7 @@
 // timetable after the traveller previews and explicitly applies the plan.
 import {waveChoices} from './day-wave.mjs?v=2';
 import {nextDate} from './trip-days-state.mjs?v=23';
-import {tripStarterChoices} from './trip-starters.mjs?v=22';
+import {tripStarterChoices} from './trip-starters.mjs?v=24';
 import {railTable,rideSnapshot,validRail,resolveRail} from './trip-rail-state.mjs?v=6';
 import {railStation} from './rail-destinations.mjs?v=1';
 import {planInput} from './trip-schedule-state.mjs?v=17';
@@ -14,10 +14,15 @@ export function wizardRailTargets(catalog,answers) {
   let date=answers.date;
   return templates.flatMap((template,index)=>{
     const today=date;date=nextDate(date);
+    if((answers.transport===undefined || answers.transport==='auto') && template.transport!=='rail')return [];
     const areas=new Set(template.places.map(id=>catalog.poi.find(p=>p.slug===id)?.area).filter(Boolean));
     const services=(catalog.rail_services || []).filter(service=>{const {station}=railStation(service,catalog);return station && areas.size===1 && areas.has(station.area);});
     return services.length?[{index,date:today,services}]:[];
   });
+}
+export function wizardRailActive(catalog,answers) {
+  return answers.transport==='rail' || ((answers.transport===undefined || answers.transport==='auto')
+    && answers.area==='whole-trip' && !!tripStarterChoices(catalog).find(row=>row.id===answers.starter)?.days.some(day=>day.transport==='rail'));
 }
 export function wizardRailChoice(catalog,answers,target) {
   const previous=answers.rail_days?.find(row=>row.day_index===target.index)?.rail;

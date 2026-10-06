@@ -1,20 +1,20 @@
-import {wizardRailTargets,wizardRailChoice} from './wizard-rail.mjs?v=4';
+import {wizardRailTargets,wizardRailChoice,wizardRailActive} from './wizard-rail.mjs?v=6';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
 import {rideSnapshot} from './trip-rail-state.mjs?v=6';
 import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2';
 import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';
-const messages={choose_date:'Выберите дату: по ней подберём электрички.',unpublished_year:'Расписание на этот год ещё не добавлено. Прежние рейсы сюда не переносим.',outside_validity:'Добавленная таблица не действует на эту дату.'};
+const messages={choose_date:'Выберите дату: по ней подберём поезда.',unpublished_year:'Расписание на этот год ещё не добавлено. Прежние рейсы сюда не переносим.',outside_validity:'Добавленная таблица не действует на эту дату.'};
 export function initWizardRail({mount,catalog,base,getAnswers,chooseDate}) {
   const access=wizardAccessUI(),rides=new Map();
-  const roads=stationRoadDraft({base,catalog,changed(){if(getAnswers().transport!=='rail')return;const active=document.activeElement,key=active?.dataset.wizardRailField,day=active?.closest('[data-wizard-rail-day]')?.dataset.wizardRailDay;render();if(key&&day!==undefined)mount.querySelector(`[data-wizard-rail-day="${day}"] [data-wizard-rail-field="${key}"]`)?.focus({preventScroll:true});}});
+  const roads=stationRoadDraft({base,catalog,changed(){if(!wizardRailActive(catalog,getAnswers()))return;const active=document.activeElement,key=active?.dataset.wizardRailField,day=active?.closest('[data-wizard-rail-day]')?.dataset.wizardRailDay;render();if(key&&day!==undefined)mount.querySelector(`[data-wizard-rail-day="${day}"] [data-wizard-rail-field="${key}"]`)?.focus({preventScroll:true});}});
   const node=(tag,text)=>{const value=document.createElement(tag);if(text!==undefined)value.textContent=text;return value;};
   function render() {
-    const answers=getAnswers();access.remember(mount);mount.replaceChildren();mount.hidden=answers.transport!=='rail';if(mount.hidden)return;
+    const answers=getAnswers();access.remember(mount);mount.replaceChildren();mount.hidden=!wizardRailActive(catalog,answers);if(mount.hidden)return;
     const targets=wizardRailTargets(catalog,answers),selections=targets.map(target=>wizardRailChoice(catalog,answers,target));
     answers.rail_days=selections.map(({target,rail})=>({day_index:target.index,rail}));
     if(!targets.length){mount.append(node('p','Для этой прогулки пока нет связанного железнодорожного направления. Выберите прогулку в Зеленоградске, Светлогорске или Балтийске.'));return;}
     if(!answers.date){const button=node('button','Выбрать дату →');button.type='button';button.className='wizard-secondary';button.addEventListener('click',chooseDate);mount.append(button);}
-    if(answers.area==='whole-trip')mount.append(node('p','Электрички учтём в дни у моря. В остальных днях оставим транспорт из готового плана — он подписан у каждого дня.'));
+    if(answers.area==='whole-trip')mount.append(node('p','Поезда учтём в выбранные дни у моря. Дату и возвращение покажем отдельно для каждого дня.'));
     for(const {target,table,rail,available} of selections) {
       const card=node('fieldset');card.dataset.wizardRailDay=target.index;
       card.append(node('legend',`${answers.area==='whole-trip'?`День ${target.index+1} · `:''}${table.service.to} · ${wizardTravelDate(target.date)}`));

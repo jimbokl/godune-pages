@@ -19,13 +19,14 @@ export function tripStarterChoices(catalog) {
  const known=new Set((catalog?.poi || []).map(point=>point.slug));
  const existing=TRIP_STARTERS.filter(starter=>starter.days.every(day=>
   [...day.places,day.start_at,day.night_at].every(id=>id===null || known.has(id))));
- const recipes=new Map(waveChoices(catalog,[]).map(row=>[row.slug,row]));
+ const recipes=new Map(waveChoices(catalog,(catalog.routes || []).filter(row=>row.mode==='walking'))
+  .map(row=>[row.slug,{...row,theme:row.wave_theme}]));
  const ids=new Set(existing.map(row=>row.id));
  const editorial=(catalog?.day_waves?.version===1?catalog.day_waves.itineraries || []:[]).flatMap(row=>{
   if(!row || typeof row.id!=='string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(row.id) || ids.has(row.id)
     || typeof row.name!=='string' || !row.name || !Array.isArray(row.days) || !row.days.length
     || row.days.some(day=>!recipes.has(day?.recipe)
-      || day.transport!==undefined && !['foot','car','bus'].includes(day.transport)
+      || day.transport!==undefined && !['foot','car','bus','rail'].includes(day.transport)
       || day.transport_origin!==undefined && (day.transport!=='bus' || !['kaliningrad','zelenogradsk'].includes(day.transport_origin))))return [];
   ids.add(row.id);
   return [{...row,days:row.days.map(day=>{const recipe=recipes.get(day.recipe);return {
@@ -38,7 +39,7 @@ export function tripStarterChoices(catalog) {
 export function addTripStarter(trip,id,catalog) {
  const starter=tripStarterChoices(catalog).find(row=>row.id===id);if(!starter)return trip;
  // A dated transport day needs the wizard's real timetable and confirmed preview.
- if(starter.days.some(day=>day.transport==='bus'))return trip;
+ if(starter.days.some(day=>['bus','rail'].includes(day.transport)))return trip;
  const known=new Set(catalog.poi.map(p=>p.slug));
  if(starter.days.some(day=>[...day.places,day.start_at,day.night_at].some(place=>place && !known.has(place))))return trip;
  let date=trip.date;const {party,preferences}=selectedDay(trip);

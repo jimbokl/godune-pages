@@ -74,7 +74,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const matrix=generated?null:await matrixFor(current),result=generated?null:calculate(planInput(current,catalog,matrix));
     const roads=generated?{type:'FeatureCollection',features:[]}:await roadsFor(current,matrix);
     const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:guideDayRows(current,catalog,result,matrix);
-    const recipe=catalog.day_waves?.recipes?.find(row=>row.slug===record.wave?.recipe);
+    const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:generated?kosa.state:result.status,summary:generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
