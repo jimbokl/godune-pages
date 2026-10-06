@@ -1,7 +1,7 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
-import {journeyKinds} from './day-journey-view.mjs?v=6';
+import {journeyKinds} from './day-journey-view.mjs?v=7';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
@@ -45,7 +45,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
-    text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});text(day.summary);
+    text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});
+    const home=day.record.start_at,night=day.record.night_at;
+    if(home?.kind==='personal')text(`Начало: ${home.name} · GPS ${gps(home)}`,{size:phone?9.5:11});
+    if(night?.kind==='personal')text(`Возвращение: ${night.name} · GPS ${gps(night)}`,{size:phone?9.5:11});
+    text(day.summary);
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes)text(note,{size:phone?10:12});}
     text(`${plural(day.stops.length,['место','места','мест'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);

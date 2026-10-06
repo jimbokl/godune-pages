@@ -25,7 +25,8 @@ export function wizardRailChoice(catalog,answers,target) {
   const table=railTable(catalog,service.id,target.date),station=service.arrival_poi,home=answers.base || null;
   const sameAccess=previous?.service===service.id && previous?.access?.station===station && stable(previous.access.start_at)===stable(home) && stable(previous.access.return_at)===stable(home);
   const access={version:1,station,start_at:clone(home),return_at:clone(home),to_station:sameAccess?previous.access.to_station:null,from_station:sameAccess?previous.access.from_station:null};
-  const boarding=previous?.boarding ?? 10;
+  if(sameAccess&&previous.access.road)access.road=clone(previous.access.road);
+  const boarding=previous&&Object.hasOwn(previous,'boarding')?previous.boarding:10;
   const selected=(direction)=>{
     const rows=table[direction] || [];
     if(previous?.date===target.date && previous.service===service.id){const pinned=rows.find(row=>stable(rideSnapshot(row))===stable(previous[direction]));if(pinned)return rideSnapshot(pinned);}
@@ -33,7 +34,7 @@ export function wizardRailChoice(catalog,answers,target) {
     return suggested?rideSnapshot(suggested):rows.length?rideSnapshot(direction==='outward'?rows[0]:rows.at(-1)):null;
   };
   const rail={service:service.id,date:target.date,outward:selected('outward'),inbound:selected('inbound'),after_arrival:0,before_return:0,boarding,access};
-  return {target,table,rail,available:!table.reason && validRail(rail)};
+  return {target,table,rail,available:!table.reason && !!table.outward?.length && !!table.inbound?.length};
 }
 export function attachWizardRail(day,catalog,answers,index,target) {
   const rail=answers.rail_days?.find(row=>row.day_index===index)?.rail;

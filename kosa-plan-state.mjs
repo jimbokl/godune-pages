@@ -5,8 +5,9 @@ import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?
 import {kosaBoarding,kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
 import {datedTransitInput,transitTable,pinTransitSelection} from './transport-day.mjs?v=3';
-import {transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=1';
+import {transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=2';
 export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
+import {stationRoadOrigin} from './station-road-proof.mjs?v=1';
 const kosaDefaults=value=>({...value,pace:value.pace||'gentle',...(value.city==='kaliningrad'?{origin:value.origin||'home'}:{})});
 const stable=value=>JSON.stringify(value,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
 export const sameKosaAnswer=(key,a,b)=>key==='home'?!!a&&!!b&&['ready_at','end_by','approach','return_minutes'].every(field=>a[field]===b[field]):key==='home_access'?stable(a)===stable(b):a===b;
@@ -51,7 +52,7 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);
   else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
-  if(day.home)rows.push(transitHomeCopy(day.home,answers.home_access?!!answers.home_access.return_at:true),...(day.backup?[transitBackupCopy(day,answers.home_access?!!answers.home_access.return_at:true)]:[]));
+  if(day.home)rows.push(transitHomeCopy(day.home,answers.home_access?!!answers.home_access.return_at:true,answers.home_access?.road),...(day.backup?[transitBackupCopy(day,answers.home_access?!!answers.home_access.return_at:true)]:[]));
   if(options.light!==false)rows.push(...kosaLightSummary(day.light).rows.map(row=>row.text));
   if(options.boarding!==false){
     const boarding=kosaBoarding(table,answers);
@@ -60,12 +61,13 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   }
   if(day.rail){
     const rail=kosaRailTable(answers,catalog),r=day.rail;
-    rows.splice(2,0,answers.origin==='station'?`Начало у вокзала ${rail.service.from} в ${kosaClock(r.home_start)}; у поезда к ${kosaClock(r.station_by)}. Дорога от жилья не включена.`:r.home_start===null?`Время дороги от жилья до вокзала неизвестно. У поезда к ${kosaClock(r.station_by)}.`:`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин по вашей оценке; у поезда к ${kosaClock(r.station_by)}.`,
+    rows.splice(2,0,answers.origin==='station'?`Начало у вокзала ${rail.service.from} в ${kosaClock(r.home_start)}; у поезда к ${kosaClock(r.station_by)}. Дорога от жилья не включена.`:r.home_start===null?`Время дороги от жилья до вокзала неизвестно. У поезда к ${kosaClock(r.station_by)}.`:`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин ${stationRoadOrigin(answers.home_access?.road,'to')}; у поезда к ${kosaClock(r.station_by)}.`,
       `${rail.service.from}: поезд № ${r.outward.id} ${kosaClock(r.outward.departure)} → ${rail.service.to} ${kosaClock(r.outward.arrival)}. От станции до автобуса ${r.to_bus} мин по вашей оценке.`,
       `Обратно: от автобуса до поезда ${r.to_train} мин по вашей оценке; у поезда к ${kosaClock(r.train_by)}. Поезд № ${r.inward.id} ${kosaClock(r.inward.departure)} → ${rail.service.from} ${kosaClock(r.inward.arrival)}. ${answers.origin==='station'?'Дальнейшая дорога до жилья не включена.':r.from_station===null?'Дорога после поезда до жилья ещё неизвестна.':`До жилья ${r.from_station} мин; вернуться около ${kosaClock(r.home_finish)}.`}`);
     if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
-    rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.`);
+    rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. ${answers.home_access?.road?'Дорога от жилья оценена по карте; пересадки и запас заданы вами. Платформы ещё не проверены.':'Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.'}`);
   }
+  if(answers.home_access?.road)rows.push(`Дорога от жилья: OpenStreetMap · карта от ${answers.home_access.road.source.snapshot_at.slice(0,10)} · ${answers.home_access.road.anchor.url}. До транспортной точки; вход и платформу сверьте перед выходом.`);
   const selected=selectKosaInterchanges(answers,interchanges);
   if(selected){
     const walking=assessKosaWalking(answers,selected);

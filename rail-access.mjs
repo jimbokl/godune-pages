@@ -2,14 +2,16 @@
 // the arrival station as its origin and return, after the outward train.
 import {validBase,baseName} from './personal-points.mjs?v=3';
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
+import {validStationRoad} from './station-road-proof.mjs?v=1';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const minute=v=>v===null || Number.isInteger(v) && v>=0 && v<=1440;
 const stable=v=>JSON.stringify(v,(_,row)=>object(row)?Object.fromEntries(Object.keys(row).sort().map(k=>[k,row[k]])):row);
 export function validRailAccess(v) {
   const keys=['version','station','start_at','return_at','to_station','from_station'];
-  return object(v) && Object.keys(v).length===keys.length && keys.every(k=>Object.hasOwn(v,k))
+  return object(v) && Object.keys(v).length===keys.length+(v.road===undefined?0:1) && keys.every(k=>Object.hasOwn(v,k))
     && v.version===1 && typeof v.station==='string' && /^[a-z0-9][a-z0-9-]*$/.test(v.station)
-    && validBase(v.start_at) && validBase(v.return_at) && minute(v.to_station) && minute(v.from_station);
+    && validBase(v.start_at) && validBase(v.return_at) && minute(v.to_station) && minute(v.from_station)
+    &&(v.road===undefined||validStationRoad(v.road,v.to_station,v.from_station));
 }
 export function railAccess(trip,catalog) {
   const value=trip.schedule?.rail?.access;

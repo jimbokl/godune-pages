@@ -1,15 +1,16 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=22';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=23';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding} from './kosa-boarding.mjs?v=1';
 import {transitTable} from './transport-day.mjs?v=3';
-import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=1';
+import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=2';
+import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog,interchanges){
   table=transitTable(table,answers.date).publication;
   kosaNote(answers,day,table,catalog); // Reject a proposal without a return.
-  const atForest=answers.walks==='two',returnTime=atForest?day.inward.via:day.inward.departure,homeKnown=answers.home_access?!!answers.home_access.return_at:true;
+  const atForest=answers.walks==='two',returnTime=atForest?day.inward.via:day.inward.departure,homeKnown=answers.home_access?!!answers.home_access.return_at:true,homeRoad=answers.home_access?.road;
   const timeline=[
     {kind:'bus',time:day.outward.departure,title:'Из Зеленоградска - к Эфе',text:`Автобус № 210. У остановки к ${clock(day.outward.departure-answers.boarding)}. Прибытие к тропе по таблице - ${clock(day.outward.arrival)}.`},
     {kind:'visit',poi:'vysota-efa',time:day.outward.arrival,title:'Дюны и высокий горизонт',text:`${answers.first_visit} мин на подход, настил, смотровые и возвращение к автобусу. Темп, погоду и доступ проверьте на месте.`},
@@ -27,25 +28,28 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
   const railTable=kosaRailTable(answers,catalog),rail=day.rail?{...structuredClone(day.rail),from:railTable.service.from,to:railTable.service.to,publication:structuredClone(railTable.source)}:null;
   if(rail){
     timeline.unshift(
-      {kind:'walk',time:rail.home_start,title:answers.origin==='station'?'Начало у вокзала':'От жилья - к вокзалу',text:answers.origin==='station'?`${rail.from}. У поезда к ${clock(rail.station_by)}; платформу уточните на месте.`:rail.to_station===null?`Время до ${rail.from} пока неизвестно. У поезда к ${clock(rail.station_by)}; уточните дорогу от жилья.`:`До ${rail.from} - ${rail.to_station} мин по вашей оценке. У поезда к ${clock(rail.station_by)}. Выход и платформу уточните на месте.`},
+      {kind:'walk',time:rail.home_start,title:answers.origin==='station'?'Начало у вокзала':'От жилья - к вокзалу',text:answers.origin==='station'?`${rail.from}. У поезда к ${clock(rail.station_by)}; платформу уточните на месте.`:rail.to_station===null?`Время до ${rail.from} пока неизвестно. У поезда к ${clock(rail.station_by)}; уточните дорогу от жилья.`:`До ${rail.from} - ${rail.to_station} мин ${stationRoadOrigin(homeRoad,'to')}. У поезда к ${clock(rail.station_by)}. Выход и платформу уточните на месте.`},
       {kind:'rail',time:rail.outward.departure,title:'Электричка к морю',text:`Поезд № ${rail.outward.id}: ${rail.from} → ${rail.to}. По таблице прибытие в ${clock(rail.outward.arrival)}.`},
       {kind:'walk',time:rail.outward.arrival,title:'Пересадка на автобус',text:`${rail.to_bus} мин от станции до остановки по вашей оценке, ещё ${answers.boarding} мин до посадки. Оставшееся время - ожидание автобуса.`});
     timeline[timeline.length-1].text=`От остановки до поезда - ${rail.to_train} мин по вашей оценке. У поезда к ${clock(rail.train_by)}.`;
     timeline.push(
       {kind:'rail',time:rail.inward.departure,title:'Электричка обратно',text:`Поезд № ${rail.inward.id} до ${rail.from}. Прибытие по таблице в ${clock(rail.inward.arrival)}.`},
-      {kind:'return',time:rail.home_finish,title:answers.origin==='station'?'Снова у вокзала':'Вернуться к жилью',text:answers.origin==='station'?`${rail.from}. Дорогу от вокзала до жилья выберите отдельно.`:`После поезда ещё ${rail.from_station} мин по вашей оценке. Это расчёт с вашим запасом, а не проверенное время от двери до двери.`});
+      {kind:'return',time:rail.home_finish,title:answers.origin==='station'?'Снова у вокзала':'Вернуться к жилью',text:answers.origin==='station'?`${rail.from}. Дорогу от вокзала до жилья выберите отдельно.`:`После поезда ещё ${rail.from_station} мин ${stationRoadOrigin(homeRoad,'back')}. Это расчёт с вашим запасом, а не проверенное время от двери до двери.`});
   }
   if(day.home){
     if(!rail){
       timeline.unshift({kind:'walk',time:answers.home.approach===null?null:day.home.ready_at,title:homeKnown?'От жилья — к автобусу':'Начало у автобуса',
-        text:answers.home.approach===null?'Время до остановки пока неизвестно. Уточните дорогу до первой посадки.':`${answers.home.approach} мин до остановки по вашей оценке. У автобуса к ${clock(day.home.station_by)}. Оставшееся время — ожидание рейса.`,state:answers.home.approach===null?'unknown':'estimate'});
-      timeline[timeline.length-1].text=!homeKnown?'Возвращение к автостанции Зеленоградска. Дорога до жилья не включена.':answers.home.return_minutes===null?'Дорога от остановки до жилья ещё неизвестна.':`После автобуса ещё ${answers.home.return_minutes} мин до жилья по вашей оценке.`;
-      timeline.push({kind:'return',time:day.home.finish??(answers.home.return_minutes===null?null:day.home.earliest_finish),title:homeKnown?'Вернуться к жилью':'Возвращение к остановке',text:transitHomeCopy(day.home,homeKnown),state:day.home.state==='fits'?'estimate':day.home.state==='late_home'?'conflict':'unknown'});
+        text:answers.home.approach===null?'Время до остановки пока неизвестно. Уточните дорогу до первой посадки.':`${answers.home.approach} мин до остановки ${stationRoadOrigin(homeRoad,'to')}. У автобуса к ${clock(day.home.station_by)}. Оставшееся время — ожидание рейса.`,state:answers.home.approach===null?'unknown':'estimate'});
+      timeline[0].text+=stationRoadNote(homeRoad,'to');
+      timeline[timeline.length-1].text=!homeKnown?'Возвращение к автостанции Зеленоградска. Дорога до жилья не включена.':answers.home.return_minutes===null?'Дорога от остановки до жилья ещё неизвестна.':`После автобуса ещё ${answers.home.return_minutes} мин до жилья ${stationRoadOrigin(homeRoad,'back')}.`;
+      timeline.push({kind:'return',time:day.home.finish??(answers.home.return_minutes===null?null:day.home.earliest_finish),title:homeKnown?'Вернуться к жилью':'Возвращение к остановке',text:transitHomeCopy(day.home,homeKnown,homeRoad),state:day.home.state==='fits'?'estimate':day.home.state==='late_home'?'conflict':'unknown'});
     }else{
       const returning=timeline[timeline.length-1];returning.time=day.home.finish??(answers.home.return_minutes===null?null:day.home.earliest_finish);
-      returning.text=transitHomeCopy(day.home,homeKnown);returning.state=day.home.state==='fits'?'estimate':day.home.state==='late_home'?'conflict':'unknown';
+      returning.text=transitHomeCopy(day.home,homeKnown,homeRoad);returning.state=day.home.state==='fits'?'estimate':day.home.state==='late_home'?'conflict':'unknown';
     }
   }
+  if(rail)timeline[0].text+=stationRoadNote(homeRoad,'to');
+  if(day.home)timeline[timeline.length-1].text+=stationRoadNote(homeRoad,'back');
   const selected=selectKosaInterchanges(answers,interchanges);
   const boarding=kosaBoarding(table,answers);
   const walking=assessKosaWalking(answers,selected);
@@ -65,7 +69,7 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
   }
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:transitDayFinish(day)===null?null:transitDayFinish(day)-(day.home?day.home.ready_at:rail?rail.home_start:day.outward.departure),finish:transitDayFinish(day),timeline,...(rail?{rail,origin:answers.origin||'home'}:{}),
-    ...(day.home?{home:structuredClone(day.home),...(answers.home_access?{home_known:homeKnown}:{}),earliest_finish:transitDayEarliestFinish(day),backup_home:day.backup_home?structuredClone(day.backup_home):null}:{}),
+    ...(day.home?{home:structuredClone(day.home),...(homeRoad?{home_road:structuredClone(homeRoad)}:{}),...(answers.home_access?{home_known:homeKnown}:{}),earliest_finish:transitDayEarliestFinish(day),backup_home:day.backup_home?structuredClone(day.backup_home):null}:{}),
     walking,boarding,light:kosaLightSummary(day.light),...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
     fallback:fallback+(rail&&backup?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :'')+(day.home&&backup?' '+transitBackupCopy(day,homeKnown):''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
     before:[rail?'Подтвердите электрички и автобусы на выбранную дату. Проверьте путь от жилья, выход со станции и обе пересадки.':'Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',

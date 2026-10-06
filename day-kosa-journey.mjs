@@ -1,12 +1,12 @@
 import {selectedDay} from './trip-days-state.mjs?v=22';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=22';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=20';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=23';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=21';
 import {transitTable} from './transport-day.mjs?v=3';
-import {roadbookJourney} from './day-journey-view.mjs?v=6';
+import {roadbookJourney} from './day-journey-view.mjs?v=7';
 import {currentProgress} from './day-progress.mjs?v=2';
 import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=6';
-import {transitHomeCopy} from './transport-home.mjs?v=1';
-import {boundBusInput} from './wizard-bus.mjs?v=1';
+import {transitHomeCopy} from './transport-home.mjs?v=2';
+import {boundBusInput} from './wizard-bus.mjs?v=2';
 // Never overwrite the saved record, nor silently substitute a newer bus table.
 export async function savedKosaJourney(trip,catalog,base,calculate) {
   const saved=selectedDay(trip).kosa_plan;
@@ -34,5 +34,5 @@ export async function savedKosaJourney(trip,catalog,base,calculate) {
     if(progress)book=continueKosaRoadbook(original,calculate.transitDay(kosaProgressInput(trip,context)),progress);
   }catch(error){return {state:'stale',message:'Отметки дня изменились. Обновите место и время у остановки перед новым расчётом.',rows:[],context,error:error.message};}
   return {generated_note,state:book.continuation?.state==='conflict'||book.home?.state==='late_home'?'conflict':book.continuation?.state==='incomplete'||book.home&&book.home.state!=='fits'?'incomplete':'ready',context,
-    message:(book.continuation?kosaContinuationMessage(book.continuation):[book.home?transitHomeCopy(book.home,book.home_known??true):'','Электрички и автобусы — по опубликованной таблице. Рейсы и посадку на дату поездки подтвердите перед выходом.'].filter(Boolean).join(' '))+(book.walking.status==='unavailable'?' Карта переходов не загрузилась: время пеших участков ещё нужно сверить.':''),rows:roadbookJourney(book),book};
+    message:(book.continuation?kosaContinuationMessage(book.continuation):[book.home?transitHomeCopy(book.home,book.home_known??true,book.home_road):'','Электрички и автобусы — по опубликованной таблице. Рейсы и посадку на дату поездки подтвердите перед выходом.'].filter(Boolean).join(' '))+(book.walking.status==='unavailable'?' Карта переходов не загрузилась: время пеших участков ещё нужно сверить.':''),rows:roadbookJourney(book),book};
 }

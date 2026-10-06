@@ -1,4 +1,4 @@
-import {excursionJourney} from './day-journey-view.mjs?v=6';
+import {excursionJourney} from './day-journey-view.mjs?v=7';
 import {journeyRow} from './day-journey-ui.mjs?v=5';
 import {defaultExcursion,parseDepartures,transportOptions,resolveExcursion,validExcursion} from './trip-transport-state.mjs?v=3';
 import {updateSchedule} from './trip-schedule-state.mjs?v=16';

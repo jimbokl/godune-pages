@@ -1,6 +1,6 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=22';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=23';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=1';
 const {PDFDocument,rgb}=globalThis.PDFLib;
@@ -55,7 +55,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   paragraph('День на волне.',{font:title,size:phone?35:49,space:28});
   paragraph(snapshot.date.split('-').reverse().join('.')+' · '+snapshot.city,{size:13,space:22});
   page.drawRectangle({x:margin,y:y-54,width,height:54,color:blue});
-  page.drawText(snapshot.continuation?'Возвращение после отметки у остановки':snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью, по вашей оценке'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:phone?9:10,color:ink});
+  page.drawText(snapshot.continuation?'Возвращение после отметки у остановки':snapshot.rail?(snapshot.origin==='station'?'Снова у вокзала':'Вернуться к жилью'):'Возвращение в Зеленоградск',{x:margin+12,y:y-18,font:ui,size:phone?9:10,color:ink});
   page.drawText(Number.isInteger(snapshot.finish)?clock(snapshot.finish):'Время уточнить',{x:margin+12,y:y-42,font:title,size:Number.isInteger(snapshot.finish)?24:phone?20:24,color:ink});y-=77;
   paragraph(snapshot.walks.length===2?'Дюны Эфа и Танцующий лес. Между тропами - автобус.':'Высота Эфа. Настил, смотровые и возвращение к началу тропы.');
   paragraph('Это ваш план по опубликованной таблице № 210. Рейсы на дату поездки и наличие мест ещё нужно подтвердить.',{size:bodySize,color:muted});
@@ -63,7 +63,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   else if(snapshot.walking&&snapshot.walking.status!=='within_estimate')paragraph('Время переходов пока не сопоставлено с картой. Уточните его перед поездкой.',{size:bodySize});
   paragraph(walkingMaps.length?'Внутри - ваш день, запасной вариант, карты переходов и троп. Всё читается без связи.':'Внутри - расписание вашего дня, запасной вариант и автономные карты троп.',{space:0});
   start();heading('Ритм вашего дня');
-  paragraph(snapshot.rail?(snapshot.origin==='station'?'Начало и возвращение у вокзала. Дорога от жилья не включена; рейсы требуют проверки на дату поездки.':'Расчёт связывает жильё, электричку, автобус и возвращение. Время подходов и запас заданы вами. Рейсы требуют проверки на дату поездки.'):'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
+  paragraph(snapshot.rail?(snapshot.origin==='station'?'Начало и возвращение у вокзала. Дорога от жилья не включена; рейсы требуют проверки на дату поездки.':'Расчёт связывает жильё, электричку, автобус и возвращение. Дорога до транспорта учтена; её оценка подписана ниже. Запас перед посадкой выбран вами. Рейсы требуют проверки на дату поездки.'):snapshot.home_known?'Расчёт связывает жильё, автобус и возвращение. Оценки дороги подписаны ниже.':'Расчёт начинается у автобуса в Зеленоградске. Дорогу от жилья до пересадки выбирайте отдельно.',{color:muted});
   for(const row of snapshot.timeline){
     const boarding=row.boarding?kosaBoardingText(row.boarding):Object.hasOwn(row,'boarding')?'Названия остановок пока не загружены. Уточните их до поездки.':null;
     const height=22*1.18+5+lines(row.title,ui,phone?12:14).length*(phone?12:14)*1.48+6+lines(row.text,ui,bodySize).length*bodySize*1.48+20

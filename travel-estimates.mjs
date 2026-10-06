@@ -1,5 +1,5 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {railWalkBases} from './rail-access.mjs?v=1';
+import {railWalkBases} from './rail-access.mjs?v=2';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 import {baseId,personalPoints} from './personal-points.mjs?v=3';
 import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=2';
@@ -80,6 +80,7 @@ function resolveRoadPair(previous,id,catalog,matrix,mode) {
   for(const slug of [previous,id]) {
     if(!currentPoint(catalog,matrix,slug))return {origin:'unknown',status:'changed_point',minutes:null,mode};
   }
+  if(previous===id)return {origin:'same_place',minutes:0,distance_m:0,mode,source:matrix.source};
   const legMode=sameArrival(catalog,previous,id,mode)?'foot':mode;
   const leg=matrix.legs?.[`${legMode}/${previous}/${id}`];
   if(!leg)return {origin:'unknown',status:'missing_pair',minutes:null,mode};
@@ -109,11 +110,28 @@ export function sameRoadSource(a,b){
 }
 export async function loadTripTravelMatrix(base,trip,catalog){
   const matrix=await loadTravelMatrix(base),points=personalPoints(trip);if(!points.length)return matrix;
-  const bases=dayBases(trip),copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
+  const bases=dayBases(trip);
   const pairs=trip.places.flatMap(id=>[...(bases.start_at?.startsWith('@')?[[bases.start_at,id]]:[]),...(bases.night_at?.startsWith('@')?[[id,bases.night_at]]:[])]);
   if(bases.end_at?.startsWith('@') && trip.places.length)pairs.push([bases.night_at||trip.places.at(-1),bases.end_at]);
   if(bases.night_at?.startsWith('@') && bases.end_at && !bases.end_at.startsWith('@'))pairs.push([bases.night_at,bases.end_at]);
   const segments=pairs.flatMap(([from,to])=>mobilitySegments(trip,from,to,bases)).filter(part=>part.kind==='travel' && (part.from?.startsWith('@') || part.to?.startsWith('@')));
+  return directedMatrix(base,catalog,matrix,points,segments);
+}
+// Explicit pairs also serve roads to transport hubs, outside the walking day.
+// They use the same pinned graph, worker and directed cache as personal origins.
+export async function loadDirectedTravelMatrix(base,catalog,{points,pairs}) {
+  return directedMatrix(base,catalog,await loadTravelMatrix(base),points,pairs);
+}
+export const resolveDirectedTravel=(from,to,catalog,matrix,mode='foot')=>resolveRoadPair(from,to,catalog,matrix,mode);
+async function directedMatrix(base,catalog,matrix,points,segments) {
+  const ids=new Set();
+  for(const point of points) {
+    if(!point || !Number.isFinite(point.lon) || !Number.isFinite(point.lat) || Math.abs(point.lon)>180 || Math.abs(point.lat)>90
+      || point.slug!==`@${point.lon},${point.lat}` || ids.has(point.slug))throw Error('Invalid personal road point');
+    ids.add(point.slug);
+  }
+  if(segments.some(part=>!Object.hasOwn(TRAVEL_MODES,part.mode)||typeof part.from!=='string'||typeof part.to!=='string'))throw Error('Invalid directed road pair');
+  const copy={...matrix,points:[...matrix.points,...points],personal_points:points,legs:{...matrix.legs}};
   if(!segments.length)return copy;
   const profiles=[...new Set(segments.map(part=>part.mode))];
   await Promise.all(profiles.map(async mode=>{try{
@@ -122,7 +140,7 @@ export async function loadTripTravelMatrix(base,trip,catalog){
     await Promise.all(segments.filter(part=>part.mode===mode).map(async({from,to})=>{
       const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);
       if(!a||!b)return;const anchor=p=>p.arrival_points?.[mode] || p;
-      const x=anchor(a),y=anchor(b),cacheKey=`${new URL(base).href}/${matrix.source.id}/${key}/${x.lon},${x.lat}/${y.lon},${y.lat}`;
+      const x=anchor(a),y=anchor(b),cacheKey=`${new URL(base).href}/${stable(matrix.source)}/${key}/${x.lon},${x.lat}/${y.lon},${y.lat}`;
       if(!personalLegs.has(cacheKey))personalLegs.set(cacheKey,route([x.lon,x.lat],[y.lon,y.lat]).catch(error=>{personalLegs.delete(cacheKey);throw error;}));
       const result=await personalLegs.get(cacheKey);copy.legs[key]={...result,engine:'godune-route',dynamic:true};
     }));

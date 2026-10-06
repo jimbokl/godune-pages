@@ -1,4 +1,4 @@
-import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=11';
 import {clock} from './day-stop-view.mjs?v=1';
 

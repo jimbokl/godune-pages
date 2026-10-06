@@ -1,5 +1,6 @@
 // Read-only adapters. Rust owns time; this module only names its results.
 import {clock} from './day-stop-view.mjs?v=1';
+import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
 export const journeyKinds={start:'Выход',walk:'Пешком',car:'На машине',bike:'На велосипеде',mixed:'Пешком и транспорт',rail:'Электричка',bus:'Автобус',ferry:'Переправа',wait:'Ожидание',visit:'Прогулка',return:'Возвращение',boarding:'До посадки',notice:'Проверьте перед выходом'};
 const row=(id,kind,time,title,text,state='estimate',source=null)=>({id,kind,time,title,text,state,source});
 const known=n=>Number.isInteger(n)&&n>=0?n:null;
@@ -14,7 +15,7 @@ export function railJourney(resolved,result) {
       row('rail-home-approach','walk',h?.ready_at ?? null,`До вокзала · ${names?.start || 'Начало поездки'}`,
         !h || h.outward_slack===null?'Время дороги до вокзала ещё нужно уточнить. Пока не знаем, успеете ли к отправлению.':
           h?.missed_outward_by?`С дорогой до вокзала и запасом на посадку опоздаете как минимум на ${h.missed_outward_by} мин.`:
-          `${h.station_ready-h.ready_at} мин по вашей оценке. Быть на вокзале до ${clock(Math.max(0,h?.station_by ?? 0))}; ещё ${s.boarding} мин до отправления.`,
+          `${h.station_ready-h.ready_at} мин ${stationRoadOrigin(s.access.road,'to')}. Быть на вокзале до ${clock(Math.max(0,h?.station_by ?? 0))}; ещё ${s.boarding} мин до отправления.`+stationRoadNote(s.access.road,'to'),
         h?.missed_outward_by?'conflict':!h || h.outward_slack===null?'unknown':'estimate'),
       row('rail-outward','rail',r.outward_departure,`${service.from} → ${service.to}`,`Прибытие по таблице — ${clock(r.outward_arrival)}. Пеший путь от этой станции и обратно учтён ниже. Перед выездом подтвердите рейс и платформу.`,'timetable',source)
     ],after:[
@@ -24,7 +25,7 @@ export function railJourney(resolved,result) {
       row('rail-home-return','return',h?.finish ?? null,`После поезда · ${names?.return || 'Конец поездки'}`,
         h?.late_by?`С дорогой после поезда закончите позже выбранного времени как минимум на ${h.late_by} мин.`:
         !h || h.finish===null?'Полное время возвращения ещё неизвестно. Уточните дорогу до вокзала, после поезда и участки прогулки.':
-        `${h.finish-r.inbound_arrival} мин после поезда по вашей оценке. До конца дня остаётся ${h.return_slack} мин.`,h?.late_by?'conflict':!h || h.finish===null?'unknown':'estimate')
+        `${h.finish-r.inbound_arrival} мин после поезда ${stationRoadOrigin(s.access.road,'back')}. До конца дня остаётся ${h.return_slack} мин.`+stationRoadNote(s.access.road,'back'),h?.late_by?'conflict':!h || h.finish===null?'unknown':'estimate')
     ]};
   }
   return {before:r.resume_at!==undefined?[]:[

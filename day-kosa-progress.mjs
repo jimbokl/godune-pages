@@ -2,7 +2,7 @@ import {currentProgress} from './day-progress.mjs?v=2';
 import {generatedDayPoints} from './day-points.mjs?v=1';
 import {selectedDay} from './trip-days-state.mjs?v=22';
 import {clock} from './day-stop-view.mjs?v=1';
-import {transitHomeCopy} from './transport-home.mjs?v=1';
+import {transitHomeCopy} from './transport-home.mjs?v=2';
 
 // Continue only the verified, saved rides. Observations never choose new transport.
 export function kosaProgressInput(trip,context) {

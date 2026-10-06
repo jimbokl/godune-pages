@@ -6,7 +6,7 @@ import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {foodTrip,anchorRequest} from './gastro-day.mjs?v=10';
 import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=22';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings,anchored=false) {

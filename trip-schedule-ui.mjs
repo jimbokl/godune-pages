@@ -1,7 +1,7 @@
 import {selectedDay} from './trip-days-state.mjs?v=22';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
-import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=6';
+import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=7';
 import {journeyRow} from './day-journey-ui.mjs?v=5';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
@@ -11,7 +11,7 @@ import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=11';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=9';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=10';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=7';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=11';
@@ -326,7 +326,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=10')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=11')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

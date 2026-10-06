@@ -1,5 +1,5 @@
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
-import {transitHomeInput} from './transport-home.mjs?v=1';
+import {transitHomeInput} from './transport-home.mjs?v=2';
 
 // Legacy bus publications are adapted at the boundary, not inside the calendar.
 export function transitTable(publication,day){

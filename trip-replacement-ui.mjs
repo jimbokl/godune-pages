@@ -4,7 +4,7 @@ import {transferTitle} from './trip-transfer-costs.mjs?v=6';
 import {rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {planInput} from './trip-schedule-state.mjs?v=16';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
 
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const normalize=text=>text.toLocaleLowerCase('ru-RU').replaceAll('ё','е').trim();

@@ -3,7 +3,7 @@ import {tripSignature} from './trip-light.mjs?v=12';
 import {regionMapStyle} from './region-map.mjs?v=6';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=6';
-import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=9';
+import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=10';
 import {waveLabel} from './day-wave.mjs?v=2';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};

@@ -3,7 +3,7 @@ import {emptyCost,putExpense,removeExpense,cancelExpense,putRefund,removeRefund,
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=6';
-import {TRAVEL_MODES} from './travel-estimates.mjs?v=9';
+import {TRAVEL_MODES} from './travel-estimates.mjs?v=10';
 import {initTripOffers} from './trip-offers-ui.mjs?v=13';
 import {offerSource,offerContext,offerStatusText,retainedSource} from './trip-offers-state.mjs?v=3';
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

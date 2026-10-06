@@ -2,8 +2,8 @@
 // Rust, service calendars and the saved transport bindings own every time.
 import {collectTripGuide} from './trip-guide-engine.mjs?v=14';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=10';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=11';
 import {clock} from './day-stop-view.mjs?v=1';
 
 export async function collectVirtualJourney({trip,catalog,base,calculate,matrixFor,kosaFor}) {

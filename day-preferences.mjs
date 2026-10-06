@@ -1,4 +1,4 @@
-import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=9';
+import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=10';
 
 // Preferences describe the traveller's intent. They never certify a path.
 export const DAY_INTERESTS={sea:'Море',nature:'Лес и парки',history:'Архитектура и история',museums:'Музеи',food:'Кофе и еда'};

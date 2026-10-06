@@ -3,10 +3,11 @@
 import {waveVisit} from './day-wave.mjs?v=2';
 import {tripStarterChoices} from './trip-starters.mjs?v=20';
 import {nextDate} from './trip-days-state.mjs?v=22';
-import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=22';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=20';
+import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=23';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=21';
 import {validBase} from './personal-points.mjs?v=3';
-import {railHomeLocations} from './rail-access.mjs?v=1';
+import {railHomeLocations} from './rail-access.mjs?v=2';
+import {validStationRoad} from './station-road-proof.mjs?v=1';
 const clone=v=>structuredClone(v);
 const stable=v=>JSON.stringify(v,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
 const points=new Set(['vysota-efa','smotrovaya-efa','tancuyushchiy-les']);
@@ -29,16 +30,18 @@ export function wizardBusChoice(answers,target){
   const same=old?.home_access?.city===city&&old.home_access.station===station&&stable(old.home_access.start_at)===stable(location)&&stable(old.home_access.return_at)===stable(location);
   const approach=same?old.home.approach:location?null:0,back=same?old.home.return_minutes:location?null:0;
   const plan={city,date:target.date,ready:answers.start,walks:target.walks,origin:location?'home':'station',pace:answers.wave?.pace==='full'?'ordinary':'gentle',
-    first_visit:waveVisit(120,answers.wave?.pace||'calm'),second_visit:waveVisit(75,answers.wave?.pace||'calm'),boarding:old?.boarding??15,
+    first_visit:waveVisit(120,answers.wave?.pace||'calm'),second_visit:waveVisit(75,answers.wave?.pace||'calm'),boarding:old&&Object.hasOwn(old,'boarding')?old.boarding:15,
     home:{ready_at:answers.start,end_by:answers.end,approach,return_minutes:back},
     home_access:{version:1,city,station,start_at:clone(location),return_at:clone(location)},
-    ...(city==='kaliningrad'?{station,to_station:approach,from_station:back,to_bus:old?.to_bus??10,to_train:old?.to_train??10,rail_boarding:10}:{})};
+    ...(city==='kaliningrad'?{station,to_station:approach,from_station:back,to_bus:old&&Object.hasOwn(old,'to_bus')?old.to_bus:10,to_train:old&&Object.hasOwn(old,'to_train')?old.to_train:10,rail_boarding:10}:{})};
+  if(same&&old.home_access.road)plan.home_access.road=clone(old.home_access.road);
   return {day_index:target.index,plan};
 }
 export function validTransitAccess(access,plan){
   const fields=['version','city','station','start_at','return_at'];
-  return !!access&&typeof access==='object'&&!Array.isArray(access)&&Object.keys(access).length===fields.length&&fields.every(key=>Object.hasOwn(access,key))
-    &&access.version===1&&access.city===plan.city&&access.station===(plan.city==='kaliningrad'?plan.station:null)&&validBase(access.start_at)&&validBase(access.return_at);
+  return !!access&&typeof access==='object'&&!Array.isArray(access)&&Object.keys(access).length===fields.length+(access.road===undefined?0:1)&&fields.every(key=>Object.hasOwn(access,key))
+    &&access.version===1&&access.city===plan.city&&access.station===(plan.city==='kaliningrad'?plan.station:null)&&validBase(access.start_at)&&validBase(access.return_at)
+    &&(access.road===undefined||validStationRoad(access.road,plan.home?.approach,plan.home?.return_minutes));
 }
 export function boundBusInput(trip,saved,input){
   if(!saved.home_access)return input;

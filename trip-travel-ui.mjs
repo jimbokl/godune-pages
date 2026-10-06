@@ -4,7 +4,7 @@ import {baseName,baseId} from './personal-points.mjs?v=3';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=22';
 import {planInput} from './trip-schedule-state.mjs?v=16';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=10';
 import {offlinePaths} from './offline.mjs?v=6';
 import {availableMaps} from './offline-map.mjs?v=9';
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;

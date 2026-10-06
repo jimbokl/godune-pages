@@ -1,7 +1,7 @@
 // Service snapshots are separate from personal walk/boarding allowances.
 import {remainingTrip} from './day-progress.mjs?v=2';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
-import {validRailAccess,railAccess,railHomeNames} from './rail-access.mjs?v=1';
+import {validRailAccess,railAccess,railHomeNames} from './rail-access.mjs?v=2';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
 const date=validServiceDate;
 const minute=v=>Number.isInteger(v) && v>=0 && v<=1440;

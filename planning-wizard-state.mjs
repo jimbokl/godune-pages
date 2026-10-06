@@ -1,5 +1,5 @@
-import {wizardBusChoices,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=1';
-import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=1';
+import {wizardBusChoices,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=2';
+import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=2';
 import {cleanTrip} from './trip-state.mjs?v=26';
 import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=22';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=16';

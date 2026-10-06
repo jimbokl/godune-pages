@@ -1,4 +1,4 @@
-import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=7';
 import {clock} from './day-stop-view.mjs?v=1';
 
