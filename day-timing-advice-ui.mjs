@@ -1,4 +1,5 @@
-import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=6';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {timingAdvice, applyTimingAdvice, needsTimingHelp} from './day-timing-advice.mjs?v=7';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
@@ -32,7 +33,7 @@ export function initTimingAdvice({mount,commit,feedback}) {
           const title=el('h5','',option.kind==='start'?`Начать в ${clock(option.start)}`:`«${catalog.poi.find(p=>p.slug===option.moved)?.name || option.moved}» — раньше`);
           const times=el('dl','day-advice-times');
           const rows=option.kind==='start'?[['Выход',clock(option.previousStart),clock(option.start)]]:[];
-          rows.push(['Окончание',option.before.finish===null?`Не раньше ${clock(option.before.earliest_finish)}`:clock(option.before.finish),clock(option.result.finish)],
+          rows.push(['Окончание',dayFinish(option.before)===null?`Не раньше ${clock(dayEarliestFinish(option.before))}`:clock(dayFinish(option.before)),dayFinish(option.result)===null?`Не раньше ${clock(dayEarliestFinish(option.result))}`:clock(dayFinish(option.result))],
             [option.result.rail?'Запас до обратного поезда':'Запас до конца дня',remaining(option.before.slack),remaining(option.result.slack)]);
           for(const [label,before,after]of rows){const group=el('div'),dt=el('dt','',label),dd=el('dd');dd.append(el('span','',before),el('span','day-advice-arrow','→'),el('strong','',after));group.append(dt,dd);times.append(group);}
           const order=el('details','day-advice-order'),summary=el('summary','','Как пойдёт день'),list=el('ol');

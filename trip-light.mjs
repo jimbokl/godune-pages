@@ -1,4 +1,5 @@
-import {planInput} from './trip-schedule-state.mjs?v=15';
+import {planInput} from './trip-schedule-state.mjs?v=16';
+import {dayFinish} from './rail-access.mjs?v=1';
 export const prefersDaylight = place => ['nature','park','viewpoint','beach'].includes(place?.category);
 export function lightInput(trip,catalog,result) {
   return {version:1,date:trip.date,stops:result.stops.filter(item=>catalog.poi.some(row=>row.slug===item.id)).map(item=>{
@@ -22,7 +23,7 @@ export const tripSignature = trip => JSON.stringify([trip.itinerary?.active ?? n
 // Try moving a late outdoor stop earlier. Every option uses the actual directed road and visit calendar.
 // This is an explicit suggestion; it never silently sorts, deletes or saves the visitor's work.
 export async function lightAlternative(trip,catalog,matrix,engine,result,light,stillCurrent=()=>true) {
-  if(trip.schedule?.progress || !trip.date || !result.stops.length || result.finish===null || conflicts(result)) return null;
+  if(trip.schedule?.progress || !trip.date || !result.stops.length || dayFinish(result)===null || result.rail && result.rail.state!=='fits' || conflicts(result)) return null;
   const original=lightScore(light);if(original.unknown || !original.outside) return null;
   let best=null,iterations=0;
   const scores=new Map(light.stops.map(row=>[row.id,row]));
@@ -33,7 +34,7 @@ export async function lightAlternative(trip,catalog,matrix,engine,result,light,s
       if(!stillCurrent())return null;
       const places=[...trip.places], [moved]=places.splice(from,1);places.splice(to,0,moved);
       const candidate={...trip,places}, schedule=engine(planInput(candidate,catalog,matrix));
-      if(schedule.finish===null || conflicts(schedule))continue;
+      if(dayFinish(schedule)===null || schedule.rail && schedule.rail.state!=='fits' || conflicts(schedule))continue;
       const candidateLight=engine.light(lightInput(candidate,catalog,schedule)),score=lightScore(candidateLight);
       if(!score.unknown && (score.dark<original.dark || score.dark===original.dark && score.outside<original.outside)
         && (!best || score.dark<best.score.dark || score.dark===best.score.dark && (score.outside<best.score.outside || score.outside===best.score.outside && schedule.finish<best.schedule.finish))) {
@@ -82,7 +83,7 @@ export function renderLightView(mount,trip,catalog,light,alternative,onApply) {
   if(alternative) {
     const proposal=document.createElement('div');proposal.className='trip-light-proposal';proposal.dataset.lightAlternative='ready';
     const heading=document.createElement('p');heading.className='trip-light-proposal-title';heading.textContent=alternative.score.outside?'Оставить прогулке больше света':'Прогуляться, пока светло';
-    const copy=document.createElement('p');copy.textContent=`«${catalog.poi.find(row=>row.slug===alternative.moved).name}» — раньше. На открытом воздухе вне дневного света: ${alternative.score.outside} мин вместо ${lightScore(light).outside}. День закончится около ${clock(alternative.schedule.finish)}. Часы посещения и дорога учтены.`;
+    const copy=document.createElement('p');copy.textContent=`«${catalog.poi.find(row=>row.slug===alternative.moved).name}» — раньше. На открытом воздухе вне дневного света: ${alternative.score.outside} мин вместо ${lightScore(light).outside}. День закончится около ${clock(dayFinish(alternative.schedule))}. Часы посещения и дорога учтены.`;
     const order=document.createElement('ol');for(const id of alternative.places){const li=document.createElement('li');li.textContent=catalog.poi.find(place=>place.slug===id).name;order.append(li);}
     const button=document.createElement('button');button.type='button';button.className='save-item';button.dataset.applyLight='true';button.textContent='Сохранить этот порядок';button.onclick=()=>onApply(alternative);
     proposal.append(heading,copy,order,button);mount.append(proposal);

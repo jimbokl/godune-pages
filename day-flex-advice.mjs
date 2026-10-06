@@ -1,9 +1,9 @@
-import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=15';
-import {selectedDay} from './trip-days-state.mjs?v=20';
-import {tripSignature} from './trip-light.mjs?v=11';
-import {timingTrial} from './day-timing-advice.mjs?v=6';
-import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=5';
-import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=4';
+import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=16';
+import {selectedDay} from './trip-days-state.mjs?v=21';
+import {tripSignature} from './trip-light.mjs?v=12';
+import {timingTrial} from './day-timing-advice.mjs?v=7';
+import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=6';
+import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=5';
 
 // Planning proposals, not a reconstruction of time already spent on the road.
 // The shared Rust calculation remains the sole clock for every candidate.

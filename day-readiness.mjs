@@ -12,6 +12,7 @@ export function assessSchedule(schedule) {
   const issues=schedule.stops.flatMap(stop=>Array.isArray(stop.issues)?stop.issues.map(issue=>issue.code):[]);
   const evidence={estimated:issues.some(code=>estimated.has(code)),conditions_pending:issues.some(code=>unconfirmed.has(code))};
   if(['overrun','conflict'].includes(schedule.status))return assessment(false,'conflict',evidence);
+  if(schedule.rail && schedule.rail.state!=='fits')return assessment(false,'transport',evidence);
   if(schedule.finish===null || !Number.isFinite(schedule.finish) || schedule.unknown_legs!==0 || issues.some(code=>blockers.has(code))) {
     const reason=issues.some(code=>code.startsWith('transport_'))?'transport':
       issues.some(code=>['unknown_travel','unknown_approach','unknown_return'].includes(code)) || schedule.unknown_legs>0?'travel':

@@ -1,9 +1,11 @@
 import {visitedPlaces} from './day-progress.mjs?v=2';
-import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=5';
-import {tripSignature,lightMessage} from './trip-light.mjs?v=11';
+import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=6';
+import {tripSignature,lightMessage} from './trip-light.mjs?v=12';
 import {clock} from './day-stop-view.mjs?v=1';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=4';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=5';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {railProblem} from './day-journey-view.mjs?v=6';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 function regionalNow() {
@@ -43,7 +45,7 @@ export function initDayProgress({mount,commit,feedback}) {
       preview=previewProgress(trip,{after:select.value,at:h*60+m},catalog,matrix,engine,kosaContext);
       if(preview.error){mount.dataset.progressState='error';status.textContent=progressMessages[preview.error] || 'Остаток дня пока не рассчитан. Проверьте время и возвращение.';return;}
       mount.dataset.progressState='preview';
-      const result=preview.result,conflict=kosa?result.continuation.state==='conflict':['conflict','overrun'].includes(result.status),unknown=result.finish===null;
+      const result=preview.result,conflict=kosa?result.continuation.state==='conflict':['conflict','overrun'].includes(result.status),unknown=dayFinish(result)===null;
       status.textContent=kosa?kosaContinuationMessage(result.continuation):conflict?'Все оставшиеся остановки не помещаются. Билеты и возвращение сохранены; ниже видно, где возникла задержка.':unknown?'Часть пути ещё неизвестна. Ниже — ориентиры; точное возвращение пока не подтверждено.':'Остаток дня рассчитан. Перед выходом сверьте дорогу, входы и обратный рейс.';
       const card=el('article','day-advice-option');card.append(el('h4','',`Дальше — с ${clock(preview.progress.at)}`));
       if(kosa){
@@ -60,8 +62,9 @@ export function initDayProgress({mount,commit,feedback}) {
         const light=preview.light?.stops.find(p=>p.id===row.id),note=light&&lightMessage(light);if(note)li.append(el('p','',note));list.append(li);
       }
       if(!list.children.length)card.append(el('p','','Все отмеченные места позади. Осталось возвращение.'));else card.append(list);
-      card.append(el('p','',`${result.finish===null?'Окончание не раньше':'Ориентир окончания'} ${clock(result.earliest_finish)}.${result.slack===null?' Запас времени пока неизвестен.':result.slack<0?` Позже границы дня на ${-result.slack} мин.`:` Запас до границы дня — ${result.slack} мин.`}`));
-      if(result.rail)card.append(el('p','',`Обратная электричка — ${clock(result.rail.inbound_departure)}.${['missed','no_time'].includes(result.rail.state)?' По этому плану на неё не успеваете.':result.rail.state==='incomplete'?' Возвращение ещё нужно уточнить.':' Путь к станции и запас до посадки учтены.'}`));
+      const slack=result.rail?.home?result.rail.home.return_slack:result.slack;
+      card.append(el('p','',`${dayFinish(result)===null?'Окончание не раньше':'Ориентир окончания'} ${clock(dayEarliestFinish(result))}.${slack===null?' Запас времени пока неизвестен.':slack<0?` Позже границы дня на ${-slack} мин.`:` Запас до границы дня — ${slack} мин.`}`));
+      if(result.rail)card.append(el('p','',`Обратная электричка — ${clock(result.rail.inbound_departure)}.${result.rail.home?' '+railProblem(result.rail):['missed','no_time'].includes(result.rail.state)?' По этому плану на неё не успеваете.':result.rail.state==='incomplete'?' Возвращение ещё нужно уточнить.':' Путь к станции и запас до посадки учтены.'}`));
       }
       const apply=el('button','save-item','Сохранить этот расчёт');apply.type='button';apply.dataset.progressApply='true';
       apply.onclick=async()=>{

@@ -1,10 +1,10 @@
-import {selectedDay} from './trip-days-state.mjs?v=20';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot} from './kosa-plan-state.mjs?v=19';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=17';
+import {selectedDay} from './trip-days-state.mjs?v=21';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot} from './kosa-plan-state.mjs?v=20';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=18';
 import {transitTable} from './transport-day.mjs?v=2';
-import {roadbookJourney} from './day-journey-view.mjs?v=5';
+import {roadbookJourney} from './day-journey-view.mjs?v=6';
 import {currentProgress} from './day-progress.mjs?v=2';
-import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=4';
+import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=5';
 // Never overwrite the saved record, nor silently substitute a newer bus table.
 export async function savedKosaJourney(trip,catalog,base,calculate) {
   const saved=selectedDay(trip).kosa_plan;

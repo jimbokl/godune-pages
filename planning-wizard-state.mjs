@@ -1,12 +1,13 @@
-import {cleanTrip} from './trip-state.mjs?v=25';
-import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=20';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=15';
-import {tripStarterChoices} from './trip-starters.mjs?v=19';
+import {wizardRailTargets,attachWizardRail} from './wizard-rail.mjs?v=1';
+import {cleanTrip} from './trip-state.mjs?v=26';
+import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=21';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=16';
+import {tripStarterChoices} from './trip-starters.mjs?v=20';
 import {validDayWave,waveChoices,waveSchedule,waveStopSettings} from './day-wave.mjs?v=2';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {validParty} from './trip-party.mjs?v=1';
-import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=3';
+import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=4';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -54,7 +55,7 @@ function checkedParty(answers) {
 
 function checkedTransport(answers) {
   if(answers.transport===undefined || answers.transport==='auto')return null;
-  if(!['foot','car'].includes(answers.transport))throw Error('wizard_invalid_transport');
+  if(!['foot','car','rail'].includes(answers.transport))throw Error('wizard_invalid_transport');
   return answers.transport;
 }
 function transportSchedule(schedule,places,area,transport) {
@@ -100,8 +101,9 @@ export function prepareWizardDay(current,answers,catalog) {
   if(party)day.party=party;
   if(preferences)day.preferences=preferences;
   if(route.wave_recipe && route.access_note)day.note=route.access_note;
-  if(!day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
-  if(base!==undefined){day.start_at=clone(base);day.night_at=clone(base || route.return_to || null);}
+  if(transport!=='rail' && !day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
+  if(base!==undefined){day.start_at=clone(base);day.night_at=clone(base || (transport==='rail'?null:route.return_to) || null);}
+  if(transport==='rail'){const target=wizardRailTargets(catalog,answers)[0];attachWizardRail(day,catalog,answers,0,target);schedule=day.schedule;}
   next.date=day.date;next.month=day.date?Number(day.date.slice(5,7)):next.month;
   next.places=[...places];next.schedule=schedule;
   next.routes=[...new Set([...current.routes,...(route.wave_recipe?[]:[route.slug])])];
@@ -133,11 +135,14 @@ export function prepareWizardTrip(current,answers,catalog) {
   if(answers.area!=='whole-trip' || !starter)throw new Error('wizard_unknown_starter');
   if(!(answers.date===null || validTripDate(answers.date)))throw new Error('wizard_invalid_date');
   if(!minute(answers.start) || !minute(answers.end) || answers.start>=answers.end)throw new Error('wizard_invalid_time');
+  const railTargets=transport==='rail'?wizardRailTargets(catalog,answers):[];
+  if(transport==='rail' && !railTargets.length)throw Error('wizard_rail_unavailable');
   let date=answers.date;
   const days=starter.days.map((template,index)=>{
     if(answers.date!==null && !validTripDate(date))throw new Error('wizard_date_overflow');
     let schedule={...defaultSchedule(),mode:template.mode,start:answers.start,end:answers.end};
-    schedule=transportSchedule(schedule,template.places,template.recipe?.area,transport);
+    const railTarget=railTargets.find(row=>row.index===index);
+    schedule=transportSchedule(schedule,template.places,template.recipe?.area,transport==='rail'?(railTarget?'foot':null):transport);
     for(const id of template.places) {
       const visit=catalog.poi.find(point=>point.slug===id).visit_minutes;
       schedule.stops[id]={visit:Number.isInteger(visit)&&visit>0&&visit<=1440?visit:30,pause:0,leg:null,window:null};
@@ -146,8 +151,9 @@ export function prepareWizardTrip(current,answers,catalog) {
     const theme=template.recipe?.theme || (template.places.every(id=>catalog.poi.find(row=>row.slug===id).gastronomy)?'gastro':'mixed');
     const wave=(answers.wave || template.recipe)?{...(answers.wave || {version:1,pace:'full'}),theme,recipe:template.recipe?.slug || null}:null;
     if(wave)schedule=waveSchedule(schedule,wave);
-    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(party?{party:clone(party)}:{}),...(preferences?{preferences:clone(preferences)}:{}),...(wave?{wave}:{}),start_at:clone(base || template.start_at),
-      night_at:clone(base || template.night_at),note:template.recipe?.access_note || '',costs:{}};
+    const day={id:`day-${index+1}`,date,places:[...template.places],schedule,...(party?{party:clone(party)}:{}),...(preferences?{preferences:clone(preferences)}:{}),...(wave?{wave}:{}),start_at:clone(base || (railTarget?null:template.start_at)),
+      night_at:clone(base || (railTarget?null:template.night_at)),note:template.recipe?.access_note || '',costs:{}};
+    if(railTarget)attachWizardRail(day,catalog,answers,index,railTarget);
     date=nextDate(date);return day;
   });
   const incoming={...clone(current),places:[...days[0].places],date:days[0].date,schedule:clone(days[0].schedule),

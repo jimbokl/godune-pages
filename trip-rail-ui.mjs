@@ -1,12 +1,14 @@
+import {railHomeLocations,railHomeInput} from './rail-access.mjs?v=1';
+import {railProblem} from './day-journey-view.mjs?v=6';
 import {remainingTrip} from './day-progress.mjs?v=2';
-import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=5';
-import {planInput} from './trip-schedule-state.mjs?v=15';
-import {loadScheduler} from './trip-scheduler.mjs?v=20';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=8';
+import {validRail,railTable,rideSnapshot,resolveRail,saveRail,railContext} from './trip-rail-state.mjs?v=6';
+import {planInput} from './trip-schedule-state.mjs?v=16';
+import {loadScheduler} from './trip-scheduler.mjs?v=21';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=9';
 import {preferredRailService,railStation} from './rail-destinations.mjs?v=1';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${n>=1440?`+${Math.floor(n/1440)} дн. `:''}${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
-const messages={unpublished_year:'Расписание на этот год ещё не добавлено. Летние рейсы и «Морской экспресс» проверяем отдельно — осеннее время сюда не подставляем.',choose_date:'Выберите дату, чтобы открыть расписание.',stale_date:'Дата дня изменилась. Выберите электрички заново — прежние рейсы сохранены, но сейчас не меняют день.',missing_service:'Прежнего направления сейчас нет в каталоге. Выберите другое.',outside_validity:'Это расписание не действует на дату поездки.',unknown_timetable:'На эту дату расписание ещё не опубликовано.',cancelled:'В изменении на эту дату указана отмена рейсов.',changed_timetable:'Расписание изменилось. Выберите рейсы заново — прежнее время больше не применяется.'};
+const messages={changed_station:'Станция направления изменилась. Выберите рейсы и дорогу заново.',unpublished_year:'Расписание на этот год ещё не добавлено. Летние рейсы и «Морской экспресс» проверяем отдельно — осеннее время сюда не подставляем.',choose_date:'Выберите дату, чтобы открыть расписание.',stale_date:'Дата дня изменилась. Выберите электрички заново — прежние рейсы сохранены, но сейчас не меняют день.',missing_service:'Прежнего направления сейчас нет в каталоге. Выберите другое.',outside_validity:'Это расписание не действует на дату поездки.',unknown_timetable:'На эту дату расписание ещё не опубликовано.',cancelled:'В изменении на эту дату указана отмена рейсов.',changed_timetable:'Расписание изменилось. Выберите рейсы заново — прежнее время больше не применяется.'};
 export function initTripRail({mount,read,commit,base,catalog}) {
  if(!mount)return {render(){}};
  const panel=mount.querySelector('#trip-rail') || el('section',undefined,'trip-rail');panel.id='trip-rail';panel.setAttribute('aria-labelledby','rail-title');
@@ -19,12 +21,14 @@ export function initTripRail({mount,read,commit,base,catalog}) {
  dialog.innerHTML=`<form id="rail-form"><div class="rail-dialog-heading"><div><p class="eyebrow">День у моря</p><h3 id="rail-dialog-title">Уехать. Погулять. Вернуться.</h3></div><button type="button" data-rail-close aria-label="Закрыть выбор электричек">×</button></div><div class="rail-fields"></div><div class="rail-station rail-form-note" hidden></div><p class="rail-source"></p><p class="rail-form-note">Выбираете рейсы для своего плана. Это не покупка билета. Время дороги от станции и обратно — ваша оценка; входы и расписание перед поездкой нужно сверить.</p><p class="rail-error" role="alert"></p><div class="rail-dialog-actions"><button type="submit" class="button button-dark">Учитывать в моём дне</button><button type="button" data-rail-close class="button button-light">Вернуться к плану</button></div></form>`;
  document.body.append(dialog);
  const $=s=>dialog.querySelector(s),feedback=t=>panel.querySelector('.rail-feedback').textContent=t;
- let expected,focus,destination,sequence=0;
+ let expected,focus,destination,accessMode=false,previousService=null,sequence=0;
  function field(caption,name,type,value){const label=el('label',caption),input=el('input');input.name=name;input.type=type;input.value=value;label.append(input);$('.rail-fields').append(label);return input;}
  function select(caption,name,options,value){const label=el('label'),text=el('span',caption),input=el('select');text.dataset.railCaption=name;label.append(text);input.name=name;for(const [id,title]of options){const o=el('option',title);o.value=id;input.append(o);}if([...input.options].some(o=>o.value===value))input.value=value;label.append(input);$('.rail-fields').append(label);return input;}
  function refreshTable() {
   const table=railTable(catalog,$('[name=service]').value,$('[name=date]').value);
-  if(destination && destination!==table.service?.to)for(const name of ['after_arrival','before_return'])$(`[name=${name}]`).value='';
+  if(accessMode && previousService && previousService!==table.service?.id)for(const name of ['to_station','from_station'])$(`[name=${name}]`).value='';
+  if(!accessMode && destination && destination!==table.service?.to)for(const name of ['after_arrival','before_return'])$(`[name=${name}]`).value='';
+  previousService=table.service?.id;
   destination=table.service?.to;
   $('[data-rail-caption=outward]').textContent=`В ${destination||'город у моря'} · отправление → прибытие`;
   $('[data-rail-caption=inbound]').textContent=`В ${table.service?.from||'Калининград'} · отправление → прибытие`;
@@ -44,7 +48,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   $('[type=submit]').disabled=!!$('.rail-error').textContent;
  }
  function open(){
-  const trip=read(),saved=trip.schedule?.rail;expected=railContext(trip);focus=document.activeElement;destination=null;
+  const trip=read(),saved=trip.schedule?.rail;expected=railContext(trip);focus=document.activeElement;destination=null;previousService=null;accessMode=!!saved?.access;
   $('.rail-fields').replaceChildren();
   const date=field('Дата этого дня','date','date',trip.date||'');date.required=true;
   select('Вокзал Калининграда ↔ станция у моря','service',(catalog.rail_services||[]).map(s=>[s.id,`${s.from.replace(/^Калининград-/, '')} ↔ ${s.to}`]),preferredRailService(trip,catalog));
@@ -52,7 +56,10 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   let end=trip.places.at(-1);try{end=remainingTrip(trip).places.at(-1);}catch {}
   const returnChanged=trip.schedule?.progress && end!==(trip.schedule.progress.return_from || trip.places.at(-1));
   const returnCaption=trip.schedule?.progress?`Обратно до станции от «${catalog.poi.find(p=>p.slug===end)?.name || end}», мин`:'От конца дня обратно до станции, мин';
-  for(const [caption,name,value]of [['От станции до начала вашего дня, мин','after_arrival',saved?.after_arrival],[returnCaption,'before_return',returnChanged?null:saved?.before_return],['Прийти до отправления за, мин','boarding',saved?.boarding??10]]){const input=field(caption,name,'number',value??'');input.min='0';input.max='1440';input.step='1';if(name==='boarding')input.required=true;}
+  const home=accessMode?railHomeInput(trip,catalog,trip.schedule.start,trip.schedule.end):null;
+  const fields=accessMode?[['До вокзала Калининграда, мин','to_station',home?.approach],['После поезда до жилья или конца дня, мин','from_station',home?.return_minutes]]:[['От станции до начала вашего дня, мин','after_arrival',saved?.after_arrival],[returnCaption,'before_return',returnChanged?null:saved?.before_return]];
+  fields.push(['Прийти до отправления за, мин','boarding',saved?.boarding??10]);
+  for(const [caption,name,value]of fields){const input=field(caption,name,'number',value??'');input.min='0';input.max='1440';input.step='1';if(name==='boarding')input.required=true;}
   refreshTable();for(const direction of ['outward','inbound'])if(saved?.[direction]&&[...$(`[name=${direction}]`).options].some(o=>o.value===saved[direction].id))$(`[name=${direction}]`).value=saved[direction].id;
   dialog.showModal();date.focus();
  }
@@ -64,7 +71,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   const outward=table.outward?.find(r=>r.id===f.get('outward')),inbound=table.inbound?.find(r=>r.id===f.get('inbound'));
   if(table.reason||!outward||!inbound){$('.rail-error').textContent='Выберите дату и два рейса из расписания.';return;}
   const number=name=>f.get(name)===''?null:Number(f.get(name));
-  const value={service:f.get('service'),date:f.get('date'),outward:rideSnapshot(outward),inbound:rideSnapshot(inbound),after_arrival:number('after_arrival'),before_return:number('before_return'),boarding:number('boarding')};
+  const value={service:f.get('service'),date:f.get('date'),outward:rideSnapshot(outward),inbound:rideSnapshot(inbound),after_arrival:accessMode?0:number('after_arrival'),before_return:accessMode?0:number('before_return'),boarding:number('boarding'),...(accessMode?{access:{version:1,station:table.service.arrival_poi,...railHomeLocations(read()),to_station:number('to_station'),from_station:number('from_station')}}:{})};
   if(!validRail(value)){$('.rail-error').textContent='Проверьте целые минуты дороги и запаса на посадку.';return;}
   let stale=false;const button=$('[type=submit]');button.disabled=true;
   try {const outcome=await commit(current=>{if(railContext(current)!==expected){stale=true;return current;}return saveRail({...current,date:value.date,month:Number(value.date.slice(5,7))},value);},'Электрички сохранены в вашем дне.');
@@ -91,7 +98,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   try {const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,trip,catalog).catch(()=>null)]);if(ticket!==sequence)return;
    const result=calculate(planInput(trip,catalog,matrix)),rail=result.rail;panel.dataset.railState=rail.state;
    const window=el('p',undefined,'rail-window');window.textContent=`Начало прогулки не раньше ${clock(rail.earliest_start)}${rail.itinerary_start===null?' · путь от станции ещё не задан':''}. ${rail.itinerary_deadline===null?'Для возвращения задайте путь до станции.':`Закончить до ${clock(rail.itinerary_deadline)} с вашим запасом на посадку.`}`;status.before(window);
-   status.textContent=rail.state==='no_time'?'Между этими рейсами не осталось времени на день. Выберите другое отправление или возвращение.':rail.state==='missed'?`На выбранный обратный поезд не успеваете: как минимум ${rail.missed_by} мин после нужного времени. Уберите остановку, сократите паузу или выберите более поздний рейс.`:rail.state==='incomplete'?'Возвращение пока нельзя подтвердить по плану. Заполните путь от станции и обратно, затем проверьте неизвестные участки дня.':`По вашим оценкам, до посадки остаётся ${rail.wait} мин после дороги и запаса. Расписание и билеты перед выездом нужно сверить.`;
+   status.textContent=rail.home?railProblem(rail):rail.state==='no_time'?'Между этими рейсами не осталось времени на день. Выберите другое отправление или возвращение.':rail.state==='missed'?`На выбранный обратный поезд не успеваете: как минимум ${rail.missed_by} мин после нужного времени. Уберите остановку, сократите паузу или выберите более поздний рейс.`:rail.state==='incomplete'?'Возвращение пока нельзя подтвердить по плану. Заполните путь от станции и обратно, затем проверьте неизвестные участки дня.':`По вашим оценкам, до посадки остаётся ${rail.wait} мин после дороги и запаса. Расписание и билеты перед выездом нужно сверить.`;
   }catch(error){if(ticket!==sequence)return;panel.dataset.railState='error';status.textContent=error.message==='arrival_after_day'?'Записанное прибытие позже конца дня. Сначала проверьте время дня.':'Расчёт пока не открылся. Рейсы сохранены; попробуйте ещё раз.';}finally{if(ticket===sequence)panel.dataset.railReady='true';}
  }
  return {render};

@@ -1,6 +1,6 @@
-import {cleanTrip} from './trip-state.mjs?v=25';
-import {selectedDay} from './trip-days-state.mjs?v=20';
-import {replacementContext} from './trip-replacement-state.mjs?v=15';
+import {cleanTrip} from './trip-state.mjs?v=26';
+import {selectedDay} from './trip-days-state.mjs?v=21';
+import {replacementContext} from './trip-replacement-state.mjs?v=16';
 
 export function previewStopCancellation(trip,id,catalog) {
   const before=cleanTrip(trip,catalog),day=selectedDay(before),place=catalog.poi.find(p=>p.slug===id);

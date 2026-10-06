@@ -43,6 +43,7 @@ export function accessModes(trip,id,previous,next,bases) {
 }
 
 export function mobilityLabel(trip) {
+  if(trip.schedule?.rail?.access?.version===1)return 'Электричка и пешая прогулка';
   const mode=trip.schedule?.mode || 'foot';
   return baseTransport(trip)?baseTransport(trip).mode==='car'?'До прогулки на машине, дальше пешком':'До прогулки на велосипеде, дальше пешком'
     :mode==='car'?'На машине':mode==='bike'?'На велосипеде':'Пешком';

@@ -1,26 +1,27 @@
-import {selectedDay} from './trip-days-state.mjs?v=20';
-import {resolveRail} from './trip-rail-state.mjs?v=5';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=5';
-import {journeyRow} from './day-journey-ui.mjs?v=4';
+import {selectedDay} from './trip-days-state.mjs?v=21';
+import {resolveRail} from './trip-rail-state.mjs?v=6';
+import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=6';
+import {journeyRow} from './day-journey-ui.mjs?v=5';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=11';
-import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=15';
-import {loadScheduler} from './trip-scheduler.mjs?v=20';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=12';
+import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=16';
+import {loadScheduler} from './trip-scheduler.mjs?v=21';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=10';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=8';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=11';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=9';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=6';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=10';
-import {initDayProgress} from './day-progress-ui.mjs?v=5';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=4';
-import {progressMessages} from './day-progress-advice.mjs?v=5';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=7';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=11';
+import {initDayProgress} from './day-progress-ui.mjs?v=6';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=5';
+import {progressMessages} from './day-progress-advice.mjs?v=6';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=10';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=9';
-import {mobilitySegments} from './day-mobility.mjs?v=1';
+import {flexSignature} from './day-flex-advice.mjs?v=11';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=10';
+import {mobilitySegments} from './day-mobility.mjs?v=2';
 
 export {clock} from './day-stop-view.mjs?v=1';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -159,7 +160,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       if(item.id==='__day_origin' || item.id==='__day_night' || item.id==='__day_departure') {
         const li=document.createElement('li'), bases=dayBases(trip), origin=item.id==='__day_origin', departure=item.id==='__day_departure';
         li.className='trip-day-anchor';li.dataset.planAnchor=origin?'start':departure?'end':'night';
-        const rawDay=trip.itinerary?.days.find(row=>row.id===trip.itinerary.active),day=rawDay?effectiveBookingDay(rawDay):null, placeName=baseName(origin?day?.start_at:departure?bookingEffects(trip).end?.location:day?.night_at,catalog);
+        const access=railAccess(trip),rawDay=trip.itinerary?.days.find(row=>row.id===trip.itinerary.active),day=rawDay?effectiveBookingDay(rawDay):null, placeName=baseName(access?access.station:origin?day?.start_at:departure?bookingEffects(trip).end?.location:day?.night_at,catalog);
         const header=document.createElement('div');header.className='trip-timeline-heading';
         const time=document.createElement('span');time.className='trip-timeline-time';time.textContent=blockedByReturn?'После возвращения':item.begins===null?`Не раньше ${clock(item.earliest_begin)}`:clock(item.begins);
         const name=document.createElement('span');name.textContent=`${origin?'Начало':departure?'К вылету / отъезду':'К ночи'} · ${placeName}`;header.append(time,name);li.append(header);
@@ -325,7 +326,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=7')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=8')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);
@@ -369,7 +370,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const intro={empty:'Сначала добавьте точки в свой маршрут.',fits:'По вашим оценкам, день складывается.',needs_check:'День складывается по оценкам. Сверьте дорогу и вход в выбранные места.',
         incomplete:'Для точного плана нужно время дороги, пеших участков или переправы.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки или рейсы, которые не помещаются в этот день.'}[result.status];
       const noReturn=result.stops.some(row=>row.excursion?.conflict);
-      summary.textContent=(trip.schedule?.progress?`Остаток дня с ${clock(trip.schedule.progress.at)}. `:'')+intro+(result.stops.length && !noReturn ? ` ${result.finish === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(result.earliest_finish)}.` : '')
+      summary.textContent=(trip.schedule?.progress?`Остаток дня с ${clock(trip.schedule.progress.at)}. `:'')+intro+(result.stops.length && !noReturn ? ` ${dayFinish(result) === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(dayEarliestFinish(result))}.` : '')
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До ${result.rail?'границы дня с обратным поездом':'конца дня'} остаётся ${result.slack} мин.` : '')
         +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
       section.dataset.scheduleReady='true';

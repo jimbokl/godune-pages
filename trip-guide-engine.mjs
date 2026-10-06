@@ -1,15 +1,16 @@
 import {partyLabel} from './trip-party.mjs?v=1';
-import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=1';
-import {assessDayPreferences} from './day-preferences.mjs?v=3';
+import {mobilityLabel,baseTransport} from './day-mobility.mjs?v=2';
+import {assessDayPreferences} from './day-preferences.mjs?v=4';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=20';
-import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=15';
-import {resolveRail} from './trip-rail-state.mjs?v=5';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=21';
+import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=16';
+import {resolveRail} from './trip-rail-state.mjs?v=6';
+import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
 import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
-import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=8';
+import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=9';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=5';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=6';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -24,7 +25,7 @@ export const guidePlanStatus={empty:'Остановок пока нет.',fits:'
 
 export function guideDayRows(trip,catalog,result,matrix) {
   const settings=trip.schedule || defaultSchedule(),bookings=bookingEffects(trip),bases=dayBases(trip);
-  const namedBases=effectiveBookingDay(selectedDay(trip));
+  const stationAccess=railAccess(trip),namedBases=stationAccess?{start_at:stationAccess.station,night_at:stationAccess.station}:effectiveBookingDay(selectedDay(trip));
   // Indexed personal points include a slug; they are not the strict saved base shape.
   const points=personalPoints(trip),name=id=>points.find(p=>p.slug===id)?.name || baseName(id,catalog);
   const rail=railJourney(resolveRail(trip,catalog),result.rail),rows=[...rail.before];
@@ -35,7 +36,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
     if(item.id==='__day_checkpoint'){rows.push({id:item.id,kind:'notice',time:settings.progress.at,title:`Снова в пути · ${name(settings.progress.after)}`,text:'Вы указали время после осмотра. Ниже — оставшийся день; пройденные места сохранены без выдуманного времени посещения.',state:'estimate'});return;}
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
-      const title={start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
+      const title=stationAccess?{start:'Начало прогулки у станции',night:'Обратно к станции',end:'К вылету / отъезду'}[role]:{start:'Начало',night:'Возвращение',end:'К вылету / отъезду'}[role];
       const anchor=namedBases[role+'_at'],point=isPersonalPoint(anchor)?anchor:catalog.poi.find(p=>p.slug===anchor);
       const gps=Number.isFinite(point?.lat)&&Number.isFinite(point?.lon)?` GPS: ${point.lat.toFixed(5)}, ${point.lon.toFixed(5)}.`:'';
       const vehicle=baseTransport(trip);
@@ -43,7 +44,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
         const inbound=planBaseTravel(trip,role,catalog,matrix);
         if(inbound)rows.push(roadJourney(item,inbound.travel,settings.reserve,name(inbound.from),blocked,name));
       }
-      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?'Начало дня по выбранному времени.':'Время по расчёту дня. Подход к двери ещё нужно сверить.')+` ${mobilityLabel(trip)}.`+(vehicle && (role==='night'||role==='end'&&!bases.night_at) && trip.places.length && baseId(anchor)!==vehicle.via?` Сначала вернитесь к оставленному транспорту: ${name(vehicle.via)}. Парковку и проход нужно сверить.`:'')+gps+(issues.length?' '+issues.join(' '):''),state});return;
+      rows.push({id:item.id,kind:role==='start'?'start':'return',time:blocked?null:item.begins,title:`${title} · ${baseName(anchor,catalog)}`,text:(blocked?'Сначала нужно подобрать возвращение.':item.begins===null?`Не раньше ${clock(item.earliest_begin)}. Точное время ещё неизвестно.`:role==='start'?(stationAccess?'Начало прогулки после прибытия электрички.':'Начало дня по выбранному времени.'):'Время по расчёту дня. Подход к двери ещё нужно сверить.')+` ${mobilityLabel(trip)}.`+(vehicle && (role==='night'||role==='end'&&!bases.night_at) && trip.places.length && baseId(anchor)!==vehicle.via?` Сначала вернитесь к оставленному транспорту: ${name(vehicle.via)}. Парковку и проход нужно сверить.`:'')+gps+(issues.length?' '+issues.join(' '):''),state});return;
     }
     const place=catalog.poi.find(p=>p.slug===item.id);if(!place)throw Error('guide_unknown_point');
     const {projected,travel,access}=planTravel(trip,item.id,catalog,matrix),previous=previousPlace(projected,item.id);
@@ -73,7 +74,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const recipe=catalog.day_waves?.recipes?.find(row=>row.slug===record.wave?.recipe);
     out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),status:generated?kosa.state:result.status,summary:generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
-      finish:generated?(kosa.book?.finish ?? null):result.finish,earliest_finish:result?.earliest_finish ?? null,slack:generated?(kosa.book?.continuation?.slack ?? null):result?.slack ?? null,
+      finish:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:dayEarliestFinish(result),slack:generated?(kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       rows,roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,
       stops:guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};}),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),

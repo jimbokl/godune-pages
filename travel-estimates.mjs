@@ -1,10 +1,11 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
+import {railWalkBases} from './rail-access.mjs?v=1';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 import {baseId,personalPoints} from './personal-points.mjs?v=3';
-import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=1';
+import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=2';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
-export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return {...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)};};
+export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return railWalkBases(trip,{...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)});};
 export const previousPlace = (trip,id) => trip.places[trip.places.indexOf(id)-1] || (trip.places[0]===id ? dayBases(trip).start_at : null);
 const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];

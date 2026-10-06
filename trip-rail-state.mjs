@@ -1,12 +1,13 @@
 // Service snapshots are separate from personal walk/boarding allowances.
 import {remainingTrip} from './day-progress.mjs?v=2';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
+import {validRailAccess,railAccess,railHomeNames} from './rail-access.mjs?v=1';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
 const date=validServiceDate;
 const minute=v=>Number.isInteger(v) && v>=0 && v<=1440;
 const ride=v=>object(v) && Object.keys(v).length===3 && typeof v.id==='string' && /^[a-z0-9][a-z0-9-]*$/.test(v.id) && minute(v.departure) && minute(v.arrival) && v.departure<v.arrival && v.arrival<1440;
 export function validRail(v) {
-  return object(v) && Object.keys(v).length===7 && typeof v.service==='string' && /^[a-z0-9][a-z0-9-]*$/.test(v.service)
+  return object(v) && Object.keys(v).length===(v.access===undefined?7:8) && (v.access===undefined || validRailAccess(v.access)) && typeof v.service==='string' && /^[a-z0-9][a-z0-9-]*$/.test(v.service)
     && (v.date===null || date(v.date)) && ride(v.outward) && ride(v.inbound) && minute(v.boarding)
     && [v.after_arrival,v.before_return].every(n=>n===null || minute(n));
 }
@@ -22,13 +23,14 @@ export function resolveRail(trip,catalog) {
   if(!date(trip.date))return {...result,reason:'choose_date'};
   if(saved.date!==trip.date)return {...result,reason:'stale_date'};
   if(table.reason)return result;
+  if(saved.access && !railAccess(trip,catalog))return {...result,reason:'changed_station'};
   for(const direction of ['outward','inbound']) {
     if(table[direction]===null)return {...result,reason:'unknown_timetable'};
     if(!table[direction].length)return {...result,reason:'cancelled'};
     const current=table[direction].find(r=>r.id===saved[direction].id);
     if(!current || JSON.stringify(rideSnapshot(current))!==JSON.stringify(saved[direction]))return {...result,reason:'changed_timetable'};
   }
-  return {...result,input:{outward:{departure:saved.outward.departure,arrival:saved.outward.arrival},inbound:{departure:saved.inbound.departure,arrival:saved.inbound.arrival},after_arrival:saved.after_arrival,before_return:saved.before_return,boarding:saved.boarding,needs_check:true}};
+  return {...result,homeNames:saved.access?railHomeNames(trip,catalog):null,input:{outward:{departure:saved.outward.departure,arrival:saved.outward.arrival},inbound:{departure:saved.inbound.departure,arrival:saved.inbound.arrival},after_arrival:saved.access?0:saved.after_arrival,before_return:saved.access?0:saved.before_return,boarding:saved.boarding,needs_check:true}};
 }
 export function saveRail(trip,value) {
   if(value!==null && !validRail(value))return trip;

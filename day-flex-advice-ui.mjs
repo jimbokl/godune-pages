@@ -1,8 +1,9 @@
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=10';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=1';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions} from './day-flex-advice.mjs?v=11';
 import {clock} from './day-stop-view.mjs?v=1';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
-const finish=result=>result.finish===null?`Не раньше ${clock(result.earliest_finish)}`:clock(result.finish);
+const finish=result=>dayFinish(result)===null?`Не раньше ${clock(dayEarliestFinish(result))}`:clock(dayFinish(result));
 const placesWord=count=>({one:'место',few:'места',many:'мест',other:'места'})[new Intl.PluralRules('ru').select(count)];
 export function initFlexAdvice({mount,commit,feedback}) {
   let revision=0;

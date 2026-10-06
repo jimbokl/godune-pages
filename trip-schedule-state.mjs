@@ -1,12 +1,13 @@
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {validRail,resolveRail} from './trip-rail-state.mjs?v=5';
+import {railAccess,railHomeInput} from './rail-access.mjs?v=1';
+import {validRail,resolveRail} from './trip-rail-state.mjs?v=6';
 import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=2';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
 import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=1';
-import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=8';
+import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=2';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=9';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
@@ -49,6 +50,7 @@ export function planBaseTravel(trip,role,catalog,matrix) {
 export function planInput(trip, catalog, matrix) {
   const settings = cleanSchedule(trip.schedule, trip.places) || defaultSchedule();
   const progress=currentProgress(trip),configured=remainingTrip({...trip,schedule:settings}),bases=dayBases(trip),bookings=bookingEffects(trip);
+  const access=railAccess(trip),resolved=resolveRail(configured,catalog),rail=resolved?.input;
   const remaining=progress?configured.places.slice(1):configured.places;
   const stops=remaining.map(id => {
     const stop = Object.hasOwn(settings.stops,id) ? settings.stops[id] : null;
@@ -72,16 +74,17 @@ export function planInput(trip, catalog, matrix) {
   if(!progress && stops.length && bases.start_at) {
     const access=resolveAccessBetween(configured,bases.start_at,null,trip.places[0],catalog,matrix);
     stops.unshift({id:'__day_origin',visit:0,pause:0,travel:0,opening:[{open:0,close:1440}],
-      ...(access?{access:{approach:0,return_minutes:access.back.minutes,needs_check:true}}:{})});
+      ...(access?{access:{approach:0,return_minutes:access.back.minutes,needs_check:true}}:{}),
+      ...(settings.rail?.access && !rail?{access:{approach:null,return_minutes:0,needs_check:true}}:{})});
   }
   if(stops.length && trip.places.length && bases.night_at) {
     const {travel}=planBaseTravel({...trip,schedule:settings},'night',catalog,matrix);
     const access=resolveAccessBetween(configured,bases.night_at,configured.places.at(-1),bases.end_at,catalog,matrix);
-    stops.push({id:'__day_night',visit:0,pause:0,travel:travel.minutes,opening:[{open:bookings.night?.time??0,close:1440}],
+    stops.push({id:'__day_night',visit:0,pause:0,travel:travel.minutes,opening:[{open:access?0:bookings.night?.time??0,close:1440}],
       ...(travel.origin==='estimate'?{travel_needs_check:true}:{}),
       ...(access?{access:{approach:access.approach.minutes,return_minutes:bases.end_at?access.back.minutes:0,needs_check:true}}:{})});
   }
-  if(stops.length && bookings.end) {
+  if(stops.length && bookings.end && bases.end_at) {
     const {from:previous,travel}=planBaseTravel({...trip,schedule:settings},'end',catalog,matrix);
     const access=resolveAccessBetween(configured,bases.end_at,previous,null,catalog,matrix);
     stops.push({id:'__day_departure',visit:0,pause:0,travel:travel.minutes,opening:[{open:0,close:1440}],...(travel.origin==='estimate'?{travel_needs_check:true}:{}),
@@ -91,11 +94,11 @@ export function planInput(trip, catalog, matrix) {
   const start=progress?progress.at:Math.max(settings.start,bookings.start?bookings.start.time+bookings.start.buffer:0);
   if(progress && bookings.start && start<bookings.start.time+bookings.start.buffer)throw Error('progress_before_arrival');
   if(start>=end)throw new Error(progress?'progress_after_day':bookings.end?'departure_before_day':'arrival_after_day');
-  const resolved=resolveRail(configured,catalog),rail=resolved?.input;
+  if(rail && access)rail.home=railHomeInput(trip,catalog,start,end);
   if(progress && settings.rail && !rail)throw Error('progress_rail_unavailable');
   if(progress && rail){rail.resume_at=progress.at;
     // A manual station approach belongs to the original final place.
-    if(configured.places.at(-1)!==(progress.return_from || trip.places.at(-1)))rail.before_return=null;
+    if(!access && configured.places.at(-1)!==(progress.return_from || trip.places.at(-1)))rail.before_return=null;
   }
   return {version:1,start,end,reserve:settings.reserve,stops,...(rail?{rail}:{})};
 }
