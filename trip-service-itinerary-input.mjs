@@ -45,10 +45,23 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
   anchors.set(anchor.id,anchor);graph.anchors.push(anchor);placeAnchors.set(place.slug,anchor.id);
  }
  const available=new Set(boundVisits.map(v=>v.id)),ordinary=new Set(day.places);
+ const manualAnchors=new Map();
+ for(const visit of boundVisits){
+  if(visit.selection.visit.kind!=='manual'||!visit.point)continue;
+  const p=visit.point,source={reference:p.source_id,checked_at:p.checked_at,valid_from:null,valid_until:null};
+  // A saved map point binds a manual arrival to a landmark, never to a door.
+  // Share only the same physical landmark with identical dated evidence.
+  const existing=graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&JSON.stringify(a.source)===JSON.stringify(source));
+  if(existing){manualAnchors.set(visit.id,existing.id);continue;}
+  const anchor={id:`__timeline_service_${visit.id}`,name:visit.name,kind:'landmark',revision:`point:${p.lat},${p.lon}`,location:{kind:'point',lat:p.lat,lon:p.lon},source};
+  while(anchors.has(anchor.id))anchor.id+='_';
+  anchors.set(anchor.id,anchor);graph.anchors.push(anchor);manualAnchors.set(visit.id,anchor.id);
+ }
  const order=timelineOrder(day).filter(entry=>entry.kind==='place'?ordinary.has(entry.id):available.has(entry.id)).map(entry=>{
   const visit=entry.kind==='service'?boundVisits.find(v=>v.id===entry.id):null;
   const selected=['directed','rental'].includes(visit?.selection.visit.kind)?visit.selection.visit.input.selection:null;
-  return {...entry,arrival_anchor:selected?.from||placeAnchors.get(entry.id)||null,departure_anchor:selected?.back_to||placeAnchors.get(entry.id)||null};
+  const landmark=manualAnchors.get(entry.id)||placeAnchors.get(entry.id)||null;
+  return {...entry,arrival_anchor:selected?.from||landmark,departure_anchor:selected?.back_to||landmark};
  });
  const boundaries=dayJourneyBoundaries(day,catalog);
  let boundaryOrigin=null,destination=null;

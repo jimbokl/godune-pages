@@ -5,8 +5,8 @@ export function loadTrip(storage,catalog){
  try{
   const raw=storage.getItem(TRIP_KEY);
   if(raw!==null){
-   try{return {state:cleanTrip(JSON.parse(raw),catalog),available:true};}
-   catch{return {state:emptyTrip(),available:true};}
+   try{const rawState=JSON.parse(raw);return {state:cleanTrip(rawState,catalog),rawState,rawText:raw,available:true};}
+   catch{return {state:emptyTrip(),rawText:raw,available:true};}
   }
   let routes=[];
   try{routes=JSON.parse(storage.getItem('godune-routes')||'[]');}catch{}

@@ -30,7 +30,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=22'),import('./workshop.mjs?v=95')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=23'),import('./workshop.mjs?v=98')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});

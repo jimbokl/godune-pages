@@ -2523,6 +2523,11 @@
       ]
     },
     {
+      "id": "place:velovoyage39",
+      "name": "ВелоВояж 39",
+      "references": []
+    },
+    {
       "id": "poi:002dfdf0-3edf-5521-b454-1dbb065f470e",
       "name": "БАЛТ",
       "references": [
@@ -7923,15 +7928,492 @@
           "slug": "promenad-svetlogorsk"
         }
       }
+    },
+    {
+      "id": "branch:velovoyage39:solnechnaya-17",
+      "place_id": "place:velovoyage39",
+      "name": "ВелоВояж 39 · Солнечная, 17",
+      "area": "zelenogradsk",
+      "address": "Зеленоградск, улица Солнечная, 17",
+      "location": {
+        "kind": "point",
+        "lat": 54.954864,
+        "lon": 20.4885,
+        "source": "https://yandex.ru/maps/org/veloport39/139254881193/"
+      }
     }
   ],
-  "services": [],
-  "offers": [],
+  "services": [
+    {
+      "id": "service:gnezdo:kitchen",
+      "branch_id": "branch:dining:2gis-70000001055109040",
+      "name": "Гнездо: рыбный обед",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001055109040"
+      }
+    },
+    {
+      "id": "service:velovoyage39:bike",
+      "branch_id": "branch:velovoyage39:solnechnaya-17",
+      "name": "ВелоВояж 39: прокат велосипеда",
+      "profile": {
+        "kind": "bike_rental",
+        "bike_types": [
+          "electric",
+          "child"
+        ],
+        "helmets": true,
+        "child_seats": true,
+        "return_branches": null
+      }
+    }
+  ],
+  "offers": [
+    {
+      "id": "offer:gnezdo:fish-soup",
+      "service_id": "service:gnezdo:kitchen",
+      "name": "Уха классическая · 400 г",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "base",
+          "scope": "unit",
+          "billing": {
+            "kind": "once"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 39000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "none"
+        }
+      }
+    },
+    {
+      "id": "offer:gnezdo:mackerel",
+      "service_id": "service:gnezdo:kitchen",
+      "name": "Скумбрия на палке · 280/170 г",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "base",
+          "scope": "unit",
+          "billing": {
+            "kind": "once"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 82000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "none"
+        }
+      }
+    },
+    {
+      "id": "offer:velovoyage39:standard-day",
+      "service_id": "service:velovoyage39:bike",
+      "name": "Стандарт · день от 5 часов",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "base",
+          "scope": "unit",
+          "billing": {
+            "kind": "once"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 150000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "none"
+        }
+      }
+    },
+    {
+      "id": "offer:velovoyage39:standard-hour",
+      "service_id": "service:velovoyage39:bike",
+      "name": "Стандарт · 300 ₽ в час",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "base",
+          "scope": "unit",
+          "billing": {
+            "kind": "duration",
+            "step_minutes": 60,
+            "minimum_minutes": 60
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 30000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "none"
+        }
+      }
+    }
+  ],
   "aliases": {},
-  "calendars": [],
+  "calendars": [
+    {
+      "id": "calendar:gnezdo:kitchen",
+      "subject": {
+        "kind": "service",
+        "id": "service:gnezdo:kitchen"
+      },
+      "action": "visit",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://gnezdo.cafe/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "unknown"
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    },
+    {
+      "id": "calendar:gnezdo:venue",
+      "subject": {
+        "kind": "branch",
+        "id": "branch:dining:2gis-70000001055109040"
+      },
+      "action": "visit",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://gnezdo.cafe/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 540,
+                  "close": 1260,
+                  "last_entry": null,
+                  "return_by": null
+                }
+              ]
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    },
+    {
+      "id": "calendar:velovoyage39:collect",
+      "subject": {
+        "kind": "service",
+        "id": "service:velovoyage39:bike"
+      },
+      "action": "collect",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 600,
+                  "close": 1200,
+                  "last_entry": null,
+                  "return_by": null
+                }
+              ]
+            }
+          },
+          {
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              1
+            ],
+            "day": {
+              "kind": "closed"
+            }
+          },
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "unknown"
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    },
+    {
+      "id": "calendar:velovoyage39:return",
+      "subject": {
+        "kind": "service",
+        "id": "service:velovoyage39:bike"
+      },
+      "action": "return",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 600,
+                  "close": 1200,
+                  "last_entry": null,
+                  "return_by": null
+                }
+              ]
+            }
+          },
+          {
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              1
+            ],
+            "day": {
+              "kind": "closed"
+            }
+          },
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "unknown"
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    }
+  ],
   "access": {
     "version": 1,
     "anchors": [
+      {
+        "id": "a01:gnezdo-pin",
+        "name": "Гнездо: ориентир кафе",
+        "kind": "landmark",
+        "revision": "point:54.951879,20.444133",
+        "location": {
+          "kind": "point",
+          "lat": 54.951879,
+          "lon": 20.444133
+        },
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001055109040",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:velo-counter",
+        "name": "ВелоВояж 39: точный вход ещё не записан",
+        "kind": "pickup",
+        "revision": "unknown",
+        "location": {
+          "kind": "unknown"
+        },
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:velo-pin",
+        "name": "Солнечная, 17: ориентир проката",
+        "kind": "landmark",
+        "revision": "point:54.954864,20.4885",
+        "location": {
+          "kind": "point",
+          "lat": 54.954864,
+          "lon": 20.4885
+        },
+        "source": {
+          "reference": "https://yandex.ru/maps/org/veloport39/139254881193/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
       {
         "id": "arrival:parking-amalienau",
         "name": "Парковка у начала прогулки по Амалиенау",
@@ -8103,7 +8585,122 @@
         }
       }
     ],
-    "links": []
+    "links": [
+      {
+        "id": "a01:bike-back",
+        "from": "a01:gnezdo-pin",
+        "to": "a01:velo-pin",
+        "from_revision": "point:54.951879,20.444133",
+        "to_revision": "point:54.954864,20.4885",
+        "mode": "bike",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 17
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:bike-back:counter",
+        "from": "a01:gnezdo-pin",
+        "to": "a01:velo-counter",
+        "from_revision": "point:54.951879,20.444133",
+        "to_revision": "unknown",
+        "mode": "bike",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 17
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:bike-west",
+        "from": "a01:velo-pin",
+        "to": "a01:gnezdo-pin",
+        "from_revision": "point:54.954864,20.4885",
+        "to_revision": "point:54.951879,20.444133",
+        "mode": "bike",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 15
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:bike-west:counter",
+        "from": "a01:velo-counter",
+        "to": "a01:gnezdo-pin",
+        "from_revision": "unknown",
+        "to_revision": "point:54.951879,20.444133",
+        "mode": "bike",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 15
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:walk-lunch",
+        "from": "a01:velo-pin",
+        "to": "a01:gnezdo-pin",
+        "from_revision": "point:54.954864,20.4885",
+        "to_revision": "point:54.951879,20.444133",
+        "mode": "foot",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 44
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      },
+      {
+        "id": "a01:walk-lunch:counter",
+        "from": "a01:velo-counter",
+        "to": "a01:gnezdo-pin",
+        "from_revision": "unknown",
+        "to_revision": "point:54.951879,20.444133",
+        "mode": "foot",
+        "claim": {
+          "kind": "minutes",
+          "minutes": 44
+        },
+        "basis": "map_estimate",
+        "source": {
+          "reference": "https://www.openstreetmap.org/",
+          "checked_at": "2026-10-08",
+          "valid_from": null,
+          "valid_until": null
+        }
+      }
+    ]
   },
   "access_bindings": [
     {
@@ -8169,12 +8766,603 @@
       },
       "role": "arrival",
       "anchor_id": "arrival:parking-royal-gates"
+    },
+    {
+      "subject": {
+        "kind": "service",
+        "id": "service:velovoyage39:bike"
+      },
+      "role": "pickup",
+      "anchor_id": "a01:velo-counter"
+    },
+    {
+      "subject": {
+        "kind": "service",
+        "id": "service:velovoyage39:bike"
+      },
+      "role": "return",
+      "anchor_id": "a01:velo-counter"
     }
   ],
   "conditions": [],
-  "rental_offers": [],
+  "rental_offers": [
+    {
+      "offer_id": "offer:velovoyage39:standard-hour",
+      "pickup": {
+        "point": {
+          "branch_id": "branch:velovoyage39:solnechnaya-17",
+          "anchor_id": "a01:velo-counter"
+        },
+        "calendar_id": "calendar:velovoyage39:collect"
+      },
+      "returns": [
+        {
+          "point": {
+            "branch_id": "branch:velovoyage39:solnechnaya-17",
+            "anchor_id": "a01:velo-counter"
+          },
+          "calendar_id": "calendar:velovoyage39:return"
+        }
+      ],
+      "collect_minutes": null,
+      "handover_minutes": null,
+      "terms": [
+        {
+          "service_id": "service:velovoyage39:bike",
+          "offer_id": "offer:velovoyage39:standard-hour",
+          "pickup": {
+            "branch_id": "branch:velovoyage39:solnechnaya-17",
+            "anchor_id": "a01:velo-counter"
+          },
+          "returns": null,
+          "billing_start": null,
+          "billing_end": null,
+          "source": {
+            "reference": "https://velovoyage39.ru/",
+            "checked_at": "2026-10-08",
+            "valid_from": null,
+            "valid_until": null
+          }
+        }
+      ]
+    }
+  ],
   "provenance": {
     "version": 1,
-    "facts": []
+    "facts": [
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:velovoyage39"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": "ВелоВояж 39"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:velovoyage39:solnechnaya-17"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": "Зеленоградск, улица Солнечная, 17"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:velovoyage39:solnechnaya-17"
+        },
+        "path": "/location",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/veloport39/139254881193/",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "point",
+          "lat": 54.954864,
+          "lon": 20.4885,
+          "source": "https://yandex.ru/maps/org/veloport39/139254881193/"
+        },
+        "note": "Координата организации на карте; вход и стойка выдачи отдельно не проверены."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:velovoyage39:bike"
+        },
+        "path": "/profile/bike_types",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": [
+          "electric",
+          "child"
+        ],
+        "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:velovoyage39:bike"
+        },
+        "path": "/profile/helmets",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": true,
+        "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:velovoyage39:bike"
+        },
+        "path": "/profile/child_seats",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": true,
+        "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:velovoyage39:bike"
+        },
+        "path": "/profile/return_branches",
+        "status": "unknown",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": null,
+        "note": "Допустимые точки возврата не опубликованы."
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/tariff/base/rate/amount",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": 30000
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/tariff/deposit",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "none"
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:velovoyage39:standard-day"
+        },
+        "path": "/tariff/base/rate/amount",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": 150000
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:velovoyage39:standard-day"
+        },
+        "path": "/tariff/deposit",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "none"
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:gnezdo:mackerel"
+        },
+        "path": "/tariff/base/rate/amount",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://static.tildacdn.com/tild6633-6461-4439-b061-393862383931/photo.png",
+          "checked_at": "2026-10-08"
+        },
+        "value": 82000
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:gnezdo:mackerel"
+        },
+        "path": "/tariff/deposit",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://static.tildacdn.com/tild6633-6461-4439-b061-393862383931/photo.png",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "none"
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:gnezdo:fish-soup"
+        },
+        "path": "/tariff/base/rate/amount",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://static.tildacdn.com/tild6463-6361-4939-b732-363735343363/__1.png",
+          "checked_at": "2026-10-08"
+        },
+        "value": 39000
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:gnezdo:fish-soup"
+        },
+        "path": "/tariff/deposit",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://static.tildacdn.com/tild6463-6361-4939-b732-363735343363/__1.png",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "none"
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/tariff/base/billing",
+        "status": "unknown",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": {
+          "kind": "duration",
+          "minimum_minutes": 60,
+          "step_minutes": 60
+        },
+        "note": "300 ₽/час опубликовано. Округление неполного часа и минимальный оплачиваемый период в договоре не опубликованы; не использовать как подтверждённый окончательный счёт."
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:velovoyage39:collect"
+        },
+        "path": "/calendar/rules",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": [
+          {
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "close": 1200,
+                  "last_entry": null,
+                  "open": 600,
+                  "return_by": null
+                }
+              ]
+            },
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "day": {
+              "kind": "closed"
+            },
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              1
+            ]
+          },
+          {
+            "day": {
+              "kind": "unknown"
+            },
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "note": "Май–октябрь, вторник–воскресенье 10:00–20:00; понедельник выходной. Вне сезона по записи."
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:velovoyage39:return"
+        },
+        "path": "/calendar/rules",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/info/transport/prokat-velosipedov.php",
+          "checked_at": "2026-10-08"
+        },
+        "value": [
+          {
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "close": 1200,
+                  "last_entry": null,
+                  "open": 600,
+                  "return_by": null
+                }
+              ]
+            },
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "day": {
+              "kind": "closed"
+            },
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "weekdays": [
+              1
+            ]
+          },
+          {
+            "day": {
+              "kind": "unknown"
+            },
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "note": "Май–октябрь, вторник–воскресенье 10:00–20:00; понедельник выходной. Вне сезона по записи."
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:gnezdo:venue"
+        },
+        "path": "/calendar/rules",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://gnezdo.cafe/",
+          "checked_at": "2026-10-08"
+        },
+        "value": [
+          {
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "close": 1260,
+                  "last_entry": null,
+                  "open": 540,
+                  "return_by": null
+                }
+              ]
+            },
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:gnezdo:kitchen"
+        },
+        "path": "/calendar/rules",
+        "status": "unknown",
+        "source": {
+          "reference": "https://gnezdo.cafe/",
+          "checked_at": "2026-10-08"
+        },
+        "value": [
+          {
+            "day": {
+              "kind": "unknown"
+            },
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "note": "Открытый огонь доступен с 10:00; время закрытия кухни не указано. 21:00 — закрытие заведения."
+      },
+      {
+        "subject": {
+          "kind": "rental_offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/terms/0/returns",
+        "status": "unknown",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": null,
+        "note": "Условия договора не опубликованы."
+      },
+      {
+        "subject": {
+          "kind": "rental_offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/terms/0/billing_start",
+        "status": "unknown",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": null,
+        "note": "Условия договора не опубликованы."
+      },
+      {
+        "subject": {
+          "kind": "rental_offer",
+          "id": "offer:velovoyage39:standard-hour"
+        },
+        "path": "/terms/0/billing_end",
+        "status": "unknown",
+        "source": {
+          "reference": "https://velovoyage39.ru/",
+          "checked_at": "2026-10-08"
+        },
+        "value": null,
+        "note": "Условия договора не опубликованы."
+      }
+    ]
   }
 }

@@ -83,7 +83,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const coverHeight=Math.max(65,Math.min(phone?180:300,y-51-(phone?155:180)));
   if(first){await image(media.photos[first.id],coverHeight);text('Авторский снимок · '+first.name,{size:8,color:muted,space:8});}
   else if(media.overview[snapshot.days[0].id])await image(media.overview[snapshot.days[0].id],coverHeight);
-  text('Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
+  text(snapshot.transport_receipt?'Ваш транспортный план, суммы и источники остаются в этом файле без сети.':'Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
   for(const [index,day]of snapshot.days.entries()){
@@ -103,7 +103,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     heading('По шагам',false,day.rows[0]?.title||'Точное время ещё не рассчитано.',40);
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){
-      need(60);text(`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
+      need(60);text(row.kind==='cost'?'Стоимость на компанию':`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
       for(const anchor of row.anchors||[])if(anchor.location?.kind==='point')text(`${anchor.name} · GPS ${gps(anchor.location)}`,{size:phone?9:11,color:muted});
       const detail=day.kosa?.timeline.find(item=>item.title===row.title&&item.kind===row.kind&&item.time===row.time) || row;
       if(Object.hasOwn(detail,'boarding'))text(detail.boarding?kosaBoardingText(detail.boarding):'Названия остановок пока не загружены. Уточните их до поездки.');
@@ -189,10 +189,12 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');text('Карты, фото и координаты встроены в PDF. План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
   for(const value of preparation)text(value);
   text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Рейсы, цены и погода в этом файле не обновляются.`);
-  text('Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
-  text('В этом файле могут быть ваши адреса, номера брони и личные заметки. Передавайте его тем, кому доверяете.');
-  text('Расписание взято из таблицы, дорога - из карты или вашей оценки. Посадка, доступ и погода могут измениться. После пропущенного рейса пересчитайте день.');
-  for(const warning of media.warnings)text(warning,{color:muted});source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
+  text(snapshot.transport_receipt?'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Источники доступны по ссылкам при появлении связи.':'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
+  if(!snapshot.transport_receipt){
+    text('В этом файле могут быть ваши адреса, номера брони и личные заметки. Передавайте его тем, кому доверяете.');
+    text('Расписание взято из таблицы, дорога - из карты или вашей оценки. Посадка, доступ и погода могут измениться. После пропущенного рейса пересчитайте день.');
+  }
+  for(const warning of media.warnings)text(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
   text((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
   const full={...snapshot,format,chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();

@@ -1,10 +1,49 @@
 {
-  "categories": {},
-  "areas": {},
-  "branches": {},
-  "offers": {},
+  "categories": {
+    "bike_rental": [
+      "service:velovoyage39:bike"
+    ],
+    "dining": [
+      "service:gnezdo:kitchen"
+    ]
+  },
+  "areas": {
+    "zelenogradsk": [
+      "service:gnezdo:kitchen",
+      "service:velovoyage39:bike"
+    ]
+  },
+  "branches": {
+    "branch:dining:2gis-70000001055109040": [
+      "service:gnezdo:kitchen"
+    ],
+    "branch:velovoyage39:solnechnaya-17": [
+      "service:velovoyage39:bike"
+    ]
+  },
+  "offers": {
+    "service:gnezdo:kitchen": [
+      "offer:gnezdo:fish-soup",
+      "offer:gnezdo:mackerel"
+    ],
+    "service:velovoyage39:bike": [
+      "offer:velovoyage39:standard-day",
+      "offer:velovoyage39:standard-hour"
+    ]
+  },
   "aliases": {},
-  "calendars": {},
+  "calendars": {
+    "branch/branch:dining:2gis-70000001055109040": [
+      "calendar:gnezdo:venue"
+    ],
+    "service/service:gnezdo:kitchen": [
+      "calendar:gnezdo:kitchen"
+    ],
+    "service/service:velovoyage39:bike": [
+      "calendar:velovoyage39:collect",
+      "calendar:velovoyage39:return"
+    ]
+  },
   "access": {
     "branch/branch:poi:39c6ba56-93ca-51e4-9ee4-96003017311b/arrival": [
       "arrival:parking-honey-bridge"
@@ -29,6 +68,12 @@
     ],
     "branch/branch:poi:e00243c1-ec39-5c32-be71-534fa75de14a/arrival": [
       "arrival:parking-royal-gates"
+    ],
+    "service/service:velovoyage39:bike/pickup": [
+      "a01:velo-counter"
+    ],
+    "service/service:velovoyage39:bike/return": [
+      "a01:velo-counter"
     ]
   },
   "conditions": {}

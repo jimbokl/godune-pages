@@ -1,9 +1,9 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=27';
 import {initTripSharing} from './trip-link.mjs?v=50';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=22';
-import {loadTrip} from './trip-memory-bootstrap.mjs';
-import {initMemoryControls} from './trip-memory-ui.mjs?v=6';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=23';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2';
+import {initMemoryControls} from './trip-memory-ui.mjs?v=7';
 import {createPlanningProgress} from './planning-progress.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=23';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=44';
@@ -18,7 +18,7 @@ import {initTripReplacement} from './trip-replacement-ui.mjs?v=21';
 import {initTripRail} from './trip-rail-ui.mjs?v=18';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=27';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=2';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }
@@ -180,7 +180,10 @@ export async function initWorkshop(catalog, base) {
     const month = $('#trip-month'); if (month) month.value = state.month === null ? '' : String(state.month);
     const date = $('#trip-date'); if (date) date.value = state.date || '';
     const share = $('#trip-share'); if (share) share.disabled = !tripHasDraft(state) && !state.dreams?.length;
-    const notice = $('#trip-storage'); if (notice) notice.hidden = available;
+    const notice = $('#trip-storage'); if (notice) {
+      notice.hidden = available;
+      notice.textContent = memory.compatibility?.message || 'Браузер не подтвердил сохранение. Текущий план можно скачать в файл.';
+    }
     document.querySelectorAll('[data-my-trip]').forEach(link => {
       const count=journeyDays(state).reduce((sum,day)=>sum+day.places.length+serviceVisitRows(day).length,0);
       link.textContent = 'Мой маршрут' + (count || state.routes.length ? ` · ${count || state.routes.length}` : '');
@@ -204,7 +207,7 @@ export async function initWorkshop(catalog, base) {
     writes++; document.documentElement.dataset.tripWriting = 'true';
     try {
       const result = await memory.change(current => typeof next === 'function' ? next(current) : next, {...options, label: message});
-      announce(result.conflict ? 'Черновик уже изменился. Показан свежий выбор.' : result.saved ? message : 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
+      announce(result.conflict ? 'Черновик уже изменился. Показан свежий выбор.' : result.saved ? message : result.compatibility?.message || 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
       return result;
     } finally {
       writes--; document.documentElement.dataset.tripWriting = String(writes > 0);
@@ -261,6 +264,7 @@ export async function initWorkshop(catalog, base) {
     progress: createPlanningProgress(storage),
     addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
+    memoryCompatibility: () => memory.compatibility, memoryBackup: () => memory.backup(),
     async clearMemory() {
       const result = await memory.clear();
       const localRemoved = result.saved && removeLocalMemory(storage);

@@ -6,9 +6,10 @@ export function initMemoryControls(catalog, base, workshop) {
   historyButton.disabled = clearButton.disabled = false;
   const dialog = document.createElement('dialog'); dialog.id = 'trip-memory-dialog'; dialog.className = 'trip-link-dialog';
   dialog.setAttribute('aria-labelledby', 'trip-memory-title');
-  dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Ваш черновик на месте</p><button type="button" class="icon-button" id="trip-memory-close" aria-label="Закрыть память поездки">×</button></div>
+  dialog.innerHTML = `<div class="dialog-top"><p class="eyebrow">Память поездки</p><button type="button" class="icon-button" id="trip-memory-close" aria-label="Закрыть память поездки">×</button></div>
     <h2 id="trip-memory-title"></h2><p id="trip-memory-intro"></p><div id="trip-history-list"></div>
     <div id="trip-revision-preview" hidden><h3>В этой версии</h3><p id="trip-revision-date"></p><ol id="trip-revision-places"></ol><ul id="trip-revision-routes"></ul><button id="trip-revision-restore" type="button" class="button button-dark">Восстановить эту версию</button></div>
+    <button id="trip-memory-backup" type="button" class="button button-outline">Скачать исходную копию</button>
     <details id="trip-planning-progress" class="wizard-evidence"><summary>Что уже получилось</summary><p id="trip-progress-count"></p><p id="trip-progress-time"></p><p>Здесь только планы, начатые Вами в мастере или на странице Куршской косы в этом браузере. Обычный просмотр страницы не считается. Расчёт по карте и расписанию ещё не означает проверку на месте.</p><button id="trip-progress-export" type="button" class="button button-outline">Скачать сводку</button><p>Сводка хранится здесь: без названий мест, маршрутов и личных записей. Удаление памяти сайта удалит и её.</p></details>
     <div id="trip-clear-confirm" hidden><p>Исчезнут черновик и его предыдущие версии, личные точки, дата и настройки поездки, отметки на остановках, выбор города для погоды, загруженные прогулки и дорожные графы.</p><p>Скачанные вами файлы поездки и отправленные ссылки останутся у вас и у получателей. Другие устройства это действие не затронет.</p><button id="trip-clear-do" type="button" class="button button-dark">Удалить данные в этом браузере</button></div>
     <p id="trip-memory-result" role="status" aria-live="polite"></p>`;
@@ -36,6 +37,17 @@ export function initMemoryControls(catalog, base, workshop) {
     dialog.showModal(); $('#trip-memory-close').focus();
   }
   $('#trip-memory-close').addEventListener('click', () => dialog.close());
+  $('#trip-memory-backup').addEventListener('click', async () => {
+    const button = $('#trip-memory-backup'); button.disabled = true;
+    try {
+      const copy = await workshop.memoryBackup(), link = document.createElement('a');
+      const url = URL.createObjectURL(new Blob([JSON.stringify(copy,null,2)], {type:'application/json'}));
+      link.href = url; link.download = 'godune-memory-source-'+copy.createdAt.slice(0,10)+'.json';
+      link.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
+      $('#trip-memory-result').textContent = 'Исходная копия подготовлена: черновик и версии без преобразования.';
+    } catch { $('#trip-memory-result').textContent = 'Не удалось прочитать исходную копию. Попробуйте ещё раз; данные не изменены.'; }
+    finally { button.disabled = false; }
+  });
   dialog.addEventListener('close', () => focus?.focus({preventScroll: true}));
   window.addEventListener('godune:memory-cleared', () => {
     request++; selected = null;
@@ -46,18 +58,18 @@ export function initMemoryControls(catalog, base, workshop) {
     window.dispatchEvent(new Event('godune:offline-change'));
   });
   historyButton.addEventListener('click', async () => {
-    open('Предыдущие версии поездки', 'Можно вернуться к прежнему выбору. Текущий черновик тоже останется среди версий.');
+    open('Предыдущие версии поездки', workshop.memoryCompatibility()?.message || 'Можно вернуться к прежнему выбору. Текущий черновик тоже останется среди версий.');
     const token = request;
     const rows = await workshop.history();
     if (!dialog.open || token !== request) return;
     if (!rows.length) {
-      $('#trip-memory-result').textContent = workshop.memoryMode() === 'indexeddb' ? 'Предыдущих версий пока нет. Они появятся после изменения черновика.' : 'Браузер не открыл хранилище версий. Текущий выбор можно сохранить в файл.';
+      $('#trip-memory-result').textContent = workshop.memoryCompatibility() ? 'Для восстановления скачайте исходную копию.' : workshop.memoryMode() === 'indexeddb' ? 'Предыдущих версий пока нет. Они появятся после изменения черновика.' : 'Браузер не открыл хранилище версий. Текущий выбор можно сохранить в файл.';
       return;
     }
     for (const row of rows) {
       const button = document.createElement('button'); button.type = 'button'; button.className = 'trip-revision-choice';
       const time = document.createElement('strong'), note = document.createElement('span');
-      time.textContent = new Intl.DateTimeFormat('ru-RU', {day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Kaliningrad'}).format(new Date(row.savedAt));
+      time.textContent = Number.isFinite(Date.parse(row.savedAt)) ? new Intl.DateTimeFormat('ru-RU', {day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Kaliningrad'}).format(new Date(row.savedAt)) : 'Версия '+row.revision;
       note.textContent = count(row.state.places.length, ['точка','точки','точек']) + ' · ' + count(row.state.routes.length, ['прогулка','прогулки','прогулок']);
       button.append(time, note);
       button.addEventListener('click', () => {

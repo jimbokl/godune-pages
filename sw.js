@@ -3,10 +3,12 @@ importScripts('offline-archive.js?v=3');
 importScripts('offline-fetch.js?v=1');
 importScripts('offline-storage.js?v=1');
 importScripts('offline-media.js?v=1');
+importScripts('offline-clients.js?v=1');
 const LEGACY='godune-walk-offline:v1:',PREFIX='godune-walk-offline:v2:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const draftURL=new URL('__godune_download__',ROOT).href;
 const jobs=new Map(),removals=new Map(),packageReads=new Set();
+const clientSnapshots=GoduneOfflineClients.create({root:ROOT,caches,clients:self.clients});
 let clearing,snapshot,reading,epoch=0;
 const pathIndexes=new WeakMap();
 const packageCache=name=>name.startsWith(PREFIX)||name.startsWith(LEGACY);
@@ -33,7 +35,9 @@ async function readPackages(){
     const cache=await caches.open(name),response=await cache.match(metadataURL);if(!response)continue;
     try{const record=await response.json();validate(record);if(typeof record.saved_at!=='string' || record.compressed_files>0 && typeof DecompressionStream!=='function')continue;const stored=new Set((await cache.keys()).map(r=>normalized(r.url)));if(record.resources.every(r=>stored.has(normalized(url(r.path)))))result.push({...record,cache:name});}catch{/* An interrupted/damaged package is not ready. */}
   }
-  return result.sort((a,b)=>b.saved_at.localeCompare(a.saved_at));
+  // Retired snapshots may still serve open documents, but the library shows
+  // only the most recently completed version of each package.
+  const seen=new Set();return result.sort((a,b)=>b.saved_at.localeCompare(a.saved_at)).filter(pack=>{if(seen.has(pack.slug))return false;seen.add(pack.slug);return true;});
 }
 function validate(pack){
   if(!pack || !/^[a-z0-9-]+$/.test(pack.slug) || !Array.isArray(pack.resources) || !pack.resources.length)throw new Error('Не удалось проверить список файлов.');
@@ -128,7 +132,10 @@ async function download(slug,port,id){
     abortCheck(controller.signal);if(bytes!==pack.bytes || count!==pack.resources.length)throw new Error('Не все файлы карты сохранены.');
     const record={...pack,storage_format:2,stored_bytes:storedBytes,compressed_files:compressedFiles,saved_at:new Date().toISOString()};await cache.put(metadataURL,new Response(JSON.stringify(record),{headers:{'Content-Type':'application/json'}}));abortCheck(controller.signal);job.committed=true;
     // No event can abort a committed version after this point: removals wait for done.
-    await Promise.allSettled([cache.delete(draftURL),...(pack.archives || []).map(archive=>cache.delete(url(archive.path))),...(await caches.keys()).filter(n=>slugCache(n,slug) && n!==name).map(old=>caches.delete(old))]);
+    try{
+      const protectedNames=await clientSnapshots.protectedCaches();
+      await Promise.allSettled([cache.delete(draftURL),...(pack.archives || []).map(archive=>cache.delete(url(archive.path))),...(await caches.keys()).filter(n=>slugCache(n,slug) && n!==name && !protectedNames.has(n)).map(old=>caches.delete(old))]);
+    }catch{/* Cleanup failure must not undo a fully committed update. */}
     invalidate();return {...record,cache:name};
   }catch(error){if(name && (job.cancelled || error.name!=='OfflineNetworkError'))await caches.delete(name);invalidate();if(error.name==='AbortError')throw new Error('Загрузка отменена. Прежняя загрузка сохранена.');if(error.name==='QuotaExceededError')throw new Error('На телефоне не хватило места. Удалите другой пакет и попробуйте снова.');throw error;}
   finally{jobs.delete(slug);finish();}
@@ -155,10 +162,49 @@ function emptyTile(pack,path){
 }
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET' || new URL(event.request.url).origin!==new URL(ROOT).origin)return;
-  event.respondWith((async()=>{try{return await fetch(event.request);}catch{
+  event.respondWith((async()=>{
+    const target=normalized(event.request.url),navigation=event.request.mode==='navigate';
+    if(!navigation){
+      const binding=await clientSnapshots.get(event.clientId);
+      if(binding){
+        // Read the bound package directly: it may have been superseded in LIST.
+        const cache=await caches.open(binding.cache),metadata=await cache.match(metadataURL);
+        if(metadata){try{
+          const pack=await metadata.json();validate(pack);
+          if(pack.version!==binding.version)return Response.error();
+          const resource=pathsOf(pack).get(target);
+          if(resource){
+            let response=await cache.match(target,{ignoreSearch:true});
+            try{
+              if(!response)throw new Error('Missing snapshot resource');
+              const decoded=await GoduneStorage.decode(response,resource);
+              if(decoded.body.byteLength!==resource.bytes || await GoduneArchive.digest(decoded.body)!==resource.sha256)throw new Error('Damaged snapshot resource');
+              response=new Response(decoded.body,{headers:decoded.headers});
+            }catch{
+              // Reconnecting is safe only when the original snapshot's bytes
+              // are still available. A newer module never enters an old page.
+              const checked=await GoduneOfflineFetch.request(target,{resource,digest:GoduneArchive.digest,delays:[]});
+              response=new Response(checked.body,{headers:checked.headers});
+            }
+            return target.endsWith('.mp3')?await GoduneMedia.range(response,event.request.headers.get('Range')):response;
+          }
+          const path=decodeURIComponent(new URL(target).pathname.slice(new URL(ROOT).pathname.length));
+          if(emptyTile(pack,path))return new Response(new Uint8Array(),{headers:{'Content-Type':'application/x-protobuf'}});
+        }catch{return Response.error();}}
+        // Explicitly removed packages are unavailable. Never replace their
+        // modules/data with bytes from another cached release.
+        if(!metadata)return Response.error();
+        try{return await fetch(event.request);}catch{return Response.error();}
+      }
+    }
+    try{
+      const response=await fetch(event.request);
+      if(navigation && response.ok)await clientSnapshots.set(event.resultingClientId,null);
+      return response;
+    }catch{
     const list=await packages(),client=event.clientId && await self.clients.get(event.clientId),clientURL=client && normalized(client.url);
     if(clientURL)list.sort((a,b)=>Number(pathsOf(b).has(clientURL))-Number(pathsOf(a).has(clientURL)));
-    const target=normalized(event.request.url);for(const pack of list){if(!pathsOf(pack).has(target))continue;const response=await caches.match(target,{cacheName:pack.cache,ignoreSearch:true});if(response){try{const restored=await GoduneStorage.restore(response,pathsOf(pack).get(target),GoduneArchive.digest);return target.endsWith('.mp3')?await GoduneMedia.range(restored,event.request.headers.get('Range')):restored;}catch{/* Try another complete package; never expose internal gzip bytes. */}}}
+    for(const pack of list){if(!pathsOf(pack).has(target))continue;const response=await caches.match(target,{cacheName:pack.cache,ignoreSearch:true});if(response){try{const restored=await GoduneStorage.restore(response,pathsOf(pack).get(target),GoduneArchive.digest);if(navigation)await clientSnapshots.set(event.resultingClientId,pack);return target.endsWith('.mp3')?await GoduneMedia.range(restored,event.request.headers.get('Range')):restored;}catch{/* Try another complete package; never expose internal gzip bytes. */}}}
     const path=decodeURIComponent(new URL(target).pathname.slice(new URL(ROOT).pathname.length));
     if(list.some(pack=>emptyTile(pack,path)))return new Response(new Uint8Array(),{headers:{'Content-Type':'application/x-protobuf'}});
     const routing=await caches.match(event.request,{cacheName:'godune-routing:v1'});if(routing)return routing;
