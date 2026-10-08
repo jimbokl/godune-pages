@@ -66,3 +66,15 @@ body[data-tool="offline"] .offline-region-grid{margin-top:18px;margin-bottom:48p
 @media(max-width:520px){.travel-toolbar{gap:1rem;align-items:start;flex-direction:column}.travel-toolbar label{width:100%}.travel-meter{max-width:100%;width:100%;grid-template-columns:4rem 1fr;align-items:center}.travel-next,.travel-empty{padding:1.25rem}.travel-take{grid-template-columns:1fr}.travel-path li{gap:.6rem;grid-template-columns:1.5rem minmax(0,1fr) auto}.travel-check{min-width:72px;padding:.65rem .5rem;font-size:.7rem}.travel-next-actions .button{flex:1 1 auto}.travel-next h2{font-size:2rem}.travel-path-heading{align-items:start}}
 
 .route-guide{margin:1.6rem 0;padding:1.5rem 0;border-block:1px solid #bfd9e7}.guide-downloads{display:grid;gap:.7rem}.guide-downloads .button{min-height:48px;justify-content:space-between;white-space:normal}
+
+/* Three direct entrances; the remaining tools stay one click away. */
+.tool-nav{overflow:visible;flex-wrap:wrap;align-items:center;gap:8px}
+.tool-nav>a,.tool-nav-more>summary{min-height:44px;border-radius:10px;font:500 13px var(--sans);padding:10px 16px}
+.tool-nav>a[aria-current],.tool-nav-more[data-current]>summary{background:#bfd9e7;color:#183c50;border-color:#86abc2;box-shadow:none;font-weight:700}
+.tool-nav-more{margin-left:auto}.tool-nav-more>summary{display:flex;align-items:center;gap:9px;list-style:none;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.tool-nav-more>summary::-webkit-details-marker{display:none}.tool-nav-more[open]>summary{border-color:var(--sea-line)}
+.tool-nav-more .nav-tools-panel{top:calc(100% + 8px);min-width:220px;border-radius:12px;background:var(--paper)}
+.tool-nav-more .nav-tools-panel a{border:0;background:transparent;white-space:normal;border-radius:8px;padding:10px 12px}
+.tool-nav-more .nav-tools-panel a:hover{background:var(--sea-soft)}.tool-nav-more .nav-tools-panel a[aria-current]{background:var(--sea-soft);color:var(--ink);box-shadow:none}
+@media(max-width:560px){.tool-nav{gap:6px}.tool-nav>a,.tool-nav-more>summary{padding:10px 12px;font-size:12px}.tool-nav-more .nav-tools-panel{min-width:210px}}
+@media(max-width:360px){.tool-nav>a,.tool-nav-more>summary{padding-inline:9px}.tool-nav-more{margin-left:0}.tool-nav-more .nav-tools-panel{left:0;right:auto}}

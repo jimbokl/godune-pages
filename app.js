@@ -12,7 +12,7 @@
     const params=new URLSearchParams(location.search),hash=location.hash;
     let destination;
     if(params.has('map') || params.has('foodtour'))destination='map/';
-    else if(hash==='#my-trip' || /^#(?:trip-|day-|journey-|planner-)/.test(hash))destination='planner/';
+    else if(hash==='#my-trip' || hash.startsWith('#trip=') || /^#(?:trip-|day-|journey-|planner-)/.test(hash))destination='planner/';
     else destination={'#food':'food/zelenogradsk/','#map':'map/','#places':'cities/','#stay':'stay/'}[hash];
     if(destination){location.replace(url(destination)+location.search+hash);return;}
     import(url('home-showcase.mjs?v=1')).then(({initShowcase})=>initShowcase()).catch(()=>{});
@@ -119,11 +119,22 @@
     });
   });
   const menu = $('.menu-button'), mobile = $('#mobile-nav');
-  function closeMenu() { if (mobile) mobile.hidden = true; menu?.setAttribute('aria-expanded', 'false'); }
-  menu?.addEventListener('click', () => { mobile.hidden = !mobile.hidden; menu.setAttribute('aria-expanded', String(!mobile.hidden)); });
+  function closeMenu(restoreFocus = false) {
+    const wasOpen = mobile && !mobile.hidden;
+    if (mobile) mobile.hidden = true;
+    menu?.setAttribute('aria-expanded', 'false');
+    menu?.setAttribute('aria-label', 'Открыть меню');
+    if (restoreFocus && wasOpen) menu?.focus();
+  }
+  menu?.addEventListener('click', () => {
+    if (!mobile) return;
+    mobile.hidden = !mobile.hidden;
+    menu.setAttribute('aria-expanded', String(!mobile.hidden));
+    menu.setAttribute('aria-label', mobile.hidden ? 'Открыть меню' : 'Закрыть меню');
+  });
   mobile?.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); for(const panel of $$('.nav-tools[open]')) { panel.open=false; panel.querySelector('summary').focus(); } } });
-  document.addEventListener('click',e=>{ for(const panel of $$('.nav-tools[open]'))if(!panel.contains(e.target))panel.open=false; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { for(const panel of $$('.nav-tools[open]')) { panel.open=false; panel.querySelector('summary').focus(); } closeMenu(true); } });
+  document.addEventListener('click',e=>{ for(const panel of $$('.nav-tools[open]'))if(!panel.contains(e.target))panel.open=false; if(mobile && !mobile.hidden && !mobile.contains(e.target) && !menu?.contains(e.target))closeMenu(); });
   function applyFilters() {
     let count = 0;
     $$('.route-row[data-area]').forEach(row => {
@@ -220,17 +231,17 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=83'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=97'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=29')).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=32')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=21')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=25')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=21')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
@@ -239,9 +250,9 @@
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=27')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
-    if ($('#housing-engine')) import(url('housing-ui.mjs?v=10')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
-    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=13')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=30')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#housing-engine')) import(url('housing-ui.mjs?v=12')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=15')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
     });
     if (inlineMap) {
@@ -259,7 +270,7 @@
     });
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
-    if ($('#budget-page')) import(url('budget-ui.mjs?v=8')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
+    if ($('#budget-page')) import(url('budget-ui.mjs?v=10')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
     if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=7')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=23')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
@@ -267,7 +278,8 @@
     if ($('#trip-weather')) import(url('live-weather.mjs?v=3')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
       $('#weather-status').textContent = 'Прогноз пока не загрузился. Ваш маршрут на месте.';
     });
-  }).catch(() => {
+  }).catch(error => {
+    console.error('Не удалось открыть инструменты поездки.', error);
     $$('[data-save-place], [data-save-route], [data-plan-starter]').forEach(button => { button.disabled = true; button.textContent = 'Сохранение пока недоступно'; });
     if ($('#travel-status')) $('#travel-status').textContent='Поездка пока не открылась. Обновите страницу или откройте свой план.';
     if (inlineMap) setMapStatus('Карта пока не открылась. Места доступны в списке ниже.');
@@ -321,7 +333,7 @@
         // A small fragment must allow padding around a walk on wide screens.
         // GPS coverage is still checked against the original data bounds.
         maxBounds:local?.kind==='region' ? [[local.bbox[0],local.bbox[1]],[local.bbox[2],local.bbox[3]]] : undefined,
-        style:vector ? (await import(url('region-map.mjs?v=6'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
+        style:vector ? (await import(url('region-map.mjs?v=7'))).regionMapStyle(base,local || {}) : localStyle.localMapStyle(local)});
       const applyMapTheme=(await import(url('map-theme.mjs?v=2'))).bindMapTheme(map);
       map.on('click',e=>{const feature=map.queryRenderedFeatures(e.point,{layers:!vector?['local-roads','local-building','local-green','local-water']:['region-roads','region-building','region-green','region-water']}).find(f=>f.properties.name);if(feature){const title=document.createElement('span');title.textContent=feature.properties.name;new maplibregl.Popup().setLngLat(e.lngLat).setDOMContent(title).addTo(map);}});
       map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
@@ -329,7 +341,7 @@
       map.on('error', () => { mapBaseError = true; setMapStatus(mapStatus); });
       await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(new Error('Карта загружается дольше обычного')), 20000); map.once('load', () => { clearTimeout(timer); resolve(); }); });
       if(vector){
-        const {mapCities}=await import(url('region-map.mjs?v=6'));
+        const {mapCities}=await import(url('region-map.mjs?v=7'));
         const labels=mapCities.filter(([,lon,lat])=>!local || lon>=local.bbox[0] && lon<=local.bbox[2] && lat>=local.bbox[1] && lat<=local.bbox[3]).map(([name,lon,lat])=>{
           const el=document.createElement('span');el.className='region-city-label';el.textContent=name;
           new maplibregl.Marker({element:el}).setLngLat([lon,lat]).addTo(map);return el;

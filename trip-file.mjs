@@ -1,6 +1,9 @@
-import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=23';
+import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=24';
 import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=27';
 import {validSchedule} from './trip-schedule-state.mjs?v=17';
+import {serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
+import {transferConnectionImportIssue} from './trip-transfer-connections-contract.mjs';
+import {menuChoiceImportIssue} from './trip-menu-choices-contract.mjs';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
 export function createTripFile(state, catalog, now = new Date()) {
@@ -24,12 +27,18 @@ export function readTripFile(text, catalog) {
     if (document?.format !== 'godune.trip') return {error: 'Это другой файл. Выберите файл поездки, сохранённый на «Маршрутах Балтики». Ваш черновик на месте.'};
     if (document.version !== 1) return {error: 'Этот файл создан в другой версии поездки. Ваш черновик на месте.'};
     const trip = document.trip;
+    const menuIssue=menuChoiceImportIssue(trip);
+    if(menuIssue)return {error:menuIssue};
     if (!trip || trip.version !== 1 || ![trip.places, trip.routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))
       || !(trip.month === null || Number.isInteger(trip.month) && trip.month >= 1 && trip.month <= 12)
       || !(trip.date === null || validTripDate(trip.date)) || (trip.date && Number(trip.date.slice(5, 7)) !== trip.month)
       || !TRIP_AREAS.includes(trip.filters?.area) || !TRIP_TIMES.includes(trip.filters?.minutes)
       || Object.hasOwn(trip,'dreams') && !(Array.isArray(trip.dreams) && trip.dreams.every(id => typeof id === 'string'))
       || Object.hasOwn(trip,'schedule') && !validSchedule(trip.schedule) || Object.hasOwn(trip,'itinerary') && !validJourneyProjection(trip)) throw Error();
+    const serviceIssue=serviceVisitImportIssue(trip);
+    if(serviceIssue)return {error:serviceIssue};
+    const transferIssue=transferConnectionImportIssue(trip);
+    if(transferIssue)return {error:transferIssue};
     const state = cleanTrip(trip, catalog);
     const missing = tripPlaceIds(trip).filter(id => !tripPlaceIds(state).includes(id)).length
       + new Set(trip.routes.filter(id => !state.routes.includes(id))).size

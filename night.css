@@ -35,7 +35,7 @@
 :root[data-theme=night] #my-trip{--trip-paper:#14293a;--trip-blue:#25485f}
 :root[data-theme=night] .travel-day{--travel-ink:#e2edf2;--travel-sky:#193346}
 :root[data-theme=night] .site-header{color:var(--ink)}
-:root[data-theme=night] .brand-mark{filter:brightness(0) invert(.88)}
+:root[data-theme=night]{--brand-ink:#e2edf2;--brand-amber:#e6b877;--card:#172e3e}
 :root[data-theme=night] .icon-button img,
 :root[data-theme=night] .button-outline img,
 :root[data-theme=night] .quick-links>a>img,
@@ -87,3 +87,6 @@
  .theme-control{display:none}
  :root[data-theme=night]{--paper:white;--sand:#f5f2ec;--ink:#202c32;--muted:#586469;--sea:#bfd9e7;--sea-ink:#243f52;--sea-soft:#edf4f8;--line:#d6d8d5;--night-surface:white;--night-panel:#edf4f8;--night-ink:#202c32;--night-muted:#586469;--night-warm:#f5f2ec;--night-amber:#805b25;--night-line:#d6d8d5;color-scheme:light}
 }
+
+:root[data-theme=night] .brand-mark{filter:none}
+@media(max-width:390px){.site-header .brand-mark{width:32px;height:32px}.site-header .brand-name{font-size:clamp(12px,3.55vw,14px);letter-spacing:.35px}}

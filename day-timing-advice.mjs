@@ -1,5 +1,6 @@
 import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=17';
-import {tripSignature, lightInput} from './trip-light.mjs?v=13';
+import {lightInput} from './trip-light.mjs?v=13';
+import {planningDay,completePlanningCandidate,planningSignature} from './day-planning-state.mjs?v=1';
 
 // This is a proposal search, not a second clock. Every trial uses the shared
 // Rust scheduler, including directed roads, calendars, tickets and the return.
@@ -27,22 +28,26 @@ function daylightDoesNotWorsen(before, after) {
 // Both repair and shortening proposals use this one acceptance contract.
 // A shorter list must still have known roads and must not move nature into darkness.
 export function timingTrial(trip,catalog,matrix,engine,result) {
+  let before;
+  try{before=planningDay(trip,catalog,matrix,engine,result);}catch(error){return {error:error.message==='continuation_unresolved'?'continuation_unresolved':'day_unavailable'};}
+  result=before.result;
   const missing=unknownKeys(result);
   const outdoor=trip.places.some(id=>['nature','park','viewpoint','beach'].includes(catalog.poi.find(place=>place.slug===id)?.category));
   let beforeLight=null;
   if(outdoor && trip.date) {
     try {beforeLight=engine.light(lightInput(trip,catalog,result));}catch {return {error:'light_unavailable'};}
   }
-  return {evaluate(candidate) {
+  return {before:result,check:before.check,evaluate(candidate) {
     try {
-      const input=planInput(candidate,catalog,matrix),schedule=engine(input);
+      const input=planInput(candidate,catalog,matrix),after=planningDay(candidate,catalog,matrix,engine,before.check?null:engine(input)),schedule=after.result;
+      if(!completePlanningCandidate(before,after))return null;
       if(!fits(schedule) || [...unknownKeys(schedule)].some(key=>!missing.has(key)))return null;
       let light=null;
       if(outdoor && trip.date) {
         light=engine.light(lightInput(candidate,catalog,schedule));
         if(!daylightDoesNotWorsen(beforeLight,light))return null;
       }
-      return {before:result,result:schedule,light,scheduleStart:input.start,needsCheck:issues(schedule).length>0};
+      return {before:result,result:schedule,light,scheduleStart:input.start,needsCheck:issues(schedule).length>0||after.check?.state==='needs_info',...(after.check?{dayAssessment:after.check}:{})};
     }catch {return null;}
   }};
 }
@@ -50,7 +55,7 @@ export function timingTrial(trip,catalog,matrix,engine,result) {
 export async function timingAdvice(trip,catalog,matrix,engine,result,stillCurrent=()=>true) {
   if(trip.schedule?.progress || !needsTimingHelp(result) || !trip.places.length || trip.itinerary?.days.find(day=>day.id===trip.itinerary.active)?.kosa_plan)
     return {state:'not_needed',options:[]};
-  const snapshot=structuredClone(trip),signature=tripSignature(snapshot),settings=snapshot.schedule || defaultSchedule();
+  const snapshot=structuredClone(trip),signature=planningSignature(snapshot),settings=snapshot.schedule || defaultSchedule();
   const trial=timingTrial(snapshot,catalog,matrix,engine,result),options=[];
   if(trial.error)return {state:trial.error,options:[]};
   let trials=0;
@@ -84,7 +89,7 @@ export async function timingAdvice(trip,catalog,matrix,engine,result,stillCurren
 // Storage still owns validation, selected-day projection and real completion.
 // A stale proposal is a no-op; fresh unrelated notes/expenses remain intact.
 export function applyTimingAdvice(trip,option) {
-  if(tripSignature(trip)!==option.signature)return {trip,error:'stale'};
+  if(planningSignature(trip)!==option.signature)return {trip,error:'stale'};
   if(option.kind==='start')return {trip:{...trip,schedule:{...(trip.schedule || defaultSchedule()),start:option.start}},error:null};
   if(option.kind==='order')return {trip:{...trip,places:[...option.places]},error:null};
   return {trip,error:'unknown_option'};

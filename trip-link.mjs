@@ -1,9 +1,11 @@
 import {publicBookingTrip} from './trip-bookings-state.mjs?v=2';
 import {baseName} from './personal-points.mjs?v=3';
-import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=23';
+import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=24';
 import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=27';
 import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=28';
 import {validSchedule} from './trip-schedule-state.mjs?v=17';
+import {serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
+import {transferConnectionImportIssue} from './trip-transfer-connections-contract.mjs';
 
 export function tripLink(state, catalog, base = 'https://godune.ru/') {
   const trip = publicBookingTrip(cleanTrip(state, catalog));
@@ -36,6 +38,10 @@ export function readTripLink(hash, catalog) {
       || !(date === null || validTripDate(date)) || (date && Number(date.slice(5, 7)) !== month)
       || !TRIP_AREAS.includes(area) || !TRIP_TIMES.includes(minutes)) throw Error();
     if((data.length===9 || data.length===10 && itinerary!==null) && !validJourneyProjection({places,date,schedule,itinerary}))throw Error();
+    const serviceIssue=serviceVisitImportIssue({itinerary});
+    if(serviceIssue)return {error:serviceIssue};
+    const transferIssue=transferConnectionImportIssue({itinerary});
+    if(transferIssue)return {error:transferIssue};
     const state = cleanTrip({version, places, routes, month, date, filters: {area, minutes}, schedule,...(itinerary?{itinerary}:{}),...(dreams?{dreams}:{})}, catalog);
     const original={places,date,schedule,itinerary,routes};
     const missing = tripPlaceIds(original).filter(id => !tripPlaceIds(state).includes(id)).length
@@ -154,7 +160,7 @@ export function initTripSharing(catalog, base, workshop) {
     const controller=new AbortController();guideController=controller;const signature=JSON.stringify(workshop.getState());
     const status=$('#trip-guide-status');$('#trip-guide-save').disabled=true;$('#trip-guide-cancel').hidden=false;
     const message=text=>{if(guideController===controller)status.textContent=text;};
-    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=22');
+    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=31');
       const result=await downloadPersonalGuide({trip:snapshot,catalog,base,scope:$('#trip-guide-scope').value,format:$('#trip-guide-format').value,signal:controller.signal,onProgress:message,stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       message(`PDF подготовлен: ${result.pages} стр., карты мест: ${result.map_count}. Сохраните файл в папку на телефоне.${result.warnings.length?' '+result.warnings.join(' '):''}`);
     }catch(error){message(controller.signal.aborted?'Сборка отменена. Поездка на месте.':error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Откройте «Взять с собой» заново и скачайте свежий план.':'Путеводитель не собрался целиком. Повторите при связи; ваш план на месте.');}
@@ -210,7 +216,7 @@ export function initTripSharing(catalog, base, workshop) {
     }
   });
   $('#trip-link-send').addEventListener('click', async () => {
-    try { await navigator.share({title: 'Моя поездка — Маршруты Балтики', url: $('#trip-link-url').value}); message('Поездка отправлена.'); }
+    try { await navigator.share({title: 'Моя поездка — Балтийские дюны', url: $('#trip-link-url').value}); message('Поездка отправлена.'); }
     catch (error) { if (error.name !== 'AbortError') message('Не получилось открыть отправку. Скопируйте ссылку.'); }
   });
   async function importTrip(replace) {

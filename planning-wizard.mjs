@@ -1,4 +1,4 @@
-import {initWizardBus} from './wizard-bus-ui.mjs?v=6';
+import {initWizardBus} from './wizard-bus-ui.mjs?v=8';
 import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=6';
 import {initWizardRail} from './wizard-rail-ui.mjs?v=7';
 import {earlierWizardReturn,earlierWizardDeparture,wizardRailActive} from './wizard-rail.mjs?v=6';
@@ -6,7 +6,7 @@ import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=4';
 import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=21';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=23';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=24';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=17';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=8';
 import {baseName} from './personal-points.mjs?v=3';
@@ -382,7 +382,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=22'),import('./travel-estimates.mjs?v=11')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=40'),import('./travel-estimates.mjs?v=11')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const matrices=await Promise.all(trips.map(trip=>proposal.bus?.[selectedDay(trip).id]?null:loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));
@@ -491,6 +491,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       announce(readiness.next);
       $('[data-wizard-title]').textContent=readiness.title;
       (committed.saved?$('[data-wizard-saved-travel]'):$('[data-wizard-download]')).focus({preventScroll:true});
+      document.dispatchEvent(new CustomEvent('godune:day-ready',{detail:{saved:committed.saved}}));
     } catch {announce('Не удалось сохранить день. Ответы здесь — попробуйте ещё раз.');}
     finally {saving=false;mount.removeAttribute('aria-busy');save.disabled=false;changed();}
   });

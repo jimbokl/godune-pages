@@ -1,26 +1,27 @@
 import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=17';
-import {selectedDay} from './trip-days-state.mjs?v=23';
-import {tripSignature} from './trip-light.mjs?v=13';
+import {selectedDay} from './trip-days-state.mjs?v=24';
 import {timingTrial} from './day-timing-advice.mjs?v=8';
 import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=6';
 import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=6';
+import {planningSignature,planningWalkingMinutes} from './day-planning-state.mjs?v=1';
+import {transferChoices} from './trip-transfer-connections-contract.mjs';
 
 // Planning proposals, not a reconstruction of time already spent on the road.
 // The shared Rust calculation remains the sole clock for every candidate.
-export const flexSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).visited || []]);
+export const flexSignature=planningSignature;
 export const canFlexDay=trip=>trip.places.length>0 && !selectedDay(trip).kosa_plan;
 export const flexOmissions=option=>option.omittedIds || (option.omitted?[option.omitted]:[]);
 
 // Compare the remaining walk using the shared Rust result. This is not a new
 // clock or a claim about shelter: waiting and unspecified landmark interiors
 // are not counted as outdoor visits. Station approaches remain unchanged.
-export function flexEffort(trip,catalog,result) {
+export function flexEffort(trip,catalog,result,check=null) {
   const outdoor=result.stops.reduce((minutes,row)=>{
     const place=catalog.poi.find(p=>p.slug===row.id),stop=trip.schedule?.stops[row.id];
     return minutes+(['nature','park','viewpoint','beach'].includes(place?.category) || stop?.visit_scope==='outside'
       ?row.visit_minutes+(stop?.pause || 0):0);
   },0);
-  return {walking:(trip.schedule?.mode && trip.schedule.mode!=='foot'?0:result.travel_minutes)+result.access_minutes,outdoor};
+  return {walking:planningWalkingMinutes(result,check)??((trip.schedule?.mode && trip.schedule.mode!=='foot'?0:result.travel_minutes)+result.access_minutes),outdoor};
 }
 
 // Search by the number of moved places, keeping the remaining order intact.
@@ -41,6 +42,7 @@ export function protectedFlexStops(trip,catalog) {
   }
   // Saved station approaches refer to the existing boundary stops. Keep them.
   if(trip.schedule?.rail){ids.add(trip.places[0]);ids.add(trip.places.at(-1));}
+  for(const choice of transferChoices(day))for(const endpoint of [choice.from,choice.to])if(endpoint.kind==='place')ids.add(endpoint.id);
   return ids;
 }
 
@@ -52,8 +54,11 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
     return {state:'invalid_request',options:[]};
   if(trip.schedule?.progress && request.kind==='later')return {state:'already_started',options:[]};
   const snapshot=structuredClone(trip),settings=snapshot.schedule || defaultSchedule(),signature=flexSignature(snapshot);
+  const trial=timingTrial(snapshot,catalog,matrix,engine,result);
+  if(trial.error)return {state:trial.error,options:[]};
+  result=trial.before;
   if((request.kind==='breathing_room' || scenario) && result.finish===null)return {state:'incomplete',options:[]};
-  const beforeEffort=scenario?flexEffort(snapshot,catalog,result):null;
+  const beforeEffort=scenario?flexEffort(snapshot,catalog,result,trial.check):null;
   if(request.kind==='rain' && !beforeEffort.outdoor)return {state:'no_outdoor',options:[]};
   if(request.kind==='fatigue' && !beforeEffort.walking)return {state:'no_walking',options:[]};
   // An unresolved saved train must not disappear from a proposed walking day.
@@ -71,8 +76,6 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
       .map(outward=>({start:settings.start,outward}))
     :[{start:request.kind==='later'?previousStart+request.minutes:settings.start,outward:null}];
   if(!starts.length || starts.every(row=>row.start>=settings.end || row.start>=1440))return {state:'no_option',options:[]};
-  const trial=timingTrial(snapshot,catalog,matrix,engine,result);
-  if(trial.error)return {state:trial.error,options:[]};
   const protectedIds=protectedFlexStops(snapshot,catalog),options=[];
   const optional=snapshot.places.filter(id=>!protectedIds.has(id));
   const rank=(a,b)=>(scenario?b.effort.saved[request.kind==='rain'?'outdoor':'walking']-a.effort.saved[request.kind==='rain'?'outdoor':'walking']:0)
@@ -89,7 +92,7 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
     if(request.kind==='later' && tested.result.stops[0]?.arrival<(result.stops[0]?.arrival??previousStart)+request.minutes)return null;
     const freed=result.finish===null?null:result.finish-tested.result.finish;
     if(request.kind==='breathing_room' && freed<request.minutes)return null;
-    const afterEffort=scenario?flexEffort(candidate,catalog,tested.result):null;
+    const afterEffort=scenario?flexEffort(candidate,catalog,tested.result,tested.dayAssessment):null;
     const effort=scenario?{before:beforeEffort,after:afterEffort,saved:{walking:beforeEffort.walking-afterEffort.walking,outdoor:beforeEffort.outdoor-afterEffort.outdoor}}:null;
     if(request.kind==='rain' && (effort.saved.outdoor<=0 || effort.saved.walking<0))return null;
     if(request.kind==='fatigue' && effort.saved.walking<=0)return null;

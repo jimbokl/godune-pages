@@ -50,6 +50,27 @@
 .day-map-dot{position:absolute;z-index:2;padding:0}
 .day-map-dot:focus-visible{outline:3px solid var(--ink);outline-offset:3px;z-index:4}
 .day-map-dot[hidden]{display:none}
+.day-map-transfer{background:var(--amber,#cf943c);border-color:var(--amber,#cf943c);color:var(--paper);border-radius:12px}
+.day-map-roads{padding:14px;display:grid;gap:10px;border-top:1px solid var(--line)}
+.day-map-roads[hidden]{display:none}
+.day-map-road{min-width:0;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow-wrap:anywhere}
+.day-map-road>summary{display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:6px 12px;align-items:center;list-style:none;padding:16px;min-height:60px;cursor:pointer}
+.day-map-road>summary::-webkit-details-marker{display:none}
+.day-map-road>summary::after{content:'＋';grid-column:2;grid-row:1/3;color:var(--sea-muted)}
+.day-map-road[open]>summary::after{content:'−'}
+.day-map-road-title{font:400 23px/1.25 var(--serif);color:var(--ink)}
+.day-map-road-caption{grid-column:1;font:14px/1.5 var(--sans);color:var(--muted)}
+.day-map-road-body{padding:0 16px 16px;font:14px/1.6 var(--sans)}
+.day-map-road-part{padding:12px 0;border-top:1px solid var(--line)}
+.day-map-road-part p{margin:6px 0}
+.day-map-road-stage{font-weight:600;color:var(--ink)}
+.day-map-road-sources{color:var(--muted);font-size:12px}
+.day-map-road-sources>summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.day-map-road-location{margin:10px 0;font:13px/1.6 var(--sans);color:var(--muted)}
+.day-map-road-actions{display:flex;flex-wrap:wrap;gap:0 16px;margin-top:8px}
+.day-map-road-link{padding:8px 0;min-height:44px;max-width:100%;background:transparent;color:var(--sea-muted);font:600 14px/1.5 var(--sans);text-align:left;text-decoration:underline;text-underline-offset:4px}
+.day-map-road>summary:focus-visible,.day-map-road-link:focus-visible{outline:2px solid var(--sea-muted);outline-offset:-2px;border-radius:8px}
+.day-map-road-part[data-transfer-status=missed],.day-map-road-part[data-transfer-status=conflict],.day-map-road-part[data-transfer-status=risk]{border-left:3px solid var(--amber,#cf943c);padding-left:12px}
 .day-map-group{grid-template-rows:22px 12px;align-content:center;background:var(--sea-soft)}
 .day-map-group small{font:600 10px/1 var(--sans)}
 .day-map-leaders{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden;color:var(--sea-muted)}

@@ -6,7 +6,7 @@ export function regionMapStyle(base,coverage={}) {
   const source='baltic', layer=(id,type,sourceLayer,paint,filter,minzoom=5)=>({id,type,source,'source-layer':sourceLayer,paint,...(filter?{filter}:{}),minzoom});
   const kind=x=>['==',['get','kind'],x];
   const road=['==',['get','kind'],'road'];
-  return {version:8,glyphs:mapGlyphs(base),sources:{baltic:{type:'vector',tiles:[new URL('data/region-map/{z}/{x}/{y}.pbf',base).href.replaceAll('%7B','{').replaceAll('%7D','}')],minzoom:5,maxzoom:13,bounds:coverage.bbox || [19.4,54.3,22.91,55.4],attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a> · Карта: Маршруты Балтики'}},layers:[
+  return {version:8,glyphs:mapGlyphs(base),sources:{baltic:{type:'vector',tiles:[new URL('data/region-map/{z}/{x}/{y}.pbf',base).href.replaceAll('%7B','{').replaceAll('%7D','}')],minzoom:5,maxzoom:13,bounds:coverage.bbox || [19.4,54.3,22.91,55.4],attribution:'© <a href="https://www.openstreetmap.org/copyright">Участники OpenStreetMap</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a> · Карта: Балтийские дюны'}},layers:[
     {id:'sea',type:'background',paint:{'background-color':'#b9d5e3'}},
     layer('region-land','fill','land',{'fill-color':'#f2efe6'}),
     layer('region-green','fill','areas',{'fill-color':'#dce3d7','fill-opacity':.85},kind('green'),8),

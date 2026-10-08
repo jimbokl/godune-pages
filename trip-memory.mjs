@@ -7,6 +7,9 @@ const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 // The transaction reads the latest draft before applying an action. A page's
 // rendered copy is never used as the starting point of another tab's write.
+class TripActionError extends Error {
+  constructor(cause) { super('Trip action rejected'); this.cause = cause; }
+}
 export function createTripMemory(catalog, initial, storage, environment = globalThis) {
   let current = {state: cleanTrip(initial.state, catalog), revision: 0, generation: 0};
   let saved = initial.available, db, mode = 'loading', queue = Promise.resolve();
@@ -37,7 +40,7 @@ export function createTripMemory(catalog, initial, storage, environment = global
     return new Promise((resolve, reject) => {
       const tx = db.transaction([STORE, HISTORY, META], 'readwrite');
       const drafts = tx.objectStore(STORE), history = tx.objectStore(HISTORY), meta = tx.objectStore(META);
-      const request = meta.get('clock'); let result;
+      const request = meta.get('clock'); let result, actionError;
       request.onsuccess = () => {
         const clock = request.result || {revision: 0, generation: 0};
         const draft = drafts.get('current');
@@ -48,7 +51,9 @@ export function createTripMemory(catalog, initial, storage, environment = global
             result = {record: before, before: before.state, conflict: true}; return;
           }
           const base = !saved && before.revision === current.revision && !options.clear ? current.state : before.state;
-          const next = cleanTrip(update(structuredClone(base)), catalog);
+          let next;
+          try { next = cleanTrip(update(structuredClone(base)), catalog); }
+          catch (error) { actionError = new TripActionError(error); tx.abort(); return; }
           if (!options.clear && same(next, before.state)) {
             result = {record: before, before: before.state}; return;
           }
@@ -64,7 +69,7 @@ export function createTripMemory(catalog, initial, storage, environment = global
         };
       };
       tx.oncomplete = () => resolve(result);
-      tx.onabort = () => reject(tx.error || Error('Запись прервана'));
+      tx.onabort = () => reject(actionError || tx.error || Error('Запись прервана'));
       tx.onerror = () => { /* onabort owns the failure */ };
     });
   }
@@ -159,7 +164,9 @@ export function createTripMemory(catalog, initial, storage, environment = global
           }
           adopt(result.record); channel?.postMessage({revision: current.revision});
           return {...result, saved: true, fullyCleared: Boolean(options.clear), state: structuredClone(current.state), revision: current.revision};
-        } catch {
+        } catch (error) {
+          // A rejected edit is not a storage failure and must not be reapplied.
+          if (error instanceof TripActionError) throw error.cause;
           // Keep the durable record intact. The changed draft remains exportable
           // in this page, with an explicit failure notice.
           const before = current.state;

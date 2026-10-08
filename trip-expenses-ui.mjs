@@ -1,11 +1,13 @@
-import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=23';
+import {selectedDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=24';
 import {emptyCost,putExpense,removeExpense,cancelExpense,putRefund,removeRefund,validExpense,validCosts,validObservations,observationSource} from './trip-expenses-state.mjs?v=11';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=22';
+import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {dayTransfers,transferKey,transferContext,transferTitle,transferRole,transferStatus} from './trip-transfer-costs.mjs?v=7';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=11';
-import {initTripOffers} from './trip-offers-ui.mjs?v=14';
+import {initTripOffers} from './trip-offers-ui.mjs?v=16';
 import {offerSource,offerContext,offerStatusText,retainedSource} from './trip-offers-state.mjs?v=3';
+import {recordServiceExpense} from './trip-service-expenses-state.mjs';
+import {linkedServiceExpense} from './trip-service-expenses-contract.mjs?v=1';
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const button=(text,action)=>{const node=el('button',text,'expense-button');node.type='button';node.dataset.expenseAction=action;return node;};
 const basis=row=>row?.basis || 'summary';
@@ -20,8 +22,11 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   dialog.innerHTML='<div class="expense-dialog-top"><p class="eyebrow">Часть вашего дня</p><button type="button" class="expense-close" aria-label="Закрыть расход">×</button></div><h2 id="expense-editor-title">Добавить расход</h2><form id="expense-form"><div class="expense-fields"></div><details class="expense-source-details"><summary>Источник и дата цены <span aria-hidden="true">+</span></summary><div class="expense-source-fields"></div></details><p id="expense-basis-note" class="journey-note"></p><div class="expense-editor-actions"><button type="submit" class="expense-save">Сохранить расход</button><button type="button" class="expense-cancel">Отмена</button></div><p id="expense-editor-status" class="journey-note" role="status" aria-live="polite"></p></form>';
   document.body.append(dialog);
   const $=selector=>panel.querySelector(selector),field=name=>dialog.querySelector(`[name="${name}"]`),form=dialog.querySelector('form');
+  const services=el('details',undefined,'expense-roads');services.id='expense-services';services.hidden=true;
+  services.innerHTML='<summary>Услуги в плане <span aria-hidden="true">+</span></summary><ul id="expense-service-list"></ul><p id="expense-service-deposit" class="journey-note"></p>';
+  $('#expense-categories').before(services);
   const quoteNote=el('p','','expense-quote-note');quoteNote.hidden=true;dialog.querySelector('.expense-fields').after(quoteNote);
-  let prices=[],pricePromise,editing,lastFocus;
+  let prices=[],pricePromise,editing,lastFocus,servicePending=false;
   const status=text=>{$('#expense-status').textContent=text;};
   const editorStatus=text=>{dialog.querySelector('#expense-editor-status').textContent=text;};
   function label(parent,caption,name,type='text') {
@@ -89,7 +94,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     const day=selectedDay(read()),item=day.costs[kind]?.items?.find(item=>item.id===id);
     if(expected && offerContext(day,read().itinerary?.people || 1)!==expected)throw Error('День изменился. Выберите цену заново.');
     lastFocus=document.activeElement;
-    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null,savedTransfer:item?.transfer || null,previousBindings:item?.previous_bindings?structuredClone(item.previous_bindings):null,cancelled:item?.cancelled,refunds:item?.refunds?structuredClone(item.refunds):null,transfers:dayTransfers(day,catalog),context:transferContext(day,catalog)};
+    editing={day:day.id,kind,id:item?.id || crypto.randomUUID(),before:structuredClone(day.costs[kind]),source:item?.source || null,serviceVisit:item?.service_visit?structuredClone(item.service_visit):null,savedTransfer:item?.transfer || null,previousBindings:item?.previous_bindings?structuredClone(item.previous_bindings):null,cancelled:item?.cancelled,refunds:item?.refunds?structuredClone(item.refunds):null,transfers:dayTransfers(day,catalog),context:transferContext(day,catalog)};
     const ticket=editing;form.reset();kindField.value=kind;kindField.disabled=!!item;
     editing.offerContext=quote || item?.source?.offer?offerContext(day,read().itinerary?.people || 1):null;
     const select=field('poi');select.replaceChildren();option(select,'','Без остановки');
@@ -108,6 +113,34 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     updateBinding();if(!rows.length && binding.value==='place' && !editing.source?.offer)editorStatus('Снимки цен пока не открылись. Свою оценку можно сохранить.');
   }
   function close() {editing=null;dialog.close();lastFocus?.isConnected && lastFocus.focus({preventScroll:true});}
+  async function recordService(visitId){
+    if(servicePending)return {message:'Расход уже сохраняется.'};
+    const trip=read(),day=selectedDay(trip),existing=linkedServiceExpense(day,visitId);
+    if(existing){await open(existing.kind,existing.item.id);return {message:'Открыта прежняя запись расхода.'};}
+    servicePending=true;const guard=JSON.stringify(trip);let issue='';
+    status('Сохраняем расход…');
+    try{
+      const engine=await loadScheduler(base),visit=day.service_visits?.find(v=>v?.id===visitId);
+      if(!visit)throw Error('Посещение изменилось. Откройте его заново.');
+      const prepared=engine.serviceTrip(visit);
+      const result=await commit(current=>{
+        const next=recordServiceExpense(current,visitId,prepared,guard);
+        if(next===current){issue='День или посещение изменились. Откройте расход заново — свежий выбор на месте.';return current;}
+        try{engine.budget(budgetInput(next));}catch{issue='Расчёт расходов нужно проверить. Ваши суммы и посещения на месте.';return current;}
+        return next;
+      },'Посещение добавлено в расходы дня.');
+      const message=result?.conflict?'Поездка изменилась в другой вкладке. Откройте посещение заново.':issue|| (result?.saved===false?'Расход остался в этой вкладке. Браузер не разрешил сохранение.':'Посещение добавлено в расходы дня. Оплату можно записать отдельно.');
+      status(message);
+      if(!issue&&!result?.conflict){
+        for(let parent=panel.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
+        $('#expense-categories').open=true;
+        const linked=linkedServiceExpense(selectedDay(read()),visitId),card=linked&&[...panel.querySelectorAll('[data-expense-id]')].find(v=>v.dataset.expenseId===linked.item.id&&v.matches('article'));
+        if(card){card.tabIndex=-1;card.scrollIntoView({block:'center',behavior:'instant'});card.focus({preventScroll:true});}
+      }
+      return {message};
+    }catch{const message='Расход пока не добавлен. Проверьте дату и выбранный тариф; ваш день на месте.';status(message);return {message};}
+    finally{servicePending=false;}
+  }
   dialog.querySelector('.expense-close').addEventListener('click',close);dialog.querySelector('.expense-cancel').addEventListener('click',close);
   dialog.addEventListener('cancel',event=>{event.preventDefault();close();});window.addEventListener('godune:memory-cleared',()=>{if(dialog.open)close();});
   field('poi').addEventListener('change',()=>{editing.source=null;sourceFields(null);fillObservations();});
@@ -141,7 +174,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
       const linked=values.get('binding')==='transfer',transfer=linked && values.get('transfer')!==''?chosenTransfer():null;
       if(linked && !transfer)throw Error('Выберите, за какой переезд платите. Общий расход можно сохранить для дня целиком.');
       ticket.checkTransfer=linked;
-      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('binding')==='place'?values.get('poi') || null:null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source,...(transfer?{transfer:structuredClone(transfer)}:{}),...(ticket.previousBindings?{previous_bindings:ticket.previousBindings}:{}),...(ticket.cancelled!==undefined?{cancelled:ticket.cancelled}:{}),...(ticket.refunds?{refunds:ticket.refunds}:{})};
+      const item={id:ticket.id,label:String(values.get('label')).trim(),poi:values.get('binding')==='place'?values.get('poi') || null:null,amount:parseKopecks(values.get('amount')),quantity:Number(values.get('quantity')),scope:values.get('scope'),paid:parseKopecks(values.get('paid')),source,...(ticket.serviceVisit?{service_visit:ticket.serviceVisit}:{}),...(transfer?{transfer:structuredClone(transfer)}:{}),...(ticket.previousBindings?{previous_bindings:ticket.previousBindings}:{}),...(ticket.cancelled!==undefined?{cancelled:ticket.cancelled}:{}),...(ticket.refunds?{refunds:ticket.refunds}:{})};
       if(!validExpense(item))throw Error('Проверьте название, цену, источник и количество.');
       const error=await guardedChange(ticket.day,ticket.kind,ticket.before,costs=>putExpense(costs,ticket.kind,item),'Расход сохранён в этом дне.',ticket);
       if(error)editorStatus(error);else {$('#expense-categories').open=true;close();}
@@ -209,6 +242,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
         card.dataset.cancelled=String(!!item.cancelled);card.append(el('h6',item.label));if(item.cancelled)card.append(el('span','Убран из плана · деньги сохранены','expense-cancelled-badge'));
         const place=catalog.poi.find(p=>p.slug===item.poi);
         if(item.poi)card.append(el('p',`${place?.name || 'Место вне каталога'}${day.places.includes(item.poi)?'':' · вне остановок этого дня'}`,'expense-place'));
+        if(item.service_visit){const link=el('p','Проверяем связь с посещением…','expense-service-link');link.dataset.serviceExpenseLink=item.id;card.append(link);}
         if(item.transfer) {
           const state=transferStatus(item.transfer,day,catalog),link=el('div',undefined,'expense-transfer-link');link.dataset.current=String(state.current);
           link.append(el('span',transferRole(item.transfer),'expense-transfer-role'),el('strong',transferTitle(item.transfer)),el('p',`${TRAVEL_MODES[item.transfer.leg_mode]} · ${dateLabel(item.transfer.date)}`),el('p',state.reason));card.append(link);
@@ -241,16 +275,30 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
   }
   function totals(budget) {
     const day=budget.days.find(row=>row.id===selectedDay(read()).id);if(!day)return;
-    $('#expense-planned').textContent=rubles(day.known);$('#expense-plan-note').textContent=day.total===null?`Известная часть · неизвестных сумм: ${day.unknown}`:`Весь день · вас ${day.people ?? budget.people}`;
-    $('#expense-paid').textContent=rubles(day.paid_known);$('#expense-paid-note').textContent=day.paid_total===null?`Записанная часть · не заполнено: ${day.paid_unknown}`:'Все расходы этого дня записаны';
-    $('#expense-refunded').textContent=rubles(day.refunded);$('#expense-net').textContent=rubles(day.net_known);$('#expense-net-note').textContent=day.net_known<0?'Возвратов больше записанных оплат. Проверьте, все ли оплаты внесены.':day.net_total===null?'Записанная часть · не все оплаты заполнены':'Оплаты за вычетом полученных возвратов';
-    $('#expense-difference').textContent=day.difference_overflow?'Разница выходит за пределы точного расчёта. Суммы сохранены.':day.difference===null?'Разница появится, когда план и оплаты будут заполнены целиком. Полученные возвраты уже вычтены.':day.difference===0?'Потратили ровно столько, сколько планировали.':`${day.difference>0?'Больше':'Меньше'} плана на ${rubles(Math.abs(day.difference))}.`;
-    for(const category of day.categories) {
-      const node=panel.querySelector(`[data-expense-total="${category.kind}"]`);if(node)node.textContent=`План: ${rubles(category.known)}${category.total===null?' · часть суммы':''}. Оплачено: ${category.paid_unknown>0 && category.paid_known===0?'ещё не записано':`${rubles(category.paid_known)}${category.paid_total===null?' · часть суммы':''}`}. Вернулось: ${rubles(category.refunded)}. После возвратов: ${rubles(category.net_known)}${category.net_total===null?' · часть суммы':''}.${category.net_known<0?' Возвратов больше записанных оплат — проверьте оплаты.':''}`;
+    const plan=budget.forecast?.days.find(row=>row.id===day.id)||day;
+    const contexts={current:'Связано с посещением',date_missing:'Дата не выбрана — цену нужно проверить',date_changed:'Дата изменилась — цену нужно проверить',party_changed:'Состав группы изменился — цену нужно проверить',selection_changed:'Посещение изменилось — цену нужно проверить',visit_removed:'Посещение убрано из дня. Запись расходов сохранена',unsupported:'Выбор посещения нужно проверить. Записанные суммы сохранены'};
+    for(const record of budget.service_expenses?.find(v=>v.id===day.id)?.records||[]){
+      const link=[...panel.querySelectorAll('[data-service-expense-link]')].find(v=>v.dataset.serviceExpenseLink===record.item_id);
+      if(link){link.textContent=contexts[record.context]||contexts.unsupported;link.dataset.context=record.context;
+        if(record.deposit_total!=null&&record.deposit_total>0)link.append(el('br'),el('span',`Залог по сохранённому выбору: ${rubles(record.deposit_total)} · отдельно от расходов`));}
     }
+    $('#expense-planned').textContent=rubles(plan.known);$('#expense-plan-note').textContent=plan.total===null?(budget.forecast?'Известная часть · есть суммы, которые нужно уточнить':`Известная часть · неизвестных сумм: ${plan.unknown}`):`Весь день · вас ${plan.people ?? budget.people}`;
+    $('#expense-paid').textContent=rubles(day.paid_known);$('#expense-paid-note').textContent=day.paid_total===null?`Записанная часть · не заполнено: ${day.paid_unknown}`:plan.services?.some(row=>['automatic','needs_info'].includes(row.basis))?'Записанные оплаты · цена услуги не означает оплату':'Все расходы этого дня записаны';
+    $('#expense-refunded').textContent=rubles(day.refunded);$('#expense-net').textContent=rubles(day.net_known);$('#expense-net-note').textContent=day.net_known<0?'Возвратов больше записанных оплат. Проверьте, все ли оплаты внесены.':day.net_total===null?'Записанная часть · не все оплаты заполнены':'Оплаты за вычетом полученных возвратов';
+    $('#expense-difference').textContent=plan.difference_overflow?'Разница выходит за пределы точного расчёта. Суммы сохранены.':plan.difference===null?'Разница появится, когда план и оплаты будут заполнены целиком. Полученные возвраты уже вычтены.':plan.difference===0?'Потратили ровно столько, сколько планировали.':`${plan.difference>0?'Больше':'Меньше'} плана на ${rubles(Math.abs(plan.difference))}.`;
+    for(const category of day.categories) {
+      const projection=plan.categories.find(row=>row.kind===category.kind),node=panel.querySelector(`[data-expense-total="${category.kind}"]`);if(node)node.textContent=`План: ${rubles(projection.known)}${projection.total===null?' · часть суммы':''}. Оплачено: ${category.paid_unknown>0 && category.paid_known===0?'ещё не записано':`${rubles(category.paid_known)}${category.paid_total===null?' · часть суммы':''}`}. Вернулось: ${rubles(category.refunded)}. После возвратов: ${rubles(category.net_known)}${category.net_total===null?' · часть суммы':''}.${category.net_known<0?' Возвратов больше записанных оплат — проверьте оплаты.':''}`;
+    }
+    services.hidden=!plan.services?.length;
+    $('#expense-service-list').replaceChildren(...(plan.services||[]).map(row=>{
+      const visit=selectedDay(read()).service_visits?.find?.(v=>v.id===row.visit_id),li=el('li');li.dataset.serviceForecast=row.visit_id||'';
+      const text=row.basis==='recorded'?'Учтено в записанном расходе':row.basis==='cancelled'?'Расход отменён':row.basis==='category_estimate'?'Учтено в общей оценке категории':row.basis==='needs_info'?(contexts[row.context]||contexts.unsupported):row.added_unknown?`В прогнозе не меньше ${rubles(row.added_known)} · полную цену нужно уточнить`:`В прогнозе ${rubles(row.added_known)}`;
+      li.append(el('strong',visit?.name||'Сохранённое посещение'),el('p',text,'journey-note'));return li;
+    }));
+    $('#expense-service-deposit').textContent=plan.deposit?(plan.deposit.total===null?`${plan.deposit.known?`Известные залоги: ${rubles(plan.deposit.known)}. `:''}Не все залоги уточнены. Они не входят в расходы.`:plan.deposit.known?`Залоги: ${rubles(plan.deposit.known)} · отдельно от расходов.`:'По выбранным тарифам залог не нужен.') : '';
     panel.dataset.expensesReady='true';
   }
-  function pending(){panel.dataset.expensesReady='false';$('#expense-planned').textContent='Считаем…';$('#expense-paid').textContent='Считаем…';$('#expense-refunded').textContent='Считаем…';$('#expense-net').textContent='Считаем…';$('#expense-net-note').textContent='';$('#expense-plan-note').textContent='';$('#expense-paid-note').textContent='';$('#expense-difference').textContent='';}
-  function error(){panel.dataset.expensesReady='error';$('#expense-planned').textContent='Расчёт нужно проверить';$('#expense-paid').textContent='Суммы сохранены';$('#expense-refunded').textContent='Суммы сохранены';$('#expense-net').textContent='Суммы сохранены';$('#expense-net-note').textContent='';$('#expense-plan-note').textContent='Проверьте суммы, количество и число путешественников.';$('#expense-paid-note').textContent='';$('#expense-difference').textContent='';panel.querySelectorAll('[data-expense-total]').forEach(node=>{node.textContent='Расчёт пока не готов';});}
-  return {render,totals,pending,error};
+  function pending(){services.hidden=true;panel.dataset.expensesReady='false';$('#expense-planned').textContent='Считаем…';$('#expense-paid').textContent='Считаем…';$('#expense-refunded').textContent='Считаем…';$('#expense-net').textContent='Считаем…';$('#expense-net-note').textContent='';$('#expense-plan-note').textContent='';$('#expense-paid-note').textContent='';$('#expense-difference').textContent='';}
+  function error(){services.hidden=true;panel.dataset.expensesReady='error';$('#expense-planned').textContent='Расчёт нужно проверить';$('#expense-paid').textContent='Суммы сохранены';$('#expense-refunded').textContent='Суммы сохранены';$('#expense-net').textContent='Суммы сохранены';$('#expense-net-note').textContent='';$('#expense-plan-note').textContent='Проверьте суммы, количество и число путешественников.';$('#expense-paid-note').textContent='';$('#expense-difference').textContent='';panel.querySelectorAll('[data-expense-total]').forEach(node=>{node.textContent='Расчёт пока не готов';});panel.querySelectorAll('[data-service-expense-link]').forEach(node=>{node.textContent='Выбор посещения нужно проверить. Записанные суммы сохранены.';});}
+  return {render,totals,pending,error,recordService};
 }

@@ -1,0 +1,35 @@
+{
+  "categories": {},
+  "areas": {},
+  "branches": {},
+  "offers": {},
+  "aliases": {},
+  "calendars": {},
+  "access": {
+    "branch/branch:poi:39c6ba56-93ca-51e4-9ee4-96003017311b/arrival": [
+      "arrival:parking-honey-bridge"
+    ],
+    "branch/branch:poi:3a46649f-4513-5fe1-8d3d-53adfd4efec6/arrival": [
+      "arrival:parking-efa"
+    ],
+    "branch/branch:poi:6a888640-8b85-5f2e-bfbb-fd0c48ac817b/arrival": [
+      "arrival:parking-svetlogorsk-2"
+    ],
+    "branch/branch:poi:79687218-a2dd-586f-a16f-0d89dfa5a234/arrival": [
+      "arrival:parking-zelenogradsk-2"
+    ],
+    "branch/branch:poi:8b70dae5-d082-5363-a894-7e5e2cc1a0b8/arrival": [
+      "arrival:parking-tancuyushchiy-les"
+    ],
+    "branch/branch:poi:b100ba05-d048-5fe0-a605-c563afd7c6a9/arrival": [
+      "arrival:parking-amalienau"
+    ],
+    "branch/branch:poi:be1267ac-1eb3-58a0-b7c8-f0c693f5b348/arrival": [
+      "arrival:parking-efa"
+    ],
+    "branch/branch:poi:e00243c1-ec39-5c32-be71-534fa75de14a/arrival": [
+      "arrival:parking-royal-gates"
+    ]
+  },
+  "conditions": {}
+}

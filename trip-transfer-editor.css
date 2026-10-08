@@ -1,0 +1,20 @@
+.transfer-dialog{--tr-ink:var(--ink,#152c3b);--tr-paper:var(--paper,#faf7f2);--tr-line:var(--line,#d9d5ce);width:min(580px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:24px;border:1px solid var(--tr-line);border-radius:20px;background:var(--tr-paper);color:var(--tr-ink);overflow:auto;box-sizing:border-box}
+.transfer-dialog::backdrop{background:rgb(12 26 34 / .45)}
+.transfer-heading{display:flex;align-items:flex-start;gap:12px;justify-content:space-between}.transfer-heading h2{font:400 30px/1.12 var(--serif,serif);margin:0 0 20px}.transfer-close{font-size:14px;flex-shrink:0}
+.transfer-dialog button{min-height:44px;border-radius:9px;padding:10px 14px;font:600 15px/1.35 var(--sans,sans-serif);color:var(--tr-ink);border:1px solid var(--tr-line);background:transparent;white-space:normal;cursor:pointer}.transfer-dialog button:disabled{opacity:.55;cursor:default}
+.transfer-field{display:grid;gap:7px;margin:14px 0;font:400 15px/1.45 var(--sans,sans-serif);min-width:0}.transfer-field input,.transfer-field select,.transfer-field textarea{font:400 16px/1.4 var(--sans,sans-serif);min-height:46px;min-width:0;width:100%;max-width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid var(--tr-line);border-radius:9px;color:var(--tr-ink);background:var(--tr-paper)}
+.transfer-date{color:var(--muted,#567084);font-size:16px}.transfer-tabs{display:flex;gap:4px;padding:4px;background:var(--sand,#ece8e1);border-radius:10px;margin:18px 0}.transfer-tabs button{flex:1;border:0}.transfer-tabs [aria-pressed=true]{background:var(--sea,#bedce9)}
+.transfer-leg{border:1px solid var(--tr-line);border-radius:13px;padding:16px;margin:12px 0}.transfer-leg h3{font:400 24px/1.2 var(--serif,serif);margin:0 0 12px}.transfer-source{font:400 13px/1.5 var(--sans,sans-serif);color:var(--muted,#567084);overflow-wrap:anywhere}.transfer-source span{display:block;margin-top:8px}
+.transfer-preview,.transfer-feedback,.transfer-receipt{font:400 15px/1.5 var(--sans,sans-serif);overflow-wrap:anywhere}.transfer-preview{padding:14px;border-radius:10px;background:var(--sea-soft,#eaf3f7)}.transfer-preview[data-state=conflict]{border:1px solid var(--wave-amber,#ce963f)}.transfer-feedback:empty,.transfer-receipt:empty{display:none}
+.transfer-actions{display:grid;gap:9px;margin-top:20px}.transfer-dialog .transfer-primary{background:var(--wave-amber,#ce963f);color:#152c3b;border-color:transparent}.transfer-dialog :focus-visible{outline:2px solid var(--sea-line,#517d97);outline-offset:3px}
+@media(max-width:400px){.transfer-dialog{padding:18px}.transfer-heading h2{font-size:26px}.transfer-heading{gap:4px}.transfer-close{padding:6px!important;font-size:13px!important}}
+
+html[data-theme=night] .transfer-dialog{--sea:#33586d;--sea-soft:#193446;--sea-line:#99bacd}
+
+.transfer-boundaries{display:grid;gap:10px;margin:0 0 20px;padding:0 0 20px;border-bottom:1px solid var(--tr-line)}
+.transfer-boundaries h3{margin:0;font-size:1.15rem}
+.transfer-boundary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:12px;border:1px solid var(--tr-line);border-radius:12px}
+.transfer-boundary>div{display:grid;gap:4px;min-width:0;overflow-wrap:anywhere}
+.transfer-boundary span,.transfer-boundary small{color:var(--muted)}
+.transfer-boundary button:last-child{grid-column:2;font-size:.85rem;padding:5px 10px}
+.transfer-boundary button{min-height:44px}

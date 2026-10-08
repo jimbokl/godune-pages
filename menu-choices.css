@@ -1,0 +1,25 @@
+.trip-menu-choices{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;color:var(--ink)}
+.trip-menu-choices[hidden],.menu-choice-edit[hidden]{display:none}
+.trip-menu-choices h4{font:400 27px/1.25 var(--serif);margin:0 0 16px}
+.trip-menu-choice-list{list-style:none;margin:0;padding:0}
+.trip-menu-choice-list>li{padding:18px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.trip-menu-choice-list>li>strong{font:600 16px/1.5 var(--sans)}
+.trip-menu-choices p{font:14px/1.6 var(--sans);margin:5px 0}
+.trip-menu-choices .menu-choice-detail,.trip-menu-choices .menu-choice-price{color:var(--muted);font-size:13px}
+.menu-choice-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.menu-choice-button{background:var(--sea);color:#183347;border:1px solid var(--sea-line);border-radius:4px;padding:12px 18px;min-height:44px;font:600 14px/1.5 var(--sans);cursor:pointer}
+.menu-choice-link{background:transparent;color:var(--sea-ink);border:0;padding:10px 0;min-height:44px;font:14px/1.5 var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.menu-choice-quantity{display:flex;gap:14px;align-items:center;color:var(--ink);font:14px/1.5 var(--sans)}
+.menu-choice-quantity input{width:88px;min-height:44px;border:1px solid var(--line);border-radius:4px;padding:9px 12px;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans)}
+.menu-choice-edit{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.menu-choice-form{grid-column:1/-1;min-width:0;width:100%;margin-top:4px;padding-top:8px;border-top:1px solid var(--line)}
+.menu-choice-form .menu-choice-destination{font:500 13px/1.6 var(--sans);color:var(--sea-ink);margin:8px 0 14px}
+.menu-choice-form .menu-choice-actions{margin-top:12px}
+.menu-choice-form .menu-choice-button{flex:1}
+.menu-choice-feedback{font:13px/1.65 var(--sans);color:var(--muted);overflow-wrap:anywhere}
+.menu-choice-feedback a{display:block;color:var(--sea-ink);min-height:44px;padding-top:10px}
+.dining-menu .food-menu-items li:has(.menu-choice-add){display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start}
+.menu-choice-add{grid-column:1/-1;justify-self:start;min-height:44px;border:0;background:transparent;color:var(--sea-ink);font:500 13px/1.6 var(--sans);cursor:pointer;padding:7px 0}
+:is(.trip-menu-choices,.menu-choice-form,.dining-menu) :is(button,input,a):focus-visible{outline:2px solid var(--sea-ink);outline-offset:4px}
+:is(.trip-menu-choices,.menu-choice-form) button:disabled{opacity:.6;cursor:wait}
+@media(max-width:650px){.menu-choice-add{font-size:15px}.menu-choice-form .menu-choice-button{font-size:16px}.trip-menu-choices h4{font-size:25px}}

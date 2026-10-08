@@ -3,7 +3,7 @@
 const escape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 export const guideHash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 export function overviewSvg(day,land,water={routes:{}}) {
-  const points=day.stops.filter(p=>Number.isFinite(p.lon)&&Number.isFinite(p.lat));
+  const points=(day.entries||day.stops).filter(p=>Number.isFinite(p.lon)&&Number.isFinite(p.lat));
   if(!points.length)return null;
   // Include the actual approach and return roads. Framing only visits crops a
   // long car journey to a few metres around the dune and hides the homeward leg.
@@ -24,7 +24,7 @@ export function overviewSvg(day,land,water={routes:{}}) {
     return `<path fill="#c8dde8" stroke="#93b5c8" stroke-width="1.5" fill-rule="evenodd" d="${polys.map(poly=>poly.map(r=>path(r)+'Z').join('')).join('')}"/>`;
   }).join('');
   const roads=(day.roads?.features || []).filter(f=>f.geometry?.type==='LineString').map(f=>`<path fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" d="${path(f.geometry.coordinates)}"/><path fill="none" stroke="#4b7d9d" stroke-width="6" stroke-linecap="round" d="${path(f.geometry.coordinates)}"/>`).join('');
-  const markers=points.map((p,i)=>{const [x,y]=xy([p.lon,p.lat]);return `<g><circle cx="${x}" cy="${y}" r="25" fill="#fff" stroke="#365e78" stroke-width="3"/><text x="${x}" y="${y+8}" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#233d4b">${i+1}</text><title>${escape(p.name)}</title></g>`;}).join('');
+  const markers=points.map((p,i)=>{const [x,y]=xy([p.lon,p.lat]);return `<g><circle cx="${x}" cy="${y}" r="25" fill="#fff" stroke="#365e78" stroke-width="3"/><text x="${x}" y="${y+8}" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#233d4b">${p.number||i+1}</text><title>${escape(p.name)}</title></g>`;}).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="1000" height="700" fill="#c8dde8"/>${ground}${rivers}${roads}${markers}<path d="M948 65 L960 28 L972 65" fill="#233d4b"/><text x="960" y="89" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#233d4b">С</text></svg>`;
 }
 async function raster(bytes,type,{signal,maxWidth=1000,jpeg=false}={}) {
@@ -60,6 +60,20 @@ export async function collectGuideMedia(snapshot,base,{signal,onProgress=()=>{}}
     if(point.photo){try{const photo=await read(point.photo);media.photos[point.id]={...await raster(photo.bytes,photo.type || 'image/jpeg',{signal,jpeg:true,maxWidth:1100}),path:point.photo,sha256:await guideHash(photo.bytes)};}
       catch(error){signal?.throwIfAborted();media.warnings.push(`Фото «${point.name}» не загрузилось. Карта и текст сохранены.`);}}
   }
-  for(const day of snapshot.days){const svg=overviewSvg(day,land,water);if(svg)media.overview[day.id]=await raster(new TextEncoder().encode(svg),'image/svg+xml',{signal});}
+  for(const day of snapshot.days){
+    for(const service of day.services||[]){
+      if(service.rental_points?.length){
+        onProgress(`Готовим карту получения и возврата: ${service.name}…`);
+        const svg=overviewSvg({stops:service.rental_points.map((p,i)=>({...p,name:`${p.label}: ${p.name}`,number:i+1}))},land,water);
+        const raw=new TextEncoder().encode(svg);media.maps[service.key+':rental']={...await raster(raw,'image/svg+xml',{signal}),path:'generated:rental-points',sha256:await guideHash(raw)};
+        continue;
+      }
+      if(!service.point)continue;
+      onProgress(`Готовим карту: ${service.name}…`);
+      const entry=day.entries.find(v=>v.kind==='service'&&v.key===service.key),svg=overviewSvg({stops:[{...service.point,name:service.name,number:entry.number}]},land,water);
+      const raw=new TextEncoder().encode(svg);media.maps[service.key]={...await raster(raw,'image/svg+xml',{signal}),path:'generated:service-point',sha256:await guideHash(raw)};
+    }
+    const svg=overviewSvg(day,land,water);if(svg)media.overview[day.id]=await raster(new TextEncoder().encode(svg),'image/svg+xml',{signal});
+  }
   return media;
 }

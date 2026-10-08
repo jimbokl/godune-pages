@@ -1,4 +1,6 @@
-import {selectedDay} from './trip-days-state.mjs?v=23';
+import {enhanceWaveStops} from './wave-stop-ui.mjs?v=4';
+import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=3';
+import {selectedDay} from './trip-days-state.mjs?v=24';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=8';
@@ -7,7 +9,7 @@ import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2'
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=13';
 import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=17';
-import {loadScheduler} from './trip-scheduler.mjs?v=22';
+import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=12';
@@ -58,6 +60,14 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   const progressMount=document.createElement('details');progressMount.id='day-progress';progressMount.className='day-progress day-timing-advice';progressMount.hidden=true;
   $('#trip-plan-summary').after(progressMount);
   const progress=initDayProgress({mount:progressMount,commit,feedback:$('#trip-plan-feedback')});
+  if(compact){
+    const calculation=document.createElement('details');calculation.className='wave-calculations';
+    const label=document.createElement('summary');label.textContent='Время, дорога и запас';calculation.append(label);
+    for(const node of [$('#trip-timing-settings'),$('#trip-plan-summary'),progressMount,adviceMount,flexMount,section.querySelector('.day-light-details')])if(node)calculation.append(node);
+    $('#trip-plan-body').prepend(calculation);
+    const update=()=>{const state=$('#trip-plan-summary').dataset.planStatus;label.textContent=state==='conflict'||state==='overrun'?'Проверьте время — день не складывается':state==='incomplete'?'Расчёт дня — не хватает данных':state==='needs_check'?'Расчёт дня — есть что уточнить':state==='error'?'Расчёт дня не открылся':'Время, дорога и запас';calculation.dataset.planStatus=state||'';if(['conflict','overrun','error'].includes(state))calculation.open=true;};
+    new MutationObserver(update).observe($('#trip-plan-summary'),{attributes:true,childList:true,subtree:true});
+  }
   bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
   let opened=compact, sequence=0;
   function input(form, caption, name, type, value, stop) {
@@ -307,7 +317,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       applyButton(form);li.append(details);return li;
     }),...rail.after.map(journeyRow));
     if(observed){const history=document.createElement('details');history.className='day-disclosure';history.dataset.progressHistory='true';const title=document.createElement('summary');title.textContent=`Позади: ${observed.completed.length}`;history.append(title);const list=document.createElement('ul');for(const id of observed.completed){const item=document.createElement('li');item.textContent=catalog.poi.find(p=>p.slug===id)?.name || id;list.append(item);}history.append(list);$('#trip-plan-stops').before(history);}
+    if(compact){enhanceWaveStops({root:$('#trip-plan-stops'),trip,catalog,base,read,commit});waveMenu?.render(trip);}
   }
+  const waveMenu=compact?initWaveMenuPicker({root:$('#trip-plan-stops'),trip:read(),catalog,base,read,commit}):null;
   async function render() {
     advice.reset();
     flex.reset();kosaFlex.reset();progress.reset();section.querySelector('[data-progress-history]')?.remove();
@@ -414,7 +426,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     commit(current=>updateSchedule(current,'window',null,id),'Вернулись к расписанию места.');
   });
   section.addEventListener('submit',async event=>{
-    if(event.target.closest('[data-transport-edit]') || event.target.matches('.day-flex-form'))return;
+    if(!event.target.matches('#trip-day-settings, [data-plan-edit]'))return;
     event.preventDefault();const form=event.target, values=new FormData(form), id=form.dataset.planEdit;
     const feedback=$('#trip-plan-feedback');feedback.textContent='';
     let fields;

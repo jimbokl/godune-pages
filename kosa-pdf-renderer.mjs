@@ -28,7 +28,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   let page,y;const bodySize=phone?10.5:12;
   function start(){
     page=doc.addPage([w,h]);page.drawRectangle({x:0,y:0,width:w,height:h,color:paper});
-    page.drawText('МАРШРУТЫ БАЛТИКИ',{x:margin,y:h-margin-9,font:ui,size:8,color:muted});
+    page.drawText('БАЛТИЙСКИЕ ДЮНЫ',{x:margin,y:h-margin-9,font:ui,size:8,color:muted});
     y=h-margin-36;return page;
   }
   function lines(text,font,size,max=width){
@@ -140,7 +140,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
   });
   // Sources remain a part of the artifact; personal input is never uploaded.
   await doc.attach(snapshotBytes,'plan.json',{mimeType:'application/json',description:'Снимок личного плана дня и версии встроенных карт'});
-  doc.setTitle('Куршская коса · '+snapshot.date+' · ваш день у дюн');doc.setAuthor('Маршруты Балтики · godune.ru');
+  doc.setTitle('Куршская коса · '+snapshot.date+' · ваш день у дюн');doc.setAuthor('Балтийские дюны · godune.ru');
   doc.setSubject('Личный план по датированной таблице. '+snapshotSha);
   signal?.throwIfAborted();onProgress('Готовим файл для сохранения…');
   const bytes=await doc.save();

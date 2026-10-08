@@ -1,7 +1,7 @@
-import {collectTripGuide} from './trip-guide-engine.mjs?v=18';
-import {collectGuideMedia} from './trip-guide-media.mjs?v=2';
-import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=16';
-import {loadScheduler} from './trip-scheduler.mjs?v=22';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=23';
+import {collectGuideMedia} from './trip-guide-media.mjs?v=3';
+import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=19';
+import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
 import {savedKosaJourney} from './day-kosa-journey.mjs?v=13';
 export async function downloadPersonalGuide({trip,catalog,base,scope,format,signal,onProgress,stillCurrent}) {

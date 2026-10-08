@@ -1,5 +1,5 @@
 import {transitTable} from './transport-day.mjs?v=3';
-import {loadScheduler} from './trip-scheduler.mjs?v=22';
+import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=24';
 import {createTripFile} from './trip-file.mjs?v=28';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=22';
@@ -173,7 +173,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=22');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=23');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');

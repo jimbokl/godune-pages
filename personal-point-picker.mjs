@@ -1,5 +1,5 @@
 import {bindMapTheme} from './map-theme.mjs?v=2';
-import {regionMapStyle} from './region-map.mjs?v=6';
+import {regionMapStyle} from './region-map.mjs?v=7';
 import {isPersonalPoint} from './personal-points.mjs?v=3';
 import {addressPicker} from './address-picker.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=10';

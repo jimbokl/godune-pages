@@ -6,6 +6,10 @@ import {validDayWave} from './day-wave.mjs?v=2';
 import {dayPointIds} from './day-points.mjs?v=1';
 import {validParty,dayPeople,partyWithCount} from './trip-party.mjs?v=1';
 import {validPreferences,hasPreferences} from './day-preferences.mjs?v=5';
+import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contract.mjs?v=1';
+import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=1';
+import {hasTransferConnections} from './trip-transfer-connections-contract.mjs';
+import {hasMenuChoices,validMenuChoices,menuChoiceRows} from './trip-menu-choices-contract.mjs';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
@@ -14,6 +18,7 @@ export function validJourney(journey) {
   const ids=new Set();
   return journey.days.every(day=>{
     if(!object(day))return false;
+    if(!validMenuChoices(day))return false;
     if(Object.hasOwn(day,'visited')&&(!Array.isArray(day.visited)||!day.visited.every(id=>typeof id==='string')||new Set(day.visited).size!==day.visited.length))return false;
     if(Object.hasOwn(day,'bookings')&&!validBookings(day.bookings))return false;
     if(Object.hasOwn(day,'wave')&&!validDayWave(day.wave))return false;
@@ -39,10 +44,11 @@ const snapshot=(trip,id='day-1')=>({id,date:trip.date,places:[...trip.places],..
 export function cleanJourney(value,trip,catalog) {
   if(!validJourney(value))return null;
   const known=new Set(catalog.poi.map(p=>p.slug));
-  const days=value.days.map(day=>{
+  const days=value.days.map(saved=>{
+    const day=structuredClone(saved);
     const places=day.places.filter(id=>known.has(id)), schedule=cleanSchedule(day.schedule,places);
     const bookings=day.bookings?.map(row=>{const missingLocation=typeof row.location==='string'&&!known.has(row.location),missingTarget=row.target&&!known.has(row.target);return {...structuredClone(row),location:missingLocation?null:row.location,target:missingTarget?null:row.target,binding:missingLocation||missingTarget?'none':row.binding};});
-    return {...day,...(day.preferences?{preferences:structuredClone(day.preferences)}:{}),...(day.party?{party:structuredClone(day.party)}:{}),...(day.wave?{wave:structuredClone(day.wave)}:{}),...(day.visited?{visited:dayPointIds({...day,places}).filter(id=>known.has(id)&&day.visited.includes(id))}:{}),...(bookings?{bookings}:{}),places,...(schedule?{schedule}:{}),start_at:isPersonalPoint(day.start_at)?structuredClone(day.start_at):known.has(day.start_at)?day.start_at:null,night_at:isPersonalPoint(day.night_at)?structuredClone(day.night_at):known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
+    return {...day,...(Object.hasOwn(day,'service_visits')?{service_visits:structuredClone(day.service_visits)}:{}),...(day.preferences?{preferences:structuredClone(day.preferences)}:{}),...(day.party?{party:structuredClone(day.party)}:{}),...(day.wave?{wave:structuredClone(day.wave)}:{}),...(day.visited?{visited:dayPointIds({...day,places}).filter(id=>known.has(id)&&day.visited.includes(id))}:{}),...(bookings?{bookings}:{}),places,...(schedule?{schedule}:{}),start_at:isPersonalPoint(day.start_at)?structuredClone(day.start_at):known.has(day.start_at)?day.start_at:null,night_at:isPersonalPoint(day.night_at)?structuredClone(day.night_at):known.has(day.night_at)?day.night_at:null,costs:structuredClone(day.costs)};
   });
   const selected=days.find(day=>day.id===value.active);
   selected.date=trip.date;selected.places=[...trip.places];delete selected.schedule;
@@ -55,7 +61,7 @@ export const selectedDay=trip=>trip.itinerary?.days.find(day=>day.id===trip.itin
 export function dayHasContent(trip) {
   const day=selectedDay(trip);
   if(day.places.length || day.start_at || day.night_at || day.note?.trim() || day.wave || day.party || hasPreferences(day.preferences)
-    || Object.keys(day.costs || {}).length || day.bookings?.length || day.visited?.length)return true;
+    || Object.keys(day.costs || {}).length || day.bookings?.length || day.visited?.length || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day))return true;
   const schedule=day.schedule || trip.schedule;if(!schedule)return false;
   const stable=value=>JSON.stringify(value,(_,row)=>object(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
   const {mode,...settings}=schedule;
@@ -63,7 +69,7 @@ export function dayHasContent(trip) {
 }
 export const tripHasPlaces=trip=>journeyDays(trip).some(day=>dayPointIds(day).length) || !!trip.routes.length;
 export const tripHasExpenses=trip=>journeyDays(trip).some(day=>Object.values(day.costs).some(row=>row.items?.length || row.amount!==null && row.amount!==undefined || row.paid!==null && row.paid!==undefined));
-export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.bookings?.length || day.schedule?.rail || hasPreferences(day.preferences));
+export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.start_at || day.night_at || day.bookings?.length || day.schedule?.rail || hasPreferences(day.preferences) || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day));
 export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...dayPointIds(day),day.start_at,day.night_at,...(day.bookings||[]).flatMap(row=>[row.location,row.target])]).filter(id=>typeof id==='string'))];
 export function ensureJourney(trip) {
   if(trip.itinerary)return structuredClone(trip);
@@ -86,7 +92,7 @@ export function nextDate(value) {
 }
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
-  if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(day.schedule?.rail)day.schedule.rail.date=null;}
+  if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(Object.hasOwn(day,'service_visits'))day.service_visits=copiedServiceVisits(day.service_visits);if(day.schedule?.rail)day.schedule.rail.date=null;}
   if(day.schedule)delete day.schedule.progress;
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=effectiveBookingDay(current).night_at;day.night_at=effectiveBookingDay(current).night_at;if(current.party)day.party=structuredClone(current.party);if(current.preferences)day.preferences=structuredClone(current.preferences);}
@@ -107,6 +113,11 @@ export function movePlaceToDay(trip,id,target,copy=false) {
     if(setting){destination.schedule ||= defaultSchedule();destination.schedule.stops[id]=structuredClone(setting);}
   }
   if(!copy)next.places=next.places.filter(value=>value!==id);
+  const source=selectedDay(next),choices=menuChoiceRows(source).filter(v=>v.place?.poi_id===id);
+  if(choices.length){
+    destination.menu_choices=[...menuChoiceRows(destination),...structuredClone(choices).filter(v=>!menuChoiceRows(destination).some(old=>old.menu_item_id===v.menu_item_id))];
+    if(!copy)source.menu_choices=menuChoiceRows(source).filter(v=>v.place?.poi_id!==id);
+  }
   return next;
 }
 export function changeDayDetails(trip,changes) {
@@ -119,7 +130,8 @@ export function changeDayDetails(trip,changes) {
   return validJourney(next.itinerary)?next:trip;
 }
 export function budgetInput(trip) {
-  return {version:1,people:trip.itinerary?.people || 1,days:journeyDays(trip).map(day=>({id:day.id,...(day.party?{people:dayPeople(day,trip.itinerary?.people || 1)}:{}),costs:Object.keys(COST_KINDS).map(kind=>expenseCostInput(kind,day.costs[kind]))}))};
+  const days=journeyDays(trip),links=days.map(serviceExpenseDay).filter(Boolean);
+  return {version:1,people:trip.itinerary?.people || 1,days:days.map(day=>({id:day.id,...(day.party?{people:dayPeople(day,trip.itinerary?.people || 1)}:{}),costs:Object.keys(COST_KINDS).map(kind=>expenseCostInput(kind,day.costs[kind]))})),...(links.length?{service_expenses:links}:{})};
 }
 export function mergeJourney(before,incoming,merged) {
   const days=structuredClone(journeyDays(before));
