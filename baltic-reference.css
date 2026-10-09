@@ -208,14 +208,14 @@ body.day-planner #my-trip .wave-stop-summary h4,body.day-planner #my-trip .wave-
 @font-face{font-family:Caveat;font-style:normal;font-weight:400 700;font-display:swap;src:url('./assets/fonts/caveat-variable.ttf') format('truetype')}
 :root{--serif:'Times New Roman',Times,'Liberation Serif',serif;--sans:Arial,'Liberation Sans',sans-serif;--action:#5386a6;--action-hover:#427592}
 h1,h2,h3,h4{font-weight:400;letter-spacing:-.025em}
-.brand-mark{object-fit:contain;width:88px;height:55px}
+.brand-mark{object-fit:contain;width:60px;height:60px}
 .site-header .brand-name{font-family:var(--serif);font-weight:700;letter-spacing:-.025em}
 .site-header .brand-caption{font-size:21px}
-.footer-brand .brand-mark{width:76px;height:48px}
+.footer-brand .brand-mark{width:48px;height:48px}
 @media(min-width:601px) and (max-width:1100px){
  .inner-page .site-header,.site-header{min-height:118px;padding:18px 40px 28px;gap:0}
  .site-header .brand{gap:16px;order:1}
- .site-header .brand-mark{width:110px;height:68px}
+ .site-header .brand-mark{width:68px;height:68px}
  .site-header .brand-name{font-size:32px;line-height:1.1}
  .site-header .brand-caption{font-size:24px;line-height:1.2}
  .site-header .desktop-nav{display:none}
@@ -231,7 +231,7 @@ h1,h2,h3,h4{font-weight:400;letter-spacing:-.025em}
 @media(max-width:600px){
  .inner-page .site-header,.site-header{min-height:88px;padding:14px 18px;gap:8px}
  .site-header .brand{gap:9px}
- .site-header .brand-mark{width:60px;height:40px}
+ .site-header .brand-mark{width:48px;height:48px}
  .site-header .brand-name{font-size:22px;line-height:1.12}
  .site-header .brand-caption{font-size:17px;line-height:1.25}
  .site-header .header-note{display:none}
