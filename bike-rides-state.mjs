@@ -58,8 +58,8 @@ const partList=travel=>travel?.parts?.length?travel.parts.flatMap(partList):[tra
 
 // Selection uses the same directed roads and Rust day plan as My Day/PDF.
 // An absent road/profile is not zero distance and cannot satisfy a strict filter.
-export function assessBikeRide(ride,settings,catalog,matrix,engine){
- const trip=bikeTrip(ride,settings,catalog),input=planInput(trip,catalog,matrix);
+export function assessBikeRide(ride,settings,catalog,matrix,engine,preparedTrip=null){
+ const trip=preparedTrip?cleanTrip(structuredClone(preparedTrip),catalog):bikeTrip(ride,settings,catalog),input=planInput(trip,catalog,matrix);
  // A day with physical boundaries uses the same itinerary as My Day and PDF.
  // Its explicit origin, parking walks and return must not be approximated by
  // the legacy sequence of places before saving.
@@ -92,6 +92,8 @@ export function assessBikeRide(ride,settings,catalog,matrix,engine){
  if(unknownRoad)reasons.push('Не все участки дороги рассчитаны.');
  if(!profileKnown)reasons.push('Не хватает сведений о велосипедной дороге.');
  if(duration===null&&!unknownRoad)reasons.push('Полное время пока неизвестно.');
+ const added=new Set(trip.places.filter(id=>!ride.stops.some(s=>s.poi===id)));
+ if(plan.stops.some(s=>added.has(s.id)&&trip.schedule.stops[s.id]?.visit_scope!=='outside'&&s.issues?.some(i=>['unknown_opening','opening_needs_check','unknown_kitchen','kitchen_needs_check'].includes(i.code))))reasons.push('Время работы остановок нужно уточнить.');
  if(duration!==null&&duration>settings.available)excluded.push('Не помещается в выбранное время.');
  if(returning&&plan.finish!==null&&plan.finish>input.end)excluded.push('Не успеваем вернуться с выбранным запасом.');
  if(['conflict','overrun'].includes(plan.status)&&!excluded.length)excluded.push(returning?'Не успеваем вернуться с выбранным запасом.':'В расчёте дня есть конфликт времени.');
@@ -111,7 +113,9 @@ export function assessBikeRide(ride,settings,catalog,matrix,engine){
   if(profileKnown&&profiles.some(p=>p.elevation===null))reasons.push('Для оценки нагрузки с детьми не хватает уклонов.');
  }
  const facts=profileKnown?bikeRouteFacts({origin:'estimate',mode:'bike',parts:bikeParts}):[];
- if(reasons.length)selectedDay(trip).note+=' Уточнить перед поездкой: '+[...new Set(reasons)].join(' ');
+ const day=selectedDay(trip),marker=' Уточнить перед поездкой: ';
+ if(preparedTrip&&day.note?.includes(marker))day.note=day.note.slice(0,day.note.indexOf(marker));
+ if(reasons.length)day.note+=marker+[...new Set(reasons)].join(' ');
  const deadline=bookingEffects(trip).end,finishId=shared?.itinerary?.order.find(s=>s.kind==='destination')?.schedule_id||'__day_departure';
  const arrival=plan.stops.find(s=>s.id===finishId)?.begins??null;
  return {id:ride.id,ride,trip,plan,input,distance_m:distance,duration_minutes:duration,

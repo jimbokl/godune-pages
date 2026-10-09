@@ -33,6 +33,21 @@
 .bike-facts p{margin:.4rem 0}.bike-facts ul{padding-left:1.1rem}.bike-facts details summary{min-height:44px;align-content:center;cursor:pointer}
 .bike-actions{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;padding-top:1.25rem}.bike-save{flex:1}.bike-actions a{min-height:44px;align-content:center}
 .bike-source{font-size:.85rem;color:var(--muted,#607483)}.bike-next{border-top:1px solid var(--line,#ddd8ce);margin-top:3rem;padding-top:2rem;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}.bike-next>div{flex:1 1 100%}
+.bike-stop-picker{border:1px solid var(--line,#ddd8ce);border-radius:16px;padding:.5rem 1rem 1rem;margin:1rem 0 1.5rem;background:var(--paper,#faf7f1)}
+.bike-stop-picker>summary{min-height:48px;align-content:center;cursor:pointer;font-family:var(--font-serif,Georgia,serif);font-size:1.4rem;color:var(--ink,#10273b)}
+.bike-stop-picker:not([open]){padding-bottom:.5rem}.bike-stop-picker>.bike-caption{margin:.35rem 0 1rem}
+.bike-stop-kinds{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.3rem;margin:1rem 0}
+.bike-stop-kinds button{display:grid;place-items:center;gap:.4rem;min-height:65px;min-width:0;border:1px solid var(--line,#ddd8ce);border-radius:12px;padding:.6rem .15rem;background:transparent;color:var(--ink,#10273b);font:inherit;font-size:.85rem;cursor:pointer}
+.bike-stop-kinds [aria-pressed=true]{background:#bfd9e7;color:#10273b;border-color:#9cbfcf}
+.bike-stop-kinds svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bike-stop-time label{display:flex;align-items:center;gap:1rem;color:var(--muted,#607483);font-size:.9rem}
+.bike-stop-time input{font:inherit;color:var(--ink,#10273b);background:var(--card,#fffdf9);border:1px solid #a9bac5;border-radius:8px;padding:.5rem;min-height:44px;width:5rem;box-sizing:border-box}
+.bike-stop-choices{display:grid;gap:.8rem;margin-top:1rem}.bike-stop-choice{min-width:0;display:grid;gap:.5rem;padding:1rem;border:1px solid var(--line,#ddd8ce);border-radius:12px;background:var(--card,#fffdf9)}
+.bike-stop-choice>a:first-child{font-family:var(--font-serif,Georgia,serif);font-size:1.25rem;color:var(--ink,#10273b);text-decoration:none}.bike-stop-choice p{margin:0;line-height:1.5}.bike-stop-arrival{font-weight:600}
+.bike-stop-add{min-height:44px;border:0;border-radius:10px;background:#bfd9e7;color:#10273b;padding:.65rem .8rem;font:inherit;font-weight:600;cursor:pointer}
+.bike-stop-choice[hidden]{display:none}.bike-stop-more{min-height:44px;background:transparent;border:1px solid var(--line,#ddd8ce);border-radius:10px;padding:.65rem .8rem;font:inherit;color:var(--sea-ink,#34617d);cursor:pointer}
+.bike-stop-remove{display:block;min-height:44px;padding:.4rem 0;border:0;background:transparent;color:var(--sea-ink,#34617d);font:inherit;font-size:.9rem;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.bike-stop-picker button:focus-visible,.bike-stop-remove:focus-visible{outline:2px solid #c58a33;outline-offset:3px}
 @media(max-width:760px){.bike-main-fields{grid-template-columns:1fr 1fr}.bike-main-fields button{grid-column:1/-1}.bike-extra-fields{grid-template-columns:1fr 1fr}.bike-results{grid-template-columns:1fr}.bike-card>img{height:180px}}
 @media(max-width:360px){.bike-main-fields,.bike-extra-fields{grid-template-columns:1fr}.bike-tabs button{flex:1 1 auto}.bike-metrics{gap:.5rem 1rem}}
 @media(prefers-reduced-motion:no-preference){.bike-save,.bike-tabs button{transition:background-color .15s ease}.bike-save:hover{background:#3c6d8e}}
