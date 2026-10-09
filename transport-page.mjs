@@ -43,17 +43,23 @@ async function init(){
  });
  const read=()=>{const v=name=>Number(form.elements[name].value),time=form.elements.ready.value;return {date:form.elements.date.value,ready:Number(time.slice(0,2))*60+Number(time.slice(3)),boarding:v('boarding'),shore:v('shore'),people:v('people'),exempt:v('exempt'),bikes:v('bikes'),mode:form.elements.mode.value,walks:form.elements.walks.value,forest:v('forest')};};
  function render(frozen,ticket,restored){
-  receipt=structuredClone(frozen);result.replaceChildren(heading(restored?'Сохранённый транспортный план':'Ваш транспортный план'));
+  receipt=structuredClone(frozen);result.replaceChildren(node('p',restored?'Сохранённый маршрут':'Маршрут дня','transport-plan-label'),heading(profile.adapter==='bus210'?'Куршская коса':'Балтийская коса'));
   result.append(node('p',`${transportDate(frozen.date)} · ${frozen.answers.people} чел.`,'transport-plan-date'));
   const assessment=node('p',transportStates[frozen.state]||'Проверьте выбранные рейсы по таблице.','transport-result-heading');assessment.dataset.state=frozen.state;result.append(assessment);
   if(restored){const note=transportContextText(restored.entry,restored.day);if(note)result.append(node('p',note,'transport-plan-context'));}
   const timeline=node('ol',undefined,'transport-timeline');
-  for(const row of frozen.rows.filter(row=>row.kind==='transport')){const li=node('li');li.append(node('span',transportClock(row.time),'transport-time'),node('h3',row.title),node('p',row.text));timeline.append(li);}
+  for(const row of frozen.rows.filter(row=>row.kind==='transport'&&row.id!=='backup')){
+   const li=node('li'),icon=node('span',undefined,'transport-step-icon'),img=node('img');
+   img.src=new URL(`assets/icons/${(row.id==='shore'||/пеш|прогул|месте|троп|осмотр/i.test(row.title))?'walk':profile.adapter==='bus210'?'bus':'ship'}.svg`,base);img.alt='';img.width=30;img.height=30;icon.setAttribute('aria-hidden','true');icon.append(img);
+   li.append(icon,node('span',transportClock(row.time),'transport-time'),node('h3',row.title),node('p',row.text));timeline.append(li);
+  }
   result.append(timeline);
-  const budget=node('section',undefined,'transport-budget'),list=node('dl');budget.append(node('h3','Стоимость на компанию'));
+  const backup=frozen.rows.find(row=>row.kind==='transport'&&row.id==='backup');
+  if(backup){const planB=node('details',undefined,'transport-plan-b');planB.append(node('summary',`План Б · автобус в ${transportClock(backup.time)}`),node('p',backup.text));result.append(planB);}
+  const budget=node('details',undefined,'transport-budget'),list=node('dl');budget.append(node('summary',transportTotal(frozen.price)));
   for(const row of frozen.price.rows){const line=node('div');line.append(node('dt',row.label),node('dd',row.cost===null?'Уточняется':money(row.cost)));list.append(line);}
-  budget.append(list,node('p',transportTotal(frozen.price),'transport-budget-total'));result.append(budget);
-  const actions=node('div',undefined,'transport-result-actions'),save=node('button','Сохранить в Мой день','transport-primary'),pdf=node('button','Скачать памятку PDF ↓','transport-secondary'),saved=node('div',undefined,'transport-saved');
+  budget.append(node('h3','Стоимость на компанию'),list);result.append(budget);
+  const actions=node('div',undefined,'transport-result-actions'),save=node('button','Сохранить в Мой день','transport-primary'),pdf=node('button','Скачать буклет PDF ↓','transport-secondary'),saved=node('div',undefined,'transport-saved');
   save.type=pdf.type='button';saved.setAttribute('role','status');saved.hidden=true;
   save.addEventListener('click',async()=>{
    if(ticket!==generation||!receipt)return;save.disabled=true;save.textContent='Сохраняем…';
@@ -63,7 +69,7 @@ async function init(){
     const completed=await store.change(trip=>saveTransportPlan(trip,catalog,frozen),{label:'Транспортный расчёт'});
     if(!completed.saved){if(ticket===generation)status.textContent=completed.compatibility?.message||'Сохранение не завершилось. Скачайте PDF, чтобы забрать расчёт с собой.';return;}
     metric('saved');if(ticket!==generation)return;
-    saved.replaceChildren(node('p','Сохранено в Мой день.'));const open=node('a','Открыть Мой день →');open.href=new URL('planner/#my-trip',base);saved.append(open);saved.hidden=false;
+    const check=node('img',undefined,'transport-saved-check');check.src=new URL('assets/icons/circle-check.svg',base);check.alt='';check.width=36;check.height=36;saved.replaceChildren(check,node('p','План сохранён в Мой день'));const open=node('a','Открыть Мой день →');open.href=new URL('planner/#my-trip',base);saved.append(open);saved.hidden=false;
     save.textContent='Сохранено';save.dataset.saved='true';status.textContent='Расчёт записан. Он будет в вашем дне и в личном буклете.';
    }catch{if(ticket===generation)status.textContent='Расчёт не сохранился. Попробуйте ещё раз или скачайте PDF.';}
    finally{if(ticket===generation&&!save.dataset.saved){save.disabled=false;save.textContent='Сохранить в Мой день';}}
@@ -79,6 +85,8 @@ async function init(){
   });
   actions.append(save,pdf);result.append(actions,saved);
   const source=node('p',undefined,'transport-source'),link=node('a','Источник расписания');link.href=frozen.source.url;source.append(link,document.createTextNode(` · проверен ${frozen.source.checked_at}`));result.append(source);result.dataset.state=frozen.state;
+  const settings=document.querySelector('[data-transport-settings]');
+  if(settings&&matchMedia('(max-width:800px)').matches){settings.open=false;result.scrollIntoView({block:'start'});}
  }
  form.addEventListener('submit',async event=>{
   event.preventDefault();const ticket=++generation;receipt=null;pdfAbort?.abort();submit.disabled=true;status.textContent='Считаем отправление и возвращение…';
