@@ -1,7 +1,7 @@
-import {journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=26';
-import {bookingEffects} from './trip-bookings-state.mjs?v=2';
+import {journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=27';
+import {bookingEffects} from './trip-bookings-state.mjs?v=3';
 import {baseId,validBase} from './personal-points.mjs?v=3';
-import {resolvePair,resolveAccessBetween,loadTripTravelMatrix,travelMode} from './travel-estimates.mjs?v=12';
+import {resolvePair,resolveAccessBetween,loadTripTravelMatrix,travelMode} from './travel-estimates.mjs?v=13';
 
 export function housingContext(trip,ids) {
   return JSON.stringify({active:trip.itinerary?.active||'day-1',days:journeyDays(trip).filter(d=>ids.includes(d.id))});

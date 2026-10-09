@@ -1,12 +1,12 @@
 // The shared wizard attaches the existing dated bus roadbook. It never turns
 // distant trails into walking segments or creates its own service calendar.
 import {waveVisit} from './day-wave.mjs?v=2';
-import {tripStarterChoices} from './trip-starters.mjs?v=25';
-import {nextDate} from './trip-days-state.mjs?v=26';
-import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=25';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=23';
+import {tripStarterChoices} from './trip-starters.mjs?v=26';
+import {nextDate} from './trip-days-state.mjs?v=27';
+import {kosaInput,kosaMetadata,kosaNote} from './kosa-plan-state.mjs?v=26';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=24';
 import {validBase} from './personal-points.mjs?v=3';
-import {railHomeLocations} from './rail-access.mjs?v=2';
+import {railHomeLocations} from './rail-access.mjs?v=3';
 import {validStationRoad} from './station-road-proof.mjs?v=1';
 const clone=v=>structuredClone(v);
 const stable=v=>JSON.stringify(v,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);

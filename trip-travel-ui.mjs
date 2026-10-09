@@ -1,10 +1,10 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=26';
-import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=12';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=27';
+import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=13';
 import {baseName,baseId} from './personal-points.mjs?v=3';
-import {BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2';
+import {endBookingLabel,bookingEffects,BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {planInput} from './trip-schedule-state.mjs?v=18';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
+import {planInput} from './trip-schedule-state.mjs?v=19';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {offlinePaths} from './offline.mjs?v=6';
 import {availableMaps} from './offline-map.mjs?v=10';
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
@@ -56,7 +56,7 @@ export function initTravel(workshop,catalog,base){
       button.setAttribute('aria-pressed',String(visited));button.setAttribute('aria-label',`${visited?'Снять отметку':'Отметить посещение'}: ${place.name}`);li.append(button);return li;
     }));
     if(focused)Array.from($('travel-stops').querySelectorAll('button')).find(b=>b.dataset.travelVisited===focused)?.focus({preventScroll:true});
-    $('travel-bases').textContent=[day.start_at?`Начало: ${baseName(day.start_at,catalog)}.`:'',day.night_at?`К ночи: ${baseName(day.night_at,catalog)}.`:day.end_at?'':'Возвращение пока не выбрано. Добавьте его в планировщике.',day.end_at?`Вылет / отъезд: ${baseName(day.end_at,catalog)}.`:''].filter(Boolean).join(' ');
+    $('travel-bases').textContent=[day.start_at?`Начало: ${baseName(day.start_at,catalog)}.`:'',day.night_at?`К ночи: ${baseName(day.night_at,catalog)}.`:day.end_at?'':'Возвращение пока не выбрано. Добавьте его в планировщике.',day.end_at?`${endBookingLabel(bookingEffects(trip).end)}: ${baseName(day.end_at,catalog)}.`:''].filter(Boolean).join(' ');
     const notes=$('travel-day-note');notes.textContent=raw.note;notes.hidden=!raw.note;
     $('travel-bookings').replaceChildren(...(raw.bookings||[]).map(row=>{const li=node('li');
       li.append(node('strong',`${BOOKING_KINDS[row.kind]} · ${row.name}`),node('p',`${BOOKING_STATUSES[row.status]} · ${date(row.date)}${row.time===null?'':` · ${clock(row.time)}`}${row.location?` · ${baseName(row.location,catalog)}`:''}`));

@@ -1,6 +1,6 @@
-import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=18';
-import {lightInput} from './trip-light.mjs?v=14';
-import {planningDay,completePlanningCandidate,planningSignature} from './day-planning-state.mjs?v=2';
+import {defaultSchedule, planInput} from './trip-schedule-state.mjs?v=19';
+import {lightInput} from './trip-light.mjs?v=15';
+import {planningDay,completePlanningCandidate,planningSignature} from './day-planning-state.mjs?v=3';
 
 // This is a proposal search, not a second clock. Every trial uses the shared
 // Rust scheduler, including directed roads, calendars, tickets and the return.

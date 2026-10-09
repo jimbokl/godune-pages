@@ -1,6 +1,6 @@
 // Route geometry for an explicitly projected, sourced road. This never supplies
 // timing or a straight-line substitute for an unknown transfer.
-import {TRAVEL_MODES,resolveDirectedTravel,resolveAccessBetween,decodePath} from './travel-estimates.mjs?v=12';
+import {TRAVEL_MODES,resolveDirectedTravel,resolveAccessBetween,decodePath} from './travel-estimates.mjs?v=13';
 const chunks=new Map();
 export async function directedRoadFeature(from,to,catalog,matrix,base,profile='foot') {
  if(!Object.hasOwn(TRAVEL_MODES,profile))return null;

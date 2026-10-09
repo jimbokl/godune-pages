@@ -1,7 +1,7 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {budgetInput} from './trip-days-state.mjs?v=26';
-import {serviceMoveTargets,prepareServiceMove,confirmServiceMove,inspectServiceMoveDay} from './trip-service-move-state.mjs?v=2';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
+import {budgetInput} from './trip-days-state.mjs?v=27';
+import {serviceMoveTargets,prepareServiceMove,confirmServiceMove,inspectServiceMoveDay} from './trip-service-move-state.mjs?v=3';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {dayOutcome} from './day-outcome.mjs?v=1';
 import {rentalFactsElement} from './trip-rental-view.mjs';
 import {formatKopecks} from './trip-money.mjs';
@@ -26,7 +26,7 @@ export async function openServiceMove({read,commit,base,catalog,sourceId,visitId
  const cancel=button('Отмена'),status=node('p',undefined,'visit-feedback');status.setAttribute('role','status');
  const retry=button('Проверить ещё раз');retry.hidden=true;
  const download=button('Скачать файл поездки');download.hidden=true;
- download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=30');downloadTripFile(read(),catalog);});
+ download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=31');downloadTripFile(read(),catalog);});
  form.append(label,review,save,cancel);dialog.append(close,title,form,status,retry,download);document.body.append(dialog);
  let sequence=0,preview,pending=false;
  const returnFocus=()=>{const target=opener?.isConnected?opener:document.querySelector('#my-trip-title');target?.setAttribute('tabindex','-1');target?.focus({preventScroll:true});};

@@ -1,13 +1,14 @@
-import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
+import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
+import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
 import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
 import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs';
-import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=26';
+import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=27';
 import {formatKopecks as money} from './trip-money.mjs';
 import {clock} from './day-stop-view.mjs?v=1';
 import {railJourney,excursionJourney} from './day-journey-view.mjs?v=10';
-import {resolveRail} from './trip-rail-state.mjs?v=6';
+import {resolveRail} from './trip-rail-state.mjs?v=7';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {baseName} from './personal-points.mjs?v=3';
 import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
@@ -109,7 +110,7 @@ export function mixedGuideRows(trip,catalog,guide,issueText){
    }
   }
   if(entry.kind==='origin'||entry.kind==='destination'||boundary){
-   rows.push({id:entry.schedule_id,kind:entry.kind==='origin'?'start':'return',time:stop?.begins??null,title:`${entry.kind==='origin'?'Начало':entry.kind==='destination'&&boundaries.bookings.end?'Отъезд':'Возвращение'} · ${name}`,text:stop?.begins!=null?'Время по расчёту дня.':'Точное время неизвестно.',state:stop?.begins!=null?'estimate':'unknown'});continue;
+   rows.push({id:entry.schedule_id,kind:entry.kind==='origin'?'start':'return',time:stop?.begins??null,title:`${entry.kind==='origin'?'Начало':entry.kind==='destination'&&boundaries.bookings.end?endBookingLabel(boundaries.bookings.end):'Возвращение'} · ${name}`,text:stop?.begins!=null?'Время по расчёту дня.':'Точное время неизвестно.',state:stop?.begins!=null?'estimate':'unknown'});continue;
   }
   if(entry.kind==='service'){
    rows.push(serviceRow(service,stop));continue;

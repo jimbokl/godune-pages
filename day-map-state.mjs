@@ -1,13 +1,14 @@
+import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
 // Read-only map projection. The day engine owns timing; a named stop never
 // borrows the coordinates of a nearby attraction or a straight-line path.
-import {selectedDay} from './trip-days-state.mjs?v=26';
-import {tripSignature} from './trip-light.mjs?v=14';
+import {selectedDay} from './trip-days-state.mjs?v=27';
+import {tripSignature} from './trip-light.mjs?v=15';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=3';
-import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=2';
-import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=3';
+import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=4';
+import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=3';
+import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=4';
 
 export const dayMapSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).timeline,selectedDay(trip).service_visits,selectedDay(trip).transfer_connections]);
 const located=p=>p&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)&&Math.abs(p.lat)<=90&&Math.abs(p.lon)<=180;
@@ -46,7 +47,7 @@ export function projectDayMap(trip,catalog,result=null,fallback=[]){
   const entry=scheduled.find(e=>e.kind===row.entry.kind&&e.id===row.entry.id);if(!entry)continue;
   const connection=result.itinerary.connections.find(c=>row.entry.kind==='origin'?c.from===entry.schedule_id:c.to===entry.schedule_id);
   const p=anchorMapPoint(row.anchor,catalog);
-  if(p)add({...p,slug:row.entry.id,name:row.anchor.name,kind:'transfer',label:row.entry.kind==='origin'?'↑':'↩',boundary:true,boundaryLabel:row.entry.kind==='origin'?'Начало':row.entry.kind==='destination'&&boundaries.bookings.end?'Отъезд':'Возвращение',connectionKey:connection?JSON.stringify([connection.from,connection.to]):null},locationKey(row.anchor));
+  if(p)add({...p,slug:row.entry.id,name:row.anchor.name,kind:'transfer',label:row.entry.kind==='origin'?'↑':'↩',boundary:true,boundaryLabel:row.entry.kind==='origin'?'Начало':row.entry.kind==='destination'&&boundaries.bookings.end?endBookingLabel(boundaries.bookings.end):'Возвращение',connectionKey:connection?JSON.stringify([connection.from,connection.to]):null},locationKey(row.anchor),false);
  }
  const entryFor=id=>scheduled.find(e=>e.schedule_id===id);
  function knownRoad(leg,key){

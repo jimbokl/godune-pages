@@ -1,7 +1,7 @@
-import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=1';
+import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=2';
 import {bikeDistance} from './bike-route-profile.mjs';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {loadTravelMatrix} from './travel-estimates.mjs?v=12';
+import {loadTravelMatrix} from './travel-estimates.mjs?v=13';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-bike-rides]');
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 const names={fits:'По вашим условиям',needs_info:'Нужно уточнить',does_not_fit:'Не подходят'};
@@ -14,17 +14,23 @@ if(root){
  let ctx,pending,rows=[],guard,revision,sequence=0,busy=false,saving=false;
  field('date').value=new Date().toLocaleDateString('sv-SE');
  const initial=new URL(location.href).searchParams;
- for(const name of ['area','available','max_km','surface','adults','children','date','start'])if(initial.has(name)){
+ for(const name of ['area','available','max_km','surface','adults','children','date','start','journey','start_at','end_at','return_by','return_buffer'])if(initial.has(name)){
   const el=field(name),value=initial.get(name);
   if(el.tagName!=='SELECT'||[...el.options].some(option=>option.value===value))el.value=value;
  }
  field('trailer').checked=initial.get('trailer')==='1';
- const getSettings=()=>{const [hour,minute]=field('start').value.split(':').map(Number);return bikeSettings({
-  ...Object.fromEntries(new FormData(form)),start:hour*60+minute,trailer:field('trailer').checked});};
+ const journeyCaption=()=>{
+  const returning=field('journey').value==='loop'||field('end_at').value;
+  root.querySelector('[data-bike-journey-caption]').textContent=returning?'Считаем весь путь с возвращением, остановками и запасом.':'Считаем путь в одну сторону, остановки и паузы.';
+  field('end_at').options[0].textContent=field('journey').value==='loop'?'К месту старта':'Без возвращения';
+ };
+ form.addEventListener('input',journeyCaption);journeyCaption();
+ const getSettings=()=>{const minutes=value=>{const [h,m]=value.split(':').map(Number);return h*60+m;};return bikeSettings({
+  ...Object.fromEntries(new FormData(form)),start:minutes(field('start').value),return_by:field('return_by').value?minutes(field('return_by').value):null,trailer:field('trailer').checked});};
  async function load(){
   if(!pending)pending=(async()=>{
    const [{createTripMemory},{loadTrip},catalogResponse,ridesResponse,matrix,engine]=await Promise.all([
-    import('./trip-memory.mjs?v=25'),import('./trip-memory-bootstrap.mjs?v=4'),
+    import('./trip-memory.mjs?v=26'),import('./trip-memory-bootstrap.mjs?v=5'),
     fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/bike-rides.json',base),{cache:'no-cache'}),loadTravelMatrix(base),loadScheduler(base)]);
    if(!catalogResponse.ok||!ridesResponse.ok)throw Error('Не удалось открыть места и прогулки. Нажмите «Подобрать прогулку», чтобы повторить.');
    const catalog=await catalogResponse.json(),rides=await ridesResponse.json();let storage;try{storage=localStorage;}catch{}
@@ -48,11 +54,16 @@ if(root){
   const area=ctx.catalog.poi.find(p=>p.slug===row.ride.stops[0].poi)?.area_name||'';
   content.append(node('p',area,'inner-kicker'),heading,metrics,node('p',row.ride.description));
   const stops=node('ol',undefined,'bike-stops');
+  const boundary=(id,title,time,text)=>{const p=ctx.catalog.poi.find(p=>p.slug===id),li=node('li',undefined,'bike-boundary'),link=node('a',`${title} · ${p.name}`);link.href=new URL(`poi/${id}/`,base);li.append(link,node('small',`${time==null?'Время неизвестно':clock(time)} · ${text}`));stops.append(li);};
+  const origin=row.trip.itinerary.days[0].start_at;
+  if(origin)boundary(origin,'Выезд',row.input.start,'Дорога к первой остановке включена');
   for(const stop of row.ride.stops){
    const point=ctx.catalog.poi.find(p=>p.slug===stop.poi),time=row.plan.stops.find(s=>s.id===stop.poi),li=node('li'),link=node('a',point.name);
    link.href=new URL(`poi/${point.slug}/`,base);li.append(link,node('small',`${time?.begins!=null?clock(time.begins)+' · ':''}${stop.visit_minutes?stop.visit_minutes+' мин на остановку':'Начало прогулки'}`));stops.append(li);
   }
-  content.append(stops,node('p','В одну сторону · осмотр снаружи','bike-caption'));
+  if(row.returning)boundary(row.returning.at,'Возвращение',row.returning.arrival,`до ${clock(row.returning.by)} · запас ${row.returning.buffer} мин`);
+  content.append(stops,node('p',`${row.returning?'Весь путь с возвращением':'В одну сторону'} · осмотр снаружи`,'bike-caption'));
+  if(row.returning?.slack!=null){const p=node('p',row.returning.slack<0?`К сроку с запасом опаздываем на ${-row.returning.slack} мин.`:`До срока остаётся ещё ${row.returning.slack} мин сверх запаса.`, 'bike-return');p.dataset.state=row.returning.slack<0?'late':'fits';content.append(p);}
   const facts=node('div',undefined,'bike-facts');
   if(row.excluded.length||row.reasons.length){const issues=node('ul');for(const text of [...row.excluded,...row.reasons])issues.append(node('li',text));facts.append(issues);}
   const dismount=row.facts.find(text=>text.startsWith('Пешком с велосипедом'));
@@ -96,7 +107,7 @@ if(root){
    tabs.replaceChildren(...Object.entries(names).filter(([state])=>rows.some(row=>row.state===state)).map(([state,name])=>{
     const button=node('button',`${name} · ${rows.filter(row=>row.state===state).length}`);button.type='button';button.dataset.state=state;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>show(state));return button;
    }));
-   status.textContent=rows.length?`${dateLabel(settings.date)} · начало ${clock(settings.start)}. Выберите прогулку — она добавится отдельным днём.`:'Для этого направления пока нет прогулок. Выберите соседний город.';
+   status.textContent=rows.length?`${dateLabel(settings.date)} · начало ${clock(settings.start)}. ${settings.journey==='loop'&&!settings.end_at?'Возвращение к старту учтено. ':''}Выберите прогулку — она добавится отдельным днём.`:'Для этого направления пока нет прогулок. Выберите соседний город.';
    if(rows.length)show(rows[0].state);else list.replaceChildren();
   }catch(error){if(ticket===sequence){status.textContent=error.message||'Расчёт пока не загрузился. Нажмите «Подобрать прогулку», чтобы повторить.';}}
   finally{busy=false;submit.disabled=false;}

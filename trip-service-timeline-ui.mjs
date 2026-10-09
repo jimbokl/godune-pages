@@ -1,3 +1,4 @@
+import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceExpenseButton} from './trip-service-expenses-ui.mjs';
@@ -5,7 +6,7 @@ import {rentalFactsElement} from './trip-rental-view.mjs';
 import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=1';
 import {selectedConnectionRows,unusedConnectionRows,transferClock} from './trip-service-transfer-view.mjs';
 import {decorateStop} from './wave-stop-ui.mjs?v=4';
-import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=3';
+import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=4';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const roadNames={unknown:'Время дороги пока неизвестно',stale:'Сведения о дороге нужно обновить',changed_point:'Точка пути изменилась — дорогу нужно проверить',conflict:'Источники по дороге расходятся',blocked:'Этот переход недоступен'};
@@ -23,7 +24,7 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
  }
  for(const entry of scheduled){
   const boundary=boundaryForEntry(boundaries,entry),point=catalog.poi.find(p=>p.slug===entry.id),visit=entry.kind==='service'?visits.find(v=>v.id===entry.id):null;
-  const name=boundary?`${entry.kind==='origin'?'Начало':entry.kind==='destination'&&boundaries.bookings.end?'Отъезд':'Возвращение'} · ${boundary.anchor?.name||'Точка поездки'}`:visit?.name||point?.name||(entry.kind==='destination'?'Возвращение':({__day_origin:'Начало дня',__day_night:'Ночёвка',__day_departure:'Отъезд'}[entry.id]||'Остановка'));
+  const name=boundary?`${entry.kind==='origin'?'Начало':entry.kind==='destination'&&boundaries.bookings.end?endBookingLabel(boundaries.bookings.end):'Возвращение'} · ${boundary.anchor?.name||'Точка поездки'}`:visit?.name||point?.name||(entry.kind==='destination'?'Возвращение':({__day_origin:'Начало дня',__day_night:'Ночёвка',__day_departure:'Отъезд'}[entry.id]||'Остановка'));
   const item=node('li',undefined,'visit-timeline-item');item.dataset.timelineKind=entry.kind;item.dataset.timelineId=entry.id;
   const connection=result.itinerary.connections.find(v=>v.to===entry.schedule_id),minutes=connection?.leg?.minutes;
   if(connection){
@@ -60,7 +61,7 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
    const rental=rentalFactsElement(visit,assessment?.assessment);if(rental)card.append(rental);
    if(assessment?.context==='date_changed')card.append(node('p','Пересчитайте посещение на дату этого дня.','visit-timeline-warning'));
    if(visit.note)card.append(node('p',visit.note,'visit-timeline-note'));
-  }else if(stop)card.append(node('p',boundary?(entry.kind==='origin'?'Выходим отсюда':boundaries.bookings.end&&entry.kind==='destination'?'К выбранному отъезду':'Здесь завершаем день'):entry.kind==='destination'?'Конец выбранного пути':`На месте · ${stop.visit_minutes} мин`,'visit-timeline-detail'));
+  }else if(stop)card.append(node('p',boundary?(entry.kind==='origin'?'Выходим отсюда':boundaries.bookings.end&&entry.kind==='destination'?(boundaries.bookings.end.kind==='return'?'К выбранному сроку возвращения':'К выбранному отъезду'):'Здесь завершаем день'):entry.kind==='destination'?'Конец выбранного пути':`На месте · ${stop.visit_minutes} мин`,'visit-timeline-detail'));
   if(stop?.issues?.some(v=>v.code==='fixed_visit_missed'))card.append(node('p','На выбранное время не успеваем. Переставьте остановки или измените посещение.','visit-timeline-warning'));
   const controls=node('div',undefined,'visit-timeline-controls'),index=editable.findIndex(v=>v.id===entry.id&&v.kind===entry.kind);
   if(index>=0){

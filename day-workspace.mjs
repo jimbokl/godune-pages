@@ -1,20 +1,20 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=26';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=27';
 import {regionMapStyle} from './region-map.mjs?v=7';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=7';
-import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=12';
+import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=13';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
-import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=6';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
+import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=7';
 import {renderMapRoads} from './day-map-roads-ui.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
 import {vehicleArrival} from './day-mobility.mjs?v=4';
 import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
 import {serviceVisitRows} from './trip-service-visits-state.mjs';
 import {validTimeline} from './trip-service-timeline-state.mjs';
-import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=16';
+import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=17';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
-import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
+import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {focusWaveStop} from './wave-stop-ui.mjs?v=4';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 
@@ -102,7 +102,7 @@ function initDayMap({mount,read,base,catalog,onSelect}) {
     const close=el('button','day-parking-close','×');close.type='button';close.setAttribute('aria-label','Закрыть список мест');close.addEventListener('click',()=>closeStops());
     heading.append(title,close);detail.append(heading,el('p','','Выберите место или пересадку.'));
     const list=el('ol','day-map-choices');
-    for(const point of members){const item=el('li'),choice=el('button','',`${point.label||point.number||point.index+1}. ${point.name}`);choice.type='button';choice.dataset.dayMapChoose=point.slug;choice.addEventListener('click',()=>selectStop(point));item.append(choice);list.append(item);}
+    for(const point of members){const item=el('li'),choice=el('button','',`${point.boundary?point.boundaryLabel:point.label||point.number||point.index+1}. ${point.name}`);choice.type='button';choice.dataset.dayMapChoose=point.slug;choice.addEventListener('click',()=>selectStop(point));item.append(choice);list.append(item);}
     detail.append(list);frame.after(detail);stopDetail=detail;button.setAttribute('aria-expanded','true');
     detail.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();closeStops();}});detail.focus({preventScroll:true});detail.scrollIntoView({block:'nearest',behavior:'auto'});
   };
@@ -145,7 +145,7 @@ function initDayMap({mount,read,base,catalog,onSelect}) {
     try {
       const matrix=generated?null:await loadTripTravelMatrix(base,trip,catalog).catch(()=>null);
       let result=null,assessmentFailed=false;
-      const hasMixed=Object.hasOwn(day,'timeline')||Object.hasOwn(day,'transfer_connections')||serviceVisitRows(day).length>0;
+      const hasMixed=Object.hasOwn(day,'timeline')||Object.hasOwn(day,'transfer_connections')||serviceVisitRows(day).length>0||usesJourneyBoundaries(day,catalog);
       if(hasMixed&&!generated)try{result=inspectTripServiceDay(await loadScheduler(base),trip,catalog,matrix);}catch{assessmentFailed=true;}
       if(ticket!==revision||next!==dayMapSignature(read()))return;
       const projection=projectDayMap(trip,catalog,result,workspacePoints(trip,catalog)),points=projection.points,mapPoints=[...points,...(parking?[parking]:[])];

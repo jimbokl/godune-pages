@@ -4,8 +4,8 @@ import {formatKopecks as money} from './trip-money.mjs';
 import {saveTransportPlan} from './trip-transport-plans-state.mjs';
 import {transportStates,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs';
 import {recordTransportAction} from './transport-useful-actions.mjs';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=4';
-import {createTripMemory} from './trip-memory.mjs?v=25';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=5';
+import {createTripMemory} from './trip-memory.mjs?v=26';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

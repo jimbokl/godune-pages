@@ -1,5 +1,5 @@
 // Scope selection and display only. Distances and eligibility belong to trip-core.
-import {effectiveBookingDay,bookingDate} from './trip-bookings-state.mjs?v=2';
+import {endBookingLabel,bookingEffects,effectiveBookingDay,bookingDate} from './trip-bookings-state.mjs?v=3';
 
 const point = value => value && Number.isFinite(value.lat) && Number.isFinite(value.lon)
   && Math.abs(value.lat)<=90 && Math.abs(value.lon)<=180;
@@ -12,7 +12,7 @@ export function savedServiceContexts({day,trip,catalog}) {
     const current=effectiveBookingDay(rawDay);
     const date=bookingDate(current.date)?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(current.date+'T12:00:00Z')):'без даты';
     const suffix=days.length>1?` · День ${index+1} · ${date}`:'';
-    for(const [key,label] of [['night_at','Жильё'],['start_at','Начало дня'],['end_at','Отъезд']]) {
+    for(const [key,label] of [['night_at','Жильё'],['start_at','Начало дня'],['end_at',endBookingLabel(bookingEffects({itinerary:{active:rawDay.id,days:[rawDay]}}).end)]]) {
       const saved=current[key],place=typeof saved==='string'?catalog.poi.find(p=>p.slug===saved):saved;
       if(typeof saved!=='string'&&saved?.kind!=='personal'
         ||!point(place)||typeof place.name!=='string'||!place.name.trim())continue;
@@ -82,7 +82,7 @@ export function bindServiceContext(form,page,onChange) {
     if(pending)return pending;
     if(notify)onChange();load.disabled=true;status.textContent='Открываем сохранённую поездку…';
     pending=(async()=>{
-      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=20');
+      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=21');
       const saved=savedServiceContexts(await savedServiceDay(new URL('./',import.meta.url)));
       contexts=[...(page.contexts||[]),...saved];
       for(const [select,type] of [[pointSelect,'point'],[routeSelect,'route']]){

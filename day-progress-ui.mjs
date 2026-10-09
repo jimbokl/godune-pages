@@ -1,10 +1,10 @@
 import {visitedPlaces} from './day-progress.mjs?v=2';
-import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=8';
-import {tripSignature,lightMessage} from './trip-light.mjs?v=14';
+import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=9';
+import {tripSignature,lightMessage} from './trip-light.mjs?v=15';
 import {clock} from './day-stop-view.mjs?v=1';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=8';
-import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=9';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
 import {railProblem} from './day-journey-view.mjs?v=10';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};

@@ -1,6 +1,6 @@
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=4';
-import {previewStopReplacement} from './trip-replacement-state.mjs?v=18';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=18';
+import {previewStopReplacement} from './trip-replacement-state.mjs?v=19';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=19';
 
 // Closure is a visitor's scenario, not an edit to the regional facts. A new
 // place needs its own dated calendar; the original stop's window is discarded.

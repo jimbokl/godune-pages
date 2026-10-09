@@ -1,5 +1,5 @@
 import {baseId,isPersonalPoint} from './personal-points.mjs?v=3';
-import {loadDirectedTravelMatrix,resolveDirectedTravel,sameRoadSource} from './travel-estimates.mjs?v=12';
+import {loadDirectedTravelMatrix,resolveDirectedTravel,sameRoadSource} from './travel-estimates.mjs?v=13';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const coordinate=v=>object(v)&&Number.isFinite(v.lon)&&Number.isFinite(v.lat)&&Math.abs(v.lon)<=180&&Math.abs(v.lat)<=90;
 const minute=v=>Number.isInteger(v)&&v>=0&&v<=1440;

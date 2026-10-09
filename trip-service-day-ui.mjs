@@ -1,19 +1,19 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {selectedDay} from './trip-days-state.mjs?v=26';
+import {selectedDay} from './trip-days-state.mjs?v=27';
 import {hasServiceVisits,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
 import {formatKopecks as money} from './trip-money.mjs';
 import {activateTimeline,moveTimelineEntry,timelineGuard,validTimeline} from './trip-service-timeline-state.mjs';
-import {serviceTimelineView} from './trip-service-timeline-ui.mjs?v=7';
+import {serviceTimelineView} from './trip-service-timeline-ui.mjs?v=8';
 import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=3';
 import {selectTab} from './wave-stop-ui.mjs?v=4';
-import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
+import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {dayOutcome} from './day-outcome.mjs?v=1';
 
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
-const errors={service_day_generated_unresolved:'Посещения пока не сверены с поездкой на косу. Они остаются в вашем дне.',service_day_rail_unresolved:'Выбранные электрички нужно проверить заново. Посещения пока не сверены с возвращением.',arrival_after_day:'Прибытие позже конца дня. Проверьте время дня.',departure_before_day:'Отъезд раньше начала дня. Проверьте время дня.'};
+const errors={service_day_generated_unresolved:'Посещения пока не сверены с поездкой на косу. Они остаются в вашем дне.',service_day_rail_unresolved:'Выбранные электрички нужно проверить заново. Посещения пока не сверены с возвращением.',arrival_after_day:'Прибытие позже конца дня. Проверьте время дня.',departure_before_day:'Срок возвращения раньше начала дня. Проверьте время дня.'};
 Object.assign(errors,{service_timeline_unsupported:'Порядок сохранён в другой версии. Он остаётся в файле поездки.',service_timeline_anchor_conflict:'У двух посещений расходятся точки пути. Дорогу нужно уточнить; ваш выбор на месте.'});
 errors.service_transfer_connections_unsupported='Дорога сохранена в другой версии или не прочитана. Ваш выбор остаётся в файле поездки.';
 

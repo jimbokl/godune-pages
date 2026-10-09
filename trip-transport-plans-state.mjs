@@ -1,5 +1,5 @@
-import {cleanTrip} from './trip-state.mjs?v=29';
-import {ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=26';
+import {cleanTrip} from './trip-state.mjs?v=30';
+import {ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=27';
 import {validTransportReceipt,transportPlansImportIssue} from './trip-transport-plans-contract.mjs';
 export {transportPlanContext} from './trip-transport-plans-contract.mjs';
 const check=trip=>{const issue=transportPlansImportIssue(trip);if(issue)throw Error(issue);};

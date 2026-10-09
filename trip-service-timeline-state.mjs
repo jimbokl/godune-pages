@@ -1,5 +1,5 @@
 // User order only. Computed times, roads and quotes are never stored here.
-import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=26';
+import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=27';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 const key=entry=>JSON.stringify([entry.kind,entry.id]);
 export function validTimeline(value){

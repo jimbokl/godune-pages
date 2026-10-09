@@ -1,5 +1,5 @@
-import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {railWalkBases} from './rail-access.mjs?v=2';
+import {bookingEffects} from './trip-bookings-state.mjs?v=3';
+import {railWalkBases} from './rail-access.mjs?v=3';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
 import {baseId,personalPoints} from './personal-points.mjs?v=3';
 import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=4';

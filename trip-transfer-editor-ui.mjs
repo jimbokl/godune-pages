@@ -1,13 +1,13 @@
-import {selectedDay} from './trip-days-state.mjs?v=26';
-import {transferEditorPairs,publishedTransferRoutes,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=7';
-import {bookingEffects} from './trip-bookings-state.mjs?v=2';
-import {canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
+import {selectedDay} from './trip-days-state.mjs?v=27';
+import {transferEditorPairs,publishedTransferRoutes,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=8';
+import {endBookingLabel,bookingEffects} from './trip-bookings-state.mjs?v=3';
+import {canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {baseName} from './personal-points.mjs?v=3';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=6';
 import {saveTransferConnection,removeTransferConnection,transferConnectionGuard} from './trip-transfer-connections-state.mjs';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {transferClock} from './trip-service-transfer-view.mjs';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,cls='transfer-secondary')=>{const n=el('button',text,cls);n.type='button';return n;};
@@ -58,7 +58,7 @@ export function initTransferEditor({host,read,commit,catalog,base}){
     }
     edit.addEventListener('click',()=>change());clear.addEventListener('click',()=>change(true));
    }
-   if(bookings.end)boundaries.append(el('p',`Отъезд: ${baseName(bookings.end.location,catalog)} · ${transferClock(bookings.end.time)}. Запас ${bookings.end.buffer} мин.`, 'transfer-source'));
+   if(bookings.end)boundaries.append(el('p',`${endBookingLabel(bookings.end)}: ${baseName(bookings.end.location,catalog)} · ${transferClock(bookings.end.time)}. Запас ${bookings.end.buffer} мин.`, 'transfer-source'));
    form.append(boundaries);
    }
    if(!pairs.length){form.append(el('p',configureBoundaries?'Добавьте остановку и выберите начало или возвращение, чтобы настроить дорогу.':'Добавьте ещё остановку, чтобы настроить дорогу между местами.','transfer-preview'));dialog.showModal();close.focus();return;}

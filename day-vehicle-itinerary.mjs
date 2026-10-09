@@ -1,7 +1,7 @@
 // Read the portable transport settings into physical roads, without migrating
 // or writing the saved day. Rust remains the only owner of timing and fit.
 import {baseTransport} from './day-mobility.mjs?v=4';
-import {manualLeg,resolveAccessBetween,resolveDirectedTravel,sameArrival} from './travel-estimates.mjs?v=12';
+import {manualLeg,resolveAccessBetween,resolveDirectedTravel,sameArrival} from './travel-estimates.mjs?v=13';
 const physical=a=>JSON.stringify([a?.kind,a?.revision,a?.location]);
 const poiId=a=>a?.location?.kind==='catalog'&&a.location.reference_kind==='poi'?a.location.id:null;
 const roadId=a=>poiId(a)||(a?.location?.kind==='point'?`@${a.location.lon},${a.location.lat}`:null);
@@ -25,6 +25,10 @@ export function vehicleItinerary(trip,itinerary,catalog,matrix,date){
   if(boundary&&a?.location?.kind==='point')return a;
   const key=a?.id||'unknown';if(parkingCache.has(key))return parkingCache.get(key);
   const p=catalog.poi.find(p=>p.slug===poiId(a)),v=p?.arrival_points?.[mode];
+  // A riding day follows bicycle roads to the landmark. A separate parking
+  // walk exists only when the catalogue defines that access point. A day
+  // leaving a bicycle at `base.via` still requires its actual parking facts.
+  if(mode==='bike'&&!base&&!v)return a;
   const valid=v&&Number.isFinite(v.lat)&&Math.abs(v.lat)<=90&&Number.isFinite(v.lon)&&Math.abs(v.lon)<=180&&v.source?.url&&v.source.checked_at;
   const point=add({id:JSON.stringify(['vehicle-parking',mode,key,p?.slug||null]),name:valid?v.name:`Место для ${mode==='car'?'машины':'велосипеда'} у ${a?.name||'остановки'} пока не проверено`,kind:'parking',
    revision:valid?`point:${v.lat},${v.lon}`:`parking:unknown:${key}`,location:valid?{kind:'point',lat:v.lat,lon:v.lon}:{kind:'unknown'},

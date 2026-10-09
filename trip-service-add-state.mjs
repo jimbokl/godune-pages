@@ -1,7 +1,7 @@
 // A pure preview of the exact draft that the author will confirm.
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=26';
-import {serviceVisitRows,addServiceVisitToDate} from './trip-service-visits-state.mjs?v=4';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
+import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=27';
+import {serviceVisitRows,addServiceVisitToDate} from './trip-service-visits-state.mjs?v=5';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
 
 export const serviceAddGuard=trip=>JSON.stringify(trip);
 export function prepareServiceAdd(engine,trip,prepared,target){

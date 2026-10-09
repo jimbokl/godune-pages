@@ -1,11 +1,11 @@
-import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=3';
+import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=4';
 import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalDetails} from './trip-rental-view.mjs';
 import {dayPeople} from './trip-party.mjs?v=1';
-import {selectedDay,journeyDays,ensureJourney} from './trip-days-state.mjs?v=26';
+import {selectedDay,journeyDays,ensureJourney} from './trip-days-state.mjs?v=27';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {dayChangeText} from './trip-day-change-view.mjs?v=1';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-along-route]');
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
@@ -19,7 +19,7 @@ if(root){
  async function load(){
   if(!pending)pending=(async()=>{
    const [{createTripMemory},{loadTrip},response,serviceResponse,engine]=await Promise.all([
-    import('./trip-memory.mjs?v=25'),import('./trip-memory-bootstrap.mjs?v=4'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
+    import('./trip-memory.mjs?v=26'),import('./trip-memory-bootstrap.mjs?v=5'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
    if(!response.ok)throw Error('Не удалось открыть места и прогулки.');const catalog=await response.json();let storage;try{storage=localStorage;}catch{}
    if(!serviceResponse.ok)throw Error('Не удалось открыть услуги.');const services=await serviceResponse.json();
    if(services.version!==1||!Array.isArray(services.entries))throw Error('Обновите страницу, чтобы открыть услуги.');
