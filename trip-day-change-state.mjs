@@ -1,7 +1,7 @@
 // This adapter projects an exact target day; all timing maths remains in WASM.
-import {ensureJourney,chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=25';
+import {ensureJourney,chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=26';
 import {emptyTrip} from './trip-state.mjs';
-import {serviceDayInput} from './trip-service-day-state.mjs?v=6';
+import {serviceDayInput} from './trip-service-day-state.mjs?v=7';
 
 export function dayChangeBaseline(trip,preview,targetId){
  const journey=ensureJourney(structuredClone(trip));

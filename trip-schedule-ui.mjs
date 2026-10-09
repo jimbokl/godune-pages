@@ -1,28 +1,29 @@
 import {enhanceWaveStops} from './wave-stop-ui.mjs?v=4';
 import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=3';
-import {selectedDay} from './trip-days-state.mjs?v=25';
+import {selectedDay} from './trip-days-state.mjs?v=26';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
-import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=8';
-import {journeyRow} from './day-journey-ui.mjs?v=6';
+import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=10';
+import {bikeRouteFacts} from './bike-route-profile.mjs?v=1';
+import {journeyRow} from './day-journey-ui.mjs?v=7';
 import {bookingEffects,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {baseName,personalPoints} from './personal-points.mjs?v=3';
-import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=13';
-import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=17';
+import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=14';
+import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=18';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=4';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=12';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=11';
+import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=13';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=12';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=8';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=13';
-import {initDayProgress} from './day-progress-ui.mjs?v=8';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=6';
-import {progressMessages} from './day-progress-advice.mjs?v=7';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=9';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=14';
+import {initDayProgress} from './day-progress-ui.mjs?v=9';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=7';
+import {progressMessages} from './day-progress-advice.mjs?v=8';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=13';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=11';
+import {flexSignature} from './day-flex-advice.mjs?v=14';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=12';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 import {routeAccessDetails} from './route-access-ui.mjs?v=1';
@@ -248,6 +249,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
           no_path:'Для этого способа передвижения связного пути пока нет.',changed_point:'Координаты места изменились. Оценку дороги нужно обновить.',
           coincident_snap:'Дорожные привязки совпали. Путь между входами ещё нужно уточнить.',unavailable:'Оценки дороги сейчас не загрузились. Можно задать своё время.',missing_pair:'Этот переход ещё не рассчитан. Можно задать своё время.'}[travel.status]||'Время дороги ещё нужно уточнить.';
         road.append(text);
+        if(!compact&&!blockedByReturn)for(const fact of bikeRouteFacts(travel)) {
+          const detail=document.createElement('p');detail.className='trip-bike-profile';detail.textContent=fact;road.append(detail);
+        }
         if(travel.source) {
           const source=document.createElement('a');source.href=travel.source.url;source.target='_blank';source.rel='noopener';source.textContent=`OpenStreetMap · карта на ${travel.source.snapshot_at.slice(0,10).split('-').reverse().join('.')}`;
           const license=document.createElement('a');license.href=new URL('assets/licenses/routing-data.txt',base);license.target='_blank';license.rel='noopener';license.textContent='Условия карты';road.append(source,' · ',license);
@@ -345,7 +349,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=13')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=14')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

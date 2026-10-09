@@ -1,7 +1,7 @@
-import {selectedDay} from './trip-days-state.mjs?v=25';
-import {planInput} from './trip-schedule-state.mjs?v=17';
+import {selectedDay} from './trip-days-state.mjs?v=26';
+import {planInput} from './trip-schedule-state.mjs?v=18';
 import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
-import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=6';
+import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=7';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
 
 // Compare the original whole day, rather than treating finished visits as

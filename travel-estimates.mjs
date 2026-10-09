@@ -11,6 +11,9 @@ const placeFor=(catalog,id)=>catalog?.poi?.find(p=>p.slug===id);
 const anchorFor=(catalog,id,mode)=>placeFor(catalog,id)?.arrival_points?.[mode];
 const stable=value=>JSON.stringify(value,(_,v)=>v && typeof v==='object' && !Array.isArray(v)
   ? Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])) : v);
+// Rust/Python JSON writers may differ by one float ULP for the same GPS value.
+const sameCoordinate=(a,b)=>Number.isFinite(a)&&Number.isFinite(b)
+  && Math.abs(a-b)<=4*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
 export function sameArrival(catalog,a,b,mode) {
   const x=anchorFor(catalog,a,mode),y=anchorFor(catalog,b,mode);
   return !!x && !!y && x.id===y.id && x.lat===y.lat && x.lon===y.lon;
@@ -18,7 +21,7 @@ export function sameArrival(catalog,a,b,mode) {
 function currentPoint(catalog,matrix,id) {
   if(typeof id==='string'&&id.startsWith('@'))return matrix?.personal_points?.some(p=>p.slug===id&&`@${p.lon},${p.lat}`===id) || false;
   const a=placeFor(catalog,id),b=matrix?.points?.find(p=>p.slug===id);
-  return !!a && !!b && a.lat===b.lat && a.lon===b.lon
+  return !!a && !!b && sameCoordinate(a.lat,b.lat) && sameCoordinate(a.lon,b.lon)
     && stable(a.arrival_points||{})===stable(b.arrival_points||{});
 }
 export function resolveAccess(trip,id,catalog,matrix) {
@@ -138,7 +141,7 @@ async function directedMatrix(base,catalog,matrix,points,segments) {
   if(!segments.length)return copy;
   const profiles=[...new Set(segments.map(part=>part.mode))];
   await Promise.all(profiles.map(async mode=>{try{
-    const {loadBrowserRouter}=await import('./browser-router.mjs?v=2');const route=await loadBrowserRouter(base,mode);
+    const {loadBrowserRouter}=await import('./browser-router.mjs?v=4');const route=await loadBrowserRouter(base,mode);
     if(!sameRoadSource(matrix.source,route.graph.source))return;
     await Promise.all(segments.filter(part=>part.mode===mode).map(async({from,to})=>{
       const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);
@@ -188,11 +191,11 @@ export async function tripRoadFeatures(trip,catalog,matrix,base,visible=trip.pla
     const leg=resolveRoadPair(from,to,catalog,matrix,profile);
     if(leg.origin!=='estimate')return null;
     try {
-      const legMode=leg.leg_mode || mode;
-      let coordinates=leg.dynamic?leg.geometry:null;
-      if(!coordinates){const chunk=await loadGeometry(base,legMode,from,matrix.source.id),path=chunk.legs[to];if(!path)return null;coordinates=decodePath(path.points);}
+      const legMode=leg.leg_mode || profile;
+      let coordinates=leg.dynamic?leg.geometry:null,sections=leg.bike_profile?.sections;
+      if(!coordinates){const chunk=await loadGeometry(base,legMode,from,matrix.source.id),path=chunk.legs[to];if(!path)return null;coordinates=decodePath(path.points);sections=path.bike_sections;}
       if(coordinates.length<2)return null;
-      return {type:'Feature',properties:{from,to,mode:legMode,kind:'travel',minutes:leg.minutes,source_id:matrix.source.id},geometry:{type:'LineString',coordinates}};
+      return {type:'Feature',properties:{from,to,mode:legMode,kind:'travel',minutes:leg.minutes,source_id:matrix.source.id,...(legMode==='bike'?{bike_profile:leg.bike_profile,bike_sections:sections}: {})},geometry:{type:'LineString',coordinates}};
     }catch{return null;}
   }));
   const accesses=visible.map(id=>[id,resolveAccess(trip,id,catalog,matrix),['approach','return']]);

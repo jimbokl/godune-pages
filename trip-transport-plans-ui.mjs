@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=25';
+import {selectedDay} from './trip-days-state.mjs?v=26';
 import {removeTransportPlan} from './trip-transport-plans-state.mjs';
 import {transportStates,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs';
 import {transportClock} from './transport-page-state.mjs?v=1';

@@ -1,4 +1,4 @@
-import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=11';
+import {dayBases,resolvePair,resolveAccess,resolveAccessBetween} from './travel-estimates.mjs?v=12';
 import {routeAccessProfile,tripAccessProfile} from './route-access.mjs?v=1';
 
 // Preferences describe the traveller's intent. They never certify a path.

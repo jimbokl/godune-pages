@@ -1,7 +1,7 @@
-import {excursionJourney} from './day-journey-view.mjs?v=8';
-import {journeyRow} from './day-journey-ui.mjs?v=6';
+import {excursionJourney} from './day-journey-view.mjs?v=10';
+import {journeyRow} from './day-journey-ui.mjs?v=7';
 import {defaultExcursion,parseDepartures,transportOptions,resolveExcursion,validExcursion} from './trip-transport-state.mjs?v=3';
-import {updateSchedule} from './trip-schedule-state.mjs?v=17';
+import {updateSchedule} from './trip-schedule-state.mjs?v=18';
 
 const line = (text,cls) => {const node=document.createElement('p');node.textContent=text;if(cls)node.className=cls;return node;};
 export function transportCard({trip,item,place,catalog,clock}) {

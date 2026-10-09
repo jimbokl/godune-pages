@@ -1,11 +1,11 @@
 import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=12';
-import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=17';
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=13';
+import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=18';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=3';
 import {validDayWave} from './day-wave.mjs?v=2';
 import {dayPointIds} from './day-points.mjs?v=1';
 import {validParty,dayPeople,partyWithCount} from './trip-party.mjs?v=1';
-import {validPreferences,hasPreferences} from './day-preferences.mjs?v=5';
+import {validPreferences,hasPreferences} from './day-preferences.mjs?v=7';
 import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contract.mjs?v=1';
 import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=1';
 import {hasTransferConnections} from './trip-transfer-connections-contract.mjs';

@@ -1,5 +1,6 @@
 // Read-only adapters. Rust owns time; this module only names its results.
 import {clock} from './day-stop-view.mjs?v=1';
+import {bikeRouteFacts} from './bike-route-profile.mjs?v=1';
 import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
 export const journeyKinds={start:'Выход',walk:'Пешком',car:'На машине',bike:'На велосипеде',mixed:'Пешком и транспорт',rail:'Поезд',bus:'Автобус',ferry:'Переправа',wait:'Ожидание',visit:'Прогулка',return:'Возвращение',boarding:'До посадки',notice:'Проверьте перед выходом'};
 const row=(id,kind,time,title,text,state='estimate',source=null)=>({id,kind,time,title,text,state,source});
@@ -53,7 +54,8 @@ export function roadJourney(item,travel,reserve,fromName,blocked=false,name=id=>
     const title=part.kind==='approach'?'От парковки к началу прогулки':part.kind==='return'?'Обратно к парковке':`${part.leg_mode==='foot'||part.mode==='foot'?'Пешком':part.mode==='bike'?'На велосипеде':'На машине'} до ${name(part.to)}`;
     return `${title} — ${part.minutes===null?'время ещё нужно уточнить':part.minutes+' мин'}`;
   }).join('; ')+'. ':'';
-  return {...row(`road-${item.id}`,label,blocked?null:known(item.arrival),`От ${fromName}`,blocked?'Сначала нужно подобрать возвращение с переправы.':parts+(travel.minutes===null?'Общее время дороги пока неизвестно.':travel.origin==='same_place'?'Вы уже в этом месте. Дорога между точками не нужна.':`${travel.origin==='estimate'?'Около ':''}${travel.minutes} мин ${travel.origin==='manual'?'по вашей оценке':'по карте'} + ${reserve} мин запас.`),unknown?'unknown':'estimate'),timeLabel:'Прибытие'};
+  const bike=unknown?'':bikeRouteFacts(travel).join(' ');
+  return {...row(`road-${item.id}`,label,blocked?null:known(item.arrival),`От ${fromName}`,blocked?'Сначала нужно подобрать возвращение с переправы.':parts+(travel.minutes===null?'Общее время дороги пока неизвестно.':travel.origin==='same_place'?'Вы уже в этом месте. Дорога между точками не нужна.':`${travel.origin==='estimate'?'Около ':''}${travel.minutes} мин ${travel.origin==='manual'?'по вашей оценке':'по карте'} + ${reserve} мин запас.`)+(bike?' '+bike:''),unknown?'unknown':'estimate'),timeLabel:'Прибытие'};
 }
 export function waitJourney(item,booked=false) {
   return item.wait>0?row(`wait-${item.id}`,'wait',known(item.arrival),booked?'До записанного времени':'До начала посещения',`${item.wait} мин. Начать около ${clock(item.begins)}.`):null;

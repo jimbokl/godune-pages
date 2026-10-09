@@ -1,7 +1,7 @@
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
 import {clock} from './day-stop-view.mjs?v=1';
-import {journeyKinds} from './day-journey-view.mjs?v=8';
+import {journeyKinds} from './day-journey-view.mjs?v=10';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
 import {formatKopecks as money} from './trip-money.mjs';
@@ -89,7 +89,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
-    signal?.throwIfAborted();chapter=`ДЕНЬ ${index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
+    signal?.throwIfAborted();chapter=`ДЕНЬ ${Number.isInteger(day.number)&&day.number>0?day.number:index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
     text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});
     const home=day.record.start_at,night=day.record.night_at;
     if(home?.kind==='personal')text(`Начало: ${home.name} · GPS ${gps(home)}`,{size:phone?9.5:11});

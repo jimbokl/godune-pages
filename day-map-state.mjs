@@ -1,12 +1,12 @@
 // Read-only map projection. The day engine owns timing; a named stop never
 // borrows the coordinates of a nearby attraction or a straight-line path.
-import {selectedDay} from './trip-days-state.mjs?v=25';
-import {tripSignature} from './trip-light.mjs?v=13';
+import {selectedDay} from './trip-days-state.mjs?v=26';
+import {tripSignature} from './trip-light.mjs?v=14';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=2';
-import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=1';
+import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=3';
+import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=2';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=3';
 
 export const dayMapSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).timeline,selectedDay(trip).service_visits,selectedDay(trip).transfer_connections]);

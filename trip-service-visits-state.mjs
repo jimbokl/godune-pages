@@ -1,5 +1,5 @@
 // Rust owns calculations; this adapter owns membership and user notes.
-import {ensureJourney,selectedDay,journeyDays,validTripDate,addTripDay,chooseTripDay,dayHasContent} from './trip-days-state.mjs?v=25';
+import {ensureJourney,selectedDay,journeyDays,validTripDate,addTripDay,chooseTripDay,dayHasContent} from './trip-days-state.mjs?v=26';
 import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 export {serviceVisitRows,serviceVisitContext,serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
 function dayFor(trip,id){

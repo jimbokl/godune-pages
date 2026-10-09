@@ -1,8 +1,8 @@
-import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=6';
+import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=7';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
 import {transitTable} from './transport-day.mjs?v=3';
 
-import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2';
+import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=3';
 import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';
 
 // Timetables and WASM are loaded only when a traveller asks for this journey.

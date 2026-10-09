@@ -1,5 +1,5 @@
 import {railHomeLocations} from './rail-access.mjs?v=2';
-import {kosaClock} from './kosa-plan-state.mjs?v=24';
+import {kosaClock} from './kosa-plan-state.mjs?v=25';
 import {retainStationRoad,forgetStationRoad} from './station-road-proof.mjs?v=1';
 const stable=v=>JSON.stringify(v,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
 

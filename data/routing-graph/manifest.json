@@ -24,28 +24,28 @@
       "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3"
     }
   },
-  "exporter_sha256": "ab9877225a03340b88bbaed23ab26b4fc27079bc2d171fe16ad15218658f73be",
+  "exporter_sha256": "2f52ce2edd30a7c9bc2358320d3405ec4c970be129a6f8722bfdfca699d53306",
   "profiles": {
     "foot": {
       "path": "data/routing-graph/foot.gdr.gz",
-      "bytes": 6674063,
-      "sha256": "37e9d1a898b2ab3defe01569d37877cc91c8ef68e16becf08d069371406650dd",
-      "raw_bytes": 12974208,
-      "raw_sha256": "c8f49e6073d48fd13200675cc148988ee94802b41439afd2adffe2668897cbd2"
+      "bytes": 6767377,
+      "sha256": "55629209809dfd02d4389e4a6087648077fce3620b36cf80d4766167165f6c8a",
+      "raw_bytes": 14123410,
+      "raw_sha256": "5ae299ba0e0f26bd15e58ed4620d19197dff583628eccc349b17812eff665796"
     },
     "bike": {
       "path": "data/routing-graph/bike.gdr.gz",
-      "bytes": 6564717,
-      "sha256": "72720978c1b30848aad5bbd79d6152282080dbaadb547113b978ba66bd84a6b2",
-      "raw_bytes": 13136467,
-      "raw_sha256": "0620653fc0a943d251e21b66a5fde1dfb5b5a387542c95724c592da88179befe"
+      "bytes": 6659384,
+      "sha256": "88f636c66f41cd935f9947440103895e5291ab012594bcc7b08a137ba3fd8c34",
+      "raw_bytes": 14304013,
+      "raw_sha256": "f9590f9421489089485f6cfb088432c23a08c932fe66bbfb30c6ed4d45d7f4a7"
     },
     "car": {
       "path": "data/routing-graph/car.gdr.gz",
-      "bytes": 6320332,
-      "sha256": "f6d70c41b81c3f40c053efe27c0a79e772ed9b1568d5e1ab504b9b0e0246857b",
-      "raw_bytes": 14909108,
-      "raw_sha256": "4fcb805a5421defb19bc2f5bae0017708c44769adae9ba388f4501b037f7a6c9"
+      "bytes": 6381565,
+      "sha256": "5e53a9a9c39e3fb33c0481f5ab1164e2a45a845a21aecb6494f988b7a9e03198",
+      "raw_bytes": 15777262,
+      "raw_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d"
     }
   }
 }

@@ -2,22 +2,22 @@ import {transportGuideRows} from './trip-transport-plans-view.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
 import {partyLabel} from './trip-party.mjs?v=1';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
-import {assessDayPreferences} from './day-preferences.mjs?v=6';
+import {assessDayPreferences} from './day-preferences.mjs?v=7';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=25';
-import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=17';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=26';
+import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=18';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2';
 import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=3';
-import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=11';
+import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=12';
 import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=8';
+import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=10';
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=7';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=8';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
 import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2';
 
@@ -72,7 +72,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
 
 export async function collectTripGuide({trip,catalog,scope='day',calculate,matrixFor,roadsFor,kosaFor,createdAt=new Date().toISOString()}) {
   if(!['day','trip'].includes(scope))throw Error('guide_invalid_scope');
-  const saved=structuredClone(trip),days=scope==='day'?[selectedDay(saved)]:journeyDays(saved),out=[];
+  const saved=structuredClone(trip),allDays=journeyDays(saved),days=scope==='day'?[selectedDay(saved)]:allDays,out=[];
   for(const [index,record] of days.entries()) {
     const current=chooseTripDay(saved,record.id),generated=!!record.kosa_plan,transport=record.transport_plans?.entries||[],transportOnly=transport.length>0&&!current.places.length&&!serviceVisitRows(record).length&&!generated;
     const kosa=generated?await kosaFor(current):null;
@@ -98,7 +98,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;
     if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
-    out.push({id:record.id,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
+    out.push({id:record.id,number:allDays.findIndex(d=>d.id===record.id)+1 || index+1,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${allDays.findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:transport.length?'needs_info':services?(services.check?.state||'needs_info'):generated?kosa.state:result.status,summary:transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':services?services.summary+(generated?' '+kosa.message:''):generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,

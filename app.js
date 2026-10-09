@@ -231,28 +231,28 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=107'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=109'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=32')).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=33')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=27')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=28')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=21')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+      import(url('tool-pages.mjs?v=22')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
         $$('[data-plan-starter]').forEach(button=>button.disabled=true);
         const status=$('#plan-starter-status');
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=30')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
-    if ($('#housing-engine')) import(url('housing-ui.mjs?v=12')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
-    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=15')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=31')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#housing-engine')) import(url('housing-ui.mjs?v=13')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=16')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
     });
     if (inlineMap) {
@@ -270,9 +270,9 @@
     });
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
-    if ($('#budget-page')) import(url('budget-ui.mjs?v=13')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
-    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=7')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=23')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#budget-page')) import(url('budget-ui.mjs?v=14')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=8')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=24')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=3')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -428,7 +428,7 @@
       });
       let roads={type:'FeatureCollection',features:[]},modeLabel='',arrivals=[];
       if(trip) {
-        const travel=await import(url('travel-estimates.mjs?v=11'));
+        const travel=await import(url('travel-estimates.mjs?v=12'));
         const matrix=await travel.loadTripTravelMatrix(base,trip,data).catch(()=>null);
         roads=await travel.tripRoadFeatures(trip,data,matrix,base,points.map(p=>p.slug));
         modeLabel=travel.TRAVEL_MODES[travel.travelMode(trip)];

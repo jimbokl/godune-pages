@@ -4,8 +4,8 @@ import {formatKopecks as money} from './trip-money.mjs';
 import {saveTransportPlan} from './trip-transport-plans-state.mjs';
 import {transportStates,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs';
 import {recordTransportAction} from './transport-useful-actions.mjs';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=3';
-import {createTripMemory} from './trip-memory.mjs?v=24';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=4';
+import {createTripMemory} from './trip-memory.mjs?v=25';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -98,7 +98,7 @@ async function init(){
   pdf.addEventListener('click',async()=>{
    if(ticket!==generation||!receipt)return;pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
    try{
-    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=22');signal.throwIfAborted();
+    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=25');signal.throwIfAborted();
     const file=await makeTripGuidePdf({snapshot:transportGuide(frozen),media:{maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]},base:base.href,format:'print'},{signal,onProgress:text=>{if(ticket===generation)notify(text);}});
     if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
    }catch(error){if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}

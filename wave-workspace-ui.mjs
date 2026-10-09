@@ -1,5 +1,5 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=25';
-import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=8';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=26';
+import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=9';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
 
@@ -60,7 +60,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=35');const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=37');const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=!canDownloadWaveDay(read(),catalog);}
  });

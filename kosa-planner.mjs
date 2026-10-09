@@ -1,10 +1,10 @@
 import {transitTable} from './transport-day.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=24';
-import {createTripFile} from './trip-file.mjs?v=29';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=22';
+import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=25';
+import {createTripFile} from './trip-file.mjs?v=30';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=23';
 import {assessKosa} from './day-readiness.mjs?v=6';
-import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=3';
+import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=4';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -173,7 +173,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=23');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=24');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');

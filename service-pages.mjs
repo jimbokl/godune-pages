@@ -1,7 +1,7 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
-import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=13';
+import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=15';
 import {bindServiceComparison} from './service-comparison.mjs?v=3';
 import {bindServiceFavorites} from './service-favorites.mjs?v=1';
 
@@ -190,7 +190,7 @@ if(typeof document!=='undefined') {
           if((context.usesSaved(new FormData(form))||appliedRevision!==revision)&&!await calculate())return;
           if(card.hidden)return;
           const selection=structuredClone(currentInputs.get(id)),generation=revision;
-          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=18');
+          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=20');
           if(generation!==revision){status.textContent='Условия изменились. Добавьте посещение ещё раз.';return;}
           await pickServiceVisit(metadata,selection,new URL('./',import.meta.url),add);
         }catch(error){status.textContent=/[А-Яа-яЁё]/.test(error.message)?error.message:'Не получилось открыть поездку. Попробуйте ещё раз.';}

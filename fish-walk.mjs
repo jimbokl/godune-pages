@@ -1,4 +1,4 @@
-import {saveTourDay} from './gastronomy.mjs?v=23';
+import {saveTourDay} from './gastronomy.mjs?v=24';
 export async function initFishWalk({workshop,base}) {
   const button=document.querySelector('[data-fish-save]'),status=document.querySelector('[data-fish-status]');
   const response=await fetch(new URL('data/gastronomy.json',base));

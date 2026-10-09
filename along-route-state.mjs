@@ -1,9 +1,9 @@
-import {emptyTrip,cleanTrip} from './trip-state.mjs?v=28';
-import {ensureJourney,selectedDay,chooseTripDay,addTripDay,journeyDays,validTripDate,dayHasContent} from './trip-days-state.mjs?v=25';
+import {emptyTrip,cleanTrip} from './trip-state.mjs?v=29';
+import {ensureJourney,selectedDay,chooseTripDay,addTripDay,journeyDays,validTripDate,dayHasContent} from './trip-days-state.mjs?v=26';
 import {addRouteStops} from './trip-order.mjs';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=17';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=18';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
-import {serviceDayInput} from './trip-service-day-state.mjs?v=6';
+import {serviceDayInput} from './trip-service-day-state.mjs?v=7';
 
 export const alongGuard=trip=>JSON.stringify(trip);
 export const stopTypes={all:['landmark','restaurant','museum','nature','park','viewpoint','beach'],

@@ -1,0 +1,35 @@
+.bike-form,.bike-card{border:1px solid var(--line,#ddd8ce);border-radius:22px;background:var(--card,#fffdf9);box-shadow:0 12px 40px #152d420b}
+.bike-form{padding:clamp(1rem,3vw,2rem)}
+.bike-main-fields{display:grid;grid-template-columns:1fr 1fr auto;gap:1rem;align-items:end}
+.bike-extra-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.bike-form label{display:grid;gap:.5rem;min-width:0;font-weight:600}
+.bike-form input:not([type=checkbox]),.bike-form select{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:.7rem;border:1px solid #a9bac5;border-radius:10px;font:inherit;color:inherit;background:var(--paper,#faf7f1)}
+.bike-form button,.bike-save{min-height:48px;border:0;border-radius:12px;background:#527f9f;color:#fff;padding:.8rem 1.3rem;font:inherit;font-weight:600;cursor:pointer}
+.bike-form button:disabled,.bike-save:disabled{opacity:.55;cursor:default}
+.bike-options{margin-top:1rem}.bike-options summary{min-height:44px;align-content:center;cursor:pointer;color:var(--sea-ink);font-weight:600}
+.bike-form .bike-checkbox{display:flex;align-items:center;gap:.7rem;grid-column:1/-1;min-height:44px;font-weight:400}
+.bike-checkbox input{width:22px;height:22px;accent-color:#527f9f}
+.bike-caption,.bike-status{color:var(--muted,#607483);line-height:1.5}.bike-caption{font-size:.9rem;margin-bottom:0}
+.bike-status{margin:1.75rem 0 1rem;min-height:1.5em}.bike-status a{font-weight:600}
+.bike-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.bike-tabs button{min-height:44px;border:1px solid #a9bac5;border-radius:22px;padding:.6rem 1rem;font:inherit;color:inherit;background:transparent;cursor:pointer}
+.bike-tabs [aria-pressed=true]{background:#527f9f;border-color:#527f9f;color:#fff}
+.bike-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-items:stretch}
+.bike-card{overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.bike-card>img{width:100%;height:200px;object-fit:cover}
+.bike-card-body{padding:clamp(1.1rem,3vw,1.75rem);display:flex;flex-direction:column;flex:1;min-width:0}
+.bike-card h3{font-size:clamp(1.65rem,3vw,2.2rem);line-height:1.15;margin:.35rem 0 .8rem}
+.bike-card-body>p{line-height:1.5}.bike-metrics{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:.25rem 0 1rem;font-weight:600;color:var(--sea-ink)}
+.bike-stops{list-style:none;padding:0;counter-reset:stop;margin:1rem 0 1.25rem}
+.bike-stops li{counter-increment:stop;position:relative;min-height:42px;padding:0 0 .8rem 44px;line-height:1.4}
+.bike-stops li:before{content:counter(stop);display:grid;place-items:center;position:absolute;left:0;top:-4px;width:30px;height:30px;border-radius:50%;background:#d9e8ee;color:#274d67}
+.bike-stops li:not(:last-child):after{content:'';position:absolute;top:28px;bottom:5px;left:14px;border-left:1px dashed #7d9eb1}
+.bike-stops a{text-decoration:none;color:inherit}.bike-stops a:hover{text-decoration:underline}
+.bike-stops small{display:block;margin-top:.2rem;color:var(--muted,#607483);font-size:.85rem}
+.bike-facts{border-top:1px solid var(--line,#ddd8ce);padding-top:1rem;margin-top:auto;color:var(--muted,#607483);font-size:.95rem;line-height:1.5}
+.bike-facts p{margin:.4rem 0}.bike-facts ul{padding-left:1.1rem}.bike-facts details summary{min-height:44px;align-content:center;cursor:pointer}
+.bike-actions{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;padding-top:1.25rem}.bike-save{flex:1}.bike-actions a{min-height:44px;align-content:center}
+.bike-source{font-size:.85rem;color:var(--muted,#607483)}.bike-next{border-top:1px solid var(--line,#ddd8ce);margin-top:3rem;padding-top:2rem;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}.bike-next>div{flex:1 1 100%}
+@media(max-width:760px){.bike-main-fields{grid-template-columns:1fr 1fr}.bike-main-fields button{grid-column:1/-1}.bike-extra-fields{grid-template-columns:1fr 1fr}.bike-results{grid-template-columns:1fr}.bike-card>img{height:180px}}
+@media(max-width:360px){.bike-main-fields,.bike-extra-fields{grid-template-columns:1fr}.bike-tabs button{flex:1 1 auto}.bike-metrics{gap:.5rem 1rem}}
+@media(prefers-reduced-motion:no-preference){.bike-save,.bike-tabs button{transition:background-color .15s ease}.bike-save:hover{background:#3c6d8e}}

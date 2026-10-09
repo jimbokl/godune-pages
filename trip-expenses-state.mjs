@@ -1,5 +1,5 @@
 // Prices are snapshots. Plans and actual group payments are independent.
-import {validTransfer,validTransferPoint} from './trip-transfer-costs.mjs?v=7';
+import {validTransfer,validTransferPoint} from './trip-transfer-costs.mjs?v=8';
 import {validOfferSource} from './trip-offers-state.mjs?v=3';
 import {validMenuExpenseLink} from './trip-menu-expenses-contract.mjs';
 import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=1';

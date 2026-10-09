@@ -1,8 +1,8 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {selectedDay} from './trip-days-state.mjs?v=25';
+import {selectedDay} from './trip-days-state.mjs?v=26';
 import {hasServiceVisits,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=6';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=12';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=7';
 import {formatKopecks as money} from './trip-money.mjs';
 import {activateTimeline,moveTimelineEntry,timelineGuard,validTimeline} from './trip-service-timeline-state.mjs';
 import {serviceTimelineView} from './trip-service-timeline-ui.mjs?v=7';

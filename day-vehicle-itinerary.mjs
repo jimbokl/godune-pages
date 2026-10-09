@@ -1,7 +1,7 @@
 // Read the portable transport settings into physical roads, without migrating
 // or writing the saved day. Rust remains the only owner of timing and fit.
 import {baseTransport} from './day-mobility.mjs?v=4';
-import {manualLeg,resolveAccessBetween,resolveDirectedTravel,sameArrival} from './travel-estimates.mjs?v=11';
+import {manualLeg,resolveAccessBetween,resolveDirectedTravel,sameArrival} from './travel-estimates.mjs?v=12';
 const physical=a=>JSON.stringify([a?.kind,a?.revision,a?.location]);
 const poiId=a=>a?.location?.kind==='catalog'&&a.location.reference_kind==='poi'?a.location.id:null;
 const roadId=a=>poiId(a)||(a?.location?.kind==='point'?`@${a.location.lon},${a.location.lat}`:null);

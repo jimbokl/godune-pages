@@ -1,4 +1,4 @@
-import {previewKosaFlex,applyKosaFlex} from './day-kosa-flex.mjs?v=6';
+import {previewKosaFlex,applyKosaFlex} from './day-kosa-flex.mjs?v=7';
 import {clock} from './day-stop-view.mjs?v=1';
 const el=(tag,cls='',text='')=>{const node=document.createElement(tag);node.className=cls;node.textContent=text;return node;};
 const messages={one_walk:'В плане уже одна тропа. Более короткого проверенного пути здесь пока нет. Сохранённое возвращение показано выше.',

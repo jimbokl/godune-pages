@@ -1,6 +1,6 @@
-import {cleanTrip} from './trip-state.mjs?v=28';
-import {selectedDay, changeDayDetails} from './trip-days-state.mjs?v=25';
-import {defaultSchedule} from './trip-schedule-state.mjs?v=17';
+import {cleanTrip} from './trip-state.mjs?v=29';
+import {selectedDay, changeDayDetails} from './trip-days-state.mjs?v=26';
+import {defaultSchedule} from './trip-schedule-state.mjs?v=18';
 
 // Apply an intent to the latest draft, rather than saving the order seen at drag start.
 export function reorderTripPlace(state, id, anchor, side, catalog) {

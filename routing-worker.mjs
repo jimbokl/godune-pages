@@ -1,4 +1,4 @@
-import {invokeRoute} from './browser-router.mjs?v=2';
+import {invokeRoute} from './browser-router.mjs?v=4';
 let wasm;
 const hex=buffer=>[...new Uint8Array(buffer)].map(n=>n.toString(16).padStart(2,'0')).join('');
 const sha=bytes=>crypto.subtle.digest('SHA-256',bytes).then(hex);
@@ -15,7 +15,7 @@ async function initialise(base,mode){
   if(!graph){const response=await fetch(graphURL,{cache:'no-cache'});if(!response.ok)throw Error('Не удалось загрузить дорожный граф.');bytes=await response.arrayBuffer();if(bytes.byteLength!==row.bytes||await sha(bytes)!==row.sha256)throw Error('Загрузка дороги неполная. Попробуйте ещё раз.');}
   const raw=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
   if(raw.byteLength!==row.raw_bytes||await sha(raw)!==row.raw_sha256)throw Error('Дорожный граф повреждён.');
-  const moduleURL=new URL('assets/route.wasm?v=1',base);let moduleResponse;
+  const moduleURL=new URL('assets/route.wasm?v=2',base);let moduleResponse;
   try{moduleResponse=await fetch(moduleURL);if(!moduleResponse.ok)throw Error();}catch{moduleResponse=await cache.match(moduleURL);}
   if(!moduleResponse)throw Error('Расчёт дороги не загрузился.');
   const moduleCopy=moduleResponse.clone();
@@ -26,7 +26,7 @@ async function initialise(base,mode){
   if(!graph)await cache.put(graphURL,new Response(bytes,{headers:{'Content-Type':'application/gzip'}})).catch(()=>{});
   await cache.put(moduleURL,moduleCopy).catch(()=>{});
   await cache.put(manifestURL,new Response(JSON.stringify(manifest),{headers:{'Content-Type':'application/json'}})).catch(()=>{});
-  for(const path of ['routing-worker.mjs?v=2','browser-router.mjs?v=2'])try{const target=new URL(path,base),response=await fetch(target);if(response.ok)await cache.put(target,response);}catch{/* The road can still be used for this visit. */}
+  for(const path of ['routing-worker.mjs?v=4','browser-router.mjs?v=4'])try{const target=new URL(path,base),response=await fetch(target);if(response.ok)await cache.put(target,response);}catch{/* The road can still be used for this visit. */}
   return facts;
 }
 self.onmessage=async event=>{

@@ -15,7 +15,7 @@ export function loadBrowserRouter(base,mode) {
   if(!['foot','bike','car'].includes(mode))return Promise.reject(Error('Неизвестный способ передвижения.'));
   const key=`${new URL(base).href}/${mode}`;
   if(!routers.has(key))routers.set(key,new Promise((resolve,reject)=>{
-    const worker=new Worker(new URL('routing-worker.mjs?v=2',base),{type:'module'}),pending=new Map();let id=0,ready=false;
+    const worker=new Worker(new URL('routing-worker.mjs?v=4',base),{type:'module'}),pending=new Map();let id=0,ready=false;
     const fail=message=>{const error=Error(message);if(!ready)reject(error);for(const task of pending.values())task.reject(error);pending.clear();routers.delete(key);stops.delete(key);worker.terminate();};
     stops.set(key,fail);
     worker.onerror=()=>fail('Расчёт дороги не открылся. Точки поездки сохранены.');

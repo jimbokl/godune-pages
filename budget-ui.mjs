@@ -1,7 +1,7 @@
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=6';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=7';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
-import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=25';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=23';
+import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=26';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=24';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2';
 
