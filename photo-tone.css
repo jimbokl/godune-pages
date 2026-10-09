@@ -1,0 +1,13 @@
+/* Dune colour grade. Apply to photographs, never logos, maps or scanned facts.
+   The source pixels and image downloads are unchanged. Same grade in both themes. */
+[data-photo-tone="dune"]{--photo-grade:sepia(.065) saturate(.9) contrast(.97) brightness(1.025)}
+[data-photo-tone="dune"][data-photo-profile="architecture"]{--photo-grade:sepia(.065) saturate(.9) contrast(.965) brightness(1.035)}
+[data-photo-tone="dune"][data-photo-profile="food"]{--photo-grade:sepia(.025) saturate(.98) contrast(.99) brightness(1.01)}
+[data-photo-tone="amber"]{--photo-grade:sepia(.18) saturate(.85) contrast(.95) brightness(1.04)}
+[data-photo-tone="amber"][data-photo-profile="food"]{--photo-grade:sepia(.07) saturate(.97) contrast(.98) brightness(1.02)}
+[data-photo-tone="original"]{--photo-grade:none}
+picture[data-photo-tone]>img,.photo-tone-image{filter:var(--photo-grade,none)}
+/* Existing authored landscapes and venue covers share the recipe. Menu scans
+   and source galleries keep their original colours for reading facts. */
+img[src*="assets/author/"],.dining-photo>img,.food-place-photo>img{filter:var(--photo-grade,sepia(.065) saturate(.9) contrast(.97) brightness(1.025))}
+@media print{picture[data-photo-tone]>img,.photo-tone-image,img[src*="assets/author/"],.dining-photo>img,.food-place-photo>img{filter:none}}

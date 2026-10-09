@@ -4,7 +4,11 @@ import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=11';
 import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
 import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=1';
-const physical=anchor=>JSON.stringify([anchor.kind,anchor.revision,anchor.location]);
+// Rust's JSON serializer can reorder object keys. Physical identity and source
+// evidence must survive that round trip without inventing a second landmark.
+const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;
+const same=(a,b)=>JSON.stringify(ordered(a))===JSON.stringify(ordered(b));
+const physical=anchor=>JSON.stringify(ordered([anchor.kind,anchor.revision,anchor.location]));
 export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
  const graph={version:1,anchors:[],links:[]},anchors=new Map(),boundVisits=structuredClone(visits),mode=travelMode(trip);
  for(const visit of boundVisits){
@@ -16,7 +20,7 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
    if(existing&&physical(existing)!==physical(anchor))throw Error('service_timeline_anchor_conflict');
    let id=anchor.id;
    // A matching location does not allow us to discard a different source.
-   if(existing&&JSON.stringify(existing.source)!==JSON.stringify(anchor.source)){
+   if(existing&&!same(existing.source,anchor.source)){
     id=JSON.stringify([visit.id,anchor.id]);while(anchors.has(id))id+='_';
    }
    aliases.set(anchor.id,id);
@@ -51,7 +55,7 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
   const p=visit.point,source={reference:p.source_id,checked_at:p.checked_at,valid_from:null,valid_until:null};
   // A saved map point binds a manual arrival to a landmark, never to a door.
   // Share only the same physical landmark with identical dated evidence.
-  const existing=graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&JSON.stringify(a.source)===JSON.stringify(source));
+  const existing=graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&same(a.source,source));
   if(existing){manualAnchors.set(visit.id,existing.id);continue;}
   const anchor={id:`__timeline_service_${visit.id}`,name:visit.name,kind:'landmark',revision:`point:${p.lat},${p.lon}`,location:{kind:'point',lat:p.lat,lon:p.lon},source};
   while(anchors.has(anchor.id))anchor.id+='_';
@@ -84,12 +88,15 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
   const roadOrder=[...(boundaryOrigin?[{id:boundaryOrigin,departure_anchor:boundaryOrigin}]:[]),...order,...(destination?[{id:destination,arrival_anchor:destination}]:[])];
   for(let i=1;i<roadOrder.length;i++){
    const from=roadOrder[i-1],to=roadOrder[i],a=anchors.get(from.departure_anchor),b=anchors.get(to.arrival_anchor);
+   // A rental can start exactly where the previous stop ends. Rust already
+   // knows that anchor identity; a map self-link would invalidate the graph.
+   if(from.departure_anchor===to.arrival_anchor)continue;
    const identity=anchor=>anchor?.location?.kind==='catalog'&&anchor.location.reference_kind==='poi'?anchor.location.id:anchor?.location?.kind==='point'?`@${anchor.location.lon},${anchor.location.lat}`:null;
    const fromId=identity(a),toId=identity(b);if(!fromId||!toId)continue;
    const road=resolveDirectedTravel(fromId,toId,catalog,matrix,'foot');
    // A boundary and stop may reference the exact same current catalogue
    // entity under separate IDs. Only that identity permits a zero road.
-   const shared=road.origin==='same_place'&&physical(a)===physical(b)&&JSON.stringify(a.source)===JSON.stringify(b.source);
+   const shared=road.origin==='same_place'&&physical(a)===physical(b)&&same(a.source,b.source);
    if(road.origin!=='estimate'&&!shared)continue;
    graph.links.push({id:`map:${from.id}:${to.id}`,from:from.departure_anchor,to:to.arrival_anchor,
     from_revision:anchors.get(from.departure_anchor).revision,to_revision:anchors.get(to.arrival_anchor).revision,

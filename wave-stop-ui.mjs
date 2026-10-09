@@ -1,4 +1,4 @@
-import {menuChoiceGuide} from './trip-menu-choices-view.mjs';
+import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
 
 const states=new WeakMap();
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

@@ -4,7 +4,7 @@ importScripts('offline-fetch.js?v=1');
 importScripts('offline-storage.js?v=1');
 importScripts('offline-media.js?v=1');
 importScripts('offline-clients.js?v=1');
-const LEGACY='godune-walk-offline:v1:',PREFIX='godune-walk-offline:v2:',SHELL='godune-offline-shell:v2',ROOT=self.registration.scope;
+const LEGACY='godune-walk-offline:v1:',PREFIX='godune-walk-offline:v2:',SHELL='godune-offline-shell:v3',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const draftURL=new URL('__godune_download__',ROOT).href;
 const jobs=new Map(),removals=new Map(),packageReads=new Set();
@@ -19,7 +19,7 @@ const normalized=value=>{const u=new URL(value);u.search='';u.hash='';if(u.pathn
 const invalidate=()=>{snapshot=undefined;epoch++;};
 const abortCheck=signal=>{if(signal.aborted)throw new DOMException('Cancelled','AbortError');};
 self.addEventListener('install',event=>event.waitUntil((async()=>{const response=await fetch(url('offline.html'),{cache:'no-store'});if(!response.ok)throw new Error('Offline page unavailable');await (await caches.open(SHELL)).put(url('offline.html'),response);await self.skipWaiting();})()));
-self.addEventListener('activate',event=>event.waitUntil((async()=>{await caches.delete('godune-offline-shell:v1');await self.clients.claim();})()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{await caches.delete('godune-offline-shell:v1');await caches.delete('godune-offline-shell:v2');await self.clients.claim();})()));
 function packages(force=false){
   if(clearing)return Promise.resolve([]);
   if(force)invalidate();

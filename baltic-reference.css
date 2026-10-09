@@ -485,7 +485,7 @@ body .site-header .header-note{font:400 10px/1.6 "Baltic Serif",Georgia,serif;le
 }
 
 /* Shared composition: one title, one useful surface, a clear next action. */
-body[data-ui-context]:not([data-transport]) .inner-main :is(.inner-title,.tool-intro h1,.events-heading h1,.news-index h1,.news-info h1,.dunes-hero h1){font-weight:700;letter-spacing:-.035em}
+body[data-ui-context]:not([data-transport]) .inner-main :is(.inner-title,.tool-intro h1,.events-heading h1,.news-index h1,.news-info h1,.dunes-hero h1){font-weight:400;letter-spacing:-.035em}
 body[data-ui-context]:not([data-transport]) .inner-main :is(.inner-actions,.route-intro .inner-actions){gap:12px}
 body[data-ui-context] :is(.save-item,.route-download,.stop-nav,.dunes-card-link,.news-card-action){font-size:14px;min-height:44px;color:var(--sea-ink)}
 body[data-ui-context] .save-item{border-radius:10px;padding:12px 16px}
@@ -493,7 +493,7 @@ body[data-ui-context] :is(.section-jumps,.dunes-jumps,.food-guide-nav){gap:8px}
 body[data-ui-context] :is(.section-jumps a,.dunes-jumps a){border-radius:10px;background:var(--card);padding:10px 16px;min-height:44px}
 body[data-ui-context] :is(.route-practical,.collection-guide,.practical-panel,.food-planner,.food-tour,.dunes-card,.news-card,.guide-reading,.guide-empty,.housing-arrival,.daily-discovery){background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--card-shadow)}
 body[data-ui-context] :is(.route-practical,.collection-guide,.practical-panel) p{font-size:15px;line-height:1.7;color:var(--muted)}
-body[data-ui-context] :is(.route-practical,.collection-guide,.practical-panel) h2{font-weight:700;font-size:clamp(28px,3vw,38px)}
+body[data-ui-context] :is(.route-practical,.collection-guide,.practical-panel) h2{font-weight:400;font-size:clamp(28px,3vw,38px)}
 body[data-ui-context] :is(.route-practical,.practical-panel) h3{font-size:14px;letter-spacing:0}
 body[data-ui-context] :is(.inner-hero,.tool-intro,.events-heading)::after{background-image:url('./assets/identity/hero-reeds-gulls.webp');width:220px;height:140px;aspect-ratio:auto;opacity:.65}
 body[data-ui-context="tool"] .tool-intro::after,body[data-ui-context="events"] .events-heading::after{display:none}
@@ -502,12 +502,12 @@ body[data-ui-context="tool"] .tool-intro::after,body[data-ui-context="events"] .
 /* Walks: the same numbered path as the transport page, with useful stop detail. */
 body[data-ui-context="route"] .route-walk-layout{gap:40px;margin-top:64px}
 body[data-ui-context="route"] .route-walk{background:var(--card);padding:32px;border-radius:20px;box-shadow:var(--card-shadow)}
-body[data-ui-context="route"] .route-walk h2{font-weight:700}
+body[data-ui-context="route"] .route-walk h2{font-weight:400}
 body[data-ui-context="route"] .route-stops>li{position:relative;grid-template-columns:36px minmax(0,1fr);gap:20px;border:0;padding:20px 0 28px}
 body[data-ui-context="route"] .route-stops>li:not(:last-child)::after{content:"";position:absolute;left:17px;top:60px;bottom:-12px;border-left:1px dashed var(--sea-line)}
 body[data-ui-context="route"] .route-walk .route-stops>li::before{display:grid;place-items:center;align-self:start;width:36px;height:36px;margin-top:8px;border-radius:50%;font:400 18px/1 var(--sans);color:#fff;background:var(--action)}
 body[data-ui-context="route"] .route-walk .route-stops>li.is-complete::before{color:#fff;background:#527e5b}
-body[data-ui-context="route"] .route-stops h3{font-weight:700;font-size:clamp(26px,2.7vw,34px);margin-top:8px}
+body[data-ui-context="route"] .route-stops h3{font-weight:400;font-size:clamp(26px,2.7vw,34px);margin-top:8px}
 body[data-ui-context="route"] .route-stops p{font-size:16px;line-height:1.65}
 body[data-ui-context="route"] :is(.route-stop-note,.route-source-note) summary{font-size:14px;color:var(--sea-ink)}
 body[data-ui-context="route"] .route-stops .route-stop-category{font:600 10px/1.5 var(--sans);letter-spacing:.16em;color:var(--sea-muted)}
@@ -519,27 +519,27 @@ body[data-ui-context="route"] .walk-status{font-size:14px;color:var(--muted)}
 /* Places and collections: photographs and facts lead to a walk. */
 body:is([data-ui-context="place"],[data-ui-context="collection"]) :is(.poi-card,.route-row){background:var(--card);border-radius:20px;box-shadow:var(--card-shadow)}
 body:is([data-ui-context="place"],[data-ui-context="collection"]) .poi-card{padding:24px}
-body:is([data-ui-context="place"],[data-ui-context="collection"]) .poi-card :is(h2,h3){font-weight:700}
+body:is([data-ui-context="place"],[data-ui-context="collection"]) .poi-card :is(h2,h3){font-weight:400}
 body:is([data-ui-context="place"],[data-ui-context="collection"]) .poi-card p{font-size:15px;line-height:1.7}
 body:is([data-ui-context="place"],[data-ui-context="collection"]) .poi-card figure img{border-radius:12px}
 body[data-ui-context] .route-row{padding:28px}
-body[data-ui-context] .route-row h3{font-weight:700}
+body[data-ui-context] .route-row h3{font-weight:400}
 
 /* Coastal hubs: actionable chapters; future projects retain a factual reading layout. */
 body[data-ui-context="coast"] .dunes-hero{position:relative;isolation:isolate}
 body[data-ui-context="coast"] .dunes-primary{background:var(--action);color:var(--action-ink);font-weight:600}
 body[data-ui-context="coast"] .dunes-primary:hover{background:var(--action-hover)}
-body[data-ui-context="coast"] .dunes-card h3{font-weight:700;font-size:30px}
+body[data-ui-context="coast"] .dunes-card h3{font-weight:400;font-size:30px}
 body[data-ui-context="coast"] .dunes-card-link{color:var(--sea-ink);font-weight:600}
 body[data-ui-context="coast"] .dunes-facts{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-body[data-ui-context="coast"] :is(.dunes-section,.dunes-faq,.dunes-related) h2{font-weight:700}
+body[data-ui-context="coast"] :is(.dunes-section,.dunes-faq,.dunes-related) h2{font-weight:400}
 
 /* Food: keep food photography, warm accents and the same day-planning controls. */
 body[data-ui-context="food"] .food-hero figure img{border-radius:20px}
 body[data-ui-context="food"] .food-planner{padding:32px;margin-bottom:48px}
-body[data-ui-context="food"] :is(.food-planner,.food-section-heading,.food-tour-section) h2{font-weight:700}
+body[data-ui-context="food"] :is(.food-planner,.food-section-heading,.food-tour-section) h2{font-weight:400}
 body[data-ui-context="food"] .food-tour{padding:28px}
-body[data-ui-context="food"] .food-tour h3{font-weight:700}
+body[data-ui-context="food"] .food-tour h3{font-weight:400}
 body[data-ui-context="food"] .food-tour li{font-size:24px;padding-bottom:20px}
 body[data-ui-context="food"] .food-tour .food-day-save{background:var(--action);color:var(--action-ink);border-color:var(--action)}
 body[data-ui-context="food"] .food-tour-facts{font-size:14px;line-height:1.6}
@@ -548,7 +548,7 @@ body[data-ui-context="food"] .food-guide-day{border-radius:16px;background:var(-
 
 /* Events: photos, dates and equally placed primary actions. */
 body[data-ui-context="events"] .events-controls{padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--card-shadow)}
-body[data-ui-context="events"] .event-card h2{font-weight:700}
+body[data-ui-context="events"] .event-card h2{font-weight:400}
 body[data-ui-context="events"] .event-body{padding:26px;gap:16px}
 body[data-ui-context="events"] .event-toolbar{padding-bottom:4px}
 body[data-ui-context="events"] .event-kind{font-size:11px;color:var(--sea-muted)}
@@ -558,10 +558,10 @@ body[data-ui-context="events"] .event-source{font-size:12px}
 
 /* News and reference information: readable prose rather than repeated card grids. */
 body[data-ui-context="news"] .news-article{max-width:920px}
-body[data-ui-context="news"] .news-article h1{font-weight:700;font-size:clamp(38px,4.8vw,66px);line-height:1.1}
-body[data-ui-context="news"] .news-article h2{font-weight:700}
+body[data-ui-context="news"] .news-article h1{font-weight:400;font-size:clamp(38px,4.8vw,66px);line-height:1.1}
+body[data-ui-context="news"] .news-article h2{font-weight:400}
 body[data-ui-context="news"] .news-cover img{border-radius:20px}
-body[data-ui-context="news"] .news-card h2{font-weight:700}
+body[data-ui-context="news"] .news-card h2{font-weight:400}
 body[data-ui-context="news"] .news-card-content{padding:28px}
 body[data-ui-context="news"] .news-card-action{color:var(--sea-ink)}
 body[data-ui-context="news"] .news-audiences>div{border:1px solid var(--line);border-radius:16px;padding:8px 24px 20px;background:var(--card)}
@@ -570,15 +570,17 @@ body[data-ui-context="info"] .news-info{padding:32px;background:var(--card);bord
 /* Working tools: the day and the result stay central, advanced detail stays folded. */
 body[data-ui-context="tool"] :is(.budget-controls,.guide-empty){padding:26px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--card-shadow)}
 body[data-ui-context="tool"] .guide-reading{padding:32px}
-body[data-ui-context="tool"] .guide-reading h2{font-weight:700}
+body[data-ui-context="tool"] .guide-reading h2{font-weight:400}
 body[data-ui-context="tool"] .guide-side details{border-radius:16px;background:var(--card)}
 body[data-ui-context="tool"] :is(.guide-controls button:first-child,.guide-next [data-guide-next]){background:var(--action);color:var(--action-ink);border-color:var(--action);border-radius:10px}
 body[data-ui-context="tool"] .guide-controls button{min-height:52px}
 body[data-ui-context="day"].day-planner #my-trip .wave-stop-card{border-radius:20px;padding:24px}
-body[data-ui-context="day"].day-planner .wizard-page-intro h1{font-weight:700}
-body[data-ui-context="day"].day-planner #my-trip .wave-stop-title{font-weight:700}
+body[data-ui-context="day"].day-planner .wizard-page-intro h1{font-weight:400}
+body[data-ui-context="day"].day-planner #my-trip .wave-stop-title{font-weight:400}
 
 @media(max-width:800px){
+ body[data-ui-context="food"] .tool-intro,body[data-ui-context="day"] .wizard-page-intro{padding-bottom:64px}
+ body[data-ui-context="food"] .tool-intro::after,body[data-ui-context="day"] .wizard-page-intro::after{width:150px;height:80px;bottom:-24px}
  body[data-ui-context="route"] .route-walk-layout{margin-top:40px;gap:24px}
  body[data-ui-context="route"] .route-walk{padding:24px}
  body[data-ui-context="route"] .route-stops>li{grid-template-columns:32px minmax(0,1fr);gap:14px}
@@ -594,4 +596,63 @@ body[data-ui-context="day"].day-planner #my-trip .wave-stop-title{font-weight:70
  body[data-ui-context="news"] .news-card-content{padding:24px}
  body[data-ui-context="coast"] .dunes-facts{padding:20px}
 }
-@media print{body[data-ui-context] :is(.route-walk,.news-info,.poi-card,.route-row,.budget-controls){box-shadow:none;border:0;padding:0}}
+/* The same reference language also follows the traveller into working states. */
+body[data-ui-context] .travel-day{--travel-ink:var(--ink);--travel-sky:var(--sea-soft);font-family:var(--sans)}
+body[data-ui-context] :is(.travel-next,.travel-empty){padding:28px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--card-shadow)}
+body[data-ui-context] .travel-day :is(h2,#travel-number){font-family:var(--serif);font-weight:400}
+body[data-ui-context] .travel-toolbar{gap:24px;border-color:var(--line)}
+body[data-ui-context] .travel-toolbar label{font-size:15px}
+body[data-ui-context] .travel-toolbar select{border-radius:10px;background:var(--card);border-color:var(--line);color:var(--ink)}
+body[data-ui-context] :is(.travel-meter,#travel-status){font-size:14px;color:var(--muted)}
+body[data-ui-context] .travel-day .button{font:600 16px/1.45 var(--sans);min-height:52px;border-radius:12px;padding:14px 20px}
+body[data-ui-context] .travel-day .trip-amber{background:var(--action);color:var(--action-ink);border-color:var(--action)}
+body[data-ui-context] .travel-day .trip-amber:hover{background:var(--action-hover)}
+body[data-ui-context] .travel-path li{grid-template-columns:36px minmax(0,1fr) auto;gap:16px;border:0;padding:14px 0 24px}
+body[data-ui-context] .travel-path li:not(:last-child)::before{content:"";position:absolute;left:17px;top:50px;bottom:-14px;border-left:1px dashed var(--sea-line)}
+body[data-ui-context] .travel-step-number{display:grid;place-items:center;position:relative;width:36px;height:36px;background:var(--action);color:var(--action-ink);border:0;border-radius:50%;font:500 16px/1 var(--sans)}
+body[data-ui-context] .travel-path li>div>a{font:400 24px/1.25 var(--serif);color:var(--ink)}
+body[data-ui-context] .travel-step-time{font-size:14px;color:var(--muted)}
+body[data-ui-context] .travel-check{min-height:44px;font:600 14px/1.4 var(--sans);border-radius:10px;border-color:var(--line);background:var(--card);color:var(--sea-ink)}
+body[data-ui-context] .travel-check[aria-pressed=true]{background:var(--visit-success-surface,#eaf1e7);border-color:var(--visit-success-line,#b8cdb5);color:var(--visit-success-ink,#356b45)}
+body[data-ui-context] .travel-return{border-color:var(--line)}
+
+body[data-ui-context] :is(.budget-estimates,.expense-dialog){background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;box-shadow:var(--card-shadow)}
+body[data-ui-context] .expense-dialog{box-shadow:0 24px 90px #152d4038}
+body[data-ui-context] .expense-dialog h2{font-weight:400}
+body[data-ui-context] .expense-dialog :is(label,input,select){color:var(--ink)}
+body[data-ui-context] .expense-dialog :is(input,select){border-color:var(--line);border-radius:10px;background:var(--paper)}
+body[data-ui-context] :is(.expense-add,.expense-save){background:var(--action);border-color:var(--action);color:var(--action-ink);border-radius:12px;min-height:52px}
+body[data-ui-context] :is(.expense-add,.expense-save):hover{background:var(--action-hover)}
+body[data-ui-context] :is(.expense-button,.expense-cancel,.expense-close){border-radius:10px;border-color:var(--line);background:var(--card);color:var(--sea-ink)}
+body[data-ui-context] .expense-totals p{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+body[data-ui-context] .expense-totals strong{font-weight:400}
+body[data-ui-context] :is(.expense-totals small,.expense-dialog .journey-note){color:var(--muted)}
+
+body[data-ui-context] :is(.map-location-tools,.map-choice){background:var(--card);color:var(--ink);border-color:var(--line);border-radius:16px;box-shadow:var(--card-shadow)}
+body[data-ui-context] .map-location-tools{padding:20px}
+body[data-ui-context] :is(.map-location-actions button,.map-choice-close,.map-neighbor-pick){font-size:14px;border-radius:10px;background:var(--paper);color:var(--sea-ink);border-color:var(--line)}
+body[data-ui-context] .map-location-actions .map-locate,body[data-ui-context] .map-choice-body .save-item{background:var(--action);color:var(--action-ink);border-color:var(--action);border-radius:10px;font-size:14px}
+body[data-ui-context] .map-location-actions [aria-pressed=true]{background:var(--sea);color:var(--sea-ink);border-color:var(--sea-line)}
+body[data-ui-context] :is(.map-location-status,.map-choice-body,.map-choice-body p,.map-choice-back){font-size:14px;line-height:1.65;color:var(--muted)}
+body[data-ui-context] :is(.map-location-note,.map-choice-note,.map-neighbor-pick small){font-size:12px!important;color:var(--muted)}
+body[data-ui-context] .map-choice :is(h3,strong){color:var(--ink)}
+
+body[data-ui-context] :is(.visit-dialog,.visit-saved,.visit-timeline-card){border-radius:20px;background:var(--card);border-color:var(--line)}
+body[data-ui-context] .visit-primary{background:var(--action);color:var(--action-ink);border-color:var(--action);border-radius:12px;min-height:52px}
+body[data-ui-context] .visit-primary:hover{background:var(--action-hover)}
+body[data-ui-context] .visit-timeline{border-left-style:dashed}
+body[data-ui-context] .visit-timeline-card[data-timeline-number]::before{background:var(--action);color:var(--action-ink);border-color:var(--action);font-size:15px}
+
+@media(max-width:520px){
+ body[data-ui-context] :is(.travel-next,.travel-empty){padding:22px}
+ body[data-ui-context] .travel-path li{grid-template-columns:32px minmax(0,1fr) auto;gap:10px}
+ body[data-ui-context] .travel-step-number{width:32px;height:32px}
+ body[data-ui-context] .travel-path li:not(:last-child)::before{left:15px;top:46px}
+ body[data-ui-context] .travel-path li>div>a{font-size:22px}
+ body[data-ui-context] .travel-check{min-width:72px;font-size:13px}
+ body[data-ui-context] .expense-totals p{padding:16px}
+ body[data-ui-context] .expense-dialog{padding:22px 18px}
+ body[data-ui-context] .map-location-tools{padding:16px}
+ body[data-ui-context] .map-location-actions button{font-size:13px}
+}
+@media print{body[data-ui-context] :is(.route-walk,.news-info,.poi-card,.route-row,.budget-controls,.travel-next,.travel-empty,.expense-totals p){box-shadow:none;border:0;padding:0}}

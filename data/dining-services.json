@@ -1,0 +1,4864 @@
+{
+  "bindings": [
+    {
+      "branch_id": "branch:dining:2gis-5630027815190832",
+      "directory_id": "2gis-5630027815190832",
+      "menu_item_count": 60,
+      "menu_ref": {
+        "id": "2gis-5630027815190832",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630027815190832",
+      "service_ids": [
+        "service:dining:2gis-5630027815190832"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630027815190832"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630027815347793",
+      "directory_id": "2gis-5630027815347793",
+      "menu_item_count": 256,
+      "menu_ref": {
+        "id": "2gis-5630027815347793",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630027815347793",
+      "service_ids": [
+        "service:dining:2gis-5630027815347793"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630027815347793"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630028815427796",
+      "directory_id": "2gis-5630028815427796",
+      "menu_item_count": 0,
+      "menu_ref": {
+        "id": "2gis-5630028815427796",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630028815427796",
+      "service_ids": [
+        "service:dining:2gis-5630028815427796"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630028815427796"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630028815429871",
+      "directory_id": "2gis-5630028815429871",
+      "menu_item_count": 6,
+      "menu_ref": {
+        "id": "2gis-5630028815429871",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630028815429871",
+      "service_ids": [
+        "service:dining:2gis-5630028815429871"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630028815429871"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630028815430157",
+      "directory_id": "2gis-5630028815430157",
+      "menu_item_count": 42,
+      "menu_ref": {
+        "id": "kafe-skovorodka",
+        "kind": "poi"
+      },
+      "photo_poi": "kafe-skovorodka",
+      "place_id": "dining:2gis-5630028815430157",
+      "service_ids": [
+        "service:dining:2gis-5630028815430157"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630028815430157"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630028815430301",
+      "directory_id": "2gis-5630028815430301",
+      "menu_item_count": 185,
+      "menu_ref": {
+        "id": "2gis-5630028815430301",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630028815430301",
+      "service_ids": [
+        "service:dining:2gis-5630028815430301"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630028815430301"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-5630028815561754",
+      "directory_id": "2gis-5630028815561754",
+      "menu_item_count": 46,
+      "menu_ref": {
+        "id": "2gis-5630028815561754",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-5630028815561754",
+      "service_ids": [
+        "service:dining:2gis-5630028815561754"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/5630028815561754"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001019514562",
+      "directory_id": "2gis-70000001019514562",
+      "menu_item_count": 139,
+      "menu_ref": {
+        "id": "kafe-uksus",
+        "kind": "poi"
+      },
+      "photo_poi": "kafe-uksus",
+      "place_id": "dining:2gis-70000001019514562",
+      "service_ids": [
+        "service:dining:2gis-70000001019514562"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001019514562"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001019617766",
+      "directory_id": "2gis-70000001019617766",
+      "menu_item_count": 5,
+      "menu_ref": {
+        "id": "2gis-70000001019617766",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001019617766",
+      "service_ids": [
+        "service:dining:2gis-70000001019617766"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001019617766"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001021673647",
+      "directory_id": "2gis-70000001021673647",
+      "menu_item_count": 88,
+      "menu_ref": {
+        "id": "2gis-70000001021673647",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001021673647",
+      "service_ids": [
+        "service:dining:2gis-70000001021673647"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001021673647"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001022620039",
+      "directory_id": "2gis-70000001022620039",
+      "menu_item_count": 179,
+      "menu_ref": {
+        "id": "2gis-70000001022620039",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001022620039",
+      "service_ids": [
+        "service:dining:2gis-70000001022620039"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001022620039"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001023285288",
+      "directory_id": "2gis-70000001023285288",
+      "menu_item_count": 36,
+      "menu_ref": {
+        "id": "2gis-70000001023285288",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001023285288",
+      "service_ids": [
+        "service:dining:2gis-70000001023285288"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001023285288"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001024024428",
+      "directory_id": "2gis-70000001024024428",
+      "menu_item_count": 68,
+      "menu_ref": {
+        "id": "2gis-70000001024024428",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001024024428",
+      "service_ids": [
+        "service:dining:2gis-70000001024024428"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001024024428"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001024530011",
+      "directory_id": "2gis-70000001024530011",
+      "menu_item_count": 53,
+      "menu_ref": {
+        "id": "restoran-sambiya",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-sambiya",
+      "place_id": "dining:2gis-70000001024530011",
+      "service_ids": [
+        "service:dining:2gis-70000001024530011"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001024530011"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001024924415",
+      "directory_id": "2gis-70000001024924415",
+      "menu_item_count": 26,
+      "menu_ref": {
+        "id": "2gis-70000001024924415",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001024924415",
+      "service_ids": [
+        "service:dining:2gis-70000001024924415"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001024924415"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001025294914",
+      "directory_id": "2gis-70000001025294914",
+      "menu_item_count": 42,
+      "menu_ref": {
+        "id": "kafe-bufet",
+        "kind": "poi"
+      },
+      "photo_poi": "kafe-bufet",
+      "place_id": "dining:2gis-70000001025294914",
+      "service_ids": [
+        "service:dining:2gis-70000001025294914"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001025294914"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001025612862",
+      "directory_id": "2gis-70000001025612862",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001025612862",
+      "service_ids": [
+        "service:dining:2gis-70000001025612862"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001025612862"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001025626102",
+      "directory_id": "2gis-70000001025626102",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001025626102",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001025626102",
+      "service_ids": [
+        "service:dining:2gis-70000001025626102"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001025626102"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001028174377",
+      "directory_id": "2gis-70000001028174377",
+      "menu_item_count": 2,
+      "menu_ref": {
+        "id": "2gis-70000001028174377",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001028174377",
+      "service_ids": [
+        "service:dining:2gis-70000001028174377"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001028174377"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001028414540",
+      "directory_id": "2gis-70000001028414540",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001028414540",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001028414540",
+      "service_ids": [
+        "service:dining:2gis-70000001028414540"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001028414540"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001030029796",
+      "directory_id": "2gis-70000001030029796",
+      "menu_item_count": 88,
+      "menu_ref": {
+        "id": "2gis-70000001030029796",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001030029796",
+      "service_ids": [
+        "service:dining:2gis-70000001030029796"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001030029796"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001030035636",
+      "directory_id": "2gis-70000001030035636",
+      "menu_item_count": 327,
+      "menu_ref": {
+        "id": "2gis-70000001030035636",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001030035636",
+      "service_ids": [
+        "service:dining:2gis-70000001030035636"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001030035636"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001032109722",
+      "directory_id": "2gis-70000001032109722",
+      "menu_item_count": 5,
+      "menu_ref": {
+        "id": "2gis-70000001032109722",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001032109722",
+      "service_ids": [
+        "service:dining:2gis-70000001032109722"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001032109722"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001032109921",
+      "directory_id": "2gis-70000001032109921",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001032109921",
+      "service_ids": [
+        "service:dining:2gis-70000001032109921"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001032109921"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001033735148",
+      "directory_id": "2gis-70000001033735148",
+      "menu_item_count": 429,
+      "menu_ref": {
+        "id": "2gis-70000001033735148",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001033735148",
+      "service_ids": [
+        "service:dining:2gis-70000001033735148"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001033735148"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001033958020",
+      "directory_id": "2gis-70000001033958020",
+      "menu_item_count": 19,
+      "menu_ref": {
+        "id": "2gis-70000001033958020",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001033958020",
+      "service_ids": [
+        "service:dining:2gis-70000001033958020"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001033958020"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001034307535",
+      "directory_id": "2gis-70000001034307535",
+      "menu_item_count": 68,
+      "menu_ref": {
+        "id": "2gis-70000001034307535",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001034307535",
+      "service_ids": [
+        "service:dining:2gis-70000001034307535"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001034307535"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001034396845",
+      "directory_id": "2gis-70000001034396845",
+      "menu_item_count": 27,
+      "menu_ref": {
+        "id": "2gis-70000001034396845",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001034396845",
+      "service_ids": [
+        "service:dining:2gis-70000001034396845"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001034396845"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001036184841",
+      "directory_id": "2gis-70000001036184841",
+      "menu_item_count": 85,
+      "menu_ref": {
+        "id": "2gis-70000001036184841",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001036184841",
+      "service_ids": [
+        "service:dining:2gis-70000001036184841"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001036184841"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037113827",
+      "directory_id": "2gis-70000001037113827",
+      "menu_item_count": 48,
+      "menu_ref": {
+        "id": "2gis-70000001037113827",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001037113827",
+      "service_ids": [
+        "service:dining:2gis-70000001037113827"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037113827"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037362065",
+      "directory_id": "2gis-70000001037362065",
+      "menu_item_count": 239,
+      "menu_ref": {
+        "id": "restoran-oblaka",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-oblaka",
+      "place_id": "dining:2gis-70000001037362065",
+      "service_ids": [
+        "service:dining:2gis-70000001037362065"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037362065"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037544569",
+      "directory_id": "2gis-70000001037544569",
+      "menu_item_count": 36,
+      "menu_ref": {
+        "id": "2gis-70000001037544569",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001037544569",
+      "service_ids": [
+        "service:dining:2gis-70000001037544569"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037544569"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037585272",
+      "directory_id": "2gis-70000001037585272",
+      "menu_item_count": 58,
+      "menu_ref": {
+        "id": "2gis-70000001037585272",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001037585272",
+      "service_ids": [
+        "service:dining:2gis-70000001037585272"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037585272"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037585837",
+      "directory_id": "2gis-70000001037585837",
+      "menu_item_count": 8,
+      "menu_ref": {
+        "id": "2gis-70000001037585837",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001037585837",
+      "service_ids": [
+        "service:dining:2gis-70000001037585837"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037585837"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001037607297",
+      "directory_id": "2gis-70000001037607297",
+      "menu_item_count": 88,
+      "menu_ref": {
+        "id": "2gis-70000001037607297",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001037607297",
+      "service_ids": [
+        "service:dining:2gis-70000001037607297"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001037607297"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001038639251",
+      "directory_id": "2gis-70000001038639251",
+      "menu_item_count": 28,
+      "menu_ref": {
+        "id": "2gis-70000001038639251",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001038639251",
+      "service_ids": [
+        "service:dining:2gis-70000001038639251"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001038639251"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001042837294",
+      "directory_id": "2gis-70000001042837294",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001042837294",
+      "service_ids": [
+        "service:dining:2gis-70000001042837294"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001042837294"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001043919248",
+      "directory_id": "2gis-70000001043919248",
+      "menu_item_count": 96,
+      "menu_ref": {
+        "id": "restoran-telegraf",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-telegraf",
+      "place_id": "dining:2gis-70000001043919248",
+      "service_ids": [
+        "service:dining:2gis-70000001043919248"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001043919248"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044022865",
+      "directory_id": "2gis-70000001044022865",
+      "menu_item_count": 113,
+      "menu_ref": {
+        "id": "2gis-70000001044022865",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044022865",
+      "service_ids": [
+        "service:dining:2gis-70000001044022865"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044022865"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044511706",
+      "directory_id": "2gis-70000001044511706",
+      "menu_item_count": 238,
+      "menu_ref": {
+        "id": "2gis-70000001044511706",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044511706",
+      "service_ids": [
+        "service:dining:2gis-70000001044511706"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044511706"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044566489",
+      "directory_id": "2gis-70000001044566489",
+      "menu_item_count": 25,
+      "menu_ref": {
+        "id": "2gis-70000001044566489",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044566489",
+      "service_ids": [
+        "service:dining:2gis-70000001044566489"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044566489"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044566545",
+      "directory_id": "2gis-70000001044566545",
+      "menu_item_count": 32,
+      "menu_ref": {
+        "id": "2gis-70000001044566545",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044566545",
+      "service_ids": [
+        "service:dining:2gis-70000001044566545"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044566545"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044599664",
+      "directory_id": "2gis-70000001044599664",
+      "menu_item_count": 26,
+      "menu_ref": {
+        "id": "2gis-70000001044599664",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044599664",
+      "service_ids": [
+        "service:dining:2gis-70000001044599664"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044599664"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044871628",
+      "directory_id": "2gis-70000001044871628",
+      "menu_item_count": 10,
+      "menu_ref": {
+        "id": "2gis-70000001044871628",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044871628",
+      "service_ids": [
+        "service:dining:2gis-70000001044871628"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044871628"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001044896443",
+      "directory_id": "2gis-70000001044896443",
+      "menu_item_count": 84,
+      "menu_ref": {
+        "id": "2gis-70000001044896443",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001044896443",
+      "service_ids": [
+        "service:dining:2gis-70000001044896443"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001044896443"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001047520475",
+      "directory_id": "2gis-70000001047520475",
+      "menu_item_count": 106,
+      "menu_ref": {
+        "id": "2gis-70000001047520475",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001047520475",
+      "service_ids": [
+        "service:dining:2gis-70000001047520475"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001047520475"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001047895525",
+      "directory_id": "2gis-70000001047895525",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001047895525",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001047895525",
+      "service_ids": [
+        "service:dining:2gis-70000001047895525"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001047895525"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001048500903",
+      "directory_id": "2gis-70000001048500903",
+      "menu_item_count": 26,
+      "menu_ref": {
+        "id": "2gis-70000001048500903",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001048500903",
+      "service_ids": [
+        "service:dining:2gis-70000001048500903"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001048500903"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001052139191",
+      "directory_id": "2gis-70000001052139191",
+      "menu_item_count": 234,
+      "menu_ref": {
+        "id": "2gis-70000001052139191",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001052139191",
+      "service_ids": [
+        "service:dining:2gis-70000001052139191"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001052139191"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001052325383",
+      "directory_id": "2gis-70000001052325383",
+      "menu_item_count": 35,
+      "menu_ref": {
+        "id": "2gis-70000001052325383",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001052325383",
+      "service_ids": [
+        "service:dining:2gis-70000001052325383"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001052325383"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001052595286",
+      "directory_id": "2gis-70000001052595286",
+      "menu_item_count": 9,
+      "menu_ref": {
+        "id": "2gis-70000001052595286",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001052595286",
+      "service_ids": [
+        "service:dining:2gis-70000001052595286"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001052595286"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001052651307",
+      "directory_id": "2gis-70000001052651307",
+      "menu_item_count": 45,
+      "menu_ref": {
+        "id": "2gis-70000001052651307",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001052651307",
+      "service_ids": [
+        "service:dining:2gis-70000001052651307"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001052651307"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001055071752",
+      "directory_id": "2gis-70000001055071752",
+      "menu_item_count": 316,
+      "menu_ref": {
+        "id": "2gis-70000001055071752",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001055071752",
+      "service_ids": [
+        "service:dining:2gis-70000001055071752"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001055071752"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001055109040",
+      "directory_id": "2gis-70000001055109040",
+      "menu_item_count": 2,
+      "menu_ref": {
+        "id": "2gis-70000001055109040",
+        "kind": "directory"
+      },
+      "photo_poi": "kafe-gnezdo",
+      "place_id": "dining:2gis-70000001055109040",
+      "service_ids": [
+        "service:gnezdo:kitchen"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001055109040"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001055986923",
+      "directory_id": "2gis-70000001055986923",
+      "menu_item_count": 35,
+      "menu_ref": {
+        "id": "2gis-70000001055986923",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001055986923",
+      "service_ids": [
+        "service:dining:2gis-70000001055986923"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001055986923"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001056678568",
+      "directory_id": "2gis-70000001056678568",
+      "menu_item_count": 208,
+      "menu_ref": {
+        "id": "2gis-70000001056678568",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001056678568",
+      "service_ids": [
+        "service:dining:2gis-70000001056678568"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001056678568"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001056728854",
+      "directory_id": "2gis-70000001056728854",
+      "menu_item_count": 35,
+      "menu_ref": {
+        "id": "2gis-70000001056728854",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001056728854",
+      "service_ids": [
+        "service:dining:2gis-70000001056728854"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001056728854"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001056940270",
+      "directory_id": "2gis-70000001056940270",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001056940270",
+      "service_ids": [
+        "service:dining:2gis-70000001056940270"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001056940270"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001057273773",
+      "directory_id": "2gis-70000001057273773",
+      "menu_item_count": 19,
+      "menu_ref": {
+        "id": "2gis-70000001057273773",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001057273773",
+      "service_ids": [
+        "service:dining:2gis-70000001057273773"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001057273773"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001060101799",
+      "directory_id": "2gis-70000001060101799",
+      "menu_item_count": 132,
+      "menu_ref": {
+        "id": "2gis-70000001060101799",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001060101799",
+      "service_ids": [
+        "service:dining:2gis-70000001060101799"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001060101799"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061061369",
+      "directory_id": "2gis-70000001061061369",
+      "menu_item_count": 46,
+      "menu_ref": {
+        "id": "2gis-70000001061061369",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061061369",
+      "service_ids": [
+        "service:dining:2gis-70000001061061369"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061061369"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061063601",
+      "directory_id": "2gis-70000001061063601",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061063601",
+      "service_ids": [
+        "service:dining:2gis-70000001061063601"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061063601"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061065253",
+      "directory_id": "2gis-70000001061065253",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061065253",
+      "service_ids": [
+        "service:dining:2gis-70000001061065253"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061065253"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061265160",
+      "directory_id": "2gis-70000001061265160",
+      "menu_item_count": 35,
+      "menu_ref": {
+        "id": "2gis-70000001061265160",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061265160",
+      "service_ids": [
+        "service:dining:2gis-70000001061265160"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061265160"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061269738",
+      "directory_id": "2gis-70000001061269738",
+      "menu_item_count": 85,
+      "menu_ref": {
+        "id": "kafe-granat",
+        "kind": "poi"
+      },
+      "photo_poi": "kafe-granat",
+      "place_id": "dining:2gis-70000001061269738",
+      "service_ids": [
+        "service:dining:2gis-70000001061269738"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061269738"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061498399",
+      "directory_id": "2gis-70000001061498399",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061498399",
+      "service_ids": [
+        "service:dining:2gis-70000001061498399"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061498399"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061576405",
+      "directory_id": "2gis-70000001061576405",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001061576405",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061576405",
+      "service_ids": [
+        "service:dining:2gis-70000001061576405"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061576405"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001061794029",
+      "directory_id": "2gis-70000001061794029",
+      "menu_item_count": 52,
+      "menu_ref": {
+        "id": "2gis-70000001061794029",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001061794029",
+      "service_ids": [
+        "service:dining:2gis-70000001061794029"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001061794029"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001062122791",
+      "directory_id": "2gis-70000001062122791",
+      "menu_item_count": 3,
+      "menu_ref": {
+        "id": "2gis-70000001062122791",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001062122791",
+      "service_ids": [
+        "service:dining:2gis-70000001062122791"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001062122791"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001062141930",
+      "directory_id": "2gis-70000001062141930",
+      "menu_item_count": 52,
+      "menu_ref": {
+        "id": "2gis-70000001062141930",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001062141930",
+      "service_ids": [
+        "service:dining:2gis-70000001062141930"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001062141930"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001062435163",
+      "directory_id": "2gis-70000001062435163",
+      "menu_item_count": 45,
+      "menu_ref": {
+        "id": "pekarnya-khleb",
+        "kind": "poi"
+      },
+      "photo_poi": "pekarnya-khleb",
+      "place_id": "dining:2gis-70000001062435163",
+      "service_ids": [
+        "service:dining:2gis-70000001062435163"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001062435163"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001062461095",
+      "directory_id": "2gis-70000001062461095",
+      "menu_item_count": 37,
+      "menu_ref": {
+        "id": "2gis-70000001062461095",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001062461095",
+      "service_ids": [
+        "service:dining:2gis-70000001062461095"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001062461095"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001063205699",
+      "directory_id": "2gis-70000001063205699",
+      "menu_item_count": 28,
+      "menu_ref": {
+        "id": "2gis-70000001063205699",
+        "kind": "directory"
+      },
+      "photo_poi": "kafe-fanat",
+      "place_id": "dining:2gis-70000001063205699",
+      "service_ids": [
+        "service:dining:2gis-70000001063205699"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001063205699"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001063367025",
+      "directory_id": "2gis-70000001063367025",
+      "menu_item_count": 63,
+      "menu_ref": {
+        "id": "2gis-70000001063367025",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001063367025",
+      "service_ids": [
+        "service:dining:2gis-70000001063367025"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001063367025"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001063531891",
+      "directory_id": "2gis-70000001063531891",
+      "menu_item_count": 219,
+      "menu_ref": {
+        "id": "restoran-balt",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-balt",
+      "place_id": "dining:2gis-70000001063531891",
+      "service_ids": [
+        "service:dining:2gis-70000001063531891"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001063531891"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001063772351",
+      "directory_id": "2gis-70000001063772351",
+      "menu_item_count": 14,
+      "menu_ref": {
+        "id": "2gis-70000001063772351",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001063772351",
+      "service_ids": [
+        "service:dining:2gis-70000001063772351"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001063772351"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001063971984",
+      "directory_id": "2gis-70000001063971984",
+      "menu_item_count": 63,
+      "menu_ref": {
+        "id": "2gis-70000001063971984",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001063971984",
+      "service_ids": [
+        "service:dining:2gis-70000001063971984"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001063971984"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001064812247",
+      "directory_id": "2gis-70000001064812247",
+      "menu_item_count": 17,
+      "menu_ref": {
+        "id": "2gis-70000001064812247",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001064812247",
+      "service_ids": [
+        "service:dining:2gis-70000001064812247"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001064812247"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001065277939",
+      "directory_id": "2gis-70000001065277939",
+      "menu_item_count": 57,
+      "menu_ref": {
+        "id": "2gis-70000001065277939",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001065277939",
+      "service_ids": [
+        "service:dining:2gis-70000001065277939"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001065277939"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001065316839",
+      "directory_id": "2gis-70000001065316839",
+      "menu_item_count": 22,
+      "menu_ref": {
+        "id": "2gis-70000001065316839",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001065316839",
+      "service_ids": [
+        "service:dining:2gis-70000001065316839"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001065316839"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001065378191",
+      "directory_id": "2gis-70000001065378191",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001065378191",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001065378191",
+      "service_ids": [
+        "service:dining:2gis-70000001065378191"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001065378191"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001065532501",
+      "directory_id": "2gis-70000001065532501",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001065532501",
+      "service_ids": [
+        "service:dining:2gis-70000001065532501"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001065532501"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001066225617",
+      "directory_id": "2gis-70000001066225617",
+      "menu_item_count": 125,
+      "menu_ref": {
+        "id": "2gis-70000001066225617",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001066225617",
+      "service_ids": [
+        "service:dining:2gis-70000001066225617"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001066225617"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001066661710",
+      "directory_id": "2gis-70000001066661710",
+      "menu_item_count": 19,
+      "menu_ref": {
+        "id": "2gis-70000001066661710",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001066661710",
+      "service_ids": [
+        "service:dining:2gis-70000001066661710"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001066661710"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001066920153",
+      "directory_id": "2gis-70000001066920153",
+      "menu_item_count": 50,
+      "menu_ref": {
+        "id": "2gis-70000001066920153",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001066920153",
+      "service_ids": [
+        "service:dining:2gis-70000001066920153"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001066920153"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067014954",
+      "directory_id": "2gis-70000001067014954",
+      "menu_item_count": 253,
+      "menu_ref": {
+        "id": "2gis-70000001067014954",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001067014954",
+      "service_ids": [
+        "service:dining:2gis-70000001067014954"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067014954"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067078963",
+      "directory_id": "2gis-70000001067078963",
+      "menu_item_count": 13,
+      "menu_ref": {
+        "id": "2gis-70000001067078963",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001067078963",
+      "service_ids": [
+        "service:dining:2gis-70000001067078963"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067078963"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067087177",
+      "directory_id": "2gis-70000001067087177",
+      "menu_item_count": 82,
+      "menu_ref": {
+        "id": "2gis-70000001067087177",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001067087177",
+      "service_ids": [
+        "service:dining:2gis-70000001067087177"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067087177"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067189296",
+      "directory_id": "2gis-70000001067189296",
+      "menu_item_count": 4,
+      "menu_ref": {
+        "id": "2gis-70000001067189296",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001067189296",
+      "service_ids": [
+        "service:dining:2gis-70000001067189296"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067189296"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067241256",
+      "directory_id": "2gis-70000001067241256",
+      "menu_item_count": 205,
+      "menu_ref": {
+        "id": "restoran-riviera",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-riviera",
+      "place_id": "dining:2gis-70000001067241256",
+      "service_ids": [
+        "service:dining:2gis-70000001067241256"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067241256"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001067991853",
+      "directory_id": "2gis-70000001067991853",
+      "menu_item_count": 9,
+      "menu_ref": {
+        "id": "2gis-70000001067991853",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001067991853",
+      "service_ids": [
+        "service:dining:2gis-70000001067991853"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001067991853"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001068727236",
+      "directory_id": "2gis-70000001068727236",
+      "menu_item_count": 70,
+      "menu_ref": {
+        "id": "2gis-70000001068727236",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001068727236",
+      "service_ids": [
+        "service:dining:2gis-70000001068727236"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001068727236"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001069072186",
+      "directory_id": "2gis-70000001069072186",
+      "menu_item_count": 11,
+      "menu_ref": {
+        "id": "2gis-70000001069072186",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001069072186",
+      "service_ids": [
+        "service:dining:2gis-70000001069072186"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001069072186"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001074591131",
+      "directory_id": "2gis-70000001074591131",
+      "menu_item_count": 19,
+      "menu_ref": {
+        "id": "restoran-dolche-nonna",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-dolche-nonna",
+      "place_id": "dining:2gis-70000001074591131",
+      "service_ids": [
+        "service:dining:2gis-70000001074591131"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001074591131"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001074632992",
+      "directory_id": "2gis-70000001074632992",
+      "menu_item_count": 59,
+      "menu_ref": {
+        "id": "2gis-70000001074632992",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001074632992",
+      "service_ids": [
+        "service:dining:2gis-70000001074632992"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001074632992"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001074847373",
+      "directory_id": "2gis-70000001074847373",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001074847373",
+      "service_ids": [
+        "service:dining:2gis-70000001074847373"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001074847373"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075022565",
+      "directory_id": "2gis-70000001075022565",
+      "menu_item_count": 118,
+      "menu_ref": {
+        "id": "rybnoe-kafe-na-pirse",
+        "kind": "poi"
+      },
+      "photo_poi": "rybnoe-kafe-na-pirse",
+      "place_id": "dining:2gis-70000001075022565",
+      "service_ids": [
+        "service:dining:2gis-70000001075022565"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075022565"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075022566",
+      "directory_id": "2gis-70000001075022566",
+      "menu_item_count": 284,
+      "menu_ref": {
+        "id": "2gis-70000001075022566",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001075022566",
+      "service_ids": [
+        "service:dining:2gis-70000001075022566"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075022566"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075039563",
+      "directory_id": "2gis-70000001075039563",
+      "menu_item_count": 41,
+      "menu_ref": {
+        "id": "2gis-70000001075039563",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001075039563",
+      "service_ids": [
+        "service:dining:2gis-70000001075039563"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075039563"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075071177",
+      "directory_id": "2gis-70000001075071177",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001075071177",
+      "service_ids": [
+        "service:dining:2gis-70000001075071177"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075071177"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075305201",
+      "directory_id": "2gis-70000001075305201",
+      "menu_item_count": 46,
+      "menu_ref": {
+        "id": "kofeynya-slou",
+        "kind": "poi"
+      },
+      "photo_poi": "kofeynya-slou",
+      "place_id": "dining:2gis-70000001075305201",
+      "service_ids": [
+        "service:dining:2gis-70000001075305201"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075305201"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001075909647",
+      "directory_id": "2gis-70000001075909647",
+      "menu_item_count": 3,
+      "menu_ref": {
+        "id": "2gis-70000001075909647",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001075909647",
+      "service_ids": [
+        "service:dining:2gis-70000001075909647"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001075909647"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001076193342",
+      "directory_id": "2gis-70000001076193342",
+      "menu_item_count": 86,
+      "menu_ref": {
+        "id": "2gis-70000001076193342",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001076193342",
+      "service_ids": [
+        "service:dining:2gis-70000001076193342"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001076193342"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001076560743",
+      "directory_id": "2gis-70000001076560743",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001076560743",
+      "service_ids": [
+        "service:dining:2gis-70000001076560743"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001076560743"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001077228719",
+      "directory_id": "2gis-70000001077228719",
+      "menu_item_count": 41,
+      "menu_ref": {
+        "id": "2gis-70000001077228719",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001077228719",
+      "service_ids": [
+        "service:dining:2gis-70000001077228719"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001077228719"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001077229247",
+      "directory_id": "2gis-70000001077229247",
+      "menu_item_count": 100,
+      "menu_ref": {
+        "id": "2gis-70000001077229247",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001077229247",
+      "service_ids": [
+        "service:dining:2gis-70000001077229247"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001077229247"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001077326726",
+      "directory_id": "2gis-70000001077326726",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001077326726",
+      "service_ids": [
+        "service:dining:2gis-70000001077326726"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001077326726"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001078820284",
+      "directory_id": "2gis-70000001078820284",
+      "menu_item_count": 48,
+      "menu_ref": {
+        "id": "2gis-70000001078820284",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001078820284",
+      "service_ids": [
+        "service:dining:2gis-70000001078820284"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001078820284"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001080218641",
+      "directory_id": "2gis-70000001080218641",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001080218641",
+      "service_ids": [
+        "service:dining:2gis-70000001080218641"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001080218641"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001082041800",
+      "directory_id": "2gis-70000001082041800",
+      "menu_item_count": 41,
+      "menu_ref": {
+        "id": "2gis-70000001082041800",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001082041800",
+      "service_ids": [
+        "service:dining:2gis-70000001082041800"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001082041800"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001082816728",
+      "directory_id": "2gis-70000001082816728",
+      "menu_item_count": 13,
+      "menu_ref": {
+        "id": "2gis-70000001082816728",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001082816728",
+      "service_ids": [
+        "service:dining:2gis-70000001082816728"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001082816728"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001083771524",
+      "directory_id": "2gis-70000001083771524",
+      "menu_item_count": 199,
+      "menu_ref": {
+        "id": "2gis-70000001083771524",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001083771524",
+      "service_ids": [
+        "service:dining:2gis-70000001083771524"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001083771524"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001084146915",
+      "directory_id": "2gis-70000001084146915",
+      "menu_item_count": 23,
+      "menu_ref": {
+        "id": "2gis-70000001084146915",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001084146915",
+      "service_ids": [
+        "service:dining:2gis-70000001084146915"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001084146915"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001085399505",
+      "directory_id": "2gis-70000001085399505",
+      "menu_item_count": 46,
+      "menu_ref": {
+        "id": "2gis-70000001085399505",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001085399505",
+      "service_ids": [
+        "service:dining:2gis-70000001085399505"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001085399505"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001086801671",
+      "directory_id": "2gis-70000001086801671",
+      "menu_item_count": 43,
+      "menu_ref": {
+        "id": "2gis-70000001086801671",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001086801671",
+      "service_ids": [
+        "service:dining:2gis-70000001086801671"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001086801671"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001088058997",
+      "directory_id": "2gis-70000001088058997",
+      "menu_item_count": 70,
+      "menu_ref": {
+        "id": "2gis-70000001088058997",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001088058997",
+      "service_ids": [
+        "service:dining:2gis-70000001088058997"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001088058997"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001088093638",
+      "directory_id": "2gis-70000001088093638",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001088093638",
+      "service_ids": [
+        "service:dining:2gis-70000001088093638"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001088093638"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001088176461",
+      "directory_id": "2gis-70000001088176461",
+      "menu_item_count": 17,
+      "menu_ref": {
+        "id": "2gis-70000001088176461",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001088176461",
+      "service_ids": [
+        "service:dining:2gis-70000001088176461"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001088176461"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001088184100",
+      "directory_id": "2gis-70000001088184100",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001088184100",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001088184100",
+      "service_ids": [
+        "service:dining:2gis-70000001088184100"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001088184100"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001088812636",
+      "directory_id": "2gis-70000001088812636",
+      "menu_item_count": 36,
+      "menu_ref": {
+        "id": "2gis-70000001088812636",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001088812636",
+      "service_ids": [
+        "service:dining:2gis-70000001088812636"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001088812636"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001089098517",
+      "directory_id": "2gis-70000001089098517",
+      "menu_item_count": 29,
+      "menu_ref": {
+        "id": "2gis-70000001089098517",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001089098517",
+      "service_ids": [
+        "service:dining:2gis-70000001089098517"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001089098517"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001089351030",
+      "directory_id": "2gis-70000001089351030",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001089351030",
+      "service_ids": [
+        "service:dining:2gis-70000001089351030"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001089351030"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001089532517",
+      "directory_id": "2gis-70000001089532517",
+      "menu_item_count": 44,
+      "menu_ref": {
+        "id": "2gis-70000001089532517",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001089532517",
+      "service_ids": [
+        "service:dining:2gis-70000001089532517"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001089532517"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090070657",
+      "directory_id": "2gis-70000001090070657",
+      "menu_item_count": 10,
+      "menu_ref": {
+        "id": "restoran-koptilnyy-tsekh",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-koptilnyy-tsekh",
+      "place_id": "dining:2gis-70000001090070657",
+      "service_ids": [
+        "service:dining:2gis-70000001090070657"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090070657"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090214806",
+      "directory_id": "2gis-70000001090214806",
+      "menu_item_count": 62,
+      "menu_ref": {
+        "id": "2gis-70000001090214806",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001090214806",
+      "service_ids": [
+        "service:dining:2gis-70000001090214806"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090214806"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090368093",
+      "directory_id": "2gis-70000001090368093",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001090368093",
+      "service_ids": [
+        "service:dining:2gis-70000001090368093"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090368093"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090430022",
+      "directory_id": "2gis-70000001090430022",
+      "menu_item_count": 26,
+      "menu_ref": {
+        "id": "2gis-70000001090430022",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001090430022",
+      "service_ids": [
+        "service:dining:2gis-70000001090430022"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090430022"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090699779",
+      "directory_id": "2gis-70000001090699779",
+      "menu_item_count": 262,
+      "menu_ref": {
+        "id": "2gis-70000001090699779",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001090699779",
+      "service_ids": [
+        "service:dining:2gis-70000001090699779"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090699779"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001090821065",
+      "directory_id": "2gis-70000001090821065",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001090821065",
+      "service_ids": [
+        "service:dining:2gis-70000001090821065"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001090821065"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001094346782",
+      "directory_id": "2gis-70000001094346782",
+      "menu_item_count": 20,
+      "menu_ref": {
+        "id": "2gis-70000001094346782",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001094346782",
+      "service_ids": [
+        "service:dining:2gis-70000001094346782"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001094346782"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001094750499",
+      "directory_id": "2gis-70000001094750499",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001094750499",
+      "service_ids": [
+        "service:dining:2gis-70000001094750499"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001094750499"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001095394846",
+      "directory_id": "2gis-70000001095394846",
+      "menu_item_count": 11,
+      "menu_ref": {
+        "id": "2gis-70000001095394846",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001095394846",
+      "service_ids": [
+        "service:dining:2gis-70000001095394846"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001095394846"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001096778482",
+      "directory_id": "2gis-70000001096778482",
+      "menu_item_count": 1,
+      "menu_ref": {
+        "id": "2gis-70000001096778482",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001096778482",
+      "service_ids": [
+        "service:dining:2gis-70000001096778482"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001096778482"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001097054716",
+      "directory_id": "2gis-70000001097054716",
+      "menu_item_count": 65,
+      "menu_ref": {
+        "id": "2gis-70000001097054716",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001097054716",
+      "service_ids": [
+        "service:dining:2gis-70000001097054716"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001097054716"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001098551461",
+      "directory_id": "2gis-70000001098551461",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001098551461",
+      "service_ids": [
+        "service:dining:2gis-70000001098551461"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001098551461"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001099439922",
+      "directory_id": "2gis-70000001099439922",
+      "menu_item_count": 5,
+      "menu_ref": {
+        "id": "2gis-70000001099439922",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001099439922",
+      "service_ids": [
+        "service:dining:2gis-70000001099439922"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001099439922"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001099852506",
+      "directory_id": "2gis-70000001099852506",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001099852506",
+      "service_ids": [
+        "service:dining:2gis-70000001099852506"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001099852506"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100232385",
+      "directory_id": "2gis-70000001100232385",
+      "menu_item_count": 85,
+      "menu_ref": {
+        "id": "2gis-70000001100232385",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100232385",
+      "service_ids": [
+        "service:dining:2gis-70000001100232385"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100232385"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100264437",
+      "directory_id": "2gis-70000001100264437",
+      "menu_item_count": 1,
+      "menu_ref": {
+        "id": "2gis-70000001100264437",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100264437",
+      "service_ids": [
+        "service:dining:2gis-70000001100264437"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100264437"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100360498",
+      "directory_id": "2gis-70000001100360498",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100360498",
+      "service_ids": [
+        "service:dining:2gis-70000001100360498"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100360498"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100608564",
+      "directory_id": "2gis-70000001100608564",
+      "menu_item_count": 2,
+      "menu_ref": {
+        "id": "2gis-70000001100608564",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100608564",
+      "service_ids": [
+        "service:dining:2gis-70000001100608564"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100608564"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100628075",
+      "directory_id": "2gis-70000001100628075",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100628075",
+      "service_ids": [
+        "service:dining:2gis-70000001100628075"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100628075"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100800650",
+      "directory_id": "2gis-70000001100800650",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001100800650",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100800650",
+      "service_ids": [
+        "service:dining:2gis-70000001100800650"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100800650"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001100869855",
+      "directory_id": "2gis-70000001100869855",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001100869855",
+      "service_ids": [
+        "service:dining:2gis-70000001100869855"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001100869855"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001101049637",
+      "directory_id": "2gis-70000001101049637",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001101049637",
+      "service_ids": [
+        "service:dining:2gis-70000001101049637"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001101049637"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001101158549",
+      "directory_id": "2gis-70000001101158549",
+      "menu_item_count": 46,
+      "menu_ref": {
+        "id": "2gis-70000001101158549",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001101158549",
+      "service_ids": [
+        "service:dining:2gis-70000001101158549"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001101158549"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001101305153",
+      "directory_id": "2gis-70000001101305153",
+      "menu_item_count": 10,
+      "menu_ref": {
+        "id": "2gis-70000001101305153",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001101305153",
+      "service_ids": [
+        "service:dining:2gis-70000001101305153"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001101305153"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001101410810",
+      "directory_id": "2gis-70000001101410810",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001101410810",
+      "service_ids": [
+        "service:dining:2gis-70000001101410810"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001101410810"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001101428340",
+      "directory_id": "2gis-70000001101428340",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001101428340",
+      "service_ids": [
+        "service:dining:2gis-70000001101428340"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001101428340"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001102212879",
+      "directory_id": "2gis-70000001102212879",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001102212879",
+      "service_ids": [
+        "service:dining:2gis-70000001102212879"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001102212879"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001102550193",
+      "directory_id": "2gis-70000001102550193",
+      "menu_item_count": 44,
+      "menu_ref": {
+        "id": "2gis-70000001102550193",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001102550193",
+      "service_ids": [
+        "service:dining:2gis-70000001102550193"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001102550193"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001102892160",
+      "directory_id": "2gis-70000001102892160",
+      "menu_item_count": 16,
+      "menu_ref": {
+        "id": "2gis-70000001102892160",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001102892160",
+      "service_ids": [
+        "service:dining:2gis-70000001102892160"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001102892160"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103038629",
+      "directory_id": "2gis-70000001103038629",
+      "menu_item_count": 65,
+      "menu_ref": {
+        "id": "2gis-70000001103038629",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103038629",
+      "service_ids": [
+        "service:dining:2gis-70000001103038629"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103038629"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103083586",
+      "directory_id": "2gis-70000001103083586",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103083586",
+      "service_ids": [
+        "service:dining:2gis-70000001103083586"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103083586"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103278740",
+      "directory_id": "2gis-70000001103278740",
+      "menu_item_count": 47,
+      "menu_ref": {
+        "id": "2gis-70000001103278740",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103278740",
+      "service_ids": [
+        "service:dining:2gis-70000001103278740"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103278740"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103339960",
+      "directory_id": "2gis-70000001103339960",
+      "menu_item_count": 4,
+      "menu_ref": {
+        "id": "2gis-70000001103339960",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103339960",
+      "service_ids": [
+        "service:dining:2gis-70000001103339960"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103339960"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103552911",
+      "directory_id": "2gis-70000001103552911",
+      "menu_item_count": 49,
+      "menu_ref": {
+        "id": "bistro-laba-dena",
+        "kind": "poi"
+      },
+      "photo_poi": "bistro-laba-dena",
+      "place_id": "dining:2gis-70000001103552911",
+      "service_ids": [
+        "service:dining:2gis-70000001103552911"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103552911"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103814071",
+      "directory_id": "2gis-70000001103814071",
+      "menu_item_count": 9,
+      "menu_ref": {
+        "id": "2gis-70000001103814071",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103814071",
+      "service_ids": [
+        "service:dining:2gis-70000001103814071"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103814071"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001103818141",
+      "directory_id": "2gis-70000001103818141",
+      "menu_item_count": 278,
+      "menu_ref": {
+        "id": "2gis-70000001103818141",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001103818141",
+      "service_ids": [
+        "service:dining:2gis-70000001103818141"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001103818141"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001104111947",
+      "directory_id": "2gis-70000001104111947",
+      "menu_item_count": 96,
+      "menu_ref": {
+        "id": "2gis-70000001104111947",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001104111947",
+      "service_ids": [
+        "service:dining:2gis-70000001104111947"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001104111947"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001104605114",
+      "directory_id": "2gis-70000001104605114",
+      "menu_item_count": 4,
+      "menu_ref": {
+        "id": "2gis-70000001104605114",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001104605114",
+      "service_ids": [
+        "service:dining:2gis-70000001104605114"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001104605114"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001105066031",
+      "directory_id": "2gis-70000001105066031",
+      "menu_item_count": 7,
+      "menu_ref": {
+        "id": "2gis-70000001105066031",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001105066031",
+      "service_ids": [
+        "service:dining:2gis-70000001105066031"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001105066031"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001105230719",
+      "directory_id": "2gis-70000001105230719",
+      "menu_item_count": 1,
+      "menu_ref": {
+        "id": "2gis-70000001105230719",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001105230719",
+      "service_ids": [
+        "service:dining:2gis-70000001105230719"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001105230719"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001105274860",
+      "directory_id": "2gis-70000001105274860",
+      "menu_item_count": 50,
+      "menu_ref": {
+        "id": "2gis-70000001105274860",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001105274860",
+      "service_ids": [
+        "service:dining:2gis-70000001105274860"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001105274860"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001105353041",
+      "directory_id": "2gis-70000001105353041",
+      "menu_item_count": 18,
+      "menu_ref": {
+        "id": "2gis-70000001105353041",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001105353041",
+      "service_ids": [
+        "service:dining:2gis-70000001105353041"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001105353041"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001105750954",
+      "directory_id": "2gis-70000001105750954",
+      "menu_item_count": 80,
+      "menu_ref": {
+        "id": "2gis-70000001105750954",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001105750954",
+      "service_ids": [
+        "service:dining:2gis-70000001105750954"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001105750954"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001110053737",
+      "directory_id": "2gis-70000001110053737",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001110053737",
+      "service_ids": [
+        "service:dining:2gis-70000001110053737"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001110053737"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001110373998",
+      "directory_id": "2gis-70000001110373998",
+      "menu_item_count": 5,
+      "menu_ref": {
+        "id": "2gis-70000001110373998",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001110373998",
+      "service_ids": [
+        "service:dining:2gis-70000001110373998"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001110373998"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001110529788",
+      "directory_id": "2gis-70000001110529788",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001110529788",
+      "service_ids": [
+        "service:dining:2gis-70000001110529788"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001110529788"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001110576397",
+      "directory_id": "2gis-70000001110576397",
+      "menu_item_count": 12,
+      "menu_ref": {
+        "id": "2gis-70000001110576397",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001110576397",
+      "service_ids": [
+        "service:dining:2gis-70000001110576397"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001110576397"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001110629278",
+      "directory_id": "2gis-70000001110629278",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001110629278",
+      "service_ids": [
+        "service:dining:2gis-70000001110629278"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001110629278"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001111485878",
+      "directory_id": "2gis-70000001111485878",
+      "menu_item_count": 42,
+      "menu_ref": {
+        "id": "2gis-70000001111485878",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001111485878",
+      "service_ids": [
+        "service:dining:2gis-70000001111485878"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001111485878"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001112587424",
+      "directory_id": "2gis-70000001112587424",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001112587424",
+      "service_ids": [
+        "service:dining:2gis-70000001112587424"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001112587424"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001112645201",
+      "directory_id": "2gis-70000001112645201",
+      "menu_item_count": 15,
+      "menu_ref": {
+        "id": "2gis-70000001112645201",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001112645201",
+      "service_ids": [
+        "service:dining:2gis-70000001112645201"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001112645201"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113476541",
+      "directory_id": "2gis-70000001113476541",
+      "menu_item_count": 22,
+      "menu_ref": {
+        "id": "2gis-70000001113476541",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113476541",
+      "service_ids": [
+        "service:dining:2gis-70000001113476541"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113476541"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113663108",
+      "directory_id": "2gis-70000001113663108",
+      "menu_item_count": 41,
+      "menu_ref": {
+        "id": "2gis-70000001113663108",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113663108",
+      "service_ids": [
+        "service:dining:2gis-70000001113663108"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113663108"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113748505",
+      "directory_id": "2gis-70000001113748505",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113748505",
+      "service_ids": [
+        "service:dining:2gis-70000001113748505"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113748505"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113789427",
+      "directory_id": "2gis-70000001113789427",
+      "menu_item_count": 57,
+      "menu_ref": {
+        "id": "2gis-70000001113789427",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113789427",
+      "service_ids": [
+        "service:dining:2gis-70000001113789427"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113789427"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113808058",
+      "directory_id": "2gis-70000001113808058",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113808058",
+      "service_ids": [
+        "service:dining:2gis-70000001113808058"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113808058"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001113923588",
+      "directory_id": "2gis-70000001113923588",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001113923588",
+      "service_ids": [
+        "service:dining:2gis-70000001113923588"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001113923588"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001114030928",
+      "directory_id": "2gis-70000001114030928",
+      "menu_item_count": 22,
+      "menu_ref": {
+        "id": "2gis-70000001114030928",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001114030928",
+      "service_ids": [
+        "service:dining:2gis-70000001114030928"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001114030928"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001114385329",
+      "directory_id": "2gis-70000001114385329",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001114385329",
+      "service_ids": [
+        "service:dining:2gis-70000001114385329"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001114385329"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001114680625",
+      "directory_id": "2gis-70000001114680625",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001114680625",
+      "service_ids": [
+        "service:dining:2gis-70000001114680625"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001114680625"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001114680627",
+      "directory_id": "2gis-70000001114680627",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001114680627",
+      "service_ids": [
+        "service:dining:2gis-70000001114680627"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001114680627"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001115147432",
+      "directory_id": "2gis-70000001115147432",
+      "menu_item_count": 10,
+      "menu_ref": {
+        "id": "2gis-70000001115147432",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001115147432",
+      "service_ids": [
+        "service:dining:2gis-70000001115147432"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001115147432"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001115604626",
+      "directory_id": "2gis-70000001115604626",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001115604626",
+      "service_ids": [
+        "service:dining:2gis-70000001115604626"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001115604626"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001115656026",
+      "directory_id": "2gis-70000001115656026",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001115656026",
+      "service_ids": [
+        "service:dining:2gis-70000001115656026"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001115656026"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001116067540",
+      "directory_id": "2gis-70000001116067540",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001116067540",
+      "service_ids": [
+        "service:dining:2gis-70000001116067540"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001116067540"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001116301573",
+      "directory_id": "2gis-70000001116301573",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001116301573",
+      "service_ids": [
+        "service:dining:2gis-70000001116301573"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001116301573"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001116304165",
+      "directory_id": "2gis-70000001116304165",
+      "menu_item_count": 58,
+      "menu_ref": {
+        "id": "2gis-70000001116304165",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001116304165",
+      "service_ids": [
+        "service:dining:2gis-70000001116304165"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001116304165"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001117023679",
+      "directory_id": "2gis-70000001117023679",
+      "menu_item_count": 10,
+      "menu_ref": {
+        "id": "2gis-70000001117023679",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001117023679",
+      "service_ids": [
+        "service:dining:2gis-70000001117023679"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001117023679"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001117165284",
+      "directory_id": "2gis-70000001117165284",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001117165284",
+      "service_ids": [
+        "service:dining:2gis-70000001117165284"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001117165284"
+      }
+    },
+    {
+      "branch_id": "branch:dining:2gis-70000001117379752",
+      "directory_id": "2gis-70000001117379752",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:2gis-70000001117379752",
+      "service_ids": [
+        "service:dining:2gis-70000001117379752"
+      ],
+      "source": {
+        "name": "2ГИС",
+        "observed_at": "2026-10-03",
+        "url": "https://2gis.ru/zelenogradsk/firm/70000001117379752"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-101132704696",
+      "directory_id": "yandex-101132704696",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-101132704696",
+      "service_ids": [
+        "service:dining:yandex-101132704696"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pivnoy_dvor/101132704696/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-102677791022",
+      "directory_id": "yandex-102677791022",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-102677791022",
+      "service_ids": [
+        "service:dining:yandex-102677791022"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/ryumka/102677791022/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-105000201333",
+      "directory_id": "yandex-105000201333",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-105000201333",
+      "service_ids": [
+        "service:dining:yandex-105000201333"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/piv_kom/105000201333/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-105083800672",
+      "directory_id": "yandex-105083800672",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-105083800672",
+      "service_ids": [
+        "service:dining:yandex-105083800672"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/okhota_yest/105083800672/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-105417453494",
+      "directory_id": "yandex-105417453494",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-105417453494",
+      "service_ids": [
+        "service:dining:yandex-105417453494"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/grand_doner/105417453494/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-107743116269",
+      "directory_id": "yandex-107743116269",
+      "menu_item_count": 172,
+      "menu_ref": {
+        "id": "kafe-tunets",
+        "kind": "poi"
+      },
+      "photo_poi": "kafe-tunets",
+      "place_id": "dining:yandex-107743116269",
+      "service_ids": [
+        "service:dining:yandex-107743116269"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/sushi_tunets/107743116269/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-109606567460",
+      "directory_id": "yandex-109606567460",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-109606567460",
+      "service_ids": [
+        "service:dining:yandex-109606567460"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/sup_s_soboy/109606567460/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-118974219775",
+      "directory_id": "yandex-118974219775",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-118974219775",
+      "service_ids": [
+        "service:dining:yandex-118974219775"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/nami/118974219775/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-121072900654",
+      "directory_id": "yandex-121072900654",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-121072900654",
+      "service_ids": [
+        "service:dining:yandex-121072900654"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/yeda_i_napitki/121072900654/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-122424519590",
+      "directory_id": "yandex-122424519590",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-122424519590",
+      "service_ids": [
+        "service:dining:yandex-122424519590"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kotofeynya/122424519590/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-123318360036",
+      "directory_id": "yandex-123318360036",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-123318360036",
+      "service_ids": [
+        "service:dining:yandex-123318360036"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/korolevskiye_kolbaski/123318360036/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-125171111947",
+      "directory_id": "yandex-125171111947",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-125171111947",
+      "service_ids": [
+        "service:dining:yandex-125171111947"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/stolovaya/125171111947/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-126717216814",
+      "directory_id": "yandex-126717216814",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-126717216814",
+      "service_ids": [
+        "service:dining:yandex-126717216814"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/asteriya/126717216814/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-128328283460",
+      "directory_id": "yandex-128328283460",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-128328283460",
+      "service_ids": [
+        "service:dining:yandex-128328283460"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kofe_s_soboy/128328283460/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-132845084954",
+      "directory_id": "yandex-132845084954",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-132845084954",
+      "service_ids": [
+        "service:dining:yandex-132845084954"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/sosiska/132845084954/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-13460046220",
+      "directory_id": "yandex-13460046220",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-13460046220",
+      "service_ids": [
+        "service:dining:yandex-13460046220"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/gostevoy_dom/13460046220/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-137758388898",
+      "directory_id": "yandex-137758388898",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-137758388898",
+      "service_ids": [
+        "service:dining:yandex-137758388898"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/mi_ami/137758388898/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-139616771698",
+      "directory_id": "yandex-139616771698",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-139616771698",
+      "service_ids": [
+        "service:dining:yandex-139616771698"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/bacchus_club/139616771698/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-140584585546",
+      "directory_id": "yandex-140584585546",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-140584585546",
+      "service_ids": [
+        "service:dining:yandex-140584585546"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/mangal_house/140584585546/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-14935772612",
+      "directory_id": "yandex-14935772612",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-14935772612",
+      "service_ids": [
+        "service:dining:yandex-14935772612"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/delo_v_dyme/14935772612/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-157477571827",
+      "directory_id": "yandex-157477571827",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-157477571827",
+      "service_ids": [
+        "service:dining:yandex-157477571827"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/o_launzh/157477571827/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-158675093252",
+      "directory_id": "yandex-158675093252",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-158675093252",
+      "service_ids": [
+        "service:dining:yandex-158675093252"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pyatyorochka/158675093252/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-159549919671",
+      "directory_id": "yandex-159549919671",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-159549919671",
+      "service_ids": [
+        "service:dining:yandex-159549919671"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/koffe/159549919671/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-16092394161",
+      "directory_id": "yandex-16092394161",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-16092394161",
+      "service_ids": [
+        "service:dining:yandex-16092394161"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/martsipany_m_zappa/16092394161/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-161139271068",
+      "directory_id": "yandex-161139271068",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-161139271068",
+      "service_ids": [
+        "service:dining:yandex-161139271068"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/zhelateriya_italyana/161139271068/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-16142981705",
+      "directory_id": "yandex-16142981705",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-16142981705",
+      "service_ids": [
+        "service:dining:yandex-16142981705"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kofeynya_yantarnoy_myshki/16142981705/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-172491090348",
+      "directory_id": "yandex-172491090348",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-172491090348",
+      "service_ids": [
+        "service:dining:yandex-172491090348"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/spa/172491090348/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-17354791545",
+      "directory_id": "yandex-17354791545",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-17354791545",
+      "service_ids": [
+        "service:dining:yandex-17354791545"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/shum/17354791545/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-174143369381",
+      "directory_id": "yandex-174143369381",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-174143369381",
+      "service_ids": [
+        "service:dining:yandex-174143369381"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kofe_na_more/174143369381/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-176570478682",
+      "directory_id": "yandex-176570478682",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-176570478682",
+      "service_ids": [
+        "service:dining:yandex-176570478682"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/shaurma_na_mangale/176570478682/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-186545988000",
+      "directory_id": "yandex-186545988000",
+      "menu_item_count": 0,
+      "menu_ref": {
+        "id": "restoran-zolotaya-milya",
+        "kind": "poi"
+      },
+      "photo_poi": "restoran-zolotaya-milya",
+      "place_id": "dining:yandex-186545988000",
+      "service_ids": [
+        "service:dining:yandex-186545988000"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/zolotaya_milya/186545988000/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-187087309616",
+      "directory_id": "yandex-187087309616",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-187087309616",
+      "service_ids": [
+        "service:dining:yandex-187087309616"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kafe/187087309616/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-187898367736",
+      "directory_id": "yandex-187898367736",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-187898367736",
+      "service_ids": [
+        "service:dining:yandex-187898367736"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/coffee/187898367736/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-194132075235",
+      "directory_id": "yandex-194132075235",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-194132075235",
+      "service_ids": [
+        "service:dining:yandex-194132075235"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/okhota_yest/194132075235/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-202232409269",
+      "directory_id": "yandex-202232409269",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-202232409269",
+      "service_ids": [
+        "service:dining:yandex-202232409269"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kofe/202232409269/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-211967753853",
+      "directory_id": "yandex-211967753853",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-211967753853",
+      "service_ids": [
+        "service:dining:yandex-211967753853"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/rezidentsiya/211967753853/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-230031286084",
+      "directory_id": "yandex-230031286084",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-230031286084",
+      "service_ids": [
+        "service:dining:yandex-230031286084"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/fast_fud/230031286084/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-234114175097",
+      "directory_id": "yandex-234114175097",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-234114175097",
+      "service_ids": [
+        "service:dining:yandex-234114175097"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/chay_ka/234114175097/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-240524461004",
+      "directory_id": "yandex-240524461004",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-240524461004",
+      "service_ids": [
+        "service:dining:yandex-240524461004"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/mne_kak_obychno/240524461004/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-25560318531",
+      "directory_id": "yandex-25560318531",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-25560318531",
+      "service_ids": [
+        "service:dining:yandex-25560318531"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/dym_zhar/25560318531/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-33587312263",
+      "directory_id": "yandex-33587312263",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-33587312263",
+      "service_ids": [
+        "service:dining:yandex-33587312263"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/eksponatburg/33587312263/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-38812501061",
+      "directory_id": "yandex-38812501061",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-38812501061",
+      "service_ids": [
+        "service:dining:yandex-38812501061"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/forshmak/38812501061/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-39358652961",
+      "directory_id": "yandex-39358652961",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-39358652961",
+      "service_ids": [
+        "service:dining:yandex-39358652961"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pivnoy_dvor/39358652961/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-44378535353",
+      "directory_id": "yandex-44378535353",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-44378535353",
+      "service_ids": [
+        "service:dining:yandex-44378535353"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/cheburechnaya_talpaki/44378535353/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-44782786643",
+      "directory_id": "yandex-44782786643",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-44782786643",
+      "service_ids": [
+        "service:dining:yandex-44782786643"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/ryumka/44782786643/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-4808812571",
+      "directory_id": "yandex-4808812571",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-4808812571",
+      "service_ids": [
+        "service:dining:yandex-4808812571"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/heprosto_kofe/4808812571/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-49350982814",
+      "directory_id": "yandex-49350982814",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-49350982814",
+      "service_ids": [
+        "service:dining:yandex-49350982814"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/bulochnaya/49350982814/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-49449302608",
+      "directory_id": "yandex-49449302608",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-49449302608",
+      "service_ids": [
+        "service:dining:yandex-49449302608"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/gastrobar_krantsvayn/49449302608/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-49589629001",
+      "directory_id": "yandex-49589629001",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-49589629001",
+      "service_ids": [
+        "service:dining:yandex-49589629001"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kenig_roaster/49589629001/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-53028333633",
+      "directory_id": "yandex-53028333633",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-53028333633",
+      "service_ids": [
+        "service:dining:yandex-53028333633"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/merenga/53028333633/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-64829657300",
+      "directory_id": "yandex-64829657300",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-64829657300",
+      "service_ids": [
+        "service:dining:yandex-64829657300"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pivnoy_dvor/64829657300/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-67669290902",
+      "directory_id": "yandex-67669290902",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-67669290902",
+      "service_ids": [
+        "service:dining:yandex-67669290902"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/vkusno/67669290902/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-6900416483",
+      "directory_id": "yandex-6900416483",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-6900416483",
+      "service_ids": [
+        "service:dining:yandex-6900416483"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/krants_vaflya/6900416483/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-78202236219",
+      "directory_id": "yandex-78202236219",
+      "menu_item_count": 90,
+      "menu_ref": {
+        "id": "yandex-78202236219",
+        "kind": "directory"
+      },
+      "photo_poi": null,
+      "place_id": "dining:yandex-78202236219",
+      "service_ids": [
+        "service:dining:yandex-78202236219"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/ura_/78202236219/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-80290146158",
+      "directory_id": "yandex-80290146158",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-80290146158",
+      "service_ids": [
+        "service:dining:yandex-80290146158"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/kaliningradskiye_konfety/80290146158/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-80862438724",
+      "directory_id": "yandex-80862438724",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-80862438724",
+      "service_ids": [
+        "service:dining:yandex-80862438724"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/lev_borodinskiy/80862438724/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-81806656025",
+      "directory_id": "yandex-81806656025",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-81806656025",
+      "service_ids": [
+        "service:dining:yandex-81806656025"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pekarnya/81806656025/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-83768680391",
+      "directory_id": "yandex-83768680391",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-83768680391",
+      "service_ids": [
+        "service:dining:yandex-83768680391"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/bar_13/83768680391/"
+      }
+    },
+    {
+      "branch_id": "branch:dining:yandex-86328291089",
+      "directory_id": "yandex-86328291089",
+      "menu_item_count": 0,
+      "menu_ref": null,
+      "photo_poi": null,
+      "place_id": "dining:yandex-86328291089",
+      "service_ids": [
+        "service:dining:yandex-86328291089"
+      ],
+      "source": {
+        "name": "Яндекс Карты",
+        "observed_at": "2026-10-03",
+        "url": "https://yandex.ru/maps/org/pivnoy_dvor/86328291089/"
+      }
+    }
+  ],
+  "city": "Зеленоградск",
+  "identity_reviews": [
+    {
+      "branches": [
+        {
+          "address": "улица Марины Расковой, 4а",
+          "directory_id": "2gis-70000001100360498",
+          "lat": 54.956306,
+          "lon": 20.486051,
+          "name": "Kenig Roaster"
+        },
+        {
+          "address": "ул. Пугачёва, 8А",
+          "directory_id": "yandex-49589629001",
+          "lat": 54.962841,
+          "lon": 20.478223,
+          "name": "Kenig Roaster"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Вокзальная улица, 2",
+          "directory_id": "2gis-70000001025626102",
+          "lat": 54.95868,
+          "lon": 20.472477,
+          "name": "Sun coffee shop"
+        },
+        {
+          "address": "Московская улица, 74",
+          "directory_id": "2gis-70000001047895525",
+          "lat": 54.964975,
+          "lon": 20.495728,
+          "name": "Sun coffee shop"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "улица Володарского, 32в",
+          "directory_id": "2gis-70000001102892160",
+          "lat": 54.965593,
+          "lon": 20.488577,
+          "name": "Гранд Донер"
+        },
+        {
+          "address": "Калининградская область, Зеленоградск",
+          "directory_id": "yandex-105417453494",
+          "lat": 54.96575,
+          "lon": 20.489062,
+          "name": "Гранд Донер"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Калининградская область, Зеленоградск, Городской парк",
+          "directory_id": "yandex-187087309616",
+          "lat": 54.964634,
+          "lon": 20.490465,
+          "name": "Кафе"
+        },
+        {
+          "address": "улица Дачная, 1",
+          "directory_id": "2gis-70000001080218641",
+          "lat": 54.938954,
+          "lon": 20.405917,
+          "name": "Кафе"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Железнодорожная улица, 40",
+          "directory_id": "2gis-70000001037607297",
+          "lat": 54.950088,
+          "lon": 20.471191,
+          "name": "Королевский пекарь"
+        },
+        {
+          "address": "Окружная улица, 15",
+          "directory_id": "2gis-70000001030029796",
+          "lat": 54.954621,
+          "lon": 20.483048,
+          "name": "Королевский пекарь"
+        },
+        {
+          "address": "улица Тургенева, 1Б",
+          "directory_id": "2gis-70000001021673647",
+          "lat": 54.958739,
+          "lon": 20.474079,
+          "name": "Королевский пекарь"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": null,
+          "directory_id": "2gis-70000001117379752",
+          "lat": 54.961146,
+          "lon": 20.472153,
+          "name": "Кранц вафля"
+        },
+        {
+          "address": "Крымская ул., 5",
+          "directory_id": "yandex-6900416483",
+          "lat": 54.96085,
+          "lon": 20.474662,
+          "name": "Кранц Вафля"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "улица Гагарина, 87",
+          "directory_id": "2gis-70000001101158549",
+          "lat": 54.953136,
+          "lon": 20.45058,
+          "name": "Лев Бородинский"
+        },
+        {
+          "address": "Курортный просп., 16",
+          "directory_id": "yandex-80862438724",
+          "lat": 54.961207,
+          "lon": 20.47833,
+          "name": "Лев Бородинский"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Калининградская область, Зеленоградск, Крымская улица",
+          "directory_id": "yandex-157477571827",
+          "lat": 54.961456,
+          "lon": 20.473466,
+          "name": "О! Лаунж"
+        },
+        {
+          "address": "Крымская улица, 5",
+          "directory_id": "2gis-70000001116067540",
+          "lat": 54.960674,
+          "lon": 20.471735,
+          "name": "О! Лаунж"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Железнодорожная ул., 40, корп. 2",
+          "directory_id": "yandex-194132075235",
+          "lat": 54.950614,
+          "lon": 20.47146,
+          "name": "Охота есть"
+        },
+        {
+          "address": "Окружная ул., 5",
+          "directory_id": "yandex-105083800672",
+          "lat": 54.956186,
+          "lon": 20.487411,
+          "name": "Охота есть"
+        },
+        {
+          "address": "улица Пугачёва, 4а",
+          "directory_id": "2gis-70000001077229247",
+          "lat": 54.962518,
+          "lon": 20.478023,
+          "name": "Охота есть"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Калининградская ул., 33",
+          "directory_id": "yandex-101132704696",
+          "lat": 54.936807,
+          "lon": 20.510056,
+          "name": "Пивной Двор"
+        },
+        {
+          "address": "ул. Ленина, 10",
+          "directory_id": "yandex-39358652961",
+          "lat": 54.959276,
+          "lon": 20.472793,
+          "name": "Пивной Двор"
+        },
+        {
+          "address": "Окружная ул., 9",
+          "directory_id": "yandex-86328291089",
+          "lat": 54.955613,
+          "lon": 20.48679,
+          "name": "Пивной Двор"
+        },
+        {
+          "address": "ул. Тургенева, 10Д",
+          "directory_id": "yandex-64829657300",
+          "lat": 54.95506,
+          "lon": 20.481144,
+          "name": "Пивной Двор"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Калининградская область, Зеленоградск, улица Гагарина",
+          "directory_id": "yandex-211967753853",
+          "lat": 54.953715,
+          "lon": 20.451169,
+          "name": "Резиденция"
+        },
+        {
+          "address": "улица Гагарина, 40Б",
+          "directory_id": "2gis-70000001103038629",
+          "lat": 54.95398,
+          "lon": 20.452238,
+          "name": "Резиденция"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "улица Гагарина, 2г/2",
+          "directory_id": "2gis-70000001103339960",
+          "lat": 54.95987,
+          "lon": 20.469085,
+          "name": "Рыба Агонь"
+        },
+        {
+          "address": "улица Пугачёва, 1Б",
+          "directory_id": "2gis-70000001036184841",
+          "lat": 54.96098,
+          "lon": 20.475512,
+          "name": "Рыба Агонь"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "ул. Волонтёров, 2А",
+          "directory_id": "yandex-44782786643",
+          "lat": 54.94761,
+          "lon": 20.46771,
+          "name": "Рюмка"
+        },
+        {
+          "address": "ул. Марины Расковой, 4А",
+          "directory_id": "yandex-102677791022",
+          "lat": 54.956116,
+          "lon": 20.485683,
+          "name": "Рюмка"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "улица Гагарина, 46а",
+          "directory_id": "2gis-70000001113789427",
+          "lat": 54.95191,
+          "lon": 20.444556,
+          "name": "Сладкий домик"
+        },
+        {
+          "address": "Курортный проспект, 3",
+          "directory_id": "2gis-70000001056728854",
+          "lat": 54.961572,
+          "lon": 20.481656,
+          "name": "Сладкий домик"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Лесопарковая улица, 1а",
+          "directory_id": "2gis-70000001062141930",
+          "lat": 54.958053,
+          "lon": 20.491724,
+          "name": "Тортино"
+        },
+        {
+          "address": "улица Тургенева, 1/7",
+          "directory_id": "2gis-70000001061794029",
+          "lat": 54.958587,
+          "lon": 20.474468,
+          "name": "Тортино"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "улица Горького, 1",
+          "directory_id": "2gis-70000001023285288",
+          "lat": 54.959241,
+          "lon": 20.472322,
+          "name": "Ура Пицца!"
+        },
+        {
+          "address": "улица Горького, 1",
+          "directory_id": "2gis-70000001088812636",
+          "lat": 54.95938,
+          "lon": 20.472121,
+          "name": "Ура Пицца!"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    },
+    {
+      "branches": [
+        {
+          "address": "Курортный проспект, 19",
+          "directory_id": "2gis-70000001100869855",
+          "lat": 54.960425,
+          "lon": 20.477443,
+          "name": "Шакотис"
+        },
+        {
+          "address": "Курортный проспект, 25",
+          "directory_id": "2gis-70000001090368093",
+          "lat": 54.959991,
+          "lon": 20.476246,
+          "name": "Шакотис"
+        }
+      ],
+      "reason": "same_name",
+      "resolution": "review_separately"
+    }
+  ],
+  "version": 1
+}

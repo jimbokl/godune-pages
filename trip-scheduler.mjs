@@ -2,7 +2,7 @@ import {instantiateWasm} from './wasm-loader.mjs?v=1';
 let engine;
 // Every caller uses Rust. A failed WASM load never silently switches to different maths.
 export function loadScheduler(base) {
-  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=40',base)).then(async response => {
+  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=42',base)).then(async response => {
     if (!response.ok) throw Error('Не удалось загрузить расчёт дня.');
     const {instance} = await instantiateWasm(response, {name:'trip'});
     const plan = input => calculate(instance.exports,input);
@@ -18,6 +18,8 @@ export function loadScheduler(base) {
     plan.serviceAssessment = input => calculateServiceAssessment(instance.exports,input);
     plan.serviceTrip = input => prepareServiceTrip(instance.exports,input);
     plan.serviceDay = input => inspectServiceDay(instance.exports,input);
+    plan.dayChange = input => calculateDayChange(instance.exports,input);
+    plan.alongRoute = input => calculateAlongRoute(instance.exports,input);
     plan.serviceTransfer = input => calculateServiceTransfer(instance.exports,input);
     plan.serviceQuery = input => calculateServiceQuery(instance.exports,input);
     plan.serviceSpatial = input => calculateServiceSpatial(instance.exports,input);
@@ -50,6 +52,8 @@ export const calculateServiceConditions = (wasm,input) => invoke(wasm,input,'tri
 export const calculateServiceAssessment = (wasm,input) => invoke(wasm,input,'trip_service_assessment','assessment');
 export const prepareServiceTrip = (wasm,input) => invoke(wasm,input,'trip_service_trip','prepared');
 export const inspectServiceDay = (wasm,input) => invoke(wasm,input,'trip_service_day','day_check');
+export const calculateDayChange = (wasm,input) => invoke(wasm,input,'trip_day_change','change');
+export const calculateAlongRoute = (wasm,input) => invoke(wasm,input,'trip_along_route','matches');
 export const calculateServiceTransfer = (wasm,input) => invoke(wasm,input,'trip_service_transfer','journey');
 export const calculateServiceQuery = (wasm,input) => invoke(wasm,input,'trip_service_query','results');
 export const calculateServiceSpatial = (wasm,input) => invoke(wasm,input,'trip_service_spatial','nearby');

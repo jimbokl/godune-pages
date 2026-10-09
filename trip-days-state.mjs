@@ -1,5 +1,5 @@
 import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=11';
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=12';
 import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=17';
 import {validBase,isPersonalPoint} from './personal-points.mjs?v=3';
 import {validDayWave} from './day-wave.mjs?v=2';

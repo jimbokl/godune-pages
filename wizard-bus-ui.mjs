@@ -14,7 +14,7 @@ export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
   async function context(){
     if(!pending)pending=(async()=>{
       const json=async path=>{const response=await fetch(new URL(path,base));if(!response.ok)throw Error('wizard_bus_unavailable');return response.json();};
-      const [table,maps,{loadScheduler}]=await Promise.all([json('data/kosa-bus-210.json'),json('data/kosa-interchanges.json').catch(()=>null),import('./trip-scheduler.mjs?v=40')]);
+      const [table,maps,{loadScheduler}]=await Promise.all([json('data/kosa-bus-210.json'),json('data/kosa-interchanges.json').catch(()=>null),import('./trip-scheduler.mjs?v=42')]);
       const calculate=await loadScheduler(base);loaded={table,maps,calculate};return loaded;
     })().catch(error=>{pending=null;failed=true;throw error;});
     return pending;

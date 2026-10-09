@@ -1,14 +1,23 @@
 // Scope selection and display only. Distances and eligibility belong to trip-core.
+import {effectiveBookingDay,bookingDate} from './trip-bookings-state.mjs?v=2';
+
 const point = value => value && Number.isFinite(value.lat) && Number.isFinite(value.lon)
   && Math.abs(value.lat)<=90 && Math.abs(value.lon)<=180;
 
 export function savedServiceContexts({day,trip,catalog}) {
   const contexts=[];
-  for(const [key,label] of [['night_at','Жильё'],['start_at','Начало дня']]) {
-    const saved=day?.[key],place=typeof saved==='string'?catalog.poi.find(p=>p.slug===saved):saved;
-    if(!/^day-[1-9]\d*$/.test(day?.id)||typeof saved!=='string'&&saved?.kind!=='personal'
-      ||!point(place)||typeof place.name!=='string'||!place.name.trim())continue;
-    contexts.push({id:`trip-point-${day.id}-${key}`,name:`${label}: ${place.name}`,mode:'foot',scope:{kind:'point',point:{lat:place.lat,lon:place.lon}}});
+  const days=trip.itinerary?.days?.length?trip.itinerary.days:day?[day]:[];
+  for(const [index,rawDay] of days.entries()) {
+    if(!/^day-[1-9]\d*$/.test(rawDay?.id))continue;
+    const current=effectiveBookingDay(rawDay);
+    const date=bookingDate(current.date)?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(current.date+'T12:00:00Z')):'без даты';
+    const suffix=days.length>1?` · День ${index+1} · ${date}`:'';
+    for(const [key,label] of [['night_at','Жильё'],['start_at','Начало дня'],['end_at','Отъезд']]) {
+      const saved=current[key],place=typeof saved==='string'?catalog.poi.find(p=>p.slug===saved):saved;
+      if(typeof saved!=='string'&&saved?.kind!=='personal'
+        ||!point(place)||typeof place.name!=='string'||!place.name.trim())continue;
+      contexts.push({id:`trip-point-${current.id}-${key}`,name:`${label}: ${place.name}${suffix}`,mode:'foot',scope:{kind:'point',point:{lat:place.lat,lon:place.lon}}});
+    }
   }
   for(const id of trip.routes||[]) {
     const route=catalog.routes.find(r=>r.slug===id);
@@ -55,7 +64,7 @@ export function showSpatialDistance(cards,nearby) {
 }
 
 export function bindServiceContext(form,page,onChange) {
-  if(!form.elements.namedItem('scope_kind'))return {update(){},async prepare(){},request(){return null;}};
+  if(!form.elements.namedItem('scope_kind'))return {update(){},async prepare(){},async refresh(){},usesSaved(){return false;},request(){return null;}};
   const kind=form.elements.namedItem('scope_kind'),pointSelect=form.elements.namedItem('scope_point'),routeSelect=form.elements.namedItem('scope_route');
   const status=form.querySelector('[data-context-status]'),load=form.querySelector('[data-load-contexts]');
   let contexts=structuredClone(page.contexts||[]),pending;
@@ -69,27 +78,32 @@ export function bindServiceContext(form,page,onChange) {
     form.querySelector('[data-distance-sort]').disabled=kind.value==='all';
     if(kind.value==='all'&&form.elements.namedItem('sort').value==='distance')form.elements.namedItem('sort').value='relevance';
   }
-  async function loadSaved(){
+  async function loadSaved(notify=true){
     if(pending)return pending;
-    onChange();load.disabled=true;status.textContent='Открываем сохранённый день…';
+    if(notify)onChange();load.disabled=true;status.textContent='Открываем сохранённую поездку…';
     pending=(async()=>{
-      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=12');
+      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=18');
       const saved=savedServiceContexts(await savedServiceDay(new URL('./',import.meta.url)));
       contexts=[...(page.contexts||[]),...saved];
       for(const [select,type] of [[pointSelect,'point'],[routeSelect,'route']]){
         const selected=select.value,empty=document.createElement('option');empty.value='';empty.textContent=type==='point'?'Выберите место':'Выберите прогулку';
         select.replaceChildren(empty,...contexts.filter(c=>c.scope.kind===type).map(c=>{const option=document.createElement('option');option.value=c.id;option.textContent=c.name;return option;}));
+        if(selected&&!contexts.some(c=>c.id===selected&&c.scope.kind===type)){
+          const missing=document.createElement('option');missing.value=selected;missing.textContent=type==='point'?'Место удалено из поездки — выберите другое':'Прогулка удалена из поездки — выберите другую';select.append(missing);
+        }
         select.value=selected;
       }
-      status.textContent=saved.length?'Жильё и сохранённые прогулки добавлены в выбор.':'В вашем дне пока нет места с координатами или сохранённой прогулки.';
+      status.textContent=saved.length?'Места и прогулки поездки обновлены.':'В поездке пока нет места с координатами или сохранённой прогулки.';
       return saved;
     })().finally(()=>{pending=null;load.disabled=false;});
     return pending;
   }
   load.addEventListener('click',()=>{loadSaved().catch(()=>{status.textContent='Не получилось открыть ваш день. Попробуйте ещё раз.';});});
   kind.addEventListener('change',update);update();
-  return {update,request:fields=>spatialRequest(fields,String(fields.get('date')||''),page.spatial,contexts),
+  const usesSaved=fields=>['point','route'].includes(fields.get('scope_kind'))&&String(fields.get(`scope_${fields.get('scope_kind')}`)||'').startsWith('trip-');
+  return {update,usesSaved,request:fields=>spatialRequest(fields,String(fields.get('date')||''),page.spatial,contexts),
+    async refresh(fields){if(usesSaved(fields))await loadSaved(false);},
     async prepare(params){
-      if(['sr_scope_point','sr_scope_route'].some(key=>params.get(key)?.startsWith('trip-')))await loadSaved();
+      if(['sr_scope_point','sr_scope_route'].some(key=>params.get(key)?.startsWith('trip-')))await loadSaved(false);
     }};
 }

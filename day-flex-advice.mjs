@@ -5,6 +5,7 @@ import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=6';
 import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=6';
 import {planningSignature,planningWalkingMinutes} from './day-planning-state.mjs?v=1';
 import {transferChoices} from './trip-transfer-connections-contract.mjs';
+import {closedAdvice,withClosedReplacement} from './day-closed-advice.mjs?v=1';
 
 // Planning proposals, not a reconstruction of time already spent on the road.
 // The shared Rust calculation remains the sole clock for every candidate.
@@ -48,12 +49,16 @@ export function protectedFlexStops(trip,catalog) {
 
 export async function flexAdvice(trip,catalog,matrix,engine,result,request,stillCurrent=()=>true) {
   if(!canFlexDay(trip))return {state:'not_available',options:[]};
-  const scenario=['rain','fatigue'].includes(request?.kind);
-  if(!request || !['later','breathing_room','rain','fatigue'].includes(request.kind) || !Number.isInteger(request.minutes)
-    || (scenario?request.minutes!==0:request.minutes<=0 || request.minutes>=1440))
+  const scenario=['rain','fatigue'].includes(request?.kind),closed=request?.kind==='closed';
+  if(!request || !['later','breathing_room','rain','fatigue','closed'].includes(request.kind) || !Number.isInteger(request.minutes)
+    || (scenario||closed?request.minutes!==0:request.minutes<=0 || request.minutes>=1440)
+    || closed&&typeof request.stop!=='string')
     return {state:'invalid_request',options:[]};
   if(trip.schedule?.progress && request.kind==='later')return {state:'already_started',options:[]};
   const snapshot=structuredClone(trip),settings=snapshot.schedule || defaultSchedule(),signature=flexSignature(snapshot);
+  snapshot.schedule=settings;
+  if(closed&&!snapshot.places.includes(request.stop))return {state:'invalid_closed_stop',options:[]};
+  if(closed&&protectedFlexStops(snapshot,catalog).has(request.stop))return {state:'protected_closed',options:[],protectedStop:request.stop};
   const trial=timingTrial(snapshot,catalog,matrix,engine,result);
   if(trial.error)return {state:trial.error,options:[]};
   result=trial.before;
@@ -71,6 +76,8 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
   // Compare the same effective beginning, not a hidden old form value.
   let previousStart;
   try {previousStart=planInput(snapshot,catalog,matrix).start;}catch {return {state:'no_option',options:[]};}
+  if(closed)return closedAdvice({trip:snapshot,catalog,trial,request,signature,previousStart,
+    protectedIds:protectedFlexStops(snapshot,catalog),stillCurrent});
   const starts=rail && request.kind==='later'
     ?rail.outward.map(rideSnapshot).filter(ride=>ride.departure>=settings.rail.outward.departure+request.minutes && ride.arrival>settings.rail.outward.arrival)
       .map(outward=>({start:settings.start,outward}))
@@ -159,10 +166,11 @@ export async function flexAdvice(trip,catalog,matrix,engine,result,request,still
 
 export function applyFlexAdvice(trip,option,catalog) {
   if(flexSignature(trip)!==option.signature)return {trip,error:'stale'};
-  if(!['later','breathing_room','rain','fatigue'].includes(option.kind))return {trip,error:'unknown_option'};
+  if(!['later','breathing_room','rain','fatigue','closed'].includes(option.kind))return {trip,error:'unknown_option'};
   // Keep up-to-date notes, money and other days. The existing cleaner projects
   // only this day's new stop list and discards obsolete directed leg settings.
-  const replaced=option.replacements?.length && catalog?withShelterReplacements(trip,option.replacements,catalog):trip;
+  if(option.kind==='closed'&&(!catalog||protectedFlexStops(trip,catalog).has(option.closedStop)))return {trip,error:'stale'};
+  const replaced=option.replacements?.length && catalog?(option.kind==='closed'?withClosedReplacement:withShelterReplacements)(trip,option.replacements,catalog):trip;
   if(!replaced || option.replacements?.length && !catalog)return {trip,error:'stale'};
   const next={...replaced,places:[...option.places],schedule:{...(replaced.schedule || defaultSchedule()),start:option.start}};
   if(option.railChange)next.schedule.rail={...trip.schedule.rail,outward:structuredClone(option.railChange.after)};

@@ -14,8 +14,17 @@ function choice(prepared){
 }
 export function addServiceVisit(trip,prepared,dayId){
  const visit=choice(prepared),next=ensureJourney(trip),day=dayFor(next,dayId),rows=serviceVisitRows(day);
- let number=1;while(rows.some(v=>v?.id===`visit-${number}`))number++;
- visit.id=`visit-${number}`;day.service_visits=[...rows,visit];return next;
+ visit.id=nextServiceVisitId(day);day.service_visits=[...rows,visit];return next;
+}
+// Removed visits can still have paid expenses or selected roads. Reusing their
+// identity would silently attach that history to an unrelated new visit.
+export function nextServiceVisitId(day){
+ const ids=new Set(serviceVisitRows(day).map(v=>v?.id));
+ for(const cost of Object.values(day.costs||{}))for(const item of cost.items||[])ids.add(item.service_visit?.snapshot?.id);
+ const roads=day.transfer_connections?.choices;
+ for(const road of Array.isArray(roads)?roads:[])for(const end of [road?.from,road?.to])if(end?.kind==='service')ids.add(end.id);
+ let number=1;while(ids.has(`visit-${number}`))number++;
+ return `visit-${number}`;
 }
 export function serviceVisitTargets(trip,date){
  if(!validTripDate(date))throw Error('Выберите дату посещения.');

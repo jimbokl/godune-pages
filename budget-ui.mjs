@@ -1,7 +1,8 @@
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=6';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
 import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=25';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=22';
-import {loadScheduler} from './trip-scheduler.mjs?v=40';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=23';
+import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2';
 
 // The same cost model is used by the planner and the standalone budget.
@@ -62,6 +63,7 @@ export async function initBudget({workshop,catalog,base}) {
   const engine=await loadScheduler(base);
   const estimates=summaryEditor({section,read,commit,engine});
   const ledger=initTripExpenses({section,read,commit,base,catalog});
+  const menuChoices=initTripMenuChoices({mount:section,read,commit,base,catalog,onExpense:ledger.recordMenu});
   const select=section.querySelector('#budget-day'),form=section.querySelector('#budget-people-form'),people=section.querySelector('#budget-people'),status=section.querySelector('#budget-page-status');
   function render() {
     const trip=read(),active=selectedDay(trip);
@@ -75,7 +77,7 @@ export async function initBudget({workshop,catalog,base}) {
     let note=section.querySelector('[data-budget-party-note]');if(!note){note=document.createElement('p');note.dataset.budgetPartyNote='';note.className='budget-memory-note';section.querySelector(".budget-controls").after(note);}
     note.textContent=active.party?`${partyLabel(active.party)}. Число относится к выбранному дню. Детские билеты с другой ценой внесите отдельным расходом на всех.`:'Это число используется в днях, где ещё не указан отдельный состав группы.';
     estimates.render(trip);
-    ledger.render(trip);
+    ledger.render(trip);menuChoices.render(trip);
     try {ledger.totals(engine.budget(budgetInput(trip)));}
     catch {ledger.error();}
     section.dataset.budgetReady='true';

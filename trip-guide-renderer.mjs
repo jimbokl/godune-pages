@@ -41,6 +41,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   async function serviceChapter(s,number){
     start();text(`${String(number).padStart(2,'0')} · ${s.category}`,{size:9,color:muted,space:16});heading(s.name,true);
     text(s.summary);if(s.address)text('Адрес: '+s.address);
+    for(const row of s.selection_facts||[])text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});
     if(s.rental_points?.length){
       await image(media.maps[s.key+':rental'],phone?175:260);
       for(const [i,p]of s.rental_points.entries()){text(`${i+1}. ${p.label}: ${p.name} · GPS ${gps(p)}`,{size:phone?10:12});source(p.source?{name:p.source.reference,checked_at:p.source.checked_at}:null);}
@@ -112,7 +113,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(day.menu_choices?.length){
       const mealHeight=meal=>textHeight(meal.name,ui,phone?14:17,6)+textHeight(meal.place+(meal.address?' · '+meal.address:''),ui,phone?10.5:12)+(meal.text?textHeight(meal.text):0)+textHeight(meal.price)+(meal.note?textHeight(meal.note,ui,phone?9:11):0)+sourceHeight(meal.source);
-      heading('Что попробовать',false,'',mealHeight(day.menu_choices[0]));
+      const quote=day.menu_quote?.text||day.menu_quote?.error||'';
+      heading('Что попробовать',false,quote,mealHeight(day.menu_choices[0]));
+      if(quote)text(quote);
       for(const meal of day.menu_choices){
         need(mealHeight(meal));text(meal.name,{size:phone?14:17,space:6});text(meal.place+(meal.address?' · '+meal.address:''),{size:phone?10.5:12});
         if(meal.text)text(meal.text);text(meal.price);if(meal.note)text(meal.note,{size:phone?9:11,color:muted});source(meal.source);

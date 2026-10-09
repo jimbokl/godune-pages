@@ -1,3 +1,4 @@
+import {formatKopecks} from './trip-money.mjs';
 // Descriptive source snapshots. They never decide admission, availability or price.
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,required,optional=[])=>object(v)&&required.every(k=>Object.hasOwn(v,k))&&Object.keys(v).every(k=>required.includes(k)||optional.includes(k));
@@ -35,17 +36,18 @@ export function validServiceProvenance(v,checkedBefore,identity){
 const subjects={place:'Место',branch:'Адрес',service:'Услуга',offer:'Тариф',calendar:'Часы посещения',conditions:'Условия',rental_offer:'Условия проката'};
 const fields={name:'Название',address:'Адрес',area:'Город',location:'Положение',references:'Связи с местами',tariff:'Тариф',calendar:'Расписание',action:'Назначение расписания',policy:'Условия посещения',bike_types:'Велосипеды',helmets:'Шлемы',child_seats:'Детские кресла',return_branches:'Пункты возврата',steam:'Парная',capacity:'Вместимость',private:'Отдельное посещение',length_m:'Длина бассейна, м',lanes:'Дорожки',indoor:'В помещении',swim_cap:'Шапочка',medical_document:'Медицинская справка',single_visit:'Разовое посещение',personal_trainer:'Тренер',minimum_age:'Минимальный возраст',market_kind:'Вид рынка',products:'Товары',seasonal:'Сезонность',topic:'Тема',duration_minutes:'Длительность, мин',venue_id:'Заведение',activities:'Занятия на воде',format:'Формат',briefing_minutes:'Инструктаж, мин',changing_minutes:'Переодевание, мин',requires_swimming:'Нужно уметь плавать',experience_required:'Нужен опыт',instructor_included:'Инструктор включён',equipment_included:'Снаряжение включено',weather_dependent:'Зависит от погоды'};
 const terms={sup:'Сап',kayak:'Байдарка',rowing:'Гребля',boat:'Лодка',sailing:'Парусный спорт',diving:'Дайвинг',kitesurf:'Кайтсёрфинг',windsurf:'Виндсёрфинг',equipment_rental:'Прокат снаряжения',guided_trip:'Прогулка с гидом',lesson:'Занятие',passenger_cruise:'Пассажирский круиз',self_guided:'Самостоятельно',guided:'С сопровождением',excursion:'Прогулка',city:'Городской',electric:'Электрический',mountain:'Горный',road:'Шоссейный',child:'Детский',tandem:'Тандем'};
+Object.assign(fields,{rules:'Расписание',returns:'Возврат',billing_start:'Начало оплаты',billing_end:'Конец оплаты',amount:'Сумма тарифа',deposit:'Залог',billing:'Расчёт тарифа'});
 function valueText(value){
  if(value===null)return 'неизвестно';
  if(typeof value==='boolean')return value?'да':'нет';
- if(Array.isArray(value))return value.length?value.map(v=>typeof v==='string'?terms[v]||v:JSON.stringify(v)).join(', '):'нет';
- return object(value)?'':typeof value==='string'?terms[value]||value:String(value);
+ if(Array.isArray(value))return value.length?value.filter(v=>!object(v)&&!Array.isArray(v)).map(valueText).join(', '):'нет';
+ return object(value)?(value.kind==='none'?'нет':''):typeof value==='string'?terms[value]||value:String(value);
 }
 export function provenanceSources(snapshot,visitDate){
  if(!validServiceProvenance(snapshot)||visitDate!=null&&!date(visitDate))return [];
  return snapshot.facts.map(fact=>{
   const s=fact.source,key=fact.path.split('/').at(-1).replaceAll('~1','/').replaceAll('~0','~');
-  const label=fields[key]||fact.path,value=Object.hasOwn(fact,'value')?valueText(fact.value):'';
+  const label=fields[key]||'Сведения',money=fact.path.startsWith('/tariff/')&&key==='amount'&&Number.isSafeInteger(fact.value)&&fact.value>=0,value=money?formatKopecks(fact.value):Object.hasOwn(fact,'value')?valueText(fact.value):'';
   let state={confirmed:'подтверждено на дату проверки',unknown:'нужно уточнить',conflict:'источники расходятся'}[fact.status];
   if(fact.status==='confirmed'&&visitDate&&s.valid_from&&visitDate<s.valid_from)state='действует с '+s.valid_from;
   if(fact.status==='confirmed'&&visitDate&&s.valid_until&&visitDate>s.valid_until)state='срок сведений закончился '+s.valid_until;

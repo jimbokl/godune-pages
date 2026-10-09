@@ -1,11 +1,10 @@
-/* Sunlit, documentary photographs keep their own colour in either site theme. */
+/* Author photographs use the same restrained grade in either site theme. */
 .destination-picture{display:block;width:100%;height:100%}
 .destination-picture img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;transition:transform .8s ease}
 .destination:hover .destination-picture img{transform:scale(1.025)}
 .destination-author:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(0deg,#eff7fcf5,transparent);pointer-events:none}
 .destination-author .destination-copy,.destination-author .destination-arrow{z-index:1}
 :root[data-theme=night] .destination-author:after{background:linear-gradient(0deg,var(--paper),transparent 90%)}
-:root[data-theme=night] .destination-author .destination-picture img{filter:none}
 .author-shore figure,.author-live,.author-gallery figure,.author-poi{margin:0}
 .author-shore figure{position:relative;overflow:hidden}
 .author-shore-picture,.author-poi-picture{display:block}

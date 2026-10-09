@@ -2,6 +2,7 @@ import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceExpenseButton} from './trip-service-expenses-ui.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
+import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=1';
 import {selectedConnectionRows,unusedConnectionRows,transferClock} from './trip-service-transfer-view.mjs';
 import {decorateStop} from './wave-stop-ui.mjs?v=4';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=3';
@@ -53,6 +54,7 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
   if(visit)header.append(node('span',assessment?.context==='date_changed'?'Другая дата':assessment?.assessment?'Фиксированное время':'Выбор сохранён','visit-timeline-badge'));
   const title=node('h5',name);title.tabIndex=-1;title.dataset.timelineTitle=entry.id;card.append(header,title);
   if(visit){
+   const selection=serviceSelectionElement(visit);if(selection)card.append(selection);
    if(!assessment?.assessment)card.append(node('p','Полный расчёт этого посещения пока недоступен. Выбор остаётся в поездке.','visit-timeline-warning'));
    card.append(node('p','Перестановка не меняет выбранное время.','visit-timeline-detail'));
    const rental=rentalFactsElement(visit,assessment?.assessment);if(rental)card.append(rental);

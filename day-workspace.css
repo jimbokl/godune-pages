@@ -198,6 +198,7 @@
 #my-trip .day-flex-advice>summary{min-height:48px;cursor:pointer;font:600 16px/1.5 var(--sans);color:var(--ink)}
 #my-trip .day-flex-advice:not([open]){padding-block:8px}
 #my-trip .day-flex-form{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:18px 0}
+#my-trip .day-flex-form [hidden]{display:none!important}
 #my-trip .day-flex-form label{display:grid;gap:6px;flex:1 1 220px;min-width:0;color:var(--ink)}
 #my-trip .day-flex-form select{min-height:48px;width:100%;min-width:0;border:1px solid var(--sea-line);border-radius:8px;background:var(--paper);color:var(--ink);padding:10px 12px;font:inherit}
 #my-trip .day-flex-advice :is(select,button,summary):focus-visible{outline:3px solid var(--sea-muted);outline-offset:3px}

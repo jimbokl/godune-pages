@@ -17,8 +17,9 @@ import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journe
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=5';
-import {menuChoiceGuide} from './trip-menu-choices-view.mjs';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=7';
+import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
+import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2';
 
 const notes={unknown_travel:'Время дороги ещё неизвестно.',unknown_opening:'Часы входа ещё нужно сверить.',opening_needs_check:'Часы учтены; дату и билеты нужно сверить.',unknown_kitchen:'Уточните время последнего заказа.',kitchen_needs_check:'Время приёма заказов нужно сверить.',kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К этому времени кухня уже не принимает заказ.',travel_needs_check:'Дорога учтена по оценке; доступ нужно сверить.',unknown_approach:'Неизвестно время подхода ко входу.',unknown_return:'Неизвестно время возвращения к парковке.',access_needs_check:'Пеший участок учтён по карте; темп и доступ нужно сверить.',transport_needs_check:'Переправу нужно сверить на дату поездки.',transport_incomplete:'Не хватает времени пути или расписания переправы.',transport_conflict:'Возвращение с переправы не складывается.',closed:'По выбранным часам в этот день посещений нет.',window_missed:'Осмотр не помещается в часы входа или сеанс.',appointment_needs_check:'Без времени дороги прибытие к билету нельзя подтвердить.',appointment_venue_conflict:'Время билета не совпадает с известными часами посещения.'};
 export function guideIssue(issue) {
@@ -95,11 +96,13 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};});
     const entries=guideEntries(record,stops,services?.services||[]),complete=!transport.length&&(!services||!!services.check?.itinerary);
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
+    let menuQuote=null;
+    if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
     out.push({id:record.id,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:transport.length?'needs_info':services?(services.check?.state||'needs_info'):generated?kosa.state:result.status,summary:transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':services?services.summary+(generated?' '+kosa.message:''):generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
-      stops,entries,menu_choices:menuChoiceGuide(record),services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),
+      stops,entries,menu_choices:menuChoiceGuide(record),menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
       planB:generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
   }

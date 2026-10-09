@@ -15,6 +15,15 @@
 .menu-choice-form{grid-column:1/-1;min-width:0;width:100%;margin-top:4px;padding-top:8px;border-top:1px solid var(--line)}
 .menu-choice-form .menu-choice-destination{font:500 13px/1.6 var(--sans);color:var(--sea-ink);margin:8px 0 14px}
 .menu-choice-form .menu-choice-actions{margin-top:12px}
+.menu-choice-day{display:grid;gap:8px;font:500 14px/1.5 var(--sans);margin:0 0 14px}
+.menu-choice-day select{min-width:0;width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans)}
+.menu-choice-review{margin:16px 0;padding:16px;border:1px solid var(--sea-line);border-radius:12px;background:var(--card)}
+.menu-choice-review p{font:14px/1.6 var(--sans);margin:0 0 8px;overflow-wrap:anywhere}
+.menu-choice-review p:last-child{margin-bottom:0}
+.menu-choice-review .menu-choice-total,.trip-menu-choices .menu-choice-total{font-weight:600;color:var(--ink)}
+.menu-choice-review :is(.menu-choice-effect,.menu-choice-timing){color:var(--muted)}
+.menu-choice-review :is([data-menu-day-state=does_not_fit],[data-menu-day-state=conflict],[data-menu-day-state=overrun]){color:var(--ink);font-weight:600}
+.menu-choice-button,.menu-choice-quantity input{border-radius:10px}
 .menu-choice-form .menu-choice-button{flex:1}
 .menu-choice-feedback{font:13px/1.65 var(--sans);color:var(--muted);overflow-wrap:anywhere}
 .menu-choice-feedback a{display:block;color:var(--sea-ink);min-height:44px;padding-top:10px}

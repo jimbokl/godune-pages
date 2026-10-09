@@ -35,6 +35,21 @@
   .dining-menu .food-menu-condition,.dining-menu .food-menu-source>p:not(.food-source){font-size:14px}
 }
 .dining-card .dining-status{color:var(--ink);padding-left:12px;margin:18px 0}
+.dining-route-filter{margin-top:16px;border-block:1px solid var(--sea-line);padding:6px 0}
+.dining-route-filter>summary{cursor:pointer;min-height:52px;display:flex;align-items:center;gap:12px;font:500 16px/1.5 var(--sans);color:var(--sea-ink);list-style:none}
+.dining-route-filter>summary::-webkit-details-marker{display:none}
+.dining-route-filter>summary::after{content:'+';margin-left:auto;font-size:24px}
+.dining-route-filter[open]>summary::after{content:'−'}
+.dining-route-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:18px 0}
+.dining-route-fields label{display:grid;gap:8px;min-width:0;font:500 14px/1.5 var(--sans)}
+.dining-route-fields :is(input,select){width:100%;min-width:0;min-height:48px;background:var(--paper);color:var(--ink);border:1px solid var(--sea-line);border-radius:8px;padding:10px;font:16px var(--sans)}
+.dining-route-filter button{min-height:48px;padding:12px 18px;border:1px solid var(--sea-line);border-radius:8px;background:var(--sea);color:var(--sea-ink);font:500 14px/1.5 var(--sans);cursor:pointer}
+.dining-route-fields>button{align-self:end}
+.dining-route-filter button:disabled{opacity:.65;cursor:wait}
+.dining-route-fields [data-context-options]{grid-column:1/-1}
+.dining-route-status,.dining-route-fields [data-context-status]{font:14px/1.7 var(--sans);color:var(--muted);overflow-wrap:anywhere}
+.dining-card [data-spatial-distance]{color:var(--sea-ink);font-size:13px}
+@media(max-width:650px){.dining-route-fields{grid-template-columns:1fr}.dining-route-filter>summary{font-size:15px}}
 .dining-status .food-operational-status{background:transparent;border:0;padding:0;margin:0}
 .dining-status .food-operational-status>p{font:12px/1.75 var(--sans);margin:8px 0}
 .dining-facts .food-review-source{padding:16px 14px;margin:18px 0}

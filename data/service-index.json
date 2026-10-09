@@ -4,18 +4,1273 @@
       "service:velovoyage39:bike"
     ],
     "dining": [
+      "service:dining:2gis-5630027815190832",
+      "service:dining:2gis-5630027815347793",
+      "service:dining:2gis-5630028815427796",
+      "service:dining:2gis-5630028815429871",
+      "service:dining:2gis-5630028815430157",
+      "service:dining:2gis-5630028815430301",
+      "service:dining:2gis-5630028815561754",
+      "service:dining:2gis-70000001019514562",
+      "service:dining:2gis-70000001019617766",
+      "service:dining:2gis-70000001021673647",
+      "service:dining:2gis-70000001022620039",
+      "service:dining:2gis-70000001023285288",
+      "service:dining:2gis-70000001024024428",
+      "service:dining:2gis-70000001024530011",
+      "service:dining:2gis-70000001024924415",
+      "service:dining:2gis-70000001025294914",
+      "service:dining:2gis-70000001025612862",
+      "service:dining:2gis-70000001025626102",
+      "service:dining:2gis-70000001028174377",
+      "service:dining:2gis-70000001028414540",
+      "service:dining:2gis-70000001030029796",
+      "service:dining:2gis-70000001030035636",
+      "service:dining:2gis-70000001032109722",
+      "service:dining:2gis-70000001032109921",
+      "service:dining:2gis-70000001033735148",
+      "service:dining:2gis-70000001033958020",
+      "service:dining:2gis-70000001034307535",
+      "service:dining:2gis-70000001034396845",
+      "service:dining:2gis-70000001036184841",
+      "service:dining:2gis-70000001037113827",
+      "service:dining:2gis-70000001037362065",
+      "service:dining:2gis-70000001037544569",
+      "service:dining:2gis-70000001037585272",
+      "service:dining:2gis-70000001037585837",
+      "service:dining:2gis-70000001037607297",
+      "service:dining:2gis-70000001038639251",
+      "service:dining:2gis-70000001042837294",
+      "service:dining:2gis-70000001043919248",
+      "service:dining:2gis-70000001044022865",
+      "service:dining:2gis-70000001044511706",
+      "service:dining:2gis-70000001044566489",
+      "service:dining:2gis-70000001044566545",
+      "service:dining:2gis-70000001044599664",
+      "service:dining:2gis-70000001044871628",
+      "service:dining:2gis-70000001044896443",
+      "service:dining:2gis-70000001047520475",
+      "service:dining:2gis-70000001047895525",
+      "service:dining:2gis-70000001048500903",
+      "service:dining:2gis-70000001052139191",
+      "service:dining:2gis-70000001052325383",
+      "service:dining:2gis-70000001052595286",
+      "service:dining:2gis-70000001052651307",
+      "service:dining:2gis-70000001055071752",
+      "service:dining:2gis-70000001055986923",
+      "service:dining:2gis-70000001056678568",
+      "service:dining:2gis-70000001056728854",
+      "service:dining:2gis-70000001056940270",
+      "service:dining:2gis-70000001057273773",
+      "service:dining:2gis-70000001060101799",
+      "service:dining:2gis-70000001061061369",
+      "service:dining:2gis-70000001061063601",
+      "service:dining:2gis-70000001061065253",
+      "service:dining:2gis-70000001061265160",
+      "service:dining:2gis-70000001061269738",
+      "service:dining:2gis-70000001061498399",
+      "service:dining:2gis-70000001061576405",
+      "service:dining:2gis-70000001061794029",
+      "service:dining:2gis-70000001062122791",
+      "service:dining:2gis-70000001062141930",
+      "service:dining:2gis-70000001062435163",
+      "service:dining:2gis-70000001062461095",
+      "service:dining:2gis-70000001063205699",
+      "service:dining:2gis-70000001063367025",
+      "service:dining:2gis-70000001063531891",
+      "service:dining:2gis-70000001063772351",
+      "service:dining:2gis-70000001063971984",
+      "service:dining:2gis-70000001064812247",
+      "service:dining:2gis-70000001065277939",
+      "service:dining:2gis-70000001065316839",
+      "service:dining:2gis-70000001065378191",
+      "service:dining:2gis-70000001065532501",
+      "service:dining:2gis-70000001066225617",
+      "service:dining:2gis-70000001066661710",
+      "service:dining:2gis-70000001066920153",
+      "service:dining:2gis-70000001067014954",
+      "service:dining:2gis-70000001067078963",
+      "service:dining:2gis-70000001067087177",
+      "service:dining:2gis-70000001067189296",
+      "service:dining:2gis-70000001067241256",
+      "service:dining:2gis-70000001067991853",
+      "service:dining:2gis-70000001068727236",
+      "service:dining:2gis-70000001069072186",
+      "service:dining:2gis-70000001074591131",
+      "service:dining:2gis-70000001074632992",
+      "service:dining:2gis-70000001074847373",
+      "service:dining:2gis-70000001075022565",
+      "service:dining:2gis-70000001075022566",
+      "service:dining:2gis-70000001075039563",
+      "service:dining:2gis-70000001075071177",
+      "service:dining:2gis-70000001075305201",
+      "service:dining:2gis-70000001075909647",
+      "service:dining:2gis-70000001076193342",
+      "service:dining:2gis-70000001076560743",
+      "service:dining:2gis-70000001077228719",
+      "service:dining:2gis-70000001077229247",
+      "service:dining:2gis-70000001077326726",
+      "service:dining:2gis-70000001078820284",
+      "service:dining:2gis-70000001080218641",
+      "service:dining:2gis-70000001082041800",
+      "service:dining:2gis-70000001082816728",
+      "service:dining:2gis-70000001083771524",
+      "service:dining:2gis-70000001084146915",
+      "service:dining:2gis-70000001085399505",
+      "service:dining:2gis-70000001086801671",
+      "service:dining:2gis-70000001088058997",
+      "service:dining:2gis-70000001088093638",
+      "service:dining:2gis-70000001088176461",
+      "service:dining:2gis-70000001088184100",
+      "service:dining:2gis-70000001088812636",
+      "service:dining:2gis-70000001089098517",
+      "service:dining:2gis-70000001089351030",
+      "service:dining:2gis-70000001089532517",
+      "service:dining:2gis-70000001090070657",
+      "service:dining:2gis-70000001090214806",
+      "service:dining:2gis-70000001090368093",
+      "service:dining:2gis-70000001090430022",
+      "service:dining:2gis-70000001090699779",
+      "service:dining:2gis-70000001090821065",
+      "service:dining:2gis-70000001094346782",
+      "service:dining:2gis-70000001094750499",
+      "service:dining:2gis-70000001095394846",
+      "service:dining:2gis-70000001096778482",
+      "service:dining:2gis-70000001097054716",
+      "service:dining:2gis-70000001098551461",
+      "service:dining:2gis-70000001099439922",
+      "service:dining:2gis-70000001099852506",
+      "service:dining:2gis-70000001100232385",
+      "service:dining:2gis-70000001100264437",
+      "service:dining:2gis-70000001100360498",
+      "service:dining:2gis-70000001100608564",
+      "service:dining:2gis-70000001100628075",
+      "service:dining:2gis-70000001100800650",
+      "service:dining:2gis-70000001100869855",
+      "service:dining:2gis-70000001101049637",
+      "service:dining:2gis-70000001101158549",
+      "service:dining:2gis-70000001101305153",
+      "service:dining:2gis-70000001101410810",
+      "service:dining:2gis-70000001101428340",
+      "service:dining:2gis-70000001102212879",
+      "service:dining:2gis-70000001102550193",
+      "service:dining:2gis-70000001102892160",
+      "service:dining:2gis-70000001103038629",
+      "service:dining:2gis-70000001103083586",
+      "service:dining:2gis-70000001103278740",
+      "service:dining:2gis-70000001103339960",
+      "service:dining:2gis-70000001103552911",
+      "service:dining:2gis-70000001103814071",
+      "service:dining:2gis-70000001103818141",
+      "service:dining:2gis-70000001104111947",
+      "service:dining:2gis-70000001104605114",
+      "service:dining:2gis-70000001105066031",
+      "service:dining:2gis-70000001105230719",
+      "service:dining:2gis-70000001105274860",
+      "service:dining:2gis-70000001105353041",
+      "service:dining:2gis-70000001105750954",
+      "service:dining:2gis-70000001110053737",
+      "service:dining:2gis-70000001110373998",
+      "service:dining:2gis-70000001110529788",
+      "service:dining:2gis-70000001110576397",
+      "service:dining:2gis-70000001110629278",
+      "service:dining:2gis-70000001111485878",
+      "service:dining:2gis-70000001112587424",
+      "service:dining:2gis-70000001112645201",
+      "service:dining:2gis-70000001113476541",
+      "service:dining:2gis-70000001113663108",
+      "service:dining:2gis-70000001113748505",
+      "service:dining:2gis-70000001113789427",
+      "service:dining:2gis-70000001113808058",
+      "service:dining:2gis-70000001113923588",
+      "service:dining:2gis-70000001114030928",
+      "service:dining:2gis-70000001114385329",
+      "service:dining:2gis-70000001114680625",
+      "service:dining:2gis-70000001114680627",
+      "service:dining:2gis-70000001115147432",
+      "service:dining:2gis-70000001115604626",
+      "service:dining:2gis-70000001115656026",
+      "service:dining:2gis-70000001116067540",
+      "service:dining:2gis-70000001116301573",
+      "service:dining:2gis-70000001116304165",
+      "service:dining:2gis-70000001117023679",
+      "service:dining:2gis-70000001117165284",
+      "service:dining:2gis-70000001117379752",
+      "service:dining:yandex-101132704696",
+      "service:dining:yandex-102677791022",
+      "service:dining:yandex-105000201333",
+      "service:dining:yandex-105083800672",
+      "service:dining:yandex-105417453494",
+      "service:dining:yandex-107743116269",
+      "service:dining:yandex-109606567460",
+      "service:dining:yandex-118974219775",
+      "service:dining:yandex-121072900654",
+      "service:dining:yandex-122424519590",
+      "service:dining:yandex-123318360036",
+      "service:dining:yandex-125171111947",
+      "service:dining:yandex-126717216814",
+      "service:dining:yandex-128328283460",
+      "service:dining:yandex-132845084954",
+      "service:dining:yandex-13460046220",
+      "service:dining:yandex-137758388898",
+      "service:dining:yandex-139616771698",
+      "service:dining:yandex-140584585546",
+      "service:dining:yandex-14935772612",
+      "service:dining:yandex-157477571827",
+      "service:dining:yandex-158675093252",
+      "service:dining:yandex-159549919671",
+      "service:dining:yandex-16092394161",
+      "service:dining:yandex-161139271068",
+      "service:dining:yandex-16142981705",
+      "service:dining:yandex-172491090348",
+      "service:dining:yandex-17354791545",
+      "service:dining:yandex-174143369381",
+      "service:dining:yandex-176570478682",
+      "service:dining:yandex-186545988000",
+      "service:dining:yandex-187087309616",
+      "service:dining:yandex-187898367736",
+      "service:dining:yandex-194132075235",
+      "service:dining:yandex-202232409269",
+      "service:dining:yandex-211967753853",
+      "service:dining:yandex-230031286084",
+      "service:dining:yandex-234114175097",
+      "service:dining:yandex-240524461004",
+      "service:dining:yandex-25560318531",
+      "service:dining:yandex-33587312263",
+      "service:dining:yandex-38812501061",
+      "service:dining:yandex-39358652961",
+      "service:dining:yandex-44378535353",
+      "service:dining:yandex-44782786643",
+      "service:dining:yandex-4808812571",
+      "service:dining:yandex-49350982814",
+      "service:dining:yandex-49449302608",
+      "service:dining:yandex-49589629001",
+      "service:dining:yandex-53028333633",
+      "service:dining:yandex-64829657300",
+      "service:dining:yandex-67669290902",
+      "service:dining:yandex-6900416483",
+      "service:dining:yandex-78202236219",
+      "service:dining:yandex-80290146158",
+      "service:dining:yandex-80862438724",
+      "service:dining:yandex-81806656025",
+      "service:dining:yandex-83768680391",
+      "service:dining:yandex-86328291089",
       "service:gnezdo:kitchen"
     ]
   },
   "areas": {
     "zelenogradsk": [
+      "service:dining:2gis-5630027815190832",
+      "service:dining:2gis-5630027815347793",
+      "service:dining:2gis-5630028815427796",
+      "service:dining:2gis-5630028815429871",
+      "service:dining:2gis-5630028815430157",
+      "service:dining:2gis-5630028815430301",
+      "service:dining:2gis-5630028815561754",
+      "service:dining:2gis-70000001019514562",
+      "service:dining:2gis-70000001019617766",
+      "service:dining:2gis-70000001021673647",
+      "service:dining:2gis-70000001022620039",
+      "service:dining:2gis-70000001023285288",
+      "service:dining:2gis-70000001024024428",
+      "service:dining:2gis-70000001024530011",
+      "service:dining:2gis-70000001024924415",
+      "service:dining:2gis-70000001025294914",
+      "service:dining:2gis-70000001025612862",
+      "service:dining:2gis-70000001025626102",
+      "service:dining:2gis-70000001028174377",
+      "service:dining:2gis-70000001028414540",
+      "service:dining:2gis-70000001030029796",
+      "service:dining:2gis-70000001030035636",
+      "service:dining:2gis-70000001032109722",
+      "service:dining:2gis-70000001032109921",
+      "service:dining:2gis-70000001033735148",
+      "service:dining:2gis-70000001033958020",
+      "service:dining:2gis-70000001034307535",
+      "service:dining:2gis-70000001034396845",
+      "service:dining:2gis-70000001036184841",
+      "service:dining:2gis-70000001037113827",
+      "service:dining:2gis-70000001037362065",
+      "service:dining:2gis-70000001037544569",
+      "service:dining:2gis-70000001037585272",
+      "service:dining:2gis-70000001037585837",
+      "service:dining:2gis-70000001037607297",
+      "service:dining:2gis-70000001038639251",
+      "service:dining:2gis-70000001042837294",
+      "service:dining:2gis-70000001043919248",
+      "service:dining:2gis-70000001044022865",
+      "service:dining:2gis-70000001044511706",
+      "service:dining:2gis-70000001044566489",
+      "service:dining:2gis-70000001044566545",
+      "service:dining:2gis-70000001044599664",
+      "service:dining:2gis-70000001044871628",
+      "service:dining:2gis-70000001044896443",
+      "service:dining:2gis-70000001047520475",
+      "service:dining:2gis-70000001047895525",
+      "service:dining:2gis-70000001048500903",
+      "service:dining:2gis-70000001052139191",
+      "service:dining:2gis-70000001052325383",
+      "service:dining:2gis-70000001052595286",
+      "service:dining:2gis-70000001052651307",
+      "service:dining:2gis-70000001055071752",
+      "service:dining:2gis-70000001055986923",
+      "service:dining:2gis-70000001056678568",
+      "service:dining:2gis-70000001056728854",
+      "service:dining:2gis-70000001056940270",
+      "service:dining:2gis-70000001057273773",
+      "service:dining:2gis-70000001060101799",
+      "service:dining:2gis-70000001061061369",
+      "service:dining:2gis-70000001061063601",
+      "service:dining:2gis-70000001061065253",
+      "service:dining:2gis-70000001061265160",
+      "service:dining:2gis-70000001061269738",
+      "service:dining:2gis-70000001061498399",
+      "service:dining:2gis-70000001061576405",
+      "service:dining:2gis-70000001061794029",
+      "service:dining:2gis-70000001062122791",
+      "service:dining:2gis-70000001062141930",
+      "service:dining:2gis-70000001062435163",
+      "service:dining:2gis-70000001062461095",
+      "service:dining:2gis-70000001063205699",
+      "service:dining:2gis-70000001063367025",
+      "service:dining:2gis-70000001063531891",
+      "service:dining:2gis-70000001063772351",
+      "service:dining:2gis-70000001063971984",
+      "service:dining:2gis-70000001064812247",
+      "service:dining:2gis-70000001065277939",
+      "service:dining:2gis-70000001065316839",
+      "service:dining:2gis-70000001065378191",
+      "service:dining:2gis-70000001065532501",
+      "service:dining:2gis-70000001066225617",
+      "service:dining:2gis-70000001066661710",
+      "service:dining:2gis-70000001066920153",
+      "service:dining:2gis-70000001067014954",
+      "service:dining:2gis-70000001067078963",
+      "service:dining:2gis-70000001067087177",
+      "service:dining:2gis-70000001067189296",
+      "service:dining:2gis-70000001067241256",
+      "service:dining:2gis-70000001067991853",
+      "service:dining:2gis-70000001068727236",
+      "service:dining:2gis-70000001069072186",
+      "service:dining:2gis-70000001074591131",
+      "service:dining:2gis-70000001074632992",
+      "service:dining:2gis-70000001074847373",
+      "service:dining:2gis-70000001075022565",
+      "service:dining:2gis-70000001075022566",
+      "service:dining:2gis-70000001075039563",
+      "service:dining:2gis-70000001075071177",
+      "service:dining:2gis-70000001075305201",
+      "service:dining:2gis-70000001075909647",
+      "service:dining:2gis-70000001076193342",
+      "service:dining:2gis-70000001076560743",
+      "service:dining:2gis-70000001077228719",
+      "service:dining:2gis-70000001077229247",
+      "service:dining:2gis-70000001077326726",
+      "service:dining:2gis-70000001078820284",
+      "service:dining:2gis-70000001080218641",
+      "service:dining:2gis-70000001082041800",
+      "service:dining:2gis-70000001082816728",
+      "service:dining:2gis-70000001083771524",
+      "service:dining:2gis-70000001084146915",
+      "service:dining:2gis-70000001085399505",
+      "service:dining:2gis-70000001086801671",
+      "service:dining:2gis-70000001088058997",
+      "service:dining:2gis-70000001088093638",
+      "service:dining:2gis-70000001088176461",
+      "service:dining:2gis-70000001088184100",
+      "service:dining:2gis-70000001088812636",
+      "service:dining:2gis-70000001089098517",
+      "service:dining:2gis-70000001089351030",
+      "service:dining:2gis-70000001089532517",
+      "service:dining:2gis-70000001090070657",
+      "service:dining:2gis-70000001090214806",
+      "service:dining:2gis-70000001090368093",
+      "service:dining:2gis-70000001090430022",
+      "service:dining:2gis-70000001090699779",
+      "service:dining:2gis-70000001090821065",
+      "service:dining:2gis-70000001094346782",
+      "service:dining:2gis-70000001094750499",
+      "service:dining:2gis-70000001095394846",
+      "service:dining:2gis-70000001096778482",
+      "service:dining:2gis-70000001097054716",
+      "service:dining:2gis-70000001098551461",
+      "service:dining:2gis-70000001099439922",
+      "service:dining:2gis-70000001099852506",
+      "service:dining:2gis-70000001100232385",
+      "service:dining:2gis-70000001100264437",
+      "service:dining:2gis-70000001100360498",
+      "service:dining:2gis-70000001100608564",
+      "service:dining:2gis-70000001100628075",
+      "service:dining:2gis-70000001100800650",
+      "service:dining:2gis-70000001100869855",
+      "service:dining:2gis-70000001101049637",
+      "service:dining:2gis-70000001101158549",
+      "service:dining:2gis-70000001101305153",
+      "service:dining:2gis-70000001101410810",
+      "service:dining:2gis-70000001101428340",
+      "service:dining:2gis-70000001102212879",
+      "service:dining:2gis-70000001102550193",
+      "service:dining:2gis-70000001102892160",
+      "service:dining:2gis-70000001103038629",
+      "service:dining:2gis-70000001103083586",
+      "service:dining:2gis-70000001103278740",
+      "service:dining:2gis-70000001103339960",
+      "service:dining:2gis-70000001103552911",
+      "service:dining:2gis-70000001103814071",
+      "service:dining:2gis-70000001103818141",
+      "service:dining:2gis-70000001104111947",
+      "service:dining:2gis-70000001104605114",
+      "service:dining:2gis-70000001105066031",
+      "service:dining:2gis-70000001105230719",
+      "service:dining:2gis-70000001105274860",
+      "service:dining:2gis-70000001105353041",
+      "service:dining:2gis-70000001105750954",
+      "service:dining:2gis-70000001110053737",
+      "service:dining:2gis-70000001110373998",
+      "service:dining:2gis-70000001110529788",
+      "service:dining:2gis-70000001110576397",
+      "service:dining:2gis-70000001110629278",
+      "service:dining:2gis-70000001111485878",
+      "service:dining:2gis-70000001112587424",
+      "service:dining:2gis-70000001112645201",
+      "service:dining:2gis-70000001113476541",
+      "service:dining:2gis-70000001113663108",
+      "service:dining:2gis-70000001113748505",
+      "service:dining:2gis-70000001113789427",
+      "service:dining:2gis-70000001113808058",
+      "service:dining:2gis-70000001113923588",
+      "service:dining:2gis-70000001114030928",
+      "service:dining:2gis-70000001114385329",
+      "service:dining:2gis-70000001114680625",
+      "service:dining:2gis-70000001114680627",
+      "service:dining:2gis-70000001115147432",
+      "service:dining:2gis-70000001115604626",
+      "service:dining:2gis-70000001115656026",
+      "service:dining:2gis-70000001116067540",
+      "service:dining:2gis-70000001116301573",
+      "service:dining:2gis-70000001116304165",
+      "service:dining:2gis-70000001117023679",
+      "service:dining:2gis-70000001117165284",
+      "service:dining:2gis-70000001117379752",
+      "service:dining:yandex-101132704696",
+      "service:dining:yandex-102677791022",
+      "service:dining:yandex-105000201333",
+      "service:dining:yandex-105083800672",
+      "service:dining:yandex-105417453494",
+      "service:dining:yandex-107743116269",
+      "service:dining:yandex-109606567460",
+      "service:dining:yandex-118974219775",
+      "service:dining:yandex-121072900654",
+      "service:dining:yandex-122424519590",
+      "service:dining:yandex-123318360036",
+      "service:dining:yandex-125171111947",
+      "service:dining:yandex-126717216814",
+      "service:dining:yandex-128328283460",
+      "service:dining:yandex-132845084954",
+      "service:dining:yandex-13460046220",
+      "service:dining:yandex-137758388898",
+      "service:dining:yandex-139616771698",
+      "service:dining:yandex-140584585546",
+      "service:dining:yandex-14935772612",
+      "service:dining:yandex-157477571827",
+      "service:dining:yandex-158675093252",
+      "service:dining:yandex-159549919671",
+      "service:dining:yandex-16092394161",
+      "service:dining:yandex-161139271068",
+      "service:dining:yandex-16142981705",
+      "service:dining:yandex-172491090348",
+      "service:dining:yandex-17354791545",
+      "service:dining:yandex-174143369381",
+      "service:dining:yandex-176570478682",
+      "service:dining:yandex-186545988000",
+      "service:dining:yandex-187087309616",
+      "service:dining:yandex-187898367736",
+      "service:dining:yandex-194132075235",
+      "service:dining:yandex-202232409269",
+      "service:dining:yandex-211967753853",
+      "service:dining:yandex-230031286084",
+      "service:dining:yandex-234114175097",
+      "service:dining:yandex-240524461004",
+      "service:dining:yandex-25560318531",
+      "service:dining:yandex-33587312263",
+      "service:dining:yandex-38812501061",
+      "service:dining:yandex-39358652961",
+      "service:dining:yandex-44378535353",
+      "service:dining:yandex-44782786643",
+      "service:dining:yandex-4808812571",
+      "service:dining:yandex-49350982814",
+      "service:dining:yandex-49449302608",
+      "service:dining:yandex-49589629001",
+      "service:dining:yandex-53028333633",
+      "service:dining:yandex-64829657300",
+      "service:dining:yandex-67669290902",
+      "service:dining:yandex-6900416483",
+      "service:dining:yandex-78202236219",
+      "service:dining:yandex-80290146158",
+      "service:dining:yandex-80862438724",
+      "service:dining:yandex-81806656025",
+      "service:dining:yandex-83768680391",
+      "service:dining:yandex-86328291089",
       "service:gnezdo:kitchen",
       "service:velovoyage39:bike"
     ]
   },
   "branches": {
+    "branch:dining:2gis-5630027815190832": [
+      "service:dining:2gis-5630027815190832"
+    ],
+    "branch:dining:2gis-5630027815347793": [
+      "service:dining:2gis-5630027815347793"
+    ],
+    "branch:dining:2gis-5630028815427796": [
+      "service:dining:2gis-5630028815427796"
+    ],
+    "branch:dining:2gis-5630028815429871": [
+      "service:dining:2gis-5630028815429871"
+    ],
+    "branch:dining:2gis-5630028815430157": [
+      "service:dining:2gis-5630028815430157"
+    ],
+    "branch:dining:2gis-5630028815430301": [
+      "service:dining:2gis-5630028815430301"
+    ],
+    "branch:dining:2gis-5630028815561754": [
+      "service:dining:2gis-5630028815561754"
+    ],
+    "branch:dining:2gis-70000001019514562": [
+      "service:dining:2gis-70000001019514562"
+    ],
+    "branch:dining:2gis-70000001019617766": [
+      "service:dining:2gis-70000001019617766"
+    ],
+    "branch:dining:2gis-70000001021673647": [
+      "service:dining:2gis-70000001021673647"
+    ],
+    "branch:dining:2gis-70000001022620039": [
+      "service:dining:2gis-70000001022620039"
+    ],
+    "branch:dining:2gis-70000001023285288": [
+      "service:dining:2gis-70000001023285288"
+    ],
+    "branch:dining:2gis-70000001024024428": [
+      "service:dining:2gis-70000001024024428"
+    ],
+    "branch:dining:2gis-70000001024530011": [
+      "service:dining:2gis-70000001024530011"
+    ],
+    "branch:dining:2gis-70000001024924415": [
+      "service:dining:2gis-70000001024924415"
+    ],
+    "branch:dining:2gis-70000001025294914": [
+      "service:dining:2gis-70000001025294914"
+    ],
+    "branch:dining:2gis-70000001025612862": [
+      "service:dining:2gis-70000001025612862"
+    ],
+    "branch:dining:2gis-70000001025626102": [
+      "service:dining:2gis-70000001025626102"
+    ],
+    "branch:dining:2gis-70000001028174377": [
+      "service:dining:2gis-70000001028174377"
+    ],
+    "branch:dining:2gis-70000001028414540": [
+      "service:dining:2gis-70000001028414540"
+    ],
+    "branch:dining:2gis-70000001030029796": [
+      "service:dining:2gis-70000001030029796"
+    ],
+    "branch:dining:2gis-70000001030035636": [
+      "service:dining:2gis-70000001030035636"
+    ],
+    "branch:dining:2gis-70000001032109722": [
+      "service:dining:2gis-70000001032109722"
+    ],
+    "branch:dining:2gis-70000001032109921": [
+      "service:dining:2gis-70000001032109921"
+    ],
+    "branch:dining:2gis-70000001033735148": [
+      "service:dining:2gis-70000001033735148"
+    ],
+    "branch:dining:2gis-70000001033958020": [
+      "service:dining:2gis-70000001033958020"
+    ],
+    "branch:dining:2gis-70000001034307535": [
+      "service:dining:2gis-70000001034307535"
+    ],
+    "branch:dining:2gis-70000001034396845": [
+      "service:dining:2gis-70000001034396845"
+    ],
+    "branch:dining:2gis-70000001036184841": [
+      "service:dining:2gis-70000001036184841"
+    ],
+    "branch:dining:2gis-70000001037113827": [
+      "service:dining:2gis-70000001037113827"
+    ],
+    "branch:dining:2gis-70000001037362065": [
+      "service:dining:2gis-70000001037362065"
+    ],
+    "branch:dining:2gis-70000001037544569": [
+      "service:dining:2gis-70000001037544569"
+    ],
+    "branch:dining:2gis-70000001037585272": [
+      "service:dining:2gis-70000001037585272"
+    ],
+    "branch:dining:2gis-70000001037585837": [
+      "service:dining:2gis-70000001037585837"
+    ],
+    "branch:dining:2gis-70000001037607297": [
+      "service:dining:2gis-70000001037607297"
+    ],
+    "branch:dining:2gis-70000001038639251": [
+      "service:dining:2gis-70000001038639251"
+    ],
+    "branch:dining:2gis-70000001042837294": [
+      "service:dining:2gis-70000001042837294"
+    ],
+    "branch:dining:2gis-70000001043919248": [
+      "service:dining:2gis-70000001043919248"
+    ],
+    "branch:dining:2gis-70000001044022865": [
+      "service:dining:2gis-70000001044022865"
+    ],
+    "branch:dining:2gis-70000001044511706": [
+      "service:dining:2gis-70000001044511706"
+    ],
+    "branch:dining:2gis-70000001044566489": [
+      "service:dining:2gis-70000001044566489"
+    ],
+    "branch:dining:2gis-70000001044566545": [
+      "service:dining:2gis-70000001044566545"
+    ],
+    "branch:dining:2gis-70000001044599664": [
+      "service:dining:2gis-70000001044599664"
+    ],
+    "branch:dining:2gis-70000001044871628": [
+      "service:dining:2gis-70000001044871628"
+    ],
+    "branch:dining:2gis-70000001044896443": [
+      "service:dining:2gis-70000001044896443"
+    ],
+    "branch:dining:2gis-70000001047520475": [
+      "service:dining:2gis-70000001047520475"
+    ],
+    "branch:dining:2gis-70000001047895525": [
+      "service:dining:2gis-70000001047895525"
+    ],
+    "branch:dining:2gis-70000001048500903": [
+      "service:dining:2gis-70000001048500903"
+    ],
+    "branch:dining:2gis-70000001052139191": [
+      "service:dining:2gis-70000001052139191"
+    ],
+    "branch:dining:2gis-70000001052325383": [
+      "service:dining:2gis-70000001052325383"
+    ],
+    "branch:dining:2gis-70000001052595286": [
+      "service:dining:2gis-70000001052595286"
+    ],
+    "branch:dining:2gis-70000001052651307": [
+      "service:dining:2gis-70000001052651307"
+    ],
+    "branch:dining:2gis-70000001055071752": [
+      "service:dining:2gis-70000001055071752"
+    ],
     "branch:dining:2gis-70000001055109040": [
       "service:gnezdo:kitchen"
+    ],
+    "branch:dining:2gis-70000001055986923": [
+      "service:dining:2gis-70000001055986923"
+    ],
+    "branch:dining:2gis-70000001056678568": [
+      "service:dining:2gis-70000001056678568"
+    ],
+    "branch:dining:2gis-70000001056728854": [
+      "service:dining:2gis-70000001056728854"
+    ],
+    "branch:dining:2gis-70000001056940270": [
+      "service:dining:2gis-70000001056940270"
+    ],
+    "branch:dining:2gis-70000001057273773": [
+      "service:dining:2gis-70000001057273773"
+    ],
+    "branch:dining:2gis-70000001060101799": [
+      "service:dining:2gis-70000001060101799"
+    ],
+    "branch:dining:2gis-70000001061061369": [
+      "service:dining:2gis-70000001061061369"
+    ],
+    "branch:dining:2gis-70000001061063601": [
+      "service:dining:2gis-70000001061063601"
+    ],
+    "branch:dining:2gis-70000001061065253": [
+      "service:dining:2gis-70000001061065253"
+    ],
+    "branch:dining:2gis-70000001061265160": [
+      "service:dining:2gis-70000001061265160"
+    ],
+    "branch:dining:2gis-70000001061269738": [
+      "service:dining:2gis-70000001061269738"
+    ],
+    "branch:dining:2gis-70000001061498399": [
+      "service:dining:2gis-70000001061498399"
+    ],
+    "branch:dining:2gis-70000001061576405": [
+      "service:dining:2gis-70000001061576405"
+    ],
+    "branch:dining:2gis-70000001061794029": [
+      "service:dining:2gis-70000001061794029"
+    ],
+    "branch:dining:2gis-70000001062122791": [
+      "service:dining:2gis-70000001062122791"
+    ],
+    "branch:dining:2gis-70000001062141930": [
+      "service:dining:2gis-70000001062141930"
+    ],
+    "branch:dining:2gis-70000001062435163": [
+      "service:dining:2gis-70000001062435163"
+    ],
+    "branch:dining:2gis-70000001062461095": [
+      "service:dining:2gis-70000001062461095"
+    ],
+    "branch:dining:2gis-70000001063205699": [
+      "service:dining:2gis-70000001063205699"
+    ],
+    "branch:dining:2gis-70000001063367025": [
+      "service:dining:2gis-70000001063367025"
+    ],
+    "branch:dining:2gis-70000001063531891": [
+      "service:dining:2gis-70000001063531891"
+    ],
+    "branch:dining:2gis-70000001063772351": [
+      "service:dining:2gis-70000001063772351"
+    ],
+    "branch:dining:2gis-70000001063971984": [
+      "service:dining:2gis-70000001063971984"
+    ],
+    "branch:dining:2gis-70000001064812247": [
+      "service:dining:2gis-70000001064812247"
+    ],
+    "branch:dining:2gis-70000001065277939": [
+      "service:dining:2gis-70000001065277939"
+    ],
+    "branch:dining:2gis-70000001065316839": [
+      "service:dining:2gis-70000001065316839"
+    ],
+    "branch:dining:2gis-70000001065378191": [
+      "service:dining:2gis-70000001065378191"
+    ],
+    "branch:dining:2gis-70000001065532501": [
+      "service:dining:2gis-70000001065532501"
+    ],
+    "branch:dining:2gis-70000001066225617": [
+      "service:dining:2gis-70000001066225617"
+    ],
+    "branch:dining:2gis-70000001066661710": [
+      "service:dining:2gis-70000001066661710"
+    ],
+    "branch:dining:2gis-70000001066920153": [
+      "service:dining:2gis-70000001066920153"
+    ],
+    "branch:dining:2gis-70000001067014954": [
+      "service:dining:2gis-70000001067014954"
+    ],
+    "branch:dining:2gis-70000001067078963": [
+      "service:dining:2gis-70000001067078963"
+    ],
+    "branch:dining:2gis-70000001067087177": [
+      "service:dining:2gis-70000001067087177"
+    ],
+    "branch:dining:2gis-70000001067189296": [
+      "service:dining:2gis-70000001067189296"
+    ],
+    "branch:dining:2gis-70000001067241256": [
+      "service:dining:2gis-70000001067241256"
+    ],
+    "branch:dining:2gis-70000001067991853": [
+      "service:dining:2gis-70000001067991853"
+    ],
+    "branch:dining:2gis-70000001068727236": [
+      "service:dining:2gis-70000001068727236"
+    ],
+    "branch:dining:2gis-70000001069072186": [
+      "service:dining:2gis-70000001069072186"
+    ],
+    "branch:dining:2gis-70000001074591131": [
+      "service:dining:2gis-70000001074591131"
+    ],
+    "branch:dining:2gis-70000001074632992": [
+      "service:dining:2gis-70000001074632992"
+    ],
+    "branch:dining:2gis-70000001074847373": [
+      "service:dining:2gis-70000001074847373"
+    ],
+    "branch:dining:2gis-70000001075022565": [
+      "service:dining:2gis-70000001075022565"
+    ],
+    "branch:dining:2gis-70000001075022566": [
+      "service:dining:2gis-70000001075022566"
+    ],
+    "branch:dining:2gis-70000001075039563": [
+      "service:dining:2gis-70000001075039563"
+    ],
+    "branch:dining:2gis-70000001075071177": [
+      "service:dining:2gis-70000001075071177"
+    ],
+    "branch:dining:2gis-70000001075305201": [
+      "service:dining:2gis-70000001075305201"
+    ],
+    "branch:dining:2gis-70000001075909647": [
+      "service:dining:2gis-70000001075909647"
+    ],
+    "branch:dining:2gis-70000001076193342": [
+      "service:dining:2gis-70000001076193342"
+    ],
+    "branch:dining:2gis-70000001076560743": [
+      "service:dining:2gis-70000001076560743"
+    ],
+    "branch:dining:2gis-70000001077228719": [
+      "service:dining:2gis-70000001077228719"
+    ],
+    "branch:dining:2gis-70000001077229247": [
+      "service:dining:2gis-70000001077229247"
+    ],
+    "branch:dining:2gis-70000001077326726": [
+      "service:dining:2gis-70000001077326726"
+    ],
+    "branch:dining:2gis-70000001078820284": [
+      "service:dining:2gis-70000001078820284"
+    ],
+    "branch:dining:2gis-70000001080218641": [
+      "service:dining:2gis-70000001080218641"
+    ],
+    "branch:dining:2gis-70000001082041800": [
+      "service:dining:2gis-70000001082041800"
+    ],
+    "branch:dining:2gis-70000001082816728": [
+      "service:dining:2gis-70000001082816728"
+    ],
+    "branch:dining:2gis-70000001083771524": [
+      "service:dining:2gis-70000001083771524"
+    ],
+    "branch:dining:2gis-70000001084146915": [
+      "service:dining:2gis-70000001084146915"
+    ],
+    "branch:dining:2gis-70000001085399505": [
+      "service:dining:2gis-70000001085399505"
+    ],
+    "branch:dining:2gis-70000001086801671": [
+      "service:dining:2gis-70000001086801671"
+    ],
+    "branch:dining:2gis-70000001088058997": [
+      "service:dining:2gis-70000001088058997"
+    ],
+    "branch:dining:2gis-70000001088093638": [
+      "service:dining:2gis-70000001088093638"
+    ],
+    "branch:dining:2gis-70000001088176461": [
+      "service:dining:2gis-70000001088176461"
+    ],
+    "branch:dining:2gis-70000001088184100": [
+      "service:dining:2gis-70000001088184100"
+    ],
+    "branch:dining:2gis-70000001088812636": [
+      "service:dining:2gis-70000001088812636"
+    ],
+    "branch:dining:2gis-70000001089098517": [
+      "service:dining:2gis-70000001089098517"
+    ],
+    "branch:dining:2gis-70000001089351030": [
+      "service:dining:2gis-70000001089351030"
+    ],
+    "branch:dining:2gis-70000001089532517": [
+      "service:dining:2gis-70000001089532517"
+    ],
+    "branch:dining:2gis-70000001090070657": [
+      "service:dining:2gis-70000001090070657"
+    ],
+    "branch:dining:2gis-70000001090214806": [
+      "service:dining:2gis-70000001090214806"
+    ],
+    "branch:dining:2gis-70000001090368093": [
+      "service:dining:2gis-70000001090368093"
+    ],
+    "branch:dining:2gis-70000001090430022": [
+      "service:dining:2gis-70000001090430022"
+    ],
+    "branch:dining:2gis-70000001090699779": [
+      "service:dining:2gis-70000001090699779"
+    ],
+    "branch:dining:2gis-70000001090821065": [
+      "service:dining:2gis-70000001090821065"
+    ],
+    "branch:dining:2gis-70000001094346782": [
+      "service:dining:2gis-70000001094346782"
+    ],
+    "branch:dining:2gis-70000001094750499": [
+      "service:dining:2gis-70000001094750499"
+    ],
+    "branch:dining:2gis-70000001095394846": [
+      "service:dining:2gis-70000001095394846"
+    ],
+    "branch:dining:2gis-70000001096778482": [
+      "service:dining:2gis-70000001096778482"
+    ],
+    "branch:dining:2gis-70000001097054716": [
+      "service:dining:2gis-70000001097054716"
+    ],
+    "branch:dining:2gis-70000001098551461": [
+      "service:dining:2gis-70000001098551461"
+    ],
+    "branch:dining:2gis-70000001099439922": [
+      "service:dining:2gis-70000001099439922"
+    ],
+    "branch:dining:2gis-70000001099852506": [
+      "service:dining:2gis-70000001099852506"
+    ],
+    "branch:dining:2gis-70000001100232385": [
+      "service:dining:2gis-70000001100232385"
+    ],
+    "branch:dining:2gis-70000001100264437": [
+      "service:dining:2gis-70000001100264437"
+    ],
+    "branch:dining:2gis-70000001100360498": [
+      "service:dining:2gis-70000001100360498"
+    ],
+    "branch:dining:2gis-70000001100608564": [
+      "service:dining:2gis-70000001100608564"
+    ],
+    "branch:dining:2gis-70000001100628075": [
+      "service:dining:2gis-70000001100628075"
+    ],
+    "branch:dining:2gis-70000001100800650": [
+      "service:dining:2gis-70000001100800650"
+    ],
+    "branch:dining:2gis-70000001100869855": [
+      "service:dining:2gis-70000001100869855"
+    ],
+    "branch:dining:2gis-70000001101049637": [
+      "service:dining:2gis-70000001101049637"
+    ],
+    "branch:dining:2gis-70000001101158549": [
+      "service:dining:2gis-70000001101158549"
+    ],
+    "branch:dining:2gis-70000001101305153": [
+      "service:dining:2gis-70000001101305153"
+    ],
+    "branch:dining:2gis-70000001101410810": [
+      "service:dining:2gis-70000001101410810"
+    ],
+    "branch:dining:2gis-70000001101428340": [
+      "service:dining:2gis-70000001101428340"
+    ],
+    "branch:dining:2gis-70000001102212879": [
+      "service:dining:2gis-70000001102212879"
+    ],
+    "branch:dining:2gis-70000001102550193": [
+      "service:dining:2gis-70000001102550193"
+    ],
+    "branch:dining:2gis-70000001102892160": [
+      "service:dining:2gis-70000001102892160"
+    ],
+    "branch:dining:2gis-70000001103038629": [
+      "service:dining:2gis-70000001103038629"
+    ],
+    "branch:dining:2gis-70000001103083586": [
+      "service:dining:2gis-70000001103083586"
+    ],
+    "branch:dining:2gis-70000001103278740": [
+      "service:dining:2gis-70000001103278740"
+    ],
+    "branch:dining:2gis-70000001103339960": [
+      "service:dining:2gis-70000001103339960"
+    ],
+    "branch:dining:2gis-70000001103552911": [
+      "service:dining:2gis-70000001103552911"
+    ],
+    "branch:dining:2gis-70000001103814071": [
+      "service:dining:2gis-70000001103814071"
+    ],
+    "branch:dining:2gis-70000001103818141": [
+      "service:dining:2gis-70000001103818141"
+    ],
+    "branch:dining:2gis-70000001104111947": [
+      "service:dining:2gis-70000001104111947"
+    ],
+    "branch:dining:2gis-70000001104605114": [
+      "service:dining:2gis-70000001104605114"
+    ],
+    "branch:dining:2gis-70000001105066031": [
+      "service:dining:2gis-70000001105066031"
+    ],
+    "branch:dining:2gis-70000001105230719": [
+      "service:dining:2gis-70000001105230719"
+    ],
+    "branch:dining:2gis-70000001105274860": [
+      "service:dining:2gis-70000001105274860"
+    ],
+    "branch:dining:2gis-70000001105353041": [
+      "service:dining:2gis-70000001105353041"
+    ],
+    "branch:dining:2gis-70000001105750954": [
+      "service:dining:2gis-70000001105750954"
+    ],
+    "branch:dining:2gis-70000001110053737": [
+      "service:dining:2gis-70000001110053737"
+    ],
+    "branch:dining:2gis-70000001110373998": [
+      "service:dining:2gis-70000001110373998"
+    ],
+    "branch:dining:2gis-70000001110529788": [
+      "service:dining:2gis-70000001110529788"
+    ],
+    "branch:dining:2gis-70000001110576397": [
+      "service:dining:2gis-70000001110576397"
+    ],
+    "branch:dining:2gis-70000001110629278": [
+      "service:dining:2gis-70000001110629278"
+    ],
+    "branch:dining:2gis-70000001111485878": [
+      "service:dining:2gis-70000001111485878"
+    ],
+    "branch:dining:2gis-70000001112587424": [
+      "service:dining:2gis-70000001112587424"
+    ],
+    "branch:dining:2gis-70000001112645201": [
+      "service:dining:2gis-70000001112645201"
+    ],
+    "branch:dining:2gis-70000001113476541": [
+      "service:dining:2gis-70000001113476541"
+    ],
+    "branch:dining:2gis-70000001113663108": [
+      "service:dining:2gis-70000001113663108"
+    ],
+    "branch:dining:2gis-70000001113748505": [
+      "service:dining:2gis-70000001113748505"
+    ],
+    "branch:dining:2gis-70000001113789427": [
+      "service:dining:2gis-70000001113789427"
+    ],
+    "branch:dining:2gis-70000001113808058": [
+      "service:dining:2gis-70000001113808058"
+    ],
+    "branch:dining:2gis-70000001113923588": [
+      "service:dining:2gis-70000001113923588"
+    ],
+    "branch:dining:2gis-70000001114030928": [
+      "service:dining:2gis-70000001114030928"
+    ],
+    "branch:dining:2gis-70000001114385329": [
+      "service:dining:2gis-70000001114385329"
+    ],
+    "branch:dining:2gis-70000001114680625": [
+      "service:dining:2gis-70000001114680625"
+    ],
+    "branch:dining:2gis-70000001114680627": [
+      "service:dining:2gis-70000001114680627"
+    ],
+    "branch:dining:2gis-70000001115147432": [
+      "service:dining:2gis-70000001115147432"
+    ],
+    "branch:dining:2gis-70000001115604626": [
+      "service:dining:2gis-70000001115604626"
+    ],
+    "branch:dining:2gis-70000001115656026": [
+      "service:dining:2gis-70000001115656026"
+    ],
+    "branch:dining:2gis-70000001116067540": [
+      "service:dining:2gis-70000001116067540"
+    ],
+    "branch:dining:2gis-70000001116301573": [
+      "service:dining:2gis-70000001116301573"
+    ],
+    "branch:dining:2gis-70000001116304165": [
+      "service:dining:2gis-70000001116304165"
+    ],
+    "branch:dining:2gis-70000001117023679": [
+      "service:dining:2gis-70000001117023679"
+    ],
+    "branch:dining:2gis-70000001117165284": [
+      "service:dining:2gis-70000001117165284"
+    ],
+    "branch:dining:2gis-70000001117379752": [
+      "service:dining:2gis-70000001117379752"
+    ],
+    "branch:dining:yandex-101132704696": [
+      "service:dining:yandex-101132704696"
+    ],
+    "branch:dining:yandex-102677791022": [
+      "service:dining:yandex-102677791022"
+    ],
+    "branch:dining:yandex-105000201333": [
+      "service:dining:yandex-105000201333"
+    ],
+    "branch:dining:yandex-105083800672": [
+      "service:dining:yandex-105083800672"
+    ],
+    "branch:dining:yandex-105417453494": [
+      "service:dining:yandex-105417453494"
+    ],
+    "branch:dining:yandex-107743116269": [
+      "service:dining:yandex-107743116269"
+    ],
+    "branch:dining:yandex-109606567460": [
+      "service:dining:yandex-109606567460"
+    ],
+    "branch:dining:yandex-118974219775": [
+      "service:dining:yandex-118974219775"
+    ],
+    "branch:dining:yandex-121072900654": [
+      "service:dining:yandex-121072900654"
+    ],
+    "branch:dining:yandex-122424519590": [
+      "service:dining:yandex-122424519590"
+    ],
+    "branch:dining:yandex-123318360036": [
+      "service:dining:yandex-123318360036"
+    ],
+    "branch:dining:yandex-125171111947": [
+      "service:dining:yandex-125171111947"
+    ],
+    "branch:dining:yandex-126717216814": [
+      "service:dining:yandex-126717216814"
+    ],
+    "branch:dining:yandex-128328283460": [
+      "service:dining:yandex-128328283460"
+    ],
+    "branch:dining:yandex-132845084954": [
+      "service:dining:yandex-132845084954"
+    ],
+    "branch:dining:yandex-13460046220": [
+      "service:dining:yandex-13460046220"
+    ],
+    "branch:dining:yandex-137758388898": [
+      "service:dining:yandex-137758388898"
+    ],
+    "branch:dining:yandex-139616771698": [
+      "service:dining:yandex-139616771698"
+    ],
+    "branch:dining:yandex-140584585546": [
+      "service:dining:yandex-140584585546"
+    ],
+    "branch:dining:yandex-14935772612": [
+      "service:dining:yandex-14935772612"
+    ],
+    "branch:dining:yandex-157477571827": [
+      "service:dining:yandex-157477571827"
+    ],
+    "branch:dining:yandex-158675093252": [
+      "service:dining:yandex-158675093252"
+    ],
+    "branch:dining:yandex-159549919671": [
+      "service:dining:yandex-159549919671"
+    ],
+    "branch:dining:yandex-16092394161": [
+      "service:dining:yandex-16092394161"
+    ],
+    "branch:dining:yandex-161139271068": [
+      "service:dining:yandex-161139271068"
+    ],
+    "branch:dining:yandex-16142981705": [
+      "service:dining:yandex-16142981705"
+    ],
+    "branch:dining:yandex-172491090348": [
+      "service:dining:yandex-172491090348"
+    ],
+    "branch:dining:yandex-17354791545": [
+      "service:dining:yandex-17354791545"
+    ],
+    "branch:dining:yandex-174143369381": [
+      "service:dining:yandex-174143369381"
+    ],
+    "branch:dining:yandex-176570478682": [
+      "service:dining:yandex-176570478682"
+    ],
+    "branch:dining:yandex-186545988000": [
+      "service:dining:yandex-186545988000"
+    ],
+    "branch:dining:yandex-187087309616": [
+      "service:dining:yandex-187087309616"
+    ],
+    "branch:dining:yandex-187898367736": [
+      "service:dining:yandex-187898367736"
+    ],
+    "branch:dining:yandex-194132075235": [
+      "service:dining:yandex-194132075235"
+    ],
+    "branch:dining:yandex-202232409269": [
+      "service:dining:yandex-202232409269"
+    ],
+    "branch:dining:yandex-211967753853": [
+      "service:dining:yandex-211967753853"
+    ],
+    "branch:dining:yandex-230031286084": [
+      "service:dining:yandex-230031286084"
+    ],
+    "branch:dining:yandex-234114175097": [
+      "service:dining:yandex-234114175097"
+    ],
+    "branch:dining:yandex-240524461004": [
+      "service:dining:yandex-240524461004"
+    ],
+    "branch:dining:yandex-25560318531": [
+      "service:dining:yandex-25560318531"
+    ],
+    "branch:dining:yandex-33587312263": [
+      "service:dining:yandex-33587312263"
+    ],
+    "branch:dining:yandex-38812501061": [
+      "service:dining:yandex-38812501061"
+    ],
+    "branch:dining:yandex-39358652961": [
+      "service:dining:yandex-39358652961"
+    ],
+    "branch:dining:yandex-44378535353": [
+      "service:dining:yandex-44378535353"
+    ],
+    "branch:dining:yandex-44782786643": [
+      "service:dining:yandex-44782786643"
+    ],
+    "branch:dining:yandex-4808812571": [
+      "service:dining:yandex-4808812571"
+    ],
+    "branch:dining:yandex-49350982814": [
+      "service:dining:yandex-49350982814"
+    ],
+    "branch:dining:yandex-49449302608": [
+      "service:dining:yandex-49449302608"
+    ],
+    "branch:dining:yandex-49589629001": [
+      "service:dining:yandex-49589629001"
+    ],
+    "branch:dining:yandex-53028333633": [
+      "service:dining:yandex-53028333633"
+    ],
+    "branch:dining:yandex-64829657300": [
+      "service:dining:yandex-64829657300"
+    ],
+    "branch:dining:yandex-67669290902": [
+      "service:dining:yandex-67669290902"
+    ],
+    "branch:dining:yandex-6900416483": [
+      "service:dining:yandex-6900416483"
+    ],
+    "branch:dining:yandex-78202236219": [
+      "service:dining:yandex-78202236219"
+    ],
+    "branch:dining:yandex-80290146158": [
+      "service:dining:yandex-80290146158"
+    ],
+    "branch:dining:yandex-80862438724": [
+      "service:dining:yandex-80862438724"
+    ],
+    "branch:dining:yandex-81806656025": [
+      "service:dining:yandex-81806656025"
+    ],
+    "branch:dining:yandex-83768680391": [
+      "service:dining:yandex-83768680391"
+    ],
+    "branch:dining:yandex-86328291089": [
+      "service:dining:yandex-86328291089"
     ],
     "branch:velovoyage39:solnechnaya-17": [
       "service:velovoyage39:bike"

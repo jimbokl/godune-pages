@@ -3,8 +3,8 @@ import {regionMapStyle} from './region-map.mjs?v=7';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=7';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
-import {loadScheduler} from './trip-scheduler.mjs?v=40';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=5';
+import {loadScheduler} from './trip-scheduler.mjs?v=42';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=6';
 import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=5';
 import {renderMapRoads} from './day-map-roads-ui.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
@@ -12,7 +12,8 @@ import {vehicleArrival} from './day-mobility.mjs?v=4';
 import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
 import {serviceVisitRows} from './trip-service-visits-state.mjs';
 import {validTimeline} from './trip-service-timeline-state.mjs';
-import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=13';
+import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=15';
+import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
 import {focusWaveStop} from './wave-stop-ui.mjs?v=4';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
@@ -283,8 +284,8 @@ export function initDayWorkspace({mount,read,commit,base,catalog}) {
     if(timelineTools){timelineTools.querySelector('summary').hidden=!mixed;timelineNote.hidden=!mixed;if(wasMixed!==mixed)timelineTools.open=!mixed;wasMixed=mixed;}
     const stops=`${n} ${n%100>=11&&n%100<=14?'остановок':n%10===1?'остановка':n%10>=2&&n%10<=4?'остановки':'остановок'}`;
     const visitCount=`${v} ${v%100>=11&&v%100<=14?'посещений':v%10===1?'посещение':v%10>=2&&v%10<=4?'посещения':'посещений'}`;
-    name.textContent=selectedDay(trip).kosa_plan?'День на куршской волне · дорога и возвращение':`${summary.name} · ${n?stops:v?visitCount:hasTransportPlans(selectedDay(trip))?'дорога сохранена':stops}${n&&v?` · ${visitCount}`:''}`;
-    empty.hidden=summary.stops>0 || summary.visits>0 || hasTransportPlans(selectedDay(trip)) || !!selectedDay(trip).kosa_plan || !!trip.schedule?.rail;
+    name.textContent=selectedDay(trip).kosa_plan?'День на куршской волне · дорога и возвращение':`${summary.name} · ${n?stops:v?visitCount:hasTransportPlans(selectedDay(trip))?'дорога сохранена':hasMenuChoices(selectedDay(trip))?'блюда выбраны':stops}${n&&v?` · ${visitCount}`:''}`;
+    empty.hidden=summary.stops>0 || summary.visits>0 || hasTransportPlans(selectedDay(trip)) || hasMenuChoices(selectedDay(trip)) || !!selectedDay(trip).kosa_plan || !!trip.schedule?.rail;
     if(!initialized){const wizard=document.querySelector('#planner-new-day');if(wizard&&summary.hasTrip&&!location.hash.includes('planning-wizard'))wizard.open=false;initialized=true;}
     const stopTools=document.querySelector('#day-stop-tools > summary');if(stopTools)stopTools.textContent=`Изменить порядок и остановки · ${summary.stops}`;
     const bookingsCount=selectedDay(trip).bookings?.length || 0;bookings.querySelector('summary').textContent=`Билеты и ночёвка${bookingsCount?` · ${bookingsCount}`:''}`;

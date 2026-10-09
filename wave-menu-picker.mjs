@@ -1,7 +1,7 @@
 import {selectedDay} from './trip-days-state.mjs';
 import {selectMenuChoice} from './trip-menu-choices-state.mjs';
 import {menuChoiceRows} from './trip-menu-choices-contract.mjs';
-import {menuChoiceGuide} from './trip-menu-choices-view.mjs';
+import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
 import {menuChoiceFromTemplate} from './trip-menu-choices-ui.mjs';
 
 const pickerStates=new WeakMap();

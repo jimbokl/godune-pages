@@ -1,4 +1,4 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=40';
+import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingRows,bookingEffects,bookingProblem,saveBooking,deleteBooking,nextBookingId} from './trip-bookings-state.mjs?v=2';
 import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=25';
 import {baseName} from './personal-points.mjs?v=3';

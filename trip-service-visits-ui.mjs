@@ -1,13 +1,19 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=40';
+import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {selectedDay} from './trip-days-state.mjs?v=25';
-import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,addServiceVisitToDate,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=2';
+import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=3';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
-import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=9';
+import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=10';
 import {serviceExpenseButton} from './trip-service-expenses-ui.mjs';
 import {validTimeline} from './trip-service-timeline-state.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
+import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=1';
+import {prepareServiceAdd,confirmServiceAdd} from './trip-service-add-state.mjs?v=1';
+import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=1';
+import {dayChangeText} from './trip-day-change-view.mjs?v=1';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
+import {dayOutcome} from './day-outcome.mjs?v=1';
 
 const categories={bike_rental:'Прокат',bath:'Баня',pool:'Бассейн',gym:'Тренировка',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
 const states={fits:'По времени и условиям подходит',does_not_fit:'Нужно изменить план',needs_info:'Есть что уточнить'};
@@ -17,11 +23,12 @@ const errorText=error=>/[А-Яа-яЁё]/.test(error?.message||'')?error.message
 const dateText=date=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));}catch{return 'дата не указана';}};
 const clock=n=>n==null?'Время пока неизвестно':`${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}${n>=1440?' следующего дня':''}`;
 const money=n=>n==null?'Полная цена пока неизвестна':formatKopecks(n);
-function style(){if(document.querySelector('[data-visit-styles]'))return;const link=node('link');link.rel='stylesheet';link.href=new URL('trip-service-visits.css',import.meta.url);link.dataset.visitStyles='';document.head.append(link);}
+function style(){if(document.querySelector('[data-visit-styles]'))return;const link=node('link');link.rel='stylesheet';link.href=new URL('trip-service-visits.css?v=3',import.meta.url);link.dataset.visitStyles='';document.head.append(link);}
 function summary(visit,result){
  const wrap=node('div',undefined,'visit-summary');wrap.append(node('p',categories[visit.category],'visit-category'),node('h3',visit.name));
  wrap.append(node('p',`${clock(visit.selection.visit.input.arrival)} → ${clock(result.summary.departure)} · ${money(result.summary.cost_total)}`,'visit-facts'));
  if(visit.address)wrap.append(node('p',visit.address,'visit-address'));
+ const selection=serviceSelectionElement(visit);if(selection)wrap.append(selection);
  wrap.append(node('p',states[result.state],'visit-assessment'));
  const rental=rentalFactsElement(visit,result);if(rental)wrap.append(rental);return wrap;
 }
@@ -30,7 +37,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=24'),import('./workshop.mjs?v=99')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=24'),import('./workshop.mjs?v=107')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
@@ -42,6 +49,7 @@ async function pageMemory(base){
 // Loaded only when the author asks to use their saved day as a search context.
 export async function savedServiceDay(base){
  const {memory,catalog}=await pageMemory(base);await memory.sync();
+ if(memory.compatibility)throw Error(`Проверьте сохранённую поездку: ${memory.compatibility.message}`);
  const trip=memory.get();
  const {effectiveBookingDay}=await import('./trip-bookings-state.mjs?v=2');
  return {trip,catalog,day:effectiveBookingDay(selectedDay(trip))};
@@ -61,39 +69,64 @@ export async function pickServiceVisit(metadata,selection,base,opener){
  }
  const extra=node('option',`Новый день · ${dateText(selection.visit.input.date)}`);extra.value='';select.append(extra);dayLabel.append(select);
  const noteLabel=node('label','Заметка для себя'),note=node('textarea');note.name='note';note.rows=3;note.placeholder='Например, что взять с собой';noteLabel.append(note);
- const save=node('button','Добавить в этот день','visit-primary');save.type='submit';
+ const review=node('div',undefined,'visit-add-review');review.setAttribute('aria-live','polite');
+ const save=node('button','Добавить в этот день','visit-primary');save.type='submit';save.disabled=true;
+ const retry=button('Проверить день ещё раз');retry.hidden=true;
  const status=node('p',undefined,'visit-feedback');status.setAttribute('role','status');
  const receipt=node('div',undefined,'visit-receipt');receipt.hidden=true;
  const open=node('a','Открыть мой день →','visit-primary');open.href=new URL('planner/#my-trip',base);receipt.append(open);
  const download=button('Скачать файл поездки');download.hidden=true;
  download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=29');downloadTripFile(memory.get(),catalog);});
- form.append(dayLabel,noteLabel,save);dialog.append(close,heading,summary(prepared.visit,prepared.assessment),form,status,receipt,download);document.body.append(dialog);
+ form.append(dayLabel,review,noteLabel,save);dialog.append(close,heading,summary(prepared.visit,prepared.assessment),form,status,retry,receipt,download);document.body.append(dialog);
  close.addEventListener('click',()=>dialog.close());
  // Escape and the close button restore focus to the original card.
- dialog.addEventListener('close',()=>{dialog.remove();opener?.focus({preventScroll:true});},{once:true});
- let pending=false;
+ let pending=false,sequence=0,preview;
+ dialog.addEventListener('close',()=>{sequence++;dialog.remove();opener?.focus({preventScroll:true});},{once:true});
  dialog.addEventListener('cancel',event=>{if(pending)event.preventDefault();});
+ async function update(){
+  const ticket=++sequence;preview=null;save.disabled=true;retry.hidden=true;review.replaceChildren();status.textContent='Проверяем, как посещение впишется в день…';
+  try{
+   await memory.sync();if(ticket!==sequence)return;
+   if(memory.compatibility)throw Error(`Проверьте сохранённую поездку: ${memory.compatibility.message}`);
+   const original=memory.get(),candidate=prepareServiceAdd(engine,original,prepared,select.value||null);
+   const baseline=dayChangeBaseline(original,candidate.trip,candidate.targetId);
+   const [beforeMatrix,matrix]=await Promise.all([baseline,candidate.trip].map(day=>day.places.length?loadTripTravelMatrix(base,day,catalog).catch(()=>null):null));
+   if(ticket!==sequence)return;
+   review.append(node('h3',candidate.alreadyAdded?'Уже в вашем дне':'После добавления'));
+   try{
+    const change=inspectTripDayChange(engine,baseline,candidate.trip,catalog,beforeMatrix,matrix),check=change.after;review.dataset.addDayState=check.state;
+    review.append(node('p',dayOutcome(check),'visit-add-outcome'));
+    for(const line of dayChangeText(change))review.append(node('p',line,'visit-facts'));
+    const budget=check.services_budget;
+    review.append(node('p',`Услуги на вашу группу: ${budget.cost_total!==null?money(budget.cost_total):budget.cost_lower_bound>0?'не меньше '+money(budget.cost_lower_bound)+' · полная сумма неизвестна':'полная сумма неизвестна'}`,'visit-facts'));
+    if(budget.deposit_total>0||budget.deposit_unknown>0)review.append(node('p',`Возвратный залог: ${budget.deposit_total!==null?money(budget.deposit_total):'полная сумма неизвестна'}`,'visit-facts'));
+    const issues=node('ul',undefined,'visit-day-issues');
+    for(const overlap of check.overlaps)issues.append(node('li',`Посещения пересекаются на ${overlap.minutes} мин.`));
+    if(check.issues.some(row=>row.code==='outside_day_window'))issues.append(node('li','Посещение выходит за время дня или выбранные рейсы.'));
+    if(check.issues.some(row=>row.code==='service_connections_unknown'))issues.append(node('li','Дорога к посещению ещё не выбрана. Весь день пока не рассчитан.'));
+    if(issues.childElementCount)review.append(issues);
+   }catch{
+    review.dataset.addDayState='unknown';review.append(node('p','Полный день пока не рассчитан. Посещение можно сохранить и выбрать дорогу в «Моём дне».','visit-add-outcome'));
+   }
+   preview=candidate;save.textContent=candidate.alreadyAdded?'Открыть этот день':'Добавить в этот день';save.disabled=false;status.textContent='';
+  }catch(error){if(ticket===sequence){status.textContent=errorText(error);retry.hidden=false;}}
+ }
+ select.addEventListener('change',()=>update());retry.addEventListener('click',()=>update());
  form.addEventListener('submit',async event=>{
-  event.preventDefault();if(pending)return;pending=true;save.disabled=true;close.disabled=true;
+  event.preventDefault();if(pending||!preview)return;pending=true;save.disabled=true;close.disabled=true;select.disabled=true;note.disabled=true;retry.hidden=true;
   status.textContent='Сохраняем посещение…';
   try{
-   const chosen=structuredClone(prepared);chosen.visit.note=note.value;
-   const result=await memory.change(current=>{
-    const day=current.itinerary?.days.find(d=>d.id===select.value);
-    // Membership is idempotent; an existing personal note belongs to its author.
-    if(day?.date===selection.visit.input.date&&serviceVisitRows(day).some(v=>JSON.stringify(v.identity)===JSON.stringify(chosen.visit.identity)&&JSON.stringify(v.selection)===JSON.stringify(chosen.visit.selection)))return current;
-    return addServiceVisitToDate(current,chosen,select.value||null);
-   },{label:'Посещение добавлено в день'});
-   if(result.conflict){status.textContent='Поездка изменилась в другой вкладке. Закройте окно и выберите день заново.';return;}
+   const result=await memory.change(current=>confirmServiceAdd(current,preview,note.value),{label:'Посещение добавлено в день'});
+   if(result.conflict){preview=null;status.textContent='Поездка изменилась в другой вкладке. Проверьте день ещё раз.';retry.hidden=false;return;}
    form.hidden=true;receipt.hidden=!result.saved;
    status.textContent=result.saved?`Сохранено в вашем дне · ${dateText(selection.visit.input.date)}.`:'Посещение осталось в этой вкладке. Браузер не смог сохранить его. Скачайте файл поездки.';
    download.hidden=result.saved;
-   if(result.saved){opener.textContent='В вашем дне ✓';opener.dataset.visitSaved='true';}
+   if(result.saved&&opener){opener.textContent='В вашем дне ✓';opener.dataset.visitSaved='true';}
    (result.saved?open:download).focus();document.dispatchEvent(new CustomEvent('godune:useful-action',{detail:'service_visit_added'}));
-  }catch(error){status.textContent=errorText(error);}
-  finally{pending=false;save.disabled=false;close.disabled=false;}
+  }catch(error){preview=null;status.textContent=errorText(error);retry.hidden=false;}
+  finally{pending=false;save.disabled=!preview;close.disabled=false;select.disabled=false;note.disabled=false;}
  });
- dialog.showModal();select.focus();return dialog;
+ dialog.showModal();select.focus();await update();return dialog;
 }
 
 export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
@@ -122,7 +155,7 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
   // Keep the editor when focus moves from its field to Save or Cancel, too.
   // A newer tab's note is checked against the original snapshot on submit.
   if(currentDay===day.id&&section.querySelector('.visit-note-editor:not([hidden])'))return;
-  const rows=serviceVisitRows(day),stamp=JSON.stringify([day.id,day.date,rows,day.costs]);if(stamp===last)return;last=stamp;currentDay=day.id;
+  const rows=serviceVisitRows(day),stamp=JSON.stringify([day.id,day.date,rows,day.costs,read().itinerary?.days.map(d=>[d.id,d.date])]);if(stamp===last)return;last=stamp;currentDay=day.id;
   const ticket=++sequence;
   if(!rows.length){list.replaceChildren();return;}style();
   const items=rows.map(visit=>{
@@ -130,12 +163,21 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
    const context=serviceVisitContext(visit,day),content=node('div');
    content.append(node('p',categories[visit?.category]||'Посещение','visit-category'),node('h4',typeof visit?.name==='string'?visit.name:'Сохранённое посещение'));
    const detail=node('p','Проверяем выбранное посещение…','visit-facts'),rental=node('div');content.append(detail,rental);
+   const selection=serviceSelectionElement(visit);if(selection)detail.before(selection);
    if(context==='unsupported')detail.textContent='Сохранено в другой версии. Файл поездки сохранит эти сведения.';
    else if(context!=='ready')detail.textContent=`Выбрано на ${dateText(visit.selection.visit.input.date)}. ${day.date?'Дата дня изменилась.':'Выберите дату дня, чтобы пересчитать.'}`;
    if(visit?.note)content.append(node('p',visit.note,'visit-note'));
    article.append(content);
    if(context==='unsupported')return {article};
    const controls=node('div',undefined,'visit-actions'),edit=button('Заметка'),remove=button('Убрать');controls.append(edit,remove);article.append(controls);
+   if(read().itinerary?.days.length>1){
+    const move=button('В другой день');controls.prepend(move);
+    move.addEventListener('click',async()=>{
+     move.disabled=true;
+     try{const {openServiceMove}=await import('./trip-service-move-ui.mjs?v=1');await openServiceMove({read,commit,base,catalog,sourceId:day.id,visitId:visit.id,opener:move});}
+     catch(error){feedback.textContent=errorText(error);}finally{move.disabled=false;}
+    });
+   }
    const expense=serviceExpenseButton({day,visit,onExpense});if(expense)controls.prepend(expense);
    const editor=node('form',undefined,'visit-note-editor');editor.hidden=true;const label=node('label','Заметка для себя'),field=node('textarea');field.rows=3;field.value=visit.note;label.append(field);
    const save=node('button','Сохранить заметку','visit-primary');save.type='submit';const cancel=button('Отмена');editor.append(label,save,cancel);article.append(editor);

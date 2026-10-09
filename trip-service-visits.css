@@ -67,6 +67,8 @@
 .visit-expense-action .visit-feedback{flex-basis:100%;margin:0}
 .visit-note-editor{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
 .visit-dialog [hidden],.trip-service-visits [hidden]{display:none!important}
+.visit-move-review{min-width:0;overflow-wrap:anywhere}.visit-move-review .visit-summary{margin:0 0 16px}.visit-move-outcome{font-weight:600;margin:0}.visit-move-review .visit-day-footnote{margin:12px 0 0}
+.visit-add-review{min-width:0;border-block:1px solid var(--sea-line);padding:20px 0;overflow-wrap:anywhere}.visit-add-review:empty{display:none}.visit-add-review h3{font:400 27px/1.2 var(--serif);margin:0 0 12px}.visit-add-outcome{font-weight:600;margin:0}
 @media(max-width:480px){.visit-dialog{padding:24px 20px}.visit-summary{padding:16px}.saved-visit,.visit-day-check{padding:20px}.visit-day-budget{grid-template-columns:minmax(0,1fr);gap:16px}.visit-picker,.visit-note-editor{gap:16px}.visit-actions{gap:8px}.visit-actions button{flex:1 1 auto}}
 .visit-timeline-item[data-day-selected=true] .visit-timeline-card{border-color:var(--sea-muted);box-shadow:0 0 0 2px var(--sea-line)}
 

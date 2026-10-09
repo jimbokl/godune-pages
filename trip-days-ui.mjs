@@ -3,12 +3,12 @@ import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
 import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=5';
 import {initTripBookings} from './trip-bookings-ui.mjs?v=17';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=22';
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=1';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=23';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=6';
 import {serviceBudgetInput} from './trip-service-budget.mjs';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,COST_KINDS} from './trip-days-state.mjs?v=25';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=40';
+import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=11';
 import {mobilityLabel} from './day-mobility.mjs?v=4';
 import {isPersonalPoint,baseName} from './personal-points.mjs?v=3';
@@ -42,7 +42,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   const $=selector=>section.querySelector(selector);let sequence=0;
   const bookings=initTripBookings({section,read,commit,base,catalog});
   const expenses=initTripExpenses({section,read,commit,base,catalog});
-  const menuChoices=initTripMenuChoices({mount:section,read,commit,base,catalog});
+  const menuChoices=initTripMenuChoices({mount:section,read,commit,base,catalog,onExpense:expenses.recordMenu});
   $('#journey-starters').replaceChildren(...tripStarterChoices(catalog).map(starter=>{
     if(starter.days.some(day=>['bus','rail'].includes(day.transport))){
       const link=el('a',starter.name);link.href=new URL(`planner/?starter=${encodeURIComponent(starter.id)}`,base);link.className='journey-starter';link.append(el('span',starter.description));return link;

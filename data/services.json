@@ -7945,6 +7945,2265 @@
   ],
   "services": [
     {
+      "id": "service:dining:2gis-5630027815190832",
+      "branch_id": "branch:dining:2gis-5630027815190832",
+      "name": "Веранда",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630027815190832"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630027815347793",
+      "branch_id": "branch:dining:2gis-5630027815347793",
+      "name": "У Нептуна",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630027815347793"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630028815427796",
+      "branch_id": "branch:dining:2gis-5630028815427796",
+      "name": "Встреча",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630028815427796"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630028815429871",
+      "branch_id": "branch:dining:2gis-5630028815429871",
+      "name": "Монополь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630028815429871"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630028815430157",
+      "branch_id": "branch:dining:2gis-5630028815430157",
+      "name": "Сковородка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630028815430157"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630028815430301",
+      "branch_id": "branch:dining:2gis-5630028815430301",
+      "name": "Ам! Бар",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630028815430301"
+      }
+    },
+    {
+      "id": "service:dining:2gis-5630028815561754",
+      "branch_id": "branch:dining:2gis-5630028815561754",
+      "name": "Шопен",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-5630028815561754"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001019514562",
+      "branch_id": "branch:dining:2gis-70000001019514562",
+      "name": "Уксус",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001019514562"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001019617766",
+      "branch_id": "branch:dining:2gis-70000001019617766",
+      "name": "Кофеюха",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001019617766"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001021673647",
+      "branch_id": "branch:dining:2gis-70000001021673647",
+      "name": "Королевский пекарь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001021673647"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001022620039",
+      "branch_id": "branch:dining:2gis-70000001022620039",
+      "name": "Pilot",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001022620039"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001023285288",
+      "branch_id": "branch:dining:2gis-70000001023285288",
+      "name": "Ура Пицца!",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001023285288"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001024024428",
+      "branch_id": "branch:dining:2gis-70000001024024428",
+      "name": "Дача",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001024024428"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001024530011",
+      "branch_id": "branch:dining:2gis-70000001024530011",
+      "name": "Самбия",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001024530011"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001024924415",
+      "branch_id": "branch:dining:2gis-70000001024924415",
+      "name": "Кафе фастфуда",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001024924415"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001025294914",
+      "branch_id": "branch:dining:2gis-70000001025294914",
+      "name": "Буфетъ",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001025294914"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001025612862",
+      "branch_id": "branch:dining:2gis-70000001025612862",
+      "name": "Курортная лавка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001025612862"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001025626102",
+      "branch_id": "branch:dining:2gis-70000001025626102",
+      "name": "Sun coffee shop",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001025626102"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001028174377",
+      "branch_id": "branch:dining:2gis-70000001028174377",
+      "name": "Kranz torte",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001028174377"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001028414540",
+      "branch_id": "branch:dining:2gis-70000001028414540",
+      "name": "Геркулес",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001028414540"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001030029796",
+      "branch_id": "branch:dining:2gis-70000001030029796",
+      "name": "Королевский пекарь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001030029796"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001030035636",
+      "branch_id": "branch:dining:2gis-70000001030035636",
+      "name": "Park House",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001030035636"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001032109722",
+      "branch_id": "branch:dining:2gis-70000001032109722",
+      "name": "Blend 66",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001032109722"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001032109921",
+      "branch_id": "branch:dining:2gis-70000001032109921",
+      "name": "Пирожки из печи",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001032109921"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001033735148",
+      "branch_id": "branch:dining:2gis-70000001033735148",
+      "name": "Папаша Беппе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001033735148"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001033958020",
+      "branch_id": "branch:dining:2gis-70000001033958020",
+      "name": "Grand Alberto pizza",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001033958020"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001034307535",
+      "branch_id": "branch:dining:2gis-70000001034307535",
+      "name": "Русский хлеб",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001034307535"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001034396845",
+      "branch_id": "branch:dining:2gis-70000001034396845",
+      "name": "The Waffles",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001034396845"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001036184841",
+      "branch_id": "branch:dining:2gis-70000001036184841",
+      "name": "Рыба Агонь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001036184841"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037113827",
+      "branch_id": "branch:dining:2gis-70000001037113827",
+      "name": "Промрыба",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037113827"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037362065",
+      "branch_id": "branch:dining:2gis-70000001037362065",
+      "name": "Облака",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037362065"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037544569",
+      "branch_id": "branch:dining:2gis-70000001037544569",
+      "name": "Сейф",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037544569"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037585272",
+      "branch_id": "branch:dining:2gis-70000001037585272",
+      "name": "12",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037585272"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037585837",
+      "branch_id": "branch:dining:2gis-70000001037585837",
+      "name": "Хвоя бар",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037585837"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001037607297",
+      "branch_id": "branch:dining:2gis-70000001037607297",
+      "name": "Королевский пекарь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001037607297"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001038639251",
+      "branch_id": "branch:dining:2gis-70000001038639251",
+      "name": "Лестница",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001038639251"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001042837294",
+      "branch_id": "branch:dining:2gis-70000001042837294",
+      "name": "Любимая",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001042837294"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001043919248",
+      "branch_id": "branch:dining:2gis-70000001043919248",
+      "name": "Телеграф",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001043919248"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044022865",
+      "branch_id": "branch:dining:2gis-70000001044022865",
+      "name": "Сладенбург",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044022865"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044511706",
+      "branch_id": "branch:dining:2gis-70000001044511706",
+      "name": "Круассан",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044511706"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044566489",
+      "branch_id": "branch:dining:2gis-70000001044566489",
+      "name": "Богатырь №1",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044566489"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044566545",
+      "branch_id": "branch:dining:2gis-70000001044566545",
+      "name": "Восточный экспресс",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044566545"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044599664",
+      "branch_id": "branch:dining:2gis-70000001044599664",
+      "name": "Кранц Пицца",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044599664"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044871628",
+      "branch_id": "branch:dining:2gis-70000001044871628",
+      "name": "Ковровский хлеб",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044871628"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001044896443",
+      "branch_id": "branch:dining:2gis-70000001044896443",
+      "name": "Пицца Хаус",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001044896443"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001047520475",
+      "branch_id": "branch:dining:2gis-70000001047520475",
+      "name": "Port-o-coffee",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001047520475"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001047895525",
+      "branch_id": "branch:dining:2gis-70000001047895525",
+      "name": "Sun coffee shop",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001047895525"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001048500903",
+      "branch_id": "branch:dining:2gis-70000001048500903",
+      "name": "Балтийская корона",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001048500903"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001052139191",
+      "branch_id": "branch:dining:2gis-70000001052139191",
+      "name": "Променад",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001052139191"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001052325383",
+      "branch_id": "branch:dining:2gis-70000001052325383",
+      "name": "Лаунж Зеленоградск",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001052325383"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001052595286",
+      "branch_id": "branch:dining:2gis-70000001052595286",
+      "name": "Карамельково",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001052595286"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001052651307",
+      "branch_id": "branch:dining:2gis-70000001052651307",
+      "name": "Восточное",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001052651307"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001055071752",
+      "branch_id": "branch:dining:2gis-70000001055071752",
+      "name": "Хого",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001055071752"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001055986923",
+      "branch_id": "branch:dining:2gis-70000001055986923",
+      "name": "Кебаб кинг",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001055986923"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001056678568",
+      "branch_id": "branch:dining:2gis-70000001056678568",
+      "name": "Тунец",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001056678568"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001056728854",
+      "branch_id": "branch:dining:2gis-70000001056728854",
+      "name": "Сладкий домик",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001056728854"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001056940270",
+      "branch_id": "branch:dining:2gis-70000001056940270",
+      "name": "Точка продажи кофе на вынос",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001056940270"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001057273773",
+      "branch_id": "branch:dining:2gis-70000001057273773",
+      "name": "Миндаль",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001057273773"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001060101799",
+      "branch_id": "branch:dining:2gis-70000001060101799",
+      "name": "Горизонт",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001060101799"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061061369",
+      "branch_id": "branch:dining:2gis-70000001061061369",
+      "name": "Na Bali",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061061369"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061063601",
+      "branch_id": "branch:dining:2gis-70000001061063601",
+      "name": "Mangal House",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061063601"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061065253",
+      "branch_id": "branch:dining:2gis-70000001061065253",
+      "name": "Парк",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061065253"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061265160",
+      "branch_id": "branch:dining:2gis-70000001061265160",
+      "name": "Ростерхит",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061265160"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061269738",
+      "branch_id": "branch:dining:2gis-70000001061269738",
+      "name": "Гранат",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061269738"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061498399",
+      "branch_id": "branch:dining:2gis-70000001061498399",
+      "name": "Prosto блин",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061498399"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061576405",
+      "branch_id": "branch:dining:2gis-70000001061576405",
+      "name": "Гриль на море",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061576405"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001061794029",
+      "branch_id": "branch:dining:2gis-70000001061794029",
+      "name": "Тортино",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001061794029"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001062122791",
+      "branch_id": "branch:dining:2gis-70000001062122791",
+      "name": "Шарлоttа",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001062122791"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001062141930",
+      "branch_id": "branch:dining:2gis-70000001062141930",
+      "name": "Тортино",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001062141930"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001062435163",
+      "branch_id": "branch:dining:2gis-70000001062435163",
+      "name": "Хлеб",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001062435163"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001062461095",
+      "branch_id": "branch:dining:2gis-70000001062461095",
+      "name": "Шашлычная №1",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001062461095"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001063205699",
+      "branch_id": "branch:dining:2gis-70000001063205699",
+      "name": "Фанат",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001063205699"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001063367025",
+      "branch_id": "branch:dining:2gis-70000001063367025",
+      "name": "Resto Bistro",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001063367025"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001063531891",
+      "branch_id": "branch:dining:2gis-70000001063531891",
+      "name": "Балт",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001063531891"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001063772351",
+      "branch_id": "branch:dining:2gis-70000001063772351",
+      "name": "Окно вкуса",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001063772351"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001063971984",
+      "branch_id": "branch:dining:2gis-70000001063971984",
+      "name": "Шкипер",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001063971984"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001064812247",
+      "branch_id": "branch:dining:2gis-70000001064812247",
+      "name": "Колесо",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001064812247"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001065277939",
+      "branch_id": "branch:dining:2gis-70000001065277939",
+      "name": "Дюна",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001065277939"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001065316839",
+      "branch_id": "branch:dining:2gis-70000001065316839",
+      "name": "Кофе Крендель",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001065316839"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001065378191",
+      "branch_id": "branch:dining:2gis-70000001065378191",
+      "name": "Про100 пышка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001065378191"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001065532501",
+      "branch_id": "branch:dining:2gis-70000001065532501",
+      "name": "Гуффи",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001065532501"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001066225617",
+      "branch_id": "branch:dining:2gis-70000001066225617",
+      "name": "Душа",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001066225617"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001066661710",
+      "branch_id": "branch:dining:2gis-70000001066661710",
+      "name": "Stierlitz",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001066661710"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001066920153",
+      "branch_id": "branch:dining:2gis-70000001066920153",
+      "name": "Зеленоградск",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001066920153"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067014954",
+      "branch_id": "branch:dining:2gis-70000001067014954",
+      "name": "Суши Love",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067014954"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067078963",
+      "branch_id": "branch:dining:2gis-70000001067078963",
+      "name": "Хинкали Пиросмани",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067078963"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067087177",
+      "branch_id": "branch:dining:2gis-70000001067087177",
+      "name": "Гранд Сокольники",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067087177"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067189296",
+      "branch_id": "branch:dining:2gis-70000001067189296",
+      "name": "Инлав",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067189296"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067241256",
+      "branch_id": "branch:dining:2gis-70000001067241256",
+      "name": "Ривьера",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067241256"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001067991853",
+      "branch_id": "branch:dining:2gis-70000001067991853",
+      "name": "Курортный",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001067991853"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001068727236",
+      "branch_id": "branch:dining:2gis-70000001068727236",
+      "name": "Pomatti",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001068727236"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001069072186",
+      "branch_id": "branch:dining:2gis-70000001069072186",
+      "name": "Камамбер",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001069072186"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001074591131",
+      "branch_id": "branch:dining:2gis-70000001074591131",
+      "name": "Dolce Nonna",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001074591131"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001074632992",
+      "branch_id": "branch:dining:2gis-70000001074632992",
+      "name": "Fab",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001074632992"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001074847373",
+      "branch_id": "branch:dining:2gis-70000001074847373",
+      "name": "Марципан&шоколад",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001074847373"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075022565",
+      "branch_id": "branch:dining:2gis-70000001075022565",
+      "name": "Бранч на море",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075022565"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075022566",
+      "branch_id": "branch:dining:2gis-70000001075022566",
+      "name": "Огонёк",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075022566"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075039563",
+      "branch_id": "branch:dining:2gis-70000001075039563",
+      "name": "Птичка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075039563"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075071177",
+      "branch_id": "branch:dining:2gis-70000001075071177",
+      "name": "Кактус",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075071177"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075305201",
+      "branch_id": "branch:dining:2gis-70000001075305201",
+      "name": "Slow",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075305201"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001075909647",
+      "branch_id": "branch:dining:2gis-70000001075909647",
+      "name": "Greengate",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001075909647"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001076193342",
+      "branch_id": "branch:dining:2gis-70000001076193342",
+      "name": "Королева Луиза",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001076193342"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001076560743",
+      "branch_id": "branch:dining:2gis-70000001076560743",
+      "name": "Тут вкусно",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001076560743"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001077228719",
+      "branch_id": "branch:dining:2gis-70000001077228719",
+      "name": "Талпаки",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001077228719"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001077229247",
+      "branch_id": "branch:dining:2gis-70000001077229247",
+      "name": "Охота есть",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001077229247"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001077326726",
+      "branch_id": "branch:dining:2gis-70000001077326726",
+      "name": "Солёная ворона",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001077326726"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001078820284",
+      "branch_id": "branch:dining:2gis-70000001078820284",
+      "name": "Корюшка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001078820284"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001080218641",
+      "branch_id": "branch:dining:2gis-70000001080218641",
+      "name": "Кафе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001080218641"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001082041800",
+      "branch_id": "branch:dining:2gis-70000001082041800",
+      "name": "#Завтра´к 7:45",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001082041800"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001082816728",
+      "branch_id": "branch:dining:2gis-70000001082816728",
+      "name": "Сёстры Шутц",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001082816728"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001083771524",
+      "branch_id": "branch:dining:2gis-70000001083771524",
+      "name": "Додо Пицца",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001083771524"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001084146915",
+      "branch_id": "branch:dining:2gis-70000001084146915",
+      "name": "ZelBurger",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001084146915"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001085399505",
+      "branch_id": "branch:dining:2gis-70000001085399505",
+      "name": "Октоберфест",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001085399505"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001086801671",
+      "branch_id": "branch:dining:2gis-70000001086801671",
+      "name": "Кранц Фиш",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001086801671"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001088058997",
+      "branch_id": "branch:dining:2gis-70000001088058997",
+      "name": "Mrest",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001088058997"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001088093638",
+      "branch_id": "branch:dining:2gis-70000001088093638",
+      "name": "Кёнигсбергский марципан",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001088093638"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001088176461",
+      "branch_id": "branch:dining:2gis-70000001088176461",
+      "name": "Фишка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001088176461"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001088184100",
+      "branch_id": "branch:dining:2gis-70000001088184100",
+      "name": "Добрая столовая",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001088184100"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001088812636",
+      "branch_id": "branch:dining:2gis-70000001088812636",
+      "name": "Ура Пицца!",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001088812636"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001089098517",
+      "branch_id": "branch:dining:2gis-70000001089098517",
+      "name": "Teya",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001089098517"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001089351030",
+      "branch_id": "branch:dining:2gis-70000001089351030",
+      "name": "Гонконгские вафли",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001089351030"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001089532517",
+      "branch_id": "branch:dining:2gis-70000001089532517",
+      "name": "PitStop",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001089532517"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090070657",
+      "branch_id": "branch:dining:2gis-70000001090070657",
+      "name": "Коптильный цех",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090070657"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090214806",
+      "branch_id": "branch:dining:2gis-70000001090214806",
+      "name": "Гранд Монополь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090214806"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090368093",
+      "branch_id": "branch:dining:2gis-70000001090368093",
+      "name": "Шакотис",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090368093"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090430022",
+      "branch_id": "branch:dining:2gis-70000001090430022",
+      "name": "Лабар",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090430022"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090699779",
+      "branch_id": "branch:dining:2gis-70000001090699779",
+      "name": "Берег моря",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090699779"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001090821065",
+      "branch_id": "branch:dining:2gis-70000001090821065",
+      "name": "Хлеб да соль",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001090821065"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001094346782",
+      "branch_id": "branch:dining:2gis-70000001094346782",
+      "name": "Супы Пельмени",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001094346782"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001094750499",
+      "branch_id": "branch:dining:2gis-70000001094750499",
+      "name": "Магазин кондитерских изделий",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001094750499"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001095394846",
+      "branch_id": "branch:dining:2gis-70000001095394846",
+      "name": "M. Zappa",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001095394846"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001096778482",
+      "branch_id": "branch:dining:2gis-70000001096778482",
+      "name": "Millor",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001096778482"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001097054716",
+      "branch_id": "branch:dining:2gis-70000001097054716",
+      "name": "Уютный уголок",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001097054716"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001098551461",
+      "branch_id": "branch:dining:2gis-70000001098551461",
+      "name": "Рюwка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001098551461"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001099439922",
+      "branch_id": "branch:dining:2gis-70000001099439922",
+      "name": "ШашлыкОк",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001099439922"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001099852506",
+      "branch_id": "branch:dining:2gis-70000001099852506",
+      "name": "Маркет рыба&морепродукты",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001099852506"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100232385",
+      "branch_id": "branch:dining:2gis-70000001100232385",
+      "name": "Cinnabon",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100232385"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100264437",
+      "branch_id": "branch:dining:2gis-70000001100264437",
+      "name": "Настроение пива",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100264437"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100360498",
+      "branch_id": "branch:dining:2gis-70000001100360498",
+      "name": "Kenig Roaster",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100360498"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100608564",
+      "branch_id": "branch:dining:2gis-70000001100608564",
+      "name": "Цеппелины",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100608564"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100628075",
+      "branch_id": "branch:dining:2gis-70000001100628075",
+      "name": "Завтрак у папы",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100628075"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100800650",
+      "branch_id": "branch:dining:2gis-70000001100800650",
+      "name": "Крокетерия",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100800650"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001100869855",
+      "branch_id": "branch:dining:2gis-70000001100869855",
+      "name": "Шакотис",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001100869855"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001101049637",
+      "branch_id": "branch:dining:2gis-70000001101049637",
+      "name": "Sky",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001101049637"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001101158549",
+      "branch_id": "branch:dining:2gis-70000001101158549",
+      "name": "Лев Бородинский",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001101158549"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001101305153",
+      "branch_id": "branch:dining:2gis-70000001101305153",
+      "name": "В лаваше-булочная",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001101305153"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001101410810",
+      "branch_id": "branch:dining:2gis-70000001101410810",
+      "name": "Royal Beach",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001101410810"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001101428340",
+      "branch_id": "branch:dining:2gis-70000001101428340",
+      "name": "Марципановая лавка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001101428340"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001102212879",
+      "branch_id": "branch:dining:2gis-70000001102212879",
+      "name": "Пицца?! Да!",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001102212879"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001102550193",
+      "branch_id": "branch:dining:2gis-70000001102550193",
+      "name": "Луч",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001102550193"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001102892160",
+      "branch_id": "branch:dining:2gis-70000001102892160",
+      "name": "Гранд Донер",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001102892160"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103038629",
+      "branch_id": "branch:dining:2gis-70000001103038629",
+      "name": "Резиденция",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103038629"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103083586",
+      "branch_id": "branch:dining:2gis-70000001103083586",
+      "name": "Пиратская креветка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103083586"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103278740",
+      "branch_id": "branch:dining:2gis-70000001103278740",
+      "name": "Камбуз",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103278740"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103339960",
+      "branch_id": "branch:dining:2gis-70000001103339960",
+      "name": "Рыба Агонь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103339960"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103552911",
+      "branch_id": "branch:dining:2gis-70000001103552911",
+      "name": "Лаба Дена",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103552911"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103814071",
+      "branch_id": "branch:dining:2gis-70000001103814071",
+      "name": "Бургер Бар",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103814071"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001103818141",
+      "branch_id": "branch:dining:2gis-70000001103818141",
+      "name": "Звезды",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001103818141"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001104111947",
+      "branch_id": "branch:dining:2gis-70000001104111947",
+      "name": "Starfoods",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001104111947"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001104605114",
+      "branch_id": "branch:dining:2gis-70000001104605114",
+      "name": "Zoltan",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001104605114"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001105066031",
+      "branch_id": "branch:dining:2gis-70000001105066031",
+      "name": "Просто пышка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001105066031"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001105230719",
+      "branch_id": "branch:dining:2gis-70000001105230719",
+      "name": "Элиза Инн",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001105230719"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001105274860",
+      "branch_id": "branch:dining:2gis-70000001105274860",
+      "name": "Пицца есть!",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001105274860"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001105353041",
+      "branch_id": "branch:dining:2gis-70000001105353041",
+      "name": "Арабика",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001105353041"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001105750954",
+      "branch_id": "branch:dining:2gis-70000001105750954",
+      "name": "Суши-Маркет",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001105750954"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001110053737",
+      "branch_id": "branch:dining:2gis-70000001110053737",
+      "name": "Кранц рыба",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001110053737"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001110373998",
+      "branch_id": "branch:dining:2gis-70000001110373998",
+      "name": "Девять жизней",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001110373998"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001110529788",
+      "branch_id": "branch:dining:2gis-70000001110529788",
+      "name": "Экспресс",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001110529788"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001110576397",
+      "branch_id": "branch:dining:2gis-70000001110576397",
+      "name": "Крендель",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001110576397"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001110629278",
+      "branch_id": "branch:dining:2gis-70000001110629278",
+      "name": "Маркс",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001110629278"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001111485878",
+      "branch_id": "branch:dining:2gis-70000001111485878",
+      "name": "Krc&W",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001111485878"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001112587424",
+      "branch_id": "branch:dining:2gis-70000001112587424",
+      "name": "НеProsto кофе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001112587424"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001112645201",
+      "branch_id": "branch:dining:2gis-70000001112645201",
+      "name": "Шаверма у братьев",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001112645201"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113476541",
+      "branch_id": "branch:dining:2gis-70000001113476541",
+      "name": "Рыба на крыше",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113476541"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113663108",
+      "branch_id": "branch:dining:2gis-70000001113663108",
+      "name": "Мякиш",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113663108"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113748505",
+      "branch_id": "branch:dining:2gis-70000001113748505",
+      "name": "Арт",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113748505"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113789427",
+      "branch_id": "branch:dining:2gis-70000001113789427",
+      "name": "Сладкий домик",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113789427"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113808058",
+      "branch_id": "branch:dining:2gis-70000001113808058",
+      "name": "Киоск быстрого питания",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113808058"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001113923588",
+      "branch_id": "branch:dining:2gis-70000001113923588",
+      "name": "Бистро",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001113923588"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001114030928",
+      "branch_id": "branch:dining:2gis-70000001114030928",
+      "name": "Крошка ласточка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001114030928"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001114385329",
+      "branch_id": "branch:dining:2gis-70000001114385329",
+      "name": "Сладкое королевство",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001114385329"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001114680625",
+      "branch_id": "branch:dining:2gis-70000001114680625",
+      "name": "Магазин марципана",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001114680625"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001114680627",
+      "branch_id": "branch:dining:2gis-70000001114680627",
+      "name": "Магазин конфет и кофе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001114680627"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001115147432",
+      "branch_id": "branch:dining:2gis-70000001115147432",
+      "name": "Tamago izakaya",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001115147432"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001115604626",
+      "branch_id": "branch:dining:2gis-70000001115604626",
+      "name": "Огонь",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001115604626"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001115656026",
+      "branch_id": "branch:dining:2gis-70000001115656026",
+      "name": "Lichi",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001115656026"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001116067540",
+      "branch_id": "branch:dining:2gis-70000001116067540",
+      "name": "О! Лаунж",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001116067540"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001116301573",
+      "branch_id": "branch:dining:2gis-70000001116301573",
+      "name": "Про мясо",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001116301573"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001116304165",
+      "branch_id": "branch:dining:2gis-70000001116304165",
+      "name": "Парко",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001116304165"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001117023679",
+      "branch_id": "branch:dining:2gis-70000001117023679",
+      "name": "Наше",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001117023679"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001117165284",
+      "branch_id": "branch:dining:2gis-70000001117165284",
+      "name": "Ne Prosto кофе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001117165284"
+      }
+    },
+    {
+      "id": "service:dining:2gis-70000001117379752",
+      "branch_id": "branch:dining:2gis-70000001117379752",
+      "name": "Кранц вафля",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "2gis-70000001117379752"
+      }
+    },
+    {
+      "id": "service:dining:yandex-101132704696",
+      "branch_id": "branch:dining:yandex-101132704696",
+      "name": "Пивной Двор",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-101132704696"
+      }
+    },
+    {
+      "id": "service:dining:yandex-102677791022",
+      "branch_id": "branch:dining:yandex-102677791022",
+      "name": "Рюмка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-102677791022"
+      }
+    },
+    {
+      "id": "service:dining:yandex-105000201333",
+      "branch_id": "branch:dining:yandex-105000201333",
+      "name": "Пив'ком",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-105000201333"
+      }
+    },
+    {
+      "id": "service:dining:yandex-105083800672",
+      "branch_id": "branch:dining:yandex-105083800672",
+      "name": "Охота есть",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-105083800672"
+      }
+    },
+    {
+      "id": "service:dining:yandex-105417453494",
+      "branch_id": "branch:dining:yandex-105417453494",
+      "name": "Гранд Донер",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-105417453494"
+      }
+    },
+    {
+      "id": "service:dining:yandex-107743116269",
+      "branch_id": "branch:dining:yandex-107743116269",
+      "name": "Суши Тунец",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-107743116269"
+      }
+    },
+    {
+      "id": "service:dining:yandex-109606567460",
+      "branch_id": "branch:dining:yandex-109606567460",
+      "name": "СУП с собой",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-109606567460"
+      }
+    },
+    {
+      "id": "service:dining:yandex-118974219775",
+      "branch_id": "branch:dining:yandex-118974219775",
+      "name": "Nami",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-118974219775"
+      }
+    },
+    {
+      "id": "service:dining:yandex-121072900654",
+      "branch_id": "branch:dining:yandex-121072900654",
+      "name": "Еда и напитки",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-121072900654"
+      }
+    },
+    {
+      "id": "service:dining:yandex-122424519590",
+      "branch_id": "branch:dining:yandex-122424519590",
+      "name": "Котофейня",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-122424519590"
+      }
+    },
+    {
+      "id": "service:dining:yandex-123318360036",
+      "branch_id": "branch:dining:yandex-123318360036",
+      "name": "Королевские колбаски",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-123318360036"
+      }
+    },
+    {
+      "id": "service:dining:yandex-125171111947",
+      "branch_id": "branch:dining:yandex-125171111947",
+      "name": "Столовая",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-125171111947"
+      }
+    },
+    {
+      "id": "service:dining:yandex-126717216814",
+      "branch_id": "branch:dining:yandex-126717216814",
+      "name": "Астерия",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-126717216814"
+      }
+    },
+    {
+      "id": "service:dining:yandex-128328283460",
+      "branch_id": "branch:dining:yandex-128328283460",
+      "name": "Кофе с собой",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-128328283460"
+      }
+    },
+    {
+      "id": "service:dining:yandex-132845084954",
+      "branch_id": "branch:dining:yandex-132845084954",
+      "name": "Сосиска",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-132845084954"
+      }
+    },
+    {
+      "id": "service:dining:yandex-13460046220",
+      "branch_id": "branch:dining:yandex-13460046220",
+      "name": "Гостевой дом",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-13460046220"
+      }
+    },
+    {
+      "id": "service:dining:yandex-137758388898",
+      "branch_id": "branch:dining:yandex-137758388898",
+      "name": "Mi Ami",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-137758388898"
+      }
+    },
+    {
+      "id": "service:dining:yandex-139616771698",
+      "branch_id": "branch:dining:yandex-139616771698",
+      "name": "Bacchus club",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-139616771698"
+      }
+    },
+    {
+      "id": "service:dining:yandex-140584585546",
+      "branch_id": "branch:dining:yandex-140584585546",
+      "name": "Мангал House",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-140584585546"
+      }
+    },
+    {
+      "id": "service:dining:yandex-14935772612",
+      "branch_id": "branch:dining:yandex-14935772612",
+      "name": "Дело в Дыме",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-14935772612"
+      }
+    },
+    {
+      "id": "service:dining:yandex-157477571827",
+      "branch_id": "branch:dining:yandex-157477571827",
+      "name": "О! Лаунж",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-157477571827"
+      }
+    },
+    {
+      "id": "service:dining:yandex-158675093252",
+      "branch_id": "branch:dining:yandex-158675093252",
+      "name": "Пятёрочка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-158675093252"
+      }
+    },
+    {
+      "id": "service:dining:yandex-159549919671",
+      "branch_id": "branch:dining:yandex-159549919671",
+      "name": "Koffe",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-159549919671"
+      }
+    },
+    {
+      "id": "service:dining:yandex-16092394161",
+      "branch_id": "branch:dining:yandex-16092394161",
+      "name": "Марципаны M. Zappa",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-16092394161"
+      }
+    },
+    {
+      "id": "service:dining:yandex-161139271068",
+      "branch_id": "branch:dining:yandex-161139271068",
+      "name": "Желатерия Итальяна",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-161139271068"
+      }
+    },
+    {
+      "id": "service:dining:yandex-16142981705",
+      "branch_id": "branch:dining:yandex-16142981705",
+      "name": "Кофейня Янтарной Мышки",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-16142981705"
+      }
+    },
+    {
+      "id": "service:dining:yandex-172491090348",
+      "branch_id": "branch:dining:yandex-172491090348",
+      "name": "SPA",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-172491090348"
+      }
+    },
+    {
+      "id": "service:dining:yandex-17354791545",
+      "branch_id": "branch:dining:yandex-17354791545",
+      "name": "Шум",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-17354791545"
+      }
+    },
+    {
+      "id": "service:dining:yandex-174143369381",
+      "branch_id": "branch:dining:yandex-174143369381",
+      "name": "Кофе на море",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-174143369381"
+      }
+    },
+    {
+      "id": "service:dining:yandex-176570478682",
+      "branch_id": "branch:dining:yandex-176570478682",
+      "name": "Шаурма на мангале",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-176570478682"
+      }
+    },
+    {
+      "id": "service:dining:yandex-186545988000",
+      "branch_id": "branch:dining:yandex-186545988000",
+      "name": "Золотая миля",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-186545988000"
+      }
+    },
+    {
+      "id": "service:dining:yandex-187087309616",
+      "branch_id": "branch:dining:yandex-187087309616",
+      "name": "Кафе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-187087309616"
+      }
+    },
+    {
+      "id": "service:dining:yandex-187898367736",
+      "branch_id": "branch:dining:yandex-187898367736",
+      "name": "Coffee",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-187898367736"
+      }
+    },
+    {
+      "id": "service:dining:yandex-194132075235",
+      "branch_id": "branch:dining:yandex-194132075235",
+      "name": "Охота есть",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-194132075235"
+      }
+    },
+    {
+      "id": "service:dining:yandex-202232409269",
+      "branch_id": "branch:dining:yandex-202232409269",
+      "name": "Кофе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-202232409269"
+      }
+    },
+    {
+      "id": "service:dining:yandex-211967753853",
+      "branch_id": "branch:dining:yandex-211967753853",
+      "name": "Резиденция",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-211967753853"
+      }
+    },
+    {
+      "id": "service:dining:yandex-230031286084",
+      "branch_id": "branch:dining:yandex-230031286084",
+      "name": "Фаст-фуд",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-230031286084"
+      }
+    },
+    {
+      "id": "service:dining:yandex-234114175097",
+      "branch_id": "branch:dining:yandex-234114175097",
+      "name": "Чай-ка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-234114175097"
+      }
+    },
+    {
+      "id": "service:dining:yandex-240524461004",
+      "branch_id": "branch:dining:yandex-240524461004",
+      "name": "Мне Как Обычно",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-240524461004"
+      }
+    },
+    {
+      "id": "service:dining:yandex-25560318531",
+      "branch_id": "branch:dining:yandex-25560318531",
+      "name": "Дым&Жар",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-25560318531"
+      }
+    },
+    {
+      "id": "service:dining:yandex-33587312263",
+      "branch_id": "branch:dining:yandex-33587312263",
+      "name": "ЭкспонатБург",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-33587312263"
+      }
+    },
+    {
+      "id": "service:dining:yandex-38812501061",
+      "branch_id": "branch:dining:yandex-38812501061",
+      "name": "Форшмак",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-38812501061"
+      }
+    },
+    {
+      "id": "service:dining:yandex-39358652961",
+      "branch_id": "branch:dining:yandex-39358652961",
+      "name": "Пивной Двор",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-39358652961"
+      }
+    },
+    {
+      "id": "service:dining:yandex-44378535353",
+      "branch_id": "branch:dining:yandex-44378535353",
+      "name": "Чебуречная Талпаки",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-44378535353"
+      }
+    },
+    {
+      "id": "service:dining:yandex-44782786643",
+      "branch_id": "branch:dining:yandex-44782786643",
+      "name": "Рюмка",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-44782786643"
+      }
+    },
+    {
+      "id": "service:dining:yandex-4808812571",
+      "branch_id": "branch:dining:yandex-4808812571",
+      "name": "HeProsto Кофе",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-4808812571"
+      }
+    },
+    {
+      "id": "service:dining:yandex-49350982814",
+      "branch_id": "branch:dining:yandex-49350982814",
+      "name": "Булочная",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-49350982814"
+      }
+    },
+    {
+      "id": "service:dining:yandex-49449302608",
+      "branch_id": "branch:dining:yandex-49449302608",
+      "name": "Гастробар Кранцвайн",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-49449302608"
+      }
+    },
+    {
+      "id": "service:dining:yandex-49589629001",
+      "branch_id": "branch:dining:yandex-49589629001",
+      "name": "Kenig Roaster",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-49589629001"
+      }
+    },
+    {
+      "id": "service:dining:yandex-53028333633",
+      "branch_id": "branch:dining:yandex-53028333633",
+      "name": "Меренга",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-53028333633"
+      }
+    },
+    {
+      "id": "service:dining:yandex-64829657300",
+      "branch_id": "branch:dining:yandex-64829657300",
+      "name": "Пивной Двор",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-64829657300"
+      }
+    },
+    {
+      "id": "service:dining:yandex-67669290902",
+      "branch_id": "branch:dining:yandex-67669290902",
+      "name": "Вкусно",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-67669290902"
+      }
+    },
+    {
+      "id": "service:dining:yandex-6900416483",
+      "branch_id": "branch:dining:yandex-6900416483",
+      "name": "Кранц Вафля",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-6900416483"
+      }
+    },
+    {
+      "id": "service:dining:yandex-78202236219",
+      "branch_id": "branch:dining:yandex-78202236219",
+      "name": "Ура!",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-78202236219"
+      }
+    },
+    {
+      "id": "service:dining:yandex-80290146158",
+      "branch_id": "branch:dining:yandex-80290146158",
+      "name": "Калининградские конфеты",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-80290146158"
+      }
+    },
+    {
+      "id": "service:dining:yandex-80862438724",
+      "branch_id": "branch:dining:yandex-80862438724",
+      "name": "Лев Бородинский",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-80862438724"
+      }
+    },
+    {
+      "id": "service:dining:yandex-81806656025",
+      "branch_id": "branch:dining:yandex-81806656025",
+      "name": "Пекарня",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-81806656025"
+      }
+    },
+    {
+      "id": "service:dining:yandex-83768680391",
+      "branch_id": "branch:dining:yandex-83768680391",
+      "name": "Бар 13",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-83768680391"
+      }
+    },
+    {
+      "id": "service:dining:yandex-86328291089",
+      "branch_id": "branch:dining:yandex-86328291089",
+      "name": "Пивной Двор",
+      "profile": {
+        "kind": "dining",
+        "venue_id": "yandex-86328291089"
+      }
+    },
+    {
       "id": "service:gnezdo:kitchen",
       "branch_id": "branch:dining:2gis-70000001055109040",
       "name": "Гнездо: рыбный обед",
@@ -9362,6 +11621,3269 @@
         },
         "value": null,
         "note": "Условия договора не опубликованы."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037585272"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037585272",
+          "checked_at": "2026-10-03"
+        },
+        "value": "12"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-139616771698"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/bacchus_club/139616771698/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Bacchus club"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001032109722"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001032109722",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Blend 66"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100232385"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100232385",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Cinnabon"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-187898367736"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/coffee/187898367736/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Coffee"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001074591131"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001074591131",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Dolce Nonna"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001074632992"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001074632992",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Fab"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001033958020"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001033958020",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Grand Alberto pizza"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075909647"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075909647",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Greengate"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-4808812571"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/heprosto_kofe/4808812571/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "HeProsto Кофе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100360498"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100360498",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Kenig Roaster"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-49589629001"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kenig_roaster/49589629001/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Kenig Roaster"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-159549919671"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/koffe/159549919671/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Koffe"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001028174377"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001028174377",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Kranz torte"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001111485878"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001111485878",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Krc&W"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001115656026"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001115656026",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Lichi"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061063601"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061063601",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Mangal House"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-137758388898"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/mi_ami/137758388898/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Mi Ami"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001096778482"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001096778482",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Millor"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001088058997"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001088058997",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Mrest"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001095394846"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001095394846",
+          "checked_at": "2026-10-03"
+        },
+        "value": "M. Zappa"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061061369"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061061369",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Na Bali"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-118974219775"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/nami/118974219775/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Nami"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001117165284"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001117165284",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ne Prosto кофе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001030035636"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001030035636",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Park House"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001022620039"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001022620039",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Pilot"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001089532517"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001089532517",
+          "checked_at": "2026-10-03"
+        },
+        "value": "PitStop"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001068727236"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001068727236",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Pomatti"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001047520475"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001047520475",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Port-o-coffee"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061498399"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061498399",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Prosto блин"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001063367025"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001063367025",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Resto Bistro"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001101410810"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001101410810",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Royal Beach"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001101049637"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001101049637",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Sky"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075305201"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075305201",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Slow"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-172491090348"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/spa/172491090348/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "SPA"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001104111947"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001104111947",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Starfoods"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001066661710"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001066661710",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Stierlitz"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001025626102"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001025626102",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Sun coffee shop"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001047895525"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001047895525",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Sun coffee shop"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001115147432"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001115147432",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Tamago izakaya"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001089098517"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001089098517",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Teya"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001034396845"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001034396845",
+          "checked_at": "2026-10-03"
+        },
+        "value": "The Waffles"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001084146915"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001084146915",
+          "checked_at": "2026-10-03"
+        },
+        "value": "ZelBurger"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001104605114"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001104605114",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Zoltan"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630028815430301"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630028815430301",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ам! Бар"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001105353041"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001105353041",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Арабика"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113748505"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113748505",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Арт"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-126717216814"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/asteriya/126717216814/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Астерия"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001063531891"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001063531891",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Балт"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001048500903"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001048500903",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Балтийская корона"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-83768680391"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/bar_13/83768680391/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Бар 13"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090699779"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090699779",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Берег моря"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113923588"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113923588",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Бистро"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044566489"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044566489",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Богатырь №1"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075022565"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075022565",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Бранч на море"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-49350982814"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/bulochnaya/49350982814/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Булочная"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103814071"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103814071",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Бургер Бар"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001025294914"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001025294914",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Буфетъ"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630027815190832"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630027815190832",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Веранда"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-67669290902"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/vkusno/67669290902/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Вкусно"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001101305153"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001101305153",
+          "checked_at": "2026-10-03"
+        },
+        "value": "В лаваше-булочная"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001052651307"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001052651307",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Восточное"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044566545"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044566545",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Восточный экспресс"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630028815427796"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630028815427796",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Встреча"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-49449302608"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/gastrobar_krantsvayn/49449302608/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гастробар Кранцвайн"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001028414540"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001028414540",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Геркулес"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001089351030"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001089351030",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гонконгские вафли"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001060101799"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001060101799",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Горизонт"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-13460046220"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/gostevoy_dom/13460046220/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гостевой дом"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061269738"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061269738",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гранат"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001102892160"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001102892160",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гранд Донер"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-105417453494"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/grand_doner/105417453494/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гранд Донер"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090214806"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090214806",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гранд Монополь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067087177"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067087177",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гранд Сокольники"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061576405"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061576405",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гриль на море"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001065532501"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001065532501",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Гуффи"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001024024428"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001024024428",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Дача"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001110373998"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001110373998",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Девять жизней"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-14935772612"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/delo_v_dyme/14935772612/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Дело в Дыме"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001088184100"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001088184100",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Добрая столовая"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001083771524"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001083771524",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Додо Пицца"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001066225617"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001066225617",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Душа"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-25560318531"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/dym_zhar/25560318531/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Дым&Жар"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001065277939"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001065277939",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Дюна"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-121072900654"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/yeda_i_napitki/121072900654/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Еда и напитки"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-161139271068"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/zhelateriya_italyana/161139271068/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Желатерия Итальяна"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001082041800"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001082041800",
+          "checked_at": "2026-10-03"
+        },
+        "value": "#Завтра´к 7:45"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100628075"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100628075",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Завтрак у папы"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103818141"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103818141",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Звезды"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001066920153"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001066920153",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Зеленоградск"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-186545988000"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/zolotaya_milya/186545988000/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Золотая миля"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067189296"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067189296",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Инлав"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075071177"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075071177",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кактус"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-80290146158"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kaliningradskiye_konfety/80290146158/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Калининградские конфеты"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001069072186"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001069072186",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Камамбер"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103278740"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103278740",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Камбуз"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001052595286"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001052595286",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Карамельково"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-187087309616"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kafe/187087309616/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кафе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001080218641"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001080218641",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кафе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001024924415"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001024924415",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кафе фастфуда"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001055986923"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001055986923",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кебаб кинг"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001088093638"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001088093638",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кёнигсбергский марципан"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113808058"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113808058",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Киоск быстрого питания"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044871628"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044871628",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ковровский хлеб"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001064812247"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001064812247",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Колесо"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090070657"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090070657",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Коптильный цех"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001076193342"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001076193342",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Королева Луиза"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-123318360036"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/korolevskiye_kolbaski/123318360036/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Королевские колбаски"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037607297"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037607297",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Королевский пекарь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001030029796"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001030029796",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Королевский пекарь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001021673647"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001021673647",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Королевский пекарь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001078820284"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001078820284",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Корюшка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-122424519590"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kotofeynya/122424519590/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Котофейня"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-202232409269"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kofe/202232409269/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-16142981705"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kofeynya_yantarnoy_myshki/16142981705/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофейня Янтарной Мышки"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001065316839"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001065316839",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофе Крендель"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-174143369381"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kofe_na_more/174143369381/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофе на море"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-128328283460"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/kofe_s_soboy/128328283460/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофе с собой"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001019617766"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001019617766",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кофеюха"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001117379752"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001117379752",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кранц вафля"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-6900416483"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/krants_vaflya/6900416483/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кранц Вафля"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044599664"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044599664",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кранц Пицца"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001110053737"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001110053737",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кранц рыба"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001086801671"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001086801671",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Кранц Фиш"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001110576397"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001110576397",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Крендель"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100800650"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100800650",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Крокетерия"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001114030928"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001114030928",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Крошка ласточка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044511706"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044511706",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Круассан"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001025612862"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001025612862",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Курортная лавка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067991853"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067991853",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Курортный"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103552911"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103552911",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лаба Дена"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090430022"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090430022",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лабар"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001052325383"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001052325383",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лаунж Зеленоградск"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001101158549"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001101158549",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лев Бородинский"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-80862438724"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/lev_borodinskiy/80862438724/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лев Бородинский"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001038639251"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001038639251",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Лестница"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001102550193"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001102550193",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Луч"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001042837294"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001042837294",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Любимая"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001094750499"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001094750499",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Магазин кондитерских изделий"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001114680627"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001114680627",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Магазин конфет и кофе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001114680625"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001114680625",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Магазин марципана"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-140584585546"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/mangal_house/140584585546/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Мангал House"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001099852506"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001099852506",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Маркет рыба&морепродукты"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001110629278"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001110629278",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Маркс"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001101428340"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001101428340",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Марципановая лавка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001074847373"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001074847373",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Марципан&шоколад"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-16092394161"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/martsipany_m_zappa/16092394161/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Марципаны M. Zappa"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-53028333633"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/merenga/53028333633/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Меренга"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001057273773"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001057273773",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Миндаль"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-240524461004"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/mne_kak_obychno/240524461004/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Мне Как Обычно"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630028815429871"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630028815429871",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Монополь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113663108"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113663108",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Мякиш"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100264437"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100264437",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Настроение пива"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001117023679"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001117023679",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Наше"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001112587424"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001112587424",
+          "checked_at": "2026-10-03"
+        },
+        "value": "НеProsto кофе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037362065"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037362065",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Облака"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075022566"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075022566",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Огонёк"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001115604626"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001115604626",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Огонь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001063772351"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001063772351",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Окно вкуса"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001085399505"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001085399505",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Октоберфест"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-157477571827"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/o_launzh/157477571827/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "О! Лаунж"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001116067540"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001116067540",
+          "checked_at": "2026-10-03"
+        },
+        "value": "О! Лаунж"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-194132075235"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/okhota_yest/194132075235/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Охота есть"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-105083800672"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/okhota_yest/105083800672/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Охота есть"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001077229247"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001077229247",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Охота есть"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001033735148"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001033735148",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Папаша Беппе"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061065253"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061065253",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Парк"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001116304165"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001116304165",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Парко"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-81806656025"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pekarnya/81806656025/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пекарня"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-105000201333"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/piv_kom/105000201333/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пив'ком"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-101132704696"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pivnoy_dvor/101132704696/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пивной Двор"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-39358652961"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pivnoy_dvor/39358652961/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пивной Двор"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-86328291089"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pivnoy_dvor/86328291089/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пивной Двор"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-64829657300"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pivnoy_dvor/64829657300/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пивной Двор"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103083586"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103083586",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пиратская креветка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001032109921"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001032109921",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пирожки из печи"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001102212879"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001102212879",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пицца?! Да!"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001105274860"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001105274860",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пицца есть!"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044896443"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044896443",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пицца Хаус"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001065378191"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001065378191",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Про100 пышка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001052139191"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001052139191",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Променад"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037113827"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037113827",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Промрыба"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001116301573"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001116301573",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Про мясо"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001105066031"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001105066031",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Просто пышка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001075039563"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001075039563",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Птичка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-158675093252"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/pyatyorochka/158675093252/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Пятёрочка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-211967753853"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/rezidentsiya/211967753853/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Резиденция"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103038629"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103038629",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Резиденция"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067241256"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067241256",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ривьера"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061265160"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061265160",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ростерхит"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001034307535"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001034307535",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Русский хлеб"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001103339960"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001103339960",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рыба Агонь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001036184841"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001036184841",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рыба Агонь"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113476541"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113476541",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рыба на крыше"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001098551461"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001098551461",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рюwка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-44782786643"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/ryumka/44782786643/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рюмка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-102677791022"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/ryumka/102677791022/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Рюмка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001024530011"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001024530011",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Самбия"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037544569"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037544569",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сейф"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001082816728"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001082816728",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сёстры Шутц"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630028815430157"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630028815430157",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сковородка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001044022865"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001044022865",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сладенбург"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001113789427"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001113789427",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сладкий домик"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001056728854"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001056728854",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сладкий домик"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001114385329"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001114385329",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сладкое королевство"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001077326726"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001077326726",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Солёная ворона"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-132845084954"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/sosiska/132845084954/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Сосиска"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-125171111947"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/stolovaya/125171111947/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Столовая"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-109606567460"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/sup_s_soboy/109606567460/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "СУП с собой"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001094346782"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001094346782",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Супы Пельмени"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067014954"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067014954",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Суши Love"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001105750954"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001105750954",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Суши-Маркет"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-107743116269"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/sushi_tunets/107743116269/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Суши Тунец"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001077228719"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001077228719",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Талпаки"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001043919248"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001043919248",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Телеграф"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001062141930"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001062141930",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Тортино"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001061794029"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001061794029",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Тортино"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001056940270"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001056940270",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Точка продажи кофе на вынос"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001056678568"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001056678568",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Тунец"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001076560743"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001076560743",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Тут вкусно"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001019514562"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001019514562",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Уксус"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630027815347793"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630027815347793",
+          "checked_at": "2026-10-03"
+        },
+        "value": "У Нептуна"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-78202236219"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/ura_/78202236219/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ура!"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001023285288"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001023285288",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ура Пицца!"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001088812636"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001088812636",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Ура Пицца!"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001097054716"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001097054716",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Уютный уголок"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001063205699"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001063205699",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Фанат"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-230031286084"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/fast_fud/230031286084/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Фаст-фуд"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001088176461"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001088176461",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Фишка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-38812501061"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/forshmak/38812501061/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Форшмак"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001037585837"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001037585837",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Хвоя бар"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001067078963"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001067078963",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Хинкали Пиросмани"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001062435163"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001062435163",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Хлеб"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090821065"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090821065",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Хлеб да соль"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001055071752"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001055071752",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Хого"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100608564"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100608564",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Цеппелины"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-234114175097"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/chay_ka/234114175097/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Чай-ка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-44378535353"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/cheburechnaya_talpaki/44378535353/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Чебуречная Талпаки"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001112645201"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001112645201",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шаверма у братьев"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001100869855"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001100869855",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шакотис"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001090368093"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001090368093",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шакотис"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001062122791"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001062122791",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шарлоttа"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-176570478682"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/shaurma_na_mangale/176570478682/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шаурма на мангале"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001099439922"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001099439922",
+          "checked_at": "2026-10-03"
+        },
+        "value": "ШашлыкОк"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001062461095"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001062461095",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шашлычная №1"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001063971984"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001063971984",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шкипер"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-5630028815561754"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/5630028815561754",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шопен"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-17354791545"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/shum/17354791545/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Шум"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:yandex-33587312263"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://yandex.ru/maps/org/eksponatburg/33587312263/",
+          "checked_at": "2026-10-03"
+        },
+        "value": "ЭкспонатБург"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001110529788"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001110529788",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Экспресс"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dining:2gis-70000001105230719"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://2gis.ru/zelenogradsk/firm/70000001105230719",
+          "checked_at": "2026-10-03"
+        },
+        "value": "Элиза Инн"
       }
     ]
   }

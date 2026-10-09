@@ -1,6 +1,6 @@
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=5';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=6';
 import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
 import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs';
 import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=25';
@@ -12,7 +12,8 @@ import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {baseName} from './personal-points.mjs?v=3';
 import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {provenanceSources} from './service-provenance.mjs';
+import {provenanceSources} from './service-provenance.mjs?v=2';
+import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};
@@ -38,6 +39,7 @@ function serviceCard(engine,visit,day,index){
  const card={id:safeText(visit?.id)||`unknown-${index+1}`,key:`service:${day.id}:${index}`,name:safeText(visit?.name)||'Сохранённое посещение',category:categories[visit?.category]||'Посещение',address:safeText(visit?.address),note:safeText(visit?.note),point:null,date:null,context:'unsupported',state:null,summary:contexts.unsupported,assessment:null,conditions:[],sources:[]};
  if(visit&&Object.hasOwn(visit,'provenance'))card.provenance=structuredClone(visit.provenance);
  if(!validServiceVisit(visit))return card;
+ card.selection_facts=serviceSelectionFacts(visit);
  let prepared;try{prepared=engine.serviceTrip(visit);}catch{return card;}
  const a=prepared.assessment;card.context=serviceVisitContext(visit,day);card.assessment=a;card.point=prepared.visit.point;card.date=a.visit.date;card.state=a.state;card.summary=contexts[card.context]||states[a.state];
  card.cost=price(a.quote?.cost_total??null,a.quote?.cost_lower_bound??0);

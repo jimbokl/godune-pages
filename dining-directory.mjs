@@ -1,10 +1,12 @@
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=2';
+import {showSpatialDistance} from './service-context.mjs?v=13';
 import {regionMapStyle} from './region-map.mjs?v=2';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 const root=document.querySelector('[data-dining-directory]');
 if(root) {
   let choicesReady;
   root.querySelectorAll('[data-dining-menu]').forEach(menu=>menu.addEventListener('toggle',()=>{
-    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=1').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
+    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=6').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
   }));
   const form=root.querySelector('.dining-filters'),cards=[...root.querySelectorAll('[data-dining-card]')];
   const status=root.querySelector('[data-dining-count]'),empty=root.querySelector('[data-dining-empty]');
@@ -15,6 +17,10 @@ if(root) {
     const d=card.dataset,items=[...card.querySelectorAll('.food-item-name')].map(item=>item.textContent);
     return [card,normalize([d.name,d.address,d.cuisine,d.category,...items].join(' '))];
   }));
+  const cardMap=new Map(cards.map(card=>[card.dataset.id,card]));
+  for(const card of cards){const label=document.createElement('p');label.dataset.spatialDistance='';label.hidden=true;card.querySelector('.dining-address').after(label);}
+  let nearby=null,eligible=null;
+  const routeFilter=initDiningRouteFilter({root,cards,base,area:'zelenogradsk',onResult(result){nearby=result;eligible=result?new Set(result.eligible_ids):null;showSpatialDistance(cardMap,nearby);filter();}});
   let map,library,markers=[],popup;
   function libraryReady() {
     if(window.maplibregl)return Promise.resolve();
@@ -59,11 +65,11 @@ if(root) {
     const words=query.split(/\s+/).filter(Boolean);
     cards.forEach(card=>{
       const d=card.dataset,text=searchText.get(card);
-      card.hidden=!!((category&&!d.category.split(' · ').includes(category)) || (form.elements.photos.checked&&d.photo!=='true') || (form.elements.menu.checked&&Number(d.menu)===0) || !words.every(word=>text.includes(word)));
+      card.hidden=!!((eligible&&!eligible.has(d.id)) || (category&&!d.category.split(' · ').includes(category)) || (form.elements.photos.checked&&d.photo!=='true') || (form.elements.menu.checked&&Number(d.menu)===0) || !words.every(word=>text.includes(word)));
     });
     const count=cards.filter(card=>!card.hidden).length;status.textContent=`Найдено: ${count}`;empty.hidden=count>0;redraw();
   }
   form.hidden=false;toggle.hidden=false;root.querySelectorAll('[data-dining-location]').forEach(button=>{button.hidden=false;button.addEventListener('click',()=>showMap(cards.find(card=>card.dataset.id===button.dataset.diningLocation)));});
-  form.addEventListener('submit',event=>event.preventDefault());form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('reset',()=>setTimeout(filter,0));
+  form.addEventListener('submit',event=>event.preventDefault());form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('reset',()=>{routeFilter.reset();setTimeout(filter,0);});
   toggle.addEventListener('click',()=>{if(panel.hidden)showMap();else{panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.textContent='Показать на карте';}});
 }
