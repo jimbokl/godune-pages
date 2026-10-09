@@ -84,7 +84,7 @@ export function initDiningMenuChoices(root,base){
  const cache=new Map();let contextPromise,opened;
  async function context(){
   if(!contextPromise)contextPromise=(async()=>{
-   const [{createTripMemory},{loadTrip},response]=await Promise.all([import('./trip-memory.mjs?v=23'),import('./trip-memory-bootstrap.mjs?v=2'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'})]);
+   const [{createTripMemory},{loadTrip},response]=await Promise.all([import('./trip-memory.mjs?v=24'),import('./trip-memory-bootstrap.mjs?v=3'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'})]);
    if(!response.ok)throw Error('catalog_load');const catalog=await response.json();let storage;try{storage=localStorage;}catch{}
    const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
    document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});

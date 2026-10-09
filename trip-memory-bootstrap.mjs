@@ -1,4 +1,4 @@
-import {TRIP_KEY,emptyTrip,cleanTrip} from './trip-state.mjs?v=27';
+import {TRIP_KEY,emptyTrip,cleanTrip} from './trip-state.mjs?v=28';
 
 // The catalog and planner enter the same saved draft, including older route lists.
 export function loadTrip(storage,catalog){

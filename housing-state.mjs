@@ -1,4 +1,4 @@
-import {journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=24';
+import {journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=25';
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 import {baseId,validBase} from './personal-points.mjs?v=3';
 import {resolvePair,resolveAccessBetween,loadTripTravelMatrix,travelMode} from './travel-estimates.mjs?v=11';

@@ -1,9 +1,10 @@
-import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=24';
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=27';
+import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=25';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=28';
 import {validSchedule} from './trip-schedule-state.mjs?v=17';
 import {serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
 import {transferConnectionImportIssue} from './trip-transfer-connections-contract.mjs';
 import {menuChoiceImportIssue} from './trip-menu-choices-contract.mjs';
+import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
 export function createTripFile(state, catalog, now = new Date()) {
@@ -27,6 +28,8 @@ export function readTripFile(text, catalog) {
     if (document?.format !== 'godune.trip') return {error: 'Это другой файл. Выберите файл поездки, сохранённый на «Маршрутах Балтики». Ваш черновик на месте.'};
     if (document.version !== 1) return {error: 'Этот файл создан в другой версии поездки. Ваш черновик на месте.'};
     const trip = document.trip;
+    const transportIssue=transportPlansImportIssue(trip);
+    if(transportIssue)return {error:transportIssue};
     const menuIssue=menuChoiceImportIssue(trip);
     if(menuIssue)return {error:menuIssue};
     if (!trip || trip.version !== 1 || ![trip.places, trip.routes].every(list => Array.isArray(list) && list.every(id => typeof id === 'string'))

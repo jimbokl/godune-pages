@@ -1,5 +1,5 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=40';
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,addServiceVisitToDate,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=2';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
 import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=9';
@@ -30,7 +30,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=23'),import('./workshop.mjs?v=98')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=24'),import('./workshop.mjs?v=99')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
@@ -66,7 +66,7 @@ export async function pickServiceVisit(metadata,selection,base,opener){
  const receipt=node('div',undefined,'visit-receipt');receipt.hidden=true;
  const open=node('a','Открыть мой день →','visit-primary');open.href=new URL('planner/#my-trip',base);receipt.append(open);
  const download=button('Скачать файл поездки');download.hidden=true;
- download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=4');downloadTripFile(memory.get(),catalog);});
+ download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=29');downloadTripFile(memory.get(),catalog);});
  form.append(dayLabel,noteLabel,save);dialog.append(close,heading,summary(prepared.visit,prepared.assessment),form,status,receipt,download);document.body.append(dialog);
  close.addEventListener('click',()=>dialog.close());
  // Escape and the close button restore focus to the original card.

@@ -1,6 +1,6 @@
 import {enhanceWaveStops} from './wave-stop-ui.mjs?v=4';
 import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=3';
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=8';

@@ -83,7 +83,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const coverHeight=Math.max(65,Math.min(phone?180:300,y-51-(phone?155:180)));
   if(first){await image(media.photos[first.id],coverHeight);text('Авторский снимок · '+first.name,{size:8,color:muted,space:8});}
   else if(media.overview[snapshot.days[0].id])await image(media.overview[snapshot.days[0].id],coverHeight);
-  text(snapshot.transport_receipt?'Ваш транспортный план, суммы и источники остаются в этом файле без сети.':'Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
+  text(snapshot.transport_receipt||snapshot.days.some(d=>d.transport_plans?.length)?'Ваш транспортный план, суммы и источники остаются в этом файле без сети.':'Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
   for(const [index,day]of snapshot.days.entries()){
@@ -96,7 +96,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(day.summary);
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
-    text(`${plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
+    text(`${day.transport_plans?.length&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?180:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
     for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):' · координаты пока не записаны'}`,{size:phone?9.5:11,space:8});

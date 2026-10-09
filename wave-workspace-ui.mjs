@@ -1,5 +1,6 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=24';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=25';
 import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=8';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 
 const el=(tag,classes,text)=>{const node=document.createElement(tag);if(classes)node.className=classes;if(text)node.textContent=text;return node;};
 const areaNames={'zelenogradsk':'Зеленоградск','svetlogorsk':'Светлогорск','kaliningrad':'Калининград','kurshskaya-kosa':'Куршская коса','baltiysk':'Балтийск','yantarnyy':'Янтарный'};
@@ -13,7 +14,7 @@ export function waveCover(trip,catalog){
  const dining=points.some(p=>p.category==='restaurant');
  const title=named||(day.kosa_plan?'День на Куршской косе':areas.length===1?(areas[0]==='zelenogradsk'&&dining?'Зеленоградск на вкус':areaNames[areas[0]]||'День на волне'):'Ваш день на волне');
  const photo=areas.length===1&&areas[0]==='zelenogradsk'?'assets/author/zelenogradsk-2026-10-03/promenade-1920.avif':points.flatMap(p=>p.photos||[]).find(path=>typeof path==='string'&&path.startsWith('assets/author/'));
- return {title,photo,subtitle:areas.length===1&&areas[0]==='zelenogradsk'&&dining?'Море, прогулка и местная кухня.':points.length?'Ваши места, дорога и время для себя.':'Выберите прогулку — остальное соберём в ваш день.'};
+ return {title,photo,subtitle:areas.length===1&&areas[0]==='zelenogradsk'&&dining?'Море, прогулка и местная кухня.':points.length?'Ваши места, дорога и время для себя.':hasTransportPlans(day)?'Дорога сохранена. Возьмите расчёт с собой или добавьте прогулку.':'Выберите прогулку — остальное соберём в ваш день.'};
 }
 
 /** The same Trip and controls in a smaller, mobile-first frame. */
@@ -53,9 +54,9 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=31');const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=32');const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
-  finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=workspacePoints(read(),catalog).length===0&&!selectedDay(read()).service_visits?.length;}
+  finally{downloading=false;button.textContent='Скачать буклет ↓';const day=selectedDay(read());button.disabled=workspacePoints(read(),catalog).length===0&&!day.service_visits?.length&&!hasTransportPlans(day);}
  });
  daySelect.addEventListener('change',async()=>{daySelect.disabled=true;try{await commit(current=>chooseTripDay(current,daySelect.value),'День открыт.');}finally{daySelect.disabled=false;}});
  add.addEventListener('click',async()=>{add.disabled=true;try{await commit(current=>addTripDay(current),'Новый день сохранён.');}finally{add.disabled=false;}});
@@ -66,7 +67,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
   if(day.id!==savedDay){saved.textContent='';savedDay=day.id;}
   if(key!==coverKey){if(title)title.textContent=view.title;if(subtitle)subtitle.textContent=view.subtitle;cover.hidden=!view.photo;if(view.photo)cover.src=new URL(view.photo,base);coverKey=key;}
   const nextKey=JSON.stringify(days.map(d=>[d.id,d.date,d.name]));if(nextKey!==daysKey){daySelect.replaceChildren(...days.map((d,i)=>{const opt=el('option','',`День ${i+1}${d.date?' · '+new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(d.date+'T12:00:00Z')):''}`);opt.value=d.id;return opt;}));daysKey=nextKey;}daySelect.value=day.id;
-  if(!downloading)button.disabled=workspacePoints(trip,catalog).length===0&&!day.service_visits?.length;
+  if(!downloading)button.disabled=workspacePoints(trip,catalog).length===0&&!day.service_visits?.length&&!hasTransportPlans(day);
   download.hidden=button.disabled&&!downloading;
   const wizard=document.querySelector('#planner-new-day');if(wizard)wizard.hidden=!wizard.open&&(trip.places.length>0||days.length>1);
  }};

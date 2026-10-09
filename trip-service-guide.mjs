@@ -3,7 +3,7 @@ import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day
 import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=5';
 import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
 import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs';
-import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=24';
+import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=25';
 import {formatKopecks as money} from './trip-money.mjs';
 import {clock} from './day-stop-view.mjs?v=1';
 import {railJourney,excursionJourney} from './day-journey-view.mjs?v=8';

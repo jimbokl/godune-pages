@@ -1,6 +1,7 @@
-import {collectTripGuide} from './trip-guide-engine.mjs?v=23';
-import {collectGuideMedia} from './trip-guide-media.mjs?v=3';
-import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=19';
+import {recordTransportAction} from './transport-useful-actions.mjs';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=24';
+import {collectGuideMedia} from './trip-guide-media.mjs?v=4';
+import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=21';
 import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=11';
 import {savedKosaJourney} from './day-kosa-journey.mjs?v=13';
@@ -18,5 +19,6 @@ export async function downloadPersonalGuide({trip,catalog,base,scope,format,sign
   signal?.throwIfAborted();if(!stillCurrent())throw Error('guide_trip_changed');
   const url=URL.createObjectURL(new Blob([result.bytes],{type:'application/pdf'})),a=document.createElement('a');
   a.href=url;a.download=`godune-${scope}-${snapshot.days[0].date || 'plan'}-${format}.pdf`;a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);
+  for(const profile of new Set(snapshot.days.flatMap(day=>(day.transport_plans||[]).map(e=>e.receipt.profile))))recordTransportAction({profile,action:'pdf_ready'});
   return result;
 }

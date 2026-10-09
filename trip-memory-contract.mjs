@@ -1,3 +1,4 @@
+import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs';
 export const MEMORY_VERSION = 1;
 
 export class MemoryCompatibilityError extends Error {
@@ -22,6 +23,8 @@ export function checkMemoryTrip(state) {
   if (!Array.isArray(state.places) || !Array.isArray(state.routes)
     || ![...state.places, ...state.routes].every(id => typeof id === 'string'))
     fail('damaged-trip', 'Не удалось прочитать сохранённую поездку. Исходную копию можно скачать.');
+  const transportIssue=transportPlansImportIssue(state);
+  if(transportIssue)fail('unsupported-transport-plans',transportIssue);
 }
 
 export function checkMemoryRecord(record, clock) {

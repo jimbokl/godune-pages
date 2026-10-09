@@ -1,5 +1,5 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=40';
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {hasServiceVisits,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=11';
 import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=5';

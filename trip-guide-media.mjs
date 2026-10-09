@@ -44,6 +44,7 @@ async function raster(bytes,type,{signal,maxWidth=1000,jpeg=false}={}) {
   }finally{img.src='';URL.revokeObjectURL(url);}
 }
 export async function collectGuideMedia(snapshot,base,{signal,onProgress=()=>{}}={}) {
+  if(snapshot.days.every(day=>!day.stops?.length&&!day.services?.length))return {maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]};
   const read=async path=>{signal?.throwIfAborted();const r=await fetch(new URL(path,base),{signal});if(!r.ok)throw Error('guide_maps_unavailable');return {bytes:new Uint8Array(await r.arrayBuffer()),type:r.headers.get('content-type')};};
   const json=async path=>JSON.parse(new TextDecoder().decode((await read(path)).bytes));
   const [land,source,water]=await Promise.all([json('data/region-map/land.geojson'),json('data/region-map/source.json'),json('data/guide-water.json')]);

@@ -1,5 +1,5 @@
 import {defaultSchedule,planInput} from './trip-schedule-state.mjs?v=17';
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {timingTrial} from './day-timing-advice.mjs?v=8';
 import {resolveRail,rideSnapshot} from './trip-rail-state.mjs?v=6';
 import {visitShelter,withShelterReplacements,shelterAssignments} from './day-shelter-advice.mjs?v=6';

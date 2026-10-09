@@ -1,4 +1,4 @@
-import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=24';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=25';
 import {tripSignature} from './trip-light.mjs?v=13';
 import {currentProgress} from './day-progress.mjs?v=2';
 import {kosaInput,kosaBusSnapshot,kosaRailSnapshot} from './kosa-plan-state.mjs?v=24';

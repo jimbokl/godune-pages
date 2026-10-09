@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {transferEditorPairs,publishedTransferRoutes,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=6';
 import {bookingEffects} from './trip-bookings-state.mjs?v=2';
 import {canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=3';

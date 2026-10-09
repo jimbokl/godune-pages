@@ -1,6 +1,6 @@
 // Read-only map projection. The day engine owns timing; a named stop never
 // borrows the coordinates of a nearby attraction or a straight-line path.
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {tripSignature} from './trip-light.mjs?v=13';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs';

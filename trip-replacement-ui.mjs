@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=17';
 import {transferTitle} from './trip-transfer-costs.mjs?v=7';
 import {rubles} from './trip-budget-state.mjs?v=2';

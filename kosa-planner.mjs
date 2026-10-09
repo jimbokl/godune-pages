@@ -1,7 +1,7 @@
 import {transitTable} from './transport-day.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=24';
-import {createTripFile} from './trip-file.mjs?v=28';
+import {createTripFile} from './trip-file.mjs?v=29';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=22';
 import {assessKosa} from './day-readiness.mjs?v=6';
 import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=3';

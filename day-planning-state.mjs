@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {tripSignature} from './trip-light.mjs?v=13';
 import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=5';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';

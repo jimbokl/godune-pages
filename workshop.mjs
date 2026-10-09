@@ -1,24 +1,26 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=27';
-import {initTripSharing} from './trip-link.mjs?v=50';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=23';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=28';
+import {initTripSharing} from './trip-link.mjs?v=51';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=24';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=3';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=7';
 import {createPlanningProgress} from './planning-progress.mjs?v=2';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=23';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=44';
-import {initTripDays} from './trip-days-ui.mjs?v=36';
+import {initTripDays} from './trip-days-ui.mjs?v=37';
 import {initServiceVisits} from './trip-service-visits-ui.mjs?v=12';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=1';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=27';
+import {initDayWorkspace} from './day-workspace.mjs?v=28';
 import {addTripStarter} from './trip-starters.mjs?v=24';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=24';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=25';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=16';
 import {initTripReplacement} from './trip-replacement-ui.mjs?v=21';
 import {initTripRail} from './trip-rail-ui.mjs?v=18';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=27';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=28';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs?v=2';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=3';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }
@@ -96,6 +98,7 @@ export async function initWorkshop(catalog, base) {
   await yieldTask();
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const visits = initServiceVisits({mount:$('#my-trip'),read:()=>state,commit,base,catalog,onExpense:days.recordServiceExpense});
+  const transportPlans=initTransportPlans({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   await yieldTask();
   const cancellation = initTripCancellation({read:()=>state,commit,catalog});
   await yieldTask();
@@ -149,7 +152,8 @@ export async function initWorkshop(catalog, base) {
   }
   function refresh() {
     const hasVisits=journeyDays(state).some(day=>serviceVisitRows(day).length>0);
-    const hasTrip = tripHasPlaces(state)||hasVisits;
+    const hasTransport=journeyDays(state).some(hasTransportPlans);
+    const hasTrip = tripHasPlaces(state)||hasVisits||hasTransport;
     const draft = $('#trip-draft'); if (draft) draft.hidden = !hasTrip && !state.itinerary;
     const starters = $('#trip-starters');
     if (starters && starterEmpty !== !hasTrip) { starters.open = !hasTrip; starterEmpty = !hasTrip; }
@@ -167,6 +171,7 @@ export async function initWorkshop(catalog, base) {
     rail.render();
     days.render();
     visits.render();
+    transportPlans.render();
     replacement.render();
     cancellation.render();
     workspace.render();
@@ -185,12 +190,12 @@ export async function initWorkshop(catalog, base) {
       notice.textContent = memory.compatibility?.message || 'Браузер не подтвердил сохранение. Текущий план можно скачать в файл.';
     }
     document.querySelectorAll('[data-my-trip]').forEach(link => {
-      const count=journeyDays(state).reduce((sum,day)=>sum+day.places.length+serviceVisitRows(day).length,0);
+      const count=journeyDays(state).reduce((sum,day)=>sum+day.places.length+serviceVisitRows(day).length+(day.transport_plans?.entries.length||0),0);
       link.textContent = 'Мой маршрут' + (count || state.routes.length ? ` · ${count || state.routes.length}` : '');
     });
     renderList('places'); renderList('routes');
     const emptyDay = $('#my-places-empty');
-    if(state.itinerary && !state.places.length && emptyDay)emptyDay.textContent=serviceVisitRows(state.itinerary.days.find(day=>day.id===state.itinerary.active)).length?'Добавьте прогулку рядом с посещением.':'Этот день ещё свободен. Добавьте места или выберите готовую прогулку.';
+    if(state.itinerary && !state.places.length && emptyDay)emptyDay.textContent=hasTransportPlans(state.itinerary.days.find(day=>day.id===state.itinerary.active))?'Дорога сохранена. Добавьте места, которые хотите посмотреть.':serviceVisitRows(state.itinerary.days.find(day=>day.id===state.itinerary.active)).length?'Добавьте прогулку рядом с посещением.':'Этот день ещё свободен. Добавьте места или выберите готовую прогулку.';
     document.querySelectorAll('[data-route-stops]').forEach(node => {
       const route = catalog.routes.find(row => row.slug === node.dataset.routeStops);
       const done = route?.stops.every(stop => state.places.includes(stop.poi));
@@ -198,7 +203,7 @@ export async function initWorkshop(catalog, base) {
       node.textContent = done ? 'Остановки добавлены ✓' : 'Добавить остановки в мой маршрут';
     });
     const summary = $('#my-trip-summary');
-    if (summary) summary.textContent = hasTrip ? `${available ? 'Ваш выбор сохранён.' : 'Ваш выбор останется в этой вкладке.'} ${hasVisits?'Посещения — в выбранных днях. Добавьте прогулку рядом.':'Добавьте остановку, поменяйте порядок или разложите день по времени.'}` : 'Выберите прогулку — её остановки появятся в вашем маршруте. Или начните с места, к которому хочется вернуться.';
+    if (summary) summary.textContent = hasTrip ? `${available ? 'Ваш выбор сохранён.' : 'Ваш выбор останется в этой вкладке.'} ${hasTransport?'Дорога — в выбранных днях. Сохранённые рейсы и источники войдут в буклет.':hasVisits?'Посещения — в выбранных днях. Добавьте прогулку рядом.':'Добавьте остановку, поменяйте порядок или разложите день по времени.'}` : 'Выберите прогулку — её остановки появятся в вашем маршруте. Или начните с места, к которому хочется вернуться.';
   }
   async function commit(next, message, options = {}) {
     // Controls installed in earlier tasks may receive input while later panels

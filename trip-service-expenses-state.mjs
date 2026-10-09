@@ -1,4 +1,4 @@
-import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=24';
+import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=25';
 import {dayPeople} from './trip-party.mjs?v=1';
 import {putExpense} from './trip-expenses-state.mjs?v=11';
 import {validServiceVisit,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';

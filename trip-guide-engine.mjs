@@ -1,9 +1,11 @@
+import {transportGuideRows} from './trip-transport-plans-view.mjs';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs';
 import {partyLabel} from './trip-party.mjs?v=1';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {assessDayPreferences} from './day-preferences.mjs?v=6';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=24';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=25';
 import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=17';
 import {resolveRail} from './trip-rail-state.mjs?v=6';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2';
@@ -71,13 +73,13 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
   if(!['day','trip'].includes(scope))throw Error('guide_invalid_scope');
   const saved=structuredClone(trip),days=scope==='day'?[selectedDay(saved)]:journeyDays(saved),out=[];
   for(const [index,record] of days.entries()) {
-    const current=chooseTripDay(saved,record.id),generated=!!record.kosa_plan;
+    const current=chooseTripDay(saved,record.id),generated=!!record.kosa_plan,transport=record.transport_plans?.entries||[],transportOnly=transport.length>0&&!current.places.length&&!serviceVisitRows(record).length&&!generated;
     const kosa=generated?await kosaFor(current):null;
     const points=[...new Set([...(generated?['vysota-efa',...(record.kosa_plan.walks==='two'?['tancuyushchiy-les']:[])]:[]),...current.places])];
     const guide=buildGuide(catalog,{trip:{...current,places:points}});
-    const matrix=generated?null:await matrixFor(current),services=serviceGuide(calculate,current,catalog,matrix);
-    const result=generated?null:services?.check?.itinerary?services.check.places:calculate(planInput(current,catalog,matrix));
-    let roads=generated?{type:'FeatureCollection',features:[]}:await roadsFor(current,matrix);
+    const matrix=generated||transportOnly?null:await matrixFor(current),services=serviceGuide(calculate,current,catalog,matrix);
+    const result=generated||transportOnly?null:services?.check?.itinerary?services.check.places:calculate(planInput(current,catalog,matrix));
+    let roads=generated||transportOnly?{type:'FeatureCollection',features:[]}:await roadsFor(current,matrix);
     // Legacy geometry must not bridge two places with a service in between.
     if(services){
       const pairs=(services.check?.itinerary?.connections||[]).filter(c=>c.status==='known'&&c.leg?.mode==='foot').map(c=>{
@@ -86,16 +88,17 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
       }).filter(Boolean);
       roads={...roads,features:(roads.features||[]).filter(f=>f.properties?.mode==='foot'&&f.properties.kind==='travel'&&pairs.some(p=>p.from===f.properties.from&&p.to===f.properties.to))};
     }
-    const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:mixedGuideRows(current,catalog,services||{},guideIssue)||guideDayRows(current,catalog,result,matrix);
+    const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:transportOnly?[]:mixedGuideRows(current,catalog,services||{},guideIssue)||guideDayRows(current,catalog,result,matrix);
     if(services&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),state:'unknown'});
+    if(transport.length)rows.push(...transportGuideRows(transport,record));
     const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};});
-    const entries=guideEntries(record,stops,services?.services||[]),complete=!services||!!services.check?.itinerary;
+    const entries=guideEntries(record,stops,services?.services||[]),complete=!transport.length&&(!services||!!services.check?.itinerary);
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
-    out.push({id:record.id,name:record.name || (generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
-      record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:services?(services.check?.state||'needs_info'):generated?kosa.state:result.status,summary:services?services.summary+(generated?' '+kosa.message:''):generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
+    out.push({id:record.id,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${journeyDays(saved).findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
+      record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:transport.length?'needs_info':services?(services.check?.state||'needs_info'):generated?kosa.state:result.status,summary:transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':services?services.summary+(generated?' '+kosa.message:''):generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
-      rows,roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
+      rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
       stops,entries,menu_choices:menuChoiceGuide(record),services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
       planB:generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});

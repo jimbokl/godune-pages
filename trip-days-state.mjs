@@ -10,6 +10,7 @@ import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contra
 import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=1';
 import {hasTransferConnections} from './trip-transfer-connections-contract.mjs';
 import {hasMenuChoices,validMenuChoices,menuChoiceRows} from './trip-menu-choices-contract.mjs';
+import {hasTransportPlans,validTransportPlans,copiedTransportPlans,transportPlansImportIssue} from './trip-transport-plans-contract.mjs';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
@@ -19,6 +20,7 @@ export function validJourney(journey) {
   return journey.days.every(day=>{
     if(!object(day))return false;
     if(!validMenuChoices(day))return false;
+    if(!validTransportPlans(day))return false;
     if(Object.hasOwn(day,'visited')&&(!Array.isArray(day.visited)||!day.visited.every(id=>typeof id==='string')||new Set(day.visited).size!==day.visited.length))return false;
     if(Object.hasOwn(day,'bookings')&&!validBookings(day.bookings))return false;
     if(Object.hasOwn(day,'wave')&&!validDayWave(day.wave))return false;
@@ -42,6 +44,7 @@ export function validJourneyProjection(trip) {
 }
 const snapshot=(trip,id='day-1')=>({id,date:trip.date,places:[...trip.places],...(trip.schedule?{schedule:structuredClone(trip.schedule)}:{}),start_at:null,night_at:null,note:'',costs:{}});
 export function cleanJourney(value,trip,catalog) {
+  const transportIssue=transportPlansImportIssue({itinerary:value});if(transportIssue)throw Error(transportIssue);
   if(!validJourney(value))return null;
   const known=new Set(catalog.poi.map(p=>p.slug));
   const days=value.days.map(saved=>{
@@ -61,7 +64,7 @@ export const selectedDay=trip=>trip.itinerary?.days.find(day=>day.id===trip.itin
 export function dayHasContent(trip) {
   const day=selectedDay(trip);
   if(day.places.length || day.start_at || day.night_at || day.note?.trim() || day.wave || day.party || hasPreferences(day.preferences)
-    || Object.keys(day.costs || {}).length || day.bookings?.length || day.visited?.length || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day))return true;
+    || Object.keys(day.costs || {}).length || day.bookings?.length || day.visited?.length || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day)||hasTransportPlans(day))return true;
   const schedule=day.schedule || trip.schedule;if(!schedule)return false;
   const stable=value=>JSON.stringify(value,(_,row)=>object(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
   const {mode,...settings}=schedule;
@@ -69,7 +72,7 @@ export function dayHasContent(trip) {
 }
 export const tripHasPlaces=trip=>journeyDays(trip).some(day=>dayPointIds(day).length) || !!trip.routes.length;
 export const tripHasExpenses=trip=>journeyDays(trip).some(day=>Object.values(day.costs).some(row=>row.items?.length || row.amount!==null && row.amount!==undefined || row.paid!==null && row.paid!==undefined));
-export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.start_at || day.night_at || day.bookings?.length || day.schedule?.rail || hasPreferences(day.preferences) || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day));
+export const tripHasDraft=trip=>tripHasPlaces(trip) || tripHasExpenses(trip) || journeyDays(trip).some(day=>day.start_at || day.night_at || day.bookings?.length || day.schedule?.rail || hasPreferences(day.preferences) || hasServiceVisits(day)||hasTransferConnections(day)||hasMenuChoices(day)||hasTransportPlans(day));
 export const tripPlaceIds=trip=>[...new Set(journeyDays(trip).flatMap(day=>[...dayPointIds(day),day.start_at,day.night_at,...(day.bookings||[]).flatMap(row=>[row.location,row.target])]).filter(id=>typeof id==='string'))];
 export function ensureJourney(trip) {
   if(trip.itinerary)return structuredClone(trip);
@@ -92,7 +95,7 @@ export function nextDate(value) {
 }
 export function addTripDay(trip,copy=false) {
   const next=ensureJourney(trip), current=selectedDay(next), day=copy?structuredClone(current):snapshot({...trip,places:[],schedule:trip.schedule?{...trip.schedule,stops:{}}:defaultSchedule()});
-  if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(Object.hasOwn(day,'service_visits'))day.service_visits=copiedServiceVisits(day.service_visits);if(day.schedule?.rail)day.schedule.rail.date=null;}
+  if(copy){delete day.visited;day.costs=unpaidCopy(day.costs);if(day.bookings)day.bookings=copiedBookings(day.bookings);if(Object.hasOwn(day,'service_visits'))day.service_visits=copiedServiceVisits(day.service_visits);if(Object.hasOwn(day,'transport_plans'))day.transport_plans=copiedTransportPlans(day);if(day.schedule?.rail)day.schedule.rail.date=null;}
   if(day.schedule)delete day.schedule.progress;
   day.id=nextId(next.itinerary.days);day.date=nextDate(next.itinerary.days.at(-1).date);
   if(!copy){day.start_at=effectiveBookingDay(current).night_at;day.night_at=effectiveBookingDay(current).night_at;if(current.party)day.party=structuredClone(current.party);if(current.preferences)day.preferences=structuredClone(current.preferences);}

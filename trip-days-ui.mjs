@@ -1,3 +1,4 @@
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=1';
 import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=5';
 import {initTripBookings} from './trip-bookings-ui.mjs?v=17';
@@ -5,7 +6,7 @@ import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=22';
 import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=1';
 import {serviceBudgetInput} from './trip-service-budget.mjs';
-import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,COST_KINDS} from './trip-days-state.mjs?v=24';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,COST_KINDS} from './trip-days-state.mjs?v=25';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=40';
 import {loadTripTravelMatrix,TRAVEL_MODES,travelMode} from './travel-estimates.mjs?v=11';
@@ -103,6 +104,8 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       $('#journey-total').textContent=forecast.total===null?`${rubles(forecast.known)} известно · полный бюджет пока неизвестен`:`${rubles(forecast.total)} на всех`+(forecast.varying_people?' · число путешественников различается по дням':` · ${rubles(forecast.per_person)} на человека`);
       const active=forecast.days.find(day=>day.id===selectedDay(trip).id),daySummary=$('#journey-budget-day');
       daySummary.textContent=active.total===null?`Этот день: ${rubles(active.known)} известно. Есть суммы, которые нужно уточнить.`:`Оценка этого дня: ${rubles(active.total)} на всех.`;
+      if(journeyDays(trip).some(hasTransportPlans))$('#journey-total').textContent+=' · без отдельных транспортных расчётов';
+      if(hasTransportPlans(selectedDay(trip)))daySummary.textContent+=' Транспортный расчёт — отдельно.';
       section.dataset.budgetReady='true';
       const matrices=await loadJourneyTravelMatrices(base,trip,catalog);if(ticket!==sequence)return;
       $('#journey-overview-days').replaceChildren(...journeyDays(trip).map((day,index)=>{
@@ -117,8 +120,8 @@ export function initTripDays({mount,read,commit,base,catalog}) {
             if(['conflict','overrun'].includes(result.status))text+=' · не всё помещается';
             if(result.finish===null)text+=' · дорогу нужно уточнить';
           }catch(error){if(error.message==='departure_before_day')text+=' · отъезд не оставляет времени этому дню';else if(error.message==='arrival_after_day')text+=' · прибытие позже конца дня';else throw error;}
-        }else text+=' · выберите места';
-        text+=total.total===null?` · ${rubles(total.known)} известно`:` · ${rubles(total.total)}`;summary.textContent=text;li.append(summary);
+        }else text+=hasTransportPlans(day)?' · дорога сохранена':' · выберите места';
+        text+=total.total===null?` · ${rubles(total.known)} известно`:` · ${rubles(total.total)}`;summary.textContent=text;li.append(summary);if(hasTransportPlans(day))li.append(el('p','Транспортный расчёт показан отдельно; в этот бюджет и время он не входит.','journey-day-note'));
         for(const [field,caption]of [['start_at','От'],['night_at','К ночи']])if(effectiveBookingDay(day)[field])li.append(el('p',`${caption}: ${baseName(effectiveBookingDay(day)[field],catalog)}`,'journey-day-note'));
         return li;
       }));
@@ -131,7 +134,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     $('#journey-count').textContent=`${days.length} ${plural(days.length,'день','дня','дней')}`;
     $('#journey-days').replaceChildren(...days.map((row,index)=>{
       const b=button('', 'choose',row.id);b.className='journey-day';b.setAttribute('aria-pressed',String(row.id===day.id));
-      b.append(el('span',`День ${index+1}`,'journey-day-number'),el('span',dateLabel(row.date),'journey-day-date'),el('span',stopsLabel(row.places.length),'journey-day-points'));return b;
+      b.append(el('span',`День ${index+1}`,'journey-day-number'),el('span',dateLabel(row.date),'journey-day-date'),el('span',hasTransportPlans(row)?`${row.places.length?stopsLabel(row.places.length)+' · ':''}дорога сохранена`:stopsLabel(row.places.length),'journey-day-points'));return b;
     }));
     section.querySelector('[data-journey-action="remove"]').hidden=days.length===1;
     renderForms(trip);bookings.render(trip);expenses.render(trip);expenses.pending();menuChoices.render(trip);section.dataset.budgetReady='false';

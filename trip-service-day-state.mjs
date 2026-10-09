@@ -1,4 +1,4 @@
-import {selectedDay} from './trip-days-state.mjs?v=24';
+import {selectedDay} from './trip-days-state.mjs?v=25';
 import {planInput} from './trip-schedule-state.mjs?v=17';
 import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
 import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=5';
