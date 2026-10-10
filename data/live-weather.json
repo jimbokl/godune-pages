@@ -16,18 +16,8 @@
       "poi": "promenad-zelenogradsk",
       "lat": 54.9635,
       "lon": 20.4808,
-      "model_updated_at": "2026-10-10T22:29:32Z",
+      "model_updated_at": "2026-10-10T23:30:35Z",
       "hours": [
-        {
-          "time": "2026-10-10T22:00:00Z",
-          "temperature_c": 10.5,
-          "wind_ms": 2.5,
-          "wind_from_degrees": 186.0,
-          "cloud_percent": 69.9,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-10T23:00:00Z",
           "temperature_c": 9.9,
@@ -270,7 +260,7 @@
         },
         {
           "time": "2026-10-11T23:00:00Z",
-          "temperature_c": 8.7,
+          "temperature_c": 8.6,
           "wind_ms": 3.9,
           "wind_from_degrees": 184.0,
           "cloud_percent": 50.7,
@@ -460,7 +450,7 @@
         },
         {
           "time": "2026-10-12T18:00:00Z",
-          "temperature_c": 11.4,
+          "temperature_c": 11.3,
           "wind_ms": 7.1,
           "wind_from_degrees": 311.0,
           "cloud_percent": 98.2,
@@ -490,7 +480,7 @@
         },
         {
           "time": "2026-10-12T21:00:00Z",
-          "temperature_c": 10.9,
+          "temperature_c": 11.0,
           "wind_ms": 6.2,
           "wind_from_degrees": 302.0,
           "cloud_percent": 93.8,
@@ -589,13 +579,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T22:59:17.181637Z",
-      "checked_at": "2026-10-10T23:26:34.392260Z",
+      "received_at": "2026-10-10T23:35:02.168957Z",
+      "checked_at": "2026-10-10T23:35:02.168957Z",
       "sun": {
         "date": "2026-10-11",
         "sunrise": "2026-10-11T04:59:00Z",
         "sunset": "2026-10-11T15:49:00Z",
-        "received_at": "2026-10-10T23:26:34.392260Z"
+        "received_at": "2026-10-10T23:35:02.168957Z"
       }
     },
     {
@@ -604,18 +594,8 @@
       "poi": "vysota-efa",
       "lat": 55.2217,
       "lon": 20.8928,
-      "model_updated_at": "2026-10-10T22:29:32Z",
+      "model_updated_at": "2026-10-10T23:30:27Z",
       "hours": [
-        {
-          "time": "2026-10-10T22:00:00Z",
-          "temperature_c": 12.2,
-          "wind_ms": 4.5,
-          "wind_from_degrees": 211.0,
-          "cloud_percent": 92.4,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-10T23:00:00Z",
           "temperature_c": 11.8,
@@ -688,7 +668,7 @@
         },
         {
           "time": "2026-10-11T06:00:00Z",
-          "temperature_c": 10.1,
+          "temperature_c": 10.0,
           "wind_ms": 4.8,
           "wind_from_degrees": 202.0,
           "cloud_percent": 100.0,
@@ -698,7 +678,7 @@
         },
         {
           "time": "2026-10-11T07:00:00Z",
-          "temperature_c": 10.2,
+          "temperature_c": 10.0,
           "wind_ms": 4.9,
           "wind_from_degrees": 197.0,
           "cloud_percent": 98.7,
@@ -708,7 +688,7 @@
         },
         {
           "time": "2026-10-11T08:00:00Z",
-          "temperature_c": 11.0,
+          "temperature_c": 10.9,
           "wind_ms": 5.5,
           "wind_from_degrees": 190.0,
           "cloud_percent": 87.5,
@@ -728,7 +708,7 @@
         },
         {
           "time": "2026-10-11T10:00:00Z",
-          "temperature_c": 12.9,
+          "temperature_c": 13.0,
           "wind_ms": 5.1,
           "wind_from_degrees": 198.0,
           "cloud_percent": 20.2,
@@ -898,7 +878,7 @@
         },
         {
           "time": "2026-10-12T03:00:00Z",
-          "temperature_c": 10.4,
+          "temperature_c": 10.3,
           "wind_ms": 6.9,
           "wind_from_degrees": 208.0,
           "cloud_percent": 81.1,
@@ -908,7 +888,7 @@
         },
         {
           "time": "2026-10-12T04:00:00Z",
-          "temperature_c": 10.2,
+          "temperature_c": 10.1,
           "wind_ms": 7.6,
           "wind_from_degrees": 203.0,
           "cloud_percent": 89.8,
@@ -938,7 +918,7 @@
         },
         {
           "time": "2026-10-12T07:00:00Z",
-          "temperature_c": 11.0,
+          "temperature_c": 11.1,
           "wind_ms": 5.4,
           "wind_from_degrees": 224.0,
           "cloud_percent": 97.5,
@@ -998,7 +978,7 @@
         },
         {
           "time": "2026-10-12T13:00:00Z",
-          "temperature_c": 12.5,
+          "temperature_c": 12.4,
           "wind_ms": 2.4,
           "wind_from_degrees": 251.0,
           "cloud_percent": 92.2,
@@ -1068,7 +1048,7 @@
         },
         {
           "time": "2026-10-12T20:00:00Z",
-          "temperature_c": 11.5,
+          "temperature_c": 11.4,
           "wind_ms": 7.1,
           "wind_from_degrees": 297.0,
           "cloud_percent": 87.6,
@@ -1098,7 +1078,7 @@
         },
         {
           "time": "2026-10-12T23:00:00Z",
-          "temperature_c": 11.8,
+          "temperature_c": 11.7,
           "wind_ms": 6.4,
           "wind_from_degrees": 282.0,
           "cloud_percent": 85.1,
@@ -1158,7 +1138,7 @@
         },
         {
           "time": "2026-10-13T05:00:00Z",
-          "temperature_c": 11.0,
+          "temperature_c": 10.9,
           "wind_ms": 2.9,
           "wind_from_degrees": 39.0,
           "cloud_percent": 54.7,
@@ -1177,13 +1157,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T22:59:17.181637Z",
-      "checked_at": "2026-10-10T23:26:34.392260Z",
+      "received_at": "2026-10-10T23:35:02.168957Z",
+      "checked_at": "2026-10-10T23:35:02.168957Z",
       "sun": {
         "date": "2026-10-11",
         "sunrise": "2026-10-11T04:58:00Z",
         "sunset": "2026-10-11T15:47:00Z",
-        "received_at": "2026-10-10T23:26:34.392260Z"
+        "received_at": "2026-10-10T23:35:02.168957Z"
       }
     },
     {
@@ -1192,18 +1172,8 @@
       "poi": "promenad-svetlogorsk",
       "lat": 54.9464,
       "lon": 20.1545,
-      "model_updated_at": "2026-10-10T22:29:35Z",
+      "model_updated_at": "2026-10-10T23:30:35Z",
       "hours": [
-        {
-          "time": "2026-10-10T22:00:00Z",
-          "temperature_c": 11.0,
-          "wind_ms": 2.8,
-          "wind_from_degrees": 194.0,
-          "cloud_percent": 68.1,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-10T23:00:00Z",
           "temperature_c": 11.0,
@@ -1366,7 +1336,7 @@
         },
         {
           "time": "2026-10-11T15:00:00Z",
-          "temperature_c": 12.2,
+          "temperature_c": 12.1,
           "wind_ms": 5.0,
           "wind_from_degrees": 232.0,
           "cloud_percent": 82.5,
@@ -1406,7 +1376,7 @@
         },
         {
           "time": "2026-10-11T19:00:00Z",
-          "temperature_c": 11.1,
+          "temperature_c": 11.2,
           "wind_ms": 5.2,
           "wind_from_degrees": 234.0,
           "cloud_percent": 86.4,
@@ -1765,13 +1735,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T22:59:17.181637Z",
-      "checked_at": "2026-10-10T23:26:34.392260Z",
+      "received_at": "2026-10-10T23:35:02.168957Z",
+      "checked_at": "2026-10-10T23:35:02.168957Z",
       "sun": {
         "date": "2026-10-11",
         "sunrise": "2026-10-11T05:00:00Z",
         "sunset": "2026-10-11T15:50:00Z",
-        "received_at": "2026-10-10T23:26:34.392260Z"
+        "received_at": "2026-10-10T23:35:02.168957Z"
       }
     },
     {
@@ -1780,18 +1750,8 @@
       "poi": "kafedralny-sobor",
       "lat": 54.7064,
       "lon": 20.5114,
-      "model_updated_at": "2026-10-10T22:29:32Z",
+      "model_updated_at": "2026-10-10T23:30:35Z",
       "hours": [
-        {
-          "time": "2026-10-10T22:00:00Z",
-          "temperature_c": 10.6,
-          "wind_ms": 1.8,
-          "wind_from_degrees": 207.0,
-          "cloud_percent": 66.2,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-10T23:00:00Z",
           "temperature_c": 9.9,
@@ -1864,7 +1824,7 @@
         },
         {
           "time": "2026-10-11T06:00:00Z",
-          "temperature_c": 9.9,
+          "temperature_c": 9.8,
           "wind_ms": 1.7,
           "wind_from_degrees": 173.0,
           "cloud_percent": 76.7,
@@ -1964,7 +1924,7 @@
         },
         {
           "time": "2026-10-11T16:00:00Z",
-          "temperature_c": 12.2,
+          "temperature_c": 12.3,
           "wind_ms": 4.5,
           "wind_from_degrees": 243.0,
           "cloud_percent": 75.5,
@@ -2134,7 +2094,7 @@
         },
         {
           "time": "2026-10-12T09:00:00Z",
-          "temperature_c": 10.5,
+          "temperature_c": 10.6,
           "wind_ms": 3.9,
           "wind_from_degrees": 234.0,
           "cloud_percent": 87.8,
@@ -2353,13 +2313,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T22:59:17.181637Z",
-      "checked_at": "2026-10-10T23:26:34.392260Z",
+      "received_at": "2026-10-10T23:35:02.168957Z",
+      "checked_at": "2026-10-10T23:35:02.168957Z",
       "sun": {
         "date": "2026-10-11",
         "sunrise": "2026-10-11T04:58:00Z",
         "sunset": "2026-10-11T15:49:00Z",
-        "received_at": "2026-10-10T23:26:34.392260Z"
+        "received_at": "2026-10-10T23:35:02.168957Z"
       }
     }
   ]
