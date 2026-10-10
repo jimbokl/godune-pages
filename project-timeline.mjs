@@ -50,6 +50,8 @@ if(typeof document!=='undefined'){
   const empty=document.querySelector('[data-timeline-empty]');
   const counter=toolbar.querySelector('[data-timeline-count]');
   const exportButton=toolbar.querySelector('[data-timeline-export]');
+  const drawer=toolbar.querySelector('.timeline-filter-panel');
+  const yearHeadings=[...root.querySelectorAll('[data-timeline-year]')];
   let filters=readFilters(location.href,options);
   const apply=()=>{
    let visible=0;
@@ -58,11 +60,14 @@ if(typeof document!=='undefined'){
     card.hidden=!matches(row,filters);if(!card.hidden)visible++;
     for(const impact of card.querySelectorAll('[data-timeline-impact]'))impact.hidden=!!filters.audience&&impact.dataset.timelineImpact!==filters.audience;
     const meaning=card.querySelector('.timeline-meaning');if(meaning)meaning.open=!!filters.audience;
+    if(filters.audience&&!card.hidden)card.querySelector('.timeline-event').open=true;
    }
+   for(const heading of yearHeadings)heading.hidden=!records.some(r=>r.dataset.year===heading.dataset.timelineYear&&!r.hidden);
+   for(const link of document.querySelectorAll('.timeline-years a'))link.setAttribute('aria-current',link.hash==='#timeline-year-'+filters.year?'true':'false');
    for(const control of controls)control.value=filters[control.dataset.timelineFilter];
    counter.textContent=`Показано ${visible} из ${records.length}`;empty.hidden=visible!==0;exportButton.disabled=visible===0;
   };
-  const revealAnchor=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(target?.matches('[data-timeline-record][hidden]')){filters={};apply();history.replaceState(null,'',filterUrl(location.href,filters));target.scrollIntoView({block:'start'});}};
+  const revealAnchor=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(!target?.matches('[data-timeline-record],[data-timeline-year]'))return;if(target.hidden){filters={};apply();history.replaceState(null,'',filterUrl(location.href,filters));}const event=target.querySelector('.timeline-event');if(event)event.open=true;target.scrollIntoView({block:'start'});};
   for(const control of controls)control.addEventListener('change',()=>{filters[control.dataset.timelineFilter]=control.value;history.pushState(null,'',filterUrl(location.href,filters));apply();});
   toolbar.querySelector('[data-timeline-reset]').addEventListener('click',()=>{filters={};history.pushState(null,'',filterUrl(location.href,filters));apply();});
   window.addEventListener('popstate',()=>{filters=readFilters(location.href,options);apply();revealAnchor();});
@@ -74,6 +79,6 @@ if(typeof document!=='undefined'){
    }catch{counter.textContent='Не удалось скачать CSV. Все этапы доступны на странице.';}
    finally{exportButton.disabled=records.every(c=>c.hidden);setTimeout(()=>{counter.textContent=previous;},3000);}
   });
-  toolbar.hidden=false;apply();revealAnchor();
+  toolbar.hidden=false;if(Object.values(filters).some(Boolean))drawer.open=true;apply();revealAnchor();
  }
 }
