@@ -23,6 +23,13 @@ export function serviceSelectionFacts(visit){
   if(subject)rate+=' · '+subject;
  }else if(base?.rate?.kind==='graduated')rate='Ступенчатый'+(subject?' · '+subject:'');
  rows.push({label:'Базовый тариф',value:rate});
+ if(base?.billing?.kind==='duration'&&base.billing.minimum_minutes>0)rows.push({label:'Минимум по тарифу',value:`${base.billing.minimum_minutes} мин`});
+ if(price?.tariff?.included?.length)rows.push({label:'Включено',value:price.tariff.included.join(', ')});
+ for(const extra of price?.tariff?.extras||[]){
+  if(!price.selection.extras.includes(extra.id))continue;
+  const count=extra.scope==='unit'?(price.selection.extra_units?.[extra.id]??price.selection.units):extra.scope==='person'?price.selection.people:null;
+  rows.push({label:extra.label||extra.id,value:count==null?'На компанию':`${count} ${extra.scope==='unit'?'шт.':'чел.'}`});
+ }
  return rows;
 }
 

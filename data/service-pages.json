@@ -547,5 +547,151 @@
         "answer": "Подбор проверяет время и известные условия посещения. Запись и наличие мест уточняют у заведения."
       }
     ]
+  },
+  {
+    "version": 1,
+    "id": "baths-kaliningrad",
+    "path": "/tools/baths/kaliningrad/",
+    "intent": "Посчитайте сауну на компанию",
+    "title": "Бани и сауны Калининграда",
+    "description": "Выберите размер компании и длительность. Посчитаем аренду, доплаты и сумму на человека.",
+    "area": "kaliningrad",
+    "area_name": "Калининград",
+    "category": "bath",
+    "contexts": [],
+    "inputs": [
+      {
+        "key": "date",
+        "label": "Когда",
+        "secondary": false
+      },
+      {
+        "key": "people",
+        "label": "Сколько вас",
+        "secondary": false
+      },
+      {
+        "key": "duration_minutes",
+        "label": "В бане, минут",
+        "secondary": false
+      },
+      {
+        "key": "arrival",
+        "label": "Начать путь в",
+        "secondary": true
+      },
+      {
+        "key": "finish_by",
+        "label": "Вернуться не позже",
+        "secondary": true
+      },
+      {
+        "key": "cost_limit",
+        "label": "Бюджет на всех, ₽",
+        "secondary": true
+      },
+      {
+        "key": "upfront_limit",
+        "label": "При входе — не больше, ₽",
+        "secondary": true
+      }
+    ],
+    "result_heading": "Что подойдёт вашему дню",
+    "empty_heading": "Пока нет мест для подбора",
+    "empty_text": "Добавим варианты, когда соберём адреса, условия и время посещения. Готовые прогулки уже можно выбрать.",
+    "action_label": "Время и условия",
+    "next_steps": [
+      {
+        "label": "Баня на Куршской косе",
+        "href": "/tools/baths/lesnoy/"
+      },
+      {
+        "label": "Мой день",
+        "href": "/planner/"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Что входит в сумму?",
+        "answer": "Сумма рассчитана на выбранную компанию и предложение. Залог показан отдельно: он нужен при входе, но не считается расходом."
+      },
+      {
+        "question": "Можно сразу записаться?",
+        "answer": "Подбор проверяет время и известные условия посещения. Запись и наличие мест уточняют у заведения."
+      }
+    ]
+  },
+  {
+    "version": 1,
+    "id": "baths-lesnoy",
+    "path": "/tools/baths/lesnoy/",
+    "intent": "Парная после прогулки по косе",
+    "title": "Баня в Лесном на Куршской косе",
+    "description": "Баня-бочка с купелью в Лесном на Куршской косе: условия посещения, тарифы источника и план поездки на выбранный день.",
+    "area": "lesnoy",
+    "area_name": "Лесной · Куршская коса",
+    "category": "bath",
+    "contexts": [],
+    "inputs": [
+      {
+        "key": "date",
+        "label": "Когда",
+        "secondary": false
+      },
+      {
+        "key": "people",
+        "label": "Сколько вас",
+        "secondary": false
+      },
+      {
+        "key": "duration_minutes",
+        "label": "В бане, минут",
+        "secondary": false
+      },
+      {
+        "key": "arrival",
+        "label": "Начать путь в",
+        "secondary": true
+      },
+      {
+        "key": "finish_by",
+        "label": "Вернуться не позже",
+        "secondary": true
+      },
+      {
+        "key": "cost_limit",
+        "label": "Бюджет на всех, ₽",
+        "secondary": true
+      },
+      {
+        "key": "upfront_limit",
+        "label": "При входе — не больше, ₽",
+        "secondary": true
+      }
+    ],
+    "result_heading": "Что подойдёт вашему дню",
+    "empty_heading": "Пока нет мест для подбора",
+    "empty_text": "Добавим варианты, когда соберём адреса, условия и время посещения. Готовые прогулки уже можно выбрать.",
+    "action_label": "Время и условия",
+    "next_steps": [
+      {
+        "label": "Бани Калининграда",
+        "href": "/tools/baths/kaliningrad/"
+      },
+      {
+        "label": "Мой день",
+        "href": "/planner/"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Что входит в сумму?",
+        "answer": "Сумма рассчитана на выбранную компанию и предложение. Залог показан отдельно: он нужен при входе, но не считается расходом."
+      },
+      {
+        "question": "Можно сразу записаться?",
+        "answer": "Подбор проверяет время и известные условия посещения. Запись и наличие мест уточняют у заведения."
+      }
+    ]
   }
 ]

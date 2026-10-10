@@ -58,8 +58,13 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       text(`Всего: ${a.visit.duration.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.visit.duration.total_minutes} мин`}.`);
       heading('Время на подготовку',false,s.stages[0]?.label);
       for(const stage of s.stages)text(`${stage.label}: ${stage.minutes==null?'нужно уточнить':stage.minutes+' мин'}`,{size:phone?10:12,space:5});
-      heading('На вашу компанию',false,'Стоимость: '+s.cost);
-      text('Стоимость: '+s.cost);text('Возвратный залог: '+s.deposit);text('Потребуется при входе: '+s.upfront);
+      const priceLines=(s.price_rows||[]).map(row=>`${row.name}: ${row.total==null?'Нужно уточнить':money(row.total)}${row.detail?' · '+row.detail:''}`);
+      const totals=['Стоимость: '+s.cost,...(s.cost_split?[s.cost_split]:[]),'Возвратный залог: '+s.deposit,'Потребуется при входе: '+s.upfront];
+      // Keep an ordinary receipt with its total on one page; long receipts still flow.
+      const receiptHeight=priceLines.reduce((sum,line)=>sum+textHeight(line,ui,phone?10.5:12,5),0)+totals.reduce((sum,line)=>sum+textHeight(line),0);
+      heading('На вашу компанию',false,'',receiptHeight);
+      for(const line of priceLines)text(line,{size:phone?10.5:12,space:5});
+      for(const line of totals)text(line);
       text('Это выбранный тариф. Записанные оплаты и возвраты показаны отдельно в расходах дня.',{size:phone?9:11,color:muted});
       if(s.conditions.length){
         const label=c=>`${c.label} · ${c.status}`,observationText=o=>o.text+(o.status==='current'?'':' · сведения нужно сверить');

@@ -2523,8 +2523,18 @@
       ]
     },
     {
+      "id": "place:dom-poeta",
+      "name": "Парк-отель «Дом поэта»",
+      "references": []
+    },
+    {
       "id": "place:velovoyage39",
       "name": "ВелоВояж 39",
+      "references": []
+    },
+    {
+      "id": "place:vostok",
+      "name": "Семейная сауна «Восток»",
       "references": []
     },
     {
@@ -6838,6 +6848,16 @@
       }
     },
     {
+      "id": "branch:dom-poeta",
+      "place_id": "place:dom-poeta",
+      "name": "Парк-отель «Дом поэта»",
+      "area": "lesnoy",
+      "address": "Калининградская область, посёлок Лесной, улица Ветеранов, 5/1",
+      "location": {
+        "kind": "unknown"
+      }
+    },
+    {
       "id": "branch:poi:002dfdf0-3edf-5521-b454-1dbb065f470e",
       "place_id": "poi:002dfdf0-3edf-5521-b454-1dbb065f470e",
       "name": "БАЛТ",
@@ -7940,6 +7960,16 @@
         "lat": 54.954864,
         "lon": 20.4885,
         "source": "https://yandex.ru/maps/org/veloport39/139254881193/"
+      }
+    },
+    {
+      "id": "branch:vostok",
+      "place_id": "place:vostok",
+      "name": "Семейная сауна «Восток»",
+      "area": "kaliningrad",
+      "address": "Калининград, улица Дзержинского, 242",
+      "location": {
+        "kind": "unknown"
       }
     }
   ],
@@ -10204,6 +10234,17 @@
       }
     },
     {
+      "id": "service:dom-poeta:bath",
+      "branch_id": "branch:dom-poeta",
+      "name": "Дом поэта: баня-бочка с купелью",
+      "profile": {
+        "kind": "bath",
+        "steam": null,
+        "capacity": 4,
+        "private": true
+      }
+    },
+    {
       "id": "service:gnezdo:kitchen",
       "branch_id": "branch:dining:2gis-70000001055109040",
       "name": "Гнездо: рыбный обед",
@@ -10226,9 +10267,108 @@
         "child_seats": true,
         "return_branches": null
       }
+    },
+    {
+      "id": "service:vostok:bath",
+      "branch_id": "branch:vostok",
+      "name": "Восток: сауна на компанию",
+      "profile": {
+        "kind": "bath",
+        "steam": "finnish",
+        "capacity": 15,
+        "private": true
+      }
     }
   ],
   "offers": [
+    {
+      "id": "offer:dom-poeta:bath",
+      "service_id": "service:dom-poeta:bath",
+      "name": "Баня-бочка с купелью · 2800 ₽ в час",
+      "tariff": {
+        "currency": "RUB",
+        "included": [
+          "Баня-бочка",
+          "Купель",
+          "Полотенца для каждого"
+        ],
+        "base": {
+          "id": "room",
+          "label": "Баня-бочка с купелью",
+          "scope": "group",
+          "billing": {
+            "kind": "duration",
+            "step_minutes": 60,
+            "minimum_minutes": 120,
+            "rounding": "unknown"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 280000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [
+          {
+            "id": "sheets",
+            "label": "Простыни",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 10000
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "birch-broom",
+            "label": "Берёзовый веник",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 40000
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "oak-broom",
+            "label": "Дубовый веник",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 45000
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "hat",
+            "label": "Банная шапка",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 25000
+            },
+            "minimum_amount": null
+          }
+        ],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "unknown"
+        }
+      }
+    },
     {
       "id": "offer:gnezdo:fish-soup",
       "service_id": "service:gnezdo:kitchen",
@@ -10332,6 +10472,99 @@
         "minimum_amount": null,
         "deposit": {
           "kind": "none"
+        }
+      }
+    },
+    {
+      "id": "offer:vostok:bath",
+      "service_id": "service:vostok:bath",
+      "name": "Аренда сауны · 2500 ₽ в час",
+      "tariff": {
+        "currency": "RUB",
+        "included": [
+          "Финская парная",
+          "Бассейн",
+          "Комната отдыха"
+        ],
+        "base": {
+          "id": "room",
+          "label": "Аренда сауны",
+          "scope": "group",
+          "billing": {
+            "kind": "duration",
+            "step_minutes": 60,
+            "minimum_minutes": 180,
+            "rounding": "unknown"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 250000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [
+          {
+            "id": "extra-guests",
+            "label": "Гости сверх шести",
+            "scope": "person",
+            "included_subjects": 6,
+            "billing": {
+              "kind": "duration",
+              "step_minutes": 60,
+              "minimum_minutes": 180,
+              "rounding": "unknown"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 15000
+            },
+            "minimum_amount": null
+          }
+        ],
+        "extras": [
+          {
+            "id": "towels",
+            "label": "Полотенца",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": null
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "sheets",
+            "label": "Простыни",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": null
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "slippers",
+            "label": "Одноразовые тапочки",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": null
+            },
+            "minimum_amount": null
+          }
+        ],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "unknown"
         }
       }
     }
@@ -10614,6 +10847,63 @@
             ],
             "day": {
               "kind": "unknown"
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    },
+    {
+      "id": "calendar:vostok:visit",
+      "subject": {
+        "kind": "service",
+        "id": "service:vostok:bath"
+      },
+      "action": "visit",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 0,
+                  "close": 1440,
+                  "last_entry": null,
+                  "return_by": null
+                }
+              ]
             }
           }
         ],
@@ -11043,7 +11333,82 @@
       "anchor_id": "a01:velo-counter"
     }
   ],
-  "conditions": [],
+  "conditions": [
+    {
+      "id": "conditions:dom-poeta",
+      "service_id": "service:dom-poeta:bath",
+      "policy": {
+        "version": 1,
+        "rules": [
+          {
+            "id": "group",
+            "source": {
+              "reference": "https://dompoeta39.ru/services/banya/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "group",
+              "minimum": null,
+              "maximum": 4
+            }
+          },
+          {
+            "id": "booking",
+            "source": {
+              "reference": "https://dompoeta39.ru/services/banya/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "booking",
+              "required": true,
+              "notice_minutes": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "conditions:vostok",
+      "service_id": "service:vostok:bath",
+      "policy": {
+        "version": 1,
+        "rules": [
+          {
+            "id": "group",
+            "source": {
+              "reference": "https://sauna-kaliningrad.ru/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "group",
+              "minimum": null,
+              "maximum": 15
+            }
+          },
+          {
+            "id": "booking",
+            "source": {
+              "reference": "https://sauna-kaliningrad.ru/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "booking",
+              "required": true,
+              "notice_minutes": null
+            }
+          }
+        ]
+      }
+    }
+  ],
   "rental_offers": [
     {
       "offer_id": "offer:velovoyage39:standard-hour",
@@ -11621,6 +11986,624 @@
         },
         "value": null,
         "note": "Условия договора не опубликованы."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:vostok"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Семейная сауна «Восток»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:vostok"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Семейная сауна «Восток»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:vostok"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "kaliningrad"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:vostok"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Калининград, улица Дзержинского, 242"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:vostok:bath"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Восток: сауна на компанию"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:vostok:bath"
+        },
+        "path": "/profile/capacity",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": 15
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:vostok:bath"
+        },
+        "path": "/profile/private",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:vostok:bath"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Аренда сауны · 2500 ₽ в час",
+        "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного часа; для расчёта выбираются целые часы."
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:vostok:bath"
+        },
+        "path": "/tariff",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "base": {
+            "billing": {
+              "kind": "duration",
+              "minimum_minutes": 180,
+              "rounding": "unknown",
+              "step_minutes": 60
+            },
+            "id": "room",
+            "label": "Аренда сауны",
+            "minimum_amount": null,
+            "rate": {
+              "amount": 250000,
+              "kind": "fixed"
+            },
+            "scope": "group"
+          },
+          "currency": "RUB",
+          "deposit": {
+            "kind": "unknown"
+          },
+          "extras": [
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "towels",
+              "label": "Полотенца",
+              "minimum_amount": null,
+              "rate": {
+                "amount": null,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "sheets",
+              "label": "Простыни",
+              "minimum_amount": null,
+              "rate": {
+                "amount": null,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "slippers",
+              "label": "Одноразовые тапочки",
+              "minimum_amount": null,
+              "rate": {
+                "amount": null,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            }
+          ],
+          "included": [
+            "Финская парная",
+            "Бассейн",
+            "Комната отдыха"
+          ],
+          "mandatory": [
+            {
+              "billing": {
+                "kind": "duration",
+                "minimum_minutes": 180,
+                "rounding": "unknown",
+                "step_minutes": 60
+              },
+              "id": "extra-guests",
+              "included_subjects": 6,
+              "label": "Гости сверх шести",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 15000,
+                "kind": "fixed"
+              },
+              "scope": "person"
+            }
+          ],
+          "minimum_amount": null
+        },
+        "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного интервала."
+      },
+      {
+        "subject": {
+          "kind": "conditions",
+          "id": "conditions:vostok"
+        },
+        "path": "/policy",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "rules": [
+            {
+              "condition": {
+                "kind": "group",
+                "maximum": 15,
+                "minimum": null
+              },
+              "id": "group",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://sauna-kaliningrad.ru/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "kind": "booking",
+                "notice_minutes": null,
+                "required": true
+              },
+              "id": "booking",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://sauna-kaliningrad.ru/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            }
+          ],
+          "version": 1
+        }
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:vostok"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "kind": "unknown"
+        },
+        "note": "Точный вход и координаты не подтверждены."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:vostok:bath"
+        },
+        "path": "/profile/steam",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "finnish"
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:vostok:visit"
+        },
+        "path": "/calendar",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://sauna-kaliningrad.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "exceptions": [],
+          "rules": [
+            {
+              "day": {
+                "kind": "continuous",
+                "windows": [
+                  {
+                    "close": 1440,
+                    "last_entry": null,
+                    "open": 0,
+                    "return_by": null
+                  }
+                ]
+              },
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "weekdays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          ],
+          "source": {
+            "checked_at": "2026-10-10",
+            "reference": "https://sauna-kaliningrad.ru/",
+            "valid_from": null,
+            "valid_until": null
+          },
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "note": "Круглосуточный режим по предварительной записи не подтверждает свободное время."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:dom-poeta"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Парк-отель «Дом поэта»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:dom-poeta"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Парк-отель «Дом поэта»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:dom-poeta"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "lesnoy"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:dom-poeta"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Калининградская область, посёлок Лесной, улица Ветеранов, 5/1"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dom-poeta:bath"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Дом поэта: баня-бочка с купелью"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dom-poeta:bath"
+        },
+        "path": "/profile/capacity",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": 4
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dom-poeta:bath"
+        },
+        "path": "/profile/private",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:dom-poeta:bath"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Баня-бочка с купелью · 2800 ₽ в час",
+        "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного часа; для расчёта выбираются целые часы."
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:dom-poeta:bath"
+        },
+        "path": "/tariff",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "base": {
+            "billing": {
+              "kind": "duration",
+              "minimum_minutes": 120,
+              "rounding": "unknown",
+              "step_minutes": 60
+            },
+            "id": "room",
+            "label": "Баня-бочка с купелью",
+            "minimum_amount": null,
+            "rate": {
+              "amount": 280000,
+              "kind": "fixed"
+            },
+            "scope": "group"
+          },
+          "currency": "RUB",
+          "deposit": {
+            "kind": "unknown"
+          },
+          "extras": [
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "sheets",
+              "label": "Простыни",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 10000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "birch-broom",
+              "label": "Берёзовый веник",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 40000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "oak-broom",
+              "label": "Дубовый веник",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 45000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "hat",
+              "label": "Банная шапка",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 25000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            }
+          ],
+          "included": [
+            "Баня-бочка",
+            "Купель",
+            "Полотенца для каждого"
+          ],
+          "mandatory": [],
+          "minimum_amount": null
+        },
+        "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного интервала."
+      },
+      {
+        "subject": {
+          "kind": "conditions",
+          "id": "conditions:dom-poeta"
+        },
+        "path": "/policy",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "rules": [
+            {
+              "condition": {
+                "kind": "group",
+                "maximum": 4,
+                "minimum": null
+              },
+              "id": "group",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://dompoeta39.ru/services/banya/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "kind": "booking",
+                "notice_minutes": null,
+                "required": true
+              },
+              "id": "booking",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://dompoeta39.ru/services/banya/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            }
+          ],
+          "version": 1
+        }
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:dom-poeta"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "kind": "unknown"
+        },
+        "note": "Точный вход и координаты не подтверждены."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:dom-poeta:bath"
+        },
+        "path": "/profile/steam",
+        "status": "unknown",
+        "source": {
+          "reference": "https://dompoeta39.ru/services/banya/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null,
+        "note": "На странице указан формат баня-бочка; вид парной отдельно не назван."
       },
       {
         "subject": {

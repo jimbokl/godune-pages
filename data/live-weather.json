@@ -577,15 +577,25 @@
           "symbol": "rainshowers_day",
           "rain_mm": 2.7,
           "rain_hours": 6
+        },
+        {
+          "time": "2026-10-12T18:00:00Z",
+          "temperature_c": 10.3,
+          "wind_ms": 3.9,
+          "wind_from_degrees": 298.6,
+          "cloud_percent": 64.1,
+          "symbol": "partlycloudy_night",
+          "rain_mm": 0.0,
+          "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T05:54:45.467633Z",
-      "checked_at": "2026-10-10T05:54:45.467633Z",
+      "received_at": "2026-10-10T06:12:49.216727Z",
+      "checked_at": "2026-10-10T06:21:10.942175Z",
       "sun": {
         "date": "2026-10-10",
         "sunrise": "2026-10-10T04:57:00Z",
         "sunset": "2026-10-10T15:51:00Z",
-        "received_at": "2026-10-10T05:54:45.467633Z"
+        "received_at": "2026-10-10T06:21:10.942175Z"
       }
     },
     {
@@ -1155,15 +1165,25 @@
           "symbol": "partlycloudy_day",
           "rain_mm": 0.0,
           "rain_hours": 6
+        },
+        {
+          "time": "2026-10-12T18:00:00Z",
+          "temperature_c": 11.1,
+          "wind_ms": 4.4,
+          "wind_from_degrees": 302.1,
+          "cloud_percent": 45.7,
+          "symbol": "partlycloudy_night",
+          "rain_mm": 0.0,
+          "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T05:54:45.467633Z",
-      "checked_at": "2026-10-10T05:54:45.467633Z",
+      "received_at": "2026-10-10T06:12:49.216727Z",
+      "checked_at": "2026-10-10T06:21:10.942175Z",
       "sun": {
         "date": "2026-10-10",
         "sunrise": "2026-10-10T04:56:00Z",
         "sunset": "2026-10-10T15:49:00Z",
-        "received_at": "2026-10-10T05:54:45.467633Z"
+        "received_at": "2026-10-10T06:21:10.942175Z"
       }
     },
     {
@@ -1733,15 +1753,25 @@
           "symbol": "partlycloudy_day",
           "rain_mm": 0.0,
           "rain_hours": 6
+        },
+        {
+          "time": "2026-10-12T18:00:00Z",
+          "temperature_c": 10.1,
+          "wind_ms": 3.6,
+          "wind_from_degrees": 304.5,
+          "cloud_percent": 50.0,
+          "symbol": "partlycloudy_night",
+          "rain_mm": 0.0,
+          "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T05:54:45.467633Z",
-      "checked_at": "2026-10-10T05:54:45.467633Z",
+      "received_at": "2026-10-10T06:12:49.216727Z",
+      "checked_at": "2026-10-10T06:21:10.942175Z",
       "sun": {
         "date": "2026-10-10",
         "sunrise": "2026-10-10T04:58:00Z",
         "sunset": "2026-10-10T15:52:00Z",
-        "received_at": "2026-10-10T05:54:45.467633Z"
+        "received_at": "2026-10-10T06:21:10.942175Z"
       }
     },
     {
@@ -2311,15 +2341,25 @@
           "symbol": "rain",
           "rain_mm": 2.6,
           "rain_hours": 6
+        },
+        {
+          "time": "2026-10-12T18:00:00Z",
+          "temperature_c": 8.9,
+          "wind_ms": 2.3,
+          "wind_from_degrees": 284.5,
+          "cloud_percent": 39.5,
+          "symbol": "partlycloudy_night",
+          "rain_mm": 0.0,
+          "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-10T05:54:45.467633Z",
-      "checked_at": "2026-10-10T05:54:45.467633Z",
+      "received_at": "2026-10-10T06:12:49.216727Z",
+      "checked_at": "2026-10-10T06:21:10.942175Z",
       "sun": {
         "date": "2026-10-10",
         "sunrise": "2026-10-10T04:57:00Z",
         "sunset": "2026-10-10T15:51:00Z",
-        "received_at": "2026-10-10T05:54:45.467633Z"
+        "received_at": "2026-10-10T06:21:10.942175Z"
       }
     }
   ]

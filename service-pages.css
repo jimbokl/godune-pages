@@ -1,4 +1,29 @@
 .service-page{font-size:17px;background:var(--sand);line-height:1.6}
+/* A readable tariff receipt, shared by every service profile. */
+.service-price-panel{border-top:1px solid var(--line);margin-top:20px;padding-top:8px}
+.service-price-panel>summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font:600 16px/1.5 var(--sans);color:var(--ink)}
+.service-price-panel>summary:focus-visible,.service-extra-options input:focus-visible{outline:3px solid var(--sea-line);outline-offset:4px}
+.service-price-terms{font-size:14px;color:var(--muted);margin:8px 0;overflow-wrap:anywhere}
+.service-extra-options{min-width:0;border:0;padding:16px 0;margin:12px 0;border-top:1px solid var(--line)}
+.service-extra-options legend{font:600 15px/1.5 var(--sans);padding-right:12px}
+.service-extra-option{display:flex;align-items:center;gap:12px;min-height:48px;cursor:pointer}
+.service-extra-option input{width:22px;height:22px;accent-color:var(--brand-amber);flex:none}
+.service-extra-option small,.service-price-lines small,.service-price-deposit small{display:block;font:400 13px/1.5 var(--sans);color:var(--muted);margin-top:3px}
+.service-extra-quantity{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;margin:6px 0 12px 34px;font-size:14px}
+.service-extra-quantity input{width:86px;min-width:0;min-height:48px;border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--paper);color:var(--ink);font:inherit}
+.service-extra-quantity input:disabled{opacity:.5;cursor:not-allowed}
+.service-price-lines{margin:12px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.service-price-lines>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:10px 0;align-items:start;font-size:15px}
+.service-price-lines dt{min-width:0;overflow-wrap:anywhere}.service-price-lines dd{text-align:right;overflow-wrap:anywhere;max-width:160px}
+.service-price-lines .service-price-total{border-top:1px solid var(--line);margin-top:10px;padding-top:18px;font-size:21px;font-weight:600}
+.service-price-total dd{font-family:var(--serif);font-size:28px;line-height:1.1}
+.service-price-split{text-align:right;font-size:14px;color:var(--muted);margin:4px 0 20px}
+.service-key-facts [data-cost-split]{display:block;font:400 13px/1.5 var(--sans);color:var(--muted);margin-top:5px}
+.service-profile-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.service-profile-facts dt{font-size:12px;color:var(--muted)}.service-profile-facts dd{font-size:14px;overflow-wrap:anywhere}
+@media(max-width:500px){.service-profile-facts{grid-template-columns:1fr}.service-profile-facts>div{display:flex;justify-content:space-between;gap:16px}.service-profile-facts dd{text-align:right}}
+.service-price-deposit{font-size:14px;margin:0 0 12px;padding:14px 16px;background:var(--sea-soft);border-radius:10px}
+@media(max-width:360px){.service-price-lines>div{gap:10px}.service-price-lines dd{max-width:116px}.service-price-total dd{font-size:25px}.service-extra-quantity{margin-left:0}}
 .service-page-width{width:min(1120px,calc(100% - 64px));margin:0 auto}
 .service-page-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;width:min(1280px,calc(100% - 64px));margin:0 auto;padding:24px 0;border-bottom:1px solid var(--line)}
 .service-brand{font-family:var(--serif);font-size:30px;line-height:1.15;letter-spacing:1px}
@@ -80,6 +105,12 @@
 .service-time-strip li:first-child{padding-left:0}.service-time-strip li:last-child{border:0;padding-right:0}
 .service-time-strip span{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 .service-time-strip strong{font-size:16px;font-weight:600}
+.service-visit-timing{margin:-12px 0 24px;color:var(--ink)}
+.service-visit-timing>p{display:flex;justify-content:space-between;gap:12px;margin:0 0 12px;font-size:15px}
+.service-visit-timing dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0}
+.service-visit-timing dl>div{padding:10px 12px;background:var(--sea-soft);border-radius:10px}
+.service-visit-timing dt{font-size:12px;color:var(--muted)}
+.service-visit-timing dd{margin:4px 0 0;font-size:15px;font-weight:600}
 .service-card-details{margin-top:auto}
 .service-card-details summary{list-style:none;background:var(--sea);color:var(--sea-ink);border-radius:9px;min-height:52px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:16px}
 .service-card-details summary::-webkit-details-marker{display:none}
@@ -195,3 +226,5 @@
 .service-favorites .service-clear{margin-top:0}
 .service-favorite:focus-visible,.service-favorites-open:focus-visible,.service-favorites :focus-visible{outline:3px solid var(--sea-ink);outline-offset:4px}
 @media(max-width:680px){.service-favorites>summary{padding:18px 16px;font-size:25px}.service-favorites-body{padding:0 16px 16px}.service-favorites li{align-items:flex-start;flex-wrap:wrap;gap:8px 16px}.service-favorites li a,.service-favorites li strong{font-size:23px}}
+
+.service-pool-entry{margin:16px 0;border-bottom:1px solid var(--line);padding-bottom:12px}.service-pool-entry h3{font-family:var(--font-sans, sans-serif);font-size:14px;font-weight:600;margin:0 0 8px}

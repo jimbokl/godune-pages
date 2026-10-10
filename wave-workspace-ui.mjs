@@ -2,6 +2,7 @@ import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-stat
 import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=10';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
+import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
 
 const el=(tag,classes,text)=>{const node=document.createElement(tag);if(classes)node.className=classes;if(text)node.textContent=text;return node;};
 const areaNames={'zelenogradsk':'Зеленоградск','svetlogorsk':'Светлогорск','kaliningrad':'Калининград','kurshskaya-kosa':'Куршская коса','baltiysk':'Балтийск','yantarnyy':'Янтарный'};
@@ -19,7 +20,7 @@ export function waveCover(trip,catalog){
  const dining=points.some(p=>p.category==='restaurant');
  const title=named||(day.kosa_plan?'День на Куршской косе':areas.length===1?(areas[0]==='zelenogradsk'&&dining?'Зеленоградск на вкус':areaNames[areas[0]]||'День на волне'):'Ваш день на волне');
  const photo=areas.length===1&&areas[0]==='zelenogradsk'?'assets/author/zelenogradsk-2026-10-03/promenade-1920.avif':points.flatMap(p=>p.photos||[]).find(path=>typeof path==='string'&&path.startsWith('assets/author/'));
- return {title,photo,subtitle:areas.length===1&&areas[0]==='zelenogradsk'&&dining?'Море, прогулка и местная кухня.':points.length?'Ваши места, дорога и время для себя.':hasTransportPlans(day)?'Дорога сохранена. Возьмите расчёт с собой или добавьте прогулку.':hasMenuChoices(day)?'Блюда выбраны. Добавьте прогулку или возьмите выбор с собой.':'Выберите прогулку — остальное соберём в ваш день.'};
+ return {title,photo,subtitle:areas.length===1&&areas[0]==='zelenogradsk'&&dining?'Море, прогулка и местная кухня.':points.length?'Ваши места, дорога и время для себя.':hasTransportPlans(day)?'Дорога сохранена. Возьмите расчёт с собой или добавьте прогулку.':hasMenuChoices(day)?'Блюда выбраны. Добавьте прогулку или возьмите выбор с собой.':hasServiceVisits(day)?'Посещения сохранены. Возьмите план с собой или добавьте прогулку рядом.':'Выберите прогулку — остальное соберём в ваш день.'};
 }
 
 /** The same Trip and controls in a smaller, mobile-first frame. */
@@ -85,6 +86,6 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
   if(!gpxDownloading)gpx.disabled=!canDownloadWaveDay(trip,catalog);
   gpx.hidden=!!day.kosa_plan;
   download.hidden=button.disabled&&!downloading&&!gpxDownloading;
-  const wizard=document.querySelector('#planner-new-day');if(wizard)wizard.hidden=!wizard.open&&(trip.places.length>0||days.length>1||hasMenuChoices(day));
+  const wizard=document.querySelector('#planner-new-day');if(wizard)wizard.hidden=!wizard.open&&(trip.places.length>0||days.length>1||hasMenuChoices(day)||hasServiceVisits(day));
  }};
 }

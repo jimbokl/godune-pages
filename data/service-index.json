@@ -1,5 +1,9 @@
 {
   "categories": {
+    "bath": [
+      "service:dom-poeta:bath",
+      "service:vostok:bath"
+    ],
     "bike_rental": [
       "service:velovoyage39:bike"
     ],
@@ -259,6 +263,12 @@
     ]
   },
   "areas": {
+    "kaliningrad": [
+      "service:vostok:bath"
+    ],
+    "lesnoy": [
+      "service:dom-poeta:bath"
+    ],
     "zelenogradsk": [
       "service:dining:2gis-5630027815190832",
       "service:dining:2gis-5630027815347793",
@@ -1272,11 +1282,20 @@
     "branch:dining:yandex-86328291089": [
       "service:dining:yandex-86328291089"
     ],
+    "branch:dom-poeta": [
+      "service:dom-poeta:bath"
+    ],
     "branch:velovoyage39:solnechnaya-17": [
       "service:velovoyage39:bike"
+    ],
+    "branch:vostok": [
+      "service:vostok:bath"
     ]
   },
   "offers": {
+    "service:dom-poeta:bath": [
+      "offer:dom-poeta:bath"
+    ],
     "service:gnezdo:kitchen": [
       "offer:gnezdo:fish-soup",
       "offer:gnezdo:mackerel"
@@ -1284,6 +1303,9 @@
     "service:velovoyage39:bike": [
       "offer:velovoyage39:standard-day",
       "offer:velovoyage39:standard-hour"
+    ],
+    "service:vostok:bath": [
+      "offer:vostok:bath"
     ]
   },
   "aliases": {},
@@ -1297,6 +1319,9 @@
     "service/service:velovoyage39:bike": [
       "calendar:velovoyage39:collect",
       "calendar:velovoyage39:return"
+    ],
+    "service/service:vostok:bath": [
+      "calendar:vostok:visit"
     ]
   },
   "access": {
@@ -1331,5 +1356,12 @@
       "a01:velo-counter"
     ]
   },
-  "conditions": {}
+  "conditions": {
+    "service:dom-poeta:bath": [
+      "conditions:dom-poeta"
+    ],
+    "service:vostok:bath": [
+      "conditions:vostok"
+    ]
+  }
 }

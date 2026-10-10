@@ -15,6 +15,7 @@ import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
 import {provenanceSources} from './service-provenance.mjs?v=2';
 import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
+import {priceRows,splitText} from './service-price-view.mjs';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};
@@ -46,6 +47,7 @@ function serviceCard(engine,visit,day,index,catalog){
  card.cost=price(a.quote?.cost_total??null,a.quote?.cost_lower_bound??0);
  card.deposit=a.quote?.deposit?price(a.quote.deposit.total,0):'Возвратный залог пока неизвестен.';
  card.upfront=price(a.quote?.upfront_total??null,a.quote?.upfront_lower_bound??0);
+ if(a.quote){card.price_rows=priceRows(visit.selection,a.quote);card.cost_split=splitText(a.quote);}
  card.stages=a.visit.duration.segments.map(v=>({label:stages[v.stage]||'Часть посещения',minutes:v.minutes}));
  card.rental=rentalDetails(visit,a,catalog);
  card.rental_points=rentalMapPoints(visit,a,catalog);
