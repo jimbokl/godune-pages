@@ -191,6 +191,7 @@ export function mountProjectTenders(root = globalThis.document) {
     }
     if (count) count.textContent = `Показано ${visible} из ${cards.length}`;
     if (empty) empty.hidden = visible !== 0;
+    for (const button of root.querySelectorAll('[data-export-dates=""]')) button.disabled = visible === 0;
     if (updateUrl) writeUrl(filters);
   };
 

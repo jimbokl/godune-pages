@@ -154,3 +154,4 @@ body:has(.dossier-page) .inner-main{max-width:1160px}
 .dossier-page .research-citations>summary{cursor:pointer;min-height:32px;justify-content:flex-start;font-size:.75rem;padding:.3rem 0;color:var(--business-muted)}
 .dossier-page .research-citations>div{padding:.3rem 0 .5rem;line-height:1.6}
 .dossier-page .research-chapter-menu>summary{justify-content:flex-start;text-align:left;font-size:.85rem}
+.dossier-page .business-context-links button:disabled{opacity:.45;cursor:default}
