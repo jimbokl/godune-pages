@@ -27,7 +27,9 @@ export function priceRows(input,quote) {
     const charge=charges.find(c=>c.id===line.id),name=charge.label||(charge.id===tariff.base.id?'Посещение':'Доплата');
     const count=line.subjects===0?'Не требуется':charge.scope==='person'?`${line.subjects} чел.`:charge.scope==='unit'?`${line.subjects} шт.`:'На компанию';
     const time=line.unknown?.includes('partial_step_unknown')?' · оплату неполного интервала нужно уточнить':line.billed_minutes==null?'':` · оплачивается ${line.billed_minutes} мин`;
-    return {name,detail:count+time,total:line.total};
+    const q=line.admission,chosen=q?.alternatives.find(a=>a.id===q.recommended_id);
+    const extra=chosen?.overtime_minutes>0?` · сверх тарифа ${chosen.overtime_minutes} мин: ${money(chosen.overtime_total)}`:'';
+    return {name:chosen?`${name} · ${chosen.label}`:name,detail:count+time+extra,total:line.total};
   });
   if(quote.minimum_adjustment>0)rows.push({name:'До минимальной суммы',detail:'',total:quote.minimum_adjustment});
   return rows;
@@ -46,9 +48,24 @@ export function priceQuoteElement(input,quote) {
   }
   for(const r of priceRows(input,quote))row(r.name,r.detail,r.total);
   row('Итого','',quote.cost_total,true);fragment.append(dl);
+  for(const line of quote.lines)if(line.admission)fragment.append(admissionPlansElement(line.admission));
   const split=document.createElement('p');split.className='service-price-split';split.textContent=splitText(quote);fragment.append(split);
   const deposit=document.createElement('p'),small=document.createElement('small');deposit.className='service-price-deposit';
   deposit.textContent='Возвратный залог: '+money(quote.deposit.total);small.textContent='Потребуется при входе: '+money(quote.upfront_total);deposit.append(small);fragment.append(deposit);
   return fragment;
 }
 
+
+function admissionPlansElement(q){
+  const panel=document.createElement('div');panel.className='service-admission-plans';
+  const clock=document.createElement('p');clock.textContent=(q.charged_minutes===null?'Время по браслету пока неизвестно':`По браслету: ${q.charged_minutes} мин`)+'. Сравнение доступных тарифов:';panel.append(clock);
+  const available=q.alternatives.filter(a=>a.eligibility==='eligible');
+  if(!available.length){const p=document.createElement('p');p.textContent='Укажите возраст гостей и льготные билеты в блоке «Кто пойдёт».';panel.append(p);}
+  for(const a of available){
+    const row=document.createElement('div'),label=document.createElement('span'),value=document.createElement('strong'),detail=document.createElement('small');row.className='service-admission-plan';
+    const chosen=a.id===q.recommended_id;if(chosen)row.dataset.recommended='';label.textContent=a.label+(chosen?' · выбран':'');value.textContent=money(a.total);
+    if(a.overtime_minutes>0)detail.textContent=`Вход ${money(a.base_total)} · доплата за ${a.overtime_minutes} мин: ${money(a.overtime_total)}`;
+    row.append(label,value,detail);panel.append(row);
+  }
+  return panel;
+}

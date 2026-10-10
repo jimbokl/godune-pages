@@ -13,9 +13,9 @@ import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {baseName} from './personal-points.mjs?v=3';
 import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {provenanceSources} from './service-provenance.mjs?v=3';
+import {provenanceSources} from './service-provenance.mjs?v=4';
 import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
-import {priceRows,splitText} from './service-price-view.mjs';
+import {priceRows,splitText} from './service-price-view.mjs?v=2';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};

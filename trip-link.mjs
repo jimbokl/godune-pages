@@ -162,7 +162,7 @@ export function initTripSharing(catalog, base, workshop) {
     const controller=new AbortController();guideController=controller;const signature=JSON.stringify(workshop.getState());
     const status=$('#trip-guide-status');$('#trip-guide-save').disabled=true;$('#trip-guide-cancel').hidden=false;
     const message=text=>{if(guideController===controller)status.textContent=text;};
-    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=39');
+    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=40');
       const result=await downloadPersonalGuide({trip:snapshot,catalog,base,scope:$('#trip-guide-scope').value,format:$('#trip-guide-format').value,signal:controller.signal,onProgress:message,stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       message(`PDF подготовлен: ${result.pages} стр., карты мест: ${result.map_count}. Сохраните файл в папку на телефоне.${result.warnings.length?' '+result.warnings.join(' '):''}`);
     }catch(error){message(controller.signal.aborted?'Сборка отменена. Поездка на месте.':error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Откройте «Взять с собой» заново и скачайте свежий план.':'Путеводитель не собрался целиком. Повторите при связи; ваш план на месте.');}

@@ -10315,6 +10315,226 @@
   ],
   "offers": [
     {
+      "id": "offer:baden39:admission",
+      "service_id": "service:baden39:pool",
+      "name": "Баден Аква Спа · входные тарифы",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "admission",
+          "label": "Вход в комплекс",
+          "scope": "group",
+          "billing": {
+            "kind": "once"
+          },
+          "rate": {
+            "kind": "admission",
+            "tariff": {
+              "bands": [
+                {
+                  "id": "infant",
+                  "label": "До 3 лет",
+                  "age_from": 0,
+                  "age_before": 3,
+                  "required_concession": null,
+                  "overtime_applies": false
+                },
+                {
+                  "id": "child",
+                  "label": "От 3 до 15 лет",
+                  "age_from": 3,
+                  "age_before": 15,
+                  "required_concession": null,
+                  "overtime_applies": true
+                },
+                {
+                  "id": "adult",
+                  "label": "С 15 лет",
+                  "age_from": 15,
+                  "age_before": null,
+                  "required_concession": null,
+                  "overtime_applies": true
+                },
+                {
+                  "id": "concession",
+                  "label": "Льготный с подтверждающим документом",
+                  "age_from": 15,
+                  "age_before": null,
+                  "required_concession": "baden-discount-document",
+                  "overtime_applies": true
+                }
+              ],
+              "plans": [
+                {
+                  "id": "three-hours",
+                  "label": "3 часа",
+                  "price": {
+                    "kind": "individual",
+                    "rates": {
+                      "adult": 270000,
+                      "child": 220000,
+                      "concession": 220000,
+                      "infant": 0
+                    }
+                  },
+                  "included_minutes": 180,
+                  "overtime_per_minute": 2000
+                },
+                {
+                  "id": "unlimited",
+                  "label": "Безлимитный",
+                  "price": {
+                    "kind": "individual",
+                    "rates": {
+                      "adult": 320000,
+                      "child": 270000,
+                      "concession": 270000,
+                      "infant": 0
+                    }
+                  },
+                  "included_minutes": null,
+                  "overtime_per_minute": null
+                },
+                {
+                  "id": "family-1",
+                  "label": "Семейный: 2 взрослых и 1 ребёнок",
+                  "price": {
+                    "kind": "bundle",
+                    "cohorts": [
+                      {
+                        "age_from": 18,
+                        "age_before": null,
+                        "count": 2
+                      },
+                      {
+                        "age_from": 3,
+                        "age_before": 18,
+                        "count": 1
+                      }
+                    ],
+                    "free_before": 3,
+                    "amount": 650000
+                  },
+                  "included_minutes": 180,
+                  "overtime_per_minute": 2000
+                },
+                {
+                  "id": "family-2",
+                  "label": "Семейный: 2 взрослых и 2 ребёнка",
+                  "price": {
+                    "kind": "bundle",
+                    "cohorts": [
+                      {
+                        "age_from": 18,
+                        "age_before": null,
+                        "count": 2
+                      },
+                      {
+                        "age_from": 3,
+                        "age_before": 18,
+                        "count": 2
+                      }
+                    ],
+                    "free_before": 3,
+                    "amount": 800000
+                  },
+                  "included_minutes": 180,
+                  "overtime_per_minute": 2000
+                },
+                {
+                  "id": "family-3",
+                  "label": "Семейный: 2 взрослых и 3 ребёнка",
+                  "price": {
+                    "kind": "bundle",
+                    "cohorts": [
+                      {
+                        "age_from": 18,
+                        "age_before": null,
+                        "count": 2
+                      },
+                      {
+                        "age_from": 3,
+                        "age_before": 18,
+                        "count": 3
+                      }
+                    ],
+                    "free_before": 3,
+                    "amount": 950000
+                  },
+                  "included_minutes": 180,
+                  "overtime_per_minute": 2000
+                },
+                {
+                  "id": "family-4",
+                  "label": "Семейный: 2 взрослых и 4 ребёнка",
+                  "price": {
+                    "kind": "bundle",
+                    "cohorts": [
+                      {
+                        "age_from": 18,
+                        "age_before": null,
+                        "count": 2
+                      },
+                      {
+                        "age_from": 3,
+                        "age_before": 18,
+                        "count": 4
+                      }
+                    ],
+                    "free_before": 3,
+                    "amount": 1100000
+                  },
+                  "included_minutes": 180,
+                  "overtime_per_minute": 2000
+                }
+              ],
+              "charged_stages": [
+                "change_before",
+                "prepare",
+                "activity",
+                "complete",
+                "change_after"
+              ]
+            }
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [
+          {
+            "id": "towel",
+            "label": "Аренда полотенца",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 20000
+            },
+            "minimum_amount": null
+          },
+          {
+            "id": "robe",
+            "label": "Аренда халата",
+            "scope": "unit",
+            "billing": {
+              "kind": "once"
+            },
+            "rate": {
+              "kind": "fixed",
+              "amount": 30000
+            },
+            "minimum_amount": null
+          }
+        ],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "unknown"
+        }
+      }
+    },
+    {
       "id": "offer:dom-poeta:bath",
       "service_id": "service:dom-poeta:bath",
       "name": "Баня-бочка с купелью · 2800 ₽ в час",
@@ -10615,7 +10835,7 @@
         "version": 1,
         "timezone": "Europe/Kaliningrad",
         "source": {
-          "reference": "https://baden39.ru/",
+          "reference": "https://baden39.ru/pravila",
           "checked_at": "2026-10-10",
           "valid_from": null,
           "valid_until": null
@@ -10651,7 +10871,7 @@
                 {
                   "open": 540,
                   "close": 1320,
-                  "last_entry": null,
+                  "last_entry": 1200,
                   "return_by": null
                 }
               ]
@@ -12845,67 +13065,6 @@
       },
       {
         "subject": {
-          "kind": "calendar",
-          "id": "calendar:baden39:visit"
-        },
-        "path": "/calendar",
-        "status": "confirmed",
-        "source": {
-          "reference": "https://baden39.ru/",
-          "checked_at": "2026-10-10"
-        },
-        "value": {
-          "exceptions": [],
-          "rules": [
-            {
-              "day": {
-                "kind": "continuous",
-                "windows": [
-                  {
-                    "close": 1320,
-                    "last_entry": null,
-                    "open": 540,
-                    "return_by": null
-                  }
-                ]
-              },
-              "months": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12
-              ],
-              "weekdays": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7
-              ]
-            }
-          ],
-          "source": {
-            "checked_at": "2026-10-10",
-            "reference": "https://baden39.ru/",
-            "valid_from": null,
-            "valid_until": null
-          },
-          "timezone": "Europe/Kaliningrad",
-          "version": 1
-        }
-      },
-      {
-        "subject": {
           "kind": "conditions",
           "id": "conditions:baden39:pool"
         },
@@ -13073,6 +13232,344 @@
           "checked_at": "2026-10-10"
         },
         "value": null
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:baden39:admission"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/calc",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Баден Аква Спа · входные тарифы"
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:baden39:admission"
+        },
+        "path": "/tariff",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/calc",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "base": {
+            "billing": {
+              "kind": "once"
+            },
+            "id": "admission",
+            "label": "Вход в комплекс",
+            "minimum_amount": null,
+            "rate": {
+              "kind": "admission",
+              "tariff": {
+                "bands": [
+                  {
+                    "age_before": 3,
+                    "age_from": 0,
+                    "id": "infant",
+                    "label": "До 3 лет",
+                    "overtime_applies": false,
+                    "required_concession": null
+                  },
+                  {
+                    "age_before": 15,
+                    "age_from": 3,
+                    "id": "child",
+                    "label": "От 3 до 15 лет",
+                    "overtime_applies": true,
+                    "required_concession": null
+                  },
+                  {
+                    "age_before": null,
+                    "age_from": 15,
+                    "id": "adult",
+                    "label": "С 15 лет",
+                    "overtime_applies": true,
+                    "required_concession": null
+                  },
+                  {
+                    "age_before": null,
+                    "age_from": 15,
+                    "id": "concession",
+                    "label": "Льготный с подтверждающим документом",
+                    "overtime_applies": true,
+                    "required_concession": "baden-discount-document"
+                  }
+                ],
+                "charged_stages": [
+                  "change_before",
+                  "prepare",
+                  "activity",
+                  "complete",
+                  "change_after"
+                ],
+                "plans": [
+                  {
+                    "id": "three-hours",
+                    "included_minutes": 180,
+                    "label": "3 часа",
+                    "overtime_per_minute": 2000,
+                    "price": {
+                      "kind": "individual",
+                      "rates": {
+                        "adult": 270000,
+                        "child": 220000,
+                        "concession": 220000,
+                        "infant": 0
+                      }
+                    }
+                  },
+                  {
+                    "id": "unlimited",
+                    "included_minutes": null,
+                    "label": "Безлимитный",
+                    "overtime_per_minute": null,
+                    "price": {
+                      "kind": "individual",
+                      "rates": {
+                        "adult": 320000,
+                        "child": 270000,
+                        "concession": 270000,
+                        "infant": 0
+                      }
+                    }
+                  },
+                  {
+                    "id": "family-1",
+                    "included_minutes": 180,
+                    "label": "Семейный: 2 взрослых и 1 ребёнок",
+                    "overtime_per_minute": 2000,
+                    "price": {
+                      "amount": 650000,
+                      "cohorts": [
+                        {
+                          "age_before": null,
+                          "age_from": 18,
+                          "count": 2
+                        },
+                        {
+                          "age_before": 18,
+                          "age_from": 3,
+                          "count": 1
+                        }
+                      ],
+                      "free_before": 3,
+                      "kind": "bundle"
+                    }
+                  },
+                  {
+                    "id": "family-2",
+                    "included_minutes": 180,
+                    "label": "Семейный: 2 взрослых и 2 ребёнка",
+                    "overtime_per_minute": 2000,
+                    "price": {
+                      "amount": 800000,
+                      "cohorts": [
+                        {
+                          "age_before": null,
+                          "age_from": 18,
+                          "count": 2
+                        },
+                        {
+                          "age_before": 18,
+                          "age_from": 3,
+                          "count": 2
+                        }
+                      ],
+                      "free_before": 3,
+                      "kind": "bundle"
+                    }
+                  },
+                  {
+                    "id": "family-3",
+                    "included_minutes": 180,
+                    "label": "Семейный: 2 взрослых и 3 ребёнка",
+                    "overtime_per_minute": 2000,
+                    "price": {
+                      "amount": 950000,
+                      "cohorts": [
+                        {
+                          "age_before": null,
+                          "age_from": 18,
+                          "count": 2
+                        },
+                        {
+                          "age_before": 18,
+                          "age_from": 3,
+                          "count": 3
+                        }
+                      ],
+                      "free_before": 3,
+                      "kind": "bundle"
+                    }
+                  },
+                  {
+                    "id": "family-4",
+                    "included_minutes": 180,
+                    "label": "Семейный: 2 взрослых и 4 ребёнка",
+                    "overtime_per_minute": 2000,
+                    "price": {
+                      "amount": 1100000,
+                      "cohorts": [
+                        {
+                          "age_before": null,
+                          "age_from": 18,
+                          "count": 2
+                        },
+                        {
+                          "age_before": 18,
+                          "age_from": 3,
+                          "count": 4
+                        }
+                      ],
+                      "free_before": 3,
+                      "kind": "bundle"
+                    }
+                  }
+                ]
+              }
+            },
+            "scope": "group"
+          },
+          "currency": "RUB",
+          "deposit": {
+            "kind": "unknown"
+          },
+          "extras": [
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "towel",
+              "label": "Аренда полотенца",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 20000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            },
+            {
+              "billing": {
+                "kind": "once"
+              },
+              "id": "robe",
+              "label": "Аренда халата",
+              "minimum_amount": null,
+              "rate": {
+                "amount": 30000,
+                "kind": "fixed"
+              },
+              "scope": "unit"
+            }
+          ],
+          "mandatory": [],
+          "minimum_amount": null
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:baden39:admission"
+        },
+        "path": "/tariff/base/rate/tariff/charged_stages",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/pravila",
+          "checked_at": "2026-10-10"
+        },
+        "value": [
+          "change_before",
+          "prepare",
+          "activity",
+          "complete",
+          "change_after"
+        ],
+        "note": "Время от получения электронного браслета до расчёта на кассе. Дорога и оформление до браслета не включены; переодевания включены."
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:baden39:admission"
+        },
+        "path": "/tariff/deposit",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/calc",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "kind": "unknown"
+        },
+        "note": "На странице калькулятора не установлена сумма возвратного залога; неизвестное не заменено нулём."
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:baden39:visit"
+        },
+        "path": "/calendar",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/pravila",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "exceptions": [],
+          "rules": [
+            {
+              "day": {
+                "kind": "continuous",
+                "windows": [
+                  {
+                    "close": 1320,
+                    "last_entry": 1200,
+                    "open": 540,
+                    "return_by": null
+                  }
+                ]
+              },
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "weekdays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          ],
+          "source": {
+            "checked_at": "2026-10-10",
+            "reference": "https://baden39.ru/pravila",
+            "valid_from": null,
+            "valid_until": null
+          },
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "note": "Продажа входных тарифов заканчивается в 20:00; выход до 22:00."
       },
       {
         "subject": {

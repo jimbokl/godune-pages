@@ -229,3 +229,20 @@
 @media(max-width:680px){.service-favorites>summary{padding:18px 16px;font-size:25px}.service-favorites-body{padding:0 16px 16px}.service-favorites li{align-items:flex-start;flex-wrap:wrap;gap:8px 16px}.service-favorites li a,.service-favorites li strong{font-size:23px}}
 
 .service-pool-entry{margin:16px 0;border-bottom:1px solid var(--line);padding-bottom:12px}.service-pool-entry h3{font-family:var(--font-sans, sans-serif);font-size:14px;font-weight:600;margin:0 0 8px}
+
+/* Admission party and source-calculated alternatives. */
+.service-party-fields{margin-top:20px;border-top:1px solid var(--sea-line);padding-top:10px}
+.service-party-fields summary{cursor:pointer;min-height:48px;font-weight:600;align-content:center}
+.service-party-fields summary span{font-size:13px;font-weight:400;color:var(--muted);margin-left:10px}
+.service-party-fields p{font-size:14px;color:var(--muted);max-width:65ch;margin:10px 0 16px}
+.service-party-person{display:grid;grid-template-columns:minmax(80px,.7fr) minmax(0,1.4fr);gap:16px;margin:16px 0}
+.service-party-person label{min-width:0;font-size:14px}.service-party-person label span{display:block;margin-bottom:6px}
+.service-party-person input,.service-party-person select{width:100%;min-width:0;min-height:48px;border:1px solid var(--sea-line);border-radius:9px;background:var(--paper);color:var(--ink);padding:10px 12px;font:inherit}
+.service-party-person :focus-visible,.service-party-fields summary:focus-visible{outline:3px solid var(--sea-line);outline-offset:3px}
+.service-party-pagination{display:flex;justify-content:space-between;gap:12px}.service-party-pagination button{min-height:48px;padding:8px}
+.service-admission-plans{margin:20px 0;border:1px solid var(--line);border-radius:12px;padding:16px}
+.service-admission-plans>p{font-size:14px;color:var(--muted);margin:0 0 12px}
+.service-admission-plan{padding:12px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+.service-admission-plan small{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.service-admission-plan[data-recommended]{color:var(--sea-deep,var(--ink));font-weight:600}
+@media(max-width:420px){.service-party-person{grid-template-columns:1fr;gap:10px}.service-party-fields summary span{display:block;margin:0}.service-admission-plan{grid-template-columns:1fr}.service-admission-plan small{grid-column:auto}}

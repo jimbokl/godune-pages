@@ -1302,6 +1302,9 @@
     ]
   },
   "offers": {
+    "service:baden39:pool": [
+      "offer:baden39:admission"
+    ],
     "service:dom-poeta:bath": [
       "offer:dom-poeta:bath"
     ],

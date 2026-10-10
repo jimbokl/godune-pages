@@ -1,7 +1,7 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
-import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs';
+import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs?v=2';
 import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=16';
 import {bindServiceComparison} from './service-comparison.mjs?v=3';
 import {bindServiceFavorites} from './service-favorites.mjs?v=1';
@@ -24,8 +24,9 @@ const integer=(value,name)=>{if(!/^\d+$/.test(value)||!Number.isSafeInteger(Numb
 const minutes=(value,name)=>{if(!/^\d{2}:\d{2}$/.test(value))throw Error(`Укажите время в поле «${name}».`);const [h,m]=value.split(':').map(Number);if(h>23||m>59)throw Error(`Проверьте поле «${name}».`);return h*60+m;};
 const amount=(value,name)=>{if(value==='')return null;if(!/^\d+(?:[.,]\d{1,2})?$/.test(value))throw Error(`Укажите сумму в поле «${name}».`);const [whole,frac='']=value.replace(',','.').split('.');const n=BigInt(whole)*100n+BigInt(frac.padEnd(2,'0'));if(n>9007199254740991n)throw Error(`Проверьте сумму в поле «${name}».`);return Number(n);};
 
-import {selectedInput} from './service-selection-state.mjs?v=2';
-export {selectedInput} from './service-selection-state.mjs?v=2';
+import {bindAdmissionParty} from './service-admission-party.mjs?v=2';
+import {selectedInput} from './service-selection-state.mjs?v=3';
+export {selectedInput} from './service-selection-state.mjs?v=3';
 
 function apply(card,result,input) {
   const price=card.querySelector('[data-price-quote]');
@@ -53,7 +54,7 @@ function apply(card,result,input) {
   card.querySelector('[data-plan-checks]').replaceChildren(...result.checks.filter(v=>v.kind!=='conditions'&&v.status!=='pass').map(v=>{const li=document.createElement('li');li.textContent=planTexts[v.kind][v.status==='fail'?0:1];return li;}));
 }
 
-import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=2';
+import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=3';
 
 const urlPrefix='sr_';
 const checkKinds=['time','approach','return','conditions','cost','upfront'];
@@ -80,6 +81,7 @@ if(typeof document!=='undefined') {
     const button=form.querySelector('[type=submit]'),status=form.querySelector('[data-form-status]');
     const controls=[...form.elements].filter(e=>e.name);
     const defaults=controls.map(e=>({element:e,value:e.value,checked:e.checked}));
+    const party=bindAdmissionParty(form,inputs);
     const detailLinks=[...document.querySelectorAll('[data-service-detail]')].map(link=>({link,path:link.getAttribute('href'),id:link.closest('[data-service]')?.dataset.service}));
     const back=document.querySelector('[data-service-back]'),backPath=back?.getAttribute('href');
     function updateNavigation(){
@@ -133,7 +135,7 @@ if(typeof document!=='undefined') {
       const generation=++restoreVersion;
       const params=new URL(location.href).searchParams;
       if(params.has('sr_v')&&params.get('sr_v')!=='1')throw Error('Условия в ссылке имеют другую версию. Последний подбор остаётся ниже.');
-      if(!params.has('sr_v')){for(const {element,value,checked} of defaults){element.value=value;element.checked=checked;}refreshExtras();context.update();updateNavigation();return false;}
+      if(!params.has('sr_v')){for(const {element,value,checked} of defaults){element.value=value;element.checked=checked;}party.restore();refreshExtras();context.update();updateNavigation();return false;}
       const allowed=new Set(['sr_v',...(page.parent?['sr_list']:[]),...controls.map(e=>urlPrefix+e.name)]);
       if([...params.keys()].some(k=>k.startsWith(urlPrefix)&&!allowed.has(k)))throw Error('В ссылке есть незнакомое условие. Последний подбор остаётся ниже.');
       await context.prepare(params);
@@ -144,7 +146,7 @@ if(typeof document!=='undefined') {
         else if(params.has(key)){e.value=params.get(key);if(e.value!==params.get(key))throw Error('Проверьте условия в ссылке.');}
       }
       if(form.elements.namedItem('scope_kind')?.value==='all'&&form.elements.namedItem('sort').value==='distance')throw Error('Укажите место или прогулку для поиска по близости.');
-      refreshExtras();context.update();
+      party.restore();refreshExtras();context.update();
       updateNavigation();
       return true;
     }
@@ -163,6 +165,7 @@ if(typeof document!=='undefined') {
           finish_by:fields.has('finish_by')?minutes(get('finish_by'),'Вернуться не позже')+(fields.has('finish_next_day')?1440:0):original.finish_by,
           cost_limit:amount(get('cost_limit'),'Бюджет на всех'),upfront_limit:amount(get('upfront_limit'),'При входе'),
           paid_minutes:get('paid_minutes')?integer(get('paid_minutes'),'По тарифу'):null};
+        if(form.elements.namedItem('participant_details'))values.participant_details=party.read();
         const visitTiming={};
         for(const key of ['session_start','change_before','change_after'])if(fields.has(key)){
           visitTiming[key]=get(key)===''?null:key==='session_start'?minutes(get(key),'Начало сеанса'):integer(get(key),key==='change_before'?'Переодевание до':'Переодевание после');

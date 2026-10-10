@@ -6,7 +6,7 @@ import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
 import {formatKopecks as money} from './trip-money.mjs';
 import {transferClock} from './trip-service-transfer-view.mjs';
-import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=3';
+import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=4';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');

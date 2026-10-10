@@ -18,6 +18,9 @@ export function selectedInput(original,values) {
   if(input.participants.people?.length!==values.people){
     input.participants.people=null;input.participants.party_size=values.people;input.participants.party_items=null;
   }
+  if(values.participant_details!==undefined){
+    input.participants.people=structuredClone(values.participant_details);input.participants.party_size=values.people;
+  }
   if(input.price){input.price.selection.people=values.people;if(input.visit.kind!=='rental')input.price.selection.duration_minutes=values.paid_minutes??values.duration_minutes;}
   if(input.visit.kind==='rental'&&visit.price)visit.price.selection.people=values.people;
   input.limits={cost:values.cost_limit,upfront:values.upfront_limit};
