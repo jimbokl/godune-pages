@@ -220,7 +220,40 @@
         "planning"
       ],
       "organization_ids": [],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:planning:2025-08-04",
+          "date": "2025-08-04",
+          "precision": "day",
+          "relation": "on",
+          "kind": "actual",
+          "state": "current",
+          "source_ids": [
+            "planning"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "planning",
+      "next_evidence": "Материалы утверждённой планировки и последующие изменения.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Планировка показывает будущую территорию; прогулки сегодня выбирайте по действующим маршрутам.",
+          "source_ids": [
+            "planning"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Проверяйте объект и участок работ по действующей редакции документов.",
+          "source_ids": [
+            "planning"
+          ]
+        }
+      ],
+      "depends_on": []
     },
     {
       "id": "milestone:samson",
@@ -236,7 +269,40 @@
       "organization_ids": [
         "org:samson"
       ],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:samson:2026-06-05",
+          "date": "2026-06-05",
+          "precision": "day",
+          "relation": "on",
+          "kind": "actual",
+          "state": "current",
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "investors",
+      "next_evidence": "Проектная документация, разрешение на строительство и сведения о начале работ.",
+      "impacts": [
+        {
+          "audience": "worker",
+          "text": "Следите за кадровыми каналами инвестора: соглашение ещё не является объявлением набора.",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Обращение с предложением направляйте компании; конкретный подряд требует отдельного подтверждения.",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        }
+      ],
+      "depends_on": []
     },
     {
       "id": "milestone:leader",
@@ -252,7 +318,40 @@
       "organization_ids": [
         "org:leader"
       ],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:leader:2026-06-05",
+          "date": "2026-06-05",
+          "precision": "day",
+          "relation": "on",
+          "kind": "actual",
+          "state": "current",
+          "source_ids": [
+            "leader-agreement"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "investors",
+      "next_evidence": "Проектная документация и объявления компании по конкретной площадке.",
+      "impacts": [
+        {
+          "audience": "worker",
+          "text": "Проверяйте площадку в вакансии: общий сайт группы охватывает разные регионы.",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Уточняйте юридическое лицо и объект до подготовки предложения.",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        }
+      ],
+      "depends_on": []
     },
     {
       "id": "milestone:utilities",
@@ -268,7 +367,40 @@
       "organization_ids": [
         "org:krko"
       ],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:utilities:2026-09-30",
+          "date": "2026-09-30",
+          "precision": "day",
+          "relation": "on",
+          "kind": "actual",
+          "state": "current",
+          "source_ids": [
+            "utilities"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "networks",
+      "next_evidence": "Первичные договоры, ход работ и документы о подключении.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Соглашения о сетях не дают даты, на которую можно бронировать будущий курорт.",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Газ и электричество имеют разные сроки и исполнителей; проверяйте нужный договор отдельно.",
+          "source_ids": [
+            "utilities"
+          ]
+        }
+      ],
+      "depends_on": []
     },
     {
       "id": "milestone:road",
@@ -282,7 +414,41 @@
         "road-mirror"
       ],
       "organization_ids": [],
-      "procurement_id": "procurement:0335200014926003779"
+      "procurement_id": "procurement:0335200014926003779",
+      "date_claims": [
+        {
+          "id": "date:road:2026-10-07",
+          "date": "2026-10-07",
+          "precision": "day",
+          "relation": "on",
+          "kind": "actual",
+          "state": "current",
+          "source_ids": [
+            "road-mirror"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "roads",
+      "next_evidence": "Изменения извещения, протокол определения поставщика и подписанный контракт.",
+      "impacts": [
+        {
+          "audience": "contractor",
+          "text": "Сверьте документацию в ЕИС и подготовьте заявку до указанного срока.",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Набор на дорожные работы проверяйте у установленного подрядчика после определения исполнителя.",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "tender_calendar_kind": "publication"
     },
     {
       "id": "milestone:forum",
@@ -298,7 +464,83 @@
       "organization_ids": [
         "org:krko"
       ],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:forum:2026-10-10",
+          "date": "2026-10-10",
+          "precision": "day",
+          "relation": "on",
+          "kind": "statement",
+          "state": "current",
+          "source_ids": [
+            "forum"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "project",
+      "next_evidence": "Документы по отдельным объектам: контракт, начало работ, приёмка.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Заявление об активной фазе описывает развитие проекта; дату открытия проверяйте по конкретному объекту.",
+          "source_ids": [
+            "forum"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Ищите объявление работодателя с площадкой и условиями, а не только общий план рабочих мест.",
+          "source_ids": [
+            "forum"
+          ]
+        }
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "milestone:road-deadline",
+      "project_id": "project:belaya-duna",
+      "date": "2026-10-26",
+      "period": "26 октября 2026 · план",
+      "title": "Окончание подачи заявок на дорогу",
+      "status": "scheduled",
+      "description": "Приём заявок на дорожный конкурс запланирован до 26 октября, 11:00 по Москве. Изменения срока проверяются в извещении ЕИС.",
+      "source_ids": [
+        "road-mirror"
+      ],
+      "organization_ids": [],
+      "procurement_id": "procurement:0335200014926003779",
+      "date_claims": [
+        {
+          "id": "date:road-deadline:2026-10-26",
+          "date": "2026-10-26",
+          "precision": "day",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "road-mirror"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "roads",
+      "next_evidence": "Актуальная редакция извещения и протокол рассмотрения заявок.",
+      "impacts": [
+        {
+          "audience": "contractor",
+          "text": "Подайте заявку по часам ЕИС: 11:00 по Москве соответствует 10:00 в Калининграде.",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "depends_on": [
+        "milestone:road"
+      ],
+      "tender_calendar_kind": "submission_deadline"
     },
     {
       "id": "milestone:road-result",
@@ -312,7 +554,43 @@
         "road-mirror"
       ],
       "organization_ids": [],
-      "procurement_id": "procurement:0335200014926003779"
+      "procurement_id": "procurement:0335200014926003779",
+      "date_claims": [
+        {
+          "id": "date:road-result:2026-10-29",
+          "date": "2026-10-29",
+          "precision": "day",
+          "relation": "on",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "road-mirror"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "roads",
+      "next_evidence": "Опубликованный протокол и сведения о победителе в ЕИС.",
+      "impacts": [
+        {
+          "audience": "contractor",
+          "text": "Плановая дата итогов — ориентир для проверки протокола, а не имя выбранного исполнителя.",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "После подтверждения исполнителя можно проверить его кадровые каналы.",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "depends_on": [
+        "milestone:road"
+      ],
+      "tender_calendar_kind": "result"
     },
     {
       "id": "milestone:gas",
@@ -326,7 +604,42 @@
         "utilities"
       ],
       "organization_ids": [],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:gas:2028-09-30",
+          "date": "2028-09-30",
+          "precision": "month",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "utilities"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "networks",
+      "next_evidence": "Документ о выполнении подключения к газу и изменения договора.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Срок подключения к газу сам по себе не определяет открытие гостиниц.",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Дата найма зависит от работодателя и готовности конкретного объекта.",
+          "source_ids": [
+            "utilities"
+          ]
+        }
+      ],
+      "depends_on": [
+        "milestone:utilities"
+      ]
     },
     {
       "id": "milestone:power",
@@ -340,7 +653,42 @@
         "utilities"
       ],
       "organization_ids": [],
-      "procurement_id": null
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:power:2030-09-30",
+          "date": "2030-09-30",
+          "precision": "month",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "utilities"
+          ],
+          "recorded_at": "2026-10-10"
+        }
+      ],
+      "topic": "networks",
+      "next_evidence": "Документ о выполнении электроподключения и изменения договора.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Срок электроподключения относится к сетям; отдельного подтверждения открытия отелей в этой записи нет.",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Уточняйте сроки запуска и найма по конкретному работодателю.",
+          "source_ids": [
+            "utilities"
+          ]
+        }
+      ],
+      "depends_on": [
+        "milestone:utilities"
+      ]
     }
   ],
   "procurements": [
