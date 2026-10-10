@@ -36,7 +36,7 @@ function conditionText(c){
  if(c.kind==='booking')return !c.required?'Без предварительной записи':c.notice_minutes==null?'Нужна запись':`Запись минимум за ${c.notice_minutes} мин`;
  return 'Условие нужно уточнить';
 }
-function serviceCard(engine,visit,day,index){
+function serviceCard(engine,visit,day,index,catalog){
  const card={id:safeText(visit?.id)||`unknown-${index+1}`,key:`service:${day.id}:${index}`,name:safeText(visit?.name)||'Сохранённое посещение',category:categories[visit?.category]||'Посещение',address:safeText(visit?.address),note:safeText(visit?.note),point:null,date:null,context:'unsupported',state:null,summary:contexts.unsupported,assessment:null,conditions:[],sources:[]};
  if(visit&&Object.hasOwn(visit,'provenance'))card.provenance=structuredClone(visit.provenance);
  if(!validServiceVisit(visit))return card;
@@ -47,14 +47,15 @@ function serviceCard(engine,visit,day,index){
  card.deposit=a.quote?.deposit?price(a.quote.deposit.total,0):'Возвратный залог пока неизвестен.';
  card.upfront=price(a.quote?.upfront_total??null,a.quote?.upfront_lower_bound??0);
  card.stages=a.visit.duration.segments.map(v=>({label:stages[v.stage]||'Часть посещения',minutes:v.minutes}));
- card.rental=rentalDetails(visit,a);
- card.rental_points=rentalMapPoints(visit,a);
+ card.rental=rentalDetails(visit,a,catalog);
+ card.rental_points=rentalMapPoints(visit,a,catalog);
  for(const check of a.eligibility.checks){
   const status={pass:'Подходит',fail:'Условие не выполнено',unknown:'Нужно уточнить',stale:'Нужны свежие сведения',conflict:'Источники расходятся'}[check.status]||'Нужно уточнить';
   card.conditions.push({label:checks[check.kind]||'Условие',status,observations:check.observations.map(v=>({text:conditionText(v.rule.condition),status:v.status,source:source(v.rule.source)}))});
  }
  const calendars=[a.visit.calendar,a.rental?.pickup.calendar,a.rental?.return_visit?.calendar].filter(Boolean);
  const roads=[a.access?.approach,a.access?.return_walk,a.rental?.approach,a.rental?.return_road,a.rental?.after_return].filter(Boolean);
+ for(const connection of a.rental?.activity?.itinerary.connections||[])roads.push(...(connection.selection?(connection.journey?.transfers||[]).map(t=>t.road):[connection.leg]).filter(Boolean));
  const evidence=[...calendars.flatMap(c=>[...c.windows,...c.sessions].map(v=>v.source)),...roads.flatMap(r=>r.candidates.map(v=>v.link.source)),...(a.rental?.billing.sources||[]),...card.rental_points.map(p=>p.source)];
  card.sources=[...new Map(evidence.filter(Boolean).map(s=>[JSON.stringify(s),source(s)])).values(),...provenanceSources(visit.provenance,day.date||card.date)];
  return card;
@@ -71,7 +72,7 @@ export function guideEntries(day,stops,services){
 }
 export function serviceGuide(engine,trip,catalog,matrix){
  const day=selectedDay(trip);if(!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!(usesJourneyBoundaries(day,catalog)&&typeof engine.serviceDay==='function'))return null;
- const services=serviceVisitRows(day).map((v,i)=>serviceCard(engine,v,day,i));
+ const services=serviceVisitRows(day).map((v,i)=>serviceCard(engine,v,day,i,catalog));
  let check=null,error=null;try{check=inspectTripServiceDay(engine,trip,catalog,matrix);}catch(e){error=errors[e.message]||'Полный расчёт дня пока недоступен. Выбранные посещения и записи сохранены ниже.';}
  const boundaries=dayJourneyBoundaries(day,catalog);
  const name=entry=>boundaryForEntry(boundaries,entry)?.anchor?.name||(entry?.kind==='service'?services.find(v=>v.id===entry.id)?.name||'Посещение':catalog.poi.find(p=>p.slug===entry?.id)?.name||'Остановка');

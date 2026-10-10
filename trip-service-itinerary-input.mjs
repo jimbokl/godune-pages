@@ -9,7 +9,7 @@ import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=3';
 const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;
 const same=(a,b)=>JSON.stringify(ordered(a))===JSON.stringify(ordered(b));
 const physical=anchor=>JSON.stringify(ordered([anchor.kind,anchor.revision,anchor.location]));
-export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
+export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix,physicalBounds=null){
  const graph={version:1,anchors:[],links:[]},anchors=new Map(),boundVisits=structuredClone(visits),mode=travelMode(trip);
  for(const visit of boundVisits){
   if(!['directed','rental'].includes(visit.selection.visit.kind))continue;
@@ -36,6 +36,21 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
    const point=v=>{v.anchor_id=aliases.get(v.anchor_id);};
    point(input.pickup.point);point(input.return_at.point);
    for(const term of input.terms){point(term.pickup);for(const v of term.returns||[])point(v);}
+   // The held itinerary owns its internal namespace. Only its two physical
+   // boundaries share the rental's namespace and must follow outer aliases.
+   const activity=input.activity?.itinerary;
+   if(activity){
+    const ids=new Map([activity.origin,activity.destination].map(id=>[id,aliases.get(id)||id]));
+    const alias=id=>ids.get(id)||id;
+    for(const a of activity.graph.anchors)a.id=alias(a.id);
+    for(const link of activity.graph.links){link.from=alias(link.from);link.to=alias(link.to);}
+    for(const entry of activity.order){entry.arrival_anchor=alias(entry.arrival_anchor);entry.departure_anchor=alias(entry.departure_anchor);}
+    activity.origin=alias(activity.origin);activity.destination=alias(activity.destination);
+    for(const connection of activity.selected_connections||[]){
+     for(const endpoint of [connection.from,connection.to])if(['origin','destination'].includes(endpoint.kind))endpoint.id=alias(endpoint.id);
+     for(const step of connection.steps){const road=step.kind==='ride'?step.ride:step;road.from=alias(road.from);road.to=alias(road.to);}
+    }
+   }
   }
  }
  const placeAnchors=new Map();
@@ -69,7 +84,24 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix){
  });
  const boundaries=dayJourneyBoundaries(day,catalog);
  let boundaryOrigin=null,destination=null;
- if(usesJourneyBoundaries(day,catalog)&&order.length){
+ if(physicalBounds){
+  plan.stops=plan.stops.filter(stop=>!['__day_origin','__day_night','__day_departure'].includes(stop.id));
+  // The rental graph may contain verified counter-to-landmark roads. Keep
+  // their own revisions and dated evidence instead of borrowing a POI pin.
+  for(const anchor of physicalBounds.graph?.anchors||[]){
+   const existing=anchors.get(anchor.id);
+   if(existing&&!same(existing,anchor))throw Error('service_timeline_anchor_conflict');
+   if(!existing){anchors.set(anchor.id,structuredClone(anchor));graph.anchors.push(structuredClone(anchor));}
+  }
+  for(const link of physicalBounds.graph?.links||[])graph.links.push(structuredClone(link));
+  for(const anchor of [physicalBounds.origin,physicalBounds.destination]){
+   if(!anchor)throw Error('rental_activity_boundary_missing');
+   const existing=anchors.get(anchor.id);
+   if(existing&&!same(existing,anchor))throw Error('service_timeline_anchor_conflict');
+   if(!existing){anchors.set(anchor.id,structuredClone(anchor));graph.anchors.push(structuredClone(anchor));}
+  }
+  boundaryOrigin=physicalBounds.origin.id;destination=physicalBounds.destination.id;
+ }else if(usesJourneyBoundaries(day,catalog)&&order.length){
   // Rust owns the origin/destination travel. Drop the old zero-visit wrappers
   // so the start and reserve are counted once, including service-only days.
   plan.stops=plan.stops.filter(stop=>!['__day_origin','__day_night','__day_departure'].includes(stop.id));

@@ -2,7 +2,11 @@
 export function selectedInput(original,values) {
   const input=structuredClone(original),visit=input.visit.input;
   visit.date=values.date;visit.arrival=values.arrival;visit.finish_by=values.finish_by;
-  if(input.visit.kind==='rental')visit.timing.use_minutes=values.duration_minutes;
+  if(input.visit.kind==='rental'){
+    // An existing held route determines its duration. A generic duration field
+    // must not replace that route or create two competing use durations.
+    visit.timing.use_minutes=visit.activity?null:values.duration_minutes;
+  }
   else visit.timing.activity=values.duration_minutes;
   if(input.participants.people?.length!==values.people){
     input.participants.people=null;input.participants.party_size=values.people;input.participants.party_items=null;

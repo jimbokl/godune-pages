@@ -49,6 +49,19 @@
 .bike-stop-choice[hidden]{display:none}.bike-stop-more{min-height:44px;background:transparent;border:1px solid var(--line,#ddd8ce);border-radius:10px;padding:.65rem .8rem;font:inherit;color:var(--sea-ink,#34617d);cursor:pointer}
 .bike-stop-remove{display:block;min-height:44px;padding:.4rem 0;border:0;background:transparent;color:var(--sea-ink,#34617d);font:inherit;font-size:.9rem;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
 .bike-stop-picker button:focus-visible,.bike-stop-remove:focus-visible{outline:2px solid #c58a33;outline-offset:3px}
+.bike-rental-picker{border:1px solid var(--line,#ddd8ce);border-radius:16px;padding:.5rem 1rem 1rem;margin:0 0 1.5rem;background:var(--paper,#faf7f1)}
+.bike-rental-picker:not([open]){padding-bottom:.5rem}.bike-rental-picker>summary{min-height:48px;align-content:center;cursor:pointer;font-family:var(--font-serif,Georgia,serif);font-size:1.4rem;color:var(--ink,#10273b)}
+.bike-rental-modes{display:flex;gap:4px;padding:4px;border:1px solid var(--line,#ddd8ce);border-radius:12px;margin:.75rem 0 1rem}
+.bike-rental-modes button{flex:1;min-width:0;min-height:44px;padding:.6rem .4rem;border:0;border-radius:9px;font:inherit;color:var(--ink,#10273b);background:transparent;cursor:pointer}
+.bike-rental-modes [aria-pressed=true]{background:#bfd9e7;color:#10273b}.bike-rental-modes button:disabled{opacity:.5;cursor:default}
+.bike-rental-offer{margin:1rem 0}.bike-rental-offer>a{font-family:var(--font-serif,Georgia,serif);font-size:1.3rem;color:var(--ink,#10273b);text-decoration:none}.bike-rental-rate{margin:.35rem 0;color:var(--sea-ink);font-weight:600}
+.bike-rental-picker label{display:flex;justify-content:space-between;gap:1rem;align-items:center;color:var(--muted,#607483)}
+.bike-rental-picker input,.bike-rental-picker select{box-sizing:border-box;min-height:44px;min-width:0;width:5rem;border:1px solid #a9bac5;border-radius:9px;padding:.5rem;color:var(--ink,#10273b);background:var(--card,#fffdf9);font:inherit}.bike-rental-picker select{flex:1;width:auto}
+.bike-rental-sequence{font-size:.9rem;color:var(--sea-ink);padding:1rem 0;border-bottom:1px solid var(--line,#ddd8ce);line-height:1.6}
+.bike-rental-facts{font-size:.9rem;line-height:1.5;margin:0}.bike-rental-facts dt{color:var(--muted,#607483);margin-top:.9rem}.bike-rental-facts dd{margin:.2rem 0;color:var(--ink,#10273b)}
+.bike-rental-outcome{border-left:2px solid #c58a33;padding-left:.75rem;font-size:.9rem;line-height:1.5;color:var(--muted,#607483)}
+.bike-rental-link{display:inline-block;min-height:44px;align-content:center;color:var(--sea-ink);text-underline-offset:4px}
+.bike-rental-picker :focus-visible{outline:2px solid #c58a33;outline-offset:3px}
 @media(max-width:760px){.bike-main-fields{grid-template-columns:1fr 1fr}.bike-main-fields button{grid-column:1/-1}.bike-extra-fields{grid-template-columns:1fr 1fr}.bike-results{grid-template-columns:1fr}.bike-card>img{height:180px}}
 @media(max-width:360px){.bike-main-fields,.bike-extra-fields{grid-template-columns:1fr}.bike-tabs button{flex:1 1 auto}.bike-metrics{gap:.5rem 1rem}}
 @media(prefers-reduced-motion:no-preference){.bike-save,.bike-tabs button{transition:background-color .15s ease}.bike-save:hover{background:#3c6d8e}}

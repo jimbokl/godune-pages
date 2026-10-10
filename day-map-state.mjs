@@ -9,6 +9,7 @@ import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transf
 import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=4';
 import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=3';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=4';
+import {rentalActivityStops} from './trip-rental-view.mjs';
 
 export const dayMapSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).timeline,selectedDay(trip).service_visits,selectedDay(trip).transfer_connections]);
 const located=p=>p&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)&&Math.abs(p.lat)<=90&&Math.abs(p.lon)<=180;
@@ -27,6 +28,7 @@ export function anchorMapPoint(anchor,catalog){
 export function projectDayMap(trip,catalog,result=null,fallback=[]){
  const day=selectedDay(trip),visits=serviceVisitRows(day),order=timelineOrder(day),points=[],keys=new Set(),connections=[],roads=[];
  const mixed=!!result?.itinerary,boundaries=dayJourneyBoundaries(day,catalog);
+ let totalStops=day.kosa_plan?fallback.length:order.length;
  const name=e=>boundaryForEntry(boundaries,e)?.anchor?.name||(e?.kind==='service'?visits.find(v=>v.id===e.id)?.name:catalog.poi.find(p=>p.slug===e?.id)?.name);
  const add=(value,key,deduplicate=true)=>{if(!located(value)||deduplicate&&keys.has(key))return;keys.add(key);points.push(value);};
  for(const [index,entry] of (day.kosa_plan?fallback.map(p=>({kind:'place',id:p.slug})):order).entries()){
@@ -34,14 +36,26 @@ export function projectDayMap(trip,catalog,result=null,fallback=[]){
    const p=catalog.poi.find(p=>p.slug===entry.id);if(p)add({...p,entry:{...entry},number:index+1,kind:'place'},JSON.stringify(['poi',p.slug]),false);
   }else{
    const v=visits.find(v=>v.id===entry.id),assessment=result?.visits?.find(row=>row.id===entry.id);
+   const rental=validServiceVisit(v)&&v.selection.visit.kind==='rental';
+   if(rental)totalStops+=1+(v.selection.visit.input.activity?.itinerary.order.length||0);
    if(!validServiceVisit(v)||!assessment?.assessment||assessment.context!=='ready')continue;
    const input=v.selection.visit.input;
    const anchorId=v.selection.visit.kind==='rental'?input.pickup.point.anchor_id:input.selection?.entrance;
    const anchor=input.graph?.anchors?.find(a=>a.id===anchorId),p=anchor?anchorMapPoint(anchor,catalog):v.point;
    if(p)add({...p,slug:entry.id,name:v.name,entry:{...entry},number:index+1,kind:'service',source:anchor?.source||v.point&&{reference:v.point.source_id,checked_at:v.point.checked_at}},anchor?locationKey(anchor):JSON.stringify([p.lat,p.lon]),false);
+   if(rental){
+    const stops=rentalActivityStops(v,assessment.assessment,catalog);
+    const back=input.graph.anchors.find(a=>a.id===input.return_at.point.anchor_id);
+    for(const [i,stop] of [...stops,{id:`${entry.id}:return`,name:back?.name||'Пункт возврата',anchor:back}].entries()){
+     const point=anchorMapPoint(stop.anchor,catalog);if(!point)continue;
+     const returning=i===stops.length;
+     add({...point,slug:stop.id,name:stop.name,entry:{...entry},number:`${index+1}.${i+1}`,kind:'service',rental:true,
+      ...(returning?{boundaryLabel:'Возврат велосипеда'}:{})},locationKey(stop.anchor),false);
+    }
+   }
   }
  }
- if(!mixed)return {mixed:false,points,connections,roads,unused:[],totalStops:day.kosa_plan?fallback.length:order.length,omittedStops:(day.kosa_plan?fallback.length:order.length)-points.length};
+ if(!mixed)return {mixed:false,points,connections,roads,unused:[],totalStops,omittedStops:totalStops-points.length};
  const scheduled=result.itinerary.order;
  for(const row of boundaries.rows){
   const entry=scheduled.find(e=>e.kind===row.entry.kind&&e.id===row.entry.id);if(!entry)continue;
@@ -65,9 +79,8 @@ export function projectDayMap(trip,catalog,result=null,fallback=[]){
   const from=identity(a,pa),to=identity(b,pb);if(!from||!to)return;
   roads.push({from,to,mode:leg.mode,connectionKey:key,sources});
  }
- for(const c of result.itinerary.connections){
-  if(!c.selection&&c.status==='shared')continue;
-  const from=entryFor(c.from),to=entryFor(c.to),key=JSON.stringify([c.from,c.to]),title=`${name(from)||'Начало пути'} → ${name(to)||'Возвращение'}`;
+ function connection(c,key,title,target=null){
+  if(!c.selection&&c.status==='shared')return;
   const rows=selectedConnectionRows(c,{id:key,title})||[{id:key,kind:'walk',time:c.departure,title:c.leg?.mode==='bike'?'На велосипеде':c.leg?.mode==='car'?'На машине':'Пешком',text:c.leg?.minutes==null?'Время дороги пока неизвестно.':`${c.leg.minutes} мин в пути.`,status:c.status,sources:(c.leg?.candidates||[]).map(v=>({name:v.link.source.reference,checked_at:v.link.source.checked_at}))}];
   const anchors=(c.journey?.transfers||[]).flatMap(t=>t.anchors||t.road?.anchors||[]);
   const unknown=[];
@@ -78,9 +91,34 @@ export function projectDayMap(trip,catalog,result=null,fallback=[]){
   }
   if(c.selection){for(const transfer of c.journey?.transfers||[])knownRoad(transfer.road,key);}
   else knownRoad(c.leg,key);
-  connections.push({key,title,target:!boundaryForEntry(boundaries,to)&&(to?.kind==='place'||to?.kind==='service')?{kind:to.kind,id:to.id}:null,status:c.status,selected:!!c.selection,rows,unknown});
+  connections.push({key,title,target,status:c.status,selected:!!c.selection,rows,unknown});
  }
- return {mixed:true,points,connections,roads,unused:unusedConnectionRows(result.itinerary),totalStops:order.length,omittedStops:order.length-points.filter(p=>p.kind!=='transfer').length};
+ const renderedRentals=new Set();
+ function rentalRoads(entry){
+  if(entry?.kind!=='service'||renderedRentals.has(entry.id))return;
+  renderedRentals.add(entry.id);
+  const row=result.visits?.find(v=>v.id===entry.id),cycle=row?.assessment?.rental;
+  if(row?.context!=='ready'||!cycle)return;
+  const emit=(leg,phase)=>{
+   if(!leg||leg.from===leg.to&&leg.minutes===0)return;
+   const a=leg.anchors.find(a=>a.id===leg.from),b=leg.anchors.find(a=>a.id===leg.to);
+   connection({from:leg.from,to:leg.to,leg,status:leg.status},JSON.stringify(['rental',entry.id,phase,leg.from,leg.to]),`${a?.name||'Начало пути'} → ${b?.name||'Возвращение'}`,{kind:'service',id:entry.id});
+  };
+  emit(cycle.approach,'approach');
+  for(const [i,c] of (cycle.activity?.itinerary.connections||[]).entries()){
+   const anchors=cycle.activity.itinerary.graph?.anchors||visits.find(v=>v.id===entry.id)?.selection.visit.input.activity.itinerary.graph.anchors||[];
+   const nested=cycle.activity.itinerary.order;
+   const label=id=>{const e=nested.find(e=>e.schedule_id===id);return catalog.poi.find(p=>p.slug===e?.id)?.name||anchors.find(a=>a.id===e?.id)?.name||e?.id;};
+   connection(c,JSON.stringify(['rental',entry.id,'activity',i]),`${label(c.from)||'Выдача велосипеда'} → ${label(c.to)||'Конец прогулки'}`,{kind:'service',id:entry.id});
+  }
+  emit(cycle.return_road,'return');emit(cycle.after_return,'after_return');
+ }
+ for(const c of result.itinerary.connections){
+  const from=entryFor(c.from),to=entryFor(c.to);rentalRoads(from);
+  connection(c,JSON.stringify([c.from,c.to]),`${name(from)||'Начало пути'} → ${name(to)||'Возвращение'}`,!boundaryForEntry(boundaries,to)&&(to?.kind==='place'||to?.kind==='service')?{kind:to.kind,id:to.id}:null);
+ }
+ for(const entry of scheduled)rentalRoads(entry);
+ return {mixed:true,points,connections,roads,unused:unusedConnectionRows(result.itinerary),totalStops,omittedStops:totalStops-points.filter(p=>p.kind!=='transfer').length};
 }
 export async function projectedRoadFeatures(projection,catalog,matrix,base){
  const features=await Promise.all(projection.roads.map(async road=>{

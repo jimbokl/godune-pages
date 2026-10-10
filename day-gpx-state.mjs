@@ -38,11 +38,12 @@ export async function collectDayGpx({trip,catalog,matrix,engine,base}){
   return {coordinates:feature.geometry.coordinates,mode:p.mode,from:p.from,to:p.to,connection:p.connection_key,
    description:[`Участок ${i+1}: ${modes[p.mode]}.`,...facts].join(' ')};
  });
+ const trackModes=new Set(segments.map(s=>s.mode)),type=trackModes.size>1?'multimodal':{bike:'cycling',car:'driving',foot:'walking'}[segments[0].mode];
  const waypoints=projection.points.map(p=>({lat:p.lat,lon:p.lon,name:[p.boundaryLabel||p.number,p.name].filter(Boolean).join(' · '),description:p.boundaryLabel||'Остановка выбранного дня'}));
  const xml=`<?xml version="1.0" encoding="UTF-8"?>\n<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gd="https://godune.ru/gpx/1" version="1.1" creator="GoDune.ru">\n`+
   `<metadata>${tag('name',title)}${tag('desc',notes.join(' '))}<copyright author="OpenStreetMap contributors"><license>https://opendatacommons.org/licenses/odbl/1-0/</license></copyright><link href="https://godune.ru/"><text>GoDune.ru · Балтийские дюны</text></link></metadata>\n`+
   waypoints.map(p=>`<wpt lat="${p.lat}" lon="${p.lon}">${tag('name',p.name)}${tag('desc',p.description)}</wpt>`).join('\n')+
-  `\n<trk>${tag('name',title)}${tag('desc',[...notes,...segments.map(s=>s.description)].join(' '))}${tag('type',day.schedule?.mode==='bike'?'cycling':day.schedule?.mode==='car'?'driving':'walking')}\n`+
+  `\n<trk>${tag('name',title)}${tag('desc',[...notes,...segments.map(s=>s.description)].join(' '))}${tag('type',type)}\n`+
   segments.map(s=>`<trkseg>${s.coordinates.map(p=>`<trkpt lat="${p[1]}" lon="${p[0]}"/>`).join('')}<extensions>${tag('gd:mode',s.mode)}${tag('gd:from',s.from)}${tag('gd:to',s.to)}${tag('gd:description',s.description)}</extensions></trkseg>`).join('\n')+
   '\n</trk>\n</gpx>\n';
  const id=String(day.id||'day').replace(/[^a-z0-9-]/gi,'-');
