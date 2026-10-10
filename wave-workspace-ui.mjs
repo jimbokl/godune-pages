@@ -57,6 +57,14 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  if(dishes)secondary.after(dishes);
  const roadEditor=initTransferEditor({host:secondary,read,commit,catalog,base});
  const download=el('section','wave-download'),button=el('button','wave-download-button','Скачать буклет ↓'),status=el('p','wave-download-status');button.type='button';status.setAttribute('role','status');download.append(button,status);(dishes||secondary).after(download);
+ const gpx=el('button','wave-gpx-button','Скачать трек GPX ↓'),gpxStatus=el('p','wave-download-status');gpx.type='button';gpxStatus.setAttribute('role','status');download.append(gpx,gpxStatus);
+ let gpxDownloading=false;
+ gpx.addEventListener('click',async()=>{
+  if(gpxDownloading)return;gpxDownloading=true;gpx.disabled=true;gpx.textContent='Собираем трек…';gpxStatus.textContent='';const trip=structuredClone(read()),signature=JSON.stringify(trip);let module;
+  try{module=await import('./day-gpx-ui.mjs?v=1');const result=await module.downloadDayGpx({trip,catalog,base,stillCurrent:()=>JSON.stringify(read())===signature});gpxStatus.textContent=module.gpxReady(result);}
+  catch(error){gpxStatus.textContent=module?module.gpxMessage(error):'Трек пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
+  finally{gpxDownloading=false;gpx.textContent='Скачать трек GPX ↓';gpx.disabled=!canDownloadWaveDay(read(),catalog);}
+ });
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
@@ -70,11 +78,13 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  return {render(){
   roadEditor.render();
   const trip=read(),day=selectedDay(trip),days=journeyDays(trip),view=waveCover(trip,catalog),key=JSON.stringify(view);
-  if(day.id!==savedDay){saved.textContent='';savedDay=day.id;}
+  if(day.id!==savedDay){saved.textContent='';gpxStatus.textContent='';savedDay=day.id;}
   if(key!==coverKey){if(title)title.textContent=view.title;if(subtitle)subtitle.textContent=view.subtitle;cover.hidden=!view.photo;if(view.photo)cover.src=new URL(view.photo,base);coverKey=key;}
   const nextKey=JSON.stringify(days.map(d=>[d.id,d.date,d.name]));if(nextKey!==daysKey){daySelect.replaceChildren(...days.map((d,i)=>{const opt=el('option','',`День ${i+1}${d.date?' · '+new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(d.date+'T12:00:00Z')):''}`);opt.value=d.id;return opt;}));daysKey=nextKey;}daySelect.value=day.id;
   if(!downloading)button.disabled=!canDownloadWaveDay(trip,catalog);
-  download.hidden=button.disabled&&!downloading;
+  if(!gpxDownloading)gpx.disabled=!canDownloadWaveDay(trip,catalog);
+  gpx.hidden=!!day.kosa_plan;
+  download.hidden=button.disabled&&!downloading&&!gpxDownloading;
   const wizard=document.querySelector('#planner-new-day');if(wizard)wizard.hidden=!wizard.open&&(trip.places.length>0||days.length>1||hasMenuChoices(day));
  }};
 }

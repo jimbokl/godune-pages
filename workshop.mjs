@@ -12,7 +12,7 @@ import {initServiceVisits} from './trip-service-visits-ui.mjs?v=21';
 import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=3';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=32';
+import {initDayWorkspace} from './day-workspace.mjs?v=33';
 import {addTripStarter} from './trip-starters.mjs?v=26';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=27';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=18';

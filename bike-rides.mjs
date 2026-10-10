@@ -89,6 +89,13 @@ if(root){
   const actions=node('div',undefined,'bike-actions');
   if(row.state!=='does_not_fit'){
    const add=node('button',row.state==='needs_info'?'Добавить с пометками →':'Сохранить в Мой день →','bike-save');add.type='button';add.addEventListener('click',()=>save(row));actions.append(add);
+   const gpx=node('button','Скачать трек GPX ↓','bike-gpx'),feedback=node('p',undefined,'bike-gpx-status');gpx.type='button';feedback.setAttribute('role','status');
+   gpx.addEventListener('click',async()=>{
+    if(gpx.disabled)return;gpx.disabled=true;gpx.textContent='Собираем трек…';feedback.textContent='';const ticket=sequence,settings=currentSettings;let module;
+    try{module=await import('./day-gpx-ui.mjs?v=1');const result=await module.downloadDayGpx({trip:row.trip,catalog:ctx.catalog,matrix:ctx.matrix,engine:ctx.engine,base,stillCurrent:()=>ticket===sequence&&settings===currentSettings&&rows.includes(row)&&article.isConnected});feedback.textContent=module.gpxReady(result);}
+    catch(error){feedback.textContent=module?module.gpxMessage(error):'Трек пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
+    finally{gpx.textContent='Скачать трек GPX ↓';gpx.disabled=false;}
+   });actions.append(gpx,feedback);
   }else actions.append(node('p','Измените время или условия выше.','bike-caption'));
   content.append(actions);article.append(content);return article;
  }
