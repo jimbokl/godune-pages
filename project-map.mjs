@@ -1,4 +1,4 @@
-import './project-dossier.mjs?v=1';
+import './project-dossier.mjs?v=2';
 
 export function mapState(params, versions, defaultDocument) {
   const document = Object.hasOwn(versions, params.get('document')) ? params.get('document') : defaultDocument;

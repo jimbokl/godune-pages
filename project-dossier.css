@@ -155,3 +155,47 @@ body:has(.dossier-page) .inner-main{max-width:1160px}
 .dossier-page .research-citations>div{padding:.3rem 0 .5rem;line-height:1.6}
 .dossier-page .research-chapter-menu>summary{justify-content:flex-start;text-align:left;font-size:.85rem}
 .dossier-page .business-context-links button:disabled{opacity:.45;cursor:default}
+
+/* One section switcher across the project, research and business dossiers. */
+.business-page .dossier-section-nav{border:0;border-radius:0;background:none;box-shadow:none;padding:0;margin:0 0 1.8rem;min-width:0}
+.business-page .dossier-section-nav>summary{display:none}
+.business-page .dossier-section-nav>.business-nav{margin:0;padding:0 0 .8rem;gap:.25rem}
+.business-page .dossier-section-nav>.business-nav a{min-height:44px;display:flex;align-items:center;padding:.55rem .8rem;font-size:.85rem;border-radius:.4rem}
+.business-page :is(a,button,input,select,summary):focus-visible{outline:2px solid #5786a3;outline-offset:3px}
+.dossier-page .dossier-record>summary{padding-right:3rem}
+.dossier-record>summary::after{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;top:1.15rem;right:.2rem;font-size:1.1rem;color:#477593}
+.dossier-record[open]>summary::after{background:#dce8ec;border-color:transparent;color:#284c63}
+.dossier-record[open]>.dossier-record-body{border-left:2px solid #789bb0;padding-left:1rem;margin-bottom:.75rem;padding-bottom:.5rem}
+.dossier-chapters .dossier-record[open]>.dossier-record-body{margin-left:.35rem;padding-left:3rem}
+.dossier-page .business-company .business-card-actions{gap:.5rem 1.25rem;padding-top:0;align-items:center}
+.dossier-page .business-company .business-card-actions button{width:auto;flex:0 1 auto;min-height:44px;border:1px solid var(--line);color:inherit;padding:.5rem .85rem}
+.dossier-page .business-company .business-card-actions button[aria-pressed=true]{background:#dce8ec;border-color:#789bb0;color:#284c63}
+.dossier-page .business-card-actions a,.dossier-page .dossier-related a,.dossier-page .dossier-subnav a{min-height:44px}
+.dossier-page .dossier-subnav{flex-wrap:wrap;gap:0 1.25rem;overflow:visible;white-space:normal}
+.dossier-filters>summary{display:flex;justify-content:flex-start;align-items:center;gap:.75rem;text-align:left}
+.dossier-filter-count{margin-left:auto;color:var(--business-muted);font-size:.7rem;font-weight:400;font-variant-numeric:tabular-nums}
+.dossier-filter-count:empty{display:none}
+@media(hover:hover){
+ .dossier-record>summary:hover::after{background:#dce8ec;border-color:#789bb0}
+ .dossier-page .business-company .business-card-actions button:hover{border-color:#789bb0;background:rgba(120,155,176,.1)}
+}
+html[data-theme=night] .dossier-record[open]>summary::after,html[data-theme=night] .dossier-page .business-company .business-card-actions button[aria-pressed=true]{background:#29495b;color:#d8e8f1}
+html[data-theme=night] .dossier-record>summary::after{color:#a9cbdc}
+@media(max-width:760px){
+ .business-page .dossier-section-nav{border:1px solid var(--line);border-radius:.7rem;margin:0 0 1.25rem;background:var(--business-surface)}
+ .business-page .dossier-section-nav>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px;padding:.7rem 1rem;list-style:none;cursor:pointer;text-align:left}
+ .business-page .dossier-section-nav>summary::-webkit-details-marker{display:none}
+ .dossier-section-nav>summary>span:first-child{display:grid;gap:.25rem}
+ .dossier-section-nav small{font-size:.6rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--business-muted)}
+ .dossier-section-nav strong{font-size:1rem;font-weight:500;line-height:1.3}
+ .dossier-nav-chevron{width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:.1rem .2rem .4rem 0;color:#477593}
+ .dossier-section-nav[open] .dossier-nav-chevron{transform:rotate(225deg);margin-top:.5rem;margin-bottom:0}
+ .business-page .dossier-section-nav>.business-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem;border-top:1px solid var(--line);border-bottom:0;margin:0 .65rem;padding:.65rem 0;overflow:visible;white-space:normal}
+ .business-page .dossier-section-nav>.business-nav a{font-size:.78rem;white-space:normal;overflow-wrap:anywhere;padding:.65rem .55rem}
+ .dossier-record>summary::after{top:.9rem}
+ .dossier-chapters .dossier-record[open]>.dossier-record-body{margin-left:0;padding-left:.8rem}
+ .dossier-page .business-company .business-card-actions{gap:.35rem .8rem}
+ .dossier-filter-count{font-size:.65rem}
+}
+
+@media(hover:hover){html[data-theme=night] .dossier-record>summary:hover::after{background:#29495b;border-color:#789bb0;color:#d8e8f1}}

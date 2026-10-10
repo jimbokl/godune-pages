@@ -10,12 +10,24 @@ export function revealDossierHash(doc = globalThis.document, hash = globalThis.l
   target.scrollIntoView({block: 'start'});
   return true;
 }
+// The server renders an open native disclosure so every destination also works without JS.
+export function mountDossierNavigation(doc = globalThis.document, win = globalThis) {
+  const nav = doc?.querySelector('[data-section-nav]');
+  if (!nav || !win.matchMedia) return;
+  const compact = win.matchMedia('(max-width: 760px)');
+  const sync = () => { nav.open = !compact.matches; };
+  sync();
+  compact.addEventListener('change', sync);
+  nav.addEventListener('toggle', () => { if (!compact.matches) nav.open = true; });
+  nav.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !compact.matches || !nav.open) return;
+    nav.open = false;
+    nav.querySelector('summary')?.focus();
+    event.preventDefault();
+  });
+}
 if (globalThis.document) {
-  const nav = document.querySelector('.dossier-page .business-nav');
-  const current = nav?.querySelector('[aria-current="page"]');
-  if (current && nav.scrollWidth > nav.clientWidth) {
-    nav.scrollLeft += current.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - current.offsetWidth) / 2;
-  }
+  mountDossierNavigation();
   revealDossierHash();
   globalThis.addEventListener('hashchange', () => revealDossierHash());
   // Clicking the current anchor again should also reveal a manually closed record.

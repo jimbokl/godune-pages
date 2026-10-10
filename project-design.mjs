@@ -1,4 +1,4 @@
-import {revealDossierHash} from './project-dossier.mjs?v=1';
+import {revealDossierHash} from './project-dossier.mjs?v=2';
 const normal=value=>String(value??'').toLocaleLowerCase('ru').replaceAll('ё','е').replace(/\s+/g,' ').trim();
 export function filterDocuments(records,{query='',kind='all',stage='all',sort='newest'}={}) {
   const terms=normal(query).split(' ').filter(Boolean);
@@ -27,7 +27,7 @@ function init(root) {
       records.forEach(r=>{r.el.hidden=!visible.has(r)});
       // Preserve unchanged nodes: a search-field blur can render between a link's pointerdown and click.
       [...result,...records.filter(r=>!visible.has(r))].forEach((r,i)=>{if(list.children[i]!==r.el)list.insertBefore(r.el,list.children[i]??null)});
-      tools.querySelector('[data-document-count]').textContent=`Найдено: ${result.length} из ${records.length}`;
+      root.querySelector('[data-document-count]').textContent=`Найдено: ${result.length} из ${records.length}`;
       root.querySelector('[data-document-empty]').hidden=!!result.length;
     };
     root.querySelector('[data-document-filter-panel]').hidden=false;tools.hidden=false;tools.addEventListener('submit',e=>e.preventDefault());tools.addEventListener('input',render);tools.addEventListener('change',render);tools.addEventListener('reset',e=>{e.preventDefault();search.value='';kind.value='all';stage.value='all';sort.value='newest';render();});render();
