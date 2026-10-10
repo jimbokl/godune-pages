@@ -1,0 +1,35 @@
+/* Project landing: the same restrained dossier used by the timeline and research. */
+.project-overview .business-intro h1{max-width:21ch}
+.overview-status{font-size:.8rem;color:var(--business-muted);margin:0 0 1.25rem}
+.overview-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 2.5rem;border-bottom:1px solid var(--line);padding:0 0 1.5rem;gap:2rem}
+.overview-facts dt{font-size:.75rem;color:var(--business-muted);margin:0 0 .45rem}
+.overview-facts dd{font-family:var(--font-display,Georgia,serif);font-size:1.55rem;line-height:1.25;margin:0 0 .5rem}
+.overview-facts .dunes-citation{font-size:.7rem}
+.overview-topic-link{border-top:1px solid var(--line);padding:1rem 0}
+.overview-topic-link h3{font-family:var(--font-display,Georgia,serif);font-weight:400;font-size:1.3rem;margin:0 0 .5rem}
+.overview-topic-link .business-link{font-size:.85rem;min-height:36px;display:inline-flex;align-items:center}
+.overview-location{max-width:32rem;margin:1.25rem 0}
+.overview-location svg{width:100%;height:auto}
+.overview-location figcaption{font-size:.7rem;line-height:1.5;color:var(--business-muted)}
+.overview-more{margin-top:2.5rem}
+.overview-answer>summary{font-size:1rem;line-height:1.5;font-weight:500;min-height:44px;justify-content:center}
+.overview-answer .dossier-record-body{padding-left:0}
+.overview-sources ul{list-style:none;padding:0;margin:0}
+.overview-sources li{padding:1rem 0;border-top:1px solid var(--line);scroll-margin-top:6rem;overflow-wrap:anywhere}
+.overview-sources small{display:block;font-size:.7rem;color:var(--business-muted);margin-top:.5rem}
+.overview-sources li p{margin:.5rem 0 0}
+.overview-nearby{margin-top:3rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.overview-nearby h2{font-family:var(--font-display,Georgia,serif);font-size:1.6rem;font-weight:400;margin:0 0 1rem}
+.overview-nearby>div{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem}
+.overview-nearby a{font-size:.8rem;line-height:1.6;min-height:36px;display:inline-flex;align-items:center}
+@media(max-width:760px){
+ .project-overview .business-intro h1{font-size:clamp(2.2rem,8vw,3.2rem);max-width:20ch}
+ .overview-facts{grid-template-columns:1fr;gap:1rem;padding-bottom:1.25rem;margin-bottom:2rem}
+ .overview-facts>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.2rem 1rem;align-items:baseline}
+ .overview-facts dd{font-size:1.15rem}
+ .overview-facts .dunes-citation{grid-column:2}
+ .project-overview .dossier-chapters>details>summary{grid-template-columns:1.6rem minmax(0,1fr)}
+ .project-overview .dossier-chapters .dossier-record-body{padding-left:2.2rem}
+ .overview-more{margin-top:2rem}
+ .overview-nearby>div{display:grid;gap:.4rem}
+}

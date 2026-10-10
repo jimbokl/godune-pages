@@ -2,3 +2,62 @@
 html[data-theme=night] .map-page{--rp-paper:#142b3a}
 
 .map-tenders{border:1px solid var(--rp-line);border-radius:.7rem;padding:1rem;margin:1rem 0 1.5rem;background:var(--rp-paper)}.map-tenders summary{font-weight:650;cursor:pointer;min-height:28px}.map-tenders article{border-top:1px solid var(--rp-line);padding-top:1rem;margin-top:1rem}.map-tenders h3{font-size:1.35rem;margin:.2rem 0}.map-tenders p{font-size:.9rem;color:var(--rp-muted)}.tender-map-shape{fill:none;stroke:var(--rp-amber);stroke-width:6;vector-effect:non-scaling-stroke;pointer-events:stroke}.hide-tenders [data-map-tender]{visibility:hidden}
+
+/* Compact dossier shell. The SVG remains a drawing of the source coordinates. */
+.map-page.dossier-page{--rp-paper:var(--business-surface);--rp-amber:var(--business-amber);--rp-blue:#5786a3;--rp-ink:var(--ink)}
+.map-page.dossier-page .map-tools{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:1rem;align-items:end;margin:0 0 .6rem}
+.map-page.dossier-page .map-tools label{font-size:.75rem;color:var(--business-muted);gap:.45rem}
+.map-page.dossier-page .map-tools select,.map-page.dossier-page .map-tools input{min-width:0;width:100%;font-size:.85rem;min-height:44px;padding:.65rem .8rem;border-radius:.4rem;border-color:var(--line)}
+.map-page.dossier-page .map-tools button{min-height:44px;font-size:.8rem;border-radius:.4rem}
+.map-page.dossier-page .map-intro-note{font-size:.75rem;line-height:1.6;margin:.6rem 0 1.6rem;color:var(--business-muted)}
+.map-page.dossier-page .map-edition{margin:0 0 1.5rem}
+.map-page.dossier-page .map-edition-heading{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.4rem 1rem;margin:0 0 .8rem}
+.map-page.dossier-page .map-edition-heading h2{font-family:var(--font-display,Georgia,serif);font-size:1.5rem;font-weight:400;margin:0}
+.map-page.dossier-page .map-edition-heading p{font-size:.7rem;margin:0;color:var(--business-muted)}
+.map-page.dossier-page .map-workspace{grid-template-columns:minmax(0,1fr) 19rem;background:var(--business-surface);border:1px solid var(--line);border-radius:.9rem;overflow:hidden}
+.map-page.dossier-page .map-canvas{background:color-mix(in srgb,var(--business-blue) 13%,transparent);min-width:0}
+.map-page.dossier-page .map-legend{font-size:.65rem;padding:1rem 1.25rem;gap:.8rem}
+.map-page.dossier-page .parcel-map{height:410px}
+.map-page.dossier-page .map-zoom,.map-page.dossier-page .map-layers{padding:.5rem 1.25rem;gap:.6rem}
+.map-page.dossier-page .map-zoom button{font-size:.75rem;min-height:36px;border-radius:.35rem}
+.map-page.dossier-page .map-layers{font-size:.7rem;padding-bottom:1rem}
+.map-page.dossier-page .map-selection{padding:1.4rem;min-width:0;overflow-wrap:anywhere;max-height:580px;overflow:auto;scrollbar-width:thin}
+.map-page.dossier-page .map-selection h3{font-family:var(--font-display,Georgia,serif);font-size:1.7rem;font-weight:400;line-height:1.2;margin:.5rem 0 1rem}
+.map-page.dossier-page .map-selection p{font-size:.85rem;line-height:1.65}
+.map-page.dossier-page .map-selection .research-kicker{font-size:.65rem;line-height:1.6;color:var(--business-muted)}
+.map-page.dossier-page .map-selection dt{font-size:.7rem;color:var(--business-muted)}
+.map-page.dossier-page .map-selection dd{font-size:.85rem;line-height:1.6;margin-bottom:.7rem}
+.map-page.dossier-page .map-selection details{font-size:.75rem}
+.map-page.dossier-page .map-results-heading{margin:1.25rem 0 .6rem;gap:.7rem}
+.map-page.dossier-page .map-results-heading h3{font-family:var(--font-display,Georgia,serif);font-size:1.4rem;font-weight:400}
+.map-page.dossier-page .map-results-heading p{font-size:.75rem}
+.map-page.dossier-page .map-results-heading button{font-size:.75rem;min-height:36px;border-radius:.35rem}
+.map-catalog,.map-method-fold{border-bottom:1px solid var(--line)}
+.map-catalog>summary,.map-method-fold>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;font-size:.9rem;list-style:none;cursor:pointer;min-height:44px;box-sizing:border-box}
+.map-catalog>summary::-webkit-details-marker,.map-method-fold>summary::-webkit-details-marker{display:none}
+.map-catalog>summary>span,.map-method-fold>summary>span{color:var(--business-muted);transition:transform .15s}
+.map-catalog[open]>summary>span,.map-method-fold[open]>summary>span{transform:rotate(180deg)}
+.map-enhanced .map-catalog .map-parcels{max-height:24rem;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 .6rem 1rem 0;gap:.6rem}
+.map-page.dossier-page .map-parcel{border-color:var(--line);border-radius:.4rem}
+.map-page.dossier-page .map-record-select{font-size:.85rem;padding:.8rem 1rem}
+.map-page.dossier-page .map-record-select small{font-size:.7rem}
+.map-page.dossier-page .map-method{max-width:none;margin:0;padding:0;border-top:0}
+.map-method-body{max-width:74ch;padding:0 0 1.25rem}
+.map-method-body h2{font-family:var(--font-display,Georgia,serif);font-weight:400;font-size:1.6rem}
+.map-method-body p,.map-method-body li{font-size:.85rem;line-height:1.75}
+.map-method-body details{font-size:.85rem}
+.map-method-body .map-downloads a{font-size:.75rem;padding:.6rem .8rem;border-radius:.4rem}
+.map-page.dossier-page .map-tenders{margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:1rem 0;background:transparent}
+.map-page.dossier-page .map-tenders summary{font-size:.9rem;font-weight:500;min-height:44px;display:flex;align-items:center}
+@media(max-width:760px){
+ .map-page.dossier-page .map-tools{grid-template-columns:1fr;gap:.8rem}
+ .map-page.dossier-page .map-tools button{justify-self:stretch}
+ .map-page.dossier-page .map-workspace{grid-template-columns:1fr}
+ .map-page.dossier-page .parcel-map{height:310px}
+ .map-page.dossier-page .map-selection{border-left:0;border-top:1px solid var(--line);padding:1.2rem;max-height:30rem}
+ .map-page.dossier-page .map-results-heading h3{flex-basis:100%}
+ .map-page.dossier-page .map-results-heading button{margin-left:auto}
+ .map-page.dossier-page .map-edition-heading h2{font-size:1.35rem}
+ .map-page.dossier-page .map-legend{gap:.6rem;padding:1rem}
+ .map-page.dossier-page .map-zoom,.map-page.dossier-page .map-layers{padding-left:1rem;padding-right:1rem}
+}

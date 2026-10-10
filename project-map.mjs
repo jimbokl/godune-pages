@@ -1,3 +1,5 @@
+import './project-dossier.mjs?v=1';
+
 export function mapState(params, versions, defaultDocument) {
   const document = Object.hasOwn(versions, params.get('document')) ? params.get('document') : defaultDocument;
   const plot = versions[document].includes(params.get('plot')) ? params.get('plot') : '';
@@ -39,7 +41,9 @@ if(typeof document!=='undefined') {
   function draw({focus=false,fitPlot=false}={}) {
    selector.value=state.document;search.value=state.query;
    for(const el of editions)el.hidden=el.dataset.mapEdition!==state.document;
-   const el=edition(),rows=[...el.querySelectorAll('[data-map-record]')];
+   const el=edition();
+   if(state.query.trim())el.querySelector('[data-map-catalog]').open=true;
+   const rows=[...el.querySelectorAll('[data-map-record]')];
    const matching=new Set(matchingPlots(rows.map(node=>({id:node.dataset.mapRecord,text:node.dataset.search})),state.query).map(r=>r.id));
    for(const node of rows){node.hidden=!matching.has(node.dataset.mapRecord);node.classList.toggle('is-selected',node.dataset.mapRecord===state.plot);}
    for(const link of el.querySelectorAll('[data-plot-link]')) {
@@ -56,10 +60,11 @@ if(typeof document!=='undefined') {
   }
   function save(push=false){history[push?'pushState':'replaceState'](null,'',mapUrl(location.href,state));}
   function select(id){state={...state,plot:id};save(true);draw({focus:true,fitPlot:true});}
-  selector.addEventListener('change',()=>{state={document:selector.value,plot:'',query:''};resetView(edition());save(true);draw();});
+  selector.addEventListener('change',()=>{state={document:selector.value,plot:'',query:''};resetView(edition());edition().querySelector('[data-map-catalog]').open=false;save(true);draw();});
   search.addEventListener('input',()=>{state={...state,query:search.value.slice(0,160)};save();draw();});
-  root.querySelector('[data-map-reset]').addEventListener('click',()=>{state={...state,plot:'',query:''};resetView(edition());save();draw();});
+  root.querySelector('[data-map-reset]').addEventListener('click',()=>{state={...state,plot:'',query:''};resetView(edition());edition().querySelector('[data-map-catalog]').open=false;save();draw();});
   for(const el of editions) {
+   el.querySelector('[data-map-catalog]').open=false;
    for(const record of el.querySelectorAll('[data-map-record]')) {
     const link=record.querySelector('[data-select-plot]');
     const title=record.querySelector('h3').textContent;
