@@ -59,7 +59,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       if(s.rental?.length){for(const row of s.rental)text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});}
       else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],[s.category==='Бассейн'?'Начало посещения':'Начало занятия',a.visit.timeline.activity_start],[s.category==='Бассейн'?'Конец посещения':'Конец занятия',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
       if(a.visit.timeline.wait>0)text(`Ожидание сеанса: ${a.visit.timeline.wait} мин.`,{size:phone?10.5:12});
-      text(`Всего: ${a.visit.duration.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.visit.duration.total_minutes} мин`}.`);
+      text(`Всего: ${a.summary.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.summary.total_minutes} мин`}.`);
       heading('Время на подготовку',false,s.stages[0]?.label);
       for(const stage of s.stages)text(`${stage.label}: ${stage.minutes==null?'нужно уточнить':stage.minutes+' мин'}`,{size:phone?10:12,space:5});
       const priceLines=(s.price_rows||[]).map(row=>`${row.name}: ${row.total==null?'Нужно уточнить':money(row.total)}${row.detail?' · '+row.detail:''}`);

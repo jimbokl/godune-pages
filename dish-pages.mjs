@@ -1,6 +1,6 @@
 import {dishItemMatches,dishResultPrice} from './dish-search.mjs?v=1';
-import {initDiningRouteFilter} from './dining-route-filter.mjs?v=5';
-import {showSpatialDistance} from './service-context.mjs?v=16';
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=6';
+import {showSpatialDistance} from './service-context.mjs?v=17';
 const root=document.querySelector('[data-dish-page]');
 if(root){
  const base=new URL('./',import.meta.url),form=root.querySelector('.dish-filters'),cards=[...root.querySelectorAll('[data-dining-card]')],list=root.querySelector('#dish-results');

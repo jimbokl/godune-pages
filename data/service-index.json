@@ -266,11 +266,15 @@
     ],
     "pool": [
       "service:baden39:pool"
+    ],
+    "workshop": [
+      "service:nonstop:fitness"
     ]
   },
   "areas": {
     "kaliningrad": [
       "service:newfitness:gym",
+      "service:nonstop:fitness",
       "service:vostok:bath"
     ],
     "lesnoy": [
@@ -1301,6 +1305,9 @@
     "branch:newfitness:chelnokova": [
       "service:newfitness:gym"
     ],
+    "branch:nonstop:frunze": [
+      "service:nonstop:fitness"
+    ],
     "branch:velovoyage39:solnechnaya-17": [
       "service:velovoyage39:bike"
     ],
@@ -1321,6 +1328,9 @@
     ],
     "service:newfitness:gym": [
       "offer:newfitness:day"
+    ],
+    "service:nonstop:fitness": [
+      "offer:nonstop:single"
     ],
     "service:velovoyage39:bike": [
       "offer:velovoyage39:standard-day",
@@ -1343,6 +1353,9 @@
     ],
     "service/service:newfitness:gym": [
       "calendar:newfitness:visit"
+    ],
+    "service/service:nonstop:fitness": [
+      "calendar:nonstop:fitness"
     ],
     "service/service:velovoyage39:bike": [
       "calendar:velovoyage39:collect",

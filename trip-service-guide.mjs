@@ -17,7 +17,7 @@ import {provenanceSources} from './service-provenance.mjs?v=5';
 import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
 import {priceRows,splitText} from './service-price-view.mjs?v=2';
 
-const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
+const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Занятие',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};
 const checks={age:'Возраст',group:'Ваша компания',audience:'Вход для гостей',equipment:'Что взять',booking:'Запись'};
 const states={fits:'По времени и условиям подходит.',does_not_fit:'Время или условия не подходят. Измените выбор перед выходом.',needs_info:'Часть времени или условий ещё нужно уточнить.'};

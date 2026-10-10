@@ -2,9 +2,10 @@ import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
 import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs?v=2';
-import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=16';
+import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=17';
 import {bindServiceComparison} from './service-comparison.mjs?v=3';
 import {bindServiceFavorites} from './service-favorites.mjs?v=1';
+import {withSessionChoice,renderSessionChoices} from './service-sessions.mjs?v=1';
 
 const labels={age:'Возраст',group:'Ваша компания',audience:'Вход для гостей',equipment:'Что взять',booking:'Запись'};
 const statuses={pass:'Подходит',fail:'Условие не выполнено',conflict:'Источники расходятся',stale:'Нужны свежие сведения',unknown:'Уточните перед посещением'};
@@ -29,6 +30,7 @@ import {selectedInput} from './service-selection-state.mjs?v=3';
 export {selectedInput} from './service-selection-state.mjs?v=3';
 
 function apply(card,result,input) {
+  renderSessionChoices(card,result,input);
   const price=card.querySelector('[data-price-quote]');
   if(price&&result.quote)price.replaceChildren(priceQuoteElement(input,result.quote));
   const split=card.querySelector('[data-cost-split]');
@@ -54,7 +56,7 @@ function apply(card,result,input) {
   card.querySelector('[data-plan-checks]').replaceChildren(...result.checks.filter(v=>v.kind!=='conditions'&&v.status!=='pass').map(v=>{const li=document.createElement('li');li.textContent=planTexts[v.kind][v.status==='fail'?0:1];return li;}));
 }
 
-import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=3';
+import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=4';
 
 const urlPrefix='sr_';
 const checkKinds=['time','approach','return','conditions','cost','upfront'];
@@ -112,6 +114,7 @@ if(typeof document!=='undefined') {
       }));
     }
     function showResults(results,assessments) {
+      const focused=document.activeElement;
       const ids=new Set(results.hits.map(v=>v.id));
       for(const [id,card] of cards)card.hidden=!ids.has(id);
       const parent=document.querySelector('.service-results');
@@ -121,6 +124,8 @@ if(typeof document!=='undefined') {
       mapList(results);currentResults=results;mapView?.update(results.map_ids,currentMarkers);
       comparison.update(results,assessments,currentInputs);
       favorites?.update();
+      // Reordering connected cards may reset keyboard focus in the browser.
+      if(document.activeElement===document.body&&focused?.isConnected&&focused.closest('[data-service]')?.hidden===false)focused.focus({preventScroll:true});
     }
     function saveURL() {
       const url=new URL(location.href);
@@ -178,7 +183,7 @@ if(typeof document!=='undefined') {
         if(Object.keys(visitTiming).length)values.visit_timing=visitTiming;
         const selection=selectionFromFields(fields,page.query,facets);
         const scheduler=await loadScheduler(new URL('./',import.meta.url));
-        const chosenInputs=inputs.map(input=>selectedInput(input,{...values,...extrasFromFields(fields,input)}));
+        const chosenInputs=inputs.map(input=>withSessionChoice(selectedInput(input,{...values,...extrasFromFields(fields,input)}),fields));
         const assessments=chosenInputs.map(input=>scheduler.serviceAssessment(input));
         const query=structuredClone(page.query);query.selection=selection;
         const spatial=context.request(fields);
@@ -216,7 +221,7 @@ if(typeof document!=='undefined') {
           if((context.usesSaved(new FormData(form))||appliedRevision!==revision)&&!await calculate())return;
           if(card.hidden)return;
           const selection=structuredClone(currentInputs.get(id)),generation=revision;
-          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=21');
+          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=22');
           if(generation!==revision){status.textContent='Условия изменились. Добавьте посещение ещё раз.';return;}
           await pickServiceVisit(metadata,selection,new URL('./',import.meta.url),add);
         }catch(error){status.textContent=/[А-Яа-яЁё]/.test(error.message)?error.message:'Не получилось открыть поездку. Попробуйте ещё раз.';}
@@ -232,6 +237,12 @@ if(typeof document!=='undefined') {
     for(const card of cards.values())card.addEventListener('change',event=>{
       if(!event.target.matches('[data-service-extra],[data-extra-quantity]'))return;
       refreshExtras();
+      revision++;restoreVersion++;comparison.dirty();updateNavigation();calculate();
+    });
+    for(const card of cards.values())card.addEventListener('click',event=>{
+      const pick=event.target.closest('[data-session-value],[data-session-clear]');
+      if(!pick)return;
+      card.querySelector('[data-session-choice]').value=pick.dataset.sessionValue||'';
       revision++;restoreVersion++;comparison.dirty();updateNavigation();calculate();
     });
     form.addEventListener('submit',event=>{event.preventDefault();restoreVersion++;calculate();});
