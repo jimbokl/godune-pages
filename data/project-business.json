@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "checked_at": "2026-10-10",
   "projects": [
     {
@@ -350,7 +350,7 @@
       "registry_number": "0335200014926003779",
       "title": "Дорога к «Белой Дюне»",
       "description": "Автомобильная дорога от трассы Зеленоградск — Приморск через Светлогорск к будущему курорту.",
-      "status": "open",
+      "status": "bidding",
       "published_at": "2026-10-07",
       "deadline": "2026-10-26",
       "result_date": "2026-10-29",
@@ -363,7 +363,107 @@
         "road-mirror",
         "road-eis"
       ],
-      "registry_url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779"
+      "registry_url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779",
+      "slug": "doroga-0335200014926003779",
+      "kind": "construction",
+      "customer_id": null,
+      "organizer_id": null,
+      "infrastructure_id": "infrastructure:belaya-duna-access-road",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "source_id": "0335200014926003779",
+      "source_url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779",
+      "related_ids": [],
+      "subtender_ids": [],
+      "map_binding": null,
+      "news_urls": [
+        "/news/2026/10/08/belaya-duna-doroga-tender/"
+      ],
+      "price_rule": {
+        "kind": "initial_maximum",
+        "amount_minor": 291967453800,
+        "currency": "RUB",
+        "source_ids": [
+          "road-mirror"
+        ]
+      },
+      "calendar_rules": [
+        {
+          "id": "calendar:road-publication",
+          "kind": "publication",
+          "date": "2026-10-07",
+          "status": "actual",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "id": "calendar:road-submission_deadline",
+          "kind": "submission_deadline",
+          "date": "2026-10-26",
+          "status": "planned",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "id": "calendar:road-result",
+          "kind": "result",
+          "date": "2026-10-29",
+          "status": "planned",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "constraints": [],
+      "facts": [
+        {
+          "id": "fact:road-procedure",
+          "label": "Процедура",
+          "value": "Открытый конкурс в электронной форме · 44-ФЗ",
+          "status": "statement",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "id": "fact:road-platform",
+          "label": "Площадка",
+          "value": "Фабрикант",
+          "status": "statement",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "id": "fact:road-organizer",
+          "label": "Организатор торгов по зеркалу",
+          "value": "ГКУ КО «Центр обеспечения организации и проведения торгов»",
+          "status": "statement",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "registry_linked",
+        "checked_at": "2026-10-10",
+        "primary_document_read": false,
+        "note": "Номер и ссылка ЕИС сохранены. Цена и сроки сверены с зеркалом B2B.House; содержание первичной документации в этой версии не проверено."
+      },
+      "stage_events": [
+        {
+          "id": "tender-event:road-publication",
+          "status": "announced",
+          "date": "2026-10-07",
+          "source_ids": [
+            "road-mirror"
+          ],
+          "news_url": "/news/2026/10/08/belaya-duna-doroga-tender/"
+        }
+      ]
     }
   ],
   "hiring_tracks": [
@@ -477,7 +577,7 @@
       "kind": "primary",
       "published_at": "2026-10-07",
       "checked_at": "2026-10-10",
-      "note": "Ссылка на первичный реестр; параметры сверены по зеркалам карточки."
+      "note": "Ссылка на первичный реестр. Содержание первичной документации не загружено; цена и сроки сверены по зеркалу B2B.House."
     },
     {
       "id": "road-mirror",
@@ -505,6 +605,34 @@
       "published_at": "2025-08-04",
       "checked_at": "2026-10-10",
       "note": ""
+    }
+  ],
+  "places": [
+    {
+      "id": "place:povarovka",
+      "name": "Поваровка",
+      "url": "/dunes/povarovka/",
+      "source_ids": [
+        "planning"
+      ]
+    }
+  ],
+  "infrastructure": [
+    {
+      "id": "infrastructure:belaya-duna-access-road",
+      "project_id": "project:belaya-duna",
+      "slug": "access-road",
+      "name": "Подъездная дорога к «Белой Дюне»",
+      "kind": "road",
+      "status": "bidding",
+      "description": "Связь будущего курорта с дорогой Зеленоградск — Приморск через Светлогорск. Дорожный конкурс связан с инфраструктурой проекта; геометрия трассы в реестре пока не подтверждена.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "source_ids": [
+        "road-mirror",
+        "planning"
+      ]
     }
   ]
 }

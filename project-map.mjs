@@ -9,8 +9,9 @@ export function mapUrl(base,state) {
   url.hash='map';return url;
 }
 export function matchingPlots(rows,query='') {
-  const words=query.toLocaleLowerCase('ru').trim().split(/\s+/).filter(Boolean);
-  return rows.filter(row=>words.every(word=>row.text.toLocaleLowerCase('ru').includes(word)));
+  const normalize=value=>value.normalize('NFKC').toLocaleLowerCase('ru').replace(/з(?=у)/gu,'3');
+  const words=normalize(query).trim().split(/\s+/).filter(Boolean);
+  return rows.filter(row=>words.every(word=>normalize(row.text).includes(word)));
 }
 export function boundedView(view, full) {
   const width=Math.min(full[2],Math.max(full[2]/64,view[2]));
