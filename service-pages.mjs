@@ -2,7 +2,7 @@ import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalFactsElement} from './trip-rental-view.mjs';
 import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs?v=2';
-import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=17';
+import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=19';
 import {bindServiceComparison} from './service-comparison.mjs?v=3';
 import {bindServiceFavorites} from './service-favorites.mjs?v=1';
 import {withSessionChoice,renderSessionChoices} from './service-sessions.mjs?v=1';
@@ -26,8 +26,8 @@ const minutes=(value,name)=>{if(!/^\d{2}:\d{2}$/.test(value))throw Error(`Ука
 const amount=(value,name)=>{if(value==='')return null;if(!/^\d+(?:[.,]\d{1,2})?$/.test(value))throw Error(`Укажите сумму в поле «${name}».`);const [whole,frac='']=value.replace(',','.').split('.');const n=BigInt(whole)*100n+BigInt(frac.padEnd(2,'0'));if(n>9007199254740991n)throw Error(`Проверьте сумму в поле «${name}».`);return Number(n);};
 
 import {bindAdmissionParty} from './service-admission-party.mjs?v=3';
-import {selectedInput} from './service-selection-state.mjs?v=3';
-export {selectedInput} from './service-selection-state.mjs?v=3';
+import {selectedInput} from './service-selection-state.mjs?v=4';
+export {selectedInput} from './service-selection-state.mjs?v=4';
 
 function apply(card,result,input) {
   renderSessionChoices(card,result,input);
@@ -221,7 +221,7 @@ if(typeof document!=='undefined') {
           if((context.usesSaved(new FormData(form))||appliedRevision!==revision)&&!await calculate())return;
           if(card.hidden)return;
           const selection=structuredClone(currentInputs.get(id)),generation=revision;
-          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=22');
+          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=24');
           if(generation!==revision){status.textContent='Условия изменились. Добавьте посещение ещё раз.';return;}
           await pickServiceVisit(metadata,selection,new URL('./',import.meta.url),add);
         }catch(error){status.textContent=/[А-Яа-яЁё]/.test(error.message)?error.message:'Не получилось открыть поездку. Попробуйте ещё раз.';}

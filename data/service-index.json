@@ -8,6 +8,7 @@
       "service:velovoyage39:bike"
     ],
     "dining": [
+      "service:baden-cafe:meal",
       "service:dining:2gis-5630027815190832",
       "service:dining:2gis-5630027815347793",
       "service:dining:2gis-5630028815427796",
@@ -259,7 +260,8 @@
       "service:dining:yandex-81806656025",
       "service:dining:yandex-83768680391",
       "service:dining:yandex-86328291089",
-      "service:gnezdo:kitchen"
+      "service:gnezdo:kitchen",
+      "service:steindamm99:meal"
     ],
     "gym": [
       "service:newfitness:gym"
@@ -275,12 +277,14 @@
     "kaliningrad": [
       "service:newfitness:gym",
       "service:nonstop:fitness",
+      "service:steindamm99:meal",
       "service:vostok:bath"
     ],
     "lesnoy": [
       "service:dom-poeta:bath"
     ],
     "svetlogorsk": [
+      "service:baden-cafe:meal",
       "service:baden39:pool"
     ],
     "zelenogradsk": [
@@ -540,6 +544,9 @@
     ]
   },
   "branches": {
+    "branch:baden-cafe": [
+      "service:baden-cafe:meal"
+    ],
     "branch:baden39:svetlogorsk": [
       "service:baden39:pool"
     ],
@@ -1307,6 +1314,9 @@
     ],
     "branch:nonstop:frunze": [
       "service:nonstop:fitness"
+    ],
+    "branch:steindamm99": [
+      "service:steindamm99:meal"
     ],
     "branch:velovoyage39:solnechnaya-17": [
       "service:velovoyage39:bike"

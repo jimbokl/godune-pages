@@ -1,5 +1,5 @@
-import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=4';
-import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs';
+import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=5';
+import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=1';
 import {formatKopecks} from './trip-money.mjs';
 import {rentalDetails} from './trip-rental-view.mjs';
 import {dayPeople} from './trip-party.mjs?v=1';

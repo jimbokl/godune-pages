@@ -1,9 +1,9 @@
 // Catalogue choices bind the prepared ride to the shared rental cycle.
 // All clocks, prices, eligibility and conflicts are calculated by Rust.
 import {selectedDay} from './trip-days-state.mjs?v=27';
-import {selectedInput} from './service-selection-state.mjs';
-import {rentalActivityTrip} from './trip-rental-activity-state.mjs?v=1';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
+import {selectedInput} from './service-selection-state.mjs?v=4';
+import {rentalActivityTrip} from './trip-rental-activity-state.mjs?v=2';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
 import {rentalActivityStops} from './trip-rental-view.mjs?v=1';
 
 export function bikeRentalChoices(data,row){

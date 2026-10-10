@@ -3,7 +3,7 @@ import {ensureJourney,selectedDay,chooseTripDay,addTripDay,journeyDays,validTrip
 import {addRouteStops} from './trip-order.mjs';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=19';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
-import {serviceDayInput} from './trip-service-day-state.mjs?v=8';
+import {serviceDayInput} from './trip-service-day-state.mjs?v=9';
 
 export const alongGuard=trip=>JSON.stringify(trip);
 export const stopTypes={all:['landmark','restaurant','museum','nature','park','viewpoint','beach'],

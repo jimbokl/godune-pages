@@ -4,6 +4,7 @@ import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=13';
 import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=3';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs';
 // Rust's JSON serializer can reorder object keys. Physical identity and source
 // evidence must survive that round trip without inventing a second landmark.
 const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;
@@ -66,13 +67,12 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix,physic
  const available=new Set(boundVisits.map(v=>v.id)),ordinary=new Set(day.places);
  const manualAnchors=new Map();
  for(const visit of boundVisits){
-  if(visit.selection.visit.kind!=='manual'||!visit.point)continue;
-  const p=visit.point,source={reference:p.source_id,checked_at:p.checked_at,valid_from:null,valid_until:null};
+  const anchor=serviceVisitAnchor(visit);if(!anchor)continue;
+  const p=visit.point,source=anchor.source;
   // A saved map point binds a manual arrival to a landmark, never to a door.
   // Share only the same physical landmark with identical dated evidence.
-  const existing=graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&same(a.source,source));
+  const existing=p&&graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&same(a.source,source));
   if(existing){manualAnchors.set(visit.id,existing.id);continue;}
-  const anchor={id:`__timeline_service_${visit.id}`,name:visit.name,kind:'landmark',revision:`point:${p.lat},${p.lon}`,location:{kind:'point',lat:p.lat,lon:p.lon},source};
   while(anchors.has(anchor.id))anchor.id+='_';
   anchors.set(anchor.id,anchor);graph.anchors.push(anchor);manualAnchors.set(visit.id,anchor.id);
  }

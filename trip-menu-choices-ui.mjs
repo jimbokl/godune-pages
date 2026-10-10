@@ -5,7 +5,7 @@ import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
 import {formatKopecks} from './trip-money.mjs';
 import {prepareMenuChoice,confirmMenuChoice,quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=3';
+import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=4';
 import {dayChangeText} from './trip-day-change-view.mjs?v=1';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 

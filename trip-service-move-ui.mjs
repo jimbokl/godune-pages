@@ -1,6 +1,6 @@
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {budgetInput} from './trip-days-state.mjs?v=27';
-import {serviceMoveTargets,prepareServiceMove,confirmServiceMove,inspectServiceMoveDay} from './trip-service-move-state.mjs?v=3';
+import {serviceMoveTargets,prepareServiceMove,confirmServiceMove,inspectServiceMoveDay} from './trip-service-move-state.mjs?v=4';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {dayOutcome} from './day-outcome.mjs?v=1';
 import {rentalFactsElement} from './trip-rental-view.mjs';

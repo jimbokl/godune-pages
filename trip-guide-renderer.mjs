@@ -57,7 +57,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       const sourcesHeight=sources.reduce((sum,g)=>sum+groupHeight(g),0);
       heading('Выбранное посещение',false,date(s.date));text(date(s.date));
       if(s.rental?.length){for(const row of s.rental)text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});}
-      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],[s.category==='Бассейн'?'Начало посещения':'Начало занятия',a.visit.timeline.activity_start],[s.category==='Бассейн'?'Конец посещения':'Конец занятия',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
+      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],['Начало посещения',a.visit.timeline.activity_start],['Конец посещения',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
       if(a.visit.timeline.wait>0)text(`Ожидание сеанса: ${a.visit.timeline.wait} мин.`,{size:phone?10.5:12});
       text(`Всего: ${a.summary.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.summary.total_minutes} мин`}.`);
       heading('Время на подготовку',false,s.stages[0]?.label);
@@ -118,7 +118,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     heading('По шагам',false,day.rows[0]?.title||'Точное время ещё не рассчитано.',40);
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){
-      need(60);text(row.kind==='cost'?'Стоимость на компанию':`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
+      const label=row.kind==='cost'?'Стоимость на компанию':`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
+      const leadHeight=textHeight(label,ui,phone?9:11,5)+textHeight(row.title,ui,phone?12:14,6),bodyHeight=textHeight(row.text);
+      // Keep a short event together; a long event starts with at least two body lines.
+      need(leadHeight+(leadHeight+bodyHeight<h-2*m-90?bodyHeight:body*1.48*2));
+      text(label,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
       for(const anchor of row.anchors||[])if(anchor.location?.kind==='point')text(`${anchor.name} · GPS ${gps(anchor.location)}`,{size:phone?9:11,color:muted});
       const detail=day.kosa?.timeline.find(item=>item.title===row.title&&item.kind===row.kind&&item.time===row.time) || row;
       if(Object.hasOwn(detail,'boarding'))text(detail.boarding?kosaBoardingText(detail.boarding):'Названия остановок пока не загружены. Уточните их до поездки.');

@@ -1,6 +1,6 @@
 import {dishItemMatches,dishResultPrice} from './dish-search.mjs?v=1';
-import {initDiningRouteFilter} from './dining-route-filter.mjs?v=6';
-import {showSpatialDistance} from './service-context.mjs?v=17';
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=8';
+import {showSpatialDistance} from './service-context.mjs?v=19';
 const root=document.querySelector('[data-dish-page]');
 if(root){
  const base=new URL('./',import.meta.url),form=root.querySelector('.dish-filters'),cards=[...root.querySelectorAll('[data-dining-card]')],list=root.querySelector('#dish-results');
@@ -23,6 +23,6 @@ if(root){
  form.hidden=false;form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('submit',event=>{event.preventDefault();filter();});form.addEventListener('reset',()=>queueMicrotask(filter));
  initDiningRouteFilter({root,cards,base,area:'zelenogradsk',onResult(result){eligible=result?new Set(result.eligible_ids):null;showSpatialDistance(new Map(cards.map(card=>[card.dataset.id,card])),result);filter();}});
  // Menu JSON is fetched only for visible cards. Trip/WASM starts on an explicit selection.
- import('./trip-menu-choices-ui.mjs?v=8').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,base,{lazy:true}));
+ import('./trip-menu-choices-ui.mjs?v=9').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,base,{lazy:true}));
  filter();
 }

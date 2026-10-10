@@ -1,0 +1,510 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-10",
+  "projects": [
+    {
+      "id": "project:belaya-duna",
+      "slug": "belaya-duna",
+      "name": "Белая Дюна",
+      "location": "Поваровка · Зеленоградский округ",
+      "status": "infrastructure",
+      "summary": "Соглашения, инфраструктура и участники будущего курорта на Балтике.",
+      "url": "/dunes/belaya-duna/",
+      "facts": [
+        {
+          "label": "Площадь",
+          "value": "479 га",
+          "status": "plan",
+          "source_ids": [
+            "forum"
+          ]
+        },
+        {
+          "label": "Общий объём инвестиций",
+          "value": "более 400 млрд ₽",
+          "status": "statement",
+          "source_ids": [
+            "forum"
+          ]
+        },
+        {
+          "label": "Рабочие места",
+          "value": "17,8 тыс. · целевой показатель проекта",
+          "status": "plan",
+          "source_ids": [
+            "forum"
+          ]
+        }
+      ],
+      "news_urls": [
+        "/news/2026/10/10/belaya-duna-aktivnaya-faza/",
+        "/news/2026/10/08/belaya-duna-doroga-tender/"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "id": "org:krko",
+      "project_id": "project:belaya-duna",
+      "name": "Корпорация развития Калининградской области",
+      "role": "coordinator",
+      "role_label": "Координатор проекта",
+      "summary": "Координирует реализацию курорта и инфраструктурные подключения. Общий канал для обращения по проекту и инвестиционным вопросам.",
+      "website": "https://www.kgd-rdc.ru/",
+      "source_ids": [
+        "forum",
+        "corporation-contact"
+      ],
+      "facts": [],
+      "contacts": [
+        {
+          "label": "Общая почта",
+          "value": "office@kgd-rdc.ru",
+          "kind": "email",
+          "source_ids": [
+            "corporation-contact"
+          ],
+          "scope": "Общие вопросы корпорации",
+          "checked_at": "2026-10-10"
+        },
+        {
+          "label": "Телефон",
+          "value": "+7 (4012) 67-39-39",
+          "kind": "phone",
+          "source_ids": [
+            "corporation-contact"
+          ],
+          "scope": "Общие вопросы корпорации",
+          "checked_at": "2026-10-10"
+        }
+      ],
+      "career_url": null
+    },
+    {
+      "id": "org:samson",
+      "project_id": "project:belaya-duna",
+      "name": "ГК «Самсон»",
+      "role": "investor",
+      "role_label": "Инвестор · соглашение",
+      "summary": "Соглашение с регионом подписано 5 июня 2026 года. Компания заявила гостиницы и общественно-деловой центр.",
+      "website": "https://sk-samson.ru/",
+      "source_ids": [
+        "samson-agreement"
+      ],
+      "facts": [
+        {
+          "label": "Инвестиции",
+          "value": "не менее 40 млрд ₽",
+          "status": "agreement",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        },
+        {
+          "label": "Номерной фонд",
+          "value": "не менее 3 200 номеров",
+          "status": "plan",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        },
+        {
+          "label": "Рабочие места",
+          "value": "не менее 2 200 · обязательство по соглашению",
+          "status": "plan",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "label": "Коммерческие предложения",
+          "value": "partners@sk-samson.ru",
+          "kind": "email",
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "scope": "Партнёрство с группой компаний",
+          "checked_at": "2026-10-10"
+        },
+        {
+          "label": "Общая почта",
+          "value": "info@sk-samson.ru",
+          "kind": "email",
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "scope": "Общие вопросы группы компаний",
+          "checked_at": "2026-10-10"
+        },
+        {
+          "label": "Телефон",
+          "value": "8 (800) 700-30-56",
+          "kind": "phone",
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "scope": "Общий телефон группы компаний",
+          "checked_at": "2026-10-10"
+        }
+      ],
+      "career_url": null
+    },
+    {
+      "id": "org:leader",
+      "project_id": "project:belaya-duna",
+      "name": "ГК «Лидер Групп»",
+      "role": "investor",
+      "role_label": "Инвестор · соглашение",
+      "summary": "По сообщению РБК, соглашение предусматривает гостиницы, общественно-деловой центр и социальные объекты.",
+      "website": "https://lidgroup.ru/",
+      "source_ids": [
+        "leader-agreement",
+        "leader-contact",
+        "leader-career"
+      ],
+      "facts": [
+        {
+          "label": "Инвестиции",
+          "value": "не менее 50 млрд ₽",
+          "status": "agreement",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        },
+        {
+          "label": "Номерной фонд",
+          "value": "от 3 000 номеров",
+          "status": "plan",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "label": "Для предложений",
+          "value": "offers@lidgroup.ru",
+          "kind": "email",
+          "source_ids": [
+            "leader-contact"
+          ],
+          "scope": "Коммерческие предложения группе компаний",
+          "checked_at": "2026-10-10"
+        },
+        {
+          "label": "Отдел кадров",
+          "value": "moroz@lidgroup.ru",
+          "kind": "email",
+          "source_ids": [
+            "leader-contact"
+          ],
+          "scope": "Кадровые вопросы всей группы; набор на «Белую Дюну» отдельно не подтверждён",
+          "checked_at": "2026-10-10"
+        }
+      ],
+      "career_url": "https://lidgroup.ru/about/vacancy/"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "milestone:planning",
+      "project_id": "project:belaya-duna",
+      "date": "2025-08-04",
+      "period": "Август 2025",
+      "title": "Утверждена планировка",
+      "status": "decision",
+      "description": "Опубликованы материалы общественных обсуждений и приказ об утверждении планировки территории в Поваровке.",
+      "source_ids": [
+        "planning"
+      ],
+      "organization_ids": [],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:samson",
+      "project_id": "project:belaya-duna",
+      "date": "2026-06-05",
+      "period": "5 июня 2026",
+      "title": "Соглашение с «Самсоном»",
+      "status": "agreement",
+      "description": "Заявлены инвестиции не менее 40 млрд ₽ и гостиницы минимум на 3 200 номеров.",
+      "source_ids": [
+        "samson-agreement"
+      ],
+      "organization_ids": [
+        "org:samson"
+      ],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:leader",
+      "project_id": "project:belaya-duna",
+      "date": "2026-06-05",
+      "period": "5 июня 2026",
+      "title": "Соглашение с «Лидер Групп»",
+      "status": "agreement",
+      "description": "По сообщению РБК, инвестиционные обязательства составляют не менее 50 млрд ₽.",
+      "source_ids": [
+        "leader-agreement"
+      ],
+      "organization_ids": [
+        "org:leader"
+      ],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:utilities",
+      "project_id": "project:belaya-duna",
+      "date": "2026-09-30",
+      "period": "30 сентября 2026",
+      "title": "Договоры на газ и электричество",
+      "status": "contract",
+      "description": "РуГрад сообщает о договорах подключения: 4,27 млрд ₽ за электричество и 2,46 млрд ₽ за газ. Эти суммы относятся к договорам, а не к выполненным работам.",
+      "source_ids": [
+        "utilities"
+      ],
+      "organization_ids": [
+        "org:krko"
+      ],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:road",
+      "project_id": "project:belaya-duna",
+      "date": "2026-10-07",
+      "period": "7 октября 2026",
+      "title": "Объявлен дорожный конкурс",
+      "status": "tender",
+      "description": "Начальная цена — 2 919 674 538 ₽. Приём заявок до 26 октября, подведение итогов назначено на 29 октября.",
+      "source_ids": [
+        "road-mirror"
+      ],
+      "organization_ids": [],
+      "procurement_id": "procurement:0335200014926003779"
+    },
+    {
+      "id": "milestone:forum",
+      "project_id": "project:belaya-duna",
+      "date": "2026-10-10",
+      "period": "10 октября 2026",
+      "title": "Заявление об активной фазе",
+      "status": "statement",
+      "description": "На форуме Дмитрий Лапицкий назвал первым этапом поддерживающую инфраструктуру. Статус отдельных работ проверяется по документам.",
+      "source_ids": [
+        "forum"
+      ],
+      "organization_ids": [
+        "org:krko"
+      ],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:road-result",
+      "project_id": "project:belaya-duna",
+      "date": "2026-10-29",
+      "period": "29 октября 2026",
+      "title": "Плановая дата итогов конкурса",
+      "status": "scheduled",
+      "description": "После публикации протокола можно будет назвать подрядчика и проверить условия контракта.",
+      "source_ids": [
+        "road-mirror"
+      ],
+      "organization_ids": [],
+      "procurement_id": "procurement:0335200014926003779"
+    },
+    {
+      "id": "milestone:gas",
+      "project_id": "project:belaya-duna",
+      "date": "2028-09-30",
+      "period": "Сентябрь 2028 · план",
+      "title": "Срок подключения к газу",
+      "status": "plan",
+      "description": "По сообщению о договоре, работы предусмотрены до конца сентября 2028 года. Это срок газового подключения, а не сдачи гостиниц.",
+      "source_ids": [
+        "utilities"
+      ],
+      "organization_ids": [],
+      "procurement_id": null
+    },
+    {
+      "id": "milestone:power",
+      "project_id": "project:belaya-duna",
+      "date": "2030-09-30",
+      "period": "Сентябрь 2030 · план",
+      "title": "Срок подключения к электросетям",
+      "status": "plan",
+      "description": "РуГрад указывает срок работ по электрическому подключению до конца сентября 2030 года.",
+      "source_ids": [
+        "utilities"
+      ],
+      "organization_ids": [],
+      "procurement_id": null
+    }
+  ],
+  "procurements": [
+    {
+      "id": "procurement:0335200014926003779",
+      "project_id": "project:belaya-duna",
+      "registry_number": "0335200014926003779",
+      "title": "Дорога к «Белой Дюне»",
+      "description": "Автомобильная дорога от трассы Зеленоградск — Приморск через Светлогорск к будущему курорту.",
+      "status": "open",
+      "published_at": "2026-10-07",
+      "deadline": "2026-10-26",
+      "result_date": "2026-10-29",
+      "price_rub": 2919674538,
+      "procedure": "Открытый конкурс в электронной форме · 44-ФЗ",
+      "platform": "Фабрикант",
+      "organizer": "ГКУ КО «Центр обеспечения организации и проведения торгов»",
+      "winner_id": null,
+      "source_ids": [
+        "road-mirror",
+        "road-eis"
+      ],
+      "registry_url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779"
+    }
+  ],
+  "hiring_tracks": [
+    {
+      "id": "track:networks",
+      "project_id": "project:belaya-duna",
+      "phase": "infrastructure",
+      "title": "Дороги и инженерные сети",
+      "description": "Проектирование, строительство дорог, подключение к сетям. Проверяем работодателя по договору или протоколу закупки.",
+      "trigger": "Публикация результата закупки и заключение контракта",
+      "organization_ids": [
+        "org:krko"
+      ],
+      "source_ids": [
+        "road-mirror",
+        "utilities"
+      ],
+      "confirmed_hiring": false
+    },
+    {
+      "id": "track:construction",
+      "project_id": "project:belaya-duna",
+      "phase": "construction",
+      "title": "Строительство гостиниц",
+      "description": "Строительные, монтажные и отделочные специальности. Объявление должно называть площадку, работодателя и условия работы.",
+      "trigger": "Подтверждение площадки и старта работ конкретным инвестором",
+      "organization_ids": [
+        "org:samson",
+        "org:leader"
+      ],
+      "source_ids": [
+        "samson-agreement",
+        "leader-agreement"
+      ],
+      "confirmed_hiring": false
+    },
+    {
+      "id": "track:operation",
+      "project_id": "project:belaya-duna",
+      "phase": "operation",
+      "title": "Отели, сервис и управление",
+      "description": "Гостиничные и сервисные направления по мере открытия объектов. Сроки найма и операторы пока не названы в нашем реестре.",
+      "trigger": "Объявление оператора и набора персонала",
+      "organization_ids": [],
+      "source_ids": [
+        "forum"
+      ],
+      "confirmed_hiring": false
+    }
+  ],
+  "vacancies": [],
+  "sources": [
+    {
+      "id": "forum",
+      "title": "Новый Калининград · заявление на Балтийском бизнес-форуме",
+      "url": "https://www.newkaliningrad.ru/news/briefs/economy/24166400-lapitskiy-kurort-belaya-dyuna-voshyel-v-aktivnuyu-fazu-realizatsii-d1257a15ffc10d1f.html",
+      "kind": "media",
+      "published_at": "2026-10-10",
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "samson-agreement",
+      "title": "Самсон · соглашение о «Белой Дюне»",
+      "url": "https://sk-samson.ru/article/59",
+      "kind": "primary",
+      "published_at": "2026-06-05",
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "leader-agreement",
+      "title": "РБК · соглашения с двумя инвесторами",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/05/06/2026/6a22aee09a7947df9da5423e",
+      "kind": "media",
+      "published_at": "2026-06-05",
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "corporation-contact",
+      "title": "Корпорация развития · биржа инвестпроектов",
+      "url": "https://invest.kgd-rdc.ru/",
+      "kind": "primary",
+      "published_at": null,
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "leader-contact",
+      "title": "Лидер Групп · контакты подразделений",
+      "url": "https://lidgroup.ru/contacts/",
+      "kind": "primary",
+      "published_at": null,
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "leader-career",
+      "title": "Лидер Групп · карьера",
+      "url": "https://lidgroup.ru/about/vacancy/",
+      "kind": "primary",
+      "published_at": null,
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "road-eis",
+      "title": "ЕИС · закупка №0335200014926003779",
+      "url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779",
+      "kind": "primary",
+      "published_at": "2026-10-07",
+      "checked_at": "2026-10-10",
+      "note": "Ссылка на первичный реестр; параметры сверены по зеркалам карточки."
+    },
+    {
+      "id": "road-mirror",
+      "title": "B2B.House · зеркало дорожного конкурса",
+      "url": "https://b2b.house/activepurchase/acae4749-7469-4d3c-9ff4-76e9911b28cb_2439ec02/",
+      "kind": "procurement-mirror",
+      "published_at": "2026-10-07",
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "utilities",
+      "title": "РуГрад · договоры подключения к сетям",
+      "url": "https://rugrad.online/news/1482007/",
+      "kind": "media",
+      "published_at": "2026-10-02",
+      "checked_at": "2026-10-10",
+      "note": ""
+    },
+    {
+      "id": "planning",
+      "title": "Зеленоградский округ · утверждение планировки",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/documents/results/?ELEMENT_ID=40157",
+      "kind": "primary",
+      "published_at": "2025-08-04",
+      "checked_at": "2026-10-10",
+      "note": ""
+    }
+  ]
+}

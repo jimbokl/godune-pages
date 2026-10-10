@@ -4,7 +4,7 @@ import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-p
 import {initTripBookings} from './trip-bookings-ui.mjs?v=19';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=3';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=25';
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=8';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=9';
 import {serviceBudgetInput} from './trip-service-budget.mjs';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,COST_KINDS} from './trip-days-state.mjs?v=27';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2';

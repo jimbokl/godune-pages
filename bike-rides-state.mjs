@@ -4,7 +4,7 @@ import {planInput,planTravel,planBaseTravel} from './trip-schedule-state.mjs?v=1
 import {dayBases,resolveAccessBetween,resolveDirectedTravel} from './travel-estimates.mjs?v=13';
 import {bookingEffects} from './trip-bookings-state.mjs?v=3';
 import {bikeProfile,bikeRouteFacts} from './bike-route-profile.mjs';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
 import {projectDayMap} from './day-map-state.mjs?v=7';
 
 export const bikeGuard=trip=>JSON.stringify(trip);

@@ -3,7 +3,7 @@
 // times, conflicts, rounded tariffs and unknown facts.
 import {selectedDay} from './trip-days-state.mjs?v=27';
 import {planInput} from './trip-schedule-state.mjs?v=19';
-import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=9';
+import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=10';
 import {cleanTrip} from './trip-state.mjs';
 import {activateTimeline} from './trip-service-timeline-state.mjs';
 

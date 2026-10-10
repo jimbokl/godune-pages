@@ -5,6 +5,7 @@ import {bookingEffects,saveBooking} from './trip-bookings-state.mjs?v=3';
 import {validBase} from './personal-points.mjs?v=3';
 import {timelineOrder} from './trip-service-timeline-state.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 import {connectionKey,transferChoices} from './trip-transfer-connections-contract.mjs';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
@@ -30,6 +31,7 @@ export function transferEndpoint(entry,day,catalog,side){
   return poi?point(entry.id,poi.name,poi):null;
  }
  const visit=serviceVisitRows(day).find(v=>v.id===entry.id),input=visit?.selection?.visit?.input;
+ if(visit?.selection?.visit?.kind==='manual')return serviceVisitAnchor(visit);
  if(!['directed','rental'].includes(visit?.selection?.visit?.kind))return null;
  const id=input.selection[side==='from'?'back_to':'from'];
  return copy(input.graph.anchors.find(a=>a.id===id)||null);

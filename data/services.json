@@ -2523,6 +2523,11 @@
       ]
     },
     {
+      "id": "place:baden-cafe",
+      "name": "Кафе «Баден»",
+      "references": []
+    },
+    {
       "id": "place:baden39",
       "name": "Баден Аква Спа",
       "references": []
@@ -2540,6 +2545,11 @@
     {
       "id": "place:nonstop",
       "name": "Нонстоп",
+      "references": []
+    },
+    {
+      "id": "place:steindamm99",
+      "name": "Штайндамм 99",
       "references": []
     },
     {
@@ -3334,6 +3344,16 @@
     }
   ],
   "branches": [
+    {
+      "id": "branch:baden-cafe",
+      "place_id": "place:baden-cafe",
+      "name": "Кафе «Баден»",
+      "area": "svetlogorsk",
+      "address": "Светлогорск, улица Горького, 14",
+      "location": {
+        "kind": "unknown"
+      }
+    },
     {
       "id": "branch:baden39:svetlogorsk",
       "place_id": "place:baden39",
@@ -7995,6 +8015,16 @@
       }
     },
     {
+      "id": "branch:steindamm99",
+      "place_id": "place:steindamm99",
+      "name": "Штайндамм 99",
+      "area": "kaliningrad",
+      "address": "Калининград, улица Житомирская, 22–24",
+      "location": {
+        "kind": "unknown"
+      }
+    },
+    {
       "id": "branch:velovoyage39:solnechnaya-17",
       "place_id": "place:velovoyage39",
       "name": "ВелоВояж 39 · Солнечная, 17",
@@ -8019,6 +8049,15 @@
     }
   ],
   "services": [
+    {
+      "id": "service:baden-cafe:meal",
+      "branch_id": "branch:baden-cafe",
+      "name": "Кафе «Баден»",
+      "profile": {
+        "kind": "dining",
+        "venue_id": null
+      }
+    },
     {
       "id": "service:baden39:pool",
       "branch_id": "branch:baden39:svetlogorsk",
@@ -10342,6 +10381,15 @@
         "capacity": null,
         "duration_minutes": 60,
         "minimum_age": null
+      }
+    },
+    {
+      "id": "service:steindamm99:meal",
+      "branch_id": "branch:steindamm99",
+      "name": "Штайндамм 99",
+      "profile": {
+        "kind": "dining",
+        "venue_id": null
       }
     },
     {
@@ -14616,6 +14664,136 @@
           "version": 1
         },
         "note": "Последнее обновление сайта: 29.07.2026; период действия не указан. Субботняя группа временно закрыта."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:steindamm99"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Штайндамм 99"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:steindamm99"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "kaliningrad"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:steindamm99"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Калининград, улица Житомирская, 22–24"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:steindamm99:meal"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Штайндамм 99"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:steindamm99"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/",
+          "checked_at": "2026-10-10"
+        },
+        "note": "Адрес не подтверждает точные координаты входа."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:baden-cafe"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Кафе «Баден»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden-cafe"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "svetlogorsk"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden-cafe"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Светлогорск, улица Горького, 14"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden-cafe:meal"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Кафе «Баден»"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden-cafe"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
+          "checked_at": "2026-10-10"
+        },
+        "note": "Адрес не подтверждает точные координаты входа."
       },
       {
         "subject": {

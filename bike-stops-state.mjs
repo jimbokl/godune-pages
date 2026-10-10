@@ -1,5 +1,5 @@
-import {assessBikeRide,bikeGuard} from './bike-rides-state.mjs?v=3';
-import {insertionVariants} from './along-route-state.mjs?v=1';
+import {assessBikeRide,bikeGuard} from './bike-rides-state.mjs?v=4';
+import {insertionVariants} from './along-route-state.mjs?v=5';
 import {cleanTrip} from './trip-state.mjs?v=30';
 import {selectedDay,validTripDate} from './trip-days-state.mjs?v=27';
 

@@ -3,7 +3,7 @@ import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract
 import {nextServiceVisitId} from './trip-service-visits-state.mjs?v=5';
 import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=1';
 import {validTimeline,timelineOrder} from './trip-service-timeline-state.mjs';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=8';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
 import {emptyCost} from './trip-expenses-state.mjs?v=14';
 
 export const serviceMoveGuard=trip=>JSON.stringify(trip);
