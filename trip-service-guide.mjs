@@ -13,7 +13,7 @@ import {resolveExcursion} from './trip-transport-state.mjs?v=3';
 import {baseName} from './personal-points.mjs?v=3';
 import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {provenanceSources} from './service-provenance.mjs?v=4';
+import {provenanceSources} from './service-provenance.mjs?v=5';
 import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
 import {priceRows,splitText} from './service-price-view.mjs?v=2';
 

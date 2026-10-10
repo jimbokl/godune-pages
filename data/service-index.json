@@ -261,12 +261,16 @@
       "service:dining:yandex-86328291089",
       "service:gnezdo:kitchen"
     ],
+    "gym": [
+      "service:newfitness:gym"
+    ],
     "pool": [
       "service:baden39:pool"
     ]
   },
   "areas": {
     "kaliningrad": [
+      "service:newfitness:gym",
       "service:vostok:bath"
     ],
     "lesnoy": [
@@ -1294,6 +1298,9 @@
     "branch:dom-poeta": [
       "service:dom-poeta:bath"
     ],
+    "branch:newfitness:chelnokova": [
+      "service:newfitness:gym"
+    ],
     "branch:velovoyage39:solnechnaya-17": [
       "service:velovoyage39:bike"
     ],
@@ -1311,6 +1318,9 @@
     "service:gnezdo:kitchen": [
       "offer:gnezdo:fish-soup",
       "offer:gnezdo:mackerel"
+    ],
+    "service:newfitness:gym": [
+      "offer:newfitness:day"
     ],
     "service:velovoyage39:bike": [
       "offer:velovoyage39:standard-day",
@@ -1330,6 +1340,9 @@
     ],
     "service/service:gnezdo:kitchen": [
       "calendar:gnezdo:kitchen"
+    ],
+    "service/service:newfitness:gym": [
+      "calendar:newfitness:visit"
     ],
     "service/service:velovoyage39:bike": [
       "calendar:velovoyage39:collect",
@@ -1377,6 +1390,9 @@
     ],
     "service:dom-poeta:bath": [
       "conditions:dom-poeta"
+    ],
+    "service:newfitness:gym": [
+      "conditions:newfitness:gym"
     ],
     "service:vostok:bath": [
       "conditions:vostok"

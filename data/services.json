@@ -2533,6 +2533,11 @@
       "references": []
     },
     {
+      "id": "place:newfitness",
+      "name": "NEWFitness",
+      "references": []
+    },
+    {
       "id": "place:velovoyage39",
       "name": "ВелоВояж 39",
       "references": []
@@ -6873,6 +6878,16 @@
       }
     },
     {
+      "id": "branch:newfitness:chelnokova",
+      "place_id": "place:newfitness",
+      "name": "NEWFitness · Челнокова",
+      "area": "kaliningrad",
+      "address": "Калининград, улица Челнокова, 25",
+      "location": {
+        "kind": "unknown"
+      }
+    },
+    {
       "id": "branch:poi:002dfdf0-3edf-5521-b454-1dbb065f470e",
       "place_id": "poi:002dfdf0-3edf-5521-b454-1dbb065f470e",
       "name": "БАЛТ",
@@ -10287,6 +10302,22 @@
       }
     },
     {
+      "id": "service:newfitness:gym",
+      "branch_id": "branch:newfitness:chelnokova",
+      "name": "NEWFitness: разовая тренировка",
+      "profile": {
+        "kind": "gym",
+        "single_visit": true,
+        "personal_trainer": true,
+        "minimum_age": 16,
+        "equipment": [
+          "free_weights"
+        ],
+        "shower": true,
+        "lockers": true
+      }
+    },
+    {
       "id": "service:velovoyage39:bike",
       "branch_id": "branch:velovoyage39:solnechnaya-17",
       "name": "ВелоВояж 39: прокат велосипеда",
@@ -10675,6 +10706,34 @@
       }
     },
     {
+      "id": "offer:newfitness:day",
+      "service_id": "service:newfitness:gym",
+      "name": "NEWFitness · дневной вход",
+      "tariff": {
+        "currency": "RUB",
+        "base": {
+          "id": "day-pass",
+          "label": "Дневной вход",
+          "scope": "person",
+          "billing": {
+            "kind": "once"
+          },
+          "rate": {
+            "kind": "fixed",
+            "amount": 89000
+          },
+          "minimum_amount": null
+        },
+        "mandatory": [],
+        "extras": [],
+        "minimum_amount": null,
+        "deposit": {
+          "kind": "unknown"
+        }
+      },
+      "visit_kind": "day_pass"
+    },
+    {
       "id": "offer:velovoyage39:standard-day",
       "service_id": "service:velovoyage39:bike",
       "name": "Стандарт · день от 5 часов",
@@ -10985,6 +11044,100 @@
           }
         ],
         "exceptions": []
+      }
+    },
+    {
+      "id": "calendar:newfitness:visit",
+      "subject": {
+        "kind": "service",
+        "id": "service:newfitness:gym"
+      },
+      "action": "visit",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 420,
+                  "close": 1380,
+                  "last_entry": 1335,
+                  "return_by": null
+                }
+              ]
+            }
+          }
+        ],
+        "exceptions": [
+          {
+            "date": "--12-31",
+            "source": {
+              "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "day": {
+              "kind": "closed"
+            }
+          },
+          {
+            "date": "--01-01",
+            "source": {
+              "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "day": {
+              "kind": "closed"
+            }
+          },
+          {
+            "date": "--01-02",
+            "source": {
+              "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "day": {
+              "kind": "closed"
+            }
+          }
+        ]
       }
     },
     {
@@ -11743,6 +11896,63 @@
               "kind": "booking",
               "required": true,
               "notice_minutes": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "conditions:newfitness:gym",
+      "service_id": "service:newfitness:gym",
+      "policy": {
+        "version": 1,
+        "rules": [
+          {
+            "id": "minimum-age",
+            "source": {
+              "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "age",
+              "minimum": 16,
+              "maximum": null
+            }
+          },
+          {
+            "id": "day-pass-guest",
+            "source": {
+              "reference": "https://www.newfitness.pro/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "audience",
+              "allowed": [
+                "guest"
+              ]
+            }
+          },
+          {
+            "id": "training-shoes",
+            "source": {
+              "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "equipment",
+              "required": [
+                {
+                  "id": "indoor-training-shoes",
+                  "label": "Сменная обувь для тренировки",
+                  "scope": "everyone"
+                }
+              ]
             }
           }
         ]
@@ -13570,6 +13780,421 @@
           "version": 1
         },
         "note": "Продажа входных тарифов заканчивается в 20:00; выход до 22:00."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:newfitness"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "NEWFitness"
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:newfitness"
+        },
+        "path": "/references",
+        "status": "unknown",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": [],
+        "note": "Точный вход и связи с существующими точками не подтверждены."
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:newfitness:chelnokova"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "NEWFitness · Челнокова"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:newfitness:chelnokova"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "kaliningrad"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:newfitness:chelnokova"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Калининград, улица Челнокова, 25"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:newfitness:chelnokova"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "kind": "unknown"
+        },
+        "note": "Точный вход и связи с существующими точками не подтверждены."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "NEWFitness: разовая тренировка"
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/single_visit",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/personal_trainer",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true,
+        "note": "Есть тренеры и вводный инструктаж; индивидуальная тренировка не включена в цену дневного входа."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/minimum_age",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10"
+        },
+        "value": 16
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/equipment",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10"
+        },
+        "value": [
+          "free_weights"
+        ],
+        "note": "Зона свободных весов, штанги и гантели названы в правилах. Другие зоны не проверены."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/shower",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:newfitness:gym"
+        },
+        "path": "/profile/lockers",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": true
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:newfitness:day"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "NEWFitness · дневной вход"
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:newfitness:day"
+        },
+        "path": "/tariff",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "base": {
+            "billing": {
+              "kind": "once"
+            },
+            "id": "day-pass",
+            "label": "Дневной вход",
+            "minimum_amount": null,
+            "rate": {
+              "amount": 89000,
+              "kind": "fixed"
+            },
+            "scope": "person"
+          },
+          "currency": "RUB",
+          "deposit": {
+            "kind": "unknown"
+          },
+          "extras": [],
+          "mandatory": [],
+          "minimum_amount": null
+        }
+      },
+      {
+        "subject": {
+          "kind": "offer",
+          "id": "offer:newfitness:day"
+        },
+        "path": "/visit_kind",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "day_pass"
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:newfitness:visit"
+        },
+        "path": "/action",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10"
+        },
+        "value": "visit"
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:newfitness:visit"
+        },
+        "path": "/calendar",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "exceptions": [
+            {
+              "date": "--12-31",
+              "day": {
+                "kind": "closed"
+              },
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "date": "--01-01",
+              "day": {
+                "kind": "closed"
+              },
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "date": "--01-02",
+              "day": {
+                "kind": "closed"
+              },
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+                "valid_from": null,
+                "valid_until": null
+              }
+            }
+          ],
+          "rules": [
+            {
+              "day": {
+                "kind": "continuous",
+                "windows": [
+                  {
+                    "close": 1380,
+                    "last_entry": 1335,
+                    "open": 420,
+                    "return_by": null
+                  }
+                ]
+              },
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "weekdays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          ],
+          "source": {
+            "checked_at": "2026-10-10",
+            "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+            "valid_from": null,
+            "valid_until": null
+          },
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        },
+        "note": "Правила версии 15.11.2019, связаны с действующим сайтом на дату проверки. Дата проверки не является датой обновления правил."
+      },
+      {
+        "subject": {
+          "kind": "conditions",
+          "id": "conditions:newfitness:gym"
+        },
+        "path": "/policy",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "rules": [
+            {
+              "condition": {
+                "kind": "age",
+                "maximum": null,
+                "minimum": 16
+              },
+              "id": "minimum-age",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "allowed": [
+                  "guest"
+                ],
+                "kind": "audience"
+              },
+              "id": "day-pass-guest",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "kind": "equipment",
+                "required": [
+                  {
+                    "id": "indoor-training-shoes",
+                    "label": "Сменная обувь для тренировки",
+                    "scope": "everyone"
+                  }
+                ]
+              },
+              "id": "training-shoes",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://www.newfitness.pro/upload/docs/%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%20%D0%9A%D0%BB%D1%83%D0%B1%D0%B0.pdf",
+                "valid_from": null,
+                "valid_until": null
+              }
+            }
+          ],
+          "version": 1
+        },
+        "note": "Правила версии 15.11.2019, связаны с действующим сайтом на дату проверки. Дата проверки не является датой обновления правил."
       },
       {
         "subject": {
