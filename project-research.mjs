@@ -1,3 +1,4 @@
+import './project-dossier.mjs?v=1';
 // Progressive enhancement only: every record is present in server-rendered HTML.
 export function filterRecords(records, query) {
   const q=String(query??'').trim().toLocaleLowerCase('ru');

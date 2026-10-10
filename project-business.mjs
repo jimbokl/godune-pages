@@ -1,3 +1,4 @@
+import './project-dossier.mjs?v=1';
 // Progressive tools for the sourced registry. This storage never touches Trip.
 const root = globalThis.document?.querySelector('.business-page');
 const KEY = 'godune-business-selection-v1';

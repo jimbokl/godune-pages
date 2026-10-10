@@ -195,6 +195,7 @@ export function mountProjectTenders(root = globalThis.document) {
   };
 
   syncForm(form, filters);
+  if (FILTER_KEYS.some(key => filters[key])) { const drawer = form.closest('.dossier-filters'); if (drawer) drawer.open = true; }
   form.addEventListener('input', () => redraw());
   form.addEventListener('change', () => redraw());
   form.addEventListener('submit', event => { event.preventDefault(); redraw(); });
