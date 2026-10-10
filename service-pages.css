@@ -46,6 +46,7 @@
 .service-submit:disabled{opacity:.65;cursor:progress}
 .service-extra-fields{margin-top:20px}
 .service-extra-fields summary{font-size:15px;cursor:pointer;padding:8px 0}
+.service-timing-help{font-size:14px;line-height:1.5;color:var(--muted);max-width:62ch;margin:12px 0 0}
 .service-extra-fields>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:18px}
 .service-extra-fields:not([open])>div{display:none}
 .service-next-day{display:flex;align-items:center;gap:9px;margin-top:9px;font-size:14px;min-height:36px}

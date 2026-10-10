@@ -260,6 +260,9 @@
       "service:dining:yandex-83768680391",
       "service:dining:yandex-86328291089",
       "service:gnezdo:kitchen"
+    ],
+    "pool": [
+      "service:baden39:pool"
     ]
   },
   "areas": {
@@ -268,6 +271,9 @@
     ],
     "lesnoy": [
       "service:dom-poeta:bath"
+    ],
+    "svetlogorsk": [
+      "service:baden39:pool"
     ],
     "zelenogradsk": [
       "service:dining:2gis-5630027815190832",
@@ -526,6 +532,9 @@
     ]
   },
   "branches": {
+    "branch:baden39:svetlogorsk": [
+      "service:baden39:pool"
+    ],
     "branch:dining:2gis-5630027815190832": [
       "service:dining:2gis-5630027815190832"
     ],
@@ -1313,6 +1322,9 @@
     "branch/branch:dining:2gis-70000001055109040": [
       "calendar:gnezdo:venue"
     ],
+    "service/service:baden39:pool": [
+      "calendar:baden39:visit"
+    ],
     "service/service:gnezdo:kitchen": [
       "calendar:gnezdo:kitchen"
     ],
@@ -1357,6 +1369,9 @@
     ]
   },
   "conditions": {
+    "service:baden39:pool": [
+      "conditions:baden39:pool"
+    ],
     "service:dom-poeta:bath": [
       "conditions:dom-poeta"
     ],

@@ -231,7 +231,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=111'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=112'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
@@ -241,7 +241,7 @@
     const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=34')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=29')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=30')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=23')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';

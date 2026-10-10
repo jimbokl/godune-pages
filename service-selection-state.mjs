@@ -12,6 +12,7 @@ export function selectedInput(original,values) {
     if(values.visit_timing){
       for(const key of ['change_before','change_after'])if(Object.hasOwn(values.visit_timing,key))visit.timing[key]=values.visit_timing[key];
       if(Object.hasOwn(values.visit_timing,'session_start'))visit.session_start=values.visit_timing.session_start;
+      if(values.visit_timing.stages)for(const key of ['approach','collect','complete','return_walk'])if(Object.hasOwn(values.visit_timing.stages,key))visit.timing[key]=values.visit_timing.stages[key];
     }
   }
   if(input.participants.people?.length!==values.people){

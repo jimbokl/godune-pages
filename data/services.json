@@ -2523,6 +2523,11 @@
       ]
     },
     {
+      "id": "place:baden39",
+      "name": "Баден Аква Спа",
+      "references": []
+    },
+    {
       "id": "place:dom-poeta",
       "name": "Парк-отель «Дом поэта»",
       "references": []
@@ -3319,6 +3324,16 @@
     }
   ],
   "branches": [
+    {
+      "id": "branch:baden39:svetlogorsk",
+      "place_id": "place:baden39",
+      "name": "Баден Аква Спа · Светлогорск",
+      "area": "svetlogorsk",
+      "address": "Светлогорск, улица Горького, 14",
+      "location": {
+        "kind": "unknown"
+      }
+    },
     {
       "id": "branch:dining:2gis-5630027815190832",
       "place_id": "dining:2gis-5630027815190832",
@@ -7975,6 +7990,24 @@
   ],
   "services": [
     {
+      "id": "service:baden39:pool",
+      "branch_id": "branch:baden39:svetlogorsk",
+      "name": "Баден Аква Спа: бассейны и термы",
+      "profile": {
+        "kind": "pool",
+        "length_m": null,
+        "lanes": null,
+        "activities": [
+          "leisure",
+          "wellness"
+        ],
+        "session_minutes": null,
+        "indoor": null,
+        "swim_cap": null,
+        "medical_document": null
+      }
+    },
+    {
       "id": "service:dining:2gis-5630027815190832",
       "branch_id": "branch:dining:2gis-5630027815190832",
       "name": "Веранда",
@@ -10572,6 +10605,63 @@
   "aliases": {},
   "calendars": [
     {
+      "id": "calendar:baden39:visit",
+      "subject": {
+        "kind": "service",
+        "id": "service:baden39:pool"
+      },
+      "action": "visit",
+      "calendar": {
+        "version": 1,
+        "timezone": "Europe/Kaliningrad",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10",
+          "valid_from": null,
+          "valid_until": null
+        },
+        "rules": [
+          {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "weekdays": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "day": {
+              "kind": "continuous",
+              "windows": [
+                {
+                  "open": 540,
+                  "close": 1320,
+                  "last_entry": null,
+                  "return_by": null
+                }
+              ]
+            }
+          }
+        ],
+        "exceptions": []
+      }
+    },
+    {
       "id": "calendar:gnezdo:kitchen",
       "subject": {
         "kind": "service",
@@ -11334,6 +11424,73 @@
     }
   ],
   "conditions": [
+    {
+      "id": "conditions:baden39:pool",
+      "service_id": "service:baden39:pool",
+      "policy": {
+        "version": 1,
+        "rules": [
+          {
+            "id": "public-access",
+            "source": {
+              "reference": "https://baden39.ru/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "audience",
+              "allowed": [
+                "guest"
+              ]
+            }
+          },
+          {
+            "id": "no-advance-booking",
+            "source": {
+              "reference": "https://baden39.ru/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "booking",
+              "required": false,
+              "notice_minutes": null
+            }
+          },
+          {
+            "id": "bring-swimwear",
+            "source": {
+              "reference": "https://baden39.ru/",
+              "checked_at": "2026-10-10",
+              "valid_from": null,
+              "valid_until": null
+            },
+            "condition": {
+              "kind": "equipment",
+              "required": [
+                {
+                  "id": "towel",
+                  "label": "Полотенце",
+                  "scope": "everyone"
+                },
+                {
+                  "id": "swimwear",
+                  "label": "Купальный костюм",
+                  "scope": "everyone"
+                },
+                {
+                  "id": "non-slip-slippers",
+                  "label": "Нескользящие тапочки",
+                  "scope": "everyone"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     {
       "id": "conditions:dom-poeta",
       "service_id": "service:dom-poeta:bath",
@@ -12604,6 +12761,318 @@
         },
         "value": null,
         "note": "На странице указан формат баня-бочка; вид парной отдельно не назван."
+      },
+      {
+        "subject": {
+          "kind": "place",
+          "id": "place:baden39"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Баден Аква Спа"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden39:svetlogorsk"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Баден Аква Спа · Светлогорск"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden39:svetlogorsk"
+        },
+        "path": "/area",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "svetlogorsk"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden39:svetlogorsk"
+        },
+        "path": "/address",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Светлогорск, улица Горького, 14"
+      },
+      {
+        "subject": {
+          "kind": "branch",
+          "id": "branch:baden39:svetlogorsk"
+        },
+        "path": "/location",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "kind": "unknown"
+        },
+        "note": "Адрес подтверждён; точный вход и координаты ещё не сняты."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/name",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": "Баден Аква Спа: бассейны и термы"
+      },
+      {
+        "subject": {
+          "kind": "calendar",
+          "id": "calendar:baden39:visit"
+        },
+        "path": "/calendar",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "exceptions": [],
+          "rules": [
+            {
+              "day": {
+                "kind": "continuous",
+                "windows": [
+                  {
+                    "close": 1320,
+                    "last_entry": null,
+                    "open": 540,
+                    "return_by": null
+                  }
+                ]
+              },
+              "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "weekdays": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          ],
+          "source": {
+            "checked_at": "2026-10-10",
+            "reference": "https://baden39.ru/",
+            "valid_from": null,
+            "valid_until": null
+          },
+          "timezone": "Europe/Kaliningrad",
+          "version": 1
+        }
+      },
+      {
+        "subject": {
+          "kind": "conditions",
+          "id": "conditions:baden39:pool"
+        },
+        "path": "/policy",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": {
+          "rules": [
+            {
+              "condition": {
+                "allowed": [
+                  "guest"
+                ],
+                "kind": "audience"
+              },
+              "id": "public-access",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://baden39.ru/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "kind": "booking",
+                "notice_minutes": null,
+                "required": false
+              },
+              "id": "no-advance-booking",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://baden39.ru/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            },
+            {
+              "condition": {
+                "kind": "equipment",
+                "required": [
+                  {
+                    "id": "towel",
+                    "label": "Полотенце",
+                    "scope": "everyone"
+                  },
+                  {
+                    "id": "swimwear",
+                    "label": "Купальный костюм",
+                    "scope": "everyone"
+                  },
+                  {
+                    "id": "non-slip-slippers",
+                    "label": "Нескользящие тапочки",
+                    "scope": "everyone"
+                  }
+                ]
+              },
+              "id": "bring-swimwear",
+              "source": {
+                "checked_at": "2026-10-10",
+                "reference": "https://baden39.ru/",
+                "valid_from": null,
+                "valid_until": null
+              }
+            }
+          ],
+          "version": 1
+        }
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/length_m",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/lanes",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/activities",
+        "status": "confirmed",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": [
+          "leisure",
+          "wellness"
+        ]
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/session_minutes",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/indoor",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null,
+        "note": "В комплексе есть открытый бассейн с морской водой и внутренний бассейн с гидромассажем."
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/swim_cap",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null
+      },
+      {
+        "subject": {
+          "kind": "service",
+          "id": "service:baden39:pool"
+        },
+        "path": "/profile/medical_document",
+        "status": "unknown",
+        "source": {
+          "reference": "https://baden39.ru/",
+          "checked_at": "2026-10-10"
+        },
+        "value": null
       },
       {
         "subject": {

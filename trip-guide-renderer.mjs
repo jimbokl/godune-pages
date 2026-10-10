@@ -6,7 +6,7 @@ import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
 import {formatKopecks as money} from './trip-money.mjs';
 import {transferClock} from './trip-service-transfer-view.mjs';
-import {serviceSourceCaption} from './service-provenance.mjs';
+import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=3';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -33,8 +33,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   function qrLayout(caption){const size=phone?52:68,wrapped=lines(caption,ui,phone?9:11,width-size-12),leading=phone?13:16;return {size,wrapped,leading,height:Math.max(size,wrapped.length*leading)+18};}
   async function qrCard(value,caption){if(!value)return;const img=await doc.embedPng(value.bytes),{size,wrapped,leading,height}=qrLayout(caption);need(height);page.drawImage(img,{x:m,y:y-size,width:size,height:size});wrapped.forEach((line,i)=>page.drawText(line,{x:m+size+12,y:y-leading*(i+1),font:ui,size:phone?9:11,color:muted}));y-=height;}
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
-  const sourceHeight=s=>s?textHeight(serviceSourceCaption(s),ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
-  const source=(s)=>{if(!s)return;need(sourceHeight(s));text(serviceSourceCaption(s),{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8,link:s.url});};
+  const sourceCaption=s=>serviceSourceCaption(s.name===s.url?{...s,name:'Источник'}:s);
+  const sourceHeight=s=>s?textHeight(sourceCaption(s),ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
+  const source=(s)=>{if(!s)return;need(sourceHeight(s));text(sourceCaption(s),{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8,link:s.url});};
   function notes(day){if(!day.record.note||day.generated_note===true)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
   const amount=(total,known)=>total!=null?money(total):known>0?`Известно ${money(known)}. Полная сумма неизвестна.`:'Сумма пока неизвестна.';
   const expenseContext={date_missing:'Дата дня не выбрана. Выбранный тариф нужно проверить.',date_changed:'Дата дня изменилась. Выбранный тариф нужно проверить.',party_changed:'Состав компании изменился. Выбранный тариф нужно проверить.',selection_changed:'Посещение изменилось. Записанная сумма сохранена.',visit_removed:'Посещение убрано из дня. Запись расходов сохранена.',unsupported:'Выбор посещения нужно проверить. Записанные суммы сохранены.'};
@@ -51,35 +52,43 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     else text('Координаты не записаны. Сохраните адрес и уточните вход до выхода.',{color:muted});
     const a=s.assessment;
     if(a){
+      const sources=groupServiceSources(s.sources);
+      const groupHeight=g=>g.details.reduce((sum,d)=>sum+textHeight(d,ui,phone?8.5:10,4),0)+sourceHeight({...g,name:'Источник'});
+      const sourcesHeight=sources.reduce((sum,g)=>sum+groupHeight(g),0);
       heading('Выбранное посещение',false,date(s.date));text(date(s.date));
       if(s.rental?.length){for(const row of s.rental)text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});}
-      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],['Начало занятия',a.visit.timeline.activity_start],['Конец занятия',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
+      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],[s.category==='Бассейн'?'Начало посещения':'Начало занятия',a.visit.timeline.activity_start],[s.category==='Бассейн'?'Конец посещения':'Конец занятия',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
       if(a.visit.timeline.wait>0)text(`Ожидание сеанса: ${a.visit.timeline.wait} мин.`,{size:phone?10.5:12});
       text(`Всего: ${a.visit.duration.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.visit.duration.total_minutes} мин`}.`);
       heading('Время на подготовку',false,s.stages[0]?.label);
       for(const stage of s.stages)text(`${stage.label}: ${stage.minutes==null?'нужно уточнить':stage.minutes+' мин'}`,{size:phone?10:12,space:5});
       const priceLines=(s.price_rows||[]).map(row=>`${row.name}: ${row.total==null?'Нужно уточнить':money(row.total)}${row.detail?' · '+row.detail:''}`);
-      const totals=['Стоимость: '+s.cost,...(s.cost_split?[s.cost_split]:[]),'Возвратный залог: '+s.deposit,'Потребуется при входе: '+s.upfront];
+      const totals=['Стоимость: '+s.cost,...(s.cost_split?[s.cost_split]:[]),...(a.quote?['Возвратный залог: '+s.deposit,'Потребуется при входе: '+s.upfront]:[])];
       // Keep an ordinary receipt with its total on one page; long receipts still flow.
       const receiptHeight=priceLines.reduce((sum,line)=>sum+textHeight(line,ui,phone?10.5:12,5),0)+totals.reduce((sum,line)=>sum+textHeight(line),0);
       heading('На вашу компанию',false,'',receiptHeight);
       for(const line of priceLines)text(line,{size:phone?10.5:12,space:5});
       for(const line of totals)text(line);
-      text('Это выбранный тариф. Записанные оплаты и возвраты показаны отдельно в расходах дня.',{size:phone?9:11,color:muted});
+      text(a.quote?'Это выбранный тариф. Записанные оплаты и возвраты показаны отдельно в расходах дня.':'Тариф ещё не выбран. Уточните стоимость у заведения перед посещением.',{size:phone?9:11,color:muted});
       if(s.conditions.length){
         const label=c=>`${c.label} · ${c.status}`,observationText=o=>o.text+(o.status==='current'?'':' · сведения нужно сверить');
         const blockHeight=c=>textHeight(label(c),ui,phone?11:13)+c.observations.reduce((sum,o)=>sum+textHeight(observationText(o),ui,phone?10:12)+sourceHeight(o.source),0);
         heading('Перед посещением',false,label(s.conditions[0]),Math.max(0,blockHeight(s.conditions[0])-textHeight(label(s.conditions[0]))));
         for(const [i,condition]of s.conditions.entries()){
-          const tail=i===s.conditions.length-1?s.sources.reduce((sum,s0)=>sum+sourceHeight(s0),0)+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0):0;
+          const tail=i===s.conditions.length-1?sourcesHeight+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0):0;
           const block=blockHeight(condition);need(block+tail<h-2*m-90?block+tail:Math.min(block,body*6));
           text(label(condition),{size:phone?11:13});
           for(const observation of condition.observations){const size=phone?10:12,block=textHeight(observationText(observation),ui,size)+sourceHeight(observation.source);if(block<h-2*m-90)need(block);text(observationText(observation),{size});source(observation.source);}
         }
       }
-      const tail=s.sources.reduce((sum,s0)=>sum+sourceHeight(s0),0)+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0);
+      const tail=sourcesHeight+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0);
       if(tail<h-2*m-90)need(tail);
-      for(const s0 of s.sources)source(s0);
+      if(sources.length)heading('Сведения и источники',false,sources[0].details[0]||'Источник');
+      for(const group of sources){
+        if(groupHeight(group)<h-2*m-90)need(groupHeight(group));
+        for(const detail of group.details)text(detail,{size:phone?8.5:10,color:muted,space:4});
+        source({...group,name:'Источник'});
+      }
     }
     if(s.note){heading('Ваша заметка',false,s.note);text(s.note);}
   }

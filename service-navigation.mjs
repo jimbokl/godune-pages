@@ -1,7 +1,8 @@
 // Only selection values travel in URLs. Destination paths belong to the renderer.
 import {extraKey,extraBelongsTo} from './service-price-view.mjs';
-const visitKeys = new Set(['date','people','units','duration_minutes','arrival','finish_by','finish_next_day','cost_limit','upfront_limit','paid_minutes'].map(v=>`sr_${v}`));
+const visitKeys = new Set(['date','people','units','duration_minutes','arrival','finish_by','finish_next_day','cost_limit','upfront_limit','paid_minutes','session_start','change_before','change_after','approach_minutes','entry_minutes','exit_minutes','return_minutes'].map(v=>`sr_${v}`));
 const listKeys = new Set(['v','q','sort','only_fits','scope_kind','scope_point','scope_route','radius_m','spatial_strict'].map(v=>`sr_${v}`));
+const nullableTimingKeys = new Set(['session_start','change_before','change_after','approach_minutes','entry_minutes','exit_minutes','return_minutes'].map(v=>`sr_${v}`));
 const allowed = key => visitKeys.has(key)||listKeys.has(key)||extraKey(key)||/^sr_facet_[a-z_]+$/.test(key);
 
 export function serviceSelectionParams(controls) {
@@ -11,7 +12,8 @@ export function serviceSelectionParams(controls) {
     const key=`sr_${control.name}`;
     if(!allowed(key))continue;
     const value=control.type==='checkbox'?(control.checked?'1':extraKey(key)?'0':''):control.value;
-    if(value!=='')params.set(key,value);
+    // A cleared timing field must also clear a nonempty authored default.
+    if(value!==''||nullableTimingKeys.has(key))params.set(key,value);
   }
   return params;
 }

@@ -17,7 +17,7 @@ import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journe
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=9';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=10';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
 import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2';
 

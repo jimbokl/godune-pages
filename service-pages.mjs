@@ -24,8 +24,8 @@ const integer=(value,name)=>{if(!/^\d+$/.test(value)||!Number.isSafeInteger(Numb
 const minutes=(value,name)=>{if(!/^\d{2}:\d{2}$/.test(value))throw Error(`Укажите время в поле «${name}».`);const [h,m]=value.split(':').map(Number);if(h>23||m>59)throw Error(`Проверьте поле «${name}».`);return h*60+m;};
 const amount=(value,name)=>{if(value==='')return null;if(!/^\d+(?:[.,]\d{1,2})?$/.test(value))throw Error(`Укажите сумму в поле «${name}».`);const [whole,frac='']=value.replace(',','.').split('.');const n=BigInt(whole)*100n+BigInt(frac.padEnd(2,'0'));if(n>9007199254740991n)throw Error(`Проверьте сумму в поле «${name}».`);return Number(n);};
 
-import {selectedInput} from './service-selection-state.mjs';
-export {selectedInput} from './service-selection-state.mjs';
+import {selectedInput} from './service-selection-state.mjs?v=2';
+export {selectedInput} from './service-selection-state.mjs?v=2';
 
 function apply(card,result,input) {
   const price=card.querySelector('[data-price-quote]');
@@ -35,7 +35,7 @@ function apply(card,result,input) {
   const rental=card.querySelector('[data-rental-facts]');
   if(rental){const facts=rentalFactsElement({selection:input},result);rental.replaceChildren(...(facts?[facts]:[]));}
 
-  const put=(selector,value)=>{card.querySelector(selector).textContent=value;};
+  const put=(selector,value)=>{const target=card.querySelector(selector);if(target)target.textContent=value;};
   card.dataset.state=result.state;put('[data-result-state]',states[result.state]);
   put('[data-total-time]',result.summary.total_minutes===null?'Время не полностью известно':`${result.summary.total_minutes} мин`);
   put('[data-cost]',money(result.summary.cost_total));put('[data-departure]',clock(result.summary.departure));put('[data-upfront]',money(result.summary.upfront_total));
@@ -53,7 +53,7 @@ function apply(card,result,input) {
   card.querySelector('[data-plan-checks]').replaceChildren(...result.checks.filter(v=>v.kind!=='conditions'&&v.status!=='pass').map(v=>{const li=document.createElement('li');li.textContent=planTexts[v.kind][v.status==='fail'?0:1];return li;}));
 }
 
-import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=1';
+import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=2';
 
 const urlPrefix='sr_';
 const checkKinds=['time','approach','return','conditions','cost','upfront'];
@@ -167,6 +167,11 @@ if(typeof document!=='undefined') {
         for(const key of ['session_start','change_before','change_after'])if(fields.has(key)){
           visitTiming[key]=get(key)===''?null:key==='session_start'?minutes(get(key),'Начало сеанса'):integer(get(key),key==='change_before'?'Переодевание до':'Переодевание после');
         }
+        const stages={};
+        for(const [key,stage] of Object.entries({approach_minutes:'approach',entry_minutes:'collect',exit_minutes:'complete',return_minutes:'return_walk'}))if(fields.has(key)){
+          stages[stage]=get(key)===''?null:integer(get(key),form.elements.namedItem(key)?.labels?.[0]?.textContent.trim()||key);
+        }
+        if(Object.keys(stages).length)visitTiming.stages=stages;
         if(Object.keys(visitTiming).length)values.visit_timing=visitTiming;
         const selection=selectionFromFields(fields,page.query,facets);
         const scheduler=await loadScheduler(new URL('./',import.meta.url));
