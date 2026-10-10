@@ -1,5 +1,5 @@
 const STATUSES = new Set(['announced', 'bidding', 'awarded', 'contracted', 'completed', 'cancelled']);
-const KINDS = new Set(['construction', 'works', 'services', 'supplies', 'design', 'repair', 'other']);
+const KINDS = new Set(['construction', 'works', 'services', 'supply', 'supplies', 'design', 'repair', 'other']);
 const FILTER_KEYS = ['q', 'kind', 'status', 'infrastructure', 'min', 'max', 'from', 'to'];
 
 function field(record, ...names) {
@@ -22,12 +22,28 @@ function validIsoDate(value) {
   return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
-function finiteNonnegative(value) {
+function rublesToMinor(value) {
   if (value === '' || value === null || value === undefined) return null;
   const text = String(value).trim();
-  if (!/^(?:\d+)(?:\.\d+)?$/.test(text)) return null;
-  const number = Number(text);
-  return Number.isFinite(number) ? number : null;
+  if (!/^\d+(?:\.\d{1,2})?$/.test(text)) return null;
+  const [rubles,kopecks=''] = text.split('.');
+  const amount = BigInt(rubles)*100n+BigInt(kopecks.padEnd(2,'0'));
+  return amount <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(amount) : null;
+}
+
+function priceMinor(tender) {
+  const canonical = tender?.price_rule?.amount_minor ?? field(tender,'priceMinor');
+  if (canonical !== '') {
+    const text=String(canonical);
+    const amount=/^\d+$/.test(text)?Number(text):NaN;
+    return Number.isSafeInteger(amount) && amount>=0 ? amount : null;
+  }
+  return rublesToMinor(field(tender,'price','price_rub'));
+}
+
+function deadlineDate(tender) {
+  if (Array.isArray(tender?.calendar_rules)) return String(tender.calendar_rules.find(c=>c.kind==='submission_deadline')?.date??'');
+  return String(field(tender,'deadline')??'');
 }
 
 function safeSlug(value) {
@@ -50,8 +66,9 @@ export function validateFilters(params) {
   const requestedStatus = String(get('status') ?? '').trim().toLocaleLowerCase('en');
   const status = STATUSES.has(requestedStatus) ? requestedStatus : '';
   const infrastructure = safeInfrastructureReference(get('infrastructure'));
-  let min = finiteNonnegative(get('min'));
-  let max = finiteNonnegative(get('max'));
+  const minMinor = rublesToMinor(get('min')), maxMinor = rublesToMinor(get('max'));
+  let min = minMinor === null ? null : minMinor/100;
+  let max = maxMinor === null ? null : maxMinor/100;
   if (min !== null && max !== null && min > max) [min, max] = [null, null];
   let from = String(get('from') ?? '');
   let to = String(get('to') ?? '');
@@ -64,7 +81,7 @@ export function validateFilters(params) {
 /** Return the factual registry status and whether a bidding deadline has passed. */
 export function tenderStatus(tender, today) {
   const status = canonicalStatus(field(tender, 'status'));
-  const deadline = String(field(tender, 'deadline') ?? '');
+  const deadline = deadlineDate(tender);
   const deadlinePassed = status === 'bidding' && validIsoDate(deadline) && validIsoDate(today) && today > deadline;
   return {status, deadlinePassed};
 }
@@ -89,8 +106,8 @@ export function matchesTender(tender, filters = {}) {
   const status = canonicalStatus(field(tender, 'status'));
   const kind = String(field(tender, 'kind') ?? '').trim().toLocaleLowerCase('ru');
   const infrastructure = tokens(field(tender, 'infrastructure_id', 'infrastructure'));
-  const price = finiteNonnegative(field(tender, 'price', 'price_rub'));
-  const deadline = String(field(tender, 'deadline') ?? '');
+  const price = priceMinor(tender);
+  const deadline = deadlineDate(tender);
   const searchValue = field(tender, 'search', 'title', 'name');
   const searchText = [searchValue, field(tender, 'description'), field(tender, 'registry_number'), field(tender, 'id')]
     .flatMap(tokens).join(' ').toLocaleLowerCase('ru');
@@ -100,8 +117,8 @@ export function matchesTender(tender, filters = {}) {
   if (f.status && status !== f.status) return false;
   if (f.infrastructure && !infrastructure.includes(f.infrastructure)) return false;
   if ((f.min !== null || f.max !== null) && price === null) return false;
-  if (f.min !== null && price < f.min) return false;
-  if (f.max !== null && price > f.max) return false;
+  if (f.min !== null && price < rublesToMinor(f.min)) return false;
+  if (f.max !== null && price > rublesToMinor(f.max)) return false;
   if ((f.from || f.to) && !validIsoDate(deadline)) return false;
   if (f.from && deadline < f.from) return false;
   if (f.to && deadline > f.to) return false;
