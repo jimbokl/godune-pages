@@ -513,6 +513,158 @@
         "map:order-255"
       ],
       "to": "document:order-255"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-kaliningrad",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "to": "access:kaliningrad"
+    },
+    {
+      "from": "access:kaliningrad",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-kaliningrad",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "to": "access:povarovka"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-airport",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "to": "access:airport"
+    },
+    {
+      "from": "access:airport",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-airport",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "to": "access:povarovka"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-zelenogradsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:zelenogradsk"
+    },
+    {
+      "from": "access:zelenogradsk",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-zelenogradsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:povarovka"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-svetlogorsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:svetlogorsk"
+    },
+    {
+      "from": "access:svetlogorsk",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-svetlogorsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:povarovka"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-yantarny",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:yantarny"
+    },
+    {
+      "from": "access:yantarny",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-yantarny",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:povarovka"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_access_calculation",
+      "source_refs": [
+        "transport:point-baltiysk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:baltiysk"
+    },
+    {
+      "from": "access:baltiysk",
+      "relation": "calculated_to",
+      "source_refs": [
+        "transport:point-baltiysk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "to": "access:povarovka"
     }
   ],
   "inputs": [
@@ -527,6 +679,10 @@
     {
       "registry": "map",
       "sha256": "edae6177205e2d249711a5d42c3479976c824147b9daf79f816d0cf292d6b423"
+    },
+    {
+      "registry": "transport",
+      "sha256": "9f498483325d338517b88d6f7fb3f98680adbcf309a19119691b763507437754"
     }
   ],
   "nodes": [
@@ -1326,6 +1482,445 @@
       "state": "Архивная редакция",
       "title": "Исходное межевание",
       "url": "/dunes/belaya-duna/map/?document=order-255#map"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "access:povarovka",
+      "kind": "settlement_access",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-povarovka"
+      ],
+      "state": "Центр посёлка",
+      "title": "Поваровка · конечная точка поездки",
+      "url": "/dunes/belaya-duna/how-to-get/#journey"
+    },
+    {
+      "bus": {
+        "direction": "В сторону Янтарного / Синявино",
+        "legs": [
+          {
+            "copy": "Выходите на остановке «пос. Поваровка». В расписании есть рейсы до Янтарного и Синявино.",
+            "number": "120",
+            "title": "Автовокзал → Поваровка"
+          }
+        ],
+        "note": "Время отправления из Поваровки проверяйте отдельно.",
+        "return_text": "Обратно — №120 в сторону Калининграда.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka"
+        ],
+        "transfers": 0
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 41938.87120743043,
+      "id": "access:kaliningrad",
+      "kind": "transport_origin",
+      "point_label": "Автовокзал, Железнодорожная улица, 7",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-kaliningrad",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Калининград → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=kaliningrad&mode=car#journey"
+    },
+    {
+      "bus": {
+        "direction": "Через автовокзал Калининграда",
+        "legs": [
+          {
+            "copy": "Доезжайте до автовокзала у Южного вокзала.",
+            "number": "244Э",
+            "title": "Аэропорт → Калининград"
+          },
+          {
+            "copy": "Пересадка на автобус в сторону Янтарного / Синявино.",
+            "number": "120",
+            "title": "Автовокзал → Поваровка"
+          }
+        ],
+        "note": "Время на пересадку и отправление из Поваровки проверяйте отдельно.",
+        "return_text": "Обратно — №120 до Калининграда, затем №244Э до аэропорта.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka"
+        ],
+        "transfers": 1
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 51420.10123840811,
+      "id": "access:airport",
+      "kind": "transport_origin",
+      "point_label": "Остановка «Аэропорт Храброво»",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-airport",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Храброво → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=airport&mode=car#journey"
+    },
+    {
+      "bus": {
+        "direction": "В сторону Балтийска",
+        "legs": [
+          {
+            "copy": "Выберите рейс в сторону Балтийска с остановкой в Поваровке.",
+            "number": "587",
+            "title": "Зеленоградск → Поваровка"
+          }
+        ],
+        "note": "В графике есть укороченные рейсы: сверяйте конечную выбранного отправления.",
+        "return_text": "Обратно — №587 в сторону Зеленоградска.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka",
+          "transport:route-587"
+        ],
+        "transfers": 0
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 39523.84726041783,
+      "id": "access:zelenogradsk",
+      "kind": "transport_origin",
+      "point_label": "Железнодорожная улица",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-zelenogradsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Зеленоградск → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=zelenogradsk&mode=car#journey"
+    },
+    {
+      "bus": {
+        "direction": "В сторону Балтийска",
+        "legs": [
+          {
+            "copy": "Выберите рейс в сторону Балтийска с остановкой в Поваровке.",
+            "number": "587",
+            "title": "Светлогорск → Поваровка"
+          }
+        ],
+        "note": "В графике есть укороченные рейсы: сверяйте конечную выбранного отправления.",
+        "return_text": "Обратно — №587 в сторону Зеленоградска.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka",
+          "transport:route-587"
+        ],
+        "transfers": 0
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 21771.98759777271,
+      "id": "access:svetlogorsk",
+      "kind": "transport_origin",
+      "point_label": "Вокзал Светлогорск-2",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-svetlogorsk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Светлогорск → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=svetlogorsk&mode=car#journey"
+    },
+    {
+      "bus": {
+        "direction": "В сторону Балтийска",
+        "legs": [
+          {
+            "copy": "Выберите рейс в сторону Балтийска с остановкой в Поваровке.",
+            "number": "587",
+            "title": "Янтарный → Поваровка"
+          }
+        ],
+        "note": "В графике есть укороченные рейсы: сверяйте конечную выбранного отправления.",
+        "return_text": "Обратно — №587 в сторону Зеленоградска.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka",
+          "transport:route-587"
+        ],
+        "transfers": 0
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 9310.665369245036,
+      "id": "access:yantarny",
+      "kind": "transport_origin",
+      "point_label": "Центр посёлка по OSM",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-yantarny",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Янтарный → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=yantarny&mode=car#journey"
+    },
+    {
+      "bus": {
+        "direction": "В сторону Зеленоградска",
+        "legs": [
+          {
+            "copy": "Выберите рейс в сторону Зеленоградска с остановкой в Поваровке.",
+            "number": "587",
+            "title": "Балтийск → Поваровка"
+          }
+        ],
+        "note": "В графике есть укороченные рейсы: сверяйте конечную выбранного отправления.",
+        "return_text": "Обратно — №587 в сторону Балтийска.",
+        "source_refs": [
+          "transport:avl-october",
+          "transport:stop-povarovka",
+          "transport:route-587"
+        ],
+        "transfers": 0
+      },
+      "calculation": {
+        "calculated_at": "2026-10-11",
+        "distance_scope": "snapped_road_points",
+        "engine": "godune-route",
+        "graph_path": "runtime/routing/wasm-check-car.gdr",
+        "graph_sha256": "febf08cf955c8a437ff9ae943abbce7820b3aeaea22c11745243e01835b4436d",
+        "profile": "car",
+        "router_sha256": "73fd536de35a3a17887573ae592c6ba45c5a38d86583097ef3215e41dc0d3816",
+        "source": {
+          "checked_at": "2026-10-02",
+          "config_sha256": "da49f4f38857a6a78e13f751f3462c92ef0a119d04d0935be230a0f1cedc5855",
+          "data_url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf",
+          "elevation": false,
+          "engine": "GraphHopper",
+          "engine_sha256": "8462f758d9ea49edaded557cec5c687a0a24f004ec371cd4daaeb0534824ea33",
+          "engine_version": "11.1",
+          "ferry_timetable": false,
+          "id": "kaliningrad-261001-gh-11-1-v1",
+          "license": "ODbL-1.0",
+          "license_url": "https://www.openstreetmap.org/copyright",
+          "max_snap_m": 230,
+          "name": "OpenStreetMap · Geofabrik",
+          "profile_sha256": {
+            "bike": "8a2aed8050503fa6193d7b9f91cf2cc55aae1acd56ab0c5db36521aee0f06d6e",
+            "car": "7db076817ddcd93281ea0435397d360a2a7997a56b760547bae2feace02302c3",
+            "foot": "ca7580323352500edb97ac12ad882c25baab68e5d7e904237c5200327d462315"
+          },
+          "sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+          "snapshot_at": "2026-10-01T20:22:06+00:00",
+          "traffic": false,
+          "url": "https://download.geofabrik.de/russia/kaliningrad.html"
+        },
+        "time_estimate_published": false
+      },
+      "checked_at": "2026-10-11",
+      "distance_m": 26511.150299281708,
+      "id": "access:baltiysk",
+      "kind": "transport_origin",
+      "point_label": "Вокзал Балтийск",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "transport:point-baltiysk",
+        "transport:roads",
+        "transport:point-povarovka",
+        "transport:avl-october",
+        "transport:stop-povarovka",
+        "transport:route-587"
+      ],
+      "state": "Расчёт по карте",
+      "title": "Балтийск → Поваровка",
+      "url": "/dunes/belaya-duna/how-to-get/?from=baltiysk&mode=car#journey"
     }
   ],
   "project_id": "project:belaya-duna",
@@ -1612,6 +2207,106 @@
       "sha256": "671c451459eef228f1d65464e460023ac10c10a82a693954bab542c14fb0c3b1",
       "title": "Приказ №255 · PDF с координатами",
       "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:avl-october",
+      "kind": "primary",
+      "published_at": "2026-10-01",
+      "registry": "transport",
+      "sha256": "022059eb4a78d3c02b8d67f39e1d9aeda631e3aebc2c46637cc8aa7430f913bc",
+      "title": "АО «Автовокзал» · график с 1 октября 2026",
+      "url": "https://avl39.ru/news/izmenenie-po-sostoyaniyu-na-01-10-2026g-grafika-dvizheniya-avtobusov-po-mezhmunitsipalnym-marshrutam/"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:stop-povarovka",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "2ГИС · остановка «пос. Поваровка», 120 и 587",
+      "url": "https://2gis.ru/kaliningrad/station/5630285513229827"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:route-587",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "2ГИС · остановки маршрута №587",
+      "url": "https://2gis.ru/baltijsk/route/5630105124606979"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:roads",
+      "kind": "map_snapshot",
+      "published_at": "2026-10-01",
+      "registry": "transport",
+      "title": "OpenStreetMap / Geofabrik · дороги, снимок 01.10.2026",
+      "url": "https://download.geofabrik.de/russia/kaliningrad-261001.osm.pbf"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-kaliningrad",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · kaliningrad",
+      "url": "https://www.openstreetmap.org/way/617211601"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-airport",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · airport",
+      "url": "https://www.openstreetmap.org/node/1596573356"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-zelenogradsk",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · zelenogradsk",
+      "url": "https://www.openstreetmap.org/way/288937964"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-povarovka",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · povarovka",
+      "url": "https://www.openstreetmap.org/relation/21038725"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-yantarny",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · yantarny",
+      "url": "https://www.openstreetmap.org/relation/18091511"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-svetlogorsk",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · svetlogorsk",
+      "url": "https://www.openstreetmap.org/way/154655105"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "transport:point-baltiysk",
+      "kind": "map_provider",
+      "published_at": null,
+      "registry": "transport",
+      "title": "OpenStreetMap · baltiysk",
+      "url": "https://www.openstreetmap.org/node/2001287734"
     }
   ],
   "url": "/dunes/belaya-duna/",
