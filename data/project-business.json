@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "checked_at": "2026-10-10",
+  "checked_at": "2026-10-11",
   "projects": [
     {
       "id": "project:belaya-duna",
@@ -955,6 +955,36 @@
       "published_at": "2025-08-04",
       "checked_at": "2026-10-10",
       "note": ""
+    },
+    {
+      "id": "infrastructure-update",
+      "title": "РБК · внешняя инфраструктура курорта",
+      "url": "https://www.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6?from=newsfeed",
+      "kind": "media",
+      "publisher": "РБК Калининград",
+      "published_at": "2026-09-28",
+      "checked_at": "2026-10-11",
+      "note": "Сообщение Натальи Масяновой: электрическая мощность, газ, планы коллектора и очистных сооружений. Стадии приведены на дату сообщения."
+    },
+    {
+      "id": "shore-design",
+      "title": "РБК · проектирование берегозащиты",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/01/04/2025/67ebc5e89a7947e81bd708d3",
+      "kind": "media",
+      "publisher": "РБК Калининград",
+      "published_at": "2025-04-01",
+      "checked_at": "2026-10-11",
+      "note": "Сообщение о подготовке проектирования берегозащитных и противооползневых сооружений у Поваровки; не подтверждает выполнение работ."
+    },
+    {
+      "id": "promenade-plan",
+      "title": "РБК · береговая полоса и променад в планировке",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/20/08/2025/68a58dd69a79471ce76b037a",
+      "kind": "media",
+      "publisher": "РБК Калининград",
+      "published_at": "2025-08-20",
+      "checked_at": "2026-10-11",
+      "note": "Публикация описывает планировку 2025 года. Размеры и состав променада требуют сверки с последующими изменениями; действующий проход не подтверждён."
     }
   ],
   "places": [
@@ -964,6 +994,20 @@
       "url": "/dunes/povarovka/",
       "source_ids": [
         "planning"
+      ]
+    },
+    {
+      "id": "place:putilovo",
+      "name": "Путилово",
+      "source_ids": [
+        "road-mirror"
+      ]
+    },
+    {
+      "id": "place:zaostrovye",
+      "name": "Заостровье",
+      "source_ids": [
+        "infrastructure-update"
       ]
     }
   ],
@@ -977,12 +1021,339 @@
       "status": "bidding",
       "description": "Связь будущего курорта с дорогой Зеленоградск — Приморск через Светлогорск. Дорожный конкурс связан с инфраструктурой проекта; геометрия трассы в реестре пока не подтверждена.",
       "place_ids": [
-        "place:povarovka"
+        "place:povarovka",
+        "place:putilovo"
       ],
       "source_ids": [
         "road-mirror",
         "planning"
-      ]
+      ],
+      "status_label": "Приём заявок",
+      "status_source_ids": [
+        "road-mirror"
+      ],
+      "checked_at": "2026-10-10",
+      "verification_scope": "Конкурс и состав работ по зеркалу извещения; протокол и ввод дороги не подтверждены.",
+      "facts": [
+        {
+          "label": "Два этапа",
+          "value": "Подъезд 4,5 км и внутренняя улица 2,6 км",
+          "status": "tender",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "milestone_ids": [
+        "milestone:road",
+        "milestone:road-deadline",
+        "milestone:road-result"
+      ],
+      "procurement_ids": [
+        "procurement:0335200014926003779"
+      ],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-10"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-internal-road",
+      "project_id": "project:belaya-duna",
+      "slug": "internal-road",
+      "name": "Улица внутри курорта",
+      "kind": "road",
+      "status": "bidding",
+      "status_label": "В составе дорожного конкурса",
+      "description": "Второй этап дорожной закупки — внутренняя магистральная улица. Выделена в отдельный объект, чтобы отслеживать её собственную готовность.",
+      "source_ids": [
+        "road-mirror"
+      ],
+      "status_source_ids": [
+        "road-mirror"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Состав дорожной закупки; геометрия и введённый участок не подтверждены.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [
+        {
+          "label": "Протяжённость",
+          "value": "2,6 км",
+          "status": "tender",
+          "source_ids": [
+            "road-mirror"
+          ]
+        },
+        {
+          "label": "Поперечный профиль",
+          "value": "Четыре полосы, тротуар и велодорожка",
+          "status": "tender",
+          "source_ids": [
+            "road-mirror"
+          ]
+        }
+      ],
+      "milestone_ids": [
+        "milestone:road"
+      ],
+      "procurement_ids": [
+        "procurement:0335200014926003779"
+      ],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-electricity",
+      "project_id": "project:belaya-duna",
+      "slug": "electricity",
+      "name": "Электроснабжение",
+      "kind": "power",
+      "status": "contract_reported",
+      "status_label": "Сообщается о договоре",
+      "description": "РуГрад сообщает о договоре с АО «Россети Янтарь» от 30 сентября 2026 года. Фактическое подключение в реестре пока не подтверждено.",
+      "source_ids": [
+        "utilities",
+        "infrastructure-update"
+      ],
+      "status_source_ids": [
+        "utilities",
+        "infrastructure-update"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Договор и срок — по публикации о закупке; мощность — по более раннему сообщению представителя корпорации.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [
+        {
+          "label": "Договор",
+          "value": "4,27 млрд ₽",
+          "status": "contract",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "label": "Срок работ",
+          "value": "До конца сентября 2030 года",
+          "status": "plan",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "label": "Заявленная мощность",
+          "value": "48,5 МВт",
+          "status": "statement",
+          "source_ids": [
+            "infrastructure-update"
+          ]
+        }
+      ],
+      "milestone_ids": [
+        "milestone:utilities",
+        "milestone:power"
+      ],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-gas",
+      "project_id": "project:belaya-duna",
+      "slug": "gas",
+      "name": "Газоснабжение",
+      "kind": "gas",
+      "status": "contract_reported",
+      "status_label": "Сообщается о договоре",
+      "description": "По данным РуГрад, договор на технологическое присоединение заключён с АО «Калининградгазификация». Готовность газопровода отслеживается отдельно.",
+      "source_ids": [
+        "utilities"
+      ],
+      "status_source_ids": [
+        "utilities"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Сумма и срок договора приведены по публикации; акт подключения не получен.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [
+        {
+          "label": "Договор",
+          "value": "2,46 млрд ₽",
+          "status": "contract",
+          "source_ids": [
+            "utilities"
+          ]
+        },
+        {
+          "label": "Срок работ",
+          "value": "До конца сентября 2028 года",
+          "status": "plan",
+          "source_ids": [
+            "utilities"
+          ]
+        }
+      ],
+      "milestone_ids": [
+        "milestone:utilities",
+        "milestone:gas"
+      ],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-water",
+      "project_id": "project:belaya-duna",
+      "slug": "water",
+      "name": "Водоснабжение",
+      "kind": "water",
+      "status": "planned",
+      "status_label": "Заявлен план",
+      "description": "В сентябрьском сообщении корпорации создание систем водоснабжения связано с проектированием коллектора. Отдельного подтверждения ввода сети пока нет.",
+      "source_ids": [
+        "infrastructure-update"
+      ],
+      "status_source_ids": [
+        "infrastructure-update"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Планы, изложенные представителем корпорации 28 сентября 2026 года; стоимость и срок ввода не установлены.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [],
+      "milestone_ids": [],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-wastewater",
+      "project_id": "project:belaya-duna",
+      "slug": "wastewater",
+      "name": "Водоотведение и очистные",
+      "kind": "sewer",
+      "status": "planned",
+      "status_label": "Заявлен план",
+      "description": "Сообщается о планах коллектора, новых очистных сооружений в Поваровке и Заостровье и реконструкции действующих объектов.",
+      "source_ids": [
+        "infrastructure-update"
+      ],
+      "status_source_ids": [
+        "infrastructure-update"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Объявленные направления работ; подрядчик, договор и ввод очистных не подтверждены.",
+      "place_ids": [
+        "place:povarovka",
+        "place:zaostrovye"
+      ],
+      "facts": [],
+      "milestone_ids": [],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-shore-protection",
+      "project_id": "project:belaya-duna",
+      "slug": "shore-protection",
+      "name": "Берегозащита",
+      "kind": "shore",
+      "status": "planned",
+      "status_label": "Заявлено проектирование",
+      "description": "В апреле 2025 года сообщалось о подготовке проектирования берегозащитных и противооползневых сооружений у Поваровки.",
+      "source_ids": [
+        "shore-design"
+      ],
+      "status_source_ids": [
+        "shore-design"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Стадия из сообщения 2025 года; дальнейшие результаты конкурса и выполненные работы требуют отдельного документа.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [],
+      "milestone_ids": [],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-promenade",
+      "project_id": "project:belaya-duna",
+      "slug": "promenade",
+      "name": "Пляж и променад",
+      "kind": "public_space",
+      "status": "planned",
+      "status_label": "Описаны в планировке",
+      "description": "Береговая полоса и променад присутствуют в опубликованном описании планировки 2025 года. Доступный сегодня участок и актуальная протяжённость здесь не установлены.",
+      "source_ids": [
+        "promenade-plan",
+        "planning"
+      ],
+      "status_source_ids": [
+        "promenade-plan",
+        "planning"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Описание планировки 2025 года; последующие изменения и действующий проход проверяются отдельно.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [],
+      "milestone_ids": [],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
+    },
+    {
+      "id": "infrastructure:belaya-duna-public-transport",
+      "project_id": "project:belaya-duna",
+      "slug": "public-transport",
+      "name": "Общественный транспорт",
+      "kind": "transport",
+      "status": "unknown",
+      "status_label": "Действующий маршрут не установлен",
+      "description": "Транспортный каркас фигурирует в сообщении о внешней инфраструктуре. Датированного расписания транспорта именно к будущему курорту в реестре пока нет.",
+      "source_ids": [
+        "infrastructure-update"
+      ],
+      "status_source_ids": [
+        "infrastructure-update"
+      ],
+      "checked_at": "2026-10-11",
+      "verification_scope": "Источник подтверждает обсуждение транспортного каркаса, но не действующий рейс, остановку или расписание.",
+      "place_ids": [
+        "place:povarovka"
+      ],
+      "facts": [],
+      "milestone_ids": [],
+      "procurement_ids": [],
+      "visit_conditions": {
+        "status": "unverified",
+        "checked_at": "2026-10-11"
+      }
     }
   ]
 }
