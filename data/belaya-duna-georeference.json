@@ -1,0 +1,65 @@
+{
+  "boundary_policy": "Open 141-point LineString; unverified closure is never added.",
+  "checked_at": "2026-10-11",
+  "control": {
+    "dataset_date": "2023-09-21",
+    "matching_dbf": true,
+    "paired_points": 17029,
+    "paired_records": 1055,
+    "reference": "research/belaya-duna-map/georeference-20261011/control-pairs.json",
+    "reference_sha256": "d51e01c629390c40730dfc1ba01446853155b066ac798de50402eeee7d19957c",
+    "scope": "Agreement with published municipal coordinates, not cadastral or ground-survey accuracy.",
+    "source_page": "https://www.klgd.ru/activity/construction/adresnyy-reestr/prostranstdannye_adresreestr.php"
+  },
+  "datum_operation": {
+    "accuracy_m": null,
+    "accuracy_note": "Accuracy estimate not available (EPSG operation remark).",
+    "authority": "EPSG",
+    "code": 1254,
+    "name": "Pulkovo 1942 to WGS 84 (1)",
+    "translation_m": [
+      28,
+      -130,
+      -95
+    ]
+  },
+  "projection": {
+    "central_meridian": 21.45,
+    "ellipsoid": "Krassovsky 1940",
+    "false_easting": 1250000,
+    "false_northing": -5711057.628,
+    "inverse_flattening": 298.3,
+    "latitude_origin": 0,
+    "method": "Transverse Mercator",
+    "scale": 1,
+    "semi_major_axis": 6378245
+  },
+  "source_axis_order": [
+    "Y",
+    "X"
+  ],
+  "source_crs": "МСК-39",
+  "source_map_sha256": "edae6177205e2d249711a5d42c3479976c824147b9daf79f816d0cf292d6b423",
+  "sources": [
+    {
+      "file": "research/belaya-duna-map/georeference-20261011/pm2-primary.pdf",
+      "sha256": "98f0732b37c3ecff75c3b443df41ea34adfffda428309eb12da91548d3184804",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/pub/%D0%9F%D0%9C-2%20%D0%9E%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%BE%20%D0%BC%D0%B5%D0%B6%D0%B5%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E_%D0%BE%D0%B1%D0%BB%D0%B5%D0%B3%D1%87.pdf"
+    },
+    {
+      "file": "research/belaya-duna-map/georeference-20261011/street-msk39.zip",
+      "sha256": "ca8c598b4a5b337659b476533fe3f796a000e33000e33d058275786246b09428",
+      "url": "https://www.klgd.ru/activity/construction/adresnyy-reestr/street_msk39_SHP_21092023.zip"
+    },
+    {
+      "file": "research/belaya-duna-map/georeference-20261011/street-wgs84.zip",
+      "sha256": "eb8965f909bbc644e9de11382d071fe274a8fb248af8a999e66e8e6d4e410216",
+      "url": "https://www.klgd.ru/activity/construction/adresnyy-reestr/street_wgs84_SHP_21092023.zip"
+    }
+  ],
+  "target_axis_order": [
+    "longitude",
+    "latitude"
+  ],
+  "version": 1
+}

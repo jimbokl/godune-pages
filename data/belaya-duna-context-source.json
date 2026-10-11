@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "source": {
+    "version": 1,
+    "source": "https://download.geofabrik.de/russia/kaliningrad.html",
+    "snapshot_at": "2026-10-01",
+    "license": "ODbL-1.0",
+    "source_sha256": "e29be6c2b262d6c1370689eca28e4fed260eff4ef2d62d6d7e26399143dbd83d",
+    "tiles": 4006,
+    "bytes": 44822370,
+    "minzoom": 5,
+    "maxzoom": 13,
+    "layers": [
+      "land",
+      "areas",
+      "lines",
+      "buildings"
+    ],
+    "coverage": [
+      19.4,
+      54.3,
+      22.91,
+      55.4
+    ],
+    "land_checks": 7,
+    "coast_boundary_note": "Замыкание обрезанных береговых линий за пределами российского покрытия"
+  },
+  "bbox": [
+    19.925,
+    54.795,
+    20.035,
+    54.851
+  ],
+  "sha256": "516f985df966ac905e4aa0ddf7f1044d4599a93f9fcc7fa3c1f0d453591c2c4a",
+  "features": 260,
+  "scope": "existing OSM land and roads, not planned resort infrastructure"
+}
