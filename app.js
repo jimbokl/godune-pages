@@ -141,7 +141,8 @@
       row.hidden = (routeFilter !== 'all' && row.dataset.area !== routeFilter) || (timeFilter !== 'all' && +row.dataset.minutes > +timeFilter);
       if (!row.hidden) count++;
     });
-    if ($('#route-count')) $('#route-count').textContent = count ? `Подходит маршрутов: ${count}` : 'Таких прогулок пока нет. Выберите больше времени или другой район.';
+    if ($('#route-count')) $('#route-count').textContent = count ? `Подходит маршрутов: ${count}. Время — на прогулку, без дороги до начала.` : 'Таких прогулок пока нет. Выберите больше времени или другой район.';
+    const empty = $('.catalog-empty'); if (empty) empty.hidden = count !== 0;
     $$('[data-route-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.routeFilter === routeFilter)));
   }
   $$('[data-route-filter]').forEach(b => b.addEventListener('click', () => {
@@ -150,11 +151,31 @@
     workshop?.setFilters(routeFilter, timeFilter);
     applyFilters();
   }));
-  $('#trip-picker')?.addEventListener('submit', e => {
-    e.preventDefault(); routeFilter = $('#trip-area').value; timeFilter = $('#trip-time').value;
+  const routeCatalog = document.body.dataset.tool === 'routes';
+  const catalogQuery = new URLSearchParams(location.search);
+  let catalogQueryPending = routeCatalog && (catalogQuery.has('area') || catalogQuery.has('minutes'));
+  function updateRouteFilters() {
+    routeFilter = $('#trip-area').value; timeFilter = $('#trip-time').value;
+    if (routeCatalog) {
+      const address = new URL(location.href);
+      for (const [key,value] of [['area',routeFilter],['minutes',timeFilter]]) {
+        if (value === 'all') address.searchParams.delete(key); else address.searchParams.set(key,value);
+      }
+      history.replaceState(null,'',address);
+    }
     workshop?.setFilters(routeFilter, timeFilter); applyFilters();
+  }
+  $('#trip-picker')?.addEventListener('submit', e => {
+    e.preventDefault(); updateRouteFilters();
     $('#route-count').scrollIntoView({block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   });
+  if (routeCatalog) {
+    for (const control of [$('#trip-area'),$('#trip-time')]) control?.addEventListener('change',updateRouteFilters);
+    $$('[data-reset-route-filters]').forEach(link => link.addEventListener('click',e => {
+      e.preventDefault(); $('#trip-area').value = 'all'; $('#trip-time').value = 'all'; updateRouteFilters();
+      $('#trip-area').focus();
+    }));
+  }
 
   let wasmScore, wasmAttempt;
   const fallbackScore = (text, query) => {
@@ -225,6 +246,12 @@
     if (signature === lastTripFilters) return;
     lastTripFilters = signature;
     routeFilter = filters.area; timeFilter = filters.minutes;
+    if (catalogQueryPending) {
+      const validOption = (id,value) => Array.from($(id)?.options || []).some(option=>option.value===value) ? value : 'all';
+      routeFilter = validOption('#trip-area',catalogQuery.get('area') || 'all');
+      timeFilter = validOption('#trip-time',catalogQuery.get('minutes') || 'all');
+      catalogQueryPending = false;
+    }
     if ($('#trip-area')) $('#trip-area').value = routeFilter;
     if ($('#trip-time')) $('#trip-time').value = timeFilter;
     applyFilters();
