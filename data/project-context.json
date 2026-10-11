@@ -1,0 +1,1495 @@
+{
+  "edges": [
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_party",
+      "source_refs": [
+        "business:competition-customer"
+      ],
+      "to": "party:krko-belaya-duna-competition"
+    },
+    {
+      "from": "party:krko-belaya-duna-competition",
+      "relation": "organization",
+      "source_refs": [
+        "business:competition-customer"
+      ],
+      "to": "org:krko"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_party",
+      "source_refs": [
+        "business:planning-preparation"
+      ],
+      "to": "party:krko-belaya-duna-coordinator"
+    },
+    {
+      "from": "party:krko-belaya-duna-coordinator",
+      "relation": "organization",
+      "source_refs": [
+        "business:planning-preparation"
+      ],
+      "to": "org:krko"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_party",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "to": "party:samson-belaya-duna-investor"
+    },
+    {
+      "from": "party:samson-belaya-duna-investor",
+      "relation": "organization",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "to": "org:samson"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_party",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "to": "party:leader-belaya-duna-investor"
+    },
+    {
+      "from": "party:leader-belaya-duna-investor",
+      "relation": "organization",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "to": "org:leader"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:planning"
+      ],
+      "to": "milestone:planning"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "to": "milestone:samson"
+    },
+    {
+      "from": "milestone:samson",
+      "relation": "involves",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "to": "org:samson"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "to": "milestone:leader"
+    },
+    {
+      "from": "milestone:leader",
+      "relation": "involves",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "to": "org:leader"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "milestone:utilities"
+    },
+    {
+      "from": "milestone:utilities",
+      "relation": "involves",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "org:krko"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "milestone:road"
+    },
+    {
+      "from": "milestone:road",
+      "relation": "procurement",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:forum"
+      ],
+      "to": "milestone:forum"
+    },
+    {
+      "from": "milestone:forum",
+      "relation": "involves",
+      "source_refs": [
+        "business:forum"
+      ],
+      "to": "org:krko"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "milestone:road-deadline"
+    },
+    {
+      "from": "milestone:road-deadline",
+      "relation": "procurement",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "milestone:road-result"
+    },
+    {
+      "from": "milestone:road-result",
+      "relation": "procurement",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "milestone:gas"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "milestone:power"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_procurement",
+      "source_refs": [
+        "business:road-mirror",
+        "business:road-eis"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "to": "infrastructure:belaya-duna-access-road"
+    },
+    {
+      "from": "infrastructure:belaya-duna-access-road",
+      "relation": "milestone",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "to": "milestone:road"
+    },
+    {
+      "from": "infrastructure:belaya-duna-access-road",
+      "relation": "milestone",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "to": "milestone:road-deadline"
+    },
+    {
+      "from": "infrastructure:belaya-duna-access-road",
+      "relation": "milestone",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "to": "milestone:road-result"
+    },
+    {
+      "from": "infrastructure:belaya-duna-access-road",
+      "relation": "procurement",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "infrastructure:belaya-duna-internal-road"
+    },
+    {
+      "from": "infrastructure:belaya-duna-internal-road",
+      "relation": "milestone",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "milestone:road"
+    },
+    {
+      "from": "infrastructure:belaya-duna-internal-road",
+      "relation": "procurement",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "to": "procurement:0335200014926003779"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:utilities",
+        "business:infrastructure-update"
+      ],
+      "to": "infrastructure:belaya-duna-electricity"
+    },
+    {
+      "from": "infrastructure:belaya-duna-electricity",
+      "relation": "milestone",
+      "source_refs": [
+        "business:utilities",
+        "business:infrastructure-update"
+      ],
+      "to": "milestone:utilities"
+    },
+    {
+      "from": "infrastructure:belaya-duna-electricity",
+      "relation": "milestone",
+      "source_refs": [
+        "business:utilities",
+        "business:infrastructure-update"
+      ],
+      "to": "milestone:power"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "infrastructure:belaya-duna-gas"
+    },
+    {
+      "from": "infrastructure:belaya-duna-gas",
+      "relation": "milestone",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "milestone:utilities"
+    },
+    {
+      "from": "infrastructure:belaya-duna-gas",
+      "relation": "milestone",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "to": "milestone:gas"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "to": "infrastructure:belaya-duna-water"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "to": "infrastructure:belaya-duna-wastewater"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:shore-design"
+      ],
+      "to": "infrastructure:belaya-duna-shore-protection"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:promenade-plan",
+        "business:planning"
+      ],
+      "to": "infrastructure:belaya-duna-promenade"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_infrastructure",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "to": "infrastructure:belaya-duna-public-transport"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_document",
+      "source_refs": [
+        "design:municipal-255"
+      ],
+      "to": "document:order-255"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_document",
+      "source_refs": [
+        "design:municipal-404"
+      ],
+      "to": "document:order-404"
+    },
+    {
+      "from": "document:order-404",
+      "relation": "amends",
+      "source_refs": [
+        "design:municipal-404"
+      ],
+      "to": "document:order-255"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_document",
+      "source_refs": [
+        "design:municipal-register"
+      ],
+      "to": "document:order-134"
+    },
+    {
+      "from": "document:order-134",
+      "relation": "amends",
+      "source_refs": [
+        "design:municipal-register"
+      ],
+      "to": "document:order-255"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_document",
+      "source_refs": [
+        "design:municipal-364"
+      ],
+      "to": "document:order-364"
+    },
+    {
+      "from": "document:order-364",
+      "relation": "amends",
+      "source_refs": [
+        "design:municipal-364"
+      ],
+      "to": "document:order-255"
+    },
+    {
+      "from": "document:order-364",
+      "relation": "amends",
+      "source_refs": [
+        "design:municipal-364"
+      ],
+      "to": "document:order-404"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_concept",
+      "source_refs": [
+        "design:mla-portfolio"
+      ],
+      "to": "concept:mla"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_concept",
+      "source_refs": [
+        "design:map-portfolio"
+      ],
+      "to": "concept:map"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_concept",
+      "source_refs": [
+        "design:wow-portfolio"
+      ],
+      "to": "concept:wow"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_map_version",
+      "source_refs": [
+        "map:order-364"
+      ],
+      "to": "map:order-364"
+    },
+    {
+      "from": "map:order-364",
+      "relation": "depicts_document",
+      "source_refs": [
+        "map:order-364"
+      ],
+      "to": "document:order-364"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_map_version",
+      "source_refs": [
+        "map:order-255"
+      ],
+      "to": "map:order-255"
+    },
+    {
+      "from": "map:order-255",
+      "relation": "depicts_document",
+      "source_refs": [
+        "map:order-255"
+      ],
+      "to": "document:order-255"
+    }
+  ],
+  "inputs": [
+    {
+      "registry": "business",
+      "sha256": "66504f2dae939b8feb46f4de7a5144cef1a203b66c68ea4fa6b3b1df0337c369"
+    },
+    {
+      "registry": "design",
+      "sha256": "c32cfdbfbcc76e43578b72e72ae15ac55f55788237904b96db9fa86e1f5ae86c"
+    },
+    {
+      "registry": "map",
+      "sha256": "edae6177205e2d249711a5d42c3479976c824147b9daf79f816d0cf292d6b423"
+    }
+  ],
+  "nodes": [
+    {
+      "checked_at": "2026-10-11",
+      "id": "project:belaya-duna",
+      "kind": "project",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:forum"
+      ],
+      "state": "infrastructure",
+      "title": "Белая Дюна",
+      "url": "/dunes/belaya-duna/"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "org:krko",
+      "inn": "3906123600",
+      "kind": "organization",
+      "legal_name": "Акционерное общество \"Корпорация развития Калининградской области\"",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:krko-identity-egrn"
+      ],
+      "state": "legal_entity",
+      "title": "Корпорация развития Калининградской области",
+      "url": "/business/belaya-duna/companies/#org-krko"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "party:krko-belaya-duna-competition",
+      "kind": "party",
+      "project_id": "project:belaya-duna",
+      "role": "customer",
+      "source_refs": [
+        "business:competition-customer"
+      ],
+      "state": "reported",
+      "title": "Корпорация развития Калининградской области · Заказчик архитектурного конкурса",
+      "url": "/business/belaya-duna/companies/#org-krko",
+      "valid_from": null,
+      "valid_until": null
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "party:krko-belaya-duna-coordinator",
+      "kind": "party",
+      "project_id": "project:belaya-duna",
+      "role": "coordinator",
+      "source_refs": [
+        "business:planning-preparation"
+      ],
+      "state": "reported",
+      "title": "Корпорация развития Калининградской области · Подготовка документации по планировке",
+      "url": "/business/belaya-duna/companies/#org-krko",
+      "valid_from": null,
+      "valid_until": null
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "org:samson",
+      "inn": null,
+      "kind": "organization",
+      "legal_name": null,
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "state": "group",
+      "title": "ГК «Самсон»",
+      "url": "/business/belaya-duna/companies/#org-samson"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "party:samson-belaya-duna-investor",
+      "kind": "party",
+      "project_id": "project:belaya-duna",
+      "role": "investor",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "state": "agreement",
+      "title": "ГК «Самсон» · Инвестор · соглашение",
+      "url": "/business/belaya-duna/companies/#org-samson",
+      "valid_from": null,
+      "valid_until": null
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "org:leader",
+      "inn": null,
+      "kind": "organization",
+      "legal_name": null,
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:leader-contact"
+      ],
+      "state": "group",
+      "title": "ГК «Лидер Групп»",
+      "url": "/business/belaya-duna/companies/#org-leader"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "party:leader-belaya-duna-investor",
+      "kind": "party",
+      "project_id": "project:belaya-duna",
+      "role": "investor",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "state": "agreement",
+      "title": "ГК «Лидер Групп» · Инвестор · соглашение",
+      "url": "/business/belaya-duna/companies/#org-leader",
+      "valid_from": null,
+      "valid_until": null
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2025-08-04",
+        "id": "date:planning:2025-08-04",
+        "kind": "actual",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "planning"
+        ],
+        "source_refs": [
+          "business:planning"
+        ],
+        "state": "current"
+      },
+      "date_label": "4 августа 2025",
+      "id": "milestone:planning",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:planning"
+      ],
+      "state": "Событие",
+      "title": "Утверждена планировка",
+      "url": "/dunes/belaya-duna/timeline/#milestone-planning"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-06-05",
+        "id": "date:samson:2026-06-05",
+        "kind": "actual",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "samson-agreement"
+        ],
+        "source_refs": [
+          "business:samson-agreement"
+        ],
+        "state": "current"
+      },
+      "date_label": "5 июня 2026",
+      "id": "milestone:samson",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:samson-agreement"
+      ],
+      "state": "Событие",
+      "title": "Соглашение с «Самсоном»",
+      "url": "/dunes/belaya-duna/timeline/#milestone-samson"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-06-05",
+        "id": "date:leader:2026-06-05",
+        "kind": "actual",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "leader-agreement"
+        ],
+        "source_refs": [
+          "business:leader-agreement"
+        ],
+        "state": "current"
+      },
+      "date_label": "5 июня 2026",
+      "id": "milestone:leader",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:leader-agreement"
+      ],
+      "state": "Событие",
+      "title": "Соглашение с «Лидер Групп»",
+      "url": "/dunes/belaya-duna/timeline/#milestone-leader"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-09-30",
+        "id": "date:utilities:2026-09-30",
+        "kind": "actual",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "utilities"
+        ],
+        "source_refs": [
+          "business:utilities"
+        ],
+        "state": "current"
+      },
+      "date_label": "30 сентября 2026",
+      "id": "milestone:utilities",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "state": "Событие",
+      "title": "Договоры на газ и электричество",
+      "url": "/dunes/belaya-duna/timeline/#milestone-utilities"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-10-07",
+        "id": "date:road:2026-10-07",
+        "kind": "actual",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "road-mirror"
+        ],
+        "source_refs": [
+          "business:road-mirror"
+        ],
+        "state": "current"
+      },
+      "date_label": "7 октября 2026",
+      "id": "milestone:road",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "state": "Событие",
+      "title": "Объявлен дорожный конкурс",
+      "url": "/dunes/belaya-duna/timeline/#milestone-road"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-10-10",
+        "id": "date:forum:2026-10-10",
+        "kind": "statement",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "forum"
+        ],
+        "source_refs": [
+          "business:forum"
+        ],
+        "state": "current"
+      },
+      "date_label": "10 октября 2026",
+      "id": "milestone:forum",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:forum"
+      ],
+      "state": "Заявление",
+      "title": "Заявление об активной фазе",
+      "url": "/dunes/belaya-duna/timeline/#milestone-forum"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-10-26",
+        "id": "date:road-deadline:2026-10-26",
+        "kind": "planned",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "by",
+        "source_ids": [
+          "road-mirror"
+        ],
+        "source_refs": [
+          "business:road-mirror"
+        ],
+        "state": "current"
+      },
+      "date_label": "До 26 октября 2026",
+      "id": "milestone:road-deadline",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "state": "Плановый срок",
+      "title": "Окончание подачи заявок на дорогу",
+      "url": "/dunes/belaya-duna/timeline/#milestone-road-deadline"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2026-10-29",
+        "id": "date:road-result:2026-10-29",
+        "kind": "planned",
+        "precision": "day",
+        "recorded_at": "2026-10-10",
+        "relation": "on",
+        "source_ids": [
+          "road-mirror"
+        ],
+        "source_refs": [
+          "business:road-mirror"
+        ],
+        "state": "current"
+      },
+      "date_label": "29 октября 2026",
+      "id": "milestone:road-result",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "state": "Плановый срок",
+      "title": "Плановая дата итогов конкурса",
+      "url": "/dunes/belaya-duna/timeline/#milestone-road-result"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2028-09-30",
+        "id": "date:gas:2028-09-30",
+        "kind": "planned",
+        "precision": "month",
+        "recorded_at": "2026-10-10",
+        "relation": "by",
+        "source_ids": [
+          "utilities"
+        ],
+        "source_refs": [
+          "business:utilities"
+        ],
+        "state": "current"
+      },
+      "date_label": "До конца сентября 2028",
+      "id": "milestone:gas",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "state": "Плановый срок",
+      "title": "Срок подключения к газу",
+      "url": "/dunes/belaya-duna/timeline/#milestone-gas"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date_claim": {
+        "date": "2030-09-30",
+        "id": "date:power:2030-09-30",
+        "kind": "planned",
+        "precision": "month",
+        "recorded_at": "2026-10-10",
+        "relation": "by",
+        "source_ids": [
+          "utilities"
+        ],
+        "source_refs": [
+          "business:utilities"
+        ],
+        "state": "current"
+      },
+      "date_label": "До конца сентября 2030",
+      "id": "milestone:power",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "state": "Плановый срок",
+      "title": "Срок подключения к электросетям",
+      "url": "/dunes/belaya-duna/timeline/#milestone-power"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "procurement:0335200014926003779",
+      "kind": "procurement",
+      "project_id": "project:belaya-duna",
+      "published_at": "2026-10-07",
+      "source_refs": [
+        "business:road-mirror",
+        "business:road-eis"
+      ],
+      "state": "bidding",
+      "title": "Дорога к «Белой Дюне»",
+      "url": "/business/belaya-duna/tenders/doroga-0335200014926003779/",
+      "winner_id": null
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "infrastructure:belaya-duna-access-road",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-mirror",
+        "business:planning"
+      ],
+      "stage": "bidding",
+      "state": "Приём заявок",
+      "title": "Подъездная дорога к «Белой Дюне»",
+      "url": "/dunes/belaya-duna/infrastructure/#access-road",
+      "visit_conditions": {
+        "checked_at": "2026-10-10",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-internal-road",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-mirror"
+      ],
+      "stage": "bidding",
+      "state": "В составе дорожного конкурса",
+      "title": "Улица внутри курорта",
+      "url": "/dunes/belaya-duna/infrastructure/#internal-road",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-electricity",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:utilities",
+        "business:infrastructure-update"
+      ],
+      "stage": "contract_reported",
+      "state": "Сообщается о договоре",
+      "title": "Электроснабжение",
+      "url": "/dunes/belaya-duna/infrastructure/#electricity",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-gas",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:utilities"
+      ],
+      "stage": "contract_reported",
+      "state": "Сообщается о договоре",
+      "title": "Газоснабжение",
+      "url": "/dunes/belaya-duna/infrastructure/#gas",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-water",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "stage": "planned",
+      "state": "Заявлен план",
+      "title": "Водоснабжение",
+      "url": "/dunes/belaya-duna/infrastructure/#water",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-wastewater",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "stage": "planned",
+      "state": "Заявлен план",
+      "title": "Водоотведение и очистные",
+      "url": "/dunes/belaya-duna/infrastructure/#wastewater",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-shore-protection",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:shore-design"
+      ],
+      "stage": "planned",
+      "state": "Заявлено проектирование",
+      "title": "Берегозащита",
+      "url": "/dunes/belaya-duna/infrastructure/#shore-protection",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-promenade",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:promenade-plan",
+        "business:planning"
+      ],
+      "stage": "planned",
+      "state": "Описаны в планировке",
+      "title": "Пляж и променад",
+      "url": "/dunes/belaya-duna/infrastructure/#promenade",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "infrastructure:belaya-duna-public-transport",
+      "kind": "infrastructure",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:infrastructure-update"
+      ],
+      "stage": "unknown",
+      "state": "Действующий маршрут не установлен",
+      "title": "Общественный транспорт",
+      "url": "/dunes/belaya-duna/infrastructure/#public-transport",
+      "visit_conditions": {
+        "checked_at": "2026-10-11",
+        "status": "unverified"
+      }
+    },
+    {
+      "checked_at": "2026-10-10",
+      "document_date": "2025-08-04",
+      "id": "document:order-255",
+      "kind": "document",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:municipal-255"
+      ],
+      "state": "Утверждённый документ",
+      "title": "Приказ №255 · Планировка территории курорта и межевание в её составе",
+      "url": "/dunes/belaya-duna/masterplan/#order-255"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "document_date": "2025-10-27",
+      "id": "document:order-404",
+      "kind": "document",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:municipal-404"
+      ],
+      "state": "Утверждённый документ",
+      "title": "Приказ №404 · Изменения в проект межевания территории",
+      "url": "/dunes/belaya-duna/masterplan/#order-404"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "document_date": "2026-03-25",
+      "id": "document:order-134",
+      "kind": "document",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:municipal-register"
+      ],
+      "state": "Подготовка изменений",
+      "title": "Приказ №134 · Подготовка изменений в проект межевания",
+      "url": "/dunes/belaya-duna/masterplan/#order-134"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "document_date": "2026-08-21",
+      "id": "document:order-364",
+      "kind": "document",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:municipal-364"
+      ],
+      "state": "Утверждённый документ",
+      "title": "Приказ №364 · Утверждение изменений в проект межевания",
+      "url": "/dunes/belaya-duna/masterplan/#order-364"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "credit": "МЛА+ · Яна Голубева и команда",
+      "id": "concept:mla",
+      "idea": "Песчаные клинья между кварталами",
+      "kind": "concept",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:mla-portfolio"
+      ],
+      "state": "Конкурсная концепция",
+      "title": "МЛА+",
+      "url": "/dunes/belaya-duna/concepts/#mla",
+      "year": 2025
+    },
+    {
+      "checked_at": "2026-10-10",
+      "credit": "Институт Генплана Москвы, Sheredega Consulting, Design Unit 4, MAParchitects, NF Group, MARTA · архитектурная часть MAParchitects",
+      "id": "concept:map",
+      "idea": "Кварталы и янтарные ориентиры",
+      "kind": "concept",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:map-portfolio"
+      ],
+      "state": "Конкурсная концепция",
+      "title": "Консорциум Института Генплана Москвы / MAParchitects",
+      "url": "/dunes/belaya-duna/concepts/#map",
+      "year": 2025
+    },
+    {
+      "checked_at": "2026-10-10",
+      "credit": "Wowhaus · Олег Шапиро, Дмитрий Ликин · руководитель проектной группы Дарья Ионова",
+      "id": "concept:wow",
+      "idea": "Шесть миров в одном курортном маршруте",
+      "kind": "concept",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "design:wow-portfolio"
+      ],
+      "state": "Конкурсная концепция",
+      "title": "Wowhaus",
+      "url": "/dunes/belaya-duna/concepts/#wow",
+      "year": 2025
+    },
+    {
+      "checked_at": "2026-10-10",
+      "coordinate_system": {
+        "code": "local-document-xy",
+        "description": "Координаты X/Y каталога приказа; схема в метрах без преобразования в WGS84",
+        "order": [
+          "Y",
+          "X"
+        ],
+        "unit": "m"
+      },
+      "document_date": "2026-08-21",
+      "edition": "current",
+      "id": "map:order-364",
+      "kind": "map_version",
+      "parcel_count": 252,
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "map:order-364"
+      ],
+      "state": "Текущая редакция в реестре",
+      "title": "Новая редакция межевания",
+      "url": "/dunes/belaya-duna/map/?document=order-364#map"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "coordinate_system": {
+        "code": "local-document-xy",
+        "description": "Координаты X/Y каталога приказа; схема в метрах без преобразования в WGS84",
+        "order": [
+          "Y",
+          "X"
+        ],
+        "unit": "m"
+      },
+      "document_date": "2025-08-04",
+      "edition": "archive",
+      "id": "map:order-255",
+      "kind": "map_version",
+      "parcel_count": 3,
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "map:order-255"
+      ],
+      "state": "Архивная редакция",
+      "title": "Исходное межевание",
+      "url": "/dunes/belaya-duna/map/?document=order-255#map"
+    }
+  ],
+  "project_id": "project:belaya-duna",
+  "sources": [
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:forum",
+      "kind": "media",
+      "note": "",
+      "published_at": "2026-10-10",
+      "registry": "business",
+      "title": "Новый Калининград · заявление на Балтийском бизнес-форуме",
+      "url": "https://www.newkaliningrad.ru/news/briefs/economy/24166400-lapitskiy-kurort-belaya-dyuna-voshyel-v-aktivnuyu-fazu-realizatsii-d1257a15ffc10d1f.html"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "evidence_text": "ГК «Самсон»\nинвестиционно-строительный холдинг «Самсон»\nСтороны подписали соглашение о сотрудничестве 5 июня",
+      "id": "business:samson-agreement",
+      "kind": "primary",
+      "note": "",
+      "published_at": "2026-06-05",
+      "registry": "business",
+      "title": "Самсон · соглашение о «Белой Дюне»",
+      "url": "https://sk-samson.ru/article/59"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "evidence_text": "группа компаний «Лидер Групп»\nПо условиям соглашения с регионом компания инвестирует не менее 50 млрд руб.",
+      "id": "business:leader-agreement",
+      "kind": "media",
+      "note": "",
+      "published_at": "2026-06-05",
+      "registry": "business",
+      "title": "РБК · соглашения с двумя инвесторами",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/05/06/2026/6a22aee09a7947df9da5423e"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:corporation-contact",
+      "kind": "primary",
+      "note": "",
+      "published_at": null,
+      "registry": "business",
+      "title": "Корпорация развития · биржа инвестпроектов",
+      "url": "https://invest.kgd-rdc.ru/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "evidence_text": "ГК «Лидер Групп»",
+      "id": "business:leader-contact",
+      "kind": "primary",
+      "note": "",
+      "published_at": null,
+      "registry": "business",
+      "title": "Лидер Групп · контакты подразделений",
+      "url": "https://lidgroup.ru/contacts/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:leader-career",
+      "kind": "primary",
+      "note": "",
+      "published_at": null,
+      "registry": "business",
+      "title": "Лидер Групп · карьера",
+      "url": "https://lidgroup.ru/about/vacancy/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:road-eis",
+      "kind": "primary",
+      "note": "Ссылка на первичный реестр. Содержание первичной документации не загружено; цена и сроки сверены по зеркалу B2B.House.",
+      "published_at": "2026-10-07",
+      "registry": "business",
+      "title": "ЕИС · закупка №0335200014926003779",
+      "url": "https://zakupki.gov.ru/epz/order/notice/ok20/view/common-info.html?regNumber=0335200014926003779"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:road-mirror",
+      "kind": "procurement-mirror",
+      "note": "",
+      "published_at": "2026-10-07",
+      "registry": "business",
+      "title": "B2B.House · зеркало дорожного конкурса",
+      "url": "https://b2b.house/activepurchase/acae4749-7469-4d3c-9ff4-76e9911b28cb_2439ec02/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:utilities",
+      "kind": "media",
+      "note": "",
+      "published_at": "2026-10-02",
+      "registry": "business",
+      "title": "РуГрад · договоры подключения к сетям",
+      "url": "https://rugrad.online/news/1482007/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "business:planning",
+      "kind": "primary",
+      "note": "",
+      "published_at": "2025-08-04",
+      "registry": "business",
+      "title": "Зеленоградский округ · утверждение планировки",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/documents/results/?ELEMENT_ID=40157"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "business:infrastructure-update",
+      "kind": "media",
+      "note": "Сообщение Натальи Масяновой: электрическая мощность, газ, планы коллектора и очистных сооружений. Стадии приведены на дату сообщения.",
+      "published_at": "2026-09-28",
+      "publisher": "РБК Калининград",
+      "registry": "business",
+      "title": "РБК · внешняя инфраструктура курорта",
+      "url": "https://www.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6?from=newsfeed"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "business:shore-design",
+      "kind": "media",
+      "note": "Сообщение о подготовке проектирования берегозащитных и противооползневых сооружений у Поваровки; не подтверждает выполнение работ.",
+      "published_at": "2025-04-01",
+      "publisher": "РБК Калининград",
+      "registry": "business",
+      "title": "РБК · проектирование берегозащиты",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/01/04/2025/67ebc5e89a7947e81bd708d3"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "id": "business:promenade-plan",
+      "kind": "media",
+      "note": "Публикация описывает планировку 2025 года. Размеры и состав променада требуют сверки с последующими изменениями; действующий проход не подтверждён.",
+      "published_at": "2025-08-20",
+      "publisher": "РБК Калининград",
+      "registry": "business",
+      "title": "РБК · береговая полоса и променад в планировке",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/20/08/2025/68a58dd69a79471ce76b037a"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "document_date": "2025-08-05",
+      "evidence_text": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+      "id": "business:krko-identity-egrn",
+      "kind": "official_registry",
+      "published_at": null,
+      "publisher": "Официальный источник",
+      "registry": "business",
+      "title": "Выписка ЕГРН · реквизиты Корпорации развития · 5 августа 2025",
+      "url": "https://www.klgd.ru/upload/iblock/98c/x0995d05fyh8v89615pxxmchrvgbm4uy.pdf"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "evidence_text": "Подготовку документации по планировке территории (Проекта) обеспечит АО «Корпорация развития Калининградской области».",
+      "id": "business:planning-preparation",
+      "kind": "official_statement",
+      "published_at": null,
+      "publisher": "Официальный источник",
+      "registry": "business",
+      "title": "Администрация Зеленоградского округа · подготовка документации проекта",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/news/?ELEMENT_ID=38705"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "evidence_text": "Заказчик Конкурса – Акционерное общество \"Корпорация развития Калининградской области\".",
+      "id": "business:competition-customer",
+      "kind": "official_statement",
+      "published_at": null,
+      "publisher": "Официальный источник",
+      "registry": "business",
+      "title": "Положение архитектурного конкурса · заказчик",
+      "url": "https://archi.ru/files/files_uploaded/1545.pdf"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": null,
+      "id": "design:municipal-register",
+      "kind": "primary",
+      "publisher": "Администрация Зеленоградского муниципального округа",
+      "registry": "design",
+      "title": "Зеленоградский округ: документация по планировке территории",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/ter-plan/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": "2025-08-04",
+      "id": "design:municipal-255",
+      "kind": "primary",
+      "publisher": "Министерство градостроительной политики Калининградской области",
+      "registry": "design",
+      "title": "Приказ №255 от 4 августа 2025 года",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/ter-plan/?ELEMENT_ID=40883"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": "2025-10-27",
+      "id": "design:municipal-404",
+      "kind": "primary",
+      "publisher": "Министерство градостроительной политики Калининградской области",
+      "registry": "design",
+      "title": "Изменения межевания: приказ №404",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/ter-plan/?ELEMENT_ID=41702"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": "2026-08-21",
+      "id": "design:municipal-364",
+      "kind": "primary",
+      "publisher": "Министерство градостроительной политики Калининградской области",
+      "registry": "design",
+      "title": "Изменения межевания: приказ №364",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/ter-plan/?ELEMENT_ID=44126"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": null,
+      "id": "design:uar-result",
+      "kind": "primary",
+      "publisher": "Союз архитекторов России",
+      "registry": "design",
+      "title": "Союз архитекторов России: итоги «ЭкоБерега» и конкурса «Белой Дюны»",
+      "url": "https://uar.ru/news/podvedeny-itogi-xiv-mezhdunarodnogo-arkhitekturnogo-festivalya-ekobereg/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": null,
+      "id": "design:map-portfolio",
+      "kind": "primary",
+      "publisher": "MAParchitects",
+      "registry": "design",
+      "title": "MAParchitects: мастер-план туристического кластера «Белая Дюна»",
+      "url": "https://maparchitects.ru/projects/master-plan-turisticheskogo-klastera-belaya-dyuna/"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": null,
+      "id": "design:mla-portfolio",
+      "kind": "primary",
+      "publisher": "МЛА+",
+      "registry": "design",
+      "title": "МЛА+: морской курорт «Белая Дюна»",
+      "url": "https://mlaplus.ru/projects/masterplans/belayaduna"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "date": null,
+      "id": "design:wow-portfolio",
+      "kind": "primary",
+      "publisher": "Wowhaus",
+      "registry": "design",
+      "title": "Wowhaus: «Белая Дюна»",
+      "url": "https://www.wowhaus.ru/project/belaya-dyuna"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "map:order-364",
+      "kind": "primary",
+      "published_at": "2026-08-21",
+      "registry": "map",
+      "sha256": "c7e4075bb9960206711356ad5687ffab08ca9f24c069413a196cd133338d0d4b",
+      "title": "Приказ №364 · PDF с координатами",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/normgrad/%D0%9F%D0%A0%D0%98%D0%9A%D0%90%D0%97%20%D0%9C%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D0%B0%20%D0%BE%D1%82%2021.08.2026%20%E2%84%96%20364%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%B8%D0%B7%D0%BC.%20%D0%B2%20%D0%9F%D0%9C%D0%A2%20%28%D0%9A%D1%83%D1%80%D0%BE%D1%80%D1%82%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0%29_compressed.pdf"
+    },
+    {
+      "checked_at": "2026-10-10",
+      "id": "map:order-255",
+      "kind": "primary",
+      "published_at": "2025-08-04",
+      "registry": "map",
+      "sha256": "671c451459eef228f1d65464e460023ac10c10a82a693954bab542c14fb0c3b1",
+      "title": "Приказ №255 · PDF с координатами",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf"
+    }
+  ],
+  "url": "/dunes/belaya-duna/",
+  "version": 1
+}
