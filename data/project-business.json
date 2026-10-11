@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "checked_at": "2026-10-11",
   "projects": [
     {
@@ -39,23 +39,25 @@
       "news_urls": [
         "/news/2026/10/10/belaya-duna-aktivnaya-faza/",
         "/news/2026/10/08/belaya-duna-doroga-tender/"
+      ],
+      "project_type": "integrated_resort",
+      "parent_project_id": null,
+      "checked_at": "2026-10-11",
+      "source_ids": [
+        "forum"
       ]
     }
   ],
   "organizations": [
     {
       "id": "org:krko",
-      "project_id": "project:belaya-duna",
       "name": "Корпорация развития Калининградской области",
-      "role": "coordinator",
-      "role_label": "Координатор проекта",
-      "summary": "Координирует реализацию курорта и инфраструктурные подключения. Общий канал для обращения по проекту и инвестиционным вопросам.",
+      "summary": "Региональная корпорация развития.",
       "website": "https://www.kgd-rdc.ru/",
       "source_ids": [
         "forum",
         "corporation-contact"
       ],
-      "facts": [],
       "contacts": [
         {
           "label": "Общая почта",
@@ -78,44 +80,63 @@
           "checked_at": "2026-10-10"
         }
       ],
-      "career_url": null
+      "career_url": null,
+      "legal_name": "Акционерное общество \"Корпорация развития Калининградской области\"",
+      "inn": "3906123600",
+      "aliases": [
+        {
+          "value": "Акционерное общество \"Корпорация развития Калининградской области\"",
+          "source_ids": [
+            "krko-identity-egrn"
+          ],
+          "quote": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+          "locator": "Страница 2, правообладатель; используется только для реквизитов организации",
+          "checked_at": "2026-10-11"
+        }
+      ],
+      "entity_kind": "legal_entity",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "krko-identity-egrn"
+          ],
+          "quote": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+          "locator": "Страница 2, правообладатель; используется только для реквизитов организации",
+          "checked_at": "2026-10-11"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "krko-identity-egrn"
+          ],
+          "quote": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+          "locator": "Страница 2, правообладатель; используется только для реквизитов организации",
+          "checked_at": "2026-10-11"
+        },
+        "legal_name": {
+          "source_ids": [
+            "krko-identity-egrn"
+          ],
+          "quote": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+          "locator": "Страница 2, правообладатель; используется только для реквизитов организации",
+          "checked_at": "2026-10-11"
+        },
+        "inn": {
+          "source_ids": [
+            "krko-identity-egrn"
+          ],
+          "quote": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+          "locator": "Страница 2, правообладатель; используется только для реквизитов организации",
+          "checked_at": "2026-10-11"
+        }
+      }
     },
     {
       "id": "org:samson",
-      "project_id": "project:belaya-duna",
       "name": "ГК «Самсон»",
-      "role": "investor",
-      "role_label": "Инвестор · соглашение",
-      "summary": "Соглашение с регионом подписано 5 июня 2026 года. Компания заявила гостиницы и общественно-деловой центр.",
+      "summary": "Инвестиционно-строительный холдинг.",
       "website": "https://sk-samson.ru/",
       "source_ids": [
         "samson-agreement"
-      ],
-      "facts": [
-        {
-          "label": "Инвестиции",
-          "value": "не менее 40 млрд ₽",
-          "status": "agreement",
-          "source_ids": [
-            "samson-agreement"
-          ]
-        },
-        {
-          "label": "Номерной фонд",
-          "value": "не менее 3 200 номеров",
-          "status": "plan",
-          "source_ids": [
-            "samson-agreement"
-          ]
-        },
-        {
-          "label": "Рабочие места",
-          "value": "не менее 2 200 · обязательство по соглашению",
-          "status": "plan",
-          "source_ids": [
-            "samson-agreement"
-          ]
-        }
       ],
       "contacts": [
         {
@@ -149,38 +170,49 @@
           "checked_at": "2026-10-10"
         }
       ],
-      "career_url": null
+      "career_url": null,
+      "legal_name": null,
+      "inn": null,
+      "aliases": [
+        {
+          "value": "инвестиционно-строительный холдинг «Самсон»",
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "quote": "инвестиционно-строительный холдинг «Самсон»",
+          "locator": "Первый абзац",
+          "checked_at": "2026-10-11"
+        }
+      ],
+      "entity_kind": "group",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "quote": "ГК «Самсон»",
+          "locator": "Заголовок",
+          "checked_at": "2026-10-11"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "samson-agreement"
+          ],
+          "quote": "инвестиционно-строительный холдинг «Самсон»",
+          "locator": "Первый абзац",
+          "checked_at": "2026-10-11"
+        }
+      }
     },
     {
       "id": "org:leader",
-      "project_id": "project:belaya-duna",
       "name": "ГК «Лидер Групп»",
-      "role": "investor",
-      "role_label": "Инвестор · соглашение",
-      "summary": "По сообщению РБК, соглашение предусматривает гостиницы, общественно-деловой центр и социальные объекты.",
+      "summary": "Группа компаний, работающая в сфере строительства.",
       "website": "https://lidgroup.ru/",
       "source_ids": [
         "leader-agreement",
         "leader-contact",
         "leader-career"
-      ],
-      "facts": [
-        {
-          "label": "Инвестиции",
-          "value": "не менее 50 млрд ₽",
-          "status": "agreement",
-          "source_ids": [
-            "leader-agreement"
-          ]
-        },
-        {
-          "label": "Номерной фонд",
-          "value": "от 3 000 номеров",
-          "status": "plan",
-          "source_ids": [
-            "leader-agreement"
-          ]
-        }
       ],
       "contacts": [
         {
@@ -204,7 +236,39 @@
           "checked_at": "2026-10-10"
         }
       ],
-      "career_url": "https://lidgroup.ru/about/vacancy/"
+      "career_url": "https://lidgroup.ru/about/vacancy/",
+      "legal_name": null,
+      "inn": null,
+      "aliases": [
+        {
+          "value": "группа компаний «Лидер Групп»",
+          "source_ids": [
+            "leader-agreement"
+          ],
+          "quote": "группа компаний «Лидер Групп»",
+          "locator": "Абзац об участнике",
+          "checked_at": "2026-10-11"
+        }
+      ],
+      "entity_kind": "group",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "leader-contact"
+          ],
+          "quote": "ГК «Лидер Групп»",
+          "locator": "Подвал официального сайта",
+          "checked_at": "2026-10-11"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "leader-agreement"
+          ],
+          "quote": "группа компаний «Лидер Групп»",
+          "locator": "Абзац об участнике",
+          "checked_at": "2026-10-11"
+        }
+      }
     }
   ],
   "milestones": [
@@ -1322,7 +1386,8 @@
       "kind": "primary",
       "published_at": "2026-06-05",
       "checked_at": "2026-10-10",
-      "note": ""
+      "note": "",
+      "evidence_text": "ГК «Самсон»\nинвестиционно-строительный холдинг «Самсон»\nСтороны подписали соглашение о сотрудничестве 5 июня"
     },
     {
       "id": "leader-agreement",
@@ -1331,7 +1396,8 @@
       "kind": "media",
       "published_at": "2026-06-05",
       "checked_at": "2026-10-10",
-      "note": ""
+      "note": "",
+      "evidence_text": "группа компаний «Лидер Групп»\nПо условиям соглашения с регионом компания инвестирует не менее 50 млрд руб."
     },
     {
       "id": "corporation-contact",
@@ -1349,7 +1415,8 @@
       "kind": "primary",
       "published_at": null,
       "checked_at": "2026-10-10",
-      "note": ""
+      "note": "",
+      "evidence_text": "ГК «Лидер Групп»"
     },
     {
       "id": "leader-career",
@@ -1425,6 +1492,37 @@
       "published_at": "2025-08-20",
       "checked_at": "2026-10-11",
       "note": "Публикация описывает планировку 2025 года. Размеры и состав променада требуют сверки с последующими изменениями; действующий проход не подтверждён."
+    },
+    {
+      "id": "krko-identity-egrn",
+      "title": "Выписка ЕГРН · реквизиты Корпорации развития · 5 августа 2025",
+      "url": "https://www.klgd.ru/upload/iblock/98c/x0995d05fyh8v89615pxxmchrvgbm4uy.pdf",
+      "publisher": "Официальный источник",
+      "kind": "official_registry",
+      "published_at": null,
+      "checked_at": "2026-10-11",
+      "evidence_text": "Акционерное общество \"Корпорация развития Калининградской области\", ИНН: 3906123600",
+      "document_date": "2025-08-05"
+    },
+    {
+      "id": "planning-preparation",
+      "title": "Администрация Зеленоградского округа · подготовка документации проекта",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/news/?ELEMENT_ID=38705",
+      "publisher": "Официальный источник",
+      "kind": "official_statement",
+      "published_at": null,
+      "checked_at": "2026-10-11",
+      "evidence_text": "Подготовку документации по планировке территории (Проекта) обеспечит АО «Корпорация развития Калининградской области»."
+    },
+    {
+      "id": "competition-customer",
+      "title": "Положение архитектурного конкурса · заказчик",
+      "url": "https://archi.ru/files/files_uploaded/1545.pdf",
+      "publisher": "Официальный источник",
+      "kind": "official_statement",
+      "published_at": null,
+      "checked_at": "2026-10-11",
+      "evidence_text": "Заказчик Конкурса – Акционерное общество \"Корпорация развития Калининградской области\"."
     }
   ],
   "places": [
@@ -1794,6 +1892,120 @@
         "status": "unverified",
         "checked_at": "2026-10-11"
       }
+    }
+  ],
+  "project_parties": [
+    {
+      "id": "party:krko-belaya-duna-competition",
+      "organization_id": "org:krko",
+      "project_id": "project:belaya-duna",
+      "role": "customer",
+      "role_label": "Заказчик архитектурного конкурса",
+      "status": "reported",
+      "valid_from": null,
+      "valid_until": null,
+      "source_ids": [
+        "competition-customer"
+      ],
+      "quote": "Заказчик Конкурса – Акционерное общество \"Корпорация развития Калининградской области\".",
+      "locator": "Страница 1, определение заказчика конкурса",
+      "checked_at": "2026-10-11"
+    },
+    {
+      "id": "party:krko-belaya-duna-coordinator",
+      "organization_id": "org:krko",
+      "project_id": "project:belaya-duna",
+      "role": "coordinator",
+      "role_label": "Подготовка документации по планировке",
+      "status": "reported",
+      "valid_from": null,
+      "valid_until": null,
+      "source_ids": [
+        "planning-preparation"
+      ],
+      "quote": "Подготовку документации по планировке территории (Проекта) обеспечит АО «Корпорация развития Калининградской области».",
+      "locator": "Основной текст, абзац 2",
+      "checked_at": "2026-10-11",
+      "summary": "Обеспечивает подготовку документации по планировке территории. Также выступает заказчиком архитектурного конкурса; обе роли подтверждены отдельными источниками.",
+      "facts": []
+    },
+    {
+      "id": "party:samson-belaya-duna-investor",
+      "organization_id": "org:samson",
+      "project_id": "project:belaya-duna",
+      "role": "investor",
+      "role_label": "Инвестор · соглашение",
+      "status": "agreement",
+      "valid_from": null,
+      "valid_until": null,
+      "source_ids": [
+        "samson-agreement"
+      ],
+      "quote": "Стороны подписали соглашение о сотрудничестве 5 июня",
+      "locator": "Абзац о соглашении",
+      "checked_at": "2026-10-11",
+      "summary": "Соглашение с регионом подписано 5 июня 2026 года. Компания заявила гостиницы и общественно-деловой центр.",
+      "facts": [
+        {
+          "label": "Инвестиции",
+          "value": "не менее 40 млрд ₽",
+          "status": "agreement",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        },
+        {
+          "label": "Номерной фонд",
+          "value": "не менее 3 200 номеров",
+          "status": "plan",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        },
+        {
+          "label": "Рабочие места",
+          "value": "не менее 2 200 · обязательство по соглашению",
+          "status": "plan",
+          "source_ids": [
+            "samson-agreement"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "party:leader-belaya-duna-investor",
+      "organization_id": "org:leader",
+      "project_id": "project:belaya-duna",
+      "role": "investor",
+      "role_label": "Инвестор · соглашение",
+      "status": "agreement",
+      "valid_from": null,
+      "valid_until": null,
+      "source_ids": [
+        "leader-agreement"
+      ],
+      "quote": "По условиям соглашения с регионом компания инвестирует не менее 50 млрд руб.",
+      "locator": "Абзац об условиях соглашения",
+      "checked_at": "2026-10-11",
+      "summary": "По сообщению РБК, соглашение предусматривает гостиницы, общественно-деловой центр и социальные объекты.",
+      "facts": [
+        {
+          "label": "Инвестиции",
+          "value": "не менее 50 млрд ₽",
+          "status": "agreement",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        },
+        {
+          "label": "Номерной фонд",
+          "value": "от 3 000 номеров",
+          "status": "plan",
+          "source_ids": [
+            "leader-agreement"
+          ]
+        }
+      ]
     }
   ]
 }
