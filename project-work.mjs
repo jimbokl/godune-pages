@@ -1,11 +1,11 @@
-import {BUDGET_KEY,DRAFT_KEY,civilDay,draftFields,draftIssues,httpUrl,jobState,makeDraft,moneyMinor,normalizeDraft,queryWork,readSaved,saveLocal} from './work-catalog.mjs?v=2';
+import {BUDGET_KEY,DRAFT_KEY,civilDay,draftFields,draftIssues,httpUrl,jobState,makeDraft,moneyMinor,normalizeDraft,queryWork,readSaved,saveLocal} from './work-catalog.mjs?v=3';
 const fields=['housing','food','transport','travel','deposit','reserve'];
 export function relocationBudget(values){
  const minor={};for(const key of fields){minor[key]=moneyMinor(values[key]);if(minor[key]===null)return null;}
  const monthly=minor.housing+minor.food*30+minor.transport;
  return {monthly_rub:monthly/100,first_month_rub:(monthly+minor.travel+minor.deposit+minor.reserve)/100,inputs:Object.fromEntries(fields.map(k=>[k,minor[k]/100])),food_days:30};
 }
-// Compatibility for previously downloaded v1 drafts. The editor writes the v2 contract.
+// Compatibility for previously downloaded v1 drafts. The editor writes the v3 contract.
 export function jobDraft(values,now=new Date()){
  return {version:1,status:'draft',verified_project_hiring:false,project_id:'project:belaya-duna',captured_at:now.toISOString(),title:values.title,employer:{name:values.employer},source:{url:values.source_url,checked_at:null},location:values.location,salary:values.salary,schedule:values.schedule,housing:values.housing,transport:values.transport,skills_text:values.skills,contact:values.contact,valid_through:values.valid_through};
 }
@@ -34,7 +34,7 @@ if(doc){
   const status=form.querySelector('[data-draft-status]'),exportButton=form.querySelector('[data-job-export]'),saveButton=form.querySelector('[data-job-save]'),importButton=form.querySelector('[data-job-import]'),file=form.querySelector('[data-job-file]');
   [exportButton,saveButton,importButton].forEach(b=>b.hidden=false);form.noValidate=true;let revision=null;
   const get=()=>makeDraft(values(form));
-  const show=()=>{const draft=get(),v=draft.inputs,issues=draftIssues(draft);for(const el of doc.querySelectorAll('[data-draft-preview]')){const key=el.dataset.draftPreview;el.textContent=v[key]||({title:'Название должности',employer:'Работодатель',location:'Место работы',salary:'Оплата',schedule:'График',housing:'Проживание',transport:'Дорога',skills:'Требования',contact:'Отклик'})[key]||'Не заполнено';}const source=doc.querySelector('[data-draft-source]');if(source){source.textContent=httpUrl(v.source_url)?'Первоисточник ↗':'Добавьте ссылку на объявление';if(httpUrl(v.source_url))source.href=v.source_url;else source.removeAttribute('href');}const issuesNode=doc.querySelector('[data-draft-issues]');if(issuesNode)issuesNode.textContent=issues.length?'Перед согласованием: '+issues[0]:'Карточка заполнена. Можно скачать для согласования.';exportButton.disabled=false;};
+  const show=()=>{const draft=get(),v=draft.inputs,issues=draftIssues(draft);for(const el of doc.querySelectorAll('[data-draft-preview]')){const key=el.dataset.draftPreview;el.textContent=v[key]||({title:'Название должности',employer:'Работодатель',location:'Место работы',salary:'Оплата',schedule:'График',housing:'Проживание',transport:'Дорога',skills:'Требования',contact:'Отклик'})[key]||'Не заполнено';}const source=doc.querySelector('[data-draft-source]');if(source){source.textContent=httpUrl(v.source_url)?'Первоисточник ↗':'Добавьте ссылку на объявление';if(httpUrl(v.source_url))source.href=v.source_url;else source.removeAttribute('href');}const company=doc.querySelector('[data-draft-company-source]');if(company){company.textContent=httpUrl(v.employer_source_url)?'Реквизиты компании ↗':'Добавьте реквизиты компании';if(httpUrl(v.employer_source_url))company.href=v.employer_source_url;else company.removeAttribute('href');}const issuesNode=doc.querySelector('[data-draft-issues]');if(issuesNode)issuesNode.textContent=issues.length?'Перед согласованием: '+issues[0]:'Карточка заполнена. Можно скачать для согласования.';exportButton.disabled=false;};
   const fill=draft=>{for(const k of draftFields)form.elements.namedItem(k).value=draft.inputs[k];show();};
   const load=()=>{const saved=readSaved(storage,DRAFT_KEY);revision=saved?.revision??null;if(saved){try{fill(normalizeDraft(saved));status.textContent='Локальный черновик открыт.';}catch(e){status.textContent=e.message;}}else show();};const reload=loadButton(status,load);
   form.addEventListener('input',()=>{show();status.textContent='Есть изменения. Сохраните черновик, чтобы продолжить позже.';});

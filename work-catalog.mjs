@@ -1,7 +1,8 @@
 // Shared listing lifecycle and local-only employer drafts; no network calls.
 export const DRAFT_KEY='godune-work-draft-v2';
 export const BUDGET_KEY='godune-work-budget-v2';
-export const draftFields=['title','employer','source_url','location','salary','schedule','housing','transport','skills','contact','valid_through'];
+export const draftFields=['employer','employer_inn','employer_url','employer_source_url','employer_contact','employer_description','title','description','source_url','location','salary','schedule','housing','transport','skills','contact','valid_through'];
+export function validInn(value){if(!/^\d{10}$/.test(value))return false;return [2,4,10,3,5,9,4,6,8].reduce((n,w,i)=>n+w*Number(value[i]),0)%11%10===Number(value[9]);}
 export function validDate(value){
  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
  const d=new Date(value+'T00:00:00Z');return Number.isFinite(d.valueOf())&&d.toISOString().slice(0,10)===value;
@@ -20,17 +21,19 @@ export function queryWork(rows,{q='',status='active',employer='',skill='',housin
  return rows.filter(r=>(status==='all'||jobState(r,day)===status)&&(!employer||r.employer_id===employer)&&(!skill||r.skill_ids?.includes(skill))&&(!housing||Boolean(r.dormitory_id))&&terms.every(t=>normalize([r.title,r.description,r.location,r.requirements,r.employer_name].join(' ')).includes(t)));
 }
 export function normalizeDraft(value,now=new Date()){
- if(!value||typeof value!=='object'||Array.isArray(value)||![1,2].includes(value.version)||value.project_id!=='project:belaya-duna')throw Error('Это не карточка вакансии «Белой Дюны».');
+ if(!value||typeof value!=='object'||Array.isArray(value)||![1,2,3].includes(value.version)||value.project_id!=='project:belaya-duna')throw Error('Это не карточка вакансии «Белой Дюны».');
  const inputs=value.inputs??{...value,employer:value.employer?.name??value.employer,source_url:value.source?.url??value.source_url,skills:value.skills_text??value.skills};
  if(!inputs||typeof inputs!=='object'||Array.isArray(inputs))throw Error('Поля карточки должны быть объектом.');
  const fields={};for(const key of draftFields){const v=inputs[key];if(v!==undefined&&v!==null&&typeof v!=='string')throw Error('Поле «'+key+'» должно содержать текст.');fields[key]=String(v??'').slice(0,1500);}
- return {version:2,kind:'employer_job_draft',status:'draft',verified_project_hiring:false,project_id:'project:belaya-duna',updated_at:now.toISOString(),inputs:fields};
+ return {version:3,kind:'employer_job_draft',status:'draft',verified_project_hiring:false,project_id:'project:belaya-duna',updated_at:now.toISOString(),inputs:fields};
 }
-export function makeDraft(values,now=new Date()){return normalizeDraft({version:2,project_id:'project:belaya-duna',inputs:values},now);}
+export function makeDraft(values,now=new Date()){return normalizeDraft({version:3,project_id:'project:belaya-duna',inputs:values},now);}
 export function draftIssues(draft,day=civilDay()){
- const labels={title:'должность',employer:'юридическое имя работодателя',source_url:'первоисточник',location:'адрес площадки',salary:'оплата',schedule:'график',housing:'условия проживания',transport:'дорога',skills:'требования',contact:'способ отклика',valid_through:'срок откликов'};
+ const labels={title:'должность',description:'обязанности',employer:'юридическое имя работодателя',employer_inn:'ИНН компании',employer_url:'официальный сайт',employer_source_url:'источник реквизитов',employer_contact:'контакт компании',employer_description:'описание компании',source_url:'первоисточник',location:'адрес площадки',salary:'оплата',schedule:'график',housing:'условия проживания',transport:'дорога',skills:'требования',contact:'способ отклика',valid_through:'срок откликов'};
  const v=draft.inputs,issues=draftFields.filter(k=>!v[k].trim()).map(k=>'Добавьте '+labels[k]+'.');
  if(v.source_url&&!httpUrl(v.source_url))issues.push('Укажите HTTPS-ссылку на объявление работодателя.');
+ for(const key of ['employer_url','employer_source_url'])if(v[key]&&!httpUrl(v[key]))issues.push('Укажите HTTPS-ссылку: '+labels[key]+'.');
+ if(v.employer_inn&&!validInn(v.employer_inn))issues.push('Проверьте десятизначный ИНН юридического лица.');
  if(v.valid_through&&(!validDate(v.valid_through)||v.valid_through<day))issues.push('Укажите действующий срок приёма откликов.');
  return issues;
 }

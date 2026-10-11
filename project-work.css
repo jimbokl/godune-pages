@@ -12,6 +12,11 @@
 .work-filter-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.6rem}.work-filter-actions button,.work-form-actions button,.work-reload{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:.5rem;padding:.65rem 1rem;min-height:44px;background:var(--card,#fff);color:var(--ink)}
 .work-form-actions button.business-primary{background:#4d7f9e;color:#fff;border-color:#4d7f9e}
 .work-form-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+.work-form-section{margin:0 0 1.25rem;padding:1.25rem;border:1px solid var(--line);border-radius:.9rem;min-width:0;background:var(--business-surface)}
+.work-form-section legend{font:1.6rem var(--serif,Georgia,serif);padding:0 .5rem;color:var(--ink)}
+.work-form-section legend span{font:500 .8rem var(--sans,system-ui);letter-spacing:.12em;color:var(--business-muted);margin-right:.5rem}
+.work-preview-sources{display:grid;gap:.7rem;font-size:.85rem;padding-top:1rem}.work-preview-sources a{overflow-wrap:anywhere}
+.work-editorial-path{border-top:1px solid var(--line);padding-top:1.5rem}
 .work-form-actions button:disabled,.work-filter-actions button:disabled{opacity:.5;cursor:default}
 .work-list-count,.work-save-state{font-size:.85rem;color:var(--business-muted);min-height:1.5em;overflow-wrap:anywhere}
 .work-listing{min-width:0;display:flex;flex-direction:column;scroll-margin-top:6rem;overflow-wrap:anywhere}
