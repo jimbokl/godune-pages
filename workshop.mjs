@@ -1,18 +1,19 @@
 import {loadWalkProgress} from './walk.mjs?v=3';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=30';
-import {initTripSharing} from './trip-link.mjs?v=61';
+import {initTripSharing} from './trip-link.mjs?v=62';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=26';
 import {loadTrip} from './trip-memory-bootstrap.mjs?v=5';
-import {initMemoryControls} from './trip-memory-ui.mjs?v=7';
-import {createPlanningProgress} from './planning-progress.mjs?v=2';
+import {initMemoryControls} from './trip-memory-ui.mjs?v=8';
+import {createPlanningProgress} from './planning-progress.mjs?v=3';
+import {tripJournalBindings} from './scenario-bindings.mjs';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=25';
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=49';
 import {initTripDays} from './trip-days-ui.mjs?v=44';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=24';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=25';
 import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=3';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=38';
+import {initDayWorkspace} from './day-workspace.mjs?v=39';
 import {addTripStarter} from './trip-starters.mjs?v=26';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=27';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=18';
@@ -76,6 +77,7 @@ export async function initWorkshop(catalog, base) {
   const memory = createTripMemory(catalog, restored, storage);
   await memory.ready;
   let state = memory.get(), available = memory.saved, writes = 0;
+  const progress=createPlanningProgress(storage);
   const status = document.createElement('p');
   status.className = 'save-feedback'; status.setAttribute('role', 'status'); status.hidden = true;
   document.body.append(status);
@@ -209,9 +211,11 @@ export async function initWorkshop(catalog, base) {
     // Controls installed in earlier tasks may receive input while later panels
     // are still being prepared. Keep that edit until every renderer exists.
     await initialized;
+    const before=structuredClone(state);
     writes++; document.documentElement.dataset.tripWriting = 'true';
     try {
       const result = await memory.change(current => typeof next === 'function' ? next(current) : next, {...options, label: message});
+      if(result.saved&&!result.conflict&&journeyDays(before).length<2&&journeyDays(result.state).length>=2)await progress.journal.followUp('second_day',await tripJournalBindings(before));
       announce(result.conflict ? 'Черновик уже изменился. Показан свежий выбор.' : result.saved ? message : result.compatibility?.message || 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
       return result;
     } finally {
@@ -266,7 +270,7 @@ export async function initWorkshop(catalog, base) {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
   const workshop = {
-    progress: createPlanningProgress(storage),
+    progress,
     addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
     memoryCompatibility: () => memory.compatibility, memoryBackup: () => memory.backup(),

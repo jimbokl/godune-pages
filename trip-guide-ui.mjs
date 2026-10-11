@@ -1,4 +1,6 @@
 import {recordTransportAction} from './transport-useful-actions.mjs';
+import {createScenarioJournal} from './scenario-journal.mjs';
+import {tripJournalBindings} from './scenario-bindings.mjs';
 import {collectTripGuide} from './trip-guide-engine.mjs?v=36';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=4';
 import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=30';
@@ -9,6 +11,11 @@ export async function downloadPersonalGuide({trip,catalog,base,scope,format,sign
   // URL objects lose their prototype across the worker boundary; send a plain URL.
   base=new URL('.',base).href;
   const copy=structuredClone(trip);signal?.throwIfAborted();onProgress('Сверяем ваш день и дорогу…');
+  let storage;try{storage=globalThis.localStorage;}catch{}
+  const journal=createScenarioJournal(storage),bindings=await tripJournalBindings(copy,{scope});
+  const resumed=journal.resume(bindings),attempt=resumed||journal.begin('guide');
+  if(!resumed)await journal.event(attempt,'selected');
+  try{
   const calculate=await loadScheduler(base);
   const snapshot=await collectTripGuide({trip:copy,catalog,scope,calculate,
     matrixFor:async current=>{signal?.throwIfAborted();return loadTripTravelMatrix(base,current,catalog).catch(()=>null);},
@@ -20,5 +27,8 @@ export async function downloadPersonalGuide({trip,catalog,base,scope,format,sign
   const url=URL.createObjectURL(new Blob([result.bytes],{type:'application/pdf'})),a=document.createElement('a');
   a.href=url;a.download=`godune-${scope}-${snapshot.days[0].date || 'plan'}-${format}.pdf`;a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);
   for(const profile of new Set(snapshot.days.flatMap(day=>(day.transport_plans||[]).map(e=>e.receipt.profile))))recordTransportAction({profile,action:'pdf_ready'});
+  await journal.event(attempt,'pdf_ready');
   return result;
+  }catch(error){await journal.event(attempt,signal?.aborted?'refused':'failed',{reason:signal?.aborted?'cancelled':error.message==='guide_trip_changed'?'stale':'pdf'});throw error;}
+  finally{journal.destroy();}
 }

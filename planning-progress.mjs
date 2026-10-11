@@ -1,5 +1,7 @@
 // Local measurement of an explicit planning attempt. No Trip content, names,
 // dates of travel, coordinates, or network requests belong in this record.
+import {createScenarioJournal} from './scenario-journal.mjs';
+import {tripJournalBindings} from './scenario-bindings.mjs';
 export const PLANNING_PROGRESS_KEY='godune-planning-progress:v1';
 const sources=new Set(['wizard','kosa']);
 const reasons=new Set(['calculated','conflict','transport','travel','hours','walking_allowance','walking_unknown','not_calculated']);
@@ -34,6 +36,7 @@ export function progressSummary(record) {
 }
 
 export function createPlanningProgress(storage,environment=globalThis) {
+  const journal=createScenarioJournal(storage,environment);
   let epoch=0,serial=Promise.resolve();
   const listeners=new Set();
   const now=()=>Math.trunc(environment.Date?.now?.()??Date.now());
@@ -52,13 +55,13 @@ export function createPlanningProgress(storage,environment=globalThis) {
   }
   function begin(source) {
     if(!sources.has(source))throw Error('Unknown planning source');
-    const attempt={id:environment.crypto?.randomUUID?.()||`attempt-${now().toString(36)}-${Math.random().toString(36).slice(2)}`,epoch,startedAt:now()};
+    const attempt={id:environment.crypto?.randomUUID?.()||`attempt-${now().toString(36)}-${Math.random().toString(36).slice(2)}`,epoch,startedAt:now(),journal:journal.begin(source)};
     attempt.started=write(record=>{record.attempts[attempt.id]={source,started_at:attempt.startedAt};return true;},attempt.epoch);
     return attempt;
   }
-  async function saved(attempt,result,confirmed) {
+  async function saved(attempt,result,confirmed,{trip=null,secondDay=false}={}) {
     if(!attempt || attempt.epoch!==epoch || !await attempt.started)return false;
-    return write(record=>{
+    const recorded=await write(record=>{
       const row=record.attempts[attempt.id];if(!row || finiteTime(row.usable_at))return false;
       row.outcome=!confirmed?'not_saved':result.calculated?'calculated':'incomplete';
       row.reason=reasons.has(result.reason)?result.reason:'not_calculated';
@@ -71,14 +74,20 @@ export function createPlanningProgress(storage,environment=globalThis) {
       }
       return true;
     },attempt.epoch);
+    if(confirmed) {
+      const bindings=trip?await tripJournalBindings(trip,{environment}):[];
+      await journal.event(attempt.journal,'saved',{bindings});
+      if(secondDay)await journal.event(attempt.journal,'second_day');
+    }else await journal.event(attempt.journal,'refused',{reason:'storage'});
+    return recorded;
   }
   const clear=()=>{epoch++;changed();};
   const storageChanged=event=>{if(event.key===PLANNING_PROGRESS_KEY || event.key===null){if(event.newValue===null)epoch++;changed();}};
   environment.addEventListener?.('godune:memory-clearing',clear);
   environment.addEventListener?.('godune:memory-cleared',clear);
   environment.addEventListener?.('storage',storageChanged);
-  return {begin,saved,summary:()=>progressSummary(read(storage)),
-    export:()=>({version:1,scope:'this-browser-wizard-and-kosa',definition:'Начатый план → завершённый расчёт без препятствий и неизвестной важной дороги → подтверждённое сохранение в браузере. Оценки и условия, которые нужно уточнить, отделены от проверки на месте.',summary:progressSummary(read(storage)),record:read(storage)}),
+  return {begin,saved,journal,action:(attempt,action,options)=>journal.event(attempt?.journal,action,options),summary:()=>progressSummary(read(storage)),
+    export:()=>({version:1,scope:'this-browser-wizard-and-kosa',definition:'Начатый план → завершённый расчёт без препятствий и неизвестной важной дороги → подтверждённое сохранение в браузере. Оценки и условия, которые нужно уточнить, отделены от проверки на месте.',summary:progressSummary(read(storage)),record:read(storage),journal:journal.export()}),
     subscribe(listener){listeners.add(listener);return()=>listeners.delete(listener);},
-    destroy(){epoch++;listeners.clear();environment.removeEventListener?.('godune:memory-clearing',clear);environment.removeEventListener?.('godune:memory-cleared',clear);environment.removeEventListener?.('storage',storageChanged);}};
+    destroy(){epoch++;journal.destroy();listeners.clear();environment.removeEventListener?.('godune:memory-clearing',clear);environment.removeEventListener?.('godune:memory-cleared',clear);environment.removeEventListener?.('storage',storageChanged);}};
 }

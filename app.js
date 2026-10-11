@@ -231,14 +231,14 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=115'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=117'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=1')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=34')).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=36')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
     if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=32')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
@@ -250,7 +250,7 @@
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=32')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=34')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
     if ($('#housing-engine')) import(url('housing-ui.mjs?v=14')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
     if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=17')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
@@ -271,8 +271,8 @@
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
     if ($('#budget-page')) import(url('budget-ui.mjs?v=16')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
-    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=9')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=25')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=11')).then(({initFishWalk})=>initFishWalk({workshop,base})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=27')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=3')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -360,6 +360,7 @@
   let mapSelection = 'all', mapVersion = 0;
   async function renderMap() {
     const version = ++mapVersion;
+    syncMapViews();
     if (homeHero && tripMap) { wakeWorkshop('map'); await workshopReady; }
     const data = await loadCatalog();
     const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
@@ -372,8 +373,8 @@
     const personal=await import(url('personal-points.mjs?v=3'));
     const bases=day ? [day.start_at,day.night_at,day.end_at].filter(personal.isPersonalPoint).map(p=>({...p,slug:personal.baseId(p)})) : [];
     const tripPoints = trip ? [...new Set([day?.start_at,...trip.places,day?.night_at,day?.end_at].filter(Boolean))] : [];
-    const chosen = tripMap ? [...tripPoints.map(id => data.poi.find(p => p.slug === id)).filter(Boolean),...new Map(bases.map(p=>[p.slug,p])).values()] : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
-    const pointNumber = p => tripMap ? trip.places.indexOf(p.slug)+1 : chosen.indexOf(p)+1;
+    const chosen = trip ? [...tripPoints.map(id => data.poi.find(p => p.slug === id)).filter(Boolean),...new Map(bases.map(p=>[p.slug,p])).values()] : route ? route.stops.map(s => data.poi.find(p => p.slug === s.poi)) : collection ? collection.poi.map(slug => data.poi.find(p => p.slug === slug)) : here ? data.poi.filter(p => p.area === here.area) : data.poi;
+    const pointNumber = p => trip ? trip.places.indexOf(p.slug)+1 : chosen.indexOf(p)+1;
     const pointRole = p => [personal.baseId(day?.start_at) === p.slug ? 'Начало дня' : '',personal.baseId(day?.night_at) === p.slug ? 'Ночёвка' : '',personal.baseId(day?.end_at) === p.slug ? 'Вылет / отъезд' : ''].filter(Boolean).join(' · ');
     let points = chosen.filter(p => p.kind==='personal' || mapSelection === 'all' || (mapSelection === 'nature' ? p.area === 'kurshskaya-kosa' || ['beach','nature','park','viewpoint'].includes(p.category) : p.area !== 'kurshskaya-kosa' && !['beach','nature','park','viewpoint'].includes(p.category)));
     $('#map-dialog-title').textContent = (foodPreview.length || foodPreviewTrip) ? 'Ваша гастропрогулка' : tripMap ? 'Ваши точки' : route ? route.name : collection ? collection.name : here ? here.name : 'Карта маршрутов';
@@ -381,7 +382,7 @@
       const focusId=document.activeElement?.dataset.savePlace;
       const rows=points.map(p=>{
         const li=document.createElement('li'),a=document.createElement('a');li.dataset.mapPlace=p.slug;
-        if(p.kind==='personal'){a.href='#map-dialog';a.addEventListener('click',e=>{e.preventDefault();map?.flyTo({center:[p.lon,p.lat],zoom:16});});}else a.href=url(`poi/${p.slug}/`);a.textContent=((tripMap || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
+        if(p.kind==='personal'){a.href='#map-dialog';a.addEventListener('click',e=>{e.preventDefault();map?.flyTo({center:[p.lon,p.lat],zoom:16});});}else a.href=url(`poi/${p.slug}/`);a.textContent=((trip || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
         if(inlineMap && p.kind!=='personal'){
           const copy=document.createElement('div'),meta=document.createElement('small'),save=document.createElement('button');
           meta.textContent=`${p.area_name} · ${p.category_name}`;copy.append(a,meta);save.type='button';save.className='save-item';save.dataset.savePlace=p.slug;
@@ -416,7 +417,7 @@
         markers.push(marker);mapEntries.push({id:point.slug||point.id,point,element:btn,content,meta});
       }
       points.forEach((p,i) => {
-        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || tripMap ? pointNumber(p) ? String(pointNumber(p)) : personal.baseId(day?.start_at) === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
+        const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || trip ? pointNumber(p) ? String(pointNumber(p)) : personal.baseId(day?.start_at) === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
         if(pointRole(p))btn.dataset.mapBase = pointRole(p);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
         title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}addMarker(p,btn,popup,pointRole(p));return;} link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
@@ -475,7 +476,10 @@
   }));
   if(!inlineMap && (mapFocus || foodPreview.length)){tripMap=foodPreview.length>0;open($('#map-dialog'));renderMap().catch(()=>setMapStatus('Карта пока не загрузилась. Карточки доступны ниже.'));}
   function syncMapViews(){
-    $$('[data-map-view]').forEach(button=>button.setAttribute('aria-pressed',String((button.dataset.mapView==='trip')===tripMap)));
+    const preview=foodPreview.length>0 || foodPreviewTrip!==null;
+    $$('[data-map-view]').forEach(button=>button.setAttribute('aria-pressed',String(!preview && (button.dataset.mapView==='trip')===tripMap)));
+    const passport=$('#map-dialog .map-day-passport[data-tool-trip]');
+    if(passport)passport.hidden=preview;
   }
   $$('[data-map-view]').forEach(button=>button.addEventListener('click',()=>{
     tripMap=button.dataset.mapView==='trip';activeRoute=null;foodPreview=[];foodPreviewTrip=null;mapFocus=null;syncMapViews();

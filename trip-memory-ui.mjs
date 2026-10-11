@@ -10,7 +10,7 @@ export function initMemoryControls(catalog, base, workshop) {
     <h2 id="trip-memory-title"></h2><p id="trip-memory-intro"></p><div id="trip-history-list"></div>
     <div id="trip-revision-preview" hidden><h3>В этой версии</h3><p id="trip-revision-date"></p><ol id="trip-revision-places"></ol><ul id="trip-revision-routes"></ul><button id="trip-revision-restore" type="button" class="button button-dark">Восстановить эту версию</button></div>
     <button id="trip-memory-backup" type="button" class="button button-outline">Скачать исходную копию</button>
-    <details id="trip-planning-progress" class="wizard-evidence"><summary>Что уже получилось</summary><p id="trip-progress-count"></p><p id="trip-progress-time"></p><p>Здесь только планы, начатые Вами в мастере или на странице Куршской косы в этом браузере. Обычный просмотр страницы не считается. Расчёт по карте и расписанию ещё не означает проверку на месте.</p><button id="trip-progress-export" type="button" class="button button-outline">Скачать сводку</button><p>Сводка хранится здесь: без названий мест, маршрутов и личных записей. Удаление памяти сайта удалит и её.</p></details>
+    <details id="trip-planning-progress" class="wizard-evidence"><summary>Что уже получилось</summary><p id="trip-progress-count"></p><p id="trip-progress-time"></p><p>Здесь действия в инструментах этого браузера: выбор, сравнение, расчёт, сохранение и готовый PDF. Пригодный день — рассчитанный план с учтённым возвращением, показанными конфликтами и подтверждённой записью.</p><button id="trip-progress-export" type="button" class="button button-outline">Скачать сводку</button><p>Сводка хранится здесь: без названий мест, маршрутов и личных записей. Удаление памяти сайта удалит и её.</p></details>
     <div id="trip-clear-confirm" hidden><p>Исчезнут черновик и его предыдущие версии, личные точки, дата и настройки поездки, отметки на остановках, выбор города для погоды, загруженные прогулки и дорожные графы.</p><p>Скачанные вами файлы поездки и отправленные ссылки останутся у вас и у получателей. Другие устройства это действие не затронет.</p><button id="trip-clear-do" type="button" class="button button-dark">Удалить данные в этом браузере</button></div>
     <p id="trip-memory-result" role="status" aria-live="polite"></p>`;
   document.body.append(dialog);
@@ -18,11 +18,15 @@ export function initMemoryControls(catalog, base, workshop) {
   let focus, selected, openedRevision, request = 0;
   const count = (value, forms) => value + ' ' + forms[value % 100 >= 11 && value % 100 <= 14 ? 2 : value % 10 === 1 ? 0 : value % 10 >= 2 && value % 10 <= 4 ? 1 : 2];
   function progress() {
-    const summary=workshop.progress?.summary();if(!summary)return;
-    $('#trip-progress-count').textContent=summary.started?`В ${summary.usable} из ${summary.started} начатых планов есть рассчитанный и сохранённый день. Ещё требуют уточнения: ${summary.incomplete}. Браузер не сохранил: ${summary.not_saved}.`:'Пока нет записанных попыток планирования. Начните с мастера или дня на Куршской косе.';
-    $('#trip-progress-time').textContent=summary.mean_time_ms===null?'':`В среднем до первого рассчитанного и сохранённого дня — ${summary.mean_time_ms<60000?'меньше минуты':`${Math.ceil(summary.mean_time_ms/60000)} мин.`}`;
+    const journal=workshop.progress?.journal?.export();if(!journal)return;
+    if(journal.state==='unavailable'){$('#trip-progress-count').textContent='Сводка пока недоступна. Сохранённая поездка остаётся отдельно.';$('#trip-progress-time').textContent='';return;}
+    const byOrigin=new Map();
+    for(const group of journal.groups){if(!byOrigin.has(group.origin))byOrigin.set(group.origin,{started:0,usable:0,saved:0,pdf:0,second:0,times:[]});const total=byOrigin.get(group.origin);total.started+=['wizard','kosa'].includes(group.source)?group.started:0;total.usable+=group.usable;total.saved+=group.saved;total.pdf+=group.pdf_ready;total.second+=group.second_day;total.times.push(...group.usable_ms);}
+    const label=origin=>origin==='local_acceptance'?'Проверки разработчика':'Ваши действия';
+    $('#trip-progress-count').textContent=[...byOrigin].map(([origin,s])=>`${label(origin)}: В ${s.usable} из ${s.started} начатых планов есть пригодный день. Сохранено: ${s.saved}. PDF: ${s.pdf}. Второй день: ${s.second}.`).join(' ')||'Пока нет записанных действий. Начните с мастера или дня на Куршской косе.';
+    $('#trip-progress-time').textContent=[...byOrigin].filter(([,s])=>s.times.length).map(([origin,s])=>`${label(origin)}: в среднем до пригодного дня — ${Math.round(s.times.reduce((a,b)=>a+b,0)/s.times.length/1000)} сек.`).join(' ');
   }
-  workshop.progress?.subscribe(progress);progress();
+  workshop.progress?.subscribe(progress);workshop.progress?.journal?.subscribe(progress);progress();
   $('#trip-progress-export').addEventListener('click',()=>{
     const link=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(workshop.progress.export(),null,2)],{type:'application/json'}));
     link.href=url;link.download='godune-planning-summary.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);

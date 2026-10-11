@@ -6,6 +6,8 @@ import {transportStates,transportDate,transportTotal,transportContextText} from 
 import {recordTransportAction} from './transport-useful-actions.mjs';
 import {loadTrip} from './trip-memory-bootstrap.mjs?v=5';
 import {createTripMemory} from './trip-memory.mjs?v=26';
+import {createScenarioJournal} from './scenario-journal.mjs';
+import {tripJournalBindings} from './scenario-bindings.mjs';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -19,6 +21,8 @@ async function init(){
  let storage;try{storage=globalThis.localStorage;}catch{storage={getItem(){throw Error('unavailable');},setItem(){throw Error('unavailable');}};}
  const memory=()=>memoryPromise??=(async()=>{const catalog=await json('data/catalog.json'),initial=loadTrip(storage,catalog),store=createTripMemory(catalog,initial,storage);await store.ready;return {catalog,store};})();
  const metric=action=>recordTransportAction({profile:profile.id,action},storage);
+ const journal=createScenarioJournal(storage);let attempt;
+ const begin=()=>{attempt ||= journal.begin('transport');return attempt;};
  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kaliningrad',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
  form.elements.date.value=['year','month','day'].map(key=>parts.find(p=>p.type===key).value).join('-');
  const setDate=date=>{dateLabel.dateTime=date;dateLabel.textContent=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(`${date}T12:00:00Z`));};
@@ -84,24 +88,24 @@ async function init(){
   };
   if(restored)showSaved();
   save.addEventListener('click',async()=>{
-   if(ticket!==generation||!receipt)return;save.disabled=true;saveText.textContent='Сохраняем…';feedback.hidden=true;
+   if(ticket!==generation||!receipt)return;const actionAttempt=begin();save.disabled=true;saveText.textContent='Сохраняем…';feedback.hidden=true;
    try{
     const {catalog,store}=await memory();
     // Save the displayed immutable receipt, never the unsent settings in the dialog.
     const completed=await store.change(trip=>saveTransportPlan(trip,catalog,frozen),{label:'Транспортный расчёт'});
-    if(!completed.saved){if(ticket===generation)notify(completed.compatibility?.message||'Сохранение не завершилось. Скачайте PDF, чтобы забрать расчёт с собой.');return;}
-    metric('saved');if(ticket!==generation)return;
+    if(!completed.saved){await journal.event(actionAttempt,'refused',{reason:'storage'});if(ticket===generation)notify(completed.compatibility?.message||'Сохранение не завершилось. Скачайте PDF, чтобы забрать расчёт с собой.');return;}
+    metric('saved');await journal.event(actionAttempt,'saved',{bindings:await tripJournalBindings(store.get())});if(ticket!==generation)return;
     showSaved();save.dataset.saved='true';status.textContent='Расчёт записан. Он будет в вашем дне и в личном буклете.';
-   }catch{if(ticket===generation)notify('Расчёт не сохранился. Попробуйте ещё раз или скачайте PDF.');}
+   }catch{await journal.event(actionAttempt,'failed',{reason:'storage'});if(ticket===generation)notify('Расчёт не сохранился. Попробуйте ещё раз или скачайте PDF.');}
    finally{if(ticket===generation){save.disabled=false;saveText.textContent='Сохранить в Мой день';}}
   });
   pdf.addEventListener('click',async()=>{
-   if(ticket!==generation||!receipt)return;pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
+   if(ticket!==generation||!receipt)return;const actionAttempt=begin();pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
    try{
     const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=30');signal.throwIfAborted();
     const file=await makeTripGuidePdf({snapshot:transportGuide(frozen),media:{maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]},base:base.href,format:'print'},{signal,onProgress:text=>{if(ticket===generation)notify(text);}});
-    if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
-   }catch(error){if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}
+    if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');await journal.event(actionAttempt,'pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
+   }catch(error){await journal.event(actionAttempt,error.name==='AbortError'?'refused':'failed',{reason:error.name==='AbortError'?'cancelled':'pdf'});if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}
    finally{if(ticket===generation)pdf.disabled=false;}
   });
   actions.append(save,pdf);actionsMount.append(actions,saved,feedback);result.dataset.state=frozen.state;
@@ -110,11 +114,11 @@ async function init(){
   const ticket=++generation;pdfAbort?.abort();submit.disabled=true;status.textContent='Считаем отправление и возвращение…';
   try{
    const answers=read(),engine=await loadScheduler(base),calculation=calculateTransport(profile,answers,tables,engine);if(ticket!==generation)return;
-   render(transportReceipt(profile,answers,calculation),ticket);metric('calculated');status.textContent='Расчёт готов. Сохраните его в свой день или заберите PDF.';if(dialog.open)dialog.close();
-  }catch{if(ticket===generation){receipt=null;delete result.dataset.state;actionsMount.replaceChildren();result.replaceChildren(heading('Расчёт нужно повторить'),node('p','Проверьте дату, состав компании и время. Исходные таблицы доступны ниже.'));status.textContent='Поездка пока не рассчитана.';}}
+   render(transportReceipt(profile,answers,calculation),ticket);metric('calculated');await journal.event(attempt,'calculated',{criteria:{calculated:null,conflicts_shown:true,return_accounted:null}});status.textContent='Расчёт готов. Сохраните его в свой день или заберите PDF.';if(dialog.open)dialog.close();
+  }catch{await journal.event(attempt,'failed',{reason:'calculation'});if(ticket===generation){receipt=null;delete result.dataset.state;actionsMount.replaceChildren();result.replaceChildren(heading('Расчёт нужно повторить'),node('p','Проверьте дату, состав компании и время. Исходные таблицы доступны ниже.'));status.textContent='Поездка пока не рассчитана.';}}
   finally{if(ticket===generation)submit.disabled=false;}
  }
- form.addEventListener('submit',event=>{event.preventDefault();calculate();});
+ form.addEventListener('submit',event=>{event.preventDefault();attempt=journal.begin('transport');journal.event(attempt,'selected');calculate();});
  const dayId=new URL(location.href).searchParams.get('trip-day');
  if(dayId){const ticket=generation;try{
   const {store}=await memory(),trip=store.get(),day=trip.itinerary?.days.find(d=>d.id===dayId),entry=day?.transport_plans?.entries.find(e=>e.id===profile.id);if(ticket!==generation)return;

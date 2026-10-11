@@ -4,6 +4,8 @@ import {kosaInput,kosaPinnedAnswers,kosaNote,isGeneratedKosaNote,kosaClock as cl
 import {createTripFile} from './trip-file.mjs?v=31';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=24';
 import {assessKosa} from './day-readiness.mjs?v=6';
+import {kosaJournalCriteria} from './scenario-bindings.mjs';
+import {journeyDays} from './trip-days-state.mjs?v=27';
 import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=5';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
@@ -80,6 +82,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
       const title=el('h3',day.state==='candidate'?'Ваш день у дюн складывается':'Для этого дня нужен другой план');title.id='kosa-result-title';title.tabIndex=-1;result.append(title,el('p',answers.home_access?(answers.home_access.start_at||answers.home_access.return_at?'Дорога от жилья, рейсы и возвращение — в одном плане. Оценки дороги подписаны в плане.':'Начало и возвращение — у транспорта. Дорога до жилья не включена.'):answers.city==='kaliningrad'&&answers.origin==='station'?'Начало и возвращение — у выбранного вокзала. Дорога от жилья в этот план не входит.':cityNote[answers.city]));
       const warning=el('p',calendar.exception?`На ${answers.date.split('-').reverse().join('.')} опубликовано отдельное изменение. Сверено ${publication.checked_at.split('-').reverse().join('.')}. Перед выездом подтвердите рейсы.`:'Часы — из опубликованной таблицы. Перед выездом подтвердите рейсы на свою дату.','kosa-plan-warning');result.append(warning);
       if(day.state!=='candidate') {
+        workshop.progress?.action(attempt,'calculated',{criteria:{calculated:false,conflicts_shown:true,return_accounted:false}});
         const reason=day.validity==='unpublished_timetable'?'Расписание в одну из сторон на эту дату пока не опубликовано. Время возвращения станет известно после уточнения; прежние рейсы не подставляем. Карты троп доступны ниже.':day.validity==='unpublished_calendar'?'Расписание на этот год ещё не подтверждено. Точные часы не подставляем из прежнего сезона. Ниже можно выбрать тропу и скачать её карту.':
           day.validity==='outside_publication'?'Эта дата не входит в период опубликованной таблицы. Проверьте транспорт отдельно; карты троп доступны ниже.':
           day.state==='unknown_approach'?'Укажите время от жилья до вокзала и обратно. Неизвестную дорогу не заменяем нулём.':
@@ -112,6 +115,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
         const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges);
+        workshop.progress?.action(attempt,'calculated',{criteria:kosaJournalCriteria(roadbook,assessKosa(day,answers,roadbook.walking))});
         if(answers.fixed_transport)result.append(el('p','Выбранные рейсы сохранены. Поменяйте дату или время, чтобы искать другой день.','kosa-plan-warning'),freshTransport());
         if(!editingDay&&savedDay&&isGeneratedKosaNote(savedDay.note,answers,day,rawPublication,catalog,roadbook.interchanges)
           &&Object.entries(answers).every(([key,value])=>sameKosaAnswer(key,value,saved?.[key])))editingDay=structuredClone(savedDay);
@@ -177,9 +181,10 @@ export async function initKosaPlanner({workshop,catalog,base}) {
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
+            await workshop.progress?.action(attempt,'pdf_ready');
             pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Сохраните его в «Файлы» и проверьте без интернета.`;
             try{performance.mark('godune:kosa-pdf-ready',{detail:{pages:output.pages,bytes:output.bytes.length}});}catch{}
-          }catch(error){if(ticket===sequence)pdfStatus.textContent=abort.signal.aborted?'Сборка отменена. План дня на месте.':`${error.message} План дня на месте; можно повторить попытку.`;}
+          }catch(error){await workshop.progress?.action(attempt,abort.signal.aborted?'refused':'failed',{reason:abort.signal.aborted?'cancelled':'pdf'});if(ticket===sequence)pdfStatus.textContent=abort.signal.aborted?'Сборка отменена. План дня на месте.':`${error.message} План дня на месте; можно повторить попытку.`;}
           finally{pdf.disabled=false;pdfCancel.hidden=true;format.disabled=false;if(exportAbort===abort)exportAbort=null;}
         },'kosa-pdf-download');
         const pdfControls=el('div',undefined,'kosa-pdf-controls');pdfControls.append(formatLabel,format,pdf,pdfCancel);
@@ -187,13 +192,15 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         const save=action('Сохранить день и прогулки',async()=>{
           begin();
           save.disabled=true;saveStatus.textContent='Сохраняем поездку в этом браузере…';
+          const dayCount=journeyDays(workshop.getState()).length;
+          await workshop.progress?.action(attempt,'calculated',{criteria:kosaJournalCriteria(roadbook,assessKosa(day,answers,roadbook.walking))});
           try{const outcome=await workshop.setState(current=>addKosaDay(current,answers,day,publication,catalog,roadbook.interchanges,editingDay),'День на Куршской косе сохранён.');
-            if(outcome.conflict){saveStatus.textContent='Поездка уже изменилась. Попробуйте сохранить ещё раз.';save.disabled=false;return;}
+            if(outcome.conflict){workshop.progress?.action(attempt,'refused',{reason:'stale'});saveStatus.textContent='Поездка уже изменилась. Попробуйте сохранить ещё раз.';save.disabled=false;return;}
             if(outcome.saved){const state=workshop.getState();editingDay=structuredClone(state.itinerary?.days.find(d=>d.id===state.itinerary.active));}
-            workshop.progress?.saved(attempt,assessKosa(day,answers,roadbook.walking),outcome.saved);
+            await workshop.progress?.saved(attempt,assessKosa(day,answers,roadbook.walking),outcome.saved,{trip:workshop.getState(),secondDay:dayCount<2&&journeyDays(workshop.getState()).length>=2});
             saveStatus.textContent=outcome.saved?(roadbook.walking.status==='too_short'?'День сохранён в этом браузере. Перед поездкой увеличьте время отмеченных переходов и прогулок.':roadbook.walking.status!=='within_estimate'?'День сохранён в этом браузере. Время переходов ещё нужно уточнить.':'День сохранён в этом браузере. Карты и PDF скачайте отдельно ниже.'):'Браузер не разрешил запись. План остался в этой вкладке — скачайте файл поездки.';
             save.textContent=outcome.saved?'День сохранён ✓':'План в этой вкладке';
-          }catch{saveStatus.textContent='Запись не завершилась. Ваш прежний план на месте; скачайте текст этого дня.';save.disabled=false;}
+          }catch{workshop.progress?.action(attempt,'failed',{reason:'storage'});saveStatus.textContent='Запись не завершилась. Ваш прежний план на месте; скачайте текст этого дня.';save.disabled=false;}
         },'kosa-save');
         const more=el('details',undefined,'kosa-more-actions');more.append(el('summary','Перенести поездку или сохранить текст'));const extra=el('div',undefined,'kosa-result-actions');
         extra.append(action('План дня — текстовый файл',()=>download(kosaNote(answers,day,publication,catalog,roadbook.interchanges),'godune-kosa-'+answers.date+'.txt','text/plain;charset=utf-8')),
@@ -210,7 +217,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
       }else{status.textContent='Расчёт пока не загрузился. Прежняя поездка на месте. Ниже доступны готовый пример, карты и PDF; можно повторить попытку.';result.classList.add('kosa-updating');form.classList.add('kosa-load-failed');}
       result.setAttribute('aria-busy','false');}
   }
-  form.addEventListener('submit',event=>{event.preventDefault();begin();if(form.reportValidity())calculate({focus:true});});
+  form.addEventListener('submit',event=>{event.preventDefault();begin();workshop.progress?.action(attempt,'selected');if(form.reportValidity())calculate({focus:true});});
   form.addEventListener('input',()=>{begin();schedule();});
   form.addEventListener('change',event=>{
     begin();

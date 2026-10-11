@@ -6,7 +6,8 @@ import {resolveRail} from './trip-rail-state.mjs?v=7';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
 import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=4';
 import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=23';
-import {chooseTripDay,selectedDay} from './trip-days-state.mjs?v=27';
+import {chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=27';
+import {scheduleJournalCriteria,kosaJournalCriteria} from './scenario-bindings.mjs';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=19';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=10';
 import {baseName} from './personal-points.mjs?v=3';
@@ -398,9 +399,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       });
       assessments=schedules.map((schedule,index)=>{const bus=proposal.bus?.[selectedDay(trips[index]).id];return bus?assessKosa(bus.result,bus.answers,bus.book.walking):assessSchedule(schedule);});
       renderResult(proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,schedules[index]])):schedules[0],false,proposal.kind==='journey'?new Map(proposal.targetIds.map((id,index)=>[id,matrices[index]])):matrices[0]);
+      const first=assessments.findIndex(row=>row.calculated),index=first<0?0:first,bus=proposal.bus?.[selectedDay(trips[index]).id];
+      workshop.progress?.action(attempt,'calculated',{criteria:bus?kosaJournalCriteria(bus.book,assessments[index]):scheduleJournalCriteria(schedules[index],assessments[index])});
     } catch {
       if(ticket!==sequence || step!==3)return;
       renderResult(null,true);
+      workshop.progress?.action(attempt,'failed',{reason:'calculation'});
     } finally {
       if(ticket===sequence && step===3){delete mount.dataset.wizardCalculating;save.disabled=false;if(revision!==workshop.getRevision())changed();}
     }
@@ -421,9 +425,11 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       const field=form.querySelector('input[name="wizard_area"]:checked');
       if(!field){announce('Выберите место прогулки.');form.querySelector('input[name="wizard_area"]')?.focus();return;}
       attempt ||= workshop.progress?.begin('wizard');
+      workshop.progress?.action(attempt,'selected');
       answers.area=field.value;show(2);return;
     }
     if(step!==2)return;
+    if(!attempt){attempt=workshop.progress?.begin('wizard');workshop.progress?.action(attempt,'selected');}
     form.elements.wizard_end.setCustomValidity('');
     form.elements.wizard_adults.setCustomValidity('');form.elements.wizard_children.setCustomValidity('');
     for(const field of [form.elements.wizard_adults,form.elements.wizard_children])if(!field.checkValidity()){$('[data-wizard-party]').open=true;field.reportValidity();return;}
@@ -452,7 +458,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(event.target.name==='wizard_theme' || event.target.name==='wizard_pace'){
       answers.wave={...answers.wave,[event.target.name==='wizard_theme'?'theme':'pace']:event.target.value};routes({refreshSettings:false});
     }
-    if(['wizard_route','wizard_starter'].includes(event.target.name)){selectionMade=true;$('[data-wizard-selection]').open=false;selectedPlan();$('[data-wizard-selection-summary]').focus();}
+    if(['wizard_route','wizard_starter'].includes(event.target.name)){workshop.progress?.action(attempt,'selected');selectionMade=true;$('[data-wizard-selection]').open=false;selectedPlan();$('[data-wizard-selection-summary]').focus();}
     summary();
     if(['wizard_date','wizard_start','wizard_end','wizard_route','wizard_starter'].includes(event.target.name)){origin();transport();railForm.render();busForm.render();}
   });
@@ -475,11 +481,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(saving || save.disabled || !proposal)return;
     saving=true;save.disabled=true;mount.setAttribute('aria-busy','true');let intent;
     try {
+      const dayCount=journeyDays(workshop.getState()).length;
       const committed=await workshop.setState(current=>{intent=applyWizardPlan(current,proposal,catalog,{separate:proposal.placement==='separate',context:busContext});return intent.state;},multi()?'План сохранён в поездке.':'Прогулка сохранена в поездке.',{expectedRevision:revision});
-      if(committed.conflict || !intent?.applied){announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
+      if(committed.conflict || !intent?.applied){workshop.progress?.action(attempt,'refused',{reason:'stale'});announce('Поездка уже изменилась. Обновите предложение перед сохранением.');revision=-1;return;}
       if(committed.saved)document.dispatchEvent(new CustomEvent('godune:useful-action',{detail:'plan_saved'}));
       const readiness=readinessCopy(assessments,committed.saved);
-      workshop.progress?.saved(attempt,assessments.find(row=>row.calculated)||assessments[0],committed.saved);
+      await workshop.progress?.saved(attempt,assessments.find(row=>row.calculated)||assessments[0],committed.saved,{trip:workshop.getState(),secondDay:dayCount<2&&journeyDays(workshop.getState()).length>=2});
       $('[data-wizard-form]').hidden=true;$('[data-wizard-progress="3"]').setAttribute('aria-current','step');
       $('[data-wizard-saved]').hidden=false;
       $('[data-wizard-lead]').textContent=committed.saved?(proposal.bus&&Object.keys(proposal.bus).length?'День сохранён вместе с рейсами. Время прогулок и возвращения можно уточнить в настройках; путеводитель — взять с собой.':'Остановки уже в Вашей поездке. Их можно переставить, дополнить или взять с собой.'):'Остановки остаются в этой вкладке. Файл поездки поможет перенести их на другой телефон.';
@@ -492,7 +499,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       $('[data-wizard-title]').textContent=readiness.title;
       (committed.saved?$('[data-wizard-saved-travel]'):$('[data-wizard-download]')).focus({preventScroll:true});
       document.dispatchEvent(new CustomEvent('godune:day-ready',{detail:{saved:committed.saved}}));
-    } catch {announce('Не удалось сохранить день. Ответы здесь — попробуйте ещё раз.');}
+    } catch {workshop.progress?.action(attempt,'failed',{reason:'storage'});announce('Не удалось сохранить день. Ответы здесь — попробуйте ещё раз.');}
     finally {saving=false;mount.removeAttribute('aria-busy');save.disabled=false;changed();}
   });
 

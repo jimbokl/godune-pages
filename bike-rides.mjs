@@ -5,6 +5,9 @@ import {bikeRentalPicker} from './bike-rental-ui.mjs?v=1';
 import {bikeDistance} from './bike-route-profile.mjs';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTravelMatrix} from './travel-estimates.mjs?v=13';
+import {createScenarioJournal} from './scenario-journal.mjs';
+import {tripJournalBindings} from './scenario-bindings.mjs';
+import {journeyDays} from './trip-days-state.mjs?v=27';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-bike-rides]');
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 const names={fits:'По вашим условиям',needs_info:'Нужно уточнить',does_not_fit:'Не подходят'};
@@ -14,7 +17,8 @@ const dateLabel=date=>new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long
 if(root){
  const form=root.querySelector('form'),status=root.querySelector('[role=status]'),list=root.querySelector('[data-bike-results]'),tabs=root.querySelector('[data-bike-tabs]');
  const field=name=>form.elements.namedItem(name),submit=form.querySelector('[type=submit]');
- let ctx,pending,rows=[],guard,revision,sequence=0,busy=false,saving=false,currentSettings;
+ let ctx,pending,rows=[],guard,revision,sequence=0,busy=false,saving=false,currentSettings,attempt;
+ const begin=()=>attempt ||= ctx.journal.begin('rental');
  const stopViews=new Map(),rentalViews=new Map(),rentalPreviews=new WeakMap();
  field('date').value=new Date().toLocaleDateString('sv-SE');
  const initial=new URL(location.href).searchParams;
@@ -41,7 +45,7 @@ if(root){
    const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
    if(memory.compatibility)throw Error('Сначала откройте сохранённую поездку в «Моём дне».');
    window.addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
-   return {catalog,rides,rentals,matrix,engine,memory};
+   return {catalog,rides,rentals,matrix,engine,memory,journal:createScenarioJournal(storage)};
   })().catch(error=>{pending=null;throw error;});
   return pending;
  }
@@ -93,6 +97,7 @@ if(root){
   content.append(stopPicker(row));
   content.append(bikeRentalPicker({row,preview:chosen,choices:bikeRentalChoices(ctx.rentals,row),view:rentalView(row),base,catalog:ctx.catalog,onChange:focus=>{
    if(busy||saving)return;sequence++;drawTabs();show(preview(row).state);
+   const actionAttempt=begin();ctx.journal.event(actionAttempt,'selected');ctx.journal.event(actionAttempt,'calculated',{criteria:{calculated:true,conflicts_shown:true,return_accounted:null}});
    status.textContent='Велосипед и прогулка пересчитаны вместе.';
    list.querySelector(`[data-ride="${row.id}"] ${focus}`)?.focus({preventScroll:true});
   }}));
@@ -170,9 +175,13 @@ if(root){
  }
  async function save(row){
   if(busy||saving)return;saving=true;for(const el of form.elements)el.disabled=true;list.querySelectorAll('button,input,select').forEach(el=>el.disabled=true);
+  const actionAttempt=begin();await ctx.journal.event(actionAttempt,'selected');
   try{
    await ctx.memory.sync();
+   const beforeCount=journeyDays(ctx.memory.get()).length;
    const result=await ctx.memory.change(current=>appendBikeDay(current,row,ctx.catalog,guard),{expectedRevision:revision,label:'Добавлена велопрогулка'});
+   await ctx.journal.event(actionAttempt,result.conflict||!result.saved?'refused':'saved',result.conflict||!result.saved?{reason:result.conflict?'stale':'storage'}:{bindings:await tripJournalBindings(result.state)});
+   if(result.saved&&!result.conflict&&beforeCount<2&&journeyDays(result.state).length>=2)await ctx.journal.event(actionAttempt,'second_day');
    if(result.conflict)throw Error('Поездка изменилась. Повторите подбор перед сохранением.');
    rows=[];sequence++;tabs.replaceChildren();list.replaceChildren();
    status.replaceChildren(node('span',result.saved?'Велопрогулка сохранена. ':'Прогулка добавлена только в этой вкладке. '));
@@ -180,7 +189,7 @@ if(root){
    if(!result.saved){const download=node('button','Скачать файл поездки','bike-save');download.type='button';download.addEventListener('click',()=>{
     const url=URL.createObjectURL(new Blob([JSON.stringify(ctx.memory.get(),null,2)],{type:'application/json'})),link=node('a');link.href=url;link.download='godune-trip.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
    });status.append(download);}
-  }catch(error){status.textContent=error.message||'Не удалось добавить прогулку. Повторите подбор.';}
+  }catch(error){await ctx.journal.event(actionAttempt,'failed',{reason:error.message.includes('Поездка изменилась')?'stale':'storage'});status.textContent=error.message||'Не удалось добавить прогулку. Повторите подбор.';}
   finally{saving=false;for(const el of form.elements)el.disabled=false;if(rows.length){const active=tabs.querySelector('[aria-pressed=true]')?.dataset.state;drawTabs();show(active||preview(rows[0]).state);}}
  }
  async function calculate(event){
@@ -189,14 +198,16 @@ if(root){
   let settings;try{settings=getSettings();}catch(error){status.textContent=error.message;return;}
   busy=true;submit.disabled=true;const ticket=++sequence;status.textContent='Считаем дорогу, остановки и запас времени…';
   try{
-   ctx=await load();await ctx.memory.sync();
+   ctx=await load();if(event){attempt=ctx.journal.begin('rental');await ctx.journal.event(attempt,'selected');}const actionAttempt=attempt;await ctx.memory.sync();
    const found=selectBikeRides(ctx.rides,settings,ctx.catalog,ctx.matrix,ctx.engine);if(ticket!==sequence)return;
    rows=found;currentSettings=settings;stopViews.clear();rentalViews.clear();guard=bikeGuard(ctx.memory.get());revision=ctx.memory.revision;
    const url=new URL(location.href);url.search='';for(const [name,value]of new FormData(form))url.searchParams.set(name,String(value));if(settings.trailer)url.searchParams.set('trailer','1');history.replaceState(null,'',url);
    drawTabs();
    status.textContent=rows.length?`${dateLabel(settings.date)} · начало ${clock(settings.start)}. ${settings.journey==='loop'&&!settings.end_at?'Возвращение к старту учтено. ':''}Выберите прогулку — она добавится отдельным днём.`:'Для этого направления пока нет прогулок. Выберите соседний город.';
    if(rows.length)show(rows[0].state);else list.replaceChildren();
-  }catch(error){if(ticket===sequence){status.textContent=error.message||'Расчёт пока не загрузился. Нажмите «Подобрать прогулку», чтобы повторить.';}}
+   await ctx.journal.event(actionAttempt,'calculated',{criteria:{calculated:true,conflicts_shown:true,return_accounted:null}});
+   if(rows.length>1)await ctx.journal.event(actionAttempt,'compared');
+   }catch(error){ctx?.journal.event(attempt,'failed',{reason:'calculation'});if(ticket===sequence){status.textContent=error.message||'Расчёт пока не загрузился. Нажмите «Подобрать прогулку», чтобы повторить.';}}
   finally{busy=false;submit.disabled=false;}
  }
  form.addEventListener('input',()=>{sequence++;rows=[];tabs.replaceChildren();list.replaceChildren();status.textContent='Условия изменились. Нажмите «Подобрать прогулку».';});

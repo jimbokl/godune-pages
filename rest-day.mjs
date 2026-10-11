@@ -9,6 +9,8 @@ import {formatKopecks} from './trip-money.mjs';
 import {dayPeople} from './trip-party.mjs?v=1';
 import {scheduleServiceInsertion} from './along-route-services-state.mjs?v=1';
 import {dayJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
+import {createScenarioJournal} from './scenario-journal.mjs';
+import {tripJournalBindings} from './scenario-bindings.mjs';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-rest-day]');
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const labels={fits:'Подходит по расчёту',needs_info:'Нужно уточнить',does_not_fit:'Не помещается'};
@@ -18,7 +20,7 @@ if(root){
  const form=root.querySelector('form'),field=n=>form.elements.namedItem(n),submit=form.querySelector('[type=submit]');
  const status=root.querySelector('[role=status]'),results=root.querySelector('[data-rest-results]'),tabs=root.querySelector('[data-rest-tabs]');
  const remove=root.querySelector('[data-rest-remove]'),removeList=root.querySelector('[data-rest-remove-list]'),returnLabel=root.querySelector('[data-rest-return]');
- let ctx,pending,busy=false,sequence=0,rows=[],variants=[],guard,revision,context;
+ let ctx,pending,busy=false,sequence=0,rows=[],variants=[],guard,revision,context,attempt;
  async function load(){
   if(!pending)pending=(async()=>{
    const [{createTripMemory},{loadTrip},c,s,engine]=await Promise.all([import('./trip-memory.mjs?v=26'),import('./trip-memory-bootstrap.mjs?v=5'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
@@ -28,7 +30,7 @@ if(root){
    const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
    if(memory.compatibility)throw Error('Сначала откройте сохранённую поездку в «Моём дне».');
    window.addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
-   return {catalog,entries:registry.entries,engine,memory};
+   return {catalog,entries:registry.entries,engine,memory,journal:createScenarioJournal(storage)};
   })().catch(e=>{pending=null;throw e;});return pending;
  }
  function invalidate(){sequence++;rows=[];variants=[];tabs.replaceChildren();results.replaceChildren();status.textContent='Нажмите «Сравнить варианты», чтобы обновить план.';}
@@ -101,11 +103,12 @@ if(root){
    await ctx.memory.sync();if(alongGuard(ctx.memory.get())!==guard)throw Error('Поездка изменилась. Сравните варианты ещё раз.');
    const result=await ctx.memory.change(current=>confirmRest(current,{guard,context,trip:variant.trip},ctx.catalog),{expectedRevision:revision});
    if(result.conflict)throw Error('Поездка изменилась. Повторите подбор перед сохранением.');
+   await ctx.journal.event(attempt,result.saved?'saved':'refused',result.saved?{bindings:await tripJournalBindings(result.state)}:{reason:'storage'});
    sequence++;results.replaceChildren();tabs.replaceChildren();status.replaceChildren(node('strong',result.saved?'День сохранён. ':'День сохранён только в этой вкладке. '));
    const open=node('a','Открыть Мой день и скачать буклет →');open.href=new URL('planner/',base);status.append(open);
    if(!result.saved){const file=node('button','Скачать файл поездки');file.type='button';file.addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(ctx.memory.get(),null,2)],{type:'application/json'})),a=node('a');a.href=url;a.download='godune-trip.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});status.append(file);}
    controls(ctx.memory.get());
-  }catch(e){invalidate();status.textContent=e.message;controls(ctx.memory.get());}
+  }catch(e){ctx.journal.event(attempt,'refused',{reason:'stale'});invalidate();status.textContent=e.message;controls(ctx.memory.get());}
   finally{busy=false;submit.disabled=false;results.querySelectorAll('button').forEach(b=>b.disabled=false);}
  }
  form.addEventListener('input',invalidate);
@@ -119,7 +122,7 @@ if(root){
  form.addEventListener('submit',async e=>{
   e.preventDefault();if(busy)return;busy=true;submit.disabled=true;const ticket=++sequence;results.replaceChildren();tabs.replaceChildren();status.textContent='Собираем варианты с обедом и возвращением…';
   try{
-   ctx=await load();await ctx.memory.sync();const original=ctx.memory.get();guard=alongGuard(original);revision=ctx.memory.revision;context=field('context').value;
+   ctx=await load();attempt=ctx.journal.begin('rest');await ctx.journal.event(attempt,'selected');await ctx.memory.sync();const original=ctx.memory.get();guard=alongGuard(original);revision=ctx.memory.revision;context=field('context').value;
    const before=restContext(original,ctx.catalog,{context,date:field('date').value,returnTo:field('returnTo').value});
    const nullable=name=>field(name).value===''?null:Number(field(name).value);
    const timing=prefix=>{const values={stages:{approach:0,return_walk:0}};for(const key of ['prepare','collect','change_before','change_after','complete']){
@@ -139,7 +142,8 @@ if(root){
    if(!rows.length){status.textContent='Для этого места пока нет пары «отдых + обед». Выберите Калининград или Светлогорск — там уже есть реальные варианты.';return;}
    tabs.replaceChildren(...Object.entries(labels).filter(([state])=>rows.some(r=>r.state===state)).map(([state,label])=>{const b=node('button',`${label} · ${rows.filter(r=>r.state===state).length}`);b.type='button';b.dataset.state=state;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>render(state));return b;}));
    render(rows[0].state);status.textContent='Сравните варианты. Поездка изменится после вашего выбора.';
-  }catch(e){if(ticket===sequence)status.textContent=({service_day_rail_unresolved:'Обновите обратную электричку в «Моём дне» и повторите подбор.',service_day_generated_unresolved:'Этот день меняется в транспортном планировщике.'}[e.message]||e.message);}
+   if(rows.length>1)await ctx.journal.event(attempt,'compared');
+  }catch(e){ctx?.journal.event(attempt,'failed',{reason:'calculation'});if(ticket===sequence)status.textContent=({service_day_rail_unresolved:'Обновите обратную электричку в «Моём дне» и повторите подбор.',service_day_generated_unresolved:'Этот день меняется в транспортном планировщике.'}[e.message]||e.message);}
   finally{busy=false;submit.disabled=false;}
  });
  load().then(c=>{ctx=c;controls(ctx.memory.get(),true);root.dataset.ready='true';submit.disabled=false;status.textContent='Выберите место или свой день. Остальное соберём в варианты.';}).catch(e=>{submit.disabled=false;status.textContent=e.message;});
