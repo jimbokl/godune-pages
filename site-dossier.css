@@ -1,0 +1,147 @@
+/* The compact dossier language, shared by every page family.
+   Header, logo, photographs, maps and factual content retain their own roles. */
+body .inner-main{--card-shadow:none;--radius:12px;max-width:1160px;padding-top:1.5rem}
+body .inner-main .breadcrumbs{margin-bottom:1rem;font-size:.65rem;line-height:1.6}
+body[data-ui-context] .inner-main :is(.inner-title,.tool-intro h1,.city-page-intro h1,.service-page-heading h1,.dunes-hero h1,.events-heading h1,.news-index h1,.news-info h1,.news-article h1,.dish-hero h1,.dreams-heading h1,.food-hero h1){font:400 clamp(2.2rem,4.4vw,4rem)/1.07 var(--serif);letter-spacing:-.04em;max-width:24ch;margin:.65rem 0 1rem;text-wrap:initial}
+body[data-ui-context] .inner-main :is(.inner-lead,.tool-intro>p:not(.eyebrow):not(.inner-kicker),.events-heading>p:last-child,.dunes-lead,.service-page-heading>p:not(.eyebrow):not(.inner-kicker),.news-lead,.dish-hero>p:not(.eyebrow),.city-page-intro>p:not(.eyebrow)){font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.5;max-width:54rem;color:var(--muted)}
+body[data-ui-context] .inner-main :is(.tool-intro,.city-page-intro,.events-heading,.service-page-heading,.dining-intro){margin:0 0 1.75rem;padding:1rem 0 0;border:0}
+body[data-ui-context] .inner-main :is(.tool-intro,.wizard-page-intro,.events-heading,.transport-hero)::after{display:none}
+body[data-ui-context] .inner-main :is(.eyebrow,.inner-kicker){font-size:.65rem;line-height:1.6;letter-spacing:.16em}
+body[data-ui-context] .inner-main :is(h2,h3){text-wrap:pretty}
+body[data-ui-context] .inner-main :is(.inner-section,.tool-section,.collection-footer,.collection-walks,.route-discovery,.visit-guidance){margin-top:2.5rem}
+body[data-ui-context] .inner-main :is(.inner-section,.tool-section,.collection-footer,.collection-walks,.route-discovery)>h2{font-size:clamp(1.65rem,2.8vw,2.2rem);margin-bottom:1rem}
+body[data-ui-context] .inner-main :is(.button,.save-item,.transport-primary,.transport-secondary,.food-day-save){min-height:44px;border-radius:.55rem;padding:.65rem 1rem;font:500 .85rem/1.5 var(--sans);box-shadow:none}
+body[data-ui-context] .inner-main :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){min-height:44px;border-radius:.5rem;font-size:16px;line-height:1.5}
+body[data-ui-context] .inner-main :is(button,a,summary,input,select,textarea):focus-visible{outline:2px solid var(--sea-line);outline-offset:3px}
+body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.food-guide-day,.dining-card-actions,.tool-links){gap:.6rem 1rem;align-items:center;flex-wrap:wrap}
+body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.dining-card-actions) a{min-height:44px;display:inline-flex;align-items:center}
+
+/* One native switcher: compact on phones, the familiar tool bar on desktop. */
+body .inner-main .site-section-nav{border:0;padding:0;margin:0 0 1.5rem;border-radius:0;background:none;box-shadow:none;min-width:0}
+.site-section-nav>summary,.site-section-nav .site-tool-links{display:none}
+body .site-section-nav .tool-nav{margin:0;padding:0 0 .8rem;border:0;border-bottom:1px solid var(--line);gap:.25rem}
+body .site-section-nav .tool-nav>a,body .site-section-nav .tool-nav-more>summary{min-height:44px;padding:.55rem .8rem;font-size:.85rem;border-radius:.4rem;background:none;border:0;color:var(--muted)}
+body .site-section-nav .tool-nav>a[aria-current]{background:var(--sea);color:var(--ink)}
+body .site-section-nav .tool-nav-more[data-current]>summary{color:var(--ink);background:var(--sea)}
+body .site-section-nav .nav-tools-panel{min-width:15rem;padding:.5rem}
+body .site-section-nav .nav-tools-panel a{min-height:44px;font-size:.8rem;border-radius:.4rem;display:flex;align-items:center}
+
+/* Existing native disclosures gain the same open/closed sign and reading rhythm. */
+body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary{position:relative;min-height:44px;cursor:pointer;list-style:none;text-align:left;justify-content:flex-start;padding:.85rem 2.75rem .85rem 0;color:var(--ink);font:500 .85rem/1.5 var(--sans)}
+body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::-webkit-details-marker{display:none}
+body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"+";position:absolute;right:.2rem;top:.6rem;display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;font:400 1.1rem/1 var(--sans);color:var(--sea-muted);background:none;transform:none}
+body .inner-main:not(:has(.business-page)) details[open]:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"−";background:var(--sea);border-color:transparent;color:var(--sea-ink)}
+body .inner-main:not(:has(.business-page)) :is(.route-source-note,.route-stop-note,.route-access-profile,.dining-menu,.dining-facts,.dining-source-hours,.food-menu-category,.guide-side details,.service-card-details,.service-price-panel,.service-extra-fields,.service-filter-details){border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;box-shadow:none;margin:0;padding:0}
+
+/* Place and collection pages: a human-sized introduction, then useful facts. */
+body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro,.food-place-intro){gap:2rem;margin:1rem 0 2rem;align-items:start}
+body[data-ui-context] .inner-main :is(.place-intro-copy,.collection-intro-copy,.route-intro-copy){padding:0;min-width:0}
+body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro) figure{margin:0}
+body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro) figure img{border-radius:.8rem;max-height:390px;object-fit:cover;width:100%}
+body[data-ui-context] .inner-main :is(.place-layout,.collection-layout,.route-walk-layout,.food-guide-columns){gap:2.5rem;align-items:start}
+body[data-ui-context] .inner-main :is(.place-advice,.collection-guide,.map-day-passport){padding:1rem 1.25rem;background:var(--sea-soft);border:0;border-left:2px solid var(--sea-line);border-radius:0;font-size:.85rem;margin:1rem 0 1.5rem}
+body[data-ui-context] .inner-main :is(.route-practical,.food-guide-practical,.collection-practical){border:1px solid var(--line);border-radius:.8rem;background:var(--card);box-shadow:none;padding:1.3rem;font-size:.85rem}
+body[data-ui-context] .inner-main :is(.route-practical,.food-guide-practical,.collection-practical) h2{font-size:1.6rem;margin-bottom:.8rem}
+body[data-ui-context] .inner-main .poi-card{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:1.25rem 0;box-shadow:none;min-width:0}
+body[data-ui-context] .inner-main .poi-card :is(h2,h3){font-size:clamp(1.45rem,2.2vw,1.8rem);line-height:1.2}
+body[data-ui-context] .inner-main .poi-card p{font-size:.85rem;line-height:1.6}
+body[data-ui-context] .inner-main .poi-card figure img{border-radius:.6rem}
+body[data-ui-context] .inner-main .poi-card-copy{padding:0}
+body[data-ui-context] .inner-main .route-row{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:1.35rem 0;box-shadow:none}
+body[data-ui-context] .inner-main .route-row h3{font-size:clamp(1.5rem,2.4vw,1.9rem)}
+body[data-ui-context] .inner-main .route-row p{font-size:.85rem;line-height:1.65}
+body[data-ui-context] .inner-main .route-walk{padding:1.5rem;border:1px solid var(--line);border-radius:.8rem;background:var(--card);box-shadow:none}
+body[data-ui-context] .inner-main .route-stops h3{font-size:clamp(1.5rem,2.5vw,2rem)}
+body[data-ui-context] .inner-main .route-stops p{font-size:.9rem;line-height:1.6}
+body[data-ui-context] .inner-main .ready-plans{gap:1.25rem}
+body[data-ui-context] .inner-main .ready-plan{border:1px solid var(--line);border-radius:.8rem;overflow:hidden;background:var(--card);box-shadow:none}
+body[data-ui-context] .inner-main .ready-plan-copy{padding:1.25rem;display:flex;flex-direction:column;align-items:start;gap:.6rem}
+body[data-ui-context] .inner-main .ready-plan h2{font-size:1.65rem;line-height:1.2}
+body[data-ui-context] .inner-main .ready-plan p{font-size:.85rem;line-height:1.6}
+body[data-ui-context] .inner-main .ready-plan button{margin-top:auto;width:100%;min-height:44px}
+
+/* Catalogues: photo cards remain visual; facts and actions become consistent. */
+body[data-ui-context] .inner-main :is(.dining-card,.food-card,.service-card,.housing-card,.dream-card,.event-card,.news-card,.tool-hub-card){border:1px solid var(--line);border-radius:.8rem;box-shadow:none;background:var(--card);min-width:0}
+body[data-ui-context] .inner-main :is(.dining-card-body,.food-card,.service-card-body,.housing-card-body,.dream-card-body,.event-body,.news-card-content){padding:1.25rem;gap:.8rem}
+body[data-ui-context] .inner-main :is(.dining-card,.food-card,.service-card,.housing-card,.dream-card,.event-card,.news-card) :is(h2,h3){font-size:clamp(1.45rem,2.2vw,1.85rem);font-weight:400;line-height:1.2}
+body[data-ui-context] .inner-main :is(.dining-card,.service-card,.housing-card,.dream-card,.event-card,.news-card) p{font-size:.85rem;line-height:1.6}
+body[data-ui-context] .inner-main :is(.dining-cards,.events-grid,.news-grid,.housing-grid,.service-results){gap:1.25rem}
+body[data-ui-context] .inner-main :is(.service-choice,.events-controls,.dining-filters,.trip-picker,.food-planner,.budget-controls){border:1px solid var(--line);border-radius:.8rem;box-shadow:none;background:var(--card);padding:1.25rem;gap:1rem}
+body[data-ui-context] .inner-main :is(.service-results-heading,.dining-heading,.food-section-heading){margin:1.5rem 0 1rem;padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+body[data-ui-context] .inner-main :is(.service-results-heading,.dining-heading,.food-section-heading) h2{font-size:1.65rem}
+body[data-ui-context] .inner-main :is(.event-links .event-primary,.dining-card-actions button,.service-card-choices button){min-height:44px;border-radius:.55rem;padding:.65rem .85rem;font-size:.85rem}
+body[data-ui-context] .inner-main .event-links{grid-template-rows:minmax(44px,auto) minmax(44px,auto);gap:.5rem;padding-top:.5rem}
+body[data-ui-context] .inner-main :is(.events-periods,.dining-view-bar,.service-results-actions){gap:.5rem;flex-wrap:wrap}
+body[data-ui-context] .inner-main :is(.events-periods button,.dining-view-bar button,.service-results-actions button){min-height:44px;font-size:.8rem;border-radius:.5rem}
+
+/* Coastal guides and articles use short chapters and a restrained reading column. */
+body[data-ui-context] .inner-main .dunes-hero{gap:2rem;margin:1rem 0 2rem}
+body[data-ui-context] .inner-main .dunes-hero-copy{padding:0}
+body[data-ui-context] .inner-main .dunes-hero img{border-radius:.8rem;max-height:390px;object-fit:cover}
+body[data-ui-context] .inner-main :is(.dunes-section,.dunes-faq,.dunes-related,.dunes-sources){margin:2rem 0 0;padding-top:1.25rem;border-top:1px solid var(--line)}
+body[data-ui-context] .inner-main :is(.dunes-section,.dunes-faq,.dunes-related) h2{font-size:1.8rem;margin-bottom:.8rem}
+body[data-ui-context] .inner-main .dunes-card{padding:1.25rem;border:1px solid var(--line);border-radius:.8rem;background:var(--card);box-shadow:none}
+body[data-ui-context] .inner-main .dunes-card h3{font-size:1.65rem}
+body[data-ui-context] .inner-main .dunes-facts{border-radius:.8rem;padding:1.25rem;box-shadow:none}
+body[data-ui-context] .inner-main :is(.section-jumps,.dunes-jumps,.food-guide-nav){display:flex;flex-wrap:wrap;gap:.25rem 1rem;margin:1.25rem 0;border-block:1px solid var(--line);padding:.5rem 0}
+body[data-ui-context] .inner-main :is(.section-jumps,.dunes-jumps,.food-guide-nav) a{min-height:44px;display:inline-flex;align-items:center;font-size:.8rem}
+body[data-ui-context] .inner-main .news-article{max-width:920px}
+body[data-ui-context] .inner-main :is(.news-body,.news-info){font-size:1rem;line-height:1.75}
+body[data-ui-context] .inner-main :is(.news-body,.news-info) h2{font-size:1.85rem;margin:2rem 0 1rem}
+body[data-ui-context] .inner-main .news-info{padding:0;border:0;border-radius:0;box-shadow:none;background:none}
+body[data-ui-context] .inner-main .news-cover img{max-height:440px;object-fit:cover;border-radius:.8rem}
+body[data-ui-context] .inner-main .news-audiences>div{border-radius:.8rem;padding:1rem 1.25rem}
+body[data-ui-context] .inner-main :is(.city-guide,.food-tour,.tool-hub-card){border-radius:.8rem;box-shadow:none;padding:1.5rem}
+body[data-ui-context] .inner-main :is(.city-guide,.food-tour) h2{font-size:2rem}
+body[data-ui-context] .inner-main .city-guide-list{gap:1.5rem}
+body[data-ui-context] .inner-main :is(.food-guide-section,.food-tour-section){margin-top:2rem}
+body[data-ui-context] .inner-main .food-guide-section h2{font-size:1.8rem}
+
+/* Working states: the same frames, spacing and legible controls. */
+body[data-ui-context] .inner-main :is(.guide-reading,.guide-empty,.travel-next,.travel-empty,.day-disclosure,.planner-new-day,.wave-stop-card,.rest-form,.bike-form,.along-form){border-radius:.8rem;box-shadow:none;padding:1.25rem;background:var(--card);border-color:var(--line)}
+body[data-ui-context] .inner-main :is(.guide-reading h2,.guide-empty h2,.travel-next h2,.travel-empty h2){font-size:clamp(1.8rem,3vw,2.5rem)}
+body[data-ui-context] .inner-main .day-planner .wizard-page-intro{padding:0;margin:1rem 0 1.75rem}
+body[data-ui-context] .inner-main .page-updated{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.7rem;color:var(--muted)}
+
+/* The home stays a photographic shop window with the same compact cards. */
+body[data-home-page] main{--card-shadow:none;--radius:12px}
+body[data-home-page] :is(.page-width,.editorial-width,.hero-content){max-width:1160px}
+body[data-home-page] .section-space{margin-top:4rem}
+body[data-home-page] :is(.showcase-grid,.home-dunes-grid){gap:1.25rem}
+body[data-home-page] :is(.showcase-card,.home-dunes-card){border-radius:.8rem;box-shadow:none}
+body[data-home-page] :is(.showcase-copy,.home-dunes-copy){padding:1.25rem}
+body[data-home-page] :is(.showcase-copy h3,.home-dunes-card h3){font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.2}
+body[data-home-page] :is(.showcase-description,.home-dunes-description){font-size:.85rem;line-height:1.6}
+body[data-home-page] :is(.showcase-filters button,.showcase-open,.home-dunes-open){min-height:44px;font-size:.85rem}
+
+@media(hover:hover){
+ body .site-section-nav .tool-nav a:hover{background:var(--sea-soft);color:var(--ink)}
+ body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav)>summary:hover::after{border-color:var(--sea-line);background:var(--sea-soft)}
+}
+@media(max-width:760px){
+ body.inner-page .inner-main{width:calc(100% - 32px);padding-top:1rem}
+ body[data-ui-context] .inner-main .breadcrumbs{margin-bottom:.6rem}
+ body[data-ui-context] .inner-main :is(.inner-title,.tool-intro h1,.city-page-intro h1,.service-page-heading h1,.dunes-hero h1,.events-heading h1,.news-index h1,.news-info h1,.news-article h1,.dish-hero h1,.dreams-heading h1,.food-hero h1){font-size:clamp(2.1rem,7.5vw,2.65rem);line-height:1.1;letter-spacing:-.035em}
+ body .inner-main .site-section-nav{border:1px solid var(--line);border-radius:.7rem;background:var(--card);margin:0 0 1.25rem}
+ .site-section-nav>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px;padding:.7rem 1rem;cursor:pointer;list-style:none;text-align:left}
+ .site-section-nav>summary::-webkit-details-marker{display:none}
+ .site-section-nav>summary>span:first-child{display:grid;gap:.25rem}
+ .site-section-nav small{font-size:.6rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+ .site-section-nav strong{font-size:1rem;font-weight:500;line-height:1.3}
+ .site-nav-chevron{width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:.1rem .2rem .4rem 0;color:var(--sea-muted)}
+ .site-section-nav[open] .site-nav-chevron{transform:rotate(225deg);margin-top:.5rem;margin-bottom:0}
+ body .site-section-nav .tool-nav{display:none}
+ body .site-section-nav .site-tool-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem;margin:0 .65rem;padding:.65rem 0;border-top:1px solid var(--line)}
+ body .site-section-nav .site-tool-links a{display:flex;align-items:center;min-height:44px;padding:.65rem .55rem;border:0;border-radius:.4rem;font-size:.78rem;line-height:1.5;color:var(--muted);text-decoration:none;overflow-wrap:anywhere}
+ body .site-section-nav .site-tool-links a[aria-current]{background:var(--sea);color:var(--ink)}
+ body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro,.food-place-intro,.dunes-hero){grid-template-columns:1fr;gap:1.25rem;margin:.8rem 0 1.5rem}
+ body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro,.dunes-hero) figure img{max-height:280px;aspect-ratio:1.65;object-fit:cover}
+ body[data-ui-context] .inner-main :is(.place-layout,.collection-layout,.route-walk-layout,.food-guide-columns){gap:1.5rem}
+ body[data-ui-context] .inner-main :is(.dining-card-body,.food-card,.service-card-body,.housing-card-body,.dream-card-body,.event-body,.news-card-content,.dunes-card,.guide-reading,.guide-empty,.route-walk,.city-guide,.food-tour,.tool-hub-card){padding:1rem}
+ body[data-ui-context] .inner-main :is(.service-choice,.events-controls,.dining-filters,.trip-picker,.food-planner,.budget-controls){padding:1rem;gap:.8rem}
+ body[data-ui-context] .inner-main .ready-plan-copy{padding:1rem}
+ body[data-ui-context] .inner-main :is(.inner-section,.tool-section,.collection-footer,.collection-walks,.route-discovery){margin-top:2rem}
+ body[data-home-page] .section-space{margin-top:3rem}
+}
+@media(prefers-reduced-motion:reduce){.site-section-nav *{scroll-behavior:auto;transition:none}}
+@media print{body .inner-main .site-section-nav{display:none}body .inner-main{max-width:none;width:100%;padding:0}}
