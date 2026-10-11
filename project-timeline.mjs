@@ -4,6 +4,13 @@ const kinds = {actual:'Событие', statement:'Заявление', planned:
 const audiences = {tourist:'Для туриста', worker:'Для соискателя', contractor:'Для подрядчика'};
 const params = {kind:'stage',topic:'object',year:'year',audience:'audience'};
 export const currentClaim = row => row.date_claims.find(c=>c.state==='current');
+export const currentVersion = row => row.history?.versions.find(v=>v.id===row.history.current_version_id);
+export function phaseHistory(row) {
+ const versions=row.history?.versions||[];
+ const replaced=new Set(versions.flatMap(v=>v.supersedes));
+ const active=versions.filter(v=>!replaced.has(v.id));
+ return {versions,active,hasConflict:active.some((a,i)=>active.slice(i+1).some(b=>a.conflicts_with.includes(b.id)||b.conflicts_with.includes(a.id)))};
+}
 export function matches(row, filters={}) {
  const claim=currentClaim(row);
  return (!filters.kind||claim.kind===filters.kind)&&(!filters.topic||row.topic===filters.topic)&&(!filters.year||claim.date.slice(0,4)===filters.year)&&(!filters.audience||row.impacts.some(i=>i.audience===filters.audience));
@@ -33,11 +40,13 @@ function cell(value) {
 }
 export function timelineCsv(data, ids) {
  const sources=new Map(data.sources.map(s=>[s.id,s]));
- const lines=[['ID','Этап','Объект','Название','Дата в реестре','Точность','Отношение к дате','Понятная дата','Дата сообщения','Источники','История сроков','Что это меняет','Следующее подтверждение','Проверено']];
+ const lines=[['ID','Этап','Объект','Название','Дата в реестре','Точность','Отношение к дате','Понятная дата','Дата сообщения','Источники','История сроков','Что это меняет','Следующее подтверждение','Проверено','Текущая версия','Дата наблюдаемого события','Добавлено в реестр','Есть расхождение','Полная история этапа']];
  const rows=data.milestones.filter(row=>!ids||ids.has(row.id)).sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
  for(const row of rows){
-  const c=currentClaim(row),refs=c.source_ids.map(id=>sources.get(id));
-  lines.push([row.id,kinds[c.kind],row.topic,row.title,c.date,c.precision,c.relation,dateText(c),refs.map(s=>s.published_at||'Дата не указана').join(' | '),refs.map(s=>s.url).join(' | '),row.date_claims.filter(c=>c.state!=='current').map(c=>`${c.state}: ${dateText(c)} · ${c.source_ids.map(id=>sources.get(id).url).join(' ')} · ${c.note||''}`).join(' | '),row.impacts.map(i=>`${audiences[i.audience]}: ${i.text}`).join(' | '),row.next_evidence,c.recorded_at]);
+  const c=currentClaim(row),version=currentVersion(row),history=phaseHistory(row);
+  const refs=version?c.source_ids.map(id=>version.source_snapshots.find(s=>s.source_id===id)):c.source_ids.map(id=>sources.get(id));
+  const archive=history.versions.map(v=>`Версия ${v.version} (${v.id}) · ${v.status} · ${kinds[v.date_claim.kind]}: ${dateText(v.date_claim)} · событие: ${v.observed_on||'не указано'} · добавлено: ${v.recorded_at} · ${v.description} · ${v.source_snapshots.map(s=>`${s.title}: ${s.url} (сообщение ${s.published_at||'без даты'})`).join(' | ')} · заменяет: ${v.supersedes.join(', ')||'нет'} · расходится с: ${v.conflicts_with.join(', ')||'нет'} · ${v.conflict_reason} · ${v.reason} · SHA256 ${v.digest}`).join('\n');
+  lines.push([row.id,kinds[c.kind],row.topic,row.title,c.date,c.precision,c.relation,dateText(c),refs.map(s=>s.published_at||'Дата не указана').join(' | '),refs.map(s=>s.url).join(' | '),row.date_claims.filter(c=>c.state!=='current').map(c=>`${c.state}: ${dateText(c)} · ${c.source_ids.map(id=>sources.get(id).url).join(' ')} · ${c.note||''}`).join(' | '),row.impacts.map(i=>`${audiences[i.audience]}: ${i.text}`).join(' | '),row.next_evidence,c.recorded_at,version?.id,version?.observed_on,version?.recorded_at,history.hasConflict?'Да':'Нет',archive]);
  }
  return '\ufeff'+lines.map(line=>line.map(cell).join(';')).join('\r\n')+'\r\n';
 }
@@ -68,7 +77,7 @@ if(typeof document!=='undefined'){
    for(const control of controls)control.value=filters[control.dataset.timelineFilter];
    counter.textContent=`Показано ${visible} из ${records.length}`;empty.hidden=visible!==0;exportButton.disabled=visible===0;
   };
-  const revealAnchor=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(!target?.matches('[data-timeline-record],[data-timeline-year]'))return;if(target.hidden){filters={};apply();history.replaceState(null,'',filterUrl(location.href,filters));}const event=target.querySelector('.timeline-event');if(event)event.open=true;target.scrollIntoView({block:'start'});};
+  const revealAnchor=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(!target?.matches('[data-timeline-record],[data-timeline-year],[data-phase-version]'))return;const record=target.closest('[data-timeline-record]')||target;if(record.hidden){filters={};apply();history.replaceState(null,'',filterUrl(location.href,filters));}const event=record.querySelector('.timeline-event');if(event)event.open=true;for(let parent=target.parentElement;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;target.scrollIntoView({block:'start'});};
   for(const control of controls)control.addEventListener('change',()=>{filters[control.dataset.timelineFilter]=control.value;history.pushState(null,'',filterUrl(location.href,filters));apply();});
   toolbar.querySelector('[data-timeline-reset]').addEventListener('click',()=>{filters={};history.pushState(null,'',filterUrl(location.href,filters));apply();});
   window.addEventListener('popstate',()=>{filters=readFilters(location.href,options);apply();revealAnchor();});

@@ -64,6 +64,21 @@ body:has(.timeline-page) .breadcrumbs{margin-bottom:.8rem}
 .timeline-event-body .business-facts>div{padding:.65rem 0;grid-template-columns:7rem minmax(0,1fr);gap:.7rem}
 .timeline-event-body .business-facts dt,.timeline-event-body .business-facts dd{font-size:.8rem}
 .timeline-event-body .timeline-evidence{font-size:.7rem!important;margin:.5rem 0}
+.phase-history{border-top:1px solid var(--line);margin:.75rem 0 0;padding-top:.6rem}
+.phase-history>summary{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:44px;font-size:.85rem;font-weight:600;cursor:pointer}
+.phase-history>summary span{font-size:.7rem;font-weight:400;background:rgba(129,176,198,.16);border-radius:1rem;min-width:1.6rem;text-align:center;padding:.2rem .45rem}
+.phase-history>ol{list-style:none;margin:.6rem 0 0;padding:0}
+.phase-history>ol>li{border-top:1px solid var(--line);padding:1rem 0;scroll-margin-top:7rem}
+.phase-history>ol>li[data-conflict=true]{border-left:3px solid var(--business-amber);padding-left:.75rem}
+.phase-history-meta{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin:0!important;font-size:.75rem!important;color:var(--business-muted)}
+.phase-history-meta a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;text-decoration:none}
+.phase-history h3{font:400 1.15rem/1.3 var(--font-display,Georgia,serif);margin:.3rem 0 .7rem}
+.phase-history .business-facts{margin:.6rem 0}
+.phase-history p{font-size:.8rem;line-height:1.6}
+.phase-history-source,.phase-history-reason{color:var(--business-muted);font-size:.73rem!important}
+.phase-history-conflict{color:var(--ink);border-left:2px solid var(--business-amber);padding-left:.65rem}
+.phase-history>summary:focus-visible{outline:2px solid #5786a3;outline-offset:3px;border-radius:.3rem}
+@media(max-width:480px){.phase-history .business-facts>div{grid-template-columns:minmax(0,1fr);gap:.2rem}.phase-history .business-facts dt{font-size:.72rem}.phase-history-meta{align-items:flex-start}}
 .timeline-calendar-source{font-size:.85rem;line-height:1.6;display:grid;gap:.7rem}
 .timeline-aside{background:rgba(128,154,163,.065);border:1px solid var(--line);border-radius:.9rem;padding:1.4rem}
 .timeline-aside>section+section{border-top:1px solid var(--line);margin-top:1.4rem;padding-top:1.4rem}
