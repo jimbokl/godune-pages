@@ -1,0 +1,130 @@
+{
+  "checked_at": "2026-10-11",
+  "documents": [
+    {
+      "document_id": "order-255",
+      "page_count": 41,
+      "pages": [
+        {
+          "page": 1,
+          "preview": {
+            "height": 1800,
+            "sha256": "71af7bf42838036aad23ed1054fe902c1d07e3113087de91c65dfe12576dc5f4",
+            "url": "/assets/project-documents/order-255-p1-1800.webp",
+            "width": 1272
+          },
+          "thumbnail": {
+            "height": 600,
+            "sha256": "8232d5452068b7969e8fe4ec783ec342ae8968bf34642f1c449bf5c72c185674",
+            "url": "/assets/project-documents/order-255-p1-600.webp",
+            "width": 424
+          },
+          "title": "Титульная страница"
+        },
+        {
+          "page": 4,
+          "preview": {
+            "height": 1800,
+            "sha256": "78fda787f7078a597e754aafdaef830a8d4ec69fbb4662d805e9cd8c3db4325f",
+            "url": "/assets/project-documents/order-255-p4-1800.webp",
+            "width": 1272
+          },
+          "thumbnail": {
+            "height": 600,
+            "sha256": "68e82c9632cc112e3bcf217a09c8329792ff8ef45717f2c5a351f9c03371309e",
+            "url": "/assets/project-documents/order-255-p4-600.webp",
+            "width": 424
+          },
+          "title": "Схема территории"
+        }
+      ],
+      "pdf_sha256": "671c451459eef228f1d65464e460023ac10c10a82a693954bab542c14fb0c3b1",
+      "pdf_url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf",
+      "source_id": "municipal-255"
+    },
+    {
+      "document_id": "order-404",
+      "page_count": 20,
+      "pages": [
+        {
+          "page": 1,
+          "preview": {
+            "height": 1800,
+            "sha256": "197a5cccf30bafc84120c80a156fcccd626334a6545871366e2daa177d229406",
+            "url": "/assets/project-documents/order-404-p1-1800.webp",
+            "width": 1272
+          },
+          "thumbnail": {
+            "height": 600,
+            "sha256": "ed0f368d31daf4ee310cb0f4954d9d2b1e65f76b85b471897bfa53d0dd97d826",
+            "url": "/assets/project-documents/order-404-p1-600.webp",
+            "width": 424
+          },
+          "title": "Титульная страница"
+        },
+        {
+          "page": 4,
+          "preview": {
+            "height": 1272,
+            "sha256": "426920703ef4fcbfd33768969329a28b24a5177d8a767d624342480ec67cc2ab",
+            "url": "/assets/project-documents/order-404-p4-1800.webp",
+            "width": 1800
+          },
+          "thumbnail": {
+            "height": 424,
+            "sha256": "12a19c900423e54f2fd446234f38832595be590a524d67920c2f98b3d00f6f5c",
+            "url": "/assets/project-documents/order-404-p4-600.webp",
+            "width": 600
+          },
+          "title": "Схема территории"
+        }
+      ],
+      "pdf_sha256": "77c9c1a9bdbe55d02c52d101f64c376bd47496f8714c8680ab2a906d110f517f",
+      "pdf_url": "https://zelenogradsk.com/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D0%B0%20%D0%BE%D1%82%2027.10.2025%20%E2%84%96%20404%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%B8%D0%B7%D0%BC.%20%D0%B2%20%D0%9F%D0%9C%D0%A2%20%D0%9A%D1%83%D1%80%D0%BE%D1%80%D1%82%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%B4%D1%8E%D0%BD%D0%B0%20%D0%BF.%20%D0%9F%D0%BE%D0%B2%D0%B0%D1%80%D0%BE%D0%B2%D0%BA%D0%B0.pdf",
+      "source_id": "municipal-404"
+    },
+    {
+      "document_id": "order-364",
+      "page_count": 48,
+      "pages": [
+        {
+          "page": 1,
+          "preview": {
+            "height": 1800,
+            "sha256": "2850e63c5bd498753855a0c82adaade91c89862a643348fd876e5111f358065e",
+            "url": "/assets/project-documents/order-364-p1-1800.webp",
+            "width": 1272
+          },
+          "thumbnail": {
+            "height": 600,
+            "sha256": "a719715d038c95b5c3d3656749ade174b97706c540afe1c89dba4743d1415d92",
+            "url": "/assets/project-documents/order-364-p1-600.webp",
+            "width": 424
+          },
+          "title": "Титульная страница"
+        },
+        {
+          "page": 4,
+          "preview": {
+            "height": 1270,
+            "sha256": "f552fd125c68cca059bbd3543470e13e08e5d7e92fc305aaaca4b9ee11a7e5a2",
+            "url": "/assets/project-documents/order-364-p4-1800.webp",
+            "width": 1800
+          },
+          "thumbnail": {
+            "height": 424,
+            "sha256": "39b84431708d5509677ad21b20f40823063c0a28610a537e434748647659c9de",
+            "url": "/assets/project-documents/order-364-p4-600.webp",
+            "width": 600
+          },
+          "title": "Схема территории"
+        }
+      ],
+      "pdf_sha256": "c7e4075bb9960206711356ad5687ffab08ca9f24c069413a196cd133338d0d4b",
+      "pdf_url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/normgrad/%D0%9F%D0%A0%D0%98%D0%9A%D0%90%D0%97%20%D0%9C%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D0%B0%20%D0%BE%D1%82%2021.08.2026%20%E2%84%96%20364%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%B8%D0%B7%D0%BC.%20%D0%B2%20%D0%9F%D0%9C%D0%A2%20%28%D0%9A%D1%83%D1%80%D0%BE%D1%80%D1%82%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0%29_compressed.pdf",
+      "source_id": "municipal-364"
+    }
+  ],
+  "project_id": "project:belaya-duna",
+  "version": 1
+}
