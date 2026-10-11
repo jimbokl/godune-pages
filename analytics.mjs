@@ -1,6 +1,6 @@
 // Visit counts and explicit useful actions. Never read the local trip or forms.
 export const COUNTER_ID = 113479863;
-const goals = new Set(['plan_saved', 'trip_file_ready', 'guide_download_click']);
+const goals = new Set(['plan_saved', 'trip_file_ready', 'guide_download_click', 'work_budget_saved', 'work_budget_exported', 'work_draft_saved', 'work_draft_exported', 'work_draft_imported', 'work_jobs_exported', 'work_employer_opened']);
 
 export function publicPageUrl(document, location) {
   const canonical = document.querySelector('link[rel="canonical"]')?.href;

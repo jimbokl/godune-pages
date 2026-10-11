@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "checked_at": "2026-10-10",
+  "version": 2,
+  "checked_at": "2026-10-11",
   "project_id": "project:belaya-duna",
   "skills": [
     {
@@ -66,7 +66,8 @@
             "Для иностранного гражданина проверьте действующие требования на официальных ресурсах МВД и «Работы России»."
           ]
         }
-      ]
+      ],
+      "dormitory_ids": []
     }
   ],
   "relationships": {
@@ -77,17 +78,28 @@
       "dormitory_id",
       "source_ids",
       "published_at",
-      "valid_through"
+      "valid_through",
+      "phase_ids",
+      "salary",
+      "checked_at",
+      "review_after",
+      "status"
     ],
     "Dormitory": [
       "place_id",
       "operator_id",
       "project_id",
-      "price",
+      "price_minor",
       "capacity",
       "conditions",
       "source_ids",
-      "checked_at"
+      "checked_at",
+      "currency",
+      "price_period",
+      "available_places",
+      "employer_ids",
+      "review_after",
+      "status"
     ],
     "RelocationGuide": [
       "project_id",

@@ -1,0 +1,31 @@
+/* Work tools share the approved compact Belaya Duna dossier. */
+.work-tabs{display:flex;flex-wrap:wrap;gap:.25rem;margin:0 0 1.5rem;border-bottom:1px solid var(--line);padding:0 0 .65rem}
+.work-tabs a{padding:.65rem .9rem;min-height:44px;display:flex;align-items:center;border-radius:.4rem;text-decoration:none;font-size:.9rem}
+.work-tabs a[aria-current=page]{background:var(--business-blue,#dce9ee);color:#15394f}
+.work-coverage{display:flex;flex-wrap:wrap;gap:.65rem 2rem;border:1px solid var(--line);border-radius:.8rem;padding:1rem 1.25rem;margin:0 0 1.5rem;background:var(--business-surface)}
+.work-coverage p{margin:0;font-size:.85rem;color:var(--business-muted)}
+.work-coverage strong{font-size:1.35rem;color:var(--ink);margin-right:.3rem;font-variant-numeric:tabular-nums}
+.work-filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:.8rem;padding:1rem;border:1px solid var(--line);border-radius:.8rem;margin:1rem 0;background:var(--business-surface)}
+.work-filters label,.work-field{display:grid;gap:.4rem;font-size:.85rem;min-width:0}
+.work-filters input,.work-filters select,.work-field input{width:100%;min-width:0;min-height:44px;border:1px solid var(--line);border-radius:.4rem;background:var(--card,#fff);color:var(--ink);font:inherit;padding:.65rem .75rem;box-sizing:border-box}
+.work-field>span{display:flex;align-items:center;gap:.6rem}.work-field small{color:var(--business-muted);white-space:nowrap;font-size:.75rem}
+.work-filter-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.6rem}.work-filter-actions button,.work-form-actions button,.work-reload{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:.5rem;padding:.65rem 1rem;min-height:44px;background:var(--card,#fff);color:var(--ink)}
+.work-form-actions button.business-primary{background:#4d7f9e;color:#fff;border-color:#4d7f9e}
+.work-form-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem}
+.work-form-actions button:disabled,.work-filter-actions button:disabled{opacity:.5;cursor:default}
+.work-list-count,.work-save-state{font-size:.85rem;color:var(--business-muted);min-height:1.5em;overflow-wrap:anywhere}
+.work-listing{min-width:0;display:flex;flex-direction:column;scroll-margin-top:6rem;overflow-wrap:anywhere}
+.work-listing h2{font-size:1.6rem}.work-listing .work-employer{font-size:.85rem;color:var(--business-muted)}
+.work-listing .work-salary{font-size:1.1rem;color:var(--ink)}.work-listing .business-card-actions{margin-top:auto;display:flex;gap:1rem;flex-wrap:wrap;padding-top:1rem}
+.work-editor{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:start;gap:2rem}.work-editor>div{min-width:0}.work-editor .business-section{margin-top:0}
+.work-editor .business-grid,.work-budget .business-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.work-preview{position:sticky;top:6rem;padding:1.5rem;border:1px solid var(--line);border-radius:.9rem;background:var(--business-surface);min-width:0;overflow-wrap:anywhere}
+.work-preview h2,.work-preview h3{font-size:1.7rem;line-height:1.2;margin:.6rem 0}.work-preview .business-facts>div{padding:.65rem 0}.work-preview p{font-size:.85rem;line-height:1.6}.work-preview .business-badge{display:inline-block}
+.work-result{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0;padding:1.25rem;border-radius:.8rem;background:var(--business-blue,#dce9ee);color:var(--ink)}
+.work-result p{font-size:.85rem;margin:0}.work-result strong{font-size:1.7rem;display:block;margin-top:.5rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.work-checklist{display:grid;gap:.7rem;padding-left:1.4rem;max-width:52rem;font-size:.95rem;line-height:1.65}.work-guide summary{cursor:pointer;min-height:44px;font:1.5rem var(--serif,Georgia,serif);padding:.6rem 0}.work-guide[open] summary{margin-bottom:.5rem}
+.work-reload{margin-bottom:1rem}.work-next{margin-top:2rem}
+[data-work-list] [hidden],.work-job-form [hidden],.work-budget [hidden],.work-reload[hidden]{display:none!important}
+@media(max-width:900px){.work-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.work-editor{grid-template-columns:minmax(0,1fr)}.work-preview{position:static}.work-editor .business-section{margin-bottom:0}}
+@media(max-width:480px){.work-tabs{gap:.15rem}.work-tabs a{font-size:.8rem;padding:.6rem .65rem}.work-filters,.work-editor .business-grid{grid-template-columns:minmax(0,1fr)}.work-budget .business-grid{gap:.8rem}.work-field>span{flex-wrap:wrap;gap:.25rem}.work-result{grid-template-columns:minmax(0,1fr)}.work-result strong{font-size:1.6rem}.work-preview{padding:1rem}.work-form-actions button{flex:1 1 11rem}.work-coverage{gap:.6rem 1rem}}
+@media print{.work-tabs,.work-filters,.work-form-actions,.work-reload{display:none!important}.work-editor{display:block}.work-preview{position:static}.work-listing details:not([open]){display:none}}
