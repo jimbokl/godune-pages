@@ -1193,6 +1193,306 @@
           }
         ]
       }
+    },
+    {
+      "id": "milestone:planning-2025-tourism",
+      "project_id": "project:belaya-duna",
+      "date": "2030-12-31",
+      "period": "До 2030 года · планировка 2025",
+      "title": "I этап: туристско-рекреационный кластер",
+      "status": "plan",
+      "description": "В планировке 2025 года I этап указан до 2030 года: туристско-рекреационный кластер с номерным фондом 10 480 единиц. Даты открытия отдельных гостиниц в этом разделе не приведены.",
+      "source_ids": [
+        "planning-255-phasing"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:planning-2025-tourism:2030",
+          "date": "2030-12-31",
+          "precision": "year",
+          "relation": "by",
+          "year_boundary": "unspecified",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "planning-255-phasing"
+          ],
+          "recorded_at": "2026-10-11"
+        }
+      ],
+      "topic": "planning",
+      "next_evidence": "Документ об изменении этой очереди или о вводе конкретных объектов.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Для поездки потребуется дата открытия конкретного объекта.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Для гостиниц и сервиса документ задаёт горизонт размещения объектов; объявлений о найме здесь нет.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Состав работ, участки и сроки проверяйте по документации конкретного объекта или закупки.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:planning-2025-tourism:1",
+        "versions": [
+          {
+            "id": "phase-version:planning-2025-tourism:1",
+            "version": 1,
+            "milestone_id": "milestone:planning-2025-tourism",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-11",
+            "observed_on": null,
+            "title": "I этап: туристско-рекреационный кластер",
+            "status": "plan",
+            "description": "В планировке 2025 года I этап указан до 2030 года: туристско-рекреационный кластер с номерным фондом 10 480 единиц. Даты открытия отдельных гостиниц в этом разделе не приведены.",
+            "date_claim": {
+              "date": "2030-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "planning-255-phasing"
+              ],
+              "year_boundary": "unspecified"
+            },
+            "source_ids": [
+              "planning-255-phasing"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "planning-255-phasing",
+                "title": "Приказ №255 от 4 августа 2025 · очередность развития, страница 10 (PDF 12)",
+                "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf#page=12",
+                "kind": "primary",
+                "published_at": null
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Первая запись: раздел 2 приказа №255 от 04.08.2025, печатная страница 10 / PDF 12. Сроки и номер этапа сверены со сканом; граница года не уточнена источником.",
+            "previous_digest": null,
+            "digest": "7b6e4edfb497bc3a80de200a75d6ab992606c6666db25c59ba975fa6fb673211"
+          }
+        ]
+      }
+    },
+    {
+      "id": "milestone:planning-2025-creative",
+      "project_id": "project:belaya-duna",
+      "date": "2033-12-31",
+      "period": "До 2033 года · планировка 2025",
+      "title": "II этап: креативные индустрии и общественные объекты",
+      "status": "plan",
+      "description": "В планировке 2025 года II этап указан до 2033 года: кластер креативных индустрий, общественно-деловой кластер и зона свободной торговли / торговый кластер.",
+      "source_ids": [
+        "planning-255-phasing"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:planning-2025-creative:2033",
+          "date": "2033-12-31",
+          "precision": "year",
+          "relation": "by",
+          "year_boundary": "unspecified",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "planning-255-phasing"
+          ],
+          "recorded_at": "2026-10-11"
+        }
+      ],
+      "topic": "planning",
+      "next_evidence": "Документ об изменении этой очереди или о вводе конкретных объектов.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Условия посещения появятся в сообщениях об открытии конкретных объектов.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Документ описывает будущие функции территории; работодателей и вакансии нужно подтверждать отдельно.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Состав работ, участки и сроки проверяйте по документации конкретного объекта или закупки.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:planning-2025-creative:1",
+        "versions": [
+          {
+            "id": "phase-version:planning-2025-creative:1",
+            "version": 1,
+            "milestone_id": "milestone:planning-2025-creative",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-11",
+            "observed_on": null,
+            "title": "II этап: креативные индустрии и общественные объекты",
+            "status": "plan",
+            "description": "В планировке 2025 года II этап указан до 2033 года: кластер креативных индустрий, общественно-деловой кластер и зона свободной торговли / торговый кластер.",
+            "date_claim": {
+              "date": "2033-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "planning-255-phasing"
+              ],
+              "year_boundary": "unspecified"
+            },
+            "source_ids": [
+              "planning-255-phasing"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "planning-255-phasing",
+                "title": "Приказ №255 от 4 августа 2025 · очередность развития, страница 10 (PDF 12)",
+                "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf#page=12",
+                "kind": "primary",
+                "published_at": null
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Первая запись: раздел 2 приказа №255 от 04.08.2025, печатная страница 10 / PDF 12. Сроки и номер этапа сверены со сканом; граница года не уточнена источником.",
+            "previous_digest": null,
+            "digest": "c3dae9ed42edd60746ce61a6baff72e738bcd1936cf74cb9dc577f2b30b54660"
+          }
+        ]
+      }
+    },
+    {
+      "id": "milestone:planning-2025-residential",
+      "project_id": "project:belaya-duna",
+      "date": "2031-12-31",
+      "period": "До 2031 года · планировка 2025",
+      "title": "III этап: перспективный жилой кластер",
+      "status": "plan",
+      "description": "В планировке 2025 года III этап указан до 2031 года: перспективное размещение жилого кластера. Год сохранён по оригиналу, хотя в документе II этап обозначен до 2033 года.",
+      "source_ids": [
+        "planning-255-phasing"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:planning-2025-residential:2031",
+          "date": "2031-12-31",
+          "precision": "year",
+          "relation": "by",
+          "year_boundary": "unspecified",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "planning-255-phasing"
+          ],
+          "recorded_at": "2026-10-11"
+        }
+      ],
+      "topic": "planning",
+      "next_evidence": "Документ об изменении этой очереди или о вводе конкретных объектов.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Срок из планировки не определяет дату заселения конкретного дома.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "worker",
+          "text": "Сроки строительства домов и набор специалистов нужно смотреть по отдельным проектам.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        },
+        {
+          "audience": "contractor",
+          "text": "Состав работ, участки и сроки проверяйте по документации конкретного объекта или закупки.",
+          "source_ids": [
+            "planning-255-phasing"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:planning-2025-residential:1",
+        "versions": [
+          {
+            "id": "phase-version:planning-2025-residential:1",
+            "version": 1,
+            "milestone_id": "milestone:planning-2025-residential",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-11",
+            "observed_on": null,
+            "title": "III этап: перспективный жилой кластер",
+            "status": "plan",
+            "description": "В планировке 2025 года III этап указан до 2031 года: перспективное размещение жилого кластера. Год сохранён по оригиналу, хотя в документе II этап обозначен до 2033 года.",
+            "date_claim": {
+              "date": "2031-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "planning-255-phasing"
+              ],
+              "year_boundary": "unspecified"
+            },
+            "source_ids": [
+              "planning-255-phasing"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "planning-255-phasing",
+                "title": "Приказ №255 от 4 августа 2025 · очередность развития, страница 10 (PDF 12)",
+                "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf#page=12",
+                "kind": "primary",
+                "published_at": null
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Первая запись: раздел 2 приказа №255 от 04.08.2025, печатная страница 10 / PDF 12. Сроки и номер этапа сверены со сканом; граница года не уточнена источником.",
+            "previous_digest": null,
+            "digest": "127b05ae6aadead3cec38caa018479f75e114202b72f594d3c0ed8918b6398c6"
+          }
+        ]
+      }
     }
   ],
   "procurements": [
@@ -1523,6 +1823,18 @@
       "published_at": null,
       "checked_at": "2026-10-11",
       "evidence_text": "Заказчик Конкурса – Акционерное общество \"Корпорация развития Калининградской области\"."
+    },
+    {
+      "id": "planning-255-phasing",
+      "title": "Приказ №255 от 4 августа 2025 · очередность развития, страница 10 (PDF 12)",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf#page=12",
+      "kind": "primary",
+      "published_at": null,
+      "document_date": "2025-08-04",
+      "checked_at": "2026-10-11",
+      "document_sha256": "671c451459eef228f1d65464e460023ac10c10a82a693954bab542c14fb0c3b1",
+      "page": 12,
+      "note": "Раздел 2 планировки 2025 года. Все три года, включая 2031 для III этапа, сверены со сканом. Дата размещения PDF не установлена."
     }
   ],
   "places": [

@@ -28,7 +28,7 @@ export function dateText(claim) {
  const date=new Date(claim.date+'T00:00:00Z');
  const month=new Intl.DateTimeFormat('ru',{month:'long',timeZone:'UTC'}).format(date);
  const monthGenitive=new Intl.DateTimeFormat('ru',{day:'numeric',month:'long',timeZone:'UTC'}).format(date).replace(/^\d+\s+/,'');
- if(claim.precision==='year')return claim.relation==='by'?`До конца ${date.getUTCFullYear()} года`:String(date.getUTCFullYear());
+ if(claim.precision==='year')return claim.relation==='by'?`До ${claim.year_boundary==='unspecified'?'':'конца '}${date.getUTCFullYear()} года`:String(date.getUTCFullYear());
  if(claim.precision==='month')return claim.relation==='by'?`До конца ${monthGenitive} ${date.getUTCFullYear()}`:`${month} ${date.getUTCFullYear()}`;
  const day=new Intl.DateTimeFormat('ru',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(date).replace(/\s*г\.$/,'');
  return (claim.relation==='by'?'До ':'')+day;
@@ -40,13 +40,13 @@ function cell(value) {
 }
 export function timelineCsv(data, ids) {
  const sources=new Map(data.sources.map(s=>[s.id,s]));
- const lines=[['ID','Этап','Объект','Название','Дата в реестре','Точность','Отношение к дате','Понятная дата','Дата сообщения','Источники','История сроков','Что это меняет','Следующее подтверждение','Проверено','Текущая версия','Дата наблюдаемого события','Добавлено в реестр','Есть расхождение','Полная история этапа']];
+ const lines=[['ID','Этап','Объект','Название','Дата в реестре','Точность','Отношение к дате','Понятная дата','Дата сообщения','Источники','История сроков','Что это меняет','Следующее подтверждение','Проверено','Текущая версия','Дата наблюдаемого события','Добавлено в реестр','Есть расхождение','Полная история этапа','Граница года']];
  const rows=data.milestones.filter(row=>!ids||ids.has(row.id)).sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
  for(const row of rows){
   const c=currentClaim(row),version=currentVersion(row),history=phaseHistory(row);
   const refs=version?c.source_ids.map(id=>version.source_snapshots.find(s=>s.source_id===id)):c.source_ids.map(id=>sources.get(id));
   const archive=history.versions.map(v=>`Версия ${v.version} (${v.id}) · ${v.status} · ${kinds[v.date_claim.kind]}: ${dateText(v.date_claim)} · событие: ${v.observed_on||'не указано'} · добавлено: ${v.recorded_at} · ${v.description} · ${v.source_snapshots.map(s=>`${s.title}: ${s.url} (сообщение ${s.published_at||'без даты'})`).join(' | ')} · заменяет: ${v.supersedes.join(', ')||'нет'} · расходится с: ${v.conflicts_with.join(', ')||'нет'} · ${v.conflict_reason} · ${v.reason} · SHA256 ${v.digest}`).join('\n');
-  lines.push([row.id,kinds[c.kind],row.topic,row.title,c.date,c.precision,c.relation,dateText(c),refs.map(s=>s.published_at||'Дата не указана').join(' | '),refs.map(s=>s.url).join(' | '),row.date_claims.filter(c=>c.state!=='current').map(c=>`${c.state}: ${dateText(c)} · ${c.source_ids.map(id=>sources.get(id).url).join(' ')} · ${c.note||''}`).join(' | '),row.impacts.map(i=>`${audiences[i.audience]}: ${i.text}`).join(' | '),row.next_evidence,c.recorded_at,version?.id,version?.observed_on,version?.recorded_at,history.hasConflict?'Да':'Нет',archive]);
+  lines.push([row.id,kinds[c.kind],row.topic,row.title,c.date,c.precision,c.relation,dateText(c),refs.map(s=>s.published_at||'Дата не указана').join(' | '),refs.map(s=>s.url).join(' | '),row.date_claims.filter(c=>c.state!=='current').map(c=>`${c.state}: ${dateText(c)} · ${c.source_ids.map(id=>sources.get(id).url).join(' ')} · ${c.note||''}`).join(' | '),row.impacts.map(i=>`${audiences[i.audience]}: ${i.text}`).join(' | '),row.next_evidence,c.recorded_at,version?.id,version?.observed_on,version?.recorded_at,history.hasConflict?'Да':'Нет',archive,c.precision==='year'&&c.relation==='by'?(c.year_boundary||'end'):'']);
  }
  return '\ufeff'+lines.map(line=>line.map(cell).join(';')).join('\r\n')+'\r\n';
 }

@@ -202,6 +202,30 @@
     },
     {
       "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "to": "milestone:planning-2025-tourism"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "to": "milestone:planning-2025-creative"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "to": "milestone:planning-2025-residential"
+    },
+    {
+      "from": "project:belaya-duna",
       "relation": "has_procurement",
       "source_refs": [
         "business:road-mirror",
@@ -494,7 +518,7 @@
   "inputs": [
     {
       "registry": "business",
-      "sha256": "66504f2dae939b8feb46f4de7a5144cef1a203b66c68ea4fa6b3b1df0337c369"
+      "sha256": "a2ae9426e2ca7cd4a2fc6fdc1faf0f89cf269c8e99dd97b0672064fe74ebbb93"
     },
     {
       "registry": "design",
@@ -899,6 +923,93 @@
       "state": "Плановый срок",
       "title": "Срок подключения к электросетям",
       "url": "/dunes/belaya-duna/timeline/#milestone-power"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "date_claim": {
+        "date": "2030-12-31",
+        "id": "date:planning-2025-tourism:2030",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-11",
+        "relation": "by",
+        "source_ids": [
+          "planning-255-phasing"
+        ],
+        "source_refs": [
+          "business:planning-255-phasing"
+        ],
+        "state": "current",
+        "year_boundary": "unspecified"
+      },
+      "date_label": "До 2030 года",
+      "id": "milestone:planning-2025-tourism",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "state": "Плановый срок",
+      "title": "I этап: туристско-рекреационный кластер",
+      "url": "/dunes/belaya-duna/timeline/#milestone-planning-2025-tourism"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "date_claim": {
+        "date": "2033-12-31",
+        "id": "date:planning-2025-creative:2033",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-11",
+        "relation": "by",
+        "source_ids": [
+          "planning-255-phasing"
+        ],
+        "source_refs": [
+          "business:planning-255-phasing"
+        ],
+        "state": "current",
+        "year_boundary": "unspecified"
+      },
+      "date_label": "До 2033 года",
+      "id": "milestone:planning-2025-creative",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "state": "Плановый срок",
+      "title": "II этап: креативные индустрии и общественные объекты",
+      "url": "/dunes/belaya-duna/timeline/#milestone-planning-2025-creative"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "date_claim": {
+        "date": "2031-12-31",
+        "id": "date:planning-2025-residential:2031",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-11",
+        "relation": "by",
+        "source_ids": [
+          "planning-255-phasing"
+        ],
+        "source_refs": [
+          "business:planning-255-phasing"
+        ],
+        "state": "current",
+        "year_boundary": "unspecified"
+      },
+      "date_label": "До 2031 года",
+      "id": "milestone:planning-2025-residential",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:planning-255-phasing"
+      ],
+      "state": "Плановый срок",
+      "title": "III этап: перспективный жилой кластер",
+      "url": "/dunes/belaya-duna/timeline/#milestone-planning-2025-residential"
     },
     {
       "checked_at": "2026-10-10",
@@ -1388,6 +1499,19 @@
       "registry": "business",
       "title": "Положение архитектурного конкурса · заказчик",
       "url": "https://archi.ru/files/files_uploaded/1545.pdf"
+    },
+    {
+      "checked_at": "2026-10-11",
+      "document_date": "2025-08-04",
+      "document_sha256": "671c451459eef228f1d65464e460023ac10c10a82a693954bab542c14fb0c3b1",
+      "id": "business:planning-255-phasing",
+      "kind": "primary",
+      "note": "Раздел 2 планировки 2025 года. Все три года, включая 2031 для III этапа, сверены со сканом. Дата размещения PDF не установлена.",
+      "page": 12,
+      "published_at": null,
+      "registry": "business",
+      "title": "Приказ №255 от 4 августа 2025 · очередность развития, страница 10 (PDF 12)",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/%D0%9F%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4.%20%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%2004.08.2025%20%E2%84%96%20255%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%9F%D0%9F%D0%A2%20%D0%B8%20%D0%9F%D0%9C%D0%A2%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0.pdf#page=12"
     },
     {
       "checked_at": "2026-10-10",
