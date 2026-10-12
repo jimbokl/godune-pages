@@ -12,7 +12,7 @@ import {vehicleArrival} from './day-mobility.mjs?v=4';
 import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
 import {serviceVisitRows} from './trip-service-visits-state.mjs?v=2026101208';
 import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101208';
-import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101208';
+import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101212';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {focusWaveStop} from './wave-stop-ui.mjs?v=4';

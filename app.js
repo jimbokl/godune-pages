@@ -258,7 +258,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101208'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101212'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
@@ -298,8 +298,8 @@
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
     if ($('#budget-page')) import(url('budget-ui.mjs?v=2026101208')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
-    if ($('[data-route-day-save]')) import(url('route-day-ui.mjs?v=1')).then(({initRouteDay})=>initRouteDay({workshop,base,catalog:data})).catch(()=>{ $('[data-route-day-status]').textContent='Сохранение пока не открылось. Готовый PDF прогулки доступен ниже.'; });
-    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101210')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
+    if ($('[data-route-day-save]')) import(url('route-day-ui.mjs?v=2')).then(({initRouteDay})=>initRouteDay({workshop,base,catalog:data})).catch(()=>{ $('[data-route-day-status]').textContent='Сохранение пока не открылось. Готовый PDF прогулки доступен ниже.'; });
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101212')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101208')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
