@@ -1,36 +1,83 @@
-import {saveTourDay} from './gastronomy.mjs?v=2026101208';
+import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=1';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101208';
+import {plannerDayUrl} from './trip-day-link.mjs?v=1';
+
 export async function initFishWalk({workshop,base,catalog}) {
   const button=document.querySelector('[data-fish-save]'),booklet=document.querySelector('[data-fish-booklet]'),status=document.querySelector('[data-fish-status]');
+  const form=document.querySelector('[data-fish-settings]'),context=document.querySelector('[data-fish-context]'),open=document.querySelector('[data-fish-open]');
   const response=await fetch(new URL('data/gastronomy.json',base));
   if(!response.ok)throw Error('food_unavailable');
   const food=await response.json(),tour=food.fish_tour;
   if(!tour || tour.places.length!==3)throw Error('fish_walk_unavailable');
-  let busy=false;
-  const enabled=value=>{button.disabled=!value;if(booklet)booklet.disabled=!value;};
-  const save=()=>workshop.setState(current=>saveTourDay(current,tour,food,{name:'Зеленоградск на рыбной волне',theme:'fish',time:'12:00',date:null,max_minutes:180}),'Рыбная прогулка добавлена отдельным днём.');
-  enabled(true);
-  button.addEventListener('click',async()=>{
-    if(busy)return;busy=true;enabled(false);
-    try {
+  let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false;
+  const initial=fishWalkTarget(workshop.getState(),tour,id);
+  if(initial?.state==='ready'){
+    id=initial.day.id;
+    const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);
+  }
+  const enabled=value=>{button.disabled=!value;if(booklet)booklet.disabled=!value;for(const input of form?.querySelectorAll('input')||[])input.disabled=!value;};
+  const settings=()=>({id,date:form?.elements.date.value||null,time:form?.elements.time.value||'12:00',edit:dirty});
+  function sync(){
+    if(busy)return;
+    const target=id?fishWalkTarget(workshop.getState(),tour,id):null;
+    if(target&&target.state!=='ready'){
+      enabled(false);if(context)context.textContent='Этот день не найден. Выберите другой день в «Моём дне».';
+      button.textContent='День не найден';if(open)open.href=new URL('planner/',base).href;return;
+    }
+    enabled(true);
+    if(target){
+      const day=target.day,value=fishWalkSettings(day);
+      if(!dirty&&form){form.elements.date.value=value.date||'';form.elements.time.value=value.time;}
+      if(open)open.href=plannerDayUrl(base,id).href;
+      button.textContent=dirty?'Сохранить изменения →':'День сохранён ✓';
+      if(context)context.textContent=`${day.name||'Ваш день'} · мест в плане: ${day.places.length}${day.menu_choices?.length?` · блюд в плане: ${day.menu_choices.length}`:''}.`;
+      const heading=document.querySelector('.fish-pocket>h2+p');if(heading)heading.textContent=day.name||'Ваш день';
+      const overview=document.querySelector('.fish-overview');
+      if(overview){overview.replaceChildren();for(const place of day.places){
+        const poi=catalog.poi.find(p=>p.slug===place),venue=food.venues.find(v=>v.slug===place),li=document.createElement('li'),a=document.createElement('a'),strong=document.createElement('strong'),small=document.createElement('span');
+        a.href=plannerDayUrl(base,id).href;strong.textContent=poi?.name||venue?.name||place;
+        const visit=day.schedule?.stops[place]?.visit??venue?.visit??30;small.textContent=`${visit} мин`;
+        a.append(strong,small);li.append(a);overview.append(li);
+      }}
+    }else{button.textContent='Сохранить день →';if(context)context.textContent='Выберите дату и начало прогулки.';}
+  }
+  function remember(){
+    id=selectedDay(workshop.getState()).id;dirty=false;
+    const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);
+  }
+  async function save(){
+    const value=settings(),result=await workshop.setState(current=>saveFishWalkDay(current,tour,food,value),'Рыбная прогулка сохранена.');
+    if(result.conflict)throw Error('fish_day_conflict');
+    remember();return result;
+  }
+  async function submit(){
+    if(busy||form&&!form.reportValidity())return;busy=true;enabled(false);
+    try{
       const result=await save();
-      button.textContent=result.saved?'День сохранён ✓':'Сохранить день →';
-      status.textContent=result.saved?'День сохранён. Дату и время можно выбрать в своём плане.':'День открыт в этой вкладке. Сохраните буклет, чтобы взять его с собой.';
-    } catch {status.textContent='Не удалось сохранить прогулку. Попробуйте ещё раз.';}
-    finally {busy=false;enabled(true);}
-  });
+      status.textContent=result.saved?'День сохранён. Блюда и остановки можно выбрать в «Моём дне».':'День открыт в этой вкладке. Сохраните буклет, чтобы взять его с собой.';
+    }catch(error){status.textContent=error.message==='linked_day_missing'?'День уже удалён. Выберите другой в «Моём дне».':'Не удалось сохранить прогулку. Проверьте выбор и попробуйте ещё раз.';}
+    finally{busy=false;sync();}
+  }
+  button.addEventListener('click',submit);
+  form?.addEventListener('submit',event=>{event.preventDefault();submit();});
+  form?.addEventListener('input',()=>{dirty=true;button.textContent='Сохранить изменения →';});
   booklet?.addEventListener('click',async()=>{
-    if(busy)return;busy=true;enabled(false);booklet.textContent='Собираем буклет…';
-    try {
-      await save();
-      const trip=structuredClone(workshop.getState()),signature=JSON.stringify(trip);
+    if(busy||form&&!form.reportValidity())return;busy=true;enabled(false);booklet.textContent='Собираем буклет…';
+    try{
+      if(!id||dirty)await save();
+      const current=workshop.getState(),target=fishWalkTarget(current,tour,id);
+      if(target?.state!=='ready')throw Error('linked_day_missing');
+      // Export this saved identity, even if another day is active in another tab.
+      const trip=chooseTripDay(current,id),signature=JSON.stringify(current);
       const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101208');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
-      button.textContent='День сохранён ✓';
-    } catch(error) {status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз.';}
-    finally {busy=false;enabled(true);booklet.textContent='Собрать буклет ↓';}
+    }catch(error){status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':error.message==='linked_day_missing'?'День уже удалён. Выберите другой в «Моём дне».':'Буклет пока не собрался. Попробуйте ещё раз.';}
+    finally{busy=false;booklet.textContent='Собрать буклет ↓';sync();}
   });
-  document.querySelectorAll('.fish-overview a').forEach(link=>link.addEventListener('click',()=>{
+  window.addEventListener('godune:trip-change',sync);
+  document.querySelectorAll('.fish-overview a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
     const stop=document.querySelector(link.hash+' .fish-stop-details');if(stop)stop.open=true;
   }));
+  sync();
 }

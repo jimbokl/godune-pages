@@ -73,6 +73,13 @@ body[data-route] .inner-main .route-journey .journey-stop>summary{padding:20px;p
 @media(max-width:760px){body[data-route] .inner-main .route-journey .journey-stop>summary{padding:18px 16px}}
 /* Selected fish-wave reference: photo collage, compact stops and a day in the margin. */
 .fish-journey{--journey-blue:#126da1;--journey-accent:#a9650e}
+.fish-journey .fish-day-settings{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,200px) minmax(110px,150px);gap:20px;align-items:end;padding:20px 24px;margin:0 0 28px;border:1px solid var(--line);border-radius:8px;background:color-mix(in srgb,var(--journey-blue) 4%,transparent)}
+.fish-day-settings h2{font:400 25px/1.2 var(--serif);margin:0 0 6px}
+.fish-day-settings p{font:400 14px/1.5 var(--sans);color:var(--sea-muted);margin:0}
+.fish-day-settings label{display:grid;gap:7px;min-width:0;font:400 13px/1.4 var(--sans);color:var(--sea-ink)}
+.fish-day-settings input{box-sizing:border-box;width:100%;min-width:0;min-height:48px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font:400 16px/1.4 var(--sans);background:var(--paper);color:var(--ink)}
+.fish-day-settings input:focus-visible{outline:2px solid var(--journey-blue);outline-offset:2px}
+@media(max-width:760px){.fish-journey .fish-day-settings{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;padding:16px;margin-bottom:22px}.fish-day-settings-heading{grid-column:1/-1}.fish-day-settings h2{font-size:24px}.fish-day-settings p{font-size:13px}.fish-day-settings input{padding:10px 8px}}
 html[data-theme=night] .route-journey .button-dark,html[data-theme=night] .fish-journey .button-dark{color:#142c3b}
 html[data-theme=night] .fish-journey{--journey-blue:#91bbd3;--journey-accent:#e6b877}
 .fish-journey .fish-hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);gap:30px;margin-bottom:20px;align-items:center}

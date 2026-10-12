@@ -298,7 +298,7 @@
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
     if ($('#budget-page')) import(url('budget-ui.mjs?v=2026101208')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
-    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101208')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101210')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
     if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101208')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
