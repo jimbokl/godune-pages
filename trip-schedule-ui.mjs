@@ -1,6 +1,6 @@
 import {enhanceWaveStops} from './wave-stop-ui.mjs?v=4';
-import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101202';
-import {selectedDay} from './trip-days-state.mjs?v=2026101202';
+import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101203';
+import {selectedDay} from './trip-days-state.mjs?v=2026101203';
 import {resolveRail} from './trip-rail-state.mjs?v=7';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=10';
@@ -16,14 +16,14 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=14';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=13';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=1';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101202';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101202';
-import {initDayProgress} from './day-progress-ui.mjs?v=2026101202';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101202';
-import {progressMessages} from './day-progress-advice.mjs?v=2026101202';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101203';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101203';
+import {initDayProgress} from './day-progress-ui.mjs?v=2026101203';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101203';
+import {progressMessages} from './day-progress-advice.mjs?v=2026101203';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2';
-import {flexSignature} from './day-flex-advice.mjs?v=2026101202';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101202';
+import {flexSignature} from './day-flex-advice.mjs?v=2026101203';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101203';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 import {routeAccessDetails} from './route-access-ui.mjs?v=1';
@@ -349,7 +349,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101202')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101203')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

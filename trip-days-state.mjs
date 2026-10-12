@@ -10,7 +10,7 @@ import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contra
 import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=1';
 import {hasTransferConnections} from './trip-transfer-connections-contract.mjs';
 import {hasMenuChoices,validMenuChoices,menuChoiceRows} from './trip-menu-choices-contract.mjs';
-import {hasTransportPlans,validTransportPlans,copiedTransportPlans,transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101202';
+import {hasTransportPlans,validTransportPlans,copiedTransportPlans,transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101203';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);

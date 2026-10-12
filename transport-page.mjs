@@ -1,13 +1,13 @@
-import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2026101202';
+import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2026101203';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks as money} from './trip-money.mjs';
-import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101202';
-import {transportStates,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101202';
+import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101203';
+import {transportStates,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101203';
 import {recordTransportAction} from './transport-useful-actions.mjs';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101202';
-import {createTripMemory} from './trip-memory.mjs?v=2026101202';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101203';
+import {createTripMemory} from './trip-memory.mjs?v=2026101203';
 import {createScenarioJournal} from './scenario-journal.mjs';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101202';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101203';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -73,7 +73,20 @@ async function init(){
     if(row.id==='efa'){title='Прогулка по косе';text=`Дюны, лес и смотровые площадки.\n${frozen.answers.shore} минут на прогулку, до ${transportClock(row.time+frozen.answers.shore)}.`;}
     if(row.id==='back'){title='Обратный автобус';text=`${transportClock(back.time)} от Эфы. Возвращение\nв Зеленоградск — ${transportClock(frozen.finish)}.`;}
    }
-   li.append(pictogram,node('h3',title),node('p',text));timeline.append(li);
+   li.append(pictogram,node('h3',title),node('p',text));
+   if(row.id==='shore'&&frozen.shore_walk){
+    const walk=frozen.shore_walk,details=node('details',undefined,'transport-shore-walk');
+    details.append(node('summary',walk.title),node('p','Время на переходы и остановки — ориентир GoDune.','transport-walk-note'));
+    const stops=node('div',undefined,'transport-walk-stops');
+    for(const stop of walk.steps){
+     const card=node('section',undefined,'transport-walk-stop'),top=node('div',undefined,'transport-walk-stop-top');
+     top.append(node('h4',stop.title),node('span',`${stop.minutes} мин`));card.append(top,node('p',stop.text));
+     if(stop.map_url){const link=node('a','Найти место на карте →');link.href=stop.map_url;card.append(link);}
+     const source=node('a',`Источник · ${stop.source.name}`);source.href=stop.source.url;source.className='transport-walk-source';card.append(source);stops.append(card);
+    }
+    details.append(stops);li.append(details);
+   }
+   timeline.append(li);
   }
   result.append(timeline);
   const footer=node('footer',undefined,'transport-card-footer'),grass=node('img'),caption=node('p','Один день —\nбольше, чем кажется');grass.src=new URL('assets/identity/reference-card-reeds-v2.webp',base);grass.alt='';grass.width=300;grass.height=85;footer.append(grass,caption);result.append(footer);
@@ -107,7 +120,7 @@ async function init(){
   pdf.addEventListener('click',async()=>{
    if(ticket!==generation||!receipt)return;const actionAttempt=begin();pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
    try{
-    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101202');signal.throwIfAborted();
+    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101203');signal.throwIfAborted();
     const file=await makeTripGuidePdf({snapshot:transportGuide(frozen),media:{maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]},base:base.href,format:matchMedia('(max-width: 700px)').matches?'phone':'print'},{signal,onProgress:text=>{if(ticket===generation)notify(text);}});
     if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');await journal.event(actionAttempt,'pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
    }catch(error){await journal.event(actionAttempt,error.name==='AbortError'?'refused':'failed',{reason:error.name==='AbortError'?'cancelled':'pdf'});if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}

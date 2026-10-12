@@ -1,7 +1,8 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101202';
-import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101202';
-import {transportStates,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101202';
-import {transportClock} from './transport-page-state.mjs?v=2026101202';
+import {selectedDay} from './trip-days-state.mjs?v=2026101203';
+import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101203';
+import {transportStates,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101203';
+import {transportClock} from './transport-page-state.mjs?v=2026101203';
+import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101203';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 export function initTransportPlans({mount,read,commit,catalog,base}){
  if(!mount)return {render(){}};
@@ -18,7 +19,7 @@ export function initTransportPlans({mount,read,commit,catalog,base}){
    card.append(node('h3',r.title),node('p',`${transportDate(r.date)} · ${r.answers.people} чел.`,'transport-plan-date'),node('p',transportStates[r.state]),node('p',transportTotal(r.price),'transport-plan-cost'));
    if(context)card.append(node('p',context,'transport-plan-context'));
    const details=node('details'),summary=node('summary','Рейсы, стоимость и источники'),list=node('ol');
-   for(const row of r.rows){const li=node('li');li.append(node('strong',`${row.time===null?'':transportClock(row.time)+' · '}${row.title}`),node('p',row.text));list.append(li);}
+   for(const row of transportReceiptRows(r)){const li=node('li');li.append(node('strong',`${row.time===null?(row.timeLabel?row.timeLabel+' · ':''):transportClock(row.time)+' · '}${row.title}`),node('p',row.text));if(row.id.startsWith('shore-walk-')){const source=node('a',`Источник прогулки · ${row.source.name}`);source.href=row.source.url;li.append(source);}list.append(li);}
    const source=node('a',`Источник расписания · проверен ${r.source.checked_at}`);source.href=r.source.url;details.append(summary,list,source);card.append(details);
    const actions=node('div',undefined,'transport-plan-actions'),link=node('a','Открыть расчёт →');link.href=new URL(`${transportPath(r.profile)}?trip-day=${encodeURIComponent(day.id)}`,base);
    const remove=node('button','Убрать из дня');remove.type='button';remove.addEventListener('click',async()=>{remove.disabled=true;try{await commit(t=>removeTransportPlan(t,catalog,day.id,entry.id),'Транспортный расчёт убран из дня.');}finally{remove.disabled=false;}});

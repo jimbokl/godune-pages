@@ -1,4 +1,4 @@
-import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101202';
+import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101203';
 import {putExpense} from './trip-expenses-state.mjs?v=14';
 import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs';
 import {linkedMenuExpense} from './trip-menu-expenses-contract.mjs';

@@ -1,5 +1,5 @@
 // Directory pins are geographic landmarks, never verified doors or walking time.
-import {savedServiceContexts} from './service-context.mjs?v=2026101202';
+import {savedServiceContexts} from './service-context.mjs?v=2026101203';
 export function diningSpatialTemplate(rows){
  const ids=new Set(),anchors=[],candidates=[];
  for(const row of rows){

@@ -1,6 +1,7 @@
 // Portable calculation snapshots. A saved receipt never asserts that a whole
 // Trip day fits, and editing its day never changes the original calculation.
 import {validServiceDate} from './service-calendar.mjs?v=1';
+import {validShoreWalk} from './transport-shore-walk.mjs?v=2026101203';
 import {partyCount} from './trip-party.mjs?v=1';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,fields)=>object(v)&&Object.keys(v).every(k=>fields.includes(k));
@@ -52,7 +53,7 @@ function validCircular(v,rows){
  return rows[0].time===c.outbound_cycle&&rows[1].time===c.shore_start_estimate&&rows[2].time===c.board_by&&(c.backup_cycle===null||rows[3].time===c.backup_cycle-c.boarding);
 }
 export function validTransportReceipt(v){
- if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title','fare_policy','circular'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile,v.fare_policy)||!Array.isArray(v.rows)||v.rows.length>12)return false;
+ if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title','fare_policy','circular','shore_walk'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile,v.fare_policy)||!Array.isArray(v.rows)||v.rows.length>12)return false;
  const bus=v.profile==='curonian-210',calendar=['outside_validity','unpublished_year'];
  const states=bus?['candidate','no_outward','no_return','unknown_transfer','unavailable','car_price',...calendar]:['needs_check','incomplete','conflict','circular_candidate',...calendar];
  if(!states.includes(v.state)||!(v.finish===null||integer(v.finish,0,bus?1439:2879)))return false;
@@ -60,6 +61,7 @@ export function validTransportReceipt(v){
  if(bus&&(v.answers.mode==='car')!==(v.state==='car_price'))return false;
  if(bus&&(v.state==='candidate')!==(v.finish!==null)||!bus&&v.state==='needs_check'&&v.finish===null)return false;
  if(calendar.includes(v.state)&&v.finish!==null||!bus&&['conflict','incomplete'].includes(v.state)&&v.finish!==null)return false;
+ if(v.shore_walk!==undefined&&!validShoreWalk(v.shore_walk,v))return false;
  const ids=new Set(),transport=[],cost=[];
  for(const r of v.rows){
   if(!keys(r,['id','kind','time','title','text','source'])||!text(r.id,64)||ids.has(r.id)||!text(r.title,512)||typeof r.text!=='string'||r.text.length>8192||!['transport','cost'].includes(r.kind))return false;

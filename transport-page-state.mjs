@@ -1,13 +1,16 @@
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 import {transitTable,datedTransitInput} from './transport-day.mjs?v=4';
 import {circularFerryDay} from './ferry-circular.mjs?v=1';
-import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101202';
+import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101203';
+
+import {validShoreWalkProfile,buildShoreWalk,transportReceiptRows} from './transport-shore-walk.mjs?v=2026101203';
 
 const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 export const transportClock=n=>Number.isInteger(n)?`${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}${n>=1440?' (следующий день)':''}`:'Время уточняется';
 export function validateTransportProfile(p){
   if(!p||!['bus210','ferry'].includes(p.adapter)||!p.id||!p.path||!Array.isArray(p.modes)||!p.modes.length||!Array.isArray(p.hubs)||p.hubs.length<2||!Array.isArray(p.prices))throw Error('transport_profile_invalid');
   if(p.fare_policy!==undefined&&(p.adapter!=='ferry'||p.fare_policy!=='passenger-bike-bundle'))throw Error('transport_fare_policy_invalid');
+  if(p.shore_walk!==undefined&&(p.adapter!=='ferry'||!validShoreWalkProfile(p.shore_walk)))throw Error('shore_walk_profile_invalid');
   const ids=new Set();
   for(const r of p.prices){
     if(!r.id||ids.has(r.id)||!['eligible','people','nonriders','vehicle','bike'].includes(r.scope)||!Array.isArray(r.modes)||!r.modes.length||r.modes.some(m=>!p.modes.some(v=>v.id===m))||!(r.amount===null||integer(r.amount,0,1e12))||!validServiceDate(r.source?.checked_at))throw Error('transport_price_invalid');
@@ -97,9 +100,10 @@ export function transportReceipt(p,a,r){
   }else add('no-table',null,p.adapter==='bus210'&&a.mode==='car'?'Вход в парк на машине':'Расписание на выбранную дату',a.mode==='car'&&p.adapter==='bus210'?'Сумма ниже включает отдельные составляющие входа. Дорога на машине здесь не рассчитывается.':'Подтверждённое расписание на эту дату пока не добавлено.');
   for(const v of r.price.rows)rows.push({id:v.id,kind:'cost',time:null,title:v.label,text:`${v.count} × ${v.amount===null?'тариф уточняется':`${v.amount/100} ₽`} · ${v.cost===null?'сумма уточняется':`${v.cost/100} ₽`}`,source:v.source});
   rows.push({id:'price-total',kind:'cost',time:null,title:r.price.total===null?'Полная сумма пока неизвестна':'Итого',text:r.price.total!==null?`${r.price.total/100} ₽`:r.price.known>0?`Известная часть — ${r.price.known/100} ₽. Остальные тарифы нужно уточнить.`:'Подтверждённые тарифы пока не добавлены.'});
-  return {version:1,profile:p.id,date:a.date,answers:structuredClone(a),state:r.state,finish:r.finish,rows,price:structuredClone(r.price),source:structuredClone(source),title:p.title,...(p.fare_policy?{fare_policy:p.fare_policy}:{}),...(r.day?.circular?{circular:structuredClone(r.day.circular)}:{})};
+  const shore_walk=buildShoreWalk(p,a,r);
+  return {version:1,profile:p.id,date:a.date,answers:structuredClone(a),state:r.state,finish:r.finish,rows,price:structuredClone(r.price),source:structuredClone(source),title:p.title,...(shore_walk?{shore_walk}:{}),...(p.fare_policy?{fare_policy:p.fare_policy}:{}),...(r.day?.circular?{circular:structuredClone(r.day.circular)}:{})};
 }
 export function transportGuide(receipt){
   const summary=receipt.circular?.finish_estimate!=null?`Возвращение в Балтийск — ориентировочно ${transportClock(receipt.circular.finish_estimate)}. Время с косы зависит от посадки; расписание указано для круговых рейсов из Балтийска.`:receipt.finish!==null?`По опубликованной таблице возвращение — ${transportClock(receipt.finish)}.`:'Точное возвращение пока не рассчитано.';
-  return {version:1,title:receipt.title,scope:'day',created_at:new Date().toISOString(),transport_receipt:structuredClone(receipt),days:[{id:'day-1',name:receipt.title,date:receipt.date,record:{start_at:null,night_at:null,note:''},party_label:`Компания: ${receipt.answers.people} чел.`,summary,finish:receipt.finish,earliest_finish:null,slack:null,rows:receipt.rows,stops:[],entries:[],services:[],bookings:[],planB:transportPlanB(receipt),kosa:null,access:null,expenses:null}],preparation:[]};
+  return {version:1,title:receipt.title,scope:'day',created_at:new Date().toISOString(),transport_receipt:structuredClone(receipt),days:[{id:'day-1',name:receipt.title,date:receipt.date,record:{start_at:null,night_at:null,note:''},party_label:`Компания: ${receipt.answers.people} чел.`,summary,finish:receipt.finish,earliest_finish:null,slack:null,rows:transportReceiptRows(receipt),stops:[],entries:[],services:[],bookings:[],planB:transportPlanB(receipt),kosa:null,access:null,expenses:null}],preparation:[]};
 }

@@ -8,3 +8,22 @@
 .transport-result-actions{display:grid;grid-template-columns:1fr}.transport-secondary{min-height:48px;background:transparent;color:inherit;border:1px solid var(--line,#c8d4d8);border-radius:10px;font:inherit;cursor:pointer;padding:.7rem 1rem}.transport-secondary:disabled{opacity:.55;cursor:wait}.transport-saved{margin-top:1rem;padding:1rem;border-radius:12px;background:rgba(173,206,221,.18)}.transport-saved p{margin:0 0 .5rem}.transport-saved a{color:inherit;font-weight:650;display:inline-flex;align-items:center;min-height:44px}.transport-plan-date{color:var(--muted,#536672)}.transport-plan-context{padding:.75rem 1rem;border-inline-start:3px solid #c78b36}.transport-saved[hidden]{display:none}
 
 .transport-ferry-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:1.25rem 0 0;padding:.8rem 0;border-block:1px solid var(--line,#d8d5ce);font-size:.95rem;color:var(--muted,#536672)}.transport-ferry-meta span:first-child{font-weight:650;color:var(--ink,#20323d)}
+
+/* Walking details share the transport card, without adding another main step. */
+body[data-transport] .transport-shore-walk{grid-column:2;min-width:0;margin-top:14px;border:1px solid var(--line,#d8d5ce);border-radius:12px;background:rgba(174,203,219,.09);font:400 15px/1.5 var(--sans)}
+body[data-transport] .transport-shore-walk>summary{min-height:44px;padding:12px 14px;cursor:pointer;color:var(--ink);font-weight:600;line-height:1.45;overflow-wrap:anywhere}
+body[data-transport] .transport-shore-walk[open]{padding-bottom:8px}
+body[data-transport] .transport-shore-walk .transport-walk-note,body[data-transport] .transport-walk-overview .transport-walk-note{font:400 13px/1.5 var(--sans);color:var(--muted);margin:0 14px 12px}
+body[data-transport] .transport-walk-stops{display:grid;gap:8px;min-width:0}
+body[data-transport] .transport-shore-walk .transport-walk-stops{padding:0 8px}
+body[data-transport] .transport-walk-stop{min-width:0;padding:12px;border:1px solid var(--line,#d8d5ce);border-radius:9px;background:var(--card,#fffdf9)}
+body[data-transport] .transport-walk-stop-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px}
+body[data-transport] .transport-walk-stop h4{font:600 18px/1.3 var(--serif);margin:0;color:var(--ink)}
+body[data-transport] .transport-walk-stop-top>span{font:600 13px/1.4 var(--sans);color:var(--brand-amber,#a96816);white-space:nowrap}
+body[data-transport] .transport-walk-stop p{font:400 14px/1.55 var(--sans);margin:8px 0;color:var(--muted);white-space:normal}
+body[data-transport] .transport-walk-stop a{display:block;width:fit-content;min-height:44px;padding:10px 0;font:500 13px/1.5 var(--sans);color:var(--action,#386f95);overflow-wrap:anywhere}
+body[data-transport] .transport-walk-stop .transport-walk-source{font-size:12px;font-weight:400;color:var(--muted)}
+body[data-transport] .transport-walk-overview{margin-top:3rem}
+body[data-transport] .transport-walk-overview summary{min-height:44px;cursor:pointer;font:600 18px/1.5 var(--serif)}
+body[data-transport] .transport-walk-overview .transport-walk-note{margin:14px 0}
+@media(max-width:480px){body[data-transport] .transport-shore-walk{grid-column:1/-1;margin-left:0;margin-top:12px}body[data-transport] .transport-shore-walk>summary{padding:10px 12px;font-size:14px}body[data-transport] .transport-walk-stop h4{font-size:18px}}

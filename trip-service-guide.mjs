@@ -1,10 +1,10 @@
 import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101202';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101203';
 import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
-import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101202';
-import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101202';
+import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101203';
+import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101203';
 import {formatKopecks as money} from './trip-money.mjs';
 import {clock} from './day-stop-view.mjs?v=1';
 import {railJourney,excursionJourney} from './day-journey-view.mjs?v=10';

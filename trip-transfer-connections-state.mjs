@@ -1,6 +1,6 @@
 // Selection membership and notes. Never store a computed arrival or fit claim.
-import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101202';
-import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101202';
+import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101203';
+import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101203';
 import {validTransferChoice,validTransferConnections,transferChoices,connectionKey} from './trip-transfer-connections-contract.mjs';
 export const transferConnectionGuard=trip=>JSON.stringify(trip);
 function editable(trip,guard){

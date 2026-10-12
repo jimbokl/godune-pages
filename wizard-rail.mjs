@@ -1,8 +1,8 @@
 // Dated rail choices for the shared wizard. Suggestions only become a saved
 // timetable after the traveller previews and explicitly applies the plan.
 import {waveChoices} from './day-wave.mjs?v=2';
-import {nextDate} from './trip-days-state.mjs?v=2026101202';
-import {tripStarterChoices} from './trip-starters.mjs?v=2026101202';
+import {nextDate} from './trip-days-state.mjs?v=2026101203';
+import {tripStarterChoices} from './trip-starters.mjs?v=2026101203';
 import {railTable,rideSnapshot,validRail,resolveRail} from './trip-rail-state.mjs?v=7';
 import {railStation} from './rail-destinations.mjs?v=1';
 import {planInput} from './trip-schedule-state.mjs?v=19';

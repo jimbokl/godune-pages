@@ -125,7 +125,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     heading('По шагам',false,day.rows[0]?.title||'Точное время ещё не рассчитано.',40);
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){
-      const label=row.kind==='cost'?'Стоимость на компанию':`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
+      const label=row.kind==='cost'?'Стоимость на компанию':`${row.time===null?(row.timeLabel||'Время нужно уточнить'):`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
       const leadHeight=textHeight(label,ui,phone?9:11,5)+textHeight(row.title,ui,phone?12:14,6),bodyHeight=textHeight(row.text);
       // Keep a short event together; a long event starts with at least two body lines.
       const evidenceHeight=(row.source&&!day.kosa?sourceHeight(row.source):0)+(row.sources||[]).reduce((sum,s)=>sum+sourceHeight(s),0);
