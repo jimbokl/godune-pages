@@ -1,9 +1,9 @@
-import {transportDate,transportTotal} from './trip-transport-plans-view.mjs?v=2026101203';
+import {transportDate,transportTotal} from './trip-transport-plans-view.mjs?v=2026101205';
 import {publicBookingTrip} from './trip-bookings-state.mjs?v=3';
 import {baseName} from './personal-points.mjs?v=3';
-import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=2026101203';
-import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2026101203';
-import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=2026101203';
+import {validJourneyProjection,tripHasDraft,journeyDays,tripPlaceIds} from './trip-days-state.mjs?v=2026101205';
+import {cleanTrip, mergeTrips, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2026101205';
+import {downloadTripFile, readTripFile, TRIP_FILE_BYTES, persistentStorage} from './trip-file.mjs?v=2026101205';
 import {validSchedule} from './trip-schedule-state.mjs?v=19';
 import {serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
 import {transferConnectionImportIssue} from './trip-transfer-connections-contract.mjs';
@@ -112,7 +112,7 @@ export function initTripSharing(catalog, base, workshop) {
           title.textContent=`День ${index+1}`+(day.date?` · ${new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(day.date+'T12:00:00Z'))}`:' · дата пока не выбрана');block.append(title);
           const list=document.createElement('ol');
           for(const id of day.places) {const li=document.createElement('li'),link=document.createElement('a');link.href=new URL(`poi/${id}/`,base);link.textContent=catalog.poi.find(p=>p.slug===id).name;li.append(link);list.append(li);}block.append(list);
-          for(const entry of day.transport_plans?.entries||[]){const r=entry.receipt,line=document.createElement('p');line.textContent=`Транспорт: ${r.title} · расчёт на ${transportDate(r.date)} · ${r.answers.people} чел. ${transportTotal(r.price)}`;block.append(line);}
+          for(const entry of day.transport_plans?.entries||[]){const r=entry.receipt,line=document.createElement('p');line.textContent=`Транспорт: ${r.title} · расчёт на ${transportDate(r.date)} · ${r.answers.people} чел. ${transportTotal(r.price,r.rail_connection)}`;block.append(line);}
           if(day.visited){const line=document.createElement('p');line.textContent=`Посещено остановок: ${day.visited.length} из ${day.places.length}. Отметки войдут в файл и ссылку.`;block.append(line);}
           for(const [key,caption]of [['start_at','Начало'],['night_at','К ночи']])if(day[key]) {const line=document.createElement('p');line.textContent=`${caption}: ${baseName(day[key],catalog)}`;block.append(line);}
           for(const row of day.bookings||[]){const line=document.createElement('p');line.textContent=`${row.name} · ${row.date||'дата не выбрана'} · ${row.status==='cancelled'?'отменено':row.status==='booked'?'вы отметили бронь':'планируете'}`;block.append(line);}
@@ -162,7 +162,7 @@ export function initTripSharing(catalog, base, workshop) {
     const controller=new AbortController();guideController=controller;const signature=JSON.stringify(workshop.getState());
     const status=$('#trip-guide-status');$('#trip-guide-save').disabled=true;$('#trip-guide-cancel').hidden=false;
     const message=text=>{if(guideController===controller)status.textContent=text;};
-    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101203');
+    try{message('Готовим путеводитель…');const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101205');
       const result=await downloadPersonalGuide({trip:snapshot,catalog,base,scope:$('#trip-guide-scope').value,format:$('#trip-guide-format').value,signal:controller.signal,onProgress:message,stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       message(`PDF подготовлен: ${result.pages} стр., карты мест: ${result.map_count}. Сохраните файл в папку на телефоне.${result.warnings.length?' '+result.warnings.join(' '):''}`);
     }catch(error){message(controller.signal.aborted?'Сборка отменена. Поездка на месте.':error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Откройте «Взять с собой» заново и скачайте свежий план.':'Путеводитель не собрался целиком. Повторите при связи; ваш план на месте.');}

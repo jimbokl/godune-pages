@@ -1,9 +1,10 @@
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
 import {transitTable,datedTransitInput} from './transport-day.mjs?v=4';
 import {circularFerryDay} from './ferry-circular.mjs?v=1';
-import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101203';
+import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101205';
+import {hasRailConnection,validRailConnectionAnswers,railConnectionTable,railPierReady,buildRailConnection,railConnectionStatus} from './transport-rail-connection.mjs?v=2026101205';
 
-import {validShoreWalkProfile,buildShoreWalk,transportReceiptRows} from './transport-shore-walk.mjs?v=2026101203';
+import {validShoreWalkProfile,buildShoreWalk,transportReceiptRows} from './transport-shore-walk.mjs?v=2026101205';
 
 const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 export const transportClock=n=>Number.isInteger(n)?`${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}${n>=1440?' (следующий день)':''}`:'Время уточняется';
@@ -27,6 +28,7 @@ function validateFerryParty(p,a){
 }
 export function validateTransportAnswers(p,a){
   if(!validServiceDate(a?.date)||!integer(a.ready,0,1439)||!integer(a.boarding,0,120)||!integer(a.shore,30,720)||!integer(a.people,1,20)||!integer(a.exempt,0,a.people)||!integer(a.bikes,1,20)||!p.modes.some(m=>m.id===a.mode)||!['one','two'].includes(a.walks)||!integer(a.forest,30,240))throw Error('transport_answers_invalid');
+  if(!validRailConnectionAnswers(a,p.id))throw Error('transport_rail_answers_invalid');
   validateFerryParty(p,a);return a;
 }
 export function transportCalendar(p,a,tables){
@@ -59,6 +61,15 @@ export function quoteTransportComponents(p,a,engine){
   return {currency:'RUB',known,total,rows};
 }
 export function calculateTransport(p,a,tables,engine){
+  validateTransportProfile(p);validateTransportAnswers(p,a);
+  if(hasRailConnection(a)){
+    const table=railConnectionTable(a,tables.rail),ready=railPierReady(a,table);
+    const result=calculateTransportBase(p,{...a,ready:Math.min(1439,ready??1439)},tables,engine);
+    return {...result,rail_connection:buildRailConnection(a,table,result.day?.circular)};
+  }
+  return calculateTransportBase(p,a,tables,engine);
+}
+function calculateTransportBase(p,a,tables,engine){
   const calendar=transportCalendar(p,a,tables),price=transportPrice(p,a,engine);
   if(p.adapter==='bus210'){
     if(a.mode==='car')return {state:'car_price',calendar,price,day:null,finish:null};
@@ -99,11 +110,11 @@ export function transportReceipt(p,a,r){
     }
   }else add('no-table',null,p.adapter==='bus210'&&a.mode==='car'?'Вход в парк на машине':'Расписание на выбранную дату',a.mode==='car'&&p.adapter==='bus210'?'Сумма ниже включает отдельные составляющие входа. Дорога на машине здесь не рассчитывается.':'Подтверждённое расписание на эту дату пока не добавлено.');
   for(const v of r.price.rows)rows.push({id:v.id,kind:'cost',time:null,title:v.label,text:`${v.count} × ${v.amount===null?'тариф уточняется':`${v.amount/100} ₽`} · ${v.cost===null?'сумма уточняется':`${v.cost/100} ₽`}`,source:v.source});
-  rows.push({id:'price-total',kind:'cost',time:null,title:r.price.total===null?'Полная сумма пока неизвестна':'Итого',text:r.price.total!==null?`${r.price.total/100} ₽`:r.price.known>0?`Известная часть — ${r.price.known/100} ₽. Остальные тарифы нужно уточнить.`:'Подтверждённые тарифы пока не добавлены.'});
+  rows.push({id:'price-total',kind:'cost',time:null,title:r.price.total===null?'Полная сумма пока неизвестна':r.rail_connection?'Итого за паром':'Итого',text:r.price.total!==null?`${r.price.total/100} ₽`:r.price.known>0?`Известная часть — ${r.price.known/100} ₽. Остальные тарифы нужно уточнить.`:'Подтверждённые тарифы пока не добавлены.'});
   const shore_walk=buildShoreWalk(p,a,r);
-  return {version:1,profile:p.id,date:a.date,answers:structuredClone(a),state:r.state,finish:r.finish,rows,price:structuredClone(r.price),source:structuredClone(source),title:p.title,...(shore_walk?{shore_walk}:{}),...(p.fare_policy?{fare_policy:p.fare_policy}:{}),...(r.day?.circular?{circular:structuredClone(r.day.circular)}:{})};
+  return {version:1,profile:p.id,date:a.date,answers:structuredClone(a),state:r.state,finish:r.finish,rows,price:structuredClone(r.price),source:structuredClone(source),title:r.rail_connection?'Балтийская коса из Калининграда: поезд, паром и прогулка':p.title,...(r.rail_connection?{rail_connection:structuredClone(r.rail_connection)}:{}),...(shore_walk?{shore_walk}:{}),...(p.fare_policy?{fare_policy:p.fare_policy}:{}),...(r.day?.circular?{circular:structuredClone(r.day.circular)}:{})};
 }
 export function transportGuide(receipt){
-  const summary=receipt.circular?.finish_estimate!=null?`Возвращение в Балтийск — ориентировочно ${transportClock(receipt.circular.finish_estimate)}. Время с косы зависит от посадки; расписание указано для круговых рейсов из Балтийска.`:receipt.finish!==null?`По опубликованной таблице возвращение — ${transportClock(receipt.finish)}.`:'Точное возвращение пока не рассчитано.';
+  const summary=railConnectionStatus(receipt)||(receipt.circular?.finish_estimate!=null?`Возвращение в Балтийск — ориентировочно ${transportClock(receipt.circular.finish_estimate)}. Время с косы зависит от посадки; расписание указано для круговых рейсов из Балтийска.`:receipt.finish!==null?`По опубликованной таблице возвращение — ${transportClock(receipt.finish)}.`:'Точное возвращение пока не рассчитано.');
   return {version:1,title:receipt.title,scope:'day',created_at:new Date().toISOString(),transport_receipt:structuredClone(receipt),days:[{id:'day-1',name:receipt.title,date:receipt.date,record:{start_at:null,night_at:null,note:''},party_label:`Компания: ${receipt.answers.people} чел.`,summary,finish:receipt.finish,earliest_finish:null,slack:null,rows:transportReceiptRows(receipt),stops:[],entries:[],services:[],bookings:[],planB:transportPlanB(receipt),kosa:null,access:null,expenses:null}],preparation:[]};
 }

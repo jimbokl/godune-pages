@@ -1,13 +1,14 @@
-import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2026101203';
+import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2026101205';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks as money} from './trip-money.mjs';
-import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101203';
-import {transportStates,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101203';
+import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101205';
+import {transportStates,transportStatus,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101205';
+import {railConnectionRows} from './transport-rail-connection.mjs?v=2026101205';
 import {recordTransportAction} from './transport-useful-actions.mjs';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101203';
-import {createTripMemory} from './trip-memory.mjs?v=2026101203';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101205';
+import {createTripMemory} from './trip-memory.mjs?v=2026101205';
 import {createScenarioJournal} from './scenario-journal.mjs';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101203';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101205';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -27,21 +28,26 @@ async function init(){
  form.elements.date.value=['year','month','day'].map(key=>parts.find(p=>p.type===key).value).join('-');
  const setDate=date=>{dateLabel.dateTime=date;dateLabel.textContent=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(`${date}T12:00:00Z`));};
  setDate(form.elements.date.value);
- const fill=answers=>{for(const [key,value] of Object.entries(answers)){if(form.elements[key])form.elements[key].value=key==='ready'?transportClock(value):String(value);}};
+ const fill=answers=>{if(form.elements.origin)form.elements.origin.value=answers.origin||'baltiysk';for(const [key,value] of Object.entries(answers)){if(form.elements[key]){const control=answers.origin==='kaliningrad-rail'&&key==='ready'?form.elements.rail_ready:answers.origin==='kaliningrad-rail'&&key==='boarding'?form.elements.rail_ferry_boarding:form.elements[key];control.value=key==='ready'?transportClock(value):String(value);}}};
  document.querySelector('[data-transport-edit]').addEventListener('click',()=>dialog.showModal());
  document.querySelector('[data-transport-close]').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('close',()=>{if(receipt)fill(receipt.answers);controls();});
  dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();});
  try{
-  const [manifest,bus,services]=await Promise.all([json('data/transport-pages.json'),json('data/kosa-bus-210.json'),json('data/transport-services.json')]);
+  const [manifest,bus,services,rail]=await Promise.all([json('data/transport-pages.json'),json('data/kosa-bus-210.json'),json('data/transport-services.json'),json('data/rail-services.json')]);
   if(manifest.version!==1||services.version!==1||bus.version!==1)throw Error('transport_data_invalid');
-  profile=validateTransportProfile(manifest.profiles.find(p=>p.id===mount.dataset.transportProfile));tables={bus,services};
+  profile=validateTransportProfile(manifest.profiles.find(p=>p.id===mount.dataset.transportProfile));tables={bus,services,rail};
   submit.disabled=false;status.textContent='Начало — у остановки или причала. Дорога от жилья сюда в расчёт не входит.';
   document.documentElement.dataset.transportReady='true';
  }catch{status.textContent='Расчёт не загрузился. Расписание и ссылки доступны ниже.';result.append(node('p',status.textContent));document.documentElement.dataset.transportReady='error';return;}
  const heading=text=>{const n=node('h2',text);n.id='transport-result-title';return n;};
  function controls(){
   if(!profile)return;
+  const rail=form.elements.origin?.value==='kaliningrad-rail';
+  form.querySelectorAll('[data-rail-fields]').forEach(n=>n.hidden=!rail);
+  form.querySelectorAll('[data-local-ready],[data-local-boarding]').forEach(n=>n.hidden=rail);
+  form.elements.ready.required=!rail;if(form.elements.rail_ready)form.elements.rail_ready.required=rail;
+  if(form.elements.origin){form.elements.mode.value=rail?'foot':form.elements.mode.value;form.elements.mode.disabled=rail;}
   const bus=profile.adapter==='bus210'&&form.elements.mode.value==='foot';
   form.querySelectorAll('[data-bus-fields]').forEach(n=>n.hidden=!bus);
   form.querySelectorAll('[data-forest-fields]').forEach(n=>n.hidden=!bus||form.elements.walks.value!=='two');
@@ -51,16 +57,17 @@ async function init(){
   if(profile.adapter==='ferry'){form.elements.bikes.max=Number(form.elements.people.value)-Number(form.elements.exempt.value);form.elements.bikes.disabled=form.elements.mode.value!=='bike';}
  }
  controls();form.addEventListener('input',controls);
- const read=()=>{const v=name=>Number(form.elements[name].value),time=form.elements.ready.value;return {date:form.elements.date.value,ready:Number(time.slice(0,2))*60+Number(time.slice(3)),boarding:v('boarding'),shore:v('shore'),people:v('people'),exempt:v('exempt'),bikes:v('bikes'),mode:form.elements.mode.value,walks:form.elements.walks.value,forest:v('forest'),...(profile.adapter==='ferry'?{vehicle_weight:v('vehicle_weight')}:{})};};
+ const read=()=>{const v=name=>Number(form.elements[name].value),rail=form.elements.origin?.value==='kaliningrad-rail',time=(rail?form.elements.rail_ready:form.elements.ready).value;return {date:form.elements.date.value,ready:Number(time.slice(0,2))*60+Number(time.slice(3)),boarding:v(rail?'rail_ferry_boarding':'boarding'),shore:v('shore'),people:v('people'),exempt:v('exempt'),bikes:v('bikes'),mode:form.elements.mode.value,walks:form.elements.walks.value,forest:v('forest'),...(profile.adapter==='ferry'?{vehicle_weight:v('vehicle_weight'),origin:form.elements.origin.value,...(rail?{station_walk:v('station_walk'),rail_boarding:v('rail_boarding')}:{})}:{})};};
  function render(frozen,ticket,restored){
-  receipt=structuredClone(frozen);setDate(frozen.date);result.replaceChildren();detailsMount.replaceChildren();actionsMount.replaceChildren();
+  receipt=structuredClone(frozen);setDate(frozen.date);result.replaceChildren();detailsMount.replaceChildren();actionsMount.replaceChildren();result.toggleAttribute('data-rail',!!frozen.rail_connection);
   const header=node('header',undefined,'transport-plan-heading'),title=node('div');title.append(heading(profile.adapter==='bus210'?'Куршская коса':'Балтийская коса'),node('p','Маршрут дня','transport-plan-label'));
   const motto=node('p','Море. Лес. Дюны.\nВпечатления.','transport-plan-motto');header.append(icon('geo-alt-filled','transport-plan-pin'),title,motto);result.append(header);
-  if(frozen.state!=='candidate'&&frozen.state!=='circular_candidate'){result.append(node('p',transportStates[frozen.state]||'Проверьте выбранные рейсы по таблице.','transport-visible-status'));}
+  if(frozen.rail_connection||frozen.state!=='candidate'&&frozen.state!=='circular_candidate'){const summary=node('p',frozen.rail_connection?.state==='connected'?'Поезд и паром подобраны туда и обратно.':transportStatus(frozen)||'Проверьте выбранные рейсы по таблице.','transport-visible-status');summary.dataset.state=frozen.rail_connection?.state||frozen.state;result.append(summary);}
   if(profile.adapter==='ferry'){
-   const meta=node('div',undefined,'transport-ferry-meta');meta.append(node('span',transportTotal(frozen.price)),node('span',`${frozen.answers.shore} мин на косе`));result.append(meta);
+   const meta=node('div',undefined,'transport-ferry-meta');const origin=node('button',frozen.rail_connection?'Из Калининграда поездом · изменить':'Из Балтийска · изменить','transport-origin');origin.type='button';origin.addEventListener('click',()=>{dialog.showModal();form.elements.origin.focus();});result.append(origin);
+   meta.append(node('span',transportTotal(frozen.price,frozen.rail_connection)),node('span',`${frozen.answers.shore} мин на косе`));result.append(meta);
   }
-  const assessment=node('p',transportStates[frozen.state]||'Проверьте выбранные рейсы по таблице.','transport-result-heading');assessment.dataset.state=frozen.state;detailsMount.append(assessment,node('p',`${transportDate(frozen.date)} · ${frozen.answers.people} чел.`,'transport-plan-date'));
+  const assessment=node('p',transportStatus(frozen)||'Проверьте выбранные рейсы по таблице.','transport-result-heading');assessment.dataset.state=frozen.state;detailsMount.append(assessment,node('p',`${transportDate(frozen.date)} · ${frozen.answers.people} чел.`,'transport-plan-date'));
   if(restored){const note=transportContextText(restored.entry,restored.day);if(note)detailsMount.append(node('p',note,'transport-plan-context'));}
   const timeline=node('ol',undefined,'transport-timeline');
   for(const row of frozen.rows.filter(row=>row.kind==='transport'&&row.id!=='backup')){
@@ -73,7 +80,17 @@ async function init(){
     if(row.id==='efa'){title='Прогулка по косе';text=`Дюны, лес и смотровые площадки.\n${frozen.answers.shore} минут на прогулку, до ${transportClock(row.time+frozen.answers.shore)}.`;}
     if(row.id==='back'){title='Обратный автобус';text=`${transportClock(back.time)} от Эфы. Возвращение\nв Зеленоградск — ${transportClock(frozen.finish)}.`;}
    }
+   const rail=frozen.rail_connection;
+   if(rail&&row.id==='out'){title='Поезд и паром на косу';text=rail.outward?`${transportClock(rail.outward.departure)} → ${transportClock(rail.outward.arrival)} · поезд до Балтийска.\n${rail.walking_minutes} мин пешком; паром ${transportClock(row.time)}.`:'Поезд из Калининграда не подобран. Измените дату или начните раньше.';}
+   if(rail&&row.id==='back'){title='Паром и поезд обратно';text=rail.inbound?`В Балтийске — около ${transportClock(frozen.circular.finish_estimate)}.\nПоезд ${transportClock(rail.inbound.departure)} → ${transportClock(rail.inbound.arrival)} · Южный вокзал.`:'Возвращение поездом не складывается. Измените прогулку или дату.';}
    li.append(pictogram,node('h3',title),node('p',text));
+   if(rail&&['out','back'].includes(row.id)){
+    const details=node('details',undefined,'transport-shore-walk'),list=node('div',undefined,'transport-walk-stops'),rows=railConnectionRows(frozen)[row.id==='out'?'before':'after'];
+    details.append(node('summary',row.id==='out'?'Поезд и пересадка':'Путь к обратному поезду'));
+    for(const item of rows){const card=node('section',undefined,'transport-walk-stop');card.append(node('h4',item.title),node('p',item.text));if(item.source){const link=node('a',`Источник · ${item.source.name}`);link.href=item.source.url;card.append(link);}list.append(card);}
+    if(row.id==='out')list.append(node('p',`У причала перед паромом — ${transportClock(row.time===null?null:row.time-frozen.answers.boarding)}. Запас: ${frozen.answers.boarding} мин. Путь пешком и запас перед поездом можно изменить в настройках.`,'transport-walk-note'));
+    details.append(list);li.append(details);
+   }
    if(row.id==='shore'&&frozen.shore_walk){
     const walk=frozen.shore_walk,details=node('details',undefined,'transport-shore-walk');
     details.append(node('summary',walk.title),node('p','Время на переходы и остановки — ориентир GoDune.','transport-walk-note'));
@@ -92,7 +109,7 @@ async function init(){
   const footer=node('footer',undefined,'transport-card-footer'),grass=node('img'),caption=node('p','Один день —\nбольше, чем кажется');grass.src=new URL('assets/identity/reference-card-reeds-v2.webp',base);grass.alt='';grass.width=300;grass.height=85;footer.append(grass,caption);result.append(footer);
   const backup=frozen.rows.find(row=>row.kind==='transport'&&row.id==='backup');
   if(backup){const planB=node('details',undefined,'transport-plan-b');planB.append(node('summary',profile.adapter==='ferry'?`Запасной паром · к причалу в ${transportClock(backup.time)}`:`План Б · автобус в ${transportClock(backup.time)}`),node('p',backup.text));detailsMount.append(planB);}
-  const budget=node('details',undefined,'transport-budget'),list=node('dl');budget.append(node('summary',transportTotal(frozen.price)));
+  const budget=node('details',undefined,'transport-budget'),list=node('dl');budget.append(node('summary',transportTotal(frozen.price,frozen.rail_connection)));
   for(const row of frozen.price.rows){const line=node('div');line.append(node('dt',row.label),node('dd',row.cost===null?'Уточняется':money(row.cost)));list.append(line);}
   budget.append(node('h3','Стоимость на компанию'),list);detailsMount.append(budget);
   const source=node('p',undefined,'transport-source'),link=node('a','Источник расписания');link.href=frozen.source.url;source.append(link,document.createTextNode(` · проверен ${frozen.source.checked_at}`));detailsMount.append(source);
@@ -120,7 +137,7 @@ async function init(){
   pdf.addEventListener('click',async()=>{
    if(ticket!==generation||!receipt)return;const actionAttempt=begin();pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
    try{
-    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101203');signal.throwIfAborted();
+    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101205');signal.throwIfAborted();
     const file=await makeTripGuidePdf({snapshot:transportGuide(frozen),media:{maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]},base:base.href,format:matchMedia('(max-width: 700px)').matches?'phone':'print'},{signal,onProgress:text=>{if(ticket===generation)notify(text);}});
     if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');await journal.event(actionAttempt,'pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
    }catch(error){await journal.event(actionAttempt,error.name==='AbortError'?'refused':'failed',{reason:error.name==='AbortError'?'cancelled':'pdf'});if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}

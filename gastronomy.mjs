@@ -4,10 +4,10 @@ import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
 
 import {resolveRail} from './trip-rail-state.mjs?v=7';
 import {foodTrip,anchorRequest} from './gastro-day.mjs?v=13';
-import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=2026101203';
+import {selectedDay,dayHasContent,addTripDay,changeDayDetails,ensureJourney} from './trip-days-state.mjs?v=2026101205';
 import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101203';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101205';
 
 export const clock = minute => `${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 export function gastroDay(settings,anchored=false) {

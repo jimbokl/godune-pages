@@ -8,6 +8,13 @@
 .transport-result-actions{display:grid;grid-template-columns:1fr}.transport-secondary{min-height:48px;background:transparent;color:inherit;border:1px solid var(--line,#c8d4d8);border-radius:10px;font:inherit;cursor:pointer;padding:.7rem 1rem}.transport-secondary:disabled{opacity:.55;cursor:wait}.transport-saved{margin-top:1rem;padding:1rem;border-radius:12px;background:rgba(173,206,221,.18)}.transport-saved p{margin:0 0 .5rem}.transport-saved a{color:inherit;font-weight:650;display:inline-flex;align-items:center;min-height:44px}.transport-plan-date{color:var(--muted,#536672)}.transport-plan-context{padding:.75rem 1rem;border-inline-start:3px solid #c78b36}.transport-saved[hidden]{display:none}
 
 .transport-ferry-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:1.25rem 0 0;padding:.8rem 0;border-block:1px solid var(--line,#d8d5ce);font-size:.95rem;color:var(--muted,#536672)}.transport-ferry-meta span:first-child{font-weight:650;color:var(--ink,#20323d)}
+body[data-transport] .transport-origin{display:block;max-width:100%;min-height:44px;margin:16px 0 0;padding:8px 0;border:0;background:transparent;color:var(--muted,#536672);font:500 14px/1.5 var(--sans);text-align:left;text-decoration:underline;text-underline-offset:4px;cursor:pointer;overflow-wrap:anywhere}
+body[data-transport] .transport-origin:hover{color:var(--ink)}
+body[data-transport] .transport-origin:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:3px}
+body[data-transport] .transport-date{display:flex;align-items:center;min-height:44px}
+:root[data-theme=night] body[data-transport] .transport-step-icon{background:#294459}
+:root[data-theme=night] body[data-transport] .transport-result-actions .transport-secondary{color:#b0d6ee}
+:root[data-theme=night] body[data-transport] .transport-secondary img{filter:brightness(0) invert(1)}
 
 /* Walking details share the transport card, without adding another main step. */
 body[data-transport] .transport-shore-walk{grid-column:2;min-width:0;margin-top:14px;border:1px solid var(--line,#d8d5ce);border-radius:12px;background:rgba(174,203,219,.09);font:400 15px/1.5 var(--sans)}
@@ -27,3 +34,18 @@ body[data-transport] .transport-walk-overview{margin-top:3rem}
 body[data-transport] .transport-walk-overview summary{min-height:44px;cursor:pointer;font:600 18px/1.5 var(--serif)}
 body[data-transport] .transport-walk-overview .transport-walk-note{margin:14px 0}
 @media(max-width:480px){body[data-transport] .transport-shore-walk{grid-column:1/-1;margin-left:0;margin-top:12px}body[data-transport] .transport-shore-walk>summary{padding:10px 12px;font-size:14px}body[data-transport] .transport-walk-stop h4{font-size:18px}}
+
+/* A connected rail day keeps the three-step card; full facts unfold in place. */
+@media(max-width:600px){
+ body[data-transport] .transport-result[data-rail] .transport-visible-status{margin-top:12px;padding:8px 10px;font-size:14px;line-height:1.45}
+ body[data-transport] .transport-result[data-rail] .transport-visible-status[data-state="connected"]{padding:0;border:0;background:transparent;color:var(--muted)}
+ body[data-transport] .transport-result[data-rail] .transport-origin{margin-top:0}
+ body[data-transport] .transport-result[data-rail] .transport-ferry-meta{margin-top:0;padding:8px 0;gap:4px 12px;font-size:13px}
+ body[data-transport] .transport-result[data-rail] .transport-timeline{margin-top:20px}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk{grid-column:2;margin-top:4px;border:0;background:transparent}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk>summary{box-sizing:border-box;display:flex;align-items:center;min-height:44px;padding:8px 32px 8px 0;font-size:13px;line-height:1.4;color:var(--action,#386f95)}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk>summary::after{right:0}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk[open]{grid-column:1/-1;border:1px solid var(--line,#d8d5ce);background:rgba(174,203,219,.09)}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk[open]>summary{padding-left:12px;padding-right:44px}
+ body[data-transport] .transport-result[data-rail] .transport-shore-walk[open]>summary::after{right:8px}
+}

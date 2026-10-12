@@ -1,7 +1,7 @@
-import {assessBikeRide,bikeGuard} from './bike-rides-state.mjs?v=2026101203';
-import {insertionVariants} from './along-route-state.mjs?v=2026101203';
-import {cleanTrip} from './trip-state.mjs?v=2026101203';
-import {selectedDay,validTripDate} from './trip-days-state.mjs?v=2026101203';
+import {assessBikeRide,bikeGuard} from './bike-rides-state.mjs?v=2026101205';
+import {insertionVariants} from './along-route-state.mjs?v=2026101205';
+import {cleanTrip} from './trip-state.mjs?v=2026101205';
+import {selectedDay,validTripDate} from './trip-days-state.mjs?v=2026101205';
 
 export const bikeStopKinds={water:{name:'Вода',minutes:10},rest:{name:'Отдых',minutes:20},
  food:{name:'Еда',minutes:60},toilet:{name:'Туалет',minutes:10},repair:{name:'Ремонт',minutes:30}};

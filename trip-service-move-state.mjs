@@ -1,9 +1,9 @@
-import {ensureJourney,chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101203';
+import {ensureJourney,chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101205';
 import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs?v=1';
-import {nextServiceVisitId} from './trip-service-visits-state.mjs?v=2026101203';
+import {nextServiceVisitId} from './trip-service-visits-state.mjs?v=2026101205';
 import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=1';
-import {validTimeline,timelineOrder} from './trip-service-timeline-state.mjs?v=2026101203';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101203';
+import {validTimeline,timelineOrder} from './trip-service-timeline-state.mjs?v=2026101205';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101205';
 import {emptyCost} from './trip-expenses-state.mjs?v=14';
 
 export const serviceMoveGuard=trip=>JSON.stringify(trip);

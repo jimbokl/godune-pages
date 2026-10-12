@@ -678,7 +678,7 @@
   "inputs": [
     {
       "registry": "business",
-      "sha256": "6fa42997086ecbf2f0f3ce8de51ad4e17124ec5b2994dca728d3f0a9a872de7e"
+      "sha256": "f542a918b023bccc108fa1fe5971022c882411e9e0cbad114b81165c3c61614c"
     },
     {
       "registry": "design",
@@ -893,7 +893,7 @@
       "url": "/dunes/belaya-duna/timeline/#milestone-leader"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-12",
       "date_claim": {
         "date": "2026-09-30",
         "id": "date:utilities:2026-09-30",
@@ -1033,7 +1033,7 @@
       "url": "/dunes/belaya-duna/timeline/#milestone-road-result"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-12",
       "date_claim": {
         "date": "2028-09-30",
         "id": "date:gas:2028-09-30",
@@ -1061,7 +1061,7 @@
       "url": "/dunes/belaya-duna/timeline/#milestone-gas"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-12",
       "date_claim": {
         "date": "2030-09-30",
         "id": "date:power:2030-09-30",
@@ -1226,7 +1226,7 @@
       }
     },
     {
-      "checked_at": "2026-10-11",
+      "checked_at": "2026-10-12",
       "id": "infrastructure:belaya-duna-electricity",
       "kind": "infrastructure",
       "project_id": "project:belaya-duna",
@@ -1245,7 +1245,7 @@
       }
     },
     {
-      "checked_at": "2026-10-11",
+      "checked_at": "2026-10-12",
       "id": "infrastructure:belaya-duna-gas",
       "kind": "infrastructure",
       "project_id": "project:belaya-duna",
@@ -2021,7 +2021,7 @@
       "url": "https://b2b.house/activepurchase/acae4749-7469-4d3c-9ff4-76e9911b28cb_2439ec02/"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-12",
       "id": "business:utilities",
       "kind": "media",
       "note": "",

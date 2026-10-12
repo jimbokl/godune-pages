@@ -1,6 +1,7 @@
 // Editorial walking budgets are separate from the operator's transport times.
 // Saved walks carry their own text and sources; never refill them from live data.
 import {validServiceDate} from './service-calendar.mjs?v=1';
+import {railConnectionRows} from './transport-rail-connection.mjs?v=2026101205';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,allowed)=>object(v)&&Object.keys(v).every(k=>allowed.includes(k));
 const text=(v,max=2048)=>typeof v==='string'&&!!v.trim()&&v.length<=max;
@@ -24,8 +25,11 @@ export function validShoreWalk(v,receipt){
  return keys(v,['version','variant','allocation','title','minutes','steps'])&&v.version===1&&['full','short'].includes(v.variant)&&v.allocation==='editorial-estimate'&&text(v.title,160)&&v.minutes===receipt.answers.shore&&steps(v.steps,false)&&v.steps.reduce((sum,s)=>sum+s.minutes,0)===v.minutes;
 }
 export function transportReceiptRows(receipt){
- return receipt.rows.flatMap(row=>{
+ const rail=railConnectionRows(receipt);
+ return [...rail.before,...receipt.rows.flatMap(row=>{
+  if(row.id==='back')return [structuredClone(row),...rail.after];
+  if(row.id==='backup'&&receipt.rail_connection?.backup_catches_train===false)return [{...structuredClone(row),title:'Запасной паром · поезд уже не подходит',text:`После этого рейса до обратного поезда не успеть. ${row.text}`}];
   if(row.id!=='shore'||!receipt.shore_walk)return [structuredClone(row)];
   return [structuredClone(row),...receipt.shore_walk.steps.map(s=>({id:`shore-walk-${s.id}`,kind:'walk',time:null,timeLabel:`${s.minutes} мин · ориентир на прогулку`,title:s.title,text:s.text,source:structuredClone(s.source)}))];
- });
+ }),...(receipt.rows.some(r=>r.id==='back')?[]:rail.after),...rail.cost];
 }

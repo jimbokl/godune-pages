@@ -1,7 +1,8 @@
 // Portable calculation snapshots. A saved receipt never asserts that a whole
 // Trip day fits, and editing its day never changes the original calculation.
 import {validServiceDate} from './service-calendar.mjs?v=1';
-import {validShoreWalk} from './transport-shore-walk.mjs?v=2026101203';
+import {validShoreWalk} from './transport-shore-walk.mjs?v=2026101205';
+import {hasRailConnection,validRailConnectionAnswers,validRailConnection} from './transport-rail-connection.mjs?v=2026101205';
 import {partyCount} from './trip-party.mjs?v=1';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,fields)=>object(v)&&Object.keys(v).every(k=>fields.includes(k));
@@ -18,7 +19,7 @@ function source(v){
  return (v.image_url==null||https(v.image_url))&&(v.image_sha256==null||typeof v.image_sha256==='string'&&/^[a-f0-9]{64}$/.test(v.image_sha256));
 }
 function answers(a,profile){
- return keys(a,['date','ready','boarding','shore','people','exempt','bikes','mode','walks','forest','vehicle_weight'])&&validServiceDate(a.date)
+ return keys(a,['date','ready','boarding','shore','people','exempt','bikes','mode','walks','forest','vehicle_weight','origin','station_walk','rail_boarding'])&&validServiceDate(a.date)&&validRailConnectionAnswers(a,profile)
   &&integer(a.ready,0,1439)&&integer(a.boarding,0,120)&&integer(a.shore,30,720)&&integer(a.people,1,20)
   &&integer(a.exempt,0,a.people)&&integer(a.bikes,1,20)&&integer(a.forest,30,240)&&['one','two'].includes(a.walks)
   &&(profile==='curonian-210'?['foot','car']:['foot','bike','car']).includes(a.mode)
@@ -53,7 +54,8 @@ function validCircular(v,rows){
  return rows[0].time===c.outbound_cycle&&rows[1].time===c.shore_start_estimate&&rows[2].time===c.board_by&&(c.backup_cycle===null||rows[3].time===c.backup_cycle-c.boarding);
 }
 export function validTransportReceipt(v){
- if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title','fare_policy','circular','shore_walk'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile,v.fare_policy)||!Array.isArray(v.rows)||v.rows.length>12)return false;
+ if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title','fare_policy','circular','shore_walk','rail_connection'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile,v.fare_policy)||!Array.isArray(v.rows)||v.rows.length>12)return false;
+ if(hasRailConnection(v.answers)!==(v.rail_connection!==undefined)||v.rail_connection!==undefined&&!validRailConnection(v.rail_connection,v))return false;
  const bus=v.profile==='curonian-210',calendar=['outside_validity','unpublished_year'];
  const states=bus?['candidate','no_outward','no_return','unknown_transfer','unavailable','car_price',...calendar]:['needs_check','incomplete','conflict','circular_candidate',...calendar];
  if(!states.includes(v.state)||!(v.finish===null||integer(v.finish,0,bus?1439:2879)))return false;
@@ -79,7 +81,7 @@ export function validTransportReceipt(v){
   if(r.id!==p.id||r.title!==p.label||r.text!==text||!equal(r.source,p.source))return false;
  }
  const total=cost.at(-1),totalText=v.price.total!==null?`${v.price.total/100} ₽`:v.price.known>0?`Известная часть — ${v.price.known/100} ₽. Остальные тарифы нужно уточнить.`:'Подтверждённые тарифы пока не добавлены.';
- if(total.id!=='price-total'||Object.hasOwn(total,'source')||total.title!==(v.price.total===null?'Полная сумма пока неизвестна':'Итого')||total.text!==totalText)return false;
+ if(total.id!=='price-total'||Object.hasOwn(total,'source')||total.title!==(v.price.total===null?'Полная сумма пока неизвестна':v.rail_connection?'Итого за паром':'Итого')||total.text!==totalText)return false;
  const sequence=transport.map(r=>r.id).join(',');
  if(v.state==='car_price'||calendar.includes(v.state))return sequence==='no-table'&&transport[0].time===null;
  if(!bus){
