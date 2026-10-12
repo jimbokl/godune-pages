@@ -1,10 +1,10 @@
-import {selectedDay} from './trip-days-state.mjs?v=27';
-import {cleanTrip} from './trip-state.mjs?v=30';
-import {addServiceVisit} from './trip-service-visits-state.mjs';
-import {timelineOrder} from './trip-service-timeline-state.mjs';
+import {selectedDay} from './trip-days-state.mjs?v=2026101202';
+import {cleanTrip} from './trip-state.mjs?v=2026101202';
+import {addServiceVisit} from './trip-service-visits-state.mjs?v=2026101202';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101202';
 import {selectedInput} from './service-selection-state.mjs?v=4';
-import {alongAreas,insertionStart} from './along-route-state.mjs?v=5';
-import {serviceDayInput} from './trip-service-day-state.mjs?v=9';
+import {alongAreas,insertionStart} from './along-route-state.mjs?v=2026101202';
+import {serviceDayInput} from './trip-service-day-state.mjs?v=2026101202';
 
 export const serviceTypeNames={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спорт',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'На воде'};
 export function alongServiceCandidates(trip,catalog,entries,type){

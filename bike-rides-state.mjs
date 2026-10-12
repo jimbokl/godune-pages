@@ -1,11 +1,11 @@
-import {emptyTrip,cleanTrip} from './trip-state.mjs?v=30';
-import {ensureJourney,selectedDay,addTripDay,dayHasContent,validTripDate} from './trip-days-state.mjs?v=27';
+import {emptyTrip,cleanTrip} from './trip-state.mjs?v=2026101202';
+import {ensureJourney,selectedDay,addTripDay,dayHasContent,validTripDate} from './trip-days-state.mjs?v=2026101202';
 import {planInput,planTravel,planBaseTravel} from './trip-schedule-state.mjs?v=19';
 import {dayBases,resolveAccessBetween,resolveDirectedTravel} from './travel-estimates.mjs?v=13';
 import {bookingEffects} from './trip-bookings-state.mjs?v=3';
 import {bikeProfile,bikeRouteFacts} from './bike-route-profile.mjs';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
-import {projectDayMap} from './day-map-state.mjs?v=7';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101202';
+import {projectDayMap} from './day-map-state.mjs?v=2026101202';
 
 export const bikeGuard=trip=>JSON.stringify(trip);
 const integer=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;

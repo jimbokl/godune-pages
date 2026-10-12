@@ -1,6 +1,6 @@
 import {currentProgress} from './day-progress.mjs?v=2';
 import {generatedDayPoints} from './day-points.mjs?v=1';
-import {selectedDay} from './trip-days-state.mjs?v=27';
+import {selectedDay} from './trip-days-state.mjs?v=2026101202';
 import {clock} from './day-stop-view.mjs?v=1';
 import {transitHomeCopy} from './transport-home.mjs?v=2';
 

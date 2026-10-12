@@ -118,7 +118,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(day.summary);
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
-    text(`${day.transport_plans?.length&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
+    text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?115:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
     for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):!Number.isFinite(p.lat)||!Number.isFinite(p.lon)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});
@@ -128,7 +128,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       const label=row.kind==='cost'?'Стоимость на компанию':`${row.time===null?'Время нужно уточнить':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
       const leadHeight=textHeight(label,ui,phone?9:11,5)+textHeight(row.title,ui,phone?12:14,6),bodyHeight=textHeight(row.text);
       // Keep a short event together; a long event starts with at least two body lines.
-      need(leadHeight+(leadHeight+bodyHeight<h-2*m-90?bodyHeight:body*1.48*2));
+      const evidenceHeight=(row.source&&!day.kosa?sourceHeight(row.source):0)+(row.sources||[]).reduce((sum,s)=>sum+sourceHeight(s),0);
+      need(leadHeight+(leadHeight+bodyHeight+evidenceHeight<h-2*m-90?bodyHeight+evidenceHeight:body*1.48*2));
       text(label,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
       for(const anchor of row.anchors||[])if(anchor.location?.kind==='point')text(`${anchor.name} · GPS ${gps(anchor.location)}`,{size:phone?9:11,color:muted});
       const detail=day.kosa?.timeline.find(item=>item.title===row.title&&item.kind===row.kind&&item.time===row.time) || row;
@@ -222,9 +223,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
-  chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');const packingText=(value,options={})=>text(value,{...(phone?{size:9.5,space:6}:{}),...options});packingText('Карты, фото и координаты встроены в PDF. План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
+  chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');const packingText=(value,options={})=>text(value,{...(phone?{size:9.5,space:6}:{}),...options});packingText((Object.keys(media.maps).length||Object.keys(media.photos).length?'Карты и фото из вашего дня встроены в PDF. ':'')+'План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
   for(const value of preparation)packingText(value);
-  packingText(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Рейсы, цены и погода в этом файле не обновляются.`);
+  packingText(`Подготовлено ${date(snapshot.created_at.slice(0,10)).replace(/\.$/,'')}. Рейсы, цены и погода в этом файле не обновляются.`);
   packingText(snapshot.transport_receipt?'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Источники доступны по ссылкам при появлении связи.':'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
   if(phone)await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
   if(!snapshot.transport_receipt){

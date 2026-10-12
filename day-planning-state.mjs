@@ -1,6 +1,6 @@
-import {selectedDay} from './trip-days-state.mjs?v=27';
+import {selectedDay} from './trip-days-state.mjs?v=2026101202';
 import {tripSignature} from './trip-light.mjs?v=15';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101202';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
 import {usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 

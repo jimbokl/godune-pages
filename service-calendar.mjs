@@ -49,6 +49,7 @@ export function validateService(service){
   if(!source(service.source)||!Array.isArray(service.exceptions))fail();
   if(service.valid_from!=null&&!validServiceDate(service.valid_from)||service.valid_until!=null&&!validServiceDate(service.valid_until)||service.valid_from&&service.valid_until&&service.valid_from>service.valid_until)fail();
   if(service.publication_year!=null&&(!Number.isInteger(service.publication_year)||service.publication_year<1||service.publication_year>9999))fail();
+  if(service.circular!==undefined){const c=service.circular;if(service.mode!=='ferry'||!object(c)||Object.keys(c).sort().join(',')!=='minimum_boarding,one_way_estimate,round_trip_estimate,version'||c.version!==1||![c.one_way_estimate,c.round_trip_estimate,c.minimum_boarding].every(Number.isInteger)||c.one_way_estimate<1||c.round_trip_estimate<c.one_way_estimate||c.round_trip_estimate>120||c.minimum_boarding<5||c.minimum_boarding>120)fail();}
   const seen=new Set();
   for(const row of service.exceptions){if(!object(row)||!validServiceDate(row.date)||seen.has(row.date)||!source(row.source))fail();seen.add(row.date);}
   direction(service.outward,1,1,false);direction(service.inbound,1,1,false);

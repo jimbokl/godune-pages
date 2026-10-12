@@ -1,9 +1,9 @@
 // Build portable selections from published tables and explicitly entered estimates.
 // Rust remains the only calculator of waits, missed boardings and day feasibility.
-import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=27';
+import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101202';
 import {bookingEffects,saveBooking} from './trip-bookings-state.mjs?v=3';
 import {validBase} from './personal-points.mjs?v=3';
-import {timelineOrder} from './trip-service-timeline-state.mjs';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101202';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
 import {serviceVisitAnchor} from './service-visit-anchor.mjs';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';

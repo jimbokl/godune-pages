@@ -1,7 +1,7 @@
-import {cleanTrip} from './trip-state.mjs?v=30';
-import {ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=27';
-import {validTransportReceipt,transportPlansImportIssue} from './trip-transport-plans-contract.mjs';
-export {transportPlanContext} from './trip-transport-plans-contract.mjs';
+import {cleanTrip} from './trip-state.mjs?v=2026101202';
+import {ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=2026101202';
+import {validTransportReceipt,transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101202';
+export {transportPlanContext} from './trip-transport-plans-contract.mjs?v=2026101202';
 const check=trip=>{const issue=transportPlansImportIssue(trip);if(issue)throw Error(issue);};
 export function saveTransportPlan(trip,catalog,receipt,now=new Date()){
  check(trip);

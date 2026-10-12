@@ -1,22 +1,22 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=27';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=2026101202';
 import {regionMapStyle} from './region-map.mjs?v=7';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=7';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=13';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=9';
-import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=7';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101202';
+import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101202';
 import {renderMapRoads} from './day-map-roads-ui.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
 import {vehicleArrival} from './day-mobility.mjs?v=4';
 import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
-import {serviceVisitRows} from './trip-service-visits-state.mjs';
-import {validTimeline} from './trip-service-timeline-state.mjs';
-import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=28';
+import {serviceVisitRows} from './trip-service-visits-state.mjs?v=2026101202';
+import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101202';
+import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101202';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {focusWaveStop} from './wave-stop-ui.mjs?v=4';
-import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101202';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};
 function disclose(node,title,id) {

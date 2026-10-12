@@ -17,14 +17,16 @@ function source(v){
  return (v.image_url==null||https(v.image_url))&&(v.image_sha256==null||typeof v.image_sha256==='string'&&/^[a-f0-9]{64}$/.test(v.image_sha256));
 }
 function answers(a,profile){
- return keys(a,['date','ready','boarding','shore','people','exempt','bikes','mode','walks','forest'])&&validServiceDate(a.date)
+ return keys(a,['date','ready','boarding','shore','people','exempt','bikes','mode','walks','forest','vehicle_weight'])&&validServiceDate(a.date)
   &&integer(a.ready,0,1439)&&integer(a.boarding,0,120)&&integer(a.shore,30,720)&&integer(a.people,1,20)
   &&integer(a.exempt,0,a.people)&&integer(a.bikes,1,20)&&integer(a.forest,30,240)&&['one','two'].includes(a.walks)
-  &&(profile==='curonian-210'?['foot','car']:['foot','bike','car']).includes(a.mode);
+  &&(profile==='curonian-210'?['foot','car']:['foot','bike','car']).includes(a.mode)
+  &&(a.vehicle_weight===undefined||profile==='baltic-ferry'&&[0,1500,2000,2500,3000,3500].includes(a.vehicle_weight));
 }
-function validPrice(p,a,profile){
+function validPrice(p,a,profile,policy){
+ if(policy!==undefined&&(policy!=='passenger-bike-bundle'||profile!=='baltic-ferry'||a.exempt>Math.floor(a.people/2)||a.mode==='bike'&&a.bikes>a.people-a.exempt))return false;
  if(!keys(p,['currency','known','total','rows'])||p.currency!=='RUB'||!money(p.known)||!(p.total===null||money(p.total))||!Array.isArray(p.rows))return false;
- const expected=profile==='curonian-210'?[['park-person',a.people-a.exempt],[a.mode==='car'?'park-car':'bus-return',a.mode==='car'?1:a.people]]:[['ferry-people',a.people],...(a.mode==='foot'?[]:[[a.mode==='bike'?'ferry-bike':'ferry-car',a.mode==='bike'?a.bikes:1]])];
+ const expected=profile==='curonian-210'?[['park-person',a.people-a.exempt],[a.mode==='car'?'park-car':'bus-return',a.mode==='car'?1:a.people]]:[['ferry-people',policy?a.people-a.exempt-(a.mode==='bike'?a.bikes:0):a.people],...(a.mode==='foot'?[]:[[a.mode==='bike'?'ferry-bike':'ferry-car',a.mode==='bike'?a.bikes:1]])];
  if(p.rows.length!==expected.length)return false;
  let known=0;
  for(let i=0;i<p.rows.length;i++){
@@ -37,11 +39,24 @@ function validPrice(p,a,profile){
  }
  return p.known===known&&p.total===(p.rows.every(r=>r.cost!==null)?known:null);
 }
+function validCircular(v,rows){
+ const c=v.circular;
+ if(!keys(c,['version','outbound_cycle','return_cycle','board_by','shore_start_estimate','shore_until','finish_estimate','backup_cycle','boarding','one_way_estimate','round_trip_estimate'])||c.version!==1||v.finish!==null||!integer(c.boarding,5,120)||c.boarding<v.answers.boarding||!integer(c.one_way_estimate,1,120)||!integer(c.round_trip_estimate,c.one_way_estimate,120))return false;
+ if(!['outbound_cycle','return_cycle','board_by','shore_start_estimate','finish_estimate','backup_cycle'].every(k=>time(c[k]))||!(c.shore_until===null||integer(c.shore_until,0,2879)))return false;
+ if(c.outbound_cycle!==null&&(c.outbound_cycle<v.answers.ready+c.boarding||c.shore_start_estimate!==c.outbound_cycle+c.one_way_estimate||c.shore_until!==c.shore_start_estimate+v.answers.shore))return false;
+ if(c.outbound_cycle===null&&(c.shore_start_estimate!==null||c.shore_until!==null||c.return_cycle!==null))return false;
+ if(c.return_cycle===null){if(v.state!=='conflict'||c.board_by!==null||c.finish_estimate!==null||c.backup_cycle!==null)return false;}
+ else if(v.state!=='circular_candidate'||c.shore_until===null||c.return_cycle<c.shore_until+c.boarding||c.board_by!==c.return_cycle-c.boarding||c.finish_estimate!==c.return_cycle+c.round_trip_estimate||c.backup_cycle!==null&&c.backup_cycle<=c.return_cycle)return false;
+ const sequence=rows.map(r=>r.id).join(',');
+ if(sequence!==(c.backup_cycle===null?'out,shore,back':'out,shore,back,backup'))return false;
+ return rows[0].time===c.outbound_cycle&&rows[1].time===c.shore_start_estimate&&rows[2].time===c.board_by&&(c.backup_cycle===null||rows[3].time===c.backup_cycle-c.boarding);
+}
 export function validTransportReceipt(v){
- if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile)||!Array.isArray(v.rows)||v.rows.length>12)return false;
+ if(!keys(v,['version','profile','date','answers','state','finish','rows','price','source','title','fare_policy','circular'])||v.version!==1||!['curonian-210','baltic-ferry'].includes(v.profile)||!validServiceDate(v.date)||!answers(v.answers,v.profile)||v.date!==v.answers.date||!text(v.title,512)||!source(v.source)||!validPrice(v.price,v.answers,v.profile,v.fare_policy)||!Array.isArray(v.rows)||v.rows.length>12)return false;
  const bus=v.profile==='curonian-210',calendar=['outside_validity','unpublished_year'];
- const states=bus?['candidate','no_outward','no_return','unknown_transfer','unavailable','car_price',...calendar]:['needs_check','incomplete','conflict',...calendar];
+ const states=bus?['candidate','no_outward','no_return','unknown_transfer','unavailable','car_price',...calendar]:['needs_check','incomplete','conflict','circular_candidate',...calendar];
  if(!states.includes(v.state)||!(v.finish===null||integer(v.finish,0,bus?1439:2879)))return false;
+ if(v.circular!==undefined&&(bus||!['conflict','circular_candidate'].includes(v.state))||v.state==='circular_candidate'&&v.circular===undefined)return false;
  if(bus&&(v.answers.mode==='car')!==(v.state==='car_price'))return false;
  if(bus&&(v.state==='candidate')!==(v.finish!==null)||!bus&&v.state==='needs_check'&&v.finish===null)return false;
  if(calendar.includes(v.state)&&v.finish!==null||!bus&&['conflict','incomplete'].includes(v.state)&&v.finish!==null)return false;
@@ -66,6 +81,7 @@ export function validTransportReceipt(v){
  const sequence=transport.map(r=>r.id).join(',');
  if(v.state==='car_price'||calendar.includes(v.state))return sequence==='no-table'&&transport[0].time===null;
  if(!bus){
+  if(v.circular!==undefined)return validCircular(v,transport);
   if(sequence!=='out,shore,back')return false;
   const [out,shore,back]=transport;
   if(out.time!==null&&out.time<v.answers.ready+v.answers.boarding||shore.time!==null&&(out.time===null||shore.time<=out.time)||back.time!==null&&(shore.time===null||back.time<shore.time+v.answers.shore+v.answers.boarding))return false;
