@@ -1,13 +1,13 @@
-import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101205';
+import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101206';
 import {transitTable} from './transport-day.mjs?v=4';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101205';
-import {createTripFile} from './trip-file.mjs?v=2026101205';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101205';
+import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101206';
+import {createTripFile} from './trip-file.mjs?v=2026101206';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101206';
 import {assessKosa} from './day-readiness.mjs?v=6';
-import {kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101205';
-import {journeyDays} from './trip-days-state.mjs?v=2026101205';
-import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101205';
+import {kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101206';
+import {journeyDays} from './trip-days-state.mjs?v=2026101206';
+import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101206';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -189,7 +189,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           const abort=new AbortController();exportAbort=abort;pdf.disabled=true;pdfCancel.hidden=false;format.disabled=true;
           pdfStatus.textContent='Загружаем карты для вашего дня…';
           try{
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101205');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101206');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');

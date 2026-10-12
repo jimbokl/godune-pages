@@ -1,8 +1,8 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101205';
-import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101205';
-import {transportStates,transportStatus,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101205';
-import {transportClock} from './transport-page-state.mjs?v=2026101205';
-import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101205';
+import {selectedDay} from './trip-days-state.mjs?v=2026101206';
+import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101206';
+import {transportStates,transportStatus,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101206';
+import {transportClock} from './transport-page-state.mjs?v=2026101206';
+import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101206';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 export function initTransportPlans({mount,read,commit,catalog,base}){
  if(!mount)return {render(){}};

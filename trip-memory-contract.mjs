@@ -1,4 +1,4 @@
-import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101205';
+import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101206';
 export const MEMORY_VERSION = 1;
 
 export class MemoryCompatibilityError extends Error {

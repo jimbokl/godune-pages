@@ -7,6 +7,7 @@ import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
 import {formatKopecks as money} from './trip-money.mjs';
 import {transferClock} from './trip-service-transfer-view.mjs';
 import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=5';
+import {transportBooklet} from './transport-booklet-view.mjs?v=1';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -27,7 +28,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const need=n=>{if(y-n<51)start();};
   function lines(text,font,size,max=width){const out=[];let line='';for(const word of clean(text,font).split(/\s+/)){const next=line?line+' '+word:word;if(font.widthOfTextAtSize(next,size)<=max){line=next;continue;}if(line){out.push(line);line='';}for(const letter of word){if(line&&font.widthOfTextAtSize(line+letter,size)>max){out.push(line);line='';}line+=letter;}}if(line)out.push(line);return out;}
   const leadingFor=font=>font===title?1.2:phone?1.4:1.48;
-  function text(value,{font=ui,size=body,color=ink,space=phone?7:10,max=width,x=m,link}={}){const leading=size*leadingFor(font),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});if(link)page.node.addAnnot(doc.context.register(doc.context.obj({Type:'Annot',Subtype:'Link',Rect:[x,y-2,x+font.widthOfTextAtSize(line,size),y+size],Border:[0,0,0],A:{Type:'Action',S:'URI',URI:PDFString.of(link)}})));}y-=space;}
+  function text(value,{font=ui,size=body,color=ink,space=phone?7:10,max=width,x=m,link}={}){const leading=size*leadingFor(font),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});if(link)page.node.addAnnot(doc.context.register(doc.context.obj({Type:'Annot',Subtype:'Link',Rect:[x,y-2,x+font.widthOfTextAtSize(line,size),y+size],Border:[0,0,0],A:{Type:'Action',S:'URI',URI:PDFString.of(new URL(link,base).href)}})));}y-=space;}
   const textHeight=(value,font=ui,size=body,space=phone?7:10)=>lines(value,font,size).length*size*leadingFor(font)+space;
   function heading(value,large=false,following='',extra=0){const size=large?(phone?26:43):(phone?18:30),space=phone?10:16,head=textHeight(value,title,size,space),follow=textHeight(following)+extra;need(head+(head+follow<h-2*m-90?follow:body*3));text(value,{font:title,size,space});}
   async function embeddedImage(value){let img=embedded.get(value);if(!img){img=await (value.kind==='jpeg'?doc.embedJpg(value.bytes):doc.embedPng(value.bytes));embedded.set(value,img);}return img;}
@@ -96,8 +97,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(s.note){heading('Ваша заметка',false,s.note);text(s.note);}
   }
+  const transportBook=transportBooklet(snapshot);
   // A one-day phone booklet opens with the actual plan, without a second cover.
-  if(!phone || snapshot.days.length>1){
+  if(!transportBook&&(!phone || snapshot.days.length>1)){
   start();text('GODUNE · БАЛТИЙСКИЕ ДЮНЫ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
   const first=snapshot.days.flatMap(d=>d.stops).find(p=>media.photos[p.id]);
@@ -108,6 +110,42 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
   }
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
+  if(transportBook){
+    const b=transportBook,day=b.day;
+    chapter=date(b.receipt.date).toLocaleUpperCase('ru-RU');start();
+    heading(b.title,true);text(b.subtitle,{size:phone?12:16,color:muted,space:phone?14:20});
+    for(const value of b.context)text(value,{size:phone?9:11,color:muted});
+    const cardWidth=width-30,cardText=(value,font,size,space)=>lines(value,font,size,cardWidth).length*size*leadingFor(font)+space;
+    for(const [i,step]of b.overview.entries()){
+      const size=phone?15:22,space=phone?5:8;
+      need(cardText(step.title,title,size,space)+cardText(step.text,ui,body,phone?14:20));
+      const cy=y-12;page.drawCircle({x:m+10,y:cy,size:10,color:i===1?rgb(.75,.46,.12):rgb(.34,.53,.65)});
+      page.drawText(String(i+1),{x:m+10-ui.widthOfTextAtSize(String(i+1),10)/2,y:cy-3.5,font:ui,size:10,color:paper});
+      text(step.title,{font:title,size,space,x:m+30,max:cardWidth});text(step.text,{x:m+30,max:cardWidth,space:phone?14:20});
+    }
+    text(`${b.receipt.answers.people} чел. · ${b.budget}`,{size:phone?10:12,space:8});
+    if(b.backupWarning)text(b.backupWarning,{size:phone?9:11,color:muted,space:6});
+    if(b.receipt.rail_connection?.state!=='connected'&&b.receipt.rail_connection)text(b.status,{size:phone?9:11,color:muted});
+    chapter='ДОРОГА И ПРОГУЛКА';if(phone)start();else y-=14;heading('По шагам',false,b.details[0]?.title);
+    for(const row of b.details){
+      const label=row.kind==='cost'?'Стоимость на компанию':row.time===null?row.timeLabel||'Время уточняется':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`;
+      const size=phone?11:12,caption=`${label} · ${row.title}${row.references.length?' ['+row.references.join(', ')+']':''}`,lead=textHeight(caption,ui,size,5),content=textHeight(row.text,ui,phone?10:11,10);
+      need(lead+(lead+content<h-2*m-90?content:body*3));
+      text(caption,{size,space:5});text(row.text,{size:phone?10:11,space:10});
+    }
+    heading('Если задержались',false,day.planB);text(day.planB,{size:phone?10:12});notes(day);
+    for(const gap of day.access?.gaps||[])text(gap,{size:phone?9:11,color:muted});
+    const sourceBlock=s=>({value:`[${s.number}] ${sourceCaption(s)}`,host:new URL(s.url).hostname.replace(/^www\./,'')});
+    const sourceBlockHeight=s=>{const {value,host}=sourceBlock(s);return textHeight(value,ui,phone?8.5:10,3)+textHeight(host,ui,phone?8.5:10,8);};
+    heading('Источники',false,'',b.sources[0]?sourceBlockHeight(b.sources[0]):0);
+    for(const s of b.sources){
+      const {value,host}=sourceBlock(s);
+      need(sourceBlockHeight(s));
+      text(value,{size:phone?8.5:10,color:muted,space:3});text(host,{size:phone?8.5:10,color:muted,space:8,link:s.url});
+    }
+    text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. План и источники сохранены в PDF и вложении plan.json. Рейсы и цены в файле не обновляются.`,{size:phone?8.5:10,color:muted});
+    chapters.push({id:day.id,begins:1,pages:doc.getPageCount()});
+  }else{
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${Number.isInteger(day.number)&&day.number>0?day.number:index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
@@ -234,6 +272,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   }
   for(const warning of media.warnings)packingText(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
   packingText((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
+  }
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
   const full={...snapshot,format,chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
   pages.forEach((p,i)=>{const {width:pw}=p.getSize();p.drawRectangle({x:0,y:0,width:pw,height:35,color:paper});p.drawLine({start:{x:m,y:33},end:{x:pw-m,y:33},thickness:.6,color:blue});p.drawText('godune.ru · '+sha.slice(0,8),{x:m,y:21,font:ui,size:7.5,color:muted});const n=`${i+1} / ${pages.length}`;p.drawText(n,{x:pw-m-ui.widthOfTextAtSize(n,7.5),y:21,font:ui,size:7.5,color:muted});});

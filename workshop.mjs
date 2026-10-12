@@ -1,27 +1,27 @@
 import {loadWalkProgress} from './walk.mjs?v=5';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101205';
-import {initTripSharing} from './trip-link.mjs?v=2026101205';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101205';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101205';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101206';
+import {initTripSharing} from './trip-link.mjs?v=2026101206';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101206';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101206';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=8';
-import {createPlanningProgress} from './planning-progress.mjs?v=2026101205';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101205';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101205';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101205';
-import {initTripDays} from './trip-days-ui.mjs?v=2026101205';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101205';
-import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101205';
-import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101205';
+import {createPlanningProgress} from './planning-progress.mjs?v=2026101206';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101206';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101206';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101206';
+import {initTripDays} from './trip-days-ui.mjs?v=2026101206';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101206';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101206';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101206';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=2026101205';
-import {addTripStarter} from './trip-starters.mjs?v=2026101205';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101205';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101205';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101205';
+import {initDayWorkspace} from './day-workspace.mjs?v=2026101206';
+import {addTripStarter} from './trip-starters.mjs?v=2026101206';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101206';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101206';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101206';
 import {initTripRail} from './trip-rail-ui.mjs?v=20';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101205';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101206';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101205';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101206';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }

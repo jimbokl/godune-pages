@@ -1,10 +1,10 @@
-import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=2026101205';
-import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2026101205';
+import {validJourneyProjection,tripHasDraft,tripPlaceIds} from './trip-days-state.mjs?v=2026101206';
+import {cleanTrip, validTripDate, TRIP_AREAS, TRIP_TIMES} from './trip-state.mjs?v=2026101206';
 import {validSchedule} from './trip-schedule-state.mjs?v=19';
 import {serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=1';
 import {transferConnectionImportIssue} from './trip-transfer-connections-contract.mjs';
 import {menuChoiceImportIssue} from './trip-menu-choices-contract.mjs';
-import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101205';
+import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101206';
 
 export const TRIP_FILE_BYTES = 1024 * 1024;
 export function createTripFile(state, catalog, now = new Date()) {

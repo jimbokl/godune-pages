@@ -1,5 +1,5 @@
-import {validTripDate,cleanJourney,mergeJourney} from './trip-days-state.mjs?v=2026101205';
-export {validTripDate} from './trip-days-state.mjs?v=2026101205';
+import {validTripDate,cleanJourney,mergeJourney} from './trip-days-state.mjs?v=2026101206';
+export {validTripDate} from './trip-days-state.mjs?v=2026101206';
 import {cleanSchedule} from './trip-schedule-state.mjs?v=19';
 export const TRIP_KEY = 'godune-trip:v1';
 export const emptyTrip = () => ({version: 1, places: [], routes: [], month: null, date: null,

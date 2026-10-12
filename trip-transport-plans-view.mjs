@@ -1,7 +1,7 @@
-import {transportPlanContext} from './trip-transport-plans-contract.mjs?v=2026101205';
-import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101205';
+import {transportPlanContext} from './trip-transport-plans-contract.mjs?v=2026101206';
+import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101206';
 import {formatKopecks} from './trip-money.mjs';
-import {railConnectionStatus} from './transport-rail-connection.mjs?v=2026101205';
+import {railConnectionStatus} from './transport-rail-connection.mjs?v=2026101206';
 export const transportStatus=receipt=>railConnectionStatus(receipt)||transportStates[receipt.state]||'';
 export const transportStates={circular_candidate:'Круговые рейсы подобраны. Возвращение в Балтийск — ориентировочное.',candidate:'Отправление и обратный автобус подобраны по таблице.',no_return:'Для такой прогулки обратный автобус не подошёл.',no_outward:'Подходящий автобус к Эфе уже не найден.',unknown_transfer:'Пересадку нужно уточнить.',conflict:'Отправление или возвращение не помещаются.',incomplete:'Отправление можно выбрать. Точное возвращение нужно уточнить.',needs_check:'Рейсы складываются по опубликованной таблице.',car_price:'Вход в парк на вашу компанию.',unpublished_year:'Расписание на этот год пока не добавлено.',outside_validity:'На выбранную дату опубликованная таблица не действует.',unavailable:'Подходящая поездка по таблице не найдена.'};
 export const transportPath=profile=>profile==='curonian-210'?'kurshskaya-kosa/transport/':'dunes/baltic-spit/how-to-get/';

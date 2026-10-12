@@ -1,5 +1,5 @@
 // Current order and directed facts enter Rust; computed values stay out of memory.
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101205';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101206';
 import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=13';
 import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';

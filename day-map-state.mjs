@@ -1,9 +1,9 @@
 import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
 // Read-only map projection. The day engine owns timing; a named stop never
 // borrows the coordinates of a nearby attraction or a straight-line path.
-import {selectedDay} from './trip-days-state.mjs?v=2026101205';
+import {selectedDay} from './trip-days-state.mjs?v=2026101206';
 import {tripSignature} from './trip-light.mjs?v=15';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101205';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101206';
 import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
 import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=4';

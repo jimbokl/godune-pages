@@ -1,7 +1,7 @@
-import {ensureJourney,selectedDay,journeyDays,chooseTripDay,addTripDay,COST_KINDS} from './trip-days-state.mjs?v=2026101205';
-import {cleanTrip} from './trip-state.mjs?v=2026101205';
+import {ensureJourney,selectedDay,journeyDays,chooseTripDay,addTripDay,COST_KINDS} from './trip-days-state.mjs?v=2026101206';
+import {cleanTrip} from './trip-state.mjs?v=2026101206';
 import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs';
-import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101205';
+import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101206';
 import {menuPriceFreshness} from './trip-menu-choices-view.mjs?v=2';
 import {formatKopecks} from './trip-money.mjs';
 

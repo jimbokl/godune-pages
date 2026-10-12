@@ -1,5 +1,5 @@
-import {ensureJourney,selectedDay,validJourneyProjection} from './trip-days-state.mjs?v=2026101205';
-import {cleanTrip} from './trip-state.mjs?v=2026101205';
+import {ensureJourney,selectedDay,validJourneyProjection} from './trip-days-state.mjs?v=2026101206';
+import {cleanTrip} from './trip-state.mjs?v=2026101206';
 import {validMenuChoice,menuChoiceRows,menuChoiceImportIssue} from './trip-menu-choices-contract.mjs';
 
 function editable(trip){

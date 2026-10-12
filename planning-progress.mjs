@@ -1,7 +1,7 @@
 // Local measurement of an explicit planning attempt. No Trip content, names,
 // dates of travel, coordinates, or network requests belong in this record.
 import {createScenarioJournal} from './scenario-journal.mjs';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101205';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101206';
 export const PLANNING_PROGRESS_KEY='godune-planning-progress:v1';
 const sources=new Set(['wizard','kosa']);
 const reasons=new Set(['calculated','conflict','transport','travel','hours','walking_allowance','walking_unknown','not_calculated']);

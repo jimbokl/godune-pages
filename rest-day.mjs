@@ -1,16 +1,16 @@
-import {restContext,rainStops,restVariants,restInput,confirmRest} from './rest-day-state.mjs?v=2026101205';
-import {alongGuard} from './along-route-state.mjs?v=2026101205';
-import {selectedDay,ensureJourney,journeyDays} from './trip-days-state.mjs?v=2026101205';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101205';
+import {restContext,rainStops,restVariants,restInput,confirmRest} from './rest-day-state.mjs?v=2026101206';
+import {alongGuard} from './along-route-state.mjs?v=2026101206';
+import {selectedDay,ensureJourney,journeyDays} from './trip-days-state.mjs?v=2026101206';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101206';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 import {dayChangeText} from './trip-day-change-view.mjs?v=1';
 import {formatKopecks} from './trip-money.mjs';
 import {dayPeople} from './trip-party.mjs?v=1';
-import {scheduleServiceInsertion} from './along-route-services-state.mjs?v=2026101205';
+import {scheduleServiceInsertion} from './along-route-services-state.mjs?v=2026101206';
 import {dayJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
 import {createScenarioJournal} from './scenario-journal.mjs';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101205';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101206';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-rest-day]');
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const labels={fits:'Подходит по расчёту',needs_info:'Нужно уточнить',does_not_fit:'Не помещается'};
@@ -23,7 +23,7 @@ if(root){
  let ctx,pending,busy=false,sequence=0,rows=[],variants=[],guard,revision,context,attempt;
  async function load(){
   if(!pending)pending=(async()=>{
-   const [{createTripMemory},{loadTrip},c,s,engine]=await Promise.all([import('./trip-memory.mjs?v=2026101205'),import('./trip-memory-bootstrap.mjs?v=2026101205'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
+   const [{createTripMemory},{loadTrip},c,s,engine]=await Promise.all([import('./trip-memory.mjs?v=2026101206'),import('./trip-memory-bootstrap.mjs?v=2026101206'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
    if(!c.ok||!s.ok)throw Error('Не удалось открыть места. Повторите подбор.');
    const catalog=await c.json(),registry=await s.json();if(registry.version!==1||!Array.isArray(registry.entries))throw Error('Обновите страницу, чтобы открыть места.');
    let storage;try{storage=localStorage;}catch{}
