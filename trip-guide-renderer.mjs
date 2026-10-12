@@ -23,13 +23,17 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   let page,y,chapter='ВАША БАЛТИКА';const embedded=new Map();
   const sets=new Map([[ui,new Set(ui.getCharacterSet())],[title,new Set(title.getCharacterSet())]]);
   const clean=(text,font)=>Array.from(String(text).replace(/[\u2010-\u2015]/g,'-').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'')).map(c=>/\s/.test(c)?' ':sets.get(font).has(c.codePointAt(0))?c:'?').join('');
-  function start(){page=doc.addPage([w,h]);page.drawRectangle({x:0,y:0,width:w,height:h,color:paper});page.drawText(clean(chapter,ui).slice(0,60),{x:m,y:h-m-9,font:ui,size:8,color:muted});y=h-m-38;}
+  function start(){page=doc.addPage([w,h]);page.drawRectangle({x:0,y:0,width:w,height:h,color:paper});page.drawText(clean(chapter,ui).slice(0,60),{x:m,y:h-m-9,font:ui,size:8,color:muted});y=h-m-(phone?28:38);}
   const need=n=>{if(y-n<51)start();};
   function lines(text,font,size,max=width){const out=[];let line='';for(const word of clean(text,font).split(/\s+/)){const next=line?line+' '+word:word;if(font.widthOfTextAtSize(next,size)<=max){line=next;continue;}if(line){out.push(line);line='';}for(const letter of word){if(line&&font.widthOfTextAtSize(line+letter,size)>max){out.push(line);line='';}line+=letter;}}if(line)out.push(line);return out;}
-  function text(value,{font=ui,size=body,color=ink,space=10,max=width,x=m,link}={}){const leading=size*(font===title?1.2:1.48),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});if(link)page.node.addAnnot(doc.context.register(doc.context.obj({Type:'Annot',Subtype:'Link',Rect:[x,y-2,x+font.widthOfTextAtSize(line,size),y+size],Border:[0,0,0],A:{Type:'Action',S:'URI',URI:PDFString.of(link)}})));}y-=space;}
-  const textHeight=(value,font=ui,size=body,space=10)=>lines(value,font,size).length*size*(font===title?1.2:1.48)+space;
-  function heading(value,large=false,following='',extra=0){const size=large?(phone?32:43):(phone?24:30),head=textHeight(value,title,size,16),follow=textHeight(following)+extra;need(head+(head+follow<h-2*m-90?follow:body*3));text(value,{font:title,size,space:16});}
-  async function image(value,maxHeight){if(!value)return;let img=embedded.get(value);if(!img){img=await (value.kind==='jpeg'?doc.embedJpg(value.bytes):doc.embedPng(value.bytes));embedded.set(value,img);}const iw=Math.min(width,maxHeight*value.width/value.height),ih=iw*value.height/value.width;need(ih+15);page.drawImage(img,{x:m+(width-iw)/2,y:y-ih,width:iw,height:ih});y-=ih+14;}
+  const leadingFor=font=>font===title?1.2:phone?1.4:1.48;
+  function text(value,{font=ui,size=body,color=ink,space=phone?7:10,max=width,x=m,link}={}){const leading=size*leadingFor(font),wrapped=lines(value,font,size,max);if(wrapped.length*leading+space<h-2*m-90)need(wrapped.length*leading+space);for(const line of wrapped){need(leading);y-=leading;page.drawText(line,{x,y,font,size,color});if(link)page.node.addAnnot(doc.context.register(doc.context.obj({Type:'Annot',Subtype:'Link',Rect:[x,y-2,x+font.widthOfTextAtSize(line,size),y+size],Border:[0,0,0],A:{Type:'Action',S:'URI',URI:PDFString.of(link)}})));}y-=space;}
+  const textHeight=(value,font=ui,size=body,space=phone?7:10)=>lines(value,font,size).length*size*leadingFor(font)+space;
+  function heading(value,large=false,following='',extra=0){const size=large?(phone?26:43):(phone?18:30),space=phone?10:16,head=textHeight(value,title,size,space),follow=textHeight(following)+extra;need(head+(head+follow<h-2*m-90?follow:body*3));text(value,{font:title,size,space});}
+  async function embeddedImage(value){let img=embedded.get(value);if(!img){img=await (value.kind==='jpeg'?doc.embedJpg(value.bytes):doc.embedPng(value.bytes));embedded.set(value,img);}return img;}
+  async function imageBox(value,x,top,bw,bh){const img=await embeddedImage(value),scale=Math.max(bw/value.width,bh/value.height),dw=value.width*scale,dh=value.height*scale;page.pushOperators(globalThis.PDFLib.pushGraphicsState(),globalThis.PDFLib.rectangle(x,top-bh,bw,bh),globalThis.PDFLib.clip(),globalThis.PDFLib.endPath());page.drawImage(img,{x:x+(bw-dw)/2,y:top-bh+(bh-dh)/2,width:dw,height:dh});page.pushOperators(globalThis.PDFLib.popGraphicsState());}
+  async function image(value,maxHeight){if(!value)return;const img=await embeddedImage(value),iw=Math.min(width,maxHeight*value.width/value.height),ih=iw*value.height/value.width;need(ih+15);page.drawImage(img,{x:m+(width-iw)/2,y:y-ih,width:iw,height:ih});y-=ih+14;}
+
   function qrLayout(caption){const size=phone?52:68,wrapped=lines(caption,ui,phone?9:11,width-size-12),leading=phone?13:16;return {size,wrapped,leading,height:Math.max(size,wrapped.length*leading)+18};}
   async function qrCard(value,caption){if(!value)return;const img=await doc.embedPng(value.bytes),{size,wrapped,leading,height}=qrLayout(caption);need(height);page.drawImage(img,{x:m,y:y-size,width:size,height:size});wrapped.forEach((line,i)=>page.drawText(line,{x:m+size+12,y:y-leading*(i+1),font:ui,size:phone?9:11,color:muted}));y-=height;}
   const gps=p=>`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`;
@@ -92,6 +96,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(s.note){heading('Ваша заметка',false,s.note);text(s.note);}
   }
+  // A one-day phone booklet opens with the actual plan, without a second cover.
+  if(!phone || snapshot.days.length>1){
   start();text('GODUNE · БАЛТИЙСКИЕ ДЮНЫ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
   const first=snapshot.days.flatMap(d=>d.stops).find(p=>media.photos[p.id]);
@@ -100,6 +106,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   else if(media.overview[snapshot.days[0].id])await image(media.overview[snapshot.days[0].id],coverHeight);
   text(snapshot.transport_receipt||snapshot.days.some(d=>d.transport_plans?.length)?'Ваш транспортный план, суммы и источники остаются в этом файле без сети.':'Ваш день и возвращение. Карты, координаты и заметки остаются в этом файле без сети.');
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
+  }
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
@@ -112,9 +119,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
     text(`${day.transport_plans?.length&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
-    await image(media.overview[day.id],phone?180:265);
+    await image(media.overview[day.id],phone?115:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
-    for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):' · координаты пока не записаны'}`,{size:phone?9.5:11,space:8});
+    for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):!Number.isFinite(p.lat)||!Number.isFinite(p.lon)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});
     heading('По шагам',false,day.rows[0]?.title||'Точное время ещё не рассчитано.',40);
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){
@@ -156,7 +163,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       for(const value of k.before)preparation.add(value);
     }
     if(!kosaAssets)notes(day);
-    if(day.expenses){
+    if(day.expenses && (!phone || day.expenses.error || day.expenses.categories.some(category=>category.items?.length))){
       heading('Записанные расходы',false,day.expenses.error||'Суммы на вашу компанию');
       if(day.expenses.error)text(day.expenses.error);
       else{
@@ -170,21 +177,29 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       if(entry.kind==='service'){const service=day.services.find(v=>v.key===entry.key);await serviceChapter(service,entry.number);continue;}
       const p=day.stops.find(v=>v.id===entry.id),i=entry.number-1;
       if(kosaAssets?.chapters.some(c=>c.entry.route===p.id))continue;
-      start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:16});heading(p.name,true);
+      start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:phone?8:16});
+      if(phone){
+        const photo=media.photos[p.id],top=y;
+        text(p.name,{font:title,size:22,max:photo?width-82:width,space:10});
+        if(photo){await imageBox(photo,m+width-70,top,70,70);y=Math.min(y,top-78);}
+        text('GPS '+gps(p)+(photo?' · Фото автора':''),{size:9.5,space:8});
+      }else{
+        heading(p.name,true);text('GPS '+gps(p),{size:14,space:16});
+        if(media.photos[p.id]){await image(media.photos[p.id],270);text('Авторский снимок',{size:8,color:muted,space:10});}
+      }
       if(p.completed)text('Уже были. Время осмотра не записывали.',{size:phone?10:12,color:muted,space:10});
-      text('GPS '+gps(p),{size:phone?12:14,space:16});if(media.photos[p.id]){await image(media.photos[p.id],phone?165:270);text('Авторский снимок',{size:8,color:muted});}
-      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},qrCaption=`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`,tail=sourceHeight(placeSource)+(media.qrs?.[p.id]?qrLayout(qrCaption).height:0);
+      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},qrCaption=`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`,tail=sourceHeight(placeSource)+(!phone&&media.qrs?.[p.id]?qrLayout(qrCaption).height:0);
       const mapCaption=`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}. Ромб - ваше место.`;
-      const sectionHeight=value=>textHeight(value,title,phone?24:30,16);
+      const sectionHeight=value=>textHeight(value,title,phone?18:30,phone?10:16);
       const afterMap=textHeight(mapCaption,ui,8)+sectionHeight('На месте')+p.story.reduce((sum,paragraph)=>sum+textHeight(paragraph),0)+(p.focus?textHeight(p.focus):0)+(p.practical?textHeight(p.practical):0)+(p.conditions.length?sectionHeight('Перед входом'):0)+p.conditions.reduce((sum,c)=>sum+textHeight(c.text)+sourceHeight(c.source),0)+tail;
       // Keep a readable map while fitting the complete short place card on one page.
-      const mapHeight=Math.max(phone?135:180,Math.min(phone?180:260,y-51-afterMap-14));
+      const mapHeight=Math.max(phone?105:180,Math.min(phone?145:260,y-51-afterMap-14));
       await image(media.maps[p.id],mapHeight);
       text(mapCaption,{size:8,color:muted});
       heading('На месте',false,p.story[0]);for(const paragraph of p.story)text(paragraph);if(p.focus)text(p.focus);if(p.practical)text(p.practical);
       if(p.conditions.length){const first=p.conditions[0];heading('Перед входом',false,first.text,sourceHeight(first.source)+(p.conditions.length===1?tail:0));for(const [ci,c]of p.conditions.entries()){const block=textHeight(c.text)+sourceHeight(c.source)+(ci===p.conditions.length-1?tail:0);if(block<h-2*m-90)need(block);text(c.text);source(c.source);}}
       need(tail);source(placeSource);
-      await qrCard(media.qrs?.[p.id],qrCaption);
+      if(!phone)await qrCard(media.qrs?.[p.id],qrCaption);
     }
     if(kosaAssets){
       for(const {walk,bytes}of kosaAssets.walkingMaps){
@@ -207,16 +222,17 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
-  chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');text('Карты, фото и координаты встроены в PDF. План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
-  for(const value of preparation)text(value);
-  text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Рейсы, цены и погода в этом файле не обновляются.`);
-  text(snapshot.transport_receipt?'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Источники доступны по ссылкам при появлении связи.':'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
+  chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');const packingText=(value,options={})=>text(value,{...(phone?{size:9.5,space:6}:{}),...options});packingText('Карты, фото и координаты встроены в PDF. План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
+  for(const value of preparation)packingText(value);
+  packingText(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Рейсы, цены и погода в этом файле не обновляются.`);
+  packingText(snapshot.transport_receipt?'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Источники доступны по ссылкам при появлении связи.':'Сохраните PDF в телефоне и откройте его в авиарежиме до выхода. Ссылки и QR откроют сайт, когда появится связь.');
+  if(phone)await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
   if(!snapshot.transport_receipt){
-    text('В этом файле могут быть ваши адреса, номера брони и личные заметки. Передавайте его тем, кому доверяете.');
-    text('Расписание взято из таблицы, дорога - из карты или вашей оценки. Посадка, доступ и погода могут измениться. После пропущенного рейса пересчитайте день.');
+    packingText('В этом файле могут быть ваши адреса, номера брони и личные заметки. Передавайте его тем, кому доверяете.');
+    packingText('Расписание взято из таблицы, дорога - из карты или вашей оценки. Посадка, доступ и погода могут измениться. После пропущенного рейса пересчитайте день.');
   }
-  for(const warning of media.warnings)text(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
-  text((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
+  for(const warning of media.warnings)packingText(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
+  packingText((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
   const full={...snapshot,format,chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
   pages.forEach((p,i)=>{const {width:pw}=p.getSize();p.drawRectangle({x:0,y:0,width:pw,height:35,color:paper});p.drawLine({start:{x:m,y:33},end:{x:pw-m,y:33},thickness:.6,color:blue});p.drawText('godune.ru · '+sha.slice(0,8),{x:m,y:21,font:ui,size:7.5,color:muted});const n=`${i+1} / ${pages.length}`;p.drawText(n,{x:pw-m-ui.widthOfTextAtSize(n,7.5),y:21,font:ui,size:7.5,color:muted});});

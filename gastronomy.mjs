@@ -75,12 +75,15 @@ export function saveTourDay(current,tour,food,settings) {
   if(JSON.stringify(current.places)===JSON.stringify(prepared.places) && current.date===prepared.date
     && JSON.stringify(current.schedule)===JSON.stringify(prepared.schedule)
     && JSON.stringify(selected.start_at)===JSON.stringify(settings.anchors?.start_at || null)
-    && JSON.stringify(selected.night_at)===JSON.stringify(settings.anchors?.night_at || null))return current;
+    && JSON.stringify(selected.night_at)===JSON.stringify(settings.anchors?.night_at || null)){
+    if(!settings.name||selected.name)return current;
+    const named=ensureJourney(current);selectedDay(named).name=settings.name;return named;
+  }
   let next=dayHasContent(current) || current.routes.length ? addTripDay(current) : ensureJourney(current);
   next=changeDayDetails(next,{start_at:settings.anchors?.start_at || null,night_at:settings.anchors?.night_at || null,
     wave:{version:1,theme:'gastro',pace:'full',recipe:null}});
   const day=selectedDay(next);
-  Object.assign(day,{date:prepared.date,places:[...prepared.places],schedule:structuredClone(prepared.schedule)});
+  Object.assign(day,{...(settings.name?{name:settings.name}:{}),date:prepared.date,places:[...prepared.places],schedule:structuredClone(prepared.schedule)});
   return {...next,date:prepared.date,month:prepared.month,places:[...prepared.places],schedule:structuredClone(prepared.schedule)};
 }
 export async function initGastronomy(base,workshop) {

@@ -3,7 +3,7 @@ import {createScenarioJournal} from './scenario-journal.mjs';
 import {tripJournalBindings} from './scenario-bindings.mjs';
 import {collectTripGuide} from './trip-guide-engine.mjs?v=36';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=4';
-import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=30';
+import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=31';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=13';
 import {savedKosaJourney} from './day-kosa-journey.mjs?v=17';

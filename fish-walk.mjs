@@ -1,4 +1,4 @@
-import {saveTourDay} from './gastronomy.mjs?v=27';
+import {saveTourDay} from './gastronomy.mjs?v=28';
 export async function initFishWalk({workshop,base,catalog}) {
   const button=document.querySelector('[data-fish-save]'),booklet=document.querySelector('[data-fish-booklet]'),status=document.querySelector('[data-fish-status]');
   const response=await fetch(new URL('data/gastronomy.json',base));
@@ -7,7 +7,7 @@ export async function initFishWalk({workshop,base,catalog}) {
   if(!tour || tour.places.length!==3)throw Error('fish_walk_unavailable');
   let busy=false;
   const enabled=value=>{button.disabled=!value;if(booklet)booklet.disabled=!value;};
-  const save=()=>workshop.setState(current=>saveTourDay(current,tour,food,{theme:'fish',time:'12:00',date:null,max_minutes:180}),'Рыбная прогулка добавлена отдельным днём.');
+  const save=()=>workshop.setState(current=>saveTourDay(current,tour,food,{name:'Зеленоградск на рыбной волне',theme:'fish',time:'12:00',date:null,max_minutes:180}),'Рыбная прогулка добавлена отдельным днём.');
   enabled(true);
   button.addEventListener('click',async()=>{
     if(busy)return;busy=true;enabled(false);
@@ -23,7 +23,7 @@ export async function initFishWalk({workshop,base,catalog}) {
     try {
       await save();
       const trip=structuredClone(workshop.getState()),signature=JSON.stringify(trip);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=48');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=49');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
       button.textContent='День сохранён ✓';
