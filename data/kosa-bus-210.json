@@ -202,5 +202,197 @@
       "arrival": 1275
     }
   ],
-  "exceptions": []
+  "exceptions": [],
+  "revisions": [
+    {
+      "valid_from": "2026-10-10",
+      "valid_until": null,
+      "publication_year": 2026,
+      "checked_at": "2026-10-12",
+      "source_url": "https://xn--80afebak0adtkxo.xn--p1ai/transport/bus/",
+      "image_url": "https://xn--80afebak0adtkxo.xn--p1ai/upload/medialibrary/6cb/4pfbrehxlt4rv8ti0w4nrp7k2tbl2852.png",
+      "image_sha256": "1f912a824a933bfa4a62017b8a3f2f638cb199d0281d7c8a79ad1e5f38c83333",
+      "note": "Муниципальная таблица с 10 октября 2026: 14 отправлений из Зеленоградска и 13 различных времён возвращения. В столбцах 7 и 8 повторён обратный рейс 14:05 от Эфы — 15:00 в Зеленоградске; в расчёте он учтён один раз. Последний обратный рейс: Эфа 19:40, Танцующий лес 19:45, Зеленоградск 20:35. Наличие мест неизвестно.",
+      "outward": [
+        {
+          "id": "out-1",
+          "departure": 400,
+          "arrival": 455,
+          "via": null
+        },
+        {
+          "id": "out-2",
+          "departure": 481,
+          "arrival": 535,
+          "via": null
+        },
+        {
+          "id": "out-3",
+          "departure": 535,
+          "arrival": 590,
+          "via": null
+        },
+        {
+          "id": "out-4",
+          "departure": 580,
+          "arrival": 635,
+          "via": null
+        },
+        {
+          "id": "out-5",
+          "departure": 650,
+          "arrival": 710,
+          "via": null
+        },
+        {
+          "id": "out-6",
+          "departure": 690,
+          "arrival": 745,
+          "via": null
+        },
+        {
+          "id": "out-7",
+          "departure": 735,
+          "arrival": 785,
+          "via": null
+        },
+        {
+          "id": "out-8",
+          "departure": 775,
+          "arrival": 830,
+          "via": null
+        },
+        {
+          "id": "out-9",
+          "departure": 815,
+          "arrival": 875,
+          "via": null
+        },
+        {
+          "id": "out-10",
+          "departure": 865,
+          "arrival": 920,
+          "via": null
+        },
+        {
+          "id": "out-11",
+          "departure": 920,
+          "arrival": 980,
+          "via": null
+        },
+        {
+          "id": "out-12",
+          "departure": 960,
+          "arrival": 1015,
+          "via": null
+        },
+        {
+          "id": "out-13",
+          "departure": 1030,
+          "arrival": 1085,
+          "via": null
+        },
+        {
+          "id": "out-14",
+          "departure": 1070,
+          "arrival": 1125,
+          "via": null
+        }
+      ],
+      "inward": [
+        {
+          "id": "in-1",
+          "departure": 470,
+          "via": 475,
+          "arrival": 525
+        },
+        {
+          "id": "in-2",
+          "departure": 570,
+          "via": 575,
+          "arrival": 625
+        },
+        {
+          "id": "in-3",
+          "departure": 620,
+          "via": 625,
+          "arrival": 675
+        },
+        {
+          "id": "in-4",
+          "departure": 670,
+          "via": 675,
+          "arrival": 725
+        },
+        {
+          "id": "in-5",
+          "departure": 730,
+          "via": 735,
+          "arrival": 785
+        },
+        {
+          "id": "in-6",
+          "departure": 790,
+          "via": 795,
+          "arrival": 845
+        },
+        {
+          "id": "in-7",
+          "departure": 845,
+          "via": 850,
+          "arrival": 900
+        },
+        {
+          "id": "in-9",
+          "departure": 890,
+          "via": 895,
+          "arrival": 945
+        },
+        {
+          "id": "in-10",
+          "departure": 945,
+          "via": 950,
+          "arrival": 1000
+        },
+        {
+          "id": "in-11",
+          "departure": 1020,
+          "via": 1025,
+          "arrival": 1066
+        },
+        {
+          "id": "in-12",
+          "departure": 1060,
+          "via": 1065,
+          "arrival": 1115
+        },
+        {
+          "id": "in-13",
+          "departure": 1130,
+          "via": 1135,
+          "arrival": 1185
+        },
+        {
+          "id": "in-14",
+          "departure": 1180,
+          "via": 1185,
+          "arrival": 1235
+        }
+      ],
+      "exceptions": [],
+      "transcription_notes": [
+        {
+          "direction": "inward",
+          "source_columns": [
+            7,
+            8
+          ],
+          "departure": 845,
+          "via": 850,
+          "arrival": 900,
+          "treatment": "Identical published stop times are one usable departure, not two promised vehicles."
+        }
+      ]
+    }
+  ]
 }

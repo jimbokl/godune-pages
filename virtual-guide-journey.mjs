@@ -3,7 +3,7 @@
 import {collectTripGuide} from './trip-guide-engine.mjs?v=36';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=15';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=17';
 import {clock} from './day-stop-view.mjs?v=1';
 
 export async function collectVirtualJourney({trip,catalog,base,calculate,matrixFor,kosaFor}) {

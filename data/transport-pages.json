@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-08",
+  "updated": "2026-10-12",
   "profiles": [
     {
       "id": "curonian-210",
@@ -50,7 +50,7 @@
           "source": {
             "name": "Национальный парк · приказ № 73 от 6 марта 2025",
             "url": "https://park-kosa.ru/prikaz-ob-ustanovlenii-platyi-dlya-fizlicz-2025.pdf",
-            "checked_at": "2026-10-08"
+            "checked_at": "2026-10-12"
           }
         },
         {
@@ -66,8 +66,8 @@
           "valid_until": null,
           "source": {
             "name": "Муниципальное расписание 210 · тариф не указан",
-            "url": "https://zelenogradsk.com/transport/bus/",
-            "checked_at": "2026-10-04"
+            "url": "https://xn--80afebak0adtkxo.xn--p1ai/transport/bus/",
+            "checked_at": "2026-10-12"
           }
         },
         {
@@ -84,7 +84,7 @@
           "source": {
             "name": "Национальный парк · стоимость услуг",
             "url": "https://park-kosa.ru/stoimost-uslug-i-lgotyi",
-            "checked_at": "2026-10-08"
+            "checked_at": "2026-10-12"
           }
         }
       ],

@@ -1,8 +1,9 @@
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=26';
+import {savedKosaBudget} from './kosa-budget.mjs?v=2';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=28';
 import {kosaLightSummary} from './kosa-light.mjs?v=1';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
 import {kosaBoarding} from './kosa-boarding.mjs?v=1';
-import {transitTable} from './transport-day.mjs?v=3';
+import {transitTable} from './transport-day.mjs?v=4';
 import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=2';
 import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
@@ -70,7 +71,7 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
   return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:transitDayFinish(day)===null?null:transitDayFinish(day)-(day.home?day.home.ready_at:rail?rail.home_start:day.outward.departure),finish:transitDayFinish(day),timeline,...(rail?{rail,origin:answers.origin||'home'}:{}),
     ...(day.home?{home:structuredClone(day.home),...(homeRoad?{home_road:structuredClone(homeRoad)}:{}),...(answers.home_access?{home_known:homeKnown}:{}),earliest_finish:transitDayEarliestFinish(day),backup_home:day.backup_home?structuredClone(day.backup_home):null}:{}),
-    walking,boarding,light:kosaLightSummary(day.light),...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
+    budget:savedKosaBudget(answers),walking,boarding,light:kosaLightSummary(day.light),...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
     fallback:fallback+(rail&&backup?(rail.backup?` Затем электричка в ${clock(rail.backup.departure)}, прибытие на ${rail.from} в ${clock(rail.backup.arrival)}.`:' После запасного автобуса подходящей электрички в этой таблице нет. Полное запасное возвращение пока не подобрано.') :'')+(day.home&&backup?' '+transitBackupCopy(day,homeKnown):''),publication:{valid_from:table.valid_from,checked_at:table.checked_at,source_url:table.source_url,image_sha256:table.image_sha256,note:table.note},
     before:[rail?'Подтвердите электрички и автобусы на выбранную дату. Проверьте путь от жилья, выход со станции и обе пересадки.':'Подтвердите оба рейса на выбранную дату и проверьте дорогу до автобуса в Зеленоградске.',
       'Оформите разрешение национального парка. Сохраните билет и его код в телефоне.',

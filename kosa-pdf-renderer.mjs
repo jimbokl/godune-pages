@@ -1,6 +1,7 @@
+import {kosaBudgetText} from './kosa-budget.mjs?v=2';
 import './assets/vendor/pdf/pdf-lib.js';
 import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=26';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=28';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
 const {PDFDocument,rgb}=globalThis.PDFLib;
@@ -74,6 +75,7 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     paragraph(row.text,{color:muted,space:boarding?10:20});
     if(boarding)paragraph(boarding,{space:20});
   }
+  if(snapshot.budget){heading('Бюджет вашего дня');for(const text of kosaBudgetText(snapshot.budget))paragraph(text,{color:muted});const park=snapshot.budget.rows.find(r=>r.id==='park-person');if(park?.source){paragraph(`Плата парка · проверено ${park.source.checked_at}`,{size:9,color:muted});paragraph(park.source.url,{size:9,color:muted});}}
   start();heading('Вернуться с косы');
   paragraph('Остановка: '+snapshot.return.stop,{size:13});
   if(snapshot.return.blocked)paragraph(`Прежний автобус по таблице - ${clock(snapshot.return.departure)}. После задержки этот путь домой не подтверждён. Время возвращения неизвестно; сначала выберите и проверьте другой вариант.`);

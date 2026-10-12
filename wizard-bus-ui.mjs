@@ -1,6 +1,6 @@
-import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=8';
+import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=10';
 import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
-import {transitTable} from './transport-day.mjs?v=3';
+import {transitTable} from './transport-day.mjs?v=4';
 
 import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=4';
 import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';

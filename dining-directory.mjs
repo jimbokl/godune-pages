@@ -1,5 +1,5 @@
-import {initDiningRouteFilter} from './dining-route-filter.mjs?v=9';
-import {showSpatialDistance} from './service-context.mjs?v=20';
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=12';
+import {showSpatialDistance} from './service-context.mjs?v=23';
 import {regionMapStyle} from './region-map.mjs?v=2';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 const root=document.querySelector('[data-dining-directory]');

@@ -1,5 +1,5 @@
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
-import {transitTable,datedTransitInput} from './transport-day.mjs?v=3';
+import {transitTable,datedTransitInput} from './transport-day.mjs?v=4';
 
 const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 export const transportClock=n=>Number.isInteger(n)?`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`:'Время уточняется';
@@ -29,6 +29,13 @@ export function transportCalendar(p,a,tables){
 // unpriced component stays unknown; an explicitly exempt count can be zero.
 export function transportPrice(p,a,engine){
   validateTransportProfile(p);validateTransportAnswers(p,a);
+  return quoteTransportComponents(p,a,engine);
+}
+// A tariff quote depends on the party and date, not the duration of a walk.
+// The full transport page still validates its itinerary above.
+export function quoteTransportComponents(p,a,engine){
+  validateTransportProfile(p);
+  if(!validServiceDate(a?.date)||!integer(a.people,1,20)||!integer(a.exempt,0,a.people)||!integer(a.bikes,1,20)||!p.modes.some(m=>m.id===a.mode))throw Error('transport_answers_invalid');
   const rows=p.prices.filter(r=>r.modes.includes(a.mode)).map(r=>{
     const count={people:a.people,eligible:a.people-a.exempt,vehicle:1,bike:a.bikes}[r.scope];
     const valid=(!r.valid_from||a.date>=r.valid_from)&&(!r.valid_until||a.date<=r.valid_until);

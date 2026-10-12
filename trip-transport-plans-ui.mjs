@@ -1,7 +1,7 @@
 import {selectedDay} from './trip-days-state.mjs?v=27';
 import {removeTransportPlan} from './trip-transport-plans-state.mjs';
 import {transportStates,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs';
-import {transportClock} from './transport-page-state.mjs?v=1';
+import {transportClock} from './transport-page-state.mjs?v=2';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 export function initTransportPlans({mount,read,commit,catalog,base}){
  if(!mount)return {render(){}};

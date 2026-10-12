@@ -1,0 +1,18 @@
+/* Generated handwriting is a decorative accent; headings stay normal text. */
+.destination-signature{display:block;width:min(280px,100%);max-width:100%;pointer-events:none;flex-shrink:0}
+.destination-signature>img{display:block;width:100%;height:auto;object-fit:contain}
+@supports(mask-image:url("")){
+ .destination-signature{background-color:#789db5;mask-image:var(--signature);mask-size:contain;mask-position:center;mask-repeat:no-repeat}
+ .destination-signature>img{visibility:hidden}
+ html[data-theme=night] .destination-signature{background-color:#aacbdf}
+}
+.fish-hero-visual{min-width:0}
+.fish-hero-visual>.destination-signature{margin:0 0 -4px auto;width:min(250px,70%)}
+.journey-city-signature{display:flex;justify-content:flex-end;padding:2px 0 0}
+.journey-city-signature>.destination-signature{width:min(240px,60%)}
+.city-guide-copy>.destination-signature,.collection-intro-copy>.destination-signature,.dunes-hero-copy>.destination-signature,.kosa-hero-copy>.destination-signature{margin:6px 0 12px;width:min(240px,85%)}
+@media(max-width:760px){
+ .fish-journey .fish-hero-visual{order:-1}
+ .fish-hero-visual>.destination-signature{width:190px;margin-top:-1px;margin-bottom:-8px}
+ .journey-city-signature>.destination-signature{width:190px}
+}

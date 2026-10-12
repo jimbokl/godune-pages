@@ -66,6 +66,8 @@ export function initWalk() {
   document.querySelectorAll('[data-start-route]').forEach(button => button.addEventListener('click', () => {
     const next = checks.find(input => !input.checked);
     const target = next?.closest('li') || document.querySelector('#route-stops');
+    const details = target.querySelector?.('.journey-stop');
+    if (details) details.open = true;
     (next || target).focus({preventScroll: true});
     target.scrollIntoView({block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   }));
@@ -77,5 +79,14 @@ export function initWalk() {
   }
   window.addEventListener('storage', event => { if (event.key === key(route) || event.key === null) restoreProgress(); });
   window.addEventListener('godune:memory-cleared', restoreProgress);
+  function revealHash() {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target?.matches('.journey-map')) target.open = true;
+    const details = target?.querySelector('.journey-stop');
+    if (details) details.open = true;
+  }
+  window.addEventListener('hashchange', revealHash);
+  revealHash();
   refresh();
 }

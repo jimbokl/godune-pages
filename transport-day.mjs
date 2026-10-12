@@ -3,6 +3,21 @@ import {transitHomeInput} from './transport-home.mjs?v=2';
 
 // Legacy bus publications are adapted at the boundary, not inside the calendar.
 export function transitTable(publication,day){
+  // Keep the original publication for historical trips. Later municipal tables
+  // replace it from their own civil date; an open end never implies a new year.
+  if(publication.revisions!==undefined){
+    if(!Array.isArray(publication.revisions))throw Error('transport_revisions_invalid');
+    let previous=publication.valid_from,chosen=null;
+    for(const revision of publication.revisions){
+      if(!validServiceDate(revision.valid_from)||revision.valid_from<=previous)throw Error('transport_revisions_invalid');
+      previous=revision.valid_from;
+      const candidate={...publication,...revision};delete candidate.revisions;
+      // Validate each source/table, including a future revision not yet selected.
+      transitTable(candidate,revision.valid_from);
+      if(day>=revision.valid_from)chosen=candidate;
+    }
+    if(chosen)return {...transitTable(chosen,day),revision:true};
+  }
   const source={url:publication.source_url,checked_at:publication.checked_at,image_sha256:publication.image_sha256,image_url:publication.image_url,note:publication.note};
   const service={valid_from:publication.valid_from,valid_until:publication.valid_until,
     publication_year:publication.publication_year??(publication.valid_until?null:Number(publication.valid_from?.slice(0,4))),source,

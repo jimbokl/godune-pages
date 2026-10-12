@@ -58,3 +58,11 @@ body[data-tool="routes"] .map-day-passport{margin-top:32px}
 
 body[data-tool="routes"][data-ui-context] .inner-main .catalog-facts{font-size:12px;margin:0 0 12px}
 body[data-tool="routes"][data-ui-context] .inner-main .catalog-location{font-size:12px;margin:0 0 7px}
+.catalog-waves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.catalog-waves>a{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);min-width:0}
+.catalog-waves img{width:100%;aspect-ratio:1.9;height:auto;object-fit:cover}.catalog-waves>a>div{display:flex;flex-direction:column;flex:1;padding:22px}
+.catalog-waves span{font-size:12px;color:var(--sea-muted)}.catalog-waves h3{font:400 28px/1.2 var(--serif);margin:10px 0 12px}
+body[data-tool="routes"][data-ui-context] .inner-main .catalog-waves p{font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 18px}.catalog-waves strong{font-size:13px;color:var(--catalog-amber-ink);margin-top:auto;min-height:44px;display:flex;align-items:center}
+.catalog-waves>a:hover{border-color:var(--sea-line)}.catalog-waves>a:focus-visible{outline:2px solid var(--sea-ink);outline-offset:4px}
+@media(max-width:1000px){.catalog-waves{grid-template-columns:1fr}.catalog-waves>a{display:grid;grid-template-columns:180px minmax(0,1fr)}.catalog-waves img{height:100%;aspect-ratio:auto;min-height:180px}.catalog-waves>a>div{padding:20px}}
+@media(max-width:500px){.catalog-waves>a{grid-template-columns:110px minmax(0,1fr)}.catalog-waves h3{font-size:24px}.catalog-waves>a>div{padding:18px}.catalog-waves img{min-height:220px}}

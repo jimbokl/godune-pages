@@ -1,4 +1,4 @@
-import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=1';
+import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {formatKopecks as money} from './trip-money.mjs';
 import {saveTransportPlan} from './trip-transport-plans-state.mjs';

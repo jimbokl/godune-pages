@@ -1,19 +1,19 @@
-import {loadWalkProgress} from './walk.mjs?v=3';
+import {loadWalkProgress} from './walk.mjs?v=4';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=30';
-import {initTripSharing} from './trip-link.mjs?v=62';
+import {initTripSharing} from './trip-link.mjs?v=64';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=26';
 import {loadTrip} from './trip-memory-bootstrap.mjs?v=5';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=8';
 import {createPlanningProgress} from './planning-progress.mjs?v=3';
 import {tripJournalBindings} from './scenario-bindings.mjs';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=25';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=49';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=51';
 import {initTripDays} from './trip-days-ui.mjs?v=44';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=25';
-import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=3';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=28';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=4';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=39';
+import {initDayWorkspace} from './day-workspace.mjs?v=41';
 import {addTripStarter} from './trip-starters.mjs?v=26';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=27';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=18';
@@ -110,7 +110,7 @@ export async function initWorkshop(catalog, base) {
   const routeSave = document.body.dataset.route && document.querySelector('[data-save-route]');
   if (routeSave) {
     const add = document.createElement('button'); add.type = 'button'; add.className = 'save-item';
-    add.dataset.routeStops = document.body.dataset.route; routeSave.parentElement.append(add);
+    add.dataset.routeStops = document.body.dataset.route; (document.querySelector('.journey-extra .tool-links') || routeSave.parentElement).append(add);
   }
   function renderList(kind) {
     const list = $(kind === 'places' ? '#my-places' : '#my-routes');
@@ -164,6 +164,7 @@ export async function initWorkshop(catalog, base) {
     const savedWalks = $('#trip-saved-walks'); if (savedWalks) savedWalks.hidden = state.routes.length === 0;
     const orderNote = $('#trip-order-note'); if (orderNote) orderNote.hidden = state.places.length < 2;
     document.querySelectorAll('[data-start-route]').forEach(node => {
+      if (!node.dataset.startRoute) return;
       const route = catalog.routes.find(item => item.slug === node.dataset.startRoute);
       const done = state.routes.includes(route?.slug) && route?.stops.every(stop => state.places.includes(stop.poi));
       node.disabled = !!done;
