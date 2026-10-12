@@ -118,3 +118,98 @@ html[data-theme=night] .fish-signoff img{mix-blend-mode:screen;filter:invert(1)}
 
 /* These timelines supply their own accessible chevron, instead of the dossier marker. */
 body[data-ui-context] main.inner-main article:is(.fish-journey,.route-journey) ol:is(.fish-stops,.journey-stops) li[id] :is(.fish-stop,.journey-stop-card) details:is(.fish-stop-details,.journey-stop)>summary::after{content:none;display:none}
+
+/* Mobile polish: the selected wave reference also drives the shared walk cards. */
+.route-journey{--journey-blue:#126da1;--journey-accent:#a9650e}
+html[data-theme=night] .route-journey{--journey-blue:#91bbd3;--journey-accent:#e6b877}
+.route-journey .journey-hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr);align-items:center;gap:30px;margin-bottom:20px}
+.route-journey .journey-hero .journey-heading{margin:0;min-width:0}
+.route-journey .journey-heading h1{font-size:clamp(38px,4.3vw,60px)}
+.route-journey .journey-heading .inner-lead{font:400 21px/1.5 var(--serif)}
+.route-journey .journey-cover{aspect-ratio:1.7;border-radius:6px}
+.route-journey .journey-passport{padding:18px 0 24px;margin-bottom:0}
+.route-journey .journey-jumps{margin-bottom:24px}
+.route-journey .journey-layout{grid-template-columns:minmax(0,1fr) 290px;gap:32px}
+.route-journey .walk-status{padding:0 0 16px;border:0;border-radius:0;background:transparent;margin-bottom:14px}
+.route-journey .walk-status progress{margin:4px 0 8px}
+.route-journey .journey-stops>li{padding-bottom:12px}
+.route-journey .journey-number{background:var(--journey-accent);font:400 20px/1 var(--serif);margin-top:12px}
+.route-journey .journey-stops>li:not(:last-child):after{border:0;width:1px;background:color-mix(in srgb,var(--journey-accent) 38%,transparent)}
+.route-journey .journey-stop-card{border-radius:6px}
+.route-journey .journey-stop-card:has(.journey-stop[open]){border-color:color-mix(in srgb,var(--journey-accent) 60%,var(--line))}
+body[data-route] .inner-main .route-journey .journey-stop>summary{display:grid;grid-template-columns:90px minmax(0,1fr) 28px;gap:16px;padding:12px}
+.journey-stop-copy{display:block;min-width:0}
+.journey-stop-map{display:block;width:90px;height:86px;object-fit:cover;border-radius:4px}
+.route-journey .journey-stops .route-stop-category{font:400 10px/1.5 var(--sans);letter-spacing:0;text-transform:none;margin:0 0 6px}
+.route-journey .journey-stops h3{font:400 24px/1.18 var(--serif);margin:0;overflow-wrap:break-word}
+.route-journey .journey-chevron{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sand);color:var(--sea-ink);align-self:start;margin-top:4px}
+.route-journey .journey-stop-body{padding:0 16px 10px 118px}
+.route-journey .journey-stop-body>p{font:400 15px/1.5 var(--serif);color:var(--sea-muted);margin:0 0 10px}
+.route-journey .journey-place-link{font:400 13px/1.5 var(--serif);min-height:44px}
+.route-journey .journey-visit-details{margin:0;border:0}
+.route-journey .journey-visit-details>summary{min-height:44px;padding:12px 0;font:400 11px/1.5 var(--sans)}
+.route-journey .route-stop-actions{padding:4px 12px}
+.route-journey .stop-nav{justify-content:space-between;padding:6px 12px;border:1px solid var(--sea-line);border-radius:5px;min-width:108px}
+.route-journey .journey-pocket{padding:22px;border-radius:6px}
+.route-journey .journey-pocket>h2{margin:0;font:400 34px/1.2 var(--serif)}
+.route-journey .journey-pocket>.button{margin:10px 0}
+.route-journey .journey-pocket>.button-outline{background:transparent;color:var(--sea-ink);border:1px solid var(--sea-line)}
+.route-journey .journey-overview{list-style:none;counter-reset:walk-day;padding:0;margin:22px 0;border-bottom:1px solid var(--line)}
+body[data-route] .inner-main .journey-overview>li{position:relative;counter-increment:walk-day;padding:0 0 20px 44px;margin:0;border:0;background:transparent;display:block}
+body[data-route] .inner-main .journey-overview>li:before{content:counter(walk-day);position:absolute;left:0;top:0;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:var(--journey-accent);color:#fff;font:400 18px/1 var(--serif)}
+.journey-overview>li:not(:last-child):after{content:"";position:absolute;left:14px;top:33px;bottom:3px;width:1px;background:color-mix(in srgb,var(--journey-accent) 35%,transparent)}
+.journey-overview a{display:block;min-height:44px;color:var(--sea-ink)}
+.journey-overview strong{display:block;font:400 16px/1.35 var(--serif)}
+.journey-overview span{display:block;font:400 11px/1.5 var(--sans);color:var(--sea-muted);margin-top:4px}
+body[data-fish-walk] .inner-main .fish-journey .fish-overview>li::marker,body[data-route] .inner-main .journey-overview>li::marker{content:""}
+body[data-fish-walk] .inner-main .fish-journey .fish-overview>li{list-style:none}
+.fish-journey .fish-stop-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0}
+.fish-journey .fish-stop-links a{min-height:44px;gap:6px;font-size:14px}
+.fish-journey .fish-stop-links a:only-child{grid-column:1/-1}
+.fish-journey .fish-stop-body>.fish-stop-hint{font:400 15px/1.5 var(--serif);margin:0 0 12px}
+body[data-fish-walk] .inner-main .fish-journey .fish-stop-facts{padding:0;margin:8px 0 0;border:0;background:transparent;box-shadow:none}
+body[data-fish-walk] .inner-main .fish-journey .fish-stop-facts>summary{min-height:44px;padding:12px 22px 12px 0;font:400 11px/1.5 var(--sans);color:var(--sea-muted)}
+.fish-journey .fish-place-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:var(--sea-ink);text-underline-offset:4px}
+@media(min-width:761px){.fish-journey .fish-stop-body>.fish-stop-hint{display:none}}
+@media(max-width:1000px) and (min-width:761px){.route-journey .journey-layout{grid-template-columns:minmax(0,1fr) 250px;gap:22px}.route-journey .journey-hero{gap:22px}.route-journey .journey-heading h1{font-size:45px}.route-journey .journey-stop-body{padding-left:16px}}
+@media(max-width:760px){
+ .route-journey .journey-hero{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin-bottom:18px}
+ .route-journey .journey-hero-visual{order:-1}
+ .route-journey .journey-cover{aspect-ratio:1.9}
+ .route-journey .journey-heading h1{font-size:clamp(34px,8.4vw,48px);margin:10px 0 12px}
+ .route-journey .journey-heading .inner-lead{font-size:18px;line-height:1.5}
+ .route-journey .journey-passport{padding:0 0 18px;gap:18px}
+ .route-journey .journey-passport dl{gap:10px;justify-content:space-between}
+ .route-journey .journey-passport dt{font-size:10px}
+ .route-journey .journey-passport dd{font-size:20px}
+ .route-journey .journey-passport .inner-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+ .route-journey .journey-passport .button{display:inline-flex;align-items:center;justify-content:center;gap:6px;align-self:stretch;min-width:0;min-height:48px;height:auto;padding:11px 8px;font-size:12px}
+ .route-journey .journey-jumps{gap:20px;margin-bottom:20px}
+ .route-journey .journey-layout{grid-template-columns:minmax(0,1fr);gap:20px}
+ .route-journey .journey-section-heading{align-items:center;gap:12px;margin-bottom:12px}
+ .route-journey .journey-section-heading .inner-kicker{display:none}
+ .route-journey .journey-section-heading h2{font-size:29px;margin:0}
+ .route-journey .journey-section-heading>a{font-size:10px;white-space:normal;max-width:82px;line-height:1.5;text-align:right}
+ .route-journey .journey-stops>li{grid-template-columns:26px minmax(0,1fr);gap:10px}
+ .route-journey .journey-number{width:26px;height:26px;font-size:17px;margin-top:14px}
+ .route-journey .journey-stops>li:not(:last-child):after{left:12px;top:44px}
+ body[data-route] .inner-main .route-journey .journey-stop>summary{grid-template-columns:64px minmax(0,1fr) 24px;gap:10px;padding:10px}
+ .journey-stop-map{width:64px;height:76px}
+ .route-journey .journey-stops h3{font-size:20px}
+ .route-journey .journey-stops .route-stop-category{font-size:9px;margin-bottom:5px}
+ .route-journey .journey-chevron{width:24px;height:24px;font-size:18px}
+ .route-journey .journey-stop-body{padding:0 12px 8px}
+ .route-journey .journey-stop-body>p{font-size:14px}
+ .route-journey .stop-check,.route-journey .stop-nav{font-size:11px}
+ .route-journey .journey-pocket{padding:22px}
+ .route-journey .journey-pocket>h2{font-size:30px}
+ .fish-journey .fish-stop-body{padding-bottom:6px}
+}
+@media(max-width:360px){
+ body[data-route] .inner-main .route-journey .journey-stop>summary{grid-template-columns:48px minmax(0,1fr) 20px;gap:8px;padding:8px}
+ .journey-stop-map{width:48px;height:70px}
+ .route-journey .journey-stops h3{font-size:18px}
+ .route-journey .route-stop-actions{padding:4px 8px;gap:4px}
+ .route-journey .stop-nav{min-width:92px;padding:6px 8px}
+ .route-journey .stop-check{gap:5px;font-size:10px}
+}

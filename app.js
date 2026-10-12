@@ -258,7 +258,7 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=120'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=121'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
@@ -315,15 +315,41 @@
   });
   // A fast keyboard/touch activation may arrive before the modules. Preserve
   // that action and replay it after the normal editor handlers are installed.
+  const pendingTripActions = new Set();
   document.addEventListener('click', event => {
     const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter]');
-    if (!homeHero || workshop || !button || button.disabled) return;
+    if (workshop || !button || button.disabled) return;
     event.preventDefault(); event.stopImmediatePropagation();
+    if (pendingTripActions.has(button)) return;
+    pendingTripActions.add(button);
     wakeWorkshop('action');
-    workshopReady.then(() => { if (workshop && button.isConnected && !button.disabled) button.click(); });
+    workshopReady.then(() => {
+      pendingTripActions.delete(button);
+      if (workshop && button.isConnected && !button.disabled) button.click();
+    });
   }, true);
   if (document.body.dataset.route) {
-    import(url('walk.mjs?v=4')).then(({initWalk}) => initWalk()).catch(() => {
+    const touched = new Map();
+    let pendingStart = null;
+    const rememberCheck = event => {
+      if (event.target.matches?.('[data-step-check]')) touched.set(event.target.dataset.poi, event.target.checked);
+    };
+    const rememberStart = event => {
+      const button = event.target.closest?.('[data-start-route]');
+      if (!button) return;
+      event.preventDefault(); event.stopImmediatePropagation();
+      pendingStart = button;
+    };
+    document.addEventListener('change', rememberCheck, true);
+    document.addEventListener('click', rememberStart, true);
+    import(url('walk.mjs?v=5')).then(({initWalk}) => {
+      initWalk({touched});
+      document.removeEventListener('change', rememberCheck, true);
+      document.removeEventListener('click', rememberStart, true);
+      if (pendingStart?.isConnected) pendingStart.click();
+    }).catch(() => {
+      document.removeEventListener('change', rememberCheck, true);
+      document.removeEventListener('click', rememberStart, true);
       const notice = $('#walk-storage');
       if (notice) {
         notice.hidden = false;

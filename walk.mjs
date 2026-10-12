@@ -22,7 +22,16 @@ export function saveWalkProgress(storage, route, completed, stopIds) {
   } catch { return false; }
 }
 
-export function initWalk() {
+// User input during module loading wins over older persisted progress.
+export function mergeWalkProgress(completed, touched, stopIds) {
+  const merged = new Set(validStops(completed, stopIds));
+  for (const id of stopIds) {
+    if (touched.has(id)) touched.get(id) ? merged.add(id) : merged.delete(id);
+  }
+  return stopIds.filter(id => merged.has(id));
+}
+
+export function initWalk({touched = new Map()} = {}) {
   const route = document.body.dataset.route;
   const checks = [...document.querySelectorAll('[data-step-check]')];
   if (!route || !checks.length) return;
@@ -30,7 +39,8 @@ export function initWalk() {
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
   const restored = loadWalkProgress(storage, route, stopIds);
-  checks.forEach(input => { input.checked = restored.completed.includes(input.dataset.poi); });
+  const initial = mergeWalkProgress(restored.completed, touched, stopIds);
+  checks.forEach(input => { input.checked = initial.includes(input.dataset.poi); });
   const notice = document.querySelector('#walk-storage');
   function storageNotice(available) {
     notice.hidden = available;
@@ -71,7 +81,7 @@ export function initWalk() {
     (next || target).focus({preventScroll: true});
     target.scrollIntoView({block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   }));
-  storageNotice(restored.available);
+  storageNotice(touched.size ? saveWalkProgress(storage, route, initial, stopIds) : restored.available);
   function restoreProgress() {
     const progress = loadWalkProgress(storage, route, stopIds);
     checks.forEach(input => { input.checked = progress.completed.includes(input.dataset.poi); });
@@ -87,6 +97,7 @@ export function initWalk() {
     if (details) details.open = true;
   }
   window.addEventListener('hashchange', revealHash);
+  document.documentElement.dataset.walkReady = 'true';
   revealHash();
   refresh();
 }

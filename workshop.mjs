@@ -1,4 +1,4 @@
-import {loadWalkProgress} from './walk.mjs?v=4';
+import {loadWalkProgress} from './walk.mjs?v=5';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=30';
 import {initTripSharing} from './trip-link.mjs?v=64';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=26';
