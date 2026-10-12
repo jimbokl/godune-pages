@@ -1,11 +1,11 @@
-import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs?v=2026101206';
+import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs?v=2026101208';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
 import {partyLabel} from './trip-party.mjs?v=1';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=4';
 import {assessDayPreferences} from './day-preferences.mjs?v=8';
 import {tripAccessProfile} from './route-access.mjs?v=1';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101206';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101208';
 import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=19';
 import {resolveRail} from './trip-rail-state.mjs?v=7';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
@@ -17,9 +17,9 @@ import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journe
 import {buildGuide} from './virtual-guide-engine.mjs?v=2';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=1';
 import {waveLabel} from './day-wave.mjs?v=2';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101206';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101208';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2';
-import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101206';
+import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101208';
 
 const notes={unknown_travel:'Время дороги ещё неизвестно.',unknown_opening:'Часы входа ещё нужно сверить.',opening_needs_check:'Часы учтены; дату и билеты нужно сверить.',unknown_kitchen:'Уточните время последнего заказа.',kitchen_needs_check:'Время приёма заказов нужно сверить.',kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К этому времени кухня уже не принимает заказ.',travel_needs_check:'Дорога учтена по оценке; доступ нужно сверить.',unknown_approach:'Неизвестно время подхода ко входу.',unknown_return:'Неизвестно время возвращения к парковке.',access_needs_check:'Пеший участок учтён по карте; темп и доступ нужно сверить.',transport_needs_check:'Переправу нужно сверить на дату поездки.',transport_incomplete:'Не хватает времени пути или расписания переправы.',transport_conflict:'Возвращение с переправы не складывается.',closed:'По выбранным часам в этот день посещений нет.',window_missed:'Осмотр не помещается в часы входа или сеанс.',appointment_needs_check:'Без времени дороги прибытие к билету нельзя подтвердить.',appointment_venue_conflict:'Время билета не совпадает с известными часами посещения.'};
 export function guideIssue(issue) {

@@ -1,4 +1,4 @@
-import {saveTourDay} from './gastronomy.mjs?v=2026101206';
+import {saveTourDay} from './gastronomy.mjs?v=2026101208';
 export async function initFishWalk({workshop,base,catalog}) {
   const button=document.querySelector('[data-fish-save]'),booklet=document.querySelector('[data-fish-booklet]'),status=document.querySelector('[data-fish-status]');
   const response=await fetch(new URL('data/gastronomy.json',base));
@@ -23,7 +23,7 @@ export async function initFishWalk({workshop,base,catalog}) {
     try {
       await save();
       const trip=structuredClone(workshop.getState()),signature=JSON.stringify(trip);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101206');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101208');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
       button.textContent='День сохранён ✓';

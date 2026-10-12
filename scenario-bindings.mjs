@@ -1,4 +1,4 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101206';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101208';
 // The private day is hashed locally only to match a later PDF to the exact
 // saved snapshot. Neither that content nor the hash is sent to a server.
 export async function tripJournalBindings(trip,{scope='trip',environment=globalThis}={}) {

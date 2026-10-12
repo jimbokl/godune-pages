@@ -1,5 +1,5 @@
-import {journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101206';
-import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=2026101206';
+import {journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101208';
+import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=2026101208';
 import {baseName,baseId} from './personal-points.mjs?v=3';
 import {endBookingLabel,bookingEffects,BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=3';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';

@@ -2,8 +2,8 @@ import {offlineAction} from './offline.mjs?v=6';
 
 const SLUG='region-coast';
 const REQUIRED=[
-  'kurshskaya-kosa/bez-mashiny/index.html', 'kosa-offline.mjs?v=2026101206', 'kosa-planner.mjs?v=2026101206',
-  'kosa-pdf.mjs?v=2026101206', 'kosa-pdf-worker.mjs?v=2026101206', 'kosa-pdf-renderer.mjs?v=2026101206', 'guide-sections.mjs',
+  'kurshskaya-kosa/bez-mashiny/index.html', 'kosa-offline.mjs?v=2026101208', 'kosa-planner.mjs?v=2026101208',
+  'kosa-pdf.mjs?v=2026101208', 'kosa-pdf-worker.mjs?v=2026101208', 'kosa-pdf-renderer.mjs?v=2026101208', 'guide-sections.mjs',
   'data/kosa-bus-210.json', 'data/kosa-interchanges.json', 'guides/manifest.json',
   ...['vysota-efa','tancuyushchiy-les'].flatMap(slug=>['phone','print'].map(format=>`guides/${slug}-${format}.pdf`)),
 ];

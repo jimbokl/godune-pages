@@ -15,7 +15,7 @@ const reasons=[null,'missing_service','choose_date','unpublished_year','outside_
 export const hasRailConnection=a=>a.origin==='kaliningrad-rail';
 export function validRailConnectionAnswers(a,profile){
  if(a.origin===undefined)return a.station_walk===undefined&&a.rail_boarding===undefined;
- if(a.origin==='baltiysk')return profile==='baltic-ferry'&&a.station_walk===undefined&&a.rail_boarding===undefined;
+ if(['baltiysk','kaliningrad-bus','kaliningrad-car','kaliningrad-bike','kaliningrad-taxi'].includes(a.origin))return profile==='baltic-ferry'&&a.station_walk===undefined&&a.rail_boarding===undefined;
  return hasRailConnection(a)&&profile==='baltic-ferry'&&a.mode==='foot'&&Number.isSafeInteger(a.station_walk)&&a.station_walk>=0&&a.station_walk<=90&&Number.isSafeInteger(a.rail_boarding)&&a.rail_boarding>=0&&a.rail_boarding<=120;
 }
 function selection(a,table,circular){

@@ -1,12 +1,12 @@
-import {initDiningRouteFilter} from './dining-route-filter.mjs?v=2026101206';
-import {showSpatialDistance} from './service-context.mjs?v=2026101206';
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=2026101208';
+import {showSpatialDistance} from './service-context.mjs?v=2026101208';
 import {regionMapStyle} from './region-map.mjs?v=2';
 import {bindMapTheme} from './map-theme.mjs?v=2';
 const root=document.querySelector('[data-dining-directory]');
 if(root) {
   let choicesReady;
   root.querySelectorAll('[data-dining-menu]').forEach(menu=>menu.addEventListener('toggle',()=>{
-    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=2026101206').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
+    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=2026101208').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
   }));
   const form=root.querySelector('.dining-filters'),cards=[...root.querySelectorAll('[data-dining-card]')];
   const status=root.querySelector('[data-dining-count]'),empty=root.querySelector('[data-dining-empty]');

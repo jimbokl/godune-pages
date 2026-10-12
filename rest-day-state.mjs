@@ -1,13 +1,13 @@
 // Composition is shared by both entrances. Rust owns time, cost and feasibility.
-import {emptyTrip,cleanTrip} from './trip-state.mjs?v=2026101206';
-import {selectedDay,ensureJourney,validTripDate} from './trip-days-state.mjs?v=2026101206';
-import {alongContext,alongAreas,alongInput,insertionVariants,insertionStart,confirmAlong} from './along-route-state.mjs?v=2026101206';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101206';
-import {addServiceVisit} from './trip-service-visits-state.mjs?v=2026101206';
+import {emptyTrip,cleanTrip} from './trip-state.mjs?v=2026101208';
+import {selectedDay,ensureJourney,validTripDate} from './trip-days-state.mjs?v=2026101208';
+import {alongContext,alongAreas,alongInput,insertionVariants,insertionStart,confirmAlong} from './along-route-state.mjs?v=2026101208';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101208';
+import {addServiceVisit} from './trip-service-visits-state.mjs?v=2026101208';
 import {selectedInput} from './service-selection-state.mjs?v=4';
-import {scheduleServiceInsertion} from './along-route-services-state.mjs?v=2026101206';
-import {transferEditorPairs,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=2026101206';
-import {saveTransferConnection} from './trip-transfer-connections-state.mjs?v=2026101206';
+import {scheduleServiceInsertion} from './along-route-services-state.mjs?v=2026101208';
+import {transferEditorPairs,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=2026101208';
+import {saveTransferConnection} from './trip-transfer-connections-state.mjs?v=2026101208';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=19';
 import {bookingEffects} from './trip-bookings-state.mjs?v=3';
 

@@ -11,6 +11,13 @@
 body[data-transport] .transport-origin{display:block;max-width:100%;min-height:44px;margin:16px 0 0;padding:8px 0;border:0;background:transparent;color:var(--muted,#536672);font:500 14px/1.5 var(--sans);text-align:left;text-decoration:underline;text-underline-offset:4px;cursor:pointer;overflow-wrap:anywhere}
 body[data-transport] .transport-origin:hover{color:var(--ink)}
 body[data-transport] .transport-origin:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:3px}
+body[data-transport] .transport-origin-choices{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px;align-items:center}
+body[data-transport] .transport-choice-label{flex-basis:100%;font:500 12px/1.5 var(--sans);color:var(--muted);margin-bottom:2px}
+body[data-transport] .transport-origin-choices button{min-height:44px;border:1px solid var(--line,#d8d5ce);border-radius:7px;padding:8px 12px;background:transparent;color:var(--ink);font:500 13px/1.4 var(--sans);cursor:pointer}
+body[data-transport] .transport-origin-choices button[aria-pressed=true]{background:#e3edf2;border-color:#8babbd;color:#244d68}
+body[data-transport] .transport-origin-choices button:focus-visible{outline:2px solid var(--action,#386f95);outline-offset:3px}
+body[data-transport] .transport-settings [data-road-fields]{display:grid;gap:1rem}
+body[data-transport] .transport-settings [data-road-fields] p{margin:0}
 body[data-transport] .transport-date{display:flex;align-items:center;min-height:44px}
 :root[data-theme=night] body[data-transport] .transport-step-icon{background:#294459}
 :root[data-theme=night] body[data-transport] .transport-result-actions .transport-secondary{color:#b0d6ee}

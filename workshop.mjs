@@ -1,27 +1,28 @@
 import {loadWalkProgress} from './walk.mjs?v=5';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101206';
-import {initTripSharing} from './trip-link.mjs?v=2026101206';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101206';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101206';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101208';
+import {initTripSharing} from './trip-link.mjs?v=2026101208';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101208';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101208';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=8';
-import {createPlanningProgress} from './planning-progress.mjs?v=2026101206';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101206';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101206';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101206';
-import {initTripDays} from './trip-days-ui.mjs?v=2026101206';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101206';
-import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101206';
-import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101206';
+import {createPlanningProgress} from './planning-progress.mjs?v=2026101208';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101208';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101208';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101208';
+import {initTripDays} from './trip-days-ui.mjs?v=2026101208';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101208';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101208';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101208';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {initDayWorkspace} from './day-workspace.mjs?v=2026101206';
-import {addTripStarter} from './trip-starters.mjs?v=2026101206';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101206';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101206';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101206';
+import {initDayWorkspace} from './day-workspace.mjs?v=2026101208';
+import {addTripStarter} from './trip-starters.mjs?v=2026101208';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101208';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101208';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101208';
 import {initTripRail} from './trip-rail-ui.mjs?v=20';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101206';
+import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=1';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101208';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101206';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101208';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }
@@ -76,6 +77,18 @@ export async function initWorkshop(catalog, base) {
   const restored = loadTrip(storage, catalog);
   const memory = createTripMemory(catalog, restored, storage);
   await memory.ready;
+  let linkedDayIssue=null;
+  const linkedDayId=$('#my-trip')?new URL(location.href).searchParams.get('trip-day'):null;
+  if(linkedDayId!==null){
+    const target=resolveTripDayLink(memory.get(),linkedDayId);
+    if(target.state!=='ready')linkedDayIssue='Этот день не найден. Выберите другой сохранённый день ниже.';
+    else if(memory.get().itinerary?.active!==linkedDayId){
+      try{
+        const opened=await memory.change(current=>openLinkedTripDay(current,linkedDayId),{label:'Открыт день по ссылке'});
+        if(opened.conflict||!opened.saved)linkedDayIssue='Выбранный день не удалось сохранить активным. Проверьте выбор дня ниже.';
+      }catch{linkedDayIssue='Этот день уже изменился или удалён. Выберите другой сохранённый день ниже.';}
+    }
+  }
   let state = memory.get(), available = memory.saved, writes = 0;
   const progress=createPlanningProgress(storage);
   const status = document.createElement('p');
@@ -270,6 +283,9 @@ export async function initWorkshop(catalog, base) {
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
+  if(linkedDayIssue){
+    const notice=document.createElement('p');notice.className='transport-plan-context';notice.setAttribute('role','status');notice.dataset.linkedDayStatus='missing';notice.textContent=linkedDayIssue;$('#my-trip').prepend(notice);
+  }
   const workshop = {
     progress,
     addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,

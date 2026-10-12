@@ -1,4 +1,4 @@
-import {collectDayGpx} from './day-gpx-state.mjs?v=2026101206';
+import {collectDayGpx} from './day-gpx-state.mjs?v=2026101208';
 import {loadScheduler} from './trip-scheduler.mjs?v=42';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
 
