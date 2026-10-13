@@ -1,5 +1,6 @@
+import {withKosaDinner} from './kosa-dinner.mjs?v=2026101307';
 import {savedKosaBudget} from './kosa-budget.mjs?v=2026101305';
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101305';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101307';
 import {kosaLightSummary} from './kosa-light.mjs?v=2026101305';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2026101305';
 import {kosaBoarding} from './kosa-boarding.mjs?v=2026101305';
@@ -68,7 +69,7 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
     if(check?.trail){row.trail_budget=check.trail;row.text+=' '+check.text;}
     if(check&&check.state!=='within_estimate'){row.walking_check=check;if(!check.trail)row.text+=' '+check.text;}
   }
-  return {schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
+  const book={schema_version:1,date:answers.date,city:cities[answers.city],walks:atForest?['vysota-efa','tancuyushchiy-les']:['vysota-efa'],
     duration:transitDayFinish(day)===null?null:transitDayFinish(day)-(day.home?day.home.ready_at:rail?rail.home_start:day.outward.departure),finish:transitDayFinish(day),timeline,...(rail?{rail,origin:answers.origin||'home'}:{}),
     ...(day.home?{home:structuredClone(day.home),...(homeRoad?{home_road:structuredClone(homeRoad)}:{}),...(answers.home_access?{home_known:homeKnown}:{}),earliest_finish:transitDayEarliestFinish(day),backup_home:day.backup_home?structuredClone(day.backup_home):null}:{}),
     budget:savedKosaBudget(answers),walking,boarding,light:kosaLightSummary(day.light),...(selected?{interchanges:selected}:{}),return:{stop:atForest?'Танцующий лес':'Высота Эфа',board_by:day.board_by,departure:returnTime,arrival:day.finish,backup},
@@ -81,4 +82,5 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
       'Если автобус ушёл или приехал полным, сначала уточните следующий рейс. Не идите между тропами по проезжей части в надежде догнать автобус.',
       'Если второго автобуса нет, уточните возвращение у перевозчика или заранее выбранного водителя. Стоимость и возможность подачи здесь неизвестны.',
       selected?'Карты переходов построены по OpenStreetMap. Площадка № 210, последние метры и проходы на местности ещё не проверены. Дорога от жилья и автобусный путь на них не показаны.':'Пешие карты относятся к отдельным тропам. Они не показывают дорогу от жилья до Зеленоградска или автобусный путь по косе.']};
+  return withKosaDinner(book,answers.dinner,{date:answers.date,station:answers.station,rail_boarding:answers.rail_boarding,catalog});
 }

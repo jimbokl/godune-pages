@@ -1,12 +1,12 @@
 import {recordTransportAction} from './transport-useful-actions.mjs?v=2026101305';
 import {createScenarioJournal} from './scenario-journal.mjs?v=2026101305';
 import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101305';
-import {collectTripGuide} from './trip-guide-engine.mjs?v=2026101305';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=2026101307';
 import {collectGuideMedia} from './trip-guide-media.mjs?v=2026101305';
 import {makeTripGuidePdf} from './trip-guide-pdf.mjs?v=2026101306';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
 import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=2026101305';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=2026101305';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=2026101307';
 export async function downloadPersonalGuide({trip,catalog,base,scope,format,signal,onProgress,stillCurrent,title}) {
   // URL objects lose their prototype across the worker boundary; send a plain URL.
   base=new URL('.',base).href;

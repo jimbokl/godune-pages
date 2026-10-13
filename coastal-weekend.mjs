@@ -1,4 +1,4 @@
-import {saveStay,stayTarget,staySettings,stayGuideTrip,stayProfile} from './planned-stay-state.mjs?v=2026101305';
+import {saveStay,stayTarget,staySettings,stayGuideTrip,stayProfile} from './planned-stay-state.mjs?v=2026101307';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
 import {partyLabel} from './trip-party.mjs?v=2026101305';
 
@@ -88,7 +88,7 @@ export function initCoastalWeekend({workshop,base,catalog}){
     try{
       if(!ids||changed.size)await persist();
       const current=workshop.getState(),signature=JSON.stringify(current),trip=stayGuideTrip(current,catalog,profile,ids);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101306');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101307');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:root.querySelector('[data-weekend-format]').value,title,onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Ваш PDF готов: ${result.pages} стр. ${allText} — в одном файле в загрузках.`;
     }catch(error){console.error('coastal-weekend/pdf',error);status.textContent=error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Скачайте свежий буклет.':error.message==='weekend_missing'?'Один из дней удалён. Создайте новый план.':'PDF пока не собрался. Попробуйте ещё раз.';}

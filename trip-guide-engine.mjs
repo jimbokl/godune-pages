@@ -89,7 +89,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
       }).filter(Boolean);
       roads={...roads,features:(roads.features||[]).filter(f=>f.properties?.mode==='foot'&&f.properties.kind==='travel'&&pairs.some(p=>p.from===f.properties.from&&p.to===f.properties.to))};
     }
-    const rows=generated?[...kosa.rows,...(current.places.length?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:transportOnly?[]:mixedGuideRows(current,catalog,services||{},guideIssue)||guideDayRows(current,catalog,result,matrix);
+    const rows=generated?[...kosa.rows,...(current.places.some(id=>id!==kosa.book?.dinner?.plan.place.id)?[{id:'extra-places',kind:'notice',time:null,title:'Дополнительные места вне расчёта',text:'Эти места сохранены ниже. Время поездки на косу их не учитывает.',state:'unknown'}]:[])]:transportOnly?[]:mixedGuideRows(current,catalog,services||{},guideIssue)||guideDayRows(current,catalog,result,matrix);
     if(services&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),state:'unknown'});
     if(transport.length)rows.push(...transportGuideRows(transport,record));

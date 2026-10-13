@@ -1,3 +1,4 @@
+import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
 import {savedKosaBudget,kosaBudgetText} from './kosa-budget.mjs?v=2026101305';
 import {cleanTrip,emptyTrip} from './trip-state.mjs?v=2026101305';
 import {mergeJourney,tripHasDraft,validTripDate,chooseTripDay,selectedDay} from './trip-days-state.mjs?v=2026101305';
@@ -11,7 +12,7 @@ export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(
 import {stationRoadOrigin} from './station-road-proof.mjs?v=2026101305';
 const kosaDefaults=value=>({...value,people:value.people??1,exempt:value.exempt??0,pace:value.pace||'gentle',...(value.city==='kaliningrad'?{origin:value.origin||'home'}:{})});
 const stable=value=>JSON.stringify(value,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
-export const sameKosaAnswer=(key,a,b)=>key==='budget'?stable(a)===stable(b):key==='home'?!!a&&!!b&&['ready_at','end_by','approach','return_minutes'].every(field=>a[field]===b[field]):key==='home_access'?stable(a)===stable(b):a===b;
+export const sameKosaAnswer=(key,a,b)=>['budget','dinner'].includes(key)?stable(a)===stable(b):key==='home'?!!a&&!!b&&['ready_at','end_by','approach','return_minutes'].every(field=>a[field]===b[field]):key==='home_access'?stable(a)===stable(b):a===b;
 // Reopening the same form must replay the traveller's selected train. A real
 // preference change starts a new search, rather than carrying unrelated rides.
 export function kosaPinnedAnswers(answers,saved){
@@ -53,7 +54,7 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);
   else rows.push('После выбранного обратного рейса в этой таблице другого автобуса нет. Запасной способ возвращения нужно договорить до поездки.');
-  if(day.home)rows.push(transitHomeCopy(day.home,answers.home_access?!!answers.home_access.return_at:true,answers.home_access?.road),...(day.backup?[transitBackupCopy(day,answers.home_access?!!answers.home_access.return_at:true)]:[]));
+  if(day.home&&!answers.dinner)rows.push(transitHomeCopy(day.home,answers.home_access?!!answers.home_access.return_at:true,answers.home_access?.road),...(day.backup?[transitBackupCopy(day,answers.home_access?!!answers.home_access.return_at:true)]:[]));
   if(options.light!==false)rows.push(...kosaLightSummary(day.light).rows.map(row=>row.text));
   if(options.boarding!==false){
     const boarding=kosaBoarding(table,answers);
@@ -65,10 +66,11 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
     rows.splice(2,0,answers.origin==='station'?`Начало у вокзала ${rail.service.from} в ${kosaClock(r.home_start)}; у поезда к ${kosaClock(r.station_by)}. Дорога от жилья не включена.`:r.home_start===null?`Время дороги от жилья до вокзала неизвестно. У поезда к ${kosaClock(r.station_by)}.`:`Выйти из жилья в ${kosaClock(r.home_start)}. До вокзала ${r.to_station} мин ${stationRoadOrigin(answers.home_access?.road,'to')}; у поезда к ${kosaClock(r.station_by)}.`,
       `${rail.service.from}: поезд № ${r.outward.id} ${kosaClock(r.outward.departure)} → ${rail.service.to} ${kosaClock(r.outward.arrival)}. От станции до автобуса ${r.to_bus} мин по вашей оценке.`,
       `Обратно: от автобуса до поезда ${r.to_train} мин по вашей оценке; у поезда к ${kosaClock(r.train_by)}. Поезд № ${r.inward.id} ${kosaClock(r.inward.departure)} → ${rail.service.from} ${kosaClock(r.inward.arrival)}. ${answers.origin==='station'?'Дальнейшая дорога до жилья не включена.':r.from_station===null?'Дорога после поезда до жилья ещё неизвестна.':`До жилья ${r.from_station} мин; вернуться около ${kosaClock(r.home_finish)}.`}`);
-    if(day.backup)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
+    if(day.backup&&!answers.dinner)rows.push(r.backup?`После запасного автобуса: поезд ${kosaClock(r.backup.departure)} → ${kosaClock(r.backup.arrival)}.`:'После запасного автобуса подходящей электрички в этой таблице нет. Этот автобус не даёт полного запасного возвращения.');
     rows.push(`Электрички: ${rail.source.url} · сверено ${rail.source.checked_at}. ${answers.home_access?.road?'Дорога от жилья оценена по карте; пересадки и запас заданы вами. Платформы ещё не проверены.':'Подходы и запас заданы вами; пути от двери и платформы ещё не проверены.'}`);
   }
   if(answers.home_access?.road)rows.push(`Дорога от жилья: OpenStreetMap · карта от ${answers.home_access.road.source.snapshot_at.slice(0,10)} · ${answers.home_access.road.anchor.url}. До транспортной точки; вход и платформу сверьте перед выходом.`);
+  if(answers.dinner)rows.push(`После автобуса: ${answers.dinner.place.name}, ${answers.dinner.walk_minutes} мин пешком и ${answers.dinner.minutes} мин на ужин. Кухню и дальнейшее возвращение смотрите в расчёте дня; поезд до добавления ужина сюда не переносится.`);
   rows.push(...kosaBudgetText(savedKosaBudget(answers)));
   const selected=selectKosaInterchanges(answers,interchanges);
   if(selected){
@@ -91,7 +93,7 @@ export function isGeneratedKosaNote(note,answers,day,table,catalog,interchanges)
 export const kosaRailSnapshot=day=>day.rail?JSON.stringify([day.rail.outward,day.rail.inward]):null;
 export const kosaBusSnapshot=day=>JSON.stringify([day.outward,day.transfer,day.inward]);
 export const kosaMetadata=(answers,day,table)=>({version:1,...structuredClone(answers),source_sha256:transitTable(table,answers.date).publication.image_sha256,rail_snapshot:kosaRailSnapshot(day),bus_snapshot:kosaBusSnapshot(day)});
-export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
+function addKosaTransitDay(current,answers,day,table,catalog,interchanges,editingDay=null) {
   const before=cleanTrip(current,catalog),note=kosaNote(answers,day,table,catalog,interchanges);
   const routes=answers.walks==='two'?['vysota-efa','tancuyushchiy-les']:['vysota-efa'];
   if(routes.some(id=>!catalog.routes.some(r=>r.slug===id)))throw Error('Прогулка пока недоступна в каталоге.');
@@ -99,10 +101,10 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges,editin
   const metadata={...kosaMetadata(answers,day,table),generated_note:note};
   const active=before.itinerary?.days.find(d=>d.id===before.itinerary.active);
   if(answers.fixed_transport&&active?.kosa_plan?.fixed_transport&&Object.entries(kosaDefaults(metadata)).filter(([key])=>key!=='generated_note').every(([key,value])=>sameKosaAnswer(key,value,kosaDefaults(active.kosa_plan)[key])))return before;
-  const same=before.itinerary?.days.some(d=>d.note===note && d.kosa_plan?.version===1
+  const same=before.itinerary?.days.find(d=>d.note===note && d.kosa_plan?.version===1
     && Object.entries(metadata).every(([key,value])=>sameKosaAnswer(key,value,d.kosa_plan[key])));
   // Saving and then exporting the same proposal must not create a second day.
-  if(same)return cleanTrip({...before,routes:[...new Set([...before.routes,...routes])]},catalog);
+  if(same)return cleanTrip(chooseTripDay({...before,routes:[...new Set([...before.routes,...routes])]},same.id),catalog);
   // Replace only the exact generated day this form previously saved or restored.
   // A changed date, another active day or a concurrent edit keeps the append path.
   const target=before.itinerary?.days.find(d=>d.id===before.itinerary.active);
@@ -123,4 +125,15 @@ export function addKosaDay(current,answers,day,table,catalog,interchanges,editin
     itinerary:{version:1,active:entry.id,people:before.itinerary?.people || 1,days:[entry]}};
   const merged={...before,routes:[...new Set([...before.routes,...routes])]};
   return cleanTrip(tripHasDraft(before)?mergeJourney(before,incoming,merged):{...incoming,...(before.dreams?{dreams:before.dreams}:{})},catalog);
+}
+
+// The common menu contract is authoritative for quantities and PDF exports.
+export function addKosaDay(current,answers,day,table,catalog,interchanges,editingDay=null){
+  let next=addKosaTransitDay(current,answers,day,table,catalog,interchanges,editingDay);
+  const old=selectedDay(current)?.kosa_plan?.dinner,record=selectedDay(next);
+  const chosen=answers.dinner?.choices||[],ids=new Set(chosen.map(c=>c.menu_item_id));
+  for(const c of old?.choices||[])if(!ids.has(c.menu_item_id)&&record.menu_choices?.some(v=>v.menu_item_id===c.menu_item_id))next=removeMenuChoice(next,c.menu_item_id,catalog);
+  for(const c of chosen)next=selectMenuChoice(next,{...structuredClone(c),planned_date:answers.date},catalog);
+  if(answers.dinner)selectedDay(next).name='Куршская коса и рыбный ужин';
+  return cleanTrip(next,catalog);
 }

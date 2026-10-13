@@ -19,7 +19,7 @@ import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-v
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101305';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101305';
 import {initDayProgress} from './day-progress-ui.mjs?v=2026101305';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101305';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101307';
 import {progressMessages} from './day-progress-advice.mjs?v=2026101305';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
 import {flexSignature} from './day-flex-advice.mjs?v=2026101305';
@@ -349,7 +349,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101305')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101307')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

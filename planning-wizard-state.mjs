@@ -1,4 +1,4 @@
-import {wizardBusChoices,wizardBusTargets,wizardBusActive,attachWizardBus} from './wizard-bus.mjs?v=2026101305';
+import {wizardBusChoices,wizardBusTargets,wizardBusActive,attachWizardBus} from './wizard-bus.mjs?v=2026101307';
 import {wizardRailTargets,wizardRailActive,attachWizardRail} from './wizard-rail.mjs?v=2026101305';
 import {cleanTrip} from './trip-state.mjs?v=2026101305';
 import {addTripDay,dayHasContent,ensureJourney,journeyDays,mergeJourney,nextDate,selectedDay,validTripDate} from './trip-days-state.mjs?v=2026101305';
