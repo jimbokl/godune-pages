@@ -1,11 +1,11 @@
-import {savedKosaBudget} from './kosa-budget.mjs?v=2026101208';
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101208';
-import {kosaLightSummary} from './kosa-light.mjs?v=1';
-import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=3';
-import {kosaBoarding} from './kosa-boarding.mjs?v=1';
-import {transitTable} from './transport-day.mjs?v=4';
-import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=2';
-import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
+import {savedKosaBudget} from './kosa-budget.mjs?v=2026101305';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101305';
+import {kosaLightSummary} from './kosa-light.mjs?v=2026101305';
+import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2026101305';
+import {kosaBoarding} from './kosa-boarding.mjs?v=2026101305';
+import {transitTable} from './transport-day.mjs?v=2026101305';
+import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupCopy} from './transport-home.mjs?v=2026101305';
+import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=2026101305';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
 export function kosaRoadbook(answers,day,table,catalog,interchanges){

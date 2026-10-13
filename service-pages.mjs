@@ -1,11 +1,11 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {formatKopecks} from './trip-money.mjs';
-import {rentalFactsElement} from './trip-rental-view.mjs';
-import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs?v=2';
-import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=2026101208';
-import {bindServiceComparison} from './service-comparison.mjs?v=3';
-import {bindServiceFavorites} from './service-favorites.mjs?v=1';
-import {withSessionChoice,renderSessionChoices} from './service-sessions.mjs?v=1';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
+import {rentalFactsElement} from './trip-rental-view.mjs?v=2026101305';
+import {priceQuoteElement,extrasFromFields,extraKey,splitText} from './service-price-view.mjs?v=2026101305';
+import {bindServiceContext,showSpatialDistance,spatialMarkers} from './service-context.mjs?v=2026101305';
+import {bindServiceComparison} from './service-comparison.mjs?v=2026101305';
+import {bindServiceFavorites} from './service-favorites.mjs?v=2026101305';
+import {withSessionChoice,renderSessionChoices} from './service-sessions.mjs?v=2026101305';
 
 const labels={age:'Возраст',group:'Ваша компания',audience:'Вход для гостей',equipment:'Что взять',booking:'Запись'};
 const statuses={pass:'Подходит',fail:'Условие не выполнено',conflict:'Источники расходятся',stale:'Нужны свежие сведения',unknown:'Уточните перед посещением'};
@@ -25,9 +25,9 @@ const integer=(value,name)=>{if(!/^\d+$/.test(value)||!Number.isSafeInteger(Numb
 const minutes=(value,name)=>{if(!/^\d{2}:\d{2}$/.test(value))throw Error(`Укажите время в поле «${name}».`);const [h,m]=value.split(':').map(Number);if(h>23||m>59)throw Error(`Проверьте поле «${name}».`);return h*60+m;};
 const amount=(value,name)=>{if(value==='')return null;if(!/^\d+(?:[.,]\d{1,2})?$/.test(value))throw Error(`Укажите сумму в поле «${name}».`);const [whole,frac='']=value.replace(',','.').split('.');const n=BigInt(whole)*100n+BigInt(frac.padEnd(2,'0'));if(n>9007199254740991n)throw Error(`Проверьте сумму в поле «${name}».`);return Number(n);};
 
-import {bindAdmissionParty} from './service-admission-party.mjs?v=3';
-import {selectedInput} from './service-selection-state.mjs?v=4';
-export {selectedInput} from './service-selection-state.mjs?v=4';
+import {bindAdmissionParty} from './service-admission-party.mjs?v=2026101305';
+import {selectedInput} from './service-selection-state.mjs?v=2026101305';
+export {selectedInput} from './service-selection-state.mjs?v=2026101305';
 
 function apply(card,result,input) {
   renderSessionChoices(card,result,input);
@@ -56,7 +56,7 @@ function apply(card,result,input) {
   card.querySelector('[data-plan-checks]').replaceChildren(...result.checks.filter(v=>v.kind!=='conditions'&&v.status!=='pass').map(v=>{const li=document.createElement('li');li.textContent=planTexts[v.kind][v.status==='fail'?0:1];return li;}));
 }
 
-import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=4';
+import {serviceSelectionParams,serviceDetailURL,serviceBackURL} from './service-navigation.mjs?v=2026101305';
 
 const urlPrefix='sr_';
 const checkKinds=['time','approach','return','conditions','cost','upfront'];
@@ -221,7 +221,7 @@ if(typeof document!=='undefined') {
           if((context.usesSaved(new FormData(form))||appliedRevision!==revision)&&!await calculate())return;
           if(card.hidden)return;
           const selection=structuredClone(currentInputs.get(id)),generation=revision;
-          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=2026101208');
+          const {pickServiceVisit}=await import('./trip-service-visits-ui.mjs?v=2026101305');
           if(generation!==revision){status.textContent='Условия изменились. Добавьте посещение ещё раз.';return;}
           await pickServiceVisit(metadata,selection,new URL('./',import.meta.url),add);
         }catch(error){status.textContent=/[А-Яа-яЁё]/.test(error.message)?error.message:'Не получилось открыть поездку. Попробуйте ещё раз.';}
@@ -257,7 +257,7 @@ if(typeof document!=='undefined') {
       const canvas=document.querySelector('[data-service-map]');canvas.hidden=false;
       retry.hidden=true;mapStatus.textContent='Загружаем карту…';
       mapLoading=(async()=>{try{
-        const {createServiceMap}=await import('./service-map.mjs');
+        const {createServiceMap}=await import('./service-map.mjs?v=2026101305');
         mapView=await createServiceMap(document.querySelector('[data-service-map]'),currentMarkers,new URL('./',import.meta.url),mapStatus);
         mapView.update(currentResults.map_ids,currentMarkers);
       }catch{canvas.hidden=true;mapStatus.textContent='Карта не загрузилась. Все места доступны в списке.';retry.hidden=false;}finally{mapLoading=null;}})();

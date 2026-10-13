@@ -1,5 +1,5 @@
-import {validServiceVisit} from './trip-service-visits-contract.mjs?v=1';
-import {formatKopecks} from './trip-money.mjs';
+import {validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101305';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
 
 // Present the saved choice, independently of availability and the native quote.
 // In particular, requested rental use is not its billable duration.

@@ -70,7 +70,7 @@ export function createSceneMaskBuilder() {
       if (!failed && typeof Worker !== 'undefined' && typeof OffscreenCanvas !== 'undefined') {
         try {
           if (!worker) {
-            worker = new Worker(new URL('./scene-mask-worker.mjs', import.meta.url), {type: 'module'});
+            worker = new Worker(new URL('./scene-mask-worker.mjs?v=2026101305', import.meta.url), {type: 'module'});
             worker.onmessage = ({data}) => {
               const job = pending.get(data.id);
               if (!job) return;

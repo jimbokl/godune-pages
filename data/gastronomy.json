@@ -1,12 +1,55 @@
 {
+  "curated_tours": [
+    {
+      "distance_m": 552,
+      "id": "lithuanian-zelenogradsk",
+      "meal": "bistro-laba-dena",
+      "name": "Зеленоградск с литовским акцентом",
+      "places": [
+        "kofeynya-slou",
+        "bistro-laba-dena",
+        "pekarnya-khleb"
+      ],
+      "theme": "lithuanian",
+      "total_minutes": 128,
+      "url": "food/zelenogradsk/litovskaya-volna/",
+      "visits": [
+        30,
+        60,
+        30
+      ]
+    },
+    {
+      "distance_m": 552,
+      "id": "bakery-zelenogradsk",
+      "meal": "kafe-skovorodka",
+      "name": "Зеленоградск: кофе и выпечка",
+      "places": [
+        "pekarnya-khleb",
+        "kafe-skovorodka",
+        "kofeynya-slou"
+      ],
+      "theme": "bakery",
+      "total_minutes": 113,
+      "url": "food/zelenogradsk/kofe-i-vypechka/",
+      "visits": [
+        30,
+        45,
+        30
+      ]
+    }
+  ],
   "fish_tour": {
     "distance_m": 688,
+    "id": "fish-zelenogradsk",
     "meal": "rybnoe-kafe-na-pirse",
+    "name": "Зеленоградск на рыбной волне",
     "places": [
       "pekarnya-khleb",
       "rybnoe-kafe-na-pirse",
       "restoran-telegraf"
     ],
+    "theme": "fish",
     "theme_matches": 2,
     "total_minutes": 144,
     "visit_minutes": 135,

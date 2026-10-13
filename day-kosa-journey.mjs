@@ -1,12 +1,12 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=2026101208';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101208';
-import {transitTable} from './transport-day.mjs?v=4';
-import {roadbookJourney} from './day-journey-view.mjs?v=10';
-import {currentProgress} from './day-progress.mjs?v=2';
-import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101208';
-import {transitHomeCopy} from './transport-home.mjs?v=2';
-import {boundBusInput} from './wizard-bus.mjs?v=2026101208';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=2026101305';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101305';
+import {transitTable} from './transport-day.mjs?v=2026101305';
+import {roadbookJourney} from './day-journey-view.mjs?v=2026101305';
+import {currentProgress} from './day-progress.mjs?v=2026101305';
+import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101305';
+import {transitHomeCopy} from './transport-home.mjs?v=2026101305';
+import {boundBusInput} from './wizard-bus.mjs?v=2026101305';
 // Never overwrite the saved record, nor silently substitute a newer bus table.
 export async function savedKosaJourney(trip,catalog,base,calculate) {
   const saved=selectedDay(trip).kosa_plan;

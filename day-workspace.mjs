@@ -1,22 +1,22 @@
-import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=2026101208';
-import {regionMapStyle} from './region-map.mjs?v=7';
-import {bindMapTheme} from './map-theme.mjs?v=2';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=7';
-import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=13';
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101208';
-import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101208';
-import {renderMapRoads} from './day-map-roads-ui.mjs?v=1';
-import {waveLabel} from './day-wave.mjs?v=2';
-import {vehicleArrival} from './day-mobility.mjs?v=4';
-import {layoutMapMarkers} from './map-marker-layout.mjs?v=1';
-import {serviceVisitRows} from './trip-service-visits-state.mjs?v=2026101208';
-import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101208';
-import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101212';
-import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
-import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
-import {focusWaveStop} from './wave-stop-ui.mjs?v=4';
-import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101208';
+import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=2026101305';
+import {regionMapStyle} from './region-map.mjs?v=2026101305';
+import {bindMapTheme} from './map-theme.mjs?v=2026101305';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=2026101305';
+import {loadTripTravelMatrix,tripRoadFeatures} from './travel-estimates.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {dayMapSignature,projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101305';
+import {renderMapRoads} from './day-map-roads-ui.mjs?v=2026101305';
+import {waveLabel} from './day-wave.mjs?v=2026101305';
+import {vehicleArrival} from './day-mobility.mjs?v=2026101305';
+import {layoutMapMarkers} from './map-marker-layout.mjs?v=2026101305';
+import {serviceVisitRows} from './trip-service-visits-state.mjs?v=2026101305';
+import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
+import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101305';
+import {hasMenuChoices} from './trip-menu-choices-contract.mjs?v=2026101305';
+import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
+import {focusWaveStop} from './wave-stop-ui.mjs?v=2026101305';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};
 function disclose(node,title,id) {
@@ -55,7 +55,7 @@ function mapLibrary(base) {
   if(window.maplibregl)return Promise.resolve(window.maplibregl);
   if(!library)library=new Promise((resolve,reject)=>{
     const css=el('link');css.rel='stylesheet';css.href=new URL('assets/vendor/maplibre/maplibre-gl.css',base);document.head.append(css);
-    const script=el('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js',base);
+    const script=el('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js?v=2026101305',base);
     script.onload=()=>resolve(window.maplibregl);script.onerror=()=>reject(new Error('map_library'));document.head.append(script);
   }).catch(error=>{library=null;throw error;});
   return library;

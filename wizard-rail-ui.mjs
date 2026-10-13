@@ -1,8 +1,8 @@
-import {wizardRailTargets,wizardRailChoice,wizardRailActive} from './wizard-rail.mjs?v=2026101208';
-import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
-import {rideSnapshot} from './trip-rail-state.mjs?v=7';
-import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=4';
-import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';
+import {wizardRailTargets,wizardRailChoice,wizardRailActive} from './wizard-rail.mjs?v=2026101305';
+import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=2026101305';
+import {rideSnapshot} from './trip-rail-state.mjs?v=2026101305';
+import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2026101305';
+import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=2026101305';
 const messages={choose_date:'Выберите дату: по ней подберём поезда.',unpublished_year:'Расписание на этот год ещё не добавлено. Прежние рейсы сюда не переносим.',outside_validity:'Добавленная таблица не действует на эту дату.'};
 export function initWizardRail({mount,catalog,base,getAnswers,chooseDate}) {
   const access=wizardAccessUI(),rides=new Map();

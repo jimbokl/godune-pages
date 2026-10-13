@@ -1,5 +1,5 @@
 // Portable choices only. Rust validates every graph, ride and timing rule.
-import {validServiceDate} from './service-calendar.mjs?v=1';
+import {validServiceDate} from './service-calendar.mjs?v=2026101305';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,names)=>object(v)&&Object.keys(v).every(k=>names.includes(k));
 const text=v=>typeof v==='string'&&!!v.trim();

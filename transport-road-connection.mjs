@@ -1,5 +1,5 @@
 // Road legs use the traveller's times. They never masquerade as operator data.
-import {validServiceDate} from './service-calendar.mjs?v=1';
+import {validServiceDate} from './service-calendar.mjs?v=2026101305';
 export const roadOrigins={
  'kaliningrad-bus':{label:'Автобус',phrase:'автобусом',leg:'Автобус № 107',cost:'билеты на автобус'},
  'kaliningrad-car':{label:'Машина',phrase:'на машине',leg:'На машине',cost:'топливо и парковка'},

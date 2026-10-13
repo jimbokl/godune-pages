@@ -1,4 +1,4 @@
-import {instantiateWasm} from './wasm-loader.mjs?v=1';
+import {instantiateWasm} from './wasm-loader.mjs?v=2026101305';
 let engine;
 // Every caller uses Rust. A failed WASM load never silently switches to different maths.
 export function loadScheduler(base) {

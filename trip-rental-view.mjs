@@ -1,5 +1,5 @@
 // Presentation of the Rust cycle, shared by the day, saved visit and PDF.
-import {clock} from './day-stop-view.mjs?v=1';
+import {clock} from './day-stop-view.mjs?v=2026101305';
 
 export function rentalActivityStops(visit,assessment,catalog={}){
  const input=visit?.selection?.visit?.input,activity=assessment?.rental?.activity;

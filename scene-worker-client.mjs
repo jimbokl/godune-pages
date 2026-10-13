@@ -63,7 +63,7 @@ export async function createSceneWorker(surface,photo,input,fallback,{normalizeP
   const photoLoaded=()=>{if(closed||failed)return;surface.style.opacity='0';uploadPhoto().catch(recover);};
   try{
     mark('scene-worker-start');
-    worker=new Worker(new URL('./scene-render-worker.mjs',import.meta.url),{type:'module'});
+    worker=new Worker(new URL('./scene-render-worker.mjs?v=2026101305',import.meta.url),{type:'module'});
     worker.onmessage=({data})=>{
       if(data.error&&data.fatal){recover(new Error(data.error));return;}
       const job=jobs.get(data.id);if(!job)return;jobs.delete(data.id);

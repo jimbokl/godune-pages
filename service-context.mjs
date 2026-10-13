@@ -1,5 +1,5 @@
 // Scope selection and display only. Distances and eligibility belong to trip-core.
-import {endBookingLabel,bookingEffects,effectiveBookingDay,bookingDate} from './trip-bookings-state.mjs?v=3';
+import {endBookingLabel,bookingEffects,effectiveBookingDay,bookingDate} from './trip-bookings-state.mjs?v=2026101305';
 
 const point = value => value && Number.isFinite(value.lat) && Number.isFinite(value.lon)
   && Math.abs(value.lat)<=90 && Math.abs(value.lon)<=180;
@@ -82,7 +82,7 @@ export function bindServiceContext(form,page,onChange) {
     if(pending)return pending;
     if(notify)onChange();load.disabled=true;status.textContent='Открываем сохранённую поездку…';
     pending=(async()=>{
-      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=2026101208');
+      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=2026101305');
       const saved=savedServiceContexts(await savedServiceDay(new URL('./',import.meta.url)));
       contexts=[...(page.contexts||[]),...saved];
       for(const [select,type] of [[pointSelect,'point'],[routeSelect,'route']]){

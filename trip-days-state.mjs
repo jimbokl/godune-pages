@@ -1,16 +1,16 @@
-import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=3';
-import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=14';
-import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=19';
-import {validBase,isPersonalPoint} from './personal-points.mjs?v=3';
-import {validDayWave} from './day-wave.mjs?v=2';
-import {dayPointIds} from './day-points.mjs?v=1';
-import {validParty,dayPeople,partyWithCount} from './trip-party.mjs?v=1';
-import {validPreferences,hasPreferences} from './day-preferences.mjs?v=8';
-import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contract.mjs?v=1';
-import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=1';
-import {hasTransferConnections} from './trip-transfer-connections-contract.mjs';
-import {hasMenuChoices,validMenuChoices,menuChoiceRows} from './trip-menu-choices-contract.mjs';
-import {hasTransportPlans,validTransportPlans,copiedTransportPlans,transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101208';
+import {validBookings,copiedBookings,effectiveBookingDay} from './trip-bookings-state.mjs?v=2026101305';
+import {validCosts,expenseCostInput,unpaidCopy} from './trip-expenses-state.mjs?v=2026101305';
+import {cleanSchedule, defaultSchedule, validSchedule} from './trip-schedule-state.mjs?v=2026101305';
+import {validBase,isPersonalPoint} from './personal-points.mjs?v=2026101305';
+import {validDayWave} from './day-wave.mjs?v=2026101305';
+import {dayPointIds} from './day-points.mjs?v=2026101305';
+import {validParty,dayPeople,partyWithCount} from './trip-party.mjs?v=2026101305';
+import {validPreferences,hasPreferences} from './day-preferences.mjs?v=2026101305';
+import {hasServiceVisits,copiedServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
+import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=2026101305';
+import {hasTransferConnections} from './trip-transfer-connections-contract.mjs?v=2026101305';
+import {hasMenuChoices,validMenuChoices,menuChoiceRows,menuChoiceImportIssue} from './trip-menu-choices-contract.mjs?v=2026101305';
+import {hasTransportPlans,validTransportPlans,copiedTransportPlans,transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101305';
 export const validTripDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !value.startsWith('0000') && Number.isFinite(Date.parse(value+'T12:00:00Z')) && new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export const COST_KINDS={lodging:'Ночёвка',food:'Еда',travel:'Дорога',tickets:'Билеты',other:'Другое'};
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
@@ -44,6 +44,7 @@ export function validJourneyProjection(trip) {
 }
 const snapshot=(trip,id='day-1')=>({id,date:trip.date,places:[...trip.places],...(trip.schedule?{schedule:structuredClone(trip.schedule)}:{}),start_at:null,night_at:null,note:'',costs:{}});
 export function cleanJourney(value,trip,catalog) {
+  const menuIssue=menuChoiceImportIssue({itinerary:value});if(menuIssue)throw Error(menuIssue);
   const transportIssue=transportPlansImportIssue({itinerary:value});if(transportIssue)throw Error(transportIssue);
   if(!validJourney(value))return null;
   const known=new Set(catalog.poi.map(p=>p.slug));

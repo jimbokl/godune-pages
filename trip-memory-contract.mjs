@@ -1,4 +1,5 @@
-import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101208';
+import {transportPlansImportIssue} from './trip-transport-plans-contract.mjs?v=2026101305';
+import {menuChoiceImportIssue} from './trip-menu-choices-contract.mjs?v=2026101305';
 export const MEMORY_VERSION = 1;
 
 export class MemoryCompatibilityError extends Error {
@@ -25,6 +26,8 @@ export function checkMemoryTrip(state) {
     fail('damaged-trip', 'Не удалось прочитать сохранённую поездку. Исходную копию можно скачать.');
   const transportIssue=transportPlansImportIssue(state);
   if(transportIssue)fail('unsupported-transport-plans',transportIssue);
+  const menuIssue=menuChoiceImportIssue(state);
+  if(menuIssue)fail('unsupported-menu-choices',menuIssue);
 }
 
 export function checkMemoryRecord(record, clock) {

@@ -1,7 +1,7 @@
 // Read-only adapters. Rust owns time; this module only names its results.
-import {clock} from './day-stop-view.mjs?v=1';
-import {bikeRouteFacts} from './bike-route-profile.mjs?v=1';
-import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=1';
+import {clock} from './day-stop-view.mjs?v=2026101305';
+import {bikeRouteFacts} from './bike-route-profile.mjs?v=2026101305';
+import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=2026101305';
 export const journeyKinds={start:'Выход',walk:'Пешком',car:'На машине',bike:'На велосипеде',mixed:'Пешком и транспорт',rail:'Поезд',bus:'Автобус',ferry:'Переправа',wait:'Ожидание',visit:'Прогулка',return:'Возвращение',boarding:'До посадки',notice:'Проверьте перед выходом'};
 const row=(id,kind,time,title,text,state='estimate',source=null)=>({id,kind,time,title,text,state,source});
 const known=n=>Number.isInteger(n)&&n>=0?n:null;

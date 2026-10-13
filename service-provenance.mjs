@@ -1,4 +1,4 @@
-import {formatKopecks} from './trip-money.mjs';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
 // Descriptive source snapshots. They never decide admission, availability or price.
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,required,optional=[])=>object(v)&&required.every(k=>Object.hasOwn(v,k))&&Object.keys(v).every(k=>required.includes(k)||optional.includes(k));

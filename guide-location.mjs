@@ -1,5 +1,5 @@
-import {readPosition} from './device-position.mjs?v=1';
-import {nearbyPlaces} from './place-proximity.mjs?v=1';
+import {readPosition} from './device-position.mjs?v=2026101305';
+import {nearbyPlaces} from './place-proximity.mjs?v=2026101305';
 
 const node=(tag,text)=>{const el=document.createElement(tag);if(text)el.textContent=text;return el;};
 const meters=value=>value>=1000?`${(Math.ceil(value/100)/10).toLocaleString('ru-RU')} км`:`${Math.ceil(value/10)*10} м`;

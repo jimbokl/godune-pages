@@ -1,4 +1,4 @@
-import {createCLSAccumulator} from './performance-metrics.mjs';
+import {createCLSAccumulator} from './performance-metrics.mjs?v=2026101305';
 /* Local, opt-in performance diagnostics. No data leaves this tab. */
 (() => {
   'use strict';

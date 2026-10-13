@@ -1,21 +1,21 @@
-import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
-import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
+import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
+import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101208';
-import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
-import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101208';
-import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101208';
-import {formatKopecks as money} from './trip-money.mjs';
-import {clock} from './day-stop-view.mjs?v=1';
-import {railJourney,excursionJourney} from './day-journey-view.mjs?v=10';
-import {resolveRail} from './trip-rail-state.mjs?v=7';
-import {resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {baseName} from './personal-points.mjs?v=3';
-import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs';
-import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {provenanceSources} from './service-provenance.mjs?v=5';
-import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=1';
-import {priceRows,splitText} from './service-price-view.mjs?v=2';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=2026101305';
+import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
+import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
+import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
+import {railJourney,excursionJourney} from './day-journey-view.mjs?v=2026101305';
+import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
+import {resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
+import {baseName} from './personal-points.mjs?v=2026101305';
+import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs?v=2026101305';
+import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs?v=2026101305';
+import {provenanceSources} from './service-provenance.mjs?v=2026101305';
+import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=2026101305';
+import {priceRows,splitText} from './service-price-view.mjs?v=2026101305';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Занятие',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};

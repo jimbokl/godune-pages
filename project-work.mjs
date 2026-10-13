@@ -1,4 +1,4 @@
-import {BUDGET_KEY,DRAFT_KEY,civilDay,draftFields,draftIssues,httpUrl,jobState,makeDraft,moneyMinor,normalizeDraft,queryWork,readSaved,saveLocal} from './work-catalog.mjs?v=3';
+import {BUDGET_KEY,DRAFT_KEY,civilDay,draftFields,draftIssues,httpUrl,jobState,makeDraft,moneyMinor,normalizeDraft,queryWork,readSaved,saveLocal} from './work-catalog.mjs?v=2026101305';
 const fields=['housing','food','transport','travel','deposit','reserve'];
 export function relocationBudget(values){
  const minor={};for(const key of fields){minor[key]=moneyMinor(values[key]);if(minor[key]===null)return null;}

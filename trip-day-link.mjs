@@ -1,4 +1,4 @@
-import {journeyDays,chooseTripDay} from './trip-days-state.mjs?v=2026101208';
+import {journeyDays,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 
 // A saved-day link names an identity, never the current day or a new template.
 export function resolveTripDayLink(trip,id,profile=null){

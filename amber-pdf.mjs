@@ -1,7 +1,7 @@
 // Loaded only on explicit export. Uses the site's existing local PDF runtime.
-import './assets/vendor/pdf/pdf-lib.js';
-import './assets/vendor/pdf/fontkit.js';
-import {dateLabel} from './amber-state.mjs';
+import './assets/vendor/pdf/pdf-lib.js?v=2026101305';
+import './assets/vendor/pdf/fontkit.js?v=2026101305';
+import {dateLabel} from './amber-state.mjs?v=2026101305';
 export async function makeAmberPdf({plan,manifest,base}){
  const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
  const response=await fetch(new URL('assets/vendor/pdf/Manrope-Regular.ttf',base));if(!response.ok)throw Error('font');

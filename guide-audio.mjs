@@ -1,4 +1,4 @@
-import {guideNarration} from './guide-provenance.mjs?v=2';
+import {guideNarration} from './guide-provenance.mjs?v=2026101305';
 
 export async function narrationFingerprint(stop) {
   const bytes=new TextEncoder().encode(guideNarration(stop));

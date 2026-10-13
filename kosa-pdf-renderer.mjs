@@ -1,9 +1,9 @@
-import {kosaBudgetText} from './kosa-budget.mjs?v=2026101208';
-import './assets/vendor/pdf/pdf-lib.js';
-import './assets/vendor/pdf/fontkit.js';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101208';
-import {kosaBoardingText} from './kosa-boarding.mjs?v=1';
-import {loadKosaGuideAssets} from './guide-sections.mjs?v=2';
+import {kosaBudgetText} from './kosa-budget.mjs?v=2026101305';
+import './assets/vendor/pdf/pdf-lib.js?v=2026101305';
+import './assets/vendor/pdf/fontkit.js?v=2026101305';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101305';
+import {kosaBoardingText} from './kosa-boarding.mjs?v=2026101305';
+import {loadKosaGuideAssets} from './guide-sections.mjs?v=2026101305';
 const {PDFDocument,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const clean=text=>String(text).replace(/[\u2010-\u2015]/g,'-');

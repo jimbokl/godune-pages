@@ -1,4 +1,4 @@
-import {formatKopecks} from './trip-money.mjs';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
 
 // Stable names preserve independent selections in list/detail URLs.
 const hex=value=>[...new TextEncoder().encode(value)].map(v=>v.toString(16).padStart(2,'0')).join('');

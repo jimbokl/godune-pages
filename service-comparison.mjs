@@ -1,6 +1,6 @@
 // Compare the existing Rust assessments; this view never quotes or ranks services.
-import {formatKopecks} from './trip-money.mjs';
-import {rentalDetails} from './trip-rental-view.mjs';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
+import {rentalDetails} from './trip-rental-view.mjs?v=2026101305';
 
 const unknown='Нужно уточнить';
 const conditionLabels={age:'Возраст',group:'Размер компании',audience:'Кому доступно',equipment:'Что взять',booking:'Предварительная запись'};

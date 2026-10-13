@@ -1,4 +1,4 @@
-import {instantiateWasm} from './wasm-loader.mjs?v=1';
+import {instantiateWasm} from './wasm-loader.mjs?v=2026101305';
 const events=['dawn','sunrise','sunset','dusk','nautical_dawn','nautical_dusk','astronomical_dawn','astronomical_dusk'];
 let engine;
 export function calculateSun(wasm,date,lat,lon) {

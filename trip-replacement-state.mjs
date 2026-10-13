@@ -1,6 +1,6 @@
-import {cleanTrip} from './trip-state.mjs?v=2026101208';
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {dayTransfers,transferKey,transferStatus,validTransferPoint} from './trip-transfer-costs.mjs?v=9';
+import {cleanTrip} from './trip-state.mjs?v=2026101305';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {dayTransfers,transferKey,transferStatus,validTransferPoint} from './trip-transfer-costs.mjs?v=2026101305';
 
 const stable=value=>JSON.stringify(value,(_,item)=>item && typeof item==='object' && !Array.isArray(item)?Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))):item);
 export const replacementContext=(trip,catalog)=>stable([selectedDay(cleanTrip(trip,catalog)),catalog.poi.map(p=>[p.slug,p.lon,p.lat,p.arrival_points || null])]);

@@ -1,5 +1,5 @@
-import {previewKosaFlex,applyKosaFlex} from './day-kosa-flex.mjs?v=2026101208';
-import {clock} from './day-stop-view.mjs?v=1';
+import {previewKosaFlex,applyKosaFlex} from './day-kosa-flex.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
 const el=(tag,cls='',text='')=>{const node=document.createElement(tag);node.className=cls;node.textContent=text;return node;};
 const messages={one_walk:'В плане уже одна тропа. Более короткого проверенного пути здесь пока нет. Сохранённое возвращение показано выше.',
   completed:'Танцующий лес уже отмечен как посещённый. Укажите время у остановки в «Продолжить день после тропы».',

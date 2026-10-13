@@ -1,8 +1,8 @@
-import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=2026101208';
-import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101208';
-import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101208';
-import {hasMenuChoices} from './trip-menu-choices-contract.mjs';
-import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
+import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=2026101305';
+import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101305';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
+import {hasMenuChoices} from './trip-menu-choices-contract.mjs?v=2026101305';
+import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
 
 const el=(tag,classes,text)=>{const node=document.createElement(tag);if(classes)node.className=classes;if(text)node.textContent=text;return node;};
 const areaNames={'zelenogradsk':'Зеленоградск','svetlogorsk':'Светлогорск','kaliningrad':'Калининград','kurshskaya-kosa':'Куршская коса','baltiysk':'Балтийск','yantarnyy':'Янтарный'};
@@ -14,6 +14,7 @@ export function canDownloadWaveDay(trip,catalog){
  const day=selectedDay(trip);
  return workspacePoints(trip,catalog).length>0||!!day.service_visits?.length||hasTransportPlans(day)||hasMenuChoices(day);
 }
+export function waveGuideScope(trip){return journeyDays(trip).length>1?'trip':'day';}
 export function waveCover(trip,catalog){
  const day=selectedDay(trip),points=workspacePoints(trip,catalog),areas=[...new Set(points.map(p=>p.area))];
  const named=day.name&&!/^День\s*\d*$/i.test(day.name.trim())?day.name:null;
@@ -57,19 +58,22 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  const secondary=el('div','wave-after-stops'),addPlace=el('a','wave-add-place','+ Добавить место');addPlace.href=new URL('map/',base);const moreTop=el('button','wave-tools-link','Настройки дня');moreTop.type='button';moreTop.addEventListener('click',openMore);secondary.append(addPlace,moreTop);work.after(secondary);
  if(dishes)secondary.after(dishes);
  const roadEditor=initTransferEditor({host:secondary,read,commit,catalog,base});
- const download=el('section','wave-download'),button=el('button','wave-download-button','Скачать буклет ↓'),status=el('p','wave-download-status');button.type='button';status.setAttribute('role','status');download.append(button,status);(dishes||secondary).after(download);
+ const download=el('section','wave-download'),button=el('button','wave-download-button','Скачать буклет ↓'),status=el('p','wave-download-status');button.type='button';status.setAttribute('role','status');
+ const scopeLabel=el('label','wave-guide-scope','В буклет'),scopeSelect=el('select');scopeSelect.setAttribute('aria-label','Дни в буклете');
+ for(const [value,text]of [['trip','Все дни поездки'],['day','Только открытый день']]){const option=el('option','',text);option.value=value;scopeSelect.append(option);}scopeLabel.append(scopeSelect);
+ download.append(scopeLabel,button,status);(dishes||secondary).after(download);
  const gpx=el('button','wave-gpx-button','Скачать трек GPX ↓'),gpxStatus=el('p','wave-download-status');gpx.type='button';gpxStatus.setAttribute('role','status');download.append(gpx,gpxStatus);
  let gpxDownloading=false;
  gpx.addEventListener('click',async()=>{
   if(gpxDownloading)return;gpxDownloading=true;gpx.disabled=true;gpx.textContent='Собираем трек…';gpxStatus.textContent='';const trip=structuredClone(read()),signature=JSON.stringify(trip);let module;
-  try{module=await import('./day-gpx-ui.mjs?v=2026101208');const result=await module.downloadDayGpx({trip,catalog,base,stillCurrent:()=>JSON.stringify(read())===signature});gpxStatus.textContent=module.gpxReady(result);}
+  try{module=await import('./day-gpx-ui.mjs?v=2026101305');const result=await module.downloadDayGpx({trip,catalog,base,stillCurrent:()=>JSON.stringify(read())===signature});gpxStatus.textContent=module.gpxReady(result);}
   catch(error){gpxStatus.textContent=module?module.gpxMessage(error):'Трек пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{gpxDownloading=false;gpx.textContent='Скачать трек GPX ↓';gpx.disabled=!canDownloadWaveDay(read(),catalog);}
  });
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101212');const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101305');const result=await downloadPersonalGuide({trip,catalog,base,scope:scopeLabel.hidden?'day':scopeSelect.value,format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=!canDownloadWaveDay(read(),catalog);}
  });
@@ -79,6 +83,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  return {render(){
   roadEditor.render();
   const trip=read(),day=selectedDay(trip),days=journeyDays(trip),view=waveCover(trip,catalog),key=JSON.stringify(view);
+  scopeLabel.hidden=waveGuideScope(trip)==='day';
   if(day.id!==savedDay){saved.textContent='';gpxStatus.textContent='';savedDay=day.id;}
   if(key!==coverKey){if(title)title.textContent=view.title;if(subtitle)subtitle.textContent=view.subtitle;cover.hidden=!view.photo;if(view.photo)cover.src=new URL(view.photo,base);coverKey=key;}
   const nextKey=JSON.stringify(days.map(d=>[d.id,d.date,d.name]));if(nextKey!==daysKey){daySelect.replaceChildren(...days.map((d,i)=>{const opt=el('option','',`День ${i+1}${d.date?' · '+new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(d.date+'T12:00:00Z')):''}`);opt.value=d.id;return opt;}));daysKey=nextKey;}daySelect.value=day.id;

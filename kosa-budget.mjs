@@ -1,4 +1,4 @@
-import {quoteTransportComponents} from './transport-page-state.mjs?v=2026101208';
+import {quoteTransportComponents} from './transport-page-state.mjs?v=2026101305';
 const money=value=>new Intl.NumberFormat('ru-RU').format(value/100)+' ₽';
 // Tariffs and group arithmetic use the same Rust quote engine as transport pages.
 export function kosaBudget(answers,profile,engine){

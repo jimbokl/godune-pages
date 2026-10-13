@@ -1,12 +1,12 @@
-import {initDiningRouteFilter} from './dining-route-filter.mjs?v=2026101208';
-import {showSpatialDistance} from './service-context.mjs?v=2026101208';
-import {regionMapStyle} from './region-map.mjs?v=2';
-import {bindMapTheme} from './map-theme.mjs?v=2';
+import {initDiningRouteFilter} from './dining-route-filter.mjs?v=2026101305';
+import {showSpatialDistance} from './service-context.mjs?v=2026101305';
+import {regionMapStyle} from './region-map.mjs?v=2026101305';
+import {bindMapTheme} from './map-theme.mjs?v=2026101305';
 const root=document.querySelector('[data-dining-directory]');
 if(root) {
   let choicesReady;
   root.querySelectorAll('[data-dining-menu]').forEach(menu=>menu.addEventListener('toggle',()=>{
-    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=2026101208').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
+    if(menu.open&&!choicesReady)choicesReady=import('./trip-menu-choices-ui.mjs?v=2026101305').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,new URL('./',import.meta.url))).catch(()=>{choicesReady=null;});
   }));
   const form=root.querySelector('.dining-filters'),cards=[...root.querySelectorAll('[data-dining-card]')];
   const status=root.querySelector('[data-dining-count]'),empty=root.querySelector('[data-dining-empty]');
@@ -26,7 +26,7 @@ if(root) {
     if(window.maplibregl)return Promise.resolve();
     return library ||= new Promise((resolve,reject)=>{
       const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('assets/vendor/maplibre/maplibre-gl.css',base);document.head.append(css);
-      const script=document.createElement('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js',base);script.onload=resolve;script.onerror=()=>{library=null;script.remove();reject(new Error('map library'));};document.head.append(script);
+      const script=document.createElement('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js?v=2026101305',base);script.onload=resolve;script.onerror=()=>{library=null;script.remove();reject(new Error('map library'));};document.head.append(script);
     });
   }
   function select(card) {

@@ -1,9 +1,9 @@
-import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=2026101208';
-import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=1';
-import {transitTable} from './transport-day.mjs?v=4';
+import {wizardBusTargets,wizardBusChoice,wizardBusActive} from './wizard-bus.mjs?v=2026101305';
+import {wizardAccessUI,wizardTravelDate} from './wizard-access-ui.mjs?v=2026101305';
+import {transitTable} from './transport-day.mjs?v=2026101305';
 
-import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=4';
-import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=1';
+import {stationRoadDraft,stationRoadKey} from './station-road.mjs?v=2026101305';
+import {applyStationRoad,forgetStationRoad,stationRoadOrigin} from './station-road-proof.mjs?v=2026101305';
 
 // Timetables and WASM are loaded only when a traveller asks for this journey.
 export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
@@ -14,7 +14,7 @@ export function initWizardBus({mount,catalog,base,getAnswers,chooseDate}) {
   async function context(){
     if(!pending)pending=(async()=>{
       const json=async path=>{const response=await fetch(new URL(path,base));if(!response.ok)throw Error('wizard_bus_unavailable');return response.json();};
-      const [table,maps,{loadScheduler}]=await Promise.all([json('data/kosa-bus-210.json'),json('data/kosa-interchanges.json').catch(()=>null),import('./trip-scheduler.mjs?v=42')]);
+      const [table,maps,{loadScheduler}]=await Promise.all([json('data/kosa-bus-210.json'),json('data/kosa-interchanges.json').catch(()=>null),import('./trip-scheduler.mjs?v=2026101305')]);
       const calculate=await loadScheduler(base);loaded={table,maps,calculate};return loaded;
     })().catch(error=>{pending=null;failed=true;throw error;});
     return pending;

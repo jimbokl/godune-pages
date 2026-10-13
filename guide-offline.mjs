@@ -1,5 +1,5 @@
-import {offlineAction} from './offline.mjs?v=9';
-import {guideOfflineState} from './guide-offline-state.mjs?v=1';
+import {offlineAction} from './offline.mjs?v=2026101305';
+import {guideOfflineState} from './guide-offline-state.mjs?v=2026101305';
 
 export function initGuideOffline({mount,base,onChange=()=>{},readPackages=()=>offlineAction(base,{type:'LIST'})}) {
   if(!mount)return {update(){},reset(){},get state(){return null;}};

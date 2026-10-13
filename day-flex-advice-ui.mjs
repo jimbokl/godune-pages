@@ -1,6 +1,6 @@
-import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions,protectedFlexStops} from './day-flex-advice.mjs?v=2026101208';
-import {clock} from './day-stop-view.mjs?v=1';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions,protectedFlexStops} from './day-flex-advice.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 const finish=result=>dayFinish(result)===null?`Не раньше ${clock(dayEarliestFinish(result))}`:clock(dayFinish(result));

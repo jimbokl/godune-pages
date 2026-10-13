@@ -1,6 +1,6 @@
 // Device coordinates remain in this module's memory, never in trip state.
-import {readPosition,EARTH_METERS as earth} from './device-position.mjs?v=1';
-export {readPosition} from './device-position.mjs?v=1';
+import {readPosition,EARTH_METERS as earth} from './device-position.mjs?v=2026101305';
+export {readPosition} from './device-position.mjs?v=2026101305';
 const rad = Math.PI / 180;
 const empty = () => ({type:'FeatureCollection',features:[]});
 export function accuracyArea(fix) {

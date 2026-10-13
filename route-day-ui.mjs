@@ -1,6 +1,6 @@
-import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=1';
-import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101208';
-import {plannerDayUrl} from './trip-day-link.mjs?v=1';
+import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=2026101305';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
+import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
 
 export function initRouteDay({workshop,catalog,base}){
  const route=catalog.routes.find(row=>row.slug===document.body.dataset.route);
@@ -55,7 +55,7 @@ export function initRouteDay({workshop,catalog,base}){
    const current=workshop.getState(),target=routeDayTarget(current,route,id);
    if(target?.state!=='ready')throw Error('linked_day_missing');
    const trip=chooseTripDay(current,id),signature=JSON.stringify(current);
-   const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101212');
+   const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101305');
    const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
    status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
   }catch(error){status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':'Буклет пока не собрался. Готовый PDF прогулки доступен ниже.';}

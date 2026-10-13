@@ -1,6 +1,6 @@
-import {collectDayGpx} from './day-gpx-state.mjs?v=2026101208';
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
+import {collectDayGpx} from './day-gpx-state.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 
 export async function downloadDayGpx({trip,catalog,base,engine,matrix,stillCurrent=()=>true}){
  const copy=structuredClone(trip);

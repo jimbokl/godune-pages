@@ -1,10 +1,10 @@
 // Portable calculation snapshots. A saved receipt never asserts that a whole
 // Trip day fits, and editing its day never changes the original calculation.
-import {validServiceDate} from './service-calendar.mjs?v=1';
-import {validShoreWalk} from './transport-shore-walk.mjs?v=2026101208';
-import {hasRailConnection,validRailConnectionAnswers,validRailConnection} from './transport-rail-connection.mjs?v=2026101208';
-import {hasRoadConnection,validRoadConnectionAnswers,validRoadConnection} from './transport-road-connection.mjs?v=1';
-import {partyCount} from './trip-party.mjs?v=1';
+import {validServiceDate} from './service-calendar.mjs?v=2026101305';
+import {validShoreWalk} from './transport-shore-walk.mjs?v=2026101305';
+import {hasRailConnection,validRailConnectionAnswers,validRailConnection} from './transport-rail-connection.mjs?v=2026101305';
+import {hasRoadConnection,validRoadConnectionAnswers,validRoadConnection} from './transport-road-connection.mjs?v=2026101305';
+import {partyCount} from './trip-party.mjs?v=2026101305';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,fields)=>object(v)&&Object.keys(v).every(k=>fields.includes(k));
 const text=(v,max=8192)=>typeof v==='string'&&!!v.trim()&&v.length<=max;

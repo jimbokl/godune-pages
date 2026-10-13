@@ -1,6 +1,6 @@
-import {railHomeLocations} from './rail-access.mjs?v=3';
-import {kosaClock} from './kosa-plan-state.mjs?v=2026101208';
-import {retainStationRoad,forgetStationRoad} from './station-road-proof.mjs?v=1';
+import {railHomeLocations} from './rail-access.mjs?v=2026101305';
+import {kosaClock} from './kosa-plan-state.mjs?v=2026101305';
+import {retainStationRoad,forgetStationRoad} from './station-road-proof.mjs?v=2026101305';
 const stable=v=>JSON.stringify(v,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
 
 export function editedKosaHome(fields,binding,locations,home) {

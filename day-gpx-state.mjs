@@ -1,8 +1,8 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {activateTimeline,timelineGuard} from './trip-service-timeline-state.mjs?v=2026101208';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101208';
-import {projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101208';
-import {bikeRouteFacts} from './bike-route-profile.mjs';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {activateTimeline,timelineGuard} from './trip-service-timeline-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101305';
+import {bikeRouteFacts} from './bike-route-profile.mjs?v=2026101305';
 
 const modes={bike:'На велосипеде',foot:'Пешком',car:'На машине'};
 const escape=value=>String(value??'').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));

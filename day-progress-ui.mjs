@@ -1,11 +1,11 @@
-import {visitedPlaces} from './day-progress.mjs?v=2';
-import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=2026101208';
-import {tripSignature,lightMessage} from './trip-light.mjs?v=15';
-import {clock} from './day-stop-view.mjs?v=1';
-import {generatedDayPoints} from './day-points.mjs?v=1';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101208';
-import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=3';
-import {railProblem} from './day-journey-view.mjs?v=10';
+import {visitedPlaces} from './day-progress.mjs?v=2026101305';
+import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=2026101305';
+import {tripSignature,lightMessage} from './trip-light.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
+import {generatedDayPoints} from './day-points.mjs?v=2026101305';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101305';
+import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
+import {railProblem} from './day-journey-view.mjs?v=2026101305';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 function regionalNow() {

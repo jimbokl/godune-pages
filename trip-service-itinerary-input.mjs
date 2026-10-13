@@ -1,10 +1,10 @@
 // Current order and directed facts enter Rust; computed values stay out of memory.
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101208';
-import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=13';
-import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs';
-import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
-import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=3';
-import {serviceVisitAnchor} from './service-visit-anchor.mjs';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
+import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=2026101305';
+import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs?v=2026101305';
+import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
+import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=2026101305';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101305';
 // Rust's JSON serializer can reorder object keys. Physical identity and source
 // evidence must survive that round trip without inventing a second landmark.
 const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;

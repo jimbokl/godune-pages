@@ -1,9 +1,9 @@
 /* Explicit complete packages. Normal browsing stays network-first. */
-importScripts('offline-archive.js?v=3');
-importScripts('offline-fetch.js?v=1');
-importScripts('offline-storage.js?v=1');
-importScripts('offline-media.js?v=1');
-importScripts('offline-clients.js?v=1');
+importScripts('offline-archive.js?v=2026101305');
+importScripts('offline-fetch.js?v=2026101305');
+importScripts('offline-storage.js?v=2026101305');
+importScripts('offline-media.js?v=2026101305');
+importScripts('offline-clients.js?v=2026101305');
 const LEGACY='godune-walk-offline:v1:',PREFIX='godune-walk-offline:v2:',SHELL='godune-offline-shell:v3',ROOT=self.registration.scope;
 const metadataURL=new URL('__godune_package__',ROOT).href;
 const draftURL=new URL('__godune_download__',ROOT).href;

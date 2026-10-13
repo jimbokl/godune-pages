@@ -1,6 +1,6 @@
 // A reusable, source-coordinate scene renderer. Rust supplies the clock and wind;
 // the GPU displaces only the explicitly masked regions of the photograph.
-import {createSceneMaskBuilder, SCENE_MASK_LAYERS} from './scene-mask.mjs';
+import {createSceneMaskBuilder, SCENE_MASK_LAYERS} from './scene-mask.mjs?v=2026101305';
 export const LAYERS = SCENE_MASK_LAYERS;
 const mark = name => globalThis.performance?.mark?.(`godune:${name}`);
 const number = (value, fallback, min, max) => Number.isFinite(Number(value))
@@ -96,11 +96,11 @@ export async function loadProfile(url) {
 }
 // Prefer the worker on capable browsers; keep the same renderer as a fallback.
 export async function createScene(surface, photo, input) {
-  const {createSceneWorker} = await import('./scene-worker-client.mjs');
+  const {createSceneWorker} = await import('./scene-worker-client.mjs?v=2026101305');
   return createSceneWorker(surface,photo,input,createSceneMain,{normalizeProfile,photoCrop,photoSourceWindow,LAYERS});
 }
 export async function createSceneMain(surface, photo, input) {
-  const {createSceneRenderer} = await import('./scene-renderer.mjs');
+  const {createSceneRenderer} = await import('./scene-renderer.mjs?v=2026101305');
   const yieldTask=()=>globalThis.scheduler?.yield?.()||new Promise(resolve=>setTimeout(resolve,0));
   let profile=normalizeProfile(input),revision=0,disposed=false,photoRevision=0,photoSrc='',viewport;
   const masks=createSceneMaskBuilder();

@@ -1,6 +1,6 @@
 // Only selection values travel in URLs. Destination paths belong to the renderer.
-import {extraKey,extraBelongsTo} from './service-price-view.mjs?v=2';
-import {sessionKey,sessionBelongsTo} from './service-sessions.mjs?v=1';
+import {extraKey,extraBelongsTo} from './service-price-view.mjs?v=2026101305';
+import {sessionKey,sessionBelongsTo} from './service-sessions.mjs?v=2026101305';
 const visitKeys = new Set(['participant_details','date','people','units','duration_minutes','arrival','finish_by','finish_next_day','cost_limit','upfront_limit','paid_minutes','session_start','change_before','change_after','approach_minutes','entry_minutes','exit_minutes','return_minutes'].map(v=>`sr_${v}`));
 const listKeys = new Set(['v','q','sort','only_fits','scope_kind','scope_point','scope_route','radius_m','spatial_strict'].map(v=>`sr_${v}`));
 const nullableTimingKeys = new Set(['session_start','change_before','change_after','approach_minutes','entry_minutes','exit_minutes','return_minutes'].map(v=>`sr_${v}`));

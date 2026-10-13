@@ -1,5 +1,5 @@
-import {regionMapStyle} from './region-map.mjs';
-import {bindMapTheme} from './map-theme.mjs';
+import {regionMapStyle} from './region-map.mjs?v=2026101305';
+import {bindMapTheme} from './map-theme.mjs?v=2026101305';
 
 let library;
 async function loadLibrary(base) {
@@ -9,7 +9,7 @@ async function loadLibrary(base) {
     if(![...document.querySelectorAll('link[rel=stylesheet]')].some(e=>e.href===href)){
       const css=document.createElement('link');css.rel='stylesheet';css.href=href;document.head.append(css);
     }
-    const script=document.createElement('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js',base);
+    const script=document.createElement('script');script.src=new URL('assets/vendor/maplibre/maplibre-gl.js?v=2026101305',base);
     const timer=setTimeout(()=>{script.remove();library=null;reject(Error('map library timeout'));},20000);
     script.onload=()=>{clearTimeout(timer);resolve();};script.onerror=()=>{clearTimeout(timer);script.remove();library=null;reject(Error('map library'));};
     document.head.append(script);

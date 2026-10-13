@@ -1,4 +1,4 @@
-import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs';
+import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const date=value=>value===null||typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!value.startsWith('0000')&&Number.isFinite(Date.parse(value+'T12:00:00Z'))&&new Date(value+'T12:00:00Z').toISOString().slice(0,10)===value;
 export function validMenuExpenseLink(value){

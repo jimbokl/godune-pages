@@ -1,4 +1,6 @@
 .weekend-journey{--weekend-blue:#126da1;--weekend-amber:#aa680d}
+.city-photo-caption{font:400 11px/1.5 var(--sans);color:var(--sea-muted);margin:8px 0;text-align:right}.city-day-return{display:flex;gap:12px;align-items:center;padding:14px 18px;margin:0 0 20px 48px;border:1px solid var(--line);border-radius:6px;color:var(--sea-ink)}.city-day-return>span{font-size:24px}.city-day-return p{margin:0;font:400 12px/1.6 var(--sans)}.city-stay .weekend-tabs button span{display:block;margin:4px 0 0;font:400 12px/1.3 var(--sans)}
+@media(max-width:760px){.city-day-return{margin-left:36px}.city-stay .weekend-tabs button span{font-size:10px}.city-stay .weekend-stop summary>img{width:64px;height:76px}.city-stay .weekend-day-heading h2{font-size:26px}}
 .weekend-journey .journey-passport dd{font-size:24px}.weekend-journey .journey-passport dt{font-size:12px}
 .weekend-settings{display:grid;grid-template-columns:1.4fr 1fr .6fr .6fr 1fr;gap:16px;padding:24px;margin-bottom:32px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--weekend-blue) 3%,var(--paper))}
 .weekend-settings-heading{grid-column:1/-1}.weekend-settings h2{font:400 28px/1.2 var(--serif);margin:0 0 8px}.weekend-settings p{font-size:13px;line-height:1.6;margin:0;color:var(--sea-muted)}

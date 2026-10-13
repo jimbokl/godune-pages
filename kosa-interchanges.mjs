@@ -1,4 +1,4 @@
-import {kosaTrailBudget} from './kosa-trails.mjs?v=1';
+import {kosaTrailBudget} from './kosa-trails.mjs?v=2026101305';
 // Maps are static, directed OSM walks, independent of transport timetables.
 export function selectKosaInterchanges(answers,model){
   if(!model)return null;

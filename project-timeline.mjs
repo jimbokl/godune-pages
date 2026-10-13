@@ -1,4 +1,4 @@
-import './project-dossier.mjs?v=2';
+import './project-dossier.mjs?v=2026101305';
 // Filters and exports only; the project chronology never writes the tourist Trip.
 const kinds = {actual:'Событие', statement:'Заявление', planned:'Плановый срок'};
 const audiences = {tourist:'Для туриста', worker:'Для соискателя', contractor:'Для подрядчика'};

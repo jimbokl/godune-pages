@@ -1,4 +1,4 @@
-import {localToday,nextDay,dateLabel,planAmberWalk,saveAmberWalk,loadAmberWalk} from './amber-state.mjs?v=1';
+import {localToday,nextDay,dateLabel,planAmberWalk,saveAmberWalk,loadAmberWalk} from './amber-state.mjs?v=2026101305';
 const form=document.querySelector('#amber-form'),base=new URL('./',import.meta.url);
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 async function init(){
@@ -20,7 +20,7 @@ async function init(){
   const actions=node('div',undefined,'amber-result-actions'),pdf=node('button','Скачать памятку PDF ↓','amber-primary'),save=node('button','Сохранить здесь','amber-save'),link=node('a',plan.beach.link_label+' →');pdf.type=save.type='button';link.href=new URL(plan.beach.link.replace(/^\//,''),base).href;
   actions.append(pdf,save,link);result.append(actions);
   save.addEventListener('click',()=>{const ok=saveAmberWalk(storage,plan);status.textContent=ok?'Памятка сохранена в этом браузере. Перед новым выходом проверьте условия ещё раз.':'Сохранение недоступно. Скачайте PDF, чтобы забрать памятку с собой.';if(ok)save.textContent='Сохранено ✓';});
-  pdf.addEventListener('click',async()=>{const snapshot=structuredClone(plan);pdf.disabled=true;status.textContent='Собираем короткую памятку…';try{const {makeAmberPdf}=await import('./amber-pdf.mjs?v=1');const bytes=await makeAmberPdf({plan:snapshot,manifest,base});const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'})),a=node('a');a.href=url;a.download=`godune-yantar-${snapshot.answers.visit}.pdf`;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);status.textContent='Памятка готова. Проверьте загрузки браузера.';}catch{status.textContent='PDF не собрался. Повторите скачивание или распечатайте страницу через меню браузера.';}finally{pdf.disabled=false;}});
+  pdf.addEventListener('click',async()=>{const snapshot=structuredClone(plan);pdf.disabled=true;status.textContent='Собираем короткую памятку…';try{const {makeAmberPdf}=await import('./amber-pdf.mjs?v=2026101305');const bytes=await makeAmberPdf({plan:snapshot,manifest,base});const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'})),a=node('a');a.href=url;a.download=`godune-yantar-${snapshot.answers.visit}.pdf`;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);status.textContent='Памятка готова. Проверьте загрузки браузера.';}catch{status.textContent='PDF не собрался. Повторите скачивание или распечатайте страницу через меню браузера.';}finally{pdf.disabled=false;}});
  }
  form.addEventListener('submit',event=>{event.preventDefault();render();if(plan)result.focus({preventScroll:true});});
  // Editing invalidates the old result; a stale ready state must not remain visible.

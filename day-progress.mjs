@@ -1,5 +1,5 @@
 // An explicit observation, separate from planned start and venue timestamps.
-import {dayPointIds} from './day-points.mjs?v=1';
+import {dayPointIds} from './day-points.mjs?v=2026101305';
 const object=v=>v && typeof v==='object' && !Array.isArray(v);
 const date=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !v.startsWith('0000') && Number.isFinite(Date.parse(v+'T12:00:00Z')) && new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;
 export function validProgress(v) {

@@ -1,4 +1,4 @@
-import './offline-storage.js?v=1';
+import './offline-storage.js?v=2026101305';
 
 const digest=async body=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',body))].map(n=>n.toString(16).padStart(2,'0')).join('');
 const safePath=path=>typeof path==='string' && !path.startsWith('/') && !path.includes(':') && !path.includes('\\') && !path.includes('?') && !path.includes('#') && path.split('/').every(part=>part && part!=='.' && part!=='..');

@@ -1,6 +1,6 @@
 // A dated railway snapshot joins the ferry calculation without changing its
 // operator times or inventing a fare. Walking and boarding are personal budgets.
-import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
+import {serviceDay,validServiceDate} from './service-calendar.mjs?v=2026101305';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,list)=>object(v)&&Object.keys(v).length===list.length&&list.every(k=>Object.hasOwn(v,k));
 const minute=v=>Number.isSafeInteger(v)&&v>=0&&v<1440;

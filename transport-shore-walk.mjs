@@ -1,8 +1,8 @@
 // Editorial walking budgets are separate from the operator's transport times.
 // Saved walks carry their own text and sources; never refill them from live data.
-import {validServiceDate} from './service-calendar.mjs?v=1';
-import {railConnectionRows} from './transport-rail-connection.mjs?v=2026101208';
-import {roadConnectionRows} from './transport-road-connection.mjs?v=1';
+import {validServiceDate} from './service-calendar.mjs?v=2026101305';
+import {railConnectionRows} from './transport-rail-connection.mjs?v=2026101305';
+import {roadConnectionRows} from './transport-road-connection.mjs?v=2026101305';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const keys=(v,allowed)=>object(v)&&Object.keys(v).every(k=>allowed.includes(k));
 const text=(v,max=2048)=>typeof v==='string'&&!!v.trim()&&v.length<=max;

@@ -1,5 +1,5 @@
-import {buildGuide} from './virtual-guide-engine.mjs?v=4';
-import {verifiedOfflineResource} from './offline-evidence.mjs?v=1';
+import {buildGuide} from './virtual-guide-engine.mjs?v=2026101305';
+import {verifiedOfflineResource} from './offline-evidence.mjs?v=2026101305';
 
 const inside=(stop,bbox)=>Array.isArray(bbox) && bbox.length===4 && bbox.every(Number.isFinite)
   && stop.lon>=bbox[0] && stop.lon<=bbox[2] && stop.lat>=bbox[1] && stop.lat<=bbox[3];

@@ -269,7 +269,7 @@
     performance.mark('godune:atmosphere-wasm-start');
     const [response,{instantiateWasm}] = await Promise.all([
       fetch(new URL('assets/atmosphere.wasm?v=6',base)),
-      import(new URL('wasm-loader.mjs?v=1',base)),
+      import(new URL('wasm-loader.mjs?v=2026101305',base)),
     ]);
     if (!response.ok) throw new Error('Атмосферный слой недоступен');
     const result = await instantiateWasm(response,{name:'atmosphere'});
@@ -277,7 +277,7 @@
     performance.mark('godune:atmosphere-wasm-ready');
     return result;
   })();
-  const sceneReady = import(new URL('scene.mjs?v=12',base)).then(async module => {
+  const sceneReady = import(new URL('scene.mjs?v=2026101305',base)).then(async module => {
     const profileURL = new URL(scene.dataset.profile || 'assets/scenes/baltic-dunes.json',base);
     profileURL.searchParams.set('v','3');
     return {module,profile:await module.loadProfile(profileURL)};

@@ -1,9 +1,9 @@
-import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=4';
-import {guideNarration} from './guide-provenance.mjs?v=2';
-import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2';
-import {initGuideOffline} from './guide-offline.mjs?v=2';
-import {clock} from './day-stop-view.mjs?v=1';
-import {initGuideLocation} from './guide-location.mjs?v=1';
+import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101305';
+import {guideNarration} from './guide-provenance.mjs?v=2026101305';
+import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2026101305';
+import {initGuideOffline} from './guide-offline.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
+import {initGuideLocation} from './guide-location.mjs?v=2026101305';
 
 const KEY='godune-guide-progress-v1';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text)node.textContent=text;if(className)node.className=className;return node;};
@@ -137,7 +137,7 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     if(personal)journeyState='loading';proximity.setPoints(guide?.stops);render();
     if(personal){
       const trip=structuredClone(workshop.getState());
-      import('./virtual-guide-journey.mjs?v=2026101208').then(async module=>{
+      import('./virtual-guide-journey.mjs?v=2026101305').then(async module=>{
         const day=await module.collectVirtualJourney({trip,catalog,base});
         if(current!==revision)return;journeyModule=module;journey=day;journeyState='ready';renderJourney();
       }).catch(()=>{if(current===revision){journeyState='unavailable';renderJourney();}});

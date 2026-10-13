@@ -1,13 +1,13 @@
-import {bookingEffects} from './trip-bookings-state.mjs?v=3';
-import {railAccess,railHomeInput} from './rail-access.mjs?v=3';
-import {validRail,resolveRail} from './trip-rail-state.mjs?v=7';
-import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=2';
+import {bookingEffects} from './trip-bookings-state.mjs?v=2026101305';
+import {railAccess,railHomeInput} from './rail-access.mjs?v=2026101305';
+import {validRail,resolveRail} from './trip-rail-state.mjs?v=2026101305';
+import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
-import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
-import {resolveKitchenCalendar} from './kitchen-calendar.mjs';
-import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=3';
-import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=4';
-import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=13';
+import {resolveVisitCalendar} from './visit-calendar.mjs?v=2026101305';
+import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
+import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
+import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=2026101305';
+import {TRAVEL_MODES, resolveTravel, resolveAccess, resolveAccessBetween, resolvePair, dayBases, previousPlace, sameArrival} from './travel-estimates.mjs?v=2026101305';
 export const defaultSchedule = () => ({start:540, end:1080, reserve:10, stops:{}});
 const minute = n => Number.isInteger(n) && n >= 0 && n <= 1440;
 const day = value => value === null || typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)

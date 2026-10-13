@@ -1,15 +1,15 @@
-import {endBookingLabel} from './trip-bookings-state.mjs?v=3';
+import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 // Read-only map projection. The day engine owns timing; a named stop never
 // borrows the coordinates of a nearby attraction or a straight-line path.
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {tripSignature} from './trip-light.mjs?v=15';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101208';
-import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs';
-import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs';
-import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=4';
-import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=3';
-import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=4';
-import {rentalActivityStops} from './trip-rental-view.mjs';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {tripSignature} from './trip-light.mjs?v=2026101305';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
+import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101305';
+import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs?v=2026101305';
+import {directedRoadFeature,directedAccessFeature} from './day-map-geometry.mjs?v=2026101305';
+import {vehicleParkingReference} from './day-vehicle-itinerary.mjs?v=2026101305';
+import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=2026101305';
+import {rentalActivityStops} from './trip-rental-view.mjs?v=2026101305';
 
 export const dayMapSignature=trip=>JSON.stringify([tripSignature(trip),selectedDay(trip).timeline,selectedDay(trip).service_visits,selectedDay(trip).transfer_connections]);
 const located=p=>p&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)&&Math.abs(p.lat)<=90&&Math.abs(p.lon)<=180;

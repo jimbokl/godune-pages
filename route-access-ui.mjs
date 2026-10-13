@@ -1,4 +1,4 @@
-import {accessExtentLabel} from './route-access.mjs?v=1';
+import {accessExtentLabel} from './route-access.mjs?v=2026101305';
 const node=(tag,text,className)=>{const el=document.createElement(tag);if(text)el.textContent=text;if(className)el.className=className;return el;};
 export function routeAccessDetails(profile,{open=false}={}) {
   const details=node('details',null,'route-access-profile wizard-evidence');details.dataset.routeAccess='';details.open=open;

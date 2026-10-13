@@ -1,5 +1,5 @@
-import {createSceneRenderer} from './scene-renderer.mjs';
-import {rasterizeSceneMasks} from './scene-mask.mjs';
+import {createSceneRenderer} from './scene-renderer.mjs?v=2026101305';
+import {rasterizeSceneMasks} from './scene-mask.mjs?v=2026101305';
 
 let renderer, profile, width, height, maskRevision=0;
 const send=(id,value={})=>postMessage({id,...value});

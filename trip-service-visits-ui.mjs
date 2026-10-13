@@ -1,19 +1,19 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=2026101208';
-import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=1';
-import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=2026101208';
-import {serviceExpenseButton} from './trip-service-expenses-ui.mjs';
-import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101208';
-import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
-import {formatKopecks} from './trip-money.mjs';
-import {rentalFactsElement} from './trip-rental-view.mjs';
-import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=1';
-import {prepareServiceAdd,confirmServiceAdd} from './trip-service-add-state.mjs?v=2026101208';
-import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101208';
-import {dayChangeText} from './trip-day-change-view.mjs?v=1';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
-import {dayOutcome} from './day-outcome.mjs?v=1';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=2026101305';
+import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
+import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=2026101305';
+import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101305';
+import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
+import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
+import {rentalFactsElement} from './trip-rental-view.mjs?v=2026101305';
+import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=2026101305';
+import {prepareServiceAdd,confirmServiceAdd} from './trip-service-add-state.mjs?v=2026101305';
+import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101305';
+import {dayChangeText} from './trip-day-change-view.mjs?v=2026101305';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
+import {dayOutcome} from './day-outcome.mjs?v=2026101305';
 
 const categories={bike_rental:'Прокат',bath:'Баня',pool:'Бассейн',gym:'Тренировка',market:'Рынок',workshop:'Мастерская',dining:'Еда',water_activity:'Водный отдых'};
 const states={fits:'По времени и условиям подходит',does_not_fit:'Нужно изменить план',needs_info:'Есть что уточнить'};
@@ -37,7 +37,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101208'),import('./workshop.mjs?v=2026101208')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101305'),import('./workshop.mjs?v=2026101305')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
@@ -51,7 +51,7 @@ export async function savedServiceDay(base){
  const {memory,catalog}=await pageMemory(base);await memory.sync();
  if(memory.compatibility)throw Error(`Проверьте сохранённую поездку: ${memory.compatibility.message}`);
  const trip=memory.get();
- const {effectiveBookingDay}=await import('./trip-bookings-state.mjs?v=3');
+ const {effectiveBookingDay}=await import('./trip-bookings-state.mjs?v=2026101305');
  return {trip,catalog,day:effectiveBookingDay(selectedDay(trip))};
 }
 
@@ -76,7 +76,7 @@ export async function pickServiceVisit(metadata,selection,base,opener){
  const receipt=node('div',undefined,'visit-receipt');receipt.hidden=true;
  const open=node('a','Открыть мой день →','visit-primary');open.href=new URL('planner/#my-trip',base);receipt.append(open);
  const download=button('Скачать файл поездки');download.hidden=true;
- download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=2026101208');downloadTripFile(memory.get(),catalog);});
+ download.addEventListener('click',async()=>{const {downloadTripFile}=await import('./trip-file.mjs?v=2026101305');downloadTripFile(memory.get(),catalog);});
  form.append(dayLabel,review,noteLabel,save);dialog.append(close,heading,summary(prepared.visit,prepared.assessment),form,status,retry,receipt,download);document.body.append(dialog);
  close.addEventListener('click',()=>dialog.close());
  // Escape and the close button restore focus to the original card.
@@ -174,7 +174,7 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
     const move=button('В другой день');controls.prepend(move);
     move.addEventListener('click',async()=>{
      move.disabled=true;
-     try{const {openServiceMove}=await import('./trip-service-move-ui.mjs?v=2026101208');await openServiceMove({read,commit,base,catalog,sourceId:day.id,visitId:visit.id,opener:move});}
+     try{const {openServiceMove}=await import('./trip-service-move-ui.mjs?v=2026101305');await openServiceMove({read,commit,base,catalog,sourceId:day.id,visitId:visit.id,opener:move});}
      catch(error){feedback.textContent=errorText(error);}finally{move.disabled=false;}
     });
    }

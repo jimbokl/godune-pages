@@ -1,8 +1,8 @@
-import {bindMapTheme} from './map-theme.mjs?v=2';
-import {regionMapStyle} from './region-map.mjs?v=7';
-import {isPersonalPoint} from './personal-points.mjs?v=3';
-import {addressPicker} from './address-picker.mjs?v=2';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=10';
+import {bindMapTheme} from './map-theme.mjs?v=2026101305';
+import {regionMapStyle} from './region-map.mjs?v=2026101305';
+import {isPersonalPoint} from './personal-points.mjs?v=2026101305';
+import {addressPicker} from './address-picker.mjs?v=2026101305';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=2026101305';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){
@@ -10,7 +10,7 @@ function mapLibrary(base){
   if(!library)library=new Promise((resolve,reject)=>{
     const cssURL=new URL('assets/vendor/maplibre/maplibre-gl.css',base).href;
     if(![...document.querySelectorAll('link')].some(link=>link.href===cssURL)){const css=element('link');css.rel='stylesheet';css.href=cssURL;document.head.append(css);}
-    const url=new URL('assets/vendor/maplibre/maplibre-gl.js',base).href;
+    const url=new URL('assets/vendor/maplibre/maplibre-gl.js?v=2026101305',base).href;
     let script=[...document.scripts].find(script=>script.src===url);
     const done=()=>globalThis.maplibregl?resolve():reject(Error('Карта не открылась.'));
     const failed=error=>{script.remove();reject(error);};

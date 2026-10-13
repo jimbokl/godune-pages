@@ -1,6 +1,6 @@
 // Physical trip boundaries reuse the existing local bases and dated bookings.
-import {bookingEffects} from './trip-bookings-state.mjs?v=3';
-import {baseName,isPersonalPoint} from './personal-points.mjs?v=3';
+import {bookingEffects} from './trip-bookings-state.mjs?v=2026101305';
+import {baseName,isPersonalPoint} from './personal-points.mjs?v=2026101305';
 export function boundaryAnchor(value,id,catalog,date){
  const poi=typeof value==='string'?catalog.poi.find(p=>p.slug===value):null;
  if(!poi&&!isPersonalPoint(value))return null;

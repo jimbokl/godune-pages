@@ -1,6 +1,6 @@
-import {linkedMenuExpense,menuExpenseText} from './trip-menu-expenses-contract.mjs';
-import {validMenuChoice,menuChoiceRows,menuChoiceContext} from './trip-menu-choices-contract.mjs';
-import {formatKopecks} from './trip-money.mjs';
+import {linkedMenuExpense,menuExpenseText} from './trip-menu-expenses-contract.mjs?v=2026101305';
+import {validMenuChoice,menuChoiceRows,menuChoiceContext} from './trip-menu-choices-contract.mjs?v=2026101305';
+import {formatKopecks} from './trip-money.mjs?v=2026101305';
 const manual=new Set(['manual','partner','manual_verified','partner_verified','verified']);
 export function menuPriceFreshness(choice,asOf){
  const observed=choice.price.observed_at;

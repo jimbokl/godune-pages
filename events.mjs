@@ -1,5 +1,5 @@
-import {regionDate,eventMatches} from './events-engine.mjs?v=3';
-import {BOOKMARK_KEY,readBookmarks,writeBookmarks} from './events-bookmarks.mjs?v=1';
+import {regionDate,eventMatches} from './events-engine.mjs?v=2026101305';
+import {BOOKMARK_KEY,readBookmarks,writeBookmarks} from './events-bookmarks.mjs?v=2026101305';
 const root=document.querySelector('[data-event-calendar]');
 if(root){
  const form=root.querySelector('form'),cards=[...root.querySelectorAll('[data-event-id]')],buttons=[...root.querySelectorAll('[data-period]')],empty=root.querySelector('[data-events-empty]'),summary=root.querySelector('[data-events-count]'),status=root.querySelector('[data-events-status]');

@@ -3,7 +3,7 @@
 async function compileInWorker(bytes) {
   let worker;
   try {
-    worker = new Worker(new URL('./wasm-compile-worker.mjs', import.meta.url), {type:'module'});
+    worker = new Worker(new URL('./wasm-compile-worker.mjs?v=2026101305', import.meta.url), {type:'module'});
     return await new Promise((resolve,reject) => {
       worker.onmessage = ({data}) => {
         if (!(data.module instanceof WebAssembly.Module)) reject(new Error(data.error || 'Ответ расчётного модуля не прочитан'));

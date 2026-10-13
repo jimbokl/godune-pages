@@ -1,12 +1,12 @@
-import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
-import {transitTable,datedTransitInput} from './transport-day.mjs?v=4';
-import {circularFerryDay} from './ferry-circular.mjs?v=1';
-import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101208';
-import {hasRailConnection,validRailConnectionAnswers,railConnectionTable,railPierReady,buildRailConnection,railConnectionStatus} from './transport-rail-connection.mjs?v=2026101208';
+import {serviceDay,validServiceDate} from './service-calendar.mjs?v=2026101305';
+import {transitTable,datedTransitInput} from './transport-day.mjs?v=2026101305';
+import {circularFerryDay} from './ferry-circular.mjs?v=2026101305';
+import {transportPlanB} from './trip-transport-plans-view.mjs?v=2026101305';
+import {hasRailConnection,validRailConnectionAnswers,railConnectionTable,railPierReady,buildRailConnection,railConnectionStatus} from './transport-rail-connection.mjs?v=2026101305';
 
-import {validShoreWalkProfile,buildShoreWalk,transportReceiptRows} from './transport-shore-walk.mjs?v=2026101208';
+import {validShoreWalkProfile,buildShoreWalk,transportReceiptRows} from './transport-shore-walk.mjs?v=2026101305';
 
-import {hasRoadConnection,validRoadConnectionAnswers,roadPierReady,buildRoadConnection,roadConnectionStatus,roadOrigins} from './transport-road-connection.mjs?v=1';
+import {hasRoadConnection,validRoadConnectionAnswers,roadPierReady,buildRoadConnection,roadConnectionStatus,roadOrigins} from './transport-road-connection.mjs?v=2026101305';
 const integer=(v,min,max)=>Number.isSafeInteger(v)&&v>=min&&v<=max;
 export const transportClock=n=>Number.isInteger(n)?`${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}${n>=1440?' (следующий день)':''}`:'Время уточняется';
 export function validateTransportProfile(p){

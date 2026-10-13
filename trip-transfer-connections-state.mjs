@@ -1,7 +1,7 @@
 // Selection membership and notes. Never store a computed arrival or fit claim.
-import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101208';
-import {validTransferChoice,validTransferConnections,transferChoices,connectionKey} from './trip-transfer-connections-contract.mjs';
+import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
+import {validTransferChoice,validTransferConnections,transferChoices,connectionKey} from './trip-transfer-connections-contract.mjs?v=2026101305';
 export const transferConnectionGuard=trip=>JSON.stringify(trip);
 function editable(trip,guard){
  if(guard!==transferConnectionGuard(trip))throw Error('День уже изменился. Откройте выбор дороги заново.');

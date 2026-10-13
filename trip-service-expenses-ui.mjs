@@ -1,5 +1,5 @@
-import {linkedServiceExpense} from './trip-service-expenses-contract.mjs?v=1';
-import {serviceVisitContext} from './trip-service-visits-contract.mjs?v=1';
+import {linkedServiceExpense} from './trip-service-expenses-contract.mjs?v=2026101305';
+import {serviceVisitContext} from './trip-service-visits-contract.mjs?v=2026101305';
 export function serviceExpenseButton({day,visit,onExpense}){
  if(!onExpense)return null;
  const linked=linkedServiceExpense(day,visit.id),ready=!!linked||serviceVisitContext(visit,day)==='ready';

@@ -1,10 +1,10 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=2026101208';
-import {transferTitle} from './trip-transfer-costs.mjs?v=9';
-import {rubles} from './trip-budget-state.mjs?v=2';
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {planInput} from './trip-schedule-state.mjs?v=19';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {previewStopReplacement,replaceTripStop,replacementContext} from './trip-replacement-state.mjs?v=2026101305';
+import {transferTitle} from './trip-transfer-costs.mjs?v=2026101305';
+import {rubles} from './trip-budget-state.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {planInput} from './trip-schedule-state.mjs?v=2026101305';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 const normalize=text=>text.toLocaleLowerCase('ru-RU').replaceAll('ё','е').trim();

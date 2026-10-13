@@ -1,8 +1,8 @@
-import {bookingEffects} from './trip-bookings-state.mjs?v=3';
-import {railWalkBases} from './rail-access.mjs?v=3';
+import {bookingEffects} from './trip-bookings-state.mjs?v=2026101305';
+import {railWalkBases} from './rail-access.mjs?v=2026101305';
 // Directed, mode-specific estimates. Missing evidence never becomes zero travel.
-import {baseId,personalPoints} from './personal-points.mjs?v=3';
-import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=4';
+import {baseId,personalPoints} from './personal-points.mjs?v=2026101305';
+import {baseTransport,mobilitySegments,accessModes,travelVia} from './day-mobility.mjs?v=2026101305';
 export const TRAVEL_MODES = {foot:'Пешком',bike:'На велосипеде',car:'На машине'};
 export const travelMode = trip => trip.schedule?.mode || 'foot';
 export const dayBases = trip => {const day=trip.itinerary?.days.find(day=>day.id===trip.itinerary.active) || {};const bookings=bookingEffects(trip);return railWalkBases(trip,{...day,start_at:baseId(bookings.start?.location||day.start_at),night_at:baseId(bookings.night?.location||day.night_at),end_at:baseId(bookings.end?.location)});};
@@ -141,7 +141,7 @@ async function directedMatrix(base,catalog,matrix,points,segments) {
   if(!segments.length)return copy;
   const profiles=[...new Set(segments.map(part=>part.mode))];
   await Promise.all(profiles.map(async mode=>{try{
-    const {loadBrowserRouter}=await import('./browser-router.mjs?v=4');const route=await loadBrowserRouter(base,mode);
+    const {loadBrowserRouter}=await import('./browser-router.mjs?v=2026101305');const route=await loadBrowserRouter(base,mode);
     if(!sameRoadSource(matrix.source,route.graph.source))return;
     await Promise.all(segments.filter(part=>part.mode===mode).map(async({from,to})=>{
       const key=`${mode}/${from}/${to}`,point=id=>points.find(p=>p.slug===id)||catalog.poi.find(p=>p.slug===id),a=point(from),b=point(to);

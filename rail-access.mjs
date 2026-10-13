@@ -1,8 +1,8 @@
 // The saved home stays private and intact. Only the walking calculation uses
 // the arrival station as its origin and return, after the outward train.
-import {validBase,baseName} from './personal-points.mjs?v=3';
-import {bookingEffects} from './trip-bookings-state.mjs?v=3';
-import {validStationRoad} from './station-road-proof.mjs?v=1';
+import {validBase,baseName} from './personal-points.mjs?v=2026101305';
+import {bookingEffects} from './trip-bookings-state.mjs?v=2026101305';
+import {validStationRoad} from './station-road-proof.mjs?v=2026101305';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const minute=v=>v===null || Number.isInteger(v) && v>=0 && v<=1440;
 const stable=v=>JSON.stringify(v,(_,row)=>object(row)?Object.fromEntries(Object.keys(row).sort().map(k=>[k,row[k]])):row);

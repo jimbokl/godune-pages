@@ -1,4 +1,4 @@
-import {readPosition,distanceMeters,validCoordinates} from './device-position.mjs?v=1';
+import {readPosition,distanceMeters,validCoordinates} from './device-position.mjs?v=2026101305';
 
 // A nearby catalog point is not an entrance, a safe path or proof of a visit.
 export const PROXIMITY_DEFAULTS=Object.freeze({radius:150,maxAccuracy:100,maxAge:120000,futureTolerance:10000});

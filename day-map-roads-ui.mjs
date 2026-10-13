@@ -1,4 +1,4 @@
-import {transferClock} from './trip-service-transfer-view.mjs';
+import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 export function renderMapRoads(root,projection,{onSelect,onFocus,dayId}){
  const open=root.dataset.dayId===dayId?[...root.querySelectorAll('details[open][data-map-connection]')].map(n=>n.dataset.mapConnection):[];

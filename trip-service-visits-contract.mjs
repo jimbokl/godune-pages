@@ -1,5 +1,5 @@
 // File envelope only. Rust checks nested rules before a saved choice is used.
-import {validServiceProvenance} from './service-provenance.mjs';
+import {validServiceProvenance} from './service-provenance.mjs?v=2026101305';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const text=v=>typeof v==='string'&&!!v.trim();
 const keys=(v,allowed)=>object(v)&&Object.keys(v).every(k=>allowed.includes(k));

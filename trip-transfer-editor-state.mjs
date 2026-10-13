@@ -1,14 +1,14 @@
 // Build portable selections from published tables and explicitly entered estimates.
 // Rust remains the only calculator of waits, missed boardings and day feasibility.
-import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101208';
-import {bookingEffects,saveBooking} from './trip-bookings-state.mjs?v=3';
-import {validBase} from './personal-points.mjs?v=3';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101208';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs';
-import {serviceVisitAnchor} from './service-visit-anchor.mjs';
-import {serviceDay,validServiceDate} from './service-calendar.mjs?v=1';
-import {connectionKey,transferChoices} from './trip-transfer-connections-contract.mjs';
-import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
+import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101305';
+import {bookingEffects,saveBooking} from './trip-bookings-state.mjs?v=2026101305';
+import {validBase} from './personal-points.mjs?v=2026101305';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101305';
+import {serviceDay,validServiceDate} from './service-calendar.mjs?v=2026101305';
+import {connectionKey,transferChoices} from './trip-transfer-connections-contract.mjs?v=2026101305';
+import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 const copy=structuredClone;
 const minute=v=>v===null||Number.isInteger(v)&&v>=0&&v<=1440;
 const time=v=>typeof v==='number'?v:Number(v.slice(0,2))*60+Number(v.slice(3));

@@ -1,9 +1,12 @@
-import {saveWeekend,weekendTarget,weekendSettings,weekendGuideTrip} from './coastal-weekend-state.mjs?v=20261013-1';
-import {plannerDayUrl} from './trip-day-link.mjs?v=1';
-import {partyLabel} from './trip-party.mjs?v=1';
+import {saveStay,stayTarget,staySettings,stayGuideTrip,stayProfile} from './planned-stay-state.mjs?v=2026101305';
+import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
+import {partyLabel} from './trip-party.mjs?v=2026101305';
 
 export function initCoastalWeekend({workshop,base,catalog}){
   const root=document.querySelector('[data-coastal-weekend]'),form=root.querySelector('[data-weekend-settings]'),save=root.querySelector('[data-weekend-save]'),pdf=root.querySelector('[data-weekend-booklet]'),status=root.querySelector('[data-weekend-status]'),context=root.querySelector('[data-weekend-context]');
+  const profile=stayProfile(catalog,root.dataset.itinerary||'zelenogradsk-two-days'),count=profile.recipes.length;
+  const countText=count===2?'два дня':`${count} дня`,savedText=count===2?'Два дня сохранены ✓':`${count} дня сохранены ✓`,allText=count===2?'Оба дня':'Все три дня';
+  const title=root.querySelector('h1').innerText.replace(/\s+/g,' ').trim();
   const params=new URL(location.href).searchParams;
   let ids=params.has('trip-days')?params.get('trip-days').split(','):null,busy=false;
   const changed=new Set();
@@ -12,7 +15,8 @@ export function initCoastalWeekend({workshop,base,catalog}){
   function updateDay(day,index){
     const panel=panels[index],list=panel.querySelector('ol');
     const same=JSON.stringify(day.places)===JSON.stringify(originalPlaces[index]);
-    panel.querySelector('h2').textContent=(day.name||`День ${index+1}`).replace(/^Зеленоградск · /,'');
+    const heading=(day.name||`День ${index+1}`).replace(/^[^·]+ · /,'');
+    panel.querySelector('h2').textContent=heading.charAt(0).toLocaleUpperCase('ru')+heading.slice(1);
     if(!same)panel.querySelector('.weekend-day-intro').textContent='Ваш сохранённый день. Остановки и порядок — из «Моего дня».';
     panel.querySelector('[data-weekend-duration]').textContent=`${day.places.length} ${day.places.length===1?'остановка':day.places.length<5?'остановки':'остановок'}`;
     const nodes=day.places.map((id,i)=>{
@@ -42,51 +46,51 @@ export function initCoastalWeekend({workshop,base,catalog}){
   }
   function sync(){
     if(busy)return;
-    const target=weekendTarget(workshop.getState(),ids);
+    const target=stayTarget(workshop.getState(),profile,ids);
     if(target?.state==='missing'){
       enabled(false);save.textContent='Дни не найдены';context.textContent='Один из этих дней удалён. Откройте свою поездку или начните новый план.';
-      status.replaceChildren(document.createTextNode('Ссылка больше не ведёт к обоим дням. '));const reset=document.createElement('button');reset.type='button';reset.textContent='Создать новые два дня';reset.className='button button-outline';reset.onclick=()=>{ids=null;const url=new URL(location.href);url.searchParams.delete('trip-days');history.replaceState(history.state,'',url);status.textContent='';sync();};status.append(reset);return;
+      status.replaceChildren(document.createTextNode('Ссылка больше не ведёт ко всей поездке. '));const reset=document.createElement('button');reset.type='button';reset.textContent=`Создать новые ${countText}`;reset.className='button button-outline';reset.onclick=()=>{ids=null;const url=new URL(location.href);url.searchParams.delete('trip-days');history.replaceState(history.state,'',url);status.textContent='';sync();};status.append(reset);return;
     }
     enabled(true);
     if(target){
       if(ids===null)remember(target.days.map(d=>d.id));
-      const settings=weekendSettings(target.days);
+      const settings=staySettings(target.days);
       if(!changed.has('date'))form.elements.date.value=settings.date||'';
       if(!changed.has('time'))form.elements.time.value=settings.time;
       if(!changed.has('party')){form.elements.adults.value=settings.party.adults;form.elements.children.value=settings.party.children;}
       if(!changed.has('pace'))form.elements.pace.value=settings.pace;
-      save.textContent=changed.size?'Сохранить изменения →':'Два дня сохранены ✓';
-      context.textContent=`${dateLabel(target.days[0].date)} — ${dateLabel(target.days[1].date)} · ${partyLabel(settings.party)}. Изменения из «Моего дня» сохранены.`;
+      save.textContent=changed.size?'Сохранить изменения →':savedText;
+      context.textContent=`${dateLabel(target.days[0].date)} — ${dateLabel(target.days.at(-1).date)} · ${partyLabel(settings.party)}. Изменения из «Моего дня» сохранены.`;
       target.days.forEach((day,index)=>{
         updateDay(day,index);
         root.querySelector(`[data-weekend-date="${index}"]`).textContent=`День ${index+1} · ${dateLabel(day.date)}`;
         const preview=root.querySelector(`[data-weekend-jump="${index}"]`);
         preview.querySelector('strong').textContent=day.name||`День ${index+1}`;
-        preview.querySelector('small').textContent=day.places.map(id=>catalog.poi.find(p=>p.slug===id)?.name||id).join(' · ');
+        preview.querySelector('small').textContent=`${dateLabel(day.date)} · `+day.places.map(id=>catalog.poi.find(p=>p.slug===id)?.name||id).join(' · ');
       });
     }else{
-      save.textContent='Сохранить два дня →';
+      save.textContent=`Сохранить ${countText} →`;
       if(!form.elements.date.value){const today=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Kaliningrad'});form.elements.date.value=today;}
     }
     selectDay(Number(root.querySelector('[role=tab][aria-selected=true]').dataset.weekendTab));
   }
   const settings=()=>({ids,date:form.elements.date.value||null,time:form.elements.time.value,party:{version:1,adults:Number(form.elements.adults.value),children:Number(form.elements.children.value)},pace:form.elements.pace.value,fields:[...changed]});
   async function persist(){
-    let pair;const result=await workshop.setState(current=>{const value=saveWeekend(current,catalog,settings());pair=value.ids;return value.trip;},'Два дня в Зеленоградске сохранены.');
+    let pair;const result=await workshop.setState(current=>{const value=saveStay(current,catalog,profile,settings());pair=value.ids;return value.trip;},`${title}: ${countText} сохранены.`);
     if(result.conflict)throw Error('weekend_conflict');remember(pair);return result;
   }
-  async function submit(){if(busy||!form.reportValidity())return;busy=true;enabled(false);try{const result=await persist();status.textContent=result.saved?'Готово. Добавьте блюда, жильё и заметки в «Моём дне» или скачайте буклет.':'План открыт в этой вкладке. Скачайте PDF, чтобы взять его с собой.';}catch(error){status.textContent=error.message==='weekend_missing'?'Один из дней удалён. Создайте новый план.':'Не удалось сохранить два дня. Проверьте даты и попробуйте ещё раз.';}finally{busy=false;sync();}}
-  save.onclick=event=>{event.preventDefault();submit();};form.onsubmit=event=>{event.preventDefault();submit();};form.oninput=event=>{changed.add(['adults','children'].includes(event.target.name)?'party':event.target.name);save.textContent='Сохранить изменения →';};
-  root.querySelectorAll('[data-weekend-tab]').forEach(tab=>{tab.onclick=()=>selectDay(Number(tab.dataset.weekendTab));tab.onkeydown=event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();selectDay(event.key==='Home'?0:event.key==='End'?1:1-Number(tab.dataset.weekendTab),{focus:true});}};});
+  async function submit(){if(busy||!form.reportValidity())return;busy=true;enabled(false);try{const result=await persist();status.textContent=result.saved?'Готово. Добавьте блюда, жильё и заметки в «Моём дне» или скачайте буклет.':'План открыт в этой вкладке. Скачайте PDF, чтобы взять его с собой.';}catch(error){status.textContent=error.message==='weekend_missing'?'Один из дней удалён. Создайте новый план.':'Не удалось сохранить поездку. Проверьте даты и попробуйте ещё раз.';}finally{busy=false;sync();}}
+  save.onclick=event=>{event.preventDefault();submit();};form.onsubmit=event=>{event.preventDefault();submit();};form.oninput=event=>{changed.add(['adults','children'].includes(event.target.name)?'party':event.target.name);save.textContent=ids?'Сохранить изменения →':`Сохранить ${countText} →`;};
+  root.querySelectorAll('[data-weekend-tab]').forEach(tab=>{tab.onclick=()=>selectDay(Number(tab.dataset.weekendTab));tab.onkeydown=event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();selectDay(event.key==='Home'?0:event.key==='End'?count-1:(Number(tab.dataset.weekendTab)+(event.key==='ArrowRight'?1:count-1))%count,{focus:true});}};});
   root.querySelectorAll('[data-weekend-jump]').forEach(link=>link.onclick=event=>{event.preventDefault();selectDay(Number(link.dataset.weekendJump));root.querySelector('.weekend-tabs').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
   pdf.onclick=async()=>{
-    if(busy||!form.reportValidity())return;busy=true;enabled(false);pdf.textContent='Собираем оба дня…';
+    if(busy||!form.reportValidity())return;busy=true;enabled(false);pdf.textContent='Собираем поездку…';
     try{
       if(!ids||changed.size)await persist();
-      const current=workshop.getState(),signature=JSON.stringify(current),trip=weekendGuideTrip(current,catalog,ids);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=20261013-1');
-      const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:root.querySelector('[data-weekend-format]').value,title:'Зеленоградск на два дня',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
-      status.textContent=`Ваш PDF готов: ${result.pages} стр. Оба дня — в одном файле в загрузках.`;
+      const current=workshop.getState(),signature=JSON.stringify(current),trip=stayGuideTrip(current,catalog,profile,ids);
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101305');
+      const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:root.querySelector('[data-weekend-format]').value,title,onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
+      status.textContent=`Ваш PDF готов: ${result.pages} стр. ${allText} — в одном файле в загрузках.`;
     }catch(error){console.error('coastal-weekend/pdf',error);status.textContent=error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Скачайте свежий буклет.':error.message==='weekend_missing'?'Один из дней удалён. Создайте новый план.':'PDF пока не собрался. Попробуйте ещё раз.';}
     finally{busy=false;pdf.textContent='Скачать личный PDF ↓';sync();}
   };

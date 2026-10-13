@@ -1,19 +1,24 @@
-import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=1';
-import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101208';
-import {plannerDayUrl} from './trip-day-link.mjs?v=1';
+import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=2026101305';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
+import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
+import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101305';
 
 export async function initFishWalk({workshop,base,catalog}) {
   const button=document.querySelector('[data-fish-save]'),booklet=document.querySelector('[data-fish-booklet]'),status=document.querySelector('[data-fish-status]');
   const form=document.querySelector('[data-fish-settings]'),context=document.querySelector('[data-fish-context]'),open=document.querySelector('[data-fish-open]');
   const response=await fetch(new URL('data/gastronomy.json',base));
   if(!response.ok)throw Error('food_unavailable');
-  const food=await response.json(),tour=food.fish_tour;
+  const food=await response.json(),scenario=document.querySelector('[data-gastro-tour]')?.dataset.gastroTour;
+  const tour=scenario?food.curated_tours?.find(t=>t.id===scenario):food.fish_tour;
   if(!tour || tour.places.length!==3)throw Error('fish_walk_unavailable');
   let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false;
   const initial=fishWalkTarget(workshop.getState(),tour,id);
   if(initial?.state==='ready'){
     id=initial.day.id;
     const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);
+  }else if(!initial&&form){
+    const start=new URL(location.href).searchParams.get('start');
+    if(start&&/^([01]\d|2[0-3]):[0-5]\d$/.test(start))form.elements.time.value=start;
   }
   const enabled=value=>{button.disabled=!value;if(booklet)booklet.disabled=!value;for(const input of form?.querySelectorAll('input')||[])input.disabled=!value;};
   const settings=()=>({id,date:form?.elements.date.value||null,time:form?.elements.time.value||'12:00',edit:dirty});
@@ -46,7 +51,8 @@ export async function initFishWalk({workshop,base,catalog}) {
     const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);
   }
   async function save(){
-    const value=settings(),result=await workshop.setState(current=>saveFishWalkDay(current,tour,food,value),'Рыбная прогулка сохранена.');
+    if(form&&!form.reportValidity())throw Error('invalid_settings');
+    const value=settings(),result=await workshop.setState(current=>saveFishWalkDay(current,tour,food,value),'Гастро-прогулка сохранена.');
     if(result.conflict)throw Error('fish_day_conflict');
     remember();return result;
   }
@@ -69,13 +75,16 @@ export async function initFishWalk({workshop,base,catalog}) {
       if(target?.state!=='ready')throw Error('linked_day_missing');
       // Export this saved identity, even if another day is active in another tab.
       const trip=chooseTripDay(current,id),signature=JSON.stringify(current);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101212');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101305');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
     }catch(error){status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':error.message==='linked_day_missing'?'День уже удалён. Выберите другой в «Моём дне».':'Буклет пока не собрался. Попробуйте ещё раз.';}
     finally{busy=false;booklet.textContent='Собрать буклет ↓';sync();}
   });
   window.addEventListener('godune:trip-change',sync);
+  initGastroMenus({workshop,base,catalog,saveDay:save,getId:()=>id,setBusy:value=>{
+    if(value&&busy)return false;busy=value;enabled(!value);if(!value)sync();return true;
+  }});
   document.querySelectorAll('.fish-overview a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
     const stop=document.querySelector(link.hash+' .fish-stop-details');if(stop)stop.open=true;
   }));

@@ -9,7 +9,7 @@ export async function offlineWorker(base) {
   if (!ready) ready=(async()=>{
     if (!('serviceWorker' in navigator)) throw new Error('Этот браузер пока не сохраняет прогулки без сети. GPX можно скачать по ссылке выше.');
     const unavailable='Скачать прогулку в этом браузере пока не получилось. Попробуйте обновить страницу или возьмите GPX по ссылке выше.';
-    const registration=await navigator.serviceWorker.register(new URL('sw.js',base),{scope:new URL('.',base).pathname,updateViaCache:'none'}).catch(error=>{throw new Error(unavailable,{cause:error});});
+    const registration=await navigator.serviceWorker.register(new URL('sw.js?v=2026101305',base),{scope:new URL('.',base).pathname,updateViaCache:'none'}).catch(error=>{throw new Error(unavailable,{cause:error});});
     if (!registration) throw new Error(unavailable);
     const worker=registration.installing || registration.waiting || registration.active;
     if (!worker) throw new Error('Загрузка пока недоступна. Попробуйте ещё раз.');
@@ -44,7 +44,7 @@ export async function offlinePaths(base) {
   catch{return new Set();}
 }
 export async function initOffline(base) {
-  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=7',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
+  if(document.querySelector('[data-offline-library]')) import(new URL('offline-library.mjs?v=2026101305',base)).then(({initOfflineLibrary})=>initOfflineLibrary(base)).catch(()=>{document.querySelector('#offline-library-status').textContent='Загрузки пока не открылись. Попробуйте обновить страницу.';});
   const panel=document.querySelector('[data-offline-route]'), list=document.querySelector('#trip-offline-list');
   const banner=document.createElement('p');banner.className='offline-network';banner.setAttribute('role','status');
   banner.textContent='Без сети. Скачанные карты, прогулки и ваши отметки остаются с вами.';

@@ -1,8 +1,8 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101208';
-import {planInput} from './trip-schedule-state.mjs?v=19';
-import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=1';
-import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=2026101208';
-import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=4';
+import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {planInput} from './trip-schedule-state.mjs?v=2026101305';
+import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
+import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=2026101305';
+import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 
 // Compare the original whole day, rather than treating finished visits as
 // future appointments after a progress checkpoint. Never mutate the draft.

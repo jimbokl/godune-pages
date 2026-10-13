@@ -1,4 +1,4 @@
-import {resolveVisitCalendar} from './visit-calendar.mjs?v=4';
+import {resolveVisitCalendar} from './visit-calendar.mjs?v=2026101305';
 
 // The dining room and order acceptance are different facts, both date-aware.
 export function resolveKitchenCalendar(place, date) {

@@ -1,5 +1,5 @@
 // The quote is a durable source snapshot. Changing a plan never changes a payment.
-import {dayPeople} from './trip-party.mjs?v=1';
+import {dayPeople} from './trip-party.mjs?v=2026101305';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const keys=(v,allowed)=>Object.keys(v).every(k=>allowed.includes(k));
 const text=v=>typeof v==='string' && !!v.trim();

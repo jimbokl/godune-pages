@@ -1,5 +1,5 @@
 // Manual travel records. Status is the traveller's statement, never supplier verification.
-import {validBase} from './personal-points.mjs?v=3';
+import {validBase} from './personal-points.mjs?v=2026101305';
 export const BOOKING_KINDS={arrival:'Прибытие',lodging:'Ночёвка',activity:'Экскурсия или билет',departure:'Вылет / отъезд',return:'Возвращение'};
 export const endBookingLabel=row=>row?.kind==='return'?'Возвращение':'Отъезд';
 export const BOOKING_STATUSES={planned:'Планирую',booked:'Я уже забронировал',cancelled:'Отменено'};

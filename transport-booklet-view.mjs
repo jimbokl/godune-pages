@@ -1,10 +1,10 @@
 // Presentation of a frozen ferry receipt. No timetable or price lookup belongs here.
-import {validTransportReceipt} from './trip-transport-plans-contract.mjs?v=2026101208';
-import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101208';
-import {transportStatus,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101208';
-import {transferClock as clock} from './trip-service-transfer-view.mjs';
+import {validTransportReceipt} from './trip-transport-plans-contract.mjs?v=2026101305';
+import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101305';
+import {transportStatus,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101305';
+import {transferClock as clock} from './trip-service-transfer-view.mjs?v=2026101305';
 
-import {roadOrigins} from './transport-road-connection.mjs?v=1';
+import {roadOrigins} from './transport-road-connection.mjs?v=2026101305';
 export function transportBooklet(snapshot){
  if(snapshot.days?.length!==1)return null;
  const day=snapshot.days[0],receipt=snapshot.transport_receipt||day.transport_plans?.length===1&&day.transport_plans[0].receipt;

@@ -1,10 +1,10 @@
 // A read-only view of the same snapshot used by the personal PDF.
 // Rust, service calendars and the saved transport bindings own every time.
-import {collectTripGuide} from './trip-guide-engine.mjs?v=2026101208';
-import {loadScheduler} from './trip-scheduler.mjs?v=42';
-import {loadTripTravelMatrix} from './travel-estimates.mjs?v=13';
-import {savedKosaJourney} from './day-kosa-journey.mjs?v=2026101208';
-import {clock} from './day-stop-view.mjs?v=1';
+import {collectTripGuide} from './trip-guide-engine.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
+import {savedKosaJourney} from './day-kosa-journey.mjs?v=2026101305';
+import {clock} from './day-stop-view.mjs?v=2026101305';
 
 export async function collectVirtualJourney({trip,catalog,base,calculate,matrixFor,kosaFor}) {
   const saved=structuredClone(trip);
