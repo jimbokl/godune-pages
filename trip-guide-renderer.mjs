@@ -8,7 +8,7 @@ import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101305';
 import {transportBooklet} from './transport-booklet-view.mjs?v=2026101305';
-import {walkingBooklet} from './walking-booklet-view.mjs?v=2026101305';
+import {walkingBooklet} from './walking-booklet-view.mjs?v=2026101306';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -98,12 +98,20 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(s.note){heading('Ваша заметка',false,s.note);text(s.note);}
   }
-  const transportBook=transportBooklet(snapshot);
-  const walkingCandidates=transportBook?[]:snapshot.days.map(day=>walkingBooklet({...snapshot,days:[day]}));
-  const walkingBooks=walkingCandidates.length&&walkingCandidates.every(Boolean)?walkingCandidates:[];
-  const walkingBook=walkingBooks[0]||null;
+  // Choose each day's presentation independently: one booking or ferry must not
+  // expand all other walking days into the complete service guide.
+  const books=snapshot.days.map(day=>{
+    const one={...snapshot,days:[day]},transport=transportBooklet(one);
+    if(transport)return {kind:'transport',value:transport};
+    const walking=walkingBooklet(one);
+    return walking?{kind:'walking',value:walking}:null;
+  });
+  const allWalking=books.every(b=>b?.kind==='walking');
+  const allTransport=books.every(b=>b?.kind==='transport');
+  const hasFull=books.some(b=>!b);
+  const hasWalking=books.some(b=>b?.kind==='walking');
   // A one-day phone booklet opens with the actual plan, without a second cover.
-  if(!transportBook&&!walkingBook&&(!phone || snapshot.days.length>1)){
+  if(hasFull&&(!phone || snapshot.days.length>1)){
   start();text('GODUNE · БАЛТИЙСКИЕ ДЮНЫ',{size:9,color:muted,space:20});heading(snapshot.title,true);
   text(snapshot.days.length===1?date(snapshot.days[0].date):`${plural(snapshot.days.length,['день','дня','дней'])} в одном путеводителе`,{size:phone?13:16,space:18});
   const first=snapshot.days.flatMap(d=>d.stops).find(p=>media.photos[p.id]);
@@ -114,9 +122,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   await qrCard(media.qrs?.planner,'godune.ru/planner/\nЗдесь можно продолжить поездку при появлении связи.');
   }
   const chapters=[],trailSections=[],interchangePages=[],preparation=new Set();
-  if(transportBook){
-    const b=transportBook,day=b.day;
-    chapter=date(b.receipt.date).toLocaleUpperCase('ru-RU');start();
+  async function renderTransportBook(b){
+    const day=b.day,begins=doc.getPageCount()+1;
+    chapter=`ДЕНЬ ${day.number||1} · ${date(b.receipt.date)}`;start();
     heading(b.title,true);text(b.subtitle,{size:phone?12:16,color:muted,space:phone?14:20});
     for(const value of b.context)text(value,{size:phone?9:11,color:muted});
     const cardWidth=width-30,cardText=(value,font,size,space)=>lines(value,font,size,cardWidth).length*size*leadingFor(font)+space;
@@ -148,12 +156,12 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       text(value,{size:phone?8.5:10,color:muted,space:3});text(host,{size:phone?8.5:10,color:muted,space:8,link:s.url});
     }
     text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. План и источники сохранены в PDF и вложении plan.json. Рейсы и цены в файле не обновляются.`,{size:phone?8.5:10,color:muted});
-    chapters.push({id:day.id,begins:1,pages:doc.getPageCount()});
-  }else if(walkingBook){
-    for(const b of walkingBooks){
+    chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
+  }
+  async function renderWalkingBook(b){
     const day=b.day,small=phone?9.5:11,space=phone?5:7,begins=doc.getPageCount()+1;
     chapter=`ДЕНЬ ${day.number||1} · ${date(day.date)}`;start();
-    if(walkingBooks.length>1&&b===walkingBooks[0])text(snapshot.title,{font:title,size:phone?17:24,space:14});
+    if(snapshot.days.length>1&&b.day===snapshot.days[0]&&!hasFull)text(snapshot.title,{font:title,size:phone?17:24,space:14});
     heading(day.name,true);text(date(day.date),{size:phone?12:15,color:muted,space});
     const schedule=day.record.schedule;
     text(`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
@@ -170,6 +178,20 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       need(textHeight(caption,ui,small,3)+Math.min(textHeight(row.text,ui,small,space),small*4));
       text(caption,{size:small,space:3});text(row.text,{size:small,color:muted,space});
       for(const anchor of row.anchors||[])if(anchor.location?.kind==='point')text(`${anchor.name} · GPS ${gps(anchor.location)}`,{size:small,color:muted,space});
+    }
+    if(b.meals.length||day.menu_quote){
+      const quote=day.menu_quote?.text||day.menu_quote?.error||'';
+      const mealHeight=meal=>textHeight(meal.name,title,phone?14:17,space)+[meal.place+(meal.address?' · '+meal.address:''),meal.text,meal.price,meal.note].filter(Boolean).reduce((n,v)=>n+textHeight(v,ui,small,space),0);
+      heading('Что попробовать',false,quote,b.meals[0]?Math.min(mealHeight(b.meals[0]),small*8):0);
+      if(quote)text(quote,{size:small,space});
+      for(const meal of b.meals){
+        need(Math.min(mealHeight(meal),h-2*m-90));
+        text(meal.name,{font:title,size:phone?14:17,space});
+        text(meal.place+(meal.address?' · '+meal.address:''),{size:small,color:muted,space});
+        if(meal.text)text(meal.text,{size:small,space});
+        text(meal.price+(meal.reference?' '+meal.reference:''),{size:small,space});
+        if(meal.note)text(meal.note,{size:small,color:muted,space});
+      }
     }
     for(const {place:p,number,conditions,reference}of b.cards){
       const size=phone?20:28,map=media.maps[p.id],photo=media.photos[p.id];
@@ -197,15 +219,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     for(const s of b.sources){
       text(`[${s.number}] ${sourceCaption(s)}`,{size:phone?8.5:10,color:muted,space,link:s.url});
     }
-    if(Object.keys(media.maps).length)text('Картографические данные: OpenStreetMap · '+media.source.snapshot_at,{size:8,color:muted,space,link:media.source.source});
-    for(const warning of media.warnings)text(warning,{size:small,color:muted,space});
-    text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Карты, остановки и заметки доступны без сети. Полный план и источники вложены в plan.json.`,{size:phone?8.5:10,color:muted,space});
-    await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
-    text('Manrope и Noto Serif Display · SIL Open Font License',{size:8,color:muted,space});
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
-    }
-  }else{
+  }
   for(const [index,day]of snapshot.days.entries()){
+    if(books[index]?.kind==='transport'){await renderTransportBook(books[index].value);continue;}
+    if(books[index]?.kind==='walking'){await renderWalkingBook(books[index].value);continue;}
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
     signal?.throwIfAborted();chapter=`ДЕНЬ ${Number.isInteger(day.number)&&day.number>0?day.number:index+1} · ${date(day.date)}`;start();const begins=doc.getPageCount();heading(day.name,true);
     text(date(day.date),{size:phone?12:15,color:muted});if(day.party_label)text(day.party_label,{size:phone?12:15,color:muted});
@@ -320,6 +338,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
+  if(hasFull){
   chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');const packingText=(value,options={})=>text(value,{...(phone?{size:9.5,space:6}:{}),...options});packingText((Object.keys(media.maps).length||Object.keys(media.photos).length?'Карты и фото из вашего дня встроены в PDF. ':'')+'План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
   for(const value of preparation)packingText(value);
   packingText(`Подготовлено ${date(snapshot.created_at.slice(0,10)).replace(/\.$/,'')}. Рейсы, цены и погода в этом файле не обновляются.`);
@@ -331,9 +350,17 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   }
   for(const warning of media.warnings)packingText(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
   packingText((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
+  }else if(hasWalking){
+    // Shared once per trip, after the last day's sources.
+    const small=phone?8.5:10,space=phone?5:7;
+    if(Object.keys(media.maps).length)text('Картографические данные: OpenStreetMap · '+media.source.snapshot_at,{size:8,color:muted,space,link:media.source.source});
+    for(const warning of media.warnings)text(warning,{size:small,color:muted,space});
+    text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Карты, остановки, блюда и заметки доступны без сети. Полный план и источники вложены в plan.json.`,{size:small,color:muted,space});
+    await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
+    text('Manrope и Noto Serif Display · SIL Open Font License',{size:8,color:muted,space});
   }
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
-  const full={...snapshot,format,...(walkingBook?{layout:'walking-compact-v1'}:{}),chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
+  const full={...snapshot,format,...(allWalking?{layout:'walking-compact-v1'}:books.some(Boolean)?{layout:allTransport?'transport-compact-v1':'mixed-compact-v1'}:{}),day_layouts:books.map((b,i)=>({id:snapshot.days[i].id,layout:b?.kind||'full'})),chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
   pages.forEach((p,i)=>{const {width:pw}=p.getSize();p.drawRectangle({x:0,y:0,width:pw,height:35,color:paper});p.drawLine({start:{x:m,y:33},end:{x:pw-m,y:33},thickness:.6,color:blue});p.drawText('godune.ru · '+sha.slice(0,8),{x:m,y:21,font:ui,size:7.5,color:muted});const n=`${i+1} / ${pages.length}`;p.drawText(n,{x:pw-m-ui.widthOfTextAtSize(n,7.5),y:21,font:ui,size:7.5,color:muted});});
   await doc.attach(snapshotBytes,'plan.json',{mimeType:'application/json',description:'Личный план и версии встроенных карт'});doc.setTitle(snapshot.title);doc.setAuthor('Балтийские дюны · godune.ru');doc.setSubject('Личный путеводитель · '+sha);signal?.throwIfAborted();onProgress('Готовим файл для сохранения…');
   return {bytes:await doc.save(),pages:pages.length,format,snapshot_sha256:sha,chapters,map_count:Object.keys(media.maps).length,photo_count:Object.keys(media.photos).length,warnings:media.warnings};

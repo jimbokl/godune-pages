@@ -1,10 +1,10 @@
-// A short walking day can share evidence between the plan and place cards.
-// Richer trips keep the full guide, including their service and booking chapters.
+// A walking day shares evidence between its plan, places and chosen dishes.
+// Services, transport, expenses and bookings retain their complete chapters.
 export function walkingBooklet(snapshot) {
   const day=snapshot.days?.[0];
-  if(snapshot.days?.length!==1 || snapshot.transport_receipt || !day?.record?.source_route ||
+  if(snapshot.days?.length!==1 || snapshot.transport_receipt || !day?.record ||
     day.record.schedule?.mode!=='foot' || day.kosa || day.transport_plans?.length ||
-    day.services?.length || day.menu_choices?.length || day.menu_quote || day.bookings?.length ||
+    day.services?.length || day.bookings?.length ||
     day.expenses || Object.keys(day.record.costs||{}).length || !day.stops?.length ||
     (day.entries||[]).some(entry=>entry.kind!=='place'))return null;
   const sources=[],bySource=new Map();
@@ -33,5 +33,6 @@ export function walkingBooklet(snapshot) {
   if(cards.some(card=>!card))return null;
   const access=(day.access?.entries||[]).filter(row=>row.extent!=='place'||!day.stops.some(p=>p.id===row.poi||row.applies_to?.some(v=>v.poi===p.id)))
     .map(row=>({...row,reference:reference(row.source)}));
-  return {day,rows,cards,access,sources};
+  const meals=(day.menu_choices||[]).map(meal=>({...meal,reference:reference(meal.source)}));
+  return {day,rows,cards,access,meals,sources};
 }
