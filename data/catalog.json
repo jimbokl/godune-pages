@@ -1136,6 +1136,22 @@
         "geography": "Калининград · Куршская коса · Светлогорск",
         "id": "kaliningrad-kosa-sea-three",
         "name": "3 дня без машины: город, дюны и море"
+      },
+      {
+        "access_note": "Первый день начинается у центрального вокзала. Второй заканчивается у Зеленоградска-2. Жильё и дорогу в город можно добавить в Мой день.",
+        "days": [
+          {
+            "recipe": "wave-zelenogradsk-city-fish"
+          },
+          {
+            "recipe": "wave-zelenogradsk-west-sea"
+          }
+        ],
+        "description": "Старые улочки, рыбная кухня и время у моря. Две прогулки с остановками на обед и личным PDF.",
+        "geography": "Зеленоградск · пешком",
+        "id": "zelenogradsk-two-days",
+        "name": "Зеленоградск на два дня",
+        "page": "/routes/zelenogradsk-two-days/"
       }
     ],
     "recipes": [
@@ -1356,6 +1372,73 @@
           }
         ],
         "theme": "mixed"
+      },
+      {
+        "access_note": "Время у мест — ваш план прогулки. Рыбное кафе на пирсе: меню и контакты на branchnamore.ru.",
+        "area": "zelenogradsk",
+        "area_name": "Зеленоградск",
+        "description": "От центрального вокзала по Курортному проспекту — к кофе, рыбному обеду и променаду.",
+        "mode": "walking",
+        "name": "Город и рыбный обед",
+        "slug": "wave-zelenogradsk-city-fish",
+        "start_note": "Начало у вокзала Зеленоградск-Новый.",
+        "stops": [
+          {
+            "poi": "zelenogradsk-novyy",
+            "visit_minutes": 5
+          },
+          {
+            "poi": "kurortnyy-prospekt",
+            "visit_minutes": 45
+          },
+          {
+            "poi": "pekarnya-khleb",
+            "visit_minutes": 30
+          },
+          {
+            "poi": "rybnoe-kafe-na-pirse",
+            "visit_minutes": 60
+          },
+          {
+            "poi": "promenad-zelenogradsk",
+            "visit_minutes": 60
+          }
+        ],
+        "theme": "gastro"
+      },
+      {
+        "access_note": "Курхаус смотрим снаружи. У бювета — короткая остановка. В сильный ветер сократите прогулку у воды. На обратную электричку выбирайте рейс со станции Зеленоградск-2, не с центрального вокзала.",
+        "area": "zelenogradsk",
+        "area_name": "Зеленоградск",
+        "description": "Курхаус, бювет, обед в Телеграфе и длинная прогулка к западному пляжу. Финал у станции Зеленоградск-2.",
+        "mode": "walking",
+        "name": "Море и западный берег",
+        "slug": "wave-zelenogradsk-west-sea",
+        "start_note": "Начало у Курхауса Кранц.",
+        "stops": [
+          {
+            "poi": "kurhaus-kranc",
+            "visit_minutes": 20,
+            "visit_scope": "outside"
+          },
+          {
+            "poi": "byuvet-luizy",
+            "visit_minutes": 15
+          },
+          {
+            "poi": "restoran-telegraf",
+            "visit_minutes": 60
+          },
+          {
+            "poi": "zapadnyy-plyazh-zelenogradsk-2",
+            "visit_minutes": 90
+          },
+          {
+            "poi": "zelenogradsk-2",
+            "visit_minutes": 5
+          }
+        ],
+        "theme": "beach"
       }
     ],
     "route_themes": {

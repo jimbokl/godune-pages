@@ -98,7 +98,10 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(s.note){heading('Ваша заметка',false,s.note);text(s.note);}
   }
-  const transportBook=transportBooklet(snapshot),walkingBook=transportBook?null:walkingBooklet(snapshot);
+  const transportBook=transportBooklet(snapshot);
+  const walkingCandidates=transportBook?[]:snapshot.days.map(day=>walkingBooklet({...snapshot,days:[day]}));
+  const walkingBooks=walkingCandidates.length&&walkingCandidates.every(Boolean)?walkingCandidates:[];
+  const walkingBook=walkingBooks[0]||null;
   // A one-day phone booklet opens with the actual plan, without a second cover.
   if(!transportBook&&!walkingBook&&(!phone || snapshot.days.length>1)){
   start();text('GODUNE · БАЛТИЙСКИЕ ДЮНЫ',{size:9,color:muted,space:20});heading(snapshot.title,true);
@@ -147,8 +150,10 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. План и источники сохранены в PDF и вложении plan.json. Рейсы и цены в файле не обновляются.`,{size:phone?8.5:10,color:muted});
     chapters.push({id:day.id,begins:1,pages:doc.getPageCount()});
   }else if(walkingBook){
-    const b=walkingBook,day=b.day,small=phone?9.5:11,space=phone?5:7;
+    for(const b of walkingBooks){
+    const day=b.day,small=phone?9.5:11,space=phone?5:7,begins=doc.getPageCount()+1;
     chapter=`ДЕНЬ ${day.number||1} · ${date(day.date)}`;start();
+    if(walkingBooks.length>1&&b===walkingBooks[0])text(snapshot.title,{font:title,size:phone?17:24,space:14});
     heading(day.name,true);text(date(day.date),{size:phone?12:15,color:muted,space});
     const schedule=day.record.schedule;
     text(`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
@@ -197,7 +202,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(`Подготовлено ${date(snapshot.created_at.slice(0,10))}. Карты, остановки и заметки доступны без сети. Полный план и источники вложены в plan.json.`,{size:phone?8.5:10,color:muted,space});
     await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
     text('Manrope и Noto Serif Display · SIL Open Font License',{size:8,color:muted,space});
-    chapters.push({id:day.id,begins:1,pages:doc.getPageCount()});
+    chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
+    }
   }else{
   for(const [index,day]of snapshot.days.entries()){
     const kosaAssets=day.kosa?await loadKosaGuideAssets({snapshot:day.kosa,base,format},{signal,onProgress}):null;
