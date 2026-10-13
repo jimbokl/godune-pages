@@ -1,3 +1,4 @@
+import {kosaQuickPlan} from './kosa-quick-plan.mjs?v=2026101401';
 import {initKosaDinner} from './kosa-dinner-ui.mjs?v=2026101307';
 import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101305';
 import {transitTable} from './transport-day.mjs?v=2026101305';
@@ -56,7 +57,28 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   function link(text,path,className){const a=el('a',text,className);a.href=new URL(path,base).href;return a;}
   function row(list,time,title,text,previous){const known=Number.isInteger(time),label=known?clock(time):'Уточнить',item=el('li'),timeNode=el('time',label),copy=el('div');if(known)timeNode.dateTime=label;copy.append(el('h4',title),el('p',text));if(previous.has(title)&&previous.get(title)!==label)timeNode.classList.add('kosa-time-changed');item.append(timeNode,copy);list.append(item);return copy;}
   function invalidate(){exportAbort?.abort();sequence++;result.setAttribute('aria-busy','true');result.classList.add('kosa-updating');result.querySelectorAll('button,select').forEach(n=>n.disabled=true);}
+  const quickButtons=[...form.querySelectorAll('[data-kosa-choice]')];
+  let quickSnapshot=null;
+  const quickKey=()=>JSON.stringify(['ready','walks','pace','first_visit','second_visit'].map(name=>form.elements[name].value));
+  function syncQuickChoice(){
+    if(quickSnapshot!==null&&quickSnapshot!==quickKey()){
+      quickSnapshot=null;quickButtons.forEach(button=>button.setAttribute('aria-pressed','false'));
+      form.querySelector('[data-kosa-choice-status]').textContent='День настроен под вас. Рейсы и возвращение пересчитываются вместе.';
+    }
+  }
+  quickButtons.forEach(button=>button.addEventListener('click',()=>{
+    begin();
+    const choice=button.dataset.kosaChoice,answers=kosaQuickPlan(readFields(),choice);
+    for(const name of ['walks','pace','first_visit','second_visit'])form.elements[name].value=answers[name];
+    form.elements.ready.value=clock(answers.ready);
+    quickSnapshot=quickKey();
+    quickButtons.forEach(other=>other.setAttribute('aria-pressed',String(other===button)));
+    form.querySelector('[data-kosa-choice-status]').textContent=choice==='afternoon'?'Одна тропа после 13:00. Проверяем, хватает ли времени на прогулку и обратный автобус.':choice==='efa'?'Оставили Эфу и время для неспешной прогулки. Проверяем автобус туда и обратно.':'Две полные тропы и автобус между ними. Проверяем всё возвращение.';
+    releaseSelectedRides=true;
+    schedule();
+  }));
   function schedule(){
+    syncQuickChoice();
     if(!form.checkValidity()){clearTimeout(recalculateTimer);invalidate();status.textContent='Дополните отмеченные поля — день пересчитается.';return;}
     cityFields();const params=JSON.stringify(read());if(params===lastParams)return;lastParams=params;
     clearTimeout(recalculateTimer);invalidate();
@@ -262,6 +284,6 @@ export async function initKosaPlanner({workshop,catalog,base}) {
     schedule();
     form.dispatchEvent(new CustomEvent('TripParamsChanged',{bubbles:true,detail:{city:form.elements.city.value}}));
   });
-  form.dataset.kosaReady='true';submit.disabled=false;
+  form.dataset.kosaReady='true';submit.disabled=false;quickButtons.forEach(button=>button.disabled=false);
   await calculate();
 }

@@ -52,17 +52,11 @@
     if (target.origin===location.origin && target.pathname===location.pathname && target.search===location.search && target.hash) revealPlannerTrip(target.hash,{scroll:true,focus:true});
   });
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
-  let catalog;
+  let catalogLoader;
   function loadCatalog() {
-    if (!catalog) {
-      perfMark('catalog-start');
-      catalog = fetch(url('data/catalog.json'), {cache:'no-cache'}).then(r => {
-        if (!r.ok) throw new Error('Каталог временно недоступен');
-        return r.json();
-      }).then(data => { perfMark('catalog-ready'); return data; });
-      catalog.catch(() => {});
-    }
-    return catalog;
+    catalogLoader ||= import(url('json-loader.mjs?v=2026101401')).then(({createJsonLoader})=>createJsonLoader(url('data/catalog.json')));
+    perfMark('catalog-start');
+    return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
   const offlineTools = import(url('offline.mjs?v=2026101305'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
@@ -277,7 +271,7 @@
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=2026101305')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=2026101401')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
     if ($('#housing-engine')) import(url('housing-ui.mjs?v=2026101305')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
     if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2026101305')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
