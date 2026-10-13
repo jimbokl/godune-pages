@@ -656,3 +656,7 @@ body[data-ui-context] .visit-timeline-card[data-timeline-number]::before{backgro
  body[data-ui-context] .map-location-actions button{font-size:13px}
 }
 @media print{body[data-ui-context] :is(.route-walk,.news-info,.poi-card,.route-row,.budget-controls,.travel-next,.travel-empty,.expense-totals p){box-shadow:none;border:0;padding:0}}
+
+/* Transport headings can name the coast and intent without a fixed-height collision. */
+body[data-transport] .transport-hero{height:auto;min-height:calc(315*var(--u));padding-bottom:32px}
+body[data-transport].inner-page .inner-main .transport-hero h1{text-wrap:balance;overflow-wrap:normal}
