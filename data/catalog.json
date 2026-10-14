@@ -84,7 +84,7 @@
           "alt": "Телеграф — вход и вывеска на авторской фотографии",
           "date": "2026-05-30",
           "height": 1800,
-          "src": "assets/food/img_8764.webp",
+          "src": "assets/food/img_8764-opt-v1.webp",
           "width": 1350
         },
         "id": "telegraf",
@@ -180,7 +180,7 @@
           "alt": "Слоу — вход и вывеска на авторской фотографии",
           "date": "2026-05-30",
           "height": 1800,
-          "src": "assets/food/img_9338.webp",
+          "src": "assets/food/img_9338-opt-v1.webp",
           "width": 1350
         },
         "id": "slou",
@@ -5456,7 +5456,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_8764",
-          "src": "assets/food/img_8764.webp",
+          "src": "assets/food/img_8764-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Балтийская кухня",
@@ -5550,7 +5550,7 @@
       "lon": 20.47563,
       "name": "Телеграф",
       "photos": [
-        "assets/food/img_8764.webp"
+        "assets/food/img_8764-opt-v1.webp"
       ],
       "practical": "На остановку заложено около 60 минут. Выберите блюда и уточните столик перед прогулкой.",
       "price": null,
@@ -5729,7 +5729,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_8882",
-          "src": "assets/food/img_8882.webp",
+          "src": "assets/food/img_8882-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Домашняя кухня и завтраки",
@@ -5773,7 +5773,7 @@
       "lon": 20.481263333333334,
       "name": "Сковородка",
       "photos": [
-        "assets/food/img_8882.webp"
+        "assets/food/img_8882-opt-v1.webp"
       ],
       "practical": "На остановку заложено около 35 минут. Выберите блюда и уточните столик перед прогулкой.",
       "price": null,
@@ -6085,7 +6085,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_9338",
-          "src": "assets/food/img_9338.webp",
+          "src": "assets/food/img_9338-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Кофейня",
@@ -6114,7 +6114,7 @@
       "lon": 20.48568,
       "name": "Слоу",
       "photos": [
-        "assets/food/img_9338.webp"
+        "assets/food/img_9338-opt-v1.webp"
       ],
       "practical": "На остановку заложено около 25 минут. Выберите блюда и уточните столик перед прогулкой.",
       "price": null,
@@ -6208,7 +6208,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_8838",
-          "src": "assets/food/img_8838.webp",
+          "src": "assets/food/img_8838-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Ремесленная пекарня",
@@ -6240,7 +6240,7 @@
       "lon": 20.478328333333337,
       "name": "Хлеб",
       "photos": [
-        "assets/food/img_8838.webp"
+        "assets/food/img_8838-opt-v1.webp"
       ],
       "practical": "В туристическом справочнике часы разделены на сезон и межсезонье, но граница сезонов не названа. Уточните время на свою дату.",
       "price": null,
@@ -6601,7 +6601,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_9246",
-          "src": "assets/food/img_9246.webp",
+          "src": "assets/food/img_9246-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Рыба, морепродукты и завтраки",
@@ -6682,7 +6682,7 @@
       "lon": 20.477725,
       "name": "Рыбное кафе на пирсе",
       "photos": [
-        "assets/food/img_9246.webp"
+        "assets/food/img_9246-opt-v1.webp"
       ],
       "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
       "price": null,
@@ -7251,7 +7251,7 @@
           "height": 1800,
           "kind": "cover",
           "original_id": "IMG_8869",
-          "src": "assets/food/img_8869.webp",
+          "src": "assets/food/img_8869-opt-v1.webp",
           "width": 1350
         },
         "cuisine": "Литовская кухня",
@@ -7354,7 +7354,7 @@
       "lon": 20.480155,
       "name": "Лаба Дена",
       "photos": [
-        "assets/food/img_8869.webp"
+        "assets/food/img_8869-opt-v1.webp"
       ],
       "practical": "На остановку заложено около 50 минут. Выберите блюда и уточните столик перед прогулкой.",
       "price": null,

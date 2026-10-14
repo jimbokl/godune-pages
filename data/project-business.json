@@ -1,12 +1,13 @@
 {
   "version": 3,
-  "checked_at": "2026-10-12",
+  "checked_at": "2026-10-14",
   "projects": [
     {
       "id": "project:belaya-duna",
       "slug": "belaya-duna",
       "name": "Белая Дюна",
       "location": "Поваровка · Зеленоградский округ",
+      "location_place_id": "place:povarovka",
       "status": "infrastructure",
       "summary": "Соглашения, инфраструктура и участники будущего курорта на Балтике.",
       "url": "/dunes/belaya-duna/",
@@ -45,6 +46,57 @@
       "checked_at": "2026-10-11",
       "source_ids": [
         "forum"
+      ]
+    },
+    {
+      "id": "project:cosmos-stay",
+      "slug": "cosmos-stay",
+      "name": "Cosmos Stay Светлогорск Отрада Апартаменты",
+      "location": "пос. Лесное · Светлогорский городской округ",
+      "status": "planned",
+      "summary": "Планируемый комплекс гостиничных апартаментов: сведения Cosmos Hotel Group от 13 октября 2026 года.",
+      "url": "/realty/projects/cosmos-stay/",
+      "facts": [
+        {
+          "label": "Номерной фонд",
+          "value": "432 номера · план",
+          "status": "plan",
+          "source_ids": [
+            "cosmos-franchise-release"
+          ]
+        },
+        {
+          "label": "Корпуса",
+          "value": "4 пятиэтажных корпуса · план",
+          "status": "plan",
+          "source_ids": [
+            "cosmos-franchise-release"
+          ]
+        },
+        {
+          "label": "Первая очередь",
+          "value": "конец 2027 года · ожидаемый срок",
+          "status": "plan",
+          "source_ids": [
+            "cosmos-franchise-release"
+          ]
+        },
+        {
+          "label": "Весь проект",
+          "value": "конец 2030 года · ожидаемый срок",
+          "status": "plan",
+          "source_ids": [
+            "cosmos-franchise-release"
+          ]
+        }
+      ],
+      "news_urls": [],
+      "project_type": "mixed",
+      "parent_project_id": null,
+      "parent_evidence": null,
+      "checked_at": "2026-10-14",
+      "source_ids": [
+        "cosmos-franchise-release"
       ]
     }
   ],
@@ -267,6 +319,123 @@
           "quote": "группа компаний «Лидер Групп»",
           "locator": "Абзац об участнике",
           "checked_at": "2026-10-11"
+        }
+      }
+    },
+    {
+      "id": "org:rivera-baltiki",
+      "name": "ООО «Специализированный застройщик „Ривьера Балтики“»",
+      "summary": "Застройщик OTRADA Resort; в релизе Cosmos назван участником строительства и реализации Cosmos Stay.",
+      "website": "https://otradaresort.ru/",
+      "source_ids": [
+        "cosmos-franchise-release",
+        "otrada-developer-site"
+      ],
+      "contacts": [],
+      "career_url": null,
+      "legal_name": "ООО «Специализированный застройщик „Ривьера Балтики“»",
+      "inn": "3900008142",
+      "aliases": [],
+      "entity_kind": "legal_entity",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "cosmos-franchise-release"
+          ],
+          "quote": "ООО «Специализированный застройщик „Ривьера Балтики“»",
+          "locator": "Сообщение Cosmos, абзац о строительстве",
+          "checked_at": "2026-10-14"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "otrada-developer-site"
+          ],
+          "quote": "ООО «Специализированный застройщик „Ривьера Балтики“», ИНН 3900008142",
+          "locator": "Футер сайта: организационно-правовая форма и реквизиты",
+          "checked_at": "2026-10-14"
+        },
+        "legal_name": {
+          "source_ids": [
+            "otrada-developer-site"
+          ],
+          "quote": "ООО «Специализированный застройщик „Ривьера Балтики“», ИНН 3900008142",
+          "locator": "Футер сайта, наименование застройщика",
+          "checked_at": "2026-10-14"
+        },
+        "inn": {
+          "source_ids": [
+            "otrada-developer-site"
+          ],
+          "quote": "ООО «Специализированный застройщик „Ривьера Балтики“», ИНН 3900008142",
+          "locator": "Футер сайта, ИНН застройщика",
+          "checked_at": "2026-10-14"
+        }
+      }
+    },
+    {
+      "id": "org:cosmos-hotel-group",
+      "name": "Cosmos Hotel Group",
+      "summary": "Гостиничная группа; объявила соглашение о франшизе для проекта.",
+      "website": "https://cosmosgroup.ru/",
+      "source_ids": [
+        "cosmos-franchise-release"
+      ],
+      "contacts": [],
+      "career_url": null,
+      "legal_name": null,
+      "inn": null,
+      "aliases": [],
+      "entity_kind": "group",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "cosmos-franchise-release"
+          ],
+          "quote": "Cosmos Hotel Group подписал соглашение",
+          "locator": "Первое предложение релиза",
+          "checked_at": "2026-10-14"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "cosmos-franchise-release"
+          ],
+          "quote": "Cosmos Hotel Group",
+          "locator": "Название стороны в релизе",
+          "checked_at": "2026-10-14"
+        }
+      }
+    },
+    {
+      "id": "org:intermark-residence",
+      "name": "Intermark Residence",
+      "summary": "Участник проекта: разработка концепции и управление номерным фондом и гостиничным объектом, согласно релизу Cosmos.",
+      "website": "https://apart.intermarkresidence.com/",
+      "source_ids": [
+        "cosmos-franchise-release",
+        "intermark-residence-site"
+      ],
+      "contacts": [],
+      "career_url": null,
+      "legal_name": null,
+      "inn": null,
+      "aliases": [],
+      "entity_kind": "brand",
+      "identity_evidence": {
+        "name": {
+          "source_ids": [
+            "cosmos-franchise-release"
+          ],
+          "quote": "Intermark Residence",
+          "locator": "Сообщение Cosmos, абзац об участниках",
+          "checked_at": "2026-10-14"
+        },
+        "entity_kind": {
+          "source_ids": [
+            "cosmos-franchise-release"
+          ],
+          "quote": "Intermark Residence",
+          "locator": "Сообщение Cosmos, абзац об участниках",
+          "checked_at": "2026-10-14"
         }
       }
     }
@@ -1848,6 +2017,36 @@
       "page": 10,
       "section": "1.2.4",
       "note": "Плановые потребности и объекты по документу 2025 года. Скан сверен визуально; дата размещения PDF не установлена."
+    },
+    {
+      "id": "cosmos-franchise-release",
+      "title": "Cosmos Hotel Group · франшиза сети отелей на Балтийском море",
+      "url": "https://cosmosgroup.ru/about/press/fransiza-seti-otelej-cosmos-poavitsa-na-baltijskom-more",
+      "kind": "primary",
+      "published_at": "2026-10-13",
+      "checked_at": "2026-10-14",
+      "note": "Планируемый объект, масштаб, сроки и объявленные роли участников.",
+      "evidence_text": "Cosmos Hotel Group подписал соглашение о развитии первого объекта под брендом Cosmos в Калининградской области. К 2030 году под брендом Cosmos Stay в регионе планируется открыть комплекс гостиничных апартаментов на 432 номера. Объект строится в Светлогорском округе, на побережье Балтийского моря. Строительством и реализацией объекта занимается компания ООО «Специализированный застройщик „Ривьера Балтики“». Застройщик планирует поэтапно вводить объект в эксплуатацию: первую очередь предполагается сдать в конце 2027 года, завершить реализацию всего проекта — к концу 2030 года. В рамках подписанного соглашения о франшизе Cosmos Hotel Group предоставит стандарты федерального отельного бренда Cosmos Stay... Компания Intermark Residence займётся развитием продуктовой концепции объекта и управлением номерным фондом и гостиничным объектом... который после ввода в эксплуатацию будет работать под названием «Cosmos Stay Светлогорск Отрада Апартаменты». ...четырёх пятиэтажных корпусов с апартаментами и гостиничными номерами... коммерческие помещения, тренажёрные залы, СПА-центр с крытым бассейном, игровые комнаты для детей, рестораны общей вместимостью 204 человека, конференц-зал на 45 человек, кинозал на 12 мест, парковка на 110 машиномест. ...Проектом также предусмотрено благоустройство прогулочных зон, создание инфраструктуры для пляжного отдыха и обустройство отдельного спуска к морю."
+    },
+    {
+      "id": "otrada-developer-site",
+      "title": "OTRADA Resort · официальный сайт застройщика",
+      "url": "https://otradaresort.ru/",
+      "kind": "primary",
+      "published_at": null,
+      "checked_at": "2026-10-14",
+      "note": "Текущее описание сайта и реквизиты застройщика; проектный объём и сроки расходятся с релизом Cosmos от 13.10.2026.",
+      "evidence_text": "Калининградская область, Светлогорский р-н, пос. Лесное. 321 апартамент и 56 гостиничных номеров. Апартаменты от 300 000 ₽/м². Информация на сайте носит информационный характер и не является публичной офертой. ООО «Специализированный застройщик „Ривьера Балтики“», ИНН 3900008142"
+    },
+    {
+      "id": "intermark-residence-site",
+      "title": "Intermark Residence · официальный сайт",
+      "url": "https://apart.intermarkresidence.com/",
+      "kind": "primary",
+      "published_at": null,
+      "checked_at": "2026-10-14",
+      "note": "Самоописание оператора и портфель; не подтверждает условия договора по проекту.",
+      "evidence_text": "Intermark Residence — профессиональный оператор сервисных апартаментов. COSMOS OTRADA / Калининград / 2030 г."
     }
   ],
   "places": [
@@ -2457,6 +2656,54 @@
           ]
         }
       ]
+    },
+    {
+      "id": "party:rivera-baltiki-cosmos-stay-developer",
+      "organization_id": "org:rivera-baltiki",
+      "project_id": "project:cosmos-stay",
+      "role": "developer",
+      "role_label": "Строительство и реализация проекта",
+      "status": "reported",
+      "source_ids": [
+        "cosmos-franchise-release"
+      ],
+      "quote": "Строительством и реализацией объекта занимается компания ООО «Специализированный застройщик „Ривьера Балтики“».",
+      "locator": "Сообщение Cosmos, абзац о строительстве",
+      "valid_from": null,
+      "valid_until": null,
+      "checked_at": "2026-10-14"
+    },
+    {
+      "id": "party:cosmos-hotel-group-cosmos-stay-franchisor",
+      "organization_id": "org:cosmos-hotel-group",
+      "project_id": "project:cosmos-stay",
+      "role": "franchisor",
+      "role_label": "Франчайзер: стандарты Cosmos Stay, сетевые продукты и интеграция федеральных систем продаж",
+      "status": "agreement",
+      "source_ids": [
+        "cosmos-franchise-release"
+      ],
+      "quote": "В рамках подписанного соглашения о франшизе Cosmos Hotel Group предоставит стандарты федерального отельного бренда Cosmos Stay",
+      "locator": "Сообщение Cosmos, абзац о подписанном соглашении",
+      "valid_from": null,
+      "valid_until": null,
+      "checked_at": "2026-10-14"
+    },
+    {
+      "id": "party:intermark-residence-cosmos-stay-hotel-operator",
+      "organization_id": "org:intermark-residence",
+      "project_id": "project:cosmos-stay",
+      "role": "hotel_operator",
+      "role_label": "Разработка продуктовой концепции и управление номерным фондом и гостиничным объектом",
+      "status": "reported",
+      "source_ids": [
+        "cosmos-franchise-release"
+      ],
+      "quote": "Компания Intermark Residence займётся развитием продуктовой концепции объекта и управлением номерным фондом и гостиничным объектом",
+      "locator": "Сообщение Cosmos, абзац об Intermark Residence",
+      "valid_from": null,
+      "valid_until": null,
+      "checked_at": "2026-10-14"
     }
   ]
 }

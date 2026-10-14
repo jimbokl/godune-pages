@@ -357,7 +357,7 @@ body[data-transport] .site-footer{margin-top:0;padding-top:32px}
 /* Comparison iteration 2: bundled metric-compatible fonts and measured rhythm. */
 @font-face{font-family:'Baltic Times';font-style:normal;font-weight:400 500;font-display:swap;src:url('./assets/fonts/tinos-regular.ttf') format('truetype')}
 @font-face{font-family:'Baltic Times';font-style:normal;font-weight:600 900;font-display:swap;src:url('./assets/fonts/tinos-bold.ttf') format('truetype')}
-@font-face{font-family:'Baltic Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url('./assets/fonts/arimo-variable.ttf') format('truetype')}
+@font-face{font-family:'Baltic Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url('./assets/fonts/arimo-variable.woff2') format('woff2')}
 :root{--serif:'Baltic Times','Times New Roman',Times,serif;--sans:'Baltic Sans',Arial,sans-serif}
 .site-header{border-bottom:0!important}
 @media(min-width:601px) and (max-width:1100px){

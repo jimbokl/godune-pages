@@ -6,8 +6,9 @@ export function initRouteDay({workshop,catalog,base}){
  const route=catalog.routes.find(row=>row.slug===document.body.dataset.route);
  const form=document.querySelector('[data-route-day-settings]'),buttons=[...document.querySelectorAll('[data-route-day-save]')],pdf=document.querySelector('[data-route-day-pdf]'),status=document.querySelector('[data-route-day-status]'),context=document.querySelector('[data-route-day-context]'),open=document.querySelector('[data-route-day-open]');
  if(!route||!form||!buttons.length)return;
- let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false;
+ let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false,persisted=false;
  const initial=routeDayTarget(workshop.getState(),route,id);
+ persisted=initial?.state==='ready';
  const linkDay=value=>{id=value;const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);};
  if(initial?.state==='ready')linkDay(initial.day.id);
  function enabled(value){for(const button of [...buttons,pdf,...form.querySelectorAll('input')])button.disabled=!value;}
@@ -20,7 +21,7 @@ export function initRouteDay({workshop,catalog,base}){
    open.href=new URL('planner/',base).href;return;
   }
   enabled(true);
-  for(const button of buttons)button.textContent=target?(dirty?'Сохранить изменения →':'День сохранён ✓'):'Сохранить день →';
+  for(const button of buttons)button.textContent=target?(dirty?'Сохранить изменения →':persisted?'День сохранён ✓':'День открыт здесь ✓'):'Сохранить день →';
   if(!target){context.textContent='Выберите дату и начало прогулки.';return;}
   const day=target.day,value=routeDaySettings(day);
   if(!dirty){form.elements.date.value=value.date||'';form.elements.time.value=value.time;}
@@ -37,17 +38,17 @@ export function initRouteDay({workshop,catalog,base}){
   const settings={id,date:form.elements.date.value||null,time:form.elements.time.value,edit:dirty};
   const result=await workshop.setState(current=>saveRouteDay(current,route,catalog,settings),'Прогулка сохранена в Мой день.');
   if(result.conflict)throw Error('route_day_conflict');
-  linkDay(selectedDay(workshop.getState()).id);dirty=false;return result;
+  linkDay(selectedDay(workshop.getState()).id);dirty=false;persisted=!!result.saved;return result;
  }
  async function submit(){
-  if(busy||!form.reportValidity())return;busy=true;enabled(false);
-  try{const result=await save();status.textContent=result.saved?'День сохранён. Время, остановки и заметки можно изменить в «Моём дне».':'День открыт в этой вкладке. Скачайте буклет, чтобы взять его с собой.';}
+  if(busy||!form.reportValidity())return;busy=true;status.textContent='';enabled(false);for(const button of buttons)button.textContent='Сохраняем день…';
+  try{const result=await save();status.textContent=result.saved?'Дата и время прогулки сохранены вместе с этим днём. Остановки и заметки можно изменить в «Моём дне».':'День открыт в этой вкладке. Скачайте буклет, чтобы взять его с собой.';}
   catch{status.textContent='Не удалось сохранить день. Проверьте выбор и попробуйте ещё раз.';}
   finally{busy=false;sync();}
  }
  for(const button of buttons)button.addEventListener('click',submit);
  form.addEventListener('submit',event=>{event.preventDefault();submit();});
- form.addEventListener('input',()=>{dirty=true;for(const button of buttons)button.textContent='Сохранить изменения →';});
+ form.addEventListener('input',()=>{dirty=true;status.textContent='';for(const button of buttons)button.textContent='Сохранить изменения →';});
  pdf.addEventListener('click',async()=>{
   if(busy||!form.reportValidity())return;busy=true;enabled(false);pdf.textContent='Собираем буклет…';
   try{

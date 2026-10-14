@@ -26,6 +26,8 @@ export async function initKosaDinner({form,base,savedDay}){
   venue.addEventListener('change',()=>{choices=[];form.elements.dinner_last_order.value='';menu.replaceChildren();sync();change();});
   enabled.addEventListener('change',sync);form.elements.city.addEventListener('change',sync);
   const load=root.querySelector('[data-dinner-load]');
+  const loadLabel=load.textContent;
+  let menuReady=false;
   async function drawMenu(){
     if(!menus){const r=await fetch(new URL('data/gastro-menu-choices.json',base));if(!r.ok)throw Error('menu_unavailable');menus=await r.json();}
     const rows=menus.venues?.[venue.value];if(!rows?.length||!rows.every(validMenuChoice))throw Error('menu_invalid');
@@ -40,9 +42,9 @@ export async function initKosaDinner({form,base,savedDay}){
       const remove=el('button','Убрать');remove.type='button';remove.setAttribute('aria-label','Убрать '+c.name);remove.addEventListener('click',()=>{choices=choices.filter(v=>v.menu_item_id!==c.menu_item_id);draw();change();});
       li.append(name,el('small',c.price.amount_kopecks!==null?`${rub(c.price.amount_kopecks)} за порцию · меню на ${c.price.observed_at}`:'Цена в меню не указана'),qtyLabel,remove);list.append(li);}}
     picker.addEventListener('change',()=>{const row=rows.find(r=>r.menu_item_id===picker.value);if(row&&!choices.some(c=>c.menu_item_id===row.menu_item_id))choices.push({...structuredClone(row),selected_at:new Date().toISOString()});draw();picker.value='';change();});
-    draw();load.textContent='Обновить выбор блюд';status.textContent='Блюда и количество порций попадут в этот день и его PDF.';
+    draw();menuReady=true;load.textContent='Обновить выбор блюд';status.textContent='Блюда и количество порций попадут в этот день и его PDF.';
   }
-  load.addEventListener('click',async()=>{load.disabled=true;try{await drawMenu();}catch{status.textContent='Меню не загрузилось. Выбранные блюда на месте; попробуйте ещё раз.';}finally{load.disabled=false;}});
+  load.addEventListener('click',async()=>{load.disabled=true;load.textContent='Загрузка…';status.textContent='Загружаем меню рыбных блюд…';try{await drawMenu();}catch{status.textContent='Меню не загрузилось. Выбранные блюда на месте; попробуйте ещё раз.';}finally{load.disabled=false;load.textContent=menuReady?'Обновить выбор блюд':loadLabel;}});
   if(choices.length)drawMenu().catch(()=>{status.textContent='Выбранные блюда сохранены. Меню можно загрузить ещё раз.';});
   sync();
   return {read(date){if(!enabled.checked)return undefined;const number=n=>Number(form.elements[n].value),last=form.elements.dinner_last_order.value;

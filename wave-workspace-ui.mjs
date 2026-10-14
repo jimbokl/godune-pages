@@ -24,6 +24,15 @@ export function waveCover(trip,catalog){
  return {title,photo,subtitle:areas.length===1&&areas[0]==='zelenogradsk'&&dining?'Море, прогулка и местная кухня.':points.length?'Ваши места, дорога и время для себя.':hasTransportPlans(day)?'Дорога сохранена. Возьмите расчёт с собой или добавьте прогулку.':hasMenuChoices(day)?'Блюда выбраны. Добавьте прогулку или возьмите выбор с собой.':hasServiceVisits(day)?'Посещения сохранены. Возьмите план с собой или добавьте прогулку рядом.':'Выберите прогулку — остальное соберём в ваш день.'};
 }
 
+/** Run a day-selector action without duplicating the shared commit status. */
+export async function runWaveDayAction(commit,transform,message){
+ try{
+  await commit(transform,message);
+  // commit() already announces saved, conflict and storage-failure outcomes.
+  return 'reported';
+ }catch{return 'error';}
+}
+
 /** The same Trip and controls in a smaller, mobile-first frame. */
 export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,tabs,header,name,extras,more}){
  const intro=document.querySelector('.wizard-page-intro'),title=intro?.querySelector('h1'),subtitle=intro?.querySelector('h1 + p');
@@ -77,14 +86,15 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=!canDownloadWaveDay(read(),catalog);}
  });
- daySelect.addEventListener('change',async()=>{daySelect.disabled=true;try{await commit(current=>chooseTripDay(current,daySelect.value),'День открыт.');}finally{daySelect.disabled=false;}});
- add.addEventListener('click',async()=>{add.disabled=true;try{await commit(current=>addTripDay(current),'Новый день сохранён.');}finally{add.disabled=false;}});
+ let dayActionPending=false;
+ daySelect.addEventListener('change',async()=>{dayActionPending=true;daySelect.disabled=true;saved.textContent='Открываем день…';try{const outcome=await runWaveDayAction(commit,current=>chooseTripDay(current,daySelect.value),'День открыт.');saved.textContent=outcome==='error'?'Не удалось открыть день. Выберите его ещё раз.':'';if(outcome==='error')daySelect.value=selectedDay(read()).id;}finally{dayActionPending=false;daySelect.disabled=false;}});
+ add.addEventListener('click',async()=>{dayActionPending=true;add.disabled=true;saved.textContent='Добавляем день…';try{const outcome=await runWaveDayAction(commit,current=>addTripDay(current),'Новый день сохранён.');saved.textContent=outcome==='error'?'Не удалось добавить день. Попробуйте ещё раз.':'';}finally{dayActionPending=false;add.disabled=false;}});
  let coverKey='',daysKey='',savedDay='';
  return {render(){
   roadEditor.render();
   const trip=read(),day=selectedDay(trip),days=journeyDays(trip),view=waveCover(trip,catalog),key=JSON.stringify(view);
   scopeLabel.hidden=waveGuideScope(trip)==='day';
-  if(day.id!==savedDay){saved.textContent='';gpxStatus.textContent='';savedDay=day.id;}
+  if(day.id!==savedDay){if(!dayActionPending)saved.textContent='';gpxStatus.textContent='';savedDay=day.id;}
   if(key!==coverKey){if(title)title.textContent=view.title;if(subtitle)subtitle.textContent=view.subtitle;cover.hidden=!view.photo;if(view.photo)cover.src=new URL(view.photo,base);coverKey=key;}
   const nextKey=JSON.stringify(days.map(d=>[d.id,d.date,d.name]));if(nextKey!==daysKey){daySelect.replaceChildren(...days.map((d,i)=>{const opt=el('option','',`День ${i+1}${d.date?' · '+new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(d.date+'T12:00:00Z')):''}`);opt.value=d.id;return opt;}));daysKey=nextKey;}daySelect.value=day.id;
   if(!downloading)button.disabled=!canDownloadWaveDay(trip,catalog);
