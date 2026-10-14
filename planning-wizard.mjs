@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101402';
 import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=2026101402';
 import {initWizardRail} from './wizard-rail-ui.mjs?v=2026101305';

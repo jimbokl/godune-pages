@@ -1,4 +1,4 @@
-import {applyWizardDay, prepareWizardDay, wizardChoices, wizardDefaults} from './planning-wizard-state.mjs?v=2026101402';
+import {applyWizardDay, prepareWizardDay, wizardChoices, wizardDefaults} from './planning-wizard-state.mjs?v=2026101406';
 import {journeyDays, validTripDate} from './trip-days-state.mjs?v=2026101305';
 
 const TIME_ZONE='Europe/Kaliningrad';

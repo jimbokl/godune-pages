@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 // Civil time and preferences are separate from the trip and its selected date.
 export const THEME_KEY='godune-theme:v1', LIGHT_KEY='godune-light:v1';
 export const validMode=value=>['day','night','auto'].includes(value)?value:'auto';

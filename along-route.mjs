@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101305';
 import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101305';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';

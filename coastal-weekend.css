@@ -27,3 +27,26 @@ body[data-coastal-weekend-page] .inner-main .weekend-journey.fish-journey .fish-
 body[data-ui-context] .inner-main .weekend-journey :is(.weekend-settings p,.weekend-day-intro,.weekend-stop-body>p,.weekend-practical p,.city-day-return p){font-size:16px;line-height:1.6}
 .weekend-stop-links a{white-space:normal;overflow-wrap:anywhere;border-radius:8px}
 @media(max-width:360px){.weekend-settings{grid-template-columns:minmax(0,1fr)}.weekend-settings-action .button{width:100%}.weekend-tabs button span{font-size:14px}.weekend-day-heading{align-items:start}}
+
+/* Keep the chosen day and its stop names legible on a narrow phone. */
+.weekend-stop-meta,.weekend-settings input,.weekend-tabs button{font-variant-numeric:tabular-nums}
+@media(max-width:760px){
+ .weekend-settings-action .button{width:100%}
+ .weekend-tabs{scroll-margin-top:12px}
+ .weekend-day-heading{align-items:start}
+ .weekend-day-heading>span{flex-shrink:0;max-width:80px;padding-top:8px}
+ .weekend-stop summary{display:grid;grid-template-columns:54px minmax(0,1fr) 24px;gap:8px 12px;align-items:start}
+ .weekend-stop summary>img{width:54px;height:68px;grid-column:1;grid-row:1/4}
+ .weekend-stop-copy{display:contents}
+ .weekend-role{grid-column:2;grid-row:1;font-size:13px;line-height:1.4}
+ .weekend-journey .weekend-stop h3{grid-column:2;grid-row:2;margin:0;font-size:22px;line-height:1.2}
+ .weekend-stop-meta{grid-column:1/-1;grid-row:4;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
+ .weekend-chevron{grid-column:3;grid-row:1/4;align-self:center}
+ .weekend-stop-links a{min-height:44px;flex:1 1 100px}
+}
+@media(max-width:350px){
+ .weekend-stop summary{grid-template-columns:44px minmax(0,1fr) 20px;gap:6px 8px}
+ .weekend-stop summary>img{width:44px;height:60px}
+ .weekend-journey .weekend-stop h3{font-size:20px}
+ .weekend-role{font-size:12px}
+}

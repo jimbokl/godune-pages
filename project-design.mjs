@@ -1,4 +1,4 @@
-import {revealDossierHash} from './project-dossier.mjs?v=2026101305';
+import {revealDossierHash} from './project-dossier.mjs?v=2026101406';
 const normal=value=>String(value??'').toLocaleLowerCase('ru').replaceAll('ё','е').replace(/\s+/g,' ').trim();
 export function filterDocuments(records,{query='',kind='all',stage='all',sort='newest'}={}) {
   const terms=normal(query).split(' ').filter(Boolean);

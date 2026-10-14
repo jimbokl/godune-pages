@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 // Editorial guidance is separate from timing, bookings and visited-place records.
 import {guideProvenance,guideProvenanceTranscript,guideSourceUrl} from './guide-provenance.mjs?v=2026101305';
 export const GUIDE_VERSION=1;

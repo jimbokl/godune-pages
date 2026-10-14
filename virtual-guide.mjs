@@ -1,7 +1,7 @@
-import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101405';
+import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101406';
 import {guideNarration} from './guide-provenance.mjs?v=2026101305';
 import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2026101305';
-import {initGuideOffline} from './guide-offline.mjs?v=2026101405';
+import {initGuideOffline} from './guide-offline.mjs?v=2026101406';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 import {initGuideLocation} from './guide-location.mjs?v=2026101305';
 

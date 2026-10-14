@@ -1,5 +1,10 @@
 /* Destination decision layer. Shared brand/header are intentionally untouched. */
 .engagement-context{--decision-line:var(--line,#d9dedc);--decision-muted:var(--muted,#617384);margin:28px 0 40px;display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0;scroll-margin-top:24px}
+.engagement-context>.engagement-compact{border:1px solid var(--decision-line);border-radius:12px;background:var(--card,#fffdf8);min-width:0;margin:0;padding:0;overflow:hidden}
+body.inner-page[data-ui-context] .inner-main .engagement-context[data-kind]>.engagement-compact>summary{display:flex;align-items:baseline;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;min-height:48px;padding:12px 54px 12px 16px;cursor:pointer;font:600 14px/1.45 var(--sans,Arial,sans-serif);color:var(--ink,#092337)}
+.engagement-compact>summary span{font:12px/1.45 var(--sans,Arial,sans-serif);font-weight:400;color:var(--decision-muted)}
+.engagement-compact-content{display:grid;gap:12px;padding:0 14px 14px}
+.engagement-compact-content .engagement-fact-passport,.engagement-compact-content .decision-summary-card,.engagement-compact-content .engagement-graph-context{padding:14px;border-radius:10px}
 .engagement-context [hidden],[data-engagement-dock][hidden]{display:none!important}
 .engagement-context :is(h2,h3,p,ul,dl){margin:0}
 .engagement-context :is(h2,h3){font-family:var(--serif,Georgia,serif);font-weight:400;letter-spacing:-.025em}
@@ -91,6 +96,8 @@ body:has(.engagement-context) .tool-nav-expanded{display:none}
 .engagement-context:is([data-kind=project],[data-kind=investment_model],[data-kind=tender],[data-kind=job]) .engagement-fact-passport dd{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
 @media(max-width:760px){
  .engagement-context{margin:20px 0 28px;gap:12px}
+ body.inner-page[data-ui-context] .inner-main .engagement-context[data-kind]>.engagement-compact>summary{min-height:48px;padding:12px 48px 12px 12px;font-size:13px;align-items:center}
+ .engagement-context>.engagement-compact>summary>span{display:none}
  .engagement-context[data-kind=place]{grid-template-columns:minmax(0,1fr)}
  .engagement-fact-passport,.decision-summary-card,.engagement-graph-context,[data-engagement-controls]{padding:16px;border-radius:11px}
  .engagement-live-strip{font-size:12px;gap:6px 12px;padding:10px 12px}

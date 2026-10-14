@@ -5,7 +5,7 @@ import {
   saveEngagementDay,
   kaliningradNow,
   solarStatus,
-} from './engagement-state.mjs?v=2026101401';
+} from './engagement-state.mjs?v=2026101406';
 
 const array=value=>Array.isArray(value)?value:[];
 const node=(tag,attrs={},text='')=>{
@@ -301,7 +301,7 @@ export async function initEngagement({workshop,base,catalog}={}){
     pdf.disabled=true;dockStatus.textContent='Готовим PDF всей поездки…';
     const trip=structuredClone(workshop.getState()),signature=stable(trip);
     try{
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101405');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101406');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:format.value||'phone',onProgress:text=>{dockStatus.textContent=text;},stillCurrent:()=>stable(workshop.getState())===signature,title:'Моя поездка'});
       dockStatus.textContent=`Буклет готов: ${result.pages} стр. В него вошла вся поездка.`;
     }catch(error){dockStatus.textContent=error.message==='guide_trip_changed'?'Поездка изменилась во время подготовки PDF. Повторите загрузку.':'Не удалось подготовить PDF. Попробуйте ещё раз.';}

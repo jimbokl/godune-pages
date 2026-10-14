@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
 import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
@@ -6,7 +6,7 @@ import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101305'
 import {rentalFactsElement} from './trip-rental-view.mjs?v=2026101305';
 import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=2026101305';
 import {selectedConnectionRows,unusedConnectionRows,transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
-import {decorateStop} from './wave-stop-ui.mjs?v=2026101405';
+import {decorateStop} from './wave-stop-ui.mjs?v=2026101406';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=2026101305';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;

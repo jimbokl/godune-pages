@@ -1,4 +1,4 @@
-import {buildGuide} from './virtual-guide-engine.mjs?v=2026101405';
+import {buildGuide} from './virtual-guide-engine.mjs?v=2026101406';
 import {verifiedOfflineResource} from './offline-evidence.mjs?v=2026101305';
 
 const inside=(stop,bbox)=>Array.isArray(bbox) && bbox.length===4 && bbox.every(Number.isFinite)

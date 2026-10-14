@@ -92,6 +92,9 @@ html[data-theme=night] body.day-planner{--paper:#0e2030;--ink:#e3ebed;--muted:#a
 .wave-menu-item{padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--sand)}
 .wave-menu-item h5{font:400 23px/1.2 var(--serif);margin:0 0 8px;overflow-wrap:anywhere}
 .wave-menu-item-meta{font:400 13px/1.5 var(--sans);color:var(--muted)}
+.wave-menu-item-meta{font-variant-numeric:tabular-nums}
+.wave-menu-weight-badge{display:inline-block;padding:2px 7px;border:1px solid var(--wave-amber);border-radius:5px;color:var(--wave-amber-ink);background:color-mix(in srgb,var(--wave-amber) 12%,transparent);font-weight:600}
+.wave-menu-portion-note{font:400 12px/1.5 var(--sans);color:var(--muted);margin:0 0 12px}
 .wave-menu-add-form{display:flex;gap:12px;align-items:end;margin-top:14px;flex-wrap:wrap}
 .wave-menu-add-form label{display:grid;gap:4px;font-size:12px}
 .wave-menu-add-form input{width:80px;min-height:44px;border:1px solid var(--line);border-radius:6px;padding:8px;background:var(--paper);font:400 16px/1.4 var(--sans)}

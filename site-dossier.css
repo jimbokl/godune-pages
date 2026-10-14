@@ -16,9 +16,19 @@ body[data-ui-context] .inner-main :is(button,a,summary,input,select,textarea):fo
 body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.food-guide-day,.dining-card-actions,.tool-links){gap:.6rem 1rem;align-items:center;flex-wrap:wrap}
 body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.dining-card-actions) a{min-height:44px;display:inline-flex;align-items:center}
 
-/* One native switcher: compact on phones, the familiar tool bar on desktop. */
-body .inner-main .site-section-nav{border:0;padding:0;margin:0 0 1.5rem;border-radius:0;background:none;box-shadow:none;min-width:0}
-.site-section-nav>summary,.site-section-nav .site-tool-links{display:none}
+/* One native switcher: compact and closed at every viewport width. */
+body .inner-main .site-section-nav{border:1px solid var(--line);padding:0;margin:0 0 1.5rem;border-radius:.7rem;background:var(--card);box-shadow:none;min-width:0}
+.site-section-nav>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px;padding:.7rem 1rem;cursor:pointer;list-style:none;text-align:left}
+.site-section-nav>summary::-webkit-details-marker{display:none}
+.site-section-nav>summary>span:first-child{display:grid;gap:.25rem}
+.site-section-nav small{font-size:.6rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.site-section-nav strong{font-size:1rem;font-weight:500;line-height:1.3}
+.site-nav-chevron{width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:.1rem .2rem .4rem 0;color:var(--sea-muted)}
+.site-section-nav[open] .site-nav-chevron{transform:rotate(225deg);margin-top:.5rem;margin-bottom:0}
+.site-section-nav .tool-nav{display:none}
+.site-section-nav .site-tool-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.25rem;margin:0 .65rem;padding:.65rem 0;border-top:1px solid var(--line)}
+body .site-section-nav .site-tool-links a{display:flex;align-items:center;min-height:44px;padding:.65rem .55rem;border:0;border-radius:.4rem;font-size:.78rem;line-height:1.5;color:var(--muted);text-decoration:none;overflow-wrap:anywhere}
+body .site-section-nav .site-tool-links a[aria-current]{background:var(--sea);color:var(--ink)}
 body .site-section-nav .tool-nav{margin:0;padding:0 0 .8rem;border:0;border-bottom:1px solid var(--line);gap:.25rem}
 body .site-section-nav .tool-nav>a,body .site-section-nav .tool-nav-more>summary{min-height:44px;padding:.55rem .8rem;font-size:.85rem;border-radius:.4rem;background:none;border:0;color:var(--muted)}
 body .site-section-nav .tool-nav>a[aria-current]{background:var(--sea);color:var(--ink)}
@@ -123,17 +133,7 @@ body[data-home-page] :is(.showcase-filters button,.showcase-open,.home-dunes-ope
  body[data-ui-context] .inner-main .breadcrumbs{margin-bottom:.6rem}
  body[data-ui-context] .inner-main :is(.inner-title,.tool-intro h1,.city-page-intro h1,.service-page-heading h1,.dunes-hero h1,.events-heading h1,.news-index h1,.news-info h1,.news-article h1,.dish-hero h1,.dreams-heading h1,.food-hero h1){font-size:clamp(2.1rem,7.5vw,2.65rem);line-height:1.1;letter-spacing:-.035em}
  body .inner-main .site-section-nav{border:1px solid var(--line);border-radius:.7rem;background:var(--card);margin:0 0 1.25rem}
- .site-section-nav>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px;padding:.7rem 1rem;cursor:pointer;list-style:none;text-align:left}
- .site-section-nav>summary::-webkit-details-marker{display:none}
- .site-section-nav>summary>span:first-child{display:grid;gap:.25rem}
- .site-section-nav small{font-size:.6rem;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
- .site-section-nav strong{font-size:1rem;font-weight:500;line-height:1.3}
- .site-nav-chevron{width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:.1rem .2rem .4rem 0;color:var(--sea-muted)}
- .site-section-nav[open] .site-nav-chevron{transform:rotate(225deg);margin-top:.5rem;margin-bottom:0}
- body .site-section-nav .tool-nav{display:none}
- body .site-section-nav .site-tool-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem;margin:0 .65rem;padding:.65rem 0;border-top:1px solid var(--line)}
- body .site-section-nav .site-tool-links a{display:flex;align-items:center;min-height:44px;padding:.65rem .55rem;border:0;border-radius:.4rem;font-size:.78rem;line-height:1.5;color:var(--muted);text-decoration:none;overflow-wrap:anywhere}
- body .site-section-nav .site-tool-links a[aria-current]{background:var(--sea);color:var(--ink)}
+ .site-section-nav .site-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))}
  body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro,.food-place-intro,.dunes-hero){grid-template-columns:1fr;gap:1.25rem;margin:.8rem 0 1.5rem}
  body[data-ui-context] .inner-main :is(.place-intro,.collection-intro,.route-intro,.dunes-hero) figure img{max-height:280px;aspect-ratio:1.65;object-fit:cover}
  body[data-ui-context] .inner-main :is(.place-layout,.collection-layout,.route-walk-layout,.food-guide-columns){gap:1.5rem}

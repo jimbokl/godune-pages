@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=2026101305';
 import {bikeStopKinds,selectBikeStops,addBikeStop,removeBikeStop} from './bike-stops-state.mjs?v=2026101305';
 import {bikeRentalChoices,prepareBikeRental} from './bike-rental-state.mjs?v=2026101305';

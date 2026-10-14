@@ -1,4 +1,4 @@
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026101305';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026101406';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=2026101305';
 import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=2026101305';

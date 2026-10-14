@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {restContext,rainStops,restVariants,restInput,confirmRest} from './rest-day-state.mjs?v=2026101305';
 import {alongGuard} from './along-route-state.mjs?v=2026101305';
 import {selectedDay,ensureJourney,journeyDays} from './trip-days-state.mjs?v=2026101305';

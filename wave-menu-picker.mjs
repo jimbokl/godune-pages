@@ -2,7 +2,7 @@ import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
 import {menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
-import {menuChoiceFromTemplate} from './trip-menu-choices-ui.mjs?v=2026101305';
+import {menuChoiceFromTemplate} from './trip-menu-choices-ui.mjs?v=2026101406';
 
 const pickerStates=new WeakMap();
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
@@ -34,8 +34,17 @@ function priceText(template,trip){
  try{const selected=menuChoiceFromTemplate(template,trip,1);return menuChoiceGuide({...selectedDay(trip),menu_choices:[selected]} )[0]?.price||'Цена не указана';}
  catch{return 'Цена не указана';}
 }
+export function waveMenuPortion(template){
+ const portion=template.portion?.trim()||'';
+ const basis=[portion,template.price?.label].filter(Boolean).join(' ');
+ return {portion,weighted:/(?:за\s*100\s*г(?:р|рамм)?|\/\s*100\s*г(?:р|рамм)?)/iu.test(basis)};
+}
 function createEntry({template,trip,catalog,commit,read,fallbackTrip,expectedDayKey,expected,live,panelLive,refresh,notify}){
- const article=el('article',undefined,'wave-menu-item'),title=el('h5',template.name),meta=el('p',[template.portion?.trim()||'Порция не указана',priceText(template,trip)].join(' · '),'wave-menu-item-meta');
+ const {portion,weighted}=waveMenuPortion(template);
+ const article=el('article',undefined,'wave-menu-item'),title=el('h5',template.name),meta=el('p',undefined,'wave-menu-item-meta');
+ if(portion){meta.append(el('span',portion,weighted?'wave-menu-weight-badge':''),document.createTextNode(' · '));}
+ meta.append(document.createTextNode(priceText(template,trip)));
+ if(weighted&&!portion)meta.prepend(el('span','За 100 г','wave-menu-weight-badge'),document.createTextNode(' · '));
  const form=el('form',undefined,'wave-menu-add-form'),label=el('label','Порции'),input=el('input');input.type='number';input.name='quantity';input.min='1';input.step='1';input.value='1';input.required=true;input.inputMode='numeric';label.append(input);
  const add=el('button','Добавить блюдо','wave-menu-add');add.type='submit';const status=el('p','','wave-menu-feedback');status.setAttribute('role','status');form.append(label,add);article.append(title,meta,form,status);
  form.addEventListener('submit',async event=>{
@@ -63,13 +72,17 @@ function createEntry({template,trip,catalog,commit,read,fallbackTrip,expectedDay
 function renderResults({panel,items,venue,trip,catalog,commit,read,fallbackTrip,key,expected,searchValue,live,panelLive,refresh,notify}){
  const list=panel.querySelector('[data-wave-menu-results]'),query=searchValue?.value||'';
  const candidates=waveMenuVerifiedItems(items,query,trip,venue.poi_id,8);
+ const portionNote=panel.querySelector('[data-wave-menu-portion-note]');
+ portionNote.hidden=!candidates.some(({template})=>!waveMenuPortion(template).portion);
  list.replaceChildren(...candidates.map(({template})=>createEntry({template,trip,catalog,commit,read,fallbackTrip,expectedDayKey:key,expected,live,panelLive,refresh,notify})));
  feedback(panel.querySelector('[data-wave-menu-load]'),candidates.length?'':query?'Ничего не найдено по этому запросу.':'В меню пока нет проверенных блюд.',candidates.length?'':'empty');
 }
 function setupPicker(panel,context){
  if(pickerStates.has(panel))return pickerStates.get(panel);
  const box=el('div',undefined,'wave-menu-picker'),searchLabel=el('label','Найти блюдо','wave-menu-search-label'),search=el('input');search.type='search';search.autocomplete='off';search.placeholder='Название блюда';search.value=panel.dataset.waveMenuSearch||'';searchLabel.append(search);
- const results=el('div',undefined,'wave-menu-results');results.dataset.waveMenuResults='';const status=el('p','','wave-menu-feedback');status.dataset.waveMenuLoad='';status.setAttribute('role','status');box.append(searchLabel,status,results);panel.append(box);
+ const results=el('div',undefined,'wave-menu-results');results.dataset.waveMenuResults='';const status=el('p','','wave-menu-feedback');status.dataset.waveMenuLoad='';status.setAttribute('role','status');
+ const portionNote=el('p','Для части блюд размер порции в источнике не указан.','wave-menu-portion-note');portionNote.dataset.waveMenuPortionNote='';portionNote.hidden=true;
+ box.append(searchLabel,status,portionNote,results);panel.append(box);
  const state={box,search,results,status,promise:null,ready:false,dead:false,request:0};pickerStates.set(panel,state);
  search.addEventListener('input',()=>state.render?.());
  return state;

@@ -44,7 +44,7 @@ export function menuTemplateMatchesRow(template,row,article){
  const price=template.price,display=price.amount_kopecks!==null?formatKopecks(price.amount_kopecks):price.from_kopecks!==null?'от '+formatKopecks(price.from_kopecks):price.label?.trim()||'Уточните цену';
  const source=article.querySelector('.food-source');
  return row.querySelector('.food-item-name')?.textContent===template.name
-  &&row.querySelector('small')?.textContent===(template.portion?.trim()?template.portion:'Порция не указана')
+  &&row.dataset.portion===(template.portion?.trim()||'')
   &&compact(row.querySelector('strong')?.textContent||'')===compact(display)
   &&source?.querySelector('time')?.getAttribute('datetime')===template.source.observed_at
   &&source?.querySelector('a')?.href===new URL(template.source.url).href;

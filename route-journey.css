@@ -260,3 +260,48 @@ body[data-ui-context] .inner-main :is(.route-journey,.fish-journey) :is(p,li,spa
 }
 .weekend-tabs button[aria-selected="true"]{box-shadow:inset 0 -3px var(--brand-amber)}
 @media(prefers-reduced-motion:reduce){.fish-journey .fish-chevron{transition:none}}
+
+/* A mobile field guide: identify the walk before its photographs and keep
+   stop names wider than their supporting labels. The brand shell is untouched. */
+.journey-passport dd,.fish-stop-meta,.journey-overview span{font-variant-numeric:tabular-nums}
+.journey-cover figcaption,.fish-hero-photos figcaption{font:400 11px/1.4 var(--sans);backdrop-filter:blur(4px);padding:4px 7px}
+body[data-route] .inner-main .route-journey .route-stops .route-stop-category{font:400 13px/1.4 var(--sans);letter-spacing:0;text-transform:none}
+body[data-ui-context][data-fish-walk] main.inner-main .fish-journey .fish-stops .fish-stop-details>summary.fish-stop-heading,
+body[data-ui-context][data-route] main.inner-main .route-journey .route-stops .journey-stop-card .journey-stop>summary{padding:12px}
+@media(max-width:760px){
+ body:is([data-route],[data-fish-walk],[data-coastal-weekend-page]) .inner-main>.breadcrumbs{flex-wrap:nowrap;gap:8px;min-width:0}
+ body:is([data-route],[data-fish-walk],[data-coastal-weekend-page]) .breadcrumbs>[aria-current=page]{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+ body[data-route] .route-journey .journey-hero-visual,
+ body[data-fish-walk] .fish-journey .fish-hero-visual,
+ body[data-coastal-weekend-page] .fish-journey .fish-hero-visual{order:0}
+ .route-journey .journey-heading,.fish-journey .journey-heading{margin:0}
+ .route-journey .journey-cover{aspect-ratio:2.3}
+ body[data-ui-context] .fish-journey .fish-hero-photos{grid-template-rows:76px 76px}
+ .journey-city-signature>.destination-signature,.fish-hero-visual>.destination-signature{width:150px}
+ body[data-ui-context] .inner-main .journey-section-heading{align-items:center}
+ body[data-ui-context] .inner-main .journey-section-heading>a{max-width:none;font-size:13px}
+ body[data-route] .inner-main .route-journey .journey-stop>summary{grid-template-columns:54px minmax(0,1fr) 22px;gap:10px;padding:12px}
+ .route-journey .journey-stop-map{width:54px;height:70px}
+ body[data-route] .inner-main .route-journey .journey-stops h3{font-size:22px;line-height:1.2}
+ body[data-route] .inner-main .route-journey .journey-number{margin-top:14px}
+ body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading{grid-template-columns:58px minmax(0,1fr) 22px;gap:10px;padding:12px;align-items:start}
+ body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading>img{width:58px;height:76px}
+ .fish-journey .fish-stop-copy{display:contents}
+ .fish-journey .fish-stop-heading>img{grid-column:1;grid-row:1/3}
+ .fish-journey .fish-stop-role{grid-column:2;grid-row:1;font-size:21px}
+ body[data-fish-walk] .inner-main .fish-journey .fish-stop h3{grid-column:2;grid-row:2;margin:0;font-size:14px;line-height:1.4}
+ .fish-journey .fish-stop-meta{grid-column:1/-1;grid-row:3;margin:0;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
+ .fish-journey .fish-chevron{grid-column:3;grid-row:1/3;margin:0;align-self:center}
+ .fish-journey .fish-stop-description{display:none}
+ .fish-journey .fish-stop-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fish-journey .journey-passport dl{gap:14px}
+}
+@media(max-width:360px){
+ body[data-ui-context][data-fish-walk] main.inner-main .fish-journey .fish-stops .fish-stop-details>summary.fish-stop-heading,
+ body[data-ui-context][data-route] main.inner-main .route-journey .route-stops .journey-stop-card .journey-stop>summary{padding:10px}
+ body[data-route] .inner-main .route-journey .journey-stop>summary{grid-template-columns:44px minmax(0,1fr) 20px;gap:8px;padding:10px}
+ .route-journey .journey-stop-map{width:44px;height:64px}
+ body[data-route] .inner-main .route-journey .journey-stops h3{font-size:20px}
+ body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading{grid-template-columns:50px minmax(0,1fr) 20px;gap:8px;padding:10px}
+ body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading>img{width:50px;height:68px}
+}

@@ -10,17 +10,12 @@ export function revealDossierHash(doc = globalThis.document, hash = globalThis.l
   target.scrollIntoView({block: 'start'});
   return true;
 }
-// The server renders an open native disclosure so every destination also works without JS.
+// Section navigation stays in its server-rendered native disclosure state.
 export function mountDossierNavigation(doc = globalThis.document, win = globalThis) {
   const nav = doc?.querySelector('[data-section-nav]');
-  if (!nav || !win.matchMedia) return;
-  const compact = win.matchMedia('(max-width: 760px)');
-  const sync = () => { nav.open = !compact.matches; };
-  sync();
-  compact.addEventListener('change', sync);
-  nav.addEventListener('toggle', () => { if (!compact.matches) nav.open = true; });
+  if (!nav) return;
   nav.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || !compact.matches || !nav.open) return;
+    if (event.key !== 'Escape' || !nav.open) return;
     nav.open = false;
     nav.querySelector('summary')?.focus();
     event.preventDefault();

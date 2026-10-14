@@ -1,4 +1,6 @@
 /* The food engine shares the dune palette and type, with visible next steps. */
+.food-portion-badge{display:inline-flex;align-items:center;margin-left:7px;padding:2px 7px;border:1px solid #d4a24b;border-radius:999px;background:#fff0ca;color:#684713;font:600 10px/1.4 var(--sans,Arial,sans-serif);white-space:nowrap;vertical-align:middle}
+.food-portion-note{margin:9px 0;color:var(--guide-muted);font:12px/1.5 var(--sans,Arial,sans-serif)}
 .food-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:7%;align-items:center;padding:12px 0 68px}
 .food-hero .inner-title{font-size:clamp(54px,5.8vw,102px);line-height:1.05;letter-spacing:-2px;margin:22px 0 28px}.food-hero .inner-title em{font-weight:300}
 .food-hero .inner-lead{max-width:530px;margin-bottom:28px}.food-hero figure,.food-place-photo{margin:0;min-width:0}.food-hero figure img{display:block;width:100%;height:590px;object-fit:cover}.food-hero figcaption,.food-place-photo figcaption{font-size:11px;color:var(--muted);margin-top:12px}
@@ -24,7 +26,7 @@
 /* A restaurant guide reads like a small paper menu: sections and sources stay
    visible in HTML, with native disclosure controls for long menus. */
 .food-guide{--guide-surface:var(--night-surface,#fffdf7);--guide-panel:var(--night-panel,#edf4f7);--guide-line:var(--night-line,#c4d6de);--guide-ink:var(--night-ink,#244b63);--guide-muted:var(--night-muted,#536d7c)}
-.food-guide-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;position:sticky;top:12px;z-index:8;background:var(--paper);border:1px solid var(--guide-line);border-radius:7px;padding:5px;margin:5px 0 35px;box-shadow:0 5px 24px #15364c0a}
+body[data-ui-context] .inner-main .food-guide .food-guide-nav{display:grid;grid-template-columns:repeat(4,minmax(44px,1fr));gap:4px;position:sticky;top:12px;z-index:8;background:var(--paper);border:1px solid var(--guide-line);border-radius:7px;padding:5px;margin:5px 0 35px;box-shadow:0 5px 24px #15364c0a}
 .food-guide-nav a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:11px 8px;color:var(--guide-ink);font:500 13px/1.35 var(--sans);text-align:center;text-decoration:none;border-radius:4px;transition:background .15s}
 .food-guide-nav a:hover{background:var(--sea-soft)}
 .food-guide :is(a,button,summary):focus-visible{outline:2px solid var(--guide-ink);outline-offset:4px}

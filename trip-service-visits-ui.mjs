@@ -2,7 +2,7 @@ import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {serviceVisitRows,serviceVisitContext,serviceVisitTargets,replaceServiceVisit,changeServiceVisitNote,removeServiceVisit} from './trip-service-visits-state.mjs?v=2026101305';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
-import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=2026101305';
+import {initServiceDayCheck} from './trip-service-day-ui.mjs?v=2026101406';
 import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101305';
 import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
@@ -37,7 +37,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101305'),import('./workshop.mjs?v=2026101405')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101305'),import('./workshop.mjs?v=2026101406')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});

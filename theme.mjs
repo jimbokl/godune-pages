@@ -1,5 +1,5 @@
 import {loadSunClock} from './sun-clock.mjs?v=2026101305';
-import {THEME_KEY,LIGHT_KEY,validMode,balticTime,themeAppearance,lightClock,lightLocation,validSun} from './theme-state.mjs?v=2026101405';
+import {THEME_KEY,LIGHT_KEY,validMode,balticTime,themeAppearance,lightClock,lightLocation,validSun} from './theme-state.mjs?v=2026101406';
 const root=document.documentElement,base=new URL('.',import.meta.url),control=document.querySelector('[data-theme-control]');
 const system=matchMedia('(prefers-color-scheme: dark)');
 let mode=validMode(root.dataset.themeMode),sun,location={label:'Калининград',lat:54.7104,lon:20.4522},date='',catalog,engine,revision=0;

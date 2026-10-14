@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {railHomeLocations,railHomeInput} from './rail-access.mjs?v=2026101305';
 import {railProblem} from './day-journey-view.mjs?v=2026101305';
 import {remainingTrip} from './day-progress.mjs?v=2026101305';

@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
 
 const states=new WeakMap();

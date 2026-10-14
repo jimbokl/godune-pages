@@ -1,4 +1,4 @@
-import {placePath} from './place-path.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101406';
 // The photographic selection lives in the same Trip as the traveller's plan.
 const knownDreams = (trip, catalog) => {
   const known = new Set(catalog.poi.map(place => place.slug));

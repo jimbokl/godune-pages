@@ -14,8 +14,8 @@ import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=2026101305';
 import {resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
 import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=2026101305';
-import {buildGuide} from './virtual-guide-engine.mjs?v=2026101405';
-import {placePath} from './place-path.mjs?v=2026101405';
+import {buildGuide} from './virtual-guide-engine.mjs?v=2026101406';
+import {placePath} from './place-path.mjs?v=2026101406';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=2026101305';
 import {waveLabel} from './day-wave.mjs?v=2026101305';
 import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101305';
