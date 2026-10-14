@@ -1,6 +1,34 @@
 /* Project landing: the same restrained dossier used by the timeline and research. */
 .project-overview .business-intro h1{max-width:21ch}
 .overview-status{font-size:.8rem;color:var(--business-muted);margin:0 0 1.25rem}
+.project-metrics-byline{font-size:.78rem;color:var(--muted);margin:-.35rem 0 1.25rem}
+.project-metrics{margin:0 0 2.5rem;padding:1.25rem 0 1.5rem;border-block:1px solid var(--line)}
+.project-metrics>.dossier-list-heading{align-items:baseline;margin:0 0 1rem}
+.project-metrics>.dossier-list-heading h2{margin:0}
+.project-metrics>.dossier-list-heading a{font-size:.8rem;min-height:44px;display:inline-flex;align-items:center}
+.project-metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.8rem}
+.project-metric-card{min-width:0;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:1rem}
+.project-metric-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.65rem}
+.project-metric-head h3{font-family:var(--font-display,Georgia,serif);font-size:1.12rem;font-weight:400;line-height:1.3;margin:0}
+.project-metric-status{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:.25rem .5rem;color:var(--muted);font-size:.68rem;line-height:1.3}
+.project-metric-value{display:flex;align-items:baseline;flex-wrap:wrap;gap:.3rem .55rem;margin:.75rem 0 .25rem}
+.project-metric-value strong{font-family:var(--font-display,Georgia,serif);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:400;line-height:1.15;overflow-wrap:anywhere}
+.project-metric-value>span{color:var(--muted);font-size:.86rem}
+.project-metric-date,.project-metric-summary{font-size:.8rem;line-height:1.5;margin:.35rem 0;color:var(--muted)}
+.project-metric-sources{font-size:.75rem;line-height:1.5;margin:.7rem 0 0;overflow-wrap:anywhere}
+.project-metric-sources a,.project-metric-version-sources a{display:inline-block;min-height:36px;padding:.35rem .15rem;color:var(--sea-ink);text-underline-offset:3px}
+.project-metric-versions{margin-top:.65rem;border-top:1px solid var(--line);padding-top:.4rem}
+.project-metric-versions>summary{min-height:44px;display:flex;align-items:center;font-size:.8rem;cursor:pointer}
+.project-metric-versions>summary::after{content:"＋";margin-left:auto;color:var(--sea-ink)}
+.project-metric-versions[open]>summary::after{content:"−"}
+.project-metrics a:focus-visible,.project-metric-versions>summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.project-metric-versions ol{padding-left:1.2rem;margin:.2rem 0 0}
+.project-metric-versions li{font-size:.76rem;line-height:1.5;overflow-wrap:anywhere;margin:.3rem 0}
+.project-metric-version-sources{list-style:none;margin-left:-1.2rem!important}
+.project-metric-card a:focus-visible,.project-metrics a:focus-visible,.project-metric-versions>summary:focus-visible{outline:3px solid var(--sea-line);outline-offset:3px;border-radius:4px}
+html[data-theme=night] .project-metric-card{background:var(--card);border-color:var(--line);color:var(--ink)}
+html[data-theme=night] .project-metric-status{border-color:var(--line);color:var(--muted)}
+html[data-theme=night] .project-metric-sources a,html[data-theme=night] .project-metric-version-sources a{color:#a9cbdc}
 .overview-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 2.5rem;border-bottom:1px solid var(--line);padding:0 0 1.5rem;gap:2rem}
 .overview-facts dt{font-size:.75rem;color:var(--business-muted);margin:0 0 .45rem}
 .overview-facts dd{font-family:var(--font-display,Georgia,serif);font-size:1.55rem;line-height:1.25;margin:0 0 .5rem}
@@ -28,6 +56,14 @@
  .overview-facts>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.2rem 1rem;align-items:baseline}
  .overview-facts dd{font-size:1.15rem}
  .overview-facts .dunes-citation{grid-column:2}
+ .project-metrics{padding-top:1rem;margin-bottom:2rem}
+ .project-metrics>.dossier-list-heading{display:block}
+ .project-metrics>.dossier-list-heading a{min-height:44px}
+ .project-metrics-grid{grid-template-columns:minmax(0,1fr);gap:.65rem}
+ .project-metric-card{padding:.85rem}
+ .project-metric-head{gap:.4rem}
+ .project-metric-head h3{font-size:1.03rem}
+ .project-metric-sources a,.project-metric-version-sources a{min-height:44px}
  .project-overview .dossier-chapters>details>summary{grid-template-columns:1.6rem minmax(0,1fr)}
  .project-overview .dossier-chapters .dossier-record-body{padding-left:2.2rem}
  .overview-more{margin-top:2rem}
