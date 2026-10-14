@@ -660,3 +660,6 @@ body[data-ui-context] .visit-timeline-card[data-timeline-number]::before{backgro
 /* Transport headings can name the coast and intent without a fixed-height collision. */
 body[data-transport] .transport-hero{height:auto;min-height:calc(315*var(--u));padding-bottom:32px}
 body[data-transport].inner-page .inner-main .transport-hero h1{text-wrap:balance;overflow-wrap:normal}
+
+/* Dated daylight constraints share the route card rhythm. */
+.seasonal-constraints{margin:1.5rem 0;padding:.5rem 1rem;border:1px solid var(--line,#d8dcd9);border-radius:14px;background:rgba(255,255,255,.32)}.seasonal-constraints summary{min-height:48px;cursor:pointer;font-weight:600}.seasonal-constraints p,.seasonal-constraints li{line-height:1.55}.seasonal-constraints li{margin:.55rem 0}

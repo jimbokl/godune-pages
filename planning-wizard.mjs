@@ -5,7 +5,7 @@ import {earlierWizardReturn,earlierWizardDeparture,wizardRailActive} from './wiz
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
 import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=2026101305';
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=2026101402';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=2026101403';
 import {chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=2026101305';
 import {scheduleJournalCriteria,kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101305';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=2026101305';
@@ -518,8 +518,16 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
   $('[data-wizard-fallback]').hidden=true;$('[data-wizard-shell]').hidden=false;mount.dataset.wizardReady='true';
   show(1,{focus:false});
-  const requested=new URL(location.href).searchParams.get('starter');
-  if(requested && wizardStarters(catalog).some(row=>row.id===requested)) {
+  const params=new URL(location.href).searchParams;
+  const requested=params.get('starter');
+  const requestedRecipe=params.get('recipe');
+  const recipe= requestedRecipe && wizardChoices(catalog).find(row=>row.slug===requestedRecipe);
+  if(recipe) {
+    answers={...answers,area:recipe.area,route:recipe.slug,wave:{...answers.wave,recipe:recipe.slug}};
+    selectionMade=true;
+    all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
+    show(2,{focus:false});
+  } else if(requested && wizardStarters(catalog).some(row=>row.id===requested)) {
     answers={...answers,area:'whole-trip',starter:requested};selectionMade=true;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     show(2,{focus:false});
