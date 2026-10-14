@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {saveStay,stayTarget,staySettings,stayGuideTrip,stayProfile} from './planned-stay-state.mjs?v=2026101402';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
 import {partyLabel} from './trip-party.mjs?v=2026101305';
@@ -25,7 +26,7 @@ export function initCoastalWeekend({workshop,base,catalog}){
         card=document.createElement('li');card.dataset.weekendPoi=id;
         card.innerHTML='<span class="fish-number" aria-hidden="true"></span><details class="weekend-stop"><summary><span class="weekend-stop-copy"><span class="weekend-role">В вашем плане</span><h3></h3><span class="weekend-stop-meta"></span></span><span class="weekend-chevron" aria-hidden="true">⌄</span></summary><div class="weekend-stop-body"><div class="weekend-stop-links"><a>О месте →</a></div></div></details>';
         card.querySelector('h3').textContent=catalog.poi.find(p=>p.slug===id)?.name||id;
-        card.querySelector('a').href=new URL(`poi/${encodeURIComponent(id)}/`,base).href;
+        card.querySelector('a').href=new URL(placePath(catalog,id),base).href;
       }
       card.querySelector('.fish-number').textContent=i+1;
       const stop=day.schedule.stops[id];
@@ -88,7 +89,7 @@ export function initCoastalWeekend({workshop,base,catalog}){
     try{
       if(!ids||changed.size)await persist();
       const current=workshop.getState(),signature=JSON.stringify(current),trip=stayGuideTrip(current,catalog,profile,ids);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101403');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101405');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:root.querySelector('[data-weekend-format]').value,title,onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Ваш PDF готов: ${result.pages} стр. ${allText} — в одном файле в загрузках.`;
     }catch(error){console.error('coastal-weekend/pdf',error);status.textContent=error.message==='guide_trip_changed'?'Поездка изменилась во время сборки. Скачайте свежий буклет.':error.message==='weekend_missing'?'Один из дней удалён. Создайте новый план.':'PDF пока не собрался. Попробуйте ещё раз.';}

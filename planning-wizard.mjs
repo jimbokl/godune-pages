@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101402';
 import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=2026101402';
 import {initWizardRail} from './wizard-rail-ui.mjs?v=2026101305';
@@ -228,7 +229,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     for(const [index,id]of trip.places.entries()) {
       const place=point(id),row=schedule?.stops.find(stop=>stop.id===id),li=node('li'),time=node('span',undefined,'wizard-time');
       time.textContent=row?row.begins===null?`Не раньше ${clock(row.earliest_begin)}`:clock(row.begins):String(index+1).padStart(2,'0');
-      const copy=node('div'),link=node('a',place.name);link.href=new URL(`poi/${id}/`,base).href;
+      const copy=node('div'),link=node('a',place.name);link.href=new URL(placePath(catalog,id),base).href;
       const settings=trip.schedule.stops[id];
       copy.append(link,node('p',`${settings.visit} мин. на остановку${settings.pause?` + ${settings.pause} мин. пауза`:''}`,'wizard-stop-duration'));
       if(row) {
@@ -285,7 +286,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     for(const [index,row]of book.timeline.entries()){
       const li=node('li');li.dataset.wizardBusRow=row.poi||`${row.kind}-${index}`;
       const copy=node('div');copy.append(node('strong',row.title),node('p',row.text,'wizard-stop-note'));
-      if(row.poi){const link=node('a','Фото и место на карте →');link.href=new URL(`poi/${row.poi}/`,base).href;copy.append(link);}
+      if(row.poi){const link=node('a','Фото и место на карте →');link.href=new URL(placePath(catalog,row.poi),base).href;copy.append(link);}
       li.append(node('span',row.time===null?'Уточнить':clock(row.time),'wizard-time'),copy);list.append(li);
     }
     const fallback=node('details',undefined,'wizard-evidence');fallback.dataset.wizardBusBackup='';fallback.append(node('summary','План Б · если не сели в автобус'),node('p',book.fallback));

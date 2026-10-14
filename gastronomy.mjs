@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2026101305';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
@@ -168,7 +169,7 @@ export async function initGastronomy(base,workshop) {
       anchor('start_at','__day_origin','Начало');
       if(request.origin)list.lastChild.append(make('small',`↓ ${road(request.origin.legs.find(l=>l.venue===tour.places[0]))}`,'food-tour-leg'));
       tour.places.forEach((id,i)=>{
-        const v=food.venues.find(v=>v.slug===id),li=make('li'),a=make('a',v.name);li.value=i+1;a.href=new URL(`poi/${id}/`,base);
+        const v=food.venues.find(v=>v.slug===id),li=make('li'),a=make('a',v.name);li.value=i+1;a.href=new URL(placePath(catalog,id),base);
         li.append(a,make('span',`${v.visit} минут за столом`));list.append(li);
         if(tour.schedule) {
           const stop=tour.schedule.stops.find(s=>s.id===id);li.prepend(make('span',`${clock(stop.begins)}–${clock(stop.visit_ends)}`,'food-stop-time'));

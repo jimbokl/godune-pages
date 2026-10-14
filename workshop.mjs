@@ -1,13 +1,14 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {loadWalkProgress} from './walk.mjs?v=2026101305';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101305';
-import {initTripSharing} from './trip-link.mjs?v=2026101402';
+import {initTripSharing} from './trip-link.mjs?v=2026101405';
 import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101305';
 import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101305';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=2026101305';
 import {createPlanningProgress} from './planning-progress.mjs?v=2026101305';
 import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101305';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101305';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101402';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101405';
 import {initTripDays} from './trip-days-ui.mjs?v=2026101305';
 import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101402';
 import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101305';
@@ -18,7 +19,7 @@ import {addTripStarter} from './trip-starters.mjs?v=2026101305';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101305';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101305';
 import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101305';
-import {initTripRail} from './trip-rail-ui.mjs?v=2026101305';
+import {initTripRail} from './trip-rail-ui.mjs?v=2026101405';
 import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=2026101305';
 export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101305';
 
@@ -304,7 +305,7 @@ export async function initWorkshop(catalog, base) {
       const day = kaliningradDay(); if (day === lastDay) return; lastDay = day;
       const selection = dailyDiscovery(items, catalog); if (!selection || !$('#discovery-name')) return;
       const place = catalog.poi.find(item => item.slug === selection.poi);
-      $('#discovery-name').textContent = place.name; $('#discovery-name').href = url(`poi/${place.slug}/`);
+      $('#discovery-name').textContent = place.name; $('#discovery-name').href = url(placePath(catalog,place.slug));
       $('#discovery-note').textContent = selection.note;
       $('#discovery-area').textContent = place.area_name;
       $('#discovery-save').dataset.savePlace = place.slug;

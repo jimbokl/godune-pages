@@ -1,5 +1,6 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101305';
-import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=2026101305';
+import {travelContext,markVisited,selectTravelDay,travelSnapshot,travelCoverage} from './trip-travel-state.mjs?v=2026101405';
 import {baseName,baseId} from './personal-points.mjs?v=2026101305';
 import {endBookingLabel,bookingEffects,BOOKING_KINDS,BOOKING_STATUSES,bookingProblem} from './trip-bookings-state.mjs?v=2026101305';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
@@ -39,7 +40,7 @@ export function initTravel(workshop,catalog,base){
     $('travel-empty').hidden=places.length>0;$('travel-active').hidden=!places.length;
     $('travel-eyebrow').textContent=next?'Следующая остановка':'Все остановки отмечены';
     $('travel-number').textContent=next?String(places.indexOf(next)+1).padStart(2,'0'):'✓';
-    const title=$('travel-title');title.textContent=next?.name||'День остаётся с вами';title.href=next?new URL(`poi/${next.slug}/`,base).href:new URL('planner/',base).href;
+    const title=$('travel-title');title.textContent=next?.name||'День остаётся с вами';title.href=next?new URL(placePath(catalog,next.slug),base).href:new URL('planner/',base).href;
     $('travel-note').textContent=next?.description||'Остановки пройдены. Проверьте дорогу к поезду или к месту ночёвки.';
     const mark=$('travel-mark');mark.hidden=!next;mark.disabled=busy;mark.dataset.point=next?.slug||'';mark.dataset.context=context;
     const map=$('travel-map');map.dataset.mapFocus=next?.slug||baseId(day.night_at)||'';
@@ -49,7 +50,7 @@ export function initTravel(workshop,catalog,base){
     $('travel-stops').replaceChildren(...places.map((place,index)=>{
       const li=node('li');li.dataset.travelStop=place.slug;li.dataset.visited=String(snapshot.visited.has(place.slug));
       li.append(node('span',String(index+1).padStart(2,'0'),'travel-step-number'));
-      const copy=node('div'),link=node('a',place.name);link.href=new URL(`poi/${place.slug}/`,base).href;
+      const copy=node('div'),link=node('a',place.name);link.href=new URL(placePath(catalog,place.slug),base).href;
       const time=node('p','Считаем план…','travel-step-time');time.dataset.travelTime=place.slug;copy.append(link,time);li.append(copy);
       const visited=snapshot.visited.has(place.slug),button=node('button',visited?'Уже были ✓':'Отметить','travel-check');
       button.type='button';button.dataset.travelVisited=place.slug;button.dataset.value=String(!visited);button.dataset.context=context;button.disabled=busy;

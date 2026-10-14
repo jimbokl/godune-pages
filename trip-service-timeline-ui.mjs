@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
 import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
@@ -5,7 +6,7 @@ import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101305'
 import {rentalFactsElement} from './trip-rental-view.mjs?v=2026101305';
 import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=2026101305';
 import {selectedConnectionRows,unusedConnectionRows,transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
-import {decorateStop} from './wave-stop-ui.mjs?v=2026101305';
+import {decorateStop} from './wave-stop-ui.mjs?v=2026101405';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=2026101305';
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
@@ -75,7 +76,7 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
    controls.append(arrows);
    if(visit){const expense=serviceExpenseButton({day,visit,onExpense});if(expense)controls.append(expense);}
    const settings=node('button',visit?'Заметка и условия':'Время и пауза','visit-secondary');settings.type='button';settings.addEventListener('click',()=>onSettings(entry));controls.append(settings);
-   if(point){const link=node('a','О месте ↗','visit-timeline-link');link.href=new URL(`poi/${entry.id}/`,base);controls.append(link);}
+   if(point){const link=node('a','О месте ↗','visit-timeline-link');link.href=new URL(placePath(catalog,entry.id),base);controls.append(link);}
   }
   card.append(controls);
   if(wave&&point&&entry.kind==='place'){

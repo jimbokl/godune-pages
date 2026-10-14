@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 // The photographic selection lives in the same Trip as the traveller's plan.
 const knownDreams = (trip, catalog) => {
   const known = new Set(catalog.poi.map(place => place.slug));
@@ -50,7 +51,7 @@ export function initDreams({workshop, catalog, base}) {
       const focused = document.activeElement?.dataset.dreamRemove;
       list.replaceChildren(...dreams.map(id => {
         const li = document.createElement('li'); li.className = 'dreams-saved-item';
-        const link = document.createElement('a'); link.href = new URL(`poi/${id}/`, base).href; link.textContent = byId.get(id).name;
+        const link = document.createElement('a'); link.href = new URL(placePath(catalog,id), base).href; link.textContent = byId.get(id).name;
         const remove = document.createElement('button'); remove.type = 'button'; remove.dataset.dreamRemove = id;
         remove.textContent = 'Убрать'; remove.setAttribute('aria-label', `Убрать из подборки: ${byId.get(id).name}`); remove.disabled = busy;
         li.append(link, remove); return li;

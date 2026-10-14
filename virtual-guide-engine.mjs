@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 // Editorial guidance is separate from timing, bookings and visited-place records.
 import {guideProvenance,guideProvenanceTranscript,guideSourceUrl} from './guide-provenance.mjs?v=2026101305';
 export const GUIDE_VERSION=1;
@@ -32,7 +33,7 @@ export function buildGuide(catalog,request={}) {
   const stops=points.map(point=>{
     const authored=stories[point.slug];
     const hasStory=authored && Array.isArray(authored.story) && authored.story.length && authored.story.every(value=>cleanText(value));
-    return {id:point.slug,name:point.name,area:point.area_name,lat:point.lat,lon:point.lon,
+    return {id:point.slug,path:placePath(catalog,point.slug),name:point.name,area:point.area_name,lat:point.lat,lon:point.lon,
       story:hasStory?authored.story.map(cleanText):[cleanText(point.description)].filter(Boolean),
       focus:hasStory?cleanText(authored.focus):'',practical:cleanText(point.access_note || point.practical),
       source:guideSourceUrl(point.source_url),checkedAt:cleanText(point.verified_at),
@@ -59,7 +60,7 @@ export function guideTranscript(guide) {
     if(stop.focus)lines.push('Посмотрите вокруг: '+stop.focus);
     lines.push(...guideProvenanceTranscript(stop));
     if(stop.practical)lines.push('Перед выходом: '+stop.practical);
-    lines.push(`Карточка: https://godune.ru/poi/${stop.id}/`);
+    lines.push(`Карточка: https://godune.ru/${stop.path}`);
     if(stop.source)lines.push('Источник карточки: '+stop.source);
     if(stop.checkedAt)lines.push('Дата данных карточки: '+stop.checkedAt);
     lines.push('');

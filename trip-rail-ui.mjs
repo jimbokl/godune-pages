@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {railHomeLocations,railHomeInput} from './rail-access.mjs?v=2026101305';
 import {railProblem} from './day-journey-view.mjs?v=2026101305';
 import {remainingTrip} from './day-progress.mjs?v=2026101305';
@@ -36,7 +37,7 @@ export function initTripRail({mount,read,commit,base,catalog}) {
   $('[data-rail-caption=outward]').textContent=`В ${destination||'город у моря'} · отправление → прибытие`;
   $('[data-rail-caption=inbound]').textContent=`В ${table.service?.from||'Калининград'} · отправление → прибытие`;
   const {station,route}=railStation(table.service,catalog),help=$('.rail-station');help.replaceChildren();help.hidden=!station;
-  if(station){const link=el('a',`${station.name} · наша карта →`,'rail-beach-walk');link.href=new URL(`poi/${station.slug}/`,base).href;help.append(link,el('p',station.coordinate_note));
+  if(station){const link=el('a',`${station.name} · наша карта →`,'rail-beach-walk');link.href=new URL(placePath(catalog,station.slug),base).href;help.append(link,el('p',station.coordinate_note));
    if(route){const walk=el('a','Прогулка от вокзала к морю и обратно →','rail-beach-walk');walk.href=new URL(`routes/${route.slug}/`,base).href;help.append(walk);}}
    for(const direction of ['outward','inbound']) {
    const select=$(`[name=${direction}]`),old=select.value;select.replaceChildren();

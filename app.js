@@ -7,6 +7,7 @@
   perfMark('app-start');
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
+  const placePathReady = import(url('place-path.mjs?v=2026101405')).then(module => module.placePath);
   // Preserve bookmarks to the tools that used to live on the homepage.
   if(document.body.hasAttribute('data-home-page')) {
     const params=new URLSearchParams(location.search),hash=location.hash;
@@ -203,11 +204,11 @@
   async function search() {
     const version = ++searchVersion, query = normalize($('#search-input').value);
     try {
-      const data = await loadCatalog();
+      const [data, placePath] = await Promise.all([loadCatalog(), placePathReady]);
       if (version !== searchVersion) return;
       const entries = [
         ...data.routes.map(r => ({title: r.name, description: 'Пеший маршрут · ' + r.area_name, path: `routes/${r.slug}/`, text: `${r.name} ${r.area_name} ${r.description}`})),
-        ...data.poi.map(p => ({title: p.name, description: p.area_name + ' · ' + p.category_name, path: `poi/${p.slug}/`, text: `${p.name} ${p.area_name} ${p.category_name} ${p.tags.join(' ')}`})),
+        ...data.poi.map(p => ({title: p.name, description: p.area_name + ' · ' + p.category_name, path: placePath(data,p.slug), text: `${p.name} ${p.area_name} ${p.category_name} ${p.tags.join(' ')}`})),
         ...data.collections.filter(c=>!['map/','routes/'].includes(c.path)).map(c => ({title: c.name, description: 'Места и остановки на карте', path: c.path, text: `${c.name} ${c.intro}`})),
         ...[
           ['Планировщик поездки','Дни, время, ночёвка и бюджет','planner/','мой маршрут планировщик собрать поездку бюджет расходы дни'],
@@ -252,17 +253,17 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101306'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101405'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     restoreTripFilters();
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
-    if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101305')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101403')).then(({initPlanningWizard})=>
+    if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101405')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101405')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101305')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101405')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=2026101305')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
@@ -273,7 +274,7 @@
     }
     if ($('#kosa-form')) import(url('kosa-planner.mjs?v=2026101402')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
     if ($('#housing-engine')) import(url('housing-ui.mjs?v=2026101305')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
-    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2026101305')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2026101405')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
     });
     if (inlineMap) {
@@ -294,9 +295,9 @@
     if ($('#budget-page')) import(url('budget-ui.mjs?v=2026101305')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
     if ($('[data-route-day-save]')) import(url('route-day-ui.mjs?v=2026101306')).then(({initRouteDay})=>initRouteDay({workshop,base,catalog:data})).catch(()=>{ $('[data-route-day-status]').textContent='Сохранение пока не открылось. Готовый PDF прогулки доступен ниже.'; });
     if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101403')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
-    if ($('[data-weekend-layer]')) import(url('weekend-layer.mjs?v=2026101401')).then(({initWeekendLayer})=>initWeekendLayer({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-layer-status]').textContent='План пока не загрузился. Готовые прогулки доступны ниже.'; });
-    if ($('[data-coastal-weekend]')) import(url('coastal-weekend.mjs?v=2026101306')).then(({initCoastalWeekend})=>initCoastalWeekend({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-status]').textContent='Сохранение пока не открылось. Прогулки и карточки мест доступны ниже.'; });
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101305')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('[data-weekend-layer]')) import(url('weekend-layer.mjs?v=2026101405')).then(({initWeekendLayer})=>initWeekendLayer({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-layer-status]').textContent='План пока не загрузился. Готовые прогулки доступны ниже.'; });
+    if ($('[data-coastal-weekend]')) import(url('coastal-weekend.mjs?v=2026101405')).then(({initCoastalWeekend})=>initCoastalWeekend({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-status]').textContent='Сохранение пока не открылось. Прогулки и карточки мест доступны ниже.'; });
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101405')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2026101305')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {
@@ -412,7 +413,7 @@
     const version = ++mapVersion;
     syncMapViews();
     if (homeHero && tripMap) { wakeWorkshop('map'); await workshopReady; }
-    const data = await loadCatalog();
+    const [data, placePath] = await Promise.all([loadCatalog(), placePathReady]);
     const route = tripMap ? null : data.routes.find(r => r.slug === activeRoute);
     const collection = data.collections.find(c => c.path === document.body.dataset.collection);
     const here = data.poi.find(p => p.slug === document.body.dataset.poi);
@@ -432,7 +433,7 @@
       const focusId=document.activeElement?.dataset.savePlace;
       const rows=points.map(p=>{
         const li=document.createElement('li'),a=document.createElement('a');li.dataset.mapPlace=p.slug;
-        if(p.kind==='personal'){a.href='#map-dialog';a.addEventListener('click',e=>{e.preventDefault();map?.flyTo({center:[p.lon,p.lat],zoom:16});});}else a.href=url(`poi/${p.slug}/`);a.textContent=((trip || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
+        if(p.kind==='personal'){a.href='#map-dialog';a.addEventListener('click',e=>{e.preventDefault();map?.flyTo({center:[p.lon,p.lat],zoom:16});});}else a.href=url(placePath(data,p.slug));a.textContent=((trip || route)&&pointNumber(p)?`${pointNumber(p)}. `:'')+p.name+(pointRole(p)?` · ${pointRole(p)}`:'');
         if(inlineMap && p.kind!=='personal'){
           const copy=document.createElement('div'),meta=document.createElement('small'),save=document.createElement('button');
           meta.textContent=`${p.area_name} · ${p.category_name}`;copy.append(a,meta);save.type='button';save.className='save-item';save.dataset.savePlace=p.slug;
@@ -455,7 +456,7 @@
       if(version!==mapVersion)return;
       if(!navigator.onLine){
         const available=await offlineTools.then(({offlinePaths})=>offlinePaths(base));
-        points=points.filter(p=>(p.kind==='personal' || available.has(new URL(`poi/${p.slug}/`,base).pathname)) && p.lon>=local.bbox[0] && p.lon<=local.bbox[2] && p.lat>=local.bbox[1] && p.lat<=local.bbox[3]);
+        points=points.filter(p=>(p.kind==='personal' || available.has(new URL(placePath(data,p.slug),base).pathname)) && p.lon>=local.bbox[0] && p.lon<=local.bbox[2] && p.lat>=local.bbox[1] && p.lat<=local.bbox[3]);
         listPoints();
       }
       if(version!==mapVersion)return;
@@ -470,7 +471,7 @@
         const btn = document.createElement('button'); btn.className = 'map-dot'; btn.type = 'button'; btn.dataset.mapPlace = p.slug; btn.textContent = route || trip ? pointNumber(p) ? String(pointNumber(p)) : personal.baseId(day?.start_at) === p.slug ? 'С' : 'Н' : ''; btn.setAttribute('aria-label', p.name + (pointRole(p) ? ` · ${pointRole(p)}` : ''));
         if(pointRole(p))btn.dataset.mapBase = pointRole(p);
         const popup = document.createElement('div'), title = document.createElement('strong'), link = document.createElement('a');
-        title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}addMarker(p,btn,popup,pointRole(p));return;} link.href = url(`poi/${p.slug}/`); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
+        title.textContent = p.name; if(p.kind==='personal'){link.href='#map-dialog';link.textContent='Ваша точка · хранится с поездкой';link.addEventListener('click',e=>{e.preventDefault();m.flyTo({center:[p.lon,p.lat],zoom:16});});popup.append(title,document.createElement('br'),link);if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}addMarker(p,btn,popup,pointRole(p));return;} link.href = url(placePath(data,p.slug)); link.textContent = 'Посмотреть место'; popup.append(title, document.createElement('br'), link);
         if(pointRole(p)){const role=document.createElement('p');role.textContent=pointRole(p);popup.append(role);}
         const save = document.createElement('button'), on = workshop?.getState().places.includes(p.slug);
         save.type = 'button'; save.className = 'save-item'; save.dataset.savePlace = p.slug;

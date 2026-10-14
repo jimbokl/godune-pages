@@ -15,7 +15,7 @@ import {validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
 import {initWaveWorkspace} from './wave-workspace-ui.mjs?v=2026101402';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
-import {focusWaveStop} from './wave-stop-ui.mjs?v=2026101305';
+import {focusWaveStop} from './wave-stop-ui.mjs?v=2026101405';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 
 const el=(tag,className,text)=>{const node=document.createElement(tag);node.className=className || '';if(text)node.textContent=text;return node;};

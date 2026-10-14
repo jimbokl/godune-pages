@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {restContext,rainStops,restVariants,restInput,confirmRest} from './rest-day-state.mjs?v=2026101305';
 import {alongGuard} from './along-route-state.mjs?v=2026101305';
 import {selectedDay,ensureJourney,journeyDays} from './trip-days-state.mjs?v=2026101305';
@@ -79,7 +80,7 @@ if(root){
   const link=(name,url)=>{const a=node('a',name);a.href=new URL(url.replace(/^\//,''),base);return a;};
   const put=(label,title,url,copy)=>{const item=node('li'),body=node('div');body.append(node('p',label,'rest-step-label'),url?link(title,url):node('strong',title));if(copy)body.append(node('p',copy));item.append(body);sequence.append(item);};
   put('01 · Отдых',variant.activity.name,variant.activity.href,`${field('activityMinutes').value} мин · ${variant.activity.area_name}`);
-  put('02 · Обед',variant.meal.name,variant.meal.service?.href||`poi/${variant.meal.id}/`,`${field('mealMinutes').value} мин на месте`);
+  put('02 · Обед',variant.meal.name,variant.meal.service?.href||placePath(ctx.catalog,variant.meal.id),`${field('mealMinutes').value} мин на месте`);
   const bounds=dayJourneyBoundaries(day,ctx.catalog),endpoint=(bounds.rows.find(r=>r.entry.kind==='destination')||bounds.rows.find(r=>r.entry.id==='__day_night'))?.anchor?.name;
   put('03 · Возвращение',endpoint||'Точка возвращения не выбрана',null,`Конец дня: ${time(row.change.after_timing.finish)}`);
   article.append(sequence);

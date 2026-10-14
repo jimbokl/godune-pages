@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
 import {weekendDefaults,weekendDays,prepareWeekend,saveWeekendPlan} from './weekend-state.mjs?v=2026101401';
 
@@ -50,7 +51,7 @@ function renderDays(list,trip,config,settings,ids,catalog,base,{selectedOnly=fal
  for(let index=0;index<days.length;index++){
   const day=days[index],row=settings?weekendDays(config,settings)[index]:null,li=node('li',{class:'weekend-plan-day','data-weekend-day-id':ids?.[index]||day.id}),dot=node('span',{class:'weekend-day-dot'},String(index+1)),details=node('details',{...(index===0?{open:''}:{})}),summary=node('summary'),title=node('strong',{},day.name||row?.name||`День ${index+1}`),meta=node('small',{},`${day.date||'Дата не выбрана'} · ${day.schedule?`${fromMinutes(day.schedule.start)}–${fromMinutes(day.schedule.end)}`:''}`),body=node('div',{class:'weekend-day-body'}),places=node('ol');
   const summaryLabel=node('span');summaryLabel.append(meta,title);summary.append(summaryLabel,node('span',{'aria-hidden':'true'},'⌄'));
-  for(const slug of day.places||[]){const place=catalog.poi?.find(point=>point.slug===slug);if(place){const item=node('li'),link=node('a',{href:new URL(`poi/${encodeURIComponent(slug)}/`,base).href},place.name);item.append(link);places.append(item);}}
+  for(const slug of day.places||[]){const place=catalog.poi?.find(point=>point.slug===slug);if(place){const item=node('li'),link=node('a',{href:new URL(placePath(catalog,slug),base).href},place.name);item.append(link);places.append(item);}}
   body.append(places);
   if(row?.kind==='kosa')body.append(node('p',{class:'weekend-logistics'},'Куршская коса: план опирается на автобус № 210 и возвращение по таблице рейсов. Переход пешком из Зеленоградска к дюнам не закладывается.'));
   if(row?.kind==='ferry')body.append(node('p',{class:'weekend-logistics'},'Балтийская коса: отдельный день с поездкой к Балтийску, паромом, прогулкой и обратным путём. Расчёт переправы сохраняется в этот же день.'));
@@ -125,7 +126,7 @@ export function initWeekendLayer({workshop,base,catalog}){
  });
  pdf.addEventListener('click',async()=>{
   if(!ids?.length)return;pdf.disabled=true;const trip=currentTrip(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101403');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101405');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
   catch(error){statusText(error.message==='guide_trip_changed'?'Поездка изменилась во время подготовки PDF. Обновите план и повторите.':'Личный PDF не удалось подготовить. Попробуйте ещё раз после восстановления связи.',true);}
   finally{pdf.disabled=false;}
  });

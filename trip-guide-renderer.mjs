@@ -197,7 +197,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       const size=phone?20:28,map=media.maps[p.id],photo=media.photos[p.id];
       need(textHeight(`${number}. ${p.name}`,title,size,8)+textHeight('GPS '+gps(p),ui,small,space)+(map?phone?126:192:0)+small*4);
       text(`${number}. ${p.name}`,{font:title,size,space:8});
-      text(`GPS ${gps(p)} ${reference}`,{size:small,color:muted,space,link:`poi/${p.id}/`});
+      text(`GPS ${gps(p)} ${reference}`,{size:small,color:muted,space,link:p.path});
       if(map){
         const mapHeight=phone?105:170;
         if(photo){const photoWidth=phone?78:125,gap=10;await imageBox(map,m,y,width-photoWidth-gap,mapHeight);await imageBox(photo,m+width-photoWidth,y,photoWidth,mapHeight);y-=mapHeight+8;}
@@ -310,7 +310,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
         if(media.photos[p.id]){await image(media.photos[p.id],270);text('Авторский снимок',{size:8,color:muted,space:10});}
       }
       if(p.completed)text('Уже были. Время осмотра не записывали.',{size:phone?10:12,color:muted,space:10});
-      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},qrCaption=`godune.ru/poi/${p.id}/\nСтраница места при появлении связи.`,tail=sourceHeight(placeSource)+(!phone&&media.qrs?.[p.id]?qrLayout(qrCaption).height:0);
+      const placeSource={name:p.name,url:p.source,checked_at:p.checkedAt},qrCaption=`godune.ru/${p.path}\nСтраница места при появлении связи.`,tail=sourceHeight(placeSource)+(!phone&&media.qrs?.[p.id]?qrLayout(qrCaption).height:0);
       const mapCaption=`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}. Ромб - ваше место.`;
       const sectionHeight=value=>textHeight(value,title,phone?18:30,phone?10:16);
       const afterMap=textHeight(mapCaption,ui,8)+sectionHeight('На месте')+p.story.reduce((sum,paragraph)=>sum+textHeight(paragraph),0)+(p.focus?textHeight(p.focus):0)+(p.practical?textHeight(p.practical):0)+(p.conditions.length?sectionHeight('Перед входом'):0)+p.conditions.reduce((sum,c)=>sum+textHeight(c.text)+sourceHeight(c.source),0)+tail;

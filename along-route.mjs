@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101305';
 import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101305';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
@@ -62,7 +63,7 @@ if(root){
   const article=node('article',undefined,'along-card');article.dataset.candidate=row.candidate;
   if(point.photos?.[0]){const img=node('img');img.src=new URL(point.photos[0],base);img.alt='';img.loading='lazy';img.width=720;img.height=440;article.append(img);}
   const content=node('div',undefined,'along-card-body'),eyebrow=node('p',`${service?serviceTypeNames[service.category]:point.category_name} · ${point.area_name}`,'inner-kicker');
-  const heading=node('h3'),link=node('a',point.name);link.href=new URL(service?service.href.replace(/^\//,''):`poi/${point.slug}/`,base);heading.append(link);
+  const heading=node('h3'),link=node('a',point.name);link.href=new URL(service?service.href.replace(/^\//,''):placePath(ctx.catalog,point.slug),base);heading.append(link);
   if(service?.photo){const img=node('img');img.src=new URL(service.photo.src,base);img.alt=service.photo.alt;img.loading='lazy';img.width=720;img.height=440;article.append(img);}
   const order=selectedDay(variant.trip).timeline?.order||variant.trip.places.map(id=>({kind:'place',id}));
   const previous=order[variant.position-1],after=order[variant.position+1];

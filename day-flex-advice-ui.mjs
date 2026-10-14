@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
 import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions,protectedFlexStops} from './day-flex-advice.mjs?v=2026101305';
 import {clock} from './day-stop-view.mjs?v=2026101305';
@@ -47,7 +48,7 @@ export function initFlexAdvice({mount,commit,feedback}) {
           const title=el('h4','',replacements.length?kind==='closed'?'Зайти в другое место':'Осмотр под крышей':moved.length>1?`${moved.length} ${placesWord(moved.length)} — на другой раз`:moved.length?`«${name(moved[0])}» — на другой раз`:'Все остановки остаются');
           const movedList=el('ul','day-advice-moved');
           for(const id of moved) {const row=el('li','',name(id));row.dataset.flexMovedPlace=id;movedList.append(row);}
-          for(const replacement of replacements){const row=el('li','',`${name(replacement.from)} → `),link=el('a','',name(replacement.to));link.href=`/poi/${encodeURIComponent(replacement.to)}/`;row.dataset.flexReplacement=replacement.to;row.append(link);movedList.append(row);}
+          for(const replacement of replacements){const row=el('li','',`${name(replacement.from)} → `),link=el('a','',name(replacement.to));link.href=`/${placePath(catalog,replacement.to)}`;row.dataset.flexReplacement=replacement.to;row.append(link);movedList.append(row);}
           const times=el('dl','day-advice-times');
           const rows=[];
           if(option.effort){

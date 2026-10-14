@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2026101305';
 import {isPersonalPoint} from './personal-points.mjs?v=2026101305';
@@ -27,6 +28,6 @@ export function travelCoverage(trip,catalog,paths,maps,base){
   for(const value of [day.start_at,day.night_at,day.end_at])if(isPersonalPoint(value))points.push(value);
   const inside=(p,b)=>Array.isArray(b)&&p.lon>=b[0]&&p.lon<=b[2]&&p.lat>=b[1]&&p.lat<=b[3];
   const has=path=>paths.has(new URL(path,base).pathname);
-  return {page:has('travel/'),cards:ids.filter(id=>has(`poi/${id}/`)).length,total:ids.length,
+  return {page:has('travel/'),cards:ids.filter(id=>{const path=placePath(catalog,id);return path&&has(path);}).length,total:ids.length,
     covered:points.filter(p=>maps.some(m=>inside(p,m.bbox))).length,points:points.length};
 }

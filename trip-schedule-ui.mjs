@@ -1,4 +1,5 @@
-import {enhanceWaveStops} from './wave-stop-ui.mjs?v=2026101305';
+import {placePath} from './place-path.mjs?v=2026101405';
+import {enhanceWaveStops} from './wave-stop-ui.mjs?v=2026101405';
 import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101305';
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
@@ -17,13 +18,13 @@ import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=2026101305'
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=2026101305';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=2026101305';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101305';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101305';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101405';
 import {initDayProgress} from './day-progress-ui.mjs?v=2026101305';
 import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101402';
 import {progressMessages} from './day-progress-advice.mjs?v=2026101305';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
 import {flexSignature} from './day-flex-advice.mjs?v=2026101305';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101305';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101405';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 import {routeAccessDetails} from './route-access-ui.mjs?v=2026101305';
@@ -199,7 +200,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const header=document.createElement('div');header.className='trip-timeline-heading';
       const time=document.createElement('span');time.className='trip-timeline-time';
       time.textContent=blockedByReturn?'После возвращения':item.begins === null ? `Не раньше ${clock(item.earliest_begin)}` : clock(item.begins);
-      const name=document.createElement('a');name.href=new URL(`poi/${item.id}/`,base).href;name.textContent=place.name;
+      const name=document.createElement('a');name.href=new URL(placePath(catalog,item.id),base).href;name.textContent=place.name;
       header.append(time,name);li.append(header);
       if(compact) {
         const view=stopTimeView(item,booking,blockedByReturn);li.dataset.dayTiming=view.kind;

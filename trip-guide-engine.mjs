@@ -14,7 +14,8 @@ import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=2026101305';
 import {resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
 import {railJourney,roadJourney,waitJourney,excursionJourney} from './day-journey-view.mjs?v=2026101305';
-import {buildGuide} from './virtual-guide-engine.mjs?v=2026101305';
+import {buildGuide} from './virtual-guide-engine.mjs?v=2026101405';
+import {placePath} from './place-path.mjs?v=2026101405';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=2026101305';
 import {waveLabel} from './day-wave.mjs?v=2026101305';
 import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101305';
@@ -93,7 +94,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     if(services&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),state:'unknown'});
     if(transport.length)rows.push(...transportGuideRows(transport,record));
-    const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};});
+    const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};});
     const entries=guideEntries(record,stops,services?.services||[]),complete=!transport.length&&(!services||!!services.check?.itinerary);
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;

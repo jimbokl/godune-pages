@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=2026101305';
 import {bikeStopKinds,selectBikeStops,addBikeStop,removeBikeStop} from './bike-stops-state.mjs?v=2026101305';
 import {bikeRentalChoices,prepareBikeRental} from './bike-rental-state.mjs?v=2026101305';
@@ -79,13 +80,13 @@ if(root){
   const area=ctx.catalog.poi.find(p=>p.slug===row.ride.stops[0].poi)?.area_name||'';
   content.append(node('p',area,'inner-kicker'),heading,metrics,node('p',row.ride.description));
   const stops=node('ol',undefined,'bike-stops');
-  const boundary=(id,title,time,text)=>{const p=ctx.catalog.poi.find(p=>p.slug===id),li=node('li',undefined,'bike-boundary'),link=node('a',`${title} · ${p.name}`);link.href=new URL(`poi/${id}/`,base);li.append(link,node('small',`${time==null?'Время неизвестно':clock(time)} · ${text}`));stops.append(li);};
+  const boundary=(id,title,time,text)=>{const p=ctx.catalog.poi.find(p=>p.slug===id),li=node('li',undefined,'bike-boundary'),link=node('a',`${title} · ${p.name}`);link.href=new URL(placePath(ctx.catalog,id),base);li.append(link,node('small',`${time==null?'Время неизвестно':clock(time)} · ${text}`));stops.append(li);};
   const origin=row.trip.itinerary.days[0].start_at;
   if(origin)boundary(origin,'Выезд',row.input.start,'Дорога к первой остановке включена');
   const original=new Set(row.ride.stops.map(s=>s.poi));
   for(const id of row.trip.places){
    const point=ctx.catalog.poi.find(p=>p.slug===id),time=rented?chosen.rental?.stops.find(s=>s.id===id):row.plan.stops.find(s=>s.id===id),visit=row.trip.schedule.stops[id]?.visit,li=node('li'),link=node('a',point.name);
-   link.href=new URL(`poi/${point.slug}/`,base);li.append(link,node('small',`${time?.begins!=null?clock(time.begins)+' · ':''}${visit?visit+' мин на остановку':'Начало прогулки'}`));
+   link.href=new URL(placePath(ctx.catalog,point.slug),base);li.append(link,node('small',`${time?.begins!=null?clock(time.begins)+' · ':''}${visit?visit+' мин на остановку':'Начало прогулки'}`));
    if(!original.has(id)){const remove=node('button','Убрать остановку ×','bike-stop-remove');remove.type='button';remove.dataset.removeStop=id;remove.setAttribute('aria-label',`Убрать остановку ${point.name}`);remove.addEventListener('click',()=>{
     try{replaceRide(row,removeBikeStop(row,id,currentSettings,ctx.catalog,ctx.matrix,ctx.engine));}catch(error){status.textContent=error.message;}
    });li.append(remove);}
@@ -148,7 +149,7 @@ if(root){
     const found=selectBikeStops(row,currentSettings,ctx.catalog,ctx.matrix,ctx.engine,{kind:view.kind,visit:view.visit});
     if(!found.length){message.textContent=`${bikeStopKinds[view.kind].name}: новых точек для этой прогулки пока нет.`;return;}
     for(const [index,candidate]of found.entries()){
-     const box=node('div',undefined,'bike-stop-choice'),title=node('a',candidate.point.name);title.href=new URL(`poi/${candidate.point.slug}/`,base);box.append(title);
+     const box=node('div',undefined,'bike-stop-choice'),title=node('a',candidate.point.name);title.href=new URL(placePath(ctx.catalog,candidate.point.slug),base);box.append(title);
      box.hidden=index>=3;
      const selected=preview(candidate.preview),current=preview(row),extra=selected.duration_minutes==null||current.duration_minutes==null?null:selected.duration_minutes-current.duration_minutes,road=rentalView(row).mode==='rental'?null:candidate.extra_distance_m;
      box.append(node('p',`${view.visit} мин на месте · ${extra==null?'полное время неизвестно':extra>=0?'+'+extra+' мин ко дню':Math.abs(extra)+' мин меньше ко дню'}${road==null?'':` · ${road>=0?'+':'−'}${bikeDistance(Math.abs(road))}`}`,'bike-caption'));

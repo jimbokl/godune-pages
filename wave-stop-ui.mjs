@@ -1,3 +1,4 @@
+import {placePath} from './place-path.mjs?v=2026101405';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
 
 const states=new WeakMap();
@@ -16,15 +17,15 @@ const portions=value=>{const tail=value%100,unit=value%10;return `${value} ${tai
 const shortDescription=value=>{const text=String(value||'').trim().replace(/\s+/g,' ');if(text.length<=116)return text;const sentence=text.match(/^.{35,116}?[.!?](?=\s|$)/);return sentence?sentence[0]:text.slice(0,113).trimEnd()+'…';};
 const dayKey=trip=>trip?.itinerary?.active||trip?.date||'';
 function dayFor(trip){return trip?.itinerary?.days?.find(day=>day.id===trip.itinerary.active)||trip?.itinerary?.days?.[0]||{date:trip?.date,places:[],menu_choices:[]};}
-function foodHref(base,point){return new URL(point.area==='zelenogradsk'?'food/zelenogradsk/all/':`poi/${encodeURIComponent(point.slug)}/`,base).href;}
-function renderMenu(panel,point,trip,base){
+function foodHref(base,point,catalog){return new URL(point.area==='zelenogradsk'?'food/zelenogradsk/all/':placePath(catalog,point.slug),base).href;}
+function renderMenu(panel,point,trip,base,catalog){
  const rows=menuChoiceGuide(dayFor(trip)).filter(row=>row.poi===point.slug);
  if(rows.length){const list=el('ul',undefined,'wave-menu-choice-list');for(const row of rows){const item=el('li',undefined,'wave-menu-choice');item.append(el('strong',row.name),el('span',[row.portion,portions(row.quantity)].filter(Boolean).join(' · ')),el('small',row.price));list.append(item);}panel.append(list);}
- const link=el('a',point.area==='zelenogradsk'?'Посмотреть кафе и меню →':'Открыть место и меню →','wave-menu-link');link.href=foodHref(base,point);panel.append(link);
+ const link=el('a',point.area==='zelenogradsk'?'Посмотреть кафе и меню →':'Открыть место и меню →','wave-menu-link');link.href=foodHref(base,point,catalog);panel.append(link);
 }
 function renderNearby(panel,point,catalog,base){
  const rows=nearbyWaveStops(point,catalog);if(!rows.length){panel.append(el('p','Поблизости пока нет мест с координатами.','wave-nearby-empty'));return;}
- const list=el('ul',undefined,'wave-nearby-list');for(const {point:near,distance} of rows){const item=el('li'),link=el('a',near.name);link.href=new URL(`poi/${encodeURIComponent(near.slug)}/`,base).href;item.append(link,el('small',`По прямой · ${distanceLabel(distance)}`));list.append(item);}panel.append(list);
+ const list=el('ul',undefined,'wave-nearby-list');for(const {point:near,distance} of rows){const item=el('li'),link=el('a',near.name);link.href=new URL(placePath(catalog,near.slug),base).href;item.append(link,el('small',`По прямой · ${distanceLabel(distance)}`));list.append(item);}panel.append(list);
 }
 export function selectTab(card,name){
  for(const button of card.querySelectorAll('[data-wave-tab]')){const selected=button.dataset.waveTab===name;button.setAttribute('aria-pressed',String(selected));}
@@ -46,7 +47,7 @@ export function decorateStop(li,point,index,trip,catalog,base){
  for(const tab of names){const button=el('button',labels[tab],'wave-stop-tab');button.type='button';button.dataset.waveTab=tab;button.setAttribute('aria-pressed',String(tab==='place'));button.setAttribute('aria-controls',`wave-panel-${point.slug}-${tab}`);button.addEventListener('click',()=>selectTab(details,tab));tabs.append(button);const panel=el('section',undefined,`wave-stop-panel wave-stop-panel-${tab}`);panel.id=`wave-panel-${point.slug}-${tab}`;panel.dataset.wavePanel=tab;panel.setAttribute('role','region');panel.setAttribute('aria-label',labels[tab]);panel.hidden=tab!=='place';panels[tab]=panel;}
  if(photo)panels.place.append(photo);if(name?.tagName==='A')panels.place.append(name);
  const original=[...li.childNodes];for(const node of original){if(node===header||node===lead&&lead.contains(header)||node===photo)continue;if(node.nodeType===1&&node.classList.contains('day-stop-lead')){for(const child of [...node.childNodes])if(child!==header&&child!==photo)panels.place.append(child);node.remove();continue;}panels.place.append(node);}
- if(point.category==='restaurant')renderMenu(panels.menu,point,trip,base);
+ if(point.category==='restaurant')renderMenu(panels.menu,point,trip,base,catalog);
  renderNearby(panels.nearby,point,catalog,base);
  body.append(tabs,...Object.values(panels));details.append(summary,body);li.replaceChildren(marker,details);li.dataset.waveStopReady='true';
 }

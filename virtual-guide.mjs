@@ -1,7 +1,7 @@
-import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101305';
+import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101405';
 import {guideNarration} from './guide-provenance.mjs?v=2026101305';
 import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2026101305';
-import {initGuideOffline} from './guide-offline.mjs?v=2026101305';
+import {initGuideOffline} from './guide-offline.mjs?v=2026101405';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 import {initGuideLocation} from './guide-location.mjs?v=2026101305';
 
@@ -122,7 +122,7 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     if(stop.checkedAt)details.append(element('p','Дата данных карточки: '+stop.checkedAt));
     if(/^https?:\/\//.test(stop.source)){const source=element('a','Источник карточки');source.href=stop.source;details.append(source);}
     body.append(details);
-    $('[data-guide-place]').href=new URL(`poi/${stop.id}/`,base);
+    $('[data-guide-place]').href=new URL(stop.path,base);
     $('[data-guide-map]').href=new URL(`?map=${stop.id}`,base);
     $('[data-guide-prev]').disabled=index===0;$('[data-guide-next]').disabled=index===guide.stops.length-1;
     $('[data-guide-next]').textContent=index<guide.stops.length-1?'Следующая остановка →':'Все главы открыты';
