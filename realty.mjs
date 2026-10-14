@@ -21,13 +21,16 @@ for (const input of checks) input.checked = Boolean(existing.checklist?.[input.d
 if (form) {
   for (const field of form.elements) if (field.name && existing.brief?.[field.name] != null) field.value = existing.brief[field.name];
   if (status && existing.updatedAt) status.textContent = `Сохранено на этом устройстве · ${new Date(existing.updatedAt).toLocaleString('ru-RU')}`;
+  form.addEventListener('input', () => {
+    if (status) status.textContent = 'Есть несохранённые изменения. Сохраните памятку на устройстве.';
+  });
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     saveLocal({ brief: briefValue() });
   });
 }
 for (const input of checks) input.addEventListener('change', () => {
-  saveLocal({ checklist: checklistValue() });
+  saveLocal({ ...(form ? { brief: briefValue() } : {}), checklist: checklistValue() });
 });
 const pdfButton = document.querySelector('[data-pdf]');
 if (pdfButton) pdfButton.addEventListener('click', async () => {

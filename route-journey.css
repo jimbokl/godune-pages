@@ -244,4 +244,19 @@ body[data-ui-context] .inner-main :is(.route-journey,.fish-journey) :is(p,li,spa
 .fish-journey .fish-chevron{transition:transform .2s ease}
 @media(max-width:760px){.route-journey .journey-passport .inner-actions{grid-template-columns:minmax(0,1fr)}.route-journey .journey-passport .button{width:100%}.journey-passport dt{max-width:100px}.fish-journey .fish-stop-heading>img{height:108px}.fish-journey .fish-stop-role{line-height:1.25}.fish-journey .fish-stop-meta{margin-top:5px}.fish-alternatives-heading>a{max-width:120px}}
 @media(max-width:360px){.fish-journey .fish-stop-heading>img{height:110px}.route-journey .journey-section-heading{align-items:start}.route-journey .journey-section-heading>a{max-width:110px;font-size:14px}}
+
+/* Keep the two-day planner scannable before the day tabs on narrow screens. */
+@media(max-width:760px){
+ .weekend-journey .weekend-settings{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px;margin-bottom:20px}
+ .weekend-journey .weekend-settings-heading,.weekend-journey .weekend-settings>label:first-of-type,.weekend-journey .weekend-settings-action{grid-column:1/-1}
+ .weekend-journey .weekend-settings .weekend-pace{grid-column:auto}
+ .weekend-journey .weekend-settings h2{font-size:25px;margin-bottom:5px}
+ .weekend-journey .weekend-settings p{font-size:14px;line-height:1.45}
+ .weekend-journey .weekend-settings label{gap:5px}
+}
+@media(max-width:360px){
+ .weekend-journey .weekend-settings{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px}
+ .weekend-journey .weekend-settings-action .button{width:100%}
+}
+.weekend-tabs button[aria-selected="true"]{box-shadow:inset 0 -3px var(--brand-amber)}
 @media(prefers-reduced-motion:reduce){.fish-journey .fish-chevron{transition:none}}

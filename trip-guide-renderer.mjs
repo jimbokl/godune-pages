@@ -325,12 +325,19 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(kosaAssets){
       for(const {walk,bytes}of kosaAssets.walkingMaps){
-        start();const begins=doc.getPageCount();heading(walk.title,true);
-        text(`Около ${walk.distance_m} м · ${walk.estimated_minutes} мин по расчёту карты`,{color:muted});
-        await image({bytes,kind:'png',width:900,height:620},phone?180:300);
-        for(const [i,id]of [walk.from,walk.to].entries()){const a=day.kosa.interchanges.anchors[id];text(`${i+1}. ${a.name} · GPS ${gps(a)}`,{size:phone?9.5:11});}
-        text(walk.note);text(day.kosa.interchanges.verification.note,{color:muted});
-        source({name:'OpenStreetMap · ODbL 1.0',url:day.kosa.interchanges.source.url,checked_at:day.kosa.interchanges.source.snapshot_at});
+        start();const begins=doc.getPageCount();
+        text(walk.title,{font:title,size:phone?22:43,space:phone?8:16});
+        text(`Около ${walk.distance_m} м · ${walk.estimated_minutes} мин по расчёту карты`,{size:phone?9.5:body,color:muted});
+        const anchors=[walk.from,walk.to].map((id,i)=>{const a=day.kosa.interchanges.anchors[id];return `${i+1}. ${a.name} · GPS ${gps(a)}`;});
+        const mapSource={name:'OpenStreetMap · ODbL 1.0',url:day.kosa.interchanges.source.url,checked_at:day.kosa.interchanges.source.snapshot_at};
+        // Reserve the complete directions and provenance before sizing the map.
+        // A three-line title must not push its only source onto a blank page.
+        const tail=anchors.reduce((sum,value)=>sum+textHeight(value,ui,phone?9.5:11),0)+textHeight(walk.note,ui,phone?9.5:body)+textHeight(day.kosa.interchanges.verification.note,ui,phone?8.5:body)+sourceHeight(mapSource);
+        const mapHeight=Math.max(phone?105:180,Math.min(phone?180:300,y-51-tail-14));
+        await image({bytes,kind:'png',width:900,height:620},mapHeight);
+        for(const value of anchors)text(value,{size:phone?9.5:11});
+        text(walk.note,{size:phone?9.5:body});text(day.kosa.interchanges.verification.note,{size:phone?8.5:body,color:muted});
+        source(mapSource);
         interchangePages.push({day:day.id,id:walk.id,begins,pages:doc.getPageCount()-begins+1,image_sha256:walk.images.png.sha256});
       }
       for(const c of kosaAssets.chapters){
