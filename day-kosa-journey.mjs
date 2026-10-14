@@ -1,13 +1,14 @@
+import {kosaWeatherReturn} from './kosa-weather-return.mjs?v=2026101402';
 import {withKosaDinner} from './kosa-dinner.mjs?v=2026101307';
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
-import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=2026101307';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101307';
+import {kosaInput,kosaRailSnapshot,kosaBusSnapshot,isGeneratedKosaNote} from './kosa-plan-state.mjs?v=2026101402';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101402';
 import {transitTable} from './transport-day.mjs?v=2026101305';
 import {roadbookJourney} from './day-journey-view.mjs?v=2026101305';
 import {currentProgress} from './day-progress.mjs?v=2026101305';
 import {kosaProgressInput,continueKosaRoadbook,kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101305';
 import {transitHomeCopy} from './transport-home.mjs?v=2026101305';
-import {boundBusInput} from './wizard-bus.mjs?v=2026101307';
+import {boundBusInput} from './wizard-bus.mjs?v=2026101402';
 // Never overwrite the saved record, nor silently substitute a newer bus table.
 export async function savedKosaJourney(trip,catalog,base,calculate) {
   const saved=selectedDay(trip).kosa_plan;
@@ -28,7 +29,8 @@ export async function savedKosaJourney(trip,catalog,base,calculate) {
   try{generated_note=isGeneratedKosaNote(selectedDay(trip).note,saved,result,table,catalog,maps);}catch{/* Unrecognized notes remain visible. */}
   const effective={...saved,...(input.home?{home:input.home}:{}),...(input.rail?{to_station:input.rail.to_station,from_station:input.rail.from_station}:{})};
   if(effective.dinner)effective.dinner={...effective.dinner,choices:structuredClone(selectedDay(trip).menu_choices?.filter(c=>c.place?.poi_id===effective.dinner.place.id)||[])};
-  const original=kosaRoadbook(effective,result,table,catalog,maps),context={input,table,maps,result,plan:JSON.stringify(saved),
+  const weatherReturn=kosaWeatherReturn(effective,result,table,catalog,calculate);
+  const original=kosaRoadbook(effective,result,table,catalog,maps,weatherReturn),context={input,table,maps,result,plan:JSON.stringify(saved),
     times:{'vysota-efa':result.outward.arrival+saved.first_visit,...(result.transfer?{'tancuyushchiy-les':result.transfer.via+saved.second_visit}:{})}};
   let book=original,progress;
   try {

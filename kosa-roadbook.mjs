@@ -1,6 +1,7 @@
+import {kosaOutingCopy,kosaWeatherCopy} from './kosa-outing.mjs?v=2026101402';
 import {withKosaDinner} from './kosa-dinner.mjs?v=2026101307';
 import {savedKosaBudget} from './kosa-budget.mjs?v=2026101305';
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101307';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101402';
 import {kosaLightSummary} from './kosa-light.mjs?v=2026101305';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2026101305';
 import {kosaBoarding} from './kosa-boarding.mjs?v=2026101305';
@@ -9,7 +10,7 @@ import {transitDayFinish,transitDayEarliestFinish,transitHomeCopy,transitBackupC
 import {stationRoadOrigin,stationRoadNote} from './station-road-proof.mjs?v=2026101305';
 const cities={zelenogradsk:'Зеленоградск',kaliningrad:'Калининград',svetlogorsk:'Светлогорск'};
 // A single, immutable day snapshot supplies both the screen and the document.
-export function kosaRoadbook(answers,day,table,catalog,interchanges){
+export function kosaRoadbook(answers,day,table,catalog,interchanges,weatherReturn=null){
   table=transitTable(table,answers.date).publication;
   kosaNote(answers,day,table,catalog); // Reject a proposal without a return.
   const atForest=answers.walks==='two',returnTime=atForest?day.inward.via:day.inward.departure,homeKnown=answers.home_access?!!answers.home_access.return_at:true,homeRoad=answers.home_access?.road;
@@ -82,5 +83,6 @@ export function kosaRoadbook(answers,day,table,catalog,interchanges){
       'Если автобус ушёл или приехал полным, сначала уточните следующий рейс. Не идите между тропами по проезжей части в надежде догнать автобус.',
       'Если второго автобуса нет, уточните возвращение у перевозчика или заранее выбранного водителя. Стоимость и возможность подачи здесь неизвестны.',
       selected?'Карты переходов построены по OpenStreetMap. Площадка № 210, последние метры и проходы на местности ещё не проверены. Дорога от жилья и автобусный путь на них не показаны.':'Пешие карты относятся к отдельным тропам. Они не показывают дорогу от жилья до Зеленоградска или автобусный путь по косе.']};
+  book.outing={rows:kosaOutingCopy(answers.outing),rain:kosaWeatherCopy.rain,wind:kosaWeatherCopy.wind,source:{...kosaWeatherCopy.source},...(answers.outing?.stroller?{access_source:{...kosaWeatherCopy.access_source}}:{}),shorter_return:weatherReturn?structuredClone(weatherReturn.summary):null};
   return withKosaDinner(book,answers.dinner,{date:answers.date,station:answers.station,rail_boarding:answers.rail_boarding,catalog});
 }

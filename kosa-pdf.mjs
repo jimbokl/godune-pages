@@ -4,13 +4,13 @@ export async function makeKosaPdf({snapshot,base,format='phone',signal,onProgres
   const input={snapshot,base:new URL(base).href,format};
   if(typeof Worker==='undefined'){
     onProgress('Собираем путеводитель в этой вкладке…');
-    const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=2026101307');
+    const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=2026101402');
     return renderKosaPdf(input,{signal,onProgress});
   }
   let worker;
-  try{worker=new Worker(new URL('./kosa-pdf-worker.mjs?v=2026101307',import.meta.url),{type:'module'});}
+  try{worker=new Worker(new URL('./kosa-pdf-worker.mjs?v=2026101402',import.meta.url),{type:'module'});}
   catch{
-    const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=2026101307');
+    const {renderKosaPdf}=await import('./kosa-pdf-renderer.mjs?v=2026101402');
     return renderKosaPdf(input,{signal,onProgress});
   }
   try{return await new Promise((resolve,reject)=>{

@@ -1,8 +1,8 @@
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {tripSignature} from './trip-light.mjs?v=2026101305';
 import {currentProgress} from './day-progress.mjs?v=2026101305';
-import {kosaInput,kosaBusSnapshot,kosaRailSnapshot} from './kosa-plan-state.mjs?v=2026101307';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101307';
+import {kosaInput,kosaBusSnapshot,kosaRailSnapshot} from './kosa-plan-state.mjs?v=2026101402';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101402';
 import {kosaProgressInput} from './day-kosa-progress.mjs?v=2026101305';
 
 const forest='tancuyushchiy-les';

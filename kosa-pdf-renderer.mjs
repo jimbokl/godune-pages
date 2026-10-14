@@ -1,7 +1,7 @@
 import {kosaBudgetText} from './kosa-budget.mjs?v=2026101305';
 import './assets/vendor/pdf/pdf-lib.js?v=2026101305';
 import './assets/vendor/pdf/fontkit.js?v=2026101305';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101307';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101402';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=2026101305';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2026101305';
 const {PDFDocument,rgb}=globalThis.PDFLib;
@@ -74,6 +74,14 @@ export async function renderKosaPdf({snapshot,base,format},{signal,onProgress=()
     paragraph(row.title,{size:phone?12:14,space:6});
     paragraph(row.text,{color:muted,space:boarding?10:20});
     if(boarding)paragraph(boarding,{space:20});
+  }
+  if(snapshot.outing){
+    const o=snapshot.outing;heading('С детьми и на случай непогоды',o.rows[0]||o.rain);
+    for(const text of o.rows)paragraph(text,{keepTogether:true});
+    if(o.access_source)paragraph(o.access_source.url,{size:9,color:muted});
+    paragraph('Дождь',{font:title,size:phone?19:23});paragraph(o.rain);
+    if(o.shorter_return){const r=o.shorter_return;paragraph(`Вариант без Танцующего леса: у остановки Эфа к ${clock(r.board_by)}, автобус ${clock(r.departure)} → Зеленоградск ${clock(r.arrival)}. Автобус туда и время на Эфе те же. После изменения прогулки пересчитайте ужин и дальнейшую дорогу.`,{keepTogether:true});}
+    paragraph('Сильный ветер',{font:title,size:phone?19:23});paragraph(o.wind);paragraph(o.source.url,{size:9,color:muted});
   }
   if(snapshot.budget){heading('Бюджет вашего дня');for(const text of kosaBudgetText(snapshot.budget))paragraph(text,{color:muted});const park=snapshot.budget.rows.find(r=>r.id==='park-person');if(park?.source){paragraph(`Плата парка · проверено ${park.source.checked_at}`,{size:9,color:muted});paragraph(park.source.url,{size:9,color:muted});}}
   start();heading('Вернуться с косы');

@@ -271,6 +271,12 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(day.kosa){
       const k=day.kosa;
+      if(k.outing){const o=k.outing;heading('С детьми и на случай непогоды',false,o.rows[0]||o.rain);
+        for(const value of o.rows)text(value);if(o.access_source)source(o.access_source);
+        text('Дождь · '+o.rain);
+        if(o.shorter_return){const r=o.shorter_return;text(`Вариант без Танцующего леса: у остановки Эфа к ${clock(r.board_by)}, автобус ${clock(r.departure)} → Зеленоградск ${clock(r.arrival)}. Автобус туда и время на Эфе те же. После изменения прогулки пересчитайте ужин и дальнейшую дорогу.`);}
+        text('Сильный ветер · '+o.wind);source(o.source);
+      }
       if(k.light){heading('Свет на тропах и у остановки',false,k.light.rows[0]?.text);for(const row of k.light.rows)text(row.text,{color:row.warning?ink:muted});}
       for(const value of k.limits)text(value,{color:muted});
       heading('Источник расписания',false,k.publication.note);text(k.publication.note,{color:muted});

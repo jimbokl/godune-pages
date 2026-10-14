@@ -1,3 +1,4 @@
+import {kosaOutingCopy} from './kosa-outing.mjs?v=2026101402';
 import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
 import {savedKosaBudget,kosaBudgetText} from './kosa-budget.mjs?v=2026101305';
 import {cleanTrip,emptyTrip} from './trip-state.mjs?v=2026101305';
@@ -12,7 +13,7 @@ export const kosaClock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(
 import {stationRoadOrigin} from './station-road-proof.mjs?v=2026101305';
 const kosaDefaults=value=>({...value,people:value.people??1,exempt:value.exempt??0,pace:value.pace||'gentle',...(value.city==='kaliningrad'?{origin:value.origin||'home'}:{})});
 const stable=value=>JSON.stringify(value,(_,row)=>row&&typeof row==='object'&&!Array.isArray(row)?Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])):row);
-export const sameKosaAnswer=(key,a,b)=>['budget','dinner'].includes(key)?stable(a)===stable(b):key==='home'?!!a&&!!b&&['ready_at','end_by','approach','return_minutes'].every(field=>a[field]===b[field]):key==='home_access'?stable(a)===stable(b):a===b;
+export const sameKosaAnswer=(key,a,b)=>['budget','dinner','outing'].includes(key)?stable(a)===stable(b):key==='home'?!!a&&!!b&&['ready_at','end_by','approach','return_minutes'].every(field=>a[field]===b[field]):key==='home_access'?stable(a)===stable(b):a===b;
 // Reopening the same form must replay the traveller's selected train. A real
 // preference change starts a new search, rather than carrying unrelated rides.
 export function kosaPinnedAnswers(answers,saved){
@@ -50,6 +51,7 @@ export function kosaNote(answers,day,table,catalog,interchanges,options={}) {
     `Город начала: ${{kaliningrad:'Калининград',zelenogradsk:'Зеленоградск',svetlogorsk:'Светлогорск'}[answers.city]}.${day.rail||day.home?'':' Дорогу до пересадки в Зеленоградске нужно проверить отдельно.'}`,
     `По таблице № 210: Зеленоградск ${kosaClock(day.outward.departure)} → Эфа ${kosaClock(day.outward.arrival)}.`,
     `На Эфу с возвращением к остановке: ${answers.first_visit} мин. Запас перед посадкой: ${answers.boarding} мин.`];
+  rows.push(...kosaOutingCopy(answers.outing));
   if(day.transfer)rows.push(`Переезд: Эфа ${kosaClock(day.transfer.departure)} → Танцующий лес ${kosaClock(day.transfer.via)}. На тропу: ${answers.second_visit} мин.`);
   rows.push(`У обратной остановки не позже ${kosaClock(day.board_by)}. Автобус ${kosaClock(answers.walks==='two'?day.inward.via:day.inward.departure)} → Зеленоградск ${kosaClock(day.finish)}.`);
   if(day.backup)rows.push(`Следующий рейс по таблице: ${kosaClock(answers.walks==='two'?day.backup.via:day.backup.departure)} → Зеленоградск ${kosaClock(day.backup.arrival)}. Места и движение требуют проверки.`);

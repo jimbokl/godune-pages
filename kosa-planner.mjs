@@ -1,15 +1,17 @@
+import {kosaFamilyPlan,kosaOuting} from './kosa-outing.mjs?v=2026101402';
+import {kosaWeatherReturn} from './kosa-weather-return.mjs?v=2026101402';
 import {kosaQuickPlan} from './kosa-quick-plan.mjs?v=2026101401';
 import {initKosaDinner} from './kosa-dinner-ui.mjs?v=2026101307';
 import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101305';
 import {transitTable} from './transport-day.mjs?v=2026101305';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
-import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101307';
+import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101402';
 import {createTripFile} from './trip-file.mjs?v=2026101305';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101307';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101402';
 import {assessKosa} from './day-readiness.mjs?v=2026101305';
 import {kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101305';
 import {journeyDays} from './trip-days-state.mjs?v=2026101305';
-import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101307';
+import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101402';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -33,6 +35,9 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   if(saved?.version===1 && Number.isInteger(saved.ready))form.elements.ready.value=clock(saved.ready);
   if(saved?.version===1 && ['one','two'].includes(saved.walks))form.elements.walks.value=saved.walks;
   if(saved?.version===1 && ['slow','gentle','brisk'].includes(saved.pace))form.elements.pace.value=saved.pace;
+  const outing=kosaOuting(saved?.outing);
+  form.elements.with_children.checked=!!outing?.children;form.elements.with_stroller.checked=!!outing?.stroller;
+  form.elements.outing_weather.value=outing?.weather||'fair';
   const dinnerUI=await initKosaDinner({form,base,savedDay});
   const railFields=form.querySelector('#kosa-rail-fields');
   const homeEditor=initKosaHomeEditor({form,trip:initial,saved,getTrip:()=>workshop.getState()});
@@ -47,6 +52,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   }
   const number=name=>form.elements[name].value===''?null:Number(form.elements[name].value);
   const readFields=()=>({city:form.elements.city.value,date:form.elements.date.value,ready:Number(form.elements.ready.value.slice(0,2))*60+Number(form.elements.ready.value.slice(3)),
+    ...((form.elements.with_children.checked||form.elements.with_stroller.checked||form.elements.outing_weather.value==='rain')?{outing:{version:1,children:form.elements.with_children.checked,stroller:form.elements.with_stroller.checked,weather:form.elements.outing_weather.value}}:{}),
     walks:form.elements.walks.value,pace:form.elements.pace.value,first_visit:Number(form.elements.first_visit.value),second_visit:Number(form.elements.second_visit.value),boarding:Number(form.elements.boarding.value),people:Number(form.elements.people?.value??1),exempt:Number(form.elements.exempt?.value??0),...(form.elements.city.value==='kaliningrad'?{station:form.elements.station.value,origin:form.elements.origin.value,to_station:form.elements.origin.value==='station'?0:number('to_station'),from_station:form.elements.origin.value==='station'?0:number('from_station'),to_bus:number('to_bus'),to_train:number('to_train'),rail_boarding:number('rail_boarding')}:{})});
   const read=()=>{const raw=readFields(),dinner=dinnerUI.read(raw.date),fields=homeEditor.read({...raw,...(dinner?{dinner}:{})});return releaseSelectedRides?fields:kosaPinnedAnswers(fields,saved);};
   cityFields();
@@ -68,6 +74,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   }
   quickButtons.forEach(button=>button.addEventListener('click',()=>{
     begin();
+    form.elements.outing_weather.value='fair';
     const choice=button.dataset.kosaChoice,answers=kosaQuickPlan(readFields(),choice);
     for(const name of ['walks','pace','first_visit','second_visit'])form.elements[name].value=answers[name];
     form.elements.ready.value=clock(answers.ready);
@@ -143,7 +150,8 @@ export async function initKosaPlanner({workshop,catalog,base}) {
         } else if(day.validity==='needs_date_check'&&day.state!=='unknown_approach')result.append(el('p','Подходящий вариант с вашим временем на прогулки не найден. Измените время осмотра или проверьте другой способ возвращения.'));
         actions.append(link('Проверить расписание',publication.source_url));result.append(actions);status.textContent='Тропы и карты доступны ниже. Время возвращения пока не подобрано.';
       } else {
-        const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges);
+        const weatherReturn=kosaWeatherReturn(answers,day,rawPublication,catalog,engine);
+        const roadbook=kosaRoadbook(answers,day,rawPublication,catalog,interchanges,weatherReturn);
         workshop.progress?.action(attempt,'calculated',{criteria:kosaJournalCriteria(roadbook,assessKosa(day,answers,roadbook.walking))});
         if(answers.fixed_transport)result.append(el('p','Выбранные рейсы сохранены. Поменяйте дату или время, чтобы искать другой день.','kosa-plan-warning'),freshTransport());
         if(!editingDay&&savedDay&&saved?.version===1
@@ -193,6 +201,23 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           }
         }
         result.append(list);
+        const outingCard=el('section',undefined,'kosa-outing-card');outingCard.setAttribute('aria-labelledby','kosa-weather-title');
+        const weatherTitle=el('h4','Если погода изменится');weatherTitle.id='kosa-weather-title';outingCard.append(weatherTitle);
+        for(const text of roadbook.outing.rows){
+          if(text.startsWith('С коляской:')){const access=el('details',undefined,'kosa-outing-access');access.append(el('summary','С коляской · подход и настил'),el('p',text));outingCard.append(access);}
+          else outingCard.append(el('p',text,'kosa-outing-preference'));
+        }
+        const weatherGrid=el('div',undefined,'kosa-weather-grid');
+        const rain=el('details',undefined,'kosa-weather-option');rain.open=answers.outing?.weather==='rain';rain.append(el('summary','Дождь · сократить прогулку'),el('p',roadbook.outing.rain));
+        if(weatherReturn){const r=weatherReturn.summary;
+          const times=el('dl',undefined,'kosa-weather-times');
+          for(const [name,value]of [['У остановки Эфа',clock(r.board_by)],['Обратный автобус',clock(r.departure)],['В Зеленоградске',clock(r.arrival)]]){times.append(el('dt',name),el('dd',value));}
+          rain.append(times,el('p',`Возвращение в Зеленоградск на ${duration(r.saved_minutes)} раньше. Автобус туда и время на Эфе сохраняются; ужин и дальнейшая дорога пересчитаются.`, 'kosa-weather-help'));
+          rain.append(action('Оставить Эфу и вернуться раньше',()=>{form.elements.walks.value='one';form.elements.outing_weather.value='rain';releaseSelectedRides=true;begin();schedule();},'kosa-weather-apply'));
+        }else rain.append(el('p',answers.walks==='one'?`В вашем дне уже одна тропа. У обратной остановки к ${clock(roadbook.return.board_by)}, автобус в ${clock(roadbook.return.departure)}.`:'Для выбранного выезда более раннее возвращение не подобрано. Уточните транспорт перед изменением прогулки.','kosa-weather-help'));
+        const wind=el('details',undefined,'kosa-weather-option');wind.append(el('summary','Сильный ветер · перенести косу'),el('p',roadbook.outing.wind));
+        wind.append(action('Выбрать другую дату',()=>{form.elements.date.focus();form.elements.date.scrollIntoView({block:'center',behavior:'smooth'});},'kosa-weather-date'),link('Рекомендации национального парка ↗',roadbook.outing.source.url,'kosa-source-link'));
+        weatherGrid.append(rain,wind);outingCard.append(weatherGrid);result.append(outingCard);
         dinnerUI.render(result,roadbook);
         result.append(el('p',roadbook.fallback,'kosa-plan-warning'));
         const light=el('details',undefined,'kosa-light');light.append(el('summary','Свет на тропах и у остановки'));light.dataset.kosaLight=roadbook.light.state;
@@ -226,13 +251,13 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           try{
             if(answers.dinner){
               const outcome=await persist();abort.signal.throwIfAborted();if(ticket!==sequence)return;
-              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101307');
+              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101402');
               const output=await downloadPersonalGuide({trip:copy,catalog,base,scope:'day',format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;},stillCurrent:()=>ticket===sequence&&JSON.stringify(copy)===JSON.stringify(workshop.getState())});
               pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Коса, возвращение, ужин и выбранные порции — в одном файле.`;
               saveStatus.textContent=outcome.saved?'Весь день и блюда сохранены в этом браузере.':'Весь день остаётся в этой вкладке и в скачанном PDF.';
               await workshop.progress?.action(attempt,'pdf_ready');return;
             }
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101307');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101402');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');
@@ -280,6 +305,13 @@ export async function initKosaPlanner({workshop,catalog,base}) {
   form.addEventListener('input',()=>{begin();schedule();});
   form.addEventListener('change',event=>{
     begin();
+    if(event.target.name==='with_children'&&event.target.checked){
+      const family=kosaFamilyPlan(readFields());
+      for(const name of ['walks','pace','first_visit','boarding','to_bus','to_train','rail_boarding'])if(family[name]!==undefined)form.elements[name].value=family[name];
+      form.elements.outing_weather.value='fair';releaseSelectedRides=true;
+      form.querySelector('[data-kosa-family-status]').textContent='Выбрана одна тропа в неспешном темпе: время на паузы и возвращение к автобусу уже заложено. Все оценки можно изменить.';
+    }
+    if(event.target.name==='walks'&&event.target.value==='two')form.elements.outing_weather.value='fair';
     if(event.target.name==='station'){form.elements.to_station.value='';form.elements.from_station.value='';}
     schedule();
     form.dispatchEvent(new CustomEvent('TripParamsChanged',{bubbles:true,detail:{city:form.elements.city.value}}));
