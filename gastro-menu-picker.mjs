@@ -24,6 +24,7 @@ export function initGastroMenus({workshop,base,catalog,saveDay,getId,setBusy}){
    }sync();}
    select.addEventListener('change',draw);load.replaceWith(label);block.append(list);const source=el('p');source.className='gastro-menu-source';const link=el('a','Меню · '+rows[0].source.observed_at);link.href=rows[0].source.url;link.target='_blank';link.rel='noopener';source.append(link);block.append(source);draw();
   }catch{status.textContent='Меню пока не загрузилось. Попробуйте ещё раз.';load.disabled=false;}});
+  load.disabled=false;
  }
  window.addEventListener('godune:trip-change',sync);
 }

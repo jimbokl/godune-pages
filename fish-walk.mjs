@@ -1,7 +1,7 @@
 import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=2026101305';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
-import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101305';
+import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101403';
 
 export async function initFishWalk({workshop,base,catalog}) {
   const button=document.querySelector('[data-fish-save]'),booklet=document.querySelector('[data-fish-booklet]'),status=document.querySelector('[data-fish-status]');
