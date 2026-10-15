@@ -289,6 +289,101 @@
         }
       ]
     },
+    "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92": {
+      "path": "assets/css-bundles/4b4f85598a8cd4079a32aac763922eb20d5a7b442758ef86f8baf9c7717c54e5.css",
+      "sha256": "4b4f85598a8cd4079a32aac763922eb20d5a7b442758ef86f8baf9c7717c54e5",
+      "bytes": 459946,
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all"
+        },
+        {
+          "path": "styles.css",
+          "media": "all"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all"
+        },
+        {
+          "path": "tools.css",
+          "media": "all"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all"
+        },
+        {
+          "path": "night.css",
+          "media": "all"
+        },
+        {
+          "path": "housing.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all"
+        },
+        {
+          "path": "field-notes.css",
+          "media": "all"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all"
+        }
+      ]
+    },
     "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412": {
       "path": "assets/css-bundles/f5a2f85aef305bcb2749cace753b96710195dd3a25eaf03bc56977ee8e0175c1.css",
       "sha256": "f5a2f85aef305bcb2749cace753b96710195dd3a25eaf03bc56977ee8e0175c1",
@@ -2124,10 +2219,109 @@
         }
       ]
     },
-    "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df": {
-      "path": "assets/css-bundles/dba001ad59d833e99e969adb3f1cf9095ffb4c0379402b1ebbc504884f4ef081.css",
-      "sha256": "dba001ad59d833e99e969adb3f1cf9095ffb4c0379402b1ebbc504884f4ef081",
-      "bytes": 468439,
+    "4713c12ce9a443d66586d8f12c92c3c10dcdae4957b478bce37be9ffcfbe6bcd": {
+      "path": "assets/css-bundles/07d9291dd7b1b4b0b657ce796f04f2db9382bb5138da7eb1c637512584371e36.css",
+      "sha256": "07d9291dd7b1b4b0b657ce796f04f2db9382bb5138da7eb1c637512584371e36",
+      "bytes": 461094,
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all"
+        },
+        {
+          "path": "styles.css",
+          "media": "all"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all"
+        },
+        {
+          "path": "tools.css",
+          "media": "all"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all"
+        },
+        {
+          "path": "night.css",
+          "media": "all"
+        },
+        {
+          "path": "housing.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all"
+        },
+        {
+          "path": "field-notes.css",
+          "media": "all"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all"
+        }
+      ]
+    },
+    "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f": {
+      "path": "assets/css-bundles/ea7194ae918dd33788c20fa0bed9977b3f5998dd2c4e1f66528bf5d211ee535d.css",
+      "sha256": "ea7194ae918dd33788c20fa0bed9977b3f5998dd2c4e1f66528bf5d211ee535d",
+      "bytes": 473916,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -2183,6 +2377,10 @@
         },
         {
           "path": "engagement.css",
+          "media": "all"
+        },
+        {
+          "path": "field-notes.css",
           "media": "all"
         },
         {
@@ -3363,10 +3561,10 @@
         }
       ]
     },
-    "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784": {
-      "path": "assets/css-bundles/4730014e53b33d9713dc3fa8aae28acf7cb52d3a0a384467afb9d3461d701b55.css",
-      "sha256": "4730014e53b33d9713dc3fa8aae28acf7cb52d3a0a384467afb9d3461d701b55",
-      "bytes": 465580,
+    "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d": {
+      "path": "assets/css-bundles/42cfada339fa6b3fbe5936e6518884f06e237f623e2d1467fbb908f07d69be98.css",
+      "sha256": "42cfada339fa6b3fbe5936e6518884f06e237f623e2d1467fbb908f07d69be98",
+      "bytes": 471057,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -3426,6 +3624,10 @@
         },
         {
           "path": "weekend-layer.css",
+          "media": "all"
+        },
+        {
+          "path": "field-notes.css",
           "media": "all"
         },
         {
@@ -4243,7 +4445,7 @@
     "baltiysk/baltiyskiy-mayak/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -4322,6 +4524,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -4666,7 +4874,7 @@
     "baltiysk/muzej-baltiyskogo-flota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -4745,6 +4953,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -4803,7 +5017,7 @@
     "baltiysk/vokzal-baltiysk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -4882,6 +5096,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -14641,7 +14861,7 @@
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "4713c12ce9a443d66586d8f12c92c3c10dcdae4957b478bce37be9ffcfbe6bcd",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -14724,6 +14944,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -14780,7 +15006,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "4713c12ce9a443d66586d8f12c92c3c10dcdae4957b478bce37be9ffcfbe6bcd",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -14859,6 +15085,12 @@
             {
               "href": "../../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -14942,7 +15174,7 @@
     "food/zelenogradsk/litovskaya-volna/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "4713c12ce9a443d66586d8f12c92c3c10dcdae4957b478bce37be9ffcfbe6bcd",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -15025,6 +15257,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -15081,7 +15319,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "4713c12ce9a443d66586d8f12c92c3c10dcdae4957b478bce37be9ffcfbe6bcd",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -15160,6 +15398,12 @@
             {
               "href": "../../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -15243,7 +15487,7 @@
     "food/zelenogradsk/rybnaya-volna/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -15332,6 +15576,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -15388,7 +15638,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -15473,6 +15723,12 @@
             {
               "href": "../../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -16010,7 +16266,7 @@
     "kaliningrad/altes-haus/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16089,6 +16345,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -16290,7 +16552,7 @@
     "kaliningrad/bashnya-mayak/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16369,6 +16631,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -16570,7 +16838,7 @@
     "kaliningrad/brandenburgskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16649,6 +16917,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -16707,7 +16981,7 @@
     "kaliningrad/centralnyy-park/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16786,6 +17060,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -16987,7 +17267,7 @@
     "kaliningrad/fridrihsburgskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17066,6 +17346,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17124,7 +17410,7 @@
     "kaliningrad/kafedralny-sobor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17203,6 +17489,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17261,7 +17553,7 @@
     "kaliningrad/kaliningradskiy-zoopark/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17340,6 +17632,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17398,7 +17696,7 @@
     "kaliningrad/kirha-korolevy-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17477,6 +17775,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17535,7 +17839,7 @@
     "kaliningrad/kirha-svyatogo-semeystva/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17614,6 +17918,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17672,7 +17982,7 @@
     "kaliningrad/korolevskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17751,6 +18061,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17809,7 +18125,7 @@
     "kaliningrad/kosmonavt-viktor-patsaev/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17888,6 +18204,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -17946,7 +18268,7 @@
     "kaliningrad/mayak-irbenskiy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18025,6 +18347,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -18083,7 +18411,7 @@
     "kaliningrad/medovyy-most/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18162,6 +18490,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -18220,7 +18554,7 @@
     "kaliningrad/mogila-kanta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18299,6 +18633,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -18500,7 +18840,7 @@
     "kaliningrad/muzej-mirovogo-okeana/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18579,6 +18919,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -18637,7 +18983,7 @@
     "kaliningrad/muzej-yantarya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18716,6 +19062,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19060,7 +19412,7 @@
     "kaliningrad/ostrov-kanta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19139,6 +19491,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19197,7 +19555,7 @@
     "kaliningrad/pakgauz/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19276,6 +19634,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19334,7 +19698,7 @@
     "kaliningrad/pergola-korolevy-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19413,6 +19777,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19471,7 +19841,7 @@
     "kaliningrad/planeta-okean/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19550,6 +19920,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19608,7 +19984,7 @@
     "kaliningrad/rosgartenskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19687,6 +20063,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -19745,7 +20127,7 @@
     "kaliningrad/rybnaya-derevnya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19824,6 +20206,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -20168,7 +20556,7 @@
     "kaliningrad/sudno-vityaz/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20247,6 +20635,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -20448,7 +20842,7 @@
     "kaliningrad/villa-leo/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20527,6 +20921,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -20585,7 +20985,7 @@
     "kaliningrad/villa-shmidt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20664,6 +21064,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -21008,7 +21414,7 @@
     "kaliningrad/zakhaymskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21087,6 +21493,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -21288,7 +21700,7 @@
     "kaliningrad/zemlyakam-kosmonavtam/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21367,6 +21779,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -22024,7 +22442,7 @@
     "kurshskaya-kosa/fringilla/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22103,6 +22521,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -22161,7 +22585,7 @@
     "kurshskaya-kosa/korolevskiy-bor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22240,6 +22664,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -22727,7 +23157,7 @@
     "kurshskaya-kosa/mayak-lesnoy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22806,6 +23236,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -23007,7 +23443,7 @@
     "kurshskaya-kosa/plyazh-lesnoy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23086,6 +23522,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -23424,7 +23866,7 @@
     "kurshskaya-kosa/smotrovaya-efa/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23503,6 +23945,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -23704,7 +24152,7 @@
     "kurshskaya-kosa/tancuyushchiy-les/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23783,6 +24231,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -23990,7 +24444,7 @@
     "kurshskaya-kosa/vysota-efa/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -24069,6 +24523,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -24127,7 +24587,7 @@
     "kurshskaya-kosa/vysota-myullera/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -24206,6 +24666,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -27388,7 +27854,7 @@
     "routes/amalienau-2-hours/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -27477,6 +27943,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -27533,7 +28005,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -27618,6 +28090,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -27695,7 +28173,7 @@
     "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -27784,6 +28262,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -27840,7 +28324,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -27925,6 +28409,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -28285,7 +28775,7 @@
     "routes/kaliningrad-kosmicheskaya-volna/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -28374,6 +28864,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -28430,7 +28926,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -28515,6 +29011,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -28592,7 +29094,7 @@
     "routes/kaliningrad-three-days/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -28681,6 +29183,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -28737,7 +29245,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -28822,6 +29330,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -28905,7 +29419,7 @@
     "routes/ostrov-kanta-naberezhnye/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -28994,6 +29508,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -29050,7 +29570,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -29135,6 +29655,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -29212,7 +29738,7 @@
     "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -29301,6 +29827,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -29357,7 +29889,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -29442,6 +29974,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -29519,7 +30057,7 @@
     "routes/tancuyushchiy-les/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -29608,6 +30146,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -29664,7 +30208,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -29749,6 +30293,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -29826,7 +30376,7 @@
     "routes/vorota-i-reka/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -29915,6 +30465,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -29971,7 +30527,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -30056,6 +30612,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -30133,7 +30695,7 @@
     "routes/vysota-efa/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -30222,6 +30784,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -30278,7 +30846,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -30363,6 +30931,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -30440,7 +31014,7 @@
     "routes/zelenogradsk-2-k-moryu/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -30529,6 +31103,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -30585,7 +31165,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -30670,6 +31250,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -30747,7 +31333,7 @@
     "routes/zelenogradsk-two-days/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -30836,6 +31422,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -30892,7 +31484,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "096de2ca171b1dda3e2b276a43182fe68618f8cbeebf431d324ae8480eac40df",
+          "bundle": "5bb044454ab1bf69f9daa2b9fc70ce1a504257cb678a4a7e49225c19c78a7b1f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -30977,6 +31569,12 @@
             {
               "href": "../../engagement.css?v=2026101501",
               "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -32395,7 +32993,7 @@
     "svetlogorsk/bashnya-svetlogorsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -32474,6 +33072,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -32818,7 +33422,7 @@
     "svetlogorsk/ozero-tihoe/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -32897,6 +33501,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -32955,7 +33565,7 @@
     "svetlogorsk/promenad-svetlogorsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -33034,6 +33644,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -33092,7 +33708,7 @@
     "svetlogorsk/solnechnye-chasy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -33171,6 +33787,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -33229,7 +33851,7 @@
     "svetlogorsk/svetlogorsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -33308,6 +33930,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -38292,7 +38920,7 @@
     "weekend/de-realty-tour/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -38387,6 +39015,12 @@
               "link_media": null
             },
             {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -38441,7 +39075,7 @@
     "weekend/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -38536,6 +39170,12 @@
               "link_media": null
             },
             {
+              "href": "../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../baltic-reference.css?v=20261014",
               "path": "baltic-reference.css",
               "media": "all",
@@ -38590,7 +39230,7 @@
     "weekend/mow-friday-escape/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -38681,6 +39321,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -38739,7 +39385,7 @@
     "weekend/mow-slow-hedonism/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -38830,6 +39476,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -38888,7 +39540,7 @@
     "weekend/mow-storm-winter/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -38979,6 +39631,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -39037,7 +39695,7 @@
     "weekend/mow-two-spits/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -39128,6 +39786,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -39186,7 +39850,7 @@
     "weekend/mow-white-dune/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -39277,6 +39941,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -39335,7 +40005,7 @@
     "weekend/spb-short-escape/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -39426,6 +40096,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -39484,7 +40160,7 @@
     "weekend/work-site-visit/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "7a4296f896fe4545f9c6ecac2701d622c8df8141f0721ef58d14510cd1224784",
+          "bundle": "006ca59ca0ce823dd05522d3537f73277504ca28502adcc514e84fccaa92c13d",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -39575,6 +40251,12 @@
             {
               "href": "../../weekend-layer.css?v=2026101401",
               "path": "weekend-layer.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -41094,7 +41776,7 @@
     "yantarny/plyazh-yantarny/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -41173,6 +41855,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -41231,7 +41919,7 @@
     "yantarny/promenad-yantarny/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -41310,6 +41998,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -41511,7 +42205,7 @@
     "zelenogradsk/bistro-laba-dena/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -41590,6 +42284,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -41648,7 +42348,7 @@
     "zelenogradsk/byuvet-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -41727,6 +42427,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -41928,7 +42634,7 @@
     "zelenogradsk/kafe-amaliya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42007,6 +42713,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42065,7 +42777,7 @@
     "zelenogradsk/kafe-bufet/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42144,6 +42856,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42202,7 +42920,7 @@
     "zelenogradsk/kafe-fanat/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42281,6 +42999,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42339,7 +43063,7 @@
     "zelenogradsk/kafe-gnezdo/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42418,6 +43142,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42476,7 +43206,7 @@
     "zelenogradsk/kafe-granat/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42555,6 +43285,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42613,7 +43349,7 @@
     "zelenogradsk/kafe-skovorodka/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42692,6 +43428,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42750,7 +43492,7 @@
     "zelenogradsk/kafe-tunets/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42829,6 +43571,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -42887,7 +43635,7 @@
     "zelenogradsk/kafe-uksus/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42966,6 +43714,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43024,7 +43778,7 @@
     "zelenogradsk/kirha-svyatogo-adalberta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43103,6 +43857,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43161,7 +43921,7 @@
     "zelenogradsk/kofeynya-slou/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43240,6 +44000,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43441,7 +44207,7 @@
     "zelenogradsk/koshachiy-svetofor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43520,6 +44286,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43578,7 +44350,7 @@
     "zelenogradsk/kurhaus-kranc/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43657,6 +44429,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43715,7 +44493,7 @@
     "zelenogradsk/kurortnyy-prospekt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43794,6 +44572,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -43852,7 +44636,7 @@
     "zelenogradsk/murarium/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43931,6 +44715,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44132,7 +44922,7 @@
     "zelenogradsk/muzej-skeletov/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44211,6 +45001,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44269,7 +45065,7 @@
     "zelenogradsk/muzej-zelenogradska/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44348,6 +45144,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44406,7 +45208,7 @@
     "zelenogradsk/pekarnya-khleb/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44485,6 +45287,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44543,7 +45351,7 @@
     "zelenogradsk/promenad-zelenogradsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44622,6 +45430,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44680,7 +45494,7 @@
     "zelenogradsk/restoran-balt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44759,6 +45573,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44817,7 +45637,7 @@
     "zelenogradsk/restoran-dolche-nonna/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44896,6 +45716,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -44954,7 +45780,7 @@
     "zelenogradsk/restoran-koptilnyy-tsekh/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45033,6 +45859,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45091,7 +45923,7 @@
     "zelenogradsk/restoran-oblaka/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45170,6 +46002,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45228,7 +46066,7 @@
     "zelenogradsk/restoran-riviera/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45307,6 +46145,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45365,7 +46209,7 @@
     "zelenogradsk/restoran-sambiya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45444,6 +46288,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45502,7 +46352,7 @@
     "zelenogradsk/restoran-telegraf/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45581,6 +46431,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45639,7 +46495,7 @@
     "zelenogradsk/restoran-zolotaya-milya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45718,6 +46574,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45776,7 +46638,7 @@
     "zelenogradsk/rybnoe-kafe-na-pirse/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45855,6 +46717,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -45913,7 +46781,7 @@
     "zelenogradsk/skver-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45992,6 +46860,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -46622,7 +47496,7 @@
     "zelenogradsk/zapadnyy-plyazh-zelenogradsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46701,6 +47575,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -46759,7 +47639,7 @@
     "zelenogradsk/zelenogradsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46838,6 +47718,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },
@@ -46896,7 +47782,7 @@
     "zelenogradsk/zelenogradsk-novyy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "9ba956ded57280974ed84fbca728f937a4b6be75b016d232b1e126c7844e94f6",
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46975,6 +47861,12 @@
             {
               "href": "../../day-workspace.css?v=14",
               "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
               "media": "all",
               "link_media": null
             },

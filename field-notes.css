@@ -1,0 +1,187 @@
+.field-notes {
+  --fn-ink: var(--ink-primary, #f2ece1);
+  --fn-muted: var(--ink-secondary, #b8aea0);
+  --fn-line: var(--border-seam, rgb(243 182 86 / 22%));
+  --fn-line-strong: var(--border-seam-strong, rgb(247 195 95 / 55%));
+  --fn-plate: var(--bg-plate, rgb(19 26 34 / 86%));
+  --fn-raised: var(--bg-plate-elevated, #17202a);
+  --fn-accent: var(--amber-clear, #f7c35f);
+  color: var(--fn-ink);
+  margin: clamp(36px, 6vw, 76px) auto;
+  max-width: 920px;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.field-notes > :is(h2, h3) {
+  font: 400 clamp(28px, 4vw, 40px)/1.08 var(--serif, Georgia, serif);
+  letter-spacing: -.025em;
+  margin: 0 0 12px;
+}
+
+.field-notes > p {
+  color: var(--fn-muted);
+  font: 15px/1.65 var(--sans, Arial, sans-serif);
+  margin: 0 0 22px;
+  max-width: 64ch;
+}
+
+.field-notes [data-field-note-form] {
+  background: var(--fn-plate);
+  border: 1px solid var(--fn-line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-caustic, 0 12px 32px rgb(0 0 0 / 14%));
+  display: grid;
+  gap: 18px;
+  padding: clamp(16px, 3vw, 26px);
+}
+
+.field-notes [data-field-note-form] > :is(fieldset, [data-field-actions]) {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.field-notes [data-field-note-form] fieldset {
+  display: grid;
+  gap: 10px 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.field-notes [data-field-note-form] legend {
+  color: var(--fn-muted);
+  font: 600 12px/1.4 var(--sans, Arial, sans-serif);
+  letter-spacing: .06em;
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+
+.field-notes [data-field-note-form] label {
+  color: var(--fn-ink);
+  display: grid;
+  font: 500 14px/1.45 var(--sans, Arial, sans-serif);
+  gap: 7px;
+  min-width: 0;
+}
+
+.field-notes [data-field-note-form] :is(input:not([type="radio"]):not([type="checkbox"]), select, textarea) {
+  background: var(--fn-raised);
+  border: 1px solid var(--fn-line-strong);
+  border-radius: 7px;
+  box-sizing: border-box;
+  color: var(--fn-ink);
+  font: 400 15px/1.45 var(--sans, Arial, sans-serif);
+  min-height: 48px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.field-notes [data-field-note-form] textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.field-notes [data-field-note-form] input[type="file"] {
+  border: 1px dashed var(--fn-line-strong);
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--fn-muted);
+  cursor: pointer;
+  font: 14px/1.4 var(--sans, Arial, sans-serif);
+  min-height: 52px;
+  padding: 8px;
+  width: 100%;
+}
+
+.field-notes [data-field-note-form] input[type="file"]::file-selector-button {
+  background: var(--fn-raised);
+  border: 1px solid var(--fn-line);
+  border-radius: 5px;
+  color: var(--fn-ink);
+  cursor: pointer;
+  font: 600 13px/1.3 var(--sans, Arial, sans-serif);
+  margin-right: 9px;
+  min-height: 36px;
+  padding: 6px 10px;
+}
+
+.field-notes [data-field-note-form] :is(input, select, textarea, button, a):focus-visible {
+  outline: 3px solid var(--fn-accent);
+  outline-offset: 3px;
+}
+
+.field-notes [data-field-note-form] :is([data-field-save], [data-field-export], [data-field-clear], [data-field-copy], [data-field-photo-download], [data-field-telegram]) {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--fn-line-strong);
+  border-radius: 7px;
+  color: var(--fn-ink);
+  cursor: pointer;
+  display: inline-flex;
+  font: 600 14px/1.35 var(--sans, Arial, sans-serif);
+  justify-content: center;
+  min-height: 46px;
+  padding: 9px 13px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.field-notes [data-field-note-form] [data-field-save] {
+  background: var(--fn-accent) !important;
+  border-color: transparent !important;
+  color: var(--bg-canvas, #090d11) !important;
+}
+
+.field-notes [data-field-note-form] :is([data-field-save], [data-field-export], [data-field-clear], [data-field-copy], [data-field-photo-download], [data-field-telegram]):hover {
+  background: color-mix(in srgb, var(--fn-accent) 12%, transparent);
+}
+
+.field-notes [data-field-note-form] [data-field-telegram][aria-disabled="true"] {
+  opacity: .55;
+  pointer-events: none;
+}
+
+.field-notes [data-field-note-form] [data-field-status] {
+  border-left: 2px solid var(--amber-honey, #e89b32);
+  color: var(--fn-muted);
+  font: 13px/1.55 var(--sans, Arial, sans-serif);
+  margin: 0;
+  min-height: 24px;
+  padding: 3px 0 3px 11px;
+}
+
+.field-notes [data-field-photo-preview] {
+  border: 1px solid var(--fn-line);
+  border-radius: 8px;
+  display: block;
+  max-height: 420px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.field-notes [data-field-photo-preview][hidden] { display: none; }
+.field-notes [data-field-note-form] small { color: var(--fn-muted); font: 12px/1.5 var(--sans, Arial, sans-serif); }
+
+@media (max-width: 600px) {
+  .field-notes { padding-inline: 14px; }
+  .field-notes [data-field-note-form] fieldset { grid-template-columns: minmax(0, 1fr); }
+  .field-notes [data-field-note-form] :is([data-field-save], [data-field-export], [data-field-clear], [data-field-copy], [data-field-photo-download], [data-field-telegram]) { min-height: 48px; padding-inline: 8px; }
+}
+
+@media (max-width: 359px) {
+  .field-notes [data-field-note-form] { padding: 14px; }
+  .field-notes [data-field-note-form] :is([data-field-save], [data-field-export], [data-field-clear], [data-field-copy], [data-field-photo-download], [data-field-telegram]) { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-notes *, .field-notes *::before, .field-notes *::after { scroll-behavior: auto !important; transition: none !important; }
+}
+
+.field-note-entry > summary { cursor: pointer; min-height: 48px; padding: 14px 0; font-weight: 600; color: var(--fn-ink); }
+.field-note-entry > p, .field-note-handoff { color: var(--fn-muted); font: 14px/1.65 var(--sans, Arial, sans-serif); }
+.field-observation { padding: 20px 0; border-top: 1px solid var(--fn-line); }
+.field-observation-meta { color: var(--fn-muted); font: 12px/1.6 var(--sans, Arial, sans-serif); }
+.field-observation-text { white-space: pre-line; overflow-wrap: anywhere; font: 16px/1.65 var(--sans, Arial, sans-serif); }
+.field-observation img { max-width: 100%; max-height: 400px; object-fit: contain; border-radius: 4px; }
+.field-editor-reply { border-left: 2px solid var(--fn-accent); padding-left: 14px; font: 14px/1.6 var(--sans, Arial, sans-serif); }
