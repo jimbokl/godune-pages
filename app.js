@@ -257,7 +257,7 @@
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     if (document.querySelector('[data-engagement-page]')) {
-      import(url('engagement.mjs?v=2026101406'))
+      import(url('engagement.mjs?v=2026101501'))
         .then(({initEngagement}) => initEngagement({workshop, catalog:data, base}))
         .catch(() => {
           // The evidence-backed static passport remains useful without controls.

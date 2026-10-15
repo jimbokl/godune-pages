@@ -157,12 +157,15 @@ export async function initEngagement({workshop,base,catalog}={}){
   const path=validPath(context.node.path||root.dataset.nodePath)||location.pathname;
   const storageKey=`godune-engagement:v1:${path}`;
   const kind=String(context.node.kind||root.dataset.kind||'').toLowerCase();
+  // The server-rendered disclosure keeps asynchronous controls and status
+  // changes out of the initial reading flow. Older cached pages still work.
+  const enhancement=root.querySelector('[data-engagement-enhancement]')||root;
 
   if(nonTripKind(kind)){
     const link=node('a',{'data-engagement-investment-link':'',href:investmentHref(context,base)},'Открыть инструмент условий недвижимости →');
     safeStyle(link,{display:'inline-flex',alignItems:'center',minHeight:'44px',padding:'0 12px'});
     const callout=node('p',{'data-engagement-investment-callout':''},'Эта страница помогает проверить проект и условия; её нельзя добавить в прогулку как остановку. ');
-    callout.append(link);root.append(callout);
+    callout.append(link);enhancement.append(callout);
     const offline=offlineDetails(offlineSummary,base);
     await renderOfflinePanel(offline,{context,catalog,selectedPaths:[],base});
     const refreshOffline=()=>void renderOfflinePanel(offline,{context,catalog,selectedPaths:[],base});
@@ -177,7 +180,7 @@ export async function initEngagement({workshop,base,catalog}={}){
     const link=node('a',{'data-engagement-planner-link':'',href:plannerHref(root,base,context,transportOnPage)},transportOnPage.label);
     safeStyle(link,{display:'inline-flex',alignItems:'center',minHeight:'48px',padding:'4px 12px',margin:'8px 0'});
     const callout=node('p',{'data-engagement-transport-callout':''},'Для этой поездки используйте отдельный транспортный план: он учитывает автобус или паром и возвращение. ');
-    callout.append(link);root.append(callout);
+    callout.append(link);enhancement.append(callout);
     const offline=offlineDetails(offlineSummary,base);
     await renderOfflinePanel(offline,{context,catalog,selectedPaths:[],base});
     const refreshOffline=()=>void renderOfflinePanel(offline,{context,catalog,selectedPaths:[],base});
@@ -221,7 +224,7 @@ export async function initEngagement({workshop,base,catalog}={}){
   const save=node('button',{type:'button','data-engagement-save':'',disabled:''},'Собрать и сохранить день');
   safeStyle(save,{minHeight:'44px',padding:'0 14px'});
   controlsRow.append(dateLabel,startLabel,endLabel,selectionSummary,save);
-  content.append(heading,choices,controlsRow);controls.append(summary,content);root.append(controls);
+  content.append(heading,choices,controlsRow);controls.append(summary,content);enhancement.append(controls);
 
   const dock=node('aside',{'data-engagement-dock':'','aria-label':'Выбранное для поездки',hidden:''});
   safeStyle(dock,{position:'fixed',zIndex:'50',left:'50%',bottom:'max(8px, env(safe-area-inset-bottom))',transform:'translateX(-50%)',width:'min(420px, calc(100vw - 16px))',maxHeight:'30vh',overflow:'auto',padding:'6px 8px',display:'grid',gridTemplateColumns:'minmax(0,1fr) auto',gap:'4px 8px',fontSize:'14px',lineHeight:'1.3'});
