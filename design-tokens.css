@@ -1,0 +1,878 @@
+/* AmberMosaic editorial layer. Load after page bundles and critical styles. */
+:root {
+  --mosaic-canvas: #0A1628;
+  --mosaic-surface: #132238;
+  --mosaic-surface-hover: #1B2B42;
+  --border-mosaic: rgb(245 245 245 / 14%);
+  --amber-primary: #E8A94A;
+  --amber-glow: rgb(232 169 74 / 28%);
+  --amber-dim: rgb(232 169 74 / 14%);
+  --text-main: #F5F5F5;
+  --text-muted: #A8B0BD;
+  --font-display: var(--serif, Georgia, "Times New Roman", serif);
+  --font-sans: var(--sans, Arial, sans-serif);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Public compatibility aliases: light-mode values are supplied by .theme-sand. */
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-surface: var(--mosaic-surface);
+  --bg-subtle: var(--mosaic-surface-hover);
+  --ink-primary: var(--text-main);
+  --ink-secondary: var(--text-muted);
+  --ink-muted: var(--text-muted);
+  --accent-amber: var(--amber-primary);
+  --accent-sea: #8FA3BC;
+  --border-hairline: var(--border-mosaic);
+  --border-strong: rgb(245 245 245 / 30%);
+  --amber-canvas: #0A1628;
+  --amber-surface: #132238;
+  --amber-surface-raised: #1B2B42;
+  --amber-text: #F5F5F5;
+  --amber-muted: #A8B0BD;
+  --amber-accent: #E8A94A;
+  --amber-honey: #C9A961;
+  --amber-line: var(--border-mosaic);
+  --amber-line-strong: var(--border-strong);
+  --amber-serif: var(--font-display);
+  --amber-sans: var(--font-sans);
+  --amber-mono: var(--font-mono);
+  --amber-radius: 3px;
+}
+
+/* Optional Swiss-light palette. Apply .theme-sand to the page or content root. */
+.theme-sand {
+  --mosaic-canvas: #F4F1EA;
+  --mosaic-surface: #FAF8F4;
+  --mosaic-surface-hover: #EAE5DA;
+  --border-mosaic: rgb(22 25 24 / 12%);
+  --amber-primary: #B56522;
+  --amber-glow: rgb(181 101 34 / 28%);
+  --amber-dim: rgb(181 101 34 / 14%);
+  --text-main: #161918;
+  --text-muted: #525855;
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-surface: var(--mosaic-surface);
+  --bg-subtle: var(--mosaic-surface-hover);
+  --ink-primary: #161918;
+  --ink-secondary: #525855;
+  --ink-muted: #7A807C;
+  --accent-amber: var(--amber-primary);
+  --accent-sea: #1F4E5B;
+  --border-hairline: rgb(22 25 24 / 12%);
+  --border-strong: rgb(22 25 24 / 28%);
+  --amber-canvas: var(--mosaic-canvas);
+  --amber-surface: var(--mosaic-surface);
+  --amber-surface-raised: var(--mosaic-surface-hover);
+  --amber-text: var(--text-main);
+  --amber-muted: var(--text-muted);
+  --amber-accent: var(--amber-primary);
+  --amber-honey: #80652B;
+  --amber-line: var(--border-hairline);
+  --amber-line-strong: var(--border-strong);
+}
+
+/* SUCCINITE material aliases. The public day/night theme contract stays unchanged. */
+:root,
+html[data-theme="night"] {
+  --bg-canvas: #090D11;
+  --bg-canvas-subtle: #10161D;
+  --bg-plate: rgb(19 26 34 / 86%);
+  --bg-plate-elevated: #17202A;
+  --bg-amber-tint: radial-gradient(120% 100% at 50% 0%, rgb(243 182 86 / 16%) 0%, rgb(18 24 32 / 92%) 75%);
+  --ink-primary: #F2ECE1;
+  --ink-secondary: #B8AEA0;
+  --ink-muted: #B8AEA0;
+  --amber-clear: #F7C35F;
+  --amber-honey: #E89B32;
+  --amber-cognac: #E06D38;
+  --amber-gold-leaf: #C9A961;
+  --border-seam: rgb(243 182 86 / 22%);
+  --border-seam-strong: rgb(247 195 95 / 55%);
+  --shadow-caustic: 0 16px 40px -8px rgb(0 0 0 / 65%), 0 0 28px -6px rgb(232 155 50 / 22%);
+  --shadow-inset-gem: inset 0 1px 0 rgb(255 228 168 / 22%), inset 0 0 0 1px rgb(243 182 86 / 16%);
+  --succinite-canvas: var(--bg-canvas);
+  --succinite-plate: var(--bg-plate);
+  --succinite-clear: var(--amber-clear);
+  --succinite-honey: var(--amber-honey);
+  --succinite-cognac: var(--amber-cognac);
+  --succinite-seam: var(--border-seam);
+  --mosaic-canvas: var(--bg-canvas);
+  --mosaic-surface: #151B22;
+  --mosaic-surface-hover: #17202A;
+  --text-main: var(--ink-primary);
+  --text-muted: var(--ink-secondary);
+  --amber-primary: var(--amber-honey);
+  --amber-glow: rgb(243 182 86 / 16%);
+  --amber-dim: rgb(243 182 86 / 16%);
+  --border-mosaic: var(--border-seam);
+  --amber-canvas: var(--bg-canvas);
+  --amber-surface: var(--mosaic-surface);
+  --amber-surface-raised: var(--mosaic-surface-hover);
+  --amber-text: var(--ink-primary);
+  --amber-muted: var(--ink-secondary);
+  --amber-accent: var(--amber-clear);
+  --amber-honey: #E89B32;
+  --amber-line: var(--border-seam);
+  --amber-line-strong: var(--border-seam-strong);
+}
+
+html[data-theme="day"] {
+  --bg-canvas: #F3EFE6;
+  --bg-canvas-subtle: #EAE3D5;
+  --bg-plate: rgb(252 249 242 / 88%);
+  --bg-plate-elevated: #FFFDF9;
+  --bg-amber-tint: linear-gradient(135deg, rgb(245 183 75 / 14%) 0%, rgb(212 118 30 / 4%) 60%, rgb(158 59 24 / 9%) 100%);
+  --ink-primary: #1A1612;
+  --ink-secondary: #544739;
+  --ink-muted: #655747;
+  --amber-clear: #E59824;
+  --amber-honey: #C67314;
+  --amber-cognac: #9A3B15;
+  --amber-gold-leaf: #D4AF37;
+  --border-seam: rgb(180 110 30 / 22%);
+  --border-seam-strong: rgb(154 59 21 / 45%);
+  --shadow-caustic: 0 12px 32px -8px rgb(180 105 20 / 15%), 0 2px 6px -1px rgb(140 70 10 / 8%);
+  --shadow-inset-gem: inset 0 1px 0 rgb(255 250 235 / 90%), inset 0 0 0 1px rgb(212 132 37 / 18%);
+  --succinite-canvas: var(--bg-canvas);
+  --succinite-plate: var(--bg-plate);
+  --succinite-clear: var(--amber-clear);
+  --succinite-honey: var(--amber-honey);
+  --succinite-cognac: var(--amber-cognac);
+  --succinite-seam: var(--border-seam);
+  --mosaic-canvas: var(--bg-canvas);
+  --mosaic-surface: #FBF7EE;
+  --mosaic-surface-hover: var(--bg-plate-elevated);
+  --text-main: var(--ink-primary);
+  --text-muted: var(--ink-secondary);
+  --amber-primary: var(--amber-cognac);
+  --amber-glow: rgb(246 189 96 / 14%);
+  --amber-dim: rgb(246 189 96 / 14%);
+  --border-mosaic: var(--border-seam);
+  --amber-canvas: var(--bg-canvas);
+  --amber-surface: var(--mosaic-surface);
+  --amber-surface-raised: var(--mosaic-surface-hover);
+  --amber-text: var(--ink-primary);
+  --amber-muted: var(--ink-secondary);
+  --amber-accent: var(--amber-cognac);
+  --amber-honey: #C67314;
+  --amber-line: var(--border-seam);
+  --amber-line-strong: var(--border-seam-strong);
+}
+
+/* Keep the design contract inside editorial content; the shared shell is frozen. */
+body.inner-page > main.inner-main {
+  --paper: var(--amber-canvas);
+  --card: var(--amber-surface);
+  --sand: var(--amber-surface-raised);
+  --ink: var(--amber-text);
+  --muted: var(--amber-muted);
+  --sea: var(--amber-surface-raised);
+  --sea-ink: var(--amber-text);
+  --sea-hover: var(--amber-surface);
+  --sea-line: var(--amber-line-strong);
+  --sea-soft: var(--amber-surface-raised);
+  --sea-muted: var(--amber-muted);
+  --line: var(--amber-line);
+  --brand-ink: var(--amber-text);
+  --brand-amber: var(--amber-accent);
+  --night-surface: var(--amber-surface);
+  --night-panel: var(--amber-surface-raised);
+  --night-line: var(--amber-line);
+  --night-ink: var(--amber-text);
+  --night-muted: var(--amber-muted);
+  --radius: var(--amber-radius);
+  color: var(--amber-text);
+  background-color: var(--amber-canvas);
+  font-family: var(--amber-sans);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.58;
+}
+
+body.inner-page > main.inner-main .food-guide {
+  --guide-surface: var(--amber-surface);
+  --guide-panel: var(--amber-surface-raised);
+  --guide-line: var(--amber-line);
+  --guide-ink: var(--amber-text);
+  --guide-muted: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main :is(h1, h2, h3, h4) {
+  font-family: var(--amber-serif);
+  color: var(--amber-text);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+body.inner-page > main.inner-main :is(p, li, dt, dd, summary, label, button, input, select, textarea) {
+  color: inherit;
+  font-family: var(--amber-sans);
+  text-wrap: pretty;
+}
+
+body.inner-page > main.inner-main :is(.inner-lead, .realty-deck, .catalog-description, .journey-stop-description, .food-guide p, .place-intro p, .realty-page p) {
+  max-width: 62ch;
+}
+
+body.inner-page > main.inner-main p:not(.eyebrow):not(.inner-kicker):not(.meta) {
+  max-width: 62ch;
+}
+
+body.inner-page > main.inner-main :is(.eyebrow, .inner-kicker, .meta, .news-meta, .page-updated, .food-menu-source-heading > span, .food-menu-condition, .food-portion, .graph-weave-label) {
+  color: var(--amber-muted);
+  font-family: var(--amber-mono);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+body.inner-page > main.inner-main :is(a, .journey-place-link, .catalog-open, .catalog-pdf, .catalog-plan) {
+  color: var(--amber-accent);
+}
+
+body.inner-page > main.inner-main :is(.inner-lead, .realty-deck, .catalog-description, .journey-stop-description, .realty-muted, .food-guide-day, .food-place-address, .housing-breakdown) {
+  color: var(--amber-muted);
+}
+
+/* Existing route, POI, dining, food-guide and realty cards share one surface. */
+body.inner-page > main.inner-main :is(
+  .catalog-route, .catalog-access > a, .catalog-itinerary, .catalog-starter,
+  .journey-stop-card, .journey-pocket, .dining-card, .food-menu-source,
+  .food-guide-day, .poi-card, .route-discovery-link, .housing-card,
+  .realty-fact-panel, .realty-roles article, .realty-checklist label,
+  .realty-keyfacts > div
+) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main :is(.catalog-route, .journey-stop-card, .dining-card, .housing-card) {
+  overflow: hidden;
+}
+
+body.inner-page > main.inner-main .dining-cards {
+  align-items: stretch;
+}
+
+body.inner-page > main.inner-main .dining-card,
+body.inner-page > main.inner-main .dining-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+body.inner-page > main.inner-main .dining-card-body {
+  flex: 1;
+}
+
+body.inner-page > main.inner-main .dining-card-actions {
+  margin-top: auto;
+}
+
+body.inner-page > main.inner-main :is(
+  .catalog-route, .catalog-access > a, .catalog-itinerary, .catalog-starter,
+  .journey-stop-card, .journey-pocket, .dining-card, .food-menu-source,
+  .poi-card, .route-discovery-link, .housing-card, .realty-roles article,
+  .realty-checklist label, .realty-keyfacts > div
+) {
+  border-width: 1px;
+}
+
+/* Realty has a local paper palette; bridge it into the shared token system. */
+body.inner-page > main.inner-main .realty-page {
+  --ry-ink: var(--amber-text);
+  --ry-sea: var(--amber-muted);
+  --ry-paper: var(--amber-surface);
+  --ry-line: var(--amber-line);
+  --ry-amber: var(--amber-accent);
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .realty-page :is(.realty-fact-panel, .realty-keyfacts > div, .realty-roles article, .realty-checklist label, .realty-version, .realty-table-wrap) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main .realty-page :is(.realty-fact-foot, .realty-muted, .realty-checklist small, .realty-roles p) {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .realty-keyfacts > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 0.55rem;
+}
+
+body.inner-page > main.inner-main .realty-keyfacts dt {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .realty-keyfacts dt::after {
+  content: "";
+  flex: 1 1 auto;
+  min-width: 0.5rem;
+  border-bottom: 1px dotted var(--amber-line);
+}
+
+body.inner-page > main.inner-main .realty-keyfacts dd {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Documentary data uses mono numerals without changing prose or link meaning. */
+body.inner-page > main.inner-main :is(.catalog-facts, .catalog-location, .journey-passport dt, .journey-passport dd, .realty-keyfacts dd, .food-practical dd time, .food-source, .food-menu-passport, .housing-road, .place-plate-focus, .city-day-number, .realty-compare td, .realty-compare tbody th, time) {
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+body.inner-page > main.inner-main :is(.journey-passport, .graph-weave, .city-day-card, .food-guide-practical, .realty-compare thead th, .realty-compare tbody tr:nth-child(even)) {
+  color: var(--amber-text);
+  border-color: var(--amber-line);
+  background-color: var(--amber-surface);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main :is(.journey-passport, .graph-weave, .city-day-card) {
+  border-radius: var(--amber-radius);
+}
+
+body.inner-page > main.inner-main :is(.catalog-route, .catalog-access > a, .catalog-itinerary, .catalog-starter, .dining-card, .housing-card, .city-day-card) {
+  height: 100%;
+  transition: border-color 400ms ease;
+}
+
+body.inner-page > main.inner-main .catalog-route {
+  display: flex;
+  flex-direction: column;
+}
+
+body.inner-page > main.inner-main .catalog-route-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+body.inner-page > main.inner-main .catalog-actions {
+  margin-top: auto;
+}
+
+body.inner-page > main.inner-main .catalog-open > span {
+  display: inline-block;
+  transition: transform 400ms ease;
+}
+
+body.inner-page > main.inner-main .realty-compare tbody th {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .realty-compare :is(th, td) {
+  border-color: var(--amber-line);
+  background-color: transparent;
+}
+
+body.inner-page > main.inner-main .realty-compare thead th {
+  background-color: var(--amber-surface-raised);
+}
+
+body.inner-page > main.inner-main .realty-compare tbody tr:nth-child(even) {
+  background-color: var(--amber-surface-raised);
+}
+
+body.inner-page > main.inner-main .food-practical > div {
+  border-bottom: 1px dotted var(--amber-line);
+}
+
+body.inner-page > main.inner-main .food-practical dt {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .food-menu-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  min-width: 0;
+  width: 100%;
+}
+
+body.inner-page > main.inner-main .food-menu-line .food-menu-leader {
+  flex: 1 1 1.5rem;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--amber-line);
+  transform: translateY(-0.25em);
+}
+
+body.inner-page > main.inner-main .food-menu-line strong {
+  flex: 0 0 auto;
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+body.inner-page > main.inner-main :is(.catalog-route figcaption, .journey-cover figcaption, .dining-photo span, .housing-card figcaption, .food-place-photo figcaption, .place-intro figure figcaption, .food-hero figcaption) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border: 1px solid var(--amber-line);
+  border-radius: var(--amber-radius);
+  font-family: var(--amber-mono);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+
+body.inner-page > main.inner-main :is(.catalog-route figcaption, .journey-cover figcaption, .housing-card figcaption, .food-place-photo figcaption, .place-intro figure figcaption, .food-hero figcaption) {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem 0;
+  border-inline: 0;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main :is(.place-intro figure img, .food-place-photo img, .catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img) {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+body.inner-page > main.inner-main :is(.place-intro figure img, .food-place-photo img) {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--amber-radius);
+}
+
+body.inner-page > main.inner-main :is(.catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img) {
+  border-radius: 0;
+}
+
+body.inner-page > main.inner-main :is(.food-card-photo, .dining-photo, .housing-card figure) {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+body.inner-page > main.inner-main :is(.food-card-photo img, .dining-photo img, .housing-card figure img) {
+  aspect-ratio: 4 / 3;
+  height: 100%;
+}
+
+body.inner-page > main.inner-main :is(.journey-cover, .journey-cover-picture) {
+  aspect-ratio: 16 / 9;
+}
+
+body.inner-page > main.inner-main :is(.place-intro figure img, .food-place-photo img, .catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img, .food-card-photo img) {
+  filter: brightness(0.92) contrast(1.04);
+}
+
+body.theme-sand > main.inner-main :is(.place-intro figure img, .food-place-photo img, .catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img, .food-card-photo img),
+body.inner-page > main.inner-main.theme-sand :is(.place-intro figure img, .food-place-photo img, .catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img, .food-card-photo img) {
+  filter: contrast(1.03) saturate(0.92);
+}
+
+body.inner-page > main.inner-main :is(.place-intro figure, .food-place-photo, .catalog-route figure, .dining-photo, .housing-card figure, .journey-cover, .food-card-photo) {
+  border: 1px solid var(--amber-line);
+  background-color: var(--amber-surface);
+}
+
+/* Source evidence stays visually distinct from the places it links to. */
+:where(main) .amber-plate {
+  padding: 14px 16px;
+  border: 1px solid var(--border-mosaic);
+  border-inline-start: 3px solid var(--amber-accent);
+  border-radius: var(--amber-radius);
+  color: var(--amber-text);
+  background-color: color-mix(in srgb, var(--amber-accent) 11%, var(--amber-surface));
+  backdrop-filter: blur(8px);
+}
+
+:where(main) .amber-plate :is(p, li, a, strong, small) {
+  color: inherit;
+}
+
+:where(main) .data-light-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--amber-text);
+  font: 500 12px/1.45 var(--amber-sans);
+  transition: color 400ms ease;
+}
+
+:where(main) .data-light-indicator::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 0 2px var(--amber-surface), 0 0 0 3px currentColor;
+}
+
+:where(main) .data-light-indicator[data-status="verified"]::before {
+  color: var(--amber-honey);
+  opacity: 1;
+  animation: amber-status-breathe 3s ease-in-out infinite;
+}
+:where(main) .data-light-indicator[data-status="partial"]::before { color: var(--amber-accent); opacity: 0.6; }
+:where(main) .data-light-indicator[data-status="unknown"]::before { color: var(--amber-muted); background-color: transparent; opacity: 0.25; }
+
+@keyframes amber-status-breathe {
+  50% { opacity: 0.6; }
+}
+
+/* Only content lists receive editorial dash markers; UI lists keep native behavior. */
+body.inner-page > main.inner-main :is(.route-practical, .realty-section, .journey-stop-body, .catalog-itinerary) ul:not(.food-menu-items):not(.food-dish-chips):not(.realty-chip-list):not(.map-places):not(.search-results) {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+body.inner-page > main.inner-main :is(.route-practical, .realty-section, .journey-stop-body, .catalog-itinerary) ul:not(.food-menu-items):not(.food-dish-chips):not(.realty-chip-list):not(.map-places):not(.search-results) > li {
+  position: relative;
+  padding-inline-start: 1.2em;
+}
+
+body.inner-page > main.inner-main :is(.route-practical, .realty-section, .journey-stop-body, .catalog-itinerary) ul:not(.food-menu-items):not(.food-dish-chips):not(.realty-chip-list):not(.map-places):not(.search-results) > li::before {
+  content: "—";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--amber-muted);
+}
+
+/* Exact existing modal hooks; these sit outside main and never touch the shell. */
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border: 1px solid var(--amber-line-strong);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+  font-family: var(--amber-sans);
+}
+
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog)::backdrop {
+  background-color: rgb(3 9 17 / 78%);
+}
+
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog) :is(h2, h3, p, li, label, #map-status, .search-status, .map-note) {
+  color: var(--amber-text);
+}
+
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog) :is(button, input, select) {
+  color: var(--amber-text);
+  border-color: var(--amber-line-strong);
+  background-color: var(--amber-surface-raised);
+}
+
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog) :is(a, .timeline time) {
+  color: var(--amber-accent);
+}
+
+body.inner-page :is(dialog.route-dialog, dialog.map-dialog, dialog.search-dialog) #interactive-map {
+  border: 1px solid var(--amber-line);
+  border-radius: var(--amber-radius);
+}
+
+/* The regional map uses an id-based dialog and its own concrete panel hooks. */
+body.inner-page #map-dialog {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border: 1px solid var(--amber-line-strong);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page #map-dialog :is(h2, h3, p, li, label, dt, dd, #map-status, .map-status, .map-source-note) {
+  color: var(--amber-text);
+}
+
+body.inner-page #map-dialog :is(.map-workspace, .map-frame, .map-list-panel, .map-day-passport) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page #map-dialog :is(button, input, select) {
+  color: var(--amber-text);
+  color-scheme: dark;
+  background-color: var(--amber-surface-raised);
+  border-color: var(--amber-line-strong);
+}
+
+body.inner-page #map-dialog :is(a, .map-view-switch button[aria-pressed="true"]) {
+  color: var(--amber-accent);
+}
+
+body.inner-page #map-dialog .map-view-switch button[aria-pressed="true"] {
+  color: var(--amber-canvas);
+  background-color: var(--amber-accent);
+  border-color: var(--amber-accent);
+}
+
+body.inner-page #map-dialog :is(.map-status, .map-source-note) {
+  color: var(--amber-muted);
+}
+
+body.inner-page #map-dialog #interactive-map {
+  background-color: var(--amber-canvas);
+}
+
+body.inner-page #map-dialog #interactive-map :is(.leaflet-popup-content-wrapper, .leaflet-popup-tip, .leaflet-control-zoom a) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+}
+
+body.inner-page #map-dialog .map-day-passport :is(strong, time) {
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.inner-page > main.inner-main .catalog-route:hover .catalog-open > span {
+    transform: translate(2px, -2px);
+  }
+
+  body.inner-page > main.inner-main :is(.catalog-route, .catalog-access > a, .journey-stop-card, .dining-card, .poi-card, .housing-card, .realty-roles article, .realty-checklist label):hover {
+    transform: none;
+    border-color: var(--amber-line-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.inner-page > main.inner-main :is(.catalog-route, .catalog-access > a, .journey-stop-card, .dining-card, .poi-card, .housing-card, .realty-roles article, .realty-checklist label, .data-light-indicator, .data-light-indicator::before) {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  :where(main) .data-light-indicator[data-status="verified"]::before { animation: none; }
+  body.inner-page > main.inner-main .catalog-open > span { transition: none; }
+}
+
+/* Remaining route and wave surfaces that ship with literal light colors. */
+body.inner-page > main.inner-main :is(.journey-cover figcaption, .fish-hero-photos figcaption) {
+  color: var(--amber-text);
+  background: var(--amber-surface);
+  border: 1px solid var(--amber-line);
+}
+
+body.inner-page > main.inner-main .wave-static {
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .wave-static-stops > li {
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  background: var(--amber-surface);
+}
+
+body.inner-page > main.inner-main .wave-static .journey-pocket {
+  color: var(--amber-text);
+  background: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+}
+
+body.inner-page > main.inner-main .wave-static :is(.wave-static-duration, .wave-static small) {
+  color: var(--amber-muted);
+}
+
+/* The realty bundle has several hard-coded Swiss-light panels and form fields. */
+body.inner-page > main.inner-main .realty-page {
+  --ry-ink: var(--amber-text);
+  --ry-sea: var(--amber-muted);
+  --ry-paper: var(--amber-surface);
+  --ry-line: var(--amber-line);
+  --ry-amber: var(--amber-accent);
+  --rp-ink: var(--amber-text);
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .realty-page :is(
+  .realty-feature, .realty-side-note, .realty-card, .realty-callout,
+  .realty-keyfacts > div, .realty-roles article, .realty-chip-list li,
+  .realty-version, .realty-sticky-note, .realty-sticky-card,
+  .realty-checklist label, .realty-process article, .realty-brief,
+  .realty-money-flow > div span, .realty-compare tr
+) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main .realty-page :is(
+  .realty-deck, .realty-feature > p:not(.inner-kicker), .realty-stats span,
+  .realty-side-note p, .realty-card p, .realty-callout > p,
+  .realty-muted, .realty-fact-foot, .realty-brief :is(p, label),
+  .realty-process article p, .realty-question-grid p
+) {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .realty-page :is(.realty-badge, .realty-unknown) {
+  color: var(--amber-text);
+  background-color: color-mix(in srgb, var(--amber-accent) 18%, var(--amber-surface));
+  border: 1px solid var(--amber-line);
+}
+
+body.inner-page > main.inner-main .realty-page .realty-money-flow > div strong {
+  color: var(--amber-canvas);
+  background-color: var(--amber-accent);
+}
+
+body.inner-page > main.inner-main .realty-page :is(input, select, textarea) {
+  color: var(--amber-text);
+  color-scheme: dark;
+  background-color: var(--amber-surface-raised);
+  border-color: var(--amber-line-strong);
+}
+
+body.inner-page > main.inner-main .realty-page :is(input, textarea)::placeholder {
+  color: var(--amber-muted);
+  opacity: 1;
+}
+
+body.inner-page > main.inner-main .realty-page :is(.realty-stats strong, .realty-card-number, .realty-money-flow strong, .realty-compare td, .realty-compare tbody th) {
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Map controls, parcel panels, and the White Dune project map use separate palettes. */
+body.inner-page > main.inner-main .map-page {
+  --rp-paper: var(--amber-surface);
+  --rp-ink: var(--amber-text);
+  --rp-muted: var(--amber-muted);
+  --rp-line: var(--amber-line);
+  --rp-blue: var(--amber-accent);
+  --rp-amber: var(--amber-honey);
+  --business-surface: var(--amber-surface);
+  --business-blue: var(--amber-accent);
+  --business-amber: var(--amber-honey);
+  --business-muted: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-workspace, .map-selection, .map-parcel, .map-tenders, .map-location-tools, .map-choice) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-tools input, .map-tools select, .map-tools button, button, .map-location-actions button, .map-choice button, .map-neighbor-pick) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface-raised);
+  border-color: var(--amber-line-strong);
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-intro-note, .map-location-status, .map-location-note, .map-choice-body, .map-choice-note, .map-choice-body small, .map-record-select small, .map-legend, .map-scale) {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-record-select, .map-choice-body strong, .map-choice-body a, .map-choice-back, .map-choice h3) {
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-selection dt, .map-selection dd, .map-parcel dt, .map-parcel dd, .map-results-heading p, .map-edition-heading p, .map-method) {
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .map-page :is(.map-view-switch button[aria-pressed="true"], .map-location-actions [aria-pressed="true"]) {
+  color: var(--amber-canvas);
+  background-color: var(--amber-accent);
+  border-color: var(--amber-accent);
+}
+
+body.inner-page > main.inner-main .map-page.dossier-page :is(.map-canvas, .geographic-map) {
+  background-color: var(--amber-canvas);
+}
+
+body.inner-page > main.inner-main .map-page.dossier-page .map-context-water {
+  fill: var(--amber-surface-raised);
+}
+
+body.inner-page > main.inner-main .map-page.dossier-page .map-context-land {
+  stroke: var(--amber-line-strong);
+}
+
+body.inner-page > main.inner-main .map-page.dossier-page .map-sea-label {
+  fill: var(--amber-muted);
+}
+
+/* White Dune dossier pages outside the interactive parcel map. */
+body.inner-page > main.inner-main .business-page.dossier-page {
+  --business-surface: var(--amber-surface);
+  --business-blue: var(--amber-surface-raised);
+  --business-muted: var(--amber-muted);
+  --ink: var(--amber-text);
+  --paper: var(--amber-canvas);
+  --card: var(--amber-surface);
+  --line: var(--amber-line);
+  --muted: var(--amber-muted);
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.business-card, .dossier-aside, .decision-summary-card, .engagement-fact-passport, .engagement-graph-context, .project-metric-card, .timeline-aside, .timeline-filter-fields, .research-source, .research-status-card) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface);
+  border-color: var(--amber-line);
+  border-radius: var(--amber-radius);
+  box-shadow: none;
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.business-card p, .business-card small, .dossier-aside p, .business-facts dt, .business-facts dd, .decision-summary-card header p, .project-metric-card p, .timeline-aside p, .research-page .research-date, .research-page .research-summary) {
+  color: var(--amber-muted);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.business-nav a[aria-current="page"], .research-nav a[aria-current="page"]) {
+  color: var(--amber-text);
+  background-color: var(--amber-surface-raised);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.dossier-related a, .business-link, .business-context-links a, .dossier-record > summary::after) {
+  color: var(--amber-accent);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page .dossier-record[open] > summary::after {
+  color: var(--amber-text);
+  background-color: var(--amber-surface-raised);
+  border-color: var(--amber-line);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page .business-card-actions button {
+  color: var(--amber-text);
+  background-color: var(--amber-surface-raised);
+  border-color: var(--amber-line-strong);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page .business-card-actions button[aria-pressed="true"] {
+  color: var(--amber-canvas);
+  background-color: var(--amber-accent);
+  border-color: var(--amber-accent);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.dossier-record > summary, .dossier-record-body, .business-facts, .business-card-actions) {
+  color: var(--amber-text);
+}
+
+body.inner-page > main.inner-main .business-page.dossier-page :is(.engagement-fact-passport dd, .project-metric-card strong, .project-metric-value, .decision-summary-card [data-engagement-value]) {
+  font-family: var(--amber-mono);
+  font-variant-numeric: tabular-nums;
+}

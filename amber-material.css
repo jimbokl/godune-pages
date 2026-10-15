@@ -1,0 +1,613 @@
+/* Resin and amber material layer. Load after design-tokens.css and page bundles. */
+:root {
+  color-scheme: dark;
+  --resin-canvas: #070D14;
+  --resin-base: #0E1724;
+  --resin-card: rgb(20 30 45 / 75%);
+  --resin-card-hover: rgb(28 42 63 / 85%);
+  --amber-sun: #FCE2A3;
+  --amber-honey: #F3B656;
+  --amber-deep: #D9822B;
+  --amber-cognac: #A65B12;
+  --amber-edge-color: rgb(243 182 86 / 24%);
+  --amber-edge: 1px solid var(--amber-edge-color);
+  --amber-edge-strong: 1px solid rgb(243 182 86 / 50%);
+  --amber-glow-color: rgb(243 182 86 / 35%);
+  --amber-glow: 0 0 24px -4px var(--amber-glow-color);
+  --material-shadow: 0 8px 32px rgb(0 0 0 / 40%), inset 0 1px 0 rgb(252 226 163 / 15%);
+  --material-shadow-hover: var(--amber-glow), inset 0 1px 0 rgb(252 226 163 / 30%);
+  --mosaic-canvas: var(--resin-canvas);
+  --mosaic-surface: var(--resin-base);
+  --mosaic-surface-hover: #1C2A3F;
+  --border-mosaic: var(--amber-edge-color);
+  --amber-primary: var(--amber-honey);
+  --amber-dim: rgb(243 182 86 / 14%);
+  --text-main: #F5F5F5;
+  --text-muted: #BEB6A9;
+  --font-display: var(--serif, Georgia, "Times New Roman", serif);
+  --font-sans: var(--sans, Arial, sans-serif);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-surface: var(--resin-card);
+  --bg-subtle: var(--resin-card-hover);
+  --ink-primary: var(--text-main);
+  --ink-secondary: var(--text-muted);
+  --ink-muted: var(--text-muted);
+  --accent-amber: var(--amber-sun);
+  --accent-sea: #A8B8C8;
+  --border-hairline: var(--amber-edge-color);
+  --border-strong: rgb(243 182 86 / 55%);
+  --amber-canvas: var(--resin-canvas);
+  --amber-surface: var(--resin-base);
+  --amber-surface-raised: var(--resin-card-hover);
+  --amber-text: var(--text-main);
+  --amber-muted: var(--text-muted);
+  --amber-accent: var(--amber-sun);
+  --amber-line: var(--amber-edge-color);
+  --amber-line-strong: var(--border-strong);
+  --amber-serif: var(--font-display);
+  --amber-sans: var(--font-sans);
+  --amber-mono: var(--font-mono);
+  --amber-radius: 4px;
+}
+
+html[data-theme="night"] { color-scheme: dark; }
+
+html[data-theme="day"] {
+  color-scheme: light;
+  --resin-canvas: #F4F1EA;
+  --resin-base: #EEE7DB;
+  --resin-card: rgb(250 248 244 / 88%);
+  --resin-card-hover: #FFFFFF;
+  --amber-sun: #774018;
+  --amber-honey: #85501D;
+  --amber-deep: #A65B12;
+  --amber-cognac: #7B410C;
+  --amber-edge-color: rgb(166 91 18 / 24%);
+  --amber-edge: 1px solid var(--amber-edge-color);
+  --amber-edge-strong: 1px solid rgb(166 91 18 / 50%);
+  --amber-glow-color: rgb(166 91 18 / 16%);
+  --amber-glow: 0 0 18px -8px var(--amber-glow-color);
+  --material-shadow: 0 8px 24px -16px rgb(88 61 31 / 22%), inset 0 1px 0 rgb(255 255 255 / 78%);
+  --material-shadow-hover: 0 8px 24px -14px rgb(88 61 31 / 28%), inset 0 1px 0 rgb(255 255 255 / 88%);
+  --mosaic-canvas: var(--resin-canvas);
+  --mosaic-surface: #FAF8F4;
+  --mosaic-surface-hover: var(--resin-card-hover);
+  --border-mosaic: var(--amber-edge-color);
+  --amber-primary: var(--amber-honey);
+  --amber-dim: rgb(166 91 18 / 10%);
+  --text-main: #161918;
+  --text-muted: #525855;
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-surface: var(--resin-card);
+  --bg-subtle: var(--resin-card-hover);
+  --ink-primary: var(--text-main);
+  --ink-secondary: var(--text-muted);
+  --ink-muted: var(--text-muted);
+  --accent-amber: var(--amber-sun);
+  --accent-sea: #1F4E5B;
+  --border-hairline: var(--amber-edge-color);
+  --border-strong: rgb(166 91 18 / 42%);
+  --amber-canvas: var(--resin-canvas);
+  --amber-surface: #FAF8F4;
+  --amber-surface-raised: var(--resin-base);
+  --amber-text: var(--text-main);
+  --amber-muted: var(--text-muted);
+  --amber-accent: var(--amber-sun);
+  --amber-line: var(--amber-edge-color);
+  --amber-line-strong: var(--border-strong);
+}
+
+/* SUCCINITE palette bridges the existing public aliases onto the material system. */
+:root,
+html[data-theme="night"] {
+  --resin-canvas: #090D11;
+  --resin-base: #151B22;
+  --resin-card: rgb(19 26 34 / 86%);
+  --resin-card-hover: #17202A;
+  --amber-sun: #F7C35F;
+  --amber-honey: #E89B32;
+  --amber-deep: #D96B27;
+  --amber-cognac: #8C2D12;
+  --amber-edge-color: rgb(243 182 86 / 22%);
+  --amber-edge: 1px solid var(--amber-edge-color);
+  --amber-edge-strong: 1px solid rgb(247 195 95 / 55%);
+  --amber-glow-color: rgb(232 155 50 / 22%);
+  --amber-glow: 0 0 28px -6px var(--amber-glow-color);
+  --material-shadow: 0 16px 40px -8px rgb(0 0 0 / 65%), 0 0 28px -6px rgb(232 155 50 / 22%), var(--shadow-inset-gem);
+  --material-shadow-hover: 0 16px 40px -8px rgb(0 0 0 / 65%), 0 0 34px -6px rgb(232 155 50 / 30%), var(--shadow-inset-gem);
+  --mosaic-canvas: #090D11;
+  --mosaic-surface: #151B22;
+  --mosaic-surface-hover: #17202A;
+  --border-mosaic: var(--border-seam);
+  --amber-primary: #E89B32;
+  --amber-dim: rgb(243 182 86 / 16%);
+  --text-main: #F2ECE1;
+  --text-muted: #B8AEA0;
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-canvas-subtle: #10161D;
+  --bg-surface: var(--resin-card);
+  --bg-subtle: var(--resin-card-hover);
+  --ink-primary: #F2ECE1;
+  --ink-secondary: #B8AEA0;
+  --ink-muted: #B8AEA0;
+  --accent-amber: var(--amber-sun);
+  --accent-sea: #A8B8C8;
+  --border-hairline: var(--border-seam);
+  --border-strong: var(--border-seam-strong);
+  --amber-canvas: var(--mosaic-canvas);
+  --amber-surface: var(--mosaic-surface);
+  --amber-surface-raised: var(--mosaic-surface-hover);
+  --amber-text: var(--text-main);
+  --amber-muted: var(--text-muted);
+  --amber-accent: var(--amber-sun);
+  --amber-line: var(--border-seam);
+  --amber-line-strong: var(--border-seam-strong);
+  --bg-plate: rgb(19 26 34 / 86%);
+  --bg-plate-elevated: #17202A;
+  --bg-amber-tint: radial-gradient(120% 100% at 50% 0%, rgb(243 182 86 / 16%) 0%, rgb(18 24 32 / 92%) 75%);
+  --amber-clear: #F7C35F;
+  --amber-gold-leaf: #C9A961;
+  --shadow-caustic: 0 16px 40px -8px rgb(0 0 0 / 65%), 0 0 28px -6px rgb(232 155 50 / 22%);
+  --shadow-inset-gem: inset 0 1px 0 rgb(255 228 168 / 22%), inset 0 0 0 1px rgb(243 182 86 / 16%);
+  --border-seam: rgb(243 182 86 / 22%);
+  --border-seam-strong: rgb(247 195 95 / 55%);
+  --amber-edge-color: var(--border-seam);
+  --succinite-canvas: var(--bg-canvas);
+  --succinite-plate: var(--bg-plate);
+  --succinite-clear: var(--amber-clear);
+  --succinite-honey: var(--amber-honey);
+  --succinite-cognac: var(--amber-cognac);
+  --succinite-seam: var(--border-seam);
+}
+
+html[data-theme="day"] {
+  --resin-canvas: #F3EFE6;
+  --resin-base: #FBF7EE;
+  --resin-card: rgb(252 249 242 / 88%);
+  --resin-card-hover: #FFFDF9;
+  --amber-sun: #9A3B15;
+  --amber-honey: #C67314;
+  --amber-deep: #9E3B18;
+  --amber-cognac: #9A3B15;
+  --amber-edge-color: rgb(180 110 30 / 22%);
+  --amber-edge: 1px solid var(--amber-edge-color);
+  --amber-edge-strong: 1px solid rgb(154 59 21 / 45%);
+  --amber-glow-color: rgb(224 142 38 / 20%);
+  --amber-glow: 0 0 22px -8px var(--amber-glow-color);
+  --material-shadow: 0 12px 32px -8px rgb(180 105 20 / 15%), 0 2px 6px -1px rgb(140 70 10 / 8%), var(--shadow-inset-gem);
+  --material-shadow-hover: 0 12px 32px -8px rgb(180 105 20 / 20%), 0 2px 6px -1px rgb(140 70 10 / 12%), var(--shadow-inset-gem);
+  --mosaic-canvas: #F3EFE6;
+  --mosaic-surface: #FBF7EE;
+  --mosaic-surface-hover: #FFFDF9;
+  --border-mosaic: var(--border-seam);
+  --amber-primary: #9A3B15;
+  --amber-dim: rgb(246 189 96 / 14%);
+  --text-main: #1A1612;
+  --text-muted: #514437;
+  --bg-canvas: var(--mosaic-canvas);
+  --bg-canvas-subtle: #EAE3D5;
+  --bg-surface: var(--resin-card);
+  --bg-subtle: var(--resin-card-hover);
+  --ink-primary: #1A1612;
+  --ink-secondary: #514437;
+  --ink-muted: #514437;
+  --accent-amber: var(--amber-cognac);
+  --accent-sea: #1F4E5B;
+  --border-hairline: var(--border-seam);
+  --border-strong: var(--border-seam-strong);
+  --amber-canvas: var(--mosaic-canvas);
+  --amber-surface: var(--mosaic-surface);
+  --amber-surface-raised: var(--mosaic-surface-hover);
+  --amber-text: var(--text-main);
+  --amber-muted: var(--text-muted);
+  --amber-accent: var(--amber-cognac);
+  --amber-line: var(--border-seam);
+  --amber-line-strong: var(--border-seam-strong);
+  --bg-plate: rgb(252 249 242 / 88%);
+  --bg-plate-elevated: #FFFDF9;
+  --bg-amber-tint: linear-gradient(135deg, rgb(245 183 75 / 14%) 0%, rgb(212 118 30 / 4%) 60%, rgb(158 59 24 / 9%) 100%);
+  --amber-clear: #E59824;
+  --amber-gold-leaf: #D4AF37;
+  --shadow-caustic: 0 12px 32px -8px rgb(180 105 20 / 15%), 0 2px 6px -1px rgb(140 70 10 / 8%);
+  --shadow-inset-gem: inset 0 1px 0 rgb(255 250 235 / 90%), inset 0 0 0 1px rgb(212 132 37 / 18%);
+  --border-seam: rgb(180 110 30 / 22%);
+  --border-seam-strong: rgb(154 59 21 / 45%);
+  --amber-edge-color: var(--border-seam);
+  --succinite-canvas: var(--bg-canvas);
+  --succinite-plate: var(--bg-plate);
+  --succinite-clear: var(--amber-clear);
+  --succinite-honey: var(--amber-honey);
+  --succinite-cognac: var(--amber-cognac);
+  --succinite-seam: var(--border-seam);
+}
+
+/* Only editorial content and the home mosaic participate; the shared shell stays frozen. */
+body.inner-page > main.inner-main,
+body[data-home-page] > main#main {
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --paper: var(--amber-canvas);
+  --card: var(--amber-surface);
+  --sand: var(--amber-surface-raised);
+  --ink: var(--amber-text);
+  --muted: var(--amber-muted);
+  --line: var(--amber-line);
+  --brand-ink: var(--amber-text);
+  --brand-amber: var(--amber-accent);
+  --night-surface: var(--amber-surface);
+  --night-panel: var(--amber-surface-raised);
+  --action: var(--amber-honey);
+  --action-ink: var(--resin-canvas);
+  --action-hover: var(--amber-deep);
+}
+
+/* Page-specific legacy sea tokens must resolve to SUCCINITE in either theme. */
+html[data-theme] body.inner-page > main.inner-main {
+  --muted: var(--text-muted);
+  --sea-muted: var(--text-muted);
+  --sea-ink: var(--amber-primary);
+  --sea-line: var(--border-mosaic);
+}
+
+html[data-theme="day"] body.inner-page > main.inner-main,
+html[data-theme="day"] body[data-home-page] > main#main,
+html[data-theme="day"] body.inner-page > dialog,
+html[data-theme="day"] body[data-home-page] > dialog {
+  --action: var(--amber-cognac);
+  --action-ink: #FFFFFF;
+  --action-hover: #7D2F12;
+}
+
+body.inner-page > main.inner-main :is(h1, h2),
+body[data-home-page] > main#main :is(h1, h2) {
+  color: var(--amber-sun);
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -.025em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+body.inner-page > main.inner-main :is(p, li, dt, dd, label, figcaption),
+body[data-home-page] > main#main :is(p, li, dt, dd, label, figcaption) {
+  color: var(--text-main);
+}
+
+body.inner-page > main.inner-main :is(.inner-lead, .realty-deck, .catalog-description, .journey-stop-description),
+body[data-home-page] > main#main :is(.mosaic-fragment p, .mosaic-fragment li) {
+  max-width: 62ch;
+  line-height: 1.72;
+}
+
+body.inner-page > main.inner-main :is(.eyebrow, .inner-kicker, .meta, .news-meta, .page-updated, .food-menu-source-heading > span, .food-menu-condition, .food-portion, .graph-weave-label),
+body[data-home-page] > main#main :is(.mosaic-fragment .eyebrow, .mosaic-fragment .meta) {
+  color: var(--amber-primary);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+body.inner-page > main.inner-main :is(.catalog-facts, .catalog-location, .journey-passport dt, .journey-passport dd, .realty-keyfacts dd, .food-practical dd time, .food-source, .food-menu-passport, .housing-road, .place-plate-focus, .city-day-number, .realty-compare td, .realty-compare tbody th, time),
+body[data-home-page] > main#main :is(.mosaic-fragment time, .mosaic-fragment .metric) {
+  color: var(--amber-sun);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+body.inner-page > main.inner-main :is(a, .journey-place-link, .catalog-open, .catalog-pdf, .catalog-plan),
+body[data-home-page] > main#main .mosaic-fragment a {
+  color: var(--amber-sun);
+  text-decoration-color: var(--amber-edge-color);
+  text-underline-offset: .22em;
+  transition: color 400ms ease, border-color 400ms ease, background-color 400ms ease, box-shadow 400ms ease;
+}
+
+body.inner-page > main.inner-main :is(a.button-dark, a.button-primary, a.transport-primary, .event-links .event-primary, .day-main-actions .button),
+body[data-home-page] > main#main .mosaic-fragment :is(a.button-dark, a.button-primary, a.transport-primary, .event-links .event-primary, .day-main-actions .button) {
+  color: var(--action-ink, #FFFFFF);
+}
+
+body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="linked"]::before,
+body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 18px;
+  height: 2px;
+  margin: 0 2px 4px 0;
+  background: linear-gradient(90deg, transparent, var(--amber-sun), transparent);
+  box-shadow: 0 0 7px var(--amber-glow-color);
+  animation: amber-graph-pulse 3s ease-in-out infinite;
+}
+
+@keyframes amber-graph-pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+body.inner-page > main.inner-main :is(
+  .catalog-route, .catalog-access > a, .catalog-itinerary, .catalog-starter,
+  .journey-stop-card, .journey-pocket, .journey-passport, .graph-weave,
+  .city-day-card, .food-guide-practical, .food-guide-day, .dining-card,
+  .food-menu-source, .poi-card, .route-discovery-link, .housing-card,
+  .realty-fact-panel, .realty-roles article, .realty-checklist label,
+  .realty-keyfacts > div, .realty-compare thead th,
+  .realty-compare tbody tr:nth-child(even), .realty-feature, .realty-card,
+  .map-workspace, .map-selection, .map-parcel, .map-tenders,
+  .business-card, .dossier-aside, .decision-summary-card,
+  .engagement-fact-passport, .engagement-graph-context, .project-metric-card,
+  .timeline-aside, .timeline-filter-fields, .research-source, .research-status-card,
+  .wave-static-stops > li, .wave-static .journey-pocket
+),
+body.inner-page > main.inner-main :is(.amber-panel, .amber-shards),
+body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards) {
+  color: var(--text-main);
+  background-color: var(--resin-card);
+  background-image: var(--bg-amber-tint);
+  border: var(--amber-edge);
+  border-radius: var(--amber-radius);
+  box-shadow: var(--material-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: background-color 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+}
+
+body.inner-page > main.inner-main :is(.catalog-route, .journey-stop-card, .dining-card, .housing-card, .business-card, .research-source):hover,
+body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
+  background-color: var(--resin-card-hover);
+  border-color: var(--border-strong);
+  box-shadow: var(--material-shadow-hover);
+}
+
+body.inner-page > main.inner-main :is(.amber-plate, .amber-shards),
+body[data-home-page] > main#main :is(.amber-plate, .amber-shards) {
+  background-color: var(--bg-plate);
+  background-image: var(--bg-amber-tint);
+  border: var(--amber-edge);
+  box-shadow: var(--material-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+body.inner-page > main.inner-main .succinite-plate,
+body[data-home-page] > main#main .succinite-plate {
+  position: relative;
+  color: var(--text-main);
+  background-color: var(--bg-plate);
+  background-image: var(--bg-amber-tint);
+  border: 1px solid var(--border-seam);
+  box-shadow: var(--shadow-inset-gem), var(--shadow-caustic);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+body.inner-page > main.inner-main .succinite-plate::before,
+body[data-home-page] > main#main .succinite-plate::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto auto;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  opacity: .72;
+  background: linear-gradient(135deg, transparent 46%, var(--amber-gold-leaf) 48%, transparent 53%);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.inner-page > main.inner-main .succinite-plate:hover,
+  body[data-home-page] > main#main .succinite-plate:hover {
+    border-color: var(--border-seam-strong);
+    box-shadow: var(--shadow-inset-gem), var(--material-shadow-hover);
+  }
+}
+
+body.inner-page > main.inner-main .amber-inclusion,
+body[data-home-page] > main#main .amber-inclusion {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-seam);
+  box-shadow: inset 0 0 0 1px rgb(243 182 86 / 35%), inset 0 12px 28px -8px rgb(158 59 24 / 22%);
+}
+body.inner-page > main.inner-main .amber-inclusion > img,
+body[data-home-page] > main#main .amber-inclusion > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+body.inner-page > main.inner-main .amber-inclusion::after,
+body[data-home-page] > main#main .amber-inclusion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .72;
+  background: linear-gradient(135deg, rgb(255 244 214 / 22%) 0%, rgb(243 182 86 / 4%) 45%, rgb(158 59 24 / 12%) 100%);
+  box-shadow: inset 0 0 0 1px rgb(243 182 86 / 35%), inset 0 12px 28px -8px rgb(158 59 24 / 22%);
+}
+body.inner-page > main.inner-main .amber-inclusion figcaption,
+body[data-home-page] > main#main .amber-inclusion figcaption {
+  position: relative;
+  z-index: 1;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+}
+
+body.inner-page > main.inner-main .data-light-indicator,
+body[data-home-page] > main#main .data-light-indicator {
+  color: var(--text-main);
+  opacity: 1;
+}
+body.inner-page > main.inner-main .data-light-indicator::before,
+body[data-home-page] > main#main .data-light-indicator::before {
+  opacity: 1;
+}
+body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
+body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before {
+  color: var(--amber-sun);
+  background-color: var(--amber-sun);
+  box-shadow: 0 0 10px var(--amber-glow-color);
+}
+body.inner-page > main.inner-main .data-light-indicator[data-status="partial"]::before,
+body[data-home-page] > main#main .data-light-indicator[data-status="partial"]::before {
+  color: var(--amber-honey);
+  background-color: var(--amber-honey);
+  opacity: .6;
+}
+body.inner-page > main.inner-main .data-light-indicator[data-status="unknown"]::before,
+body[data-home-page] > main#main .data-light-indicator[data-status="unknown"]::before {
+  color: var(--text-muted);
+  background-color: transparent;
+  border: 1px solid currentColor;
+  opacity: .65;
+  box-shadow: none;
+}
+
+body.inner-page > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog),
+body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) {
+  color: var(--text-main);
+  background: var(--resin-base);
+  border: var(--amber-edge);
+  box-shadow: 0 24px 72px -28px rgb(0 0 0 / 80%), inset 0 1px 0 rgb(252 226 163 / 15%);
+  color-scheme: inherit;
+  --action: var(--amber-honey);
+  --action-ink: var(--resin-canvas);
+  --action-hover: var(--amber-deep);
+}
+body.inner-page > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(h2, h3),
+body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(h2, h3) {
+  color: var(--amber-sun);
+}
+body.inner-page > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(p, li, label, dt, dd, #map-status, #search-status, .search-status, .map-status, .map-note, .map-source-note),
+body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(p, li, label, dt, dd, #map-status, #search-status, .search-status, .map-status, .map-note, .map-source-note) {
+  color: var(--text-main);
+}
+body.inner-page > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(button, input, select),
+body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(button, input, select) {
+  color: var(--text-main);
+  background-color: var(--resin-card);
+  border-color: var(--amber-edge-color);
+  color-scheme: inherit;
+}
+body.inner-page > dialog:is(.map-dialog, #map-dialog) :is(button, input, select),
+body.inner-page > main.inner-main .realty-page :is(input, select, textarea) {
+  color-scheme: inherit;
+}
+
+body.inner-page > dialog.graph-choice-dialog :is(.graph-choice, .graph-choice-cancel),
+body[data-home-page] > dialog.graph-choice-dialog :is(.graph-choice, .graph-choice-cancel) {
+  color: var(--text-main);
+  background: var(--resin-card);
+  border-color: var(--amber-edge-color);
+}
+body.inner-page > dialog.graph-choice-dialog .graph-choice,
+body[data-home-page] > dialog.graph-choice-dialog .graph-choice { color: var(--text-main); }
+body.inner-page > dialog.graph-choice-dialog .graph-choice:hover,
+body[data-home-page] > dialog.graph-choice-dialog .graph-choice:hover { background: var(--resin-card-hover); }
+
+body.inner-page > main.inner-main :is(
+  .button-dark, .button-primary, .transport-primary, .event-links .event-primary,
+  .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
+  .food-day-save, .guide-next [data-guide-next], .amber-primary
+),
+body[data-home-page] > main#main :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button),
+body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice) {
+  background-color: var(--action);
+  border-color: var(--action);
+  color: var(--action-ink);
+}
+body.inner-page > main.inner-main :is(
+  .button-dark, .button-primary, .transport-primary, .event-links .event-primary,
+  .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
+  .food-day-save, .guide-next [data-guide-next], .amber-primary
+):hover,
+body[data-home-page] > main#main :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button):hover,
+body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice):hover {
+  background-color: var(--action-hover);
+  border-color: var(--action-hover);
+  color: var(--action-ink);
+}
+
+@keyframes amber-material-breathe {
+  0%, 100% { box-shadow: 0 0 8px -2px var(--amber-glow-color); }
+  50% { box-shadow: 0 0 16px -2px var(--amber-glow-color); }
+}
+body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
+body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before {
+  animation: amber-material-breathe 3s ease-in-out infinite;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.inner-page > main.inner-main :is(.catalog-route, .journey-stop-card, .dining-card, .housing-card, .business-card, .research-source):hover,
+  body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
+    border-color: var(--border-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
+  body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before,
+  body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="linked"]::before,
+  body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
+    animation: none;
+  }
+}
+
+@media print {
+  body.inner-page > main.inner-main,
+  body[data-home-page] > main#main,
+  body.inner-page > dialog,
+  body[data-home-page] > dialog {
+    color: #161918 !important;
+    background: #FFFFFF !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  body.inner-page > main.inner-main *,
+  body[data-home-page] > main#main *,
+  body.inner-page > dialog *,
+  body[data-home-page] > dialog * {
+    color: #161918 !important;
+    background-color: #FFFFFF !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  body.inner-page > main.inner-main :is(.data-light-indicator, .graph-weave-label, .meta, .eyebrow, .inner-kicker, .page-updated),
+  body[data-home-page] > main#main :is(.data-light-indicator, .meta, .eyebrow),
+  body.inner-page > dialog :is(.data-light-indicator, .meta, .eyebrow),
+  body[data-home-page] > dialog :is(.data-light-indicator, .meta, .eyebrow) {
+    color: #161918 !important;
+  }
+  body.inner-page > main.inner-main :is(a, button, input, select, textarea),
+  body[data-home-page] > main#main :is(a, button, input, select, textarea),
+  body.inner-page > dialog :is(a, button, input, select, textarea),
+  body[data-home-page] > dialog :is(a, button, input, select, textarea) {
+    color: #161918 !important;
+    background: #FFFFFF !important;
+  }
+  body.inner-page > main.inner-main *::before,
+  body.inner-page > main.inner-main *::after,
+  body[data-home-page] > main#main *::before,
+  body[data-home-page] > main#main *::after,
+  body.inner-page > dialog *::before,
+  body.inner-page > dialog *::after,
+  body[data-home-page] > dialog *::before,
+  body[data-home-page] > dialog *::after {
+    background-image: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
+  body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before,
+  body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="linked"]::before,
+  body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
+    animation: none;
+  }
+}

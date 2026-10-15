@@ -1,3 +1,4 @@
+import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101501';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {loadWalkProgress} from './walk.mjs?v=2026101305';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101305';
@@ -262,6 +263,21 @@ export async function initWorkshop(catalog, base) {
     if (save) {
       const kind = save.hasAttribute('data-save-place') ? 'places' : 'routes', id = kind === 'places' ? save.dataset.savePlace : save.dataset.saveRoute;
       if(kind==='places' && state.places.includes(id)){await cancellation.open(id);return;}
+      if(kind==='places') {
+        const place=catalog.poi.find(p=>p.slug===id);
+        if(!place) return;
+        const statusValue = status => typeof status === 'string' ? status : status?.status;
+        const closedStatuses = ['closed','permanently_closed','permanent-closed','permanently-closed','temporarily_closed','temporarily-closed','suspended','not_operating','ceased'];
+        const guideStatus = place.gastronomy?.operational_status;
+        const guideClosed = closedStatuses.includes(statusValue(guideStatus));
+        const seasonalAvailabilityOnly = place.gastronomy?.available===false && Boolean(place.gastronomy?.season_note) && !guideStatus;
+        const catalogClosed = !seasonalAvailabilityOnly && closedStatuses.includes(statusValue(place.operational_status));
+        if(guideClosed || catalogClosed) return;
+        const choice=await chooseComplementaryPlace(place,catalog,save);
+        if(!choice) return;
+        await commit(current => choice.kind==='pair' ? addComplementaryPair(current,id,choice.target.slug,catalog,choice.direction) : toggleTripItem(current,kind,id,catalog), choice.kind==='pair' ? 'Обе остановки добавлены в выбранный день.' : 'Ваш маршрут обновлён.');
+        return;
+      }
       await commit(current => toggleTripItem(current, kind, id, catalog), 'Ваш маршрут обновлён.'); return;
     }
     const control = event.target.closest('[data-trip-action]'); if (!control) return;

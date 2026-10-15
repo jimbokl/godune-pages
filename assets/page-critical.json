@@ -7,7 +7,7 @@
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -57,7 +57,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -82,7 +82,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -90,21 +90,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "257d6e40dd0448aa9422953b3036654fb9a26b8a5944ab65849c629813ba5509",
-      "source_bytes": 404488,
-      "critical_bytes": 66860
+      "sha256": "ad865275dc1d71d73850cae76bcb06fc20fe81dabb17f5f80a69f3bec0b569ae",
+      "source_bytes": 486361,
+      "critical_bytes": 90684
     },
     "food/dishes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -154,7 +174,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -179,7 +199,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -187,16 +227,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "957a7576915a87ddf3f19c33ece4a7dc461fe89cdf379c1a0b6668c87f1d1a6b",
-      "source_bytes": 403235,
-      "critical_bytes": 66866
+      "sha256": "5b5b922120692e1514c1ffecd8e0b92e407e8528d8aa9fcccc4f8cd21a22a92a",
+      "source_bytes": 485108,
+      "critical_bytes": 90690
     },
     "food/dishes/klopsy/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -246,7 +286,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -276,7 +316,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -284,16 +344,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "19122060bd5f4587ae1015e0bdae261c279821436134beae6ea251f7257f6290",
-      "source_bytes": 416359,
-      "critical_bytes": 86715
+      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
+      "source_bytes": 498232,
+      "critical_bytes": 114568
     },
     "food/dishes/marcipan/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -343,7 +403,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -373,7 +433,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -381,16 +461,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "19122060bd5f4587ae1015e0bdae261c279821436134beae6ea251f7257f6290",
-      "source_bytes": 416359,
-      "critical_bytes": 86715
+      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
+      "source_bytes": 498232,
+      "critical_bytes": 114568
     },
     "food/dishes/pelamida/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -440,7 +520,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -470,7 +550,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -478,16 +578,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "19122060bd5f4587ae1015e0bdae261c279821436134beae6ea251f7257f6290",
-      "source_bytes": 416359,
-      "critical_bytes": 86715
+      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
+      "source_bytes": 498232,
+      "critical_bytes": 114568
     },
     "food/dishes/stroganina/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -537,7 +637,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -567,7 +667,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -575,16 +695,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "19122060bd5f4587ae1015e0bdae261c279821436134beae6ea251f7257f6290",
-      "source_bytes": 416359,
-      "critical_bytes": 86715
+      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
+      "source_bytes": 498232,
+      "critical_bytes": 114568
     },
     "food/dishes/ugor/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -634,7 +754,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -664,7 +784,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -672,16 +812,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2e456dd7b4f70f83ddf0641aeb092cd9866b408a8aa913be9a282362822ff8cd",
-      "source_bytes": 416359,
-      "critical_bytes": 86972
+      "sha256": "c134287d1e718db579b6d7ca56378e6ddc6967b10df89607d90ae82bafeebd54",
+      "source_bytes": 498232,
+      "critical_bytes": 114825
     },
     "food/dishes/ukha/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -731,7 +871,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -761,7 +901,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -769,16 +929,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "19122060bd5f4587ae1015e0bdae261c279821436134beae6ea251f7257f6290",
-      "source_bytes": 416359,
-      "critical_bytes": 86715
+      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
+      "source_bytes": 498232,
+      "critical_bytes": 114568
     },
     "food/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -828,7 +988,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -853,7 +1013,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -861,21 +1021,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "257d6e40dd0448aa9422953b3036654fb9a26b8a5944ab65849c629813ba5509",
-      "source_bytes": 404488,
-      "critical_bytes": 66860
+      "sha256": "ad865275dc1d71d73850cae76bcb06fc20fe81dabb17f5f80a69f3bec0b569ae",
+      "source_bytes": 486361,
+      "critical_bytes": 90684
     },
     "food/routes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -925,7 +1105,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -950,7 +1130,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -958,21 +1138,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0f73c1e1182869c1a19772fbc719a9a5be44971f17aa08c18d30ca900712791d",
-      "source_bytes": 404488,
-      "critical_bytes": 67232
+      "sha256": "d0916f4799c6d175c0adce4a9502ebee5fdf255bf4ddcc2373c9b64b42eea5b6",
+      "source_bytes": 486361,
+      "critical_bytes": 91056
     },
     "food/waves/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1022,7 +1222,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1047,7 +1247,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -1055,21 +1255,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0f73c1e1182869c1a19772fbc719a9a5be44971f17aa08c18d30ca900712791d",
-      "source_bytes": 404488,
-      "critical_bytes": 67232
+      "sha256": "d0916f4799c6d175c0adce4a9502ebee5fdf255bf4ddcc2373c9b64b42eea5b6",
+      "source_bytes": 486361,
+      "critical_bytes": 91056
     },
     "food/zelenogradsk/all/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1119,7 +1339,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1144,7 +1364,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1152,16 +1392,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "53758967c74855c822a87d8ab8b9d62eb2e3def85e36534ed9d3155d2f7dc537",
-      "source_bytes": 403235,
-      "critical_bytes": 88147
+      "sha256": "c0646af2e27df7c7cdf2d54ab324e37d340b4609fdc61aebe9a59b8eed0379cd",
+      "source_bytes": 485108,
+      "critical_bytes": 120077
     },
     "food/zelenogradsk/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1211,7 +1451,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1236,7 +1476,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1244,16 +1504,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "848a739041f023e59b7b45c9ff0efa1d609f05ca05d619c14e921470e81a66c0",
-      "source_bytes": 403235,
-      "critical_bytes": 88806
+      "sha256": "dc44e760b91530708e1b66ff57b77fb7be6a93f747f4de9cfcc4c00f3d59b8d8",
+      "source_bytes": 485108,
+      "critical_bytes": 118624
     },
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1303,7 +1563,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1328,7 +1588,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -1336,21 +1596,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "117a0338a1344714787d3db4e75a4a3b1c749cdd7506a1c59999dfde47ac4b2d",
-      "source_bytes": 404488,
-      "critical_bytes": 68426
+      "sha256": "6c1bfcf2c8e074d0502620c45e1471590a62d1881bf31586f12058e665997b9b",
+      "source_bytes": 486361,
+      "critical_bytes": 94898
     },
     "food/zelenogradsk/litovskaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1400,7 +1680,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1425,7 +1705,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -1433,21 +1713,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "117a0338a1344714787d3db4e75a4a3b1c749cdd7506a1c59999dfde47ac4b2d",
-      "source_bytes": 404488,
-      "critical_bytes": 68426
+      "sha256": "6c1bfcf2c8e074d0502620c45e1471590a62d1881bf31586f12058e665997b9b",
+      "source_bytes": 486361,
+      "critical_bytes": 94898
     },
     "food/zelenogradsk/rybnaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1497,7 +1797,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1527,7 +1827,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -1535,21 +1835,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6312541bbba224958f78f1a07394ad27d30acc08e3d95eb838400a17b276ef89",
-      "source_bytes": 417612,
-      "critical_bytes": 80744
+      "sha256": "37b1fc64bbf89f470a466016cef4b7acfcbd0668752052a0aa4b08e925b06eca",
+      "source_bytes": 499485,
+      "critical_bytes": 107216
     },
     "realty/compare/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1599,7 +1919,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1634,7 +1954,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1642,16 +1982,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "8d9476a0d3c357fa2ef5cd3d2c56955bb0d8ab31c9424af214dac7852e9e25a3",
-      "source_bytes": 431616,
-      "critical_bytes": 75671
+      "sha256": "b9a8602ae6b9939b5934bb183aba2886587a50c761c01db7ccb5cdf4b5d66de0",
+      "source_bytes": 513489,
+      "critical_bytes": 107840
     },
     "realty/how-it-works/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1701,7 +2041,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1736,7 +2076,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1744,16 +2104,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6777ae2b5576b0482cd489811d85d610861427b94833a39218c2e9325e27f340",
-      "source_bytes": 431616,
-      "critical_bytes": 78868
+      "sha256": "98ef144e71141a507cae97620495410986e3c83e8a80578def447ede719bb041",
+      "source_bytes": 513489,
+      "critical_bytes": 109880
     },
     "realty/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1803,7 +2163,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1833,7 +2193,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1841,16 +2221,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9f133b93e6219ad5edccb12bbf430078c088831e8de9f0be7f705632995d6ead",
-      "source_bytes": 418492,
-      "critical_bytes": 67309
+      "sha256": "4570b0f58ba15bb7fb85f9e31add79f73bfeb529184c0bb1b461f36550b1fa35",
+      "source_bytes": 500365,
+      "critical_bytes": 98405
     },
     "realty/projects/cosmos-stay/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -1900,7 +2280,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -1935,7 +2315,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -1943,16 +2343,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "756d3d691efb871abf92bb6fa541da29c6321a719cdfa10a4afee20430886489",
-      "source_bytes": 431616,
-      "critical_bytes": 79824
+      "sha256": "69594c6d81d49a05e56c8d8dd26ff901cc797ea1f5ddbdb0e5b15629e87a5e20",
+      "source_bytes": 513489,
+      "critical_bytes": 112923
     },
     "routes/amalienau-2-hours/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2002,7 +2402,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2032,7 +2432,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2040,21 +2440,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c96b9e707365d01c39a39b6f05584bfe7f399cd8d1b184a6abf5df63d92c59a9",
-      "source_bytes": 417612,
-      "critical_bytes": 99200
+      "sha256": "592ead88066dac5f401d7c72a184e1102845344573d0bfc11f7b031a79ee24b9",
+      "source_bytes": 499485,
+      "critical_bytes": 129354
     },
     "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2104,7 +2524,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2134,7 +2554,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2142,21 +2562,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9c3784706cf793b818b7f21d12763cd90a71b1191bc78fd4712c39a9a2bf196c",
-      "source_bytes": 417612,
-      "critical_bytes": 96265
+      "sha256": "be1f550a6afe9f0822d204538eb6b53c5d390879d893138e1c68d0c501187217",
+      "source_bytes": 499485,
+      "critical_bytes": 126419
     },
     "routes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2206,7 +2646,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2231,7 +2671,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -2239,16 +2699,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "d48126f973a01793754eaad49d57a679956e6d5c513464753f091ca88d00f916",
-      "source_bytes": 403235,
-      "critical_bytes": 76666
+      "sha256": "8b654b54488bcf2deb977f14c541b623fcd486ea33fc0e20ce6fbb6482583be4",
+      "source_bytes": 485108,
+      "critical_bytes": 107118
     },
     "routes/kaliningrad-kosmicheskaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2298,7 +2758,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2328,7 +2788,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2336,21 +2796,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "81a3512fdc07a0cb742e2932aed350e8a8fc02f334efdf614f2382d78624fff1",
-      "source_bytes": 417612,
-      "critical_bytes": 96412
+      "sha256": "ee1cfa31212c7a6000e2be81573c41c1d53079422ca9197e99d3d8acad59d3c2",
+      "source_bytes": 499485,
+      "critical_bytes": 126566
     },
     "routes/kaliningrad-three-days/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2400,7 +2880,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2430,7 +2910,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2438,21 +2918,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "70315d27fc69c0cba211cd66375809c9d0a303442e5e6d4b1c70d79d49b8a851",
-      "source_bytes": 417612,
-      "critical_bytes": 78374
+      "sha256": "c0a1d6734bcba2f593724e95e378021601b9f417754d8fd39aef677051bf8269",
+      "source_bytes": 499485,
+      "critical_bytes": 104846
     },
     "routes/ostrov-kanta-naberezhnye/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2502,7 +3002,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2532,7 +3032,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2540,21 +3040,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c96b9e707365d01c39a39b6f05584bfe7f399cd8d1b184a6abf5df63d92c59a9",
-      "source_bytes": 417612,
-      "critical_bytes": 99200
+      "sha256": "592ead88066dac5f401d7c72a184e1102845344573d0bfc11f7b031a79ee24b9",
+      "source_bytes": 499485,
+      "critical_bytes": 129354
     },
     "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2604,7 +3124,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2634,7 +3154,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2642,21 +3162,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "849d5115e7a497450ca16676774eeffe9c36324ddc5cb6450fcd2efb439e918e",
-      "source_bytes": 417612,
-      "critical_bytes": 99156
+      "sha256": "c6c251194cbc0cc6a13e869b6dda6ca4be8ff3409ef8256775f9c3d4e0f0b80f",
+      "source_bytes": 499485,
+      "critical_bytes": 129310
     },
     "routes/tancuyushchiy-les/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2706,7 +3246,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2736,7 +3276,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2744,21 +3284,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "e8187144f10ec9404d36674d130a3212245768b7d8744e52c8879169163fd631",
-      "source_bytes": 417612,
-      "critical_bytes": 99038
+      "sha256": "ec2fd371a15a509db7215c2c103ad8c664bc51d98f8e0553a517cda9a3009b64",
+      "source_bytes": 499485,
+      "critical_bytes": 129192
     },
     "routes/vorota-i-reka/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2808,7 +3368,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2838,7 +3398,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2846,21 +3406,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "f7c7b30b63ffc45437fd523ccd88899a4f89b3352dcf18434f175c3ba8e0357b",
-      "source_bytes": 417612,
-      "critical_bytes": 96748
+      "sha256": "6a72e9a6eef56be43baa59d6d32b76240bafa0d6395b95cdf55834273858c616",
+      "source_bytes": 499485,
+      "critical_bytes": 126902
     },
     "routes/vysota-efa/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -2910,7 +3490,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -2940,7 +3520,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -2948,21 +3528,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "3971a0b3f95aae1e30468da62a432ae6fbc0f0426c59930404b72f1f5672bc43",
-      "source_bytes": 417612,
-      "critical_bytes": 99077
+      "sha256": "5a6fbe22f4789219b65ff48038108c9c555755616f6c9914b3dd6decad0ebdbf",
+      "source_bytes": 499485,
+      "critical_bytes": 129231
     },
     "routes/zelenogradsk-2-k-moryu/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3012,7 +3612,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3042,7 +3642,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -3050,21 +3650,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "61dce148a80dcbbcba8de87c04b7e104dca2048e366c301855bbccfba2967b09",
-      "source_bytes": 417612,
-      "critical_bytes": 96608
+      "sha256": "3df47e345944af911a6799d925acdaa3a4de759ea2cc8d174654a1ce16259e4e",
+      "source_bytes": 499485,
+      "critical_bytes": 126762
     },
     "routes/zelenogradsk-two-days/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3114,7 +3734,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3144,7 +3764,7 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
         },
         {
           "path": "destination-signatures.css",
@@ -3152,21 +3772,41 @@
           "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
         },
         {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "70315d27fc69c0cba211cd66375809c9d0a303442e5e6d4b1c70d79d49b8a851",
-      "source_bytes": 417612,
-      "critical_bytes": 78374
+      "sha256": "c0a1d6734bcba2f593724e95e378021601b9f417754d8fd39aef677051bf8269",
+      "source_bytes": 499485,
+      "critical_bytes": 104846
     },
     "waves/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3216,7 +3856,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3246,7 +3886,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3254,16 +3914,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "12df54319befc974f07f4fa49975d708213a8cdadd64c77775fb390f2345bb07",
-      "source_bytes": 405915,
-      "critical_bytes": 67823
+      "sha256": "0acd8b594a575415888158913ca3265673dac91045cd66803a9323aa3a1d3a97",
+      "source_bytes": 487788,
+      "critical_bytes": 93628
     },
     "waves/kaliningrad-ocean/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3313,7 +3973,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3348,7 +4008,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3356,16 +4036,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0c04e58fafdbd17bfa53bf7213fef9fdf7e207210a44a7dac0b254a9e3dab1ae",
-      "source_bytes": 419039,
-      "critical_bytes": 81521
+      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
+      "source_bytes": 500912,
+      "critical_bytes": 107844
     },
     "waves/svetlogorsk-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3415,7 +4095,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3450,7 +4130,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3458,16 +4158,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0c04e58fafdbd17bfa53bf7213fef9fdf7e207210a44a7dac0b254a9e3dab1ae",
-      "source_bytes": 419039,
-      "critical_bytes": 81521
+      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
+      "source_bytes": 500912,
+      "critical_bytes": 107844
     },
     "waves/yantarny-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3517,7 +4217,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3552,7 +4252,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3560,16 +4280,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0c04e58fafdbd17bfa53bf7213fef9fdf7e207210a44a7dac0b254a9e3dab1ae",
-      "source_bytes": 419039,
-      "critical_bytes": 81521
+      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
+      "source_bytes": 500912,
+      "critical_bytes": 107844
     },
     "waves/zelenogradsk-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3619,7 +4339,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3654,7 +4374,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3662,16 +4402,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2fc572e85ed64d3f575b2e620a0322a19a8efcf82ab0df5a9605c764a88cf7c4",
-      "source_bytes": 419039,
-      "critical_bytes": 83973
+      "sha256": "70ce6b1975031c851489b7d4a7df45f0efffe05c94df0972a998d0dac82f5dc4",
+      "source_bytes": 500912,
+      "critical_bytes": 110296
     },
     "waves/zelenogradsk-city-fish/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3721,7 +4461,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3756,7 +4496,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3764,16 +4524,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6009af38c8f402114fcf816c4fba42a9bf7955c7333793ae80c0f9aaff638967",
-      "source_bytes": 419039,
-      "critical_bytes": 81645
+      "sha256": "67842c1f29474ce7f7b69590179548e346e80991b77998ebbb44c346b4bf4655",
+      "source_bytes": 500912,
+      "critical_bytes": 107968
     },
     "waves/zelenogradsk-vkus/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3823,7 +4583,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3858,7 +4618,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3866,16 +4646,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6d12a2d9987d00cec5e319de6d4f2e42c1a2968a9bc0b615c1a09fa1348c243c",
-      "source_bytes": 419039,
-      "critical_bytes": 84097
+      "sha256": "25230c91f5f4e183faf58830843c9f0eb292591f22d57d527b4d077d40d5daf9",
+      "source_bytes": 500912,
+      "critical_bytes": 110420
     },
     "waves/zelenogradsk-west-sea/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
         },
         {
           "path": "styles.css",
@@ -3925,7 +4705,7 @@
         {
           "path": "editorial-cards.css",
           "media": "all",
-          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+          "sha256": "94ffd284a8042f3d85f40fdf752749c27efe2e0052741c0963f7137f3567b89d"
         },
         {
           "path": "author-media.css",
@@ -3960,7 +4740,27 @@
         {
           "path": "site-dossier.css",
           "media": "all",
-          "sha256": "e4a42ea07b15e17d7ced6687cccfe83fabfecf434bd194a1100db6e041a2e0fe"
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "84add8e395a593950b7ce4c8bc18b63df335300b6c5d3802b4c4e2a28a3b0df1"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "414a1c550de501052a40d9dcca2e890fc6960192578e4fc24f4111f2b0771a4d"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
         },
         {
           "path": "editorial-print.css",
@@ -3968,9 +4768,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6009af38c8f402114fcf816c4fba42a9bf7955c7333793ae80c0f9aaff638967",
-      "source_bytes": 419039,
-      "critical_bytes": 81645
+      "sha256": "67842c1f29474ce7f7b69590179548e346e80991b77998ebbb44c346b4bf4655",
+      "source_bytes": 500912,
+      "critical_bytes": 107968
     }
   }
 }
