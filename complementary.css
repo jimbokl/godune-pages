@@ -48,10 +48,14 @@
   white-space: normal;
 }
 .graph-weave-links a:hover { color: var(--night-amber, #805b25); }
-.graph-unknown {
-  margin: 4px 0 0;
-  color: var(--muted, #586469);
-  font-size: 11px;
+.graph-weave-links a[data-graph-indoor="true"] {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+.graph-weave-links .graph-indoor-hours,
+.graph-weave-links .graph-indoor-access {
+  flex-basis: 100%;
+  line-height: 1.6;
 }
 
 /* Layered city guide: open rows and thin rules keep the place list light. */

@@ -15,6 +15,7 @@ function edgeRows(place, catalog) {
     if (!target || target === place || isClosed(target)) return null;
     const status = raw.status;
     if (direction === 'storm') {
+      if (raw.nearby === false) return null;
       if (status !== 'linked' && status !== 'open' && !(status === 'candidate' && raw.verified_indoor === true && raw.verified_hours === true)) return null;
     } else if (status !== 'linked' && status !== 'open') return null;
     return {direction, target, edge: raw};
@@ -94,7 +95,9 @@ export async function chooseComplementaryPlace(place, catalog, trigger) {
     button.type = 'button';
     button.className = 'graph-choice';
     const extra = edgeExtra(edge);
-    const time = extra === null ? 'время уточняется' : `+${extra} минут`;
+    const time = extra === null
+      ? (Number.isFinite(edge.walking_minutes) ? `переход ≈${edge.walking_minutes} мин` : 'два места')
+      : `+${extra} минут`;
     const label = edgeName(edge, target);
     button.textContent = direction === 'before'
       ? `Цепочка: «${label}» → «${source.name}» (${time})`
