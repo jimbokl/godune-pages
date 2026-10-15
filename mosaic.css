@@ -114,3 +114,66 @@ body[data-home-page] #main figcaption {font: 11px/1.7 var(--font-mono); color: v
  .mosaic-dashboard {display: block;}
  .mosaic-legend {display: none;}
 }
+
+/* Lower homepage only: the approved masthead and dune hero keep their cascade. */
+body[data-home-page] #main :is(.home-dunes-card,.showcase-card,.home-guide) {
+ background-color: var(--bg-plate);
+ background-image: var(--bg-amber-tint);
+ border: 1px solid var(--border-seam);
+ box-shadow: var(--shadow-caustic), var(--shadow-inset-gem);
+}
+body[data-home-page] #main .home-dunes-choices {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch;}
+body[data-home-page] #main .home-dunes-card {display:block;margin:0;padding:26px;min-width:0;}
+body[data-home-page] #main .home-dunes-card>div {display:flex;flex-direction:column;height:100%;}
+body[data-home-page] #main .home-dunes-card h3 {font:400 clamp(27px,2.8vw,36px)/1.12 var(--font-display);letter-spacing:-.025em;}
+.home-dunes-facts {display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 20px;padding-top:16px;border-top:1px solid var(--border-mosaic);font:11px/1.6 var(--font-mono);font-variant-numeric:tabular-nums;}
+.home-dunes-facts div {min-width:0;}
+.home-dunes-facts dt {color:var(--text-muted);}
+.home-dunes-facts dd {margin:6px 0 0;font-size:16px;color:var(--text-main);}
+.home-dunes-friction {margin-top:auto;padding:0 0 0 12px;border-left:2px solid var(--amber-honey);font:13px/1.65 var(--font-sans);color:var(--text-muted);}
+.home-dunes-friction strong {display:block;margin-bottom:5px;font:10px/1.6 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-primary);}
+.home-dunes-open {display:flex;justify-content:space-between;gap:10px;padding-top:22px;font-size:14px;color:var(--amber-primary);}
+.home-dunes-links {display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:16px;}
+.showcase-spine {display:flex;flex-wrap:wrap;gap:5px 8px;list-style:none;margin:20px 0;padding:14px 0 0;border-top:1px solid var(--border-mosaic);font:12px/1.7 var(--font-sans);color:var(--text-muted);}
+.showcase-spine li:not(:last-child)::after {content:" →";color:var(--amber-primary);white-space:pre;}
+body[data-home-page] #main .showcase-facts {display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:8px;font-variant-numeric:tabular-nums;}
+.showcase-facts .metric-sep {color:var(--amber-primary);}
+.home-guides,.home-coast {padding-top:64px;scroll-margin-top:28px;}
+.home-guides-heading,.home-coast-heading {margin-bottom:30px;}
+body[data-home-page] #main :is(.home-guides-heading,.home-coast-heading) h2 {font:400 clamp(34px,4vw,56px)/1.1 var(--font-display);letter-spacing:-.025em;color:var(--amber-sun);margin:12px 0 16px;}
+.home-guides-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+.home-guide {display:flex;flex-direction:column;min-width:0;padding:26px;border-radius:4px;}
+.home-guide h3 {font:400 29px/1.17 var(--font-display);letter-spacing:-.02em;color:var(--text-main);margin:18px 0 20px;}
+.home-guide>p:not(.mosaic-index) {font:14px/1.75 var(--font-sans);color:var(--text-muted);}
+.home-guide .home-guide-number {padding-block:14px;border-block:1px solid var(--border-mosaic);margin-bottom:18px;font:11px/1.7 var(--font-mono);}
+.home-guide-number strong {color:var(--amber-primary);font-weight:500;font-size:22px;font-variant-numeric:tabular-nums;margin-right:6px;}
+.home-guide nav {display:flex;flex-direction:column;gap:4px;padding-top:20px;margin-top:auto;}
+.home-guide a,.home-coast-heading>a {display:flex;align-items:center;min-height:44px;color:var(--amber-primary);font-size:14px;text-underline-offset:5px;}
+.home-coast-heading {display:flex;align-items:end;justify-content:space-between;gap:28px;}
+.home-coast-heading p:last-child {max-width:45ch;color:var(--text-muted);}
+.home-coast .dunes-overview {margin:0;}
+.home-coast .dunes-map {display:block;width:100%;height:auto;max-height:660px;}
+.home-map-status {display:inline-flex;gap:8px;align-items:center;max-width:100%;padding:8px 12px;border:1px solid var(--border-seam);background:var(--bg-plate);color:var(--text-muted);font:12px/1.6 var(--font-mono);}
+.home-map-status::before {content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--amber-honey);}
+.site-footer .footer-columns {grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;width:100%;padding-top:28px;border-top:1px solid var(--border-mosaic);}
+.site-footer .footer-columns nav {grid-column:auto;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.site-footer .footer-columns h2 {margin:0 0 16px;font:11px/1.7 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.site-footer .footer-columns a {display:flex;align-items:center;min-height:44px;padding:6px 0;font:14px/1.6 var(--font-sans);color:var(--text-main);text-underline-offset:4px;}
+@media(max-width:1000px) {
+ body[data-home-page] #main .home-dunes-choices,.home-guides-grid {grid-template-columns:1fr;}
+ .home-guide {padding:26px;}
+ .home-dunes-card h3 {text-wrap:balance;}
+}
+@media(max-width:700px) {
+ body[data-home-page] #main .home-dunes-card,.home-guide {padding:22px;}
+ .home-guides,.home-coast {padding-top:44px;}
+ .home-coast-heading {display:block;}
+ .home-dunes-links {gap:4px;flex-direction:column;}
+ .site-footer .footer-columns {grid-template-columns:1fr;gap:24px;}
+ .showcase-spine {font-size:13px;}
+}
+@media print {
+ body[data-home-page] #main :is(.home-dunes-card,.showcase-card,.home-guide) {background:white;box-shadow:none;border-color:#888;}
+ .home-dunes-card,.home-guide {break-inside:avoid;}
+ .site-footer .footer-columns {display:none;}
+}
