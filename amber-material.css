@@ -559,6 +559,58 @@ body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice):hover
   backdrop-filter: none;
 }
 
+/* A metric is a phrase, not a fixed-width numeric cell. Keep all three readable. */
+@media (max-width: 760px) {
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport {
+    padding: 14px 12px;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dl > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-width: min-content;
+    padding: 0;
+    border: 0;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport :is(dt, dd) {
+    max-width: none;
+    font-family: var(--amber-sans);
+    letter-spacing: 0;
+    overflow-wrap: normal;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dt {
+    order: 1;
+    margin: 5px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dd {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+}
+@media (max-width: 350px) {
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport {
+    padding-inline: 10px;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dl {
+    gap: 8px;
+  }
+  :root body.inner-page > main.inner-main :is(.route-journey, .fish-journey) .journey-passport dd {
+    font-size: 18px;
+  }
+}
+
 @keyframes amber-material-breathe {
   0%, 100% { box-shadow: 0 0 8px -2px var(--amber-glow-color); }
   50% { box-shadow: 0 0 16px -2px var(--amber-glow-color); }
