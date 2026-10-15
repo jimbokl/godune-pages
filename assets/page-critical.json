@@ -1614,7 +1614,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
         },
         {
           "path": "engagement.css",
@@ -1643,7 +1643,7 @@
         }
       ],
       "sha256": "f96bc126405032ef6b28e56541640498b8d6220cc77d3ce3cf743b097f0b63a0",
-      "source_bytes": 430910,
+      "source_bytes": 430909,
       "critical_bytes": 74972
     },
     "realty/how-it-works/index.html": {
@@ -1716,7 +1716,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
         },
         {
           "path": "engagement.css",
@@ -1745,7 +1745,7 @@
         }
       ],
       "sha256": "3deac99d5af3690e9ef8e8aa7dbc7e25a8d5dea988b3593c995eceba5eaece4d",
-      "source_bytes": 430910,
+      "source_bytes": 430909,
       "critical_bytes": 78169
     },
     "realty/index.html": {
@@ -1818,7 +1818,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
         },
         {
           "path": "baltic-reference.css",
@@ -1842,7 +1842,7 @@
         }
       ],
       "sha256": "43f2a770c45849277ae683fb8e54ca44e3dccc2bc06b10beaf6cea121f96d97c",
-      "source_bytes": 418358,
+      "source_bytes": 418357,
       "critical_bytes": 67174
     },
     "realty/projects/cosmos-stay/index.html": {
@@ -1915,7 +1915,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
         },
         {
           "path": "engagement.css",
@@ -1943,9 +1943,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0cbf428545cdf69ceda5b663c0f17b512881137b53a28d958ef2fb93f834f564",
-      "source_bytes": 430910,
-      "critical_bytes": 79126
+      "sha256": "a83d1d98a57134d89c4d7f797d70fc971a47808f67aa0d2a5587024136ea566e",
+      "source_bytes": 430909,
+      "critical_bytes": 79125
     },
     "routes/amalienau-2-hours/index.html": {
       "sources": [
