@@ -509,10 +509,12 @@ body[data-home-page] > dialog.graph-choice-dialog .graph-choice { color: var(--t
 body.inner-page > dialog.graph-choice-dialog .graph-choice:hover,
 body[data-home-page] > dialog.graph-choice-dialog .graph-choice:hover { background: var(--resin-card-hover); }
 
-body.inner-page > main.inner-main :is(
+/* Keep inner actions above the legacy night-theme control selector. */
+:root body.inner-page > main.inner-main :is(
   .button-dark, .button-primary, .transport-primary, .event-links .event-primary,
   .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
-  .food-day-save, .guide-next [data-guide-next], .amber-primary
+  .food-day-save, .guide-next [data-guide-next], .amber-primary,
+  .realty-button:not(.realty-button-secondary)
 ),
 body[data-home-page] > main#main > .home-content :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button),
 body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice) {
@@ -520,16 +522,41 @@ body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice) {
   border-color: var(--action);
   color: var(--action-ink);
 }
-body.inner-page > main.inner-main :is(
+:root body.inner-page > main.inner-main :is(
   .button-dark, .button-primary, .transport-primary, .event-links .event-primary,
   .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
-  .food-day-save, .guide-next [data-guide-next], .amber-primary
+  .food-day-save, .guide-next [data-guide-next], .amber-primary,
+  .realty-button:not(.realty-button-secondary)
 ):hover,
 body[data-home-page] > main#main > .home-content :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button):hover,
 body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice):hover {
   background-color: var(--action-hover);
   border-color: var(--action-hover);
   color: var(--action-ink);
+}
+
+:root body.inner-page > main.inner-main :is(
+  .button-dark, .button-primary, .transport-primary, .event-links .event-primary,
+  .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
+  .food-day-save, .guide-next [data-guide-next], .amber-primary,
+  .realty-button:not(.realty-button-secondary)
+):focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 4px;
+}
+
+/* Credits sit on a photo: use an opaque surface in both themes. */
+:root body.inner-page > main.inner-main :is(.route-journey, .fish-journey)
+  :is(.journey-cover, .fish-hero-photos) > figcaption {
+  color: var(--text-main);
+  background: var(--resin-base);
+  border: var(--amber-edge);
+  font-family: var(--amber-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  backdrop-filter: none;
 }
 
 @keyframes amber-material-breathe {
