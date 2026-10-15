@@ -1,5 +1,6 @@
 // A walking day shares evidence between its plan, places and chosen dishes.
 // Services, transport, expenses and bookings retain their complete chapters.
+import {routineStopIssue} from './day-stop-view.mjs?v=2026101305';
 export function walkingBooklet(snapshot) {
   const day=snapshot.days?.[0];
   if(snapshot.days?.length!==1 || snapshot.transport_receipt || !day?.record ||
@@ -14,7 +15,20 @@ export function walkingBooklet(snapshot) {
     if(!bySource.has(key)){bySource.set(key,sources.length+1);sources.push({...source,number:sources.length+1});}
     return `[${bySource.get(key)}]`;
   };
-  const rows=(day.rows||[]).map(row=>({...row,references:[...new Set([row.source,...(row.sources||[])].filter(Boolean).map(reference))]}));
+  const calculations=new Map();
+  const rows=(day.rows||[]).map(row=>{
+    // Keep original row text and typed issues in the attachment. Only the
+    // reading view separates repeated calculation notes from visit constraints.
+    const structured=row.kind==='visit'&&typeof row.detail_text==='string'&&Array.isArray(row.issue_notes);
+    if(structured)for(const issue of row.issue_notes.filter(routineStopIssue)){
+      const key=JSON.stringify([issue.code,issue.text]);
+      if(!calculations.has(key))calculations.set(key,{code:issue.code,text:issue.text,places:[]});
+      const places=calculations.get(key).places;if(!places.includes(row.title))places.push(row.title);
+    }
+    return {...row,plan_text:structured?[row.detail_text,...row.issue_notes.filter(issue=>!routineStopIssue(issue)).map(issue=>issue.text)].filter(Boolean).join(' '):row.text,
+      references:[...new Set([row.source,...(row.sources||[])].filter(Boolean).map(reference))]};
+  });
+  const visits=rows.filter(row=>row.kind==='visit'),structured=visits.length>0&&visits.every(row=>typeof row.detail_text==='string'&&Array.isArray(row.issue_notes));
   const entries=day.entries||day.stops.map((p,i)=>({kind:'place',id:p.id,number:i+1}));
   const cards=entries.map(entry=>{
     const place=day.stops.find(p=>p.id===entry.id);
@@ -34,5 +48,5 @@ export function walkingBooklet(snapshot) {
   const access=(day.access?.entries||[]).filter(row=>row.extent!=='place'||!day.stops.some(p=>p.id===row.poi||row.applies_to?.some(v=>v.poi===p.id)))
     .map(row=>({...row,reference:reference(row.source)}));
   const meals=(day.menu_choices||[]).map(meal=>({...meal,reference:reference(meal.source)}));
-  return {day,rows,cards,access,meals,sources};
+  return {day,rows,cards,access,meals,sources,calculation_notes:[...calculations.values()],summary:structured&&day.status==='needs_check'?'':day.summary};
 }

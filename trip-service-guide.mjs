@@ -120,7 +120,8 @@ export function mixedGuideRows(trip,catalog,guide,issueText){
   }
   if(!point)continue;
   if(stop?.wait>0)rows.push({id:`wait:${entry.id}`,kind:'wait',time:stop.arrival,title:'До входа',text:`Ожидание ${stop.wait} мин.`,state:'estimate'});
-  rows.push({id:entry.id,poi:entry.id,kind:'visit',time:stop?.begins??null,title:point.name,text:`На месте ${stop?.visit_minutes??0} мин.`+(stop?.issues.length?' '+stop.issues.map(issueText).join(' '):''),state:stop?.begins!=null?'estimate':'unknown'});
+  const detail_text=`На месте ${stop?.visit_minutes??0} мин.`,issue_notes=(stop?.issues||[]).map(issue=>({...issue,text:issueText(issue)}));
+  rows.push({id:entry.id,poi:entry.id,kind:'visit',time:stop?.begins??null,title:point.name,text:detail_text+(issue_notes.length?' '+issue_notes.map(issue=>issue.text).join(' '):''),detail_text,issue_notes,state:stop?.begins!=null?'estimate':'unknown'});
   const excursion=resolveExcursion(trip,entry.id,catalog);if(excursion&&stop?.excursion)rows.push(...excursionJourney(excursion,stop.excursion,point.name));
  }
  // Future visits keep their chosen location in the list, without a fake time.

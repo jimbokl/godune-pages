@@ -62,9 +62,11 @@ export function guideDayRows(trip,catalog,result,matrix) {
     if(previous)rows.push(roadJourney(item,travel,settings.reserve,name(previous),blocked,name));
     const booking=bookings.stops[item.id],wait=waitJourney(item,!!booking);if(wait&&!blocked)rows.push(wait);
     const view=stopTimeView(item,booking,blocked),pause=settings.stops[item.id]?.pause || 0;
+    const detail_text=`${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.${outside?' Осмотр снаружи, без входа внутрь.':''}`+(view.note?' '+view.note:'')+(access?' '+parkingAccessNote(access):'');
     rows.push({id:item.id,poi:item.id,kind:'visit',time:blocked?null:item.begins,title:place.name,
       text:`${view.label}: ${view.time}. ${item.visit_minutes} мин на месте${pause?` + ${pause} мин пауза`:''}.${outside?' Осмотр снаружи, без входа внутрь.':''}`+(view.note?' '+view.note:'')
-        +(access?' '+parkingAccessNote(access):'')+(issues.length?' '+issues.join(' '):''),state});
+        +(access?' '+parkingAccessNote(access):'')+(issues.length?' '+issues.join(' '):''),
+      detail_text,issue_notes:item.issues.map((issue,i)=>({...issue,text:issues[i]})),state});
     const excursion=resolveExcursion(trip,item.id,catalog);if(excursion&&item.excursion)rows.push(...excursionJourney(excursion,item.excursion,place.name));
   });
   if(settings.progress)rows.push({id:'completed-places',kind:'notice',time:null,title:'Уже были',text:settings.progress.completed.map(name).join(' · ')+'. Время посещения не записано.',state:'estimate'});
