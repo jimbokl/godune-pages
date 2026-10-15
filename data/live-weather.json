@@ -565,7 +565,7 @@
         "date": "2026-10-15",
         "sunrise": "2026-10-15T05:07:00Z",
         "sunset": "2026-10-15T15:39:00Z",
-        "received_at": "2026-10-15T20:35:27.877752Z"
+        "received_at": "2026-10-15T21:24:36.958051Z"
       }
     },
     {
@@ -576,16 +576,6 @@
       "lon": 20.8928,
       "model_updated_at": "2026-10-15T20:29:41Z",
       "hours": [
-        {
-          "time": "2026-10-15T20:00:00Z",
-          "temperature_c": 11.2,
-          "wind_ms": 2.0,
-          "wind_from_degrees": 180.0,
-          "cloud_percent": 96.0,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-15T21:00:00Z",
           "temperature_c": 11.5,
@@ -1117,13 +1107,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-15T20:35:27.877752Z",
-      "checked_at": "2026-10-15T20:35:27.877752Z",
+      "received_at": "2026-10-15T21:24:36.958051Z",
+      "checked_at": "2026-10-15T21:24:36.958051Z",
       "sun": {
         "date": "2026-10-15",
         "sunrise": "2026-10-15T05:06:00Z",
         "sunset": "2026-10-15T15:37:00Z",
-        "received_at": "2026-10-15T20:35:27.877752Z"
+        "received_at": "2026-10-15T21:24:36.958051Z"
       }
     },
     {
@@ -1134,16 +1124,6 @@
       "lon": 20.1545,
       "model_updated_at": "2026-10-15T20:29:41Z",
       "hours": [
-        {
-          "time": "2026-10-15T20:00:00Z",
-          "temperature_c": 10.4,
-          "wind_ms": 2.0,
-          "wind_from_degrees": 172.0,
-          "cloud_percent": 99.1,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-15T21:00:00Z",
           "temperature_c": 10.4,
@@ -1675,13 +1655,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-15T20:35:27.877752Z",
-      "checked_at": "2026-10-15T20:35:27.877752Z",
+      "received_at": "2026-10-15T21:24:36.958051Z",
+      "checked_at": "2026-10-15T21:24:36.958051Z",
       "sun": {
         "date": "2026-10-15",
         "sunrise": "2026-10-15T05:08:00Z",
         "sunset": "2026-10-15T15:40:00Z",
-        "received_at": "2026-10-15T20:35:27.877752Z"
+        "received_at": "2026-10-15T21:24:36.958051Z"
       }
     },
     {
@@ -1692,16 +1672,6 @@
       "lon": 20.5114,
       "model_updated_at": "2026-10-15T20:29:41Z",
       "hours": [
-        {
-          "time": "2026-10-15T20:00:00Z",
-          "temperature_c": 10.4,
-          "wind_ms": 1.4,
-          "wind_from_degrees": 159.0,
-          "cloud_percent": 93.6,
-          "symbol": "partlycloudy_night",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-15T21:00:00Z",
           "temperature_c": 10.1,
@@ -2233,13 +2203,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-15T20:35:27.877752Z",
-      "checked_at": "2026-10-15T20:35:27.877752Z",
+      "received_at": "2026-10-15T21:24:36.958051Z",
+      "checked_at": "2026-10-15T21:24:36.958051Z",
       "sun": {
         "date": "2026-10-15",
         "sunrise": "2026-10-15T05:06:00Z",
         "sunset": "2026-10-15T15:39:00Z",
-        "received_at": "2026-10-15T20:35:27.877752Z"
+        "received_at": "2026-10-15T21:24:36.958051Z"
       }
     }
   ]
