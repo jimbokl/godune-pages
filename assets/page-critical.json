@@ -1,0 +1,3976 @@
+{
+  "version": 1,
+  "delivery": "ssr-canonical-inline+deferred-full-css",
+  "pages": {
+    "food/days/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "68231ff97b62c92ac5c7da50e1781177a37876a3183b187c7fcdae73d6b0de05",
+      "source_bytes": 404353,
+      "critical_bytes": 66725
+    },
+    "food/dishes/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "62915a5dc29cd95e1881641ac827f139327b5fc0e5e819d640dd49c3f509800f",
+      "source_bytes": 403100,
+      "critical_bytes": 66731
+    },
+    "food/dishes/klopsy/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a86c98ea28341879e0b2e1c9464ceaef910dd1f6d7787a4d5409db0fd86a176e",
+      "source_bytes": 415652,
+      "critical_bytes": 86016
+    },
+    "food/dishes/marcipan/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a86c98ea28341879e0b2e1c9464ceaef910dd1f6d7787a4d5409db0fd86a176e",
+      "source_bytes": 415652,
+      "critical_bytes": 86016
+    },
+    "food/dishes/pelamida/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a86c98ea28341879e0b2e1c9464ceaef910dd1f6d7787a4d5409db0fd86a176e",
+      "source_bytes": 415652,
+      "critical_bytes": 86016
+    },
+    "food/dishes/stroganina/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a86c98ea28341879e0b2e1c9464ceaef910dd1f6d7787a4d5409db0fd86a176e",
+      "source_bytes": 415652,
+      "critical_bytes": 86016
+    },
+    "food/dishes/ugor/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "960c2a2922adfd525ec855246ef1c01aa47cd6dbdb5b05250ea6ba9a1bb8cbef",
+      "source_bytes": 415652,
+      "critical_bytes": 86273
+    },
+    "food/dishes/ukha/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a86c98ea28341879e0b2e1c9464ceaef910dd1f6d7787a4d5409db0fd86a176e",
+      "source_bytes": 415652,
+      "critical_bytes": 86016
+    },
+    "food/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "68231ff97b62c92ac5c7da50e1781177a37876a3183b187c7fcdae73d6b0de05",
+      "source_bytes": 404353,
+      "critical_bytes": 66725
+    },
+    "food/routes/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "33f8f6fac7bfccb4c8f986209c5062a772e54f0481772d5d136c6945e94a144c",
+      "source_bytes": 404353,
+      "critical_bytes": 67097
+    },
+    "food/waves/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "33f8f6fac7bfccb4c8f986209c5062a772e54f0481772d5d136c6945e94a144c",
+      "source_bytes": 404353,
+      "critical_bytes": 67097
+    },
+    "food/zelenogradsk/all/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "800c3aa376c6ea6580241e901791aff7d2ac22c461acd0b73aaec8fe44038cd5",
+      "source_bytes": 403100,
+      "critical_bytes": 88012
+    },
+    "food/zelenogradsk/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "766c52ec4958600337892f5442e7ce0a1d900515070623ae0881244e3864f1da",
+      "source_bytes": 403100,
+      "critical_bytes": 88671
+    },
+    "food/zelenogradsk/kofe-i-vypechka/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "40a49d2eacc6bc941f82ba8a015f73a44aa89d676e933b946ba7afb7d2d2a9c3",
+      "source_bytes": 404353,
+      "critical_bytes": 68291
+    },
+    "food/zelenogradsk/litovskaya-volna/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "40a49d2eacc6bc941f82ba8a015f73a44aa89d676e933b946ba7afb7d2d2a9c3",
+      "source_bytes": 404353,
+      "critical_bytes": 68291
+    },
+    "food/zelenogradsk/rybnaya-volna/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "d9d5aae169b05f3d94aef6758b59854f6714133f8b4e3a22d3e8c46a2d90079f",
+      "source_bytes": 416905,
+      "critical_bytes": 80045
+    },
+    "realty/compare/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "realty.css",
+          "media": "all",
+          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "f96bc126405032ef6b28e56541640498b8d6220cc77d3ce3cf743b097f0b63a0",
+      "source_bytes": 430910,
+      "critical_bytes": 74972
+    },
+    "realty/how-it-works/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "realty.css",
+          "media": "all",
+          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "3deac99d5af3690e9ef8e8aa7dbc7e25a8d5dea988b3593c995eceba5eaece4d",
+      "source_bytes": 430910,
+      "critical_bytes": 78169
+    },
+    "realty/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "realty.css",
+          "media": "all",
+          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "43f2a770c45849277ae683fb8e54ca44e3dccc2bc06b10beaf6cea121f96d97c",
+      "source_bytes": 418358,
+      "critical_bytes": 67174
+    },
+    "realty/projects/cosmos-stay/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "realty.css",
+          "media": "all",
+          "sha256": "889e1160bdac4deea3404a1de811acd2806a526cb1a388452d46c42c077632da"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "0cbf428545cdf69ceda5b663c0f17b512881137b53a28d958ef2fb93f834f564",
+      "source_bytes": 430910,
+      "critical_bytes": 79126
+    },
+    "routes/amalienau-2-hours/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "9bc4db0dacb96830d03d386dd3e958e483daef33d490941211a5b6b86d8a32fd",
+      "source_bytes": 416905,
+      "critical_bytes": 98501
+    },
+    "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "4500e94dd0bfd6e32153d024857a6dccc446a80fefef818d6c088a40ad4642dc",
+      "source_bytes": 416905,
+      "critical_bytes": 95566
+    },
+    "routes/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "5479059d33f876c8efee17b560df83136b3724347e77898fa038128828349c64",
+      "source_bytes": 403100,
+      "critical_bytes": 76531
+    },
+    "routes/kaliningrad-kosmicheskaya-volna/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "6cc8390586aab060f4398471af6eca461ad30fa80c8890b3d06f4ba159b50d4c",
+      "source_bytes": 416905,
+      "critical_bytes": 95713
+    },
+    "routes/kaliningrad-three-days/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "14d22637d5e1fb54721190edaabcb36f81ea26b742f43f50cf11bd4b7905105b",
+      "source_bytes": 416905,
+      "critical_bytes": 77675
+    },
+    "routes/ostrov-kanta-naberezhnye/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "9bc4db0dacb96830d03d386dd3e958e483daef33d490941211a5b6b86d8a32fd",
+      "source_bytes": 416905,
+      "critical_bytes": 98501
+    },
+    "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "4b54636bcdaa8dc97e27d329774eee68e93b3697a1162c27ff39a4018f5ce325",
+      "source_bytes": 416905,
+      "critical_bytes": 98457
+    },
+    "routes/tancuyushchiy-les/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "b530da48ae2ccc28c02f40edc6543a4f8f007d3f0b8f35eb859f51c1d3c4c1b7",
+      "source_bytes": 416905,
+      "critical_bytes": 98339
+    },
+    "routes/vorota-i-reka/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "4b088aee8a9b11e23bbef41d956bdef467cecee3c78f8ae753bc5d69064e5906",
+      "source_bytes": 416905,
+      "critical_bytes": 96049
+    },
+    "routes/vysota-efa/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "2225597f2eae962dec90bae05b78b10ab4c88a0f7a42c370ed2fbe1a3c6c64f4",
+      "source_bytes": 416905,
+      "critical_bytes": 98378
+    },
+    "routes/zelenogradsk-2-k-moryu/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "3e0858732afd93d67692c965905389217dbb38e9c1589070dac158e1d1ee1858",
+      "source_bytes": 416905,
+      "critical_bytes": 95909
+    },
+    "routes/zelenogradsk-two-days/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "14d22637d5e1fb54721190edaabcb36f81ea26b742f43f50cf11bd4b7905105b",
+      "source_bytes": 416905,
+      "critical_bytes": 77675
+    },
+    "waves/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "d7beec36267d696da00a4d6f3db08687ef8ca015ad32132d798ec7d8d9ee793a",
+      "source_bytes": 405780,
+      "critical_bytes": 67688
+    },
+    "waves/kaliningrad-ocean/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a2bc92a365c2c688505a125bb0890377c13f4fd7ab31961ce46dd7af24d1e9d7",
+      "source_bytes": 418332,
+      "critical_bytes": 80822
+    },
+    "waves/svetlogorsk-bereg/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a2bc92a365c2c688505a125bb0890377c13f4fd7ab31961ce46dd7af24d1e9d7",
+      "source_bytes": 418332,
+      "critical_bytes": 80822
+    },
+    "waves/yantarny-bereg/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "a2bc92a365c2c688505a125bb0890377c13f4fd7ab31961ce46dd7af24d1e9d7",
+      "source_bytes": 418332,
+      "critical_bytes": 80822
+    },
+    "waves/zelenogradsk-bereg/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "690201dd414188d3cdb334087cfa5604c43e00ae8db0b896a96abcc4af004065",
+      "source_bytes": 418332,
+      "critical_bytes": 83274
+    },
+    "waves/zelenogradsk-city-fish/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "1cbf897cce712095cef2c35ab7b257994128b198f598184b28cf106630d1f871",
+      "source_bytes": 418332,
+      "critical_bytes": 80946
+    },
+    "waves/zelenogradsk-vkus/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "9b1eb7cacd7a06b3fc1af90c3034fc40011288cc0d10035677c882891f7cdea4",
+      "source_bytes": 418332,
+      "critical_bytes": 83398
+    },
+    "waves/zelenogradsk-west-sea/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "5f0e92fbc3dbc244ed831856f8c56e224c90cff7f690cc380a27a5eeabbe6766"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "39bc7497e64803ac98b3f4ef52e51ab6b9d5615bfd6f5ca3cfb8def9179a58a8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "wave-static.css",
+          "media": "all",
+          "sha256": "51a78d27cbc585db70a688f41ea8ac757988f0d0f6596a030628033e8a9f231d"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "47d6bf3bb9c2ca2c83a2e63d102759179b568384b6c7e408e9782b8e2e6d499c"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "fa5a3d71b0e838f2be97e164891e9aac1a64e5de12429935cb08e129b9fba7d2"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "1cbf897cce712095cef2c35ab7b257994128b198f598184b28cf106630d1f871",
+      "source_bytes": 418332,
+      "critical_bytes": 80946
+    }
+  }
+}

@@ -1,0 +1,172 @@
+/* Content-only print treatment. Header, logo and interactive state colours stay in their own styles. */
+
+/* Shared generated pages: body copy shifts to graphite; the established sea navy remains in headings. */
+main.inner-main {
+  color: #1a1d1c;
+}
+:root[data-theme=night] main.inner-main { color: var(--ink); }
+main.inner-main :is(h1, h2, h3, h4) { color: var(--sea-ink); }
+main.inner-main > :is(section, article) { border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--ink) 18%); }
+main.inner-main :is(.eyebrow, .inner-kicker, .meta, .news-meta, .page-updated, figcaption, .food-menu-source-heading > span, .food-menu-condition, .food-source, .food-portion) {
+  font-size: max(12px, .86em);
+  line-height: 1.5;
+}
+main.inner-main :is(p, li, small, figcaption) { min-width: 0; }
+
+/* Static directory entries read as ruled editorial rows instead of repeated boxed cards. */
+main.inner-main :is(.poi-card, .dunes-card, .business-card, .news-card, .tool-hub-card, .dish-card, .route-discovery-link) {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--ink) 18%);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+main.inner-main :is(.realty-section, .realty-side-note) {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--ink) 18%);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* These cards carry disclosure and progress states; adjust only their shared geometry. */
+main.inner-main :is(.journey-stop-card, .fish-stop) { border-radius: 3px; }
+
+/* Photo frames are presentational only: preserve image sizing, crop, and caption positioning. */
+main.inner-main :is(.food-place-photo, .journey-cover, .news-cover, .author-gallery-grid figure, .weekend-photo) {
+  border: 1px solid color-mix(in srgb, var(--line) 82%, var(--brand-amber) 18%);
+  background-color: color-mix(in srgb, var(--paper) 92%, var(--brand-amber) 8%);
+  border-radius: 2px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--paper) 90%, var(--brand-amber) 10%);
+}
+main.inner-main :is(.food-place-photo, .journey-cover, .news-cover, .author-gallery-grid figure, .weekend-photo) figcaption {
+  color: var(--muted);
+  font-size: max(12px, .86em);
+}
+main.inner-main :is(.food-place-photo, .journey-cover, .news-cover, .author-gallery-grid figure, .weekend-photo) img { border-radius: 0; }
+main.inner-main .food-place-photo figcaption { font-style: italic; padding: .65rem .25rem; }
+
+/* Menu line contract: item name, leader span, and price are siblings; portions/actions occupy later rows. */
+main.inner-main .food-menu-line {
+  display: flex;
+  align-items: baseline;
+  gap: .45rem;
+  min-width: 0;
+  width: 100%;
+}
+main.inner-main .food-menu-items > li,
+main.inner-main .dining-menu .food-menu-items > li:has(.menu-choice-add) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .25rem;
+  align-items: start;
+}
+main.inner-main .food-menu-line .food-item-name { flex: 0 1 auto; min-width: 0; }
+main.inner-main .food-menu-line .food-menu-leader {
+  flex: 1 1 1.5rem;
+  min-width: 1rem;
+  border-bottom: 1px dotted color-mix(in srgb, var(--line) 78%, var(--muted) 22%);
+  transform: translateY(-.25em);
+}
+main.inner-main .food-menu-line strong {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  max-width: none;
+  font-family: var(--sans);
+}
+main.inner-main .food-menu-line + :is(.food-portion, .food-menu-action) { display: block; }
+main.inner-main .food-menu-source {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--ink) 14%);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--paper) 96%, var(--brand-amber) 4%);
+}
+main.inner-main .food-menu-source > :is(.food-menu-source-heading, .food-source, .food-menu-condition, .food-portion-note, .food-menu-document, .food-menu-note, .dish-channel, .dish-source-context, p) { grid-column: 1 / -1; }
+main.inner-main .food-menu-source > .food-menu-category { min-width: 0; }
+main.inner-main .food-menu-passport {
+  display: block;
+  margin: .25rem 0 1.25rem;
+  color: var(--muted);
+  font: 12px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+main.inner-main .food-menu-passport :is(span, a) { display: inline; font: inherit; }
+main.inner-main .food-menu-passport > span::before { content: " · "; }
+main.inner-main .food-menu-note { margin: 0 0 1rem; font-size: 13px; }
+main.inner-main .food-menu-note summary { min-height: 44px; padding: .5rem 0; color: var(--muted); cursor: pointer; }
+main.inner-main .food-menu-source-heading h3 { margin-bottom: .25rem; }
+body[data-food-place] main.inner-main .food-order-presets {
+  padding: 1rem 0;
+  border: 0;
+  border-block: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+body[data-food-place] main.inner-main .food-order-preset {
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+body[data-food-place] main.inner-main .food-order-preset:first-child { border-left: 0; }
+body[data-food-place] main.inner-main .food-order-preset h3 { font: 500 19px/1.3 var(--serif); }
+main.inner-main .engagement-live-strip { border: 0; border-block: 1px solid var(--line); border-radius: 0; background: transparent; padding-inline: 0; }
+main.inner-main .engagement-context[data-kind=project] [data-engagement-live][data-solar-state=unknown] { display: none; }
+
+/* The hand-authored homepage and standalone utility pages use the same content language. */
+body[data-home-page] main > :not(.hero) { color: #1a1d1c; }
+:root[data-theme=night] body[data-home-page] main > :not(.hero) { color: var(--ink); }
+body[data-home-page] main :is(.poi-card, .dunes-card, .news-card, .route-discovery-link) {
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+body[data-home-page] main :is(h2, h3) { color: var(--sea-ink); }
+main.utility-content { color: #1a1d1c; }
+:root[data-theme=night] main.utility-content { color: var(--ink); }
+main.utility-content h1 { color: var(--ink); }
+main.utility-content .utility-card { border-radius: 2px; background: transparent; border: 0; border-top: 1px solid var(--line); padding: 1.25rem 0; }
+
+/* Static listing and content cards use open editorial rows across page families. */
+main.inner-main :is(.catalog-itinerary, .catalog-starter, .catalog-access > a, .gastro-route-row, .realty-card, .project-metric-card, .research-source, .research-status-card),
+html[data-theme] main.inner-main :is(.research-source, .research-status-card) {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--ink) 18%);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+body[data-tool="routes"][data-ui-context] main.inner-main .catalog-route,
+body[data-tool="routes"][data-ui-context] main.inner-main .catalog-waves > a {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--line) 82%, var(--ink) 18%);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+main.inner-main .realty-card:hover { box-shadow: none; }
+
+/* Keep catalog photos' existing dimensions and crop while giving them a quiet frame. */
+body[data-tool="routes"][data-ui-context] main.inner-main .catalog-route figure,
+body[data-tool="routes"][data-ui-context] main.inner-main .catalog-waves img {
+  border: 2px solid color-mix(in srgb, var(--line) 82%, var(--brand-amber) 18%);
+  box-sizing: border-box;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 680px) {
+  main.inner-main :is(.eyebrow, .inner-kicker, .meta, .news-meta, .page-updated, figcaption, .food-menu-source-heading > span, .food-menu-condition, .food-source, .food-portion) { font-size: max(12px, .86em); }
+  main.inner-main .food-menu-source { grid-template-columns: minmax(0, 1fr); }
+  main.inner-main .food-menu-source > .food-menu-category { grid-column: 1 / -1; }
+  main.inner-main .food-menu-line { gap: .32rem; }
+  main.inner-main .food-menu-line .food-item-name { overflow-wrap: anywhere; }
+  main.inner-main .food-menu-line strong { font-size: max(12px, 1em); }
+  body[data-food-place] main.inner-main .food-order-preset { border-left: 0; border-top: 1px solid var(--line); padding: .8rem 0; }
+  body[data-food-place] main.inner-main .food-order-preset:first-child { border-top: 0; }
+}

@@ -140,7 +140,7 @@ async function renderOfflinePanel(panel,{context,catalog,selectedPaths,base}={})
       }
     }else panel.packages.append(node('li',{},'Сохранённых комплектов нет в списке.'));
   }catch{
-    panel.summary.textContent='Статус офлайн неизвестен: список Service Worker недоступен.';
+    panel.summary.textContent='Не удалось проверить сохранённые страницы и карты.';
     panel.summary.dataset.state='unknown';
     panel.resources.append(node('li',{},'Не удалось прочитать список страниц и карт.'));
     panel.packages.append(node('li',{},'Список сохранённых комплектов неизвестен.'));
