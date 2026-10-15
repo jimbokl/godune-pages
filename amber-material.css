@@ -224,7 +224,7 @@ html[data-theme="day"] {
 
 /* Only editorial content and the home mosaic participate; the shared shell stays frozen. */
 body.inner-page > main.inner-main,
-body[data-home-page] > main#main {
+body[data-home-page] > main#main > .home-content {
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.65;
@@ -254,7 +254,7 @@ html[data-theme] body.inner-page > main.inner-main {
 }
 
 html[data-theme="day"] body.inner-page > main.inner-main,
-html[data-theme="day"] body[data-home-page] > main#main,
+html[data-theme="day"] body[data-home-page] > main#main > .home-content,
 html[data-theme="day"] body.inner-page > dialog,
 html[data-theme="day"] body[data-home-page] > dialog {
   --action: var(--amber-cognac);
@@ -263,7 +263,7 @@ html[data-theme="day"] body[data-home-page] > dialog {
 }
 
 body.inner-page > main.inner-main :is(h1, h2),
-body[data-home-page] > main#main :is(h1, h2) {
+body[data-home-page] > main#main > .home-content :is(h1, h2) {
   color: var(--amber-sun);
   font-family: var(--font-display);
   font-weight: 500;
@@ -273,18 +273,18 @@ body[data-home-page] > main#main :is(h1, h2) {
 }
 
 body.inner-page > main.inner-main :is(p, li, dt, dd, label, figcaption),
-body[data-home-page] > main#main :is(p, li, dt, dd, label, figcaption) {
+body[data-home-page] > main#main > .home-content :is(p, li, dt, dd, label, figcaption) {
   color: var(--text-main);
 }
 
 body.inner-page > main.inner-main :is(.inner-lead, .realty-deck, .catalog-description, .journey-stop-description),
-body[data-home-page] > main#main :is(.mosaic-fragment p, .mosaic-fragment li) {
+body[data-home-page] > main#main > .home-content :is(.mosaic-fragment p, .mosaic-fragment li) {
   max-width: 62ch;
   line-height: 1.72;
 }
 
 body.inner-page > main.inner-main :is(.eyebrow, .inner-kicker, .meta, .news-meta, .page-updated, .food-menu-source-heading > span, .food-menu-condition, .food-portion, .graph-weave-label),
-body[data-home-page] > main#main :is(.mosaic-fragment .eyebrow, .mosaic-fragment .meta) {
+body[data-home-page] > main#main > .home-content :is(.mosaic-fragment .eyebrow, .mosaic-fragment .meta) {
   color: var(--amber-primary);
   font-family: var(--font-mono);
   font-size: .72rem;
@@ -294,14 +294,14 @@ body[data-home-page] > main#main :is(.mosaic-fragment .eyebrow, .mosaic-fragment
 }
 
 body.inner-page > main.inner-main :is(.catalog-facts, .catalog-location, .journey-passport dt, .journey-passport dd, .realty-keyfacts dd, .food-practical dd time, .food-source, .food-menu-passport, .housing-road, .place-plate-focus, .city-day-number, .realty-compare td, .realty-compare tbody th, time),
-body[data-home-page] > main#main :is(.mosaic-fragment time, .mosaic-fragment .metric) {
+body[data-home-page] > main#main > .home-content :is(.mosaic-fragment time, .mosaic-fragment .metric) {
   color: var(--amber-sun);
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
 body.inner-page > main.inner-main :is(a, .journey-place-link, .catalog-open, .catalog-pdf, .catalog-plan),
-body[data-home-page] > main#main .mosaic-fragment a {
+body[data-home-page] > main#main > .home-content .mosaic-fragment a {
   color: var(--amber-sun);
   text-decoration-color: var(--amber-edge-color);
   text-underline-offset: .22em;
@@ -309,7 +309,7 @@ body[data-home-page] > main#main .mosaic-fragment a {
 }
 
 body.inner-page > main.inner-main :is(a.button-dark, a.button-primary, a.transport-primary, .event-links .event-primary, .day-main-actions .button),
-body[data-home-page] > main#main .mosaic-fragment :is(a.button-dark, a.button-primary, a.transport-primary, .event-links .event-primary, .day-main-actions .button) {
+body[data-home-page] > main#main > .home-content .mosaic-fragment :is(a.button-dark, a.button-primary, a.transport-primary, .event-links .event-primary, .day-main-actions .button) {
   color: var(--action-ink, #FFFFFF);
 }
 
@@ -345,7 +345,7 @@ body.inner-page > main.inner-main :is(
   .wave-static-stops > li, .wave-static .journey-pocket
 ),
 body.inner-page > main.inner-main :is(.amber-panel, .amber-shards),
-body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards) {
+body[data-home-page] > main#main > .home-content :is(.mosaic-fragment, .amber-panel, .amber-shards) {
   color: var(--text-main);
   background-color: var(--resin-card);
   background-image: var(--bg-amber-tint);
@@ -358,14 +358,14 @@ body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shar
 }
 
 body.inner-page > main.inner-main :is(.catalog-route, .journey-stop-card, .dining-card, .housing-card, .business-card, .research-source):hover,
-body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
+body[data-home-page] > main#main > .home-content :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
   background-color: var(--resin-card-hover);
   border-color: var(--border-strong);
   box-shadow: var(--material-shadow-hover);
 }
 
 body.inner-page > main.inner-main :is(.amber-plate, .amber-shards),
-body[data-home-page] > main#main :is(.amber-plate, .amber-shards) {
+body[data-home-page] > main#main > .home-content :is(.amber-plate, .amber-shards) {
   background-color: var(--bg-plate);
   background-image: var(--bg-amber-tint);
   border: var(--amber-edge);
@@ -375,7 +375,7 @@ body[data-home-page] > main#main :is(.amber-plate, .amber-shards) {
 }
 
 body.inner-page > main.inner-main .succinite-plate,
-body[data-home-page] > main#main .succinite-plate {
+body[data-home-page] > main#main > .home-content .succinite-plate {
   position: relative;
   color: var(--text-main);
   background-color: var(--bg-plate);
@@ -386,7 +386,7 @@ body[data-home-page] > main#main .succinite-plate {
   backdrop-filter: blur(14px);
 }
 body.inner-page > main.inner-main .succinite-plate::before,
-body[data-home-page] > main#main .succinite-plate::before {
+body[data-home-page] > main#main > .home-content .succinite-plate::before {
   content: "";
   position: absolute;
   inset: 0 0 auto auto;
@@ -398,28 +398,28 @@ body[data-home-page] > main#main .succinite-plate::before {
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   body.inner-page > main.inner-main .succinite-plate:hover,
-  body[data-home-page] > main#main .succinite-plate:hover {
+  body[data-home-page] > main#main > .home-content .succinite-plate:hover {
     border-color: var(--border-seam-strong);
     box-shadow: var(--shadow-inset-gem), var(--material-shadow-hover);
   }
 }
 
 body.inner-page > main.inner-main .amber-inclusion,
-body[data-home-page] > main#main .amber-inclusion {
+body[data-home-page] > main#main > .home-content .amber-inclusion {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border-seam);
   box-shadow: inset 0 0 0 1px rgb(243 182 86 / 35%), inset 0 12px 28px -8px rgb(158 59 24 / 22%);
 }
 body.inner-page > main.inner-main .amber-inclusion > img,
-body[data-home-page] > main#main .amber-inclusion > img {
+body[data-home-page] > main#main > .home-content .amber-inclusion > img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 body.inner-page > main.inner-main .amber-inclusion::after,
-body[data-home-page] > main#main .amber-inclusion::after {
+body[data-home-page] > main#main > .home-content .amber-inclusion::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -429,7 +429,7 @@ body[data-home-page] > main#main .amber-inclusion::after {
   box-shadow: inset 0 0 0 1px rgb(243 182 86 / 35%), inset 0 12px 28px -8px rgb(158 59 24 / 22%);
 }
 body.inner-page > main.inner-main .amber-inclusion figcaption,
-body[data-home-page] > main#main .amber-inclusion figcaption {
+body[data-home-page] > main#main > .home-content .amber-inclusion figcaption {
   position: relative;
   z-index: 1;
   color: var(--text-muted);
@@ -438,28 +438,28 @@ body[data-home-page] > main#main .amber-inclusion figcaption {
 }
 
 body.inner-page > main.inner-main .data-light-indicator,
-body[data-home-page] > main#main .data-light-indicator {
+body[data-home-page] > main#main > .home-content .data-light-indicator {
   color: var(--text-main);
   opacity: 1;
 }
 body.inner-page > main.inner-main .data-light-indicator::before,
-body[data-home-page] > main#main .data-light-indicator::before {
+body[data-home-page] > main#main > .home-content .data-light-indicator::before {
   opacity: 1;
 }
 body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
-body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before {
+body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="verified"]::before {
   color: var(--amber-sun);
   background-color: var(--amber-sun);
   box-shadow: 0 0 10px var(--amber-glow-color);
 }
 body.inner-page > main.inner-main .data-light-indicator[data-status="partial"]::before,
-body[data-home-page] > main#main .data-light-indicator[data-status="partial"]::before {
+body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="partial"]::before {
   color: var(--amber-honey);
   background-color: var(--amber-honey);
   opacity: .6;
 }
 body.inner-page > main.inner-main .data-light-indicator[data-status="unknown"]::before,
-body[data-home-page] > main#main .data-light-indicator[data-status="unknown"]::before {
+body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="unknown"]::before {
   color: var(--text-muted);
   background-color: transparent;
   border: 1px solid currentColor;
@@ -514,7 +514,7 @@ body.inner-page > main.inner-main :is(
   .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
   .food-day-save, .guide-next [data-guide-next], .amber-primary
 ),
-body[data-home-page] > main#main :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button),
+body[data-home-page] > main#main > .home-content :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button),
 body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice) {
   background-color: var(--action);
   border-color: var(--action);
@@ -525,7 +525,7 @@ body.inner-page > main.inner-main :is(
   .day-main-actions .button, .dunes-primary, .service-submit, .service-add-visit,
   .food-day-save, .guide-next [data-guide-next], .amber-primary
 ):hover,
-body[data-home-page] > main#main :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button):hover,
+body[data-home-page] > main#main > .home-content :is(.button-dark, .button-primary, .transport-primary, .event-links .event-primary, .day-main-actions .button):hover,
 body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice):hover {
   background-color: var(--action-hover);
   border-color: var(--action-hover);
@@ -537,20 +537,20 @@ body.inner-page > dialog :is(.button-dark, .button-primary, .graph-choice):hover
   50% { box-shadow: 0 0 16px -2px var(--amber-glow-color); }
 }
 body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
-body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before {
+body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="verified"]::before {
   animation: amber-material-breathe 3s ease-in-out infinite;
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   body.inner-page > main.inner-main :is(.catalog-route, .journey-stop-card, .dining-card, .housing-card, .business-card, .research-source):hover,
-  body[data-home-page] > main#main :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
+  body[data-home-page] > main#main > .home-content :is(.mosaic-fragment, .amber-panel, .amber-shards):hover {
     border-color: var(--border-strong);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
-  body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before,
+  body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="verified"]::before,
   body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="linked"]::before,
   body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
     animation: none;
@@ -559,7 +559,7 @@ body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::
 
 @media print {
   body.inner-page > main.inner-main,
-  body[data-home-page] > main#main,
+  body[data-home-page] > main#main > .home-content,
   body.inner-page > dialog,
   body[data-home-page] > dialog {
     color: #161918 !important;
@@ -570,7 +570,7 @@ body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::
     backdrop-filter: none !important;
   }
   body.inner-page > main.inner-main *,
-  body[data-home-page] > main#main *,
+  body[data-home-page] > main#main > .home-content *,
   body.inner-page > dialog *,
   body[data-home-page] > dialog * {
     color: #161918 !important;
@@ -580,13 +580,13 @@ body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::
     text-shadow: none !important;
   }
   body.inner-page > main.inner-main :is(.data-light-indicator, .graph-weave-label, .meta, .eyebrow, .inner-kicker, .page-updated),
-  body[data-home-page] > main#main :is(.data-light-indicator, .meta, .eyebrow),
+  body[data-home-page] > main#main > .home-content :is(.data-light-indicator, .meta, .eyebrow),
   body.inner-page > dialog :is(.data-light-indicator, .meta, .eyebrow),
   body[data-home-page] > dialog :is(.data-light-indicator, .meta, .eyebrow) {
     color: #161918 !important;
   }
   body.inner-page > main.inner-main :is(a, button, input, select, textarea),
-  body[data-home-page] > main#main :is(a, button, input, select, textarea),
+  body[data-home-page] > main#main > .home-content :is(a, button, input, select, textarea),
   body.inner-page > dialog :is(a, button, input, select, textarea),
   body[data-home-page] > dialog :is(a, button, input, select, textarea) {
     color: #161918 !important;
@@ -594,8 +594,8 @@ body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::
   }
   body.inner-page > main.inner-main *::before,
   body.inner-page > main.inner-main *::after,
-  body[data-home-page] > main#main *::before,
-  body[data-home-page] > main#main *::after,
+  body[data-home-page] > main#main > .home-content *::before,
+  body[data-home-page] > main#main > .home-content *::after,
   body.inner-page > dialog *::before,
   body.inner-page > dialog *::after,
   body[data-home-page] > dialog *::before,
@@ -605,7 +605,7 @@ body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::
     box-shadow: none !important;
   }
   body.inner-page > main.inner-main .data-light-indicator[data-status="verified"]::before,
-  body[data-home-page] > main#main .data-light-indicator[data-status="verified"]::before,
+  body[data-home-page] > main#main > .home-content .data-light-indicator[data-status="verified"]::before,
   body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="linked"]::before,
   body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
     animation: none;

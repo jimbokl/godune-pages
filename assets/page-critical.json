@@ -7,7 +7,7 @@
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -102,12 +102,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -115,16 +115,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "ad865275dc1d71d73850cae76bcb06fc20fe81dabb17f5f80a69f3bec0b569ae",
-      "source_bytes": 486361,
-      "critical_bytes": 90684
+      "sha256": "a9759486b4aa5952538e5312504d79a4e16143507a0d2e75396482bc0c395db5",
+      "source_bytes": 484065,
+      "critical_bytes": 87498
     },
     "food/dishes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -214,12 +214,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -227,16 +227,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "5b5b922120692e1514c1ffecd8e0b92e407e8528d8aa9fcccc4f8cd21a22a92a",
-      "source_bytes": 485108,
-      "critical_bytes": 90690
+      "sha256": "83a947f94a23f7bfd69b8ca8e8bba02ffcc599fca9cb9acd13d317fc26ab0011",
+      "source_bytes": 482812,
+      "critical_bytes": 87504
     },
     "food/dishes/klopsy/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -331,12 +331,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -344,16 +344,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
-      "source_bytes": 498232,
-      "critical_bytes": 114568
+      "sha256": "c0b87cf84d5c479b4ca27bdb4659b2d73b49f6b690654702a494ff215b4b9c90",
+      "source_bytes": 495936,
+      "critical_bytes": 111424
     },
     "food/dishes/marcipan/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -448,12 +448,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -461,16 +461,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
-      "source_bytes": 498232,
-      "critical_bytes": 114568
+      "sha256": "c0b87cf84d5c479b4ca27bdb4659b2d73b49f6b690654702a494ff215b4b9c90",
+      "source_bytes": 495936,
+      "critical_bytes": 111424
     },
     "food/dishes/pelamida/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -565,12 +565,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -578,16 +578,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
-      "source_bytes": 498232,
-      "critical_bytes": 114568
+      "sha256": "c0b87cf84d5c479b4ca27bdb4659b2d73b49f6b690654702a494ff215b4b9c90",
+      "source_bytes": 495936,
+      "critical_bytes": 111424
     },
     "food/dishes/stroganina/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -682,12 +682,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -695,16 +695,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
-      "source_bytes": 498232,
-      "critical_bytes": 114568
+      "sha256": "c0b87cf84d5c479b4ca27bdb4659b2d73b49f6b690654702a494ff215b4b9c90",
+      "source_bytes": 495936,
+      "critical_bytes": 111424
     },
     "food/dishes/ugor/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -799,12 +799,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -812,16 +812,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c134287d1e718db579b6d7ca56378e6ddc6967b10df89607d90ae82bafeebd54",
-      "source_bytes": 498232,
-      "critical_bytes": 114825
+      "sha256": "7d173badc6205c5380f9907043f3c69d9ab6ecd222f2fcbc9b60ea91604baaa9",
+      "source_bytes": 495936,
+      "critical_bytes": 111681
     },
     "food/dishes/ukha/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -916,12 +916,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -929,16 +929,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "40ad063885932217d98cd1925875ee9692f7a17deb4dd0de890c3b2bd171bcbd",
-      "source_bytes": 498232,
-      "critical_bytes": 114568
+      "sha256": "c0b87cf84d5c479b4ca27bdb4659b2d73b49f6b690654702a494ff215b4b9c90",
+      "source_bytes": 495936,
+      "critical_bytes": 111424
     },
     "food/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1033,12 +1033,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1046,16 +1046,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "ad865275dc1d71d73850cae76bcb06fc20fe81dabb17f5f80a69f3bec0b569ae",
-      "source_bytes": 486361,
-      "critical_bytes": 90684
+      "sha256": "a9759486b4aa5952538e5312504d79a4e16143507a0d2e75396482bc0c395db5",
+      "source_bytes": 484065,
+      "critical_bytes": 87498
     },
     "food/routes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1150,12 +1150,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1163,16 +1163,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "d0916f4799c6d175c0adce4a9502ebee5fdf255bf4ddcc2373c9b64b42eea5b6",
-      "source_bytes": 486361,
-      "critical_bytes": 91056
+      "sha256": "39ab2eb511ccaf1139510f203913c8ff6e0b1c6f6cbe43d9185baa0f294cb9d1",
+      "source_bytes": 484065,
+      "critical_bytes": 87870
     },
     "food/waves/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1267,12 +1267,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1280,16 +1280,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "d0916f4799c6d175c0adce4a9502ebee5fdf255bf4ddcc2373c9b64b42eea5b6",
-      "source_bytes": 486361,
-      "critical_bytes": 91056
+      "sha256": "39ab2eb511ccaf1139510f203913c8ff6e0b1c6f6cbe43d9185baa0f294cb9d1",
+      "source_bytes": 484065,
+      "critical_bytes": 87870
     },
     "food/zelenogradsk/all/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1379,12 +1379,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1392,16 +1392,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c0646af2e27df7c7cdf2d54ab324e37d340b4609fdc61aebe9a59b8eed0379cd",
-      "source_bytes": 485108,
-      "critical_bytes": 120077
+      "sha256": "46ddc28522520a58a536c3293660a571edcee98a7da8c1f5645e26dfda06d88f",
+      "source_bytes": 482812,
+      "critical_bytes": 116961
     },
     "food/zelenogradsk/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1491,12 +1491,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1504,16 +1504,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "dc44e760b91530708e1b66ff57b77fb7be6a93f747f4de9cfcc4c00f3d59b8d8",
-      "source_bytes": 485108,
-      "critical_bytes": 118624
+      "sha256": "c05171fe76b16a403637f87c152348bff0f9e88c05f69f8a8f2f85db10f1c7d6",
+      "source_bytes": 482812,
+      "critical_bytes": 115480
     },
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1608,12 +1608,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1621,16 +1621,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6c1bfcf2c8e074d0502620c45e1471590a62d1881bf31586f12058e665997b9b",
-      "source_bytes": 486361,
-      "critical_bytes": 94898
+      "sha256": "6401e027493043e6cfc6e599e7f64a3dd147403dfd87b1fe19dde2e0fbcadcff",
+      "source_bytes": 484065,
+      "critical_bytes": 91726
     },
     "food/zelenogradsk/litovskaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1725,12 +1725,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1738,16 +1738,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6c1bfcf2c8e074d0502620c45e1471590a62d1881bf31586f12058e665997b9b",
-      "source_bytes": 486361,
-      "critical_bytes": 94898
+      "sha256": "6401e027493043e6cfc6e599e7f64a3dd147403dfd87b1fe19dde2e0fbcadcff",
+      "source_bytes": 484065,
+      "critical_bytes": 91726
     },
     "food/zelenogradsk/rybnaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1847,12 +1847,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1860,16 +1860,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "37b1fc64bbf89f470a466016cef4b7acfcbd0668752052a0aa4b08e925b06eca",
-      "source_bytes": 499485,
-      "critical_bytes": 107216
+      "sha256": "984b55357906a3039493b5e8b889f67f28c1b21899806e0407075ff99e34aa5c",
+      "source_bytes": 497189,
+      "critical_bytes": 104044
     },
     "realty/compare/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -1969,12 +1969,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -1982,16 +1982,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "b9a8602ae6b9939b5934bb183aba2886587a50c761c01db7ccb5cdf4b5d66de0",
-      "source_bytes": 513489,
-      "critical_bytes": 107840
+      "sha256": "30b1659f1d4e8da52214e7fcb6d23c8d83d32db159c2f0a17e60ff38d35d4ce8",
+      "source_bytes": 511193,
+      "critical_bytes": 104668
     },
     "realty/how-it-works/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2091,12 +2091,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2104,16 +2104,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "98ef144e71141a507cae97620495410986e3c83e8a80578def447ede719bb041",
-      "source_bytes": 513489,
-      "critical_bytes": 109880
+      "sha256": "8b09c6d62f05db31adf51ce23791665aec5758740cf68b17a3c105160e47eb4e",
+      "source_bytes": 511193,
+      "critical_bytes": 106708
     },
     "realty/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2208,12 +2208,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2221,16 +2221,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "4570b0f58ba15bb7fb85f9e31add79f73bfeb529184c0bb1b461f36550b1fa35",
-      "source_bytes": 500365,
-      "critical_bytes": 98405
+      "sha256": "19632ae4020d7e79de0c34e09c5f43a66e18d99737daee183408098d2cc97a17",
+      "source_bytes": 498069,
+      "critical_bytes": 95233
     },
     "realty/projects/cosmos-stay/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2330,12 +2330,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2343,16 +2343,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "69594c6d81d49a05e56c8d8dd26ff901cc797ea1f5ddbdb0e5b15629e87a5e20",
-      "source_bytes": 513489,
-      "critical_bytes": 112923
+      "sha256": "bd33274e2ad8537cb52607bc88c71f494bf8ed4d06759cd5e9dbb48454f7c4d3",
+      "source_bytes": 511193,
+      "critical_bytes": 109751
     },
     "routes/amalienau-2-hours/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2452,12 +2452,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2465,16 +2465,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "592ead88066dac5f401d7c72a184e1102845344573d0bfc11f7b031a79ee24b9",
-      "source_bytes": 499485,
-      "critical_bytes": 129354
+      "sha256": "1d504053ca3b506697b4436c31809ecd73d540a25812f15fa88a9613199c98b3",
+      "source_bytes": 497189,
+      "critical_bytes": 126210
     },
     "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2574,12 +2574,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2587,16 +2587,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "be1f550a6afe9f0822d204538eb6b53c5d390879d893138e1c68d0c501187217",
-      "source_bytes": 499485,
-      "critical_bytes": 126419
+      "sha256": "ad12fa78669a3d8ec61ff7d142ccd96461b8e75c0c10bf8040f8df3f423f2dbf",
+      "source_bytes": 497189,
+      "critical_bytes": 123275
     },
     "routes/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2686,12 +2686,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2699,16 +2699,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "8b654b54488bcf2deb977f14c541b623fcd486ea33fc0e20ce6fbb6482583be4",
-      "source_bytes": 485108,
-      "critical_bytes": 107118
+      "sha256": "0a283ca9bd2dec2d28b9d31efbc7f26cb9a8d1a2eac592892583ee02927aba24",
+      "source_bytes": 482812,
+      "critical_bytes": 103974
     },
     "routes/kaliningrad-kosmicheskaya-volna/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2808,12 +2808,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2821,16 +2821,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "ee1cfa31212c7a6000e2be81573c41c1d53079422ca9197e99d3d8acad59d3c2",
-      "source_bytes": 499485,
-      "critical_bytes": 126566
+      "sha256": "5cbefd2b6e3fd5d407f9707239460ec7e5e8bb9a706f35c91e553224c4f28744",
+      "source_bytes": 497189,
+      "critical_bytes": 123422
     },
     "routes/kaliningrad-three-days/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -2930,12 +2930,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -2943,16 +2943,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c0a1d6734bcba2f593724e95e378021601b9f417754d8fd39aef677051bf8269",
-      "source_bytes": 499485,
-      "critical_bytes": 104846
+      "sha256": "4b991044ee90076419f0ca50a25e6fb49f3b9cb40157afb1cfcff424f018f771",
+      "source_bytes": 497189,
+      "critical_bytes": 101674
     },
     "routes/ostrov-kanta-naberezhnye/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3052,12 +3052,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3065,16 +3065,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "592ead88066dac5f401d7c72a184e1102845344573d0bfc11f7b031a79ee24b9",
-      "source_bytes": 499485,
-      "critical_bytes": 129354
+      "sha256": "1d504053ca3b506697b4436c31809ecd73d540a25812f15fa88a9613199c98b3",
+      "source_bytes": 497189,
+      "critical_bytes": 126210
     },
     "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3174,12 +3174,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3187,16 +3187,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c6c251194cbc0cc6a13e869b6dda6ca4be8ff3409ef8256775f9c3d4e0f0b80f",
-      "source_bytes": 499485,
-      "critical_bytes": 129310
+      "sha256": "1b7fc5d47ee63df45f0c6ee06cc44c83dbfbdec49c34c5cbe84e757fc2bc2713",
+      "source_bytes": 497189,
+      "critical_bytes": 126166
     },
     "routes/tancuyushchiy-les/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3296,12 +3296,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3309,16 +3309,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "ec2fd371a15a509db7215c2c103ad8c664bc51d98f8e0553a517cda9a3009b64",
-      "source_bytes": 499485,
-      "critical_bytes": 129192
+      "sha256": "8abc923e42ab1f37b2baf404965e09f9394ac34f07845984bb6e737b2323347d",
+      "source_bytes": 497189,
+      "critical_bytes": 126048
     },
     "routes/vorota-i-reka/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3418,12 +3418,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3431,16 +3431,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6a72e9a6eef56be43baa59d6d32b76240bafa0d6395b95cdf55834273858c616",
-      "source_bytes": 499485,
-      "critical_bytes": 126902
+      "sha256": "073268d20f435dda314611ac48c9da2f67178abd15488f412d94522874ac3ec3",
+      "source_bytes": 497189,
+      "critical_bytes": 123758
     },
     "routes/vysota-efa/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3540,12 +3540,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3553,16 +3553,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "5a6fbe22f4789219b65ff48038108c9c555755616f6c9914b3dd6decad0ebdbf",
-      "source_bytes": 499485,
-      "critical_bytes": 129231
+      "sha256": "bc224c6d92c2723d44b7f068fcbc1329a5b0fe0daa5e8c07c95d7ff61a4c2d5b",
+      "source_bytes": 497189,
+      "critical_bytes": 126087
     },
     "routes/zelenogradsk-2-k-moryu/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3662,12 +3662,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3675,16 +3675,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "3df47e345944af911a6799d925acdaa3a4de759ea2cc8d174654a1ce16259e4e",
-      "source_bytes": 499485,
-      "critical_bytes": 126762
+      "sha256": "6ce7a5b655da827dfbf303ae505490c56db6c90be43cf325735858075bc6df5f",
+      "source_bytes": 497189,
+      "critical_bytes": 123618
     },
     "routes/zelenogradsk-two-days/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3784,12 +3784,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3797,16 +3797,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c0a1d6734bcba2f593724e95e378021601b9f417754d8fd39aef677051bf8269",
-      "source_bytes": 499485,
-      "critical_bytes": 104846
+      "sha256": "4b991044ee90076419f0ca50a25e6fb49f3b9cb40157afb1cfcff424f018f771",
+      "source_bytes": 497189,
+      "critical_bytes": 101674
     },
     "waves/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -3901,12 +3901,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -3914,16 +3914,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "0acd8b594a575415888158913ca3265673dac91045cd66803a9323aa3a1d3a97",
-      "source_bytes": 487788,
-      "critical_bytes": 93628
+      "sha256": "ed9bee60a93da3d2d05fc262ac85b1baa6a6826da195d7473cf68101291f7cc4",
+      "source_bytes": 485492,
+      "critical_bytes": 90456
     },
     "waves/kaliningrad-ocean/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4023,12 +4023,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4036,16 +4036,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
-      "source_bytes": 500912,
-      "critical_bytes": 107844
+      "sha256": "9b45df2f573e35979f4bcc1881bab1b05a4bc5debaa93f69b6fbc352fe68b61f",
+      "source_bytes": 498616,
+      "critical_bytes": 104672
     },
     "waves/svetlogorsk-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4145,12 +4145,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4158,16 +4158,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
-      "source_bytes": 500912,
-      "critical_bytes": 107844
+      "sha256": "9b45df2f573e35979f4bcc1881bab1b05a4bc5debaa93f69b6fbc352fe68b61f",
+      "source_bytes": 498616,
+      "critical_bytes": 104672
     },
     "waves/yantarny-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4267,12 +4267,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4280,16 +4280,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "611c637ca270026545112009d705adb8f61b03bf87fa7d2b5bb2b1d8dfbd808e",
-      "source_bytes": 500912,
-      "critical_bytes": 107844
+      "sha256": "9b45df2f573e35979f4bcc1881bab1b05a4bc5debaa93f69b6fbc352fe68b61f",
+      "source_bytes": 498616,
+      "critical_bytes": 104672
     },
     "waves/zelenogradsk-bereg/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4389,12 +4389,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4402,16 +4402,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "70ce6b1975031c851489b7d4a7df45f0efffe05c94df0972a998d0dac82f5dc4",
-      "source_bytes": 500912,
-      "critical_bytes": 110296
+      "sha256": "39c9168161f7ae7c2ed3bd5b67a88c6f23bb490403588bc446321ecbbab86a3d",
+      "source_bytes": 498616,
+      "critical_bytes": 107124
     },
     "waves/zelenogradsk-city-fish/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4511,12 +4511,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4524,16 +4524,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "67842c1f29474ce7f7b69590179548e346e80991b77998ebbb44c346b4bf4655",
-      "source_bytes": 500912,
-      "critical_bytes": 107968
+      "sha256": "3bea8ac5fb18468ed25a8d89badbce8b05d1d334cef4cae8c8d477d3ee0ad20e",
+      "source_bytes": 498616,
+      "critical_bytes": 104796
     },
     "waves/zelenogradsk-vkus/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4633,12 +4633,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4646,16 +4646,16 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "25230c91f5f4e183faf58830843c9f0eb292591f22d57d527b4d077d40d5daf9",
-      "source_bytes": 500912,
-      "critical_bytes": 110420
+      "sha256": "9730d88aede98e11aa562f22a4b2b1e7a57768a36136ad9054ffad80071d53ad",
+      "source_bytes": 498616,
+      "critical_bytes": 107248
     },
     "waves/zelenogradsk-west-sea/index.html": {
       "sources": [
         {
           "path": "assets/fonts.css",
           "media": "all",
-          "sha256": "58c10e4e0724a26d5ffcd595aa3325f8ce21e14c4b8092e6e91488a697239f08"
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
         },
         {
           "path": "styles.css",
@@ -4755,12 +4755,12 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "e2e949b2827f24adcf8c32b442ac31ce29ab9fe415f9997d37708e642201141b"
+          "sha256": "56289c9339175013fc5691dff13479f8096d86bb6a42424d0d3a2ceddc066e6e"
         },
         {
           "path": "amber-material.css",
           "media": "all",
-          "sha256": "9f8746601c9b33467c959dff316e8296fd32110303ac47fa009cacca28c56af9"
+          "sha256": "0936ec1007df516a960bed22cb7fcb0af9ddff8176c0128a6b6acf684b1f6ceb"
         },
         {
           "path": "editorial-print.css",
@@ -4768,9 +4768,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "67842c1f29474ce7f7b69590179548e346e80991b77998ebbb44c346b4bf4655",
-      "source_bytes": 500912,
-      "critical_bytes": 107968
+      "sha256": "3bea8ac5fb18468ed25a8d89badbce8b05d1d334cef4cae8c8d477d3ee0ad20e",
+      "source_bytes": 498616,
+      "critical_bytes": 104796
     }
   }
 }

@@ -5,7 +5,7 @@ body.inner-page > main.inner-main {
   padding-bottom: clamp(40px, 6vw, 88px);
   margin-bottom: 0;
 }
-body[data-home-page] > main#main {
+body[data-home-page] > main#main > .home-content {
   --paper: var(--mosaic-canvas); --card: var(--mosaic-surface); --sand: var(--mosaic-surface-hover);
   --ink: var(--text-main); --muted: var(--text-muted); --line: var(--border-mosaic);
   --sea: var(--mosaic-surface-hover); --sea-soft: var(--mosaic-surface); --sea-ink: var(--amber-primary); --sea-line: var(--amber-honey);
@@ -26,7 +26,7 @@ body[data-home-page] #main .mosaic-hero h1 {font: 400 clamp(52px,6.3vw,88px)/.99
 body[data-home-page] #main .mosaic-hero .hero-actions {margin: 20px 0 0; padding: 0; display: flex;}
 .mosaic-intro-copy .hero-actions a {box-sizing: border-box; display: grid; grid-template-columns: minmax(0,1fr) 24px; gap: 0; align-items: center; width: min(100%,320px); min-height: 44px; border-bottom: 1px solid var(--amber-honey); color: var(--amber-primary); font: 500 15px/1.5 var(--font-sans); text-decoration: none;}
 .mosaic-intro-copy .hero-actions span {width: 24px; justify-self: end; text-align: right; font-size: 24px; line-height: 1;}
-.mosaic-dashboard {display: grid; grid-template-columns: 1.25fr 1fr; gap: 2px; align-items: stretch;}
+.mosaic-dashboard {margin-top: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: 1.25fr 1fr; gap: 2px; align-items: stretch;}
 .mosaic-fragment {position: relative; min-width: 0; border-radius: 4px; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; background-color: var(--bg-plate); background-image: var(--bg-amber-tint); border: 1px solid var(--border-mosaic); transition: opacity 400ms ease, border-color 400ms ease, transform 400ms cubic-bezier(.16,1,.3,1);}
 .mosaic-fragment .mosaic-media {display: block; position: relative; flex: none; height: clamp(210px,22vw,330px); overflow: hidden; border-bottom: 1px solid var(--border-mosaic);}
 .mosaic-fragment.mosaic-dunes .mosaic-media {height: clamp(210px,24vw,360px);}
@@ -109,7 +109,7 @@ body[data-home-page] #main figcaption {font: 11px/1.7 var(--font-mono); color: v
 }
 @media print {
  body.inner-page > main.inner-main {box-shadow: none; clip-path: none;}
- body[data-home-page] > main#main {background: white; color: #161918;}
+ body[data-home-page] > main#main > .home-content {background: white; color: #161918;}
  .mosaic-fragment {break-inside: avoid; opacity: 1;}
  .mosaic-dashboard {display: block;}
  .mosaic-legend {display: none;}
