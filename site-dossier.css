@@ -37,10 +37,10 @@ body .site-section-nav .nav-tools-panel{min-width:15rem;padding:.5rem}
 body .site-section-nav .nav-tools-panel a{min-height:44px;font-size:.8rem;border-radius:.4rem;display:flex;align-items:center}
 
 /* Existing native disclosures gain the same open/closed sign and reading rhythm. */
-body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary{position:relative;min-height:44px;cursor:pointer;list-style:none;text-align:left;justify-content:flex-start;padding:.85rem 2.75rem .85rem 0;color:var(--ink);font:500 .85rem/1.5 var(--sans)}
-body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::-webkit-details-marker{display:none}
-body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"+";position:absolute;right:.2rem;top:.6rem;display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;font:400 1.1rem/1 var(--sans);color:var(--sea-muted);background:none;transform:none}
-body .inner-main:not(:has(.business-page)) details[open]:not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"−";background:var(--sea);border-color:transparent;color:var(--sea-ink)}
+body .inner-main:not(:has(.business-page)) details:not(.catalog-filter-panel):not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary{position:relative;min-height:44px;cursor:pointer;list-style:none;text-align:left;justify-content:flex-start;padding:.85rem 2.75rem .85rem 0;color:var(--ink);font:500 .85rem/1.5 var(--sans)}
+body .inner-main:not(:has(.business-page)) details:not(.catalog-filter-panel):not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::-webkit-details-marker{display:none}
+body .inner-main:not(:has(.business-page)) details:not(.catalog-filter-panel):not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"+";position:absolute;right:.2rem;top:.6rem;display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;font:400 1.1rem/1 var(--sans);color:var(--sea-muted);background:none;transform:none}
+body .inner-main:not(:has(.business-page)) details[open]:not(.catalog-filter-panel):not(.nav-tools):not(.site-section-nav):not(.theme-control)>summary::after{content:"−";background:var(--sea);border-color:transparent;color:var(--sea-ink)}
 body .inner-main:not(:has(.business-page)) :is(.route-source-note,.route-stop-note,.route-access-profile,.dining-menu,.dining-facts,.dining-source-hours,.food-menu-category,.guide-side details,.service-card-details,.service-price-panel,.service-extra-fields,.service-filter-details){border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;box-shadow:none;margin:0;padding:0}
 
 /* Place and collection pages: a human-sized introduction, then useful facts. */
@@ -126,7 +126,7 @@ body[data-home-page] :is(.showcase-filters button,.showcase-open,.home-dunes-ope
 
 @media(hover:hover){
  body .site-section-nav .tool-nav a:hover{background:var(--sea-soft);color:var(--ink)}
- body .inner-main:not(:has(.business-page)) details:not(.nav-tools):not(.site-section-nav)>summary:hover::after{border-color:var(--sea-line);background:var(--sea-soft)}
+ body .inner-main:not(:has(.business-page)) details:not(.catalog-filter-panel):not(.nav-tools):not(.site-section-nav)>summary:hover::after{border-color:var(--sea-line);background:var(--sea-soft)}
 }
 @media(max-width:760px){
  body.inner-page .inner-main{width:calc(100% - 32px);padding-top:1rem}

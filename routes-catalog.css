@@ -78,3 +78,22 @@ body[data-tool="routes"][data-ui-context] .inner-main .catalog-filters .button{f
 .catalog-route figcaption{font-size:14px;line-height:1.4}
 @media(max-width:360px){.catalog-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}.catalog-pdf{justify-content:flex-start}.catalog-open{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.catalog-access>a{transition:none}}
+
+/* One book-like line leaves the first walk in view; the existing form stays native. */
+.catalog-filter-panel{border-block:1px solid var(--line)}
+.catalog-filter-panel>summary{display:flex;align-items:center;gap:12px;box-sizing:border-box;min-height:52px;padding:6px 0;cursor:pointer;list-style:none;font-size:14px;line-height:1.4;color:var(--sea-ink)}
+.catalog-filter-panel>summary::-webkit-details-marker{display:none}
+.catalog-filter-panel>summary>span:first-child{font-weight:600}
+.catalog-filter-panel [data-route-filter-summary]{margin-left:auto;color:var(--muted);text-align:right;overflow-wrap:anywhere}
+.catalog-filter-panel>summary:after{content:'+';flex:0 0 18px;text-align:center;font-size:22px;line-height:1}
+.catalog-filter-panel[open]>summary:after{content:'−'}
+.catalog-filter-panel>summary:focus-visible{outline:2px solid var(--sea-ink);outline-offset:4px}
+body[data-tool="routes"][data-ui-context] .inner-main .catalog-filter-panel .catalog-filters{padding:12px 0 20px}
+@media(max-width:700px){
+ body[data-tool="routes"] .inner-main .tool-intro{padding:8px 0 0;margin-bottom:16px}
+ .catalog-sections{margin-bottom:12px}
+ body[data-tool="routes"] #route-count{margin:12px 0}
+ .catalog-filter-panel>summary{flex-wrap:wrap;gap:4px 12px;position:relative;padding-right:26px}
+ .catalog-filter-panel>summary:after{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+ .catalog-filter-panel [data-route-filter-summary]{margin-left:0;flex-basis:100%;text-align:left;font-size:13px}
+}

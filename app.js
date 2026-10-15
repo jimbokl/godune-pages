@@ -136,8 +136,15 @@
       row.hidden = (routeFilter !== 'all' && row.dataset.area !== routeFilter) || (timeFilter !== 'all' && +row.dataset.minutes > +timeFilter);
       if (!row.hidden) count++;
     });
-    if ($('#route-count')) $('#route-count').textContent = count ? `Подходит маршрутов: ${count}. Время — на прогулку, без дороги до начала.` : 'Таких прогулок пока нет. Выберите больше времени или другой район.';
+    if ($('#route-count')) $('#route-count').textContent = count ? `Маршрутов: ${count}. Время — без дороги до начала.` : 'Таких прогулок пока нет. Выберите больше времени или другой район.';
     const empty = $('.catalog-empty'); if (empty) empty.hidden = count !== 0;
+    const filterSummary = $('[data-route-filter-summary]');
+    if (filterSummary) {
+      const selected = [$('#trip-area'), $('#trip-time')]
+        .filter(control => control && control.value !== 'all')
+        .map(control => control.selectedOptions[0]?.textContent).filter(Boolean);
+      filterSummary.textContent = selected.join(' · ') || 'Все прогулки';
+    }
     $$('[data-route-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.routeFilter === routeFilter)));
   }
   $$('[data-route-filter]').forEach(b => b.addEventListener('click', () => {
@@ -162,12 +169,15 @@
   }
   $('#trip-picker')?.addEventListener('submit', e => {
     e.preventDefault(); updateRouteFilters();
+    const panel = $('.catalog-filter-panel');
+    if (panel) { panel.open = false; panel.querySelector('summary').focus({preventScroll:true}); }
     $('#route-count').scrollIntoView({block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   });
   if (routeCatalog) {
     for (const control of [$('#trip-area'),$('#trip-time')]) control?.addEventListener('change',updateRouteFilters);
     $$('[data-reset-route-filters]').forEach(link => link.addEventListener('click',e => {
       e.preventDefault(); $('#trip-area').value = 'all'; $('#trip-time').value = 'all'; updateRouteFilters();
+      const panel = $('.catalog-filter-panel'); if (panel) panel.open = true;
       $('#trip-area').focus();
     }));
   }
