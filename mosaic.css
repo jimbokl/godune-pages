@@ -132,12 +132,14 @@ body[data-home-page] #main .home-dunes-card h3 {font:400 clamp(27px,2.8vw,36px)/
 .home-dunes-facts dd {margin:6px 0 0;font-size:16px;color:var(--text-main);}
 .home-dunes-friction {margin-top:auto;padding:0 0 0 12px;border-left:2px solid var(--amber-honey);font:13px/1.65 var(--font-sans);color:var(--text-muted);}
 .home-dunes-friction strong {display:block;margin-bottom:5px;font:10px/1.6 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-primary);}
+.home-dunes-verified {margin:14px 0 0;padding-top:12px;border-top:1px solid var(--border-mosaic);font:11px/1.7 var(--font-mono);font-variant-numeric:tabular-nums;color:var(--text-muted);}
 .home-dunes-open {display:flex;justify-content:space-between;gap:10px;padding-top:22px;font-size:14px;color:var(--amber-primary);}
 .home-dunes-links {display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:16px;}
 .showcase-spine {display:flex;flex-wrap:wrap;gap:5px 8px;list-style:none;margin:20px 0;padding:14px 0 0;border-top:1px solid var(--border-mosaic);font:12px/1.7 var(--font-sans);color:var(--text-muted);}
 .showcase-spine li:not(:last-child)::after {content:" →";color:var(--amber-primary);white-space:pre;}
 body[data-home-page] #main .showcase-facts {display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:8px;font-variant-numeric:tabular-nums;}
 .showcase-facts .metric-sep {color:var(--amber-primary);}
+body[data-home-page] #main .showcase-credit {z-index:1;line-height:1.5;max-width:calc(100% - 28px);}
 .home-guides,.home-coast {padding-top:64px;scroll-margin-top:28px;}
 .home-guides-heading,.home-coast-heading {margin-bottom:30px;}
 body[data-home-page] #main :is(.home-guides-heading,.home-coast-heading) h2 {font:400 clamp(34px,4vw,56px)/1.1 var(--font-display);letter-spacing:-.025em;color:var(--amber-sun);margin:12px 0 16px;}
@@ -171,6 +173,7 @@ body[data-home-page] #main :is(.home-guides-heading,.home-coast-heading) h2 {fon
  .home-dunes-links {gap:4px;flex-direction:column;}
  .site-footer .footer-columns {grid-template-columns:1fr;gap:24px;}
  .showcase-spine {font-size:13px;}
+ body[data-home-page] #main .showcase-credit {font-size:11px;}
 }
 @media print {
  body[data-home-page] #main :is(.home-dunes-card,.showcase-card,.home-guide) {background:white;box-shadow:none;border-color:#888;}
