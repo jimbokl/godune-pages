@@ -66,6 +66,8 @@ h1{font:400 clamp(36px,5.8vw,64px)/1.1 Georgia,serif;letter-spacing:-.035em;marg
 .utility-footer{margin-top:30px;color:var(--muted);font:400 13px/1.6 Georgia,serif;letter-spacing:.04em}
 @media(max-width:600px){.utility-header{width:calc(100% - 32px);margin:16px auto}.brand{gap:9px}.brand-mark{width:44px;height:44px}.brand-name{font-size:18px;letter-spacing:1.5px}.brand-caption{font-size:8px;letter-spacing:1.2px}.header-note{display:none}main{width:calc(100% - 32px);margin-top:60px}.utility-lead{font-size:17px}.utility-card{padding:16px}.utility-actions>*{width:100%}}
 @media print{.utility-actions{display:none}.utility-card{box-shadow:none}main{margin-top:30px}}
+
+.footer-release{display:block;margin:12px 0 0;color:var(--ink);font:400 12px/1.6 monospace;overflow-wrap:anywhere}
 </style><style>/* Content-only print treatment. Header, logo and interactive state colours stay in their own styles. */
 
 /* Shared generated pages: body copy shifts to graphite; the established sea navy remains in headings. */
@@ -261,7 +263,8 @@ body[data-tool="routes"][data-ui-context] main.inner-main .catalog-waves img {
         <a class="button button-secondary" id="planner-link" href="/planner/">Мой день <span aria-hidden="true">&nbsp;→</span></a>
       </div>
     </div>
-    <p class="utility-footer">Балтика — это маршрут.</p>
+    <footer class="utility-footer">Балтика — это маршрут.
+    <small class="footer-release">Релиз <span data-release-id="20261016T063105Z-9a7ff4da">20261016T063105Z-9a7ff4da</span></small></footer>
   </main>
   <script>
   (async()=>{

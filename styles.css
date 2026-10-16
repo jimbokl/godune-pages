@@ -166,3 +166,6 @@ select:focus-visible,textarea:focus-visible{outline:2px solid var(--night-amber,
 
 /* Editorial links are one wrapping row, including narrow tool pages. */
 .footer-editorial{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px 24px}.site-footer>*{min-width:0}
+
+/* Publication identity belongs to the static page, including offline copies. */
+.site-footer .footer-release{grid-column:1/-1;grid-row:auto;display:block;margin:0;color:var(--ink);font:400 12px/1.6 var(--mono,monospace);letter-spacing:0;overflow-wrap:anywhere}.footer-release [data-release-id]{font:inherit}
