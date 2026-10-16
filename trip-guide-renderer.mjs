@@ -8,7 +8,7 @@ import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101305';
 import {transportBooklet} from './transport-booklet-view.mjs?v=2026101305';
-import {walkingBooklet,walkingSourceCaption} from './walking-booklet-view.mjs?v=2026101602';
+import {walkingBooklet,walkingSourceCaption,shareWalkingSources} from './walking-booklet-view.mjs?v=2026101603';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -42,7 +42,13 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const sourceCaption=s=>serviceSourceCaption(s.name===s.url?{...s,name:'Источник'}:s);
   const sourceHeight=s=>s?textHeight(sourceCaption(s),ui,phone?8.5:10,3)+(s.url?textHeight(s.url,ui,phone?8:9,8):0):0;
   const source=(s)=>{if(!s)return;need(sourceHeight(s));text(sourceCaption(s),{size:phone?8.5:10,color:muted,space:3});if(s.url)text(s.url,{size:phone?8:9,color:muted,space:8,link:s.url});};
-  function notes(day){if(!day.record.note||day.generated_note===true)return;const prior=Boolean(day.record.kosa_plan);heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
+  function notes(day,compact=false){if(!day.record.note||day.generated_note===true)return;const prior=Boolean(day.record.kosa_plan);
+    if(compact&&!prior){
+      const size=phone?18:24,space=10,small=phone?9.5:11,gap=phone?5:7;
+      need(textHeight('Ваши заметки',title,size,space)+textHeight(day.record.note,ui,small,gap));
+      text('Ваши заметки',{font:title,size,space});text(day.record.note,{size:small,space:gap});return;
+    }
+    heading(prior?'Прежняя запись дня':'Ваши заметки',false,day.record.note);if(prior)text('Это прежняя запись дня. Текущий план и возвращение показаны выше; прежний час после изменения дня или опоздания не подтверждён.',{color:muted});text(day.record.note);}
   const amount=(total,known)=>total!=null?money(total):known>0?`Известно ${money(known)}. Полная сумма неизвестна.`:'Сумма пока неизвестна.';
   const expenseContext={date_missing:'Дата дня не выбрана. Выбранный тариф нужно проверить.',date_changed:'Дата дня изменилась. Выбранный тариф нужно проверить.',party_changed:'Состав компании изменился. Выбранный тариф нужно проверить.',selection_changed:'Посещение изменилось. Записанная сумма сохранена.',visit_removed:'Посещение убрано из дня. Запись расходов сохранена.',unsupported:'Выбор посещения нужно проверить. Записанные суммы сохранены.'};
   async function serviceChapter(s,number){
@@ -110,6 +116,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   const allTransport=books.every(b=>b?.kind==='transport');
   const hasFull=books.some(b=>!b);
   const hasWalking=books.some(b=>b?.kind==='walking');
+  const sharedSources=allWalking&&books.length>1?shareWalkingSources(books.map(book=>book.value)):null;
+  if(sharedSources)sharedSources.booklets.forEach((value,i)=>{books[i]={...books[i],value};});
   const dayFootnotes=day=>[...new Set([...(day.preferences?.notes||[]),...(day.access?.gaps||[])])];
   const commonFootnotes=allWalking&&snapshot.days.length>1?dayFootnotes(snapshot.days[0]).filter(value=>snapshot.days.every(day=>dayFootnotes(day).includes(value))):[];
   const commonPlanB=allWalking&&snapshot.days.length>1&&snapshot.days.every(day=>day.planB===snapshot.days[0].planB)?snapshot.days[0].planB:null;
@@ -226,20 +234,28 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(!commonPlanB){heading('Если день пошёл иначе',false,day.planB);text(day.planB,{size:small,space});}
     for(const row of b.access)text(`${row.name} · ${row.label}: ${row.text} ${row.reference}`,{size:small,space});
     for(const value of dayFootnotes(day).filter(value=>!commonFootnotes.includes(value)))text(value,{size:small,color:muted,space});
-    notes(day);
-    if(b.sources.length){
-      const size=phone?8.5:10,values=b.sources.map(s=>`[${s.number}] ${walkingSourceCaption(s)}`),heights=values.map(value=>textHeight(value,ui,size,space));
+    notes(day,true);
+    renderWalkingSources(b.sources);
+    chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
+  }
+  function renderWalkingSources(sources,tail=0){
+    if(sources.length){
+      const size=phone?8.5:10,space=phone?5:7,values=sources.map(s=>`[${s.number}] ${walkingSourceCaption(s)}`),heights=values.map(value=>textHeight(value,ui,size,space));
       const head=textHeight('Источники',title,phone?18:30,phone?10:16);
       // Start the evidence list in the space already available, reserving its
       // first two entries. Keeping the entire list made sparse extra pages.
       need(head+heights.slice(0,2).reduce((sum,value)=>sum+value,0));
       heading('Источники',false,values[0]);
-      for(const [i,s]of b.sources.entries()){
-        if(i===b.sources.length-2)need(heights[i]+heights[i+1]);
+      const begins=doc.getPageCount();
+      for(const [i,s]of sources.entries()){
+        if(i===Math.max(0,sources.length-2)){
+          const remaining=heights.slice(i).reduce((sum,value)=>sum+value,0);
+          need(remaining+(remaining+tail<h-2*m-90?tail:0));
+        }
         text(values[i],{size,color:muted,space,link:s.url});
       }
+      return {begins,pages:doc.getPageCount()-begins+1};
     }
-    chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
   for(const [index,day]of snapshot.days.entries()){
     if(books[index]?.kind==='transport'){await renderTransportBook(books[index].value);continue;}
@@ -371,6 +387,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     chapters.push({id:day.id,begins,pages:doc.getPageCount()-begins+1});
   }
+  let sourceDirectory;
   if(hasFull){
   chapter='ПЕРЕД ВЫХОДОМ';start();heading('Всё с собой');const packingText=(value,options={})=>text(value,{...(phone?{size:9.5,space:6}:{}),...options});packingText((Object.keys(media.maps).length||Object.keys(media.photos).length?'Карты и фото из вашего дня встроены в PDF. ':'')+'План и источники вложены в plan.json; некоторые приложения показывают вложения только на компьютере.');
   for(const value of preparation)packingText(value);
@@ -384,7 +401,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   for(const warning of media.warnings)packingText(warning,{color:muted});if(Object.keys(media.maps).length)source({name:'Картографические данные OpenStreetMap',url:media.source.source,checked_at:media.source.snapshot_at});
   packingText((phone?'Версия для телефона: вертикальный PDF.':'Печатная версия: A4, RGB, для обычного принтера.')+' Шрифты Manrope и Noto Serif Display - SIL Open Font License.',{size:9,color:muted});
   }else if(hasWalking){
-    // Shared once per trip, after the last day's sources.
+    // Shared once per trip; the directory precedes the closing credits.
     const small=phone?8.5:10,space=phone?5:7;
     const fileText=`Подготовлено ${date(snapshot.created_at.slice(0,10)).replace(/\.$/,'')}. Карты, остановки, блюда и заметки доступны без сети. Полный план и источники вложены в plan.json.`,license='Manrope и Noto Serif Display · SIL Open Font License';
     const mapText=Object.keys(media.maps).length?'Картографические данные: OpenStreetMap · '+media.source.snapshot_at:'';
@@ -395,11 +412,15 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     // Keep the short shared closing section with its credits and QR. Reserving
     // just the credits can leave them alone on the final sheet of an A4 guide.
     const closingHeading=value=>textHeight(value,title,phone?18:30,phone?10:16);
-    const closingHeight=tail+(commonPlanB?closingHeading('Если день пошёл иначе')+textHeight(commonPlanB,ui,small,space):0)
+    const closingHeight=(sharedSources?0:tail)+(commonPlanB?closingHeading('Если день пошёл иначе')+textHeight(commonPlanB,ui,small,space):0)
       +(commonFootnotes.length?closingHeading('Условия пути')+commonFootnotes.reduce((sum,value)=>sum+textHeight(value,ui,small,space),0):0);
     need(Math.min(closingHeight,h-2*m-90));
     if(commonPlanB){heading('Если день пошёл иначе',false,commonPlanB);text(commonPlanB,{size:small,color:muted,space});}
     if(commonFootnotes.length){heading('Условия пути',false,commonFootnotes[0]);for(const value of commonFootnotes)text(value,{size:small,color:muted,space});}
+    if(sharedSources?.sources.length){
+      chapter='ИСТОЧНИКИ ПОЕЗДКИ';
+      sourceDirectory={scope:'trip',sources:sharedSources.sources,...renderWalkingSources(sharedSources.sources,tail)};
+    }
     need(Math.min(tail,h-2*m-90));
     if(mapText)text(mapText,{size:8,color:muted,space,link:media.source.source});
     for(const warning of media.warnings)text(warning,{size:small,color:muted,space});
@@ -413,7 +434,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     y=Math.min(y,top-footerHeight);
   }
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
-  const full={...snapshot,format,...(allWalking?{layout:'walking-compact-v1'}:books.some(Boolean)?{layout:allTransport?'transport-compact-v1':'mixed-compact-v1'}:{}),...(hasWalking?{reading_view:'walking-notes-v2'}:{}),day_layouts:books.map((b,i)=>({id:snapshot.days[i].id,layout:b?.kind||'full'})),chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
+  const full={...snapshot,format,...(allWalking?{layout:'walking-compact-v1'}:books.some(Boolean)?{layout:allTransport?'transport-compact-v1':'mixed-compact-v1'}:{}),...(hasWalking?{reading_view:'walking-notes-v2'}:{}),...(sourceDirectory?{source_directory:sourceDirectory}:{}),day_layouts:books.map((b,i)=>({id:snapshot.days[i].id,layout:b?.kind||'full'})),chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();
   pages.forEach((p,i)=>{const {width:pw}=p.getSize();p.drawRectangle({x:0,y:0,width:pw,height:35,color:paper});p.drawLine({start:{x:m,y:33},end:{x:pw-m,y:33},thickness:.6,color:blue});p.drawText('godune.ru · '+sha.slice(0,8),{x:m,y:21,font:ui,size:7.5,color:muted});const n=`${i+1} / ${pages.length}`;p.drawText(n,{x:pw-m-ui.widthOfTextAtSize(n,7.5),y:21,font:ui,size:7.5,color:muted});});
   await doc.attach(snapshotBytes,'plan.json',{mimeType:'application/json',description:'Личный план и версии встроенных карт'});doc.setTitle(snapshot.title);doc.setAuthor('Балтийские дюны · godune.ru');doc.setSubject('Личный путеводитель · '+sha);signal?.throwIfAborted();onProgress('Готовим файл для сохранения…');
   return {bytes:await doc.save(),pages:pages.length,format,snapshot_sha256:sha,chapters,map_count:Object.keys(media.maps).length,photo_count:Object.keys(media.photos).length,warnings:media.warnings};

@@ -14,6 +14,28 @@ export function walkingSourceCaption(source){
   }
   return [...groups.values()].map(group=>serviceSourceCaption({...group,checked_at:group.dates.join(', ')})).join('; ');
 }
+// A multiday walk has one evidence directory. Reference numbers must be
+// remapped everywhere, including dishes and conditions, without changing Trip.
+export function shareWalkingSources(booklets){
+  const sources=[],bySource=new Map();
+  const shared=booklets.map(book=>{
+    const numbers=new Map();
+    for(const source of book.sources){
+      const key=JSON.stringify(source.url?['url',source.url]:['name',source.name||'']);
+      if(!bySource.has(key)){bySource.set(key,sources.length+1);sources.push({...source,number:sources.length+1,observations:[],days:[]});}
+      const target=sources[bySource.get(key)-1];
+      numbers.set(`[${source.number}]`,`[${target.number}]`);
+      if(!target.days.includes(book.day.id))target.days.push(book.day.id);
+      for(const item of source.observations||[source])if(!target.observations.some(prior=>prior.name===item.name&&prior.checked_at===item.checked_at&&prior.date_label===item.date_label))target.observations.push({...item});
+    }
+    const remap=value=>{if(!value)return value;const result=numbers.get(value);if(!result)throw Error('guide_invalid_source_reference');return result;};
+    return {...book,sources:[],rows:book.rows.map(row=>({...row,references:row.references.map(remap)})),
+      cards:book.cards.map(card=>({...card,reference:remap(card.reference),conditions:card.conditions.map(condition=>({...condition,references:condition.references.map(remap)}))})),
+      access:book.access.map(row=>({...row,reference:remap(row.reference)})),
+      meals:book.meals.map(meal=>({...meal,reference:remap(meal.reference)}))};
+  });
+  return {booklets:shared,sources};
+}
 export function walkingBooklet(snapshot) {
   const day=snapshot.days?.[0];
   if(snapshot.days?.length!==1 || snapshot.transport_receipt || !day?.record ||
