@@ -31,6 +31,7 @@ export function guideIssue(issue) {
   return notes[issue.code] || 'Для этого участка нужны дополнительные сведения.';
 }
 export const guidePlanStatus={empty:'Остановок пока нет.',fits:'По вашим оценкам день складывается.',needs_check:'День складывается по оценкам. Дорогу и вход нужно сверить.',incomplete:'Точное время дня пока неизвестно: остались неуточнённые участки.',overrun:'Все остановки не помещаются в этот день.',conflict:'Есть остановки или рейсы, которые не помещаются в этот день.'};
+const conflictIssues=new Set(['closed','window_missed','kitchen_closed','kitchen_window_missed','after_deadline','transport_conflict','appointment_missed','appointment_venue_conflict','fixed_visit_missed']);
 
 export function guideDayRows(trip,catalog,result,matrix) {
   const settings=trip.schedule || defaultSchedule(),bookings=bookingEffects(trip),bases=dayBases(trip);
@@ -43,7 +44,7 @@ export function guideDayRows(trip,catalog,result,matrix) {
   result.stops.forEach((item,index)=>{
     const blocked=result.stops.slice(0,index).some(stop=>stop.excursion?.conflict);
     const outside=settings.stops[item.id]?.visit_scope==='outside';
-    const issues=item.issues.map(issue=>outside && issue.code==='unknown_opening'?'Внешний осмотр: время доступа не записано.':guideIssue(issue)),state=issues.length?'needs_check':'estimate';
+    const issues=item.issues.map(issue=>outside && issue.code==='unknown_opening'?'Внешний осмотр: время доступа не записано.':guideIssue(issue)),state=item.issues.some(issue=>conflictIssues.has(issue.code))?'conflict':issues.length?'needs_check':'estimate';
     if(item.id==='__day_checkpoint'){rows.push({id:item.id,kind:'notice',time:settings.progress.at,title:`Снова в пути · ${name(settings.progress.after)}`,text:'Вы указали время после осмотра. Ниже — оставшийся день; пройденные места сохранены без выдуманного времени посещения.',state:'estimate'});return;}
     if(item.id.startsWith('__day_')) {
       const role=item.id==='__day_origin'?'start':item.id==='__day_night'?'night':'end';
