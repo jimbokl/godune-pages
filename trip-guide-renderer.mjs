@@ -386,14 +386,20 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   }else if(hasWalking){
     // Shared once per trip, after the last day's sources.
     const small=phone?8.5:10,space=phone?5:7;
-    if(commonPlanB){heading('Если день пошёл иначе',false,commonPlanB);text(commonPlanB,{size:small,color:muted,space});}
-    if(commonFootnotes.length){heading('Условия пути',false,commonFootnotes[0]);for(const value of commonFootnotes)text(value,{size:small,color:muted,space});}
     const fileText=`Подготовлено ${date(snapshot.created_at.slice(0,10)).replace(/\.$/,'')}. Карты, остановки, блюда и заметки доступны без сети. Полный план и источники вложены в plan.json.`,license='Manrope и Noto Serif Display · SIL Open Font License';
     const mapText=Object.keys(media.maps).length?'Картографические данные: OpenStreetMap · '+media.source.snapshot_at:'';
     const qr=media.qrs?.planner,qrSize=phone?52:68,copyWidth=qr?width-qrSize-12:width,continueText='Продолжить поездку: godune.ru/planner/';
     const copyHeight=(value,size)=>lines(value,ui,size,copyWidth).length*size*leadingFor(ui)+space;
     const copy=copyHeight(fileText,small)+copyHeight(continueText,8)+copyHeight(license,8),footerHeight=Math.max(copy,qr?qrSize:0);
     const tail=footerHeight+(mapText?textHeight(mapText,ui,8,space):0)+media.warnings.reduce((sum,value)=>sum+textHeight(value,ui,small,space),0);
+    // Keep the short shared closing section with its credits and QR. Reserving
+    // just the credits can leave them alone on the final sheet of an A4 guide.
+    const closingHeading=value=>textHeight(value,title,phone?18:30,phone?10:16);
+    const closingHeight=tail+(commonPlanB?closingHeading('Если день пошёл иначе')+textHeight(commonPlanB,ui,small,space):0)
+      +(commonFootnotes.length?closingHeading('Условия пути')+commonFootnotes.reduce((sum,value)=>sum+textHeight(value,ui,small,space),0):0);
+    need(Math.min(closingHeight,h-2*m-90));
+    if(commonPlanB){heading('Если день пошёл иначе',false,commonPlanB);text(commonPlanB,{size:small,color:muted,space});}
+    if(commonFootnotes.length){heading('Условия пути',false,commonFootnotes[0]);for(const value of commonFootnotes)text(value,{size:small,color:muted,space});}
     need(Math.min(tail,h-2*m-90));
     if(mapText)text(mapText,{size:8,color:muted,space,link:media.source.source});
     for(const warning of media.warnings)text(warning,{size:small,color:muted,space});
