@@ -8,7 +8,7 @@ import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101305';
 import {transportBooklet} from './transport-booklet-view.mjs?v=2026101305';
-import {walkingBooklet} from './walking-booklet-view.mjs?v=2026101601';
+import {walkingBooklet,walkingSourceCaption} from './walking-booklet-view.mjs?v=2026101602';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -188,7 +188,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(b.calculation_notes.length){
       const noteText=note=>(note.code==='travel_needs_check'?'':note.places.join('; ')+': ')+note.text;
-      heading('Расчёт времени',false,noteText(b.calculation_notes[0]));
+      heading('Расчёт и посещения',false,noteText(b.calculation_notes[0]));
       for(const note of b.calculation_notes)text(noteText(note),{size:small,color:muted,space});
     }
     if(b.meals.length||day.menu_quote){
@@ -228,11 +228,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     for(const value of dayFootnotes(day).filter(value=>!commonFootnotes.includes(value)))text(value,{size:small,color:muted,space});
     notes(day);
     if(b.sources.length){
-      const size=phone?8.5:10,values=b.sources.map(s=>`[${s.number}] ${sourceCaption(s)}`),heights=values.map(value=>textHeight(value,ui,size,space));
-      const head=textHeight('Источники',title,phone?18:30,phone?10:16),total=head+heights.reduce((sum,value)=>sum+value,0);
-      // Keep a short evidence list together. In longer lists keep the final two
-      // references together so a single citation never becomes its own page.
-      need(total<h-2*m-90?total:head+heights.slice(0,2).reduce((sum,value)=>sum+value,0));
+      const size=phone?8.5:10,values=b.sources.map(s=>`[${s.number}] ${walkingSourceCaption(s)}`),heights=values.map(value=>textHeight(value,ui,size,space));
+      const head=textHeight('Источники',title,phone?18:30,phone?10:16);
+      // Start the evidence list in the space already available, reserving its
+      // first two entries. Keeping the entire list made sparse extra pages.
+      need(head+heights.slice(0,2).reduce((sum,value)=>sum+value,0));
       heading('Источники',false,values[0]);
       for(const [i,s]of b.sources.entries()){
         if(i===b.sources.length-2)need(heights[i]+heights[i+1]);
@@ -390,13 +390,21 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(commonFootnotes.length){heading('Условия пути',false,commonFootnotes[0]);for(const value of commonFootnotes)text(value,{size:small,color:muted,space});}
     const fileText=`Подготовлено ${date(snapshot.created_at.slice(0,10)).replace(/\.$/,'')}. Карты, остановки, блюда и заметки доступны без сети. Полный план и источники вложены в plan.json.`,license='Manrope и Noto Serif Display · SIL Open Font License';
     const mapText=Object.keys(media.maps).length?'Картографические данные: OpenStreetMap · '+media.source.snapshot_at:'';
-    const tail=textHeight(fileText,ui,small,space)+textHeight(license,ui,8,space)+(media.qrs?.planner?qrLayout('godune.ru/planner/\nПродолжить поездку при появлении связи.').height:0)+(mapText?textHeight(mapText,ui,8,space):0)+media.warnings.reduce((sum,value)=>sum+textHeight(value,ui,small,space),0);
+    const qr=media.qrs?.planner,qrSize=phone?52:68,copyWidth=qr?width-qrSize-12:width,continueText='Продолжить поездку: godune.ru/planner/';
+    const copyHeight=(value,size)=>lines(value,ui,size,copyWidth).length*size*leadingFor(ui)+space;
+    const copy=copyHeight(fileText,small)+copyHeight(continueText,8)+copyHeight(license,8),footerHeight=Math.max(copy,qr?qrSize:0);
+    const tail=footerHeight+(mapText?textHeight(mapText,ui,8,space):0)+media.warnings.reduce((sum,value)=>sum+textHeight(value,ui,small,space),0);
     need(Math.min(tail,h-2*m-90));
-    if(Object.keys(media.maps).length)text('Картографические данные: OpenStreetMap · '+media.source.snapshot_at,{size:8,color:muted,space,link:media.source.source});
+    if(mapText)text(mapText,{size:8,color:muted,space,link:media.source.source});
     for(const warning of media.warnings)text(warning,{size:small,color:muted,space});
-    text(fileText,{size:small,color:muted,space});
-    await qrCard(media.qrs?.planner,'godune.ru/planner/\nПродолжить поездку при появлении связи.');
-    text(license,{size:8,color:muted,space});
+    // Put the continuation QR beside the file credits. A separate QR row
+    // used to push this short footer onto a mostly empty page.
+    need(footerHeight);const top=y;
+    if(qr){const img=await embeddedImage(qr);page.drawImage(img,{x:m+width-qrSize,y:top-qrSize,width:qrSize,height:qrSize});}
+    text(fileText,{size:small,color:muted,space,max:copyWidth});
+    text(continueText,{size:8,color:muted,space,max:copyWidth,link:'https://godune.ru/planner/'});
+    text(license,{size:8,color:muted,space,max:copyWidth});
+    y=Math.min(y,top-footerHeight);
   }
   const assets=group=>Object.fromEntries(Object.entries(group).map(([id,m])=>[id,{path:m.path,sha256:m.sha256}]));
   const full={...snapshot,format,...(allWalking?{layout:'walking-compact-v1'}:books.some(Boolean)?{layout:allTransport?'transport-compact-v1':'mixed-compact-v1'}:{}),...(hasWalking?{reading_view:'walking-notes-v2'}:{}),day_layouts:books.map((b,i)=>({id:snapshot.days[i].id,layout:b?.kind||'full'})),chapters,trail_sections:trailSections,interchange_pages:interchangePages,map_source:media.source,maps:assets(media.maps),photos:assets(media.photos),warnings:media.warnings},snapshotBytes=new TextEncoder().encode(JSON.stringify(full)),sha=await hash(snapshotBytes),pages=doc.getPages();

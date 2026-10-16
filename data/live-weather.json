@@ -570,12 +570,12 @@
         }
       ],
       "received_at": "2026-10-16T01:02:15.482494Z",
-      "checked_at": "2026-10-16T01:02:15.482494Z",
+      "checked_at": "2026-10-16T01:31:21.477766Z",
       "sun": {
         "date": "2026-10-16",
         "sunrise": "2026-10-16T05:09:00Z",
         "sunset": "2026-10-16T15:37:00Z",
-        "received_at": "2026-10-16T01:02:15.482494Z"
+        "received_at": "2026-10-16T01:31:21.477766Z"
       }
     },
     {
@@ -584,18 +584,8 @@
       "poi": "vysota-efa",
       "lat": 55.2217,
       "lon": 20.8928,
-      "model_updated_at": "2026-10-16T00:29:39Z",
+      "model_updated_at": "2026-10-16T01:30:17Z",
       "hours": [
-        {
-          "time": "2026-10-16T00:00:00Z",
-          "temperature_c": 11.2,
-          "wind_ms": 4.3,
-          "wind_from_degrees": 200.0,
-          "cloud_percent": 87.4,
-          "symbol": "cloudy",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-16T01:00:00Z",
           "temperature_c": 11.1,
@@ -808,7 +798,7 @@
         },
         {
           "time": "2026-10-16T22:00:00Z",
-          "temperature_c": 10.5,
+          "temperature_c": 10.4,
           "wind_ms": 6.8,
           "wind_from_degrees": 184.0,
           "cloud_percent": 50.4,
@@ -908,7 +898,7 @@
         },
         {
           "time": "2026-10-17T08:00:00Z",
-          "temperature_c": 9.4,
+          "temperature_c": 9.3,
           "wind_ms": 5.7,
           "wind_from_degrees": 162.0,
           "cloud_percent": 46.2,
@@ -918,7 +908,7 @@
         },
         {
           "time": "2026-10-17T09:00:00Z",
-          "temperature_c": 9.5,
+          "temperature_c": 9.4,
           "wind_ms": 5.7,
           "wind_from_degrees": 156.0,
           "cloud_percent": 39.3,
@@ -1058,7 +1048,7 @@
         },
         {
           "time": "2026-10-17T23:00:00Z",
-          "temperature_c": 9.6,
+          "temperature_c": 9.5,
           "wind_ms": 2.3,
           "wind_from_degrees": 63.0,
           "cloud_percent": 92.9,
@@ -1108,7 +1098,7 @@
         },
         {
           "time": "2026-10-18T04:00:00Z",
-          "temperature_c": 10.1,
+          "temperature_c": 10.2,
           "wind_ms": 4.2,
           "wind_from_degrees": 41.0,
           "cloud_percent": 100.0,
@@ -1118,7 +1108,7 @@
         },
         {
           "time": "2026-10-18T05:00:00Z",
-          "temperature_c": 10.0,
+          "temperature_c": 10.1,
           "wind_ms": 4.7,
           "wind_from_degrees": 51.0,
           "cloud_percent": 100.0,
@@ -1147,13 +1137,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-16T01:02:15.482494Z",
-      "checked_at": "2026-10-16T01:02:15.482494Z",
+      "received_at": "2026-10-16T01:31:21.477766Z",
+      "checked_at": "2026-10-16T01:31:21.477766Z",
       "sun": {
         "date": "2026-10-16",
         "sunrise": "2026-10-16T05:08:00Z",
         "sunset": "2026-10-16T15:34:00Z",
-        "received_at": "2026-10-16T01:02:15.482494Z"
+        "received_at": "2026-10-16T01:31:21.477766Z"
       }
     },
     {
@@ -1716,12 +1706,12 @@
         }
       ],
       "received_at": "2026-10-16T01:02:15.482494Z",
-      "checked_at": "2026-10-16T01:02:15.482494Z",
+      "checked_at": "2026-10-16T01:31:21.477766Z",
       "sun": {
         "date": "2026-10-16",
         "sunrise": "2026-10-16T05:10:00Z",
         "sunset": "2026-10-16T15:38:00Z",
-        "received_at": "2026-10-16T01:02:15.482494Z"
+        "received_at": "2026-10-16T01:31:21.477766Z"
       }
     },
     {
@@ -2284,12 +2274,12 @@
         }
       ],
       "received_at": "2026-10-16T01:02:15.482494Z",
-      "checked_at": "2026-10-16T01:02:15.482494Z",
+      "checked_at": "2026-10-16T01:31:21.477766Z",
       "sun": {
         "date": "2026-10-16",
         "sunrise": "2026-10-16T05:08:00Z",
         "sunset": "2026-10-16T15:37:00Z",
-        "received_at": "2026-10-16T01:02:15.482494Z"
+        "received_at": "2026-10-16T01:31:21.477766Z"
       }
     }
   ]
