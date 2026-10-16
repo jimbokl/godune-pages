@@ -66,6 +66,9 @@ body[data-ui-context] .inner-main .food-guide .food-guide-nav{display:grid;grid-
 .food-menu-condition{font:12px/1.75 var(--sans);color:var(--guide-muted);margin:10px 0 23px}
 .food-menu-source>p:not(.food-source):not(.food-menu-condition){font-size:13px}
 .food-menu-category{border-top:1px solid var(--guide-line);margin:0}
+.food-menu-category>h4{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:0;padding:18px 0 10px;font:500 16px/1.5 var(--sans);color:var(--ink)}
+.food-menu-category>h4 .food-category-count{flex-shrink:0;font:400 12px/1.5 var(--sans);color:var(--sea-muted)}
+.food-guide .food-menu-note,.food-guide .food-coordinate-note{font:400 12px/1.6 var(--sans);color:var(--sea-muted);margin:12px 0}
 .food-menu-category>summary{display:flex;align-items:center;gap:14px;justify-content:space-between;min-height:58px;padding:14px 0;cursor:pointer;list-style:none;font:500 15px/1.5 var(--sans);color:var(--ink)}
 .food-menu-category>summary::-webkit-details-marker{display:none}
 .food-menu-category>summary::after{content:'+';font:300 24px/1 var(--sans);color:var(--guide-ink);width:16px;text-align:center;flex:none}

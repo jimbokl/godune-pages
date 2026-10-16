@@ -31,11 +31,11 @@ export function initRouteDay({workshop,catalog,base}){
   const returnPlace=catalog.poi.find(point=>point.slug===day.night_at);
   context.textContent=`${day.name||route.name} · мест в плане: ${day.places.length}.${returnPlace?' Возвращение: '+returnPlace.name+'.':''}`;
   open.href=plannerDayUrl(base,id).href;
-  const overview=document.querySelector('.journey-overview');overview.replaceChildren();
+  const overview=document.querySelector('.journey-overview');overview?.replaceChildren();
   for(const place of day.places){
    const poi=catalog.poi.find(p=>p.slug===place),li=document.createElement('li'),a=document.createElement('a'),strong=document.createElement('strong'),small=document.createElement('span');
    a.href=plannerDayUrl(base,id).href;strong.textContent=poi?.name||place;small.textContent=`${day.schedule?.stops[place]?.visit??30} мин`;
-   a.append(strong,small);li.append(a);overview.append(li);
+   a.append(strong,small);li.append(a);overview?.append(li);
   }
  }
  async function save(){
@@ -53,7 +53,7 @@ export function initRouteDay({workshop,catalog,base}){
  }
  for(const button of buttons)button.addEventListener('click',submit);
  form.addEventListener('submit',event=>{event.preventDefault();submit();});
- form.addEventListener('input',()=>{dirty=true;status.textContent='';for(const button of buttons)button.textContent='Сохранить изменения →';});
+ document.addEventListener('input',event=>{if(event.target.form!==form)return;dirty=true;status.textContent='';for(const button of buttons)button.textContent='Сохранить изменения →';});
  pdf.addEventListener('click',async()=>{
   if(busy||!form.reportValidity())return;busy=true;enabled(false);pdf.textContent='Собираем буклет…';
   try{
