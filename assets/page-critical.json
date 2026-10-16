@@ -27,7 +27,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -62,7 +62,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -115,9 +115,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "1a5c0acf05ab6158b0c067d0c46436d3fbfe0b4c4e1f574dd8b359fb4348ba51",
-      "source_bytes": 499435,
-      "critical_bytes": 89049
+      "sha256": "8c56cda6e7e4b9805b635dd423502af0264acb65b2f1387fdf164742faea82f4",
+      "source_bytes": 502925,
+      "critical_bytes": 89132
     },
     "food/dishes/index.html": {
       "sources": [
@@ -144,7 +144,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -179,7 +179,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -227,9 +227,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "fd4a212a7ccf0ba23c5b7c53a81ec6f53e0e4f34791429dee98ac6a6f5adcd2f",
-      "source_bytes": 498182,
-      "critical_bytes": 89055
+      "sha256": "86737e871f276c6d378f726ceb27b8fabdb10c1c225c974e102ce43af409df6c",
+      "source_bytes": 501672,
+      "critical_bytes": 89138
     },
     "food/dishes/klopsy/index.html": {
       "sources": [
@@ -256,7 +256,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -291,7 +291,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -344,9 +344,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2c044fbde0b94f6c1a63833ddf6162c68da57680fe50cfa57e9c867715a436f8",
-      "source_bytes": 511306,
-      "critical_bytes": 113147
+      "sha256": "a409cbf5fa1dc233f6a0ddcac7f5f298306b47cfbd406ae8008121a2e3ef4317",
+      "source_bytes": 514796,
+      "critical_bytes": 113230
     },
     "food/dishes/marcipan/index.html": {
       "sources": [
@@ -373,7 +373,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -408,7 +408,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -461,9 +461,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2c044fbde0b94f6c1a63833ddf6162c68da57680fe50cfa57e9c867715a436f8",
-      "source_bytes": 511306,
-      "critical_bytes": 113147
+      "sha256": "a409cbf5fa1dc233f6a0ddcac7f5f298306b47cfbd406ae8008121a2e3ef4317",
+      "source_bytes": 514796,
+      "critical_bytes": 113230
     },
     "food/dishes/pelamida/index.html": {
       "sources": [
@@ -490,7 +490,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -525,7 +525,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -578,9 +578,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2c044fbde0b94f6c1a63833ddf6162c68da57680fe50cfa57e9c867715a436f8",
-      "source_bytes": 511306,
-      "critical_bytes": 113147
+      "sha256": "a409cbf5fa1dc233f6a0ddcac7f5f298306b47cfbd406ae8008121a2e3ef4317",
+      "source_bytes": 514796,
+      "critical_bytes": 113230
     },
     "food/dishes/stroganina/index.html": {
       "sources": [
@@ -607,7 +607,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -642,7 +642,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -695,9 +695,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2c044fbde0b94f6c1a63833ddf6162c68da57680fe50cfa57e9c867715a436f8",
-      "source_bytes": 511306,
-      "critical_bytes": 113147
+      "sha256": "a409cbf5fa1dc233f6a0ddcac7f5f298306b47cfbd406ae8008121a2e3ef4317",
+      "source_bytes": 514796,
+      "critical_bytes": 113230
     },
     "food/dishes/ugor/index.html": {
       "sources": [
@@ -724,7 +724,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -759,7 +759,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -812,9 +812,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "dced882e47c30284edd1931fa4e5a1f308915886a72d9bf4dcc3ba879d40d5fa",
-      "source_bytes": 511306,
-      "critical_bytes": 113404
+      "sha256": "51455b84b58be1b9ea794612d28fb7faa9d45d629d9f7faf089ea3c3d1b6c39d",
+      "source_bytes": 514796,
+      "critical_bytes": 113487
     },
     "food/dishes/ukha/index.html": {
       "sources": [
@@ -841,7 +841,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -876,7 +876,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -929,9 +929,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "2c044fbde0b94f6c1a63833ddf6162c68da57680fe50cfa57e9c867715a436f8",
-      "source_bytes": 511306,
-      "critical_bytes": 113147
+      "sha256": "a409cbf5fa1dc233f6a0ddcac7f5f298306b47cfbd406ae8008121a2e3ef4317",
+      "source_bytes": 514796,
+      "critical_bytes": 113230
     },
     "food/index.html": {
       "sources": [
@@ -958,7 +958,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -993,7 +993,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1046,9 +1046,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "1a5c0acf05ab6158b0c067d0c46436d3fbfe0b4c4e1f574dd8b359fb4348ba51",
-      "source_bytes": 499435,
-      "critical_bytes": 89049
+      "sha256": "8c56cda6e7e4b9805b635dd423502af0264acb65b2f1387fdf164742faea82f4",
+      "source_bytes": 502925,
+      "critical_bytes": 89132
     },
     "food/routes/index.html": {
       "sources": [
@@ -1075,7 +1075,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1110,7 +1110,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1163,9 +1163,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "98aed9f82520117523c26c1a261a4852a8a140a9c52d9c44a8687717f1087a95",
-      "source_bytes": 499435,
-      "critical_bytes": 89421
+      "sha256": "83c2ecc28e624d44cfd84a4d116b16e5b77394327c1cfb5b20cb6946ce3aab8a",
+      "source_bytes": 502925,
+      "critical_bytes": 89504
     },
     "food/waves/index.html": {
       "sources": [
@@ -1192,7 +1192,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1227,7 +1227,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1280,9 +1280,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "98aed9f82520117523c26c1a261a4852a8a140a9c52d9c44a8687717f1087a95",
-      "source_bytes": 499435,
-      "critical_bytes": 89421
+      "sha256": "83c2ecc28e624d44cfd84a4d116b16e5b77394327c1cfb5b20cb6946ce3aab8a",
+      "source_bytes": 502925,
+      "critical_bytes": 89504
     },
     "food/zelenogradsk/all/index.html": {
       "sources": [
@@ -1309,7 +1309,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1344,7 +1344,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1392,9 +1392,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "26fc65194e3c305d05ad87a2cf719750a59fb2f262f546b3e35173a82389ad8e",
-      "source_bytes": 498182,
-      "critical_bytes": 119201
+      "sha256": "78504cd1eb35d4404c13f4cfcae1568154661eedede0850cb657a946d34f6525",
+      "source_bytes": 501672,
+      "critical_bytes": 119284
     },
     "food/zelenogradsk/index.html": {
       "sources": [
@@ -1421,7 +1421,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1456,7 +1456,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1504,9 +1504,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "6581771f919e7985df9f43da48189a1ffb1fa5e67a20b8ea61b69729f64a8920",
-      "source_bytes": 498182,
-      "critical_bytes": 117437
+      "sha256": "e799b0bbdb71996b8ae9cce0e0d5d5ce5181d4067bd53c95aadc7f32ab740308",
+      "source_bytes": 501672,
+      "critical_bytes": 119770
     },
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
       "sources": [
@@ -1533,7 +1533,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1568,7 +1568,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1626,9 +1626,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "a8c40c27a3385ee1e0ee96afcc8291c9e1c6bc7244c2ce3aa7bb972df4772d29",
-      "source_bytes": 505732,
-      "critical_bytes": 99774
+      "sha256": "57d7de614d492f3f71efb22acc9788e13572638b894dedc2de911202532c6d2e",
+      "source_bytes": 509222,
+      "critical_bytes": 99857
     },
     "food/zelenogradsk/litovskaya-volna/index.html": {
       "sources": [
@@ -1655,7 +1655,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1690,7 +1690,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1748,9 +1748,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "a8c40c27a3385ee1e0ee96afcc8291c9e1c6bc7244c2ce3aa7bb972df4772d29",
-      "source_bytes": 505732,
-      "critical_bytes": 99774
+      "sha256": "57d7de614d492f3f71efb22acc9788e13572638b894dedc2de911202532c6d2e",
+      "source_bytes": 509222,
+      "critical_bytes": 99857
     },
     "food/zelenogradsk/rybnaya-volna/index.html": {
       "sources": [
@@ -1777,7 +1777,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1812,7 +1812,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1875,9 +1875,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "b23ac93678d3a1c267829dbca383185b870cbd09659a18cbf96a7055fcf1a866",
-      "source_bytes": 518856,
-      "critical_bytes": 112092
+      "sha256": "d0a06202292aca558fd683c8360ecebc13f91af20ff9ebb7074cb7c057adaf0f",
+      "source_bytes": 522346,
+      "critical_bytes": 112175
     },
     "realty/compare/index.html": {
       "sources": [
@@ -1904,7 +1904,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -1939,7 +1939,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -1997,9 +1997,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "98cf6b9a829b6c9b659dbaca9448965324ec6c1a62459cf70dbcfdc25e800e1b",
-      "source_bytes": 526563,
-      "critical_bytes": 107810
+      "sha256": "82557fc577731e8eac57b118e899f3cc3b4152d6164887f8627e15dd844acb9d",
+      "source_bytes": 530053,
+      "critical_bytes": 107893
     },
     "realty/how-it-works/index.html": {
       "sources": [
@@ -2026,7 +2026,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2061,7 +2061,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2119,9 +2119,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "577f6592363ec11ca263cbb25c659212a189fe65e38c33d57d1ccf43350b28d7",
-      "source_bytes": 526563,
-      "critical_bytes": 110213
+      "sha256": "33c435b502e1e5fd9a19a76f3fba05188c33d443bb79d19e8ca5b90ddb688b8c",
+      "source_bytes": 530053,
+      "critical_bytes": 110296
     },
     "realty/index.html": {
       "sources": [
@@ -2148,7 +2148,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2183,7 +2183,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2236,9 +2236,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "222232910481d6e7e636064b53b1ebcbddd8aaee16c25e1ff505f1abea963323",
-      "source_bytes": 513439,
-      "critical_bytes": 98375
+      "sha256": "edd81d5b2f599a88592d1ee4804aeced5f9933344aa26f78b1e5ef1785a91a57",
+      "source_bytes": 516929,
+      "critical_bytes": 98458
     },
     "realty/projects/cosmos-stay/index.html": {
       "sources": [
@@ -2265,7 +2265,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2300,7 +2300,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2358,9 +2358,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9fadf4daffda463584335181602d766456896f18b83200b166c30e700ddaf272",
-      "source_bytes": 526563,
-      "critical_bytes": 113292
+      "sha256": "8314d87dcc4046d98bc30531eb7fb75fd21d4996e9f9f43eb3464b37deba159e",
+      "source_bytes": 530053,
+      "critical_bytes": 113375
     },
     "routes/amalienau-2-hours/index.html": {
       "sources": [
@@ -2387,7 +2387,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2422,7 +2422,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2485,9 +2485,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "558953d7b5764eda7eae04b0291f2ca67bd332031130a7b71554102897606300",
-      "source_bytes": 518856,
-      "critical_bytes": 134465
+      "sha256": "638070ca8341d8a14431c067227d0ea5faa6bca825dba1a30777efc8fe74ab31",
+      "source_bytes": 522346,
+      "critical_bytes": 132987
     },
     "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
       "sources": [
@@ -2514,7 +2514,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2549,7 +2549,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2612,9 +2612,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "417b8508250969738cce55c351c3d4015920a3f60adca133458016a40ddb6401",
-      "source_bytes": 518856,
-      "critical_bytes": 131530
+      "sha256": "aab0765f3c09f53350ee676586831c63992e26ad04e2dcd2b9f8a11126acef14",
+      "source_bytes": 522346,
+      "critical_bytes": 130052
     },
     "routes/index.html": {
       "sources": [
@@ -2641,7 +2641,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2676,7 +2676,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2724,9 +2724,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "b0ca00d0e41af136f3e8f263e5172f012a06af1737bba00e5bddcc90a314a1c0",
-      "source_bytes": 498182,
-      "critical_bytes": 105662
+      "sha256": "d00e7a597bd20422ebe2721b1f7b168f8e7741dc40532914fdff4b2fd1b20887",
+      "source_bytes": 501672,
+      "critical_bytes": 105745
     },
     "routes/kaliningrad-kosmicheskaya-volna/index.html": {
       "sources": [
@@ -2753,7 +2753,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2788,7 +2788,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2851,9 +2851,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "c4bf5b917c180bc85a053f4000f81bfb84982d808d9ae6f1ac08dae8afc1224f",
-      "source_bytes": 518856,
-      "critical_bytes": 131677
+      "sha256": "18bbdaa9ea2c154dfcc513fd7487b44ca0d8ff4f9fa3c71e47e29e121a4ed616",
+      "source_bytes": 522346,
+      "critical_bytes": 130199
     },
     "routes/kaliningrad-three-days/index.html": {
       "sources": [
@@ -2880,7 +2880,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -2915,7 +2915,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -2978,9 +2978,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "46aa5d325add4d08866d6e5933046c04ce0a0c350d434a6610b3854c85835ce6",
-      "source_bytes": 518856,
-      "critical_bytes": 109814
+      "sha256": "bc186506caa85cac3973354d2f3bd5ef6428f32b898de208f2f1201d984a073f",
+      "source_bytes": 522346,
+      "critical_bytes": 109897
     },
     "routes/ostrov-kanta-naberezhnye/index.html": {
       "sources": [
@@ -3007,7 +3007,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3042,7 +3042,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3105,9 +3105,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "558953d7b5764eda7eae04b0291f2ca67bd332031130a7b71554102897606300",
-      "source_bytes": 518856,
-      "critical_bytes": 134465
+      "sha256": "638070ca8341d8a14431c067227d0ea5faa6bca825dba1a30777efc8fe74ab31",
+      "source_bytes": 522346,
+      "critical_bytes": 132987
     },
     "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
       "sources": [
@@ -3134,7 +3134,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3169,7 +3169,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3232,9 +3232,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "191ee04142594952eb73e2b8e4f5ea1f617096ed8dd38a90e9f6e52186fa55c7",
-      "source_bytes": 518856,
-      "critical_bytes": 134421
+      "sha256": "2f31010487d3ef323c935547a75b28468fd8315cfeea1c5b75a6ccd19b3d3ad2",
+      "source_bytes": 522346,
+      "critical_bytes": 132943
     },
     "routes/tancuyushchiy-les/index.html": {
       "sources": [
@@ -3261,7 +3261,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3296,7 +3296,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3359,9 +3359,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "750c4e13ce01ac21cf774914c31729cbe241efa43ca6bcddf865e58906e42e08",
-      "source_bytes": 518856,
-      "critical_bytes": 134303
+      "sha256": "6e8740572a1aabdfee0a8724f7bad4aea05e055cc9909688657e29adf6ae24eb",
+      "source_bytes": 522346,
+      "critical_bytes": 132825
     },
     "routes/vorota-i-reka/index.html": {
       "sources": [
@@ -3388,7 +3388,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3423,7 +3423,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3486,9 +3486,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "967aefd9e2f7f7968373e681e0d3822b79da2fa6ad9a5317c33d71d36c82b43e",
-      "source_bytes": 518856,
-      "critical_bytes": 132013
+      "sha256": "61e47db2fc887cfa139fe28c6e66d8bce3e764f1d8f3c8072cc7fc453be642b4",
+      "source_bytes": 522346,
+      "critical_bytes": 130535
     },
     "routes/vysota-efa/index.html": {
       "sources": [
@@ -3515,7 +3515,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3550,7 +3550,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3613,9 +3613,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "3e28fc8130b223a993884035f98712a9cd7c090117bcddd717427779d673c3b6",
-      "source_bytes": 518856,
-      "critical_bytes": 134342
+      "sha256": "d65c3e770c1c9f3aef7d04a2125e601cfdf6381bfede9fb9ca529dd608fb4545",
+      "source_bytes": 522346,
+      "critical_bytes": 132864
     },
     "routes/zelenogradsk-2-k-moryu/index.html": {
       "sources": [
@@ -3642,7 +3642,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3677,7 +3677,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3740,9 +3740,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "d59e41519a3650da4d1d669f8c9a193f4d881861b16cd9d1af0eca79a1c32408",
-      "source_bytes": 518856,
-      "critical_bytes": 131873
+      "sha256": "bb4206451165d91ab5ce3b164ddf9053cf01d1172c8443119704da6c4669e91e",
+      "source_bytes": 522346,
+      "critical_bytes": 132340
     },
     "routes/zelenogradsk-two-days/index.html": {
       "sources": [
@@ -3769,7 +3769,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3804,7 +3804,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3867,9 +3867,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "46aa5d325add4d08866d6e5933046c04ce0a0c350d434a6610b3854c85835ce6",
-      "source_bytes": 518856,
-      "critical_bytes": 109814
+      "sha256": "bc186506caa85cac3973354d2f3bd5ef6428f32b898de208f2f1201d984a073f",
+      "source_bytes": 522346,
+      "critical_bytes": 109897
     },
     "svetlogorsk/1-day/index.html": {
       "sources": [
@@ -3896,7 +3896,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -3931,7 +3931,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -3984,9 +3984,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "18ab1b2fccd2a4c87e4019bfd919aeb60fed45661826949599820e860c33f7c2",
-      "source_bytes": 499435,
-      "critical_bytes": 107752
+      "sha256": "a26b6ee39ac70cd70d5b9c8fbdfb2d407e0e1a657a76023e3d91d05102eebca7",
+      "source_bytes": 502925,
+      "critical_bytes": 107835
     },
     "waves/index.html": {
       "sources": [
@@ -4013,7 +4013,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4048,7 +4048,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4101,9 +4101,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "f38a26120104e36fa12f27a0177b42fd961e42d23fa8460f1bf029f17d63a023",
-      "source_bytes": 500862,
-      "critical_bytes": 92007
+      "sha256": "081f49837e026a2180d30bae9665ef5a8355d9f46ac6900cc6d9693012042ed4",
+      "source_bytes": 504352,
+      "critical_bytes": 92090
     },
     "waves/kaliningrad-ocean/index.html": {
       "sources": [
@@ -4130,7 +4130,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4165,7 +4165,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4223,9 +4223,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "528546c2426a0366fdb059c2e37b60c1dd4cfabffc769b92806e0ebd0142eaba",
-      "source_bytes": 513986,
-      "critical_bytes": 106707
+      "sha256": "fa92b3e513980b189b82b5f21aa55e69fd9f23b308b04ecf8ecb772685e56529",
+      "source_bytes": 517476,
+      "critical_bytes": 106790
     },
     "waves/svetlogorsk-bereg/index.html": {
       "sources": [
@@ -4252,7 +4252,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4287,7 +4287,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4345,9 +4345,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "528546c2426a0366fdb059c2e37b60c1dd4cfabffc769b92806e0ebd0142eaba",
-      "source_bytes": 513986,
-      "critical_bytes": 106707
+      "sha256": "fa92b3e513980b189b82b5f21aa55e69fd9f23b308b04ecf8ecb772685e56529",
+      "source_bytes": 517476,
+      "critical_bytes": 106790
     },
     "waves/yantarny-bereg/index.html": {
       "sources": [
@@ -4374,7 +4374,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4409,7 +4409,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4467,9 +4467,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "528546c2426a0366fdb059c2e37b60c1dd4cfabffc769b92806e0ebd0142eaba",
-      "source_bytes": 513986,
-      "critical_bytes": 106707
+      "sha256": "fa92b3e513980b189b82b5f21aa55e69fd9f23b308b04ecf8ecb772685e56529",
+      "source_bytes": 517476,
+      "critical_bytes": 106790
     },
     "waves/zelenogradsk-bereg/index.html": {
       "sources": [
@@ -4496,7 +4496,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4531,7 +4531,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4589,9 +4589,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9e5fdc377a803c59cee04e78c800aa7d73cc47f34617629641a24a59d3552c35",
-      "source_bytes": 513986,
-      "critical_bytes": 109159
+      "sha256": "6e5d45faada53ffd0e634610f5dcca9ef3b8da24c0791760fb254b7125f1d2a7",
+      "source_bytes": 517476,
+      "critical_bytes": 109242
     },
     "waves/zelenogradsk-city-fish/index.html": {
       "sources": [
@@ -4618,7 +4618,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4653,7 +4653,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4711,9 +4711,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "1e3122927c0245fe0dc575fadbaf995193d2febff3f5ba314aa4f29559c93c0d",
-      "source_bytes": 513986,
-      "critical_bytes": 106831
+      "sha256": "efc327fdc7bc5aee374fcf5e1c7c1ec95dcc1051f4709ded2f2c3aa0267178ea",
+      "source_bytes": 517476,
+      "critical_bytes": 106914
     },
     "waves/zelenogradsk-vkus/index.html": {
       "sources": [
@@ -4740,7 +4740,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4775,7 +4775,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4833,9 +4833,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "ac683e0aa5d63457bb63c3504b34c9641fb8b31c1b253c6564e761919f565556",
-      "source_bytes": 513986,
-      "critical_bytes": 109283
+      "sha256": "70a41b40c0e944f3f32272fe49535f67a364d986569fc3f9402695c172ec2b83",
+      "source_bytes": 517476,
+      "critical_bytes": 109366
     },
     "waves/zelenogradsk-west-sea/index.html": {
       "sources": [
@@ -4862,7 +4862,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -4897,7 +4897,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -4955,9 +4955,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "1e3122927c0245fe0dc575fadbaf995193d2febff3f5ba314aa4f29559c93c0d",
-      "source_bytes": 513986,
-      "critical_bytes": 106831
+      "sha256": "efc327fdc7bc5aee374fcf5e1c7c1ec95dcc1051f4709ded2f2c3aa0267178ea",
+      "source_bytes": 517476,
+      "critical_bytes": 106914
     },
     "zelenogradsk/1-day/index.html": {
       "sources": [
@@ -4984,7 +4984,7 @@
         {
           "path": "tools.css",
           "media": "all",
-          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
         },
         {
           "path": "planning-wizard.css",
@@ -5019,7 +5019,7 @@
         {
           "path": "author-media.css",
           "media": "all",
-          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
         },
         {
           "path": "day-workspace.css",
@@ -5072,9 +5072,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "099995b4bba91a5125cfc6e37b68f3fa42511c910af9eaf2921e7decf4e5b5a4",
-      "source_bytes": 499435,
-      "critical_bytes": 107822
+      "sha256": "758d35b693653c85d4bb354a40b868dd0fe167e5bdf8b8a1f01b2b0a44e888da",
+      "source_bytes": 502925,
+      "critical_bytes": 108960
     }
   }
 }

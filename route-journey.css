@@ -308,3 +308,44 @@ body[data-ui-context][data-route] main.inner-main .route-journey .route-stops .j
 
 /* Route handoff keeps the same calm secondary action on small screens. */
 .yandex-route-link{white-space:normal;text-align:center;max-width:100%;overflow-wrap:anywhere;min-height:44px}.weekend-panel>.yandex-route-link{margin:0 0 20px}.wave-download>.yandex-route-link{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px}.yandex-route-link[hidden]{display:none!important}
+
+/* Open walking routes: the day reads in one column, with reference facts below. */
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-passport{padding:18px 0;margin-bottom:24px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-day-actions,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-downloads{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-day-actions{margin:0 0 36px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-day-actions .route-day-status{flex-basis:100%;margin:0}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-walk,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-map,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-reference{max-width:900px;margin-left:auto;margin-right:auto}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stops>li{padding-bottom:28px;gap:18px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-number{margin-top:5px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-card{border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-heading{display:grid;grid-template-columns:90px minmax(0,1fr);gap:18px;align-items:start}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-map{width:90px;height:86px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stops h3{font-size:clamp(23px,2.5vw,30px);line-height:1.2;margin:0}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-time{font:400 15px/1.5 var(--sans);color:var(--sea-ink);margin:8px 0 0}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-body{padding:14px 0 0 108px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-body>p{font:400 17px/1.65 var(--serif);color:var(--sea-ink);margin:0}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-link{padding:8px 0;display:inline-flex;align-items:center}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .route-stop-actions{padding:0 0 12px 108px;border:0;gap:20px;justify-content:start;flex-wrap:wrap}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-map,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-reference{border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;padding:28px 0;margin-top:20px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-map h2,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-reference>h2{font:400 clamp(27px,3vw,37px)/1.2 var(--serif);margin:0 0 20px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-map .route-diagram{margin:0 0 16px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-reference p{font:400 17px/1.65 var(--serif);max-width:78ch}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-start{padding:0;border:0;background:transparent;margin:0 0 8px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-reference h3{font:400 23px/1.25 var(--serif);margin:0 0 12px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-facts{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-facts .visit-fact{padding:12px 0;border:0;border-radius:0;background:transparent}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-facts .visit-fact h3{font:500 16px/1.5 var(--sans);margin:0 0 6px}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-facts .visit-source,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-place-facts .visit-unknown{font:400 14px/1.6 var(--sans);color:var(--sea-muted)}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .route-access-profile{margin-top:24px;padding:0;border:0;background:transparent}
+body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-downloads{margin:20px 0}
+@media(max-width:600px){
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stops>li{grid-template-columns:26px minmax(0,1fr);gap:12px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-number{width:26px;height:26px;font-size:12px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stops>li:not(:last-child):after{left:12px;top:34px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-heading{grid-template-columns:58px minmax(0,1fr);gap:12px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-map{width:58px;height:64px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-stop-body{padding:14px 0 0}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .route-stop-actions{padding:0 0 10px;gap:6px 20px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-section-heading{align-items:start;flex-wrap:wrap;gap:8px}
+ body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-day-actions .button,body.inner-page > main.inner-main .route-journey-flat[data-route-flat] .journey-downloads .button{flex:1 1 210px}
+}

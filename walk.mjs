@@ -43,22 +43,25 @@ export function initWalk({touched = new Map()} = {}) {
   checks.forEach(input => { input.checked = initial.includes(input.dataset.poi); });
   const notice = document.querySelector('#walk-storage');
   function storageNotice(available) {
+    if (!notice) return;
     notice.hidden = available;
     notice.textContent = available ? '' : 'Отметки останутся только до закрытия этой страницы: браузер не разрешил сохранение.';
   }
   function refresh() {
     const count = checks.filter(input => input.checked).length;
-    document.querySelector('#walk-progress').textContent = `Пройдено остановок: ${count} из ${checks.length}`;
-    document.querySelector('#walk-progress-bar').value = count;
+    const progress = document.querySelector('#walk-progress');
+    const bar = document.querySelector('#walk-progress-bar');
+    if (progress) progress.textContent = `Пройдено остановок: ${count} из ${checks.length}`;
+    if (bar) bar.value = count;
     checks.forEach(input => input.closest('li').classList.toggle('is-complete', input.checked));
     const next = checks.find(input => !input.checked);
     const nextLabel = document.querySelector('#next-stop');
-    if (next) {
+    if (nextLabel && next) {
       const link = document.createElement('a');
       link.href = `#${next.closest('li').id}`;
       link.textContent = next.dataset.name;
       nextLabel.replaceChildren(document.createTextNode('Следующая остановка: '), link);
-    } else {
+    } else if (nextLabel) {
       nextLabel.textContent = 'Прогулка завершена. До встречи у моря!';
     }
     document.querySelectorAll('[data-start-route]').forEach(button => {
@@ -77,7 +80,7 @@ export function initWalk({touched = new Map()} = {}) {
     const next = checks.find(input => !input.checked);
     const target = next?.closest('li') || document.querySelector('#route-stops');
     const details = target.querySelector?.('.journey-stop');
-    if (details) details.open = true;
+    if (details?.matches('details')) details.open = true;
     (next || target).focus({preventScroll: true});
     target.scrollIntoView({block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   }));
@@ -92,9 +95,9 @@ export function initWalk({touched = new Map()} = {}) {
   function revealHash() {
     const id = location.hash.slice(1);
     const target = document.getElementById(id);
-    if (target?.matches('.journey-map')) target.open = true;
+    if (target?.matches('details.journey-map')) target.open = true;
     const details = target?.querySelector('.journey-stop');
-    if (details) details.open = true;
+    if (details?.matches('details')) details.open = true;
   }
   window.addEventListener('hashchange', revealHash);
   document.documentElement.dataset.walkReady = 'true';

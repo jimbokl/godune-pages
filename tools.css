@@ -87,3 +87,13 @@ body[data-tool="offline"] .offline-region-grid{margin-top:18px;margin-bottom:48p
 @media(prefers-reduced-motion:reduce){.tool-hub-card{transition:none}}
 
 .tool-hub-card:only-child{grid-column:1/-1}
+
+/* The optional browser map stays below the PDF introduction in one compact entry. */
+.offline-map-library{margin:0 0 28px;padding:18px 0;border-block:1px solid var(--night-line,#cadce6)}
+.offline-map-library>summary{cursor:pointer;min-height:44px;display:list-item;box-sizing:border-box;padding:8px 0;font-size:18px;line-height:1.5}
+.offline-map-library>summary:focus-visible{outline:2px solid var(--night-line,#315e7b);outline-offset:4px}
+.offline-map-library>p{font-size:14px;line-height:1.8;max-width:70ch}
+.offline-map-library .offline-region-grid{gap:12px;margin:16px 0 0}
+.offline-map-library .offline-region{display:block;padding:18px}
+.offline-map-library h3{font-size:24px;line-height:1.25;margin:0 0 12px}
+.offline-map-library .offline-region p{margin:8px 0}

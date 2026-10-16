@@ -1,6 +1,10 @@
+import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=2026101305';
+import {guidePhotoMetadata} from './author-photo.mjs?v=20261016';
 import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs?v=2026101305';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
-import {partyLabel} from './trip-party.mjs?v=2026101305';
+import {partyLabel,dayPeople} from './trip-party.mjs?v=2026101305';
+import {checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
+import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101702';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
@@ -74,6 +78,72 @@ export function guideDayRows(trip,catalog,result,matrix) {
   return [...rows,...rail.after];
 }
 
+function guideReferenceBudget(calculate,record,people){
+  if(!Object.hasOwn(record,'reference_budget'))return {};
+  try{
+    const value=checkedReferenceBudget(calculate,record.reference_budget),context=value.context;
+    const city=['zelenogradsk-one-day','svetlogorsk-one-day'].includes(context.route);
+    const stale=city?!cityReferenceMatches(value,record,people):context.route!==record.source_route||context.date!==record.date||context.people!==dayPeople(record,people);
+    return {reference_budget:value,...(stale?{reference_budget_notice:'Маршрут, дата, участники или выбранные варианты изменились. Ниже сохранён прежний справочный расчёт; его цены и источники сами не обновляются.'}:{})};
+  }catch{
+    return {reference_budget_error:'Сохранённый справочный бюджет не прошёл проверку. Исходные суммы и источники остались в записи дня; уточните расчёт в плане.'};
+  }
+}
+// Catalogue recommendations are independent of the user's ordered day.
+// Remove only the exact generated suffix, retaining every authored paragraph.
+function orderedStory(point,place) {
+  if(point.kind!=='place_card')return point.story;
+  const edges=place.complementary_edges||place;
+  const tails=['edge_after','edge_before'].map(key=>edges[key]?.linking_sentence).filter(Boolean);
+  return point.story.map(paragraph=>{
+    for(const tail of tails)if(paragraph.endsWith(tail))paragraph=paragraph.slice(0,-tail.length).trimEnd();
+    return paragraph;
+  }).filter(Boolean);
+}
+function orderedGuideLegs(trip,catalog,matrix,result,services,rows,entries) {
+  const legs=new Map(),name=id=>personalPoints(trip).find(p=>p.slug===id)?.name||baseName(id,catalog);
+  const itinerary=services?.check?.itinerary,progress=trip.schedule?.progress;
+  const ordered=!services&&progress?[entries.find(v=>v.kind==='place'&&v.id===progress.after),...entries.filter(v=>!v.completed)].filter(Boolean):entries;
+  for(const [index,entry]of ordered.entries()) {
+    if(entry.kind!=='place')continue;
+    const next=ordered[index+1];let to=next?.id,toName=next?.name,travel=null,roadRows=[],kind=next?.kind||'return';
+    if(itinerary){
+      const from=itinerary.order.find(v=>v.kind==='place'&&v.id===entry.id);
+      const connection=from&&itinerary.connections.find(v=>v.from===from.schedule_id);
+      const destination=connection&&itinerary.order.find(v=>v.schedule_id===connection.to);
+      // Never bridge a saved service or a removed/unsupported timeline entry.
+      if(destination&&(!next||destination.kind===next.kind&&destination.id===next.id)){
+        const boundary=boundaryForEntry(dayJourneyBoundaries(selectedDay(trip),catalog),destination);
+        to=boundary?baseId(boundary.value):destination.id;toName=boundary?.anchor?.name||next?.name||name(to);
+        roadRows=rows.filter(row=>row.id===`road:${destination.schedule_id}`||row.id.startsWith(`connection:${destination.schedule_id}:`));
+        travel=connection.leg;
+      }
+    } else if(!services&&result){
+      if(next?.kind==='place'){
+        const resolved=planTravel(trip,next.id,catalog,matrix);
+        if(previousPlace(resolved.projected,next.id)===entry.id){travel=resolved.travel;roadRows=rows.filter(row=>row.id===`road-${next.id}`);}
+      } else if(!next){
+        const item=result.stops.find(v=>v.id==='__day_night'||v.id==='__day_departure');
+        const role=item?.id==='__day_night'?'night':'end',resolved=item&&planBaseTravel(trip,role,catalog,matrix);
+        if(resolved?.from===entry.id){to=resolved.to;toName=name(to);travel=resolved.travel;roadRows=rows.filter(row=>row.id===`road-${item.id}`);}
+        else {
+          const rail=resolveRail(trip,catalog),row=rows.find(v=>v.id==='rail-return-walk');
+          if(rail&&row){to=rail.service.id||'rail-return';toName=rail.service.to;roadRows=[row];}
+        }
+      }
+    }
+    if(!to||!toName)continue;
+    const state=!roadRows.length||roadRows.some(row=>row.state==='unknown')?'unknown':roadRows.some(row=>row.state==='conflict')?'conflict':roadRows.some(row=>row.state==='needs_check')?'needs_check':roadRows.every(row=>row.state==='timetable')?'timetable':'estimate';
+    const known=state!=='unknown'&&state!=='conflict';
+    const meters=known&&travel?.origin!=='manual'&&Number.isFinite(travel?.distance_m)?travel.distance_m:null;
+    const sources=[...new Map([travel?.source,...roadRows.flatMap(row=>[row.source,...(row.sources||[])])].filter(Boolean).map(source=>[JSON.stringify(source),source])).values()];
+    legs.set(entry.id,{from:entry.id,to,kind,title:`${kind==='return'?'Возвращение':'Дальше'} — «${toName}»`,
+      text:(meters!==null?`${meters} м по карте. `:'')+(roadRows.length?roadRows.map(row=>row.text).join(' '):'Дорога между этими остановками ещё не рассчитана.'),
+      distance_m:meters,minutes:known?travel?.minutes??null:null,state,sources});
+  }
+  return legs;
+}
+
 export async function collectTripGuide({trip,catalog,scope='day',calculate,matrixFor,roadsFor,kosaFor,createdAt=new Date().toISOString()}) {
   if(!['day','trip'].includes(scope))throw Error('guide_invalid_scope');
   const saved=structuredClone(trip),allDays=journeyDays(saved),days=scope==='day'?[selectedDay(saved)]:allDays,out=[];
@@ -102,8 +172,11 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
       // the offline place card just like access conditions and their sources.
       const facts=[p.hours,p.price,...(p.visit_conditions || [])].filter(Boolean),seen=new Set();
       const conditions=facts.filter(fact=>{if(seen.has(fact.id))return false;seen.add(fact.id);return true;});
-      return {...point,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(conditions)};});
-    const entries=guideEntries(record,stops,services?.services||[]),complete=!transport.length&&(!services||!!services.check?.itinerary);
+      const photo_metadata=guidePhotoMetadata(p);
+      return {...point,story:orderedStory(point,p),photo_metadata,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:photo_metadata?.src||ownPointPhoto(p),conditions:structuredClone(conditions)};});
+    const entries=guideEntries(record,stops,services?.services||[]),legs=orderedGuideLegs(current,catalog,matrix,result,services,rows,entries);
+    for(const stop of stops)if(legs.has(stop.id))stop.next_leg=legs.get(stop.id);
+    const complete=!transport.length&&(!services||!!services.check?.itinerary);
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;
     if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
@@ -111,7 +184,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:transport.length?'needs_info':services?(services.check?.state||'needs_info'):generated?kosa.state:result.status,summary:transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':services?services.summary+(generated?' '+kosa.message:''):generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
-      stops,entries,menu_choices:menuChoiceGuide(record),menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),
+      stops,entries,menu_choices:menuChoiceGuide(record),menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),...guideReferenceBudget(calculate,record,saved.itinerary?.people||1),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
       planB:transportOnly&&transport.length===1?transportPlanB(transport[0].receipt):generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
   }

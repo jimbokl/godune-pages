@@ -43,3 +43,11 @@ html[data-theme=day] .city-day .journey-number{background:#7d4512;color:#fff}
 .city-day-conversation .journey-map{padding:20px 0}
 .city-day-conversation .city-day-faq h3{font-size:21px;margin-top:24px}
 @media(max-width:700px){.city-inline-settings{font-size:15px}.city-inline-settings p{line-height:2.6}.city-rail-choice{grid-template-columns:1fr;gap:14px}.city-day-conversation .city-day-deeper{margin-top:20px}.city-day-conversation .city-reference-place h3{font-size:21px}}
+
+/* The first screen reads as an open day, with two primary actions. */
+.city-day-conversation .city-day-phases{font-size:1rem;line-height:1.65;margin:1.2rem 0 .6rem;color:var(--ink-muted,var(--ink))}
+.city-day-conversation .journey-heading .city-sunset-row{margin:.6rem 0 1.2rem;font-size:.92rem;line-height:1.6}
+.city-day-conversation .journey-heading .city-day-actions{margin:1.2rem 0 0}
+.city-day-conversation>section.city-day-rain{margin:1.8rem 0 2.4rem;padding:.1rem 0 .1rem 1.1rem;border:0;border-left:2px solid var(--accent,#b97630);border-radius:0;background:transparent;box-shadow:none}
+.city-day-conversation>section.city-day-rain h2{font-family:var(--font-title,inherit);font-size:1.35rem;margin:.25rem 0 .6rem}
+.city-day-conversation>section.city-day-rain p{margin:.5rem 0;max-width:72ch}

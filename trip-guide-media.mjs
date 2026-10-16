@@ -1,3 +1,4 @@
+import {photoCrop} from './author-photo.mjs?v=20261016';
 // Rasterize our own static maps and photographs only when a guide is requested.
 // A document never needs a network connection to display its maps afterwards.
 const escape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
@@ -27,17 +28,17 @@ export function overviewSvg(day,land,water={routes:{}}) {
   const markers=points.map((p,i)=>{const [x,y]=xy([p.lon,p.lat]);return `<g><circle cx="${x}" cy="${y}" r="25" fill="#fff" stroke="#365e78" stroke-width="3"/><text x="${x}" y="${y+8}" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#233d4b">${p.number||i+1}</text><title>${escape(p.name)}</title></g>`;}).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="1000" height="700" fill="#c8dde8"/>${ground}${rivers}${roads}${markers}<path d="M948 65 L960 28 L972 65" fill="#233d4b"/><text x="960" y="89" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#233d4b">С</text></svg>`;
 }
-async function raster(bytes,type,{signal,maxWidth=1000,jpeg=false}={}) {
+async function raster(bytes,type,{signal,maxWidth=1000,jpeg=false,crop=null}={}) {
   signal?.throwIfAborted();
   const url=URL.createObjectURL(new Blob([bytes],{type})),img=new Image();
   try {
     await new Promise((resolve,reject)=>{const cancel=()=>{img.src='';reject(signal.reason || new DOMException('Отменено','AbortError'));};
       img.onload=()=>{signal?.removeEventListener('abort',cancel);resolve();};img.onerror=()=>{signal?.removeEventListener('abort',cancel);reject(Error('guide_image_unreadable'));};
       signal?.addEventListener('abort',cancel,{once:true});img.src=url;if(signal?.aborted)cancel();});
-    signal?.throwIfAborted();const ratio=Math.min(1,maxWidth/img.naturalWidth),canvas=document.createElement('canvas');
-    canvas.width=Math.round(img.naturalWidth*ratio);canvas.height=Math.round(img.naturalHeight*ratio);
+    signal?.throwIfAborted();const frame=photoCrop(img.naturalWidth,img.naturalHeight,crop),ratio=Math.min(1,maxWidth/frame.width),canvas=document.createElement('canvas');
+    canvas.width=Math.round(frame.width*ratio);canvas.height=Math.round(frame.height*ratio);
     const ctx=canvas.getContext('2d');if(!ctx)throw Error('guide_canvas_unavailable');
-    ctx.fillStyle='#f8f8f3';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#f8f8f3';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,frame.x,frame.y,frame.width,frame.height,0,0,canvas.width,canvas.height);
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,jpeg?'image/jpeg':'image/png',.87));if(!blob)throw Error('guide_image_unreadable');
     const result={bytes:new Uint8Array(await blob.arrayBuffer()),width:canvas.width,height:canvas.height,kind:jpeg?'jpeg':'png'};
     signal?.throwIfAborted();canvas.width=canvas.height=1;return result;
@@ -58,7 +59,7 @@ export async function collectGuideMedia(snapshot,base,{signal,onProgress=()=>{}}
     const path=`assets/card-maps/${point.id}-day.svg`,raw=await read(path);
     media.maps[point.id]={...await raster(raw.bytes,'image/svg+xml',{signal}),path,sha256:await guideHash(raw.bytes)};
     media.qrs[point.id]=await qr(point.id);
-    if(point.photo){try{const photo=await read(point.photo);media.photos[point.id]={...await raster(photo.bytes,photo.type || 'image/jpeg',{signal,jpeg:true,maxWidth:1100}),path:point.photo,sha256:await guideHash(photo.bytes)};}
+    if(point.photo){try{const photo=await read(point.photo);media.photos[point.id]={...await raster(photo.bytes,photo.type || 'image/jpeg',{signal,jpeg:true,maxWidth:1100,crop:point.photo_metadata?.crop}),metadata:point.photo_metadata||null,path:point.photo,sha256:await guideHash(photo.bytes)};}
       catch(error){signal?.throwIfAborted();media.warnings.push(`Фото «${point.name}» не загрузилось. Карта и текст сохранены.`);}}
   }
   for(const day of snapshot.days){

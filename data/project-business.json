@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "checked_at": "2026-10-14",
+  "checked_at": "2026-10-16",
   "projects": [
     {
       "id": "project:belaya-duna",
@@ -1662,6 +1662,410 @@
           }
         ]
       }
+    },
+    {
+      "id": "milestone:launch-2026-media",
+      "project_id": "project:belaya-duna",
+      "date": "2029-01-01",
+      "period": "2029 · сообщение СМИ",
+      "title": "План запуска: 2029 год",
+      "status": "plan",
+      "description": "РБК 8 октября 2026 года сообщает о планах запуска курорта в 2029 году. Состав запуска и даты открытия отдельных объектов в этом абзаце не раскрыты. Это сообщение СМИ, а не новая редакция очередности приказа №255.",
+      "source_ids": [
+        "road-rbc"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:launch-2026-media:2029",
+          "date": "2029-01-01",
+          "precision": "year",
+          "relation": "during",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "road-rbc"
+          ],
+          "recorded_at": "2026-10-16"
+        }
+      ],
+      "topic": "project",
+      "next_evidence": "Первичный документ с составом этой стадии, сроками её объектов и последующими изменениями.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Плановый год не подтверждает открытие конкретной гостиницы или доступность её бронирования.",
+          "source_ids": [
+            "road-rbc"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:launch-2026-media:1",
+        "versions": [
+          {
+            "id": "phase-version:launch-2026-media:1",
+            "version": 1,
+            "milestone_id": "milestone:launch-2026-media",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-16",
+            "observed_on": null,
+            "title": "План запуска: 2029 год",
+            "status": "plan",
+            "description": "РБК 8 октября 2026 года сообщает о планах запуска курорта в 2029 году. Состав запуска и даты открытия отдельных объектов в этом абзаце не раскрыты. Это сообщение СМИ, а не новая редакция очередности приказа №255.",
+            "date_claim": {
+              "date": "2029-01-01",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "during",
+              "source_ids": [
+                "road-rbc"
+              ]
+            },
+            "source_ids": [
+              "road-rbc"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "road-rbc",
+                "title": "РБК: конкурс на дорогу за 2,9 млрд рублей",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/08/10/2026/6ac750ed6f4d55a9448bf3f1",
+                "kind": "media",
+                "published_at": "2026-10-08"
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Датированная публикация 2026 года добавлена 16 октября отдельно от утверждённых этапов планировки 2025 года.",
+            "previous_digest": null,
+            "digest": "640c0341d94a222c15ec3fe382aa9317a1cc81e67f71cf4f4fb217a503652b40"
+          }
+        ]
+      }
+    },
+    {
+      "id": "milestone:base-infrastructure-2026-media",
+      "project_id": "project:belaya-duna",
+      "date": "2030-12-31",
+      "period": "2030 · сообщение СМИ",
+      "title": "Базовая инфраструктура: ориентир 2030",
+      "status": "plan",
+      "description": "В публикации РБК 28 сентября базовую инфраструктуру хотят подготовить к 2030 году; 8 октября инженерную инфраструктуру предполагают спроектировать и создать до 2030 года. Перечень работ этих обобщённых формулировок не раскрыт. Газовое и электрическое присоединение имеют отдельные сроки.",
+      "source_ids": [
+        "september",
+        "road-rbc"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:base-infrastructure-2026-media:2030",
+          "date": "2030-12-31",
+          "precision": "year",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "september",
+            "road-rbc"
+          ],
+          "recorded_at": "2026-10-16",
+          "year_boundary": "unspecified"
+        }
+      ],
+      "topic": "project",
+      "next_evidence": "Первичный документ с составом этой стадии, сроками её объектов и последующими изменениями.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Плановый год не подтверждает открытие конкретной гостиницы или доступность её бронирования.",
+          "source_ids": [
+            "september",
+            "road-rbc"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:base-infrastructure-2026-media:1",
+        "versions": [
+          {
+            "id": "phase-version:base-infrastructure-2026-media:1",
+            "version": 1,
+            "milestone_id": "milestone:base-infrastructure-2026-media",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-16",
+            "observed_on": null,
+            "title": "Базовая инфраструктура: ориентир 2030",
+            "status": "plan",
+            "description": "В публикации РБК 28 сентября базовую инфраструктуру хотят подготовить к 2030 году; 8 октября инженерную инфраструктуру предполагают спроектировать и создать до 2030 года. Перечень работ этих обобщённых формулировок не раскрыт. Газовое и электрическое присоединение имеют отдельные сроки.",
+            "date_claim": {
+              "date": "2030-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "september",
+                "road-rbc"
+              ],
+              "year_boundary": "unspecified"
+            },
+            "source_ids": [
+              "september",
+              "road-rbc"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "september",
+                "title": "РБК: инфраструктура и этапы курорта",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6",
+                "kind": "media",
+                "published_at": "2026-09-28"
+              },
+              {
+                "source_id": "road-rbc",
+                "title": "РБК: конкурс на дорогу за 2,9 млрд рублей",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/08/10/2026/6ac750ed6f4d55a9448bf3f1",
+                "kind": "media",
+                "published_at": "2026-10-08"
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Датированная публикация 2026 года добавлена 16 октября отдельно от утверждённых этапов планировки 2025 года.",
+            "previous_digest": null,
+            "digest": "325f8b3ed14a21a009a812ca8dceff6d702026a1a90645b2dc52709bc132e3d8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "milestone:hotel-complexes-2026-media",
+      "project_id": "project:belaya-duna",
+      "date": "2033-12-31",
+      "period": "2033 · сообщение СМИ",
+      "title": "Гостиничные и санаторные комплексы",
+      "status": "plan",
+      "description": "РБК 28 сентября 2026 года сообщает о планах завершить проектирование и строительство гостиничных и санаторно-курортных комплексов до конца 2033 года. Эта формулировка отличается по составу от II этапа планировки 2025 года — креативных индустрий, общественно-делового и торгового кластеров.",
+      "source_ids": [
+        "september"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:hotel-complexes-2026-media:2033",
+          "date": "2033-12-31",
+          "precision": "year",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "september"
+          ],
+          "recorded_at": "2026-10-16"
+        }
+      ],
+      "topic": "project",
+      "next_evidence": "Первичный документ с составом этой стадии, сроками её объектов и последующими изменениями.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Плановый год не подтверждает открытие конкретной гостиницы или доступность её бронирования.",
+          "source_ids": [
+            "september"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:hotel-complexes-2026-media:1",
+        "versions": [
+          {
+            "id": "phase-version:hotel-complexes-2026-media:1",
+            "version": 1,
+            "milestone_id": "milestone:hotel-complexes-2026-media",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-16",
+            "observed_on": null,
+            "title": "Гостиничные и санаторные комплексы",
+            "status": "plan",
+            "description": "РБК 28 сентября 2026 года сообщает о планах завершить проектирование и строительство гостиничных и санаторно-курортных комплексов до конца 2033 года. Эта формулировка отличается по составу от II этапа планировки 2025 года — креативных индустрий, общественно-делового и торгового кластеров.",
+            "date_claim": {
+              "date": "2033-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "september"
+              ]
+            },
+            "source_ids": [
+              "september"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "september",
+                "title": "РБК: инфраструктура и этапы курорта",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6",
+                "kind": "media",
+                "published_at": "2026-09-28"
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Датированная публикация 2026 года добавлена 16 октября отдельно от утверждённых этапов планировки 2025 года.",
+            "previous_digest": null,
+            "digest": "b64272e8ec663df32c0307737bf330846b263d724fa17da7f0d8f77f65d90bf6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "milestone:full-project-2026-media",
+      "project_id": "project:belaya-duna",
+      "date": "2033-12-31",
+      "period": "2033 / 2038 · расхождение публикаций",
+      "title": "Полное завершение: две версии СМИ",
+      "status": "plan",
+      "description": "РБК 8 октября 2026 года пишет о планах полностью построить проект до конца 2033 года. В сентябрьской публикации полная реализация отнесена к 2038 году. Более поздняя статья показана как текущая запись реестра, но расхождение остаётся открытым.",
+      "source_ids": [
+        "road-rbc"
+      ],
+      "organization_ids": [],
+      "procurement_id": null,
+      "date_claims": [
+        {
+          "id": "date:full-project-2026-media:2038",
+          "date": "2038-12-31",
+          "precision": "year",
+          "relation": "by",
+          "kind": "planned",
+          "state": "conflicting",
+          "source_ids": [
+            "september"
+          ],
+          "recorded_at": "2026-10-16",
+          "year_boundary": "unspecified"
+        },
+        {
+          "id": "date:full-project-2026-media:2033",
+          "date": "2033-12-31",
+          "precision": "year",
+          "relation": "by",
+          "kind": "planned",
+          "state": "current",
+          "source_ids": [
+            "road-rbc"
+          ],
+          "recorded_at": "2026-10-16"
+        }
+      ],
+      "topic": "project",
+      "next_evidence": "Первичный документ, который сопоставляет состав полного строительства и полной реализации и объясняет разные горизонты 2033 / 2038.",
+      "impacts": [
+        {
+          "audience": "tourist",
+          "text": "Плановый год не подтверждает открытие конкретной гостиницы или доступность её бронирования.",
+          "source_ids": [
+            "september"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "history": {
+        "schema_version": 1,
+        "current_version_id": "phase-version:full-project-2026-media:2",
+        "versions": [
+          {
+            "id": "phase-version:full-project-2026-media:1",
+            "version": 1,
+            "milestone_id": "milestone:full-project-2026-media",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-16",
+            "observed_on": null,
+            "title": "Полная реализация: сентябрьская версия",
+            "status": "plan",
+            "description": "РБК 28 сентября 2026 года со ссылкой на Корпорацию развития региона указывает горизонт полной реализации проекта до 2038 года. Какие объекты входят в этот итоговый горизонт, абзац не перечисляет.",
+            "date_claim": {
+              "date": "2038-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "september"
+              ],
+              "year_boundary": "unspecified"
+            },
+            "source_ids": [
+              "september"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "september",
+                "title": "РБК: инфраструктура и этапы курорта",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6",
+                "kind": "media",
+                "published_at": "2026-09-28"
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [],
+            "conflict_reason": "",
+            "reason": "Датированная публикация 2026 года добавлена 16 октября отдельно от утверждённых этапов планировки 2025 года.",
+            "previous_digest": null,
+            "digest": "298524cdd65bef472eb1f6a1d1e2165499f82b849124fda533a7b0eeae552bc3"
+          },
+          {
+            "id": "phase-version:full-project-2026-media:2",
+            "version": 2,
+            "milestone_id": "milestone:full-project-2026-media",
+            "project_id": "project:belaya-duna",
+            "recorded_at": "2026-10-16",
+            "observed_on": null,
+            "title": "Полное завершение: две версии СМИ",
+            "status": "plan",
+            "description": "РБК 8 октября 2026 года пишет о планах полностью построить проект до конца 2033 года. В сентябрьской публикации полная реализация отнесена к 2038 году. Более поздняя статья показана как текущая запись реестра, но расхождение остаётся открытым.",
+            "date_claim": {
+              "date": "2033-12-31",
+              "kind": "planned",
+              "precision": "year",
+              "relation": "by",
+              "source_ids": [
+                "road-rbc"
+              ]
+            },
+            "source_ids": [
+              "road-rbc"
+            ],
+            "source_snapshots": [
+              {
+                "source_id": "road-rbc",
+                "title": "РБК: конкурс на дорогу за 2,9 млрд рублей",
+                "url": "https://kaliningrad.rbc.ru/kaliningrad/08/10/2026/6ac750ed6f4d55a9448bf3f1",
+                "kind": "media",
+                "published_at": "2026-10-08"
+              }
+            ],
+            "supersedes": [],
+            "conflicts_with": [
+              "phase-version:full-project-2026-media:1"
+            ],
+            "conflict_reason": "28 сентября указана полная реализация до 2038 года, 8 октября — полное строительство до конца 2033 года. Состав сравниваемых работ не раскрыт; это расхождение формулировок, а не подтверждённый перенос срока или изменение приказа №255.",
+            "reason": "Добавлена более поздняя публикация без отмены сентябрьского сообщения: первичный документ, согласующий состав и сроки, не прочитан.",
+            "previous_digest": "298524cdd65bef472eb1f6a1d1e2165499f82b849124fda533a7b0eeae552bc3",
+            "digest": "267ce646c02fbbe8d7ff26651e3ef2a90ef6132b583f061f0c523ddbf18826b9"
+          }
+        ]
+      }
     }
   ],
   "procurements": [
@@ -2047,6 +2451,26 @@
       "checked_at": "2026-10-14",
       "note": "Самоописание оператора и портфель; не подтверждает условия договора по проекту.",
       "evidence_text": "Intermark Residence — профессиональный оператор сервисных апартаментов. COSMOS OTRADA / Калининград / 2030 г."
+    },
+    {
+      "id": "september",
+      "title": "РБК: инфраструктура и этапы курорта",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6",
+      "kind": "media",
+      "published_at": "2026-09-28",
+      "checked_at": "2026-10-16",
+      "document_sha256": "c2e4b59dd6c25453373ba1fd1e59433643172d97b53db3529fa4b5e6e82a1fb1",
+      "note": "Оригинал статьи повторно прочитан 16 октября 2026 года. Плановый горизонт из публикации СМИ; первичный документ об изменении очередности этим сообщением не подтверждён."
+    },
+    {
+      "id": "road-rbc",
+      "title": "РБК: конкурс на дорогу за 2,9 млрд рублей",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/08/10/2026/6ac750ed6f4d55a9448bf3f1",
+      "kind": "media",
+      "published_at": "2026-10-08",
+      "checked_at": "2026-10-16",
+      "document_sha256": "8cfdc5d9ded442187bc13d2932ff5783cefb2a4266f659e8ff751141f99590e3",
+      "note": "Оригинал статьи повторно прочитан 16 октября 2026 года. Плановый горизонт из публикации СМИ; первичный документ об изменении очередности этим сообщением не подтверждён."
     }
   ],
   "places": [

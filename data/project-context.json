@@ -226,6 +226,39 @@
     },
     {
       "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:road-rbc"
+      ],
+      "to": "milestone:launch-2026-media"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:september",
+        "business:road-rbc"
+      ],
+      "to": "milestone:base-infrastructure-2026-media"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:september"
+      ],
+      "to": "milestone:hotel-complexes-2026-media"
+    },
+    {
+      "from": "project:belaya-duna",
+      "relation": "has_milestone",
+      "source_refs": [
+        "business:road-rbc"
+      ],
+      "to": "milestone:full-project-2026-media"
+    },
+    {
+      "from": "project:belaya-duna",
       "relation": "has_procurement",
       "source_refs": [
         "business:road-mirror",
@@ -678,7 +711,7 @@
   "inputs": [
     {
       "registry": "business",
-      "sha256": "045c9d44615e6f89a5973738cd8ce55cb579408705ffab7f1b22ce91d89495bc"
+      "sha256": "e68ea3e4ae3afee745c90d2010143d285dd98995d577fa02d0664c6f48cd727d"
     },
     {
       "registry": "design",
@@ -686,7 +719,7 @@
     },
     {
       "registry": "map",
-      "sha256": "edae6177205e2d249711a5d42c3479976c824147b9daf79f816d0cf292d6b423"
+      "sha256": "869f2b943de41184967cc325e26a8214ad9def231113138beb3a624c20305303"
     },
     {
       "registry": "transport",
@@ -1176,6 +1209,122 @@
       "url": "/dunes/belaya-duna/timeline/#milestone-planning-2025-residential"
     },
     {
+      "checked_at": "2026-10-16",
+      "date_claim": {
+        "date": "2029-01-01",
+        "id": "date:launch-2026-media:2029",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-16",
+        "relation": "during",
+        "source_ids": [
+          "road-rbc"
+        ],
+        "source_refs": [
+          "business:road-rbc"
+        ],
+        "state": "current"
+      },
+      "date_label": "2029",
+      "id": "milestone:launch-2026-media",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-rbc"
+      ],
+      "state": "Плановый срок",
+      "title": "План запуска: 2029 год",
+      "url": "/dunes/belaya-duna/timeline/#milestone-launch-2026-media"
+    },
+    {
+      "checked_at": "2026-10-16",
+      "date_claim": {
+        "date": "2030-12-31",
+        "id": "date:base-infrastructure-2026-media:2030",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-16",
+        "relation": "by",
+        "source_ids": [
+          "september",
+          "road-rbc"
+        ],
+        "source_refs": [
+          "business:september",
+          "business:road-rbc"
+        ],
+        "state": "current",
+        "year_boundary": "unspecified"
+      },
+      "date_label": "До 2030 года",
+      "id": "milestone:base-infrastructure-2026-media",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:september",
+        "business:road-rbc"
+      ],
+      "state": "Плановый срок",
+      "title": "Базовая инфраструктура: ориентир 2030",
+      "url": "/dunes/belaya-duna/timeline/#milestone-base-infrastructure-2026-media"
+    },
+    {
+      "checked_at": "2026-10-16",
+      "date_claim": {
+        "date": "2033-12-31",
+        "id": "date:hotel-complexes-2026-media:2033",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-16",
+        "relation": "by",
+        "source_ids": [
+          "september"
+        ],
+        "source_refs": [
+          "business:september"
+        ],
+        "state": "current"
+      },
+      "date_label": "До конца 2033 года",
+      "id": "milestone:hotel-complexes-2026-media",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:september"
+      ],
+      "state": "Плановый срок",
+      "title": "Гостиничные и санаторные комплексы",
+      "url": "/dunes/belaya-duna/timeline/#milestone-hotel-complexes-2026-media"
+    },
+    {
+      "checked_at": "2026-10-16",
+      "date_claim": {
+        "date": "2033-12-31",
+        "id": "date:full-project-2026-media:2033",
+        "kind": "planned",
+        "precision": "year",
+        "recorded_at": "2026-10-16",
+        "relation": "by",
+        "source_ids": [
+          "road-rbc"
+        ],
+        "source_refs": [
+          "business:road-rbc"
+        ],
+        "state": "current"
+      },
+      "date_label": "До конца 2033 года",
+      "id": "milestone:full-project-2026-media",
+      "kind": "milestone",
+      "project_id": "project:belaya-duna",
+      "source_refs": [
+        "business:road-rbc"
+      ],
+      "state": "Плановый срок",
+      "title": "Полное завершение: две версии СМИ",
+      "url": "/dunes/belaya-duna/timeline/#milestone-full-project-2026-media"
+    },
+    {
       "checked_at": "2026-10-10",
       "id": "procurement:0335200014926003779",
       "kind": "procurement",
@@ -1448,7 +1597,7 @@
       "year": 2025
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-16",
       "coordinate_system": {
         "code": "local-document-xy",
         "description": "Координаты X/Y каталога приказа; схема в метрах без преобразования в WGS84",
@@ -1472,7 +1621,7 @@
       "url": "/dunes/belaya-duna/map/?document=order-364#map"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-16",
       "coordinate_system": {
         "code": "local-document-xy",
         "description": "Координаты X/Y каталога приказа; схема в метрах без преобразования в WGS84",
@@ -2168,6 +2317,28 @@
       "url": "https://apart.intermarkresidence.com/"
     },
     {
+      "checked_at": "2026-10-16",
+      "document_sha256": "c2e4b59dd6c25453373ba1fd1e59433643172d97b53db3529fa4b5e6e82a1fb1",
+      "id": "business:september",
+      "kind": "media",
+      "note": "Оригинал статьи повторно прочитан 16 октября 2026 года. Плановый горизонт из публикации СМИ; первичный документ об изменении очередности этим сообщением не подтверждён.",
+      "published_at": "2026-09-28",
+      "registry": "business",
+      "title": "РБК: инфраструктура и этапы курорта",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/28/09/2026/6aba2dc89a794712700758f6"
+    },
+    {
+      "checked_at": "2026-10-16",
+      "document_sha256": "8cfdc5d9ded442187bc13d2932ff5783cefb2a4266f659e8ff751141f99590e3",
+      "id": "business:road-rbc",
+      "kind": "media",
+      "note": "Оригинал статьи повторно прочитан 16 октября 2026 года. Плановый горизонт из публикации СМИ; первичный документ об изменении очередности этим сообщением не подтверждён.",
+      "published_at": "2026-10-08",
+      "registry": "business",
+      "title": "РБК: конкурс на дорогу за 2,9 млрд рублей",
+      "url": "https://kaliningrad.rbc.ru/kaliningrad/08/10/2026/6ac750ed6f4d55a9448bf3f1"
+    },
+    {
       "checked_at": "2026-10-10",
       "date": null,
       "id": "design:municipal-register",
@@ -2248,7 +2419,7 @@
       "url": "https://www.wowhaus.ru/project/belaya-dyuna"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-16",
       "id": "map:order-364",
       "kind": "primary",
       "published_at": "2026-08-21",
@@ -2258,7 +2429,7 @@
       "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/normgrad/%D0%9F%D0%A0%D0%98%D0%9A%D0%90%D0%97%20%D0%9C%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D0%B0%20%D0%BE%D1%82%2021.08.2026%20%E2%84%96%20364%20%D0%9E%D0%B1%20%D1%83%D1%82%D0%B2.%20%D0%B8%D0%B7%D0%BC.%20%D0%B2%20%D0%9F%D0%9C%D0%A2%20%28%D0%9A%D1%83%D1%80%D0%BE%D1%80%D1%82%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%94%D1%8E%D0%BD%D0%B0%29_compressed.pdf"
     },
     {
-      "checked_at": "2026-10-10",
+      "checked_at": "2026-10-16",
       "id": "map:order-255",
       "kind": "primary",
       "published_at": "2025-08-04",

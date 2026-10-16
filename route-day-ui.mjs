@@ -1,4 +1,5 @@
-import {withCityDayPlan} from './city-day-state.mjs?v=2026101604';
+import {loadCityBudget,withCityReferenceBudget} from './city-day-budget.mjs?v=2026101703';
+import {withCityDayPlan} from './city-day-state.mjs?v=2026101703';
 import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=2026101602';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
@@ -41,7 +42,8 @@ export function initRouteDay({workshop,catalog,base}){
  async function save(){
   const settings={id,date:form.elements.date.value||null,time:form.elements.time.value,edit:dirty};
   const selection=document.querySelector('[data-city-weather]')?{outward:document.querySelector('[data-city-rail-outward]:not([disabled])')?.value,inbound:document.querySelector('[data-city-rail-inbound]:not([disabled])')?.value,weather:document.querySelector('[data-city-weather]').value}:null;
-  const result=await workshop.setState(current=>withCityDayPlan(saveRouteDay(current,route,catalog,settings),catalog,selection),'Прогулка сохранена в Мой день.');
+  const resources=selection?await loadCityBudget(base):null;
+  const result=await workshop.setState(current=>{const next=withCityDayPlan(saveRouteDay(current,route,catalog,settings),catalog,selection);return resources?withCityReferenceBudget(next,catalog,resources):next;},'Прогулка сохранена в Мой день.');
   if(result.conflict)throw Error('route_day_conflict');
   linkDay(selectedDay(workshop.getState()).id);dirty=false;persisted=!!result.saved;return result;
  }
