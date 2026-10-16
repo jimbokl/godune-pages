@@ -2613,6 +2613,16 @@
       ]
     },
     {
+      "id": "poi:15f1827d-c689-5d96-bd45-6d6174ed7aa7",
+      "name": "Визит-центр «Музейный комплекс»",
+      "references": [
+        {
+          "kind": "poi",
+          "slug": "muzej-kurshskoy-kosy"
+        }
+      ]
+    },
+    {
       "id": "poi:182a7a49-4a1d-51c1-8845-83687b70519a",
       "name": "Судно «Космонавт Виктор Пацаев»",
       "references": [
@@ -6999,6 +7009,20 @@
         "reference": {
           "kind": "poi",
           "slug": "zelenogradsk-novyy"
+        }
+      }
+    },
+    {
+      "id": "branch:poi:15f1827d-c689-5d96-bd45-6d6174ed7aa7",
+      "place_id": "poi:15f1827d-c689-5d96-bd45-6d6174ed7aa7",
+      "name": "Визит-центр «Музейный комплекс»",
+      "area": "kurshskaya-kosa",
+      "address": null,
+      "location": {
+        "kind": "catalog",
+        "reference": {
+          "kind": "poi",
+          "slug": "muzej-kurshskoy-kosy"
         }
       }
     },
