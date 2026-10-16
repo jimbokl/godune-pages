@@ -2923,6 +2923,16 @@
       ]
     },
     {
+      "id": "poi:81215b64-3526-5bbe-9ecc-30d82644a780",
+      "name": "Local Baltic Food",
+      "references": [
+        {
+          "kind": "poi",
+          "slug": "restoran-local"
+        }
+      ]
+    },
+    {
       "id": "poi:822ad98a-04c8-5bd7-bef2-448c3591c6af",
       "name": "Облака",
       "references": [
@@ -7443,6 +7453,20 @@
         "reference": {
           "kind": "poi",
           "slug": "solnechnye-chasy"
+        }
+      }
+    },
+    {
+      "id": "branch:poi:81215b64-3526-5bbe-9ecc-30d82644a780",
+      "place_id": "poi:81215b64-3526-5bbe-9ecc-30d82644a780",
+      "name": "Local Baltic Food",
+      "area": "svetlogorsk",
+      "address": "ул. Юрия Гагарина, 15",
+      "location": {
+        "kind": "catalog",
+        "reference": {
+          "kind": "poi",
+          "slug": "restoran-local"
         }
       }
     },

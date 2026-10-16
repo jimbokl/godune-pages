@@ -3478,6 +3478,21 @@
         }
       ]
     },
+    "fdd19e33e29ce38223e151ba4b5b636d681c17c885b465817790677d63e3e433": {
+      "path": "assets/css-bundles/0c788efa4121b588f240edce2b0852e7eddf6c8492f1a8c216cbc61ccba2dae0.css",
+      "sha256": "0c788efa4121b588f240edce2b0852e7eddf6c8492f1a8c216cbc61ccba2dae0",
+      "bytes": 51841,
+      "sources": [
+        {
+          "path": "route-journey.css",
+          "media": "all"
+        },
+        {
+          "path": "city-day.css",
+          "media": "all"
+        }
+      ]
+    },
     "f59fb0b7c497f711cfe3e91343156425394d9fc97678613fd88571c0096a656a": {
       "path": "assets/css-bundles/5253f4619c5cf888e5bae0390e8ca7b0554661e98341db014f63244b19b9fd31.css",
       "sha256": "5253f4619c5cf888e5bae0390e8ca7b0554661e98341db014f63244b19b9fd31",
@@ -4076,21 +4091,6 @@
         },
         {
           "path": "editorial-print.css",
-          "media": "all"
-        }
-      ]
-    },
-    "fdd19e33e29ce38223e151ba4b5b636d681c17c885b465817790677d63e3e433": {
-      "path": "assets/css-bundles/5af61ac130ab2e1c51b822833a5bd05c28fa5030ba1f2dfb53b1208d80564edc.css",
-      "sha256": "5af61ac130ab2e1c51b822833a5bd05c28fa5030ba1f2dfb53b1208d80564edc",
-      "bytes": 47370,
-      "sources": [
-        {
-          "path": "route-journey.css",
-          "media": "all"
-        },
-        {
-          "path": "city-day.css",
           "media": "all"
         }
       ]
@@ -33372,6 +33372,307 @@
         }
       }
     },
+    "svetlogorsk/1-day/index.html": {
+      "groups": {
+        "active-deferred-0": {
+          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "deferred": true,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../gastronomy.css?v=5",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../planning-wizard.css?v=8",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../author-media.css?v=1",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../destination-signatures.css?v=1",
+              "path": "destination-signatures.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": "print"
+            }
+          ]
+        },
+        "noscript-0": {
+          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "deferred": false,
+          "location": "noscript",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../gastronomy.css?v=5",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../planning-wizard.css?v=8",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../author-media.css?v=1",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destination-signatures.css?v=1",
+              "path": "destination-signatures.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        },
+        "active-0": {
+          "bundle": "fdd19e33e29ce38223e151ba4b5b636d681c17c885b465817790677d63e3e433",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../route-journey.css?v=20261014",
+              "path": "route-journey.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../city-day.css?v=2026101606",
+              "path": "city-day.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
     "svetlogorsk/bashnya-svetlogorsk/index.html": {
       "groups": {
         "active-0": {
@@ -34230,6 +34531,149 @@
         }
       }
     },
+    "svetlogorsk/restoran-local/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../gastronomy.css?v=5",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../planning-wizard.css?v=8",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../author-media.css?v=1",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
     "svetlogorsk/solnechnye-chasy/index.html": {
       "groups": {
         "active-0": {
@@ -34517,149 +34961,6 @@
       }
     },
     "svetlogorsk/u-morya/index.html": {
-      "groups": {
-        "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
-          "deferred": false,
-          "location": "active",
-          "sources": [
-            {
-              "href": "../../assets/fonts.css?v=7",
-              "path": "assets/fonts.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../styles.css?v=31",
-              "path": "styles.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../toolkit.css?v=24",
-              "path": "toolkit.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../gastronomy.css?v=5",
-              "path": "gastronomy.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../tools.css?v=7",
-              "path": "tools.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../planning-wizard.css?v=8",
-              "path": "planning-wizard.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../destinations.css?v=2",
-              "path": "destinations.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../map-navigation.css?v=2",
-              "path": "map-navigation.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../night.css?v=7",
-              "path": "night.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../housing.css?v=20261014",
-              "path": "housing.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../editorial-cards.css?v=3",
-              "path": "editorial-cards.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../author-media.css?v=1",
-              "path": "author-media.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../day-workspace.css?v=14",
-              "path": "day-workspace.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../baltic-reference.css?v=20261014",
-              "path": "baltic-reference.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../photo-tone.css?v=1",
-              "path": "photo-tone.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../site-dossier.css?v=2026101504",
-              "path": "site-dossier.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../destination-signatures.css?v=1",
-              "path": "destination-signatures.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../complementary.css?v=2026101501",
-              "path": "complementary.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../design-tokens.css?v=2026101501",
-              "path": "design-tokens.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../mosaic.css?v=2026101601",
-              "path": "mosaic.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../amber-material.css?v=2026101501",
-              "path": "amber-material.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../editorial-print.css?v=1",
-              "path": "editorial-print.css",
-              "media": "all",
-              "link_media": null
-            }
-          ]
-        }
-      }
-    },
-    "svetlogorsk/za-odin-den/index.html": {
       "groups": {
         "active-0": {
           "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
@@ -43019,7 +43320,7 @@
               "link_media": null
             },
             {
-              "href": "../../city-day.css?v=2026101601",
+              "href": "../../city-day.css?v=2026101606",
               "path": "city-day.css",
               "media": "all",
               "link_media": null
@@ -48320,149 +48621,6 @@
       }
     },
     "zelenogradsk/v-dozhd/index.html": {
-      "groups": {
-        "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
-          "deferred": false,
-          "location": "active",
-          "sources": [
-            {
-              "href": "../../assets/fonts.css?v=7",
-              "path": "assets/fonts.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../styles.css?v=31",
-              "path": "styles.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../toolkit.css?v=24",
-              "path": "toolkit.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../gastronomy.css?v=5",
-              "path": "gastronomy.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../tools.css?v=7",
-              "path": "tools.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../planning-wizard.css?v=8",
-              "path": "planning-wizard.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../destinations.css?v=2",
-              "path": "destinations.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../map-navigation.css?v=2",
-              "path": "map-navigation.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../night.css?v=7",
-              "path": "night.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../housing.css?v=20261014",
-              "path": "housing.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../editorial-cards.css?v=3",
-              "path": "editorial-cards.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../author-media.css?v=1",
-              "path": "author-media.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../day-workspace.css?v=14",
-              "path": "day-workspace.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../baltic-reference.css?v=20261014",
-              "path": "baltic-reference.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../photo-tone.css?v=1",
-              "path": "photo-tone.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../site-dossier.css?v=2026101504",
-              "path": "site-dossier.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../destination-signatures.css?v=1",
-              "path": "destination-signatures.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../complementary.css?v=2026101501",
-              "path": "complementary.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../design-tokens.css?v=2026101501",
-              "path": "design-tokens.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../mosaic.css?v=2026101601",
-              "path": "mosaic.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../amber-material.css?v=2026101501",
-              "path": "amber-material.css",
-              "media": "all",
-              "link_media": null
-            },
-            {
-              "href": "../../editorial-print.css?v=1",
-              "path": "editorial-print.css",
-              "media": "all",
-              "link_media": null
-            }
-          ]
-        }
-      }
-    },
-    "zelenogradsk/za-odin-den/index.html": {
       "groups": {
         "active-0": {
           "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",

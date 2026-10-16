@@ -41,10 +41,10 @@ export function saveRouteDay(trip,route,catalog,{id=null,date=null,time='10:00',
  // Keep the planner's default day window so visits, walks and reserves can fit.
  const defaults=defaultSchedule();
  const schedule={...defaults,mode:'foot',start,end:Math.min(1440,start+Math.max(defaults.end-defaults.start,route.minutes||0,places.length*30)),stops:waveStopSettings(route,catalog)};
- Object.assign(day,{source_route:route.slug,name:route.name,date,places:[...places],schedule});
- // The closing leg belongs to the day, too. Only seed it for a new draft;
- // reopening a saved route must retain the traveller's own return choice.
- if(route.return_to)day.night_at=route.return_to;
+ // A ready route starts at its first stop. The generic new-day action inherits
+ // the previous overnight base, but that base may belong to another city.
+ // Seed both anchors only for a new draft; reopening keeps personal choices.
+ Object.assign(day,{source_route:route.slug,name:route.name,date,places:[...places],schedule,start_at:null,night_at:route.return_to||null});
  Object.assign(next,{date,month:date?Number(date.slice(5,7)):null,places:[...places],schedule:structuredClone(schedule),routes:[...new Set([...next.routes,route.slug])]});
  if(!validJourneyProjection(next))throw Error('invalid_route_day');
  return next;
