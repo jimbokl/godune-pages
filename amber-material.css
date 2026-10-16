@@ -242,7 +242,7 @@ body[data-home-page] > main#main > .home-content {
   --night-panel: var(--amber-surface-raised);
   --action: var(--amber-honey);
   --action-ink: var(--resin-canvas);
-  --action-hover: var(--amber-deep);
+  --action-hover: var(--amber-sun);
 }
 
 /* Page-specific legacy sea tokens must resolve to SUCCINITE in either theme. */
@@ -253,11 +253,20 @@ html[data-theme] body.inner-page > main.inner-main {
   --sea-line: var(--border-mosaic);
 }
 
+/* QA contrast tokens belong to content, dialogs and the footer, never the
+   approved masthead or dune panorama. Small amber text keeps AAA contrast. */
+html[data-theme="day"] :is(body.inner-page > main.inner-main, body[data-home-page] > main#main > .home-content, body > dialog, body > .site-footer) {
+  --amber-primary: #7D2F12;
+  --amber-sun: #7D2F12;
+  --amber-cognac: #7D2F12;
+  --amber-accent: #7D2F12;
+}
+
 html[data-theme="day"] body.inner-page > main.inner-main,
 html[data-theme="day"] body[data-home-page] > main#main > .home-content,
 html[data-theme="day"] body.inner-page > dialog,
 html[data-theme="day"] body[data-home-page] > dialog {
-  --action: var(--amber-cognac);
+  --action: #853410;
   --action-ink: #FFFFFF;
   --action-hover: #7D2F12;
 }
@@ -476,7 +485,7 @@ body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .gr
   color-scheme: inherit;
   --action: var(--amber-honey);
   --action-ink: var(--resin-canvas);
-  --action-hover: var(--amber-deep);
+  --action-hover: var(--amber-sun);
 }
 body.inner-page > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(h2, h3),
 body[data-home-page] > dialog:is(.route-dialog, .map-dialog, .search-dialog, .graph-choice-dialog) :is(h2, h3) {
@@ -689,4 +698,74 @@ body[data-home-page] > main#main > .home-content .data-light-indicator[data-stat
   body.inner-page > main.inner-main .graph-weave-links a[data-graph-status="verified"]::before {
     animation: none;
   }
+}
+
+/* Keep legacy translucent white panels out of night content. */
+body.inner-page > main.inner-main .seasonal-constraints {background:var(--resin-base);color:var(--text-main);}
+body.inner-page > main.inner-main :is(.route-plate-heading > span,.route-compass) {color:var(--text-main);}
+body.inner-page > main.inner-main :is(.amber-plate,.succinite-plate) :is(h2,h3) {color:var(--ink-primary);}
+body {width:100%;overflow-x:hidden;}
+@media(max-width:560px) {
+ body.inner-page > main.inner-main .graph-weave-links {display:grid;grid-template-columns:minmax(0,1fr);gap:10px;}
+ body.inner-page > main.inner-main .graph-weave-links a {min-height:44px;}
+}
+
+/* Legacy template controls use the same readable ink and surface as the
+   material layer. Status remains explicit in the label, not only its colour. */
+body.inner-page > main.inner-main :is(.business-badge,.infrastructure-stage) {
+  color:var(--text-main);
+}
+body.inner-page > main.inner-main .business-badge {
+  background:var(--resin-base);
+  border:var(--amber-edge);
+}
+body.inner-page > main.inner-main .dossier-number {
+  color:var(--amber-sun);
+}
+body.inner-page > main.inner-main :is(.access-primary,.access-origins a[aria-current],.document-pdf,.research-primary,.weekend-tabs button[aria-selected="true"],.realty-page .realty-money-flow > div > strong,[data-map-view][aria-pressed="true"]) {
+  background:var(--action);
+  color:var(--action-ink) !important;
+}
+body.inner-page > main.inner-main :is(.access-primary,.access-origins a[aria-current],.document-pdf,.research-primary,.weekend-tabs button[aria-selected="true"],[data-map-view][aria-pressed="true"]):hover {
+  background:var(--action-hover);
+  color:var(--action-ink) !important;
+}
+body.inner-page > main.inner-main .weekend-tabs button[aria-selected="true"] span {
+  color:inherit;
+}
+body.inner-page > main.inner-main :is(.kosa-boarding small,.kosa-builder-heading > .eyebrow,.realty-page .realty-question-grid > p,.amber-coast-number > span,.amber-tool-intro > .eyebrow,.amber-readiness legend) {
+  color:var(--text-main);
+}
+html[data-theme="day"] body.inner-page > main.inner-main :is(.catalog-waves strong,.rest-switch a[aria-current="page"]) {
+  color:var(--text-main);
+}
+html[data-theme] body.inner-page > main.inner-main .realty-page .realty-question-grid > p {
+  color:var(--text-main);
+  background:var(--resin-base);
+}
+html[data-theme] body.inner-page > main.inner-main .transport-secondary > span {
+  color:inherit;
+}
+html[data-theme] body.inner-page > main.inner-main .transport-secondary {
+  color:var(--text-main);
+}
+
+/* A passport value can be longer than its label. Never give the label a
+   zero-width grid track; keep both phrases in normal flow. */
+body.inner-page > main.inner-main .realty-keyfacts > div {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:8px;
+  min-width:0;
+}
+body.inner-page > main.inner-main .realty-keyfacts :is(dt,dd) {
+  width:auto;
+  min-width:0;
+  margin:0;
+  overflow-wrap:anywhere;
+}
+body.inner-page > main.inner-main .realty-keyfacts dt::after {content:none;}
+@media(max-width:560px) {
+  body.inner-page > main.inner-main .realty-keyfacts {grid-template-columns:minmax(0,1fr);}
 }

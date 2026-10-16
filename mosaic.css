@@ -33,9 +33,9 @@ body[data-home-page] #main .mosaic-hero .hero-actions {margin: 20px 0 0; padding
 .mosaic-fragment .mosaic-media::before {content:""; pointer-events:none; position:absolute; z-index:1; inset:5px; border:1px solid var(--border-seam); box-shadow:inset 0 0 0 1px rgb(243 182 86 / 18%), inset 0 12px 28px -8px rgb(158 59 24 / 18%); background:linear-gradient(135deg,rgb(255 244 214 / 10%),transparent 45%,rgb(158 59 24 / 6%));}
 .mosaic-fragment .mosaic-media::after {content:""; pointer-events: none; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgb(166 91 18 / 12%) 100%); mix-blend-mode: multiply;}
 .mosaic-fragment .mosaic-photo,.mosaic-fragment .mosaic-photo img,.mosaic-fragment .hero-picture {position: static; display: block; width: 100%; height: 100%; inset: auto; object-fit: cover; filter: saturate(.88) contrast(.96); border-radius: 0;}
-.mosaic-credit {position: absolute; left: 12px; bottom: 12px; z-index: 1; padding: 4px 8px; font: 10px/1.5 var(--font-mono); color: #F5F5F5; background: rgb(7 13 20 / 85%);}
+.mosaic-credit {position: absolute; left: 12px; bottom: 12px; z-index: 2; max-width: calc(100% - 24px); box-sizing: border-box; overflow-wrap: anywhere; padding: 4px 8px; font: 10px/1.5 var(--font-mono); color: #F5F5F5; background: #070D14;}
 .mosaic-fragment-copy {display: flex; flex-direction: column; flex: 1; position: relative; z-index: 1; padding: clamp(20px,2.6vw,36px);}
-.mosaic-fragment-copy h2 {font: 400 clamp(33px,3.5vw,49px)/1.08 var(--font-display); letter-spacing: -.025em; margin: 14px 0 18px; text-wrap: balance;}
+.mosaic-fragment-copy h2 {font: 400 clamp(33px,3.5vw,49px)/1.08 var(--font-display); letter-spacing: -.025em; margin: 16px 0 18px; text-wrap: balance;}
 .mosaic-fragment-copy h2 a {color: inherit; text-decoration: none;}
 .mosaic-fragment-copy > p:not(.mosaic-index) {font-size: 15px; color: var(--text-muted); max-width: 45ch; margin: 0 0 24px;}
 .mosaic-facts {display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: auto; padding: 16px 0; border-top: 1px solid var(--border-mosaic); font: 11px/1.65 var(--font-mono); color: var(--text-muted);}
@@ -47,17 +47,16 @@ body[data-home-page] #main .mosaic-hero .hero-actions {margin: 20px 0 0; padding
 .mosaic-fragment h2 a:focus-visible,.mosaic-edges a:focus-visible {outline-offset: 4px;}
 .mosaic-project,.mosaic-realty {min-height: 0;}
 .mosaic-project .mosaic-fragment-copy,.mosaic-realty .mosaic-fragment-copy {padding-block:24px;}
-.mosaic-project h2,.mosaic-realty h2 {font-size:clamp(29px,2.8vw,36px);margin-block:10px 14px;}
+.mosaic-project h2,.mosaic-realty h2 {font-size:clamp(29px,2.8vw,36px);margin-block:16px 14px;}
 .mosaic-project .mosaic-fragment-copy>p:not(.mosaic-index),.mosaic-realty .mosaic-fragment-copy>p:not(.mosaic-index) {margin-bottom:16px;}
 .mosaic-contours {position: absolute; right: -70px; top: -30px; width: 320px; height: 360px; opacity: .13; transform: rotate(-30deg); pointer-events: none;}
 .mosaic-contours i {display: block; position: absolute; inset: 0; border: 1px solid var(--amber-primary); border-radius: 48% 60% 40% 55%;}
 .mosaic-contours i:nth-child(2) {inset: 25px;}.mosaic-contours i:nth-child(3) {inset: 50px;}.mosaic-contours i:nth-child(4) {inset: 75px;}
 .mosaic-legend {display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-mosaic); font: 11px/1.7 var(--font-mono); color: var(--text-muted);}
 @media (hover:hover) and (pointer:fine) {
- .mosaic-dashboard:has(.mosaic-fragment:hover) .mosaic-fragment:not(:hover):not(:focus-within) {opacity: .4;}
+ .mosaic-fragment:hover {border-color: var(--amber-primary);}
  .mosaic-fragment:hover .mosaic-edges {border-color: var(--amber-primary);}
 }
-.mosaic-dashboard:has(:focus-visible) .mosaic-fragment:not(:focus-within) {opacity: .4;}
 .mosaic-fragment:focus-within {border-color: var(--amber-primary);}
 /* Existing lower sections use the same fragments and strict footer alignment. */
 body[data-home-page] #main :is(.home-dunes,.home-showcase) {padding-block: 64px 0; background: none;}
@@ -141,7 +140,7 @@ body[data-home-page] #main .home-dunes-card h3 {font:400 clamp(27px,2.8vw,36px)/
 .showcase-spine li:not(:last-child)::after {content:" →";color:var(--amber-primary);white-space:pre;}
 body[data-home-page] #main .showcase-facts {display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:flex-start;gap:8px;font-variant-numeric:tabular-nums;}
 .showcase-facts .metric-sep {color:var(--amber-primary);}
-body[data-home-page] #main .showcase-credit {z-index:1;line-height:1.5;max-width:calc(100% - 28px);}
+body[data-home-page] #main .showcase-credit {left:12px;bottom:12px;z-index:2;line-height:1.5;max-width:calc(100% - 24px);box-sizing:border-box;overflow-wrap:anywhere;background:#070D14;color:#F5F5F5;}
 .home-guides,.home-coast {padding-top:64px;scroll-margin-top:28px;}
 .home-guides-heading,.home-coast-heading {margin-bottom:30px;}
 body[data-home-page] #main :is(.home-guides-heading,.home-coast-heading) h2 {font:400 clamp(34px,4vw,56px)/1.1 var(--font-display);letter-spacing:-.025em;color:var(--amber-sun);margin:12px 0 16px;}
@@ -181,4 +180,23 @@ body[data-home-page] #main :is(.home-guides-heading,.home-coast-heading) h2 {fon
  body[data-home-page] #main :is(.home-dunes-card,.showcase-card,.home-guide) {background:white;box-shadow:none;border-color:#888;}
  .home-dunes-card,.home-guide {break-inside:avoid;}
  .site-footer .footer-columns {display:none;}
+}
+
+/* QA: keep the full-bleed photograph, give its content one safe inner box. */
+body[data-home-page] #main .mosaic-fragment {padding:0;}
+body[data-home-page] #main .mosaic-fragment-copy {padding:24px;}
+body[data-home-page] #main :is(.home-dunes-card,.home-guide) {display:flex;flex-direction:column;height:100%;padding:24px;}
+body[data-home-page] #main .home-dunes-card>div {flex:1;}
+body[data-home-page] #main .showcase-copy {flex:1;}
+body[data-home-page] #main .home-dunes-open {margin-top:auto;}
+body[data-home-page] #main .showcase-copy h3,
+body[data-home-page] #main .home-dunes-card h3 {margin-top:16px;}
+body[data-home-page] #main :is(.mosaic-fragment,.home-dunes-card,.showcase-card,.home-guide) :is(h2,h3) {color:var(--ink-primary);}
+body[data-home-page] #main :is(.home-dunes-card,.showcase-card):hover :is(.home-dunes-open,.showcase-open),
+body[data-home-page] #main .home-guide a:is(:hover,:focus-visible) {color:var(--amber-primary);text-decoration:underline;text-underline-offset:5px;}
+@media(max-width:700px) {
+ body[data-home-page] #main :is(.mosaic-fragment-copy,.showcase-copy,.home-dunes-card,.home-guide) {padding:20px;}
+}
+@media(max-width:560px) {
+ .mosaic-edges {grid-template-columns:minmax(0,1fr);gap:10px;}
 }
