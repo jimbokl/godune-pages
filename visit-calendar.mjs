@@ -21,6 +21,11 @@ export function resolveVisitCalendar(place, date, factId, scope) {
   const source=exception?.source || fact.source;
   const common={fact,source,exceptionDate:exception?.date || null,needsCheck:source.verification!=='field_checked' || source.checked_at!==date,
     reason:null,rule:null,windows:null,sessions:null};
+  // A dated, sourced exception overrides both regular hours and monthly closures.
+  const monthDay=day.getUTCDate(),lastDay=new Date(Date.UTC(day.getUTCFullYear(),month,0)).getUTCDate();
+  if(!exception && calendar.monthly_closed?.some(rule=>rule.months.includes(month) && rule.weekday===weekday
+    && (rule.ordinal===-1 ? monthDay+7>lastDay : Math.ceil(monthDay/7)===rule.ordinal)))
+    return {...common,windows:[],reason:'closed'};
   if(calendar.kind==='sessions') {
     const rule=calendar.session_rules?.find(matches);
     if(exception) return {...common,sessions:exception.sessions.map(row=>({start:minute(row.starts),duration:row.duration})),reason:exception.sessions.length ? 'exception' : 'closed'};

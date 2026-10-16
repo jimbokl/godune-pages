@@ -444,6 +444,11 @@ body.inner-page > main.inner-main :is(.catalog-route figcaption, .journey-cover 
   color: var(--amber-muted);
 }
 
+/* A map caption contains a legend and source, rather than one photo credit. */
+body.inner-page > main.inner-main figure:is(.place-plate, .venue-plate-mapped) > figcaption {
+  display: block;
+}
+
 body.inner-page > main.inner-main :is(.place-intro figure img, .food-place-photo img, .catalog-route figure > img, .dining-photo img, .housing-card img, .journey-cover img) {
   display: block;
   width: 100%;

@@ -96,7 +96,12 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     if(services&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),state:'unknown'});
     if(transport.length)rows.push(...transportGuideRows(transport,record));
-    const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);return {...point,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(p.visit_conditions || [])};});
+    const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);
+      // Hours and admission are separate canonical facts, but must travel with
+      // the offline place card just like access conditions and their sources.
+      const facts=[p.hours,p.price,...(p.visit_conditions || [])].filter(Boolean),seen=new Set();
+      const conditions=facts.filter(fact=>{if(seen.has(fact.id))return false;seen.add(fact.id);return true;});
+      return {...point,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:ownPointPhoto(p),conditions:structuredClone(conditions)};});
     const entries=guideEntries(record,stops,services?.services||[]),complete=!transport.length&&(!services||!!services.check?.itinerary);
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;

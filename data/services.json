@@ -2673,6 +2673,16 @@
       ]
     },
     {
+      "id": "poi:295bfb28-727e-5db9-b4cb-4d482b7f84d6",
+      "name": "Морской выставочный центр",
+      "references": [
+        {
+          "kind": "poi",
+          "slug": "morskoy-vystavochnyy-tsentr"
+        }
+      ]
+    },
+    {
       "id": "poi:2e0f8b7f-33dc-5b76-b58f-b440818dd39e",
       "name": "Станция «Фрингилла»",
       "references": [
@@ -7073,6 +7083,20 @@
         "reference": {
           "kind": "poi",
           "slug": "rybnoe-kafe-na-pirse"
+        }
+      }
+    },
+    {
+      "id": "branch:poi:295bfb28-727e-5db9-b4cb-4d482b7f84d6",
+      "place_id": "poi:295bfb28-727e-5db9-b4cb-4d482b7f84d6",
+      "name": "Морской выставочный центр",
+      "area": "svetlogorsk",
+      "address": "ул. Ленина, 11, «Янтарь-холл»",
+      "location": {
+        "kind": "catalog",
+        "reference": {
+          "kind": "poi",
+          "slug": "morskoy-vystavochnyy-tsentr"
         }
       }
     },

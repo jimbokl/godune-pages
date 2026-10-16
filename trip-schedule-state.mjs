@@ -3,7 +3,7 @@ import {railAccess,railHomeInput} from './rail-access.mjs?v=2026101305';
 import {validRail,resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {validProgress,currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
 // Optional extension of the existing version-1 trip; older drafts stay byte-compatible.
-import {resolveVisitCalendar} from './visit-calendar.mjs?v=2026101305';
+import {resolveVisitCalendar} from './visit-calendar.mjs?v=2026101601';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
 import {validExcursion,resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
 import {validBaseTransport,mobilitySegments,travelVia} from './day-mobility.mjs?v=2026101305';

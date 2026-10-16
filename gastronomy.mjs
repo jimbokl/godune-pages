@@ -1,6 +1,6 @@
 import {placePath} from './place-path.mjs?v=2026101406';
 import {updateSchedule,cleanSchedule,defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
-import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2026101305';
+import {resolveVisitCalendar,validVisitDate} from './visit-calendar.mjs?v=2026101601';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
 
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
