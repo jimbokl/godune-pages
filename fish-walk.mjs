@@ -1,3 +1,4 @@
+import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=2026101305';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
@@ -25,6 +26,7 @@ export async function initFishWalk({workshop,base,catalog}) {
   function sync(){
     if(busy)return;
     const target=id?fishWalkTarget(workshop.getState(),tour,id):null;
+    if(target)updateYandexRoute(document.querySelector('[data-yandex-route]'),target.state==='ready'?dayYandexRouteUrl(target.day,catalog):null);
     if(target&&target.state!=='ready'){
       enabled(false);if(context)context.textContent='Этот день не найден. Выберите другой день в «Моём дне».';
       button.textContent='День не найден';if(open)open.href=new URL('planner/',base).href;return;

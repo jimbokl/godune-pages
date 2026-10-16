@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "verified_at": "2026-10-16",
+  "airport": {
+    "bus": "244Э",
+    "source_url": "https://avl39.ru/routes/reg/kaliningrad/",
+    "departures": [
+      "08:20",
+      "09:00",
+      "09:40",
+      "10:20",
+      "11:00",
+      "11:40",
+      "12:20",
+      "13:00",
+      "13:40",
+      "14:20",
+      "15:00",
+      "15:40",
+      "16:20",
+      "17:00",
+      "17:40",
+      "18:20",
+      "19:00",
+      "19:40",
+      "20:20",
+      "21:00",
+      "22:00"
+    ],
+    "arrival_offset_min": 45,
+    "taxi_fare_rub": null,
+    "taxi_duration_min": null,
+    "bus_fare_rub": null,
+    "connection_confirmed": false,
+    "transfer": {
+      "provider": "Skytaxi",
+      "standard_rub_per_car": 1890,
+      "passengers_max": 4,
+      "url": "https://skytaxi-kaliningrad.ru/kaliningrad-airport/zelenogradsk",
+      "verified_at": "2026-10-16"
+    }
+  },
+  "park": {
+    "amount_kopecks": 40000,
+    "effective_from": "2025-04-01",
+    "verified_at": "2026-10-16",
+    "fee_source": "https://park-kosa.ru/prikaz-ob-ustanovlenii-platyi-dlya-fizlicz-2025.pdf",
+    "rules_source": "https://park-kosa.ru/polozhenie-o-pravilax-poseshheniya-prikaz-103.pdf",
+    "vehicle_source": "https://park-kosa.ru/czenyi-na-platnyie-uslugi-2026.pdf",
+    "payment_url": "https://kkosa.ru/pay",
+    "passenger_car_separate_charge_kopecks": 0,
+    "car_scope": "Отдельная плата за легковой автомобиль не начисляется по п. 3.1 правил; плата за каждого посетителя сохраняется. Это не разрешение парковаться вне обозначенных мест."
+  },
+  "rail_stations": [
+    {
+      "name": "Калининград-Пассажирский (Южный)",
+      "address": "ул. Железнодорожная, 13/23",
+      "source": "https://kppk39.ru/passengers/prigorodnye-kassy/?ELEMENT_ID=90"
+    },
+    {
+      "name": "Калининград-Северный",
+      "address": "Советский проспект, 2",
+      "source": "https://kppk39.ru/passengers/prigorodnye-kassy/?ELEMENT_ID=91"
+    },
+    {
+      "name": "Светлогорск-1",
+      "address": "Калининградский проспект, 30",
+      "source": "https://kppk39.ru/passengers/prigorodnye-kassy/?ELEMENT_ID=95"
+    },
+    {
+      "name": "Светлогорск-2",
+      "address": "ул. Ленина, 33",
+      "source": "https://kppk39.ru/passengers/prigorodnye-kassy/?ELEMENT_ID=96"
+    }
+  ]
+}

@@ -173,3 +173,5 @@ html[data-theme=night] .wave-stop-summary>img,html[data-theme=night] .wave-botto
 .wave-calculations[open]{padding-bottom:12px;border-bottom:1px solid var(--line)}
 .wave-day-saved:empty{display:none}
 .wave-day-saved{font:400 13px/1.5 var(--sans);color:var(--muted);margin:0 0 12px}
+
+.wave-download>.yandex-route-link{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;white-space:normal;text-align:center;overflow-wrap:anywhere}.wave-download>.yandex-route-link[hidden]{display:none!important}

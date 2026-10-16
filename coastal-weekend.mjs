@@ -1,3 +1,4 @@
+import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {saveStay,stayTarget,staySettings,stayGuideTrip,stayProfile} from './planned-stay-state.mjs?v=2026101402';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
@@ -15,6 +16,7 @@ export function initCoastalWeekend({workshop,base,catalog}){
   const originalPlaces=cards.map(set=>[...set.keys()]);
   function updateDay(day,index){
     const panel=panels[index],list=panel.querySelector('ol');
+    updateYandexRoute(panel.querySelector('[data-yandex-route]'),dayYandexRouteUrl(day,catalog));
     const same=JSON.stringify(day.places)===JSON.stringify(originalPlaces[index]);
     const heading=(day.name||`День ${index+1}`).replace(/^[^·]+ · /,'');
     panel.querySelector('h2').textContent=heading.charAt(0).toLocaleUpperCase('ru')+heading.slice(1);

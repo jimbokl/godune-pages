@@ -4106,9 +4106,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9cd65a46f131dc2c772a582e2cb9362483dcddaa45bc2b5197d1f36febb6f493",
+      "sha256": "658812c889a8a4e50361c927f8c47d0fbabd8913f044ec7463b6bf9911c4d02a",
       "source_bytes": 513571,
-      "critical_bytes": 107920
+      "critical_bytes": 108298
     },
     "waves/svetlogorsk-bereg/index.html": {
       "sources": [
@@ -4228,9 +4228,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9cd65a46f131dc2c772a582e2cb9362483dcddaa45bc2b5197d1f36febb6f493",
+      "sha256": "658812c889a8a4e50361c927f8c47d0fbabd8913f044ec7463b6bf9911c4d02a",
       "source_bytes": 513571,
-      "critical_bytes": 107920
+      "critical_bytes": 108298
     },
     "waves/yantarny-bereg/index.html": {
       "sources": [
@@ -4350,9 +4350,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "9cd65a46f131dc2c772a582e2cb9362483dcddaa45bc2b5197d1f36febb6f493",
+      "sha256": "658812c889a8a4e50361c927f8c47d0fbabd8913f044ec7463b6bf9911c4d02a",
       "source_bytes": 513571,
-      "critical_bytes": 107920
+      "critical_bytes": 108298
     },
     "waves/zelenogradsk-bereg/index.html": {
       "sources": [
@@ -4472,9 +4472,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "070eff67bd4f2b31cffa2b0f3e8fe893603eeb964981b13de6bbbc5465f4c067",
+      "sha256": "59597ab829057891c4553261246757eff04d7fa68ecf7111cfab6133ed3e169a",
       "source_bytes": 513571,
-      "critical_bytes": 110372
+      "critical_bytes": 110750
     },
     "waves/zelenogradsk-city-fish/index.html": {
       "sources": [
@@ -4594,9 +4594,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "73a9dff6df86c3d5e6d4b50e351ed1018403d27d9b4c423e29cbddd95676cbc1",
+      "sha256": "7ab3616e21844fdcfe32b021d81fb223dd52f9eed30d28f2b355f73bd3b3605a",
       "source_bytes": 513571,
-      "critical_bytes": 108044
+      "critical_bytes": 108422
     },
     "waves/zelenogradsk-vkus/index.html": {
       "sources": [
@@ -4716,9 +4716,9 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "5619d725346df6757016ad801ae1ee1066c4d9cb0071a0829af2669584b4a5fa",
+      "sha256": "2e4aa8ee738c0c07a81aa580cdf77dc2b7600cd66140245029e15ea0bc255f6e",
       "source_bytes": 513571,
-      "critical_bytes": 110496
+      "critical_bytes": 110874
     },
     "waves/zelenogradsk-west-sea/index.html": {
       "sources": [
@@ -4838,9 +4838,126 @@
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "73a9dff6df86c3d5e6d4b50e351ed1018403d27d9b4c423e29cbddd95676cbc1",
+      "sha256": "7ab3616e21844fdcfe32b021d81fb223dd52f9eed30d28f2b355f73bd3b3605a",
       "source_bytes": 513571,
-      "critical_bytes": 108044
+      "critical_bytes": 108422
+    },
+    "zelenogradsk/1-day/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "f56b70a1bdcc73e13fda903308cf99fe4872e34f3c2480652fa4e2442413705c"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "87942225ad0e02167d173490cb50220952879ea5877be3ec446eae86738ed597"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "e58f0c0c48112c67e78f3d44993d71fc647d420f0288f253e55298b7dced1f30"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "e04c5cce386599d2074c7849a63b7eb35b8c353dfb27f03bcdcf1019f4357a98"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "1aa206d51036ec8ae6c11560a11d3d916d5e37d264d0bf4e0fec252d670c78f8"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "937a7094aaa1332c38a1902649b8cffda8b58ecd2c61c2b3d3e93183448e73b5"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "0f265a3081293f8d38cd44f21938cc2e578ef03f02f4f8b36efd286bcd9cebfc"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "d027ef3cac4d9432fa7502ed6ad7339175238784de6d6b5962ad732d6a0d96b7"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all",
+          "sha256": "320685f2c55952da22a98b44f1ff204db609f76557db71ead6c539c1688ffa74"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "2c3a3354b7b23007af78d9114ef0e968a001aa88fabb9a75a155228f59b8696f"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "9713b17f43eafd53f5cbb6053e499f826a673e2d2978322b976db727f8518968"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "3d6f2d624219162ccc64dc9ece4180d9d4c09b233c8032adb5377f3e06b9ef09"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        }
+      ],
+      "sha256": "bc632e6b9e2a9a2eb43b0937ee22b82ceaf6eabc2d1ab0d414b963a12a4e0651",
+      "source_bytes": 499020,
+      "critical_bytes": 117032
     }
   }
 }

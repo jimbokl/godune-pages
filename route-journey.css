@@ -305,3 +305,6 @@ body[data-ui-context][data-route] main.inner-main .route-journey .route-stops .j
  body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading{grid-template-columns:50px minmax(0,1fr) 20px;gap:8px;padding:10px}
  body[data-fish-walk] .inner-main .fish-journey .fish-stop-heading>img{width:50px;height:68px}
 }
+
+/* Route handoff keeps the same calm secondary action on small screens. */
+.yandex-route-link{white-space:normal;text-align:center;max-width:100%;overflow-wrap:anywhere;min-height:44px}.weekend-panel>.yandex-route-link{margin:0 0 20px}.wave-download>.yandex-route-link{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px}.yandex-route-link[hidden]{display:none!important}

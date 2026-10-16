@@ -1,0 +1,28 @@
+/* P1 travel tools: one decision, readable before scripts arrive. */
+.intent-guide,.intent-tool{color:var(--sea-ink);font-family:var(--sans);--intent-line:var(--line);--intent-surface:var(--paper)}
+.intent-guide{max-width:1120px;margin:auto;padding:clamp(14px,3vw,36px) 0 40px}
+.intent-guide h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,62px);line-height:1.04;max-width:20ch;margin:12px 0 20px;letter-spacing:-.025em}
+.intent-guide h2,.intent-tool h2{font-family:var(--serif);font-weight:500;font-size:clamp(25px,3vw,36px);line-height:1.15;margin:0 0 14px}
+.intent-guide h3{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.15;margin:0 0 8px}
+.intent-guide p,.intent-tool p{line-height:1.55;margin:10px 0}.intent-lead{max-width:64ch;font-size:clamp(17px,2vw,21px);color:var(--sea-muted)}
+.intent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.intent-panel,.intent-tool{padding:clamp(18px,3vw,28px);border:1px solid var(--intent-line);border-radius:12px;background:var(--intent-surface);min-width:0}
+.intent-panel .intent-label,.intent-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sea-muted);margin:0 0 12px}
+.intent-number{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.1;display:block;margin:8px 0;color:var(--sea-ink)}
+.intent-guide a,.intent-tool a{color:inherit;text-decoration-color:var(--amber-honey);text-underline-offset:4px}
+.intent-action{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-bottom:1px solid currentColor;text-decoration:none!important;font-weight:600;padding:8px 0}
+.intent-guide section+section{margin-top:32px}.intent-tool{margin:20px 0 28px;scroll-margin-top:110px}
+.intent-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.intent-fields label{display:grid;gap:8px;font-size:14px;min-width:0}.intent-fields input,.intent-fields select{min-height:48px;max-width:100%;width:100%;box-sizing:border-box;background:var(--paper);color:var(--sea-ink);border:1px solid var(--line);border-radius:6px;padding:10px;font:inherit}
+.intent-result{padding:16px 0;border-top:1px solid var(--line);margin-top:16px;line-height:1.5}.intent-result ul{padding-left:20px;margin:10px 0}.intent-result li{padding:5px 0}
+.intent-source{font-size:13px;color:var(--sea-muted)}.intent-source a{display:inline-block;min-height:44px;padding:10px 0;box-sizing:border-box}
+.intent-steps{list-style:none;counter-reset:intent;padding:0;margin:20px 0}.intent-steps>li{counter-increment:intent;position:relative;padding:4px 0 22px 46px;border-left:1px solid var(--line);margin-left:16px}.intent-steps>li:before{content:counter(intent);position:absolute;left:-16px;top:0;background:var(--amber-honey);color:#18232b;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700}.intent-steps>li:last-child{border-left:0}
+.intent-edges{display:flex;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--line);padding-top:16px;margin-top:24px}.intent-edges a{min-height:44px;display:flex;align-items:center}
+.intent-guide details,.intent-tool details{border-top:1px solid var(--line);padding:10px 0}.intent-guide summary,.intent-tool summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:12px;font-weight:600}.intent-guide summary:before,.intent-tool summary:before{content:'+';color:var(--amber-honey)}
+.intent-table-wrap{overflow-x:auto}.intent-guide table{width:100%;border-collapse:collapse;font-size:15px}.intent-guide th,.intent-guide td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.intent-modes{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.intent-modes a{min-height:44px;display:flex;align-items:center;padding:8px 14px;border:1px solid var(--line);border-radius:6px;text-decoration:none}.intent-modes a[aria-current=page]{border-color:var(--amber-honey);background:var(--amber-dim,transparent)}
+.intent-tool :focus-visible,.intent-guide :focus-visible{outline:2px solid currentColor;outline-offset:4px}.intent-tool [hidden],.intent-guide [hidden]{display:none!important}
+@media(max-width:600px){.intent-grid{grid-template-columns:1fr;gap:12px;margin:18px 0}.intent-fields{grid-template-columns:1fr 1fr}.intent-fields>label:last-child:nth-child(odd){grid-column:1/-1}.intent-guide h1{max-width:19ch}.intent-panel{padding:18px}.intent-steps>li{padding-left:30px}.intent-edges{gap:4px 16px}.intent-guide section+section{margin-top:26px}}
+.intent-choices .intent-number{font-size:clamp(28px,4vw,42px)}
+@media(max-width:600px){.intent-grid.intent-choices{grid-template-columns:1fr 1fr;gap:10px}.intent-choices .intent-panel{padding:16px 12px}.intent-choices h2{font-size:25px}.intent-choices p{font-size:14px;line-height:1.4}.intent-choices .intent-label{font-size:10px;letter-spacing:.08em}.intent-choices .intent-action{font-size:14px}}
+
+.intent-guide .intent-grid>section{margin-top:0}

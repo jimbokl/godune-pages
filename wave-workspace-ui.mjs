@@ -1,3 +1,4 @@
+import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=2026101305';
 import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101305';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
@@ -72,6 +73,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  for(const [value,text]of [['trip','Все дни поездки'],['day','Только открытый день']]){const option=el('option','',text);option.value=value;scopeSelect.append(option);}scopeLabel.append(scopeSelect);
  download.append(scopeLabel,button,status);(dishes||secondary).after(download);
  const gpx=el('button','wave-gpx-button','Скачать трек GPX ↓'),gpxStatus=el('p','wave-download-status');gpx.type='button';gpxStatus.setAttribute('role','status');download.append(gpx,gpxStatus);
+ const yandex=el('a','button button-outline yandex-route-link','Открыть маршрут в Яндекс Картах ↗');yandex.dataset.yandexRoute='';download.append(yandex);
  let gpxDownloading=false;
  gpx.addEventListener('click',async()=>{
   if(gpxDownloading)return;gpxDownloading=true;gpx.disabled=true;gpx.textContent='Собираем трек…';gpxStatus.textContent='';const trip=structuredClone(read()),signature=JSON.stringify(trip);let module;
@@ -93,6 +95,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  return {render(){
   roadEditor.render();
   const trip=read(),day=selectedDay(trip),days=journeyDays(trip),view=waveCover(trip,catalog),key=JSON.stringify(view);
+  updateYandexRoute(yandex,dayYandexRouteUrl(day,catalog));
   scopeLabel.hidden=waveGuideScope(trip)==='day';
   if(day.id!==savedDay){if(!dayActionPending)saved.textContent='';gpxStatus.textContent='';savedDay=day.id;}
   if(key!==coverKey){if(title)title.textContent=view.title;if(subtitle)subtitle.textContent=view.subtitle;cover.hidden=!view.photo;if(view.photo)cover.src=new URL(view.photo,base);coverKey=key;}

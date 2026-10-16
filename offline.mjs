@@ -55,7 +55,7 @@ export async function initOffline(base) {
   network();window.addEventListener('online',network);window.addEventListener('offline',network);
   async function refresh() {
     [packs,partial]=await Promise.all([offlineAction(base,{type:'LIST'}),offlineAction(base,{type:'DRAFTS'}).catch(()=>[])]);
-    if(list){list.replaceChildren(...packs.map(p=>{const li=document.createElement('li'),a=document.createElement('a');a.href=new URL(p.kind==='region'?'map/':`routes/${p.slug}/`,base);a.textContent=p.name;li.append(a);return li;}));list.closest('.trip-offline').hidden=!packs.length;}
+    if(list){list.replaceChildren(...packs.map(p=>{const li=document.createElement('li'),a=document.createElement('a');a.href=new URL(p.kind==='region'?'map/':p.path||`routes/${p.slug}/`,base);a.textContent=p.name;li.append(a);return li;}));list.closest('.trip-offline').hidden=!packs.length;}
     if(panel){
       const slug=panel.dataset.offlineRoute,pack=packs.find(p=>p.slug===slug),draft=partial.find(p=>p.slug===slug),current=manifest?.routes.find(p=>p.slug===slug);
       remove.hidden=!pack && !draft;
