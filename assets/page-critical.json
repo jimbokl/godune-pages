@@ -102,7 +102,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -116,7 +116,7 @@
         }
       ],
       "sha256": "f46f28074a269c7b4ef7dff6a8ba1afcfdf84b43e8322a866fa33470cfcfc61b",
-      "source_bytes": 493881,
+      "source_bytes": 494188,
       "critical_bytes": 89746
     },
     "food/dishes/index.html": {
@@ -214,7 +214,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -228,7 +228,7 @@
         }
       ],
       "sha256": "ca414a8ca231dc1c23ea494accc349100482502150e60cc24a47d37bafce3fd6",
-      "source_bytes": 492628,
+      "source_bytes": 492935,
       "critical_bytes": 89752
     },
     "food/dishes/klopsy/index.html": {
@@ -331,7 +331,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -345,7 +345,7 @@
         }
       ],
       "sha256": "1065919374aaf9e2a8d03f542c7609becdc27fbe669d3443ab538b194d7f508c",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113672
     },
     "food/dishes/marcipan/index.html": {
@@ -448,7 +448,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -462,7 +462,7 @@
         }
       ],
       "sha256": "1065919374aaf9e2a8d03f542c7609becdc27fbe669d3443ab538b194d7f508c",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113672
     },
     "food/dishes/pelamida/index.html": {
@@ -565,7 +565,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -579,7 +579,7 @@
         }
       ],
       "sha256": "1065919374aaf9e2a8d03f542c7609becdc27fbe669d3443ab538b194d7f508c",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113672
     },
     "food/dishes/stroganina/index.html": {
@@ -682,7 +682,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -696,7 +696,7 @@
         }
       ],
       "sha256": "1065919374aaf9e2a8d03f542c7609becdc27fbe669d3443ab538b194d7f508c",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113672
     },
     "food/dishes/ugor/index.html": {
@@ -799,7 +799,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -813,7 +813,7 @@
         }
       ],
       "sha256": "60bbbdceaded44cda6a533fbc6fae5b602409e526eb2aec473a22210aac4fb47",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113929
     },
     "food/dishes/ukha/index.html": {
@@ -916,7 +916,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -930,7 +930,7 @@
         }
       ],
       "sha256": "1065919374aaf9e2a8d03f542c7609becdc27fbe669d3443ab538b194d7f508c",
-      "source_bytes": 505752,
+      "source_bytes": 506059,
       "critical_bytes": 113672
     },
     "food/index.html": {
@@ -1033,7 +1033,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1047,7 +1047,7 @@
         }
       ],
       "sha256": "f46f28074a269c7b4ef7dff6a8ba1afcfdf84b43e8322a866fa33470cfcfc61b",
-      "source_bytes": 493881,
+      "source_bytes": 494188,
       "critical_bytes": 89746
     },
     "food/routes/index.html": {
@@ -1150,7 +1150,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1164,7 +1164,7 @@
         }
       ],
       "sha256": "8c8bcb64eef8281d064a845107e75358244050b1d589527c7a72880f8af63718",
-      "source_bytes": 493881,
+      "source_bytes": 494188,
       "critical_bytes": 90118
     },
     "food/waves/index.html": {
@@ -1267,7 +1267,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1281,7 +1281,7 @@
         }
       ],
       "sha256": "8c8bcb64eef8281d064a845107e75358244050b1d589527c7a72880f8af63718",
-      "source_bytes": 493881,
+      "source_bytes": 494188,
       "critical_bytes": 90118
     },
     "food/zelenogradsk/all/index.html": {
@@ -1379,7 +1379,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1393,7 +1393,7 @@
         }
       ],
       "sha256": "11c1fe5533e7cdd30faa06e280c7e3053333b66cc74e396f44a8912377cd5b81",
-      "source_bytes": 492628,
+      "source_bytes": 492935,
       "critical_bytes": 119336
     },
     "food/zelenogradsk/index.html": {
@@ -1491,7 +1491,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1505,7 +1505,7 @@
         }
       ],
       "sha256": "b441a9eccb8e10153897ccccb87a69ffb2c097c733365b1850492ab432a421a1",
-      "source_bytes": 492628,
+      "source_bytes": 492935,
       "critical_bytes": 117855
     },
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
@@ -1613,7 +1613,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1627,7 +1627,7 @@
         }
       ],
       "sha256": "f93a614ba924478b1f030b948944a159cbd1d818cd4d3dbd7cd8e1f778046845",
-      "source_bytes": 500178,
+      "source_bytes": 500485,
       "critical_bytes": 100560
     },
     "food/zelenogradsk/litovskaya-volna/index.html": {
@@ -1735,7 +1735,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1749,7 +1749,7 @@
         }
       ],
       "sha256": "f93a614ba924478b1f030b948944a159cbd1d818cd4d3dbd7cd8e1f778046845",
-      "source_bytes": 500178,
+      "source_bytes": 500485,
       "critical_bytes": 100560
     },
     "food/zelenogradsk/rybnaya-volna/index.html": {
@@ -1862,7 +1862,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1876,7 +1876,7 @@
         }
       ],
       "sha256": "cd0bf938ab7f7cbe632a328b737ae6ce47b6124647e3c4fcba4169b0d58bc2ab",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 112878
     },
     "realty/compare/index.html": {
@@ -1984,7 +1984,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -1998,7 +1998,7 @@
         }
       ],
       "sha256": "4eb19bfaccc407da676e0861d91d1d9e7f1cee36c1b831c2c2af96d515551125",
-      "source_bytes": 521009,
+      "source_bytes": 521316,
       "critical_bytes": 106916
     },
     "realty/how-it-works/index.html": {
@@ -2106,7 +2106,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2120,7 +2120,7 @@
         }
       ],
       "sha256": "718186f1b2baa5dbac9fc9c2cc8a72359f38099d7a29caea3181f8cb36c2f40c",
-      "source_bytes": 521009,
+      "source_bytes": 521316,
       "critical_bytes": 108956
     },
     "realty/index.html": {
@@ -2223,7 +2223,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2237,7 +2237,7 @@
         }
       ],
       "sha256": "f7c748987b57835fd8ceedea4415973b829bdbb849038d4d0fb670d938afc6a4",
-      "source_bytes": 507885,
+      "source_bytes": 508192,
       "critical_bytes": 97481
     },
     "realty/projects/cosmos-stay/index.html": {
@@ -2345,7 +2345,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2359,7 +2359,7 @@
         }
       ],
       "sha256": "95bda5361fde3ca2eb1548dbb65fd28638f41bffaa7ed3e2af9bb0a9bdf5ac49",
-      "source_bytes": 521009,
+      "source_bytes": 521316,
       "critical_bytes": 111999
     },
     "routes/amalienau-2-hours/index.html": {
@@ -2472,7 +2472,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2486,7 +2486,7 @@
         }
       ],
       "sha256": "e675934186dcb9c1fb4b5ee5eee13ecc1b308a98c70dde447beb64fa24941a1a",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 135044
     },
     "routes/baltiysk-ot-vokzala-k-mayaku/index.html": {
@@ -2599,7 +2599,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2613,7 +2613,7 @@
         }
       ],
       "sha256": "2f2a8ef53c3473d418693085fcddc0d3c08671b8cb5e3792f8688e77f3aac0d2",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 132109
     },
     "routes/index.html": {
@@ -2711,7 +2711,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2725,7 +2725,7 @@
         }
       ],
       "sha256": "32d6964f07c6d5d37a407cc24bc4211cf659f90c2048067ae9bf0596af91fe65",
-      "source_bytes": 492628,
+      "source_bytes": 492935,
       "critical_bytes": 106222
     },
     "routes/kaliningrad-kosmicheskaya-volna/index.html": {
@@ -2838,7 +2838,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2852,7 +2852,7 @@
         }
       ],
       "sha256": "7ade367ddca5c865466f1e34a0ba92db45ba56a8261717971c265424e03fb40e",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 132256
     },
     "routes/kaliningrad-three-days/index.html": {
@@ -2965,7 +2965,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -2979,7 +2979,7 @@
         }
       ],
       "sha256": "bf4ff8cc0ec1bf010f4821a2b826b91972cecd7e1e0dd24eb66bb28218a21fe3",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 110508
     },
     "routes/ostrov-kanta-naberezhnye/index.html": {
@@ -3092,7 +3092,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3106,7 +3106,7 @@
         }
       ],
       "sha256": "e675934186dcb9c1fb4b5ee5eee13ecc1b308a98c70dde447beb64fa24941a1a",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 135044
     },
     "routes/svetlogorsk-ot-poezda-k-moryu/index.html": {
@@ -3219,7 +3219,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3233,7 +3233,7 @@
         }
       ],
       "sha256": "d622aa81e8fd4f9d46e484b10e3d525fe13198b24678c06f931953458606210d",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 135000
     },
     "routes/tancuyushchiy-les/index.html": {
@@ -3346,7 +3346,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3360,7 +3360,7 @@
         }
       ],
       "sha256": "1925cd5b9458ed9c81dc04b0aab0b67162406947834285bb6b5cad05ad91f7af",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 134882
     },
     "routes/vorota-i-reka/index.html": {
@@ -3473,7 +3473,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3487,7 +3487,7 @@
         }
       ],
       "sha256": "410775e92a48c8d46081ed1db96ca5c168bfc3dadd3303cb8efb51222bee036a",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 132592
     },
     "routes/vysota-efa/index.html": {
@@ -3600,7 +3600,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3614,7 +3614,7 @@
         }
       ],
       "sha256": "defc4cbd19b85783b7962b89e79d01084a2f1e46fe5648b1cf9efd894a82ad0e",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 134921
     },
     "routes/zelenogradsk-2-k-moryu/index.html": {
@@ -3727,7 +3727,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3741,7 +3741,7 @@
         }
       ],
       "sha256": "2a5d75670ddc92009ff1f227696ebf952723a2c47251b074891d5dcbdd5b95dd",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 132452
     },
     "routes/zelenogradsk-two-days/index.html": {
@@ -3854,7 +3854,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3868,7 +3868,7 @@
         }
       ],
       "sha256": "bf4ff8cc0ec1bf010f4821a2b826b91972cecd7e1e0dd24eb66bb28218a21fe3",
-      "source_bytes": 513302,
+      "source_bytes": 513609,
       "critical_bytes": 110508
     },
     "waves/index.html": {
@@ -3971,7 +3971,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -3985,7 +3985,7 @@
         }
       ],
       "sha256": "8e83a3a32c173fc75b0399bfd4d0df7fe08cde4db332c6b6b4a7171fee91ada3",
-      "source_bytes": 495308,
+      "source_bytes": 495615,
       "critical_bytes": 92704
     },
     "waves/kaliningrad-ocean/index.html": {
@@ -4093,7 +4093,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4107,7 +4107,7 @@
         }
       ],
       "sha256": "f5d81ff195acdaf4ccbdfcb69e46c65a6d127e0ae4dcc1b72b7e281de206fc45",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 106920
     },
     "waves/svetlogorsk-bereg/index.html": {
@@ -4215,7 +4215,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4229,7 +4229,7 @@
         }
       ],
       "sha256": "f5d81ff195acdaf4ccbdfcb69e46c65a6d127e0ae4dcc1b72b7e281de206fc45",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 106920
     },
     "waves/yantarny-bereg/index.html": {
@@ -4337,7 +4337,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4351,7 +4351,7 @@
         }
       ],
       "sha256": "f5d81ff195acdaf4ccbdfcb69e46c65a6d127e0ae4dcc1b72b7e281de206fc45",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 106920
     },
     "waves/zelenogradsk-bereg/index.html": {
@@ -4459,7 +4459,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4473,7 +4473,7 @@
         }
       ],
       "sha256": "749e28cdf842bca69bc2dcaa531f4acb0e26180a1d0ee1918ad4f7a06b74fa55",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 109372
     },
     "waves/zelenogradsk-city-fish/index.html": {
@@ -4581,7 +4581,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4595,7 +4595,7 @@
         }
       ],
       "sha256": "784baae1009c275f9c586082afb46e25a222e81c39207984a950588d2820ea2e",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 107044
     },
     "waves/zelenogradsk-vkus/index.html": {
@@ -4703,7 +4703,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4717,7 +4717,7 @@
         }
       ],
       "sha256": "0cbda21452470b7dbe18413692b35585d23f15a1041dfc384237ed78ea55a730",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 109496
     },
     "waves/zelenogradsk-west-sea/index.html": {
@@ -4825,7 +4825,7 @@
         {
           "path": "mosaic.css",
           "media": "all",
-          "sha256": "1227e22ed25b2bff6d340e8dbb53c5996dd0262aeaa45ded4ed5a36d09321d9d"
+          "sha256": "ab8f2da106b5ef81c18503781cb22e57dd13bed9572c4468951489f7100ec84e"
         },
         {
           "path": "amber-material.css",
@@ -4839,7 +4839,7 @@
         }
       ],
       "sha256": "784baae1009c275f9c586082afb46e25a222e81c39207984a950588d2820ea2e",
-      "source_bytes": 508432,
+      "source_bytes": 508739,
       "critical_bytes": 107044
     }
   }

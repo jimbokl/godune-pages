@@ -28,12 +28,16 @@ function render() {
     control.querySelector('[data-theme-name]').textContent=name;
     control.querySelector('summary').setAttribute('aria-label',`Свет на сайте: ${name}. Выбрать режим`);
     control.querySelector('[data-theme-place]').textContent=`Сегодня · ${location.label}`;
-    const ready=date===now.date && validSun(sun) && Object.hasOwn(sun,'astronomical_dusk');
+    // The pre-paint calendar already contains sunset and civil dusk. Do not
+    // hide those hours while the optional astronomical calculation loads.
+    const ready=date===now.date && validSun(sun);
+    const astronomyReady=ready && Object.hasOwn(sun,'astronomical_dusk');
     control.querySelector('[data-theme-times]').hidden=!ready;
     for(const key of ['sunset','dusk','astronomical_dusk'])control.querySelector(`[data-theme-event=${key}]`).textContent=lightClock(ready?sun[key]:null);
+    control.querySelector('[data-theme-event=astronomical_dusk]').closest('div').hidden=!astronomyReady;
     control.querySelector('[data-theme-note]').textContent=ready?'Часы солнца по открытому горизонту. Облака, фонари и доступ на тропы проверяйте отдельно.':
       'Часы солнца пока недоступны. В режиме «Авто» используем светлую или тёмную тему вашего устройства.';
-    control.querySelector('[data-theme-astronomy-note]').hidden=!ready || Number.isInteger(sun.astronomical_dusk);
+    control.querySelector('[data-theme-astronomy-note]').hidden=!astronomyReady || Number.isInteger(sun.astronomical_dusk);
   }
   if(changed)window.dispatchEvent(new CustomEvent('godune:theme-change',{detail:{theme,phase,mode}}));
   root.dataset.themeReady='true';

@@ -1,4 +1,4 @@
-import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=2026101305';
+import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=2026101601';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
 
@@ -25,7 +25,8 @@ export function initRouteDay({workshop,catalog,base}){
   if(!target){context.textContent='Выберите дату и начало прогулки.';return;}
   const day=target.day,value=routeDaySettings(day);
   if(!dirty){form.elements.date.value=value.date||'';form.elements.time.value=value.time;}
-  context.textContent=`${day.name||route.name} · мест в плане: ${day.places.length}.`;
+  const returnPlace=catalog.poi.find(point=>point.slug===day.night_at);
+  context.textContent=`${day.name||route.name} · мест в плане: ${day.places.length}.${returnPlace?' Возвращение: '+returnPlace.name+'.':''}`;
   open.href=plannerDayUrl(base,id).href;
   const overview=document.querySelector('.journey-overview');overview.replaceChildren();
   for(const place of day.places){

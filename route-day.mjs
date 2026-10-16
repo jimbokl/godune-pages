@@ -1,6 +1,7 @@
 import {selectedDay,chooseTripDay,ensureJourney,addTripDay,dayHasContent,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101305';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101305';
+import {waveStopSettings} from './day-wave.mjs?v=2026101305';
 
 const placesFor=route=>route.stops.map(stop=>stop.poi);
 export function routeDayTarget(trip,route,id=null){
@@ -39,8 +40,11 @@ export function saveRouteDay(trip,route,catalog,{id=null,date=null,time='10:00',
  // A route's approximate duration is not the traveller's hard return deadline.
  // Keep the planner's default day window so visits, walks and reserves can fit.
  const defaults=defaultSchedule();
- const schedule={...defaults,mode:'foot',start,end:Math.min(1440,start+Math.max(defaults.end-defaults.start,route.minutes||0,places.length*30))};
+ const schedule={...defaults,mode:'foot',start,end:Math.min(1440,start+Math.max(defaults.end-defaults.start,route.minutes||0,places.length*30)),stops:waveStopSettings(route,catalog)};
  Object.assign(day,{source_route:route.slug,name:route.name,date,places:[...places],schedule});
+ // The closing leg belongs to the day, too. Only seed it for a new draft;
+ // reopening a saved route must retain the traveller's own return choice.
+ if(route.return_to)day.night_at=route.return_to;
  Object.assign(next,{date,month:date?Number(date.slice(5,7)):null,places:[...places],schedule:structuredClone(schedule),routes:[...new Set([...next.routes,route.slug])]});
  if(!validJourneyProjection(next))throw Error('invalid_route_day');
  return next;

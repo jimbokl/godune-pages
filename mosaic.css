@@ -45,8 +45,10 @@ body[data-home-page] #main .mosaic-hero .hero-actions {margin: 20px 0 0; padding
 .mosaic-edges a:hover {color: var(--amber-primary); text-decoration: underline; text-underline-offset: 5px;}
 .mosaic-fragment a:focus-visible {outline: 2px solid var(--amber-primary); outline-offset: -3px;}
 .mosaic-fragment h2 a:focus-visible,.mosaic-edges a:focus-visible {outline-offset: 4px;}
-.mosaic-project {min-height: 330px;}
-.mosaic-realty {min-height: 300px;}
+.mosaic-project,.mosaic-realty {min-height: 0;}
+.mosaic-project .mosaic-fragment-copy,.mosaic-realty .mosaic-fragment-copy {padding-block:24px;}
+.mosaic-project h2,.mosaic-realty h2 {font-size:clamp(29px,2.8vw,36px);margin-block:10px 14px;}
+.mosaic-project .mosaic-fragment-copy>p:not(.mosaic-index),.mosaic-realty .mosaic-fragment-copy>p:not(.mosaic-index) {margin-bottom:16px;}
 .mosaic-contours {position: absolute; right: -70px; top: -30px; width: 320px; height: 360px; opacity: .13; transform: rotate(-30deg); pointer-events: none;}
 .mosaic-contours i {display: block; position: absolute; inset: 0; border: 1px solid var(--amber-primary); border-radius: 48% 60% 40% 55%;}
 .mosaic-contours i:nth-child(2) {inset: 25px;}.mosaic-contours i:nth-child(3) {inset: 50px;}.mosaic-contours i:nth-child(4) {inset: 75px;}
