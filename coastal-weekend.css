@@ -50,3 +50,6 @@ body[data-ui-context] .inner-main .weekend-journey :is(.weekend-settings p,.week
  .weekend-journey .weekend-stop h3{font-size:20px}
  .weekend-role{font-size:12px}
 }
+
+/* Page facts precede the two-column plan in the shared multi-day grid. */
+.weekend-layout>.engagement-context{grid-column:1/-1}

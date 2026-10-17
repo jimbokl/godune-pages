@@ -13,7 +13,7 @@ const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)
 const button=text=>{const n=node('button',text);n.type='button';n.className='visit-secondary';return n;};
 const message=e=>/[А-Яа-яЁё]/.test(e?.message||'')?e.message:'Не получилось проверить событие. Попробуйте ещё раз.';
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
-function styles(){if(document.querySelector('[data-visit-styles]'))return;const n=node('link');n.rel='stylesheet';n.href=new URL('trip-service-visits.css?v=3',import.meta.url);n.dataset.visitStyles='';document.head.append(n);}
+function styles(){if(document.querySelector('[data-visit-styles]'))return;const n=node('link');n.rel='stylesheet';n.href=new URL('trip-service-visits.css?v=2026101709',import.meta.url);n.dataset.visitStyles='';document.head.append(n);}
 // The workshop owns the only memory. Opening and reviewing this dialog are pure.
 export function initTripEvents({read,commit,base,catalog}){
  let opened=false,lastContext;

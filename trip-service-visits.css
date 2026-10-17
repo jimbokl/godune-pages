@@ -77,3 +77,6 @@
 :is(.visit-rental-facts,.visit-rental-extra) dd{margin:0;overflow-wrap:anywhere}
 .visit-rental-more summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 @media(max-width:480px){.visit-rental-facts,.visit-rental-extra{grid-template-columns:1fr;gap:.2rem}:is(.visit-rental-facts,.visit-rental-extra) dd{margin-bottom:.6rem}}
+
+/* Keep planning assumptions visually separate from confirmed times and personal notes. */
+:is(.visit-dialog,.trip-service-visits) [data-event-duration-estimate]{padding:10px 0 10px 12px;border-inline-start:2px solid var(--sea-muted,var(--text-muted));font-size:16px;line-height:1.6;color:var(--ink,var(--text-main));overflow-wrap:anywhere}

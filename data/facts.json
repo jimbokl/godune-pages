@@ -3214,18 +3214,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:vostok",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -3409,18 +3409,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:dom-poeta",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -3499,18 +3499,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:baden39:svetlogorsk",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -3799,18 +3799,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:newfitness:chelnokova",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -4054,18 +4054,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:nonstop:frunze",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -4234,18 +4234,18 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "unknown",
-        "expires_on": "2027-04-08",
-        "freshness": "unknown",
+        "effective_status": "confirmed",
+        "expires_on": "2027-04-15",
+        "freshness": "current",
         "path": "/location",
-        "reason": "source_unknown",
-        "source_status": "unknown",
+        "reason": "within_review_horizon",
+        "source_status": "confirmed",
         "subject": {
           "id": "branch:steindamm99",
           "kind": "branch"
         },
         "ttl_days": 180,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -30406,7 +30406,7 @@
         "value": true
       },
       {
-        "note": "Допустимые точки возврата не опубликованы.",
+        "note": "Допустимые точки возврата и возможность возврата в другом филиале не опубликованы; адрес проката не подтверждает условия возврата.",
         "path": "/profile/return_branches",
         "source": {
           "checked_at": "2026-10-08",
@@ -30541,7 +30541,7 @@
         }
       },
       {
-        "note": "300 ₽/час опубликовано. Округление неполного часа и минимальный оплачиваемый период в договоре не опубликованы; не использовать как подтверждённый окончательный счёт.",
+        "note": "Опубликована цена 300 ₽/час; минимальный оплачиваемый период и правило округления неполного часа договором не подтверждены. 60 минут остаются планировочным допущением, а не подтверждённым условием оплаты.",
         "path": "/tariff/base/billing",
         "source": {
           "checked_at": "2026-10-08",
@@ -30777,7 +30777,7 @@
         ]
       },
       {
-        "note": "Открытый огонь доступен с 10:00; время закрытия кухни не указано. 21:00 — закрытие заведения.",
+        "note": "Официальный сайт указывает работу заведения 09:00–21:00 и блюда с открытого огня с 10:00. Время последнего заказа и закрытия кухни не опубликовано; 21:00 не переносится на кухню.",
         "path": "/calendar/rules",
         "source": {
           "checked_at": "2026-10-08",
@@ -30821,7 +30821,7 @@
         ]
       },
       {
-        "note": "Условия договора не опубликованы.",
+        "note": "Договорные условия места и порядка возврата велосипеда не опубликованы; адрес выдачи не подтверждает допустимые возвраты.",
         "path": "/terms/0/returns",
         "source": {
           "checked_at": "2026-10-08",
@@ -30836,7 +30836,7 @@
         "value": null
       },
       {
-        "note": "Условия договора не опубликованы.",
+        "note": "Момент начала оплачиваемого проката не опубликован; открытие пункта не равно началу отсчёта по договору.",
         "path": "/terms/0/billing_start",
         "source": {
           "checked_at": "2026-10-08",
@@ -30851,7 +30851,7 @@
         "value": null
       },
       {
-        "note": "Условия договора не опубликованы.",
+        "note": "Момент окончания оплачиваемого проката не опубликован; закрытие пункта не равно окончанию отсчёта по договору.",
         "path": "/terms/0/billing_end",
         "source": {
           "checked_at": "2026-10-08",
@@ -31127,20 +31127,23 @@
         }
       },
       {
-        "note": "Точный вход и координаты не подтверждены.",
+        "note": "Метка сауны на карте, встроенной в официальный сайт. Вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
+          "checked_at": "2026-10-17",
           "reference": "https://sauna-kaliningrad.ru/"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:vostok",
           "kind": "branch"
         },
         "ttl_days": 180,
         "value": {
-          "kind": "unknown"
+          "kind": "point",
+          "lat": 54.6560021389892,
+          "lon": 20.541712761900698,
+          "source": "https://sauna-kaliningrad.ru/"
         }
       },
       {
@@ -31477,24 +31480,27 @@
         }
       },
       {
-        "note": "Точный вход и координаты не подтверждены.",
+        "note": "Метка парк-отеля «Дом Поэта» на официальной карте. Положение бани-бочки внутри комплекса, вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
-          "reference": "https://dompoeta39.ru/services/banya/"
+          "checked_at": "2026-10-17",
+          "reference": "https://dompoeta39.ru/contacts/"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:dom-poeta",
           "kind": "branch"
         },
         "ttl_days": 180,
         "value": {
-          "kind": "unknown"
+          "kind": "point",
+          "lat": 55.008630859534,
+          "lon": 20.616102780264,
+          "source": "https://dompoeta39.ru/contacts/"
         }
       },
       {
-        "note": "На странице указан формат баня-бочка; вид парной отдельно не назван.",
+        "note": "Эта услуга относится к бане-бочке. На странице отдельно описана русская баня с другими вместимостью и минимальным временем; её тип парной нельзя переносить на бочку. Тип парной бочки не указан.",
         "path": "/profile/steam",
         "source": {
           "checked_at": "2026-10-10",
@@ -31565,20 +31571,23 @@
         "value": "Светлогорск, улица Горького, 14"
       },
       {
-        "note": "Адрес подтверждён; точный вход и координаты ещё не сняты.",
+        "note": "Метка «Баден Аква СПА» на официальной карте комплекса. JSON-LD этой же страницы содержит другую координату (54.94167171528399, 20.142908224697706); выбрана явно подписанная метка карты. Это положение комплекса; вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
-          "reference": "https://baden39.ru/"
+          "checked_at": "2026-10-17",
+          "reference": "https://baden39.ru/kontakti"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:baden39:svetlogorsk",
           "kind": "branch"
         },
         "ttl_days": 180,
         "value": {
-          "kind": "unknown"
+          "kind": "point",
+          "lat": 54.941704,
+          "lon": 20.142205,
+          "source": "https://baden39.ru/kontakti"
         }
       },
       {
@@ -31672,6 +31681,7 @@
         }
       },
       {
+        "note": "Услуга объединяет несколько бассейнов: официальный сайт указывает открытый 20 × 40 м, внутренний 9 × 20 м и детский 4 × 4 м. Одна длина для всей услуги не установлена.",
         "path": "/profile/length_m",
         "source": {
           "checked_at": "2026-10-10",
@@ -31686,6 +31696,7 @@
         "value": null
       },
       {
+        "note": "На официальных страницах бассейнов и правил число плавательных дорожек не указано; размеры чаш не определяют число дорожек.",
         "path": "/profile/lanes",
         "source": {
           "checked_at": "2026-10-10",
@@ -31717,6 +31728,7 @@
         ]
       },
       {
+        "note": "У комплекса несколько форматов посещения, в том числе 3 часа и безлимит; единой длительности сеанса для всей услуги нет. Длительность выбирается по конкретному тарифу.",
         "path": "/profile/session_minutes",
         "source": {
           "checked_at": "2026-10-10",
@@ -31731,7 +31743,7 @@
         "value": null
       },
       {
-        "note": "В комплексе есть открытый бассейн с морской водой и внутренний бассейн с гидромассажем.",
+        "note": "Услуга включает открытый бассейн и внутренний гидромассажный бассейн. Одно логическое значение «крытый» не описывает весь комплекс.",
         "path": "/profile/indoor",
         "source": {
           "checked_at": "2026-10-10",
@@ -31746,6 +31758,7 @@
         "value": null
       },
       {
+        "note": "Пункт 6.5 правил рекомендует плавательную шапочку. Обязательность не указана; рекомендация не превращается ни в требование, ни в подтверждённое отсутствие требования.",
         "path": "/profile/swim_cap",
         "source": {
           "checked_at": "2026-10-10",
@@ -31760,6 +31773,7 @@
         "value": null
       },
       {
+        "note": "Пункт 6.7 правил требует письменно предупредить о заболеваниях и противопоказаниях. Требование медицинской справки или явное освобождение от неё не указано; отсутствие текста не подтверждает отсутствие требования.",
         "path": "/profile/medical_document",
         "source": {
           "checked_at": "2026-10-10",
@@ -32037,7 +32051,7 @@
         ]
       },
       {
-        "note": "На странице калькулятора не установлена сумма возвратного залога; неизвестное не заменено нулём.",
+        "note": "Правила требуют вернуть электронный браслет и указывают компенсацию 3000 ₽ при утрате. Компенсация не является возвратным залогом; размер и необходимость возвратного залога не указаны.",
         "path": "/tariff/deposit",
         "source": {
           "checked_at": "2026-10-10",
@@ -32131,7 +32145,7 @@
         "value": "NEWFitness"
       },
       {
-        "note": "Точный вход и связи с существующими точками не подтверждены.",
+        "note": "В существующих каталогах не установлена карточка для явной привязки. Метка филиала подтверждена отдельно; она не создаёт связь с каталогом и не подтверждает вход.",
         "path": "/references",
         "source": {
           "checked_at": "2026-10-10",
@@ -32188,20 +32202,23 @@
         "value": "Калининград, улица Челнокова, 25"
       },
       {
-        "note": "Точный вход и связи с существующими точками не подтверждены.",
+        "note": "Метка клуба на официальной карте с подписью «Калининград, Челнокова 25». Вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
-          "reference": "https://www.newfitness.pro/"
+          "checked_at": "2026-10-17",
+          "reference": "https://newfitness.pro/contact/"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:newfitness:chelnokova",
           "kind": "branch"
         },
         "ttl_days": 180,
         "value": {
-          "kind": "unknown"
+          "kind": "point",
+          "lat": 54.739526781177,
+          "lon": 20.485353629134,
+          "source": "https://newfitness.pro/contact/"
         }
       },
       {
@@ -32565,7 +32582,7 @@
         "value": "Нонстоп"
       },
       {
-        "note": "Точный вход и связи с существующими точками не подтверждены.",
+        "note": "В существующих каталогах не установлена карточка для явной привязки. Метка филиала подтверждена отдельно; она не создаёт связь с каталогом и не подтверждает вход.",
         "path": "/references",
         "source": {
           "checked_at": "2026-10-10",
@@ -32593,18 +32610,24 @@
         "value": "Калининград, улица Фрунзе, 6"
       },
       {
-        "note": "Адрес есть; точная точка входа не подтверждена.",
+        "note": "Метка «Студия NONSTOP», Фрунзе, 6, на карте, встроенной в официальный сайт. Вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
+          "checked_at": "2026-10-17",
           "reference": "https://nonstopkaliningrad.ru/page/kontakty"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:nonstop:frunze",
           "kind": "branch"
         },
-        "ttl_days": 180
+        "ttl_days": 180,
+        "value": {
+          "kind": "point",
+          "lat": 54.71143694024419,
+          "lon": 20.521475728835913,
+          "source": "https://nonstopkaliningrad.ru/page/kontakty"
+        }
       },
       {
         "path": "/profile/topic",
@@ -32635,6 +32658,7 @@
         "value": 60
       },
       {
+        "note": "Официальное описание и расписание фитнеса не указывают вместимость группы. Размер группы не выводится из расписания или адреса студии.",
         "path": "/profile/capacity",
         "source": {
           "checked_at": "2026-10-10",
@@ -32648,6 +32672,7 @@
         "ttl_days": 30
       },
       {
+        "note": "Официальное описание и расписание фитнеса не указывают минимальный возраст. Возрастные границы детских танцев относятся к другому направлению.",
         "path": "/profile/minimum_age",
         "source": {
           "checked_at": "2026-10-10",
@@ -32687,6 +32712,7 @@
         }
       },
       {
+        "note": "Официальная таблица указывает цену разового фитнес-посещения 750 ₽, но не условия возвратного залога. Неизвестный залог не равен нулю.",
         "path": "/tariff/deposit",
         "source": {
           "checked_at": "2026-10-10",
@@ -32873,18 +32899,24 @@
         "value": "Штайндамм 99"
       },
       {
-        "note": "Адрес не подтверждает точные координаты входа.",
+        "note": "Геометка ресторана на странице регионального туристского информационного центра. Вход и проход не проверены.",
         "path": "/location",
         "source": {
-          "checked_at": "2026-10-10",
+          "checked_at": "2026-10-17",
           "reference": "https://visit-kaliningrad.ru/food/shtayndamm-99/"
         },
-        "status": "unknown",
+        "status": "confirmed",
         "subject": {
           "id": "branch:steindamm99",
           "kind": "branch"
         },
-        "ttl_days": 180
+        "ttl_days": 180,
+        "value": {
+          "kind": "point",
+          "lat": 54.710543931373,
+          "lon": 20.506657106361,
+          "source": "https://visit-kaliningrad.ru/food/shtayndamm-99/"
+        }
       },
       {
         "path": "/name",
@@ -32943,7 +32975,7 @@
         "value": "Кафе «Баден»"
       },
       {
-        "note": "Адрес не подтверждает точные координаты входа.",
+        "note": "Туристский информационный центр указывает адрес кафе: Светлогорск, Горького, 14. Отдельная метка кафе не опубликована; метка комплекса «Баден Аква СПА» не подтверждает положение кафе или вход.",
         "path": "/location",
         "source": {
           "checked_at": "2026-10-10",

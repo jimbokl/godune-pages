@@ -171,10 +171,20 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       }
       const tail=sourcesHeight+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0);
       if(tail<h-2*m-90)need(tail);
-      if(sources.length)heading('Сведения и источники',false,sources[0].details[0]||'Источник');
-      for(const group of sources){
-        if(groupHeight(group)<h-2*m-90)need(groupHeight(group));
-        for(const detail of group.details)text(detail,{size:phone?8.5:10,color:muted,space:4});
+      const sourceHeading='Сведения и источники',headingSize=phone?18:30,headingSpace=phone?10:16;
+      const headingHeight=textHeight(sourceHeading,title,headingSize,headingSpace),pageSpace=h-m-(phone?28:38)-51;
+      const firstGroup=sources[0],firstHeight=firstGroup?groupHeight(firstGroup):0;
+      const keepFirstGroup=firstHeight<h-2*m-90&&headingHeight+firstHeight<=pageSpace;
+      const firstDetailHeight=firstGroup?.details.length?textHeight(firstGroup.details[0],ui,phone?8.5:10,4):sourceHeight(firstGroup&&{...firstGroup,name:'Источник'});
+      if(firstGroup){
+        // Reserve the same first group as the loop below. Oversized groups still
+        // flow, with at least the first fact beside their heading.
+        need(headingHeight+(keepFirstGroup?firstHeight:Math.min(firstDetailHeight,body*3)));
+        text(sourceHeading,{font:title,size:headingSize,space:headingSpace});
+      }
+      for(const [i,group]of sources.entries()){
+        if((i>0||keepFirstGroup)&&groupHeight(group)<h-2*m-90)need(groupHeight(group));
+        for(const [j,detail]of group.details.entries())text(detail,{size:phone?8.5:10,color:muted,space:4,flow:i===0&&j===0&&!keepFirstGroup});
         source({...group,name:'Источник'});
       }
     }

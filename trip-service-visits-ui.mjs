@@ -24,7 +24,7 @@ const errorText=error=>/[А-Яа-яЁё]/.test(error?.message||'')?error.message
 const dateText=date=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));}catch{return 'дата не указана';}};
 const clock=n=>n==null?'Время пока неизвестно':`${String(Math.floor(n/60)%24).padStart(2,'0')}:${String(n%60).padStart(2,'0')}${n>=1440?' следующего дня':''}`;
 const money=n=>n==null?'Полная цена пока неизвестна':formatKopecks(n);
-function style(){if(document.querySelector('[data-visit-styles]'))return;const link=node('link');link.rel='stylesheet';link.href=new URL('trip-service-visits.css?v=3',import.meta.url);link.dataset.visitStyles='';document.head.append(link);}
+function style(){if(document.querySelector('[data-visit-styles]'))return;const link=node('link');link.rel='stylesheet';link.href=new URL('trip-service-visits.css?v=2026101709',import.meta.url);link.dataset.visitStyles='';document.head.append(link);}
 function summary(visit,result){
  const wrap=node('div',undefined,'visit-summary');wrap.append(node('p',categories[visit.category],'visit-category'),node('h3',visit.name));
  wrap.append(node('p',`${clock(visit.selection.visit.input.arrival)} → ${clock(result.summary.departure)} · ${money(result.summary.cost_total)}`,'visit-facts'));
@@ -38,7 +38,7 @@ async function pageMemory(base){
  if(!memoryPromise)memoryPromise=(async()=>{
   const response=await fetch(new URL('data/catalog.json',base));if(!response.ok)throw Error('Каталог не загрузился. Попробуйте ещё раз.');
   const catalog=await response.json();if(!Array.isArray(catalog.poi)||!Array.isArray(catalog.routes))throw Error('Каталог не загрузился. Попробуйте ещё раз.');
-  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101707'),import('./workshop.mjs?v=2026101707')]);
+  const [{createTripMemory},{loadTrip}]=await Promise.all([import('./trip-memory.mjs?v=2026101707'),import('./workshop.mjs?v=2026101710')]);
   let storage;try{storage=localStorage;}catch{storage=null;}
   const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
   addEventListener('storage',()=>memory.sync());document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});
