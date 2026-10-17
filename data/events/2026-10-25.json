@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
@@ -53,12 +53,12 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-17T11:35:34Z",
+      "verified_at": "2026-10-17T14:04:08Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:34Z",
+          "verified_at": "2026-10-17T14:04:08Z",
           "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-          "sha256": "b7dc42e3d835383383140d3d5cd23207bb67a815674cfc18eb797474584aafcc",
+          "sha256": "d362f8566b9d9844a4dc4857328f2c2eb4e4afaba98cff92a816a1263b516271",
           "status": "scheduled"
         }
       ],
@@ -121,12 +121,12 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-17T11:35:34Z",
+      "verified_at": "2026-10-17T14:04:08Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:34Z",
+          "verified_at": "2026-10-17T14:04:08Z",
           "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-          "sha256": "e693e9c9d0c5754597a0f2fee4a0595aa5fae6ffb6c9cf0aa16d2ff75360ee29",
+          "sha256": "bd549ee4361a3d12c5ae8fabff0cd14f6c0c0fa09601993d83f3e55d924dc1cc",
           "status": "scheduled"
         }
       ],

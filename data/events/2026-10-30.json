@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
@@ -53,12 +53,12 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "verified_at": "2026-10-17T11:35:40Z",
+      "verified_at": "2026-10-17T14:04:09Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:40Z",
+          "verified_at": "2026-10-17T14:04:09Z",
           "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-          "sha256": "dea127243a853ed86239ef7f72ad84d4919c98a25af0088b5d7a0db4d1c44130",
+          "sha256": "60796e5c2a45d7699086161e294f10aaf492c39d2ae77795c46d4a2a151c2343",
           "status": "scheduled"
         }
       ],
@@ -120,7 +120,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-17T11:35:51Z",
+      "verified_at": "2026-10-17T14:04:11Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
@@ -129,9 +129,9 @@
           "status": "scheduled"
         },
         {
-          "verified_at": "2026-10-17T11:35:51Z",
+          "verified_at": "2026-10-17T14:04:11Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-          "sha256": "692a4ab83c69c13675d221d18ce06150be4527685a48c5b9fb912c2551286772",
+          "sha256": "8839f2cafd9f7fb977f547ba6a635669a25a8bdafb138aca1d2bcf8dd5e61923",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -148,13 +148,13 @@
         "duration": null,
         "source_identity": "yantarhall:afisha-kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra-2030-2010"
       },
-      "place_id": "yantar-hall",
-      "source_identity": "yantarhall:afisha-kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra-2030-2010",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
-      }
+      },
+      "place_id": "yantar-hall",
+      "source_identity": "yantarhall:afisha-kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra-2030-2010"
     }
   ]
 }

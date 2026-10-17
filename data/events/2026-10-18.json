@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-18",
   "coverage": {
     "status": "verified_partial",
@@ -67,7 +67,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/aybolit/",
-      "verified_at": "2026-10-17T11:35:29Z",
+      "verified_at": "2026-10-17T14:04:02Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -82,21 +82,21 @@
           "status": "scheduled"
         },
         {
-          "verified_at": "2026-10-17T11:35:29Z",
+          "verified_at": "2026-10-17T14:04:02Z",
           "source_url": "https://filarmonia39.ru/afisha/aybolit/",
-          "sha256": "636df25bbabb68260766b88b3bd5ff5493ca0929e536a93d82dff541750da942",
+          "sha256": "a4ffd1dfd3a93a1b2b33ea33c780bde3ab4808f6a138b00104a19fc5e9220a71",
           "status": "scheduled",
           "date": "2026-10-18",
           "start_time": "2026-10-18T12:00:00+02:00"
         }
       ],
-      "place_id": "kirha-svyatogo-semeystva",
-      "source_identity": "https://filarmonia39.ru/afisha/aybolit/#event",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
-      }
+      },
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/aybolit/#event"
     },
     {
       "title": "Экскурсия \"Закулисье театра\"",
@@ -197,12 +197,12 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
-      "verified_at": "2026-10-17T11:35:41Z",
+      "verified_at": "2026-10-17T14:04:09Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:41Z",
+          "verified_at": "2026-10-17T14:04:09Z",
           "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
-          "sha256": "c074c14c0a705db3cc49c17e3074967cc4142d6953e8948fed73c21718e4f71a",
+          "sha256": "430b6bf66b0eacf84fea72098234cc53e7e4b2aae930dc6e2da95792351369a0",
           "status": "scheduled"
         }
       ],
@@ -275,7 +275,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
-      "verified_at": "2026-10-17T11:35:29Z",
+      "verified_at": "2026-10-17T14:04:02Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -284,21 +284,21 @@
           "status": "scheduled"
         },
         {
-          "verified_at": "2026-10-17T11:35:29Z",
+          "verified_at": "2026-10-17T14:04:02Z",
           "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
-          "sha256": "96ae65cdffefce12049285470e7ed6704e38c64964c1bcd8e3e4546dd769caa9",
+          "sha256": "3cbfbe73b466aafcb108fc13f70e7fb4e247be912183154cd40ce93cdd7b4fff",
           "status": "scheduled",
           "date": "2026-10-18",
           "start_time": "2026-10-18T18:00:00+02:00"
         }
       ],
-      "place_id": "kirha-svyatogo-semeystva",
-      "source_identity": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/#event",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
-      }
+      },
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/#event"
     },
     {
       "title": "Доходное место",

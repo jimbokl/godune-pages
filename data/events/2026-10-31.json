@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-31",
   "coverage": {
     "status": "verified_partial",
@@ -53,12 +53,12 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "verified_at": "2026-10-17T11:35:40Z",
+      "verified_at": "2026-10-17T14:04:09Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:40Z",
+          "verified_at": "2026-10-17T14:04:09Z",
           "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-          "sha256": "3715144a1d738ca00c504a99db099cbb020a8dc026f8d7dfdc18b68ba6f2b7a7",
+          "sha256": "fad9c905da9cab30bf317427fb8b089163fe354b88a28ced2c9cdfd7e2fbf8cf",
           "status": "scheduled"
         }
       ],
@@ -121,12 +121,12 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "verified_at": "2026-10-17T11:35:51Z",
+      "verified_at": "2026-10-17T14:04:11Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:51Z",
+          "verified_at": "2026-10-17T14:04:11Z",
           "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-          "sha256": "729165541a51fd219f7ca236c91841fce4695ba800229435f876919145d659f9",
+          "sha256": "94df8062271f077a042422089a7029e9d64d14d9ba9c96651ae1042158fdcb64",
           "status": "scheduled"
         }
       ],

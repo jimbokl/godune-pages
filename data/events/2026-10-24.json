@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-24",
   "coverage": {
     "status": "verified_partial",
@@ -54,12 +54,12 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "verified_at": "2026-10-17T11:35:45Z",
+      "verified_at": "2026-10-17T14:04:10Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:45Z",
+          "verified_at": "2026-10-17T14:04:10Z",
           "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-          "sha256": "dc7e716237492540fbb89ce3bac53905d84ae1e27aa1880b62318e53472a5246",
+          "sha256": "7fe4277eadb7e9e2f0823007a990300c3fc0c996135b4c54f50de9ac2e30f723",
           "status": "scheduled"
         }
       ],
@@ -120,12 +120,12 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "verified_at": "2026-10-17T11:35:45Z",
+      "verified_at": "2026-10-17T14:04:10Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:45Z",
+          "verified_at": "2026-10-17T14:04:10Z",
           "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-          "sha256": "05e66771dbd253cf62d3a886e0db747482bacfb44b842eba70f8b6e27dae9bab",
+          "sha256": "5763d2d85555b6ed2578051549eb019d342c79bad8a3f76ec02ad7a8ed011f57",
           "status": "scheduled"
         }
       ],
@@ -186,12 +186,12 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "verified_at": "2026-10-17T11:35:34Z",
+      "verified_at": "2026-10-17T14:04:08Z",
       "observations": [
         {
-          "verified_at": "2026-10-17T11:35:34Z",
+          "verified_at": "2026-10-17T14:04:08Z",
           "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-          "sha256": "7d4ec2551b3951917a7072035d47f0c25d44412d4884ce5b419b3daf02c2698b",
+          "sha256": "ddd51438820d005831c1a4891ceefa07c87349e88091a37f78ae98963c56eab1",
           "status": "scheduled"
         }
       ],

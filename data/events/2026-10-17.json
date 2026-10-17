@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
-  "generated_at": "2026-10-17T13:07:52.313Z",
-  "updated_at": "2026-10-17T11:35:55.272990Z",
+  "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
+  "generated_at": "2026-10-17T14:05:10.407Z",
+  "updated_at": "2026-10-17T14:04:19.564341Z",
   "date": "2026-10-17",
   "coverage": {
     "status": "verified_partial",
@@ -66,7 +66,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
-      "verified_at": "2026-10-17T11:35:29Z",
+      "verified_at": "2026-10-17T14:04:02Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -81,21 +81,21 @@
           "status": "scheduled"
         },
         {
-          "verified_at": "2026-10-17T11:35:29Z",
+          "verified_at": "2026-10-17T14:04:02Z",
           "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
-          "sha256": "323613cdbe9f2dff72349216ec000297ed88d6facb209877bfed6db5223999b6",
+          "sha256": "dbd27277f76ac8cf1aee40d3063d7b56f6ccd7ebc0cb582435e03f3a49e54520",
           "status": "scheduled",
           "date": "2026-10-17",
           "start_time": "2026-10-17T18:00:00+02:00"
         }
       ],
-      "place_id": "kirha-svyatogo-semeystva",
-      "source_identity": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/#event",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
-      }
+      },
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/#event"
     },
     {
       "title": "Чайка",
