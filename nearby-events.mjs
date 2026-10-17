@@ -123,14 +123,17 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
   if(storage===undefined){try{storage=win.localStorage;}catch{storage=null;}}
   const cache=createNearbyCache({storage,fetcher,base,now});
   const config=JSON.parse(root.querySelector('[data-nearby-places]')?.textContent||'{"cities":[]}');
-  // City pages keep the page's location; the planner may follow the saved Trip.
-  const localCityPage=config.cities.some(c=>new URL(doc.baseURI).pathname.startsWith(new URL(`${c.id}/`,base).pathname));
+  // The planner owns the selected Trip. Other pages own their local city/date;
+  // a saved day in another page must not silently change their suggestions.
+  const plannerPage=new URL(doc.baseURI).pathname===new URL('planner/',base).pathname;
+  const routeForm=doc.querySelector?.('[data-route-day-settings]');
   const content=root.querySelector('[data-nearby-content]'),status=root.querySelector('[data-nearby-status]'),select=root.querySelector('[name=nearby-city]');
-  let city=root.dataset.city||select.value,date=null,index=null,buckets=new Map(),token=0,timer=null,disposed=false,freshness=null,enginePromise=null,facts=null,lastDates='',busy=false;
+  let city=root.dataset.city||select.value,date=null,dateInvalid=false,index=null,buckets=new Map(),token=0,timer=null,disposed=false,freshness=null,enginePromise=null,facts=null,lastDates='',busy=false;
   function places(){return config.cities.find(c=>c.id===city)?.places||[];}
   function currentDates(){const c=regionClock(now());return date?[date]:[c.date,c.tomorrow];}
   function render(){
     if(disposed)return;
+    if(dateInvalid){content.innerHTML='<p>Дата прогулки не указана или не распознана. Выберите дату в плане; афишу на этот день нужно уточнить.</p>';status.textContent='Дата афиши неизвестна. Время — Калининград (UTC+2).';root.dataset.clockDate=regionClock(now()).date;root.dataset.selectedDate='';root.dataset.dateState='unknown';return;}
     const active=doc.activeElement,focus=active?.dataset?.nearbyAdd,focusDate=active?.dataset?.eventDate;
     const model=nearbyModel({buckets,index,city,date,now:now(),places:places()});
     const html=renderNearby(model,{base,freshness,now:now()});
@@ -139,6 +142,7 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
     const note=`${date?'Выбранный день поездки. ':''}${failed?'Нет связи с афишей. ':''}${hasSnapshot?'Датированная подборка; текущий статус не подтверждён. ':''}Время — Калининград (UTC+2).${timestamps.length?' Копия получена '+new Intl.DateTimeFormat('ru-RU',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Kaliningrad'}).format(new Date(timestamps[0]))+'.':''}`;
     if(status.textContent!==note)status.textContent=note;
     root.dataset.clockDate=model.clock.date;root.dataset.tomorrowPrimary=String(model.clock.tomorrow_primary);root.dataset.selectedDate=date||'';
+    root.dataset.dateState=date?'selected':'live';
   }
   async function evaluateFacts(){
     try{
@@ -152,6 +156,7 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
     }catch{enginePromise=null;}
   }
   async function refresh(force=false){
+    if(dateInvalid)return;
     const mine=++token;busy=true;
     // Revalidate once per mount so a newly installed offline pack can replace
     // an unexpired index; date buckets still use their six-hour/revision checks.
@@ -177,11 +182,12 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
     if(clock){win.clearTimeout(timer);timer=win.setTimeout(tick,Math.max(1000,60000-(now().getTime()%60000)));}
   }
   function context(event){
+    if(!plannerPage)return;
     const next=event.detail||{};
-    if(!localCityPage&&next.city&&config.cities.some(c=>c.id===next.city)){city=next.city;select.value=city;root.dataset.city=city;}
+    if(next.city&&config.cities.some(c=>c.id===next.city)){city=next.city;select.value=city;root.dataset.city=city;}
     // null explicitly returns to live Today/Tomorrow; never substitute today for
     // an invalid or omitted Trip date supplied as a purported selected date.
-    if(Object.hasOwn(next,'date')){if(next.date===null||next.date==='')date=null;else if(calendarDate(next.date))date=next.date;else {status.textContent='Дата поездки не распознана. Выберите дату в плане.';return;}}
+    if(Object.hasOwn(next,'date')){dateInvalid=false;if(next.date===null||next.date==='')date=null;else if(calendarDate(next.date))date=next.date;else dateInvalid=true;}
     subscription?.update();render();evaluateFacts();refresh();
   }
   function cityChange(){city=select.value;root.dataset.city=city;subscription?.update();render();}
@@ -192,13 +198,20 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
     win.dispatchEvent(new win.CustomEvent('godune:event-proposal',{detail:{event:record,date:day,venue_id:record.venue_id,opener:button}}));
   }
   function onVisible(){if(doc.visibilityState!=='hidden')tick();}
-  // City-day forms expose a visible selected date. Input is an explicit choice;
-  // initial empty/default form values never silently replace a saved Trip date.
-  function selectedInput(event){if(event.target.matches('[data-route-day-settings] [name=date]')&&calendarDate(event.target.value))context({detail:{date:event.target.value}});}
-  select.addEventListener('change',cityChange);root.addEventListener('click',add);win.addEventListener('godune:nearby-context',context);win.addEventListener('focus',onVisible);doc.addEventListener('visibilitychange',onVisible);doc.addEventListener('input',selectedInput);
+  // Route UI publishes only after resolving its visible date, including a
+  // linked saved route or the current regional default. This also covers lazy
+  // mounting after the form was initialized and later midnight/focus updates.
+  function routeDate(){
+    if(plannerPage||!routeForm||routeForm.dataset.dateReady!=='true')return;
+    const next=routeForm.elements.date.value,invalid=routeForm.dataset.dateSource==='unknown'||!calendarDate(next);
+    if(date===next&&dateInvalid===invalid)return;
+    date=invalid?null:next;dateInvalid=invalid;render();evaluateFacts();refresh();
+  }
+  function selectedInput(event){if(event.target.matches('[data-route-day-settings] [name=date]'))routeDate();}
+  select.addEventListener('change',cityChange);root.addEventListener('click',add);win.addEventListener('godune:nearby-context',context);win.addEventListener('godune:route-date',routeDate);win.addEventListener('focus',onVisible);doc.addEventListener('visibilitychange',onVisible);doc.addEventListener('input',selectedInput);
   const subscription=mountSubscription(root,{city:()=>city});
-  render();const ready=refresh();win.dispatchEvent(new win.CustomEvent('godune:nearby-context-request'));if(clock)tick();
-  return {ready,refresh,tick,setContext:detail=>context({detail}),getModel:()=>nearbyModel({buckets,index,city,date,now:now(),places:places()}),destroy(){disposed=true;++token;win.clearTimeout(timer);select.removeEventListener('change',cityChange);root.removeEventListener('click',add);win.removeEventListener('godune:nearby-context',context);win.removeEventListener('focus',onVisible);doc.removeEventListener('visibilitychange',onVisible);doc.removeEventListener('input',selectedInput);subscription?.destroy();}};
+  render();routeDate();const ready=refresh();if(plannerPage)win.dispatchEvent(new win.CustomEvent('godune:nearby-context-request'));if(clock)tick();
+  return {ready,refresh,tick,setContext:detail=>context({detail}),getModel:()=>nearbyModel({buckets,index,city,date,now:now(),places:places()}),destroy(){disposed=true;++token;win.clearTimeout(timer);select.removeEventListener('change',cityChange);root.removeEventListener('click',add);win.removeEventListener('godune:nearby-context',context);win.removeEventListener('godune:route-date',routeDate);win.removeEventListener('focus',onVisible);doc.removeEventListener('visibilitychange',onVisible);doc.removeEventListener('input',selectedInput);subscription?.destroy();}};
 }
 
 export function mountSubscription(root,{city}){

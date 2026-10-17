@@ -32,10 +32,24 @@ export function initCityDay({workshop,catalog,base}){
  async function sync(){
   root.querySelector('[data-city-rain]').dataset.active=String(root.querySelector('[data-city-weather]').value==='rain');
   const choiceDay=routeDayTarget(workshop.getState(),route,getId())?.day,choices=choiceDay?.menu_choices||[];
-  const rain=root.querySelector('[data-city-rain-note]');if(rain)rain.textContent=cityRainPlan(config,catalog,form.elements.date.value||localDate()).note;
-  const ticket=++revision,date=form.elements.date.value||localDate(),start=(form.elements.time.value||'09:00').split(':').map(Number);
+  const rain=root.querySelector('[data-city-rain-note]');
+  const ticket=++revision,date=form.elements.date.value,start=(form.elements.time.value||'09:00').split(':').map(Number);
   const wet=root.querySelector('[data-city-weather]').value==='rain';
   root.querySelector('.city-timeline').dataset.ready='false';
+  root.querySelector('[data-day-budget]').hidden=!date;
+  if(!date){
+   if(rain)rain.textContent='Выберите дату прогулки, чтобы уточнить часы работы и план на дождь.';
+   for(const select of root.querySelectorAll('[data-city-rail-outward],[data-city-rail-inbound]')){select.replaceChildren(new Option('Выберите дату',''));select.disabled=true;}
+   root.querySelector('[data-city-rail-date]').textContent='Дата поездки не выбрана. Укажите дату для проверки расписания.';
+   root.querySelector('[data-city-rail-out]').textContent='Выберите дату, чтобы уточнить поезд до прогулки.';
+   root.querySelector('[data-city-rail-return]').textContent='Выберите дату, чтобы уточнить обратный поезд.';
+   for(const time of root.querySelectorAll('[data-city-stop]')){time.textContent='Уточняется';time.dataset.begins='';time.dataset.leaves='';time.dataset.cityOffset='';}
+   root.querySelector('[data-city-return]').textContent='Уточняется';root.querySelector('.city-timeline').dataset.ready='true';
+   root.querySelector('[data-city-total]').textContent='Уточняется';root.querySelector('[data-city-budget]').textContent='Выберите дату прогулки, чтобы рассчитать поезда и бюджет.';
+   root.querySelector('[data-city-sunset]').textContent='Уточняется';const label=root.querySelector('[data-city-sunset-date]');label.textContent='Дата не выбрана';label.removeAttribute('datetime');
+   return;
+  }
+  if(rain)rain.textContent=cityRainPlan(config,catalog,date).note;
   const service=catalog.rail_services?.find(s=>s.id===config.service);
   if(service){const table=serviceDay(service,date),saved=routeDayTarget(workshop.getState(),route,getId())?.day?.schedule?.rail;
    for(const [direction,selector,fallback] of [['outward','[data-city-rail-outward]',config.outward],['inbound','[data-city-rail-inbound]',config.inbound]]){
@@ -86,8 +100,8 @@ export function initCityDay({workshop,catalog,base}){
   try{const calculate=await loadSunClock(base),sun=calculate(date,config.lat,config.lon);if(ticket!==revision)return;root.querySelector('[data-city-sunset]').textContent=sun.sunset===null?'Солнце не заходит':clock(sun.sunset);const label=root.querySelector('[data-city-sunset-date]');label.textContent=date;label.dateTime=date;}
   catch{/* Keep the sourced static solar calculation when the runtime is unavailable. */}
  }
- const initial=routeDayTarget(workshop.getState(),route,getId());if(initial?.state==='ready'){form.elements.date.value=initial.day.date||localDate();const n=initial.day.schedule?.start??540;form.elements.time.value=clock(n);root.querySelector('[data-city-weather]').value=cityDayWeather(initial.day);}else if(!form.elements.date.value)form.elements.date.value=localDate();
- document.addEventListener('input',event=>{if(event.target.form===form)sync();});window.addEventListener('godune:trip-change',()=>queueMicrotask(sync));sync();
+ const initial=routeDayTarget(workshop.getState(),route,getId());if(initial?.state==='ready'){form.elements.date.value=initial.day.date||'';const n=initial.day.schedule?.start??540;form.elements.time.value=clock(n);root.querySelector('[data-city-weather]').value=cityDayWeather(initial.day);}else if(form.dataset.dateReady!=='true')form.elements.date.value=localDate();
+ document.addEventListener('input',event=>{if(event.target.form===form)sync();});window.addEventListener('godune:trip-change',()=>queueMicrotask(sync));window.addEventListener('godune:route-date',()=>queueMicrotask(sync));sync();
  const food=new Set(config.food),sea=new Set(config.sea);
  root.querySelectorAll('[data-city-layer]').forEach(button=>button.addEventListener('click',()=>{
   const layer=button.dataset.cityLayer;root.querySelectorAll('[data-city-layer]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));

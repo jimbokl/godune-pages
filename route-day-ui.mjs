@@ -4,31 +4,41 @@ import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=20261016
 import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=2026101707';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101707';
+import {regionDate} from './events-engine.mjs?v=2026101707';
 
 export function initRouteDay({workshop,catalog,base}){
  const route=catalog.routes.find(row=>row.slug===document.body.dataset.route);
  const form=document.querySelector('[data-route-day-settings]'),buttons=[...document.querySelectorAll('[data-route-day-save]')],pdf=document.querySelector('[data-route-day-pdf]'),status=document.querySelector('[data-route-day-status]'),context=document.querySelector('[data-route-day-context]'),open=document.querySelector('[data-route-day-open]');
  if(!route||!form||!buttons.length)return;
- let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false,persisted=false;
+ let id=new URL(location.href).searchParams.get('trip-day'),busy=false,dirty=false,dateChosen=false,persisted=false;
  const initial=routeDayTarget(workshop.getState(),route,id);
  persisted=initial?.state==='ready';
  const linkDay=value=>{id=value;const url=new URL(location.href);url.searchParams.set('trip-day',id);history.replaceState(history.state,'',url);};
  if(initial?.state==='ready')linkDay(initial.day.id);
+ function publishDate(target){
+  form.dataset.dateSource=dateChosen?'selected':target?(target.day.date?'selected':'unknown'):'live';
+  if(form.dataset.dateSource==='live')form.elements.date.value=regionDate();
+  form.dataset.dateReady='true';
+  window.dispatchEvent(new CustomEvent('godune:route-date'));
+ }
  function enabled(value){for(const button of [...buttons,pdf,...form.querySelectorAll('input')])button.disabled=!value;}
  function sync(){
   if(busy)return;
   const target=id?routeDayTarget(workshop.getState(),route,id):null;
   if(target)updateYandexRoute(document.querySelector('[data-yandex-route]'),target.state==='ready'?dayYandexRouteUrl(target.day,catalog):null);
   if(target&&target.state!=='ready'){
+   form.elements.date.value='';
+   form.dataset.dateSource='unknown';form.dataset.dateReady='true';window.dispatchEvent(new CustomEvent('godune:route-date'));
    enabled(false);context.textContent='Этот день не найден. Выберите сохранённый день в «Моём дне».';
    for(const button of buttons)button.textContent='День не найден';
    open.href=new URL('planner/',base).href;return;
   }
   enabled(true);
   for(const button of buttons)button.textContent=target?(dirty?'Сохранить изменения →':persisted?'День сохранён ✓':'День открыт здесь ✓'):'Сохранить день →';
-  if(!target){context.textContent='Выберите дату и начало прогулки.';return;}
+  if(!target){publishDate(null);context.textContent='Выберите дату и начало прогулки.';return;}
   const day=target.day,value=routeDaySettings(day);
   if(!dirty){form.elements.date.value=value.date||'';form.elements.time.value=value.time;}
+  publishDate(target);
   const returnPlace=catalog.poi.find(point=>point.slug===day.night_at);
   context.textContent=`${day.name||route.name} · мест в плане: ${day.places.length}.${returnPlace?' Возвращение: '+returnPlace.name+'.':''}`;
   open.href=plannerDayUrl(base,id).href;
@@ -55,7 +65,7 @@ export function initRouteDay({workshop,catalog,base}){
  }
  for(const button of buttons)button.addEventListener('click',submit);
  form.addEventListener('submit',event=>{event.preventDefault();submit();});
- document.addEventListener('input',event=>{if(event.target.form!==form)return;dirty=true;status.textContent='';for(const button of buttons)button.textContent='Сохранить изменения →';});
+ document.addEventListener('input',event=>{if(event.target.form!==form)return;dirty=true;if(event.target===form.elements.date)dateChosen=true;publishDate(id?routeDayTarget(workshop.getState(),route,id):null);status.textContent='';for(const button of buttons)button.textContent='Сохранить изменения →';});
  pdf.addEventListener('click',async()=>{
   if(busy||!form.reportValidity())return;busy=true;enabled(false);pdf.textContent='Собираем буклет…';
   try{
@@ -69,5 +79,9 @@ export function initRouteDay({workshop,catalog,base}){
   }catch(error){status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':'Буклет пока не собрался. Готовый PDF прогулки доступен ниже.';}
   finally{busy=false;pdf.textContent='Собрать мой PDF ↓';sync();}
  });
+ // Only the default date follows the destination clock. Saved dates and date
+ // input remain explicit choices; observing a new day never writes the Trip.
+ function refreshDate(){if(document.visibilityState!=='hidden'&&!busy&&form.dataset.dateSource==='live'&&form.elements.date.value!==regionDate())publishDate(null);}
+ window.addEventListener('focus',refreshDate);document.addEventListener('visibilitychange',refreshDate);window.setInterval(refreshDate,60000);
  window.addEventListener('godune:trip-change',sync);sync();
 }

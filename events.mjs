@@ -33,5 +33,5 @@ if(root){
  });
  window.addEventListener('storage',e=>{if(e.key===BOOKMARK_KEY||e.key===null){try{saved=readBookmarks(localStorage);storageReady=true;render();}catch{status.textContent='Не удалось прочитать сохранённые события.';}}});
  window.addEventListener('hashchange',()=>{followLink();render();});form.hidden=false;
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)render();});render();
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)render();});window.addEventListener('focus',render);window.setInterval(()=>{if(!document.hidden)render();},60000);render();
 }

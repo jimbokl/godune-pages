@@ -19,16 +19,6 @@
       "model_updated_at": "2026-10-17T12:29:28Z",
       "hours": [
         {
-          "time": "2026-10-17T12:00:00Z",
-          "temperature_c": 14.1,
-          "wind_ms": 1.8,
-          "wind_from_degrees": 194.0,
-          "cloud_percent": 57.5,
-          "symbol": "partlycloudy_day",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
-        {
           "time": "2026-10-17T13:00:00Z",
           "temperature_c": 14.2,
           "wind_ms": 1.0,
@@ -579,13 +569,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-17T12:29:29.349273Z",
-      "checked_at": "2026-10-17T12:33:24.359884Z",
+      "received_at": "2026-10-17T13:06:33.129158Z",
+      "checked_at": "2026-10-17T13:06:33.129158Z",
       "sun": {
         "date": "2026-10-17",
         "sunrise": "2026-10-17T05:11:00Z",
         "sunset": "2026-10-17T15:34:00Z",
-        "received_at": "2026-10-17T12:29:29.349273Z"
+        "received_at": "2026-10-17T13:06:33.129158Z"
       }
     },
     {
@@ -1163,7 +1153,7 @@
         "date": "2026-10-17",
         "sunrise": "2026-10-17T05:10:00Z",
         "sunset": "2026-10-17T15:32:00Z",
-        "received_at": "2026-10-17T12:29:29.349273Z"
+        "received_at": "2026-10-17T13:06:33.129158Z"
       }
     },
     {
@@ -1741,7 +1731,7 @@
         "date": "2026-10-17",
         "sunrise": "2026-10-17T05:12:00Z",
         "sunset": "2026-10-17T15:36:00Z",
-        "received_at": "2026-10-17T12:29:29.349273Z"
+        "received_at": "2026-10-17T13:06:33.129158Z"
       }
     },
     {
@@ -1750,18 +1740,8 @@
       "poi": "kafedralny-sobor",
       "lat": 54.7064,
       "lon": 20.5114,
-      "model_updated_at": "2026-10-17T12:29:13Z",
+      "model_updated_at": "2026-10-17T12:29:15Z",
       "hours": [
-        {
-          "time": "2026-10-17T12:00:00Z",
-          "temperature_c": 14.6,
-          "wind_ms": 1.5,
-          "wind_from_degrees": 150.0,
-          "cloud_percent": 61.6,
-          "symbol": "partlycloudy_day",
-          "rain_mm": 0.0,
-          "rain_hours": 1
-        },
         {
           "time": "2026-10-17T13:00:00Z",
           "temperature_c": 14.7,
@@ -2313,13 +2293,13 @@
           "rain_hours": 6
         }
       ],
-      "received_at": "2026-10-17T12:29:29.349273Z",
-      "checked_at": "2026-10-17T12:33:24.359884Z",
+      "received_at": "2026-10-17T13:06:33.129158Z",
+      "checked_at": "2026-10-17T13:06:33.129158Z",
       "sun": {
         "date": "2026-10-17",
         "sunrise": "2026-10-17T05:10:00Z",
         "sunset": "2026-10-17T15:35:00Z",
-        "received_at": "2026-10-17T12:29:29.349273Z"
+        "received_at": "2026-10-17T13:06:33.129158Z"
       }
     }
   ]
