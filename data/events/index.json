@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
-  "generated_at": "2026-10-17T15:28:59.773Z",
+  "generated_at": "2026-10-17T18:52:43.475Z",
   "updated_at": "2026-10-17T14:04:19.564341Z",
   "window": {
     "from": "2026-09-17",
@@ -613,7 +613,6 @@
   "cache_max_age_seconds": 21600,
   "dated_snapshot_age_seconds": 43200,
   "active_ids": [
-    "event-0b5cc69190c0f419",
     "event-14240db5849b4341",
     "event-17b8abe5389212d6",
     "event-26d394f51e34e522",
@@ -624,7 +623,6 @@
     "event-60b8ba53b4fa8824",
     "event-6d947bd837a6e235",
     "event-6ed93c893a119179",
-    "event-703648e2fd3d262b",
     "event-749e4139bcb56846",
     "event-7c2c58fb70b309db",
     "event-9b89fe7cfdbd7778",
@@ -633,7 +631,6 @@
     "event-bc10b3b3f00f70e1",
     "event-bc4a9e4aeaa30e6a",
     "event-c90f24387a529f61",
-    "event-e15902bc9b961b4e",
     "event-e1f424ecbcbc4a9d",
     "event-e62ffabad0d905ee",
     "event-e8ba0ec85b64467a",
