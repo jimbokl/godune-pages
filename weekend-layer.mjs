@@ -126,7 +126,7 @@ export function initWeekendLayer({workshop,base,catalog}){
  });
  pdf.addEventListener('click',async()=>{
   if(!ids?.length)return;pdf.disabled=true;const trip=currentTrip(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101711');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101714');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
   catch(error){statusText(error.message==='guide_trip_changed'?'Поездка изменилась во время подготовки PDF. Обновите план и повторите.':'Личный PDF не удалось подготовить. Попробуйте ещё раз после восстановления связи.',true);}
   finally{pdf.disabled=false;}
  });

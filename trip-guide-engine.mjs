@@ -4,7 +4,7 @@ import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';
 import {partyLabel,dayPeople} from './trip-party.mjs?v=2026101305';
 import {checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
-import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101709';
+import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101714';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
@@ -90,6 +90,15 @@ function guideReferenceBudget(calculate,record,people){
     return {reference_budget_error:'Сохранённый справочный бюджет не прошёл проверку. Исходные суммы и источники остались в записи дня; уточните расчёт в плане.'};
   }
 }
+function cityRailNotSelected(record,budget){
+  // A missing price is not a missing ride. Only a current, validated city
+  // selection can express that the saved day still has no selected trains.
+  if(record.schedule?.rail||budget.reference_budget_notice)return false;
+  const context=budget.reference_budget?.context,rail=context?.selection?.rail;
+  return ['zelenogradsk-one-day','svetlogorsk-one-day'].includes(context?.route)&&
+    context.route===record.source_route&&context.date===record.date&&!!rail&&
+    (!rail.outward||!rail.inbound);
+}
 // Catalogue recommendations are independent of the user's ordered day.
 // Remove only the exact generated suffix, retaining every authored paragraph.
 function orderedStory(point,place) {
@@ -157,6 +166,9 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     // A separate transport receipt affects certainty, not the known walking geometry.
     const geometryServices=services?.check?.itinerary||services?.services?.length||Object.hasOwn(record,'timeline')||Object.hasOwn(record,'transfer_connections')||usesJourneyBoundaries(record,catalog)?services:null;
     const result=generated||transportOnly?null:services?.check?.itinerary?services.check.places:calculate(planInput(current,catalog,matrix));
+    const reference=guideReferenceBudget(calculate,record,saved.itinerary?.people||1);
+    const missingCityRail=!generated&&!transport.length&&cityRailNotSelected(record,reference);
+    const railNotice='Поезда туда и обратно ещё не выбраны. Расчёт прогулки не включает поездку поездом. Проверьте расписание на дату поездки и выберите рейсы; до этого полное возвращение неизвестно.';
     let roads=generated||transportOnly?{type:'FeatureCollection',features:[]}:await roadsFor(current,matrix);
     // Legacy geometry must not bridge two places with a service in between.
     if(geometryServices){
@@ -170,6 +182,11 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     if(services?.services?.length&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),issue_codes:(services.check?.issues||[]).map(issue=>issue.code),state:'unknown'});
     if(transport.length)rows.push(...transportGuideRows(transport,record));
+    if(missingCityRail){
+      const walkingReturn=rows.find(row=>['__day_night','__service_day_destination'].includes(row.id)&&row.kind==='return');
+      if(walkingReturn){walkingReturn.title=walkingReturn.title.replace(/^Возвращение · /,'Завершение прогулки · ');walkingReturn.text+=' Поездка поездом в это время не входит.';}
+      rows.push({id:'city-rail-unselected',kind:'notice',time:null,title:'Полное возвращение ещё неизвестно',text:railNotice,state:'unknown'});
+    }
     const evidenceClaims=[],stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);
       // Hours and admission are separate canonical facts, but must travel with
       // the offline place card just like access conditions and their sources.
@@ -182,7 +199,9 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const entries=guideEntries(record,stops,services?.services||[]),legs=orderedGuideLegs(current,catalog,matrix,result,geometryServices,rows,entries);
     for(const stop of stops)if(legs.has(stop.id))stop.next_leg=legs.get(stop.id);
     const transportNeedsInfo=services?.transportNeedsInfo===true||services?.check?.issues?.some(issue=>String(issue.code||'').startsWith('transport_'))===true;
-    const complete=!transportNeedsInfo&&(!services||!!services.check?.itinerary||(!services.services?.length&&!services.error&&!(services.check?.issues?.length)));
+    const complete=!missingCityRail&&!transportNeedsInfo&&(!services||!!services.check?.itinerary||(!services.services?.length&&!services.error&&!(services.check?.issues?.length)));
+    const status=services?(services.check?.state||'needs_info'):transport.length?'needs_info':generated?kosa.state:result.status;
+    const summary=services?services.summary+(generated?' '+kosa.message:''):transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status];
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;
     if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
@@ -192,14 +211,14 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     for(const stop of stops)stop.condition_evidence=stop.conditions.map(condition=>{const claim=evidenceClaims.find(v=>v.subject.id===stop.id&&v.record.id===condition.id),report=guideClaimFreshness(freshness,claim.subject,claim.path);return {id:condition.id,freshness:report,text:report?guideClaimWarning(report):''};});
     for(const [i,row]of menuChoices.entries()){const claim=evidenceClaims.find(v=>v.path===`/menus/${i}`);row.fact_freshness=guideClaimFreshness(freshness,claim.subject,claim.path);row.freshness=row.fact_freshness?.facts?.[0]?.freshness||'unknown';row.price=guideMenuPrice(row,row.fact_freshness);}
     out.push({id:record.id,number:allDays.findIndex(d=>d.id===record.id)+1 || index+1,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${allDays.findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
-      record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:services?(services.check?.state||'needs_info'):transport.length?'needs_info':generated?kosa.state:result.status,summary:services?services.summary+(generated?' '+kosa.message:''):transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
+      record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:missingCityRail&&!['conflict','overrun'].includes(status)?'needs_info':status,summary:summary+(missingCityRail?' '+railNotice:''),
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       slack_label:generated?(kosa.book?.home?'запас до возвращения':'запас до конца заданного окна дня'):result?.rail?.home?'запас до выбранного обратного рейса':'запас до конца заданного окна дня',
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
-      stops,entries,menu_choices:menuChoices,menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),...guideReferenceBudget(calculate,record,saved.itinerary?.people||1),
+      stops,entries,menu_choices:menuChoices,menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),...reference,
       ...(evidenceClaims.length?{evidence:{snapshot:evidenceSnapshot,freshness},freshness_text:evidenceSnapshot.facts.length<evidenceClaims.length?'Свежесть части сведений не проверена: нет собственного датированного источника или недоступна оценка. '+(freshness?guideFreshnessText(freshness):'Уточните сведения перед выходом.'):guideFreshnessText(freshness)}:{}),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
-      planB:transportOnly&&transport.length===1?transportPlanB(transport[0].receipt):generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
+      planB:missingCityRail?railNotice+' Если задержались или устали, пропустите гибкую остановку и пересчитайте прогулку. Этот файл сам не обновляется.':transportOnly&&transport.length===1?transportPlanB(transport[0].receipt):generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
   }
   return {version:1,scope,created_at:createdAt,as_of:asOf,title:scope==='day'?out[0].name:'Ваша поездка на Балтийской волне',days:out};
 }

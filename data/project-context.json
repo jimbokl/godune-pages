@@ -563,7 +563,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "to": "access:kaliningrad"
     },
@@ -575,7 +576,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "to": "access:povarovka"
     },
@@ -587,7 +589,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "to": "access:airport"
     },
@@ -599,7 +602,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "to": "access:povarovka"
     },
@@ -723,7 +727,7 @@
     },
     {
       "registry": "transport",
-      "sha256": "dbdae737672393e4770274feda414c7a19291a604870693f653a41b1b3bf1b2c"
+      "sha256": "a14cdc3959bc1d975ad6d568a3ca1be780064dd0d8bb4dd28cff362f050e91d9"
     }
   ],
   "nodes": [
@@ -1666,11 +1670,12 @@
             "title": "Автовокзал → Поваровка"
           }
         ],
-        "note": "По графику с 1 октября рейс №120 в 20:20 из Янтарного идёт только до Северного вокзала, в 21:30 — только до Круглово; это не время отправления из Поваровки. Время автобуса именно на остановке «пос. Поваровка» и сторону посадки на вашу дату уточните в справочной: +7 (4012) 64-36-35, 08:00–20:00.",
+        "note": "По графику с 1 октября рейс №120 в 20:20 из Янтарного идёт только до Северного вокзала, в 21:30 — только до Круглово; это не время отправления из Поваровки. Время автобуса именно на остановке «пос. Поваровка» и сторону посадки на вашу дату уточните в справочной: +7 (4012) 64-36-35, 08:00–20:00. Таблица перевозчика с 10.08.2026 не даёт времени обратной посадки в Поваровке и дней движения. Площадка посадки неизвестна; действие расписания в 2027 году не подтверждено.",
         "return_text": "Обратно — №120 в сторону Калининграда.",
         "source_refs": [
           "transport:avl-october",
-          "transport:stop-povarovka"
+          "transport:stop-povarovka",
+          "transport:carrier-120-august"
         ],
         "transfers": 0
       },
@@ -1719,7 +1724,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "state": "Расчёт по карте",
       "title": "Калининград → Поваровка",
@@ -1740,11 +1746,12 @@
             "title": "Автовокзал → Поваровка"
           }
         ],
-        "note": "По графику с 1 октября рейс №120 в 20:20 из Янтарного идёт только до Северного вокзала, в 21:30 — только до Круглово; это не время отправления из Поваровки. Время автобуса именно на остановке «пос. Поваровка» и сторону посадки на вашу дату уточните в справочной: +7 (4012) 64-36-35, 08:00–20:00. Для аэропорта отдельно сверьте пересадку на №244Э.",
+        "note": "По графику с 1 октября рейс №120 в 20:20 из Янтарного идёт только до Северного вокзала, в 21:30 — только до Круглово; это не время отправления из Поваровки. Время автобуса именно на остановке «пос. Поваровка» и сторону посадки на вашу дату уточните в справочной: +7 (4012) 64-36-35, 08:00–20:00. Для аэропорта отдельно сверьте пересадку на №244Э. Таблица перевозчика с 10.08.2026 не даёт времени обратной посадки в Поваровке и дней движения. Площадка посадки неизвестна; действие расписания в 2027 году не подтверждено.",
         "return_text": "Обратно — №120 до Калининграда, затем №244Э до аэропорта.",
         "source_refs": [
           "transport:avl-october",
-          "transport:stop-povarovka"
+          "transport:stop-povarovka",
+          "transport:carrier-120-august"
         ],
         "transfers": 1
       },
@@ -1793,7 +1800,8 @@
         "transport:roads",
         "transport:point-povarovka",
         "transport:avl-october",
-        "transport:stop-povarovka"
+        "transport:stop-povarovka",
+        "transport:carrier-120-august"
       ],
       "state": "Расчёт по карте",
       "title": "Храброво → Поваровка",
@@ -2537,6 +2545,16 @@
       "registry": "transport",
       "title": "OpenStreetMap · baltiysk",
       "url": "https://www.openstreetmap.org/node/2001287734"
+    },
+    {
+      "checked_at": "2026-10-17",
+      "id": "transport:carrier-120-august",
+      "kind": "primary",
+      "published_at": null,
+      "registry": "transport",
+      "sha256": "e3b4071fdc2bf3468b16decb1d741c8d97b7afdd91124c4d31c603b07d3b4626",
+      "title": "Регио-Экспресс: № 120, таблица действует с 10.08.2026",
+      "url": "https://regio-express.ru/marshruty/120-kaliningrad-yantarnyj"
     }
   ],
   "url": "/dunes/belaya-duna/",

@@ -1,17 +1,17 @@
-import {loadCityBudget,cityReferenceBudget,withCityReferenceBudget,cityReferenceMatches} from './city-day-budget.mjs?v=2026101709';
+import {loadCityBudget,cityReferenceBudget,withCityReferenceBudget,cityReferenceMatches} from './city-day-budget.mjs?v=2026101714';
 import {referenceBudgetText,checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
 import {renderReferenceBudget} from './day-reference-budget-ui.mjs?v=2026101705';
 import {dayPeople} from './trip-party.mjs?v=2026101305';
 import {cityDayConfig,cityRainPlan} from './city-day-config.mjs?v=2026101709';
 import {cityDayReview} from './city-day-review.mjs?v=2026101712';
 import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101707';
-import {withCityDayPlan,cityDayWeather} from './city-day-state.mjs?v=2026101713';
+import {cityDayWeather} from './city-day-state.mjs?v=2026101714';
 import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101707';
 import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101707';
-import {routeDayTarget,saveRouteDay} from './route-day.mjs?v=2026101707';
+import {routeDayTarget} from './route-day.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {loadSunClock} from './sun-clock.mjs?v=2026101305';
-import {cityTimeline,cityDayPreview} from './city-day-timeline.mjs?v=2026101713';
+import {cityTimeline,cityDayPreview} from './city-day-timeline.mjs?v=2026101714';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {selectedDay as previewDay} from './trip-days-state.mjs?v=2026101707';
 import {serviceDay} from './service-calendar.mjs?v=2026101305';
@@ -29,7 +29,7 @@ export function initCityDay({workshop,catalog,base}){
  const saveDay=async()=>{const id=getId(),target=routeDayTarget(workshop.getState(),route,id);if(target?.state==='ready')return;
   const selection={outward:root.querySelector('[data-city-rail-outward]').value,inbound:root.querySelector('[data-city-rail-inbound]').value,weather:root.querySelector('[data-city-weather]').value};
   const resources=await loadCityBudget(base);
-  const result=await workshop.setState(trip=>withCityReferenceBudget(withCityDayPlan(saveRouteDay(trip,route,catalog,{date:form.elements.date.value||localDate(),time:form.elements.time.value||config.start}),catalog,selection),catalog,resources),'День сохранён вместе с выбором блюд.');
+  const result=await workshop.setState(trip=>withCityReferenceBudget(cityDayPreview(trip,route,catalog,{date:form.elements.date.value||localDate(),time:form.elements.time.value||config.start},selection),catalog,resources),'День сохранён вместе с выбором блюд.');
   if(result.conflict)throw Error('route_day_conflict');const url=new URL(location.href);url.searchParams.set('trip-day',selectedDay(workshop.getState()).id);history.replaceState(history.state,'',url);window.dispatchEvent(new Event('godune:trip-change'));
  };
  const budgetWorkshop={getState:()=>workshop.getState(),setState:async(change,message)=>{const resources=await loadCityBudget(base);return workshop.setState(current=>withCityReferenceBudget(change(current),catalog,resources),message);}};
@@ -76,6 +76,7 @@ export function initCityDay({workshop,catalog,base}){
    const {calculate,menus}=await loadCityBudget(base);if(ticket!==revision)return;
    const selection={weather:wet?'rain':'sun',outward:root.querySelector('[data-city-rail-outward]').value,inbound:root.querySelector('[data-city-rail-inbound]').value};
    const draft=cityDayPreview(workshop.getState(),route,catalog,{id:getId(),date,time:form.elements.time.value||config.start},selection),day=previewDay(draft);
+   if(rain&&wet)rain.textContent=day.note.split('\n').find(line=>line.startsWith(config.rainPrefix))||cityRainPlan(config,catalog,date).note;
    const matrix=await loadTripTravelMatrix(base,draft,catalog).catch(()=>null);if(ticket!==revision)return;
    let check;try{check=inspectTripServiceDay(calculate,draft,catalog,matrix);}catch{/* Keep failed assessment visibly unresolved. */}
    if(!check)throw Error('city_day_assessment_unavailable');
@@ -96,17 +97,14 @@ export function initCityDay({workshop,catalog,base}){
     const stop=day.schedule.stops.murarium,note=root.querySelector('[data-city-stop="murarium"]').closest('.city-timeline-stop').querySelector('.city-stop-note');
     const inside=stop&&day.places.includes('murarium')&&stop.visit_scope!=='outside';
     note.textContent=inside?`В плане — ${stop.visit} минут внутри музея кошек. Перед выездом проверьте часы и последний вход; дорога к музею остаётся на улице.`:'Башню осматриваем снаружи. Посещение музея в этот день не включено.';
-    if(wet&&choiceDay&&stop&&day.places.includes('murarium')&&stop.visit_scope==='outside'&&cityRainPlan(config,catalog,date).open){
-     rain.textContent=`В сохранённом дне Мурариум — снаружи, ${stop.visit} минут; променад — ${day.schedule.stops['promenad-zelenogradsk']?.visit??'не задано'} минут. ${cityRainPlan(config,catalog,date).note} Нажмите «Сохранить план на дождь», чтобы применить этот вариант.`;
-     for(const button of root.querySelectorAll('[data-route-day-save]'))button.textContent='Сохранить план на дождь →';
-    }
+
    }else{
     const stop=day.schedule.stops[config.museum],time=root.querySelector(`[data-city-stop="${config.museum}"]`),note=time?.closest('.city-timeline-stop').querySelector('.city-stop-note');
     if(note&&stop)note.textContent=stop.visit_scope==='outside'?'Здание осматриваем снаружи. Вход в Морской выставочный центр в этот вариант не включён.':`В плане — ${stop.visit} минут внутри Морского выставочного центра. Дорога к музею остаётся на улице.`;
    }
    root.querySelector('[data-city-return]').textContent=timeline.returnAt===null?'Уточняется':timeline.returnAt<1440?clock(timeline.returnAt):'След. день';
    list.dataset.ready='true';
-   const quote=choiceDay?.reference_budget&&cityReferenceMatches(choiceDay.reference_budget,day,draft.itinerary?.people||1)?checkedReferenceBudget(calculate,choiceDay.reference_budget):cityReferenceBudget(calculate,{catalog,menus,route:route.slug,date,people:dayPeople(day,draft.itinerary?.people||1),party:day.party||null,...selection,choices:day.menu_choices||[]});
+   const quote=choiceDay?.reference_budget&&cityReferenceMatches(choiceDay.reference_budget,day,draft.itinerary?.people||1)?checkedReferenceBudget(calculate,choiceDay.reference_budget):cityReferenceBudget(calculate,{catalog,menus,day,route:route.slug,date,people:dayPeople(day,draft.itinerary?.people||1),party:day.party||null,...selection,choices:day.menu_choices||[]});
    root.querySelector('[data-city-total]').textContent=referenceBudgetText(quote.variants.base);
    root.querySelector('[data-city-budget]').textContent=choices.length?'Учтены выбранные порции на группу. Состав и источники — в бюджете ниже.':'Поезда и обед из двух блюд. Состав, варианты и источники — в бюджете ниже.';
    renderReferenceBudget(root.querySelector('[data-day-budget]'),quote);

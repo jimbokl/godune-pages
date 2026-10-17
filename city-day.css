@@ -22,6 +22,9 @@ html[data-theme=day] .city-day .journey-number{background:#7d4512;color:#fff}
 @media(max-width:700px){.city-day-flat .journey-hero{display:block}.city-day-flat .journey-hero-visual{display:none}.city-day-flat .city-essentials{grid-template-columns:1fr;gap:18px;padding:16px 0;margin:12px 0}.city-day-flat .city-essentials h2{font-size:23px;margin-bottom:6px}.city-day-flat .city-essentials p{margin:7px 0}.city-day-flat .city-essentials dl>div{grid-template-columns:105px 1fr;gap:8px}.city-day-flat .city-timeline-stop{grid-template-columns:max-content minmax(0,1fr);column-gap:12px;padding-top:16px}.city-day-flat .journey-stop h3{font-size:23px}.city-day-flat .city-stop-note{font-size:14px}.city-day-flat .city-stop-hour{font-size:14px}.city-day-flat .city-day-save>.button{width:100%;margin:6px 0}.city-day-flat .city-day-actions>.button{width:100%}}
 .city-day-flat .city-stop-photo{float:right;object-fit:cover;width:100px;height:75px;margin:0 0 10px 14px;border-radius:3px}.city-day-flat .city-day-gastro,.city-day-flat .city-day-rain,.city-day-flat .route-stop-actions{clear:both}
 @media(max-width:700px){.city-day-flat .inner-title{font-size:clamp(32px,9vw,42px);line-height:1.06}.city-day-flat .inner-lead{font-size:16px;line-height:1.4}.city-day-flat .city-stop-photo{width:72px;height:62px;margin-left:10px}.city-day-flat .journey-stop h3{font-size:21px}}
+body[data-ui-context] .inner-main .city-day-flat .inner-lead{color:var(--sea-muted)}
+html:not([data-theme]) body[data-ui-context="route"] .inner-main .city-day-flat .inner-lead{color:#b2c1ca}
+html[data-theme=night] body[data-ui-context="route"] .inner-main .city-day-flat .inner-lead{color:#b2c1ca}
 
 /* Controls read as a sentence; the timetable remains a separate reference. */
 .city-inline-settings{margin:20px 0;font:400 16px/2 var(--sans)}

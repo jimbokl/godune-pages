@@ -1,5 +1,5 @@
 import {saveRouteDay,routeDayTarget} from './route-day.mjs?v=2026101707';
-import {withCityDayPlan,cityDayWeather} from './city-day-state.mjs?v=2026101713';
+import {withCityDayPlan,cityDayWeather} from './city-day-state.mjs?v=2026101714';
 import {chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {planInput} from './trip-schedule-state.mjs?v=2026101305';
 import {resolvePair} from './travel-estimates.mjs?v=2026101305';
@@ -10,7 +10,7 @@ export function cityDayPreview(trip,route,catalog,settings,selection){
  const minute=Number(settings.time.slice(0,2))*60+Number(settings.time.slice(3));
  const unchanged=day&&day.date===settings.date&&day.schedule?.start===minute&&cityDayWeather(day)===selection.weather
   &&(!selection.outward||rail?.outward?.id===selection.outward)&&(!selection.inbound||rail?.inbound?.id===selection.inbound);
- if(unchanged)return chooseTripDay(structuredClone(trip),day.id);
+ if(unchanged)return withCityDayPlan(chooseTripDay(structuredClone(trip),day.id),catalog,selection);
  return withCityDayPlan(saveRouteDay(trip,route,catalog,{...settings,edit:true}),catalog,selection);
 }
 // Rust owns waiting, calendars, pauses, reserves, rail constraints and all times.

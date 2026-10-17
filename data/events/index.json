@@ -2,25 +2,16 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "4bddf0267b0690c16c449c4c0dc37721139bbda1f1dd46c44a05c10f1fc19639",
-  "generated_at": "2026-10-17T21:15:41.624Z",
+  "generated_at": "2026-10-17T22:33:19.010Z",
   "updated_at": "2026-10-17T14:04:19.564341Z",
   "window": {
-    "from": "2026-09-17",
-    "to": "2026-11-16",
-    "anchor_date": "2026-10-17",
+    "from": "2026-09-18",
+    "to": "2026-11-17",
+    "anchor_date": "2026-10-18",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-17": {
-      "url": "/data/events/2026-09-17.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-18": {
       "url": "/data/events/2026-09-18.json",
       "count": 0,
@@ -601,6 +592,15 @@
     },
     "2026-11-16": {
       "url": "/data/events/2026-11-16.json",
+      "count": 0,
+      "coverage": {
+        "status": "no_verified_events",
+        "complete": false,
+        "sources": []
+      }
+    },
+    "2026-11-17": {
+      "url": "/data/events/2026-11-17.json",
       "count": 0,
       "coverage": {
         "status": "no_verified_events",
