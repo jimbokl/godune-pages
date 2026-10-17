@@ -32,3 +32,20 @@
 :is(.trip-menu-choices,.menu-choice-form,.dining-menu) :is(button,input,a):focus-visible{outline:2px solid var(--sea-ink);outline-offset:4px}
 :is(.trip-menu-choices,.menu-choice-form) button:disabled{opacity:.6;cursor:wait}
 @media(max-width:650px){.menu-choice-add{font-size:15px}.menu-choice-form .menu-choice-button{font-size:16px}.trip-menu-choices h4{font-size:25px}}
+
+.food-order-preset [data-menu-preset-open]{min-height:44px;width:100%;padding:10px 12px;border:1px solid var(--sea-line);border-radius:10px;background:var(--paper);color:var(--sea-ink);font:500 15px/1.5 var(--sans);cursor:pointer}
+.menu-preset-form{margin-top:16px;text-align:left}
+.menu-preset-rows{margin:16px 0}
+.menu-preset-row{display:grid;grid-template-columns:minmax(0,1fr) 84px;gap:8px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.menu-preset-detail strong{display:block;font:500 16px/1.4 var(--sans);overflow-wrap:anywhere}
+.menu-preset-row .menu-choice-quantity{display:grid;gap:5px;align-content:start;margin:0;min-width:0;font-size:13px}
+.menu-preset-row input{box-sizing:border-box;width:100%;min-width:0;min-height:44px}
+.menu-preset-line-total{grid-column:1/-1;margin:0;font:500 14px/1.5 var(--sans);color:var(--ink);overflow-wrap:anywhere}
+.menu-preset-form .menu-preset-total{font:600 16px/1.6 var(--sans);margin:16px 0;overflow-wrap:anywhere}
+.menu-preset-form .menu-choice-actions{flex-wrap:wrap}
+.menu-preset-form .menu-choice-actions button{min-height:44px;white-space:normal}
+.menu-preset-form .menu-choice-actions [data-menu-preset-save]{flex-basis:100%}
+.menu-preset-form a{color:var(--sea-ink)}
+.menu-preset-form :is(input,select,button,a):focus-visible{outline:2px solid var(--sea-ink);outline-offset:4px}
+[data-menu-preset-status]{font:13px/1.6 var(--sans);color:var(--muted)}
+.food-order-presets-grid>.food-order-preset:has(.menu-preset-form){grid-column:1/-1}

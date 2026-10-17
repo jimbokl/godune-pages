@@ -7,6 +7,11 @@
   perfMark('app-start');
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
+  if(document.querySelector('[data-menu-preset]')){
+    const init=()=>import(url('trip-menu-choices-ui.mjs?v=2026101704')).then(({initDiningMenuChoices})=>initDiningMenuChoices(document,base)).catch(()=>{
+      document.querySelectorAll('[data-menu-preset-status]').forEach(status=>{status.textContent='Добавление обеда пока не загрузилось. ';const retry=document.createElement('button');retry.type='button';retry.textContent='Повторить';retry.addEventListener('click',init);status.append(retry);});
+    });init();
+  }
   const placePathReady = import(url('place-path.mjs?v=2026101406')).then(module => module.placePath);
   // Preserve bookmarks to the tools that used to live on the homepage.
   if(document.body.hasAttribute('data-home-page')) {

@@ -2,7 +2,7 @@ import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
 import {menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
-import {menuChoiceFromTemplate} from './trip-menu-choices-ui.mjs?v=2026101406';
+import {menuChoiceFromTemplate} from './trip-menu-choices-ui.mjs?v=2026101704';
 
 const pickerStates=new WeakMap();
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

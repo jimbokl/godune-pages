@@ -23,6 +23,6 @@ if(root){
  form.hidden=false;form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('submit',event=>{event.preventDefault();filter();});form.addEventListener('reset',()=>queueMicrotask(filter));
  initDiningRouteFilter({root,cards,base,area:'zelenogradsk',onResult(result){eligible=result?new Set(result.eligible_ids):null;showSpatialDistance(new Map(cards.map(card=>[card.dataset.id,card])),result);filter();}});
  // Menu JSON is fetched only for visible cards. Trip/WASM starts on an explicit selection.
- import('./trip-menu-choices-ui.mjs?v=2026101406').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,base,{lazy:true}));
+ import('./trip-menu-choices-ui.mjs?v=2026101704').then(({initDiningMenuChoices})=>initDiningMenuChoices(root,base,{lazy:true}));
  filter();
 }

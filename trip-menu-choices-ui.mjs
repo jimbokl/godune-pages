@@ -3,7 +3,7 @@ import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v
 import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
-import {prepareMenuChoice,confirmMenuChoice,quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101305';
+import {prepareMenuChoice,prepareMenuChoices,menuPresetSelections,confirmMenuChoice,quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101704';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
 import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101305';
 import {dayChangeText} from './trip-day-change-view.mjs?v=2026101305';
@@ -21,8 +21,9 @@ export function menuChoiceMutationFeedback(result,action='update'){
  return result?.saved?'Выбор блюда сохранён.':'Выбор пока в этой вкладке. Скачать его можно вместе с буклетом.';
 }
 export function loadMenuChoiceStyles(base){
- if(document.querySelector('[data-menu-choice-styles]'))return;
- const link=el('link');link.rel='stylesheet';link.href=new URL('menu-choices.css?v=2',base);link.dataset.menuChoiceStyles='';document.head.append(link);
+ const href=new URL('menu-choices.css?v=2026101704',base).href,existing=document.querySelector('[data-menu-choice-styles]');
+ if(existing){if(existing.href!==href)existing.href=href;return;}
+ const link=el('link');link.rel='stylesheet';link.href=href;link.dataset.menuChoiceStyles='';document.head.append(link);
 }
 function quantityField(value){
  const label=el('label','Порции','menu-choice-quantity'),input=el('input');
@@ -173,6 +174,78 @@ export function initDiningMenuChoices(root,base,{lazy=false}={}){
    }finally{daySelect.disabled=input.disabled=cancel.disabled=false;save.disabled=!preview;}
   });
  }
+ function openPreset(article,preset,selections,ctx){
+  opened?.remove();loadMenuChoiceStyles(base);
+  const form=el('form',undefined,'menu-preset-form menu-choice-form'),status=el('p','','menu-preset-status menu-choice-feedback');status.setAttribute('role','status');
+  const dayLabel=el('label','В какой день','menu-choice-day'),daySelect=el('select');daySelect.name='menu-day';dayLabel.append(daySelect);
+  const rows=el('div',undefined,'menu-preset-rows'),fields=selections.map(({template,quantity:count})=>{
+   const row=el('div',undefined,'menu-preset-row');row.dataset.menuItem=template.menu_item_id;
+   const detail=el('div',undefined,'menu-preset-detail');detail.append(el('strong',template.name),el('p',template.portion||'Порция не указана','menu-choice-detail'));
+   const {label,input}=quantityField(count),sum=el('p','','menu-preset-line-total');input.setAttribute('aria-label',`Порции: ${template.name}`);row.append(detail,label,sum);rows.append(row);return {template,input,sum};
+  });
+  const total=el('p','','menu-preset-total menu-choice-total'),effect=el('p','','menu-choice-effect'),timing=el('p','','menu-choice-timing');
+  const source=el('a','Источник меню ↗');source.href=preset.source.url;source.target='_blank';source.rel='noopener noreferrer';
+  const sourceLine=el('p',`Меню от ${dateLabel(preset.source.observed_at)}. `,'menu-choice-detail');sourceLine.append(source);
+  const save=button('Сохранить обед в день');save.type='submit';save.dataset.menuPresetSave='';
+  const cancel=button('Отмена','menu-choice-link');cancel.dataset.menuPresetCancel='';
+  const actions=el('div',undefined,'menu-choice-actions');actions.append(save,cancel);
+  form.append(el('p','Количество порций на всю компанию.','menu-choice-detail'),rows,dayLabel,total,sourceLine,effect,timing,actions,status);article.append(form);opened=form;
+  let preview,revision,sequence=0;
+  function targets(wanted=daySelect.value){
+   const trip=ensureJourney(ctx.memory.get());daySelect.replaceChildren(...journeyDays(trip).map((day,index)=>{const option=el('option',`День ${index+1}${day.date?' · '+dateLabel(day.date):' · без даты'}`);option.value=day.id;return option;}));
+   const extra=el('option','+ Новый день');extra.value='new';daySelect.append(extra);daySelect.value=[...daySelect.options].some(option=>option.value===wanted)?wanted:selectedDay(trip).id;
+  }
+  async function refresh(){
+   const ticket=++sequence;preview=null;save.disabled=true;form.dataset.ready='false';total.textContent='';['known','unknown','total'].forEach(key=>delete total.dataset[key]);timing.textContent='';effect.textContent='';fields.forEach(field=>field.sum.textContent='');
+   try{
+    const trip=ctx.memory.get(),candidate=prepareMenuChoices(trip,fields.map(({template,input})=>({template,quantity:input.valueAsNumber})),daySelect.value,ctx.catalog);
+    const quote=quoteMenuDay(ctx.engine,{...candidate.day,menu_choices:candidate.choices});
+    total.textContent=menuQuoteText(quote);total.dataset.known=quote.known;total.dataset.unknown=quote.unknown;total.dataset.total=quote.total??'';
+    fields.forEach((field,index)=>{field.sum.textContent=menuQuoteText(quoteMenuDay(ctx.engine,{...candidate.day,menu_choices:[candidate.choices[index]]})).replace('По сохранённым ценам меню: ','');});
+    const points=[...new Set(candidate.choices.map(choice=>choice.place?.poi_id).filter(Boolean))],old=journeyDays(ensureJourney(trip)).find(day=>day.id===candidate.targetId);
+    effect.textContent=points.some(point=>!old?.places.includes(point))?'Заведение добавится в остановки этого дня.':'Заведение уже есть в остановках этого дня.';
+    if(points.length){
+     timing.textContent='Сверяем время дня…';
+     const projected=chooseTripDay(candidate.trip,candidate.targetId),baseline=dayChangeBaseline(trip,candidate.trip,candidate.targetId);
+     const [beforeMatrix,matrix]=await Promise.all([baseline,projected].map(day=>loadTripTravelMatrix(base,day,ctx.catalog).catch(()=>null)));
+     if(ticket!==sequence||!form.isConnected)return;
+     try{const change=inspectTripDayChange(ctx.engine,baseline,projected,ctx.catalog,beforeMatrix,matrix);timing.textContent=dayChangeText(change).join(' ');timing.dataset.menuDayState=change.after.state;}
+     catch{timing.textContent='Время дня пока не рассчитано.';timing.dataset.menuDayState='needs_info';}
+    }
+    if(ticket!==sequence||!form.isConnected)return;preview=candidate;revision=ctx.memory.revision;save.disabled=false;form.dataset.ready='true';
+   }catch(error){if(ticket!==sequence||!form.isConnected)return;status.textContent=error.message==='invalid_menu_choice'?'Проверьте количество порций: целое число от 1. Обед пока не сохранён.':'Не удалось рассчитать обед. Измените порции или откройте набор ещё раз. Обед пока не сохранён.';}
+  }
+  cancel.addEventListener('click',()=>{++sequence;form.remove();article.querySelector('[data-menu-preset-open]').focus();});
+  form.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();cancel.click();}});
+  fields.forEach(({input})=>input.addEventListener('input',()=>{status.textContent='';refresh();}));daySelect.addEventListener('change',()=>{status.textContent='';refresh();});
+  form.addEventListener('submit',async event=>{
+   event.preventDefault();if(!preview||save.disabled)return;const chosen=preview,expectedRevision=revision;
+   save.disabled=daySelect.disabled=cancel.disabled=true;fields.forEach(({input})=>input.disabled=true);status.textContent='Сохраняем…';
+   try{
+    await ctx.memory.sync();const confirmed=confirmMenuChoice(ctx.memory.get(),chosen);
+    const result=await ctx.memory.change(current=>{confirmMenuChoice(current,chosen);return confirmed;},{expectedRevision,label:'Обед сохранён в день'});
+    if(result.conflict)throw Error('menu_choice_context_changed');targets(chosen.targetId);
+    status.replaceChildren(el('span',result.saved?`Обед сохранён: ${daySelect.selectedOptions[0].textContent}.`:'Обед пока в этой вкладке. Скачать его можно вместе с буклетом.'));
+    if(result.saved){const link=el('a','Открыть поездку →');link.href=new URL('planner/#my-trip',base);status.append(link);}await refresh();
+   }catch{await ctx.memory.sync();targets();status.textContent='Поездка изменилась. Проверьте обновлённый день и нажмите ещё раз.';await refresh();}
+   finally{daySelect.disabled=cancel.disabled=false;fields.forEach(({input})=>input.disabled=false);save.disabled=!preview;}
+  });
+  targets();refresh();fields[0].input.focus();
+ }
+ if(root.querySelector('article[data-menu-preset]'))loadMenuChoiceStyles(base);
+ root.querySelectorAll('article[data-menu-preset]').forEach(article=>{
+  if(article.dataset.menuPresetReady==='true')return;article.dataset.menuPresetReady='true';
+  const action=article.querySelector('[data-menu-preset-open]'),feedback=article.querySelector('[data-menu-preset-status]');if(!action)return;
+  action.addEventListener('click',async()=>{
+   action.disabled=true;feedback.textContent='Загружаем поездку…';
+   try{
+    const preset=JSON.parse(article.dataset.menuPreset),response=await fetch(new URL('data/gastro-menu-choices.json',base),{cache:'no-cache'});if(!response.ok)throw Error('menu_load');
+    const selections=menuPresetSelections(preset,await response.json()),ctx=await context();await ctx.memory.sync();feedback.textContent='';openPreset(article,preset,selections,ctx);
+   }catch{feedback.textContent='Обед пока не открыт. Проверьте сеть и повторите. Если меню обновилось, обновите страницу.';}
+   finally{action.disabled=false;}
+  });
+  action.hidden=false;
+ });
  async function enhance(menu){
   const card=menu.closest('[data-dining-card]');if(!card||card.dataset.menuClosed==='true'||menu.dataset.menuChoicesReady==='true')return;
   loadMenuChoiceStyles(base);
@@ -187,7 +260,7 @@ export function initDiningMenuChoices(root,base,{lazy=false}={}){
    menu.querySelectorAll('.food-menu-source').forEach((article,m)=>article.querySelectorAll('.food-menu-category').forEach((category,c)=>{
     let installed=false;
     function controls(){
-     if(installed||!category.open)return;installed=true;
+     if(installed||(category.tagName==='DETAILS'&&!category.open))return;installed=true;
      [...category.querySelector('.food-menu-items').children].forEach((row,i)=>{
       const template=data.items[menuChoiceKey(row.dataset.menuKey,m,c,i)];if(!menuTemplateMatchesRow(template,row,article))return;
       const action=button('В день +','menu-choice-add');action.dataset.menuChoose=template.menu_item_id;action.setAttribute('aria-label',`Добавить ${template.name} в день`);
