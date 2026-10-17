@@ -2,7 +2,7 @@
 import {validTransfer,validTransferPoint} from './trip-transfer-costs.mjs?v=2026101305';
 import {validOfferSource} from './trip-offers-state.mjs?v=2026101305';
 import {validMenuExpenseLink} from './trip-menu-expenses-contract.mjs?v=2026101305';
-import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=2026101305';
+import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=2026101706';
 const object=v=>!!v && typeof v==='object' && !Array.isArray(v);
 const amount=v=>v===null || Number.isSafeInteger(v) && v>=0;
 const date=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !v.startsWith('0000') && Number.isFinite(Date.parse(v+'T12:00:00Z')) && new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;

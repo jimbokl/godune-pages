@@ -1,5 +1,5 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
+import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101706';
 
 const states=new WeakMap();
 const el=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};

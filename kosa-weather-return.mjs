@@ -1,4 +1,4 @@
-import {kosaInput} from './kosa-plan-state.mjs?v=2026101402';
+import {kosaInput} from './kosa-plan-state.mjs?v=2026101706';
 import {kosaOuting} from './kosa-outing.mjs?v=2026101402';
 // Preview a shorter day using the same engine, without changing the saved trip.
 export function kosaWeatherReturn(answers,original,table,catalog,engine) {

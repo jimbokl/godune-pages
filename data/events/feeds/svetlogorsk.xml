@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>GoDune — события: Светлогорск</title>
+    <link>https://godune.ru/events/?city=svetlogorsk</link>
+    <description>Новые события и изменения афиши. Время — Калининград. Уточняйте условия у организатора.</description>
+    <language>ru</language>
+    <ttl>360</ttl>
+    <atom:link href="https://godune.ru/data/events/feeds/svetlogorsk.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Вечер джаза</title>
+      <link>https://godune.ru/events/#event-e15902bc9b961b4e</link>
+      <guid isPermaLink="false">urn:godune:event:event-e15902bc9b961b4e:f2e511981aa8b655dce7</guid>
+      <description>Светлогорск · Органный зал "Макаров"
+17.10.2026 19:00 (Калининград)
+Окончание: время не подтверждено
+В программе: классика джаза и авторские композиции. 6+. Продолжительность: 1 час 10 минут.
+По билетам · 2000 ₽. Онлайн и в кассе зала.
+Проверено по источнику: 2026-10-16
+Источник: https://organhall.ru/</description>
+      <category>Светлогорск</category>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Гении барокко: Бах и Вивальди</title>
+      <link>https://godune.ru/events/#event-e62ffabad0d905ee</link>
+      <guid isPermaLink="false">urn:godune:event:event-e62ffabad0d905ee:461b783ac3ce09e8dfb5</guid>
+      <description>Светлогорск · Органный зал "Макаров"
+19.10.2026 16:00 (Калининград)
+Окончание: время не подтверждено
+В программе: Иоганн Себастьян Бах, Антонио Вивальди. 6+. Продолжительность: 1 час 10 минут.
+По билетам · 1500 ₽. Билеты только в кассе зала.
+Проверено по источнику: 2026-10-16
+Источник: https://organhall.ru/</description>
+      <category>Светлогорск</category>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Шедевры органной музыки</title>
+      <link>https://godune.ru/events/#event-749e4139bcb56846</link>
+      <guid isPermaLink="false">urn:godune:event:event-749e4139bcb56846:03af71e90bcb479cbc94</guid>
+      <description>Светлогорск · Органный зал "Макаров"
+21.10.2026 16:00 (Калининград)
+Окончание: время не подтверждено
+В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари Видор. 6+. Продолжительность: 1 час 10 минут.
+По билетам · 1500 ₽. Билеты только в кассе зала.
+Проверено по источнику: 2026-10-16
+Источник: https://organhall.ru/</description>
+      <category>Светлогорск</category>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Орган — голос веков</title>
+      <link>https://godune.ru/events/#event-e1f424ecbcbc4a9d</link>
+      <guid isPermaLink="false">urn:godune:event:event-e1f424ecbcbc4a9d:5e121f97cee660f9b217</guid>
+      <description>Светлогорск · Органный зал "Макаров"
+23.10.2026 16:00 (Калининград)
+Окончание: время не подтверждено
+В программе: И.С. Бах, М. Дюрюфле, Феликс Мендельсон, Габриэль Пьерне. 6+. Продолжительность: 1 час 10 минут.
+По билетам · 1500 ₽. Билеты только в кассе зала.
+Проверено по источнику: 2026-10-16
+Источник: https://organhall.ru/</description>
+      <category>Светлогорск</category>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Куин / Queen</title>
+      <link>https://godune.ru/events/#event-yantarhall-queen-2026-10-30</link>
+      <guid isPermaLink="false">urn:godune:event:event-yantarhall-queen-2026-10-30:865f39cfa08a62dcb960</guid>
+      <description>Светлогорск · Театр эстрады «Янтарь-Холл»
+30.10.2026 19:00 (Калининград)
+Окончание: время не подтверждено
+Шоу «Богемская рапсодия» в сопровождении симфонического оркестра
+Билеты от 1900 ₽ · 6+.
+Проверено по источнику: 2026-10-17T09:50:54Z
+Источник: https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/</description>
+      <category>Светлогорск</category>
+      <pubDate>Sat, 17 Oct 2026 09:50:54 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

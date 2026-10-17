@@ -1,30 +1,31 @@
-import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101501';
+import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101706';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {loadWalkProgress} from './walk.mjs?v=2026101305';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101305';
-import {initTripSharing} from './trip-link.mjs?v=2026101705';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101305';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101305';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101706';
+import {initTripSharing} from './trip-link.mjs?v=2026101706';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101706';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101706';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=2026101705';
-import {createPlanningProgress} from './planning-progress.mjs?v=2026101305';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101305';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101305';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101705';
-import {initTripDays} from './trip-days-ui.mjs?v=2026101705';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101705';
-import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101305';
+import {createPlanningProgress} from './planning-progress.mjs?v=2026101706';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101706';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101706';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101706';
+import {initTripDays} from './trip-days-ui.mjs?v=2026101706';
+import {initTripEvents} from './trip-events-ui.mjs?v=2026101706';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101706';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101706';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
-import {initDayWorkspace} from './day-workspace.mjs?v=2026101705';
-import {addTripStarter} from './trip-starters.mjs?v=2026101305';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101305';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101305';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101705';
-import {initTripRail} from './trip-rail-ui.mjs?v=2026101705';
-import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=2026101305';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101305';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
+import {initDayWorkspace} from './day-workspace.mjs?v=2026101706';
+import {addTripStarter} from './trip-starters.mjs?v=2026101706';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101706';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101706';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101706';
+import {initTripRail} from './trip-rail-ui.mjs?v=2026101706';
+import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=2026101706';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101706';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101305';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101706';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }
@@ -115,6 +116,7 @@ export async function initWorkshop(catalog, base) {
   await yieldTask();
   const days = initTripDays({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   const visits = initServiceVisits({mount:$('#my-trip'),read:()=>state,commit,base,catalog,onExpense:days.recordServiceExpense});
+  const events=initTripEvents({read:()=>state,commit,base,catalog});
   const transportPlans=initTransportPlans({mount:$('#my-trip'),read:()=>state,commit,base,catalog});
   await yieldTask();
   const cancellation = initTripCancellation({read:()=>state,commit,catalog});
@@ -189,6 +191,7 @@ export async function initWorkshop(catalog, base) {
     rail.render();
     days.render();
     visits.render();
+    events.render();
     transportPlans.render();
     replacement.render();
     cancellation.render();

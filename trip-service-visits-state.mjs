@@ -1,7 +1,7 @@
 // Rust owns calculations; this adapter owns membership and user notes.
-import {ensureJourney,selectedDay,journeyDays,validTripDate,addTripDay,chooseTripDay,dayHasContent} from './trip-days-state.mjs?v=2026101305';
-import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
-export {serviceVisitRows,serviceVisitContext,serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=2026101305';
+import {ensureJourney,selectedDay,journeyDays,validTripDate,addTripDay,chooseTripDay,dayHasContent} from './trip-days-state.mjs?v=2026101706';
+import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
+export {serviceVisitRows,serviceVisitContext,serviceVisitImportIssue} from './trip-service-visits-contract.mjs?v=2026101706';
 function dayFor(trip,id){
  const day=id?trip.itinerary.days.find(d=>d.id===id):selectedDay(trip);
  if(!day)throw Error('День поездки не найден.');

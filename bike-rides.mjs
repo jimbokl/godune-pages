@@ -1,14 +1,14 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=2026101705';
-import {bikeStopKinds,selectBikeStops,addBikeStop,removeBikeStop} from './bike-stops-state.mjs?v=2026101705';
-import {bikeRentalChoices,prepareBikeRental} from './bike-rental-state.mjs?v=2026101705';
+import {bikeSettings,selectBikeRides,appendBikeDay,bikeGuard} from './bike-rides-state.mjs?v=2026101706';
+import {bikeStopKinds,selectBikeStops,addBikeStop,removeBikeStop} from './bike-stops-state.mjs?v=2026101706';
+import {bikeRentalChoices,prepareBikeRental} from './bike-rental-state.mjs?v=2026101706';
 import {bikeRentalPicker} from './bike-rental-ui.mjs?v=2026101705';
 import {bikeDistance} from './bike-route-profile.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
 import {loadTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {createScenarioJournal} from './scenario-journal.mjs?v=2026101305';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101305';
-import {journeyDays} from './trip-days-state.mjs?v=2026101305';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101706';
+import {journeyDays} from './trip-days-state.mjs?v=2026101706';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-bike-rides]');
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 const names={fits:'По вашим условиям',needs_info:'Нужно уточнить',does_not_fit:'Не подходят'};
@@ -39,7 +39,7 @@ if(root){
  async function load(){
   if(!pending)pending=(async()=>{
    const [{createTripMemory},{loadTrip},catalogResponse,ridesResponse,rentalsResponse,matrix,engine]=await Promise.all([
-    import('./trip-memory.mjs?v=2026101305'),import('./trip-memory-bootstrap.mjs?v=2026101305'),
+    import('./trip-memory.mjs?v=2026101706'),import('./trip-memory-bootstrap.mjs?v=2026101706'),
     fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/bike-rides.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadTravelMatrix(base),loadScheduler(base)]);
    if(!catalogResponse.ok||!ridesResponse.ok||!rentalsResponse.ok)throw Error('Не удалось открыть места и прогулки. Нажмите «Подобрать прогулку», чтобы повторить.');
    const catalog=await catalogResponse.json(),rides=await ridesResponse.json(),rentals=await rentalsResponse.json();let storage;try{storage=localStorage;}catch{}
@@ -117,7 +117,7 @@ if(root){
    const gpx=node('button','Скачать трек GPX ↓','bike-gpx'),feedback=node('p',undefined,'bike-gpx-status');gpx.type='button';feedback.setAttribute('role','status');
    gpx.addEventListener('click',async()=>{
     if(gpx.disabled)return;gpx.disabled=true;gpx.textContent='Собираем трек…';feedback.textContent='';const ticket=sequence,settings=currentSettings;let module;
-    try{module=await import('./day-gpx-ui.mjs?v=2026101705');const result=await module.downloadDayGpx({trip:chosen.trip,catalog:ctx.catalog,matrix:ctx.matrix,engine:ctx.engine,base,stillCurrent:()=>ticket===sequence&&settings===currentSettings&&rows.includes(row)&&article.isConnected});feedback.textContent=module.gpxReady(result);}
+    try{module=await import('./day-gpx-ui.mjs?v=2026101706');const result=await module.downloadDayGpx({trip:chosen.trip,catalog:ctx.catalog,matrix:ctx.matrix,engine:ctx.engine,base,stillCurrent:()=>ticket===sequence&&settings===currentSettings&&rows.includes(row)&&article.isConnected});feedback.textContent=module.gpxReady(result);}
     catch(error){feedback.textContent=module?module.gpxMessage(error):'Трек пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
     finally{gpx.textContent='Скачать трек GPX ↓';gpx.disabled=false;}
    });actions.append(gpx,feedback);

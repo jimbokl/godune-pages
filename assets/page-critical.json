@@ -3979,14 +3979,19 @@
           "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
         },
         {
+          "path": "nearby-events.css",
+          "media": "all",
+          "sha256": "c34b0f6061c744a37f561210ca16510404bebb3e49ec5cc4fee14c06a1aa418e"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "a26b6ee39ac70cd70d5b9c8fbdfb2d407e0e1a657a76023e3d91d05102eebca7",
-      "source_bytes": 502925,
-      "critical_bytes": 107835
+      "sha256": "d9d324dafe0f35cd87e8cf5f6d819d686dd5cf89bb2bf3c9cbc1f2692e09ba3f",
+      "source_bytes": 508562,
+      "critical_bytes": 111377
     },
     "waves/index.html": {
       "sources": [
@@ -5067,14 +5072,19 @@
           "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
         },
         {
+          "path": "nearby-events.css",
+          "media": "all",
+          "sha256": "c34b0f6061c744a37f561210ca16510404bebb3e49ec5cc4fee14c06a1aa418e"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
         }
       ],
-      "sha256": "758d35b693653c85d4bb354a40b868dd0fe167e5bdf8b8a1f01b2b0a44e888da",
-      "source_bytes": 502925,
-      "critical_bytes": 108960
+      "sha256": "f5c1b6bd237d5f215eb950196c19eda75b41e59880b3394cee4d8558fe807747",
+      "source_bytes": 508562,
+      "critical_bytes": 112502
     }
   }
 }

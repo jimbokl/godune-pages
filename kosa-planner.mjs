@@ -1,17 +1,17 @@
 import {kosaFamilyPlan,kosaOuting} from './kosa-outing.mjs?v=2026101402';
-import {kosaWeatherReturn} from './kosa-weather-return.mjs?v=2026101402';
+import {kosaWeatherReturn} from './kosa-weather-return.mjs?v=2026101706';
 import {kosaQuickPlan} from './kosa-quick-plan.mjs?v=2026101401';
 import {initKosaDinner} from './kosa-dinner-ui.mjs?v=2026101307';
 import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101305';
 import {transitTable} from './transport-day.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
-import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101402';
-import {createTripFile} from './trip-file.mjs?v=2026101305';
-import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101402';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
+import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101706';
+import {createTripFile} from './trip-file.mjs?v=2026101706';
+import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101706';
 import {assessKosa} from './day-readiness.mjs?v=2026101305';
-import {kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101305';
-import {journeyDays} from './trip-days-state.mjs?v=2026101305';
-import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101402';
+import {kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101706';
+import {journeyDays} from './trip-days-state.mjs?v=2026101706';
+import {initKosaHomeEditor} from './kosa-home-editor.mjs?v=2026101706';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
 const duration=n=>`${Math.floor(n/60)?`${Math.floor(n/60)} ч `:''}${n%60?`${n%60} мин`:''}`.trim();
 const cityNote={zelenogradsk:'План начинается у автобуса № 210 в Зеленоградске. Дорогу от жилья до остановки добавьте отдельно.',
@@ -251,13 +251,13 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           try{
             if(answers.dinner){
               const outcome=await persist();abort.signal.throwIfAborted();if(ticket!==sequence)return;
-              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101705');
+              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101706');
               const output=await downloadPersonalGuide({trip:copy,catalog,base,scope:'day',format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;},stillCurrent:()=>ticket===sequence&&JSON.stringify(copy)===JSON.stringify(workshop.getState())});
               pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Коса, возвращение, ужин и выбранные порции — в одном файле.`;
               saveStatus.textContent=outcome.saved?'Весь день и блюда сохранены в этом браузере.':'Весь день остаётся в этой вкладке и в скачанном PDF.';
               await workshop.progress?.action(attempt,'pdf_ready');return;
             }
-            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101402');abort.signal.throwIfAborted();
+            const {makeKosaPdf}=await import('./kosa-pdf.mjs?v=2026101706');abort.signal.throwIfAborted();
             const output=await makeKosaPdf({snapshot:structuredClone(roadbook),base,format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;}});
             abort.signal.throwIfAborted();if(ticket!==sequence)return;
             download(output.bytes,`godune-kosa-${answers.date}-${output.format}.pdf`,'application/pdf');

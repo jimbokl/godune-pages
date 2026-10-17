@@ -1,9 +1,9 @@
 import {visitedPlaces} from './day-progress.mjs?v=2026101305';
-import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=2026101305';
+import {previewProgress,applyProgress,clearProgress,progressMessages} from './day-progress-advice.mjs?v=2026101706';
 import {tripSignature,lightMessage} from './trip-light.mjs?v=2026101305';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 import {generatedDayPoints} from './day-points.mjs?v=2026101305';
-import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101305';
+import {kosaContinuationMessage} from './day-kosa-progress.mjs?v=2026101706';
 import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
 import {railProblem} from './day-journey-view.mjs?v=2026101305';
 

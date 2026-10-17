@@ -1,10 +1,10 @@
 // Current order and directed facts enter Rust; computed values stay out of memory.
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
 import {resolveDirectedTravel,travelMode} from './travel-estimates.mjs?v=2026101305';
 import {transferChoices,validTransferConnections} from './trip-transfer-connections-contract.mjs?v=2026101305';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 import {vehicleItinerary} from './day-vehicle-itinerary.mjs?v=2026101305';
-import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101305';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101706';
 // Rust's JSON serializer can reorder object keys. Physical identity and source
 // evidence must survive that round trip without inventing a second landmark.
 const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;
@@ -67,11 +67,12 @@ export function serviceItineraryInput(trip,day,plan,visits,catalog,matrix,physic
  const available=new Set(boundVisits.map(v=>v.id)),ordinary=new Set(day.places);
  const manualAnchors=new Map();
  for(const visit of boundVisits){
-  const anchor=serviceVisitAnchor(visit);if(!anchor)continue;
+  const anchor=serviceVisitAnchor(visit,catalog);if(!anchor)continue;
   const p=visit.point,source=anchor.source;
   // A saved map point binds a manual arrival to a landmark, never to a door.
   // Share only the same physical landmark with identical dated evidence.
-  const existing=p&&graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&same(a.source,source));
+  const catalogExisting=visit.event?.place_id&&graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='catalog'&&a.location.id===visit.event.place_id&&a.revision===anchor.revision&&same(a.source,source));
+  const existing=catalogExisting||p&&graph.anchors.find(a=>a.kind==='landmark'&&a.location?.kind==='point'&&a.location.lat===p.lat&&a.location.lon===p.lon&&same(a.source,source));
   if(existing){manualAnchors.set(visit.id,existing.id);continue;}
   while(anchors.has(anchor.id))anchor.id+='_';
   anchors.set(anchor.id,anchor);graph.anchors.push(anchor);manualAnchors.set(visit.id,anchor.id);

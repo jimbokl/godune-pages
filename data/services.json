@@ -3343,6 +3343,16 @@
       ]
     },
     {
+      "id": "poi:f7848315-1c1c-5db6-b5d9-2287eb7e4c55",
+      "name": "Театр эстрады «Янтарь-холл»",
+      "references": [
+        {
+          "kind": "poi",
+          "slug": "yantar-hall"
+        }
+      ]
+    },
+    {
       "id": "poi:faaab7ee-3244-5c9c-a31a-9501df74de19",
       "name": "Балтийский маяк",
       "references": [
@@ -8045,6 +8055,20 @@
       }
     },
     {
+      "id": "branch:poi:f7848315-1c1c-5db6-b5d9-2287eb7e4c55",
+      "place_id": "poi:f7848315-1c1c-5db6-b5d9-2287eb7e4c55",
+      "name": "Театр эстрады «Янтарь-холл»",
+      "area": "svetlogorsk",
+      "address": null,
+      "location": {
+        "kind": "catalog",
+        "reference": {
+          "kind": "poi",
+          "slug": "yantar-hall"
+        }
+      }
+    },
+    {
       "id": "branch:poi:faaab7ee-3244-5c9c-a31a-9501df74de19",
       "place_id": "poi:faaab7ee-3244-5c9c-a31a-9501df74de19",
       "name": "Балтийский маяк",
@@ -12325,7 +12349,7 @@
     }
   ],
   "provenance": {
-    "version": 1,
+    "version": 2,
     "facts": [
       {
         "subject": {
@@ -12432,6 +12456,7 @@
         "note": "Допустимые точки возврата не опубликованы."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12445,6 +12470,7 @@
         "value": 30000
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12460,6 +12486,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:velovoyage39:standard-day"
@@ -12473,6 +12500,7 @@
         "value": 150000
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:velovoyage39:standard-day"
@@ -12488,6 +12516,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:gnezdo:mackerel"
@@ -12501,6 +12530,7 @@
         "value": 82000
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:gnezdo:mackerel"
@@ -12516,6 +12546,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:gnezdo:fish-soup"
@@ -12529,6 +12560,7 @@
         "value": 39000
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:gnezdo:fish-soup"
@@ -12544,6 +12576,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12562,6 +12595,7 @@
         "note": "300 ₽/час опубликовано. Округление неполного часа и минимальный оплачиваемый период в договоре не опубликованы; не использовать как подтверждённый окончательный счёт."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:velovoyage39:collect"
@@ -12644,6 +12678,7 @@
         "note": "Май–октябрь, вторник–воскресенье 10:00–20:00; понедельник выходной. Вне сезона по записи."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:velovoyage39:return"
@@ -12726,6 +12761,7 @@
         "note": "Май–октябрь, вторник–воскресенье 10:00–20:00; понедельник выходной. Вне сезона по записи."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:gnezdo:venue"
@@ -12776,6 +12812,7 @@
         ]
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:gnezdo:kitchen"
@@ -12966,6 +13003,7 @@
         "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного часа; для расчёта выбираются целые часы."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:vostok:bath"
@@ -13141,6 +13179,7 @@
         "value": "finnish"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:vostok:visit"
@@ -13308,6 +13347,7 @@
         "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного часа; для расчёта выбираются целые часы."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:dom-poeta:bath"
@@ -13743,6 +13783,7 @@
         "value": "Баден Аква Спа · входные тарифы"
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:baden39:admission"
@@ -13970,6 +14011,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:baden39:admission"
@@ -13990,6 +14032,7 @@
         "note": "Время от получения электронного браслета до расчёта на кассе. Дорога и оформление до браслета не включены; переодевания включены."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:baden39:admission"
@@ -14006,6 +14049,7 @@
         "note": "На странице калькулятора не установлена сумма возвратного залога; неизвестное не заменено нулём."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:baden39:visit"
@@ -14258,6 +14302,7 @@
         "value": "NEWFitness · дневной вход"
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:newfitness:day"
@@ -14305,6 +14350,7 @@
         "value": "day_pass"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:newfitness:visit"
@@ -14318,6 +14364,7 @@
         "value": "visit"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:newfitness:visit"
@@ -14585,6 +14632,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:nonstop:single"
@@ -14610,6 +14658,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:nonstop:single"
@@ -14622,6 +14671,7 @@
         }
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "calendar",
           "id": "calendar:nonstop:fitness"

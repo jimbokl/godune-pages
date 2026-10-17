@@ -1,0 +1,64 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-07",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "ocean-space-week-2026"
+    ]
+  },
+  "events": [
+    {
+      "id": "cosmic-visitors-2026",
+      "title": "Космические пришельцы",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-07",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Лекция",
+      "venue": "Образовательный центр ОКЕАНиЯ",
+      "description": "Астроном Валерий Сыткин расскажет о метеоритах в истории Солнечной системы.",
+      "admission": "Бесплатно · по регистрации.",
+      "price": 0,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-meteorite-960.webp",
+        "src_small": "assets/editorial/events-meteorite-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Метеорит в боковом свете",
+        "kind": "illustration"
+      },
+      "venue_id": "ocean-education",
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-07T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null
+    }
+  ]
+}

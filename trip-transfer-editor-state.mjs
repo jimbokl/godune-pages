@@ -1,11 +1,11 @@
 // Build portable selections from published tables and explicitly entered estimates.
 // Rust remains the only calculator of waits, missed boardings and day feasibility.
-import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101305';
+import {selectedDay,changeDayDetails} from './trip-days-state.mjs?v=2026101706';
 import {bookingEffects,saveBooking} from './trip-bookings-state.mjs?v=2026101305';
 import {validBase} from './personal-points.mjs?v=2026101305';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
-import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101305';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
+import {serviceVisitAnchor} from './service-visit-anchor.mjs?v=2026101706';
 import {serviceDay,validServiceDate} from './service-calendar.mjs?v=2026101305';
 import {connectionKey,transferChoices} from './trip-transfer-connections-contract.mjs?v=2026101305';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries,canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
@@ -31,7 +31,7 @@ export function transferEndpoint(entry,day,catalog,side){
   return poi?point(entry.id,poi.name,poi):null;
  }
  const visit=serviceVisitRows(day).find(v=>v.id===entry.id),input=visit?.selection?.visit?.input;
- if(visit?.selection?.visit?.kind==='manual')return serviceVisitAnchor(visit);
+ if(visit?.selection?.visit?.kind==='manual')return serviceVisitAnchor(visit,catalog);
  if(!['directed','rental'].includes(visit?.selection?.visit?.kind))return null;
  const id=input.selection[side==='from'?'back_to':'from'];
  return copy(input.graph.anchors.find(a=>a.id===id)||null);

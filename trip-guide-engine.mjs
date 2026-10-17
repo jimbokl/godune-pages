@@ -1,15 +1,15 @@
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 import {guidePhotoMetadata} from './author-photo.mjs?v=20261016';
 import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
 import {partyLabel,dayPeople} from './trip-party.mjs?v=2026101305';
 import {checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
-import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101705';
+import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101706';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
 import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
@@ -22,9 +22,10 @@ import {buildGuide} from './virtual-guide-engine.mjs?v=2026101406';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=2026101305';
 import {waveLabel} from './day-wave.mjs?v=2026101305';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101705';
-import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101305';
-import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101305';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101706';
+import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101706';
+import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101706';
+import {guideRegionDate,guideClaimSnapshot,guideFactFreshness,guideClaimFreshness,guideFreshnessText,guideClaimWarning,guideMenuPrice} from './trip-guide-evidence.mjs?v=2026101706';
 
 const notes={unknown_travel:'Время дороги ещё неизвестно.',unknown_opening:'Часы посещения не записаны.',opening_needs_check:'Расчёт по опубликованным часам.',unknown_kitchen:'Последний заказ кухни: время не указано.',kitchen_needs_check:'Кухня учтена по опубликованным часам.',kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К этому времени кухня уже не принимает заказ.',travel_needs_check:'Время дороги — оценка.',unknown_approach:'Неизвестно время подхода ко входу.',unknown_return:'Неизвестно время возвращения к парковке.',access_needs_check:'Время подхода ко входу и обратно — оценка.',transport_needs_check:'Переправу нужно сверить на дату поездки.',transport_incomplete:'Не хватает времени пути или расписания переправы.',transport_conflict:'Возвращение с переправы не складывается.',closed:'По выбранным часам в этот день посещений нет.',window_missed:'Осмотр не помещается в часы входа или сеанс.',appointment_needs_check:'Без времени дороги прибытие к билету нельзя подтвердить.',appointment_venue_conflict:'Время билета не совпадает с известными часами посещения.'};
 export function guideIssue(issue) {
@@ -144,7 +145,7 @@ function orderedGuideLegs(trip,catalog,matrix,result,services,rows,entries) {
   return legs;
 }
 
-export async function collectTripGuide({trip,catalog,scope='day',calculate,matrixFor,roadsFor,kosaFor,createdAt=new Date().toISOString()}) {
+export async function collectTripGuide({trip,catalog,scope='day',calculate,matrixFor,roadsFor,kosaFor,createdAt=new Date().toISOString(),asOf=guideRegionDate(createdAt)}) {
   if(!['day','trip'].includes(scope))throw Error('guide_invalid_scope');
   const saved=structuredClone(trip),allDays=journeyDays(saved),days=scope==='day'?[selectedDay(saved)]:allDays,out=[];
   for(const [index,record] of days.entries()) {
@@ -152,7 +153,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const kosa=generated?await kosaFor(current):null;
     const points=[...new Set([...(generated?['vysota-efa',...(record.kosa_plan.walks==='two'?['tancuyushchiy-les']:[])]:[]),...current.places])];
     const guide=buildGuide(catalog,{trip:{...current,places:points}});
-    const matrix=generated||transportOnly?null:await matrixFor(current),services=serviceGuide(calculate,current,catalog,matrix);
+    const matrix=generated||transportOnly?null:await matrixFor(current),services=serviceGuide(calculate,current,catalog,matrix,{asOf});
     // A separate transport receipt affects certainty, not the known walking geometry.
     const geometryServices=services?.check?.itinerary||services?.services?.length||Object.hasOwn(record,'timeline')||Object.hasOwn(record,'transfer_connections')||usesJourneyBoundaries(record,catalog)?services:null;
     const result=generated||transportOnly?null:services?.check?.itinerary?services.check.places:calculate(planInput(current,catalog,matrix));
@@ -169,11 +170,13 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     if(services?.services?.length&&!services.check?.itinerary){rows.push({id:'separate-visits',kind:'notice',time:null,title:'Посещения вне расчёта прогулки',text:services.error||'Выбранные посещения показаны отдельно. Дорога между ними и прогулкой ещё не рассчитана.',state:'unknown'},...services.services.map(v=>serviceRow(v)));}
     if(services?.issues.length)rows.push({id:'service-day-issues',kind:'notice',time:null,title:'Перед выходом',text:services.issues.join(' '),issue_codes:(services.check?.issues||[]).map(issue=>issue.code),state:'unknown'});
     if(transport.length)rows.push(...transportGuideRows(transport,record));
-    const stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);
+    const evidenceClaims=[],stops=guide.stops.map(point=>{const p=catalog.poi.find(p=>p.slug===point.id);
       // Hours and admission are separate canonical facts, but must travel with
       // the offline place card just like access conditions and their sources.
       const facts=[p.hours,p.price,...(p.visit_conditions || [])].filter(Boolean),seen=new Set();
       const conditions=facts.filter(fact=>{if(seen.has(fact.id))return false;seen.add(fact.id);return true;});
+      for(const condition of conditions){const path=condition===p.hours?'/hours':condition===p.price?'/price':`/visit_conditions/${(p.visit_conditions||[]).indexOf(condition)}`;
+        evidenceClaims.push({record:condition,subject:{kind:'place',id:point.id},path,policy:condition===p.hours?'opening_hours':condition===p.price?'restaurant_price':'visitor_conditions'});}
       const photo_metadata=guidePhotoMetadata(p);
       return {...point,story:orderedStory(point,p),photo_metadata,path:placePath(catalog,point.id),completed:!!current.schedule?.progress?.completed.includes(point.id),photo:photo_metadata?.src||ownPointPhoto(p),conditions:structuredClone(conditions)};});
     const entries=guideEntries(record,stops,services?.services||[]),legs=orderedGuideLegs(current,catalog,matrix,result,geometryServices,rows,entries);
@@ -183,14 +186,20 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;
     if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
+    const menuChoices=menuChoiceGuide(record,{evaluateFreshness:false});
+    for(const [i,row]of menuChoices.entries())evidenceClaims.push({record:{...row.choice.price,source_url:row.choice.source.url},subject:{kind:'place',id:row.poi||row.choice.place?.id||row.id},path:`/menus/${i}`,policy:'restaurant_price'});
+    const evidenceSnapshot=guideClaimSnapshot(calculate,evidenceClaims),freshness=guideFactFreshness(calculate,evidenceSnapshot,asOf,current.date);
+    for(const stop of stops)stop.condition_evidence=stop.conditions.map(condition=>{const claim=evidenceClaims.find(v=>v.subject.id===stop.id&&v.record.id===condition.id),report=guideClaimFreshness(freshness,claim.subject,claim.path);return {id:condition.id,freshness:report,text:report?guideClaimWarning(report):''};});
+    for(const [i,row]of menuChoices.entries()){const claim=evidenceClaims.find(v=>v.path===`/menus/${i}`);row.fact_freshness=guideClaimFreshness(freshness,claim.subject,claim.path);row.freshness=row.fact_freshness?.facts?.[0]?.freshness||'unknown';row.price=guideMenuPrice(row,row.fact_freshness);}
     out.push({id:record.id,number:allDays.findIndex(d=>d.id===record.id)+1 || index+1,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${allDays.findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:services?(services.check?.state||'needs_info'):transport.length?'needs_info':generated?kosa.state:result.status,summary:services?services.summary+(generated?' '+kosa.message:''):transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status],
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       slack_label:generated?(kosa.book?.home?'запас до возвращения':'запас до конца заданного окна дня'):result?.rail?.home?'запас до выбранного обратного рейса':'запас до конца заданного окна дня',
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,
-      stops,entries,menu_choices:menuChoiceGuide(record),menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),...guideReferenceBudget(calculate,record,saved.itinerary?.people||1),
+      stops,entries,menu_choices:menuChoices,menu_quote:menuQuote,services:services?.services||[],services_budget:services?.check?.services_budget||null,expenses:guideExpenses(calculate,current),...guideReferenceBudget(calculate,record,saved.itinerary?.people||1),
+      ...(evidenceClaims.length?{evidence:{snapshot:evidenceSnapshot,freshness},freshness_text:evidenceSnapshot.facts.length<evidenceClaims.length?'Свежесть части сведений не проверена: нет собственного датированного источника или недоступна оценка. '+(freshness?guideFreshnessText(freshness):'Уточните сведения перед выходом.'):guideFreshnessText(freshness)}:{}),
       bookings:(record.bookings || []).map(row=>({...structuredClone(row),kindLabel:BOOKING_KINDS[row.kind],statusLabel:BOOKING_STATUSES[row.status],locationLabel:baseName(row.location,catalog),problem:bookingProblem(row,record)})),
       planB:transportOnly&&transport.length===1?transportPlanB(transport[0].receipt):generated?kosa.book?.fallback || 'Откройте прежний план косы и подтвердите рейсы. До этого точное возвращение неизвестно.':'Если задержались или устали, сохраните время билета и обратного рейса. Пропустите гибкую остановку. После изменения дня пересчитайте дорогу; этот файл сам не обновляется.'});
   }
-  return {version:1,scope,created_at:createdAt,title:scope==='day'?out[0].name:'Ваша поездка на Балтийской волне',days:out};
+  return {version:1,scope,created_at:createdAt,as_of:asOf,title:scope==='day'?out[0].name:'Ваша поездка на Балтийской волне',days:out};
 }

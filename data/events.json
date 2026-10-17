@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "checked_at": "2026-10-16",
+  "version": 2,
+  "checked_at": "2026-10-17",
   "sources": {
     "ocean-space-week-2026": {
       "name": "Музей Мирового океана · Всемирная неделя космоса",
@@ -16,24 +16,26 @@
     "event-source-d1f1d01100e1625b": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Саундтреки на органе",
       "url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
-      "checked_at": "2026-10-16",
-      "sha256": "08d9682bf6b65bd2ecae72b8c0a07f5ed74085ce5dfcff8f1499f07198efb723",
-      "private_capture": "runtime/events-refresh/verified-2026-10-16/08d9682bf6b65bd2ecae72b8c0a07f5ed74085ce5dfcff8f1499f07198efb723.html",
+      "checked_at": "2026-10-17",
+      "sha256": "bb4d462e19d038d69badefe558632e34b8537d319168c776d52e1a6e0ffb6767",
+      "private_capture": "runtime/events-refresh/verified-2026-10-17/bb4d462e19d038d69badefe558632e34b8537d319168c776d52e1a6e0ffb6767.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
-      }
+      },
+      "fetched_at": "2026-10-17T09:50:54Z"
     },
     "event-source-9a1a9d5f0df12bb6": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Айболит",
       "url": "https://filarmonia39.ru/afisha/aybolit/",
-      "checked_at": "2026-10-16",
-      "sha256": "c0bc804c3096207cff0d44428b990120a23ac23b75a41b8e2ca5eb313d5fc16d",
-      "private_capture": "runtime/events-refresh/verified-2026-10-16/c0bc804c3096207cff0d44428b990120a23ac23b75a41b8e2ca5eb313d5fc16d.html",
+      "checked_at": "2026-10-17",
+      "sha256": "bdb21e918f5eebf8472bb3e5afaa9cea78d756432b7a71da7497d4e7d87b03fb",
+      "private_capture": "runtime/events-refresh/verified-2026-10-17/bdb21e918f5eebf8472bb3e5afaa9cea78d756432b7a71da7497d4e7d87b03fb.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
-      }
+      },
+      "fetched_at": "2026-10-17T09:50:14Z"
     },
     "event-source-1146f9c83c77dd08": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Афиша",
@@ -67,6 +69,20 @@
         "name": "Органный зал \"Макаров\"",
         "url": "https://organhall.ru/"
       }
+    },
+    "event-source-cbcb4a099e189f65": {
+      "name": "Театр эстрады «Янтарь-холл» · Куин / Queen",
+      "url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+      "checked_at": "2026-10-17",
+      "sha256": "58008b15e5b51466e828aad26f650654e3d18c0e2f306348c6c32eddbf90c04c",
+      "private_capture": "runtime/events-refresh/verified-2026-10-17/58008b15e5b51466e828aad26f650654e3d18c0e2f306348c6c32eddbf90c04c.html",
+      "fetched_at": "2026-10-17T09:50:54Z",
+      "organizer": null,
+      "publisher": {
+        "name": "Театр эстрады «Янтарь-холл»",
+        "url": "https://yantarholl.ru/",
+        "role": "venue"
+      }
     }
   },
   "events": [
@@ -93,7 +109,28 @@
         "height": 640,
         "alt": "Метеорит в боковом свете",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "ocean-education",
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-07T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "id": "star-projector-afternoon-2026",
@@ -118,7 +155,23 @@
         "height": 640,
         "alt": "Звёздный проектор под куполом планетария",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "planetarium",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T13:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "id": "bessel-astronomer-2026",
@@ -144,7 +197,28 @@
         "height": 640,
         "alt": "Старинный телескоп и звёздный атлас",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "id": "star-projector-evening-2026",
@@ -169,7 +243,23 @@
         "height": 640,
         "alt": "Звёздный проектор под куполом планетария",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "planetarium",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "id": "become-cosmonaut-2026",
@@ -196,7 +286,28 @@
         "height": 640,
         "alt": "Космический шлем и перчатки",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "pakgauz",
+      "category": "meeting",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-09T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "id": "sea-space-awards-2026",
@@ -221,7 +332,23 @@
         "height": 640,
         "alt": "Балтийское море под вечерним небом",
         "kind": "illustration"
-      }
+      },
+      "venue_id": "ocean-depth-congress",
+      "category": "other",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-10T11:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Саундтреки на органе",
@@ -263,8 +390,36 @@
         "age_quote": "6+",
         "session_card_sha256": "b00eaa95ff2dfeb555bfa77b22c4b834df631fb2328c11f9a54e9e571d622f77",
         "session_date_attribute": "2026-10-17",
-        "duration_quote": "1:30:00"
-      }
+        "duration_quote": "1:30:00",
+        "fresh_source_capture_id": "philharmonia_soundtracks"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-17T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 900,
+        "max": 900,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+      "verified_at": "2026-10-17T09:50:54Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+          "sha256": "08d9682bf6b65bd2ecae72b8c0a07f5ed74085ce5dfcff8f1499f07198efb723",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T09:50:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+          "sha256": "bb4d462e19d038d69badefe558632e34b8537d319168c776d52e1a6e0ffb6767",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Чайка",
@@ -306,7 +461,23 @@
         "session_card_sha256": "4d1d01b9a02114a2726691907e801962c5e20b09a17e71224dcef6d1d7b5ff8f",
         "session_date_attribute": null,
         "duration_quote": "2 часа 30 минут с антрактом"
-      }
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-17T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Вечер джаза",
@@ -367,7 +538,28 @@
             "session_card_sha256": "15a8de1e0fc07d1c5fbe30f9d8b110aee681c1e17895d9334c8d1ef48850752f"
           }
         ]
-      }
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-17T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 2000,
+        "max": 2000,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Айболит",
@@ -409,8 +601,36 @@
         "session_card_sha256": "88b4a2ad9f023ba61cecf93ba9c851ec7b44ca2029d55bf747879b66d6298f4f",
         "session_date_attribute": "2026-10-18",
         "duration_quote": "1:00:00",
-        "price_quote": "650, 700, 800 руб"
-      }
+        "price_quote": "650, 700, 800 руб",
+        "fresh_source_capture_id": "philharmonia_aybolit"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+      "verified_at": "2026-10-17T09:50:14Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "c0bc804c3096207cff0d44428b990120a23ac23b75a41b8e2ca5eb313d5fc16d",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T09:50:14Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "bdb21e918f5eebf8472bb3e5afaa9cea78d756432b7a71da7497d4e7d87b03fb",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Экскурсия \"Закулисье театра\"",
@@ -452,7 +672,23 @@
         "session_card_sha256": "9c4ddd955b4a8c26959f28de577e914a4f00e66914138c26bfffc1fd547d3e3d",
         "session_date_attribute": null,
         "duration_quote": "1 час 30 минут"
-      }
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T14:30:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Шедевры органной музыки",
@@ -493,7 +729,23 @@
         "age_quote": "6+",
         "session_card_sha256": "7f6b2eb203101a309119c8ce154a3bf0a7ccf6ce43a46ab3ba796e398f4e8870",
         "session_date_attribute": "2026-10-18"
-      }
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://filarmonia39.ru/afisha/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/",
+          "sha256": "7f0bb7ac8ba18284ec925b61d090cee0190e2adf59ad856a9a45c941a84da9a1",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Доходное место",
@@ -535,7 +787,23 @@
         "session_card_sha256": "62b3cf9e4c200f0d448203e13d84a4db90852dbf84a8787853dbc068fa11f1bd",
         "session_date_attribute": null,
         "duration_quote": "2 часа 40 минут с антрактом"
-      }
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Гении барокко: Бах и Вивальди",
@@ -587,7 +855,28 @@
             "session_row_sha256": "239ea2ddaaef55131038f3c567a3bee98b12435f4f3fae9c94d7418eae05b447"
           }
         ]
-      }
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-19T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Шедевры органной музыки",
@@ -639,7 +928,28 @@
             "session_row_sha256": "bda17422ff92ac467a93256f56c8e2de7b38a0c29666bae50796afd24a414918"
           }
         ]
-      }
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-21T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ]
     },
     {
       "title": "Орган — голос веков",
@@ -691,7 +1001,200 @@
             "session_row_sha256": "a7c930676e2012cbdbc30ff76ec581dd20ddf7ccf9ebfcb7058b01285165d820"
           }
         ]
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-23T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ]
+    },
+    {
+      "id": "event-yantarhall-queen-2026-10-30",
+      "title": "Куин / Queen",
+      "date": "2026-10-30",
+      "starts": "19:00",
+      "ends": null,
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "description": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 1900 ₽ · 6+.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-cbcb4a099e189f65",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1900,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+      "verified_at": "2026-10-17T09:50:54Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T09:50:54Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "58008b15e5b51466e828aad26f650654e3d18c0e2f306348c6c32eddbf90c04c",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title_quote": "Куин / Queen",
+        "description_quote": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
+        "date_quote": "30.10.2026 19:00:00",
+        "year_quote": "2026",
+        "time_quote": "19:00",
+        "venue_quote": "Янтарь-Холл",
+        "city_quote": "Светлогорск",
+        "price_quote": "Билеты от 1900 руб.",
+        "age_quote": "6+",
+        "same_page_year_source": "share metadata",
+        "source_capture_id": "yantarhall_queen"
       }
     }
-  ]
+  ],
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "venues": {
+    "ocean-education": {
+      "id": "ocean-education",
+      "name": "Образовательный центр ОКЕАНиЯ",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16"
+    },
+    "royal-gate-embassy": {
+      "id": "royal-gate-embassy",
+      "name": "Королевские ворота · «Великое посольство»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "korolevskie-vorota",
+      "coordinates": {
+        "lat": 54.7137124,
+        "lon": 20.5359816
+      },
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16"
+    },
+    "pakgauz": {
+      "id": "pakgauz",
+      "name": "Выставочный центр «Пакгауз»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "pakgauz",
+      "coordinates": {
+        "lat": 54.706692,
+        "lon": 20.49783
+      },
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16"
+    },
+    "ocean-depth-congress": {
+      "id": "ocean-depth-congress",
+      "name": "Корпус «Глубина» · конгресс-холл",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "muzej-mirovogo-okeana",
+      "coordinates": {
+        "lat": 54.7066321,
+        "lon": 20.499947
+      },
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16"
+    },
+    "kaliningrad-philharmonia": {
+      "id": "kaliningrad-philharmonia",
+      "name": "Калининградская областная филармония",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "kirha-svyatogo-semeystva",
+      "coordinates": {
+        "lat": 54.6978239,
+        "lon": 20.5096814
+      },
+      "address": "ул. Б. Хмельницкого, 61а",
+      "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://filarmonia39.ru/kontakty/",
+      "identity_verified_at": "2026-10-17",
+      "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
+      "coordinates_verified_at": "2026-10-01"
+    },
+    "kaliningrad-drama": {
+      "id": "kaliningrad-drama",
+      "name": "Калининградский областной драматический театр",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16"
+    },
+    "organhall-makarov": {
+      "id": "organhall-makarov",
+      "name": "Органный зал \"Макаров\"",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16"
+    },
+    "yantar-hall": {
+      "id": "yantar-hall",
+      "name": "Театр эстрады «Янтарь-Холл»",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": "yantar-hall",
+      "coordinates": {
+        "lat": 54.9455297,
+        "lon": 20.1575504
+      },
+      "address": "ул. Ленина, 11",
+      "source_url": "https://yantarholl.ru/",
+      "verified_at": "2026-10-17",
+      "coordinate_evidence_sha256": "c604644e135d7895b2745489b49b7b5fe8733214113363ad84ce7de74ba7edba"
+    }
+  }
 }

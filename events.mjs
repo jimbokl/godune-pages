@@ -1,4 +1,4 @@
-import {regionDate,eventMatches} from './events-engine.mjs?v=2026101305';
+import {regionDate,eventMatches} from './events-engine.mjs?v=2026101706';
 import {BOOKMARK_KEY,readBookmarks,writeBookmarks} from './events-bookmarks.mjs?v=2026101305';
 const root=document.querySelector('[data-event-calendar]');
 if(root){

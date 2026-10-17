@@ -1,0 +1,91 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-21",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "event-source-f9eb4005a625cb21"
+    ]
+  },
+  "events": [
+    {
+      "title": "Шедевры органной музыки",
+      "city_name": "Светлогорск",
+      "venue": "Органный зал \"Макаров\"",
+      "date": "2026-10-21",
+      "starts": "16:00",
+      "description": "В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари Видор. 6+. Продолжительность: 1 час 10 минут.",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "svetlogorsk",
+      "ends": null,
+      "admission": "По билетам · 1500 ₽. Билеты только в кассе зала.",
+      "price": 1500,
+      "currency": "RUB",
+      "source": "event-source-f9eb4005a625cb21",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-749e4139bcb56846",
+      "evidence": {
+        "title_quote": "ШЕДЕВРЫ ОРГАННОЙ МУЗЫКИ",
+        "date_quote": "21 октября",
+        "year_quote": "2026",
+        "time_quote": "16:00",
+        "venue_quote": "Органный зал \"Макаров\"",
+        "city_quote": "Светлогорск",
+        "description_quote": "В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари Видор",
+        "admission_quote": "билеты только в кассе зала",
+        "price_quote": "Цена билета: 1500 руб.",
+        "duration_quote": "1 час 10 мин.",
+        "age_quote": "6+",
+        "session_card_sha256": "9951922ee688d4881491eb647841a3aeb8a5cd45ae6d511babf137cc4de0a33f",
+        "year_context": "Individual session in official municipal table headed Октябрь 2026; primary listing weekday also matches.",
+        "corroborating_sources": [
+          {
+            "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+            "sha256": "ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f",
+            "private_capture": "runtime/events-refresh/verified-svetlogorsk-2026-10-16/ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f.html",
+            "month_quote": "Октябрь 2026",
+            "session_row_quote": "\"Шедевры органной музыки\". Хачатуров А., 6+\n 21 октября (16:00)\n г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"\n Концерт органной музыки",
+            "session_row_sha256": "bda17422ff92ac467a93256f56c8e2de7b38a0c29666bae50796afd24a414918"
+          }
+        ]
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-21T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null
+    }
+  ]
+}

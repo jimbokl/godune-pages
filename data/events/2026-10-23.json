@@ -1,0 +1,91 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-23",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "event-source-f9eb4005a625cb21"
+    ]
+  },
+  "events": [
+    {
+      "title": "Орган — голос веков",
+      "city_name": "Светлогорск",
+      "venue": "Органный зал \"Макаров\"",
+      "date": "2026-10-23",
+      "starts": "16:00",
+      "description": "В программе: И.С. Бах, М. Дюрюфле, Феликс Мендельсон, Габриэль Пьерне. 6+. Продолжительность: 1 час 10 минут.",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "svetlogorsk",
+      "ends": null,
+      "admission": "По билетам · 1500 ₽. Билеты только в кассе зала.",
+      "price": 1500,
+      "currency": "RUB",
+      "source": "event-source-f9eb4005a625cb21",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-e1f424ecbcbc4a9d",
+      "evidence": {
+        "title_quote": "ОРГАН — ГОЛОС ВЕКОВ",
+        "date_quote": "23 октября",
+        "year_quote": "2026",
+        "time_quote": "16:00",
+        "venue_quote": "Органный зал \"Макаров\"",
+        "city_quote": "Светлогорск",
+        "description_quote": "В программе: И.С. Бах, М. Дюрюфле, Феликс Мендельсон, Габриэль Пьерне",
+        "admission_quote": "билеты только в кассе зала",
+        "price_quote": "Цена билета: 1500 руб.",
+        "duration_quote": "1 час 10 мин.",
+        "age_quote": "6+",
+        "session_card_sha256": "3ded6315ca117af2f65e9dc0af0ab7bfa7c8b1267ac0d365b4397e06eba4a8be",
+        "year_context": "Individual session in official municipal table headed Октябрь 2026; primary listing weekday also matches.",
+        "corroborating_sources": [
+          {
+            "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+            "sha256": "ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f",
+            "private_capture": "runtime/events-refresh/verified-svetlogorsk-2026-10-16/ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f.html",
+            "month_quote": "Октябрь 2026",
+            "session_row_quote": "\"Орган-голос веков\". Хачатуров А., 6+\n 23 октября (16:00)\n г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"\n Концерт органной музыки",
+            "session_row_sha256": "a7c930676e2012cbdbc30ff76ec581dd20ddf7ccf9ebfcb7058b01285165d820"
+          }
+        ]
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-23T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null
+    }
+  ]
+}

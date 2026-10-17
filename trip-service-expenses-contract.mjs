@@ -1,4 +1,4 @@
-import {validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101305';
+import {validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101706';
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const date=v=>v===null||typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!v.startsWith('0000')&&Number.isFinite(Date.parse(v+'T12:00:00Z'))&&new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;
 // Preserve future envelopes in files. Rust refuses to treat them as a current quote.

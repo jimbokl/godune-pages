@@ -1,10 +1,10 @@
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
-import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=2026101305';
-import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
-import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101706';
+import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=2026101706';
+import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101706';
+import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101706';
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 import {railJourney,excursionJourney} from './day-journey-view.mjs?v=2026101305';
@@ -13,11 +13,12 @@ import {resolveExcursion} from './trip-transport-state.mjs?v=2026101305';
 import {baseName} from './personal-points.mjs?v=2026101305';
 import {rentalDetails,rentalMapPoints} from './trip-rental-view.mjs?v=2026101305';
 import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transfer-view.mjs?v=2026101305';
-import {provenanceSources} from './service-provenance.mjs?v=2026101305';
-import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=2026101305';
+import {provenanceSources} from './service-provenance.mjs?v=2026101706';
+import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=2026101706';
 import {priceRows,splitText} from './service-price-view.mjs?v=2026101305';
 import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
 import {dayOutcome} from './day-outcome.mjs?v=2026101705';
+import {guideRegionDate,guideFactFreshness,guideFreshnessText,guideEventPresentation} from './trip-guide-evidence.mjs?v=2026101706';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Занятие',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};
@@ -40,9 +41,11 @@ function conditionText(c){
  if(c.kind==='booking')return !c.required?'Без предварительной записи':c.notice_minutes==null?'Нужна запись':`Запись минимум за ${c.notice_minutes} мин`;
  return 'Условие нужно уточнить';
 }
-function serviceCard(engine,visit,day,index,catalog){
+function serviceCard(engine,visit,day,index,catalog,asOf){
  const card={id:safeText(visit?.id)||`unknown-${index+1}`,key:`service:${day.id}:${index}`,name:safeText(visit?.name)||'Сохранённое посещение',category:categories[visit?.category]||'Посещение',address:safeText(visit?.address),note:safeText(visit?.note),point:null,date:null,context:'unsupported',state:null,summary:contexts.unsupported,assessment:null,conditions:[],sources:[]};
  if(visit&&Object.hasOwn(visit,'provenance'))card.provenance=structuredClone(visit.provenance);
+ if(visit&&Object.hasOwn(visit,'event')){card.event=structuredClone(visit.event);card.event_presentation=guideEventPresentation(visit.event);card.category='Событие';}
+ if(visit?.provenance?.facts?.length){card.freshness=guideFactFreshness(engine,visit.provenance,asOf,day.date);card.freshness_text=guideFreshnessText(card.freshness);}
  if(!validServiceVisit(visit))return card;
  card.selection_facts=serviceSelectionFacts(visit);
  let prepared;try{prepared=engine.serviceTrip(visit);}catch{return card;}
@@ -62,7 +65,7 @@ function serviceCard(engine,visit,day,index,catalog){
  const roads=[a.access?.approach,a.access?.return_walk,a.rental?.approach,a.rental?.return_road,a.rental?.after_return].filter(Boolean);
  for(const connection of a.rental?.activity?.itinerary.connections||[])roads.push(...(connection.selection?(connection.journey?.transfers||[]).map(t=>t.road):[connection.leg]).filter(Boolean));
  const evidence=[...calendars.flatMap(c=>[...c.windows,...c.sessions].map(v=>v.source)),...roads.flatMap(r=>r.candidates.map(v=>v.link.source)),...(a.rental?.billing.sources||[]),...card.rental_points.map(p=>p.source)];
- card.sources=[...new Map(evidence.filter(Boolean).map(s=>[JSON.stringify(s),source(s)])).values(),...provenanceSources(visit.provenance,day.date||card.date)];
+ card.sources=[...new Map(evidence.filter(Boolean).map(s=>[JSON.stringify(s),source(s)])).values(),...provenanceSources(visit.provenance,day.date||card.date,{freshness:card.freshness})];
  return card;
 }
 export function guideEntries(day,stops,services){
@@ -75,10 +78,10 @@ export function guideEntries(day,stops,services){
  for(const entry of available)if(!ranked.includes(entry))ranked.push(entry);
  return ranked.map((entry,index)=>({...entry,number:index+1}));
 }
-export function serviceGuide(engine,trip,catalog,matrix){
+export function serviceGuide(engine,trip,catalog,matrix,{asOf=guideRegionDate()}={}){
  const day=selectedDay(trip),hasTransportPlans=Array.isArray(day.transport_plans?.entries)&&day.transport_plans.entries.length>0;
  if(!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!hasTransportPlans&&!(usesJourneyBoundaries(day,catalog)&&typeof engine.serviceDay==='function'))return null;
- const services=serviceVisitRows(day).map((v,i)=>serviceCard(engine,v,day,i,catalog));
+ const services=serviceVisitRows(day).map((v,i)=>serviceCard(engine,v,day,i,catalog,asOf));
  let check=null,error=null;try{check=inspectTripServiceDay(engine,trip,catalog,matrix);}catch(e){error=errors[e.message]||'Полный расчёт дня пока недоступен. Выбранные посещения и записи сохранены ниже.';}
  const boundaries=dayJourneyBoundaries(day,catalog);
  const name=entry=>boundaryForEntry(boundaries,entry)?.anchor?.name||(entry?.kind==='service'?services.find(v=>v.id===entry.id)?.name||'Посещение':catalog.poi.find(p=>p.slug===entry?.id)?.name||'Остановка');

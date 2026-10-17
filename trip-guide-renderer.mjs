@@ -6,9 +6,9 @@ import {kosaBoardingText} from './kosa-boarding.mjs?v=2026101305';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2026101305';
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
-import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101305';
+import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101706';
 import {transportBooklet} from './transport-booklet-view.mjs?v=2026101705';
-import {walkingBooklet,walkingSourceCaption,shareWalkingSources} from './walking-booklet-view.mjs?v=2026101603';
+import {walkingBooklet,walkingSourceCaption,shareWalkingSources} from './walking-booklet-view.mjs?v=2026101706';
 import {validReferenceBudget,referenceMoney,referenceBudgetText} from './day-reference-budget.mjs?v=2026101702';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
 const ink=rgb(.13,.24,.3),muted=rgb(.32,.43,.48),blue=rgb(.75,.85,.91),paper=rgb(.98,.98,.96);
@@ -128,6 +128,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   async function serviceChapter(s,number){
     start();text(`${String(number).padStart(2,'0')} · ${s.category}`,{size:9,color:muted,space:16});heading(s.name,true);
     text(s.summary);if(s.address)text('Адрес: '+s.address);
+    if(s.event_presentation){for(const line of s.event_presentation.lines)text(line,{size:phone?10.5:12,space:5});source(s.event_presentation.source);}
+    if(s.freshness_text){text(`Статус сведений на ${date(s.freshness?.as_of||snapshot.as_of)} · Калининград.`,{size:phone?9:11,color:muted,space:5});text(s.freshness_text,{size:phone?10.5:12});}
     for(const row of s.selection_facts||[])text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});
     if(s.rental_points?.length){
       await image(media.maps[s.key+':rental'],phone?175:260);
@@ -253,6 +255,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
     text(`${plural(b.cards.length,['остановка','остановки','остановок'])}${day.slack!==null?' · '+(day.slack_label||'запас')+' '+day.slack+' мин':''}${day.party_label?' · '+day.party_label:''}`,{size:small,color:muted,space});
     if(b.summary)text(b.summary,{size:small,space});
+    if(day.freshness_text)text(`Статус сведений на ${date(snapshot.as_of)} · Калининград. ${day.freshness_text}`,{size:small,space});
     for(const [label,point]of [['Начало',day.record.start_at],['Возвращение',day.record.night_at]])if(point?.kind==='personal')text(`${label}: ${point.name} · GPS ${gps(point)}`,{size:small,space});
     if(day.preferences?.label)text('Вам важно: '+day.preferences.label,{size:small,space});
     await image(media.overview[day.id],phone?125:220);
@@ -348,6 +351,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(home?.kind==='personal')text(`Начало: ${home.name} · GPS ${gps(home)}`,{size:phone?9.5:11});
     if(night?.kind==='personal')text(`Возвращение: ${night.name} · GPS ${gps(night)}`,{size:phone?9.5:11});
     text(day.summary);
+    if(day.freshness_text)text(`Статус сведений на ${date(snapshot.as_of)} · Калининград. ${day.freshness_text}`,{size:phone?9.5:11});
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
     text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · ${day.slack_label||'запас'} ${day.slack} мин`:''}`,{color:muted});
@@ -443,7 +447,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       await image(media.maps[p.id],mapHeight);
       text(mapCaption,{size:8,color:muted});
       heading('На месте',false,p.story[0]);for(const paragraph of p.story)text(paragraph);if(p.focus)text(p.focus);if(p.practical)text(p.practical);
-      if(p.conditions.length){const first=p.conditions[0];heading('Перед входом',false,first.text,sourceHeight(first.source)+(p.conditions.length===1?tail:0));for(const [ci,c]of p.conditions.entries()){const block=textHeight(c.text)+sourceHeight(c.source)+(ci===p.conditions.length-1?tail:0);if(block<h-2*m-90)need(block);text(c.text);source(c.source);}}
+      if(p.conditions.length){
+        const warningFor=c=>p.condition_evidence?.find(e=>e.id===c.id)?.text||'',warningHeight=c=>warningFor(c)?textHeight(warningFor(c),ui,phone?9:11):0,first=p.conditions[0];
+        heading('Перед входом',false,first.text,warningHeight(first)+sourceHeight(first.source)+(p.conditions.length===1?tail:0));
+        for(const [ci,c]of p.conditions.entries()){const block=textHeight(c.text)+warningHeight(c)+sourceHeight(c.source)+(ci===p.conditions.length-1?tail:0);if(block<h-2*m-90)need(block);text(c.text);if(warningFor(c))text(warningFor(c),{size:phone?9:11});source(c.source);}
+      }
       need(tail);nextLeg(p);source(placeSource);
       if(!phone)await qrCard(media.qrs?.[p.id],qrCaption);
     }

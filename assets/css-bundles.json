@@ -289,10 +289,10 @@
         }
       ]
     },
-    "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92": {
-      "path": "assets/css-bundles/a9ebb252e7130e9c073f17318f14121a9349dfc84e1f630bec9049734ecafcc6.css",
-      "sha256": "a9ebb252e7130e9c073f17318f14121a9349dfc84e1f630bec9049734ecafcc6",
-      "bytes": 471186,
+    "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343": {
+      "path": "assets/css-bundles/4a90554b8ee7ee6660cae85b4ca4f24f808cd6d3063989abdd519f0c9f90e322.css",
+      "sha256": "4a90554b8ee7ee6660cae85b4ca4f24f808cd6d3063989abdd519f0c9f90e322",
+      "bytes": 476766,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -379,15 +379,19 @@
           "media": "all"
         },
         {
+          "path": "nearby-events.css",
+          "media": "all"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all"
         }
       ]
     },
-    "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412": {
-      "path": "assets/css-bundles/41dbaf49f2a23e72eb364d59e8f7af5eb38bfd6154945d2ad58cd6c348486536.css",
-      "sha256": "41dbaf49f2a23e72eb364d59e8f7af5eb38bfd6154945d2ad58cd6c348486536",
-      "bytes": 466857,
+    "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f": {
+      "path": "assets/css-bundles/6a45a620086193640f132491ff94e1831ee96cd61dfa0605f0e371a858bcceff.css",
+      "sha256": "6a45a620086193640f132491ff94e1831ee96cd61dfa0605f0e371a858bcceff",
+      "bytes": 472437,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -471,6 +475,10 @@
         },
         {
           "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "nearby-events.css",
           "media": "all"
         },
         {
@@ -883,6 +891,101 @@
         },
         {
           "path": "project-context.css",
+          "media": "all"
+        }
+      ]
+    },
+    "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412": {
+      "path": "assets/css-bundles/41dbaf49f2a23e72eb364d59e8f7af5eb38bfd6154945d2ad58cd6c348486536.css",
+      "sha256": "41dbaf49f2a23e72eb364d59e8f7af5eb38bfd6154945d2ad58cd6c348486536",
+      "bytes": 466857,
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all"
+        },
+        {
+          "path": "styles.css",
+          "media": "all"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all"
+        },
+        {
+          "path": "tools.css",
+          "media": "all"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all"
+        },
+        {
+          "path": "night.css",
+          "media": "all"
+        },
+        {
+          "path": "housing.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all"
+        },
+        {
+          "path": "destination-signatures.css",
+          "media": "all"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-print.css",
           "media": "all"
         }
       ]
@@ -2974,10 +3077,10 @@
         }
       ]
     },
-    "16243178f3c40d606f535c572a535cb0cecb1677d29ac7327f4c25a37c6ef2b3": {
-      "path": "assets/css-bundles/fc52fe9f79d58ca44d7d4090ca4f50ec17562f3f5e4d60f71084a2707a1591f6.css",
-      "sha256": "fc52fe9f79d58ca44d7d4090ca4f50ec17562f3f5e4d60f71084a2707a1591f6",
-      "bytes": 483191,
+    "431fd80d6d646a3079b67a8369a56f62514cdf2968d4eaa5c0d9d86455c27c4e": {
+      "path": "assets/css-bundles/7fcb494f45069e89f727d825b027b12d5da7f43a69ef50633351006fb45953ce.css",
+      "sha256": "7fcb494f45069e89f727d825b027b12d5da7f43a69ef50633351006fb45953ce",
+      "bytes": 488771,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -3057,6 +3160,10 @@
         },
         {
           "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "nearby-events.css",
           "media": "all"
         },
         {
@@ -4114,6 +4221,105 @@
           "media": "all"
         }
       ]
+    },
+    "03e930a76b77b87163726c73b1a8b81ae5c071ba0a2e2bc42222e1a1e4743cc3": {
+      "path": "assets/css-bundles/f248c9e7290fc53997ea42370bae13bd044b63116f99276257a017330af9428f.css",
+      "sha256": "f248c9e7290fc53997ea42370bae13bd044b63116f99276257a017330af9428f",
+      "bytes": 476178,
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all"
+        },
+        {
+          "path": "styles.css",
+          "media": "all"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all"
+        },
+        {
+          "path": "tools.css",
+          "media": "all"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all"
+        },
+        {
+          "path": "night.css",
+          "media": "all"
+        },
+        {
+          "path": "housing.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "nearby-events.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all"
+        },
+        {
+          "path": "intent-transit.css",
+          "media": "all"
+        }
+      ]
     }
   },
   "pages": {
@@ -4686,7 +4892,7 @@
     "baltiysk/baltiyskiy-mayak/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -4813,6 +5019,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -4829,7 +5041,7 @@
     "baltiysk/chto-posmotret/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -4956,6 +5168,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -4972,7 +5190,7 @@
     "baltiysk/morskoy-den/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -5103,6 +5321,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -5115,7 +5339,7 @@
     "baltiysk/muzej-baltiyskogo-flota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -5242,6 +5466,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -5258,7 +5488,7 @@
     "baltiysk/vokzal-baltiysk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -5385,6 +5615,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -16531,7 +16767,7 @@
     "kaliningrad/altes-haus/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16658,6 +16894,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -16674,7 +16916,7 @@
     "kaliningrad/amalienau/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16801,6 +17043,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -16817,7 +17065,7 @@
     "kaliningrad/bashnya-mayak/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -16944,6 +17192,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -16960,7 +17214,7 @@
     "kaliningrad/bez-mashiny/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17087,6 +17341,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17103,7 +17363,7 @@
     "kaliningrad/brandenburgskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17230,6 +17490,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17246,7 +17512,7 @@
     "kaliningrad/centralnyy-park/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17373,6 +17639,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17389,7 +17661,7 @@
     "kaliningrad/chto-posmotret/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17516,6 +17788,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17532,7 +17810,7 @@
     "kaliningrad/fridrihsburgskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17659,6 +17937,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17675,7 +17959,7 @@
     "kaliningrad/kafedralny-sobor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17802,6 +18086,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17818,7 +18108,7 @@
     "kaliningrad/kaliningradskiy-zoopark/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -17945,6 +18235,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -17961,7 +18257,7 @@
     "kaliningrad/kirha-korolevy-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18088,6 +18384,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18104,7 +18406,7 @@
     "kaliningrad/kirha-svyatogo-semeystva/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18231,6 +18533,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18247,7 +18555,7 @@
     "kaliningrad/korolevskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18374,6 +18682,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18390,7 +18704,7 @@
     "kaliningrad/kosmonavt-viktor-patsaev/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18517,6 +18831,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18533,7 +18853,7 @@
     "kaliningrad/mayak-irbenskiy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18660,6 +18980,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18676,7 +19002,7 @@
     "kaliningrad/medovyy-most/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18803,6 +19129,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18819,7 +19151,7 @@
     "kaliningrad/mogila-kanta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -18946,6 +19278,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -18962,7 +19300,7 @@
     "kaliningrad/muzei-u-reki/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19089,6 +19427,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19105,7 +19449,7 @@
     "kaliningrad/muzej-mirovogo-okeana/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19232,6 +19576,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19248,7 +19598,7 @@
     "kaliningrad/muzej-yantarya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19375,6 +19725,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19391,7 +19747,7 @@
     "kaliningrad/naberezhnye/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19518,6 +19874,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19534,7 +19896,7 @@
     "kaliningrad/organ-i-arhitektura/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19661,6 +20023,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19677,7 +20045,7 @@
     "kaliningrad/ostrov-kanta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19804,6 +20172,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19820,7 +20194,7 @@
     "kaliningrad/pakgauz/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -19947,6 +20321,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -19963,7 +20343,7 @@
     "kaliningrad/pergola-korolevy-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20090,6 +20470,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20106,7 +20492,7 @@
     "kaliningrad/planeta-okean/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20233,6 +20619,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20249,7 +20641,7 @@
     "kaliningrad/rosgartenskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20376,6 +20768,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20392,7 +20790,7 @@
     "kaliningrad/rybnaya-derevnya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20519,6 +20917,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20535,7 +20939,7 @@
     "kaliningrad/s-detmi/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20662,6 +21066,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20678,7 +21088,7 @@
     "kaliningrad/smotrovye/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20805,6 +21215,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20821,7 +21237,7 @@
     "kaliningrad/sudno-vityaz/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -20948,6 +21364,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -20964,7 +21386,7 @@
     "kaliningrad/v-dozhd/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21091,6 +21513,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -21107,7 +21535,7 @@
     "kaliningrad/villa-leo/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21234,6 +21662,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -21250,7 +21684,7 @@
     "kaliningrad/villa-shmidt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21377,6 +21811,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -21393,7 +21833,7 @@
     "kaliningrad/vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21520,6 +21960,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -21536,7 +21982,7 @@
     "kaliningrad/yuzhnyy-bereg/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21663,6 +22109,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -21679,7 +22131,7 @@
     "kaliningrad/zakhaymskie-vorota/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21810,6 +22262,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -21822,7 +22280,7 @@
     "kaliningrad/zelenye-progulki/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -21953,6 +22411,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -21965,7 +22429,7 @@
     "kaliningrad/zemlyakam-kosmonavtam/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22092,6 +22556,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -22719,7 +23189,7 @@
     "kurshskaya-kosa/fringilla/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22846,6 +23316,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -22862,7 +23338,7 @@
     "kurshskaya-kosa/korolevskiy-bor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -22989,6 +23465,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -23434,7 +23916,7 @@
     "kurshskaya-kosa/mayak-lesnoy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23561,6 +24043,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -23577,7 +24065,7 @@
     "kurshskaya-kosa/muzej-kurshskoy-kosy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23704,6 +24192,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -23863,7 +24357,7 @@
     "kurshskaya-kosa/plyazh-lesnoy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -23990,6 +24484,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -24286,7 +24786,7 @@
     "kurshskaya-kosa/smotrovaya-efa/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -24413,6 +24913,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -24572,7 +25078,7 @@
     "kurshskaya-kosa/tancuyushchiy-les/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -24699,6 +25205,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -24870,7 +25382,7 @@
     "kurshskaya-kosa/vysota-efa/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -24997,6 +25509,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -25013,7 +25531,7 @@
     "kurshskaya-kosa/vysota-myullera/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -25140,6 +25658,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -26699,7 +27223,7 @@
     "planner/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "16243178f3c40d606f535c572a535cb0cecb1677d29ac7327f4c25a37c6ef2b3",
+          "bundle": "431fd80d6d646a3079b67a8369a56f62514cdf2968d4eaa5c0d9d86455c27c4e",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -26820,6 +27344,12 @@
             {
               "href": "../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -33419,7 +33949,7 @@
     "svetlogorsk/1-day/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -33550,6 +34080,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -33558,7 +34094,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -33689,6 +34225,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -33726,7 +34268,7 @@
     "svetlogorsk/bashnya-svetlogorsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -33853,6 +34395,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -33869,7 +34417,7 @@
     "svetlogorsk/bez-spuska-k-moryu/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -33996,6 +34544,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34012,7 +34566,7 @@
     "svetlogorsk/chto-posmotret/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34139,6 +34693,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34155,7 +34715,7 @@
     "svetlogorsk/morskoy-vystavochnyy-tsentr/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34282,6 +34842,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34298,7 +34864,7 @@
     "svetlogorsk/ozero-tihoe/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34425,6 +34991,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34441,7 +35013,7 @@
     "svetlogorsk/promenad-svetlogorsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34568,6 +35140,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34584,7 +35162,7 @@
     "svetlogorsk/restoran-local/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34711,6 +35289,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34727,7 +35311,7 @@
     "svetlogorsk/solnechnye-chasy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -34854,6 +35438,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -34870,7 +35460,7 @@
     "svetlogorsk/svetlogorsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -35001,6 +35591,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -35013,7 +35609,7 @@
     "svetlogorsk/u-morya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -35140,6 +35736,161 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "svetlogorsk/yantar-hall/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../gastronomy.css?v=2026101608",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../planning-wizard.css?v=8",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../field-notes.css?v=1",
+              "path": "field-notes.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -42509,7 +43260,7 @@
     "yantarny/chto-posmotret/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42636,6 +43387,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -42652,7 +43409,7 @@
     "yantarny/plyazh-i-promenad/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42783,6 +43540,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -42795,7 +43558,7 @@
     "yantarny/plyazh-yantarny/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -42922,6 +43685,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -42938,7 +43707,7 @@
     "yantarny/promenad-yantarny/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43069,6 +43838,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -43081,7 +43856,7 @@
     "zelenogradsk/1-day/index.html": {
       "groups": {
         "active-deferred-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": true,
           "location": "active",
           "sources": [
@@ -43212,6 +43987,12 @@
               "link_media": "print"
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -43220,7 +44001,7 @@
           ]
         },
         "noscript-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "noscript",
           "sources": [
@@ -43351,6 +44132,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -43388,7 +44175,7 @@
     "zelenogradsk/arhitektura/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43515,6 +44302,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -43531,7 +44324,7 @@
     "zelenogradsk/bistro-laba-dena/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43658,6 +44451,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -43674,7 +44473,7 @@
     "zelenogradsk/byuvet-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43805,6 +44604,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -43817,7 +44622,7 @@
     "zelenogradsk/chto-posmotret/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -43948,6 +44753,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -43960,7 +44771,7 @@
     "zelenogradsk/iz-aeroporta-hrabrovo/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "c284701d2af0ac93745ac4326c2269b177ef5a4f0c91823329d6c13db830acea",
+          "bundle": "03e930a76b77b87163726c73b1a8b81ae5c071ba0a2e2bc42222e1a1e4743cc3",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44081,6 +44892,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44103,7 +44920,7 @@
     "zelenogradsk/kafe-amaliya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44230,6 +45047,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44246,7 +45069,7 @@
     "zelenogradsk/kafe-bufet/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44373,6 +45196,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44389,7 +45218,7 @@
     "zelenogradsk/kafe-fanat/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44516,6 +45345,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44532,7 +45367,7 @@
     "zelenogradsk/kafe-gnezdo/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44659,6 +45494,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44675,7 +45516,7 @@
     "zelenogradsk/kafe-granat/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44802,6 +45643,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44818,7 +45665,7 @@
     "zelenogradsk/kafe-skovorodka/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -44945,6 +45792,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -44961,7 +45814,7 @@
     "zelenogradsk/kafe-tunets/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45088,6 +45941,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45104,7 +45963,7 @@
     "zelenogradsk/kafe-uksus/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45231,6 +46090,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45247,7 +46112,7 @@
     "zelenogradsk/kirha-svyatogo-adalberta/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45374,6 +46239,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45390,7 +46261,7 @@
     "zelenogradsk/kofeynya-slou/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45517,6 +46388,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45533,7 +46410,7 @@
     "zelenogradsk/koshachiy-gorod/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45660,6 +46537,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45676,7 +46559,7 @@
     "zelenogradsk/koshachiy-svetofor/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45803,6 +46686,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45819,7 +46708,7 @@
     "zelenogradsk/kurhaus-kranc/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -45946,6 +46835,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -45962,7 +46857,7 @@
     "zelenogradsk/kurortnyy-prospekt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46089,6 +46984,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46105,7 +47006,7 @@
     "zelenogradsk/murarium/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46232,6 +47133,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46248,7 +47155,7 @@
     "zelenogradsk/muzei/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46375,6 +47282,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46391,7 +47304,7 @@
     "zelenogradsk/muzej-skeletov/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46518,6 +47431,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46534,7 +47453,7 @@
     "zelenogradsk/muzej-zelenogradska/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46661,6 +47580,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46677,7 +47602,7 @@
     "zelenogradsk/pekarnya-khleb/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46804,6 +47729,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46820,7 +47751,7 @@
     "zelenogradsk/promenad-zelenogradsk/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -46947,6 +47878,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -46963,7 +47900,7 @@
     "zelenogradsk/restoran-balt/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47090,6 +48027,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47106,7 +48049,7 @@
     "zelenogradsk/restoran-dolche-nonna/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47233,6 +48176,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47249,7 +48198,7 @@
     "zelenogradsk/restoran-koptilnyy-tsekh/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47376,6 +48325,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47392,7 +48347,7 @@
     "zelenogradsk/restoran-oblaka/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47519,6 +48474,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47535,7 +48496,7 @@
     "zelenogradsk/restoran-riviera/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47662,6 +48623,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47678,7 +48645,7 @@
     "zelenogradsk/restoran-sambiya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47805,6 +48772,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47821,7 +48794,7 @@
     "zelenogradsk/restoran-telegraf/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -47948,6 +48921,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -47964,7 +48943,7 @@
     "zelenogradsk/restoran-zolotaya-milya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48091,6 +49070,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48107,7 +49092,7 @@
     "zelenogradsk/rybnoe-kafe-na-pirse/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48234,6 +49219,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48250,7 +49241,7 @@
     "zelenogradsk/skver-luizy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48377,6 +49368,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48393,7 +49390,7 @@
     "zelenogradsk/spokoynyy-den/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48520,6 +49517,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48536,7 +49539,7 @@
     "zelenogradsk/u-morya/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48663,6 +49666,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48679,7 +49688,7 @@
     "zelenogradsk/v-dozhd/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "140759d46f3148ecd8f1d191dc2a1197265a6990745f363cac5b82328296f412",
+          "bundle": "df146337a34d19e32ba3462a38f6ef512b8bf8f9baa522233b10fd98a33d2d2f",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48810,6 +49819,12 @@
               "link_media": null
             },
             {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../editorial-print.css?v=1",
               "path": "editorial-print.css",
               "media": "all",
@@ -48822,7 +49837,7 @@
     "zelenogradsk/zapadnyy-plyazh-zelenogradsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -48949,6 +49964,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -48965,7 +49986,7 @@
     "zelenogradsk/zelenogradsk-2/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -49092,6 +50113,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },
@@ -49108,7 +50135,7 @@
     "zelenogradsk/zelenogradsk-novyy/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "b90da4ed426c61f3137a7de2ce6f441e8d24bce25babd42063319f5cc338eb92",
+          "bundle": "2b973c9be9e74d758468f63dda4f4aadb4107f1445905f0cd1ff20eef52cf343",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -49235,6 +50262,12 @@
             {
               "href": "../../amber-material.css?v=2026101501",
               "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101706",
+              "path": "nearby-events.css",
               "media": "all",
               "link_media": null
             },

@@ -1,7 +1,7 @@
 import {kosaOutingCopy,kosaWeatherCopy} from './kosa-outing.mjs?v=2026101402';
 import {withKosaDinner} from './kosa-dinner.mjs?v=2026101307';
 import {savedKosaBudget} from './kosa-budget.mjs?v=2026101305';
-import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101402';
+import {kosaClock as clock,kosaNote,kosaRailTable} from './kosa-plan-state.mjs?v=2026101706';
 import {kosaLightSummary} from './kosa-light.mjs?v=2026101305';
 import {selectKosaInterchanges,assessKosaWalking} from './kosa-interchanges.mjs?v=2026101305';
 import {kosaBoarding} from './kosa-boarding.mjs?v=2026101305';

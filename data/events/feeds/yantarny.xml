@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>GoDune — события: Янтарный</title>
+    <link>https://godune.ru/events/?city=yantarny</link>
+    <description>Новые события и изменения афиши. Время — Калининград. Уточняйте условия у организатора.</description>
+    <language>ru</language>
+    <ttl>360</ttl>
+    <atom:link href="https://godune.ru/data/events/feeds/yantarny.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

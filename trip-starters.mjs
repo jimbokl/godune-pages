@@ -1,6 +1,6 @@
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {hasPreferences} from './day-preferences.mjs?v=2026101305';
-import {nextDate,mergeJourney,tripHasPlaces,journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {nextDate,mergeJourney,tripHasPlaces,journeyDays,selectedDay} from './trip-days-state.mjs?v=2026101706';
 import {waveChoices,waveStopSettings} from './day-wave.mjs?v=2026101305';
 // Editorial starting points, not promised bookings or verified tours.
 const river={places:['ostrov-kanta','rybnaya-derevnya','muzej-mirovogo-okeana'],mode:'foot',start_at:null,night_at:null};

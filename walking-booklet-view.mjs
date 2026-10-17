@@ -1,7 +1,7 @@
 // A walking day shares evidence between its plan, places and chosen dishes.
 // Services, transport, expenses and bookings retain their complete chapters.
 import {routineStopIssue} from './day-stop-view.mjs?v=2026101305';
-import {serviceSourceCaption} from './service-provenance.mjs?v=2026101305';
+import {serviceSourceCaption} from './service-provenance.mjs?v=2026101706';
 const groupedIssue=issue=>routineStopIssue(issue)||['unknown_opening','unknown_kitchen'].includes(issue.code);
 export function walkingSourceCaption(source){
   const observations=source.observations||[source],groups=new Map();
@@ -74,7 +74,7 @@ export function walkingBooklet(snapshot) {
     if(!place)return null;
     const conditions=[];
     for(const item of [...(place.conditions||[]),...(day.access?.entries||[]).filter(r=>r.extent==='place'&&(r.poi===place.id||r.applies_to?.some(p=>p.poi===place.id)))]){
-      const key=String(item.text||'').replace(/\s+/g,' ').trim();
+      const warning=place.condition_evidence?.find(e=>e.id===item.id)?.text,value=[item.text,warning].filter(Boolean).join(' '),key=String(value).replace(/\s+/g,' ').trim();
       if(!key)continue;
       const ref=reference(item.source);
       const prior=conditions.find(c=>c.text===key);

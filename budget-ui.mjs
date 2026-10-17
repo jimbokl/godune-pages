@@ -1,8 +1,8 @@
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026101705';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026101706';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=2026101305';
-import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
-import {initTripExpenses} from './trip-expenses-ui.mjs?v=2026101705';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
+import {journeyDays,selectedDay,chooseTripDay,changeDayDetails,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101706';
+import {initTripExpenses} from './trip-expenses-ui.mjs?v=2026101706';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
 import {parseKopecks,costText} from './trip-budget-state.mjs?v=2026101305';
 
 // The same cost model is used by the planner and the standalone budget.

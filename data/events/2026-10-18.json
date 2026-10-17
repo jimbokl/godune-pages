@@ -1,0 +1,267 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-18",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "event-source-1146f9c83c77dd08",
+      "event-source-9a1a9d5f0df12bb6",
+      "event-source-abe653549b66e8fb"
+    ]
+  },
+  "events": [
+    {
+      "title": "Айболит",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-18",
+      "starts": "12:00",
+      "description": "Музыкальная сказка для всей семьи. Концертный зал. 0+. 1 час.",
+      "kind": "Спектакль",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам: 650, 700 или 800 ₽.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-9a1a9d5f0df12bb6",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "id": "event-17b8abe5389212d6",
+      "evidence": {
+        "title_quote": "Айболит",
+        "date_quote": "18 октября 2026",
+        "year_quote": "2026",
+        "time_quote": "12:00",
+        "venue_quote": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "description_quote": "Музыкальная сказка для всей семьи",
+        "city_quote": "Калининград",
+        "admission_quote": "Купить билет",
+        "stage_quote": "Концертный зал",
+        "age_quote": "0+",
+        "session_card_sha256": "88b4a2ad9f023ba61cecf93ba9c851ec7b44ca2029d55bf747879b66d6298f4f",
+        "session_date_attribute": "2026-10-18",
+        "duration_quote": "1:00:00",
+        "price_quote": "650, 700, 800 руб",
+        "fresh_source_capture_id": "philharmonia_aybolit"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+      "verified_at": "2026-10-17T09:50:14Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "c0bc804c3096207cff0d44428b990120a23ac23b75a41b8e2ca5eb313d5fc16d",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T09:50:14Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "bdb21e918f5eebf8472bb3e5afaa9cea78d756432b7a71da7497d4e7d87b03fb",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": "kirha-svyatogo-semeystva"
+    },
+    {
+      "title": "Экскурсия \"Закулисье театра\"",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр",
+      "date": "2026-10-18",
+      "starts": "14:30",
+      "description": "Экскурсия по театру. Основная сцена. 12+. 1 час 30 минут.",
+      "kind": "Экскурсия",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "На момент проверки 16 октября билетов нет. Уточните у театра.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-abe653549b66e8fb",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-6d947bd837a6e235",
+      "evidence": {
+        "title_quote": "Экскурсия \"Закулисье театра\"",
+        "date_quote": "18 Октября",
+        "year_quote": "2026",
+        "time_quote": "14:30",
+        "venue_quote": "Калининградский областной драматический театр",
+        "description_quote": "Экскурсия по театру",
+        "city_quote": "Калининград",
+        "admission_quote": "Билетов нет",
+        "stage_quote": "Основная сцена",
+        "age_quote": "12+",
+        "session_card_sha256": "9c4ddd955b4a8c26959f28de577e914a4f00e66914138c26bfffc1fd547d3e3d",
+        "session_date_attribute": null,
+        "duration_quote": "1 час 30 минут"
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T14:30:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null
+    },
+    {
+      "title": "Шедевры органной музыки",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-18",
+      "starts": "18:00",
+      "description": "Произведения Баха, Вивальди, Регера, Вьерна. Концертный зал. 6+.",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам. Стоимость сеанса уточните у филармонии.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-1146f9c83c77dd08",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "id": "event-3af80c27bfa88bc0",
+      "evidence": {
+        "title_quote": "Шедевры органной музыки",
+        "date_quote": "18 октября",
+        "year_quote": "2026",
+        "time_quote": "18:00",
+        "venue_quote": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "description_quote": "Произведения Баха, Вивальди, Регера, Вьерна",
+        "city_quote": "Калининград",
+        "admission_quote": "Купить билет",
+        "stage_quote": "Концертный зал",
+        "age_quote": "6+",
+        "session_card_sha256": "7f6b2eb203101a309119c8ce154a3bf0a7ccf6ce43a46ab3ba796e398f4e8870",
+        "session_date_attribute": "2026-10-18"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://filarmonia39.ru/afisha/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/",
+          "sha256": "7f0bb7ac8ba18284ec925b61d090cee0190e2adf59ad856a9a45c941a84da9a1",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": "kirha-svyatogo-semeystva"
+    },
+    {
+      "title": "Доходное место",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр",
+      "date": "2026-10-18",
+      "starts": "18:00",
+      "description": "Александр Островский. Комедия. Основная сцена. 12+. 2 часа 40 минут с антрактом.",
+      "kind": "Спектакль",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам. Стоимость уточните у театра.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-abe653549b66e8fb",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-c90f24387a529f61",
+      "evidence": {
+        "title_quote": "Доходное место",
+        "date_quote": "18 Октября",
+        "year_quote": "2026",
+        "time_quote": "18:00",
+        "venue_quote": "Калининградский областной драматический театр",
+        "description_quote": "Александр Островский. Комедия",
+        "city_quote": "Калининград",
+        "admission_quote": "Билеты",
+        "stage_quote": "Основная сцена",
+        "age_quote": "12+",
+        "session_card_sha256": "62b3cf9e4c200f0d448203e13d84a4db90852dbf84a8787853dbc068fa11f1bd",
+        "session_date_attribute": null,
+        "duration_quote": "2 часа 40 минут с антрактом"
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null
+    }
+  ]
+}

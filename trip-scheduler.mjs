@@ -2,7 +2,7 @@ import {instantiateWasm} from './wasm-loader.mjs?v=2026101305';
 let engine;
 // Every caller uses Rust. A failed WASM load never silently switches to different maths.
 export function loadScheduler(base) {
-  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=43',base)).then(async response => {
+  if (!engine) engine = fetch(new URL('assets/trip.wasm?v=44',base)).then(async response => {
     if (!response.ok) throw Error('Не удалось загрузить расчёт дня.');
     const {instance} = await instantiateWasm(response, {name:'trip'});
     const plan = input => calculate(instance.exports,input);
@@ -17,6 +17,8 @@ export function loadScheduler(base) {
     plan.serviceConditions = input => calculateServiceConditions(instance.exports,input);
     plan.serviceAssessment = input => calculateServiceAssessment(instance.exports,input);
     plan.serviceTrip = input => prepareServiceTrip(instance.exports,input);
+    plan.factSnapshot = input => inspectFactSnapshot(instance.exports,input);
+    plan.factFreshness = input => inspectFactFreshness(instance.exports,input);
     plan.serviceDay = input => inspectServiceDay(instance.exports,input);
     plan.dayChange = input => calculateDayChange(instance.exports,input);
     plan.alongRoute = input => calculateAlongRoute(instance.exports,input);
@@ -51,6 +53,8 @@ export const calculateServiceAccess = (wasm,input) => invoke(wasm,input,'trip_se
 export const calculateServiceConditions = (wasm,input) => invoke(wasm,input,'trip_service_conditions','eligibility');
 export const calculateServiceAssessment = (wasm,input) => invoke(wasm,input,'trip_service_assessment','assessment');
 export const prepareServiceTrip = (wasm,input) => invoke(wasm,input,'trip_service_trip','prepared');
+export const inspectFactSnapshot = (wasm,input) => invoke(wasm,input,'trip_fact_snapshot','snapshot');
+export const inspectFactFreshness = (wasm,input) => invoke(wasm,input,'trip_fact_freshness','freshness');
 export const inspectServiceDay = (wasm,input) => invoke(wasm,input,'trip_service_day','day_check');
 export const calculateDayChange = (wasm,input) => invoke(wasm,input,'trip_day_change','change');
 export const calculateAlongRoute = (wasm,input) => invoke(wasm,input,'trip_along_route','matches');

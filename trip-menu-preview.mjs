@@ -1,8 +1,8 @@
-import {ensureJourney,selectedDay,journeyDays,chooseTripDay,addTripDay,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
-import {cleanTrip} from './trip-state.mjs?v=2026101305';
+import {ensureJourney,selectedDay,journeyDays,chooseTripDay,addTripDay,COST_KINDS} from './trip-days-state.mjs?v=2026101706';
+import {cleanTrip} from './trip-state.mjs?v=2026101706';
 import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
-import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
-import {menuPriceFreshness} from './trip-menu-choices-view.mjs?v=2026101305';
+import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101706';
+import {menuPriceFreshness} from './trip-menu-choices-view.mjs?v=2026101706';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
 
 // This is a separate, read-only quote of observed menu prices, never a payment

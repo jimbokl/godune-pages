@@ -1,5 +1,5 @@
-import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
-import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101305';
+import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
+import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101706';
 import {validMenuChoice} from './trip-menu-choices-contract.mjs?v=2026101305';
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 const rub=v=>new Intl.NumberFormat('ru-RU',{style:'currency',currency:'RUB',maximumFractionDigits:2}).format(v/100);

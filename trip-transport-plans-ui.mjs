@@ -1,5 +1,5 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101305';
-import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101305';
+import {selectedDay} from './trip-days-state.mjs?v=2026101706';
+import {removeTransportPlan} from './trip-transport-plans-state.mjs?v=2026101706';
 import {transportStates,transportStatus,transportPath,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101305';
 import {transportClock} from './transport-page-state.mjs?v=2026101305';
 import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101305';

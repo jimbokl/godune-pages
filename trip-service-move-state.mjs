@@ -1,10 +1,10 @@
-import {ensureJourney,chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101305';
-import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101305';
-import {nextServiceVisitId} from './trip-service-visits-state.mjs?v=2026101305';
-import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=2026101305';
-import {validTimeline,timelineOrder} from './trip-service-timeline-state.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
-import {emptyCost} from './trip-expenses-state.mjs?v=2026101305';
+import {ensureJourney,chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101706';
+import {serviceVisitRows,validServiceVisit} from './trip-service-visits-contract.mjs?v=2026101706';
+import {nextServiceVisitId} from './trip-service-visits-state.mjs?v=2026101706';
+import {validServiceExpenseLink} from './trip-service-expenses-contract.mjs?v=2026101706';
+import {validTimeline,timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101706';
+import {emptyCost} from './trip-expenses-state.mjs?v=2026101706';
 
 export const serviceMoveGuard=trip=>JSON.stringify(trip);
 export function serviceMoveTargets(trip,sourceId){
@@ -27,6 +27,7 @@ export function prepareServiceMove(engine,trip,visitId,sourceId,targetId){
  const original=serviceVisitRows(source).find(v=>v?.id===visitId);
  if(!validServiceVisit(original))throw Error('Не удалось прочитать выбранное посещение. Оно остаётся в исходном дне.');
  const moved=structuredClone(original),dateChanged=moved.selection.visit.input.date!==target.date;
+ if(original.event&&dateChanged)throw Error('У события фиксированная дата. Выберите день с датой события; перенос не меняет его афишу.');
  moved.id=nextServiceVisitId(target);moved.selection.visit.input.date=target.date;
  if(dateChanged)moved.selection.participants.booking={status:'not_booked',notice_minutes:null};
  const prepared=engine.serviceTrip(moved);

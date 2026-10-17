@@ -16,12 +16,13 @@ function reference(v){
 }
 const json=v=>v===null||typeof v==='string'||typeof v==='boolean'||typeof v==='number'&&Number.isFinite(v)||Array.isArray(v)&&v.every(json)||object(v)&&Object.values(v).every(json);
 export function validServiceProvenance(v,checkedBefore,identity){
- if(!keys(v,['version','facts'])||v.version!==1||!Array.isArray(v.facts)||checkedBefore!==undefined&&!date(checkedBefore))return false;
+ if(!keys(v,['version','facts'])||![1,2].includes(v.version)||!Array.isArray(v.facts)||checkedBefore!==undefined&&!date(checkedBefore))return false;
  const seen=new Set();
  for(const fact of v.facts){
-  if(!keys(fact,['subject','path','source','status'],['value','note'])||!keys(fact.subject,['kind','id'])||!kinds.has(fact.subject.kind)||!text(fact.subject.id))return false;
+  if(!keys(fact,['subject','path','source','status'],['value','note','ttl_days'])||!keys(fact.subject,['kind','id'])||!kinds.has(fact.subject.kind)||!text(fact.subject.id))return false;
   if(typeof fact.path!=='string'||!fact.path.startsWith('/')||/~(?![01])/.test(fact.path))return false;
   const key=JSON.stringify([fact.subject.kind,fact.subject.id,fact.path]);if(seen.has(key))return false;seen.add(key);
+  if(Object.hasOwn(fact,'ttl_days')&&(!Number.isInteger(fact.ttl_days)||fact.ttl_days<=0||fact.ttl_days>4294967295))return false;
   const s=fact.source;
   if(!keys(s,['reference','checked_at'],['valid_from','valid_until'])||!reference(s.reference)||!date(s.checked_at)||checkedBefore!==undefined&&s.checked_at>checkedBefore)return false;
   if(Object.hasOwn(s,'valid_from')&&!date(s.valid_from)||Object.hasOwn(s,'valid_until')&&!date(s.valid_until)||s.valid_from&&s.valid_until&&s.valid_from>s.valid_until)return false;
@@ -45,7 +46,7 @@ function valueText(value){
  if(Array.isArray(value))return value.length?value.filter(v=>!object(v)&&!Array.isArray(v)).map(valueText).join(', '):'нет';
  return object(value)?(value.kind==='none'?'нет':''):typeof value==='string'?terms[value]||value:String(value);
 }
-export function provenanceSources(snapshot,visitDate){
+export function provenanceSources(snapshot,visitDate,{freshness}={}){
  if(!validServiceProvenance(snapshot)||visitDate!=null&&!date(visitDate))return [];
  return snapshot.facts.map(fact=>{
   const s=fact.source,key=fact.path.split('/').at(-1).replaceAll('~1','/').replaceAll('~0','~');
@@ -53,9 +54,12 @@ export function provenanceSources(snapshot,visitDate){
   let state={confirmed:'',unknown:'нужно уточнить',conflict:'источники расходятся'}[fact.status];
   if(fact.status==='confirmed'&&visitDate&&s.valid_from&&visitDate<s.valid_from)state='действует с '+s.valid_from;
   if(fact.status==='confirmed'&&visitDate&&s.valid_until&&visitDate>s.valid_until)state='срок сведений закончился '+s.valid_until;
+  const evaluated=freshness?.facts?.find(row=>row.subject?.kind===fact.subject.kind&&row.subject?.id===fact.subject.id&&row.path===fact.path);
+  if(evaluated&&evaluated.effective_status!=='confirmed')state=evaluated.freshness==='needs_review'?'требует проверки':evaluated.freshness==='not_yet_valid'?'ещё не действует':evaluated.freshness==='outside_validity'?'срок сведений закончился':evaluated.reason==='source_conflict'?'источники расходятся':'нужно уточнить';
+  if(evaluated?.visit_applicability==='beyond_review_horizon')state=[state,'дата поездки за сроком проверки'].filter(Boolean).join(' · ');
   const range=[s.valid_from?'с '+s.valid_from:'',s.valid_until?'до '+s.valid_until:''].filter(Boolean).join(' ');
   const url=serviceSourceUrl(s.reference);
-  return {name:`${subjects[fact.subject.kind]} · ${label}${value?': '+value:''}${state?' · '+state:''}${range?' · '+range:''}${fact.note?' · '+fact.note:''}${url?'':' · '+s.reference}`,url,checked_at:s.checked_at,date_label:fact.status==='confirmed'?'проверено':'источник от',status:fact.status};
+  return {name:`${subjects[fact.subject.kind]} · ${label}${value?': '+value:''}${state?' · '+state:''}${range?' · '+range:''}${fact.note?' · '+fact.note:''}${url?'':' · '+s.reference}`,url,checked_at:s.checked_at,date_label:fact.status==='confirmed'?'проверено':'источник от',status:evaluated?.effective_status??fact.status,...(evaluated?{freshness:evaluated.freshness,expires_on:evaluated.expires_on,visit_applicability:evaluated.visit_applicability,source_status:fact.status}:{})};
  });
 }
 export const serviceSourceCaption=s=>`${s.name||'Источник'} · ${s.date_label||'проверено'} ${s.checked_at||'дата не указана'}`;

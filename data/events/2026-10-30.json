@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-30",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "event-source-cbcb4a099e189f65"
+    ]
+  },
+  "events": [
+    {
+      "id": "event-yantarhall-queen-2026-10-30",
+      "title": "Куин / Queen",
+      "date": "2026-10-30",
+      "starts": "19:00",
+      "ends": null,
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "description": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 1900 ₽ · 6+.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-cbcb4a099e189f65",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1900,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+      "verified_at": "2026-10-17T09:50:54Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T09:50:54Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "58008b15e5b51466e828aad26f650654e3d18c0e2f306348c6c32eddbf90c04c",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title_quote": "Куин / Queen",
+        "description_quote": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
+        "date_quote": "30.10.2026 19:00:00",
+        "year_quote": "2026",
+        "time_quote": "19:00",
+        "venue_quote": "Янтарь-Холл",
+        "city_quote": "Светлогорск",
+        "price_quote": "Билеты от 1900 руб.",
+        "age_quote": "6+",
+        "same_page_year_source": "share metadata",
+        "source_capture_id": "yantarhall_queen"
+      },
+      "place_id": "yantar-hall"
+    }
+  ]
+}

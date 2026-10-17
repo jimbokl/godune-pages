@@ -10,10 +10,10 @@ export function menuPriceFreshness(choice,asOf){
  const verified=manual.has(choice.source.verification_status?.toLowerCase().replaceAll(' ','_'));
  return age>(verified?30:90)?'stale':verified?'verified':'recent';
 }
-export function menuChoiceGuide(day){
+export function menuChoiceGuide(day,{evaluateFreshness=true}={}){
  return menuChoiceRows(day).map(choice=>{
   if(!validMenuChoice(choice))throw Error('guide_invalid_menu_choice');
-  const price=choice.price, freshness=menuPriceFreshness(choice,day.date),amount=price.amount_kopecks,minimum=price.from_kopecks;
+  const price=choice.price, freshness=evaluateFreshness?menuPriceFreshness(choice,day.date):'unknown',amount=price.amount_kopecks,minimum=price.from_kopecks;
   const value=amount!==null?formatKopecks(amount):minimum!==null?'от '+formatKopecks(minimum):price.label||'Цена не указана';
   const hasPrice=amount!==null||minimum!==null||!!price.label?.trim();
   const priceText=`${value}${price.observed_at?' · меню на '+price.observed_at:''}${freshness==='stale'?' · цена требует проверки':hasPrice&&freshness==='unknown'?' · цена на день поездки не подтверждена':''}`;

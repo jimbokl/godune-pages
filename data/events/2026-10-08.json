@@ -1,0 +1,149 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
+  "generated_at": "2026-10-17T10:30:18.218Z",
+  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "date": "2026-10-08",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "ocean-space-week-2026"
+    ]
+  },
+  "events": [
+    {
+      "id": "star-projector-afternoon-2026",
+      "title": "Звёздный проектор",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Планетарий",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Занятие в планетарии историко-культурного центра. В группе — до 15 человек.",
+      "admission": "По билетам.",
+      "price": null,
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-star-projector-960.webp",
+        "src_small": "assets/editorial/events-star-projector-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Звёздный проектор под куполом планетария",
+        "kind": "illustration"
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "planetarium",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T13:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": "korolevskie-vorota"
+    },
+    {
+      "id": "bessel-astronomer-2026",
+      "title": "Ф. В. Бессель — великий астроном",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Лекция",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Лекция Юлии Степанчук, заведующей отделом истории Музея Мирового океана.",
+      "admission": "Бесплатно · по регистрации.",
+      "price": 0,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-astronomy-960.webp",
+        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Старинный телескоп и звёздный атлас",
+        "kind": "illustration"
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": "korolevskie-vorota"
+    },
+    {
+      "id": "star-projector-evening-2026",
+      "title": "Звёздный проектор · вечерний сеанс",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "date": "2026-10-08",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Планетарий",
+      "venue": "Королевские ворота · «Великое посольство»",
+      "poi": "korolevskie-vorota",
+      "description": "Вечернее занятие в планетарии историко-культурного центра. В группе — до 15 человек.",
+      "admission": "По билетам.",
+      "price": null,
+      "status": "scheduled",
+      "source": "ocean-space-week-2026",
+      "image": {
+        "src": "assets/editorial/events-star-projector-960.webp",
+        "src_small": "assets/editorial/events-star-projector-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Звёздный проектор под куполом планетария",
+        "kind": "illustration"
+      },
+      "venue_id": "royal-gate-embassy",
+      "category": "planetarium",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-08T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+          "sha256": "82f243f79a58426be9c388236e01cd754bdc502ed9865aac128bc7fddd0b2684",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": "korolevskie-vorota"
+    }
+  ]
+}

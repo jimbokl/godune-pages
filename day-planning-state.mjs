@@ -1,7 +1,7 @@
-import {selectedDay} from './trip-days-state.mjs?v=2026101305';
+import {selectedDay} from './trip-days-state.mjs?v=2026101706';
 import {tripSignature} from './trip-light.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
-import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101706';
+import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101706';
 import {usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 
 // Trial changes must reach the same selected-day projection as a saved Trip.
