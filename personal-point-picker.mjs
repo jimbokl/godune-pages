@@ -2,7 +2,7 @@ import {bindMapTheme} from './map-theme.mjs?v=2026101305';
 import {regionMapStyle} from './region-map.mjs?v=2026101305';
 import {isPersonalPoint} from './personal-points.mjs?v=2026101305';
 import {addressPicker} from './address-picker.mjs?v=2026101305';
-import {downloadedMap,localMapStyle} from './offline-map.mjs?v=2026101305';
+import {downloadedMap,localMapStyle} from './offline-map.mjs?v=2026101705';
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 let library;
 function mapLibrary(base){

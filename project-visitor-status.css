@@ -1,0 +1,6 @@
+/* Shared SSR visitor summary. */
+.visitor-status{margin:1.5rem 0 2.5rem;padding:1.25rem 0;border-block:1px solid var(--line,#d5d7d7)}
+.business-page .visitor-status h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 1rem}
+.visitor-status dl{margin:0}.visitor-status dl>div{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:.5rem 1.2rem;padding:.8rem 0}.visitor-status dl>div+div{border-top:1px solid var(--line,#d5d7d7)}
+.visitor-status dt{font-weight:600;font-size:.88rem;line-height:1.6}.visitor-status dd{margin:0;min-width:0}.visitor-status dd p{margin:0;font-size:.9rem}.visitor-status small{display:block;font-size:.76rem;line-height:1.6;color:var(--business-muted);margin-top:.3rem}.visitor-status a{color:inherit;text-underline-offset:.18em;overflow-wrap:anywhere}.visitor-status [data-stage]{display:block}.visitor-status [data-stage]+[data-stage]{margin-top:.5rem}.visitor-status .visitor-status-guide{margin:.9rem 0 0;font-size:.9rem}
+@media(max-width:600px){.visitor-status dl>div{grid-template-columns:1fr;gap:.25rem}}

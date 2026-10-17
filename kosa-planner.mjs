@@ -4,7 +4,7 @@ import {kosaQuickPlan} from './kosa-quick-plan.mjs?v=2026101401';
 import {initKosaDinner} from './kosa-dinner-ui.mjs?v=2026101307';
 import {kosaBudget,kosaMoney} from './kosa-budget.mjs?v=2026101305';
 import {transitTable} from './transport-day.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {kosaInput,kosaPinnedAnswers,kosaNote,kosaClock as clock,addKosaDay,sameKosaAnswer} from './kosa-plan-state.mjs?v=2026101402';
 import {createTripFile} from './trip-file.mjs?v=2026101305';
 import {kosaRoadbook} from './kosa-roadbook.mjs?v=2026101402';
@@ -251,7 +251,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           try{
             if(answers.dinner){
               const outcome=await persist();abort.signal.throwIfAborted();if(ticket!==sequence)return;
-              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101406');
+              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101705');
               const output=await downloadPersonalGuide({trip:copy,catalog,base,scope:'day',format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;},stillCurrent:()=>ticket===sequence&&JSON.stringify(copy)===JSON.stringify(workshop.getState())});
               pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Коса, возвращение, ужин и выбранные порции — в одном файле.`;
               saveStatus.textContent=outcome.saved?'Весь день и блюда сохранены в этом браузере.':'Весь день остаётся в этой вкладке и в скачанном PDF.';

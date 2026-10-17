@@ -1303,10 +1303,10 @@
         }
       ]
     },
-    "e44e47025d6d76ce87ee03127d12bffc125da5663f5c8f110a25390ca12c13d8": {
-      "path": "assets/css-bundles/a9042a9071e768bf2540c1818e742cedb0171ba76ac809048ade818b1f8e5b43.css",
-      "sha256": "a9042a9071e768bf2540c1818e742cedb0171ba76ac809048ade818b1f8e5b43",
-      "bytes": 530930,
+    "f1f89fdf5f161aad5f2fa8542ba7a8933e8d4f960c9486a6dcb37f99ba23776e": {
+      "path": "assets/css-bundles/ba69f91bbceb9bd77360aef8b085f848c051572fcce4ae09fa5eb3505b5c3d3d.css",
+      "sha256": "ba69f91bbceb9bd77360aef8b085f848c051572fcce4ae09fa5eb3505b5c3d3d",
+      "bytes": 531931,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -1409,15 +1409,19 @@
           "media": "all"
         },
         {
+          "path": "project-visitor-status.css",
+          "media": "all"
+        },
+        {
           "path": "project-transport.css",
           "media": "all"
         }
       ]
     },
-    "64c222f4a71efaaa1f3801d41cc4cbff966973f3955b1fadbe77d8cca4d147ac": {
-      "path": "assets/css-bundles/202841140b7ed11ce6a11c08cf214e59e81ef987881a8a63b731f62b98c058d4.css",
-      "sha256": "202841140b7ed11ce6a11c08cf214e59e81ef987881a8a63b731f62b98c058d4",
-      "bytes": 550624,
+    "69b5b5db18fd3d1ea9b9915ba6b5e2d6e33d8959c5a18deecf16ee6896907f27": {
+      "path": "assets/css-bundles/312cbc1577730f9501dec7aad1d1cae5a7325f1be3fd689b17d69a561381773b.css",
+      "sha256": "312cbc1577730f9501dec7aad1d1cae5a7325f1be3fd689b17d69a561381773b",
+      "bytes": 551625,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -1525,6 +1529,10 @@
         },
         {
           "path": "project-overview.css",
+          "media": "all"
+        },
+        {
+          "path": "project-visitor-status.css",
           "media": "all"
         },
         {
@@ -7408,7 +7416,7 @@
     "dunes/belaya-duna/how-to-get/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "e44e47025d6d76ce87ee03127d12bffc125da5663f5c8f110a25390ca12c13d8",
+          "bundle": "f1f89fdf5f161aad5f2fa8542ba7a8933e8d4f960c9486a6dcb37f99ba23776e",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -7563,6 +7571,12 @@
               "link_media": null
             },
             {
+              "href": "../../../project-visitor-status.css?v=1",
+              "path": "project-visitor-status.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
               "href": "../../../project-transport.css?v=1",
               "path": "project-transport.css",
               "media": "all",
@@ -7575,7 +7589,7 @@
     "dunes/belaya-duna/index.html": {
       "groups": {
         "active-0": {
-          "bundle": "64c222f4a71efaaa1f3801d41cc4cbff966973f3955b1fadbe77d8cca4d147ac",
+          "bundle": "69b5b5db18fd3d1ea9b9915ba6b5e2d6e33d8959c5a18deecf16ee6896907f27",
           "deferred": false,
           "location": "active",
           "sources": [
@@ -7738,6 +7752,12 @@
             {
               "href": "/project-overview.css?v=1",
               "path": "project-overview.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "/project-visitor-status.css?v=1",
+              "path": "project-visitor-status.css",
               "media": "all",
               "link_media": null
             },

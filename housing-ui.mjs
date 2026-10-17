@@ -2,8 +2,8 @@ import {housingContext,housingInput,applyHousing,housingLock,housingMode} from '
 import {journeyDays} from './trip-days-state.mjs?v=2026101305';
 import {baseName} from './personal-points.mjs?v=2026101305';
 import {TRAVEL_MODES} from './travel-estimates.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
-import {pickPersonalPoint} from './personal-point-picker.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=2026101705';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const minutes=n=>n===null?'Путь ещё нужно уточнить':n<60?`${n} мин`:`${Math.floor(n/60)} ч${n%60?` ${n%60} мин`:''}`;
 const date=d=>d?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(d+'T12:00:00Z')):'Дата не выбрана';

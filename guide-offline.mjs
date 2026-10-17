@@ -1,4 +1,4 @@
-import {offlineAction} from './offline.mjs?v=2026101305';
+import {offlineAction} from './offline.mjs?v=2026101705';
 import {guideOfflineState} from './guide-offline-state.mjs?v=2026101406';
 
 export function initGuideOffline({mount,base,onChange=()=>{},readPackages=()=>offlineAction(base,{type:'LIST'})}) {

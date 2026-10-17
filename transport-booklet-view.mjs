@@ -4,6 +4,7 @@ import {transportReceiptRows} from './transport-shore-walk.mjs?v=2026101305';
 import {transportStatus,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101305';
 import {transferClock as clock} from './trip-service-transfer-view.mjs?v=2026101305';
 
+import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
 import {roadOrigins} from './transport-road-connection.mjs?v=2026101305';
 export function transportBooklet(snapshot){
  if(snapshot.days?.length!==1)return null;
@@ -25,9 +26,12 @@ export function transportBooklet(snapshot){
  const sources=[],sourceKey=s=>JSON.stringify([s.url,s.checked_at,s.verification]);
  const reference=s=>{if(!s)return null;const key=sourceKey(s);let index=sources.findIndex(v=>v.key===key);if(index<0){index=sources.length;sources.push({...structuredClone(s),key,number:index+1});}return index+1;};
  // The saved-plan summary is already shown by the overview and context above.
- const details=[...(day.rows||[]).filter(row=>row.kind==='notice'&&row.id!==`transport-${receipt.profile}`),...rows].map(row=>({...structuredClone(row),references:[row.source,...row.sources||[]].filter(Boolean).map(reference)}));
+ const details=[...(day.rows||[]).filter(row=>row.kind==='notice'&&row.id!==`transport-${receipt.profile}`&&row.id!=='service-day-issues'),...rows].map(row=>({...structuredClone(row),references:[row.source,...row.sources||[]].filter(Boolean).map(reference)}));
  const changed=day.transport_plans?.length===1?transportContextText(day.transport_plans[0],day.record):'';
- const context=changed?[changed]:[];
+ // Date/company context is already printed above; keep every other native issue.
+ const repeated=new Set(['transport_date_changed','transport_company_changed','transport_company_unknown']);
+ const warnings=(day.rows||[]).filter(row=>row.id==='service-day-issues').map(row=>row.issue_codes?.length?row.issue_codes.filter(code=>!repeated.has(code)).map(transportIssueText).filter(Boolean).join(' '):row.text).filter(Boolean);
+ const context=[...(changed?[changed]:[]),...warnings];
  return {receipt,day,title:'Балтийская коса',subtitle:road?`Из Калининграда ${mode.phrase}`:r?'Из Калининграда поездом':'Из Балтийска',overview,
   budget:transportTotal(receipt.price,r,road),status:transportStatus(receipt),context,
   details,sources,backupWarning:r?.inbound&&r.backup_catches_train===false?'Запасной паром не успевает к обратному поезду. Сохраните выбранный возврат.':road?.state==='connected'&&road.backup_catches_return===false?'Запасной паром не успевает к выбранному обратному автобусу. Сохраните выбранный возврат.':null};

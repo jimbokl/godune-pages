@@ -102,7 +102,7 @@ async function renderOfflinePanel(panel,{context,catalog,selectedPaths,base}={})
   if(!panel)return;
   panel.resources.replaceChildren();panel.packages.replaceChildren();
   try{
-    const {offlineAction}=await import('./offline.mjs?v=2026101305');
+    const {offlineAction}=await import('./offline.mjs?v=2026101705');
     const listed=await offlineAction(base,{type:'LIST'});
     const mapData=routeMapRows(context,catalog,selectedPaths);
     const mapPaths=mapData.paths;
@@ -304,7 +304,7 @@ export async function initEngagement({workshop,base,catalog}={}){
     pdf.disabled=true;dockStatus.textContent='Готовим PDF всей поездки…';
     const trip=structuredClone(workshop.getState()),signature=stable(trip);
     try{
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101406');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101705');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:format.value||'phone',onProgress:text=>{dockStatus.textContent=text;},stillCurrent:()=>stable(workshop.getState())===signature,title:'Моя поездка'});
       dockStatus.textContent=`Буклет готов: ${result.pages} стр. В него вошла вся поездка.`;
     }catch(error){dockStatus.textContent=error.message==='guide_trip_changed'?'Поездка изменилась во время подготовки PDF. Повторите загрузку.':'Не удалось подготовить PDF. Попробуйте ещё раз.';}
@@ -322,7 +322,7 @@ async function initLiveStatus({live,context,base,selected=()=>[]}={}){
     }
     const now=new Date(),local=kaliningradNow(now);
     try{
-      const {loadScheduler}=await import('./trip-scheduler.mjs?v=2026101305');
+      const {loadScheduler}=await import('./trip-scheduler.mjs?v=2026101705');
       const calculate=await loadScheduler(base);
       const begin=Math.min(local.minute,1439),leave=Math.min(1440,begin+1);
       const light=calculate.light({version:1,date:local.date,stops:[{id:'engagement-current',lat:context.node.lat,lon:context.node.lon,begins:begin,leaves:leave,outdoor:true}]});

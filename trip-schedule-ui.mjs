@@ -1,6 +1,6 @@
 import {placePath} from './place-path.mjs?v=2026101406';
 import {enhanceWaveStops} from './wave-stop-ui.mjs?v=2026101406';
-import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101406';
+import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101705';
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
@@ -11,23 +11,27 @@ import {endBookingLabel,bookingEffects,effectiveBookingDay} from './trip-booking
 import {baseName,personalPoints} from './personal-points.mjs?v=2026101305';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=2026101305';
 import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2026101601';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=2026101305';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=2026101305';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=2026101305';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101305';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101406';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101705';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101705';
 import {initDayProgress} from './day-progress-ui.mjs?v=2026101305';
 import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101402';
 import {progressMessages} from './day-progress-advice.mjs?v=2026101305';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
-import {flexSignature} from './day-flex-advice.mjs?v=2026101305';
+import {flexSignature} from './day-flex-advice.mjs?v=2026101705';
 import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101406';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 import {routeAccessDetails} from './route-access-ui.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
+import {dayOutcome} from './day-outcome.mjs?v=2026101705';
+import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
+import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
 
 export {clock} from './day-stop-view.mjs?v=2026101305';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -67,7 +71,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     const label=document.createElement('summary');label.textContent='Время, дорога и запас';calculation.append(label);
     for(const node of [$('#trip-timing-settings'),$('#trip-plan-summary'),progressMount,adviceMount,flexMount,section.querySelector('.day-light-details')])if(node)calculation.append(node);
     $('#trip-plan-body').prepend(calculation);
-    const update=()=>{const state=$('#trip-plan-summary').dataset.planStatus;label.textContent=state==='conflict'||state==='overrun'?'Проверьте время — день не складывается':state==='incomplete'?'Расчёт дня — не хватает данных':state==='needs_check'?'Расчёт дня — есть что уточнить':state==='error'?'Расчёт дня не открылся':'Время, дорога и запас';calculation.dataset.planStatus=state||'';if(['conflict','overrun','error'].includes(state))calculation.open=true;};
+    const update=()=>{const state=$('#trip-plan-summary').dataset.planStatus;label.textContent=state==='conflict'||state==='overrun'?'Проверьте время — день не складывается':['incomplete','needs_info'].includes(state)?'Расчёт дня — не хватает данных':state==='needs_check'?'Расчёт дня — есть что уточнить':state==='error'?'Расчёт дня не открылся':'Время, дорога и запас';calculation.dataset.planStatus=state||'';if(['conflict','overrun','error'].includes(state))calculation.open=true;};
     new MutationObserver(update).observe($('#trip-plan-summary'),{attributes:true,childList:true,subtree:true});
   }
   bindTransport({section,read,commit,catalog,feedback:$('#trip-plan-feedback')});
@@ -397,6 +401,14 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       summary.textContent=(trip.schedule?.progress?`Остаток дня с ${clock(trip.schedule.progress.at)}. `:'')+intro+(result.stops.length && !noReturn ? ` ${dayFinish(result) === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(dayEarliestFinish(result))}.` : '')
         +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До ${result.rail?'границы дня с обратным поездом':'конца дня'} остаётся ${result.slack} мин.` : '')
         +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
+      if(hasTransportPlans(selectedDay(trip))){
+        const whole=inspectTripServiceDay(calculate,trip,catalog,matrix);
+        const transportIssues=whole.issues.map(issue=>transportIssueText(issue.code)).filter(Boolean);
+        if(transportIssues.length){
+          summary.dataset.planStatus=whole.state;
+          summary.textContent=[dayOutcome(whole),...new Set(transportIssues)].join(' ');
+        }
+      }
       section.dataset.scheduleReady='true';
       advice.render({trip,catalog,matrix,engine:calculate,result,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
       flex.render({trip,catalog,matrix,engine:calculate,result,stillCurrent:()=>ticket===sequence && flexSignature(read())===flexSignature(trip)});

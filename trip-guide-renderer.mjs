@@ -7,7 +7,7 @@ import {loadKosaGuideAssets} from './guide-sections.mjs?v=2026101305';
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 import {serviceSourceCaption,groupServiceSources} from './service-provenance.mjs?v=2026101305';
-import {transportBooklet} from './transport-booklet-view.mjs?v=2026101305';
+import {transportBooklet} from './transport-booklet-view.mjs?v=2026101705';
 import {walkingBooklet,walkingSourceCaption,shareWalkingSources} from './walking-booklet-view.mjs?v=2026101603';
 import {validReferenceBudget,referenceMoney,referenceBudgetText} from './day-reference-budget.mjs?v=2026101702';
 const {PDFDocument,PDFString,rgb}=globalThis.PDFLib;
@@ -210,15 +210,15 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
   async function renderTransportBook(b){
     const day=b.day,begins=doc.getPageCount()+1;
     chapter=`ДЕНЬ ${day.number||1} · ${date(b.receipt.date)}`;start();
-    heading(b.title,true);text(b.subtitle,{size:phone?12:16,color:muted,space:phone?14:20});
-    for(const value of b.context)text(value,{size:phone?9:11,color:muted});
+    heading(b.title,true);text(b.subtitle,{size:phone?12:16,color:muted,space:phone?12:20});
+    for(const value of b.context)text(value,{size:phone?9:11,color:muted,space:phone?4:10});
     const cardWidth=width-30,cardText=(value,font,size,space)=>lines(value,font,size,cardWidth).length*size*leadingFor(font)+space;
     for(const [i,step]of b.overview.entries()){
       const size=phone?15:22,space=phone?5:8;
-      need(cardText(step.title,title,size,space)+cardText(step.text,ui,body,phone?14:20));
+      need(cardText(step.title,title,size,space)+cardText(step.text,ui,body,phone?10:20));
       const cy=y-12;page.drawCircle({x:m+10,y:cy,size:10,color:i===1?rgb(.75,.46,.12):rgb(.34,.53,.65)});
       page.drawText(String(i+1),{x:m+10-ui.widthOfTextAtSize(String(i+1),10)/2,y:cy-3.5,font:ui,size:10,color:paper});
-      text(step.title,{font:title,size,space,x:m+30,max:cardWidth});text(step.text,{x:m+30,max:cardWidth,space:phone?14:20});
+      text(step.title,{font:title,size,space,x:m+30,max:cardWidth});text(step.text,{x:m+30,max:cardWidth,space:phone?10:20});
     }
     text(`${b.receipt.answers.people} чел. · ${b.budget}`,{size:phone?10:12,space:8});
     if(b.backupWarning)text(b.backupWarning,{size:phone?9:11,color:muted,space:6});
@@ -251,7 +251,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     heading(day.name,true);text(date(day.date),{size:phone?12:15,color:muted,space});
     const schedule=day.record.schedule;
     text(`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
-    text(`${plural(b.cards.length,['остановка','остановки','остановок'])}${day.slack!==null?' · запас '+day.slack+' мин':''}${day.party_label?' · '+day.party_label:''}`,{size:small,color:muted,space});
+    text(`${plural(b.cards.length,['остановка','остановки','остановок'])}${day.slack!==null?' · '+(day.slack_label||'запас')+' '+day.slack+' мин':''}${day.party_label?' · '+day.party_label:''}`,{size:small,color:muted,space});
     if(b.summary)text(b.summary,{size:small,space});
     for(const [label,point]of [['Начало',day.record.start_at],['Возвращение',day.record.night_at]])if(point?.kind==='personal')text(`${label}: ${point.name} · GPS ${gps(point)}`,{size:small,space});
     if(day.preferences?.label)text('Вам важно: '+day.preferences.label,{size:small,space});
@@ -350,7 +350,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(day.summary);
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
-    text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · запас ${day.slack} мин`:''}`,{color:muted});
+    text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · ${day.slack_label||'запас'} ${day.slack} мин`:''}`,{color:muted});
     await image(media.overview[day.id],phone?115:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
     for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):!Number.isFinite(p.lat)||!Number.isFinite(p.lon)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});

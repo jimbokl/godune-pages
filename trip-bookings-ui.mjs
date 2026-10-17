@@ -1,8 +1,8 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {BOOKING_KINDS,BOOKING_STATUSES,bookingRows,bookingEffects,bookingProblem,saveBooking,deleteBooking,nextBookingId} from './trip-bookings-state.mjs?v=2026101305';
 import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {baseName} from './personal-points.mjs?v=2026101305';
-import {pickPersonalPoint} from './personal-point-picker.mjs?v=2026101305';
+import {pickPersonalPoint} from './personal-point-picker.mjs?v=2026101705';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>n===null?'Время ещё не записано':`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 const date=d=>d?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(d+'T12:00:00Z')):'Дата ещё не выбрана';

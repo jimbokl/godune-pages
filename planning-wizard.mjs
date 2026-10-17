@@ -1,5 +1,5 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101402';
+import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101705';
 import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=2026101402';
 import {initWizardRail} from './wizard-rail-ui.mjs?v=2026101305';
 import {earlierWizardReturn,earlierWizardDeparture,wizardRailActive} from './wizard-rail.mjs?v=2026101305';
@@ -384,7 +384,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=2026101305'),import('./travel-estimates.mjs?v=2026101305')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=2026101705'),import('./travel-estimates.mjs?v=2026101305')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const matrices=await Promise.all(trips.map(trip=>proposal.bus?.[selectedDay(trip).id]?null:loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));
@@ -468,7 +468,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   $('[data-wizard-base-pick]').addEventListener('click',async()=>{
     const button=$('[data-wizard-base-pick]'),ticket=sequence;button.disabled=true;
     try {
-      const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=2026101305');
+      const {pickPersonalPoint}=await import('./personal-point-picker.mjs?v=2026101705');
       const route=wizardChoices(catalog).find(row=>row.slug===answers.route && row.area===answers.area);
       const starter=wizardStarters(catalog).find(row=>row.id===answers.starter);
       const focus=point(multi()?starter?.days[0]?.places[0]:route?.stops[0]?.poi);

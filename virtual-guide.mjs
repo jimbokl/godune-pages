@@ -1,7 +1,7 @@
 import {buildGuide,guideProgress,restoreGuide,guideTranscript} from './virtual-guide-engine.mjs?v=2026101406';
 import {guideNarration} from './guide-provenance.mjs?v=2026101305';
 import {guideAudioRecord,createGuideAudioPlayer} from './guide-audio.mjs?v=2026101305';
-import {initGuideOffline} from './guide-offline.mjs?v=2026101406';
+import {initGuideOffline} from './guide-offline.mjs?v=2026101705';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 import {initGuideLocation} from './guide-location.mjs?v=2026101305';
 
@@ -137,7 +137,7 @@ export function initVirtualGuide({mount,workshop,catalog,base,storage}) {
     if(personal)journeyState='loading';proximity.setPoints(guide?.stops);render();
     if(personal){
       const trip=structuredClone(workshop.getState());
-      import('./virtual-guide-journey.mjs?v=2026101402').then(async module=>{
+      import('./virtual-guide-journey.mjs?v=2026101705').then(async module=>{
         const day=await module.collectVirtualJourney({trip,catalog,base});
         if(current!==revision)return;journeyModule=module;journey=day;journeyState='ready';renderJourney();
       }).catch(()=>{if(current===revision){journeyState='unavailable';renderJourney();}});

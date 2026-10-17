@@ -3,6 +3,7 @@ import {planInput} from './trip-schedule-state.mjs?v=2026101305';
 import {validServiceVisit,serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
 import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=2026101305';
 import {dayJourneyBoundaries,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
+import {dayTransportPlans} from './trip-transport-context.mjs?v=2026101705';
 
 // Compare the original whole day, rather than treating finished visits as
 // future appointments after a progress checkpoint. Never mutate the draft.
@@ -21,7 +22,8 @@ export function serviceDayInput(engine,trip,catalog,matrix){
   try{engine.serviceTrip(visit);visits.push(visit);}catch{unresolved++;}
  }
  const mixed=Object.hasOwn(day,'timeline')||Object.hasOwn(day,'transfer_connections')||usesJourneyBoundaries(day,catalog)?serviceItineraryInput(whole,day,plan,visits,catalog,matrix):null;
- return {version:1,date:day.date,plan,visits:mixed?.visits||visits,unresolved_visits:unresolved,...(mixed?{itinerary:mixed.itinerary}:{})};
+ const transport_plans=dayTransportPlans(day);
+ return {version:1,date:day.date,plan,visits:mixed?.visits||visits,unresolved_visits:unresolved,...(transport_plans.length?{transport_plans}:{}),...(mixed?{itinerary:mixed.itinerary}:{})};
 }
 export function inspectTripServiceDay(engine,trip,catalog,matrix){
  const input=serviceDayInput(engine,trip,catalog,matrix),result=engine.serviceDay(input);

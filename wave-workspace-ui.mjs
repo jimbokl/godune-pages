@@ -1,6 +1,6 @@
 import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=2026101305';
-import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101305';
+import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101705';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101305';
@@ -77,14 +77,14 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  let gpxDownloading=false;
  gpx.addEventListener('click',async()=>{
   if(gpxDownloading)return;gpxDownloading=true;gpx.disabled=true;gpx.textContent='Собираем трек…';gpxStatus.textContent='';const trip=structuredClone(read()),signature=JSON.stringify(trip);let module;
-  try{module=await import('./day-gpx-ui.mjs?v=2026101305');const result=await module.downloadDayGpx({trip,catalog,base,stillCurrent:()=>JSON.stringify(read())===signature});gpxStatus.textContent=module.gpxReady(result);}
+  try{module=await import('./day-gpx-ui.mjs?v=2026101705');const result=await module.downloadDayGpx({trip,catalog,base,stillCurrent:()=>JSON.stringify(read())===signature});gpxStatus.textContent=module.gpxReady(result);}
   catch(error){gpxStatus.textContent=module?module.gpxMessage(error):'Трек пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{gpxDownloading=false;gpx.textContent='Скачать трек GPX ↓';gpx.disabled=!canDownloadWaveDay(read(),catalog);}
  });
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101406');const result=await downloadPersonalGuide({trip,catalog,base,scope:scopeLabel.hidden?'day':scopeSelect.value,format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101705');const result=await downloadPersonalGuide({trip,catalog,base,scope:scopeLabel.hidden?'day':scopeSelect.value,format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=!canDownloadWaveDay(read(),catalog);}
  });

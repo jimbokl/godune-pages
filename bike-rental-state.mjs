@@ -3,7 +3,7 @@
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {selectedInput} from './service-selection-state.mjs?v=2026101305';
 import {rentalActivityTrip} from './trip-rental-activity-state.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
 import {rentalActivityStops} from './trip-rental-view.mjs?v=2026101305';
 
 export function bikeRentalChoices(data,row){

@@ -1,5 +1,5 @@
 import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
-import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=2026101305';
+import {fishWalkTarget,fishWalkSettings,saveFishWalkDay} from './fish-walk-day.mjs?v=2026101705';
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101305';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101305';
 import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101403';
@@ -77,7 +77,7 @@ export async function initFishWalk({workshop,base,catalog}) {
       if(target?.state!=='ready')throw Error('linked_day_missing');
       // Export this saved identity, even if another day is active in another tab.
       const trip=chooseTripDay(current,id),signature=JSON.stringify(current);
-      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101406');
+      const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101705');
       const result=await downloadPersonalGuide({trip,catalog,base,scope:'day',format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(workshop.getState())===signature});
       status.textContent=`Буклет готов: ${result.pages} стр. Ищите PDF в загрузках.`;
     }catch(error){status.textContent=error.message==='guide_trip_changed'?'День изменился. Соберите свежий буклет.':error.message==='linked_day_missing'?'День уже удалён. Выберите другой в «Моём дне».':'Буклет пока не собрался. Попробуйте ещё раз.';}

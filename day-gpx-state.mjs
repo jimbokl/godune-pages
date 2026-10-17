@@ -1,6 +1,6 @@
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {activateTimeline,timelineGuard} from './trip-service-timeline-state.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
 import {projectDayMap,projectedRoadFeatures} from './day-map-state.mjs?v=2026101305';
 import {bikeRouteFacts} from './bike-route-profile.mjs?v=2026101305';
 

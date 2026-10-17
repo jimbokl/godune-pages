@@ -1,7 +1,7 @@
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 // Read-only PDF view of the same Rust assessment used by the day screen.
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
 import {validServiceVisit,serviceVisitRows,hasServiceVisits,serviceVisitContext} from './trip-service-visits-contract.mjs?v=2026101305';
 import {timelineOrder,validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
 import {selectedDay,budgetInput,COST_KINDS} from './trip-days-state.mjs?v=2026101305';
@@ -16,6 +16,8 @@ import {selectedConnectionRows,unusedConnectionRows} from './trip-service-transf
 import {provenanceSources} from './service-provenance.mjs?v=2026101305';
 import {serviceSelectionFacts} from './trip-service-selection-view.mjs?v=2026101305';
 import {priceRows,splitText} from './service-price-view.mjs?v=2026101305';
+import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
+import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 
 const categories={bike_rental:'Велопрокат',bath:'Баня',pool:'Бассейн',gym:'Спортзал',market:'Рынок',workshop:'Занятие',dining:'Еда',water_activity:'Водный отдых'};
 const stages={approach:'До входа',collect:'Получить вещи',change_before:'Переодеться',prepare:'Подготовиться',activity:'На месте',complete:'Завершить',change_after:'Переодеться после',return_walk:'Вернуться к ориентиру',return_road:'До пункта возврата',handover:'Сдать велосипед'};
@@ -25,6 +27,7 @@ const contexts={date_changed:'Посещение выбрано на другу�
 const roads={unknown:'Время дороги пока неизвестно.',stale:'Сведения о дороге нужно обновить.',changed_point:'Точка пути изменилась. Дорогу нужно проверить.',conflict:'Источники по дороге расходятся.',blocked:'Этот переход недоступен.'};
 const errors={service_day_generated_unresolved:'Посещения сохранены отдельно от поездки на косу. Её расчёт их не учитывает.',service_day_rail_unresolved:'Выбранные электрички нужно проверить заново. Посещения пока не сверены с возвращением.',service_timeline_unsupported:'Порядок сохранён в другой версии. Полный расчёт дня пока недоступен.'};
 errors.service_transfer_connections_unsupported='Выбранную дорогу пока не удалось прочитать. Она остаётся в файле поездки.';
+errors.service_day_transport_unresolved='Сохранённый транспортный расчёт не удалось проверить. Откройте его и уточните сведения.';
 const safeText=value=>typeof value==='string'?value:'';
 const price=(total,known)=>total!=null?money(total):known>0?`Не меньше ${money(known)}. Полная сумма неизвестна.`:'Полная сумма пока неизвестна.';
 const source=value=>value?{name:value.reference||'Источник',url:/^https?:\/\//.test(value.reference||'')?value.reference:null,checked_at:value.checked_at}:null;
@@ -73,7 +76,8 @@ export function guideEntries(day,stops,services){
  return ranked.map((entry,index)=>({...entry,number:index+1}));
 }
 export function serviceGuide(engine,trip,catalog,matrix){
- const day=selectedDay(trip);if(!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!(usesJourneyBoundaries(day,catalog)&&typeof engine.serviceDay==='function'))return null;
+ const day=selectedDay(trip),hasTransportPlans=Array.isArray(day.transport_plans?.entries)&&day.transport_plans.entries.length>0;
+ if(!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!hasTransportPlans&&!(usesJourneyBoundaries(day,catalog)&&typeof engine.serviceDay==='function'))return null;
  const services=serviceVisitRows(day).map((v,i)=>serviceCard(engine,v,day,i,catalog));
  let check=null,error=null;try{check=inspectTripServiceDay(engine,trip,catalog,matrix);}catch(e){error=errors[e.message]||'Полный расчёт дня пока недоступен. Выбранные посещения и записи сохранены ниже.';}
  const boundaries=dayJourneyBoundaries(day,catalog);
@@ -81,11 +85,13 @@ export function serviceGuide(engine,trip,catalog,matrix){
  const issues=[];
  if(error)issues.push(error);
  for(const row of check?.overlaps||[])issues.push(`«${name(row.first)}» и «${name(row.second)}» пересекаются ${row.precision==='minimum'?'как минимум ':''}на ${row.minutes} мин.`);
+ const transportNeedsInfo=(check?.issues||[]).some(issue=>String(issue.code||'').startsWith('transport_'));
  for(const issue of check?.issues||[]){
-  const text={outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату.`,date_missing:'Укажите дату дня, чтобы сверить посещения.',service_time_unknown:`У «${name(issue.entry)}» неизвестна часть времени.`,service_connections_unknown:'Дорога между прогулкой и посещениями ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить.'}[issue.code];
+  const text={outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату.`,date_missing:'Укажите дату дня, чтобы сверить посещения.',service_time_unknown:`У «${name(issue.entry)}» неизвестна часть времени.`,service_connections_unknown:'Дорога между прогулкой и посещениями ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить.'}[issue.code]||transportIssueText(issue.code);
   if(text)issues.push(text);
  }
- return {services,check,error,issues:[...new Set(issues)],summary:error||({fits:check?.itinerary?'Остановки и дорога укладываются в выбранное время.':'Посещения укладываются в день по выбранному времени. Дорога между ними ещё не рассчитана.',needs_info:'Для полного расчёта дня не хватает сведений.',conflict:'В плане есть пересечения или ограничения.',empty:'В этом дне пока нет остановок.'}[check?.state]||'Полный расчёт пока недоступен.')};
+ const summary=transportNeedsInfo&&check?.state==='needs_info'?dayOutcome(check):({fits:check?.itinerary?'Остановки и дорога укладываются в выбранное время.':'Посещения укладываются в день по выбранному времени.',needs_info:'Для полного расчёта дня не хватает сведений.',conflict:'В плане есть пересечения или ограничения.',empty:'В этом дне пока нет остановок.'}[check?.state]||'Полный расчёт пока недоступен.');
+ return {services,check,error,transportNeedsInfo,issues:[...new Set(issues)],summary:error||summary};
 }
 export function mixedGuideRows(trip,catalog,guide,issueText){
  const result=guide.check;if(!result?.itinerary)return null;

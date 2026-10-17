@@ -1,5 +1,5 @@
-import {collectDayGpx} from './day-gpx-state.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {collectDayGpx} from './day-gpx-state.mjs?v=2026101705';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 
 export async function downloadDayGpx({trip,catalog,base,engine,matrix,stillCurrent=()=>true}){

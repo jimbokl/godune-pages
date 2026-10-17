@@ -5,6 +5,8 @@ export function dayOutcome(check){
  if(check.state==='empty')return 'В этом дне пока нет посещений.';
  if(check.state==='conflict')return 'В плане есть пересечения или ограничения.';
  if(check.state==='fits')return check.itinerary?'Остановки и дорога укладываются в выбранное время.':'По выбранному времени посещения укладываются в день.';
+ if(check.issues.some(i=>i.code==='transport_connections_unknown'))return 'Возвращение для всего дня пока не проверено. Уточните сохранённый транспорт и дорогу к посадке.';
+ if(check.issues.some(i=>i.code.startsWith('transport_')))return 'Сохранённый транспортный расчёт нужно сверить с этим днём.';
  if(check.issues.some(i=>i.code==='service_connections_unknown'))return 'Соедините места и посещения, чтобы рассчитать весь день.';
  if(finish!==null&&!check.issues.length&&issues.length&&issues.every(i=>estimates.has(i.code))&&check.visits.every(v=>v.context==='ready'&&v.assessment?.state==='fits'))return `По приблизительному расчёту день закончится в ${clock(finish)}.`;
  if(issues.some(i=>['unknown_travel','unknown_approach','unknown_return','transport_incomplete'].includes(i.code)))return 'Уточните неизвестные участки дороги, чтобы рассчитать возвращение.';

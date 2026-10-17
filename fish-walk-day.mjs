@@ -1,4 +1,4 @@
-import {saveTourDay} from './gastronomy.mjs?v=2026101406';
+import {saveTourDay} from './gastronomy.mjs?v=2026101705';
 import {selectedDay,chooseTripDay,journeyDays,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101305';
 import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101305';
 

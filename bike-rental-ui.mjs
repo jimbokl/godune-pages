@@ -1,6 +1,6 @@
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {rentalDetails} from './trip-rental-view.mjs?v=2026101305';
-import {dayOutcome} from './day-outcome.mjs?v=2026101305';
+import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 
 export function bikeRentalPicker({row,preview,choices,view,base,catalog,onChange}){

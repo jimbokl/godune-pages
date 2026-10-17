@@ -1,6 +1,6 @@
 import {placePath} from './place-path.mjs?v=2026101406';
 import {dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
-import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions,protectedFlexStops} from './day-flex-advice.mjs?v=2026101305';
+import {flexAdvice,applyFlexAdvice,canFlexDay,flexOmissions,protectedFlexStops} from './day-flex-advice.mjs?v=2026101705';
 import {clock} from './day-stop-view.mjs?v=2026101305';
 
 const el=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};

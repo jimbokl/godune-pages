@@ -1,13 +1,13 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101305';
-import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101305';
+import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101705';
+import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101705';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
 import {rentalDetails} from './trip-rental-view.mjs?v=2026101305';
 import {dayPeople} from './trip-party.mjs?v=2026101305';
 import {selectedDay,journeyDays,ensureJourney} from './trip-days-state.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
-import {dayChangeText} from './trip-day-change-view.mjs?v=2026101305';
+import {dayChangeText} from './trip-day-change-view.mjs?v=2026101705';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-along-route]');
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 const names={fits:'Подходит по расчёту',needs_info:'Нужно уточнить',does_not_fit:'Не помещается'};

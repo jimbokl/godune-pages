@@ -82,7 +82,7 @@ export function bindServiceContext(form,page,onChange) {
     if(pending)return pending;
     if(notify)onChange();load.disabled=true;status.textContent='Открываем сохранённую поездку…';
     pending=(async()=>{
-      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=2026101406');
+      const {savedServiceDay}=await import('./trip-service-visits-ui.mjs?v=2026101705');
       const saved=savedServiceContexts(await savedServiceDay(new URL('./',import.meta.url)));
       contexts=[...(page.contexts||[]),...saved];
       for(const [select,type] of [[pointSelect,'point'],[routeSelect,'route']]){

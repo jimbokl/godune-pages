@@ -1,19 +1,20 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101305';
+import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101705';
 import {selectedDay} from './trip-days-state.mjs?v=2026101305';
 import {hasServiceVisits,serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101305';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101305';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101705';
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
 import {activateTimeline,moveTimelineEntry,timelineGuard,validTimeline} from './trip-service-timeline-state.mjs?v=2026101305';
 import {serviceTimelineView} from './trip-service-timeline-ui.mjs?v=2026101406';
-import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101406';
+import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101705';
 import {selectTab} from './wave-stop-ui.mjs?v=2026101406';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
-import {dayOutcome} from './day-outcome.mjs?v=2026101305';
+import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const clock=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
-const errors={service_day_generated_unresolved:'Посещения пока не сверены с поездкой на косу. Они остаются в вашем дне.',service_day_rail_unresolved:'Выбранные электрички нужно проверить заново. Посещения пока не сверены с возвращением.',arrival_after_day:'Прибытие позже конца дня. Проверьте время дня.',departure_before_day:'Срок возвращения раньше начала дня. Проверьте время дня.'};
+const errors={service_day_transport_unresolved:'Сохранённый транспорт пока не удалось проверить. Он остаётся в файле поездки.',service_day_generated_unresolved:'Посещения пока не сверены с поездкой на косу. Они остаются в вашем дне.',service_day_rail_unresolved:'Выбранные электрички нужно проверить заново. Посещения пока не сверены с возвращением.',arrival_after_day:'Прибытие позже конца дня. Проверьте время дня.',departure_before_day:'Срок возвращения раньше начала дня. Проверьте время дня.'};
 Object.assign(errors,{service_timeline_unsupported:'Порядок сохранён в другой версии. Он остаётся в файле поездки.',service_timeline_anchor_conflict:'У двух посещений расходятся точки пути. Дорогу нужно уточнить; ваш выбор на месте.'});
 errors.service_transfer_connections_unsupported='Дорога сохранена в другой версии или не прочитана. Ваш выбор остаётся в файле поездки.';
 
@@ -67,7 +68,7 @@ export function initServiceDayCheck({heading,read,commit,base,catalog,onSettings
   const issues=[];
   for(const row of result.overlaps)issues.push(`«${name(row.first)}» и «${name(row.second)}» пересекаются ${row.precision==='minimum'?'как минимум ':''}на ${row.minutes} мин.`);
   for(const issue of result.issues){
-   const text={outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату. Пересчитайте посещение ниже.`,date_missing:'Укажите дату дня, чтобы сверить выбранные посещения.',service_time_unknown:`У «${name(issue.entry)}» ещё неизвестна часть времени.`,service_connections_unknown:'Дорога между остановками ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить. Они остаются в файле поездки.'}[issue.code];
+   const text=transportIssueText(issue.code)||{outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату. Пересчитайте посещение ниже.`,date_missing:'Укажите дату дня, чтобы сверить выбранные посещения.',service_time_unknown:`У «${name(issue.entry)}» ещё неизвестна часть времени.`,service_connections_unknown:'Дорога между остановками ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить. Они остаются в файле поездки.'}[issue.code];
    if(text)issues.push(text);
   }
   if(['conflict','overrun'].includes(result.places.status))issues.push(result.itinerary?'День не укладывается в выбранное время. Проверьте порядок и паузы.':'Прогулка не укладывается в выбранное время. Проверьте её таймлайн.');
@@ -89,7 +90,7 @@ export function initServiceDayCheck({heading,read,commit,base,catalog,onSettings
   if(currentOpen)waveState={dayId:renderedDayId,point:currentOpen.dataset.waveStop,tab:currentOpen.querySelector('[data-wave-tab][aria-pressed="true"]')?.dataset.waveTab||'place',query:currentOpen.querySelector('input[type="search"]')?.value||''};
   else if(body.childElementCount)waveState=null;
   if(waveState?.dayId!==day.id)waveState=null;
-  panel.hidden=!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!usesJourneyBoundaries(day,catalog);menuPicker?.cleanup();body.replaceChildren();
+  panel.hidden=!(day.transport_plans?.entries?.length)&&!hasServiceVisits(day)&&!Object.hasOwn(day,'timeline')&&!Object.hasOwn(day,'transfer_connections')&&!usesJourneyBoundaries(day,catalog);menuPicker?.cleanup();body.replaceChildren();
   title.textContent=active?'Остановки по порядку':'Как посещения вписываются в день';
   if(panel.hidden){status.textContent='';panel.dataset.serviceDayState='empty';return;}
   panel.dataset.serviceDayState='loading';status.textContent='Сверяем посещения с планом дня…';

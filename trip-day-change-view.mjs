@@ -1,3 +1,4 @@
+import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
 const clock=value=>`${String(Math.floor(value/60)%24).padStart(2,'0')}:${String(value%60).padStart(2,'0')}${value>=1440?' следующего дня':''}`;
 const reasonText={
  kitchen_closed:'В выбранный день кухня не принимает заказы.',
@@ -28,17 +29,20 @@ export function dayChangeText(change){
    `Остановки закончатся ${delta>0?'позже':'раньше'} на ${Math.abs(delta)} мин: ${clock(before.finish)} → ${clock(after.finish)}.`);
  }else if(after.finish!==null)lines.push(`По расчёту остановки закончатся в ${clock(after.finish)}.`);
  else lines.push('Изменение времени пока не рассчитано: не хватает дороги или условий посещения.');
+ const horizon=after.deadline_kind==='rail'?'выбранной электрички':'конца заданного времени дня';
  if(after.slack!==null){
-  if(after.slack<0)lines.push(`Не укладываетесь в выбранное время возвращения: не хватает ${Math.abs(after.slack)} мин.`);
-  else if(before.slack!==null)lines.push(`Запас до выбранного возвращения: ${before.slack} → ${after.slack} мин.`);
-  else lines.push(`Запас до выбранного возвращения: ${after.slack} мин.`);
+  if(after.slack<0)lines.push(`Не успеваете до ${horizon}: не хватает ${Math.abs(after.slack)} мин.`);
+  else if(before.slack!==null)lines.push(`Запас до ${horizon}: ${before.slack} → ${after.slack} мин.`);
+  else lines.push(`Запас до ${horizon}: ${after.slack} мин.`);
  }
  const previous=new Set(reasons(change.before).map(row=>`${row.code}:${row.id}`));
  const seen=new Set();
  const current=reasons(change.after),fresh=current.filter(row=>!previous.has(`${row.code}:${row.id}`));
- for(const row of (fresh.length?fresh:current)){
-  const text=reasonText[row.code];if(!text||seen.has(text))continue;
-  seen.add(text);lines.push(text);if(seen.size===2)break;
+ let ordinary=0;
+ for(const row of [...current.filter(row=>transportIssueText(row.code)),...(fresh.length?fresh:current)]){
+  const text=transportIssueText(row.code)||reasonText[row.code];if(!text||seen.has(text))continue;
+  if(!transportIssueText(row.code)&&ordinary++>=2)continue;
+  seen.add(text);lines.push(text);
  }
  if(change.after.overlaps.length&&!change.before.overlaps.length)lines.push('Выбранные посещения пересекаются по времени.');
  return lines;
