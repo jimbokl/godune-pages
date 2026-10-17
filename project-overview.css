@@ -1,6 +1,13 @@
 /* Project landing: the same restrained dossier used by the timeline and research. */
 .project-overview .business-intro h1{max-width:21ch}
-.overview-status{font-size:.8rem;color:var(--business-muted);margin:0 0 1.25rem}
+.overview-today{margin:1.5rem 0 2rem;padding:0 0 1.5rem;border-bottom:1px solid var(--line)}
+.overview-today h2{font-family:var(--font-display,Georgia,serif);font-size:clamp(1.45rem,2.5vw,2rem);font-weight:400;margin:0 0 .65rem}
+.overview-today>p{max-width:65ch}
+.overview-today-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.75rem}
+.overview-today-links article{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:1rem;min-width:0}
+.overview-today-links h3{font-family:var(--font-display,Georgia,serif);font-size:1.15rem;font-weight:400;margin:0 0 .45rem}
+.overview-today-links p{font-size:.86rem;margin:.4rem 0 .7rem}
+.overview-today-links .business-link{display:inline-flex;align-items:center;min-height:44px}
 .project-metrics-byline{font-size:.78rem;color:var(--muted);margin:-.35rem 0 1.25rem}
 .project-metrics{margin:0 0 2.5rem;padding:1.25rem 0 1.5rem;border-block:1px solid var(--line)}
 .project-metrics>.dossier-list-heading{align-items:baseline;margin:0 0 1rem}
@@ -68,4 +75,5 @@ html[data-theme=night] .project-metric-sources a,html[data-theme=night] .project
  .project-overview .dossier-chapters .dossier-record-body{padding-left:2.2rem}
  .overview-more{margin-top:2rem}
  .overview-nearby>div{display:grid;gap:.4rem}
+ .overview-today-links{grid-template-columns:1fr}
 }

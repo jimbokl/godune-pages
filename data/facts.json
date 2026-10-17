@@ -2585,7 +2585,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-15",
+        "expires_on": "2026-11-16",
         "freshness": "current",
         "path": "/hours",
         "reason": "within_review_horizon",
@@ -2595,7 +2595,7 @@
           "kind": "place"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-16",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -2630,7 +2630,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-03",
+        "expires_on": "2026-11-16",
         "freshness": "current",
         "path": "/schedule",
         "reason": "within_review_horizon",
@@ -2640,12 +2640,12 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-04",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-03",
+        "expires_on": "2026-11-16",
         "freshness": "current",
         "path": "/schedule",
         "reason": "within_review_horizon",
@@ -2655,7 +2655,7 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-04",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -2675,7 +2675,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-04",
+        "expires_on": "2026-11-16",
         "freshness": "current",
         "path": "/schedule",
         "reason": "within_review_horizon",
@@ -2685,12 +2685,12 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-05",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-04",
+        "expires_on": "2026-11-16",
         "freshness": "current",
         "path": "/schedule",
         "reason": "within_review_horizon",
@@ -2700,7 +2700,7 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-05",
+        "verified_at": "2026-10-17",
         "visit_applicability": "unknown"
       },
       {
@@ -25536,8 +25536,8 @@
       {
         "path": "/hours",
         "source": {
-          "checked_at": "2026-10-16",
-          "reference": "https://visit-kaliningrad.ru/food/restoran-local-lokal/"
+          "checked_at": "2026-10-17",
+          "reference": "https://local-baltic.ru/"
         },
         "status": "confirmed",
         "subject": {
@@ -25607,9 +25607,9 @@
           ],
           "scope": "place",
           "source": {
-            "checked_at": "2026-10-16",
-            "name": "Туристический информационный центр Калининградской области · Local",
-            "url": "https://visit-kaliningrad.ru/food/restoran-local-lokal/",
+            "checked_at": "2026-10-17",
+            "name": "Local Baltic Food · часы основного меню и завтраков",
+            "url": "https://local-baltic.ru/",
             "verification": "official_source"
           },
           "text": "Понедельник — 15:00–23:00. Вторник–воскресенье — 13:00–23:00. Завтраки отдельно: ежедневно 08:00–12:00."
@@ -25701,7 +25701,7 @@
       {
         "path": "/schedule",
         "source": {
-          "checked_at": "2026-10-04",
+          "checked_at": "2026-10-17",
           "reference": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
           "valid_from": "2026-10-01"
         },
@@ -26021,7 +26021,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-04",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -26346,7 +26346,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-04",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -26713,7 +26713,7 @@
               "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
               "verification": "official"
             },
-            "checked_at": "2026-10-04",
+            "checked_at": "2026-10-17",
             "documents": [
               {
                 "direction": "outward",
@@ -26739,7 +26739,7 @@
       {
         "path": "/schedule",
         "source": {
-          "checked_at": "2026-10-04",
+          "checked_at": "2026-10-17",
           "reference": "https://kppk39.ru/raspisanie/kaliningrad-zelenogradsk-svetlogorsk/",
           "valid_from": "2026-10-01"
         },
@@ -27073,7 +27073,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-04",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -27412,7 +27412,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-04",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -27778,7 +27778,7 @@
               "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
               "verification": "official"
             },
-            "checked_at": "2026-10-04",
+            "checked_at": "2026-10-17",
             "documents": [
               {
                 "direction": "outward",
@@ -27838,7 +27838,7 @@
       {
         "path": "/schedule",
         "source": {
-          "checked_at": "2026-10-05",
+          "checked_at": "2026-10-17",
           "reference": "https://kppk39.ru/raspisanie/kaliningrad-svetlogorsk-cherez-pereslavskoe/",
           "valid_from": "2026-10-01"
         },
@@ -27856,7 +27856,7 @@
               "date": "2026-11-04",
               "inbound": [
                 {
-                  "arrival": "07:31",
+                  "arrival": "08:42",
                   "days": [
                     1,
                     2,
@@ -27866,8 +27866,8 @@
                     6,
                     7
                   ],
-                  "departure": "06:25",
-                  "id": "svet-6700-south"
+                  "departure": "07:39",
+                  "id": "svet-6702-south"
                 },
                 {
                   "arrival": "10:01",
@@ -27940,6 +27940,20 @@
                   "id": "svet-6716-south"
                 },
                 {
+                  "arrival": "17:47",
+                  "days": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "departure": "16:42",
+                  "id": "svet-6718-south"
+                },
+                {
                   "arrival": "18:51",
                   "days": [
                     1,
@@ -27968,7 +27982,7 @@
                   "id": "svet-6722-south"
                 },
                 {
-                  "arrival": "21:44",
+                  "arrival": "21:42",
                   "days": [
                     1,
                     2,
@@ -28131,7 +28145,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-05",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -28153,7 +28167,7 @@
               "date": "2026-12-31",
               "inbound": [
                 {
-                  "arrival": "07:31",
+                  "arrival": "08:42",
                   "days": [
                     1,
                     2,
@@ -28163,8 +28177,8 @@
                     6,
                     7
                   ],
-                  "departure": "06:25",
-                  "id": "svet-6700-south"
+                  "departure": "07:39",
+                  "id": "svet-6702-south"
                 },
                 {
                   "arrival": "10:01",
@@ -28237,6 +28251,20 @@
                   "id": "svet-6716-south"
                 },
                 {
+                  "arrival": "17:47",
+                  "days": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "departure": "16:42",
+                  "id": "svet-6718-south"
+                },
+                {
                   "arrival": "18:51",
                   "days": [
                     1,
@@ -28265,7 +28293,7 @@
                   "id": "svet-6722-south"
                 },
                 {
-                  "arrival": "21:44",
+                  "arrival": "21:42",
                   "days": [
                     1,
                     2,
@@ -28428,7 +28456,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-05",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -28573,6 +28601,20 @@
               "id": "svet-6716-south"
             },
             {
+              "arrival": "17:47",
+              "days": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "departure": "16:42",
+              "id": "svet-6718-south"
+            },
+            {
               "arrival": "18:51",
               "days": [
                 1,
@@ -28625,7 +28667,7 @@
               "id": "svet-6724-south"
             },
             {
-              "arrival": "21:44",
+              "arrival": "21:42",
               "days": [
                 1,
                 2,
@@ -28820,7 +28862,7 @@
           ],
           "publication_year": 2026,
           "source": {
-            "checked_at": "2026-10-05",
+            "checked_at": "2026-10-17",
             "documents": [
               {
                 "direction": "outward",
@@ -28846,7 +28888,7 @@
       {
         "path": "/schedule",
         "source": {
-          "checked_at": "2026-10-05",
+          "checked_at": "2026-10-17",
           "reference": "https://kppk39.ru/raspisanie/kaliningrad-svetlogorsk-cherez-pereslavskoe/",
           "valid_from": "2026-10-01"
         },
@@ -28863,20 +28905,6 @@
             {
               "date": "2026-11-04",
               "inbound": [
-                {
-                  "arrival": "07:24",
-                  "days": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                  ],
-                  "departure": "06:25",
-                  "id": "svet-6700-north"
-                },
                 {
                   "arrival": "08:35",
                   "days": [
@@ -29146,6 +29174,20 @@
                   "id": "svet-6717-north"
                 },
                 {
+                  "arrival": "17:31",
+                  "days": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "departure": "16:44",
+                  "id": "svet-7215-north"
+                },
+                {
                   "arrival": "18:41",
                   "days": [
                     1,
@@ -29181,7 +29223,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-05",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -29203,20 +29245,6 @@
               "date": "2026-12-31",
               "inbound": [
                 {
-                  "arrival": "07:24",
-                  "days": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                  ],
-                  "departure": "06:25",
-                  "id": "svet-6700-north"
-                },
-                {
                   "arrival": "08:35",
                   "days": [
                     1,
@@ -29485,6 +29513,20 @@
                   "id": "svet-6717-north"
                 },
                 {
+                  "arrival": "17:31",
+                  "days": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "departure": "16:44",
+                  "id": "svet-7215-north"
+                },
+                {
                   "arrival": "18:41",
                   "days": [
                     1,
@@ -29520,7 +29562,7 @@
                   "url": "https://web-cgu-demo01.k8s.trudvsem.ru/information-pages/calendar-2026",
                   "verification": "official"
                 },
-                "checked_at": "2026-10-05",
+                "checked_at": "2026-10-17",
                 "documents": [
                   {
                     "direction": "outward",
@@ -29549,9 +29591,7 @@
                 2,
                 3,
                 4,
-                5,
-                6,
-                7
+                5
               ],
               "departure": "06:25",
               "id": "svet-6700-north"
@@ -29583,7 +29623,7 @@
               "id": "svet-6702-north"
             },
             {
-              "arrival": "08:42",
+              "arrival": "08:38",
               "days": [
                 1,
                 2,
@@ -29928,7 +29968,9 @@
                 2,
                 3,
                 4,
-                5
+                5,
+                6,
+                7
               ],
               "departure": "16:44",
               "id": "svet-7215-north"
@@ -29988,7 +30030,7 @@
           ],
           "publication_year": 2026,
           "source": {
-            "checked_at": "2026-10-05",
+            "checked_at": "2026-10-17",
             "documents": [
               {
                 "direction": "outward",

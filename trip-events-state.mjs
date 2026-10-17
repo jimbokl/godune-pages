@@ -38,6 +38,9 @@ export function prepareEventAdd(engine,trip,event,options={}){
  const prepared=engine.serviceTrip(visit),preview=prepareServiceAdd(engine,original,prepared,targetId);
  preview.guard=eventTripGuard(trip);preview.kind='event';preview.eventGuard=eventSnapshotGuard(visit.event);
  const day=selectedDay(preview.trip),entry={kind:'service',id:preview.visit.id},order=timelineOrder(day).filter(row=>row.kind!=='service'||row.id!==entry.id);
+ // A separate event day has no selected city train. Keep the original day's
+ // dated rail snapshot intact; the event's road/return remain to be selected.
+ if(!targetId){if(day.schedule)delete day.schedule.rail;if(preview.trip.schedule)delete preview.trip.schedule.rail;}
  // Only the new entry moves; every existing place, dinner and return remains.
  let index=order.length;
  if(options.before){index=order.findIndex(row=>row.kind===options.before.kind&&row.id===options.before.id);if(index<0)throw Error('Выбранная остановка уже изменилась. Проверьте порядок заново.');}

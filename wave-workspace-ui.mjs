@@ -64,7 +64,8 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  const walks=el('a','','Прогулки');walks.href=new URL('routes/',base);
  const mine=el('button','','Мой день');mine.type='button';mine.setAttribute('aria-current','page');mine.addEventListener('click',()=>{work.dataset.view='list';tabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dayView==='list')));tabs.scrollIntoView({block:'start'});});
  const icons=['walk','clock','menu-2'];[walks,mine,moreButton].forEach((control,i)=>{const icon=el('img');icon.src=new URL(`assets/icons/${icons[i]}.svg`,base);icon.width=24;icon.height=24;icon.alt='';control.prepend(icon);bottom.append(control);});
- mount.append(bottom);
+ // Keep viewport navigation outside the native details content box.
+ document.body.append(bottom);
  const secondary=el('div','wave-after-stops'),addPlace=el('a','wave-add-place','+ Добавить место');addPlace.href=new URL('map/',base);const moreTop=el('button','wave-tools-link','Настройки дня');moreTop.type='button';moreTop.addEventListener('click',openMore);secondary.append(addPlace,moreTop);work.after(secondary);
  if(dishes)secondary.after(dishes);
  const roadEditor=initTransferEditor({host:secondary,read,commit,catalog,base});
@@ -84,7 +85,7 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  let downloading=false;
  button.addEventListener('click',async()=>{
   if(downloading)return;downloading=true;button.disabled=true;button.textContent='Собираем буклет…';const trip=read(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101710');const result=await downloadPersonalGuide({trip,catalog,base,scope:scopeLabel.hidden?'day':scopeSelect.value,format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101711');const result=await downloadPersonalGuide({trip,catalog,base,scope:scopeLabel.hidden?'day':scopeSelect.value,format:'phone',onProgress:text=>{status.textContent=text;},stillCurrent:()=>JSON.stringify(read())===signature});status.textContent=`Буклет готов: ${result.pages} стр. Сохраните PDF в телефоне.`;}
   catch(error){console.error('wave_guide_export',error);status.textContent=error.message==='guide_trip_changed'?'День изменился. Скачайте свежий буклет.':'Буклет пока не собрался. Попробуйте ещё раз; ваш день на месте.';}
   finally{downloading=false;button.textContent='Скачать буклет ↓';button.disabled=!canDownloadWaveDay(read(),catalog);}
  });

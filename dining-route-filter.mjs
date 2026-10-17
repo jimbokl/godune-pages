@@ -1,5 +1,5 @@
-import {bindServiceContext} from './service-context.mjs?v=2026101710';
-import {diningSpatialTemplate,diningPublicContexts} from './dining-route-state.mjs?v=2026101710';
+import {bindServiceContext} from './service-context.mjs?v=2026101712';
+import {diningSpatialTemplate,diningPublicContexts} from './dining-route-state.mjs?v=2026101712';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 const currentDate=()=>{const parts=new Intl.DateTimeFormat('en',{timeZone:'Europe/Kaliningrad',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());return ['year','month','day'].map(type=>parts.find(p=>p.type===type).value).join('-');};

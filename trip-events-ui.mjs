@@ -4,7 +4,7 @@ import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {serviceVisitTargets} from './trip-service-visits-state.mjs?v=2026101707';
 import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101707';
 import {eventRegionalStart} from './trip-events-contract.mjs?v=2026101707';
-import {prepareEventAdd,confirmEventAdd,selectedEventContext} from './trip-events-state.mjs?v=2026101707';
+import {prepareEventAdd,confirmEventAdd,selectedEventContext} from './trip-events-state.mjs?v=2026101710';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101707';
 import {dayChangeText} from './trip-day-change-view.mjs?v=2026101705';
@@ -67,13 +67,26 @@ export function initTripEvents({read,commit,base,catalog}){
      if(estimate){const text=node('p',estimate);text.dataset.eventDurationEstimate='';review.append(text);}
     }
     if(!candidate.visit.event.place_id)review.append(node('p','Площадка пока не связана с картой. Дорогу нужно уточнить.'));
+    let dayCheck;
     try{
      const change=inspectTripDayChange(engine,baseline,candidate.trip,catalog,beforeMatrix,matrix);review.dataset.addDayState=change.after.state;
+     dayCheck=change.after;
      review.append(node('p',dayOutcome(change.after)));for(const line of dayChangeText(change))review.append(node('p',line));
-     if(change.after.state==='conflict')review.append(node('p','Выберите другое место события в порядке остановок или оставьте его в отдельном дне. Ужин и возвращение сохраняются.'));
+     if(change.after.state==='conflict')review.append(node('p','Уточните дорогу и возвращение в «Моём дне».'));
     }catch{review.dataset.addDayState='unknown';review.append(node('p','Полный день пока не рассчитан. После сохранения уточните дорогу и возвращение в «Моём дне».'));}
+    const target=selectedDay(baseline),cityIds=new Set(target.places.map(id=>catalog.poi.find(p=>p.slug===id)).filter(Boolean).map(p=>p.city||p.area));
+    for(const visit of target.service_visits||[]){const city=visit.event?.city;if(city)cityIds.add(city);}
+    const eventCity=currentEvent.city||currentVenue?.city;
+    const elsewhere=days.value&&eventCity&&cityIds.size&&!cityIds.has(eventCity);
+    const unknownRoad=!dayCheck||dayCheck.issues.some(i=>['service_connections_unknown','transport_connections_unknown','rail_connections_unknown'].includes(i.code))||dayCheck.places.stops.some(s=>s.issues.some(i=>['unknown_travel','unknown_approach','unknown_return'].includes(i.code)));
+    if(elsewhere){
+     const warning=node('p',unknownRoad?'Событие в другом городе. Дорога к нему и возвращение пока не рассчитаны; время прогулки не включает эту поездку.':'Событие в другом городе. Сверьте рассчитанную дорогу с началом события и обратным поездом.');warning.dataset.eventCityTransfer='';review.append(warning);
+    }
+    if(days.value&&(elsewhere||dayCheck?.state==='conflict'||unknownRoad)){
+     const separate=button('Посмотреть событие отдельным днём');separate.dataset.eventSeparateDay='';separate.addEventListener('click',()=>{days.value='';positions();update();});review.append(separate);
+    }
     review.append(node('p','Цена и условия билета — по источнику; цена «от» не считается полной суммой на группу.'));
-    const source=node('a','Источник события');source.href=currentEvent.source_url;source.target='_blank';source.rel='noopener';review.append(source,node('p',`Сведения проверены: ${currentEvent.verified_at}`));
+    const source=node('a',currentEvent.end_time===null?'Уточнить окончание у площадки →':'Источник события');source.href=currentEvent.source_url;source.target='_blank';source.rel='noopener';review.append(source,node('p',`Сведения проверены: ${currentEvent.verified_at}`));
     preview=candidate;save.disabled=false;save.textContent=candidate.alreadyAdded?'Открыть этот день':'Сохранить в моём дне';status.textContent='';
    }catch(e){if(ticket===sequence){status.textContent=message(e);retry.hidden=false;}}
   }

@@ -1,15 +1,17 @@
-import {loadCityBudget,cityReferenceBudget,withCityReferenceBudget,cityReferenceMatches} from './city-day-budget.mjs?v=2026101707';
+import {loadCityBudget,cityReferenceBudget,withCityReferenceBudget,cityReferenceMatches} from './city-day-budget.mjs?v=2026101709';
 import {referenceBudgetText,checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
 import {renderReferenceBudget} from './day-reference-budget-ui.mjs?v=2026101705';
 import {dayPeople} from './trip-party.mjs?v=2026101305';
-import {cityDayConfig,cityRainPlan} from './city-day-config.mjs?v=2026101703';
-import {withCityDayPlan,cityDayWeather} from './city-day-state.mjs?v=2026101707';
+import {cityDayConfig,cityRainPlan} from './city-day-config.mjs?v=2026101709';
+import {cityDayReview} from './city-day-review.mjs?v=2026101712';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101707';
+import {withCityDayPlan,cityDayWeather} from './city-day-state.mjs?v=2026101713';
 import {selectMenuChoice} from './trip-menu-choices-state.mjs?v=2026101707';
 import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101707';
 import {routeDayTarget,saveRouteDay} from './route-day.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {loadSunClock} from './sun-clock.mjs?v=2026101305';
-import {cityTimeline,cityDayPreview} from './city-day-timeline.mjs?v=2026101707';
+import {cityTimeline,cityDayPreview} from './city-day-timeline.mjs?v=2026101713';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {selectedDay as previewDay} from './trip-days-state.mjs?v=2026101707';
 import {serviceDay} from './service-calendar.mjs?v=2026101305';
@@ -18,6 +20,9 @@ const localDate=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kaliningra
 export function initCityDay({workshop,catalog,base}){
  const root=document.querySelector('[data-city-day]'),form=root?.querySelector('[data-route-day-settings]'),route=catalog.routes.find(r=>r.slug===document.body.dataset.route);if(!root||!form||!route)return;
  const config=cityDayConfig(route.slug);
+ const review=root.querySelector('[data-city-review]'),rainPreview=root.querySelector('[data-city-rain-preview]');
+ const showReview=(check,railAvailable=true)=>{if(!review)return;const view=cityDayReview(check,config,catalog,{railAvailable});review.dataset.state=view.state;review.replaceChildren();for(const text of view.lines){const p=document.createElement('p');p.textContent=text;review.append(p);}const links=document.createElement('p');for(const action of view.actions){const a=document.createElement('a');a.href=action.href;a.textContent=action.label+' →';links.append(a,document.createTextNode(' '));}review.append(links);};
+ rainPreview?.addEventListener('click',()=>{const select=root.querySelector('[data-city-weather]');select.value='rain';select.dispatchEvent(new Event('input',{bubbles:true}));});
  let busy=false,revision=0;
  const getId=()=>new URL(location.href).searchParams.get('trip-day');
  const setBusy=v=>{if(v&&busy)return false;busy=v;return true;};
@@ -35,9 +40,12 @@ export function initCityDay({workshop,catalog,base}){
   const rain=root.querySelector('[data-city-rain-note]');
   const ticket=++revision,date=form.elements.date.value,start=(form.elements.time.value||'09:00').split(':').map(Number);
   const wet=root.querySelector('[data-city-weather]').value==='rain';
+  if(rainPreview)rainPreview.hidden=wet;
+  if(review){review.dataset.state='pending';review.replaceChildren();const p=document.createElement('p');p.textContent='Пересчитываем прогулку и возвращение…';review.append(p);}
   root.querySelector('.city-timeline').dataset.ready='false';
   root.querySelector('[data-day-budget]').hidden=!date;
   if(!date){
+   if(review){review.dataset.state='choose_date';review.firstChild.textContent='Выберите дату прогулки выше, чтобы проверить посещения и обратный поезд.';}
    if(rain)rain.textContent='Выберите дату прогулки, чтобы уточнить часы работы и план на дождь.';
    for(const select of root.querySelectorAll('[data-city-rail-outward],[data-city-rail-inbound]')){select.replaceChildren(new Option('Выберите дату',''));select.disabled=true;}
    root.querySelector('[data-city-rail-date]').textContent='Дата поездки не выбрана. Укажите дату для проверки расписания.';
@@ -69,7 +77,10 @@ export function initCityDay({workshop,catalog,base}){
    const selection={weather:wet?'rain':'sun',outward:root.querySelector('[data-city-rail-outward]').value,inbound:root.querySelector('[data-city-rail-inbound]').value};
    const draft=cityDayPreview(workshop.getState(),route,catalog,{id:getId(),date,time:form.elements.time.value||config.start},selection),day=previewDay(draft);
    const matrix=await loadTripTravelMatrix(base,draft,catalog).catch(()=>null);if(ticket!==revision)return;
-   const timeline=cityTimeline(calculate,draft,catalog,matrix),list=root.querySelector('.city-timeline');
+   let check;try{check=inspectTripServiceDay(calculate,draft,catalog,matrix);}catch{/* Keep failed assessment visibly unresolved. */}
+   if(!check)throw Error('city_day_assessment_unavailable');
+   const timeline=cityTimeline(calculate,draft,catalog,matrix,check),list=root.querySelector('.city-timeline');
+   showReview(check,!!selection.outward&&!!selection.inbound);
    for(const row of timeline.rows){
     const time=root.querySelector(`[data-city-stop="${row.id}"]`);if(!time)continue;
     list.append(time.closest('.city-timeline-stop'));
@@ -79,7 +90,7 @@ export function initCityDay({workshop,catalog,base}){
     root.querySelector(`[data-city-dwell="${row.id}"]`).textContent=`${row.visit} мин здесь${row.pause?` · ${row.pause} мин пауза`:''}`;
     const wait=root.querySelector(`[data-city-wait="${row.id}"]`);wait.hidden=!row.wait;wait.textContent=`Ожидание: ${row.wait} мин`;
     const leg=root.querySelector(`[data-city-leg="${row.id}"]`),next=catalog.poi.find(p=>p.slug===row.to);
-    leg.textContent=`↓ ${row.walk===null?'Время перехода уточняется':`${row.walk} мин пешком`}${row.meters===null?'':` · ${Math.round(row.meters)} м`}${row.to?` · ${next?.name||row.to}`:''} · ${row.reserve} мин запаса`;
+    leg.textContent=`↓ ${row.walk===null?'Время перехода уточняется':`${row.walk} мин пешком`}${row.meters===null?'':` · ${Math.round(row.meters)} м`}${row.nextService?' · к событию или услуге в «Моём дне»':row.to?` · ${next?.name||row.to}`:''} · ${row.reserve} мин запаса`;
    }
    if(config.museum==='murarium'){
     const stop=day.schedule.stops.murarium,note=root.querySelector('[data-city-stop="murarium"]').closest('.city-timeline-stop').querySelector('.city-stop-note');
@@ -89,6 +100,9 @@ export function initCityDay({workshop,catalog,base}){
      rain.textContent=`В сохранённом дне Мурариум — снаружи, ${stop.visit} минут; променад — ${day.schedule.stops['promenad-zelenogradsk']?.visit??'не задано'} минут. ${cityRainPlan(config,catalog,date).note} Нажмите «Сохранить план на дождь», чтобы применить этот вариант.`;
      for(const button of root.querySelectorAll('[data-route-day-save]'))button.textContent='Сохранить план на дождь →';
     }
+   }else{
+    const stop=day.schedule.stops[config.museum],time=root.querySelector(`[data-city-stop="${config.museum}"]`),note=time?.closest('.city-timeline-stop').querySelector('.city-stop-note');
+    if(note&&stop)note.textContent=stop.visit_scope==='outside'?'Здание осматриваем снаружи. Вход в Морской выставочный центр в этот вариант не включён.':`В плане — ${stop.visit} минут внутри Морского выставочного центра. Дорога к музею остаётся на улице.`;
    }
    root.querySelector('[data-city-return]').textContent=timeline.returnAt===null?'Уточняется':timeline.returnAt<1440?clock(timeline.returnAt):'След. день';
    list.dataset.ready='true';
@@ -96,7 +110,7 @@ export function initCityDay({workshop,catalog,base}){
    root.querySelector('[data-city-total]').textContent=referenceBudgetText(quote.variants.base);
    root.querySelector('[data-city-budget]').textContent=choices.length?'Учтены выбранные порции на группу. Состав и источники — в бюджете ниже.':'Поезда и обед из двух блюд. Состав, варианты и источники — в бюджете ниже.';
    renderReferenceBudget(root.querySelector('[data-day-budget]'),quote);
-  }catch{root.querySelector('[data-city-budget]').textContent='Не удалось обновить ориентир. Ниже сохранён состав на дату сборки страницы.';}
+  }catch{if(ticket!==revision)return;showReview(null,!!root.querySelector('[data-city-rail-outward]').value&&!!root.querySelector('[data-city-rail-inbound]').value);for(const time of root.querySelectorAll('[data-city-stop],[data-city-return]')){time.textContent='Уточняется';time.dataset.begins='';time.dataset.leaves='';time.dataset.cityOffset='';}root.querySelector('.city-timeline').dataset.ready='true';root.querySelector('[data-city-total]').textContent='Уточняется';root.querySelector('[data-city-budget]').textContent='Не удалось рассчитать бюджет на выбранную дату. Попробуйте ещё раз.';const budget=root.querySelector('[data-day-budget]'),note=document.createElement('p');note.textContent=`Дата прогулки: ${date}. Состав и суммы пока уточняются.`;budget.replaceChildren(note);}
   try{const calculate=await loadSunClock(base),sun=calculate(date,config.lat,config.lon);if(ticket!==revision)return;root.querySelector('[data-city-sunset]').textContent=sun.sunset===null?'Солнце не заходит':clock(sun.sunset);const label=root.querySelector('[data-city-sunset-date]');label.textContent=date;label.dateTime=date;}
   catch{/* Keep the sourced static solar calculation when the runtime is unavailable. */}
  }

@@ -251,7 +251,7 @@ export async function initKosaPlanner({workshop,catalog,base}) {
           try{
             if(answers.dinner){
               const outcome=await persist();abort.signal.throwIfAborted();if(ticket!==sequence)return;
-              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101710');
+              const copy=workshop.getState(),{downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101711');
               const output=await downloadPersonalGuide({trip:copy,catalog,base,scope:'day',format:format.value,signal:abort.signal,onProgress:text=>{if(!abort.signal.aborted)pdfStatus.textContent=text;},stillCurrent:()=>ticket===sequence&&JSON.stringify(copy)===JSON.stringify(workshop.getState())});
               pdfStatus.textContent=`PDF готов: ${output.pages} страниц. Коса, возвращение, ужин и выбранные порции — в одном файле.`;
               saveStatus.textContent=outcome.saved?'Весь день и блюда сохранены в этом браузере.':'Весь день остаётся в этой вкладке и в скачанном PDF.';
