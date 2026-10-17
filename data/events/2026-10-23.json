@@ -1,14 +1,16 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-23",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
+      "event-source-202e65c87217f401",
+      "event-source-d6e3d67e6b349ef2",
       "event-source-f9eb4005a625cb21"
     ]
   },
@@ -85,7 +87,146 @@
           "status": "scheduled"
         }
       ],
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      },
       "place_id": null
+    },
+    {
+      "id": "event-9b89fe7cfdbd7778",
+      "title": "Концерт-открытие Школы-фестиваля Леонида Лундстрема",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-23",
+      "starts": "18:00",
+      "ends": null,
+      "description": "Концертный зал. 6+. Пятница. 18:00",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-202e65c87217f401",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-23T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 500,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
+      "verified_at": "2026-10-17T11:35:34Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:34Z",
+          "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
+          "sha256": "f9065edf77b8f6f3feb3b715f9864e1cecb8b9302a9b3d2cacff686ceebee9aa",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Концерт-открытие Школы-фестиваля Леонида Лундстрема",
+        "date_year_start": "JSON-LD startDate: 2026-10-23T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Концертный зал. 6+. Пятница. 18:00",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [500, 600, 700]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-fdd8bc506e1e4563",
+      "title": "Огни Анатолии",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-23",
+      "starts": "19:00",
+      "ends": null,
+      "description": "Огни Анатолии",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 1800 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-d6e3d67e6b349ef2",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-23T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1800,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
+      "verified_at": "2026-10-17T11:35:46Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:46Z",
+          "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
+          "sha256": "0694ecd132ee2d8cacbb54ce135e4207cb58819aa914688fbfe6a9ea532add94",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: Огни Анатолии",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Огни Анатолии+23.10.2026 19:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 1800 руб.",
+        "age": "12+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-turetskoe-tantsevalnoe-shou-ogni-anatolii-2023-2010"
+      },
+      "source_identity": "yantarhall:afisha-turetskoe-tantsevalnoe-shou-ogni-anatolii-2023-2010",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
     }
   ]
 }

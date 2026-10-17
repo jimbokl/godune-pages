@@ -1,31 +1,31 @@
-import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101706';
+import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101707';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {loadWalkProgress} from './walk.mjs?v=2026101305';
-import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101706';
-import {initTripSharing} from './trip-link.mjs?v=2026101706';
-import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101706';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101706';
+import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101707';
+import {initTripSharing} from './trip-link.mjs?v=2026101707';
+import {createTripMemory, removeLocalMemory} from './trip-memory.mjs?v=2026101707';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101707';
 import {initMemoryControls} from './trip-memory-ui.mjs?v=2026101705';
-import {createPlanningProgress} from './planning-progress.mjs?v=2026101706';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101706';
-import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101706';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101706';
-import {initTripDays} from './trip-days-ui.mjs?v=2026101706';
-import {initTripEvents} from './trip-events-ui.mjs?v=2026101706';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101706';
-import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101706';
+import {createPlanningProgress} from './planning-progress.mjs?v=2026101707';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101707';
+import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101707';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101707';
+import {initTripDays} from './trip-days-ui.mjs?v=2026101707';
+import {initTripEvents} from './trip-events-ui.mjs?v=2026101707';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101707';
+import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101707';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
-import {initDayWorkspace} from './day-workspace.mjs?v=2026101706';
-import {addTripStarter} from './trip-starters.mjs?v=2026101706';
-import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101706';
-import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101706';
-import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101706';
-import {initTripRail} from './trip-rail-ui.mjs?v=2026101706';
-import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=2026101706';
-export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101706';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';
+import {initDayWorkspace} from './day-workspace.mjs?v=2026101707';
+import {addTripStarter} from './trip-starters.mjs?v=2026101707';
+import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101707';
+import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101707';
+import {initTripReplacement} from './trip-replacement-ui.mjs?v=2026101707';
+import {initTripRail} from './trip-rail-ui.mjs?v=2026101707';
+import {resolveTripDayLink,openLinkedTripDay} from './trip-day-link.mjs?v=2026101707';
+export {TRIP_KEY, cleanTrip} from './trip-state.mjs?v=2026101707';
 
-export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101706';
+export {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101707';
 
 export function saveTrip(storage, state, catalog) {
   try { storage.setItem(TRIP_KEY, JSON.stringify(cleanTrip(state, catalog))); return true; }

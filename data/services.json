@@ -12352,6 +12352,7 @@
     "version": 2,
     "facts": [
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:velovoyage39"
@@ -12365,6 +12366,7 @@
         "value": "ВелоВояж 39"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:velovoyage39:solnechnaya-17"
@@ -12378,6 +12380,7 @@
         "value": "Зеленоградск, улица Солнечная, 17"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:velovoyage39:solnechnaya-17"
@@ -12397,6 +12400,7 @@
         "note": "Координата организации на карте; вход и стойка выдачи отдельно не проверены."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:velovoyage39:bike"
@@ -12414,6 +12418,7 @@
         "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:velovoyage39:bike"
@@ -12428,6 +12433,7 @@
         "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:velovoyage39:bike"
@@ -12442,6 +12448,7 @@
         "note": "Перечень предлагаемых типов, не остаток инвентаря на выбранную дату."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:velovoyage39:bike"
@@ -12856,6 +12863,7 @@
         "note": "Открытый огонь доступен с 10:00; время закрытия кухни не указано. 21:00 — закрытие заведения."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "rental_offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12870,6 +12878,7 @@
         "note": "Условия договора не опубликованы."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "rental_offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12884,6 +12893,7 @@
         "note": "Условия договора не опубликованы."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "rental_offer",
           "id": "offer:velovoyage39:standard-hour"
@@ -12898,6 +12908,7 @@
         "note": "Условия договора не опубликованы."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:vostok"
@@ -12911,6 +12922,7 @@
         "value": "Семейная сауна «Восток»"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "branch",
           "id": "branch:vostok"
@@ -12924,6 +12936,7 @@
         "value": "Семейная сауна «Восток»"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:vostok"
@@ -12937,6 +12950,7 @@
         "value": "kaliningrad"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:vostok"
@@ -12950,6 +12964,7 @@
         "value": "Калининград, улица Дзержинского, 242"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:vostok:bath"
@@ -12963,6 +12978,7 @@
         "value": "Восток: сауна на компанию"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:vostok:bath"
@@ -12976,6 +12992,7 @@
         "value": 15
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:vostok:bath"
@@ -12989,6 +13006,7 @@
         "value": true
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:vostok:bath"
@@ -13105,6 +13123,7 @@
         "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного интервала."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "conditions",
           "id": "conditions:vostok"
@@ -13150,6 +13169,7 @@
         }
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:vostok"
@@ -13166,6 +13186,7 @@
         "note": "Точный вход и координаты не подтверждены."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:vostok:bath"
@@ -13242,6 +13263,7 @@
         "note": "Круглосуточный режим по предварительной записи не подтверждает свободное время."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:dom-poeta"
@@ -13255,6 +13277,7 @@
         "value": "Парк-отель «Дом поэта»"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "branch",
           "id": "branch:dom-poeta"
@@ -13268,6 +13291,7 @@
         "value": "Парк-отель «Дом поэта»"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:dom-poeta"
@@ -13281,6 +13305,7 @@
         "value": "lesnoy"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:dom-poeta"
@@ -13294,6 +13319,7 @@
         "value": "Калининградская область, посёлок Лесной, улица Ветеранов, 5/1"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dom-poeta:bath"
@@ -13307,6 +13333,7 @@
         "value": "Дом поэта: баня-бочка с купелью"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:dom-poeta:bath"
@@ -13320,6 +13347,7 @@
         "value": 4
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:dom-poeta:bath"
@@ -13333,6 +13361,7 @@
         "value": true
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:dom-poeta:bath"
@@ -13444,6 +13473,7 @@
         "note": "Обычный тариф без персональных скидок. Неизвестны сумма залога и правило оплаты неполного интервала."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "conditions",
           "id": "conditions:dom-poeta"
@@ -13489,6 +13519,7 @@
         }
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:dom-poeta"
@@ -13505,6 +13536,7 @@
         "note": "Точный вход и координаты не подтверждены."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:dom-poeta:bath"
@@ -13519,6 +13551,7 @@
         "note": "На странице указан формат баня-бочка; вид парной отдельно не назван."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:baden39"
@@ -13532,6 +13565,7 @@
         "value": "Баден Аква Спа"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "branch",
           "id": "branch:baden39:svetlogorsk"
@@ -13545,6 +13579,7 @@
         "value": "Баден Аква Спа · Светлогорск"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden39:svetlogorsk"
@@ -13558,6 +13593,7 @@
         "value": "svetlogorsk"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden39:svetlogorsk"
@@ -13571,6 +13607,7 @@
         "value": "Светлогорск, улица Горького, 14"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden39:svetlogorsk"
@@ -13587,6 +13624,7 @@
         "note": "Адрес подтверждён; точный вход и координаты ещё не сняты."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13600,6 +13638,7 @@
         "value": "Баден Аква Спа: бассейны и термы"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "conditions",
           "id": "conditions:baden39:pool"
@@ -13675,6 +13714,7 @@
         }
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13688,6 +13728,7 @@
         "value": null
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13701,6 +13742,7 @@
         "value": null
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13717,6 +13759,7 @@
         ]
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13730,6 +13773,7 @@
         "value": null
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13744,6 +13788,7 @@
         "note": "В комплексе есть открытый бассейн с морской водой и внутренний бассейн с гидромассажем."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13757,6 +13802,7 @@
         "value": null
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:baden39:pool"
@@ -13770,6 +13816,7 @@
         "value": null
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:baden39:admission"
@@ -14112,6 +14159,7 @@
         "note": "Продажа входных тарифов заканчивается в 20:00; выход до 22:00."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:newfitness"
@@ -14125,6 +14173,7 @@
         "value": "NEWFitness"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "place",
           "id": "place:newfitness"
@@ -14139,6 +14188,7 @@
         "note": "Точный вход и связи с существующими точками не подтверждены."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "branch",
           "id": "branch:newfitness:chelnokova"
@@ -14152,6 +14202,7 @@
         "value": "NEWFitness · Челнокова"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:newfitness:chelnokova"
@@ -14165,6 +14216,7 @@
         "value": "kaliningrad"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:newfitness:chelnokova"
@@ -14178,6 +14230,7 @@
         "value": "Калининград, улица Челнокова, 25"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:newfitness:chelnokova"
@@ -14194,6 +14247,7 @@
         "note": "Точный вход и связи с существующими точками не подтверждены."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14207,6 +14261,7 @@
         "value": "NEWFitness: разовая тренировка"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14220,6 +14275,7 @@
         "value": true
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14234,6 +14290,7 @@
         "note": "Есть тренеры и вводный инструктаж; индивидуальная тренировка не включена в цену дневного входа."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14247,6 +14304,7 @@
         "value": 16
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14263,6 +14321,7 @@
         "note": "Зона свободных весов, штанги и гантели названы в правилах. Другие зоны не проверены."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14276,6 +14335,7 @@
         "value": true
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:newfitness:gym"
@@ -14289,6 +14349,7 @@
         "value": true
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:newfitness:day"
@@ -14337,6 +14398,7 @@
         }
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "offer",
           "id": "offer:newfitness:day"
@@ -14464,6 +14526,7 @@
         "note": "Правила версии 15.11.2019, связаны с действующим сайтом на дату проверки. Дата проверки не является датой обновления правил."
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "conditions",
           "id": "conditions:newfitness:gym"
@@ -14530,6 +14593,7 @@
         "note": "Правила версии 15.11.2019, связаны с действующим сайтом на дату проверки. Дата проверки не является датой обновления правил."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:nonstop"
@@ -14543,6 +14607,7 @@
         "value": "Нонстоп"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "place",
           "id": "place:nonstop"
@@ -14556,6 +14621,7 @@
         "note": "Точный вход и связи с существующими точками не подтверждены."
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:nonstop:frunze"
@@ -14569,6 +14635,7 @@
         "value": "Калининград, улица Фрунзе, 6"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:nonstop:frunze"
@@ -14582,6 +14649,7 @@
         "note": "Адрес есть; точная точка входа не подтверждена."
       },
       {
+        "ttl_days": 90,
         "subject": {
           "kind": "service",
           "id": "service:nonstop:fitness"
@@ -14595,6 +14663,7 @@
         "value": "Групповой фитнес"
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:nonstop:fitness"
@@ -14608,6 +14677,7 @@
         "value": 60
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:nonstop:fitness"
@@ -14620,6 +14690,7 @@
         }
       },
       {
+        "ttl_days": 30,
         "subject": {
           "kind": "service",
           "id": "service:nonstop:fitness"
@@ -14788,6 +14859,7 @@
         "note": "Последнее обновление сайта: 29.07.2026; период действия не указан. Субботняя группа временно закрыта."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:steindamm99"
@@ -14801,6 +14873,7 @@
         "value": "Штайндамм 99"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:steindamm99"
@@ -14814,6 +14887,7 @@
         "value": "kaliningrad"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:steindamm99"
@@ -14827,6 +14901,7 @@
         "value": "Калининград, улица Житомирская, 22–24"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:steindamm99:meal"
@@ -14840,6 +14915,7 @@
         "value": "Штайндамм 99"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:steindamm99"
@@ -14853,6 +14929,7 @@
         "note": "Адрес не подтверждает точные координаты входа."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "place",
           "id": "place:baden-cafe"
@@ -14866,6 +14943,7 @@
         "value": "Кафе «Баден»"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden-cafe"
@@ -14879,6 +14957,7 @@
         "value": "svetlogorsk"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden-cafe"
@@ -14892,6 +14971,7 @@
         "value": "Светлогорск, улица Горького, 14"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:baden-cafe:meal"
@@ -14905,6 +14985,7 @@
         "value": "Кафе «Баден»"
       },
       {
+        "ttl_days": 180,
         "subject": {
           "kind": "branch",
           "id": "branch:baden-cafe"
@@ -14918,6 +14999,7 @@
         "note": "Адрес не подтверждает точные координаты входа."
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037585272"
@@ -14931,6 +15013,7 @@
         "value": "12"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-139616771698"
@@ -14944,6 +15027,7 @@
         "value": "Bacchus club"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001032109722"
@@ -14957,6 +15041,7 @@
         "value": "Blend 66"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100232385"
@@ -14970,6 +15055,7 @@
         "value": "Cinnabon"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-187898367736"
@@ -14983,6 +15069,7 @@
         "value": "Coffee"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001074591131"
@@ -14996,6 +15083,7 @@
         "value": "Dolce Nonna"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001074632992"
@@ -15009,6 +15097,7 @@
         "value": "Fab"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001033958020"
@@ -15022,6 +15111,7 @@
         "value": "Grand Alberto pizza"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075909647"
@@ -15035,6 +15125,7 @@
         "value": "Greengate"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-4808812571"
@@ -15048,6 +15139,7 @@
         "value": "HeProsto Кофе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100360498"
@@ -15061,6 +15153,7 @@
         "value": "Kenig Roaster"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-49589629001"
@@ -15074,6 +15167,7 @@
         "value": "Kenig Roaster"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-159549919671"
@@ -15087,6 +15181,7 @@
         "value": "Koffe"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001028174377"
@@ -15100,6 +15195,7 @@
         "value": "Kranz torte"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001111485878"
@@ -15113,6 +15209,7 @@
         "value": "Krc&W"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001115656026"
@@ -15126,6 +15223,7 @@
         "value": "Lichi"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061063601"
@@ -15139,6 +15237,7 @@
         "value": "Mangal House"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-137758388898"
@@ -15152,6 +15251,7 @@
         "value": "Mi Ami"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001096778482"
@@ -15165,6 +15265,7 @@
         "value": "Millor"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001088058997"
@@ -15178,6 +15279,7 @@
         "value": "Mrest"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001095394846"
@@ -15191,6 +15293,7 @@
         "value": "M. Zappa"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061061369"
@@ -15204,6 +15307,7 @@
         "value": "Na Bali"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-118974219775"
@@ -15217,6 +15321,7 @@
         "value": "Nami"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001117165284"
@@ -15230,6 +15335,7 @@
         "value": "Ne Prosto кофе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001030035636"
@@ -15243,6 +15349,7 @@
         "value": "Park House"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001022620039"
@@ -15256,6 +15363,7 @@
         "value": "Pilot"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001089532517"
@@ -15269,6 +15377,7 @@
         "value": "PitStop"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001068727236"
@@ -15282,6 +15391,7 @@
         "value": "Pomatti"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001047520475"
@@ -15295,6 +15405,7 @@
         "value": "Port-o-coffee"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061498399"
@@ -15308,6 +15419,7 @@
         "value": "Prosto блин"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001063367025"
@@ -15321,6 +15433,7 @@
         "value": "Resto Bistro"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001101410810"
@@ -15334,6 +15447,7 @@
         "value": "Royal Beach"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001101049637"
@@ -15347,6 +15461,7 @@
         "value": "Sky"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075305201"
@@ -15360,6 +15475,7 @@
         "value": "Slow"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-172491090348"
@@ -15373,6 +15489,7 @@
         "value": "SPA"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001104111947"
@@ -15386,6 +15503,7 @@
         "value": "Starfoods"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001066661710"
@@ -15399,6 +15517,7 @@
         "value": "Stierlitz"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001025626102"
@@ -15412,6 +15531,7 @@
         "value": "Sun coffee shop"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001047895525"
@@ -15425,6 +15545,7 @@
         "value": "Sun coffee shop"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001115147432"
@@ -15438,6 +15559,7 @@
         "value": "Tamago izakaya"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001089098517"
@@ -15451,6 +15573,7 @@
         "value": "Teya"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001034396845"
@@ -15464,6 +15587,7 @@
         "value": "The Waffles"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001084146915"
@@ -15477,6 +15601,7 @@
         "value": "ZelBurger"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001104605114"
@@ -15490,6 +15615,7 @@
         "value": "Zoltan"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630028815430301"
@@ -15503,6 +15629,7 @@
         "value": "Ам! Бар"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001105353041"
@@ -15516,6 +15643,7 @@
         "value": "Арабика"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113748505"
@@ -15529,6 +15657,7 @@
         "value": "Арт"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-126717216814"
@@ -15542,6 +15671,7 @@
         "value": "Астерия"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001063531891"
@@ -15555,6 +15685,7 @@
         "value": "Балт"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001048500903"
@@ -15568,6 +15699,7 @@
         "value": "Балтийская корона"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-83768680391"
@@ -15581,6 +15713,7 @@
         "value": "Бар 13"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090699779"
@@ -15594,6 +15727,7 @@
         "value": "Берег моря"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113923588"
@@ -15607,6 +15741,7 @@
         "value": "Бистро"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044566489"
@@ -15620,6 +15755,7 @@
         "value": "Богатырь №1"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075022565"
@@ -15633,6 +15769,7 @@
         "value": "Бранч на море"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-49350982814"
@@ -15646,6 +15783,7 @@
         "value": "Булочная"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103814071"
@@ -15659,6 +15797,7 @@
         "value": "Бургер Бар"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001025294914"
@@ -15672,6 +15811,7 @@
         "value": "Буфетъ"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630027815190832"
@@ -15685,6 +15825,7 @@
         "value": "Веранда"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-67669290902"
@@ -15698,6 +15839,7 @@
         "value": "Вкусно"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001101305153"
@@ -15711,6 +15853,7 @@
         "value": "В лаваше-булочная"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001052651307"
@@ -15724,6 +15867,7 @@
         "value": "Восточное"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044566545"
@@ -15737,6 +15881,7 @@
         "value": "Восточный экспресс"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630028815427796"
@@ -15750,6 +15895,7 @@
         "value": "Встреча"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-49449302608"
@@ -15763,6 +15909,7 @@
         "value": "Гастробар Кранцвайн"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001028414540"
@@ -15776,6 +15923,7 @@
         "value": "Геркулес"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001089351030"
@@ -15789,6 +15937,7 @@
         "value": "Гонконгские вафли"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001060101799"
@@ -15802,6 +15951,7 @@
         "value": "Горизонт"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-13460046220"
@@ -15815,6 +15965,7 @@
         "value": "Гостевой дом"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061269738"
@@ -15828,6 +15979,7 @@
         "value": "Гранат"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001102892160"
@@ -15841,6 +15993,7 @@
         "value": "Гранд Донер"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-105417453494"
@@ -15854,6 +16007,7 @@
         "value": "Гранд Донер"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090214806"
@@ -15867,6 +16021,7 @@
         "value": "Гранд Монополь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067087177"
@@ -15880,6 +16035,7 @@
         "value": "Гранд Сокольники"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061576405"
@@ -15893,6 +16049,7 @@
         "value": "Гриль на море"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001065532501"
@@ -15906,6 +16063,7 @@
         "value": "Гуффи"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001024024428"
@@ -15919,6 +16077,7 @@
         "value": "Дача"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001110373998"
@@ -15932,6 +16091,7 @@
         "value": "Девять жизней"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-14935772612"
@@ -15945,6 +16105,7 @@
         "value": "Дело в Дыме"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001088184100"
@@ -15958,6 +16119,7 @@
         "value": "Добрая столовая"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001083771524"
@@ -15971,6 +16133,7 @@
         "value": "Додо Пицца"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001066225617"
@@ -15984,6 +16147,7 @@
         "value": "Душа"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-25560318531"
@@ -15997,6 +16161,7 @@
         "value": "Дым&Жар"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001065277939"
@@ -16010,6 +16175,7 @@
         "value": "Дюна"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-121072900654"
@@ -16023,6 +16189,7 @@
         "value": "Еда и напитки"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-161139271068"
@@ -16036,6 +16203,7 @@
         "value": "Желатерия Итальяна"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001082041800"
@@ -16049,6 +16217,7 @@
         "value": "#Завтра´к 7:45"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100628075"
@@ -16062,6 +16231,7 @@
         "value": "Завтрак у папы"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103818141"
@@ -16075,6 +16245,7 @@
         "value": "Звезды"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001066920153"
@@ -16088,6 +16259,7 @@
         "value": "Зеленоградск"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-186545988000"
@@ -16101,6 +16273,7 @@
         "value": "Золотая миля"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067189296"
@@ -16114,6 +16287,7 @@
         "value": "Инлав"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075071177"
@@ -16127,6 +16301,7 @@
         "value": "Кактус"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-80290146158"
@@ -16140,6 +16315,7 @@
         "value": "Калининградские конфеты"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001069072186"
@@ -16153,6 +16329,7 @@
         "value": "Камамбер"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103278740"
@@ -16166,6 +16343,7 @@
         "value": "Камбуз"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001052595286"
@@ -16179,6 +16357,7 @@
         "value": "Карамельково"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-187087309616"
@@ -16192,6 +16371,7 @@
         "value": "Кафе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001080218641"
@@ -16205,6 +16385,7 @@
         "value": "Кафе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001024924415"
@@ -16218,6 +16399,7 @@
         "value": "Кафе фастфуда"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001055986923"
@@ -16231,6 +16413,7 @@
         "value": "Кебаб кинг"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001088093638"
@@ -16244,6 +16427,7 @@
         "value": "Кёнигсбергский марципан"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113808058"
@@ -16257,6 +16441,7 @@
         "value": "Киоск быстрого питания"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044871628"
@@ -16270,6 +16455,7 @@
         "value": "Ковровский хлеб"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001064812247"
@@ -16283,6 +16469,7 @@
         "value": "Колесо"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090070657"
@@ -16296,6 +16483,7 @@
         "value": "Коптильный цех"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001076193342"
@@ -16309,6 +16497,7 @@
         "value": "Королева Луиза"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-123318360036"
@@ -16322,6 +16511,7 @@
         "value": "Королевские колбаски"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037607297"
@@ -16335,6 +16525,7 @@
         "value": "Королевский пекарь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001030029796"
@@ -16348,6 +16539,7 @@
         "value": "Королевский пекарь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001021673647"
@@ -16361,6 +16553,7 @@
         "value": "Королевский пекарь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001078820284"
@@ -16374,6 +16567,7 @@
         "value": "Корюшка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-122424519590"
@@ -16387,6 +16581,7 @@
         "value": "Котофейня"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-202232409269"
@@ -16400,6 +16595,7 @@
         "value": "Кофе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-16142981705"
@@ -16413,6 +16609,7 @@
         "value": "Кофейня Янтарной Мышки"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001065316839"
@@ -16426,6 +16623,7 @@
         "value": "Кофе Крендель"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-174143369381"
@@ -16439,6 +16637,7 @@
         "value": "Кофе на море"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-128328283460"
@@ -16452,6 +16651,7 @@
         "value": "Кофе с собой"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001019617766"
@@ -16465,6 +16665,7 @@
         "value": "Кофеюха"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001117379752"
@@ -16478,6 +16679,7 @@
         "value": "Кранц вафля"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-6900416483"
@@ -16491,6 +16693,7 @@
         "value": "Кранц Вафля"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044599664"
@@ -16504,6 +16707,7 @@
         "value": "Кранц Пицца"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001110053737"
@@ -16517,6 +16721,7 @@
         "value": "Кранц рыба"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001086801671"
@@ -16530,6 +16735,7 @@
         "value": "Кранц Фиш"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001110576397"
@@ -16543,6 +16749,7 @@
         "value": "Крендель"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100800650"
@@ -16556,6 +16763,7 @@
         "value": "Крокетерия"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001114030928"
@@ -16569,6 +16777,7 @@
         "value": "Крошка ласточка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044511706"
@@ -16582,6 +16791,7 @@
         "value": "Круассан"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001025612862"
@@ -16595,6 +16805,7 @@
         "value": "Курортная лавка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067991853"
@@ -16608,6 +16819,7 @@
         "value": "Курортный"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103552911"
@@ -16621,6 +16833,7 @@
         "value": "Лаба Дена"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090430022"
@@ -16634,6 +16847,7 @@
         "value": "Лабар"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001052325383"
@@ -16647,6 +16861,7 @@
         "value": "Лаунж Зеленоградск"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001101158549"
@@ -16660,6 +16875,7 @@
         "value": "Лев Бородинский"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-80862438724"
@@ -16673,6 +16889,7 @@
         "value": "Лев Бородинский"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001038639251"
@@ -16686,6 +16903,7 @@
         "value": "Лестница"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001102550193"
@@ -16699,6 +16917,7 @@
         "value": "Луч"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001042837294"
@@ -16712,6 +16931,7 @@
         "value": "Любимая"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001094750499"
@@ -16725,6 +16945,7 @@
         "value": "Магазин кондитерских изделий"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001114680627"
@@ -16738,6 +16959,7 @@
         "value": "Магазин конфет и кофе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001114680625"
@@ -16751,6 +16973,7 @@
         "value": "Магазин марципана"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-140584585546"
@@ -16764,6 +16987,7 @@
         "value": "Мангал House"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001099852506"
@@ -16777,6 +17001,7 @@
         "value": "Маркет рыба&морепродукты"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001110629278"
@@ -16790,6 +17015,7 @@
         "value": "Маркс"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001101428340"
@@ -16803,6 +17029,7 @@
         "value": "Марципановая лавка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001074847373"
@@ -16816,6 +17043,7 @@
         "value": "Марципан&шоколад"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-16092394161"
@@ -16829,6 +17057,7 @@
         "value": "Марципаны M. Zappa"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-53028333633"
@@ -16842,6 +17071,7 @@
         "value": "Меренга"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001057273773"
@@ -16855,6 +17085,7 @@
         "value": "Миндаль"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-240524461004"
@@ -16868,6 +17099,7 @@
         "value": "Мне Как Обычно"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630028815429871"
@@ -16881,6 +17113,7 @@
         "value": "Монополь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113663108"
@@ -16894,6 +17127,7 @@
         "value": "Мякиш"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100264437"
@@ -16907,6 +17141,7 @@
         "value": "Настроение пива"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001117023679"
@@ -16920,6 +17155,7 @@
         "value": "Наше"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001112587424"
@@ -16933,6 +17169,7 @@
         "value": "НеProsto кофе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037362065"
@@ -16946,6 +17183,7 @@
         "value": "Облака"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075022566"
@@ -16959,6 +17197,7 @@
         "value": "Огонёк"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001115604626"
@@ -16972,6 +17211,7 @@
         "value": "Огонь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001063772351"
@@ -16985,6 +17225,7 @@
         "value": "Окно вкуса"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001085399505"
@@ -16998,6 +17239,7 @@
         "value": "Октоберфест"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-157477571827"
@@ -17011,6 +17253,7 @@
         "value": "О! Лаунж"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001116067540"
@@ -17024,6 +17267,7 @@
         "value": "О! Лаунж"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-194132075235"
@@ -17037,6 +17281,7 @@
         "value": "Охота есть"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-105083800672"
@@ -17050,6 +17295,7 @@
         "value": "Охота есть"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001077229247"
@@ -17063,6 +17309,7 @@
         "value": "Охота есть"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001033735148"
@@ -17076,6 +17323,7 @@
         "value": "Папаша Беппе"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061065253"
@@ -17089,6 +17337,7 @@
         "value": "Парк"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001116304165"
@@ -17102,6 +17351,7 @@
         "value": "Парко"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-81806656025"
@@ -17115,6 +17365,7 @@
         "value": "Пекарня"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-105000201333"
@@ -17128,6 +17379,7 @@
         "value": "Пив'ком"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-101132704696"
@@ -17141,6 +17393,7 @@
         "value": "Пивной Двор"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-39358652961"
@@ -17154,6 +17407,7 @@
         "value": "Пивной Двор"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-86328291089"
@@ -17167,6 +17421,7 @@
         "value": "Пивной Двор"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-64829657300"
@@ -17180,6 +17435,7 @@
         "value": "Пивной Двор"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103083586"
@@ -17193,6 +17449,7 @@
         "value": "Пиратская креветка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001032109921"
@@ -17206,6 +17463,7 @@
         "value": "Пирожки из печи"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001102212879"
@@ -17219,6 +17477,7 @@
         "value": "Пицца?! Да!"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001105274860"
@@ -17232,6 +17491,7 @@
         "value": "Пицца есть!"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044896443"
@@ -17245,6 +17505,7 @@
         "value": "Пицца Хаус"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001065378191"
@@ -17258,6 +17519,7 @@
         "value": "Про100 пышка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001052139191"
@@ -17271,6 +17533,7 @@
         "value": "Променад"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037113827"
@@ -17284,6 +17547,7 @@
         "value": "Промрыба"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001116301573"
@@ -17297,6 +17561,7 @@
         "value": "Про мясо"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001105066031"
@@ -17310,6 +17575,7 @@
         "value": "Просто пышка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001075039563"
@@ -17323,6 +17589,7 @@
         "value": "Птичка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-158675093252"
@@ -17336,6 +17603,7 @@
         "value": "Пятёрочка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-211967753853"
@@ -17349,6 +17617,7 @@
         "value": "Резиденция"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103038629"
@@ -17362,6 +17631,7 @@
         "value": "Резиденция"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067241256"
@@ -17375,6 +17645,7 @@
         "value": "Ривьера"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061265160"
@@ -17388,6 +17659,7 @@
         "value": "Ростерхит"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001034307535"
@@ -17401,6 +17673,7 @@
         "value": "Русский хлеб"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001103339960"
@@ -17414,6 +17687,7 @@
         "value": "Рыба Агонь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001036184841"
@@ -17427,6 +17701,7 @@
         "value": "Рыба Агонь"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113476541"
@@ -17440,6 +17715,7 @@
         "value": "Рыба на крыше"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001098551461"
@@ -17453,6 +17729,7 @@
         "value": "Рюwка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-44782786643"
@@ -17466,6 +17743,7 @@
         "value": "Рюмка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-102677791022"
@@ -17479,6 +17757,7 @@
         "value": "Рюмка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001024530011"
@@ -17492,6 +17771,7 @@
         "value": "Самбия"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037544569"
@@ -17505,6 +17785,7 @@
         "value": "Сейф"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001082816728"
@@ -17518,6 +17799,7 @@
         "value": "Сёстры Шутц"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630028815430157"
@@ -17531,6 +17813,7 @@
         "value": "Сковородка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001044022865"
@@ -17544,6 +17827,7 @@
         "value": "Сладенбург"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001113789427"
@@ -17557,6 +17841,7 @@
         "value": "Сладкий домик"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001056728854"
@@ -17570,6 +17855,7 @@
         "value": "Сладкий домик"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001114385329"
@@ -17583,6 +17869,7 @@
         "value": "Сладкое королевство"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001077326726"
@@ -17596,6 +17883,7 @@
         "value": "Солёная ворона"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-132845084954"
@@ -17609,6 +17897,7 @@
         "value": "Сосиска"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-125171111947"
@@ -17622,6 +17911,7 @@
         "value": "Столовая"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-109606567460"
@@ -17635,6 +17925,7 @@
         "value": "СУП с собой"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001094346782"
@@ -17648,6 +17939,7 @@
         "value": "Супы Пельмени"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067014954"
@@ -17661,6 +17953,7 @@
         "value": "Суши Love"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001105750954"
@@ -17674,6 +17967,7 @@
         "value": "Суши-Маркет"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-107743116269"
@@ -17687,6 +17981,7 @@
         "value": "Суши Тунец"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001077228719"
@@ -17700,6 +17995,7 @@
         "value": "Талпаки"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001043919248"
@@ -17713,6 +18009,7 @@
         "value": "Телеграф"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001062141930"
@@ -17726,6 +18023,7 @@
         "value": "Тортино"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001061794029"
@@ -17739,6 +18037,7 @@
         "value": "Тортино"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001056940270"
@@ -17752,6 +18051,7 @@
         "value": "Точка продажи кофе на вынос"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001056678568"
@@ -17765,6 +18065,7 @@
         "value": "Тунец"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001076560743"
@@ -17778,6 +18079,7 @@
         "value": "Тут вкусно"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001019514562"
@@ -17791,6 +18093,7 @@
         "value": "Уксус"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630027815347793"
@@ -17804,6 +18107,7 @@
         "value": "У Нептуна"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-78202236219"
@@ -17817,6 +18121,7 @@
         "value": "Ура!"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001023285288"
@@ -17830,6 +18135,7 @@
         "value": "Ура Пицца!"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001088812636"
@@ -17843,6 +18149,7 @@
         "value": "Ура Пицца!"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001097054716"
@@ -17856,6 +18163,7 @@
         "value": "Уютный уголок"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001063205699"
@@ -17869,6 +18177,7 @@
         "value": "Фанат"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-230031286084"
@@ -17882,6 +18191,7 @@
         "value": "Фаст-фуд"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001088176461"
@@ -17895,6 +18205,7 @@
         "value": "Фишка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-38812501061"
@@ -17908,6 +18219,7 @@
         "value": "Форшмак"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001037585837"
@@ -17921,6 +18233,7 @@
         "value": "Хвоя бар"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001067078963"
@@ -17934,6 +18247,7 @@
         "value": "Хинкали Пиросмани"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001062435163"
@@ -17947,6 +18261,7 @@
         "value": "Хлеб"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090821065"
@@ -17960,6 +18275,7 @@
         "value": "Хлеб да соль"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001055071752"
@@ -17973,6 +18289,7 @@
         "value": "Хого"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100608564"
@@ -17986,6 +18303,7 @@
         "value": "Цеппелины"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-234114175097"
@@ -17999,6 +18317,7 @@
         "value": "Чай-ка"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-44378535353"
@@ -18012,6 +18331,7 @@
         "value": "Чебуречная Талпаки"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001112645201"
@@ -18025,6 +18345,7 @@
         "value": "Шаверма у братьев"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001100869855"
@@ -18038,6 +18359,7 @@
         "value": "Шакотис"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001090368093"
@@ -18051,6 +18373,7 @@
         "value": "Шакотис"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001062122791"
@@ -18064,6 +18387,7 @@
         "value": "Шарлоttа"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-176570478682"
@@ -18077,6 +18401,7 @@
         "value": "Шаурма на мангале"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001099439922"
@@ -18090,6 +18415,7 @@
         "value": "ШашлыкОк"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001062461095"
@@ -18103,6 +18429,7 @@
         "value": "Шашлычная №1"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001063971984"
@@ -18116,6 +18443,7 @@
         "value": "Шкипер"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-5630028815561754"
@@ -18129,6 +18457,7 @@
         "value": "Шопен"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-17354791545"
@@ -18142,6 +18471,7 @@
         "value": "Шум"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:yandex-33587312263"
@@ -18155,6 +18485,7 @@
         "value": "ЭкспонатБург"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001110529788"
@@ -18168,6 +18499,7 @@
         "value": "Экспресс"
       },
       {
+        "ttl_days": 365,
         "subject": {
           "kind": "service",
           "id": "service:dining:2gis-70000001105230719"

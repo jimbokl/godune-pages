@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "events": [
     {
       "id": "cosmic-visitors-2026",
@@ -50,7 +50,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": null
+      "place_id": null,
+      "duration_estimate": null
     },
     {
       "id": "star-projector-afternoon-2026",
@@ -92,7 +93,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": "korolevskie-vorota"
+      "place_id": "korolevskie-vorota",
+      "duration_estimate": null
     },
     {
       "id": "bessel-astronomer-2026",
@@ -140,7 +142,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": "korolevskie-vorota"
+      "place_id": "korolevskie-vorota",
+      "duration_estimate": null
     },
     {
       "id": "star-projector-evening-2026",
@@ -182,7 +185,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": "korolevskie-vorota"
+      "place_id": "korolevskie-vorota",
+      "duration_estimate": null
     },
     {
       "id": "become-cosmonaut-2026",
@@ -231,7 +235,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": "pakgauz"
+      "place_id": "pakgauz",
+      "duration_estimate": null
     },
     {
       "id": "sea-space-awards-2026",
@@ -273,7 +278,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": "muzej-mirovogo-okeana"
+      "place_id": "muzej-mirovogo-okeana",
+      "duration_estimate": null
     }
   ]
 }

@@ -1,6 +1,6 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
-import {weekendDefaults,weekendDays,prepareWeekend,saveWeekendPlan} from './weekend-state.mjs?v=2026101706';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
+import {weekendDefaults,weekendDays,prepareWeekend,saveWeekendPlan} from './weekend-state.mjs?v=2026101707';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const clone=value=>structuredClone(value);
@@ -126,7 +126,7 @@ export function initWeekendLayer({workshop,base,catalog}){
  });
  pdf.addEventListener('click',async()=>{
   if(!ids?.length)return;pdf.disabled=true;const trip=currentTrip(),signature=JSON.stringify(trip);
-  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101706');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
+  try{const {downloadPersonalGuide}=await import('./trip-guide-ui.mjs?v=2026101707');const result=await downloadPersonalGuide({trip,catalog,base,scope:'trip',format:pdfFormat?.value||'phone',onProgress:message=>statusText(message),stillCurrent:()=>JSON.stringify(currentTrip())===signature,title:'Моя поездка на Балтику'});statusText(`Личный буклет готов: ${result.pages} стр. В нём вся поездка.`);}
   catch(error){statusText(error.message==='guide_trip_changed'?'Поездка изменилась во время подготовки PDF. Обновите план и повторите.':'Личный PDF не удалось подготовить. Попробуйте ещё раз после восстановления связи.',true);}
   finally{pdf.disabled=false;}
  });

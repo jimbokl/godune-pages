@@ -1,7 +1,7 @@
 import {kosaBudgetText} from './kosa-budget.mjs?v=2026101305';
 import './assets/vendor/pdf/pdf-lib.js?v=2026101305';
 import './assets/vendor/pdf/fontkit.js?v=2026101305';
-import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101706';
+import {kosaClock as clock} from './kosa-plan-state.mjs?v=2026101707';
 import {kosaBoardingText} from './kosa-boarding.mjs?v=2026101305';
 import {loadKosaGuideAssets} from './guide-sections.mjs?v=2026101305';
 const {PDFDocument,rgb}=globalThis.PDFLib;

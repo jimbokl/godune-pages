@@ -1,18 +1,87 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
+      "event-source-8bfa02dfc9dd2f1b",
       "event-source-cbcb4a099e189f65"
     ]
   },
   "events": [
+    {
+      "id": "event-a50b95dedb720107",
+      "title": "Органная Франция",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-30",
+      "starts": "19:00",
+      "ends": null,
+      "description": "Произведения Ф. Куперена, С. Франка, Л. Вьерна",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам · 750 ₽",
+      "price": 750,
+      "currency": "RUB",
+      "source": "event-source-8bfa02dfc9dd2f1b",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 750,
+        "max": 750,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+      "verified_at": "2026-10-17T11:35:40Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+          "sha256": "dea127243a853ed86239ef7f72ad84d4919c98a25af0088b5d7a0db4d1c44130",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Органная Франция",
+        "date_year_start": "JSON-LD startDate: 2026-10-30T19:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Произведения Ф. Куперена, С. Франка, Л. Вьерна",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [750]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30",
+        "source_identity": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
     {
       "id": "event-yantarhall-queen-2026-10-30",
       "title": "Куин / Queen",
@@ -22,10 +91,10 @@
       "city": "svetlogorsk",
       "city_name": "Светлогорск",
       "venue": "Театр эстрады «Янтарь-Холл»",
-      "description": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
+      "description": "Куин / Queen",
       "kind": "Концерт",
       "status": "scheduled",
-      "admission": "Билеты от 1900 ₽ · 6+.",
+      "admission": "Билеты от 1900 ₽",
       "price": null,
       "currency": null,
       "source": "event-source-cbcb4a099e189f65",
@@ -51,29 +120,41 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-17T09:50:54Z",
+      "verified_at": "2026-10-17T11:35:51Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
           "sha256": "58008b15e5b51466e828aad26f650654e3d18c0e2f306348c6c32eddbf90c04c",
           "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T11:35:51Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "692a4ab83c69c13675d221d18ce06150be4527685a48c5b9fb912c2551286772",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
         }
       ],
       "evidence": {
-        "title_quote": "Куин / Queen",
-        "description_quote": "Шоу «Богемская рапсодия» в сопровождении симфонического оркестра",
-        "date_quote": "30.10.2026 19:00:00",
-        "year_quote": "2026",
-        "time_quote": "19:00",
-        "venue_quote": "Янтарь-Холл",
-        "city_quote": "Светлогорск",
-        "price_quote": "Билеты от 1900 руб.",
-        "age_quote": "6+",
-        "same_page_year_source": "share metadata",
-        "source_capture_id": "yantarhall_queen"
+        "title": "Visible H1: Куин / Queen",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Куин / Queen+30.10.2026 19:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 1900 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra-2030-2010"
       },
-      "place_id": "yantar-hall"
+      "place_id": "yantar-hall",
+      "source_identity": "yantarhall:afisha-kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra-2030-2010",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
     }
   ]
 }

@@ -1,14 +1,154 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-25",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-03a0eb979f0bc6b9",
+      "event-source-707d2319c774b8e0"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-26d394f51e34e522",
+      "title": "Гуси-лебеди: перезагрузка",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-25",
+      "starts": "12:00",
+      "ends": null,
+      "description": "Музыкальная сказка для всей семьи",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-707d2319c774b8e0",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+      "verified_at": "2026-10-17T11:35:34Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:34Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "b7dc42e3d835383383140d3d5cd23207bb67a815674cfc18eb797474584aafcc",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Гуси-лебеди: перезагрузка",
+        "date_year_start": "JSON-LD startDate: 2026-10-25T12:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Музыкальная сказка для всей семьи",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [650, 700, 800]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:00:00",
+        "source_identity": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-5fccc93defd20879",
+      "title": "Виват, Опера!",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-25",
+      "starts": "18:00",
+      "ends": null,
+      "description": "Оперные шедевры с органом",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-03a0eb979f0bc6b9",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 600,
+        "max": 1200,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+      "verified_at": "2026-10-17T11:35:34Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:34Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "e693e9c9d0c5754597a0f2fee4a0595aa5fae6ffb6c9cf0aa16d2ff75360ee29",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Виват, Опера!",
+        "date_year_start": "JSON-LD startDate: 2026-10-25T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Оперные шедевры с органом",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [600, 800, 1000, 1200]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/vivat-opera-/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/vivat-opera-/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    }
+  ]
 }

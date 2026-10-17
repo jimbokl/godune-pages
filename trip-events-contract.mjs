@@ -1,3 +1,4 @@
+import {validEventDurationEstimate} from './trip-events-duration.mjs?v=2026101707';
 // Portable observation, distinct from current registry/fetch time.
 const keys=(v,allowed)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).every(k=>allowed.includes(k));
 const text=v=>typeof v==='string'&&!!v.trim();
@@ -16,7 +17,8 @@ export function eventRegionalStart(e){
  return {date:`${v.year}-${v.month}-${v.day}`,minute:Number(v.hour)*60+Number(v.minute)};
 }
 export function validEventSnapshot(e,visit){
- if(!keys(e,['version','id','venue_id','place_id','title','start_time','end_time','timezone','status','source_url','verified_at','price_range'])||e.version!==1||![e.id,e.venue_id,e.title].every(text)||!(e.place_id===null||text(e.place_id))||e.timezone!=='Europe/Kaliningrad'||!['scheduled','cancelled','postponed'].includes(e.status)||!sourceURL(e.source_url)||!(date(e.verified_at)||zoned(e.verified_at))||!instant(e.start_time)||!(e.end_time===null||instant(e.end_time)&&Date.parse(e.end_time)>Date.parse(e.start_time)))return false;
+ if(!keys(e,['version','id','venue_id','place_id','title','start_time','end_time','timezone','status','source_url','verified_at','price_range','duration_estimate'])||e.version!==1||![e.id,e.venue_id,e.title].every(text)||!(e.place_id===null||text(e.place_id))||e.timezone!=='Europe/Kaliningrad'||!['scheduled','cancelled','postponed'].includes(e.status)||!sourceURL(e.source_url)||!(date(e.verified_at)||zoned(e.verified_at))||!instant(e.start_time)||!(e.end_time===null||instant(e.end_time)&&Date.parse(e.end_time)>Date.parse(e.start_time)))return false;
+ if(Object.hasOwn(e,'duration_estimate')&&!validEventDurationEstimate(e.duration_estimate))return false;
  const p=e.price_range;
  if(p!==null&&(!keys(p,['min','max','currency','kind'])||!Number.isFinite(p.min)||p.min<0||p.min>90071992547409||!(p.max===null||Number.isFinite(p.max)&&p.max>=p.min&&p.max<=90071992547409)||p.currency!=='RUB'||!['exact','from','range'].includes(p.kind)||p.kind==='exact'&&p.max!==p.min||p.kind==='range'&&p.max===null||p.kind==='from'&&p.max!==null))return false;
  if(!visit)return true;
@@ -25,7 +27,8 @@ export function validEventSnapshot(e,visit){
 }
 export function eventSnapshot(event,venue){
  const e={version:1,id:event.id,venue_id:event.venue_id,place_id:venue&&Object.hasOwn(venue,'place_id')?venue.place_id:event.place_id??null,title:event.title,start_time:event.start_time,end_time:event.end_time??null,timezone:event.timezone,status:event.status,source_url:event.source_url,verified_at:event.verified_at,price_range:event.price_range??null};
+ if(validEventDurationEstimate(event.duration_estimate))e.duration_estimate=structuredClone(event.duration_estimate);
  if(!validEventSnapshot(e))throw Error('Сведения о времени или источнике события нужно уточнить.');
  return e;
 }
-export const eventSnapshotGuard=e=>JSON.stringify(['id','venue_id','place_id','title','start_time','end_time','timezone','status','source_url','verified_at','price_range'].map(k=>k==='price_range'&&e[k]?[e[k].min,e[k].max,e[k].currency,e[k].kind]:e[k]??null));
+export const eventSnapshotGuard=e=>JSON.stringify(['id','venue_id','place_id','title','start_time','end_time','timezone','status','source_url','verified_at','price_range'].map(k=>k==='price_range'&&e[k]?[e[k].min,e[k].max,e[k].currency,e[k].kind]:e[k]??null).concat(e.duration_estimate?[e.duration_estimate.minutes,e.duration_estimate.basis,e.duration_estimate.label]:[null]));

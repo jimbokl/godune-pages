@@ -1,15 +1,15 @@
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 import {guidePhotoMetadata} from './author-photo.mjs?v=20261016';
 import {transportGuideRows,transportPlanB} from './trip-transport-plans-view.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';
 import {partyLabel,dayPeople} from './trip-party.mjs?v=2026101305';
 import {checkedReferenceBudget} from './day-reference-budget.mjs?v=2026101702';
-import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101706';
+import {cityReferenceMatches} from './city-day-budget.mjs?v=2026101707';
 import {mobilityLabel,baseTransport,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 // Portable, read-only snapshot. All times come from the same Rust API as the day screen.
-import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
+import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
@@ -22,10 +22,10 @@ import {buildGuide} from './virtual-guide-engine.mjs?v=2026101406';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {clock,stopTimeView,ownPointPhoto} from './day-stop-view.mjs?v=2026101305';
 import {waveLabel} from './day-wave.mjs?v=2026101305';
-import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101706';
+import {serviceGuide,mixedGuideRows,serviceRow,guideEntries,guideExpenses} from './trip-service-guide.mjs?v=2026101707';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101706';
-import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101706';
-import {guideRegionDate,guideClaimSnapshot,guideFactFreshness,guideClaimFreshness,guideFreshnessText,guideClaimWarning,guideMenuPrice} from './trip-guide-evidence.mjs?v=2026101706';
+import {quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101707';
+import {guideRegionDate,guideClaimSnapshot,guideFactFreshness,guideClaimFreshness,guideFreshnessText,guideClaimWarning,guideMenuPrice} from './trip-guide-evidence.mjs?v=2026101707';
 
 const notes={unknown_travel:'Время дороги ещё неизвестно.',unknown_opening:'Часы посещения не записаны.',opening_needs_check:'Расчёт по опубликованным часам.',unknown_kitchen:'Последний заказ кухни: время не указано.',kitchen_needs_check:'Кухня учтена по опубликованным часам.',kitchen_closed:'В этот день заказы не принимают.',kitchen_window_missed:'К этому времени кухня уже не принимает заказ.',travel_needs_check:'Время дороги — оценка.',unknown_approach:'Неизвестно время подхода ко входу.',unknown_return:'Неизвестно время возвращения к парковке.',access_needs_check:'Время подхода ко входу и обратно — оценка.',transport_needs_check:'Переправу нужно сверить на дату поездки.',transport_incomplete:'Не хватает времени пути или расписания переправы.',transport_conflict:'Возвращение с переправы не складывается.',closed:'По выбранным часам в этот день посещений нет.',window_missed:'Осмотр не помещается в часы входа или сеанс.',appointment_needs_check:'Без времени дороги прибытие к билету нельзя подтвердить.',appointment_venue_conflict:'Время билета не совпадает с известными часами посещения.'};
 export function guideIssue(issue) {

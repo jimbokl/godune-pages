@@ -1,8 +1,8 @@
-import {emptyTrip,cleanTrip} from './trip-state.mjs?v=2026101706';
-import {chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101706';
-import {wizardDefaults,prepareWizardPlan} from './planning-wizard-state.mjs?v=2026101706';
+import {emptyTrip,cleanTrip} from './trip-state.mjs?v=2026101707';
+import {chooseTripDay,validTripDate} from './trip-days-state.mjs?v=2026101707';
+import {wizardDefaults,prepareWizardPlan} from './planning-wizard-state.mjs?v=2026101707';
 import {calculateTransport,transportReceipt} from './transport-page-state.mjs?v=2026101305';
-import {wizardBusChoice,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=2026101706';
+import {wizardBusChoice,wizardBusTargets,attachWizardBus} from './wizard-bus.mjs?v=2026101707';
 
 const clone=value=>structuredClone(value);
 const values={origin:['mow','spb','de','local'],arrival:['morning','day','evening'],departure:['day_out','evening_out'],base:['kgd','zel','svet','split'],goal:['tourist','realty','work']};

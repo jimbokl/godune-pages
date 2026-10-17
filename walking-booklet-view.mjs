@@ -1,7 +1,7 @@
 // A walking day shares evidence between its plan, places and chosen dishes.
 // Services, transport, expenses and bookings retain their complete chapters.
 import {routineStopIssue} from './day-stop-view.mjs?v=2026101305';
-import {serviceSourceCaption} from './service-provenance.mjs?v=2026101706';
+import {serviceSourceCaption} from './service-provenance.mjs?v=2026101707';
 const groupedIssue=issue=>routineStopIssue(issue)||['unknown_opening','unknown_kitchen'].includes(issue.code);
 export function walkingSourceCaption(source){
   const observations=source.observations||[source],groups=new Map();

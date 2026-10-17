@@ -1,14 +1,85 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-22",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-aa9661144d984e95"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-488cfa6c49556489",
+      "title": "Это – русские картины",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-22",
+      "starts": "19:00",
+      "ends": null,
+      "description": "Абонемент №2 «Музыка и живопись»",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-aa9661144d984e95",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-22T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 800,
+        "max": 1000,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
+      "verified_at": "2026-10-17T11:35:29Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
+          "sha256": "0b5ee139d88200466f148f3756cb91cba36910f68074e8d3dfd0871a7eccd53b",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Это – русские картины",
+        "date_year_start": "JSON-LD startDate: 2026-10-22T19:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Абонемент №2 «Музыка и живопись»",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [800, 900, 1000]; currency: RUB",
+        "age": "Возрастное ограничение:\n 12+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    }
+  ]
 }

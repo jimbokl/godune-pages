@@ -1,6 +1,6 @@
-import {selectedDay,chooseTripDay,ensureJourney,addTripDay,dayHasContent,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101706';
+import {selectedDay,chooseTripDay,ensureJourney,addTripDay,dayHasContent,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101707';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
-import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101706';
+import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101707';
 import {waveStopSettings} from './day-wave.mjs?v=2026101305';
 
 const placesFor=route=>route.stops.map(stop=>stop.poi);

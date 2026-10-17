@@ -1,11 +1,11 @@
-import {selectedDay,journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
-import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101706';
+import {selectedDay,journeyDays,ensureJourney,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
+import {selectMenuChoice,removeMenuChoice} from './trip-menu-choices-state.mjs?v=2026101707';
 import {validMenuChoice,menuChoiceRows} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {menuChoiceGuide} from './trip-menu-choices-view.mjs?v=2026101706';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
-import {prepareMenuChoice,prepareMenuChoices,menuPresetSelections,confirmMenuChoice,quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101706';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
-import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101706';
+import {prepareMenuChoice,prepareMenuChoices,menuPresetSelections,confirmMenuChoice,quoteMenuDay,menuQuoteText} from './trip-menu-preview.mjs?v=2026101707';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
+import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101707';
 import {dayChangeText} from './trip-day-change-view.mjs?v=2026101705';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 
@@ -106,7 +106,7 @@ export function initDiningMenuChoices(root,base,{lazy=false}={}){
  const cache=new Map();let contextPromise,opened;
  async function context(){
   if(!contextPromise)contextPromise=(async()=>{
-   const [{createTripMemory},{loadTrip},response]=await Promise.all([import('./trip-memory.mjs?v=2026101706'),import('./trip-memory-bootstrap.mjs?v=2026101706'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'})]);
+   const [{createTripMemory},{loadTrip},response]=await Promise.all([import('./trip-memory.mjs?v=2026101707'),import('./trip-memory-bootstrap.mjs?v=2026101707'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'})]);
    if(!response.ok)throw Error('catalog_load');const catalog=await response.json();let storage;try{storage=localStorage;}catch{}
    const memory=createTripMemory(catalog,loadTrip(storage,catalog),storage);await memory.ready;
    document.addEventListener('visibilitychange',()=>{if(!document.hidden)memory.sync();});

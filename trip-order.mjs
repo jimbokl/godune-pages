@@ -1,5 +1,5 @@
-import {cleanTrip} from './trip-state.mjs?v=2026101706';
-import {selectedDay, changeDayDetails} from './trip-days-state.mjs?v=2026101706';
+import {cleanTrip} from './trip-state.mjs?v=2026101707';
+import {selectedDay, changeDayDetails} from './trip-days-state.mjs?v=2026101707';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 
 // Apply an intent to the latest draft, rather than saving the order seen at drag start.

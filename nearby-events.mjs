@@ -1,4 +1,5 @@
-import {calendarDate,regionClock,eventTiming,eventInterval,eventsForDate,eventCacheState,coverageForDate} from './events-engine.mjs?v=2026101706';
+import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
+import {calendarDate,regionClock,eventTiming,eventInterval,eventsForDate,eventCacheState,coverageForDate} from './events-engine.mjs?v=2026101707';
 
 const CACHE_PREFIX='godune:nearby:152:';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -78,7 +79,7 @@ export function createNearbyCache({storage,fetcher,base,now=()=>new Date()}) {
       if(expected.date&&data.date!==expected.date)throw Error('Дата афиши не совпала');
       if(expected.revision&&data.revision!==expected.revision)throw Error('Обновление афиши ещё не завершено');
       if(expected.date&&!Array.isArray(data.events))throw Error('Нет списка событий');
-      if(!expected.date&&(!data.window||!data.dates||!data.revision))throw Error('Нет календаря афиши');
+      if(!expected.date&&(!calendarDate(data.window?.from)||!calendarDate(data.window?.to)||data.window.from>data.window.to||!data.dates||typeof data.dates!=='object'||Array.isArray(data.dates)||typeof data.revision!=='string'||!data.revision.trim()))throw Error('Нет календаря афиши');
       const entry={data,meta:{fetched_at:now().toISOString(),date:data.date||null,revision:data.revision}};
       write(url,entry);return entry;
     }catch(error){return cached?{...cached,failed:true,error:error.message}:{data:null,meta:{},failed:true,error:error.message};}
@@ -101,10 +102,11 @@ function card(event,day,model,history=false,freshness=null){
   const timing=eventTiming(event,model.clockNow),url=safeURL(event.source_url),current=!day?.snapshot&&timing.now;
   const fact=freshness?.facts?.filter(f=>f.subject?.id===event.id)||[];
   const needsReview=fact.some(f=>f.freshness==='needs_review');
-  const badge=history||timing.phase==='ended'?'Завершилось':timing.phase==='past_unknown_end'?'Дата начала прошла; окончание неизвестно':day?.snapshot?'Датированный снимок':needsReview?'Требует проверки':current?'Сейчас':timing.needs_info?'Нужно уточнить окончание':'';
+  const badge=history||timing.phase==='ended'?'Завершилось':timing.phase==='past_unknown_end'?'Дата начала прошла; окончание неизвестно':day?.snapshot?'Датированный снимок':needsReview?'Требует проверки':current?'Сейчас':timing.needs_info?'Время окончания уточняется':'';
   const source=history||timing.phase==='ended'?'':url?`<a href="${escape(url)}" rel="noopener noreferrer">Программа площадки</a>`:'<span>Ссылка на программу не подтверждена</span>';
+  const estimate=eventDurationEstimateText(event);
   const canAdd=!history&&event.status!=='cancelled'&&event.status!=='postponed'&&day.date>=model.clock.date&&timing.phase!=='ended';
-  return `<li class="nearby-card" data-event-id="${escape(event.id)}" data-snapshot="${!!day?.snapshot}" data-freshness="${needsReview?'needs_review':'unknown'}"><p class="nearby-eyebrow">${escape(event.city_name||event.city)} · ${escape(event.category||event.kind||'Событие')}</p>${badge?`<span class="nearby-badge${current?' nearby-badge-now':''}">${badge}</span>`:''}<h4>${escape(event.title)}</h4><p class="nearby-time">${escape(eventTime(event))}</p><p>${escape(event.venue||'Площадка уточняется')}</p><p>${escape(priceLabel(event))}</p><p class="nearby-evidence">Сведения о событии: ${escape(evidenceLabel(event.verified_at))}.</p>${source}${canAdd?`<button type="button" data-nearby-add="${escape(event.id)}" data-event-date="${day.date}">Рассмотреть в плане</button>`:''}</li>`;
+  return `<li class="nearby-card" data-event-id="${escape(event.id)}" data-snapshot="${!!day?.snapshot}" data-freshness="${needsReview?'needs_review':'unknown'}"><p class="nearby-eyebrow">${escape(event.city_name||event.city)} · ${escape(event.category||event.kind||'Событие')}</p>${badge?`<span class="nearby-badge${current?' nearby-badge-now':''}">${badge}</span>`:''}<h4>${escape(event.title)}</h4><p class="nearby-time">${escape(eventTime(event))}</p>${estimate?`<p data-event-duration-estimate>${escape(estimate)}</p>`:''}<p>${escape(event.venue||'Площадка уточняется')}</p><p>${escape(priceLabel(event))}</p><p class="nearby-evidence">Сведения о событии: ${escape(evidenceLabel(event.verified_at))}.</p>${source}${canAdd?`<button type="button" data-nearby-add="${escape(event.id)}" data-event-date="${day.date}">Рассмотреть в плане</button>`:''}</li>`;
 }
 function placeCard(place,base){
   const url=safeURL(place.source_url);
@@ -121,6 +123,8 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
   if(storage===undefined){try{storage=win.localStorage;}catch{storage=null;}}
   const cache=createNearbyCache({storage,fetcher,base,now});
   const config=JSON.parse(root.querySelector('[data-nearby-places]')?.textContent||'{"cities":[]}');
+  // City pages keep the page's location; the planner may follow the saved Trip.
+  const localCityPage=config.cities.some(c=>new URL(doc.baseURI).pathname.startsWith(new URL(`${c.id}/`,base).pathname));
   const content=root.querySelector('[data-nearby-content]'),status=root.querySelector('[data-nearby-status]'),select=root.querySelector('[name=nearby-city]');
   let city=root.dataset.city||select.value,date=null,index=null,buckets=new Map(),token=0,timer=null,disposed=false,freshness=null,enginePromise=null,facts=null,lastDates='',busy=false;
   function places(){return config.cities.find(c=>c.id===city)?.places||[];}
@@ -139,7 +143,7 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
   async function evaluateFacts(){
     try{
       if(!facts){const response=await fetcher(new URL('data/facts.json',base).href);if(!response.ok)return;facts=await response.json();}
-      if(!enginePromise)enginePromise=factEngine?Promise.resolve(factEngine):import('./trip-scheduler.mjs?v=2026101706').then(m=>m.loadScheduler(base));
+      if(!enginePromise)enginePromise=factEngine?Promise.resolve(factEngine):import('./trip-scheduler.mjs?v=2026101707').then(m=>m.loadScheduler(base));
       const engine=await enginePromise;
       if(!engine.factFreshness)return;
       const snapshot=facts.snapshot||facts;
@@ -149,7 +153,9 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
   }
   async function refresh(force=false){
     const mine=++token;busy=true;
-    const idx=await cache.load('data/events/index.json',{},force);
+    // Revalidate once per mount so a newly installed offline pack can replace
+    // an unexpired index; date buckets still use their six-hour/revision checks.
+    const idx=await cache.load('data/events/index.json',{},force||index===null);
     if(disposed||mine!==token)return;
     index=idx.data;
     const dates=currentDates();lastDates=dates.join(',');
@@ -172,7 +178,7 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
   }
   function context(event){
     const next=event.detail||{};
-    if(next.city&&config.cities.some(c=>c.id===next.city)){city=next.city;select.value=city;root.dataset.city=city;}
+    if(!localCityPage&&next.city&&config.cities.some(c=>c.id===next.city)){city=next.city;select.value=city;root.dataset.city=city;}
     // null explicitly returns to live Today/Tomorrow; never substitute today for
     // an invalid or omitted Trip date supplied as a purported selected date.
     if(Object.hasOwn(next,'date')){if(next.date===null||next.date==='')date=null;else if(calendarDate(next.date))date=next.date;else {status.textContent='Дата поездки не распознана. Выберите дату в плане.';return;}}
@@ -215,7 +221,7 @@ export function mountFactFreshness(doc,{base=new URL('./',import.meta.url),now=(
     pending=true;
     try{
       if(!data){const response=await fetcher(new URL('data/facts.json',base));if(!response.ok)throw Error('facts unavailable');data=await response.json();}
-      if(!engine)engine=await import('./trip-scheduler.mjs?v=2026101706').then(m=>m.loadScheduler(base));
+      if(!engine)engine=await import('./trip-scheduler.mjs?v=2026101707').then(m=>m.loadScheduler(base));
       applyFreshnessReport(doc,engine.factFreshness({version:1,as_of:current,snapshot:data.snapshot}));day=current;
     }catch{}finally{pending=false;}
   }

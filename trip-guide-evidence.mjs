@@ -1,6 +1,7 @@
 // Read-only guide projection. Freshness decisions belong to the Rust engine.
-import {serviceSourceUrl} from './service-provenance.mjs?v=2026101706';
-import {validEventSnapshot} from './trip-events-contract.mjs?v=2026101706';
+import {serviceSourceUrl} from './service-provenance.mjs?v=2026101707';
+import {validEventSnapshot} from './trip-events-contract.mjs?v=2026101707';
+import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
 
 export function guideRegionDate(value=new Date()){
@@ -42,8 +43,10 @@ export function guideMenuPrice(row,report){
 }
 export function guideEventPresentation(event){
  if(!validEventSnapshot(event))return null;
+ const estimate=eventDurationEstimateText(event);
  const instant=value=>new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Kaliningrad',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(value));
  return {lines:[{scheduled:'Запланировано по сохранённому источнику.',cancelled:'Событие отменено. Сохранённая запись остаётся в поездке.',postponed:'Событие перенесено. Уточните новое время у источника.'}[event.status],
-  `Начало по источнику: ${instant(event.start_time)} · Калининград.`,event.end_time?`Окончание по источнику: ${instant(event.end_time)} · Калининград.`:'Окончание неизвестно. Полное время посещения и возвращения нужно уточнить.'],
+  `Начало по источнику: ${instant(event.start_time)} · Калининград.`,event.end_time?`Окончание по источнику: ${instant(event.end_time)} · Калининград.`:'Окончание неизвестно. Полное время посещения и возвращения нужно уточнить.',
+  ...(estimate?[estimate]:[])],
   source:{name:'Сохранённый снимок события',url:serviceSourceUrl(event.source_url),checked_at:event.verified_at,date_label:'источник проверен'}};
 }

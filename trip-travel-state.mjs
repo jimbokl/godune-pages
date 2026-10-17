@@ -1,5 +1,5 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
+import {ensureJourney,selectedDay,journeyDays,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2026101305';
 import {isPersonalPoint} from './personal-points.mjs?v=2026101305';
 import {dayPointIds} from './day-points.mjs?v=2026101305';

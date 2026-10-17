@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "window": {
     "from": "2026-09-17",
     "to": "2026-11-16",
@@ -305,12 +305,13 @@
     },
     "2026-10-18": {
       "url": "/data/events/2026-10-18.json",
-      "count": 4,
+      "count": 5,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
-          "event-source-1146f9c83c77dd08",
+          "event-source-472dfe595fccd21b",
+          "event-source-7dd21e71cbbba32f",
           "event-source-9a1a9d5f0df12bb6",
           "event-source-abe653549b66e8fb"
         ]
@@ -349,49 +350,62 @@
     },
     "2026-10-22": {
       "url": "/data/events/2026-10-22.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
-    "2026-10-23": {
-      "url": "/data/events/2026-10-23.json",
       "count": 1,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
+          "event-source-aa9661144d984e95"
+        ]
+      }
+    },
+    "2026-10-23": {
+      "url": "/data/events/2026-10-23.json",
+      "count": 3,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-202e65c87217f401",
+          "event-source-d6e3d67e6b349ef2",
           "event-source-f9eb4005a625cb21"
         ]
       }
     },
     "2026-10-24": {
       "url": "/data/events/2026-10-24.json",
-      "count": 0,
+      "count": 3,
       "coverage": {
-        "status": "no_verified_events",
+        "status": "verified_partial",
         "complete": false,
-        "sources": []
+        "sources": [
+          "event-source-35a37ab2c9cf2aca",
+          "event-source-d7db90b269724b82",
+          "event-source-f8ae9de7d890592e"
+        ]
       }
     },
     "2026-10-25": {
       "url": "/data/events/2026-10-25.json",
-      "count": 0,
+      "count": 2,
       "coverage": {
-        "status": "no_verified_events",
+        "status": "verified_partial",
         "complete": false,
-        "sources": []
+        "sources": [
+          "event-source-03a0eb979f0bc6b9",
+          "event-source-707d2319c774b8e0"
+        ]
       }
     },
     "2026-10-26": {
       "url": "/data/events/2026-10-26.json",
-      "count": 0,
+      "count": 1,
       "coverage": {
-        "status": "no_verified_events",
+        "status": "verified_partial",
         "complete": false,
-        "sources": []
+        "sources": [
+          "event-source-c0ed71aba7fddd79"
+        ]
       }
     },
     "2026-10-27": {
@@ -414,40 +428,49 @@
     },
     "2026-10-29": {
       "url": "/data/events/2026-10-29.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
-    "2026-10-30": {
-      "url": "/data/events/2026-10-30.json",
       "count": 1,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
+          "event-source-37ac5d9cc699c444"
+        ]
+      }
+    },
+    "2026-10-30": {
+      "url": "/data/events/2026-10-30.json",
+      "count": 2,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-8bfa02dfc9dd2f1b",
           "event-source-cbcb4a099e189f65"
         ]
       }
     },
     "2026-10-31": {
       "url": "/data/events/2026-10-31.json",
-      "count": 0,
+      "count": 2,
       "coverage": {
-        "status": "no_verified_events",
+        "status": "verified_partial",
         "complete": false,
-        "sources": []
+        "sources": [
+          "event-source-2d69612d16fda014",
+          "event-source-ff2ea88915efd205"
+        ]
       }
     },
     "2026-11-01": {
       "url": "/data/events/2026-11-01.json",
-      "count": 0,
+      "count": 2,
       "coverage": {
-        "status": "no_verified_events",
+        "status": "verified_partial",
         "complete": false,
-        "sources": []
+        "sources": [
+          "event-source-415d64a95f65d553",
+          "event-source-84e8439d81a585f7"
+        ]
       }
     },
     "2026-11-02": {
@@ -591,15 +614,31 @@
   "dated_snapshot_age_seconds": 43200,
   "active_ids": [
     "event-0b5cc69190c0f419",
+    "event-14240db5849b4341",
     "event-17b8abe5389212d6",
+    "event-26d394f51e34e522",
     "event-3af80c27bfa88bc0",
+    "event-488cfa6c49556489",
+    "event-4a976bf8c7f6aeb3",
+    "event-5fccc93defd20879",
+    "event-60b8ba53b4fa8824",
     "event-6d947bd837a6e235",
+    "event-6ed93c893a119179",
     "event-703648e2fd3d262b",
     "event-749e4139bcb56846",
+    "event-7c2c58fb70b309db",
+    "event-9b89fe7cfdbd7778",
+    "event-a3852ad64129e91c",
+    "event-a50b95dedb720107",
+    "event-bc10b3b3f00f70e1",
+    "event-bc4a9e4aeaa30e6a",
     "event-c90f24387a529f61",
     "event-e15902bc9b961b4e",
     "event-e1f424ecbcbc4a9d",
     "event-e62ffabad0d905ee",
+    "event-e8ba0ec85b64467a",
+    "event-fad48095e48a6a9c",
+    "event-fdd8bc506e1e4563",
     "event-yantarhall-queen-2026-10-30"
   ]
 }

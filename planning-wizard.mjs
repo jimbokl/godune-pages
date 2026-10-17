@@ -1,21 +1,21 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101706';
-import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=2026101706';
-import {initWizardRail} from './wizard-rail-ui.mjs?v=2026101706';
-import {earlierWizardReturn,earlierWizardDeparture,wizardRailActive} from './wizard-rail.mjs?v=2026101706';
+import {initWizardBus} from './wizard-bus-ui.mjs?v=2026101707';
+import {wizardBusChoices,wizardBusTargets,wizardBusActive} from './wizard-bus.mjs?v=2026101707';
+import {initWizardRail} from './wizard-rail-ui.mjs?v=2026101707';
+import {earlierWizardReturn,earlierWizardDeparture,wizardRailActive} from './wizard-rail.mjs?v=2026101707';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
 import {mobilityLabel,vehicleArrival,vehicleParkingNote} from './day-mobility.mjs?v=2026101305';
-import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=2026101706';
-import {chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=2026101706';
-import {scheduleJournalCriteria,kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101706';
+import {applyWizardPlan,dayIsOccupied,journeyIsOccupied,prepareWizardPlan,wizardDefaults,wizardRoutes,wizardChoices,wizardStarters} from './planning-wizard-state.mjs?v=2026101707';
+import {chooseTripDay,selectedDay,journeyDays} from './trip-days-state.mjs?v=2026101707';
+import {scheduleJournalCriteria,kosaJournalCriteria} from './scenario-bindings.mjs?v=2026101707';
 import {planInput,planBaseTravel,planTravel} from './trip-schedule-state.mjs?v=2026101305';
 import {roadJourney,railJourney,railProblem} from './day-journey-view.mjs?v=2026101305';
 import {baseName} from './personal-points.mjs?v=2026101305';
 import {previousPlace,dayBases} from './travel-estimates.mjs?v=2026101305';
 import {assessSchedule,assessKosa,readinessCopy} from './day-readiness.mjs?v=2026101305';
 import {WAVE_PACES,waveEvidence} from './day-wave.mjs?v=2026101305';
-import {downloadTripFile} from './trip-file.mjs?v=2026101706';
+import {downloadTripFile} from './trip-file.mjs?v=2026101707';
 import {partyLabel,validParty} from './trip-party.mjs?v=2026101305';
 import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
@@ -384,7 +384,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
-      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=2026101706'),import('./travel-estimates.mjs?v=2026101305')]);
+      const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=2026101707'),import('./travel-estimates.mjs?v=2026101305')]);
       const calculate=await loadScheduler(base);
       const trips=proposal.kind==='journey'?proposal.targetIds.map(id=>chooseTripDay(proposal.trip,id)):[proposal.trip];
       const matrices=await Promise.all(trips.map(trip=>proposal.bus?.[selectedDay(trip).id]?null:loadTripTravelMatrix(base,trip,catalog).catch(()=>null)));

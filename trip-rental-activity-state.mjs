@@ -1,11 +1,11 @@
 // A held route is part of a rental, not a second visit after its return.
 // This adapter binds existing catalogue/calendar/road inputs; Rust owns all
 // times, conflicts, rounded tariffs and unknown facts.
-import {selectedDay} from './trip-days-state.mjs?v=2026101706';
+import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {planInput} from './trip-schedule-state.mjs?v=2026101305';
-import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=2026101706';
-import {cleanTrip} from './trip-state.mjs?v=2026101706';
-import {activateTimeline} from './trip-service-timeline-state.mjs?v=2026101706';
+import {serviceItineraryInput} from './trip-service-itinerary-input.mjs?v=2026101707';
+import {cleanTrip} from './trip-state.mjs?v=2026101707';
+import {activateTimeline} from './trip-service-timeline-state.mjs?v=2026101707';
 
 export function rentalActivityInput(original,trip,catalog,matrix){
  const day=selectedDay(trip),input=structuredClone(original);

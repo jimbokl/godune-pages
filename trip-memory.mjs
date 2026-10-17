@@ -1,4 +1,4 @@
-import {TRIP_KEY, cleanTrip, emptyTrip} from './trip-state.mjs?v=2026101706';
+import {TRIP_KEY, cleanTrip, emptyTrip} from './trip-state.mjs?v=2026101707';
 import {MemoryCompatibilityError, checkMemoryClock, checkMemoryTrip, checkMemoryRecord, memoryClock, versionMemoryRecord} from './trip-memory-contract.mjs?v=2026101305';
 
 export const MEMORY_DB = 'godune-trip-memory';

@@ -8,7 +8,7 @@
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
   if(document.querySelector('[data-menu-preset]')){
-    const init=()=>import(url('trip-menu-choices-ui.mjs?v=2026101706')).then(({initDiningMenuChoices})=>initDiningMenuChoices(document,base)).catch(()=>{
+    const init=()=>import(url('trip-menu-choices-ui.mjs?v=2026101707')).then(({initDiningMenuChoices})=>initDiningMenuChoices(document,base)).catch(()=>{
       document.querySelectorAll('[data-menu-preset-status]').forEach(status=>{status.textContent='Добавление обеда пока не загрузилось. ';const retry=document.createElement('button');retry.type='button';retry.textContent='Повторить';retry.addEventListener('click',init);status.append(retry);});
     });init();
   }
@@ -279,11 +279,11 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101706'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101707'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     if (document.querySelector('[data-engagement-page]')) {
-      import(url('engagement.mjs?v=2026101706'))
+      import(url('engagement.mjs?v=2026101707'))
         .then(({initEngagement}) => initEngagement({workshop, catalog:data, base}))
         .catch(() => {
           // The evidence-backed static passport remains useful without controls.
@@ -294,21 +294,21 @@
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101406')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101706')).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101707')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
-    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101706')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
+    if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101707')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
-      import(url('tool-pages.mjs?v=2026101706')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
+      import(url('tool-pages.mjs?v=2026101707')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{
         document.documentElement.dataset.toolReady='error';
         $$('[data-plan-starter]').forEach(button=>button.disabled=true);
         const status=$('#plan-starter-status');
         if(status)status.textContent='Готовые планы пока не загрузились. Откройте «Мой маршрут» и добавьте места сами; прежняя поездка сохранена.';
       });
     }
-    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=2026101706')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
-    if ($('#housing-engine')) import(url('housing-ui.mjs?v=2026101706')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
-    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2026101706')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
+    if ($('#kosa-form')) import(url('kosa-planner.mjs?v=2026101707')).then(({initKosaPlanner})=>initKosaPlanner({workshop,catalog:data,base})).catch(()=>{ $('#kosa-status').textContent='Расчёт пока не загрузился. Ниже есть готовый пример, карты и PDF.'; });
+    if ($('#housing-engine')) import(url('housing-ui.mjs?v=2026101707')).then(({initHousing})=>initHousing(base,workshop,data)).catch(()=>{ $('#housing-status').textContent='Сравнение пока не загрузилось. Районы и ориентиры доступны ниже; вашу поездку можно открыть в планировщике.'; });
+    if ($('#travel-day')) import(url('trip-travel-ui.mjs?v=2026101707')).then(({initTravel})=>initTravel(workshop,data,base)).catch(()=>{
       $('#travel-status').textContent='Экран поездки пока не загрузился. Откройте свой план: сохранённые дни остаются на месте.';
     });
     if (inlineMap) {
@@ -326,13 +326,13 @@
     });
     if (document.readyState==='complete') restoreTripEntry();
     else window.addEventListener('load',restoreTripEntry,{once:true});
-    if ($('#budget-page')) import(url('budget-ui.mjs?v=2026101706')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
-    if ($('[data-route-day-save]')) import(url('route-day-ui.mjs?v=2026101706')).then(({initRouteDay})=>initRouteDay({workshop,base,catalog:data})).catch(()=>{ $('[data-route-day-status]').textContent='Сохранение пока не открылось. Готовый PDF прогулки доступен ниже.'; });
-    if ($('[data-city-day]')) import(url('city-day.mjs?v=2026101706')).then(({initCityDay})=>initCityDay({workshop,base,catalog:data}));
-    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101706')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
-    if ($('[data-weekend-layer]')) import(url('weekend-layer.mjs?v=2026101706')).then(({initWeekendLayer})=>initWeekendLayer({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-layer-status]').textContent='План пока не загрузился. Готовые прогулки доступны ниже.'; });
-    if ($('[data-coastal-weekend]')) import(url('coastal-weekend.mjs?v=2026101706')).then(({initCoastalWeekend})=>initCoastalWeekend({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-status]').textContent='Сохранение пока не открылось. Прогулки и карточки мест доступны ниже.'; });
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101706')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#budget-page')) import(url('budget-ui.mjs?v=2026101707')).then(({initBudget})=>initBudget({workshop,catalog:data,base})).catch(()=>{ $('#budget-page-status').textContent='Расчёт пока не открылся. Сохранённые расходы доступны в планировщике.'; });
+    if ($('[data-route-day-save]')) import(url('route-day-ui.mjs?v=2026101707')).then(({initRouteDay})=>initRouteDay({workshop,base,catalog:data})).catch(()=>{ $('[data-route-day-status]').textContent='Сохранение пока не открылось. Готовый PDF прогулки доступен ниже.'; });
+    if ($('[data-city-day]')) import(url('city-day.mjs?v=2026101707')).then(({initCityDay})=>initCityDay({workshop,base,catalog:data}));
+    if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101707')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
+    if ($('[data-weekend-layer]')) import(url('weekend-layer.mjs?v=2026101707')).then(({initWeekendLayer})=>initWeekendLayer({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-layer-status]').textContent='План пока не загрузился. Готовые прогулки доступны ниже.'; });
+    if ($('[data-coastal-weekend]')) import(url('coastal-weekend.mjs?v=2026101707')).then(({initCoastalWeekend})=>initCoastalWeekend({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-status]').textContent='Сохранение пока не открылось. Прогулки и карточки мест доступны ниже.'; });
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101707')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2026101305')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {

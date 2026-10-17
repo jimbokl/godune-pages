@@ -1,11 +1,11 @@
 import {placePath} from './place-path.mjs?v=2026101406';
-import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101706';
-import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101706';
+import {alongContext,alongCandidates,insertionVariants,alongInput,confirmAlong,alongGuard} from './along-route-state.mjs?v=2026101707';
+import {alongServiceCandidates,serviceInsertionVariants,scheduleServiceInsertion,serviceTypeNames} from './along-route-services-state.mjs?v=2026101707';
 import {formatKopecks} from './trip-money.mjs?v=2026101305';
 import {rentalDetails} from './trip-rental-view.mjs?v=2026101305';
 import {dayPeople} from './trip-party.mjs?v=2026101305';
-import {selectedDay,journeyDays,ensureJourney} from './trip-days-state.mjs?v=2026101706';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
+import {selectedDay,journeyDays,ensureJourney} from './trip-days-state.mjs?v=2026101707';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {dayChangeText} from './trip-day-change-view.mjs?v=2026101705';
 const base=new URL('./',import.meta.url),root=document.querySelector('[data-along-route]');
@@ -20,7 +20,7 @@ if(root){
  async function load(){
   if(!pending)pending=(async()=>{
    const [{createTripMemory},{loadTrip},response,serviceResponse,engine]=await Promise.all([
-    import('./trip-memory.mjs?v=2026101706'),import('./trip-memory-bootstrap.mjs?v=2026101706'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
+    import('./trip-memory.mjs?v=2026101707'),import('./trip-memory-bootstrap.mjs?v=2026101707'),fetch(new URL('data/catalog.json',base),{cache:'no-cache'}),fetch(new URL('data/along-services.json',base),{cache:'no-cache'}),loadScheduler(base)]);
    if(!response.ok)throw Error('Не удалось открыть места и прогулки.');const catalog=await response.json();let storage;try{storage=localStorage;}catch{}
    if(!serviceResponse.ok)throw Error('Не удалось открыть услуги.');const services=await serviceResponse.json();
    if(services.version!==1||!Array.isArray(services.entries))throw Error('Обновите страницу, чтобы открыть услуги.');

@@ -1,11 +1,12 @@
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
-import {selectedDay} from './trip-days-state.mjs?v=2026101706';
-import {serviceVisitTargets} from './trip-service-visits-state.mjs?v=2026101706';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
-import {eventRegionalStart} from './trip-events-contract.mjs?v=2026101706';
-import {prepareEventAdd,confirmEventAdd,selectedEventContext} from './trip-events-state.mjs?v=2026101706';
+import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
+import {selectedDay} from './trip-days-state.mjs?v=2026101707';
+import {serviceVisitTargets} from './trip-service-visits-state.mjs?v=2026101707';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101707';
+import {eventRegionalStart} from './trip-events-contract.mjs?v=2026101707';
+import {prepareEventAdd,confirmEventAdd,selectedEventContext} from './trip-events-state.mjs?v=2026101707';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
-import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101706';
+import {dayChangeBaseline,inspectTripDayChange} from './trip-day-change-state.mjs?v=2026101707';
 import {dayChangeText} from './trip-day-change-view.mjs?v=2026101705';
 import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
@@ -40,7 +41,7 @@ export function initTripEvents({read,commit,base,catalog}){
    if(!response.ok)throw Error('Афишу не удалось перепроверить. Сохранится датированный снимок; актуальность нужно уточнить.');
    const registry=await response.json(),found=registry.events?.find(row=>row.id===event.id);
    if(!found)throw Error('Событие больше не найдено в афише. Проверьте источник перед добавлением.');
-   const {normalizeEvent}=await import('./events-engine.mjs?v=2026101706');
+   const {normalizeEvent}=await import('./events-engine.mjs?v=2026101707');
    return {event:normalizeEvent(found,registry),venue:registry.venues?.[found.venue_id]??venue};
   }
   function positions(){
@@ -60,7 +61,11 @@ export function initTripEvents({read,commit,base,catalog}){
     if(ticket!==sequence)return;
     const start=eventRegionalStart(currentEvent);review.append(node('p',`${start.date} · начало ${clock(start.minute)} · калининградское время`));
     if(date&&date!==start.date)review.append(node('p',`В выбранную дату ${date} событие уже продолжается. Добавляется его исходное начало ${start.date}; посещение части события нужно уточнить отдельно.`));
-    if(currentEvent.end_time===null)review.append(node('p','Время окончания неизвестно. Ужин и возвращение после события пока нельзя подтвердить.'));
+    if(currentEvent.end_time===null){
+     review.append(node('p','Время окончания уточняется. Ужин и возвращение после события пока нельзя подтвердить.'));
+     const estimate=eventDurationEstimateText(currentEvent);
+     if(estimate){const text=node('p',estimate);text.dataset.eventDurationEstimate='';review.append(text);}
+    }
     if(!candidate.visit.event.place_id)review.append(node('p','Площадка пока не связана с картой. Дорогу нужно уточнить.'));
     try{
      const change=inspectTripDayChange(engine,baseline,candidate.trip,catalog,beforeMatrix,matrix);review.dataset.addDayState=change.after.state;

@@ -1,10 +1,10 @@
 // Explicit Event → existing SavedVisit → common service_day. No persistence here.
-import {ensureJourney,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101706';
+import {ensureJourney,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {dayPeople} from './trip-party.mjs?v=2026101305';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
-import {eventSnapshot,eventRegionalStart,eventSnapshotGuard} from './trip-events-contract.mjs?v=2026101706';
-import {prepareServiceAdd,confirmServiceAdd,inspectServiceAddDay} from './trip-service-add-state.mjs?v=2026101706';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
+import {eventSnapshot,eventRegionalStart,eventSnapshotGuard} from './trip-events-contract.mjs?v=2026101707';
+import {prepareServiceAdd,confirmServiceAdd,inspectServiceAddDay} from './trip-service-add-state.mjs?v=2026101707';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101707';
 // Object key order may change when cleanJourney projects the selected schedule.
 // Keep every value and array order in the stale-preview guard.
 const eventTripGuard=trip=>JSON.stringify(trip,(_,value)=>value&&typeof value==='object'&&!Array.isArray(value)?Object.fromEntries(Object.keys(value).sort().map(key=>[key,value[key]])):value);

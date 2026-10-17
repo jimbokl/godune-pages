@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-17",
   "coverage": {
     "status": "verified_partial",
@@ -21,12 +21,12 @@
       "venue": "Калининградская областная филармония",
       "date": "2026-10-17",
       "starts": "18:00",
-      "description": "Музыка из фильмов «Токкеби», «Аватар», «Гарри Поттер» и других. Концертный зал. 6+. 1 час 30 минут.",
+      "description": "Музыка из фильмов «Токкеби», «Аватар», «Гарри Поттер» и других",
       "kind": "Концерт",
       "status": "scheduled",
       "city": "kaliningrad",
       "ends": null,
-      "admission": "По билетам · 900 ₽.",
+      "admission": "По билетам · 900 ₽",
       "price": 900,
       "currency": "RUB",
       "source": "event-source-d1f1d01100e1625b",
@@ -42,21 +42,17 @@
       "route": null,
       "id": "event-0b5cc69190c0f419",
       "evidence": {
-        "title_quote": "Саундтреки на органе",
-        "date_quote": "17 октября 2026",
-        "year_quote": "2026",
-        "time_quote": "18:00",
-        "venue_quote": "Калининградская областная филармония им. Е.Ф. Светланова",
-        "description_quote": "Музыка из фильмов «Токкеби», «Аватар», «Гарри Поттер» и других",
-        "city_quote": "Калининград",
-        "admission_quote": "Купить билет",
-        "price_quote": "900 руб",
-        "stage_quote": "Концертный зал",
-        "age_quote": "6+",
-        "session_card_sha256": "b00eaa95ff2dfeb555bfa77b22c4b834df631fb2328c11f9a54e9e571d622f77",
-        "session_date_attribute": "2026-10-17",
-        "duration_quote": "1:30:00",
-        "fresh_source_capture_id": "philharmonia_soundtracks"
+        "title": "JSON-LD name: Саундтреки на органе",
+        "date_year_start": "JSON-LD startDate: 2026-10-17T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Музыка из фильмов «Токкеби», «Аватар», «Гарри Поттер» и других",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [900]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/#event"
       },
       "venue_id": "kaliningrad-philharmonia",
       "category": "music",
@@ -70,7 +66,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
-      "verified_at": "2026-10-17T09:50:54Z",
+      "verified_at": "2026-10-17T11:35:29Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -83,9 +79,23 @@
           "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
           "sha256": "bb4d462e19d038d69badefe558632e34b8537d319168c776d52e1a6e0ffb6767",
           "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T11:35:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+          "sha256": "323613cdbe9f2dff72349216ec000297ed88d6facb209877bfed6db5223999b6",
+          "status": "scheduled",
+          "date": "2026-10-17",
+          "start_time": "2026-10-17T18:00:00+02:00"
         }
       ],
-      "place_id": "kirha-svyatogo-semeystva"
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
     },
     {
       "title": "Чайка",
@@ -144,7 +154,8 @@
           "status": "scheduled"
         }
       ],
-      "place_id": null
+      "place_id": null,
+      "duration_estimate": null
     },
     {
       "title": "Вечер джаза",
@@ -227,6 +238,11 @@
           "status": "scheduled"
         }
       ],
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      },
       "place_id": null
     }
   ]

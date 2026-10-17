@@ -1,6 +1,6 @@
-import {saveTourDay} from './gastronomy.mjs?v=2026101706';
-import {selectedDay,chooseTripDay,journeyDays,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101706';
-import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101706';
+import {saveTourDay} from './gastronomy.mjs?v=2026101707';
+import {selectedDay,chooseTripDay,journeyDays,validTripDate,validJourneyProjection} from './trip-days-state.mjs?v=2026101707';
+import {resolveTripDayLink} from './trip-day-link.mjs?v=2026101707';
 
 export function fishWalkTarget(trip,tour,id=null){
  if(id!==null)return resolveTripDayLink(trip,id);

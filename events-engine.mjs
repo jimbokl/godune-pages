@@ -27,7 +27,7 @@ export function normalizeEvent(event,registry={}){
  const interval=eventInterval(event),source=registry.sources?.[event.source]||{},venue=registry.venues?.[event.venue_id]||{};
  const place_id=Object.hasOwn(venue,'place_id')?venue.place_id:event.place_id??event.poi??null;
  return {...event,venue_id:event.venue_id??null,place_id,category:event.category??event.kind,
-  timezone:EVENT_TIMEZONE,start_time:interval.start,end_time:interval.end,
+  timezone:EVENT_TIMEZONE,start_time:interval.start,end_time:interval.end,duration_estimate:event.duration_estimate??null,
   price_range:event.price_range!==undefined?event.price_range:event.price===null||event.price===undefined?null:{min:event.price,max:event.price,currency:event.currency,kind:'exact'},
   source_url:event.source_url??source.url??null,verified_at:event.verified_at??source.checked_at??null,observations:event.observations??[]};
 }
@@ -78,9 +78,14 @@ export function eventMatches(event,{today,date='',city='',period='upcoming',save
  return inPeriod&&(!date||(now?eventOverlapsDate(event,date):event.date===date))&&(!city||event.city===city);
 }
 export function validateEvents(data,catalog,today){
- if(!calendarDate(today)||![1,2].includes(data.version)||!calendarDate(data.checked_at)||data.checked_at>today||!Array.isArray(data.events))throw new TypeError('Invalid event registry');
+ if(!calendarDate(today)||![1,2].includes(data.version)||!calendarDate(data.checked_at)||data.checked_at>today||!Array.isArray(data.events)||!data.sources||Array.isArray(data.sources)||typeof data.sources!=='object')throw new TypeError('Invalid event registry');
  const ids=new Set(),cities=new Map(),places=new Set(catalog.poi.map(p=>p.slug)),routes=new Set(catalog.routes.map(r=>r.slug));
  const text=(v)=>typeof v==='string'&&!!v.trim();const time=v=>typeof v==='string'&&/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(v);
+ const sourceUrl=value=>{
+  if(typeof value!=='string'||/[\s\x00-\x1f\x7f\\\u0080-\uffff]/.test(value)||/%(?![a-f\d]{2})/i.test(value))throw new TypeError('Invalid source URL encoding');
+  const u=new URL(value);
+  if(u.protocol!=='https:'||!u.hostname||u.username||u.password||u.port&&u.port!=='443')throw new TypeError('Invalid source URL');
+ };
  for(const e of data.events){
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(e.id)||ids.has(e.id))throw new TypeError('Duplicate/invalid event id');ids.add(e.id);
   for(const k of ['title','city','city_name','venue','description','kind'])if(!text(e[k]))throw new TypeError('Missing event '+k);
@@ -89,6 +94,8 @@ export function validateEvents(data,catalog,today){
   if(!calendarDate(e.date)||!time(e.starts)||!(e.ends===null||(time(e.ends)&&(e.ends>e.starts||data.version===2&&(e.end_date||e.end_time)))))throw new TypeError('Invalid event time');
   if(!['scheduled','cancelled','postponed'].includes(e.status))throw new TypeError('Invalid event status');
   if(!(e.price===null||(typeof e.price==='number'&&Number.isFinite(e.price)&&e.price>=0&&e.currency==='RUB')))throw new TypeError('Unknown price is not zero');
+  const estimate=e.duration_estimate;
+  if(estimate!==undefined&&estimate!==null&&(!Number.isSafeInteger(estimate.minutes)||estimate.minutes<=0||estimate.basis!=='planning_assumption'||!text(estimate.label)||e.ends!==null||e.end_time!=null))throw new TypeError('Invalid planning duration estimate');
  if(e.poi&&!places.has(e.poi)||e.route&&!routes.has(e.route))throw new TypeError('Unknown event link');
   const image=e.image;
   const localImage=v=>typeof v==='string'&&/^assets\/[a-z0-9/_-]+\.(?:webp|avif|jpe?g|png)$/.test(v);
@@ -97,7 +104,7 @@ export function validateEvents(data,catalog,today){
   const knownOrganizer=text(s.organizer?.name)&&text(s.organizer?.url);
   const knownPublisher=data.version===2&&s.organizer===null&&text(s.publisher?.name)&&text(s.publisher?.url)&&s.publisher?.role==='venue';
   if(!knownOrganizer&&!knownPublisher)throw new TypeError('Missing organizer or official venue publisher');
-  for(const url of [s.url,...knownOrganizer?[s.organizer.url]:[s.publisher.url]]){const u=new URL(url);if(u.protocol!=='https:'||u.username||u.password)throw new TypeError('Invalid source URL');}
+  for(const url of [s.url,...knownOrganizer?[s.organizer.url]:[s.publisher.url]])sourceUrl(url);
  }
  if(data.version===2){
   const dateOrInstant=v=>calendarDate(v)||instant(v);
@@ -113,7 +120,11 @@ export function validateEvents(data,catalog,today){
    if(e.poi&&e.poi!==data.venues[e.venue_id].place_id)throw new TypeError('Event place differs from canonical venue');
    if(e.ends!==null&&(interval.end===null||interval.end.slice(11,16)!==e.ends)||e.ends===null&&interval.end!==null)throw new TypeError('Inconsistent event end');
    if(e.source_url!==source.url||!dateOrInstant(e.verified_at)||e.verified_at.slice(0,10)>today||!Array.isArray(e.observations)||!e.observations.length)throw new TypeError('Invalid event verification');
-   for(const o of e.observations)if(!dateOrInstant(o.verified_at)||o.verified_at.slice(0,10)>today||!/^https:\/\//.test(o.source_url)||!/^[a-f0-9]{64}$/.test(o.sha256)||!['scheduled','cancelled','postponed'].includes(o.status))throw new TypeError('Invalid observation');
+   sourceUrl(e.source_url);
+   for(const o of e.observations){
+    if(!dateOrInstant(o.verified_at)||o.verified_at.slice(0,10)>today||!/^[a-f0-9]{64}$/.test(o.sha256)||!['scheduled','cancelled','postponed'].includes(o.status)||o.date!==undefined&&!calendarDate(o.date)||o.start_time!==undefined&&!instant(o.start_time))throw new TypeError('Invalid observation');
+    sourceUrl(o.source_url);
+   }
    const p=e.price_range;
    if(p!==null&&(!['exact','from','range'].includes(p.kind)||p.currency!=='RUB'||typeof p.min!=='number'||!Number.isFinite(p.min)||p.min<0||p.max!==null&&(typeof p.max!=='number'||!Number.isFinite(p.max)||p.max<p.min)||p.kind==='exact'&&p.max!==p.min||p.kind==='from'&&p.max!==null||p.kind==='range'&&p.max===null))throw new TypeError('Invalid price range');
    if(e.price!==null&&(p===null||p.kind!=='exact'||p.min!==e.price))throw new TypeError('Exact price and range disagree');

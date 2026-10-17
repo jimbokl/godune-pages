@@ -1,6 +1,6 @@
 import {serviceDay} from './service-calendar.mjs?v=2026101305';
 import {rideSnapshot,saveRail} from './trip-rail-state.mjs?v=2026101305';
-import {selectedDay,validJourneyProjection,changeDayDetails} from './trip-days-state.mjs?v=2026101706';
+import {selectedDay,validJourneyProjection,changeDayDetails} from './trip-days-state.mjs?v=2026101707';
 import {cityDayConfig,cityRainPlan} from './city-day-config.mjs?v=2026101703';
 export const cityDayWeather=day=>{const config=cityDayConfig(day?.source_route);return day?.note?.split('\n').some(line=>line.startsWith(config.rainPrefix))?'rain':'sun';};
 export function withCityDayPlan(trip,catalog,selection){

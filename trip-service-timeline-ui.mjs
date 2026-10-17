@@ -1,10 +1,11 @@
+import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
-import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101706';
-import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101706';
-import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101706';
+import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';
+import {timelineOrder} from './trip-service-timeline-state.mjs?v=2026101707';
+import {serviceExpenseButton} from './trip-service-expenses-ui.mjs?v=2026101707';
 import {rentalFactsElement} from './trip-rental-view.mjs?v=2026101305';
-import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=2026101706';
+import {serviceSelectionElement} from './trip-service-selection-view.mjs?v=2026101707';
 import {selectedConnectionRows,unusedConnectionRows,transferClock} from './trip-service-transfer-view.mjs?v=2026101305';
 import {decorateStop} from './wave-stop-ui.mjs?v=2026101706';
 import {dayJourneyBoundaries,boundaryForEntry} from './day-journey-boundaries.mjs?v=2026101305';
@@ -61,6 +62,11 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
    card.append(node('p','Перестановка не меняет выбранное время.','visit-timeline-detail'));
    const rental=rentalFactsElement(visit,assessment?.assessment);if(rental)card.append(rental);
    if(assessment?.context==='date_changed')card.append(node('p','Пересчитайте посещение на дату этого дня.','visit-timeline-warning'));
+   if(visit?.event?.end_time===null){
+    card.append(node('p','Время окончания уточняется.','visit-timeline-warning'));
+    const estimate=eventDurationEstimateText(visit.event);
+    if(estimate){const text=node('p',estimate,'visit-timeline-detail');text.dataset.eventDurationEstimate='';card.append(text);}
+   }
    if(visit.note)card.append(node('p',visit.note,'visit-timeline-note'));
   }else if(stop)card.append(node('p',boundary?(entry.kind==='origin'?'Выходим отсюда':boundaries.bookings.end&&entry.kind==='destination'?(boundaries.bookings.end.kind==='return'?'К выбранному сроку возвращения':'К выбранному отъезду'):'Здесь завершаем день'):entry.kind==='destination'?'Конец выбранного пути':`На месте · ${stop.visit_minutes} мин`,'visit-timeline-detail'));
   if(stop?.issues?.some(v=>v.code==='fixed_visit_missed'))card.append(node('p','На выбранное время не успеваем. Переставьте остановки или измените посещение.','visit-timeline-warning'));

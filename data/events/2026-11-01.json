@@ -1,14 +1,152 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-11-01",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-415d64a95f65d553",
+      "event-source-84e8439d81a585f7"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-fad48095e48a6a9c",
+      "title": "Гензель и Гретель",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-11-01",
+      "starts": "12:00",
+      "ends": null,
+      "description": "Музыкальная сказка для всей семьи",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-84e8439d81a585f7",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+      "verified_at": "2026-10-17T11:35:40Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "cf4ab8eaa73691810a38f78138c96e023a2b7de25a1d54dd0802c0ee65e84708",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Гензель и Гретель",
+        "date_year_start": "JSON-LD startDate: 2026-11-01T12:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Музыкальная сказка для всей семьи",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [650, 700, 800]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:00",
+        "source_identity": "https://filarmonia39.ru/afisha/genzel-i-gretel/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/genzel-i-gretel/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-60b8ba53b4fa8824",
+      "title": "Дельфин",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-11-01",
+      "starts": "20:00",
+      "ends": null,
+      "description": "Дельфин",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 2400 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-415d64a95f65d553",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T20:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 2400,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+      "verified_at": "2026-10-17T11:35:51Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:51Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "bf544a34ad3348c13a23d3717ba2bc286e35390f5dd8ef5fc63ee528fb6db936",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: Дельфин",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Дельфин+01.11.2026 20:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 2400 руб.",
+        "age": "16+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade"
+      },
+      "source_identity": "yantarhall:afisha-delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    }
+  ]
 }

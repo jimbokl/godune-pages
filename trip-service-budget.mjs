@@ -1,5 +1,5 @@
-import {budgetInput,journeyDays} from './trip-days-state.mjs?v=2026101706';
-import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=2026101706';
+import {budgetInput,journeyDays} from './trip-days-state.mjs?v=2026101707';
+import {serviceExpenseDay} from './trip-service-expenses-contract.mjs?v=2026101707';
 
 // The same explicit ledger, supplemented by Rust's read-only visit projection.
 // Nothing here writes expenses, multiplies group quotes or assumes payments.

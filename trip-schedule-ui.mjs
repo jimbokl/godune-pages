@@ -1,7 +1,7 @@
 import {placePath} from './place-path.mjs?v=2026101406';
 import {enhanceWaveStops} from './wave-stop-ui.mjs?v=2026101706';
-import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101706';
-import {selectedDay} from './trip-days-state.mjs?v=2026101706';
+import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101707';
+import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=2026101305';
@@ -11,24 +11,24 @@ import {endBookingLabel,bookingEffects,effectiveBookingDay} from './trip-booking
 import {baseName,personalPoints} from './personal-points.mjs?v=2026101305';
 import {lightInput, lightAlternative, lightMessage, renderLightView, tripSignature} from './trip-light.mjs?v=2026101305';
 import {defaultSchedule, planInput, planTravel, planBaseTravel, updateSchedule} from './trip-schedule-state.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2026101601';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=2026101305';
 import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=2026101305';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=2026101305';
-import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101706';
-import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101706';
-import {initDayProgress} from './day-progress-ui.mjs?v=2026101706';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101706';
-import {progressMessages} from './day-progress-advice.mjs?v=2026101706';
+import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101707';
+import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101707';
+import {initDayProgress} from './day-progress-ui.mjs?v=2026101707';
+import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101707';
+import {progressMessages} from './day-progress-advice.mjs?v=2026101707';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
-import {flexSignature} from './day-flex-advice.mjs?v=2026101706';
-import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101706';
+import {flexSignature} from './day-flex-advice.mjs?v=2026101707';
+import {markVisited,travelContext} from './trip-travel-state.mjs?v=2026101707';
 import {mobilitySegments,vehicleArrival,vehicleParkingNote,parkingAccessNote} from './day-mobility.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 import {routeAccessDetails} from './route-access-ui.mjs?v=2026101305';
-import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101706';
+import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101707';
 import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
@@ -354,7 +354,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101706')]);
+        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101707')]);
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);

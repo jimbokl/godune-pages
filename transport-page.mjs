@@ -1,16 +1,16 @@
 import {validateTransportProfile,calculateTransport,transportReceipt,transportGuide,transportClock} from './transport-page-state.mjs?v=2026101305';
-import {loadScheduler} from './trip-scheduler.mjs?v=2026101706';
+import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {formatKopecks as money} from './trip-money.mjs?v=2026101305';
-import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101706';
+import {saveTransportPlan} from './trip-transport-plans-state.mjs?v=2026101707';
 import {transportStates,transportStatus,transportDate,transportTotal,transportContextText} from './trip-transport-plans-view.mjs?v=2026101305';
 import {hasRoadConnection,roadOrigins,roadConnectionRows} from './transport-road-connection.mjs?v=2026101305';
 import {railConnectionRows} from './transport-rail-connection.mjs?v=2026101305';
 import {recordTransportAction} from './transport-useful-actions.mjs?v=2026101305';
-import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101706';
-import {createTripMemory} from './trip-memory.mjs?v=2026101706';
+import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101707';
+import {createTripMemory} from './trip-memory.mjs?v=2026101707';
 import {createScenarioJournal} from './scenario-journal.mjs?v=2026101305';
-import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101706';
-import {resolveTripDayLink,plannerDayUrl} from './trip-day-link.mjs?v=2026101706';
+import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101707';
+import {resolveTripDayLink,plannerDayUrl} from './trip-day-link.mjs?v=2026101707';
 
 const mount=document.querySelector('[data-transport-profile]'),form=document.querySelector('#transport-form');
 const base=new URL('./',import.meta.url),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -175,7 +175,7 @@ async function init(){
   pdf.addEventListener('click',async()=>{
    if(ticket!==generation||!receipt)return;const actionAttempt=begin();pdfAbort?.abort();pdfAbort=new AbortController();const signal=pdfAbort.signal;pdf.disabled=true;
    try{
-    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101706');signal.throwIfAborted();
+    const {makeTripGuidePdf}=await import('./trip-guide-pdf.mjs?v=2026101707');signal.throwIfAborted();
     const file=await makeTripGuidePdf({snapshot:transportGuide(frozen),media:{maps:{},photos:{},overview:{},qrs:{},source:{snapshot_at:null},warnings:[]},base:base.href,format:matchMedia('(max-width: 700px)').matches?'phone':'print'},{signal,onProgress:text=>{if(ticket===generation)notify(text);}});
     if(ticket!==generation)return;download(file.bytes,`${profile.id}-${frozen.date}.pdf`,'application/pdf');metric('pdf_ready');await journal.event(actionAttempt,'pdf_ready');notify('PDF готов. Буклет сохранён в загрузки.');
    }catch(error){await journal.event(actionAttempt,error.name==='AbortError'?'refused':'failed',{reason:error.name==='AbortError'?'cancelled':'pdf'});if(error.name!=='AbortError'&&ticket===generation)notify('PDF не собрался. Расчёт остаётся на странице; попробуйте ещё раз.');}

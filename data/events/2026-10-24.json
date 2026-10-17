@@ -1,14 +1,219 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "36cfc585b60f406bec22ca7500ae8efa341a0747b8a77a7b38f0dd61f7701842",
-  "generated_at": "2026-10-17T10:30:18.218Z",
-  "updated_at": "2026-10-17T09:55:25.650532Z",
+  "revision": "2843c0b25317ccdabde6271f60edf088f8a0fcd08d0a1ac71ef36870c4be584f",
+  "generated_at": "2026-10-17T12:33:57.162Z",
+  "updated_at": "2026-10-17T11:35:55.272990Z",
   "date": "2026-10-24",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-35a37ab2c9cf2aca",
+      "event-source-d7db90b269724b82",
+      "event-source-f8ae9de7d890592e"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-bc10b3b3f00f70e1",
+      "title": "Ксения Гор. Исполнительница Французских песен",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-24",
+      "starts": "17:00",
+      "ends": null,
+      "description": "Ксения Гор. Исполнительница Французских песен",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 1500 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-f8ae9de7d890592e",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+      "verified_at": "2026-10-17T11:35:45Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:45Z",
+          "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+          "sha256": "dc7e716237492540fbb89ce3bac53905d84ae1e27aa1880b62318e53472a5246",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: Ксения Гор. Исполнительница Французских песен",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Ксения Гор. Исполнительница Французских песен+24.10.2026 17:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 1500 руб.",
+        "age": "12+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen-2024-2010-2017-2000"
+      },
+      "source_identity": "yantarhall:afisha-kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen-2024-2010-2017-2000",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-7c2c58fb70b309db",
+      "title": "Лига МС КВН «Запад России",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-24",
+      "starts": "18:00",
+      "ends": null,
+      "description": "Лига МС КВН «Запад России",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 800 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-35a37ab2c9cf2aca",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 800,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+      "verified_at": "2026-10-17T11:35:45Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:45Z",
+          "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+          "sha256": "05e66771dbd253cf62d3a886e0db747482bacfb44b842eba70f8b6e27dae9bab",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: Лига МС КВН «Запад России",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Лига МС КВН «Запад России»+24.10.2026 18:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 800 руб.",
+        "age": "12+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda"
+      },
+      "source_identity": "yantarhall:afisha-1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-a3852ad64129e91c",
+      "title": "Нина Шацкая",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-24",
+      "starts": "18:00",
+      "ends": null,
+      "description": "с программой – «От романса до джаза»",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-d7db90b269724b82",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1000,
+        "max": 2000,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+      "verified_at": "2026-10-17T11:35:34Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T11:35:34Z",
+          "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+          "sha256": "7d4ec2551b3951917a7072035d47f0c25d44412d4884ce5b419b3daf02c2698b",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Нина Шацкая",
+        "date_year_start": "JSON-LD startDate: 2026-10-24T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: с программой – «От романса до джаза»",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [1000, 1200, 1500, 1800, 2000]; currency: RUB",
+        "age": "Возрастное ограничение:\n 12+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/nina-shatskaya/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/nina-shatskaya/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    }
+  ]
 }
