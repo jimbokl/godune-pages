@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
-  "generated_at": "2026-10-18T13:17:02.701Z",
-  "updated_at": "2026-10-18T13:08:25.436109Z",
+  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
+  "generated_at": "2026-10-18T15:44:17.251Z",
+  "updated_at": "2026-10-18T15:34:13.255387Z",
   "date": "2026-10-22",
   "coverage": {
     "status": "verified_partial",
@@ -52,7 +52,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
-      "verified_at": "2026-10-18T13:07:54Z",
+      "verified_at": "2026-10-18T15:33:34Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -72,6 +72,14 @@
           "verified_at": "2026-10-18T13:07:54Z",
           "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
           "sha256": "9b81a5ddd098938cda3303b16f8bf594f77ca1613ecb756046662d1b6e26524b",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:33:34Z",
+          "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
+          "sha256": "052a640851e4095d875e72339b7c759ae927870657de4f63447f376273ad5ea0",
           "status": "scheduled",
           "date": "2026-10-22",
           "start_time": "2026-10-22T19:00:00+02:00"

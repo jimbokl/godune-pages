@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
-  "generated_at": "2026-10-18T13:17:02.701Z",
-  "updated_at": "2026-10-18T13:08:25.436109Z",
+  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
+  "generated_at": "2026-10-18T15:44:17.251Z",
+  "updated_at": "2026-10-18T15:34:13.255387Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -54,7 +54,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-18T13:08:05Z",
+      "verified_at": "2026-10-18T15:34:03Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -74,6 +74,14 @@
           "verified_at": "2026-10-18T13:08:05Z",
           "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
           "sha256": "211b96b9652f258a318b90a3c2849d1ec3f61712bcb2b981a4ddfadfdce587f9",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:34:03Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "5d2be22f656a232541d32f6e2009493460fb9c31c46a7c3dbab9046f6a1bb7b2",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -138,7 +146,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-18T13:08:05Z",
+      "verified_at": "2026-10-18T15:33:44Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -150,6 +158,14 @@
           "verified_at": "2026-10-18T13:08:05Z",
           "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
           "sha256": "30cf06cec268f202a025835aaf716640f254e59400937d6730749bf09847692c",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:33:44Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "af9d14c08bf2a4f3c274e41b62a04d42f6945e25e5811900dc067f8a25e711c3",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -214,7 +230,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-18T13:08:17Z",
+      "verified_at": "2026-10-18T15:34:02Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -234,6 +250,14 @@
           "verified_at": "2026-10-18T13:08:17Z",
           "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
           "sha256": "4d2ca5b0097ddc613d6637da5aaa82a025bd35916046b9a8b8ac8cad3d7bd705",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:34:02Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "743ff4f8a9b585271cbb1952d0a579ffde0142111272073e97dd60211a12c63c",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"
