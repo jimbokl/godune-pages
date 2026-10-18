@@ -9,6 +9,7 @@ import {isPersonalPoint} from './personal-points.mjs?v=2026101305';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2026101305';
 import {validParty} from './trip-party.mjs?v=2026101305';
 import {emptyPreferences,validPreferences,hasPreferences,rankPreferenceChoices} from './day-preferences.mjs?v=2026101305';
+import {isPlanB,planBNote} from './planning-wizard-context.mjs?v=2026101801';
 
 const clone=value=>structuredClone(value);
 const stable=value=>JSON.stringify(value,(_,row)=>row && typeof row==='object' && !Array.isArray(row)
@@ -92,8 +93,9 @@ export function prepareWizardDay(current,answers,catalog,context=null) {
   const route=(transport==='bus'?wizardBusChoices(catalog):wizardChoices(catalog,answers.wave?.theme || 'mixed')).find(row=>row.slug===answers.route && row.area===answers.area);
   if(!route)throw new Error('wizard_unknown_route');
   if(!(answers.date===null || validTripDate(answers.date)))throw new Error('wizard_invalid_date');
+  if(isPlanB(answers) && !answers.date)throw new Error('wizard_date_required');
   if(!minute(answers.start) || !minute(answers.end) || answers.start>=answers.end)throw new Error('wizard_invalid_time');
-  const occupied=dayIsOccupied(current),next=occupied?addTripDay(current):ensureJourney(current);
+  const occupied=(isPlanB(answers)?journeyIsOccupied:dayIsOccupied)(current),next=occupied?addTripDay(current):ensureJourney(current);
   const day=selectedDay(next),places=[...new Set(route.stops.map(stop=>stop.poi))];
   let schedule={...defaultSchedule(),mode:'foot',start:answers.start,end:answers.end,stops:waveStopSettings(route,catalog)};
   schedule=transportSchedule(schedule,places,route.area,transport);
@@ -102,6 +104,7 @@ export function prepareWizardDay(current,answers,catalog,context=null) {
   if(party)day.party=party;
   if(preferences)day.preferences=preferences;
   if(route.wave_recipe && route.access_note)day.note=route.access_note;
+  if(isPlanB(answers))day.note=planBNote;
   if(!['rail','bus'].includes(transport) && !day.start_at && !day.night_at && route.return_to && catalog.poi.some(point=>point.slug===route.return_to))day.night_at=route.return_to;
   if(base!==undefined){day.start_at=clone(base);day.night_at=clone(base || (['rail','bus'].includes(transport)?null:route.return_to) || null);}
   if(transport==='rail'){const target=wizardRailTargets(catalog,answers)[0];attachWizardRail(day,catalog,answers,0,target);schedule=day.schedule;}

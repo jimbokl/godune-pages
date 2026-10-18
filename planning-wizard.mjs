@@ -20,6 +20,7 @@ import {partyLabel,validParty} from './trip-party.mjs?v=2026101305';
 import {DAY_INTERESTS,DAY_NEEDS,preferencesLabel,assessPreferenceChoice,assessDayPreferences} from './day-preferences.mjs?v=2026101305';
 import {tripAccessProfile} from './route-access.mjs?v=2026101305';
 import {routeAccessDetails} from './route-access-ui.mjs?v=2026101305';
+import {isPlanB,planBNote,wizardRecipeEntry} from './planning-wizard-context.mjs?v=2026101801';
 
 const clock=minute=>`${minute>=1440?`+${Math.floor(minute/1440)} дн. `:''}${String(Math.floor(minute/60)%24).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`;
 const duration=minute=>`${Math.floor(minute/60)?`${Math.floor(minute/60)} ч `:''}${minute%60?`${minute%60} мин`:''}`.trim() || '0 мин';
@@ -174,10 +175,11 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
       const mark=node('span','→','wizard-choice-mark');mark.setAttribute('aria-hidden','true');label.append(radio,copy,mark);return label;
     });
     $('[data-wizard-routes]').replaceChildren(...choices);selectedPlan(rows);
-    const separate=(multi()?journeyIsOccupied:dayIsOccupied)(workshop.getState());
+    const separate=(multi() || isPlanB(answers)?journeyIsOccupied:dayIsOccupied)(workshop.getState());
     $('[data-wizard-placement]').textContent=multi()?(separate?'У Вас уже есть планы. Добавим все новые дни рядом с ними — проверьте первую дату.':'Начнём новую поездку. Каждый день потом можно изменить.'):
       separate?'Выбранный день уже занят. Эта прогулка станет отдельным днём — проверьте её дату.':'Прогулка заполнит свободный выбранный день.';
-    $('[data-wizard-date-label]').textContent=multi()?'Первый день, если знаете дату':'Дата, если знаете';
+    $('[data-wizard-date-label]').textContent=isPlanB(answers)?'Выберите дату запасного дня':multi()?'Первый день, если знаете дату':'Дата, если знаете';
+    form.elements.wizard_date.required=isPlanB(answers);
     $('[data-wizard-start-label]').textContent=multi()?'Начало каждого дня':'Начало прогулки';
     $('[data-wizard-settings-note]').textContent=multi()?(answers.transport==='foot'?'Все дороги считаем пешком. Длинные переходы на косе нужно проверить.':'Транспорт показан у каждого дня. Время задаётся для каждого дня отдельно.')+(railActive()||busActive()?' Рейсы каждого дня покажем ниже по его дате.':' Автобус или смену жилья можно добавить после сохранения.'):'Билеты, обед и долгие остановки можно добавить после сохранения.';
     origin();transport();railForm.render();busForm.render();
@@ -185,7 +187,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(!refreshSettings)return;
     form.elements.wizard_adults.value=answers.party.adults;
     form.elements.wizard_children.value=answers.party.children;group();
-    $('[data-wizard-settings]').open=separate;
+    $('[data-wizard-settings]').open=separate || isPlanB(answers);
     form.elements.wizard_date.value=answers.date || '';
     form.elements.wizard_start.value=answers.start===null?'':clock(answers.start);
     form.elements.wizard_end.value=answers.end===null?'':clock(answers.end);summary();
@@ -197,6 +199,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     all('[data-wizard-step]').forEach(panel=>{panel.hidden=Number(panel.dataset.wizardStep)!==step;});
     all('[data-wizard-progress]').forEach(item=>{const current=Number(item.dataset.wizardProgress)===step;item.toggleAttribute('data-current',current);if(current)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});
     $('[data-wizard-title]').textContent=titles[step-1];$('[data-wizard-lead]').textContent=leads[step-1];
+    if(isPlanB(answers) && step===2)$('[data-wizard-lead]').textContent=planBNote+' Выберите дату этого запасного дня.';
     if(multi() && step>1){$('[data-wizard-title]').textContent=step===2?'Как проведём поездку?':'Ваша поездка по дням';$('[data-wizard-lead]').textContent=step===2?'Останемся в городе или поедем к морю и дюнам. Выберите план — затем посмотрим каждый день.':'Откройте день, чтобы увидеть остановки и расчёт времени. Любую часть плана можно изменить после сохранения.';}
     all('[data-wizard-progress-label]').forEach((label,index)=>{label.textContent=(multi()?['Выбор','Дни','План']:['Место','Прогулка','Ваш день'])[index];});
     $('[data-wizard-change-label]').textContent=multi()?'← Изменить план':'← Изменить прогулку';
@@ -330,6 +333,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     else assumptions.append(node('p','Начало у первой остановки. Дорога до неё и от конца прогулки здесь не рассчитана.'));
     const protection=node('p',proposal.placement==='separate'?'В выбранном дне уже есть Ваши планы. Сохраним их целиком, а прогулку добавим отдельным днём.':'Сохраним этот день в общей поездке. Регистрация не нужна.','wizard-save-note');
     result.replaceChildren(meta,heading,party,brief,timing,orderedStops(schedule,proposal.trip,proposal.route,matrices),access,assumptions,protection);
+    if(isPlanB(answers)){const note=node('p',planBNote,'wizard-access-note');note.dataset.wizardPlanB='';timing.before(note);timing.textContent='Пешая часть. '+timing.textContent;}
     if(parkingSummary)access.after(parkingSummary);
     const preference=preferenceResult(proposal.trip,matrices);if(preference)timing.before(preference);
     const returning=returnSuggestion(proposal.trip,schedule);if(returning)timing.after(returning);
@@ -459,7 +463,12 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(event.target.name==='wizard_theme' || event.target.name==='wizard_pace'){
       answers.wave={...answers.wave,[event.target.name==='wizard_theme'?'theme':'pace']:event.target.value};routes({refreshSettings:false});
     }
-    if(['wizard_route','wizard_starter'].includes(event.target.name)){workshop.progress?.action(attempt,'selected');selectionMade=true;$('[data-wizard-selection]').open=false;selectedPlan();$('[data-wizard-selection-summary]').focus();}
+    if(['wizard_route','wizard_starter'].includes(event.target.name)){
+      form.elements.wizard_date.required=isPlanB(answers);
+      $('[data-wizard-date-label]').textContent=isPlanB(answers)?'Выберите дату запасного дня':multi()?'Первый день, если знаете дату':'Дата, если знаете';
+      if(answers.context && !multi())$('[data-wizard-lead]').textContent=isPlanB(answers)?planBNote+' Выберите дату этого запасного дня.':leads[1];
+      workshop.progress?.action(attempt,'selected');selectionMade=true;$('[data-wizard-selection]').open=false;selectedPlan();$('[data-wizard-selection-summary]').focus();
+    }
     summary();
     if(['wizard_date','wizard_start','wizard_end','wizard_route','wizard_starter'].includes(event.target.name)){origin();transport();railForm.render();busForm.render();}
   });
@@ -524,7 +533,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const requestedRecipe=params.get('recipe');
   const recipe= requestedRecipe && wizardChoices(catalog).find(row=>row.slug===requestedRecipe);
   if(recipe) {
-    answers={...answers,area:recipe.area,route:recipe.slug,wave:{...answers.wave,recipe:recipe.slug}};
+    answers=wizardRecipeEntry(answers,recipe,params);
     selectionMade=true;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     show(2,{focus:false});

@@ -1,4 +1,5 @@
 import {journeyDays,selectedDay,tripHasDraft} from './trip-days-state.mjs?v=2026101707';
+import {isPlanBEntry} from './planning-wizard-context.mjs?v=2026101801';
 import {regionMapStyle} from './region-map.mjs?v=2026101305';
 import {bindMapTheme} from './map-theme.mjs?v=2026101305';
 import {downloadedMap,localMapStyle} from './offline-map.mjs?v=2026101705';
@@ -286,7 +287,7 @@ export function initDayWorkspace({mount,read,commit,base,catalog}) {
     const visitCount=`${v} ${v%100>=11&&v%100<=14?'посещений':v%10===1?'посещение':v%10>=2&&v%10<=4?'посещения':'посещений'}`;
     name.textContent=selectedDay(trip).kosa_plan?'День на куршской волне · дорога и возвращение':`${summary.name} · ${n?stops:v?visitCount:hasTransportPlans(selectedDay(trip))?'дорога сохранена':hasMenuChoices(selectedDay(trip))?'блюда выбраны':stops}${n&&v?` · ${visitCount}`:''}`;
     empty.hidden=summary.stops>0 || summary.visits>0 || hasTransportPlans(selectedDay(trip)) || hasMenuChoices(selectedDay(trip)) || !!selectedDay(trip).kosa_plan || !!trip.schedule?.rail;
-    if(!initialized){const wizard=document.querySelector('#planner-new-day');if(wizard&&summary.hasTrip&&!location.hash.includes('planning-wizard'))wizard.open=false;initialized=true;}
+    if(!initialized){const wizard=document.querySelector('#planner-new-day');if(wizard&&isPlanBEntry(new URL(location.href).searchParams)){wizard.hidden=false;wizard.open=true;}else if(wizard&&summary.hasTrip&&!location.hash.includes('planning-wizard'))wizard.open=false;initialized=true;}
     const stopTools=document.querySelector('#day-stop-tools > summary');if(stopTools)stopTools.textContent=`Изменить порядок и остановки · ${summary.stops}`;
     const bookingsCount=selectedDay(trip).bookings?.length || 0;bookings.querySelector('summary').textContent=`Билеты и ночёвка${bookingsCount?` · ${bookingsCount}`:''}`;
     wave.render();
