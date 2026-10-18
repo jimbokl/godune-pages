@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "def523cbab84815568b393f887e61e56523093ecde1ab280350ec0829385339d",
-  "generated_at": "2026-10-18T08:15:55.700Z",
-  "updated_at": "2026-10-18T02:31:09.363556Z",
+  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
+  "generated_at": "2026-10-18T13:17:02.701Z",
+  "updated_at": "2026-10-18T13:08:25.436109Z",
   "date": "2026-10-23",
   "coverage": {
     "status": "verified_partial",
@@ -133,7 +133,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
-      "verified_at": "2026-10-18T02:31:05Z",
+      "verified_at": "2026-10-18T13:07:54Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -145,6 +145,14 @@
           "verified_at": "2026-10-18T02:31:05Z",
           "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
           "sha256": "2e0c8f8d3232ff612776e57d52b3d94bcebb52cd4872e29dba987ee7c5ca43d9",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:07:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
+          "sha256": "8b82503e7bfd034f99d74aa360ded6e35012f386e999b104237927076e7e64b9",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T18:00:00+02:00"
@@ -209,7 +217,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
-      "verified_at": "2026-10-18T02:31:06Z",
+      "verified_at": "2026-10-18T13:08:10Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -221,6 +229,14 @@
           "verified_at": "2026-10-18T02:31:06Z",
           "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
           "sha256": "6c67c5eb84adc63971ebae67da26ec592e12917f2f0d709363657ef2862df4dc",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:08:10Z",
+          "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
+          "sha256": "c801f8a40228fa7624a5db57d83d0309ef57141f4568a5bfb6afd7b343b86208",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T19:00:00+02:00"

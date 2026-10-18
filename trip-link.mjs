@@ -81,7 +81,7 @@ export function initTripSharing(catalog, base, workshop) {
   let snapshot, received = false, receivedFile = false, lastFocus, backup, imported, importedRevision, busy = false;
   let guideController;
   const message = text => { $('#trip-link-status').textContent = text; };
-  const names = {all: 'Вся Балтика', kaliningrad: 'Калининград', 'kurshskaya-kosa': 'Куршская коса'};
+  const names = {all: 'Вся Балтика', kaliningrad: 'Калининград', 'kurshskaya-kosa': 'Куршская коса', baltiysk: 'Балтийск', svetlogorsk: 'Светлогорск', zelenogradsk: 'Зеленоградск'};
   function show(result, incoming, source = 'link') {
     received = incoming; receivedFile = source === 'file'; backup = imported = null;
     snapshot = result.state;

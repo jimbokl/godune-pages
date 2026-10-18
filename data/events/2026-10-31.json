@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "def523cbab84815568b393f887e61e56523093ecde1ab280350ec0829385339d",
-  "generated_at": "2026-10-18T08:15:55.700Z",
-  "updated_at": "2026-10-18T02:31:09.363556Z",
+  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
+  "generated_at": "2026-10-18T13:17:02.701Z",
+  "updated_at": "2026-10-18T13:08:25.436109Z",
   "date": "2026-10-31",
   "coverage": {
     "status": "verified_partial",
@@ -53,7 +53,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "verified_at": "2026-10-18T02:31:05Z",
+      "verified_at": "2026-10-18T13:08:05Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -65,6 +65,14 @@
           "verified_at": "2026-10-18T02:31:05Z",
           "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
           "sha256": "92949dca14ba9c9e69cfb764cf159767f949e4a200fabc1989603523205031d2",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:08:05Z",
+          "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
+          "sha256": "c732b59fa295a4a70c8396e45e95230e90cdce074ed6463b043309205ae4352a",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
@@ -129,7 +137,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "verified_at": "2026-10-18T02:31:07Z",
+      "verified_at": "2026-10-18T13:08:16Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:11Z",
@@ -141,6 +149,14 @@
           "verified_at": "2026-10-18T02:31:07Z",
           "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
           "sha256": "4bffb3bea887a9439f27cae45bbdebaa0acd8bf18da009ef191e1ccc94fdcc18",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:08:16Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
+          "sha256": "914993f2623cfa985cd270b42c521868a438bbcfbe1f9f923707e552756525d2",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"

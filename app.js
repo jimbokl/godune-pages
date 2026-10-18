@@ -172,9 +172,12 @@
   const routeCatalog = document.body.dataset.tool === 'routes';
   const catalogQuery = new URLSearchParams(location.search);
   let catalogQueryPending = routeCatalog && (catalogQuery.has('area') || catalogQuery.has('minutes'));
+  let pendingRouteFilters = null;
   function updateRouteFilters() {
     routeFilter = $('#trip-area').value; timeFilter = $('#trip-time').value;
     if (routeCatalog) {
+      catalogQueryPending = false;
+      if (!workshop) pendingRouteFilters = {area:routeFilter, minutes:timeFilter};
       const address = new URL(location.href);
       for (const [key,value] of [['area',routeFilter],['minutes',timeFilter]]) {
         if (value === 'all') address.searchParams.delete(key); else address.searchParams.set(key,value);
@@ -266,9 +269,9 @@
     const signature = JSON.stringify(filters);
     if (signature === lastTripFilters) return;
     lastTripFilters = signature;
-    routeFilter = filters.area; timeFilter = filters.minutes;
+    const validOption = (id,value) => !$(id) || Array.from($(id).options).some(option=>option.value===value) ? value : 'all';
+    routeFilter = validOption('#trip-area',filters.area); timeFilter = validOption('#trip-time',filters.minutes);
     if (catalogQueryPending) {
-      const validOption = (id,value) => Array.from($(id)?.options || []).some(option=>option.value===value) ? value : 'all';
       routeFilter = validOption('#trip-area',catalogQuery.get('area') || 'all');
       timeFilter = validOption('#trip-time',catalogQuery.get('minutes') || 'all');
       catalogQueryPending = false;
@@ -282,6 +285,11 @@
   const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101714'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
+    if (pendingRouteFilters) {
+      // Keep the latest explicit catalogue choice through the async restore.
+      const filters = pendingRouteFilters; pendingRouteFilters = null;
+      await workshop.setFilters(filters.area, filters.minutes);
+    }
     if (document.querySelector('[data-engagement-page]')) {
       import(url('engagement.mjs?v=2026101714'))
         .then(({initEngagement}) => initEngagement({workshop, catalog:data, base}))

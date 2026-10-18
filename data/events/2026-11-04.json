@@ -1,14 +1,85 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "def523cbab84815568b393f887e61e56523093ecde1ab280350ec0829385339d",
-  "generated_at": "2026-10-18T08:15:55.700Z",
-  "updated_at": "2026-10-18T02:31:09.363556Z",
+  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
+  "generated_at": "2026-10-18T13:17:02.701Z",
+  "updated_at": "2026-10-18T13:08:25.436109Z",
   "date": "2026-11-04",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-2174f1d010acdf89"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-63573479d935381d",
+      "title": "Русская музыка на органе",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-11-04",
+      "starts": "17:00",
+      "ends": null,
+      "description": "Концертный зал. 6+. Array. Среда. 17:00",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам · 800 ₽",
+      "price": 800,
+      "currency": "RUB",
+      "source": "event-source-2174f1d010acdf89",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-04T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 800,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+      "verified_at": "2026-10-18T13:08:10Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-18T13:08:10Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "cc61c187cbd098affd6565ec7337cedeba8db184cc3c59535f01c810288a10ef",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Русская музыка на органе",
+        "date_year_start": "JSON-LD startDate: 2026-11-04T17:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Концертный зал. 6+. Array. Среда. 17:00",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [800]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30",
+        "source_identity": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    }
+  ]
 }

@@ -4,8 +4,8 @@ import {cleanSchedule} from './trip-schedule-state.mjs?v=2026101305';
 export const TRIP_KEY = 'godune-trip:v1';
 export const emptyTrip = () => ({version: 1, places: [], routes: [], month: null, date: null,
   filters: {area: 'all', minutes: 'all'}});
-export const TRIP_AREAS = ['all', 'kaliningrad', 'kurshskaya-kosa'];
-export const TRIP_TIMES = ['all', '120', '180'];
+export const TRIP_AREAS = ['all', 'kaliningrad', 'kurshskaya-kosa', 'baltiysk', 'svetlogorsk', 'zelenogradsk'];
+export const TRIP_TIMES = ['all', '60', '120', '180'];
 
 export function cleanTrip(record, catalog) {
   if (!record || record.version !== 1) return emptyTrip();

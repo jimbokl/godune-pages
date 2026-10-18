@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "def523cbab84815568b393f887e61e56523093ecde1ab280350ec0829385339d",
-  "generated_at": "2026-10-18T08:15:55.700Z",
-  "updated_at": "2026-10-18T02:31:09.363556Z",
+  "revision": "27943359ce31447bb13f21ee9c1be784313cd69f63fa353e020a56aa46b206c5",
+  "generated_at": "2026-10-18T13:17:02.701Z",
+  "updated_at": "2026-10-18T13:08:25.436109Z",
   "date": "2026-10-18",
   "coverage": {
     "status": "verified_partial",
@@ -67,7 +67,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/aybolit/",
-      "verified_at": "2026-10-18T02:31:04Z",
+      "verified_at": "2026-10-18T13:07:54Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -93,6 +93,14 @@
           "verified_at": "2026-10-18T02:31:04Z",
           "source_url": "https://filarmonia39.ru/afisha/aybolit/",
           "sha256": "f58c3d579ff43fb5cdb4344882fab3fea214e6911654e978a09f49bbfdd36b44",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:07:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "0a9e6b0d9f80a5169eb15efb70aaccf65b2cbf3dc10f45fa09c7828539b5becb",
           "status": "scheduled",
           "date": "2026-10-18",
           "start_time": "2026-10-18T12:00:00+02:00"
@@ -205,7 +213,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
-      "verified_at": "2026-10-18T02:31:06Z",
+      "verified_at": "2026-10-18T13:08:11Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -217,6 +225,14 @@
           "verified_at": "2026-10-18T02:31:06Z",
           "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
           "sha256": "bb013299f880958653d9d8faf33096c1648efc620380d6db0e7e3b2de24491a2",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:08:11Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+          "sha256": "0db9becf75ba8bb6ae02de119b566c1cf845ab1736f2a671949aadab45308c48",
           "status": "scheduled",
           "date": "2026-10-18",
           "start_time": "2026-10-18T17:00:00+02:00"
@@ -291,7 +307,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
-      "verified_at": "2026-10-18T02:31:04Z",
+      "verified_at": "2026-10-18T13:07:54Z",
       "observations": [
         {
           "verified_at": "2026-10-16",
@@ -311,6 +327,14 @@
           "verified_at": "2026-10-18T02:31:04Z",
           "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
           "sha256": "3b3e778516ebe85ddad0c3bf283f6cf08f0cc5d6fcf86983dd0e20ded36bfe69",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:07:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+          "sha256": "a60d5a934d6161b75011a1b79243adab5328bf0ed7fb2c1db2e6e251b7deefb7",
           "status": "scheduled",
           "date": "2026-10-18",
           "start_time": "2026-10-18T18:00:00+02:00"
