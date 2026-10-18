@@ -4160,7 +4160,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-09",
+        "expires_on": "2026-11-17",
         "freshness": "current",
         "path": "/calendar",
         "reason": "within_review_horizon",
@@ -4170,7 +4170,7 @@
           "kind": "calendar"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-18",
         "visit_applicability": "unknown"
       },
       {
@@ -32768,10 +32768,10 @@
         "ttl_days": 90
       },
       {
-        "note": "Последнее обновление сайта: 29.07.2026; период действия не указан. Субботняя группа временно закрыта.",
+        "note": "Страница расписания прочитана 18.10.2026: фитнес по понедельникам, средам и пятницам в 09:00 и 18:30. В подвале сайта указано обновление 14.10.2026; дата начала и конец действия расписания не опубликованы. Субботняя группа временно закрыта. Мягкий фитнес — отдельное направление.",
         "path": "/calendar",
         "source": {
-          "checked_at": "2026-10-10",
+          "checked_at": "2026-10-18",
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny"
         },
         "status": "confirmed",
@@ -32793,7 +32793,7 @@
                   },
                   {
                     "duration": 60,
-                    "start": 1095
+                    "start": 1110
                   }
                 ]
               },
@@ -32875,7 +32875,7 @@
             }
           ],
           "source": {
-            "checked_at": "2026-10-10",
+            "checked_at": "2026-10-18",
             "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
             "valid_from": null,
             "valid_until": null

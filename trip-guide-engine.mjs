@@ -13,6 +13,7 @@ import {journeyDays,selectedDay,chooseTripDay} from './trip-days-state.mjs?v=202
 import {planInput,planTravel,planBaseTravel,defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
 import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
+import {walkingCalculationOnly,dayCalculationSummary} from './day-calculation-summary.mjs?v=2026101802';
 import {endBookingLabel,bookingEffects,bookingProblem,effectiveBookingDay,BOOKING_KINDS,BOOKING_STATUSES} from './trip-bookings-state.mjs?v=2026101305';
 import {baseName,baseId,personalPoints,isPersonalPoint} from './personal-points.mjs?v=2026101305';
 import {resolveTravel,previousPlace,resolveAccess,dayBases} from './travel-estimates.mjs?v=2026101305';
@@ -202,6 +203,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     const complete=!missingCityRail&&!transportNeedsInfo&&(!services||!!services.check?.itinerary||(!services.services?.length&&!services.error&&!(services.check?.issues?.length)));
     const status=services?(services.check?.state||'needs_info'):transport.length?'needs_info':generated?kosa.state:result.status;
     const summary=services?services.summary+(generated?' '+kosa.message:''):transport.length?'Транспорт сохранён отдельным расчётом. Остальные места и дорога между ними в него не входят.':generated?kosa.message:(current.schedule?.progress?`Остаток дня с ${clock(current.schedule.progress.at)}. `:'')+guidePlanStatus[result.status];
+    const timingSummary=!generated&&!transport.length&&result.stops.length&&walkingCalculationOnly(current,result)?dayCalculationSummary(current,result):null;
     const recipe=[...(catalog.routes || []),...(catalog.day_waves?.recipes || [])].find(row=>row.slug===record.wave?.recipe);
     let menuQuote=null;
     if(record.menu_choices?.length)try{menuQuote={...quoteMenuDay(calculate,record)};menuQuote.text=menuQuoteText(menuQuote);}catch{menuQuote={error:'Стоимость порций не рассчитана. Цены и количества сохранены ниже.'};}
@@ -212,6 +214,7 @@ export async function collectTripGuide({trip,catalog,scope='day',calculate,matri
     for(const [i,row]of menuChoices.entries()){const claim=evidenceClaims.find(v=>v.path===`/menus/${i}`);row.fact_freshness=guideClaimFreshness(freshness,claim.subject,claim.path);row.freshness=row.fact_freshness?.facts?.[0]?.freshness||'unknown';row.price=guideMenuPrice(row,row.fact_freshness);}
     out.push({id:record.id,number:allDays.findIndex(d=>d.id===record.id)+1 || index+1,name:record.name || (transportOnly?transport[0].receipt.title:generated?'День на куршской волне':recipe?.name || waveLabel(record.wave)) || `День ${allDays.findIndex(d=>d.id===record.id)+1 || index+1}`,date:current.date,
       record:structuredClone(record),party_label:partyLabel(record.party),preferences:assessDayPreferences(current,catalog,matrix),access:tripAccessProfile(current,catalog),status:missingCityRail&&!['conflict','overrun'].includes(status)?'needs_info':status,summary:summary+(missingCityRail?' '+railNotice:''),
+      ...(timingSummary?{timing_summary:timingSummary,has_service_context:services!==null}:{}),
       finish:!complete?null:generated?(kosa.book?.finish ?? null):dayFinish(result),earliest_finish:!complete?null:generated?(kosa.book?.earliest_finish??null):dayEarliestFinish(result),slack:!complete?null:generated?(kosa.book?.home?kosa.book.home.return_slack:kosa.book?.continuation?.slack ?? null):result?.rail?.home?result.rail.home.return_slack:result?.slack ?? null,
       slack_label:generated?(kosa.book?.home?'запас до возвращения':'запас до конца заданного окна дня'):result?.rail?.home?'запас до выбранного обратного рейса':'запас до конца заданного окна дня',
       rows,transport_plans:structuredClone(transport),roads,roadSource:matrix?.source || null,kosa:kosa?.book || null,generated_note:kosa?.generated_note===true,

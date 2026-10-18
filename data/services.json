@@ -11369,7 +11369,7 @@
         "timezone": "Europe/Kaliningrad",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
-          "checked_at": "2026-10-10",
+          "checked_at": "2026-10-18",
           "valid_from": null,
           "valid_until": null
         },
@@ -11401,7 +11401,7 @@
                   "duration": 60
                 },
                 {
-                  "start": 1095,
+                  "start": 1110,
                   "duration": 60
                 }
               ]
@@ -14795,7 +14795,7 @@
         "status": "confirmed",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-18"
         },
         "value": {
           "exceptions": [],
@@ -14810,7 +14810,7 @@
                   },
                   {
                     "duration": 60,
-                    "start": 1095
+                    "start": 1110
                   }
                 ]
               },
@@ -14892,7 +14892,7 @@
             }
           ],
           "source": {
-            "checked_at": "2026-10-10",
+            "checked_at": "2026-10-18",
             "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
             "valid_from": null,
             "valid_until": null
@@ -14900,7 +14900,7 @@
           "timezone": "Europe/Kaliningrad",
           "version": 1
         },
-        "note": "Последнее обновление сайта: 29.07.2026; период действия не указан. Субботняя группа временно закрыта."
+        "note": "Страница расписания прочитана 18.10.2026: фитнес по понедельникам, средам и пятницам в 09:00 и 18:30. В подвале сайта указано обновление 14.10.2026; дата начала и конец действия расписания не опубликованы. Субботняя группа временно закрыта. Мягкий фитнес — отдельное направление."
       },
       {
         "ttl_days": 365,

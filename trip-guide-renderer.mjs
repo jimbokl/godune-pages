@@ -262,9 +262,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(snapshot.days.length>1&&b.day===snapshot.days[0]&&!hasFull)text(snapshot.title,{font:title,size:phone?17:24,space:14});
     heading(day.name,true);text(date(day.date),{size:phone?12:15,color:muted,space});
     const schedule=day.record.schedule;
-    text(`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
-    text(`${plural(b.cards.length,['остановка','остановки','остановок'])}${day.slack!==null?' · '+(day.slack_label||'запас')+' '+day.slack+' мин':''}${day.party_label?' · '+day.party_label:''}`,{size:small,color:muted,space});
-    if(b.summary)text(b.summary,{size:small,space});
+    text(day.timing_summary||`Начало ${clock(schedule.start)} · до ${clock(schedule.end)}${day.finish!==null?' · окончание около '+clock(day.finish):day.earliest_finish!==null?' · не раньше '+clock(day.earliest_finish):''}`,{size:small,space});
+    text(`${plural(b.cards.length,['остановка','остановки','остановок'])}${!day.timing_summary&&day.slack!==null?' · '+(day.slack_label||'запас')+' '+day.slack+' мин':''}${day.party_label?' · '+day.party_label:''}`,{size:small,color:muted,space});
+    if(b.summary&&(!day.timing_summary||day.has_service_context))text(b.summary,{size:small,space});
     if(day.freshness_text)text(`Статус сведений на ${date(snapshot.as_of)} · Калининград. ${day.freshness_text}`,{size:small,space});
     for(const [label,point]of [['Начало',day.record.start_at],['Возвращение',day.record.night_at]])if(point?.kind==='personal')text(`${label}: ${point.name} · GPS ${gps(point)}`,{size:small,space});
     if(day.preferences?.label)text('Вам важно: '+day.preferences.label,{size:small,space});
@@ -360,11 +360,12 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     const home=day.record.start_at,night=day.record.night_at;
     if(home?.kind==='personal')text(`Начало: ${home.name} · GPS ${gps(home)}`,{size:phone?9.5:11});
     if(night?.kind==='personal')text(`Возвращение: ${night.name} · GPS ${gps(night)}`,{size:phone?9.5:11});
-    text(day.summary);
+    text(day.timing_summary||day.summary);
+    if(day.timing_summary&&day.has_service_context)text(day.summary);
     if(day.freshness_text)text(`Статус сведений на ${date(snapshot.as_of)} · Калининград. ${day.freshness_text}`,{size:phone?9.5:11});
     if(day.preferences?.label){text('Вам важно: '+day.preferences.label,{size:phone?12:15});for(const note of day.preferences.notes.filter(note=>!day.access || !day.access.entries.some(row=>note.startsWith(row.name+':')) && !note.startsWith('Проход без лестниц')))text(note,{size:phone?10:12});}
     const entries=day.entries||day.stops.map((p,i)=>({...p,kind:'place',number:i+1}));
-    text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:''}${day.slack!==null?` · ${day.slack_label||'запас'} ${day.slack} мин`:''}`,{color:muted});
+    text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${!day.timing_summary?(day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:'')+(day.slack!==null?` · ${day.slack_label||'запас'} ${day.slack} мин`:''):''}`,{color:muted});
     await image(media.overview[day.id],phone?115:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
     for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):!Number.isFinite(p.lat)||!Number.isFinite(p.lon)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});

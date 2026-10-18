@@ -3,7 +3,7 @@ import {enhanceWaveStops} from './wave-stop-ui.mjs?v=2026101706';
 import {initWaveMenuPicker} from './wave-menu-picker.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {resolveRail} from './trip-rail-state.mjs?v=2026101305';
-import {railAccess,dayFinish,dayEarliestFinish} from './rail-access.mjs?v=2026101305';
+import {railAccess} from './rail-access.mjs?v=2026101305';
 import {railJourney,roadJourney,waitJourney} from './day-journey-view.mjs?v=2026101305';
 import {bikeRouteFacts} from './bike-route-profile.mjs?v=2026101305';
 import {journeyRow} from './day-journey-ui.mjs?v=2026101305';
@@ -32,6 +32,7 @@ import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101707';
 import {dayOutcome} from './day-outcome.mjs?v=2026101705';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
+import {dayCalculationSummary} from './day-calculation-summary.mjs?v=2026101802';
 
 export {clock} from './day-stop-view.mjs?v=2026101305';
 const timeInput = minute => minute === null ? '' : clock(minute%1440);
@@ -395,12 +396,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       };
       renderLightView($('#trip-light'),trip,catalog,light,null,applyLight);
       const summary=$('#trip-plan-summary');summary.dataset.planStatus=result.status;
-      const intro={empty:'Сначала добавьте точки в свой маршрут.',fits:'По вашим оценкам, день складывается.',needs_check:'День складывается по оценкам. Сверьте дорогу и вход в выбранные места.',
-        incomplete:'Для точного плана нужно время дороги, пеших участков или переправы.',overrun:'Этот день не вмещает все остановки.',conflict:'Есть остановки или рейсы, которые не помещаются в этот день.'}[result.status];
-      const noReturn=result.stops.some(row=>row.excursion?.conflict);
-      summary.textContent=(trip.schedule?.progress?`Остаток дня с ${clock(trip.schedule.progress.at)}. `:'')+intro+(result.stops.length && !noReturn ? ` ${dayFinish(result) === null ? 'Закончите не раньше' : 'Ориентир окончания:'} ${clock(dayEarliestFinish(result))}.` : '')
-        +(result.slack!==null && result.slack>=0 && result.stops.length ? ` До ${result.rail?'границы дня с обратным поездом':'конца дня'} остаётся ${result.slack} мин.` : '')
-        +(result.rail?' Выбранные электрички учитывают путь от станции, возвращение и запас на посадку.':'');
+      summary.textContent=dayCalculationSummary(trip,result);
       if(hasTransportPlans(selectedDay(trip))){
         const whole=inspectTripServiceDay(calculate,trip,catalog,matrix);
         const transportIssues=whole.issues.map(issue=>transportIssueText(issue.code)).filter(Boolean);
