@@ -30,6 +30,18 @@ export function serviceSelectionFacts(visit){
   const count=extra.scope==='unit'?(price.selection.extra_units?.[extra.id]??price.selection.units):extra.scope==='person'?price.selection.people:null;
   rows.push({label:extra.label||extra.id,value:count==null?'На компанию':`${count} ${extra.scope==='unit'?'шт.':'чел.'}`});
  }
+ // These are the operator rules saved with this choice, not a live tariff.
+ // Keep their original date visible, including on a day moved to another date.
+ if(visit.identity.service_id==='service:baden39:pool'){
+  for(const [kind,id,path,label] of [
+   ['offer',visit.identity.offer_id,'/tariff/base/rate/tariff/charged_stages','Оплачиваемое время'],
+   ['calendar','calendar:baden39:visit','/calendar','Продажа и выход']
+  ]){
+   const fact=visit.provenance?.facts.find(f=>f.subject.kind===kind&&f.subject.id===id&&f.path===path);
+   if(fact?.status!=='confirmed'||!fact.note||fact.source.reference!=='https://baden39.ru/pravila')continue;
+   rows.push({label:`${label} · сведения на ${fact.source.checked_at.split('-').reverse().join('.')}`,value:fact.note});
+  }
+ }
  return rows;
 }
 

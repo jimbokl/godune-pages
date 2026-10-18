@@ -58,6 +58,22 @@
 .access-bus-legs li{display:grid;grid-template-columns:3.5rem 1fr;gap:1rem;padding:.2rem 0 1.25rem}
 .access-bus-number{display:flex;align-items:center;justify-content:center;border-radius:9px;background:var(--access-pale);color:#183b52;font-size:.86rem;font-weight:700;height:2.3rem}
 .access-return{font-size:.9rem;line-height:1.5;margin:0;padding-top:1rem;border-top:1px solid var(--line)}
+.access-next-step{margin:1.25rem 0;padding:1rem 1.1rem;border:1px solid var(--line);border-left:4px solid var(--access-amber);border-radius:12px;background:var(--access-pale);color:var(--ink)}
+.access-next-step h3{margin:0 0 .65rem;font-size:1rem;line-height:1.35}
+.access-next-step ol{margin:0;padding-left:1.25rem}
+.access-next-step li,.access-next-step>p{font-size:.86rem;line-height:1.55;margin:.45rem 0}
+.access-next-step a{color:var(--ink);font-weight:600;text-underline-offset:3px;overflow-wrap:anywhere}
+.access-next-step>p{margin:.8rem 0 0;padding-top:.7rem;border-top:1px solid var(--line)}
+/* Keep the no-JS status card readable on its pale surface and respect the night surface. */
+.project-transport-page .access-next-step{color:#183b52}
+html body .business-page.project-transport-page .access-next-step a{color:#183b52}
+html[data-theme="night"] .project-transport-page .access-next-step{color:#f2ece1}
+html[data-theme="night"] body .business-page.project-transport-page .access-next-step a{color:#f7c35f}
+/* Global text rules set descendant colors directly, so keep card text and links explicit in both themes. */
+html body .business-page.project-transport-page .access-next-step :not(a):not(a *){color:#183b52}
+html body .business-page.project-transport-page .access-next-step a,html body .business-page.project-transport-page .access-next-step a *{color:#183b52}
+html[data-theme="night"] body .business-page.project-transport-page .access-next-step :not(a):not(a *){color:#f2ece1}
+html[data-theme="night"] body .business-page.project-transport-page .access-next-step a,html[data-theme="night"] body .business-page.project-transport-page .access-next-step a *{color:#f7c35f}
 .access-bus-links{display:grid;gap:.7rem;margin-top:1.4rem}
 .access-bus-links a{font-size:.85rem;line-height:1.5;text-underline-offset:4px}
 .access-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}

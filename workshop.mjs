@@ -12,7 +12,7 @@ import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs
 import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101707';
 import {initTripDays} from './trip-days-ui.mjs?v=2026101707';
 import {initTripEvents} from './trip-events-ui.mjs?v=2026101710';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101714';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101801';
 import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101707';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';

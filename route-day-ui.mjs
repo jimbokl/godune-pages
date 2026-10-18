@@ -6,6 +6,7 @@ import {routeDayTarget,routeDaySettings,saveRouteDay} from './route-day.mjs?v=20
 import {selectedDay,chooseTripDay} from './trip-days-state.mjs?v=2026101707';
 import {plannerDayUrl} from './trip-day-link.mjs?v=2026101707';
 import {regionDate} from './events-engine.mjs?v=2026101707';
+import {renderCitySun} from './city-day-sun-ui.mjs?v=2026101801';
 
 export function initRouteDay({workshop,catalog,base}){
  const route=catalog.routes.find(row=>row.slug===document.body.dataset.route);
@@ -21,6 +22,7 @@ export function initRouteDay({workshop,catalog,base}){
  function publishDate(target){
   form.dataset.dateSource=dateChosen?'selected':target?(target.day.date?'selected':'unknown'):'live';
   if(form.dataset.dateSource==='live')form.elements.date.value=regionDate();
+  renderCitySun(document.querySelector('[data-city-day]'),form.elements.date.value);
   form.dataset.dateReady='true';
   window.dispatchEvent(new CustomEvent('godune:route-date'));
  }
@@ -32,6 +34,7 @@ export function initRouteDay({workshop,catalog,base}){
   if(target)updateYandexRoute(document.querySelector('[data-yandex-route]'),target.state==='ready'?dayYandexRouteUrl(target.day,catalog):null);
   if(target&&target.state!=='ready'){
    form.elements.date.value='';
+   renderCitySun(document.querySelector('[data-city-day]'),'');
    form.dataset.dateSource='unknown';form.dataset.dateReady='true';window.dispatchEvent(new CustomEvent('godune:route-date'));
    enabled(false);context.textContent='Этот день не найден. Выберите сохранённый день в «Моём дне».';
    for(const button of buttons)button.textContent='День не найден';

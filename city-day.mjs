@@ -11,6 +11,7 @@ import {initGastroMenus} from './gastro-menu-picker.mjs?v=2026101707';
 import {routeDayTarget} from './route-day.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {loadSunClock} from './sun-clock.mjs?v=2026101305';
+import {renderCitySun} from './city-day-sun-ui.mjs?v=2026101801';
 import {cityTimeline,cityDayPreview} from './city-day-timeline.mjs?v=2026101714';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
 import {selectedDay as previewDay} from './trip-days-state.mjs?v=2026101707';
@@ -39,6 +40,7 @@ export function initCityDay({workshop,catalog,base}){
   const choiceDay=routeDayTarget(workshop.getState(),route,getId())?.day,choices=choiceDay?.menu_choices||[];
   const rain=root.querySelector('[data-city-rain-note]');
   const ticket=++revision,date=form.elements.date.value,start=(form.elements.time.value||'09:00').split(':').map(Number);
+  renderCitySun(root,date);
   const wet=root.querySelector('[data-city-weather]').value==='rain';
   if(rainPreview)rainPreview.hidden=wet;
   if(review){review.dataset.state='pending';review.replaceChildren();const p=document.createElement('p');p.textContent='Пересчитываем прогулку и возвращение…';review.append(p);}
@@ -54,7 +56,6 @@ export function initCityDay({workshop,catalog,base}){
    for(const time of root.querySelectorAll('[data-city-stop]')){time.textContent='Уточняется';time.dataset.begins='';time.dataset.leaves='';time.dataset.cityOffset='';}
    root.querySelector('[data-city-return]').textContent='Уточняется';root.querySelector('.city-timeline').dataset.ready='true';
    root.querySelector('[data-city-total]').textContent='Уточняется';root.querySelector('[data-city-budget]').textContent='Выберите дату прогулки, чтобы рассчитать поезда и бюджет.';
-   root.querySelector('[data-city-sunset]').textContent='Уточняется';const label=root.querySelector('[data-city-sunset-date]');label.textContent='Дата не выбрана';label.removeAttribute('datetime');
    return;
   }
   if(rain)rain.textContent=cityRainPlan(config,catalog,date).note;
@@ -109,8 +110,8 @@ export function initCityDay({workshop,catalog,base}){
    root.querySelector('[data-city-budget]').textContent=choices.length?'Учтены выбранные порции на группу. Состав и источники — в бюджете ниже.':'Поезда и обед из двух блюд. Состав, варианты и источники — в бюджете ниже.';
    renderReferenceBudget(root.querySelector('[data-day-budget]'),quote);
   }catch{if(ticket!==revision)return;showReview(null,!!root.querySelector('[data-city-rail-outward]').value&&!!root.querySelector('[data-city-rail-inbound]').value);for(const time of root.querySelectorAll('[data-city-stop],[data-city-return]')){time.textContent='Уточняется';time.dataset.begins='';time.dataset.leaves='';time.dataset.cityOffset='';}root.querySelector('.city-timeline').dataset.ready='true';root.querySelector('[data-city-total]').textContent='Уточняется';root.querySelector('[data-city-budget]').textContent='Не удалось рассчитать бюджет на выбранную дату. Попробуйте ещё раз.';const budget=root.querySelector('[data-day-budget]'),note=document.createElement('p');note.textContent=`Дата прогулки: ${date}. Состав и суммы пока уточняются.`;budget.replaceChildren(note);}
-  try{const calculate=await loadSunClock(base),sun=calculate(date,config.lat,config.lon);if(ticket!==revision)return;root.querySelector('[data-city-sunset]').textContent=sun.sunset===null?'Солнце не заходит':clock(sun.sunset);const label=root.querySelector('[data-city-sunset-date]');label.textContent=date;label.dateTime=date;}
-  catch{/* Keep the sourced static solar calculation when the runtime is unavailable. */}
+  try{const calculate=await loadSunClock(base),sun=calculate(date,config.lat,config.lon);if(ticket!==revision)return;renderCitySun(root,date,'ready',sun.sunset===null?'Солнце не заходит':clock(sun.sunset));}
+  catch{if(ticket!==revision)return;renderCitySun(root,date,'unknown');}
  }
  const initial=routeDayTarget(workshop.getState(),route,getId());if(initial?.state==='ready'){form.elements.date.value=initial.day.date||'';const n=initial.day.schedule?.start??540;form.elements.time.value=clock(n);root.querySelector('[data-city-weather]').value=cityDayWeather(initial.day);}else if(form.dataset.dateReady!=='true')form.elements.date.value=localDate();
  document.addEventListener('input',event=>{if(event.target.form===form)sync();});window.addEventListener('godune:trip-change',()=>queueMicrotask(sync));window.addEventListener('godune:route-date',()=>queueMicrotask(sync));sync();

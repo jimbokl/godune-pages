@@ -71,3 +71,6 @@ html[data-theme=night] body[data-ui-context="route"] .inner-main .city-day-flat 
 .city-day-flat .city-timeline-stop:has(>.city-stop-hour[data-begins=""]){grid-template-columns:minmax(0,1fr)}
 .city-day-flat .city-stop-hour[data-begins=""]{grid-column:1;grid-row:auto;white-space:normal;overflow-wrap:anywhere;margin:0 0 8px}
 .city-day-flat .city-timeline-stop:has(>.city-stop-hour[data-begins=""])>:is(.journey-stop-card,.city-walk-leg){grid-column:1;grid-row:auto}
+
+/* Keep no-JS default train timetable headers readable on the dark route surface. */
+html:not([data-theme]) .day-passport section[aria-labelledby="day-passport-trains"] thead th{color:#b8aea0}
