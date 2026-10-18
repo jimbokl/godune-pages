@@ -63,6 +63,8 @@
 .visit-note{white-space:pre-wrap;padding-top:12px;font-size:16px}
 .visit-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .visit-expense-action{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+body.inner-page .visit-expense-action [data-service-expense]{color:var(--action-ink)}
+body.inner-page #my-trip .visit-expense-action [data-service-expense]:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
 .visit-expense-action .visit-feedback:empty{display:none}
 .visit-expense-action .visit-feedback{flex-basis:100%;margin:0}
 .visit-note-editor{border-top:1px solid var(--line);padding-top:20px;margin-top:20px}
