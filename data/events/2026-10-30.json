@@ -1,19 +1,86 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-19T17:45:54.541Z",
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
+  "generated_at": "2026-10-19T19:27:29.653Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
       "event-source-8bfa02dfc9dd2f1b",
+      "event-source-941162799b6df1e6",
       "event-source-cbcb4a099e189f65"
     ]
   },
   "events": [
+    {
+      "id": "event-01a8d4d890e32115",
+      "title": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-30",
+      "starts": "12:00",
+      "ends": null,
+      "description": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 750 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-941162799b6df1e6",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 750,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+      "verified_at": "2026-10-19T19:16:44Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-19T19:16:44Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+          "sha256": "379c9a69fbdee88e456222b0f60276fd596d94d9711c56bde102367b29ae7704",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА+30.10.2026 12:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 750 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2030-2010-2012-2000"
+      },
+      "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2030-2010-2012-2000",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
     {
       "id": "event-a50b95dedb720107",
       "title": "Органная Франция",
@@ -53,7 +120,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "verified_at": "2026-10-18T15:33:51Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -81,6 +148,14 @@
           "verified_at": "2026-10-18T15:33:51Z",
           "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
           "sha256": "6a4f31abd2d20f3c8588f045d68ab19ce0fd96766d8bd92473f8aa8dbab0a2c6",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+          "sha256": "4d39904789b5ae4cc1f02e289ad14c5ccf65e422b75ce5a837f45a820ae219a0",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -144,7 +219,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-18T15:34:01Z",
+      "verified_at": "2026-10-19T19:16:43Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
@@ -180,6 +255,14 @@
           "verified_at": "2026-10-18T15:34:01Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
           "sha256": "6e4d6b56ea29eb12ac0043cda1eb153432af5192dddecb29cce34f52c5da9ef1",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:43Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "9307669668003c7b1cd20bf420cc8e4530dc8fcdf9489240440565a3ab88101b",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"

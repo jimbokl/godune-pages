@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-19T17:45:54.541Z",
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
+  "generated_at": "2026-10-19T19:27:29.653Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -11,10 +11,77 @@
     "sources": [
       "event-source-397dde4c128d3813",
       "event-source-415d64a95f65d553",
-      "event-source-84e8439d81a585f7"
+      "event-source-84e8439d81a585f7",
+      "event-source-f7e7c3215cca1530"
     ]
   },
   "events": [
+    {
+      "id": "event-5f5fe8103c167bb8",
+      "title": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-11-01",
+      "starts": "12:00",
+      "ends": null,
+      "description": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 750 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-f7e7c3215cca1530",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 750,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+      "verified_at": "2026-10-19T19:16:45Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-19T19:16:45Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+          "sha256": "8aa5883a984d2732c8868c850c431b9749aec822e63d0e7aee6f96e390619c4a",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА+01.11.2026 12:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 750 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2001-2011-2012-2000"
+      },
+      "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2001-2011-2012-2000",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
     {
       "id": "event-fad48095e48a6a9c",
       "title": "Гензель и Гретель",
@@ -54,7 +121,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-18T15:34:03Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -82,6 +149,14 @@
           "verified_at": "2026-10-18T15:34:03Z",
           "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
           "sha256": "5d2be22f656a232541d32f6e2009493460fb9c31c46a7c3dbab9046f6a1bb7b2",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "81f2529ac33310dc2a46c7583c5411310ddcc57ce9bfa904eeb05aaa296d5836",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -146,7 +221,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-18T15:33:44Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -166,6 +241,14 @@
           "verified_at": "2026-10-18T15:33:44Z",
           "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
           "sha256": "af9d14c08bf2a4f3c274e41b62a04d42f6945e25e5811900dc067f8a25e711c3",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "635f0c39af2cf261522d81eec16046d714cc4ec1bb11dd14641fe405254845ed",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -230,7 +313,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-18T15:34:02Z",
+      "verified_at": "2026-10-19T19:16:42Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -258,6 +341,14 @@
           "verified_at": "2026-10-18T15:34:02Z",
           "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
           "sha256": "743ff4f8a9b585271cbb1952d0a579ffde0142111272073e97dd60211a12c63c",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:42Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "bab2714d7ddd1da184c80f08aa8b32eb027c59082c45f1fda2d9463ede11eb92",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-19T17:45:54.541Z",
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
+  "generated_at": "2026-10-19T19:27:29.653Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "window": {
     "from": "2026-09-19",
     "to": "2026-11-18",
@@ -421,12 +421,13 @@
     },
     "2026-10-30": {
       "url": "/data/events/2026-10-30.json",
-      "count": 2,
+      "count": 3,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-8bfa02dfc9dd2f1b",
+          "event-source-941162799b6df1e6",
           "event-source-cbcb4a099e189f65"
         ]
       }
@@ -445,14 +446,15 @@
     },
     "2026-11-01": {
       "url": "/data/events/2026-11-01.json",
-      "count": 3,
+      "count": 4,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-397dde4c128d3813",
           "event-source-415d64a95f65d553",
-          "event-source-84e8439d81a585f7"
+          "event-source-84e8439d81a585f7",
+          "event-source-f7e7c3215cca1530"
         ]
       }
     },
@@ -476,11 +478,12 @@
     },
     "2026-11-04": {
       "url": "/data/events/2026-11-04.json",
-      "count": 1,
+      "count": 2,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
+          "event-source-189c02b2cbabfa29",
           "event-source-2174f1d010acdf89"
         ]
       }
@@ -616,11 +619,13 @@
   "cache_max_age_seconds": 21600,
   "dated_snapshot_age_seconds": 43200,
   "active_ids": [
+    "event-01a8d4d890e32115",
     "event-14240db5849b4341",
     "event-20ab99ecc122e836",
     "event-26d394f51e34e522",
     "event-488cfa6c49556489",
     "event-4a976bf8c7f6aeb3",
+    "event-5f5fe8103c167bb8",
     "event-5fccc93defd20879",
     "event-60b8ba53b4fa8824",
     "event-63573479d935381d",
@@ -633,6 +638,7 @@
     "event-bc10b3b3f00f70e1",
     "event-bc4a9e4aeaa30e6a",
     "event-e1f424ecbcbc4a9d",
+    "event-e4996a2143b2a927",
     "event-fad48095e48a6a9c",
     "event-fdd8bc506e1e4563",
     "event-yantarhall-queen-2026-10-30"

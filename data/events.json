@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "checked_at": "2026-10-18",
+  "checked_at": "2026-10-19",
   "sources": {
     "ocean-space-week-2026": {
       "name": "Музей Мирового океана · Всемирная неделя космоса",
@@ -73,10 +73,10 @@
     "event-source-cbcb4a099e189f65": {
       "name": "Театр эстрады «Янтарь-Холл» · Куин / Queen",
       "url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "checked_at": "2026-10-18",
-      "sha256": "6e4d6b56ea29eb12ac0043cda1eb153432af5192dddecb29cce34f52c5da9ef1",
-      "private_capture": "runtime/events-refresh/cache/sources/6e4d6b56ea29eb12ac0043cda1eb153432af5192dddecb29cce34f52c5da9ef1.html",
-      "fetched_at": "2026-10-18T15:34:01Z",
+      "checked_at": "2026-10-19",
+      "sha256": "9307669668003c7b1cd20bf420cc8e4530dc8fcdf9489240440565a3ab88101b",
+      "private_capture": "runtime/events-refresh/cache/sources/9307669668003c7b1cd20bf420cc8e4530dc8fcdf9489240440565a3ab88101b.html",
+      "fetched_at": "2026-10-19T19:16:43Z",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -99,10 +99,10 @@
     "event-source-aa9661144d984e95": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Это – русские картины",
       "url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:34Z",
-      "sha256": "052a640851e4095d875e72339b7c759ae927870657de4f63447f376273ad5ea0",
-      "private_capture": "runtime/events-refresh/cache/sources/052a640851e4095d875e72339b7c759ae927870657de4f63447f376273ad5ea0.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:38Z",
+      "sha256": "052110ff9fa34bb72566508c01ffa0bfdb8e98efcaaa352d1d4df0970f6a9ab3",
+      "private_capture": "runtime/events-refresh/cache/sources/052110ff9fa34bb72566508c01ffa0bfdb8e98efcaaa352d1d4df0970f6a9ab3.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -111,10 +111,10 @@
     "event-source-202e65c87217f401": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Концерт-открытие Школы-фестиваля Леонида Лундстрема",
       "url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:32Z",
-      "sha256": "712ed2fa7ed580cdaa3c657e28b2b145d0ba57c651d1653c8d2aea7250bb065c",
-      "private_capture": "runtime/events-refresh/cache/sources/712ed2fa7ed580cdaa3c657e28b2b145d0ba57c651d1653c8d2aea7250bb065c.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:39Z",
+      "sha256": "1027c5dc6c6210cc3615d94fd73045214f0b25416fedc926ab3adec3614d677d",
+      "private_capture": "runtime/events-refresh/cache/sources/1027c5dc6c6210cc3615d94fd73045214f0b25416fedc926ab3adec3614d677d.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -123,10 +123,10 @@
     "event-source-d7db90b269724b82": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Нина Шацкая",
       "url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:37Z",
-      "sha256": "26e8e9dcace9f60c72331024a2abb50766216b33580ce33edcd180ec22040a74",
-      "private_capture": "runtime/events-refresh/cache/sources/26e8e9dcace9f60c72331024a2abb50766216b33580ce33edcd180ec22040a74.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:38Z",
+      "sha256": "d1f946608de680d1538e88826a40f9a20389f551d486737ead8d6f0210ffad49",
+      "private_capture": "runtime/events-refresh/cache/sources/d1f946608de680d1538e88826a40f9a20389f551d486737ead8d6f0210ffad49.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -135,10 +135,10 @@
     "event-source-707d2319c774b8e0": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Гуси-лебеди: перезагрузка",
       "url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:37Z",
-      "sha256": "d834c5d4ea508818252e2459b2e2338600f4a3a83cac2b37b1bdca3df4393203",
-      "private_capture": "runtime/events-refresh/cache/sources/d834c5d4ea508818252e2459b2e2338600f4a3a83cac2b37b1bdca3df4393203.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:39Z",
+      "sha256": "1b47499e9e8d27e7a796ab7376d6beeda14f70122d615f7885786a9e3b028b0c",
+      "private_capture": "runtime/events-refresh/cache/sources/1b47499e9e8d27e7a796ab7376d6beeda14f70122d615f7885786a9e3b028b0c.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -147,10 +147,10 @@
     "event-source-03a0eb979f0bc6b9": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Виват, Опера!",
       "url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:40Z",
-      "sha256": "c20b06da5b8eb3c82e0d9b8dcdb5e361fb254c6dd36bce10c2fa04c900fdb774",
-      "private_capture": "runtime/events-refresh/cache/sources/c20b06da5b8eb3c82e0d9b8dcdb5e361fb254c6dd36bce10c2fa04c900fdb774.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:39Z",
+      "sha256": "6a929a7c9a8489965cf3432f63f1b48601f743db8a552a31a6c07858914b8bf6",
+      "private_capture": "runtime/events-refresh/cache/sources/6a929a7c9a8489965cf3432f63f1b48601f743db8a552a31a6c07858914b8bf6.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -159,10 +159,10 @@
     "event-source-37ac5d9cc699c444": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Стэнли Кубрик, Стивен Спилберг",
       "url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:38Z",
-      "sha256": "e59cade0427055a175c3554c4982eac40c61f1b23170036a5dca262f00f1ef77",
-      "private_capture": "runtime/events-refresh/cache/sources/e59cade0427055a175c3554c4982eac40c61f1b23170036a5dca262f00f1ef77.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:39Z",
+      "sha256": "bfe47e03ecb47729277911fc29a96ee0f35fd29967efa51e6aedfc77ca094c99",
+      "private_capture": "runtime/events-refresh/cache/sources/bfe47e03ecb47729277911fc29a96ee0f35fd29967efa51e6aedfc77ca094c99.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -171,10 +171,10 @@
     "event-source-8bfa02dfc9dd2f1b": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Органная Франция",
       "url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:51Z",
-      "sha256": "6a4f31abd2d20f3c8588f045d68ab19ce0fd96766d8bd92473f8aa8dbab0a2c6",
-      "private_capture": "runtime/events-refresh/cache/sources/6a4f31abd2d20f3c8588f045d68ab19ce0fd96766d8bd92473f8aa8dbab0a2c6.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:40Z",
+      "sha256": "4d39904789b5ae4cc1f02e289ad14c5ccf65e422b75ce5a837f45a820ae219a0",
+      "private_capture": "runtime/events-refresh/cache/sources/4d39904789b5ae4cc1f02e289ad14c5ccf65e422b75ce5a837f45a820ae219a0.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -183,10 +183,10 @@
     "event-source-ff2ea88915efd205": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · СИЛА ЛЮБВИ",
       "url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:55Z",
-      "sha256": "d785be2da2c5b310cbbecd5b5aaca15c76dee58393ce48803afa8564177fa937",
-      "private_capture": "runtime/events-refresh/cache/sources/d785be2da2c5b310cbbecd5b5aaca15c76dee58393ce48803afa8564177fa937.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:40Z",
+      "sha256": "23629248d7fda807119426b24812336c640465be4eb04faafe36077423753202",
+      "private_capture": "runtime/events-refresh/cache/sources/23629248d7fda807119426b24812336c640465be4eb04faafe36077423753202.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -195,10 +195,10 @@
     "event-source-84e8439d81a585f7": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Гензель и Гретель",
       "url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:03Z",
-      "sha256": "5d2be22f656a232541d32f6e2009493460fb9c31c46a7c3dbab9046f6a1bb7b2",
-      "private_capture": "runtime/events-refresh/cache/sources/5d2be22f656a232541d32f6e2009493460fb9c31c46a7c3dbab9046f6a1bb7b2.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:40Z",
+      "sha256": "81f2529ac33310dc2a46c7583c5411310ddcc57ce9bfa904eeb05aaa296d5836",
+      "private_capture": "runtime/events-refresh/cache/sources/81f2529ac33310dc2a46c7583c5411310ddcc57ce9bfa904eeb05aaa296d5836.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -221,10 +221,10 @@
     "event-source-d6e3d67e6b349ef2": {
       "name": "Театр эстрады «Янтарь-Холл» · Огни Анатолии",
       "url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:00Z",
-      "sha256": "d46dcdd521b1a5992b199b3a7f1dde18028577886697c9055d8d8dff5209fd35",
-      "private_capture": "runtime/events-refresh/cache/sources/d46dcdd521b1a5992b199b3a7f1dde18028577886697c9055d8d8dff5209fd35.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:42Z",
+      "sha256": "868dbd1d1ae516fab7ee2e060a9508c0c3679a45a978e0efb3eedc7216f48d5d",
+      "private_capture": "runtime/events-refresh/cache/sources/868dbd1d1ae516fab7ee2e060a9508c0c3679a45a978e0efb3eedc7216f48d5d.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -235,10 +235,10 @@
     "event-source-35a37ab2c9cf2aca": {
       "name": "Театр эстрады «Янтарь-Холл» · Лига МС КВН «Запад России",
       "url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:00Z",
-      "sha256": "b2a05896c9102b787b5a34c31f4c88bd9101ca5004c1d0db6de10b6de73a6737",
-      "private_capture": "runtime/events-refresh/cache/sources/b2a05896c9102b787b5a34c31f4c88bd9101ca5004c1d0db6de10b6de73a6737.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:42Z",
+      "sha256": "6f34c92caa0f35d03bb1e131fb9249f2e1acafb5e2d25f14c38c563ded7dd9bb",
+      "private_capture": "runtime/events-refresh/cache/sources/6f34c92caa0f35d03bb1e131fb9249f2e1acafb5e2d25f14c38c563ded7dd9bb.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -249,10 +249,10 @@
     "event-source-f8ae9de7d890592e": {
       "name": "Театр эстрады «Янтарь-Холл» · Ксения Гор. Исполнительница Французских песен",
       "url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:00Z",
-      "sha256": "33eb535d6033878a1105871e717e4a5c0845608c9745f67c29ee613228f891af",
-      "private_capture": "runtime/events-refresh/cache/sources/33eb535d6033878a1105871e717e4a5c0845608c9745f67c29ee613228f891af.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:42Z",
+      "sha256": "3facaba1bee88a4a441ce3ebb5d6946fd87b1b510462e255325ad7fc8cc9f35a",
+      "private_capture": "runtime/events-refresh/cache/sources/3facaba1bee88a4a441ce3ebb5d6946fd87b1b510462e255325ad7fc8cc9f35a.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -263,10 +263,10 @@
     "event-source-c0ed71aba7fddd79": {
       "name": "Театр эстрады «Янтарь-Холл» · \"Арт-Компас. Балтика\"",
       "url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:01Z",
-      "sha256": "de2707176a85ed703e786c9442620945e9a87858b5c169e4478daaf266cfa616",
-      "private_capture": "runtime/events-refresh/cache/sources/de2707176a85ed703e786c9442620945e9a87858b5c169e4478daaf266cfa616.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:44Z",
+      "sha256": "d5baeb8982c42d1219e739bd0ac3e68990763ae0b2d45755b2362a2484ac3faf",
+      "private_capture": "runtime/events-refresh/cache/sources/d5baeb8982c42d1219e739bd0ac3e68990763ae0b2d45755b2362a2484ac3faf.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -277,10 +277,10 @@
     "event-source-2d69612d16fda014": {
       "name": "Театр эстрады «Янтарь-Холл» · \"Ты где-то рядом\"",
       "url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:01Z",
-      "sha256": "7c953f30872d388410a0200c48653fc0ac20dfc2e9f2c4ba8ecc2243425f9c63",
-      "private_capture": "runtime/events-refresh/cache/sources/7c953f30872d388410a0200c48653fc0ac20dfc2e9f2c4ba8ecc2243425f9c63.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:44Z",
+      "sha256": "76f0b2921ceaf241ccaf0453c4d1377e5c33f19adaf11dd3dd3d1d3abdc6ddc9",
+      "private_capture": "runtime/events-refresh/cache/sources/76f0b2921ceaf241ccaf0453c4d1377e5c33f19adaf11dd3dd3d1d3abdc6ddc9.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -291,10 +291,10 @@
     "event-source-415d64a95f65d553": {
       "name": "Театр эстрады «Янтарь-Холл» · Дельфин",
       "url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:34:02Z",
-      "sha256": "743ff4f8a9b585271cbb1952d0a579ffde0142111272073e97dd60211a12c63c",
-      "private_capture": "runtime/events-refresh/cache/sources/743ff4f8a9b585271cbb1952d0a579ffde0142111272073e97dd60211a12c63c.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:42Z",
+      "sha256": "bab2714d7ddd1da184c80f08aa8b32eb027c59082c45f1fda2d9463ede11eb92",
+      "private_capture": "runtime/events-refresh/cache/sources/bab2714d7ddd1da184c80f08aa8b32eb027c59082c45f1fda2d9463ede11eb92.html",
       "organizer": null,
       "publisher": {
         "name": "Театр эстрады «Янтарь-Холл»",
@@ -305,10 +305,10 @@
     "event-source-397dde4c128d3813": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · От Баха до джаза. Орган и саксофон",
       "url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:44Z",
-      "sha256": "af9d14c08bf2a4f3c274e41b62a04d42f6945e25e5811900dc067f8a25e711c3",
-      "private_capture": "runtime/events-refresh/cache/sources/af9d14c08bf2a4f3c274e41b62a04d42f6945e25e5811900dc067f8a25e711c3.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:40Z",
+      "sha256": "635f0c39af2cf261522d81eec16046d714cc4ec1bb11dd14641fe405254845ed",
+      "private_capture": "runtime/events-refresh/cache/sources/635f0c39af2cf261522d81eec16046d714cc4ec1bb11dd14641fe405254845ed.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
@@ -317,13 +317,53 @@
     "event-source-2174f1d010acdf89": {
       "name": "Калининградская областная филармония им. Е.Ф. Светланова · Русская музыка на органе",
       "url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "checked_at": "2026-10-18",
-      "fetched_at": "2026-10-18T15:33:48Z",
-      "sha256": "4f81420939b34271fd3cee865bdc4f5e5e317ce51f9be99488cc31e71a2dc696",
-      "private_capture": "runtime/events-refresh/cache/sources/4f81420939b34271fd3cee865bdc4f5e5e317ce51f9be99488cc31e71a2dc696.html",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:40Z",
+      "sha256": "22fe4199b417036ccd016ddbb903fbba9010a2cb9ad92f451d3f01198c544f26",
+      "private_capture": "runtime/events-refresh/cache/sources/22fe4199b417036ccd016ddbb903fbba9010a2cb9ad92f451d3f01198c544f26.html",
       "organizer": {
         "name": "Калининградская областная филармония им. Е.Ф. Светланова",
         "url": "https://filarmonia39.ru/"
+      }
+    },
+    "event-source-189c02b2cbabfa29": {
+      "name": "Калининградская областная филармония им. Е.Ф. Светланова · Широка страна моя родная",
+      "url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:41Z",
+      "sha256": "9ada6c8999366b66058612bd485f02fef0527f6c36464c7bafa73eaef76eae3f",
+      "private_capture": "runtime/events-refresh/cache/sources/9ada6c8999366b66058612bd485f02fef0527f6c36464c7bafa73eaef76eae3f.html",
+      "organizer": {
+        "name": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "url": "https://filarmonia39.ru/"
+      }
+    },
+    "event-source-941162799b6df1e6": {
+      "name": "Театр эстрады «Янтарь-Холл» · ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:44Z",
+      "sha256": "379c9a69fbdee88e456222b0f60276fd596d94d9711c56bde102367b29ae7704",
+      "private_capture": "runtime/events-refresh/cache/sources/379c9a69fbdee88e456222b0f60276fd596d94d9711c56bde102367b29ae7704.html",
+      "organizer": null,
+      "publisher": {
+        "name": "Театр эстрады «Янтарь-Холл»",
+        "url": "https://xn--80awafglm0a6dza.xn--p1ai/",
+        "role": "venue"
+      }
+    },
+    "event-source-f7e7c3215cca1530": {
+      "name": "Театр эстрады «Янтарь-Холл» · ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+      "checked_at": "2026-10-19",
+      "fetched_at": "2026-10-19T19:16:45Z",
+      "sha256": "8aa5883a984d2732c8868c850c431b9749aec822e63d0e7aee6f96e390619c4a",
+      "private_capture": "runtime/events-refresh/cache/sources/8aa5883a984d2732c8868c850c431b9749aec822e63d0e7aee6f96e390619c4a.html",
+      "organizer": null,
+      "publisher": {
+        "name": "Театр эстрады «Янтарь-Холл»",
+        "url": "https://xn--80awafglm0a6dza.xn--p1ai/",
+        "role": "venue"
       }
     }
   },
@@ -1426,7 +1466,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
-      "verified_at": "2026-10-18T15:33:34Z",
+      "verified_at": "2026-10-19T19:16:38Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -1454,6 +1494,14 @@
           "verified_at": "2026-10-18T15:33:34Z",
           "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
           "sha256": "052a640851e4095d875e72339b7c759ae927870657de4f63447f376273ad5ea0",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:38Z",
+          "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
+          "sha256": "052110ff9fa34bb72566508c01ffa0bfdb8e98efcaaa352d1d4df0970f6a9ab3",
           "status": "scheduled",
           "date": "2026-10-22",
           "start_time": "2026-10-22T19:00:00+02:00"
@@ -1596,7 +1644,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
-      "verified_at": "2026-10-18T15:33:32Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -1624,6 +1672,14 @@
           "verified_at": "2026-10-18T15:33:32Z",
           "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
           "sha256": "712ed2fa7ed580cdaa3c657e28b2b145d0ba57c651d1653c8d2aea7250bb065c",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
+          "sha256": "1027c5dc6c6210cc3615d94fd73045214f0b25416fedc926ab3adec3614d677d",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T18:00:00+02:00"
@@ -1688,7 +1744,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
-      "verified_at": "2026-10-18T15:34:00Z",
+      "verified_at": "2026-10-19T19:16:42Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1716,6 +1772,14 @@
           "verified_at": "2026-10-18T15:34:00Z",
           "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
           "sha256": "d46dcdd521b1a5992b199b3a7f1dde18028577886697c9055d8d8dff5209fd35",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:42Z",
+          "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
+          "sha256": "868dbd1d1ae516fab7ee2e060a9508c0c3679a45a978e0efb3eedc7216f48d5d",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T19:00:00+02:00"
@@ -1778,7 +1842,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "verified_at": "2026-10-18T15:34:00Z",
+      "verified_at": "2026-10-19T19:16:42Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1806,6 +1870,14 @@
           "verified_at": "2026-10-18T15:34:00Z",
           "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
           "sha256": "33eb535d6033878a1105871e717e4a5c0845608c9745f67c29ee613228f891af",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:42Z",
+          "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+          "sha256": "3facaba1bee88a4a441ce3ebb5d6946fd87b1b510462e255325ad7fc8cc9f35a",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T17:00:00+02:00"
@@ -1868,7 +1940,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "verified_at": "2026-10-18T15:34:00Z",
+      "verified_at": "2026-10-19T19:16:42Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1896,6 +1968,14 @@
           "verified_at": "2026-10-18T15:34:00Z",
           "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
           "sha256": "b2a05896c9102b787b5a34c31f4c88bd9101ca5004c1d0db6de10b6de73a6737",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:42Z",
+          "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+          "sha256": "6f34c92caa0f35d03bb1e131fb9249f2e1acafb5e2d25f14c38c563ded7dd9bb",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -1958,7 +2038,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "verified_at": "2026-10-18T15:33:37Z",
+      "verified_at": "2026-10-19T19:16:38Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1986,6 +2066,14 @@
           "verified_at": "2026-10-18T15:33:37Z",
           "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
           "sha256": "26e8e9dcace9f60c72331024a2abb50766216b33580ce33edcd180ec22040a74",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:38Z",
+          "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+          "sha256": "d1f946608de680d1538e88826a40f9a20389f551d486737ead8d6f0210ffad49",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -2050,7 +2138,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-18T15:33:37Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -2078,6 +2166,14 @@
           "verified_at": "2026-10-18T15:33:37Z",
           "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
           "sha256": "d834c5d4ea508818252e2459b2e2338600f4a3a83cac2b37b1bdca3df4393203",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "1b47499e9e8d27e7a796ab7376d6beeda14f70122d615f7885786a9e3b028b0c",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T12:00:00+02:00"
@@ -2142,7 +2238,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-18T15:33:40Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -2170,6 +2266,14 @@
           "verified_at": "2026-10-18T15:33:40Z",
           "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
           "sha256": "c20b06da5b8eb3c82e0d9b8dcdb5e361fb254c6dd36bce10c2fa04c900fdb774",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "6a929a7c9a8489965cf3432f63f1b48601f743db8a552a31a6c07858914b8bf6",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
@@ -2234,7 +2338,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
-      "verified_at": "2026-10-18T15:34:01Z",
+      "verified_at": "2026-10-19T19:16:44Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -2262,6 +2366,14 @@
           "verified_at": "2026-10-18T15:34:01Z",
           "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
           "sha256": "de2707176a85ed703e786c9442620945e9a87858b5c169e4478daaf266cfa616",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:44Z",
+          "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
+          "sha256": "d5baeb8982c42d1219e739bd0ac3e68990763ae0b2d45755b2362a2484ac3faf",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"
@@ -2324,7 +2436,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
-      "verified_at": "2026-10-18T15:33:38Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -2355,6 +2467,14 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
+          "sha256": "bfe47e03ecb47729277911fc29a96ee0f35fd29967efa51e6aedfc77ca094c99",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -2371,6 +2491,72 @@
         "source_identity": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/#event"
       },
       "source_identity": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/#event",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-01a8d4d890e32115",
+      "title": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-30",
+      "starts": "12:00",
+      "ends": null,
+      "description": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 750 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-941162799b6df1e6",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 750,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+      "verified_at": "2026-10-19T19:16:44Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-19T19:16:44Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+          "sha256": "379c9a69fbdee88e456222b0f60276fd596d94d9711c56bde102367b29ae7704",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА+30.10.2026 12:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 750 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2030-2010-2012-2000"
+      },
+      "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2030-2010-2012-2000",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
@@ -2416,7 +2602,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "verified_at": "2026-10-18T15:33:51Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -2444,6 +2630,14 @@
           "verified_at": "2026-10-18T15:33:51Z",
           "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
           "sha256": "6a4f31abd2d20f3c8588f045d68ab19ce0fd96766d8bd92473f8aa8dbab0a2c6",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+          "sha256": "4d39904789b5ae4cc1f02e289ad14c5ccf65e422b75ce5a837f45a820ae219a0",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -2507,7 +2701,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-18T15:34:01Z",
+      "verified_at": "2026-10-19T19:16:43Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
@@ -2543,6 +2737,14 @@
           "verified_at": "2026-10-18T15:34:01Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
           "sha256": "6e4d6b56ea29eb12ac0043cda1eb153432af5192dddecb29cce34f52c5da9ef1",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:43Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "9307669668003c7b1cd20bf420cc8e4530dc8fcdf9489240440565a3ab88101b",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -2606,7 +2808,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "verified_at": "2026-10-18T15:33:55Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -2634,6 +2836,14 @@
           "verified_at": "2026-10-18T15:33:55Z",
           "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
           "sha256": "d785be2da2c5b310cbbecd5b5aaca15c76dee58393ce48803afa8564177fa937",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
+          "sha256": "23629248d7fda807119426b24812336c640465be4eb04faafe36077423753202",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
@@ -2698,7 +2908,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "verified_at": "2026-10-18T15:34:01Z",
+      "verified_at": "2026-10-19T19:16:44Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:11Z",
@@ -2729,6 +2939,14 @@
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:44Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
+          "sha256": "76f0b2921ceaf241ccaf0453c4d1377e5c33f19adaf11dd3dd3d1d3abdc6ddc9",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -2743,6 +2961,72 @@
         "source_identity": "yantarhall:afisha-spektakl-ty-gde-to-ryadom"
       },
       "source_identity": "yantarhall:afisha-spektakl-ty-gde-to-ryadom",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-5f5fe8103c167bb8",
+      "title": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-11-01",
+      "starts": "12:00",
+      "ends": null,
+      "description": "ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 750 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-f7e7c3215cca1530",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 750,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+      "verified_at": "2026-10-19T19:16:45Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-19T19:16:45Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+          "sha256": "8aa5883a984d2732c8868c850c431b9749aec822e63d0e7aee6f96e390619c4a",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - ШОУ ИЛЛЮЗИОНИСТА АЛЕКСАНДРА ПРАХОВА+01.11.2026 12:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 750 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2001-2011-2012-2000"
+      },
+      "source_identity": "yantarhall:afisha-shou-illyuzionista-aleksandra-prakhova-2001-2011-2012-2000",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
@@ -2788,7 +3072,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-18T15:34:03Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -2816,6 +3100,14 @@
           "verified_at": "2026-10-18T15:34:03Z",
           "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
           "sha256": "5d2be22f656a232541d32f6e2009493460fb9c31c46a7c3dbab9046f6a1bb7b2",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "81f2529ac33310dc2a46c7583c5411310ddcc57ce9bfa904eeb05aaa296d5836",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -2880,7 +3172,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-18T15:33:44Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -2900,6 +3192,14 @@
           "verified_at": "2026-10-18T15:33:44Z",
           "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
           "sha256": "af9d14c08bf2a4f3c274e41b62a04d42f6945e25e5811900dc067f8a25e711c3",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "635f0c39af2cf261522d81eec16046d714cc4ec1bb11dd14641fe405254845ed",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -2964,7 +3264,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-18T15:34:02Z",
+      "verified_at": "2026-10-19T19:16:42Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -2995,6 +3295,14 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:42Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "bab2714d7ddd1da184c80f08aa8b32eb027c59082c45f1fda2d9463ede11eb92",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
         }
       ],
       "evidence": {
@@ -3009,6 +3317,74 @@
         "source_identity": "yantarhall:afisha-delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade"
       },
       "source_identity": "yantarhall:afisha-delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-e4996a2143b2a927",
+      "title": "Широка страна моя родная",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-11-04",
+      "starts": "12:00",
+      "ends": null,
+      "description": "Концертный зал. 6+. Array. Array. Среда. 12:00",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам · 500 ₽",
+      "price": 500,
+      "currency": "RUB",
+      "source": "event-source-189c02b2cbabfa29",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-04T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 500,
+        "max": 500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+      "verified_at": "2026-10-19T19:16:41Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-19T19:16:41Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "9ada6c8999366b66058612bd485f02fef0527f6c36464c7bafa73eaef76eae3f",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Широка страна моя родная",
+        "date_year_start": "JSON-LD startDate: 2026-11-04T12:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Концертный зал. 6+. Array. Array. Среда. 12:00",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [500]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/#event",
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
@@ -3054,7 +3430,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-18T15:33:48Z",
+      "verified_at": "2026-10-19T19:16:40Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -3066,6 +3442,14 @@
           "verified_at": "2026-10-18T15:33:48Z",
           "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
           "sha256": "4f81420939b34271fd3cee865bdc4f5e5e317ce51f9be99488cc31e71a2dc696",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:40Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "22fe4199b417036ccd016ddbb903fbba9010a2cb9ad92f451d3f01198c544f26",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
@@ -3092,7 +3476,7 @@
       }
     }
   ],
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "venues": {
     "ocean-education": {
       "id": "ocean-education",

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-19T17:45:54.541Z",
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
+  "generated_at": "2026-10-19T19:27:29.653Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
@@ -53,7 +53,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-18T15:33:37Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -81,6 +81,14 @@
           "verified_at": "2026-10-18T15:33:37Z",
           "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
           "sha256": "d834c5d4ea508818252e2459b2e2338600f4a3a83cac2b37b1bdca3df4393203",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "1b47499e9e8d27e7a796ab7376d6beeda14f70122d615f7885786a9e3b028b0c",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T12:00:00+02:00"
@@ -145,7 +153,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-18T15:33:40Z",
+      "verified_at": "2026-10-19T19:16:39Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -173,6 +181,14 @@
           "verified_at": "2026-10-18T15:33:40Z",
           "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
           "sha256": "c20b06da5b8eb3c82e0d9b8dcdb5e361fb254c6dd36bce10c2fa04c900fdb774",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "6a929a7c9a8489965cf3432f63f1b48601f743db8a552a31a6c07858914b8bf6",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"

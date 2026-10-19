@@ -11,12 +11,13 @@ const jobs=new Map(),removals=new Map(),packageReads=new Set();
 const clientSnapshots=GoduneOfflineClients.create({root:ROOT,caches,clients:self.clients});
 let clearing,snapshot,reading,epoch=0;
 const pathIndexes=new WeakMap();
+const boundPackages=new Map();
 const packageCache=name=>name.startsWith(PREFIX)||name.startsWith(LEGACY);
 const slugCache=(name,slug)=>name.startsWith(PREFIX+slug+':')||name.startsWith(LEGACY+slug+':');
 const pathsOf=pack=>{if(!pathIndexes.has(pack))pathIndexes.set(pack,new Map(pack.resources.map(r=>[normalized(url(r.path)),r])));return pathIndexes.get(pack);};
 const url=path=>new URL(path,ROOT).href;
 const normalized=value=>{const u=new URL(value);u.search='';u.hash='';if(u.pathname.endsWith('/'))u.pathname+='index.html';return u.href;};
-const invalidate=()=>{snapshot=undefined;epoch++;};
+const invalidate=()=>{snapshot=undefined;boundPackages.clear();epoch++;};
 const abortCheck=signal=>{if(signal.aborted)throw new DOMException('Cancelled','AbortError');};
 self.addEventListener('install',event=>event.waitUntil((async()=>{const response=await fetch(url('offline.html'),{cache:'no-store'});if(!response.ok)throw new Error('Offline page unavailable');await (await caches.open(SHELL)).put(url('offline.html'),response);await self.skipWaiting();})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{await caches.delete('godune-offline-shell:v1');await caches.delete('godune-offline-shell:v2');await self.clients.claim();})()));
@@ -50,6 +51,17 @@ function validate(pack){
   for(const a of pack.archives || []){if(!GoduneArchive.safePath(a.path) || paths.has(a.path) || archivePaths.has(a.path) || !Number.isSafeInteger(a.bytes) || a.bytes<=0 || !/^[a-f0-9]{64}$/.test(a.sha256) || !Array.isArray(a.resources) || !a.resources.length || a.kind!==undefined && a.kind!=='files')throw new Error('Не удалось проверить архив карты.');archivePaths.add(a.path);for(const path of a.resources){const tile=/^data\/region-map\/\d+\/\d+\/\d+\.pbf$/.test(path);if(!paths.has(path) || archived.has(path) || a.kind!=='files' && !tile)throw new Error('Не удалось проверить состав карты.');archived.add(path);if(tile)mapTiles++;}}
   if(pack.kind==='region' && (!Array.isArray(pack.bbox) || pack.bbox.length!==4 || !pack.bbox.every(Number.isFinite) || pack.bbox[0]>=pack.bbox[2] || pack.bbox[1]>=pack.bbox[3] || pack.minzoom!==5 || pack.maxzoom!==13 || !mapTiles))throw new Error('Границы карты изменились.');
   return {paths,archived};
+}
+function boundPackage(name,metadata){
+  // A committed cache/version is immutable. Share its parsed manifest across
+  // simultaneous module requests; each request still checks metadata presence
+  // and verifies the actual decoded resource's size and SHA below.
+  if(!boundPackages.has(name)){
+    const read=metadata.json().then(pack=>{validate(pack);return pack;});
+    boundPackages.set(name,read);
+    read.catch(()=>{if(boundPackages.get(name)===read)boundPackages.delete(name);});
+  }
+  return boundPackages.get(name);
 }
 async function readDrafts(){
   const result=[];
@@ -170,7 +182,7 @@ self.addEventListener('fetch',event=>{
         // Read the bound package directly: it may have been superseded in LIST.
         const cache=await caches.open(binding.cache),metadata=await cache.match(metadataURL);
         if(metadata){try{
-          const pack=await metadata.json();validate(pack);
+          const pack=await boundPackage(binding.cache,metadata);
           if(pack.version!==binding.version)return Response.error();
           const resource=pathsOf(pack).get(target);
           if(resource){
@@ -193,7 +205,7 @@ self.addEventListener('fetch',event=>{
         }catch{return Response.error();}}
         // Explicitly removed packages are unavailable. Never replace their
         // modules/data with bytes from another cached release.
-        if(!metadata)return Response.error();
+        if(!metadata){boundPackages.delete(binding.cache);return Response.error();}
         try{return await fetch(event.request);}catch{return Response.error();}
       }
     }

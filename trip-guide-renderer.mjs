@@ -319,7 +319,9 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       for(const paragraph of p.story)text(paragraph,{size:small,space,flow:true});
       if(p.focus)text(p.focus,{size:small,space,flow:true});
       if(p.practical)text(p.practical,{size:small,color:muted,space,flow:true});
-      for(const c of conditions)text(c.text+(c.references.length?' '+c.references.join(' '):''),{size:small,space,flow:true});
+      // A visit condition is one instruction: keep it on the same page when
+      // it fits, using the shared paragraph layout rather than story flow.
+      for(const c of conditions)text(c.text+(c.references.length?' '+c.references.join(' '):''),{size:small,space});
       nextLeg(p,small,space);
       y-=phone?8:14;
     }

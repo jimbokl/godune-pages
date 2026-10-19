@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-19T17:45:54.541Z",
-  "updated_at": "2026-10-18T15:34:13.255387Z",
+  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
+  "generated_at": "2026-10-19T19:27:29.653Z",
+  "updated_at": "2026-10-19T19:16:53.856956Z",
   "date": "2026-10-26",
   "coverage": {
     "status": "verified_partial",
@@ -52,7 +52,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
-      "verified_at": "2026-10-18T15:34:01Z",
+      "verified_at": "2026-10-19T19:16:44Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -80,6 +80,14 @@
           "verified_at": "2026-10-18T15:34:01Z",
           "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
           "sha256": "de2707176a85ed703e786c9442620945e9a87858b5c169e4478daaf266cfa616",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-19T19:16:44Z",
+          "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
+          "sha256": "d5baeb8982c42d1219e739bd0ac3e68990763ae0b2d45755b2362a2484ac3faf",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"
