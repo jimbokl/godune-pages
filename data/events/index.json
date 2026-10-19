@@ -2,25 +2,16 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-18T15:44:17.251Z",
+  "generated_at": "2026-10-19T11:26:38.210Z",
   "updated_at": "2026-10-18T15:34:13.255387Z",
   "window": {
-    "from": "2026-09-18",
-    "to": "2026-11-17",
-    "anchor_date": "2026-10-18",
+    "from": "2026-09-19",
+    "to": "2026-11-18",
+    "anchor_date": "2026-10-19",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-18": {
-      "url": "/data/events/2026-09-18.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-19": {
       "url": "/data/events/2026-09-19.json",
       "count": 0,
@@ -610,6 +601,15 @@
         "complete": false,
         "sources": []
       }
+    },
+    "2026-11-18": {
+      "url": "/data/events/2026-11-18.json",
+      "count": 0,
+      "coverage": {
+        "status": "no_verified_events",
+        "complete": false,
+        "sources": []
+      }
     }
   },
   "archive_url": "/data/events/archive.json",
@@ -619,7 +619,6 @@
     "event-14240db5849b4341",
     "event-20ab99ecc122e836",
     "event-26d394f51e34e522",
-    "event-3af80c27bfa88bc0",
     "event-488cfa6c49556489",
     "event-4a976bf8c7f6aeb3",
     "event-5fccc93defd20879",
@@ -633,7 +632,6 @@
     "event-a50b95dedb720107",
     "event-bc10b3b3f00f70e1",
     "event-bc4a9e4aeaa30e6a",
-    "event-c90f24387a529f61",
     "event-e1f424ecbcbc4a9d",
     "event-e62ffabad0d905ee",
     "event-fad48095e48a6a9c",

@@ -64,6 +64,11 @@
     perfMark('catalog-start');
     return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
+  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026101901'))])
+    .then(([catalog,{initPersonalization}])=>initPersonalization(catalog,base)).catch(()=>null);
+  window.addEventListener('godune:profile-events',event=>{
+    profileReady.then(profile=>profile?.recordEvents(event.detail)).catch(()=>{});
+  });
   const offlineTools = import(url('offline.mjs?v=2026101705'));
   offlineTools.then(({initOffline}) => initOffline(base)).catch(() => {});
   let localStyle;

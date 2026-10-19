@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "b00f6b26a974f4d98216ab5ef3c8070fbc91c48874816c453c0b56bf8accb5f6",
-  "generated_at": "2026-10-18T15:44:17.251Z",
+  "generated_at": "2026-10-19T11:26:38.210Z",
   "updated_at": "2026-10-18T15:34:13.255387Z",
   "events": [
     {
@@ -510,6 +510,422 @@
         "label": "Концерт · около 2 часов"
       },
       "place_id": null
+    },
+    {
+      "title": "Айболит",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-18",
+      "starts": "12:00",
+      "description": "Музыкальная сказка для всей семьи",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-9a1a9d5f0df12bb6",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "id": "event-17b8abe5389212d6",
+      "evidence": {
+        "title": "JSON-LD name: Айболит",
+        "date_year_start": "JSON-LD startDate: 2026-10-18T12:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Музыкальная сказка для всей семьи",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [650, 700, 800]; currency: RUB",
+        "age": "Возрастное ограничение:\n 0+",
+        "duration": "Продолжительность:\n 1:00:00",
+        "source_identity": "https://filarmonia39.ru/afisha/aybolit/#event"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+      "verified_at": "2026-10-18T15:33:35Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "c0bc804c3096207cff0d44428b990120a23ac23b75a41b8e2ca5eb313d5fc16d",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T09:50:14Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "bdb21e918f5eebf8472bb3e5afaa9cea78d756432b7a71da7497d4e7d87b03fb",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T14:04:02Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "a4ffd1dfd3a93a1b2b33ea33c780bde3ab4808f6a138b00104a19fc5e9220a71",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T02:31:04Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "f58c3d579ff43fb5cdb4344882fab3fea214e6911654e978a09f49bbfdd36b44",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:07:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "0a9e6b0d9f80a5169eb15efb70aaccf65b2cbf3dc10f45fa09c7828539b5becb",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:33:35Z",
+          "source_url": "https://filarmonia39.ru/afisha/aybolit/",
+          "sha256": "e4a60ac81c0f35bd640b8f36f5964fa871c88c66cbe025f9b6adf8fba8dee71d",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T12:00:00+02:00"
+        }
+      ],
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      },
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/aybolit/#event"
+    },
+    {
+      "title": "Экскурсия \"Закулисье театра\"",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр",
+      "date": "2026-10-18",
+      "starts": "14:30",
+      "description": "Экскурсия по театру. Основная сцена. 12+. 1 час 30 минут.",
+      "kind": "Экскурсия",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "На момент проверки 16 октября билетов нет. Уточните у театра.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-abe653549b66e8fb",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-6d947bd837a6e235",
+      "evidence": {
+        "title_quote": "Экскурсия \"Закулисье театра\"",
+        "date_quote": "18 Октября",
+        "year_quote": "2026",
+        "time_quote": "14:30",
+        "venue_quote": "Калининградский областной драматический театр",
+        "description_quote": "Экскурсия по театру",
+        "city_quote": "Калининград",
+        "admission_quote": "Билетов нет",
+        "stage_quote": "Основная сцена",
+        "age_quote": "12+",
+        "session_card_sha256": "9c4ddd955b4a8c26959f28de577e914a4f00e66914138c26bfffc1fd547d3e3d",
+        "session_date_attribute": null,
+        "duration_quote": "1 час 30 минут"
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T14:30:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null,
+      "duration_estimate": null
+    },
+    {
+      "id": "event-e8ba0ec85b64467a",
+      "title": "Философия русской музыки",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-10-18",
+      "starts": "17:00",
+      "ends": null,
+      "description": "Философия русской музыки",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 600 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-7dd21e71cbbba32f",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 600,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+      "verified_at": "2026-10-18T15:33:49Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-17T14:04:09Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+          "sha256": "430b6bf66b0eacf84fea72098234cc53e7e4b2aae930dc6e2da95792351369a0",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-18T02:31:06Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+          "sha256": "bb013299f880958653d9d8faf33096c1648efc620380d6db0e7e3b2de24491a2",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:08:11Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+          "sha256": "0db9becf75ba8bb6ae02de119b566c1cf845ab1736f2a671949aadab45308c48",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:33:49Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsert-filosofiya-russkoy-muzyki/",
+          "sha256": "76b017a0306dbf27c162cbfe245b51668d85312cef67025f4d163a8099aa4e90",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: Философия русской музыки",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - Философия русской музыки+18.10.2026 17:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 600 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-kontsert-filosofiya-russkoy-muzyki"
+      },
+      "source_identity": "yantarhall:afisha-kontsert-filosofiya-russkoy-muzyki",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "title": "Шедевры органной музыки",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-10-18",
+      "starts": "18:00",
+      "description": "Произведения Баха, Вивальди, Регера, Вьерна",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам · 900 ₽",
+      "price": 900,
+      "currency": "RUB",
+      "source": "event-source-472dfe595fccd21b",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "id": "event-3af80c27bfa88bc0",
+      "evidence": {
+        "title": "JSON-LD name: Шедевры органной музыки",
+        "date_year_start": "JSON-LD startDate: 2026-10-18T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Произведения Баха, Вивальди, Регера, Вьерна",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [900]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30:00",
+        "source_identity": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/#event"
+      },
+      "venue_id": "kaliningrad-philharmonia",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 900,
+        "max": 900,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+      "verified_at": "2026-10-18T15:33:39Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://filarmonia39.ru/afisha/",
+          "sha256": "7f0bb7ac8ba18284ec925b61d090cee0190e2adf59ad856a9a45c941a84da9a1",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-17T14:04:02Z",
+          "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+          "sha256": "3cbfbe73b466aafcb108fc13f70e7fb4e247be912183154cd40ce93cdd7b4fff",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T02:31:04Z",
+          "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+          "sha256": "3b3e778516ebe85ddad0c3bf283f6cf08f0cc5d6fcf86983dd0e20ded36bfe69",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T13:07:54Z",
+          "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+          "sha256": "a60d5a934d6161b75011a1b79243adab5328bf0ed7fb2c1db2e6e251b7deefb7",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-18T15:33:39Z",
+          "source_url": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/",
+          "sha256": "b174fc85294d095f089960961d01eaf74215432ce1d68627dbd9df2f717f5f6c",
+          "status": "scheduled",
+          "date": "2026-10-18",
+          "start_time": "2026-10-18T18:00:00+02:00"
+        }
+      ],
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      },
+      "place_id": "kirha-svyatogo-semeystva",
+      "source_identity": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/#event"
+    },
+    {
+      "title": "Доходное место",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр",
+      "date": "2026-10-18",
+      "starts": "18:00",
+      "description": "Александр Островский. Комедия. Основная сцена. 12+. 2 часа 40 минут с антрактом.",
+      "kind": "Спектакль",
+      "status": "scheduled",
+      "city": "kaliningrad",
+      "ends": null,
+      "admission": "По билетам. Стоимость уточните у театра.",
+      "price": null,
+      "currency": null,
+      "source": "event-source-abe653549b66e8fb",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-c90f24387a529f61",
+      "evidence": {
+        "title_quote": "Доходное место",
+        "date_quote": "18 Октября",
+        "year_quote": "2026",
+        "time_quote": "18:00",
+        "venue_quote": "Калининградский областной драматический театр",
+        "description_quote": "Александр Островский. Комедия",
+        "city_quote": "Калининград",
+        "admission_quote": "Билеты",
+        "stage_quote": "Основная сцена",
+        "age_quote": "12+",
+        "session_card_sha256": "62b3cf9e4c200f0d448203e13d84a4db90852dbf84a8787853dbc068fa11f1bd",
+        "session_date_attribute": null,
+        "duration_quote": "2 часа 40 минут с антрактом"
+      },
+      "venue_id": "kaliningrad-drama",
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-18T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+          "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
+          "status": "scheduled"
+        }
+      ],
+      "place_id": null,
+      "duration_estimate": null
     }
   ]
 }

@@ -1,5 +1,6 @@
 import {chooseComplementaryPlace, addComplementaryPair} from './complementary-trip.mjs?v=2026101707';
 import {placePath} from './place-path.mjs?v=2026101406';
+import {confirmedTripEvents} from './personalization-state.mjs?v=2026101901';
 import {loadWalkProgress} from './walk.mjs?v=2026101305';
 import {TRIP_KEY, emptyTrip as empty, cleanTrip} from './trip-state.mjs?v=2026101707';
 import {initTripSharing} from './trip-link.mjs?v=2026101714';
@@ -234,6 +235,10 @@ export async function initWorkshop(catalog, base) {
     writes++; document.documentElement.dataset.tripWriting = 'true';
     try {
       const result = await memory.change(current => typeof next === 'function' ? next(current) : next, {...options, label: message});
+      try{
+        const profileEvents=confirmedTripEvents(result,catalog);
+        if(profileEvents.length)window.dispatchEvent(new CustomEvent('godune:profile-events',{detail:profileEvents}));
+      }catch{/* A separate profile must not fail an already completed Trip save. */}
       if(result.saved&&!result.conflict&&journeyDays(before).length<2&&journeyDays(result.state).length>=2)await progress.journal.followUp('second_day',await tripJournalBindings(before));
       announce(result.conflict ? 'Черновик уже изменился. Показан свежий выбор.' : result.saved ? message : result.compatibility?.message || 'Выбор останется в этой вкладке. Браузер не разрешил сохранение.');
       return result;
