@@ -311,6 +311,7 @@
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101406')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
+    if ($('#auto-day')) import(url('auto-day.mjs?v=2026101903')).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
     const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101707')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();

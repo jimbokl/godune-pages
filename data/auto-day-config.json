@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "transport": {"mode": "foot", "max_points": 4, "min_points": 2, "intercity": false},
+  "llm": {"enabled": false, "endpoint": null, "context_consent": false}
+}
