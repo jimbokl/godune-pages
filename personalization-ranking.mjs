@@ -1,20 +1,34 @@
-import {contextualProfile} from './personalization-state.mjs?v=2026101901';
-import {rankingCandidate,rankCandidates,validRankingConfig} from './personalization-ranking-state.mjs?v=2026101902';
+import {contextualProfile} from './personalization-state.mjs?v=2026101904';
+import {rankingCandidate,rankCandidates,validRankingConfig} from './personalization-ranking-state.mjs?v=2026101904';
+import {feedbackControls} from './personalization-feedback.mjs?v=2026101904';
 import {readSavedTrip} from './trip-memory.mjs?v=2026101902';
 import {loadTrip} from './trip-memory-bootstrap.mjs?v=2026101707';
 
 export async function initRanking({catalog,profile,base,getTrip=()=>null}){
   const groups=[...document.querySelectorAll('[data-home-showcase] .showcase-grid,.catalog-walks .catalog-grid')];
   if(!groups.length || !profile)return;
-  const style=document.createElement('link');style.rel='stylesheet';style.href=new URL('personalization-ranking.css?v=2026101902',base);document.head.append(style);
+  const style=document.createElement('link');style.rel='stylesheet';style.href=new URL('personalization-ranking.css?v=2026101904',base);document.head.append(style);
   const surfaces=groups.map(group=>{
     const cards=[...group.children].map(node=>{
       let binding;
       try{binding=node.dataset.rankingRoute?{route:node.dataset.rankingRoute}:JSON.parse(node.dataset.rankingCandidate);}catch{}
-      return {node,candidate:rankingCandidate(binding,catalog)};
+      const candidate=rankingCandidate(binding,catalog);
+      const feedback=feedbackControls({target:{kind:'route',id:binding?.route},label:candidate?.name || node.querySelector('h3,h2')?.textContent || '',catalog,profile});
+      if(feedback){
+        // Home cards are links. Controls belong outside the link, in the same
+        // existing grid item, so pointer and keyboard never activate navigation.
+        if(node.matches('a')){
+          const item=document.createElement('article');item.className='ranking-feedback-card';
+          if(node.classList.contains('showcase-card-featured'))item.classList.add('ranking-feedback-card-featured');
+          item.hidden=node.hidden;
+          for(const name of ['rankingCandidate','wave'])if(node.dataset[name]!==undefined)item.dataset[name]=node.dataset[name];
+          node.before(item);item.append(node,feedback.element);node=item;
+        }else (node.querySelector('.catalog-route-copy') || node).append(feedback.element);
+      }
+      return {node,candidate};
     });
     const controls=document.createElement('details');controls.className='ranking-controls';
-    controls.innerHTML='<summary>Порядок прогулок</summary><p data-ranking-status></p><p>Интересы выбранного дня, время и отметки о посещении помогают упорядочить список. Активность на сайте — слабая подсказка. Погода на порядок не влияет. Все прогулки остаются доступны.</p><button type="button" data-profile-open>Компания и время</button>';
+    controls.innerHTML='<summary>Порядок прогулок</summary><p data-ranking-status></p><p>Интересы выбранного дня, время, ваши оценки и отметки о посещении помогают упорядочить список. Активность на сайте — слабая подсказка. Погода на порядок не влияет. Все прогулки остаются доступны.</p><button type="button" data-profile-open>Компания и время</button>';
     group.before(controls);controls.querySelector('button').addEventListener('click',profile.open);
     return {group,cards,status:controls.querySelector('[data-ranking-status]')};
   });

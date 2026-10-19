@@ -1,13 +1,13 @@
-import {createProfileMemory} from './personalization-memory.mjs?v=2026101901';
-import {pageContext,eventContext} from './personalization-state.mjs?v=2026101901';
+import {createProfileMemory} from './personalization-memory.mjs?v=2026101904';
+import {pageContext,eventContext} from './personalization-state.mjs?v=2026101904';
 
 export async function initPersonalization(catalog,base){
   const memory=createProfileMemory(catalog),page=pageContext(location.pathname,catalog);
-  const style=document.createElement('link');style.rel='stylesheet';style.href=new URL('personalization.css?v=2026101901',base);document.head.append(style);
+  const style=document.createElement('link');style.rel='stylesheet';style.href=new URL('personalization.css?v=2026101904',base);document.head.append(style);
   const dialog=document.createElement('dialog');dialog.className='context-profile';dialog.setAttribute('aria-labelledby','context-profile-title');
   dialog.innerHTML=`<form><div class="context-profile-heading"><h2 id="context-profile-title">Какой у вас день?</h2><button type="button" data-profile-close aria-label="Закрыть">×</button></div>
     <p>Ответы и действия остаются в этом браузере. Они не отправляются на сервер и не меняют вашу поездку.</p>
-    <details><summary>Что хранится</summary><p>Ответы на два вопроса и до 200 последних просмотров мест и сохранений за 30 дней. Просмотр страницы не означает, что вы побывали в этом месте.</p></details>
+    <details><summary>Что хранится</summary><p>Ответы на два вопроса и до 200 последних просмотров, сохранений и оценок рекомендаций за 30 дней. Оценки помогают выбрать категории прогулок. Раз в неделю пересчитываем их при открытии страницы или возвращении на неё. Просмотр и оценка не означают посещение места.</p></details>
     <label>С кем вы?<select name="travel_party"><option value="unknown">Пока не знаю</option><option value="solo">Один / одна</option><option value="couple">Вдвоём</option><option value="family">С семьёй</option><option value="friends">С друзьями</option></select></label>
     <label>Сколько у вас времени?<select name="time_budget_hours"><option value="">Пока не знаю</option><option value="1">Около часа</option><option value="2">Около двух часов</option><option value="4">Полдня</option><option value="8">Целый день</option></select></label>
     <p data-profile-status role="status"></p><div class="context-profile-actions"><button class="button" type="submit">Сохранить ответы</button><button type="button" data-profile-skip>Пока пропустить</button></div>
@@ -54,6 +54,10 @@ export async function initPersonalization(catalog,base){
   });
   await memory.ready;
   await memory.change({type:'seen'});
+  await memory.change({type:'replay'});
+  const replay=()=>memory.sync().then(()=>memory.change({type:'replay'})).catch(()=>{});
+  window.addEventListener('pageshow',replay);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')replay();});
   if(page.kind==='place' && document.body.dataset.poi===page.id)await recordEvents([{type:'place_view',entity_id:page.id}]);
   const first=()=>{
     if(memory.get().record.onboarding!=='pending')return;
@@ -62,9 +66,13 @@ export async function initPersonalization(catalog,base){
   };
   first();
   function recordEvents(events){
-    const now=Date.now(),context=eventContext(page,now);
+    const now=Math.max(Date.now(),Date.parse(memory.get().record.last_seen_at)),context=eventContext(page,now);
     return memory.change({type:'events',events:events.map(event=>({...event,id:crypto.randomUUID(),timestamp:new Date(now).toISOString(),context}))});
   }
   document.documentElement.dataset.profileReady='true';
-  return {recordEvents,open,get:memory.get,subscribe:memory.subscribe};
+  function feedback(target,answer){
+    const record=memory.get().record,now=Math.max(Date.now(),Date.parse(record.last_seen_at));
+    return memory.change({type:'feedback',target,answer,id:crypto.randomUUID(),context:eventContext(page,now)},{generation:record.generation});
+  }
+  return {recordEvents,feedback,open,get:memory.get,subscribe:memory.subscribe};
 }

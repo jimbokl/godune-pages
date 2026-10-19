@@ -2,8 +2,8 @@ import {wizardChoices,wizardDefaults,prepareWizardPlan,dayIsOccupied} from './pl
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {defaultSchedule} from './trip-schedule-state.mjs?v=2026101305';
 import {cleanTrip} from './trip-state.mjs?v=2026101707';
-import {contextualProfile} from './personalization-state.mjs?v=2026101901';
-import {rankCandidates} from './personalization-ranking-state.mjs?v=2026101902';
+import {contextualProfile} from './personalization-state.mjs?v=2026101904';
+import {rankCandidates} from './personalization-ranking-state.mjs?v=2026101904';
 import {forecastView,localDay} from './live-weather.mjs?v=2026101305';
 
 export const AUTO_SCHEMA={type:'object',additionalProperties:false,required:['version','route','places','start','end','mode','backup'],properties:{version:{const:1},route:{type:'string'},places:{type:'array',minItems:2,maxItems:4,uniqueItems:true,items:{type:'string'}},start:{type:'integer',minimum:0,maximum:1439},end:{type:'integer',minimum:1,maximum:1440},mode:{const:'foot'},backup:{type:'string'}}};

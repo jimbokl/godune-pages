@@ -15,3 +15,14 @@
 .context-profile :focus-visible,.context-profile-entry:focus-visible{outline:2px solid var(--brand-amber,#a46b24);outline-offset:3px}
 html[data-theme=night] .context-profile{background:var(--card,#152b3a);color:var(--ink,#edf1ed)}
 @media(max-width:400px){.context-profile{padding:18px}.context-profile h2{font-size:26px}.context-profile-actions{align-items:stretch;flex-direction:column}}
+
+.recommendation-feedback{color:#000;background:#fff;padding:12px 0;margin-top:12px;min-width:0;font-size:14px;line-height:1.5}
+.feedback-question{display:block;margin-bottom:6px}
+.feedback-actions{display:flex;flex-wrap:wrap;gap:8px}
+.recommendation-feedback button{min-height:44px;min-width:76px;width:auto;padding:8px 14px;background:#fff;color:#000;border:1px solid currentColor;border-radius:5px;font:inherit;cursor:pointer}
+.recommendation-feedback button[aria-pressed=true]{background:#000;color:#fff}
+.recommendation-feedback button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.recommendation-feedback [data-feedback-status]{font:inherit;color:inherit;margin:6px 0 0}
+.recommendation-feedback [data-feedback-status]:empty{display:none}
+html[data-theme=night] .recommendation-feedback,html[data-theme=night] .recommendation-feedback button{background:var(--card,#152b3a);color:var(--ink,#edf1ed)}
+html[data-theme=night] .recommendation-feedback button[aria-pressed=true]{background:var(--ink,#edf1ed);color:var(--card,#152b3a)}

@@ -5,3 +5,9 @@
 .ranking-reason{color:#000;background:#fff;font-size:13px!important;line-height:1.5!important;margin:12px 0 0!important}
 .ranking-controls :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 html[data-theme=night] .ranking-controls,html[data-theme=night] .ranking-reason{background:var(--card,#152b3a);color:var(--ink,#edf1ed)}
+
+.ranking-feedback-card{grid-column:span 2;display:flex;flex-direction:column;min-width:0}
+.ranking-feedback-card-featured{grid-column:span 3}
+.ranking-feedback-card>.showcase-card{flex:1}
+.ranking-feedback-card[hidden]{display:none!important}
+@media(max-width:1100px){.ranking-feedback-card,.ranking-feedback-card-featured{grid-column:span 1}}

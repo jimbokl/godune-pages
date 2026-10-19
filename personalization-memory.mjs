@@ -1,4 +1,4 @@
-import {emptyProfile,validProfile,applyProfileAction} from './personalization-state.mjs?v=2026101901';
+import {emptyProfile,validProfile,applyProfileAction} from './personalization-state.mjs?v=2026101904';
 export const PROFILE_DB='godune-context-profile', PROFILE_KEY='godune-context-profile:v1';
 const copy=value=>structuredClone(value);
 
@@ -15,7 +15,9 @@ export function createProfileMemory(catalog,environment=globalThis){
     if(raw===undefined || raw===null)return null;
     let value=raw;
     try{if(typeof raw==='string')value=raw.length>150000?null:JSON.parse(raw);}catch{throw Error('profile-damaged-or-newer');}
-    if(!validProfile(value,catalog))throw Error('profile-damaged-or-newer');
+    // A record written before the system clock moved back remains readable.
+    const highWater=Math.max(Date.now(),Date.parse(value?.last_seen_at) || 0);
+    if(!validProfile(value,catalog,highWater))throw Error('profile-damaged-or-newer');
     return value;
   }
   function adopt(record,persisted=true){

@@ -21,7 +21,7 @@
     else if(hash==='#my-trip' || hash.startsWith('#trip=') || /^#(?:trip-|day-|journey-|planner-)/.test(hash))destination='planner/';
     else destination={'#food':'food/zelenogradsk/','#map':'map/','#places':'cities/','#stay':'stay/'}[hash];
     if(destination){location.replace(url(destination)+location.search+hash);return;}
-    import(url('home-showcase.mjs?v=2026101305')).then(({initShowcase})=>initShowcase()).catch(()=>{});
+    import(url('home-showcase.mjs?v=2026101904')).then(({initShowcase})=>initShowcase()).catch(()=>{});
   }
   if (document.querySelector('[data-author-video]')) {
     import(url('author-media.mjs?v=2026101305')).then(({initAuthorVideo}) => initAuthorVideo()).catch(() => {});
@@ -64,7 +64,7 @@
     perfMark('catalog-start');
     return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
-  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026101902'))])
+  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026101904'))])
     .then(([catalog,{initPersonalization}])=>initPersonalization(catalog,base)).catch(()=>null);
   window.addEventListener('godune:profile-events',event=>{
     profileReady.then(profile=>profile?.recordEvents(event.detail)).catch(()=>{});
@@ -75,7 +75,7 @@
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
   if(document.querySelector('[data-home-showcase],.catalog-walks')){
-    Promise.all([loadCatalog(),profileReady,import(url('personalization-ranking.mjs?v=2026101902'))])
+    Promise.all([loadCatalog(),profileReady,import(url('personalization-ranking.mjs?v=2026101904'))])
       .then(([catalog,profile,{initRanking}])=>initRanking({catalog,profile,base,getTrip:()=>workshop?.getState()})).catch(()=>{});
   }
   // The first screen keeps its own small animation engine. The full trip editor
@@ -311,7 +311,7 @@
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101406')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    if ($('#auto-day')) import(url('auto-day.mjs?v=2026101903')).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
+    if ($('#auto-day')) import(url('auto-day.mjs?v=2026101904')).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
     const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101707')).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();

@@ -1,4 +1,4 @@
-import {AUTO_SCHEMA,DEFAULT_AUTO_CONFIG,validAutoConfig,autoContext,autoBackups,ruleAutoPlan,validAutoPlan,prepareAutoDay} from './auto-day-state.mjs?v=2026101903';
+import {AUTO_SCHEMA,DEFAULT_AUTO_CONFIG,validAutoConfig,autoContext,autoBackups,ruleAutoPlan,validAutoPlan,prepareAutoDay} from './auto-day-state.mjs?v=2026101904';
 import {planInput} from './trip-schedule-state.mjs?v=2026101305';
 
 // A key never belongs in the client. Deployment may enable only an existing

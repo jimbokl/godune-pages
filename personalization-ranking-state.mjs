@@ -1,4 +1,5 @@
 import {DAY_INTERESTS,assessPreferenceChoice} from './day-preferences.mjs?v=2026101305';
+import {feedbackContribution,feedbackReason} from './personalization-feedback-state.mjs?v=2026101904';
 
 const keys=['interest_match','time_fit','visited_penalty','weather_fit','partner_boost'];
 const object=value=>value!==null && typeof value==='object' && !Array.isArray(value);
@@ -33,7 +34,7 @@ export function rankCandidates(candidates,profile,catalog,config){
   const visited=new Set(profile.visited_places || []),hours=profile.time_budget_hours;
   const budget=[1,2,4,8].includes(hours)?hours*60:null;
   return candidates.map((candidate,index)=>{
-    const row={candidate,index,score:0,reasons:[],features:{interest_match:0,time_fit:0,visited_penalty:0,weather_fit:null,partner_boost:0}};
+    const row={candidate,index,score:0,reasons:[],features:{interest_match:0,time_fit:0,visited_penalty:0,weather_fit:null,partner_boost:0,feedback_fit:0}};
     if(!enabled || !candidate)return row;
     const matched=assessPreferenceChoice(candidate,catalog,{version:1,interests,needs:[]}).matched;
     const places=[...new Set((candidate.stops || []).map(stop=>stop.poi))];
@@ -42,9 +43,12 @@ export function rankCandidates(candidates,profile,catalog,config){
     row.features.time_fit=budget && Number.isFinite(candidate.minutes) && candidate.minutes>0 && candidate.minutes<=budget?1:0;
     row.features.visited_penalty=places.length?seen.length/places.length:0;
     row.score=weights.interest_match*row.features.interest_match+weights.time_fit*row.features.time_fit-weights.visited_penalty*row.features.visited_penalty;
+    const feedback=feedbackContribution(candidate,profile,catalog);
+    row.features.feedback_fit=feedback.delta;row.score+=feedback.delta;
     if(weights.interest_match*row.features.interest_match>0)row.reasons.push(`${explicit.length?'В интересах дня':'По активности на сайте'}: ${matched.map(id=>DAY_INTERESTS[id].toLocaleLowerCase('ru')).join(', ')}.`);
     if(weights.time_fit*row.features.time_fit>0)row.reasons.push('Время прогулки укладывается в ваш ответ. Дорога до начала — отдельно.');
     if(weights.visited_penalty*row.features.visited_penalty>0)row.reasons.push('Есть места, которые вы отметили посещёнными.');
+    const reason=feedbackReason(feedback);if(reason)row.reasons.push(reason);
     // No compatible route/date weather evidence exists in STEP2. Unknown is
     // neutral even when a future config supplies a nonzero weather weight.
     return row;
