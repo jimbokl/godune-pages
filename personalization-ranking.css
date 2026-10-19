@@ -1,0 +1,7 @@
+.ranking-controls{color:#000;background:#fff;border-block:1px solid var(--line,#ddd);padding:12px 0;margin:16px 0;font-size:14px;line-height:1.5}
+.ranking-controls summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+.ranking-controls p{max-width:70ch;color:inherit;font-size:14px;line-height:1.5}
+.ranking-controls button{background:transparent;color:inherit;border:0;min-height:44px;padding:8px 0;font:inherit;text-decoration:underline;cursor:pointer}
+.ranking-reason{color:#000;background:#fff;font-size:13px!important;line-height:1.5!important;margin:12px 0 0!important}
+.ranking-controls :focus-visible{outline:2px solid currentColor;outline-offset:3px}
+html[data-theme=night] .ranking-controls,html[data-theme=night] .ranking-reason{background:var(--card,#152b3a);color:var(--ink,#edf1ed)}

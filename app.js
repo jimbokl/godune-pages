@@ -64,7 +64,7 @@
     perfMark('catalog-start');
     return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
-  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026101901'))])
+  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026101902'))])
     .then(([catalog,{initPersonalization}])=>initPersonalization(catalog,base)).catch(()=>null);
   window.addEventListener('godune:profile-events',event=>{
     profileReady.then(profile=>profile?.recordEvents(event.detail)).catch(()=>{});
@@ -74,6 +74,10 @@
   let localStyle;
   const inlineMap = document.body.hasAttribute('data-map-page');
   let lastFocus, activeRoute, map, mapReady, workshop, tripMap = false, markers = [], routeFilter = 'all', timeFilter = 'all';
+  if(document.querySelector('[data-home-showcase],.catalog-walks')){
+    Promise.all([loadCatalog(),profileReady,import(url('personalization-ranking.mjs?v=2026101902'))])
+      .then(([catalog,profile,{initRanking}])=>initRanking({catalog,profile,base,getTrip:()=>workshop?.getState()})).catch(()=>{});
+  }
   // The first screen keeps its own small animation engine. The full trip editor
   // starts near its section or on intent; direct tool pages start immediately.
   const homeHero = Boolean($('#top.hero'));

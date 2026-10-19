@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "weights": {
+    "interest_match": 4,
+    "time_fit": 2,
+    "visited_penalty": 3,
+    "weather_fit": 0,
+    "partner_boost": 0
+  }
+}

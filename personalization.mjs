@@ -66,5 +66,5 @@ export async function initPersonalization(catalog,base){
     return memory.change({type:'events',events:events.map(event=>({...event,id:crypto.randomUUID(),timestamp:new Date(now).toISOString(),context}))});
   }
   document.documentElement.dataset.profileReady='true';
-  return {recordEvents};
+  return {recordEvents,open,get:memory.get,subscribe:memory.subscribe};
 }

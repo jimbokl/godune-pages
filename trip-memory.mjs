@@ -6,6 +6,33 @@ const STORE = 'draft', HISTORY = 'revisions', META = 'meta';
 const LOCAL_RECORD = 'godune-memory-clock';
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
+// Read the authoritative saved draft without starting the editor, migrating,
+// mirroring, or creating a database. null means no readable saved database.
+export async function readSavedTrip(catalog, environment=globalThis){
+  let database;
+  try{
+    if(!environment.indexedDB)return null;
+    if(environment.indexedDB.databases && !(await environment.indexedDB.databases()).some(row=>row.name===MEMORY_DB))return null;
+    database=await new Promise((resolve,reject)=>{
+      const request=environment.indexedDB.open(MEMORY_DB);
+      request.onupgradeneeded=()=>request.transaction.abort();
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+      request.onblocked=()=>{request.onsuccess=()=>request.result.close();reject(Error('memory-blocked'));};
+    });
+    return await new Promise((resolve,reject)=>{
+      const transaction=database.transaction([STORE,META],'readonly');
+      const draft=transaction.objectStore(STORE).get('current'),clock=transaction.objectStore(META).get('clock');
+      transaction.oncomplete=()=>{
+        try{checkMemoryClock(clock.result);checkMemoryRecord(draft.result,clock.result);resolve(draft.result?cleanTrip(draft.result.state,catalog):clock.result?emptyTrip():null);}
+        catch{resolve(emptyTrip());} // Unsupported data is neutral, never guessed.
+      };
+      transaction.onabort=()=>reject(transaction.error);
+    });
+  }catch{return null;}
+  finally{database?.close();}
+}
+
 // The transaction reads the latest draft before applying an action. A page's
 // rendered copy is never used as the starting point of another tab's write.
 class TripActionError extends Error {
