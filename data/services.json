@@ -12891,7 +12891,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://velovoyage39.ru/",
-          "checked_at": "2026-10-08"
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Кто принимает велосипед и как оформляют возврат?"
@@ -12906,7 +12906,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://velovoyage39.ru/",
-          "checked_at": "2026-10-08"
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "С какого момента считают оплачиваемое время?"
@@ -12921,7 +12921,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://velovoyage39.ru/",
-          "checked_at": "2026-10-08"
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Когда заканчивается оплата и как фиксируют время возврата?"
@@ -13504,7 +13504,7 @@
         "status": "confirmed",
         "source": {
           "reference": "https://dompoeta39.ru/services/banya/",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "value": {
           "rules": [
@@ -13538,7 +13538,8 @@
             }
           ],
           "version": 1
-        }
+        },
+        "note": "Предоплата: 50% для проживающих в парк-отеле, 100% для остальных. Бесплатная отмена бронирования за сутки. Условия залога неизвестны."
       },
       {
         "ttl_days": 180,
@@ -13570,7 +13571,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://dompoeta39.ru/services/banya/",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Тип парной в бане-бочке пока не указан. При бронировании спросите, какая парная именно в бане-бочке; русская баня указана отдельно."
@@ -13750,8 +13751,8 @@
         "path": "/profile/length_m",
         "status": "unknown",
         "source": {
-          "reference": "https://baden39.ru/",
-          "checked_at": "2026-10-10"
+          "reference": "https://baden39.ru/bassejny",
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Бассейны: открытый 20 × 40 м, внутренний 9 × 20 м, детский 4 × 4 м."
@@ -13765,8 +13766,8 @@
         "path": "/profile/lanes",
         "status": "unknown",
         "source": {
-          "reference": "https://baden39.ru/",
-          "checked_at": "2026-10-10"
+          "reference": "https://baden39.ru/bassejny",
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Есть ли выделенные дорожки и сколько доступно в нужное время?"
@@ -13797,8 +13798,8 @@
         "path": "/profile/session_minutes",
         "status": "unknown",
         "source": {
-          "reference": "https://baden39.ru/",
-          "checked_at": "2026-10-10"
+          "reference": "https://baden39.ru/calc",
+          "checked_at": "2026-10-20"
         },
         "value": null,
         "note": "Длительность зависит от тарифа: 3 часа или без ограничения времени."
@@ -13812,11 +13813,11 @@
         "path": "/profile/indoor",
         "status": "unknown",
         "source": {
-          "reference": "https://baden39.ru/",
-          "checked_at": "2026-10-10"
+          "reference": "https://baden39.ru/bassejny",
+          "checked_at": "2026-10-20"
         },
         "value": null,
-        "note": "Какой бассейн доступен в день поездки: внутренний или открытый?"
+        "note": "В комплексе есть открытый и внутренний бассейны. Доступность нужной чаши уточните перед поездкой."
       },
       {
         "ttl_days": 30,
@@ -14120,8 +14121,8 @@
         "path": "/tariff/deposit",
         "status": "unknown",
         "source": {
-          "reference": "https://baden39.ru/calc",
-          "checked_at": "2026-10-10"
+          "reference": "https://baden39.ru/pravila",
+          "checked_at": "2026-10-20"
         },
         "value": {
           "kind": "unknown"
@@ -14215,7 +14216,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://www.newfitness.pro/",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "value": [],
         "note": "Вход в клуб пока не проверен. Ориентируйтесь на адрес филиала и вывеску; при необходимости спросите администратора."
@@ -14652,7 +14653,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/kontakty",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "note": "Вход в студию пока не проверен. Ориентируйтесь на адрес студии и вывеску; при необходимости спросите администратора."
       },
@@ -14728,7 +14729,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "note": "Вместимость фитнес-группы пока не указана. Перед выбранным занятием спросите о свободных местах и максимальном размере группы."
       },
@@ -14742,7 +14743,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "note": "Минимальный возраст для фитнеса пока не указан. Если идёте с ребёнком, назовите его возраст и выбранное занятие при записи."
       },
@@ -14782,7 +14783,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://nonstopkaliningrad.ru/page/raspisanie_i_tseny",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "note": "Разовое фитнес-занятие стоит 750 ₽; возвратный залог пока не подтверждён. При записи спросите, нужна ли отдельная возвратная сумма помимо оплаты занятия."
       },
@@ -15045,7 +15046,7 @@
         "status": "unknown",
         "source": {
           "reference": "https://svetlogorsk-tourism.ru/eatery/baden/",
-          "checked_at": "2026-10-10"
+          "checked_at": "2026-10-20"
         },
         "note": "Кафе находится по адресу: Светлогорск, Горького, 14. Его точка на карте и вход пока не проверены. Расположение кафе и вход спросите на месте у сотрудников комплекса."
       },
