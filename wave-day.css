@@ -51,18 +51,18 @@ html[data-theme=night] body.day-planner{--paper:#0e2030;--ink:#e3ebed;--muted:#a
 .day-planner #my-trip .trip-plan-stops>li[data-wave-stop-ready]:not(:last-child)::before{content:'';position:absolute;left:15px;top:37px;bottom:-24px;width:1px;background:var(--sea-line);z-index:0}
 .wave-stop-marker{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--sea);color:#17374b;margin-top:18px;font:600 14px/1 var(--sans);z-index:1}
 .day-planner #my-trip [data-wave-stop-ready]:has(.wave-stop-card[open]) .wave-stop-marker{background:var(--wave-amber);color:#152c3b}
-.wave-stop-card{border:1px solid var(--line);border-radius:13px;min-width:0;background:var(--paper)}
+.wave-stop-card{border:0;border-bottom:1px solid var(--line);border-radius:0;min-width:0;background:var(--paper)}
 .wave-stop-card[open]{border-color:var(--wave-amber)}
-.day-planner #my-trip .wave-stop-summary{display:block;position:relative;padding:16px 46px 16px 18px;min-height:104px;list-style:none;cursor:pointer;text-decoration:none;border:0}
+.day-planner #my-trip .wave-stop-summary{display:block;position:relative;padding:20px 46px 20px 0;min-height:104px;list-style:none;cursor:pointer;text-decoration:none;border:0}
 .wave-stop-summary::-webkit-details-marker{display:none}
 .day-planner #my-trip .wave-stop-card>.wave-stop-summary>img{position:absolute;right:15px;top:calc(50% - 11px);width:22px;height:22px;transform:rotate(-90deg)}
 .day-planner #my-trip .wave-stop-card[open]>.wave-stop-summary>img{transform:none}
 .wave-stop-summary .day-time-caption{display:inline;font:400 13px/1.5 var(--sans);color:var(--muted)}
-.day-planner #my-trip .wave-stop-summary .trip-timeline-time{font:600 13px/1.5 var(--sans);display:inline;margin-left:8px;color:var(--muted)}
-.day-planner #my-trip .wave-stop-summary h4,.day-planner #my-trip .wave-stop-summary h4 a{font:400 29px/1.14 var(--serif);letter-spacing:-.6px;color:var(--ink);margin:6px 0 5px;overflow-wrap:anywhere}
+.day-planner #my-trip .wave-stop-summary .trip-timeline-time{font:600 13px/1.5 var(--sans);font-variant-numeric:tabular-nums;display:inline;margin-left:8px;color:var(--muted)}
+.day-planner #my-trip .wave-stop-summary h4,.day-planner #my-trip .wave-stop-summary h4 a{font:650 24px/1.25 var(--sans);letter-spacing:-.02em;color:var(--ink);margin:6px 0 5px;overflow-wrap:anywhere}
 .wave-stop-description{font:400 14px/1.5 var(--sans);color:var(--muted);margin:0}
 .wave-stop-conflict{display:block;font:600 13px/1.5 var(--sans);color:var(--wave-amber-ink);margin-top:6px}
-.wave-stop-content{padding:0 18px 18px}
+.wave-stop-content{padding:0 0 20px}
 .wave-stop-tabs{display:flex;gap:2px;border:1px solid var(--line);background:var(--sand);padding:2px;border-radius:7px;margin:0 0 15px}
 .wave-stop-tabs button{flex:1;min-height:44px;background:transparent;border-radius:5px;font:400 15px/1.4 var(--sans);color:var(--ink)}
 .wave-stop-tabs button[aria-pressed=true]{background:var(--wave-amber);color:#102638}
@@ -144,11 +144,11 @@ html[data-theme=night] .wave-stop-summary>img,html[data-theme=night] .wave-botto
  .day-planner #my-trip .trip-plan-stops>li[data-wave-stop-ready]{gap:12px;grid-template-columns:26px minmax(0,1fr);margin-bottom:12px}
  .day-planner #my-trip .trip-plan-stops>li[data-wave-stop-ready]:not(:last-child)::before{left:12px}
  .wave-stop-marker{width:26px;height:26px;font-size:12px;margin-top:16px}
- .day-planner #my-trip .wave-stop-summary{padding:14px 34px 14px 12px;min-height:96px}
+ .day-planner #my-trip .wave-stop-summary{padding:16px 34px 16px 0;min-height:96px}
  .wave-stop-summary>img{right:9px;width:20px;height:20px}
- .day-planner #my-trip .wave-stop-summary h4,.day-planner #my-trip .wave-stop-summary h4 a{font-size:24px;line-height:1.14;letter-spacing:-.5px}
+ .day-planner #my-trip .wave-stop-summary h4,.day-planner #my-trip .wave-stop-summary h4 a{font-size:22px;line-height:1.25;letter-spacing:-.02em}
  .wave-stop-description{font-size:13px;line-height:1.45}
- .wave-stop-content{padding:0 12px 14px}
+ .wave-stop-content{padding:0 0 16px}
  .wave-stop-tabs button{font-size:14px}
  .wave-bottom-nav{gap:0;justify-content:space-between}
  .wave-bottom-nav :is(a,button){min-width:0;flex:1}

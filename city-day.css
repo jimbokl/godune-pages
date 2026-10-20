@@ -23,7 +23,7 @@ html[data-theme=day] .city-day .journey-number{background:#7d4512;color:#fff}
 .city-day-flat .city-stop-photo{float:right;object-fit:cover;width:100px;height:75px;margin:0 0 10px 14px;border-radius:3px}.city-day-flat .city-day-gastro,.city-day-flat .city-day-rain,.city-day-flat .route-stop-actions{clear:both}
 @media(max-width:700px){.city-day-flat .inner-title{font-size:clamp(32px,9vw,42px);line-height:1.06}.city-day-flat .inner-lead{font-size:16px;line-height:1.4}.city-day-flat .city-stop-photo{width:72px;height:62px;margin-left:10px}.city-day-flat .journey-stop h3{font-size:21px}}
 body[data-ui-context] .inner-main .city-day-flat .inner-lead{color:var(--sea-muted)}
-html:not([data-theme]) body[data-ui-context="route"] .inner-main .city-day-flat .inner-lead{color:#b2c1ca}
+html:not([data-theme=night]) body[data-ui-context="route"] .inner-main .city-day-flat .inner-lead{color:var(--ink)}
 html[data-theme=night] body[data-ui-context="route"] .inner-main .city-day-flat .inner-lead{color:#b2c1ca}
 
 /* Controls read as a sentence; the timetable remains a separate reference. */
