@@ -39,6 +39,12 @@ export function initBalticPulse(root, {window: win = globalThis.window, document
   const cards = [...list.querySelectorAll('[data-pulse-item]')];
   const records = cards.map((node, index) => ({id: String(index), kind: node.dataset.kind, city: node.dataset.city,
     published: node.dataset.published, start: node.dataset.start, end: node.dataset.end, status: node.dataset.status}));
+  root.querySelectorAll('[data-pulse-full]').forEach(details => {
+    const summary = details.querySelector('summary');
+    const sync = () => summary?.setAttribute('aria-expanded', String(details.open));
+    details.addEventListener('toggle', sync);
+    sync();
+  });
   const buttons = [...root.querySelectorAll('[data-pulse-filter]')];
   const city = root.querySelector('[data-pulse-city]');
   const count = root.querySelector('[data-pulse-count]');

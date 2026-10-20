@@ -1,3 +1,4 @@
+import {eventPath} from './events-engine.mjs?v=2026102001';
 import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
@@ -172,6 +173,7 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
     const estimate=eventDurationEstimateText(visit.event);
     if(estimate){const text=node('p',estimate,'visit-facts');text.dataset.eventDurationEstimate='';content.append(text);}
    }
+   if(typeof visit?.event?.id==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(visit.event.id)){const link=node('a','Страница события →');link.href=new URL(eventPath(visit.event.id),base).href;content.append(link);}
    if(visit?.note)content.append(node('p',visit.note,'visit-note'));
    article.append(content);
    if(context==='unsupported')return {article};

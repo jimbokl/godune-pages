@@ -1,3 +1,4 @@
+import {eventPath} from './events-engine.mjs?v=2026102001';
 import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
@@ -41,7 +42,7 @@ export function initTripEvents({read,commit,base,catalog}){
    if(!response.ok)throw Error('Афишу не удалось перепроверить. Сохранится датированный снимок; актуальность нужно уточнить.');
    const registry=await response.json(),found=registry.events?.find(row=>row.id===event.id);
    if(!found)throw Error('Событие больше не найдено в афише. Проверьте источник перед добавлением.');
-   const {normalizeEvent}=await import('./events-engine.mjs?v=2026101707');
+   const {normalizeEvent}=await import('./events-engine.mjs?v=2026102001');
    return {event:normalizeEvent(found,registry),venue:registry.venues?.[found.venue_id]??venue};
   }
   function positions(){
@@ -86,6 +87,7 @@ export function initTripEvents({read,commit,base,catalog}){
      const separate=button('Посмотреть событие отдельным днём');separate.dataset.eventSeparateDay='';separate.addEventListener('click',()=>{days.value='';positions();update();});review.append(separate);
     }
     review.append(node('p','Цена и условия билета — по источнику; цена «от» не считается полной суммой на группу.'));
+    const page=node('a','Страница события →');page.href=new URL(eventPath(currentEvent.id),base).href;review.append(page);
     const source=node('a',currentEvent.end_time===null?'Уточнить окончание у площадки →':'Источник события');source.href=currentEvent.source_url;source.target='_blank';source.rel='noopener';review.append(source,node('p',`Сведения проверены: ${currentEvent.verified_at}`));
     preview=candidate;save.disabled=false;save.textContent=candidate.alreadyAdded?'Открыть этот день':'Сохранить в моём дне';status.textContent='';
    }catch(e){if(ticket===sequence){status.textContent=message(e);retry.hidden=false;}}

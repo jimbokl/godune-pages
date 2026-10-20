@@ -59,12 +59,6 @@ export async function initPersonalization(catalog,base){
   window.addEventListener('pageshow',replay);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')replay();});
   if(page.kind==='place' && document.body.dataset.poi===page.id)await recordEvents([{type:'place_view',entity_id:page.id}]);
-  const first=()=>{
-    if(memory.get().record.onboarding!=='pending')return;
-    if(document.querySelector('dialog[open]')){document.addEventListener('close',first,{once:true,capture:true});return;}
-    open();
-  };
-  first();
   function recordEvents(events){
     const now=Math.max(Date.now(),Date.parse(memory.get().record.last_seen_at)),context=eventContext(page,now);
     return memory.change({type:'events',events:events.map(event=>({...event,id:crypto.randomUUID(),timestamp:new Date(now).toISOString(),context}))});

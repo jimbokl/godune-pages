@@ -1,4 +1,4 @@
-import {regionDate,eventMatches} from './events-engine.mjs?v=2026101707';
+import {regionDate,eventMatches} from './events-engine.mjs?v=2026102001';
 import {BOOKMARK_KEY,readBookmarks,writeBookmarks} from './events-bookmarks.mjs?v=2026101305';
 const root=document.querySelector('[data-event-calendar]');
 if(root){
@@ -34,4 +34,19 @@ if(root){
  window.addEventListener('storage',e=>{if(e.key===BOOKMARK_KEY||e.key===null){try{saved=readBookmarks(localStorage);storageReady=true;render();}catch{status.textContent='Не удалось прочитать сохранённые события.';}}});
  window.addEventListener('hashchange',()=>{followLink();render();});form.hidden=false;
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)render();});window.addEventListener('focus',render);window.setInterval(()=>{if(!document.hidden)render();},60000);render();
+}
+
+const detail=document.querySelector('[data-event-detail] [data-event-id]');
+if(detail){
+ const button=detail.querySelector('[data-event-save]');
+ const state=document.createElement('p');state.setAttribute('role','status');detail.append(state);
+ const render=()=>{try{
+  const saved=readBookmarks(localStorage).has(detail.id);button.hidden=false;
+  button.setAttribute('aria-pressed',String(saved));button.querySelector('span').textContent=saved?'Сохранено':'Сохранить';
+ }catch{state.textContent='Не удалось открыть сохранённые события в этом браузере.';}};
+ button.addEventListener('click',()=>{try{
+  const saved=readBookmarks(localStorage);if(!saved.delete(detail.id))saved.add(detail.id);
+  writeBookmarks(localStorage,saved);render();
+ }catch{state.textContent='Не удалось сохранить событие. Попробуйте ещё раз.';}});
+ window.addEventListener('storage',e=>{if(e.key===BOOKMARK_KEY||e.key===null)render();});render();
 }

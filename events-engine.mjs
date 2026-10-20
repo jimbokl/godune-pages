@@ -9,6 +9,10 @@ export function regionDate(now=new Date()){
  return `${p.year}-${p.month}-${p.day}`;
 }
 export const EVENT_TIMEZONE='Europe/Kaliningrad';
+export function eventPath(id){
+ if(typeof id!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))throw new TypeError('Invalid event id');
+ return `events/${id}/`;
+}
 const dayMs=86400000;
 const instant=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d{1,6})?)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(v)&&calendarDate(v.slice(0,10))&&Number.isFinite(Date.parse(v));
 const kgd=v=>new Date(new Date(v).getTime()+7200000).toISOString().slice(0,19)+'+02:00';
