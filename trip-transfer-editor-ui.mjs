@@ -1,10 +1,8 @@
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
-import {transferEditorPairs,publishedTransferRoutes,buildTransferChoice,setJourneyBoundary} from './trip-transfer-editor-state.mjs?v=2026101707';
 import {endBookingLabel,bookingEffects} from './trip-bookings-state.mjs?v=2026101305';
 import {canConfigureJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 import {baseName} from './personal-points.mjs?v=2026101305';
 import {pickPersonalPoint} from './personal-point-picker.mjs?v=2026101705';
-import {saveTransferConnection,removeTransferConnection,transferConnectionGuard} from './trip-transfer-connections-state.mjs?v=2026101707';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {inspectTripServiceDay} from './trip-service-day-state.mjs?v=2026101707';
 import {loadTripTravelMatrix} from './travel-estimates.mjs?v=2026101305';
@@ -22,12 +20,16 @@ export function initTransferEditor({host,read,commit,catalog,base}){
  let dialog,loading=false;
  async function open(){
   if(loading||dialog?.open)return;loading=true;opener.disabled=true;status.textContent='';styles(base);
-  const snapshot=structuredClone(read()),day=selectedDay(snapshot),guard=transferConnectionGuard(snapshot);
+  const snapshot=structuredClone(read()),day=selectedDay(snapshot);
   try{
+   const [{transferEditorPairs,publishedTransferRoutes,buildTransferChoice,setJourneyBoundary},{saveTransferConnection,removeTransferConnection,transferConnectionGuard}]=await Promise.all([import('./trip-transfer-editor-state.mjs?v=2026101707'),import('./trip-transfer-connections-state.mjs?v=2026101707')]);
+   const guard=transferConnectionGuard(snapshot);
+   if(transferConnectionGuard(read())!==guard)throw Error('День изменился. Откройте дорогу заново.');
    const pairs=transferEditorPairs(snapshot,catalog);
    if(day.kosa_plan)throw Error('Дорога на косу уже выбрана в настройках этого дня.');
    const [engine,matrix,bus]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,snapshot,catalog).catch(()=>null),fetch(new URL('data/kosa-bus-210.json',base)).then(r=>r.ok?r.json():null).catch(()=>null)]);
    const routes=publishedTransferRoutes(catalog,day.date,bus);
+   if(transferConnectionGuard(read())!==guard)throw Error('День изменился. Откройте дорогу заново.');
    dialog=el('dialog',undefined,'transfer-dialog');dialog.setAttribute('aria-labelledby','transfer-editor-title');
    const form=el('form'),heading=el('h2','Дорога дня');heading.id='transfer-editor-title';
    const close=button('Закрыть','transfer-close'),top=el('div',undefined,'transfer-heading');top.append(heading,close);form.append(top);

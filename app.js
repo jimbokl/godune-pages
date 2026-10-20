@@ -312,7 +312,22 @@
     if ($('#auto-day')) import(url('auto-day.mjs?v=2026101904')).catch(()=>{});
   }
   if ($('#planning-wizard') || $('#auto-day')) warmFirstPlanner();
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101714'))])).then(async ([data, {initWorkshop}]) => {
+  // Explicit new-day intent releases its deferred imports while the saved day restores.
+  let requestNewDay;
+  const newDayIntent = new Promise(resolve => { requestNewDay = resolve; });
+  const newDayTarget = target => target?.closest?.('#planner-new-day,#auto-day,[data-day-start],[data-journey-action="add"],a[href="#planning-wizard"],a[href="#planner-new-day"],a[href="#auto-day"]');
+  document.addEventListener('click', event => { if (newDayTarget(event.target)) requestNewDay(); }, true);
+  document.addEventListener('focusin', event => { if (newDayTarget(event.target)) requestNewDay(); }, true);
+  document.addEventListener('toggle', event => {
+    if (workshop && event.target.id === 'planner-new-day' && event.target.open) requestNewDay();
+  }, true);
+  const requestedNewDay = () => {
+    const params = new URL(location.href).searchParams;
+    return params.has('starter') || params.has('recipe') || ['#planning-wizard','#planner-new-day','#auto-day'].includes(location.hash);
+  };
+  if (requestedNewDay()) requestNewDay();
+  window.addEventListener('hashchange', () => { if (requestedNewDay()) requestNewDay(); });
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026102008'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     if (pendingRouteFilters) {
@@ -332,8 +347,11 @@
     const guidePoint=document.body.dataset.poi,guideRoute=document.body.dataset.route;
     if(!document.querySelector('[data-virtual-guide]') && (guidePoint || guideRoute)){const actions=$('.inner-actions'),link=document.createElement('a');link.className='route-download';link.href=url('guide/?'+new URLSearchParams(guidePoint?{point:guidePoint}:{route:guideRoute}));link.textContent='Открыть виртуального гида →';actions?.after(link);}
     if (document.body.hasAttribute('data-atmosphere-page')) import(url('dreams.mjs?v=2026101406')).then(({initDreams})=>initDreams({workshop,catalog:data,base})).catch(()=>{ $('#dreams-status').textContent='Подборка пока не загрузилась. Фотографии и карточки мест доступны по ссылкам; прежняя поездка сохранена.'; });
-    if ($('#auto-day')) import(url('auto-day.mjs?v=2026101904')).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
-    const plannerWizardReady = $('#planning-wizard') ? import(url('planning-wizard.mjs?v=2026101707')).then(({initPlanningWizard})=>
+    if ($('#planner-new-day')?.open) requestNewDay();
+    const newDayReady = document.body.dataset.tool === 'planner' && workshop.getState().places.length
+      ? Promise.race([workshop.whenScheduleSettled(), newDayIntent]) : Promise.resolve();
+    if ($('#auto-day')) newDayReady.then(()=>import(url('auto-day.mjs?v=2026101904'))).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
+    const plannerWizardReady = $('#planning-wizard') ? newDayReady.then(()=>import(url('planning-wizard.mjs?v=2026101707'))).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
     if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101714')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });

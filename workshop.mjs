@@ -10,14 +10,14 @@ import {initMemoryControls} from './trip-memory-ui.mjs?v=2026101705';
 import {createPlanningProgress} from './planning-progress.mjs?v=2026101707';
 import {tripJournalBindings} from './scenario-bindings.mjs?v=2026101707';
 import {reorderTripPlace, addRouteStops, initTripReorder} from './trip-order.mjs?v=2026101707';
-import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026101707';
+import {initTripSchedule} from './trip-schedule-ui.mjs?v=2026102007';
 import {initTripDays} from './trip-days-ui.mjs?v=2026101707';
 import {initTripEvents} from './trip-events-ui.mjs?v=2026101710';
-import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026101801';
+import {initServiceVisits} from './trip-service-visits-ui.mjs?v=2026102008';
 import {initTransportPlans} from './trip-transport-plans-ui.mjs?v=2026101707';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {serviceVisitRows} from './trip-service-visits-contract.mjs?v=2026101707';
-import {initDayWorkspace} from './day-workspace.mjs?v=2026101714';
+import {initDayWorkspace} from './day-workspace.mjs?v=2026102007';
 import {addTripStarter} from './trip-starters.mjs?v=2026101707';
 import {tripHasPlaces,tripHasDraft,journeyDays} from './trip-days-state.mjs?v=2026101707';
 import {initTripCancellation} from './trip-cancellation-ui.mjs?v=2026101707';
@@ -76,6 +76,9 @@ export async function initWorkshop(catalog, base) {
   const $ = selector => document.querySelector(selector);
   const url = path => new URL(path, base).href;
   let starterEmpty;
+  let scheduleSettled = Promise.resolve();
+  let replaceSchedule;
+  let scheduleReplacement = new Promise(resolve => { replaceSchedule = resolve; });
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
   const restored = loadTrip(storage, catalog);
@@ -188,7 +191,10 @@ export async function initWorkshop(catalog, base) {
       node.disabled = !!done;
       node.textContent = done ? 'Уже в маршруте ✓' : hasTrip ? 'Добавить прогулку →' : 'Выбрать прогулку →';
     });
-    schedule.render();
+    const replaced = replaceSchedule;
+    scheduleSettled = Promise.resolve(schedule.render()).catch(() => {});
+    scheduleReplacement = new Promise(resolve => { replaceSchedule = resolve; });
+    replaced();
     rail.render();
     days.render();
     visits.render();
@@ -313,6 +319,13 @@ export async function initWorkshop(catalog, base) {
   }
   const workshop = {
     progress,
+    async whenScheduleSettled() {
+      for (;;) {
+        const pending = scheduleSettled;
+        await Promise.race([pending, scheduleReplacement]);
+        if (pending === scheduleSettled) return;
+      }
+    },
     addStarter: id => commit(current => addTripStarter(current,id,catalog),'Готовые дни добавлены в поездку.'),getState: () => structuredClone(state), isSaved: () => available, setState: commit,
     getRevision: () => memory.revision, history: () => memory.history(), memoryMode: () => memory.mode,
     memoryCompatibility: () => memory.compatibility, memoryBackup: () => memory.backup(),

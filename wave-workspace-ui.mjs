@@ -1,6 +1,6 @@
 import {dayYandexRouteUrl,updateYandexRoute} from './yandex-route.mjs?v=2026101601';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay} from './trip-days-state.mjs?v=2026101707';
-import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026101707';
+import {initTransferEditor} from './trip-transfer-editor-ui.mjs?v=2026102007';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {hasMenuChoices} from './trip-menu-choices-contract.mjs?v=2026101305';
 import {hasServiceVisits} from './trip-service-visits-contract.mjs?v=2026101707';
@@ -40,14 +40,14 @@ export function initWaveWorkspace({mount,journey,read,commit,base,catalog,work,t
  const back=el('a','wave-back','← Прогулки');back.href=new URL('routes/',base);intro?.prepend(back);
  const cover=el('img','wave-cover');cover.width=1440;cover.height=450;cover.alt='';cover.decoding='async';cover.hidden=true;intro?.append(cover);
  const dayLabel=el('label','wave-day-label'),daySelect=el('select','wave-day-select');daySelect.id='wave-day-select';daySelect.setAttribute('aria-label','Выбрать день');dayLabel.append(daySelect);
- const add=el('button','wave-add-day','+ День');add.type='button';add.setAttribute('aria-label','Добавить день');
+ const add=el('button','wave-add-day','+ День');add.type='button';add.dataset.dayStart='';add.setAttribute('aria-label','Добавить день');
  const dateTools=mount.querySelector('.trip-dates');
  const toolbar=header.querySelector('.day-main-actions');
  const options=el('dialog','wave-more-dialog');options.setAttribute('aria-labelledby','wave-more-title');
  const top=el('div','wave-more-heading'),heading=el('h2','','Ещё для поездки');heading.id='wave-more-title';
  const close=el('button','wave-more-close','Закрыть');close.type='button';top.append(heading,close);options.append(top);
  if(toolbar)options.append(toolbar);if(dateTools)options.append(dateTools);
- const ready=el('button','wave-tools-link','Добавить готовую прогулку');ready.type='button';ready.addEventListener('click',()=>{const wizard=document.querySelector('#planner-new-day');options.close();if(wizard.querySelector('[data-wizard-form]')?.hidden)wizard.querySelector('[data-wizard-again]')?.click();wizard.hidden=false;wizard.open=true;wizard.scrollIntoView({block:'start'});});options.append(ready);
+ const ready=el('button','wave-tools-link','Добавить готовую прогулку');ready.type='button';ready.dataset.dayStart='';ready.addEventListener('click',()=>{const wizard=document.querySelector('#planner-new-day');options.close();if(wizard.querySelector('[data-wizard-form]')?.hidden)wizard.querySelector('[data-wizard-again]')?.click();wizard.hidden=false;wizard.open=true;wizard.scrollIntoView({block:'start'});});options.append(ready);
  options.append(extras,more);const explore=mount.querySelector('.day-explore');if(explore)options.append(explore);
  const dishes=mount.querySelector('.trip-menu-choices');
  const preferences=journey.querySelector('#journey-preferences');if(preferences)options.append(preferences);

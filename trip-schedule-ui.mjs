@@ -20,7 +20,6 @@ import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-v
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101707';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101707';
 import {initDayProgress} from './day-progress-ui.mjs?v=2026101707';
-import {initKosaFlex} from './day-kosa-flex-ui.mjs?v=2026101707';
 import {progressMessages} from './day-progress-advice.mjs?v=2026101707';
 import {currentProgress,remainingTrip} from './day-progress.mjs?v=2026101305';
 import {flexSignature} from './day-flex-advice.mjs?v=2026101707';
@@ -63,7 +62,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   const flexMount=document.createElement('details');flexMount.className='day-flex-advice day-timing-advice';flexMount.hidden=true;
   $('#trip-plan-stops').after(flexMount);
   const flex=initFlexAdvice({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
-  const kosaFlex=initKosaFlex({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
+  let kosaFlex;
   const progressMount=document.createElement('details');progressMount.id='day-progress';progressMount.className='day-progress day-timing-advice';progressMount.hidden=true;
   $('#trip-plan-summary').after(progressMount);
   const progress=initDayProgress({mount:progressMount,commit,feedback:$('#trip-plan-feedback')});
@@ -332,7 +331,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
   const waveMenu=compact?initWaveMenuPicker({root:$('#trip-plan-stops'),trip:read(),catalog,base,read,commit}):null;
   async function render() {
     advice.reset();
-    flex.reset();kosaFlex.reset();progress.reset();section.querySelector('[data-progress-history]')?.remove();
+    flex.reset();kosaFlex?.reset();progress.reset();section.querySelector('[data-progress-history]')?.remove();
     const generated=compact && selectedDay(read()).kosa_plan;
     section.hidden = !generated && read().places.length === 0 && !read().schedule?.rail;
     if(compact)$('#trip-timing-settings').hidden=!!generated;
@@ -355,7 +354,9 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     try {
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
-        const [calculate,{savedKosaJourney}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101707')]);
+        const [calculate,{savedKosaJourney},{initKosaFlex}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101707'),import('./day-kosa-flex-ui.mjs?v=2026101707')]);
+        if(ticket!==sequence)return;
+        kosaFlex ??= initKosaFlex({mount:flexMount,commit,feedback:$('#trip-plan-feedback')});
         const view=await savedKosaJourney(trip,catalog,base,calculate);if(ticket!==sequence)return;
         const summary=$('#trip-plan-summary');summary.textContent=view.message;summary.dataset.planStatus=view.state==='ready'?'needs_check':view.state==='conflict'?'conflict':'incomplete';
         const visited=selectedDay(trip).visited || [],context=travelContext(trip);
