@@ -4,7 +4,7 @@ import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-p
 import {initTripBookings} from './trip-bookings-ui.mjs?v=2026101707';
 import {effectiveBookingDay} from './trip-bookings-state.mjs?v=2026101305';
 import {initTripExpenses} from './trip-expenses-ui.mjs?v=2026101707';
-import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026101707';
+import {initTripMenuChoices} from './trip-menu-choices-ui.mjs?v=2026102001';
 import {serviceBudgetInput} from './trip-service-budget.mjs?v=2026101707';
 import {journeyDays,selectedDay,chooseTripDay,addTripDay,removeTripDay,movePlaceToDay,changeDayDetails,COST_KINDS} from './trip-days-state.mjs?v=2026101707';
 import {parseKopecks,costText,rubles} from './trip-budget-state.mjs?v=2026101305';
@@ -31,7 +31,7 @@ export function loadJourneyTravelMatrices(base,trip,catalog) {
 export function initTripDays({mount,read,commit,base,catalog}) {
   if(!mount)return {render(){},moveControl(){return null;}};
   const section=el('section',undefined,'trip-journey');section.setAttribute('aria-labelledby','journey-title');
-  section.innerHTML=`<div class="journey-heading"><div><p class="eyebrow">Один день — своё приключение</p><h3 id="journey-title">Ваши дни на Балтике</h3></div><span id="journey-count" class="journey-count"></span></div>
+  section.innerHTML=`<div class="journey-heading"><div><p class="eyebrow">Сохранённая поездка</p><h3 id="journey-title">Ваши дни на Балтике</h3></div><span id="journey-count" class="journey-count"></span></div>
     <details class="journey-starters"><summary>Взять готовый план на 3, 5 или 7 дней <span aria-hidden="true">+</span></summary><div id="journey-starters" class="journey-starter-options"></div><p class="journey-note">Калининград, Зеленоградск и коса. Это основа для вашей поездки: остановки, дни и транспорт можно менять. Дни добавятся к вашему черновику. Переезд между городами в начале дня, адрес жилья, билеты и часы работы уточните отдельно.</p></details>
     <nav id="journey-days" class="journey-days" aria-label="Выбрать день поездки"></nav>
     <div class="journey-tools"><button class="journey-button" type="button" data-journey-action="add">+ Ещё день</button><button class="journey-button" type="button" data-journey-action="copy">Скопировать этот день</button><button class="journey-button journey-delete" type="button" data-journey-action="remove">Удалить день</button></div>

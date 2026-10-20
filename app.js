@@ -8,7 +8,7 @@
   const base = new URL('.', document.currentScript.src);
   const url = path => new URL(path.replace(/^\//, ''), base).href;
   if(document.querySelector('[data-menu-preset]')){
-    const init=()=>import(url('trip-menu-choices-ui.mjs?v=2026101707')).then(({initDiningMenuChoices})=>initDiningMenuChoices(document,base)).catch(()=>{
+    const init=()=>import(url('trip-menu-choices-ui.mjs?v=2026102001')).then(({initDiningMenuChoices})=>initDiningMenuChoices(document,base)).catch(()=>{
       document.querySelectorAll('[data-menu-preset-status]').forEach(status=>{status.textContent='Добавление обеда пока не загрузилось. ';const retry=document.createElement('button');retry.type='button';retry.textContent='Повторить';retry.addEventListener('click',init);status.append(retry);});
     });init();
   }

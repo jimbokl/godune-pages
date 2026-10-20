@@ -43,12 +43,15 @@ export function menuChoiceFromTemplate(template,trip,count,now=new Date().toISOS
 export function menuTemplateMatchesRow(template,row,article){
  if(!validMenuChoice(template))return false;
  const price=template.price,display=price.amount_kopecks!==null?formatKopecks(price.amount_kopecks):price.from_kopecks!==null?'от '+formatKopecks(price.from_kopecks):price.label?.trim()||'Уточните цену';
+ const explicitSource=row.dataset.menuSourceUrl!==undefined||row.dataset.menuObservedAt!==undefined;
  const source=article.querySelector('.food-source');
+ const observedAt=explicitSource?row.dataset.menuObservedAt:source?.querySelector('time')?.getAttribute('datetime');
+ const sourceUrl=explicitSource?row.dataset.menuSourceUrl:source?.querySelector('a')?.href;
  return row.querySelector('.food-item-name')?.textContent===template.name
   &&row.dataset.portion===(template.portion?.trim()||'')
   &&compact(row.querySelector('strong')?.textContent||'')===compact(display)
-  &&source?.querySelector('time')?.getAttribute('datetime')===template.source.observed_at
-  &&source?.querySelector('a')?.href===new URL(template.source.url).href;
+  &&observedAt===template.source.observed_at
+  &&sourceUrl===new URL(template.source.url).href;
 }
 
 export function initTripMenuChoices({mount,read,commit,catalog,base,onExpense}){
