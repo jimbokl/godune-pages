@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "601ca9116cd1a253c2b65264ea119796b55af386c05a6046f5b2d81d261a6d6e",
-  "generated_at": "2026-10-19T19:27:29.653Z",
-  "updated_at": "2026-10-19T19:16:53.856956Z",
+  "revision": "50b7cde73e2875c4c9d9ac0e981360677911647e9a9fb23defc8861eada38c8e",
+  "generated_at": "2026-10-20T02:14:11.644Z",
+  "updated_at": "2026-10-20T02:03:13.873346Z",
   "events": [
     {
       "id": "cosmic-visitors-2026",
@@ -926,6 +926,85 @@
       ],
       "place_id": null,
       "duration_estimate": null
+    },
+    {
+      "title": "Гении барокко: Бах и Вивальди",
+      "city_name": "Светлогорск",
+      "venue": "Органный зал \"Макаров\"",
+      "date": "2026-10-19",
+      "starts": "16:00",
+      "description": "В программе: Иоганн Себастьян Бах, Антонио Вивальди. 6+. Продолжительность: 1 час 10 минут.",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "city": "svetlogorsk",
+      "ends": null,
+      "admission": "По билетам · 1500 ₽. Билеты только в кассе зала.",
+      "price": 1500,
+      "currency": "RUB",
+      "source": "event-source-f9eb4005a625cb21",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "id": "event-e62ffabad0d905ee",
+      "evidence": {
+        "title_quote": "ГЕНИИ БАРОККО: БАХ и ВИВАЛЬДИ",
+        "date_quote": "19 октября",
+        "year_quote": "2026",
+        "time_quote": "16:00",
+        "venue_quote": "Органный зал \"Макаров\"",
+        "city_quote": "Светлогорск",
+        "description_quote": "В программе: Иоганн Себастьян Бах, Антонио Вивальди",
+        "admission_quote": "билеты только в кассе зала",
+        "price_quote": "Цена билета: 1500 руб.",
+        "duration_quote": "1 час 10 мин.",
+        "age_quote": "6+",
+        "session_card_sha256": "84ca42a571ae13ed759d60739e71e4c7ff8b0c1576cce46ac4720cfce4594c85",
+        "year_context": "Individual session in official municipal table headed Октябрь 2026; primary listing weekday also matches.",
+        "corroborating_sources": [
+          {
+            "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+            "sha256": "ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f",
+            "private_capture": "runtime/events-refresh/verified-svetlogorsk-2026-10-16/ad790d33753edc3f976b3d7917c6a7a5255a10afc7f174bce975bda0448e526f.html",
+            "month_quote": "Октябрь 2026",
+            "session_row_quote": "\"Гении барокко: Бах и Вивальди\". Хачатуров А., 6+\n 19 октября (16:00)\n г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"\n Концерт органной музыки",
+            "session_row_sha256": "239ea2ddaaef55131038f3c567a3bee98b12435f4f3fae9c94d7418eae05b447"
+          }
+        ]
+      },
+      "venue_id": "organhall-makarov",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-19T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "observations": [
+        {
+          "verified_at": "2026-10-16",
+          "source_url": "https://organhall.ru/",
+          "sha256": "073698452ed1e9d32a932ce5f476f38b707020e71798100997cadccacbe810c9",
+          "status": "scheduled"
+        }
+      ],
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      },
+      "place_id": null
     }
   ]
 }
