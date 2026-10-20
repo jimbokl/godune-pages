@@ -24,3 +24,50 @@
   root.dataset.lightPhase=appearance;
   root.dataset.themeMode=mode;
 })();
+
+// The shared inline bootstrap owns navigation before the deferred app arrives.
+// Keep its listener after app startup so a click never crosses two owners.
+(() => {
+  if (typeof window === 'undefined' || !document.addEventListener || window.goduneEarlyUI) return;
+  const pending = new Set();
+  const menu = () => document.querySelector('.menu-button');
+  const mobile = () => document.querySelector('#mobile-nav');
+  function close(restoreFocus = false) {
+    const button = menu(), nav = mobile(), wasOpen = nav && !nav.hidden;
+    if (nav) nav.hidden = true;
+    button?.setAttribute('aria-expanded', 'false');
+    button?.setAttribute('aria-label', 'Открыть меню');
+    if (restoreFocus && wasOpen) button?.focus();
+  }
+  document.addEventListener('click', event => {
+    const target = event.target, button = menu(), nav = mobile();
+    if (button?.contains(target) && nav) {
+      nav.hidden = !nav.hidden;
+      button.setAttribute('aria-expanded', String(!nav.hidden));
+      button.setAttribute('aria-label', nav.hidden ? 'Открыть меню' : 'Закрыть меню');
+    } else if (nav && !nav.hidden && (nav.contains(target) ? target.closest?.('a') : !target.closest?.('.theme-control'))) close();
+    for (const panel of document.querySelectorAll('.nav-tools[open]')) if (!panel.contains(target)) panel.open = false;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    for (const panel of document.querySelectorAll('.nav-tools[open]')) { panel.open = false; panel.querySelector('summary')?.focus(); }
+    close(true);
+  });
+  function remember(event) {
+    const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter],[data-start-route]');
+    if (!button || button.disabled || event.defaultPrevented) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    pending.add(button);
+    button.setAttribute('aria-busy', 'true');
+  }
+  document.addEventListener('click', remember, true);
+  window.goduneEarlyUI = {
+    menu: true,
+    takeTripActions() {
+      document.removeEventListener('click', remember, true);
+      const actions = [...pending]; pending.clear();
+      actions.forEach(button => button.removeAttribute('aria-busy'));
+      return actions;
+    }
+  };
+})();

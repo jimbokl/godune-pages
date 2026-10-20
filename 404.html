@@ -31,6 +31,53 @@
   root.dataset.lightPhase=appearance;
   root.dataset.themeMode=mode;
 })();
+
+// The shared inline bootstrap owns navigation before the deferred app arrives.
+// Keep its listener after app startup so a click never crosses two owners.
+(() => {
+  if (typeof window === 'undefined' || !document.addEventListener || window.goduneEarlyUI) return;
+  const pending = new Set();
+  const menu = () => document.querySelector('.menu-button');
+  const mobile = () => document.querySelector('#mobile-nav');
+  function close(restoreFocus = false) {
+    const button = menu(), nav = mobile(), wasOpen = nav && !nav.hidden;
+    if (nav) nav.hidden = true;
+    button?.setAttribute('aria-expanded', 'false');
+    button?.setAttribute('aria-label', 'Открыть меню');
+    if (restoreFocus && wasOpen) button?.focus();
+  }
+  document.addEventListener('click', event => {
+    const target = event.target, button = menu(), nav = mobile();
+    if (button?.contains(target) && nav) {
+      nav.hidden = !nav.hidden;
+      button.setAttribute('aria-expanded', String(!nav.hidden));
+      button.setAttribute('aria-label', nav.hidden ? 'Открыть меню' : 'Закрыть меню');
+    } else if (nav && !nav.hidden && (nav.contains(target) ? target.closest?.('a') : !target.closest?.('.theme-control'))) close();
+    for (const panel of document.querySelectorAll('.nav-tools[open]')) if (!panel.contains(target)) panel.open = false;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    for (const panel of document.querySelectorAll('.nav-tools[open]')) { panel.open = false; panel.querySelector('summary')?.focus(); }
+    close(true);
+  });
+  function remember(event) {
+    const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter],[data-start-route]');
+    if (!button || button.disabled || event.defaultPrevented) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    pending.add(button);
+    button.setAttribute('aria-busy', 'true');
+  }
+  document.addEventListener('click', remember, true);
+  window.goduneEarlyUI = {
+    menu: true,
+    takeTripActions() {
+      document.removeEventListener('click', remember, true);
+      const actions = [...pending]; pending.clear();
+      actions.forEach(button => button.removeAttribute('aria-busy'));
+      return actions;
+    }
+  };
+})();
 </script>
   <style>:root{--paper:#f8f5ef;--card:#fdfbf7;--ink:#081d36;--muted:#637487;--line:#dbdcd8;--action:#5386a6;--action-hover:#427592;--amber:#b98038;--sea:#eef3f4;color-scheme:light}
 :root[data-theme=night]{--paper:#10263b;--card:#183247;--ink:#edf2f3;--muted:#b2c1ca;--line:#3d5364;--action:#5386a6;--action-hover:#427592;--sea:#213d50;color-scheme:dark}
@@ -261,7 +308,7 @@ body[data-tool="routes"][data-ui-context] main.inner-main .catalog-waves img {
       </div>
     </div>
     <footer class="utility-footer">Балтика — это маршрут.
-    <small class="footer-release">Релиз <span data-release-id="20261020T104231Z-07c492e2">20261020T104231Z-07c492e2</span></small></footer>
+    <small class="footer-release">Релиз <span data-release-id="20261020T124454Z-85a6bd90">20261020T124454Z-85a6bd90</span></small></footer>
   </main>
 </body>
 </html>

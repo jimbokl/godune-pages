@@ -8,6 +8,12 @@ body[data-home-page] #main .baltic-pulse {
 }
 .baltic-pulse * {box-sizing:border-box}
 .baltic-pulse [hidden] {display:none!important}
+/* The existing JS filters occupy their final space while listeners load.
+   Without JS, native hidden keeps the static feed unchanged. */
+:root[data-theme] .baltic-pulse [data-pulse-controls][hidden] {visibility:hidden}
+:root[data-theme] .baltic-pulse .pulse-controls[hidden] {display:flex!important}
+:root[data-theme] .baltic-pulse .pulse-feed-nav[hidden] {display:grid!important}
+@media(max-width:760px) {:root[data-theme] .baltic-pulse .pulse-feed-nav[hidden] {display:flex!important}}
 .baltic-pulse :is(.pulse-left,.pulse-center,.pulse-right) {min-width:0}
 body[data-home-page] #main .baltic-pulse :is(h1,h2,p,figure) {margin:0;color:var(--ink)}
 body[data-home-page] #main .home-content .baltic-pulse :is(h1,h2) {font-family:var(--sans);font-weight:650;letter-spacing:-.025em}
@@ -46,8 +52,8 @@ body[data-home-page] #main .baltic-pulse .pulse-count {font-size:12px;color:var(
 .pulse-list {display:grid;gap:32px}
 .pulse-card {border:0;border-bottom:1px solid var(--pulse-rule);border-radius:0;background:transparent;min-width:0;padding-bottom:24px}
 .pulse-card-body {padding:0 0 20px}
-.pulse-meta {display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;line-height:1.5;margin-bottom:10px}
-.pulse-meta>span:first-child {font-weight:700}
+.pulse-meta {display:flex;flex-wrap:wrap;gap:4px 8px;font-size:13px;line-height:1.55;margin-bottom:10px;color:var(--reading-quiet)}
+.pulse-meta>*+*::before {content:"·";margin-right:8px}
 .pulse-meta time {font-variant-numeric:tabular-nums}
 body[data-home-page] #main .baltic-pulse .pulse-card h2 {font-size:32px;line-height:1.18;margin:0 0 14px;letter-spacing:-.035em}
 body[data-home-page] #main .baltic-pulse .pulse-description {font-size:18px;line-height:1.55}

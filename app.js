@@ -64,7 +64,14 @@
     perfMark('catalog-start');
     return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
-  const profileReady=Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026102004'))])
+  // The editorial homepage has no profile editor/ranked cards. Preserve its
+  // profile bookkeeping after the visible page loads, without racing the hero.
+  const profileStart = document.body.hasAttribute('data-home-page') && !document.querySelector('[data-home-showcase],.catalog-walks')
+    ? new Promise(resolve => {
+      if (document.readyState === 'complete') resolve();
+      else window.addEventListener('load', resolve, {once:true});
+    }) : Promise.resolve();
+  const profileReady=profileStart.then(()=>Promise.all([loadCatalog(),import(url('personalization.mjs?v=2026102004'))]))
     .then(([catalog,{initPersonalization}])=>initPersonalization(catalog,base)).catch(()=>null);
   window.addEventListener('godune:profile-events',event=>{
     profileReady.then(profile=>profile?.recordEvents(event.detail)).catch(()=>{});
@@ -146,15 +153,17 @@
     menu?.setAttribute('aria-label', 'Открыть меню');
     if (restoreFocus && wasOpen) menu?.focus();
   }
-  menu?.addEventListener('click', () => {
-    if (!mobile) return;
-    mobile.hidden = !mobile.hidden;
-    menu.setAttribute('aria-expanded', String(!mobile.hidden));
-    menu.setAttribute('aria-label', mobile.hidden ? 'Открыть меню' : 'Закрыть меню');
-  });
-  mobile?.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { for(const panel of $$('.nav-tools[open]')) { panel.open=false; panel.querySelector('summary').focus(); } closeMenu(true); } });
-  document.addEventListener('click',e=>{ for(const panel of $$('.nav-tools[open]'))if(!panel.contains(e.target))panel.open=false; if(mobile && !mobile.hidden && !mobile.contains(e.target) && !menu?.contains(e.target) && !e.target.closest('.theme-control'))closeMenu(); });
+  if (!window.goduneEarlyUI?.menu) {
+    menu?.addEventListener('click', () => {
+      if (!mobile) return;
+      mobile.hidden = !mobile.hidden;
+      menu.setAttribute('aria-expanded', String(!mobile.hidden));
+      menu.setAttribute('aria-label', mobile.hidden ? 'Открыть меню' : 'Закрыть меню');
+    });
+    mobile?.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { for(const panel of $$('.nav-tools[open]')) { panel.open=false; panel.querySelector('summary').focus(); } closeMenu(true); } });
+    document.addEventListener('click',e=>{ for(const panel of $$('.nav-tools[open]'))if(!panel.contains(e.target))panel.open=false; if(mobile && !mobile.hidden && !mobile.contains(e.target) && !menu?.contains(e.target) && !e.target.closest('.theme-control'))closeMenu(); });
+  }
   function applyFilters() {
     let count = 0;
     $$('.route-row[data-area]').forEach(row => {
@@ -368,14 +377,16 @@
   // that action and replay it after the normal editor handlers are installed.
   const pendingTripActions = new Set();
   document.addEventListener('click', event => {
-    const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter]');
+    const button = event.target.closest?.('[data-save-place],[data-save-route],[data-plan-starter]' + (document.body.dataset.route ? '' : ',[data-start-route]'));
     if (workshop || !button || button.disabled) return;
     event.preventDefault(); event.stopImmediatePropagation();
     if (pendingTripActions.has(button)) return;
     pendingTripActions.add(button);
+    button.setAttribute('aria-busy', 'true');
     wakeWorkshop('action');
     workshopReady.then(() => {
       pendingTripActions.delete(button);
+      button.removeAttribute('aria-busy');
       if (workshop && button.isConnected && !button.disabled) button.click();
     });
   }, true);
@@ -596,4 +607,9 @@
   window.addEventListener('godune:trip-change', () => {
     if ((inlineMap || $('#map-dialog')?.open) && (tripMap || inlineMap)) renderMap().catch(() => {});
   });
+  // All normal capture/bubble handlers now exist. Transfer each early choice
+  // once, through those same handlers, before accepting subsequent input.
+  for (const button of window.goduneEarlyUI?.takeTripActions() || []) {
+    if (button.isConnected && !button.disabled) button.click();
+  }
 })();
