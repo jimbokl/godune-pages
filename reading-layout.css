@@ -92,6 +92,8 @@ body main.inner-main .reading-content :is(.place-advice,.collection-guide,.map-d
 body main.inner-main .reading-content :is(.route-source-note,.route-stop-note,.route-access-profile,.dining-menu,.dining-facts,.dining-source-hours,.service-card-details,.service-price-panel,.service-filter-details) {border-bottom:1px solid var(--line)!important;padding:0!important}
 body main.inner-main .reading-content :is(.poi-facts,.route-facts,.city-day-facts,.destination-signature-facts,.dunes-facts,.news-facts) {background:none!important;box-shadow:none!important;border:0!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;padding:16px 0;gap:12px}
 body main.inner-main .reading-content :is(.poi-facts,.route-facts,.city-day-facts,.destination-signature-facts,.dunes-facts,.news-facts)>* {background:none!important;border:0!important;box-shadow:none!important}
+/* Source dates follow their readable caption; amber remains decorative. */
+html:not([data-theme=night]) body.inner-page > main.inner-main .service-source-facts time {color:inherit}
 /* A primary action remains distinct; secondary destinations read as links. */
 body main.inner-main .reading-content :is(.button,.save-item,.transport-primary,.transport-secondary,.food-day-save),body[data-home-page] .home-content .button {border-radius:4px;min-height:44px;font:600 15px/1.45 var(--sans);box-shadow:none;letter-spacing:0}
 body main.inner-main .reading-content .author-play {background:var(--reading-note);color:var(--ink);border-color:var(--line)}
