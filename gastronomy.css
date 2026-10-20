@@ -81,6 +81,17 @@ body[data-ui-context] .inner-main .food-guide .food-guide-nav{display:grid;grid-
 .food-menu-unified .food-menu-anchor{position:absolute;top:0;left:0;scroll-margin-top:90px}
 .food-menu-unified .food-menu-alternative{margin:0;text-align:right;overflow-wrap:anywhere}
 .food-menu-unified .food-menu-alternative a{display:inline;min-height:0;font:inherit}
+body.inner-page>main.inner-main .food-menu-source>.food-menu-sources{grid-column:1/-1;min-width:0}
+.food-menu-sources{padding:12px 0;border-bottom:1px solid var(--guide-line);font:12px/1.65 var(--sans)}
+.food-menu-sources>summary{cursor:pointer;color:var(--guide-ink);padding:8px 0}
+.food-menu-sources>div{padding:12px 0;overflow-wrap:anywhere}
+.food-menu-sources p{margin:5px 0}
+.food-menu-unified .food-menu-items .food-menu-row-source a{display:inline;min-height:0;font:inherit;overflow-wrap:anywhere}
+.food-menu-unified .food-menu-items .food-menu-row-source{margin-top:3px}
+.food-menu-unified .food-menu-conflict,.food-menu-unified .food-menu-current{overflow-wrap:anywhere}
+body.inner-page>main.inner-main .food-menu-unified li[data-menu-price-unverified] .food-menu-line{flex-wrap:wrap;gap:4px 12px}
+body.inner-page>main.inner-main .food-menu-unified li[data-menu-price-unverified] .food-menu-line strong{white-space:normal}
+
 .food-menu-items li>div{min-width:0}
 .food-item-name{display:block;color:var(--ink);overflow-wrap:anywhere}
 .food-menu-items small{display:block;margin-top:5px;font:11px/1.6 var(--sans);color:var(--guide-muted)}
