@@ -300,6 +300,18 @@
   }
   window.addEventListener('godune:trip-change', restoreTripFilters);
   window.addEventListener('godune:memory-cleared', () => { lastTripFilters = undefined; restoreTripFilters(); });
+  async function warmFirstPlanner() {
+    try {
+      // Saved drafts keep catalog and restoration ahead of the new-day graphs.
+      if (['godune-trip:v1', 'godune-memory-clock', 'godune-routes'].some(key => localStorage.getItem(key) !== null)) return;
+      if (!globalThis.indexedDB?.databases || (await indexedDB.databases()).some(row => row.name === 'godune-trip-memory')) return;
+    } catch { return; }
+    // Discover only; initialization still awaits the common restored workshop.
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=2026101707')).catch(()=>{});
+    if ($('#auto-day')) import(url('trip-scheduler.mjs?v=2026101707')).then(({loadScheduler})=>loadScheduler(base)).catch(()=>{});
+    if ($('#auto-day')) import(url('auto-day.mjs?v=2026101904')).catch(()=>{});
+  }
+  if ($('#planning-wizard') || $('#auto-day')) warmFirstPlanner();
   const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026101714'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);

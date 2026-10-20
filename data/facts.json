@@ -2810,7 +2810,7 @@
       },
       {
         "effective_status": "unknown",
-        "expires_on": "2026-11-07",
+        "expires_on": "2026-11-19",
         "freshness": "unknown",
         "path": "/profile/return_branches",
         "reason": "source_unknown",
@@ -2820,7 +2820,7 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-08",
+        "verified_at": "2026-10-20",
         "visit_applicability": "unknown"
       },
       {
@@ -2945,7 +2945,7 @@
       },
       {
         "effective_status": "unknown",
-        "expires_on": "2027-01-06",
+        "expires_on": "2027-01-18",
         "freshness": "unknown",
         "path": "/tariff/base/billing",
         "reason": "source_unknown",
@@ -2955,7 +2955,7 @@
           "kind": "offer"
         },
         "ttl_days": 90,
-        "verified_at": "2026-10-08",
+        "verified_at": "2026-10-20",
         "visit_applicability": "unknown"
       },
       {
@@ -3005,7 +3005,7 @@
       },
       {
         "effective_status": "unknown",
-        "expires_on": "2026-11-07",
+        "expires_on": "2026-11-19",
         "freshness": "unknown",
         "path": "/calendar/rules",
         "reason": "source_unknown",
@@ -3015,7 +3015,7 @@
           "kind": "calendar"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-08",
+        "verified_at": "2026-10-20",
         "visit_applicability": "unknown"
       },
       {
@@ -3620,7 +3620,7 @@
       },
       {
         "effective_status": "unknown",
-        "expires_on": "2026-11-09",
+        "expires_on": "2026-11-19",
         "freshness": "unknown",
         "path": "/profile/swim_cap",
         "reason": "source_unknown",
@@ -3630,12 +3630,12 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-20",
         "visit_applicability": "unknown"
       },
       {
         "effective_status": "unknown",
-        "expires_on": "2026-11-09",
+        "expires_on": "2026-11-19",
         "freshness": "unknown",
         "path": "/profile/medical_document",
         "reason": "source_unknown",
@@ -3645,7 +3645,7 @@
           "kind": "service"
         },
         "ttl_days": 30,
-        "verified_at": "2026-10-10",
+        "verified_at": "2026-10-20",
         "visit_applicability": "unknown"
       },
       {
@@ -30448,10 +30448,10 @@
         "value": true
       },
       {
-        "note": "Где можно сдать велосипед, пока не подтверждено. Перед выдачей согласуйте адрес возврата и возможность сдать велосипед в другом пункте.",
+        "note": "На проверенной странице указан пункт проката на Солнечной, 17; условия возврата не указаны. До аренды согласуйте адрес и время сдачи велосипеда и возможность возврата в другом пункте.",
         "path": "/profile/return_branches",
         "source": {
-          "checked_at": "2026-10-08",
+          "checked_at": "2026-10-20",
           "reference": "https://velovoyage39.ru/"
         },
         "status": "unknown",
@@ -30583,10 +30583,10 @@
         }
       },
       {
-        "note": "Опубликована цена 300 ₽/час. Стоимость неполного часа и минимальный срок проката пока не подтверждены. Перед оплатой спросите, сколько стоит неполный час и есть ли минимальное время проката.",
+        "note": "Опубликована цена 300 ₽/час. Правила оплаты неполного часа и минимальный срок проката на проверенной странице не указаны. До аренды согласуйте стоимость выбранной длительности; часовой тариф сам по себе не подтверждает округление до часа.",
         "path": "/tariff/base/billing",
         "source": {
-          "checked_at": "2026-10-08",
+          "checked_at": "2026-10-20",
           "reference": "https://velovoyage39.ru/"
         },
         "status": "unknown",
@@ -30819,10 +30819,10 @@
         ]
       },
       {
-        "note": "Кафе работает 09:00–21:00, блюда с открытого огня готовят с 10:00. Время последнего заказа пока не известно. Для позднего ужина спросите, до скольких принимают заказы и какие блюда ещё готовят.",
+        "note": "На сайте кафе указаны часы 09:00–21:00 и блюда с открытого огня с 10:00. Время последнего заказа на проверенной странице не указано. Для позднего ужина спросите, до скольких принимают заказы и какие блюда ещё готовят.",
         "path": "/calendar/rules",
         "source": {
-          "checked_at": "2026-10-08",
+          "checked_at": "2026-10-20",
           "reference": "https://gnezdo.cafe/"
         },
         "status": "unknown",
@@ -31800,11 +31800,11 @@
         "value": null
       },
       {
-        "note": "Шапочка рекомендована правилами. Возьмите её с собой; обязательность для выбранного посещения спросите до оплаты.",
+        "note": "Пункт 6.5 правил «Баден Аква Спа» в Светлогорске рекомендует плавательную шапочку. Обязательность для выбранного посещения не подтверждена. Возьмите шапочку с собой и уточните требование до оплаты.",
         "path": "/profile/swim_cap",
         "source": {
-          "checked_at": "2026-10-10",
-          "reference": "https://baden39.ru/"
+          "checked_at": "2026-10-20",
+          "reference": "https://baden39.ru/pravila"
         },
         "status": "unknown",
         "subject": {
@@ -31815,11 +31815,11 @@
         "value": null
       },
       {
-        "note": "Требование медицинской справки пока не подтверждено. До поездки уточните его для выбранного посещения и возраста гостей.",
+        "note": "В проверенных правилах и FAQ «Баден Аква Спа» в Светлогорске требование медицинской справки не указано. Это не подтверждает, что справка не нужна: до поездки уточните условия для выбранного посещения и возраста гостей.",
         "path": "/profile/medical_document",
         "source": {
-          "checked_at": "2026-10-10",
-          "reference": "https://baden39.ru/"
+          "checked_at": "2026-10-20",
+          "reference": "https://baden39.ru/pravila"
         },
         "status": "unknown",
         "subject": {
