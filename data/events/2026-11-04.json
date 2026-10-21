@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "50b7cde73e2875c4c9d9ac0e981360677911647e9a9fb23defc8861eada38c8e",
-  "generated_at": "2026-10-21T00:31:00.500Z",
-  "updated_at": "2026-10-20T02:03:13.873346Z",
+  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
+  "generated_at": "2026-10-21T02:33:24.409Z",
+  "updated_at": "2026-10-21T02:01:52.994069Z",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -53,7 +53,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
-      "verified_at": "2026-10-20T02:03:00Z",
+      "verified_at": "2026-10-21T02:01:27Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:41Z",
@@ -65,6 +65,14 @@
           "verified_at": "2026-10-20T02:03:00Z",
           "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
           "sha256": "ad6f08cfa96095216ebad4a25a176e9648196298ba092894435ffd5297311ab6",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "2bab8c98e8b94c7427b26b29e90677e15112478274253211a173af1a03a88cb8",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T12:00:00+02:00"
@@ -129,7 +137,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-20T02:03:00Z",
+      "verified_at": "2026-10-21T02:01:27Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -157,6 +165,14 @@
           "verified_at": "2026-10-20T02:03:00Z",
           "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
           "sha256": "f082e6fee2a50c9b81af24a2398dda28aab9cebe25b0a357f45e8ff33bfd89e5",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "79cebffa7cdb825828210ce4850164c95b2b3d8a690e5a32311e3661cbc6133e",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"

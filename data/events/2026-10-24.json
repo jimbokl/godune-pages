@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "50b7cde73e2875c4c9d9ac0e981360677911647e9a9fb23defc8861eada38c8e",
-  "generated_at": "2026-10-21T00:31:00.500Z",
-  "updated_at": "2026-10-20T02:03:13.873346Z",
+  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
+  "generated_at": "2026-10-21T02:33:24.409Z",
+  "updated_at": "2026-10-21T02:01:52.994069Z",
   "date": "2026-10-24",
   "coverage": {
     "status": "verified_partial",
@@ -54,7 +54,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "verified_at": "2026-10-20T02:03:02Z",
+      "verified_at": "2026-10-21T02:01:29Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -98,6 +98,14 @@
           "verified_at": "2026-10-20T02:03:02Z",
           "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
           "sha256": "679e6b362130f85df0e7c656ee96fc437403bf78e859a9e714c1d948f6493dc1",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:29Z",
+          "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+          "sha256": "7811a34b8add7734e8f809fb79987dc974085ceff1a7ad6f51a1f00d877e5ee8",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T17:00:00+02:00"
@@ -160,7 +168,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "verified_at": "2026-10-20T02:03:01Z",
+      "verified_at": "2026-10-21T02:01:29Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -204,6 +212,14 @@
           "verified_at": "2026-10-20T02:03:01Z",
           "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
           "sha256": "600293d0ee6c63094290d3594c0a436e513d065c2c052bea1d8d5791611919cf",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:29Z",
+          "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+          "sha256": "4e4cd5ce17d940c392eab6e94feba01a1f082642394945ceab8b322259b8a166",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -266,7 +282,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "verified_at": "2026-10-20T02:02:58Z",
+      "verified_at": "2026-10-21T02:01:24Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -310,6 +326,14 @@
           "verified_at": "2026-10-20T02:02:58Z",
           "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
           "sha256": "7dec08004c071a6e32e8f2bde80a3d788505400e9bf45cae77cbb85ad9890bf4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:24Z",
+          "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+          "sha256": "e9d7ddc20736f205675f1d703dfdb120eb04ad75aef82073073577740357d1b1",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"

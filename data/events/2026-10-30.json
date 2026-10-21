@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "50b7cde73e2875c4c9d9ac0e981360677911647e9a9fb23defc8861eada38c8e",
-  "generated_at": "2026-10-21T00:31:00.500Z",
-  "updated_at": "2026-10-20T02:03:13.873346Z",
+  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
+  "generated_at": "2026-10-21T02:33:24.409Z",
+  "updated_at": "2026-10-21T02:01:52.994069Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
@@ -54,7 +54,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
-      "verified_at": "2026-10-20T02:03:03Z",
+      "verified_at": "2026-10-21T02:01:31Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:44Z",
@@ -66,6 +66,14 @@
           "verified_at": "2026-10-20T02:03:03Z",
           "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
           "sha256": "0028a914e6618c048257dad51201a2bcccdc1f897a96f7795f8cc3b53fcf29fb",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:31Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+          "sha256": "0421094acb2c02ead28578bd10eedc0cb60277734f17c839a4f29b81ee3c5657",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T12:00:00+02:00"
@@ -128,7 +136,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "verified_at": "2026-10-20T02:02:59Z",
+      "verified_at": "2026-10-21T02:01:25Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -172,6 +180,14 @@
           "verified_at": "2026-10-20T02:02:59Z",
           "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
           "sha256": "02f981d02f24965652f1fedaff1e0f2dae3cbba8c612d791ae0997e1ebed07f7",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:25Z",
+          "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+          "sha256": "8fa7287e4f30e91cfcd69d4283abacaae883d04977f7f457f443e3ff3435551f",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -235,7 +251,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-20T02:03:03Z",
+      "verified_at": "2026-10-21T02:01:31Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
@@ -287,6 +303,14 @@
           "verified_at": "2026-10-20T02:03:03Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
           "sha256": "22da61b1ffe7e3d4a9490b1f7f31c28cbdaca78dfb6476d977ce62f1c2d594f0",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:31Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "fe2e91d909734dd46f8140769b2df2f018ee6f32917a00335513d0348906bf4d",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"

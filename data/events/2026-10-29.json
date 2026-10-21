@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "50b7cde73e2875c4c9d9ac0e981360677911647e9a9fb23defc8861eada38c8e",
-  "generated_at": "2026-10-21T00:31:00.500Z",
-  "updated_at": "2026-10-20T02:03:13.873346Z",
+  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
+  "generated_at": "2026-10-21T02:33:24.409Z",
+  "updated_at": "2026-10-21T02:01:52.994069Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -52,7 +52,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
-      "verified_at": "2026-10-20T02:02:59Z",
+      "verified_at": "2026-10-21T02:01:25Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -96,6 +96,14 @@
           "verified_at": "2026-10-20T02:02:59Z",
           "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
           "sha256": "49c8dc03d67782d957092f7b83382c1b8bb39e55156239a52d6e0aae2263978d",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T02:01:25Z",
+          "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
+          "sha256": "bedb49c8464fa63c39a1a2663293b85aa1d677a433c55476fbb2c0b71bcfc50c",
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"
