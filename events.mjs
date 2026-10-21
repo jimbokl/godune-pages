@@ -8,10 +8,10 @@ if(root){
  function followLink(){const linked=cards.find(card=>'#'+card.id===location.hash);if(linked){period=linked.dataset.date<regionDate()?'past':'upcoming';form.reset();}}
  followLink();
  function render(){
-  const today=regionDate(),date=form.elements.date.value,city=form.elements.city?.value||'';let count=0;
+  const now=new Date(),today=regionDate(now),date=form.elements.date.value,city=form.elements.city?.value||'';let count=0;
   for(const card of cards){
-   const event={date:card.dataset.date,city:card.dataset.city};
-   card.hidden=!eventMatches(event,{today,date,city,period,saved:saved.has(card.id)});if(!card.hidden)count++;
+   const event={date:card.dataset.date,city:card.dataset.city,start_time:card.dataset.startTime,end_time:card.dataset.endTime||null};
+   card.hidden=!eventMatches(event,{today,date,city,period,saved:saved.has(card.id),now:date?undefined:now});if(!card.hidden)count++;
    const button=card.querySelector('[data-event-save]'),isSaved=saved.has(card.id);
    button.setAttribute('aria-pressed',String(isSaved));button.setAttribute('aria-label',(isSaved?'Убрать из сохранённых: ':'Сохранить событие: ')+card.querySelector('h2').textContent);
    button.querySelector('span').textContent=isSaved?'Сохранено':'Сохранить';button.hidden=false;

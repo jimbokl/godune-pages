@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b2f544d7f72d4f1d0f6f3d8ee5da6d0750d987a79f70a2b06b9f34bf299fd051",
-  "generated_at": "2026-10-21T14:59:19.871Z",
-  "updated_at": "2026-10-21T12:13:59Z",
+  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
+  "generated_at": "2026-10-21T19:57:49.430Z",
+  "updated_at": "2026-10-21T19:09:52Z",
   "date": "2026-10-22",
   "coverage": {
     "status": "verified_partial",
@@ -16,6 +16,91 @@
     ]
   },
   "events": [
+    {
+      "id": "event-d9355adf939d5a4f",
+      "title": "Остров Канта: сквозь время",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-10-22",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Остров Канта: сквозь время. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "По билетам · 6+",
+      "price": 1000,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-09c246846413d417",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-22T11:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1000,
+        "max": 1000,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:afd86df546e05a43d8a08441",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+          "sha256": "36d2365ee96f82bcf851ec38ac367e1ba8e2c4ef61a4cdc2df07392b387b474b",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "11:00Авторская экскурсияОстров Канта: сквозь время1000 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6E79FAF9F494C60A4BE914381070F30639B4C4E8/2026-10-22"
+        ],
+        "calendar_date": "2026-10-22",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "9769",
+          "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
+          "session": {
+            "event_id": "9769",
+            "eventday": "22.10.2026",
+            "eventtime": "11:00",
+            "eventduration": "45",
+            "ticketcount": "50",
+            "timesortnum": ".45833",
+            "daysortnum": "1"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
     {
       "id": "event-3310c7f6905662b9",
       "title": "Органный мини-концерт",
@@ -269,6 +354,91 @@
       }
     },
     {
+      "id": "event-1d11c297d7747fdd",
+      "title": "Прогулка на трамвае",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-10-22",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Прогулка на трамвае. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "По билетам · 6+",
+      "price": 1700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-09c246846413d417",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-22T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1700,
+        "max": 1700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:359bdefb8a63474e42ae749b",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+          "sha256": "36d2365ee96f82bcf851ec38ac367e1ba8e2c4ef61a4cdc2df07392b387b474b",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "15:00Авторская экскурсияПрогулка на трамвае1700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/B2E274D546C4673A07FFDA0226E959045E2466FB/2026-10-22"
+        ],
+        "calendar_date": "2026-10-22",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "10074",
+          "hash_id": "B2E274D546C4673A07FFDA0226E959045E2466FB",
+          "session": {
+            "event_id": "10074",
+            "eventday": "22.10.2026",
+            "eventtime": "15:00",
+            "eventduration": "45",
+            "ticketcount": "50",
+            "timesortnum": ".625",
+            "daysortnum": "1"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
       "id": "event-70ad0e64e10f71ce",
       "title": "Знакомство с музеем Иммануила Канта",
       "city": "kaliningrad",
@@ -326,6 +496,91 @@
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-22"
         ],
         "calendar_date": "2026-10-22"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-470b2a071f1c9b0a",
+      "title": "В гостях у органного мастера",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-22",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "В гостях у органного мастера",
+      "admission": "По билетам · 6+",
+      "price": 1300,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-09c246846413d417",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-22T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1300,
+        "max": 1300,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:4501af352427cb3e7e354b46",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+          "sha256": "36d2365ee96f82bcf851ec38ac367e1ba8e2c4ef61a4cdc2df07392b387b474b",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "16:00Авторский проектВ гостях у органного мастера1300 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/F7C215B11CA77F6C9547B8ED65B475867EB6B880/2026-10-22"
+        ],
+        "calendar_date": "2026-10-22",
+        "meeting": {
+          "status": "facility",
+          "quote": "Ticket event 9551 seatroot_id=852",
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00"
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "9551",
+          "hash_id": "F7C215B11CA77F6C9547B8ED65B475867EB6B880",
+          "session": {
+            "event_id": "9551",
+            "eventday": "22.10.2026",
+            "eventtime": "16:00",
+            "eventduration": "75",
+            "ticketcount": "39",
+            "timesortnum": ".66667",
+            "daysortnum": "1"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -444,6 +699,91 @@
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-22"
         ],
         "calendar_date": "2026-10-22"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-ed6e9aa0e07374c7",
+      "title": "Прогулка на трамвае",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-10-22",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Прогулка на трамвае. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 1700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-09c246846413d417",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-22T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1700,
+        "max": 1700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:c93cafc135561b86af3d098b",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-22",
+          "sha256": "36d2365ee96f82bcf851ec38ac367e1ba8e2c4ef61a4cdc2df07392b387b474b",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "17:00Авторская экскурсияПрогулка на трамвае1700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/B2E274D546C4673A07FFDA0226E959045E2466FB/2026-10-22"
+        ],
+        "calendar_date": "2026-10-22",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "10074",
+          "hash_id": "B2E274D546C4673A07FFDA0226E959045E2466FB",
+          "session": {
+            "event_id": "10074",
+            "eventday": "22.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "1"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },

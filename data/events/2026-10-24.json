@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "b2f544d7f72d4f1d0f6f3d8ee5da6d0750d987a79f70a2b06b9f34bf299fd051",
-  "generated_at": "2026-10-21T14:59:19.871Z",
-  "updated_at": "2026-10-21T12:13:59Z",
+  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
+  "generated_at": "2026-10-21T19:57:49.430Z",
+  "updated_at": "2026-10-21T19:09:52Z",
   "date": "2026-10-24",
   "coverage": {
     "status": "verified_partial",
@@ -11,6 +11,7 @@
     "sources": [
       "event-source-35a37ab2c9cf2aca",
       "event-source-6fa9899babb3f549",
+      "event-source-b69343273310ce45",
       "event-source-b7f7d89fb484f775",
       "event-source-bf3783fcdd66d141",
       "event-source-d7db90b269724b82",
@@ -20,6 +21,235 @@
     ]
   },
   "events": [
+    {
+      "id": "event-43684eafab4d6204",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T11:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:d98d41b1e33a6dfb234e4f39",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-cd18eca8dc7c6651",
+      "title": "Остров Канта: сквозь время",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-10-24",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Остров Канта: сквозь время. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "По билетам · 6+",
+      "price": 1000,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-dc2707e8dde67676",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T11:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1000,
+        "max": 1000,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:b8b6d89b9f6dcadcd3682e91",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+          "sha256": "aa9e5f4da183edadba50632c651e0ecece13bf19f7f2379112c21b7f38f567cc",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "11:00Авторская экскурсияОстров Канта: сквозь время1000 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6E79FAF9F494C60A4BE914381070F30639B4C4E8/2026-10-24"
+        ],
+        "calendar_date": "2026-10-24",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "9769",
+          "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
+          "session": {
+            "event_id": "9769",
+            "eventday": "24.10.2026",
+            "eventtime": "11:00",
+            "eventduration": "45",
+            "ticketcount": "50",
+            "timesortnum": ".45833",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-3908bb29377d16f6",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T12:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:a4ebb1d153ce4e44a585af77",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
+    },
     {
       "id": "event-59a6379329814193",
       "title": "Знакомство с музеем Иммануила Канта",
@@ -145,6 +375,163 @@
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
       }
+    },
+    {
+      "id": "event-b7ec7f6aa512322e",
+      "title": "Гении в лабиринтах истории и Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Касса на Соборной площади",
+      "date": "2026-10-24",
+      "starts": "12:30",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Гении в лабиринтах истории и Органный мини-концерт. Экскурсия стартует у кассы на Соборной площади.",
+      "admission": "По билетам · 0+",
+      "price": 1400,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-dc2707e8dde67676",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T12:30:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1400,
+        "max": 1400,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:b6c652813d2a82b8a0e46e8a",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+          "sha256": "aa9e5f4da183edadba50632c651e0ecece13bf19f7f2379112c21b7f38f567cc",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T12:30:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:30Авторская экскурсияГении в лабиринтах истории и Органный мини-концерт1400 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/66652FE0E1FE3CE6F5114582F6C82BF5CAD45E8E/2026-04-25/2026-10-24"
+        ],
+        "calendar_date": "2026-10-24",
+        "meeting": {
+          "status": "cashdesk",
+          "quote": "Экскурсия стартует у кассы на Соборной площади",
+          "source_url": "https://www.sobor39.ru/events/excursions/author/",
+          "sha256": "2477f54dfcc314c8731636bbf2bf2c753ee152a3e3da9e9d1550fc4135696c8a",
+          "fetched_at": "2026-10-21T18:56:47.647532+00:00"
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "11474",
+          "hash_id": "66652FE0E1FE3CE6F5114582F6C82BF5CAD45E8E",
+          "session": {
+            "event_id": "11474",
+            "eventday": "24.10.2026",
+            "eventtime": "12:30",
+            "eventduration": "105",
+            "ticketcount": "27",
+            "timesortnum": ".52083",
+            "daysortnum": "3"
+          },
+          "route_date_matches": false
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-1f6fc30a2bce955a",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T13:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:d27d335096f091e35a934e33",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T13:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
     },
     {
       "id": "event-957141f211598881",
@@ -273,6 +660,163 @@
       }
     },
     {
+      "id": "event-0c3802afe61f5fd8",
+      "title": "Трамвай времени",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-24",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Трамвай времени. Она начинается с органного мини-концерта в Соборе.",
+      "admission": "По билетам · 6+",
+      "price": 2200,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-dc2707e8dde67676",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T14:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 2200,
+        "max": 2200,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:c06d4273ddbf79782250db3f",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+          "sha256": "aa9e5f4da183edadba50632c651e0ecece13bf19f7f2379112c21b7f38f567cc",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "14:00Авторская экскурсияТрамвай времени2200 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7/2026-10-24"
+        ],
+        "calendar_date": "2026-10-24",
+        "meeting": {
+          "status": "facility",
+          "quote": "Она начинается с органного мини-концерта в Соборе",
+          "source_url": "https://www.sobor39.ru/events/excursions/author/",
+          "sha256": "2477f54dfcc314c8731636bbf2bf2c753ee152a3e3da9e9d1550fc4135696c8a",
+          "fetched_at": "2026-10-21T18:56:47.647532+00:00"
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "10069",
+          "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
+          "session": {
+            "event_id": "10069",
+            "eventday": "24.10.2026",
+            "eventtime": "14:00",
+            "eventduration": "180",
+            "ticketcount": "25",
+            "timesortnum": ".58333",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-143cc7e52c723eba",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T14:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:86b2af0d731a9475983b562c",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
+    },
+    {
       "id": "event-f81a6f6bba13f3a4",
       "title": "Экскурсия \"Закулисье театра\"",
       "city": "kaliningrad",
@@ -385,6 +929,150 @@
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-24"
         ],
         "calendar_date": "2026-10-24"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-ba0507885e42298e",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T15:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:6156acd32cd78d7207925e89",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-67ba0e4bda438e17",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T16:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:ecadf7913e32a2375f08cb3c",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
       },
       "duration_estimate": null
     },
@@ -507,6 +1195,91 @@
         "listing_sha256": "d4c8cddd0637932e899482e2267c4148cce62f069ff07ead1fb95a35baebeb3f",
         "card_quote": "Купить билетИСКУССТВО В КИНО. ГРЕХ (18+)Скоро 24 октября в 16:00 Кинозал Картина рассказывает об испытаниях на творческом пути гениального художника и скульптора Микеланджело Буонарроти. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "24 ОКТЯБРЯ 2026 16:00"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-1991b638252f27c4",
+      "title": "Прогулка на трамвае",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-10-24",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Прогулка на трамвае. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "По билетам · 6+",
+      "price": 1700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-dc2707e8dde67676",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1700,
+        "max": 1700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:e2bd19c389e80341501634aa",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+          "sha256": "aa9e5f4da183edadba50632c651e0ecece13bf19f7f2379112c21b7f38f567cc",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "17:00Авторская экскурсияПрогулка на трамвае1700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/B2E274D546C4673A07FFDA0226E959045E2466FB/2026-10-24"
+        ],
+        "calendar_date": "2026-10-24",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "10074",
+          "hash_id": "B2E274D546C4673A07FFDA0226E959045E2466FB",
+          "session": {
+            "event_id": "10074",
+            "eventday": "24.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "25",
+            "timesortnum": ".70833",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -686,6 +1459,78 @@
       "duration_estimate": null
     },
     {
+      "id": "event-f68db106d2e93c73",
+      "title": "Экскурсия-приключение «Экспонат №0»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Сбор на первом этаже около стойки информации",
+      "date": "2026-10-24",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия-приключение «Экспонат №0». По постоянной экспозиции «Зал Истории Третьяковской галереи». Сбор на первом этаже около стойки информации.",
+      "admission": "Наличие билетов уточните у организатора · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-b69343273310ce45",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T17:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+      "verified_at": "2026-10-21T18:56:08Z",
+      "source_identity": "programme:8568e7cd7e5710f9d5f75e1a",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T18:56:08Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+          "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "source_refs": [
+          {
+            "sha256": "1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/1396d292df332a1392b6348d3e9a6ef60d249795bef1f39e6f58423e0bcd5184.txt"
+          },
+          {
+            "url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "final_url": "https://kaliningrad.tretyakovgallery.ru/excursions/834/",
+            "http_status": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "fetched_at": "2026-10-21T18:56:08Z",
+            "sha256": "bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4",
+            "private_capture": "runtime/events-refresh/verified-2026-10-21/bce4c32b8c30242975567d9104d69391cde3ada39a12e2efd5208e5194dc83c4.html",
+            "captured_at": "2026-10-21T18:56:09.173611+00:00"
+          }
+        ],
+        "meeting_point": "На первом этаже около стойки информации",
+        "meeting_scope": "Meeting point in the primary programme.",
+        "date_start_evidence": "Official selected excursion/date widget",
+        "ticket_widget_url": "https://kaliningrad.tretyakovgallery.ru/tickets/#/buy/excursion/combined/6137/58/2/0/106:293/2026-10-24",
+        "availability": null
+      },
+      "duration_estimate": null
+    },
+    {
       "id": "event-7c2c58fb70b309db",
       "title": "Лига МС КВН «Запад России",
       "city": "svetlogorsk",
@@ -793,6 +1638,83 @@
         "source_identity": "yantarhall:afisha-1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda"
       },
       "source_identity": "yantarhall:afisha-1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-8439158419329f7c",
+      "title": "К юбилею Ференца Листа",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-24",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "К юбилею Ференца Листа",
+      "admission": "По билетам · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-dc2707e8dde67676",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-24T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+      "verified_at": "2026-10-21T12:13:58Z",
+      "source_identity": "programme:fd67f0eb4ddfc9df0179dc17",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:58Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-24",
+          "sha256": "aa9e5f4da183edadba50632c651e0ecece13bf19f7f2379112c21b7f38f567cc",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "18:00Вечерний концертК юбилею Ференца Листакупить",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/scheme/55C0F5A5ADCF83A90F1DC3A6107522DDCF969C3E/2026-10-24"
+        ],
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "9db289854104cb6b1a2716253598df1bcfc41a3ef180c814a04e3685e7c1b687",
+          "fetched_at": "2026-10-21T18:57:39.758731+00:00",
+          "event_id": "11561",
+          "hash_id": "55C0F5A5ADCF83A90F1DC3A6107522DDCF969C3E",
+          "session": {
+            "event_id": "11561",
+            "eventday": "24.10.2026",
+            "eventtime": "18:00",
+            "eventduration": "70",
+            "ticketcount": "456",
+            "timesortnum": ".75",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
+      },
       "duration_estimate": {
         "minutes": 120,
         "basis": "planning_assumption",
