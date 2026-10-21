@@ -71,3 +71,31 @@
     }
   };
 })();
+
+// Keep the decorative footer shore off the initial transfer path.
+// The ordinary CSS remains the fallback when scripts or observers are unavailable.
+(() => {
+  if (typeof IntersectionObserver !== 'function' || typeof MutationObserver !== 'function') return;
+  const root=document.documentElement;
+  let shore,parsed;
+  function release() {
+    root.removeAttribute('data-footer-shore-pending');
+    shore?.disconnect();
+    parsed?.disconnect();
+  }
+  try {
+    shore=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting))release();
+    },{rootMargin:'1000px 0px'});
+    function observeFooter() {
+      const footer=document.querySelector('.site-footer');
+      if(!footer)return;
+      shore.observe(footer);
+      parsed.disconnect();
+    }
+    parsed=new MutationObserver(observeFooter);
+    parsed.observe(document,{childList:true,subtree:true});
+    root.setAttribute('data-footer-shore-pending','');
+    observeFooter();
+  } catch { release(); }
+})();

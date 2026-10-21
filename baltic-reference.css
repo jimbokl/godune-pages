@@ -498,6 +498,7 @@ body[data-ui-context] :is(.route-practical,.practical-panel) h3{font-size:14px;l
 body[data-ui-context] :is(.inner-hero,.tool-intro,.events-heading)::after{background-image:url('./assets/identity/hero-reeds-gulls.webp');width:220px;height:140px;aspect-ratio:auto;opacity:.65}
 body[data-ui-context="tool"] .tool-intro::after,body[data-ui-context="events"] .events-heading::after{display:none}
 .site-footer::before{background-image:url('./assets/identity/bottom-shore-clean-v2.webp');background-position:center top;background-size:cover;opacity:.65}
+html[data-footer-shore-pending] .site-footer::before{background-image:none}
 
 /* Walks: the same numbered path as the transport page, with useful stop detail. */
 body[data-ui-context="route"] .route-walk-layout{gap:40px;margin-top:64px}
