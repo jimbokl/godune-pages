@@ -28,16 +28,16 @@
   }
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
-  // Open the saved editor before native fragment navigation and restore it
+  // Open the requested planner before native fragment navigation and restore it
   // after asynchronous trip rendering. Same-fragment clicks also work.
   function revealPlannerTrip(hash, {scroll=false, focus=false}={}) {
-    const editor=$('#planner-trip-settings') || $('#my-trip');
-    if (!editor) return;
+    const editor=$('#planner-trip-settings') || $('#my-trip'),newDay=$('#planner-new-day');
     let id;
     try { id=decodeURIComponent(hash.slice(1)); } catch { return; }
     const target=document.getElementById(id);
-    if (!target || !editor.contains(target)) return;
+    if (!target || (!editor?.contains(target) && !newDay?.contains(target))) return;
     for (let parent=target; parent; parent=parent.parentElement) {
+      if (parent===newDay) parent.hidden=false;
       if (parent.matches('details')) parent.open=true;
     }
     if (scroll || focus) requestAnimationFrame(() => {
@@ -323,7 +323,7 @@
       if (!globalThis.indexedDB?.databases || (await indexedDB.databases()).some(row => row.name === 'godune-trip-memory')) return;
     } catch { return; }
     // Discover only; initialization still awaits the common restored workshop.
-    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=2026101707')).catch(()=>{});
+    if ($('#planning-wizard')) import(url('planning-wizard.mjs?v=2026102101')).catch(()=>{});
     if ($('#auto-day')) import(url('trip-scheduler.mjs?v=2026101707')).then(({loadScheduler})=>loadScheduler(base)).catch(()=>{});
     if ($('#auto-day')) import(url('auto-day.mjs?v=2026101904')).catch(()=>{});
   }
@@ -331,7 +331,7 @@
   // Explicit new-day intent releases its deferred imports while the saved day restores.
   let requestNewDay;
   const newDayIntent = new Promise(resolve => { requestNewDay = resolve; });
-  const newDayTarget = target => target?.closest?.('#planner-new-day,#auto-day,[data-day-start],[data-journey-action="add"],a[href="#planning-wizard"],a[href="#planner-new-day"],a[href="#auto-day"]');
+  const newDayTarget = target => target?.closest?.('#planner-new-day,#planner-intent,#auto-day,[data-day-start],[data-journey-action="add"],a[href="#planning-wizard"],a[href="#planner-new-day"],a[href="#auto-day"]');
   document.addEventListener('click', event => { if (newDayTarget(event.target)) requestNewDay(); }, true);
   document.addEventListener('focusin', event => { if (newDayTarget(event.target)) requestNewDay(); }, true);
   document.addEventListener('toggle', event => {
@@ -339,7 +339,7 @@
   }, true);
   const requestedNewDay = () => {
     const params = new URL(location.href).searchParams;
-    return params.has('starter') || params.has('recipe') || ['#planning-wizard','#planner-new-day','#auto-day'].includes(location.hash);
+    return params.has('starter') || params.has('recipe') || ['#planning-wizard','#planner-new-day','#planner-intent','#auto-day'].includes(location.hash);
   };
   if (requestedNewDay()) requestNewDay();
   window.addEventListener('hashchange', () => { if (requestedNewDay()) requestNewDay(); });
@@ -367,9 +367,10 @@
     const newDayReady = document.body.dataset.tool === 'planner' && workshop.getState().places.length
       ? Promise.race([workshop.whenScheduleSettled(), newDayIntent]) : Promise.resolve();
     if ($('#auto-day')) newDayReady.then(()=>import(url('auto-day.mjs?v=2026101904'))).then(({initAutoDay})=>initAutoDay({mount:$('#auto-day'),workshop,catalog:data,base,profileReady})).catch(()=>{ $('[data-auto-status]').textContent='Автоматический подбор пока не загрузился. Готовые дни доступны ниже.'; });
-    const plannerWizardReady = $('#planning-wizard') ? newDayReady.then(()=>import(url('planning-wizard.mjs?v=2026101707'))).then(({initPlanningWizard})=>
+    const plannerWizardReady = $('#planning-wizard') ? newDayReady.then(()=>import(url('planning-wizard.mjs?v=2026102101'))).then(({initPlanningWizard})=>
       initPlanningWizard({mount:$('#planning-wizard'),workshop,catalog:data,base})
     ).catch(()=>{ $('#planning-wizard').dataset.wizardReady='error'; }) : Promise.resolve();
+    if ($('#planner-intent')) import(url('planner-intent-ui.mjs?v=2026102101')).then(({initPlannerIntent})=>initPlannerIntent({mount:$('#planner-intent'),workshop,catalog:data,base,wizardReady:plannerWizardReady,profileReady})).catch(()=>{ $('[data-intent-status]').textContent='Диалог пока не загрузился. Готовые дни доступны ниже.'; });
     if ($('#virtual-guide')) import(url('virtual-guide.mjs?v=2026101714')).then(({initVirtualGuide})=>initVirtualGuide({mount:$('#virtual-guide'),workshop,catalog:data,base})).catch(()=>{ $('[data-guide-status]').textContent='Гид пока не загрузился. Откройте прогулку по ссылкам ниже.'; });
     if (document.body.dataset.tool) {
       import(url('tool-pages.mjs?v=2026101707')).then(({initToolPages})=>initToolPages(workshop,data,base)).catch(()=>{

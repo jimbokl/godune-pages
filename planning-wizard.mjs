@@ -56,8 +56,16 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   const save=$('[data-wizard-save]');
   const defaults=()=>({...wizardDefaults(workshop.getState(),catalog),wave:{version:1,theme:'mixed',pace:'calm',recipe:null}});
   let answers=defaults(),step=1,proposal=null,revision=null,sequence=0,saving=false,attempt=null,assessments=[],preferenceMatrix=null,preferenceLoading=null;
-  let returnOptions=new Map(),departureOptions=new Map(),busContext=null,selectionMade=false;
+  let manualEpoch=0;
+  const manualListeners=new Set();
+  const manualIntent=()=>{manualEpoch++;for(const listener of manualListeners)listener();};
+  const manualClick=event=>{if(event.target.closest('button,input,select'))manualIntent();};
+  mount.addEventListener('click',manualClick,true);
+  form.addEventListener('input',manualIntent,true);
+  form.addEventListener('submit',manualIntent,true);
+  let returnOptions=new Map(),departureOptions=new Map(),busContext=null,selectionMade=false,intentPreview=false;
   const node=(tag,text,className)=>{const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;};
+  const intentNotice=node('aside',undefined,'planner-intent-notes');intentNotice.hidden=true;result.after(intentNotice);
   const point=id=>catalog.poi.find(row=>row.slug===id);
   const multi=()=>answers.area==='whole-trip';
   const busActive=()=>wizardBusActive(catalog,answers);
@@ -205,8 +213,9 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     $('[data-wizard-change-label]').textContent=multi()?'← Изменить план':'← Изменить прогулку';
     $('[data-wizard-saved]').hidden=true;save.disabled=false;
     if(step===2){$('[data-wizard-selection]').open=!selectionMade;routes();}
-    if(step===3)preview();
+    const pending=step===3?preview():null;
     if(focus)focusTitle();
+    return pending;
   }
 
   function orderedStops(schedule=null,trip=proposal.trip,route=proposal.route,matrix=null) {
@@ -376,7 +385,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
 
   async function prepareTransport() {
     await Promise.all([busActive()?busForm.prepare():null,railActive()?railForm.prepare():null]);
-    busContext=busActive()?await busForm.context():null;
+    return busActive()?await busForm.context():null;
   }
 
   async function preview() {
@@ -384,8 +393,8 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     returnOptions=new Map();departureOptions=new Map();
     assessments=[assessSchedule(null)];
     save.disabled=true;mount.dataset.wizardCalculating='true';
-    try {await prepareTransport();if(ticket!==sequence||step!==3)return;proposal=prepareWizardPlan(workshop.getState(),answers,catalog,busContext);revision=workshop.getRevision();}
-    catch {proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Вернитесь к выбору дня.');return;}
+    try {const context=await prepareTransport();if(ticket!==sequence||step!==3)return;busContext=context;proposal=prepareWizardPlan(workshop.getState(),answers,catalog,busContext);revision=workshop.getRevision();}
+    catch {if(ticket!==sequence||step!==3)return;proposal=null;save.disabled=true;result.replaceChildren();delete mount.dataset.wizardCalculating;announce('Прогулка сейчас недоступна. Проверьте дату, расписание и время в выборе дня.');return;}
     save.disabled=true;renderResult();mount.dataset.wizardCalculating='true';announce('');
     try {
       const [{loadScheduler},{loadTripTravelMatrix}]=await Promise.all([import('./trip-scheduler.mjs?v=2026101707'),import('./travel-estimates.mjs?v=2026101305')]);
@@ -425,7 +434,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   }
 
   form.addEventListener('submit',async event=>{
-    event.preventDefault();announce('');
+    event.preventDefault();intentPreview=false;intentNotice.hidden=true;announce('');
     if(step===1) {
       const field=form.querySelector('input[name="wizard_area"]:checked');
       if(!field){announce('Выберите место прогулки.');form.querySelector('input[name="wizard_area"]')?.focus();return;}
@@ -446,7 +455,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     if(answers.start>=answers.end){$('[data-wizard-settings]').open=true;form.elements.wizard_end.setCustomValidity('Конец дня должен быть позже начала прогулки.');form.elements.wizard_end.reportValidity();return;}
     for(const [kind,active]of [['bus',busActive()],['rail',railActive()]])if(active){for(const input of $(`[data-wizard-${kind}]`).querySelectorAll('input'))if(!input.checkValidity()){$('[data-wizard-transport]').open=true;input.reportValidity();return;}}
     const ticket=++sequence;
-    try {await prepareTransport();if(ticket!==sequence||step!==2)return;prepareWizardPlan(workshop.getState(),answers,catalog,busContext);show(3);}catch(error) {announce(error.message.startsWith('wizard_bus_')?'Выберите дату с опубликованным расписанием и поездку к дюнам. Если рейсы не складываются, начните раньше или оставьте одну тропу.':error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
+    try {const context=await prepareTransport();if(ticket!==sequence||step!==2)return;busContext=context;prepareWizardPlan(workshop.getState(),answers,catalog,busContext);show(3);}catch(error) {announce(error.message.startsWith('wizard_bus_')?'Выберите дату с опубликованным расписанием и поездку к дюнам. Если рейсы не складываются, начните раньше или оставьте одну тропу.':error.message.startsWith('wizard_rail_')?'Выберите дату, направление и два рейса. Если изменили жильё, уточните дорогу до вокзала и после поезда.':'Проверьте план, дату и время. Все дни должны помещаться в выбранный календарь.');}
   });
   form.addEventListener('input',event=>{
     if(event.target.name==='wizard_transport'){answers.transport=event.target.value;if(answers.transport==='bus')answers.wave.theme='mixed';routes({refreshSettings:false});return;}
@@ -514,7 +523,7 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
   });
 
   function reset() {
-    sequence++;proposal=null;attempt=null;assessments=[];answers=defaults();selectionMade=false;form.hidden=false;
+    sequence++;proposal=null;intentPreview=false;intentNotice.hidden=true;attempt=null;assessments=[];answers=defaults();selectionMade=false;form.hidden=false;
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     announce('');show(1);
   }
@@ -542,5 +551,25 @@ export function initPlanningWizard({mount,workshop,catalog,base}) {
     all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
     show(2,{focus:false});
   }
-  return {reset,destroy(){sequence++;window.removeEventListener('godune:trip-change',changed);window.removeEventListener('godune:memory-cleared',cleared);}};
+  function invalidatePreview() {
+    if(saving)return false;
+    sequence++;proposal=null;revision=null;save.disabled=true;intentPreview=false;intentNotice.hidden=true;
+    result.replaceChildren();delete mount.dataset.wizardCalculating;
+    if(step===3){form.hidden=false;show(2,{focus:false});save.disabled=true;announce('Предложение обновляется. Сохранение станет доступно после нового расчёта.');}
+    return true;
+  }
+  async function previewIntent(nextAnswers,{notes=[],epoch=manualEpoch}={}) {
+    if(epoch!==manualEpoch)return {ready:false};
+    if(!invalidatePreview())return {ready:false};
+    answers={...defaults(),...structuredClone(nextAnswers)};selectionMade=true;intentPreview=true;form.hidden=false;
+    for(let parent=mount.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS'){parent.hidden=false;parent.open=true;}
+    all('input[name="wizard_area"]').forEach(input=>{input.checked=input.value===answers.area;});
+    show(2,{focus:false});
+    // routes() may normalize a manual choice. The intent bridge must never silently substitute it.
+    if(answers.route!==nextAnswers.route||answers.starter!==nextAnswers.starter){invalidatePreview();return {ready:false};}
+    intentNotice.replaceChildren(...notes.map(text=>node('p',text)));intentNotice.hidden=!notes.length;
+    const ticket=sequence+1;await show(3);
+    return {ready:ticket===sequence&&intentPreview&&!!proposal};
+  }
+  return {reset,invalidatePreview,previewIntent,getIntentEpoch:()=>manualEpoch,onManualIntent(listener){manualListeners.add(listener);return ()=>manualListeners.delete(listener);},destroy(){sequence++;manualListeners.clear();mount.removeEventListener('click',manualClick,true);form.removeEventListener('input',manualIntent,true);form.removeEventListener('submit',manualIntent,true);window.removeEventListener('godune:trip-change',changed);window.removeEventListener('godune:memory-cleared',cleared);}};
 }
