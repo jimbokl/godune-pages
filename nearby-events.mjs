@@ -7,7 +7,7 @@ const safeURL=value=>{try{const u=new URL(value);return ['https:','http:'].inclu
 const dateLabel=date=>calendarDate(date)?new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Kaliningrad'}).format(new Date(`${date}T12:00:00+02:00`)):String(date||'Дата не указана');
 const timeLabel=value=>value?new Intl.DateTimeFormat('ru-RU',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Kaliningrad'}).format(new Date(value)):'';
 const evidenceLabel=value=>{const date=String(value||'').slice(0,10);return calendarDate(date)?dateLabel(date):'дата сверки не указана';};
-const coverageText={verified_partial:'Проверена часть афиши; полную программу уточните у площадки.',no_verified_events:'На эту дату пока нет проверенных событий в нашей подборке.',not_published:'Площадка ещё не опубликовала программу на эту дату.',fetch_failed:'Не удалось обновить афишу. Проверьте программу по ссылке площадки.',outside_window:'Дата вне подготовленной подборки. Проверьте программу у площадки.',unknown:'Полнота афиши на эту дату не подтверждена.'};
+const coverageText={verified_partial:'',no_verified_events:'На эту дату пока нет проверенных событий в нашей подборке.',not_published:'Площадка ещё не опубликовала программу на эту дату.',fetch_failed:'Не удалось обновить афишу. Проверьте программу по ссылке площадки.',outside_window:'Дата вне подготовленной подборки. Проверьте программу у площадки.',unknown:'Полнота афиши на эту дату не подтверждена.'};
 
 /** Display the Rust report. Source dates, links and original values are intact. */
 export function applyFreshnessReport(doc,report){
@@ -17,14 +17,16 @@ export function applyFreshnessReport(doc,report){
       const fact=report.facts?.find(f=>f.subject?.id===panel.dataset.factSubject&&f.subject?.kind===(panel.dataset.factKind||'place')&&f.path===row.dataset.factPath);
       if(!fact)continue;
       row.dataset.factFreshness=fact.freshness;
-      const text=fact.effective_status==='conflict'?'источники расходятся':fact.freshness==='needs_review'?'требует проверки':fact.freshness==='not_yet_valid'?'ещё не действует':fact.freshness==='outside_validity'?'срок сведений закончился':fact.freshness==='current'&&fact.effective_status==='confirmed'?'в пределах срока проверки':'нужно уточнить';
+      const text=fact.effective_status==='conflict'?'источники расходятся — уточните перед визитом':fact.freshness==='needs_review'?'данные устарели — уточните перед визитом':fact.freshness==='not_yet_valid'?'эти сведения ещё не действуют':fact.freshness==='outside_validity'?'указанный срок действия закончился':fact.freshness==='current'&&fact.effective_status==='confirmed'?'':'не подтверждено — уточните перед визитом';
       const label=row.querySelector('[data-fact-state]');if(label&&label.textContent!==text)label.textContent=text;
       review||=fact.freshness==='needs_review';
       let hint=row.querySelector('[data-fact-visit-hint]');
       const applicability={beyond_review_horizon:'К дате поездки сведения потребуют повторной проверки.',before_validity:'На дату поездки эти сведения ещё не действуют.',after_validity:'На дату поездки срок этих сведений закончится.'}[fact.visit_applicability];
       if(applicability){if(!hint){hint=doc.createElement('span');hint.dataset.factVisitHint='';row.append(hint);}hint.textContent=' '+applicability;}
       else hint?.remove();
+      row.hidden=!text&&!applicability;
     }
+    panel.hidden=![...panel.querySelectorAll('[data-fact-path]')].some(row=>!row.hidden);
     panel.dataset.factNeedsReview=String(review);panel.dataset.factAsOf=report.as_of;
   }
 }
@@ -115,7 +117,11 @@ function placeCard(place,base){
 
 export function renderNearby(model,{base,freshness=null,now=new Date()}){
   model={...model,clockNow:now};
-  return model.days.map(day=>`<section class="nearby-day" data-nearby-date="${day.date}"${day.date===model.clock.tomorrow?' data-tomorrow':''}><h3>${escape(day.heading)}<time class="nearby-date" datetime="${day.date}">${dateLabel(day.date)}</time></h3><p>${escape(coverageText[day.coverage]||coverageText.unknown)}</p>${day.snapshot?'<p>Время актуальности снимка не позволяет подтвердить, что событие идёт сейчас. Уточните программу у площадки.</p>':''}${day.continuing.length?`<p>Продолжается: ${day.continuing.map(e=>`${escape(e.title)} (${escape(eventTime(e))})`).join('; ')}. Карточка показана один раз.</p>`:''}${day.fallback.length?'<p>Для спокойного дня — места из каталога. Условия визита требуют проверки.</p>':''}<ul class="nearby-grid">${day.events.map(e=>card(e,day,model,false,freshness,base)).join('')}${day.fallback.map(p=>placeCard(p,base)).join('')}</ul>${day.majors.length?`<h4>Ещё в области</h4><ul class="nearby-grid">${day.majors.map(e=>card(e,day,model,false,freshness,base)).join('')}</ul>`:''}${day.unknown.length?`<aside class="nearby-unknown"><p>Начало по расписанию уже прошло; окончание неизвестно:</p><p>${day.unknown.map(e=>`<a href="${escape(new URL(eventPath(e.id),base).href)}">${escape(e.title)}</a> · ${escape(timeLabel(eventInterval(e).start))}${safeURL(e.source_url)?` · <a href="${escape(safeURL(e.source_url))}">Уточнить у площадки</a>`:''}`).join('<br>')}</p></aside>`:''}</section>`).join('')+(model.recent.length?`<section class="nearby-history" aria-label="Недавно завершилось"><h3>Недавно завершилось</h3><ul class="nearby-grid">${model.recent.map(e=>card(e,null,model,true,freshness,base)).join('')}</ul></section>`:'');
+  // Identical undated catalog suggestions need one list. Keep both dates when
+  // events, unknown endings, coverage or snapshot conditions differ.
+  const fallbackKey=day=>day.events.length||day.majors.length||day.continuing.length||day.unknown.length?null:JSON.stringify([day.fallback,day.coverage,day.snapshot,!!day.failed]);
+  const days=model.days.filter((day,i)=>i===0||fallbackKey(day)===null||fallbackKey(day)!==fallbackKey(model.days[i-1]));
+  return days.map(day=>`<section class="nearby-day" data-nearby-date="${day.date}"${day.date===model.clock.tomorrow?' data-tomorrow':''}><h3>${escape(day.heading)}<time class="nearby-date" datetime="${day.date}">${dateLabel(day.date)}</time></h3>${coverageText[day.coverage]!==''?`<p>${escape(coverageText[day.coverage]||coverageText.unknown)}</p>`:''}${day.snapshot?'<p>Время актуальности снимка не позволяет подтвердить, что событие идёт сейчас. Уточните программу у площадки.</p>':''}${day.continuing.length?`<p>Продолжается: ${day.continuing.map(e=>`${escape(e.title)} (${escape(eventTime(e))})`).join('; ')}. Карточка показана один раз.</p>`:''}<ul class="nearby-grid">${day.events.map(e=>card(e,day,model,false,freshness,base)).join('')}${day.fallback.map(p=>placeCard(p,base)).join('')}</ul>${day.majors.length?`<h4>Ещё в области</h4><ul class="nearby-grid">${day.majors.map(e=>card(e,day,model,false,freshness,base)).join('')}</ul>`:''}${day.unknown.length?`<aside class="nearby-unknown"><p>Начало по расписанию уже прошло; окончание неизвестно:</p><p>${day.unknown.map(e=>`<a href="${escape(new URL(eventPath(e.id),base).href)}">${escape(e.title)}</a> · ${escape(timeLabel(eventInterval(e).start))}${safeURL(e.source_url)?` · <a href="${escape(safeURL(e.source_url))}">Уточнить у площадки</a>`:''}`).join('<br>')}</p></aside>`:''}</section>`).join('')+(model.recent.length?`<section class="nearby-history" aria-label="Недавно завершилось"><h3>Недавно завершилось</h3><ul class="nearby-grid">${model.recent.map(e=>card(e,null,model,true,freshness,base)).join('')}</ul></section>`:'');
 }
 
 export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fetch.bind(globalThis),storage,clock=true,factEngine=null}={}){

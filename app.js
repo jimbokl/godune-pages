@@ -49,13 +49,29 @@
       if (scroll) target.scrollIntoView({block:'start',behavior:'instant'});
     });
   }
+  // Restaurant links may target the menu section outside its closed details.
+  // Open only that menu and any nested source/category enclosing the target.
+  function revealArticleMenu(hash, {scroll=false}={}) {
+    let id;
+    try { id=decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target=document.getElementById(id), section=target?.closest('.food-guide #menu');
+    const menu=section?.querySelector('.food-menu-disclosure');
+    if (!menu || (target!==section && !menu.contains(target))) return;
+    menu.open=true;
+    for (let parent=target; parent && parent!==section; parent=parent.parentElement) {
+      if (parent.matches('details')) parent.open=true;
+    }
+    if (scroll) requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'instant'}));
+  }
+  revealArticleMenu(location.hash);
+  window.addEventListener('hashchange',()=>revealArticleMenu(location.hash,{scroll:true}));
   revealPlannerTrip(location.hash);
   window.addEventListener('hashchange',()=>revealPlannerTrip(location.hash,{scroll:true,focus:true}));
   document.addEventListener('click',event=>{
     const link=event.target.closest?.('a[href]');
     if (!link || event.defaultPrevented || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
     const target=new URL(link.href,location.href);
-    if (target.origin===location.origin && target.pathname===location.pathname && target.search===location.search && target.hash) revealPlannerTrip(target.hash,{scroll:true,focus:true});
+    if (target.origin===location.origin && target.pathname===location.pathname && target.search===location.search && target.hash) { revealPlannerTrip(target.hash,{scroll:true,focus:true}); revealArticleMenu(target.hash,{scroll:true}); }
   });
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
   let catalogLoader;

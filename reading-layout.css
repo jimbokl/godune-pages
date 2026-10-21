@@ -44,12 +44,12 @@ body:is([data-ui-context=day],[data-ui-context=tool],[data-ui-context=transport]
   .reading-navigation::details-content {content-visibility:visible;display:block}
   .reading-navigation:not([open])>.reading-navigation-body {display:block}
 }
-.reading-sections,.reading-chapters {display:flex;flex-direction:column;gap:0}
+.reading-chapters {display:flex;flex-direction:column;gap:0}
 .reading-sidebar a,body.inner-page main.inner-main .reading-sidebar a {display:block;padding:10px 0;min-height:44px;color:inherit;text-decoration:none;overflow-wrap:anywhere}
 .reading-sidebar a:hover,.reading-sidebar a[aria-current],body.inner-page main.inner-main .reading-sidebar a:hover,body.inner-page main.inner-main .reading-sidebar a[aria-current] {color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 .reading-sidebar a[aria-current=page] {font-weight:650}
 .reading-sidebar :is(a,summary):focus-visible {outline:2px solid var(--ink);outline-offset:3px}
-.reading-chapters {border-top:1px solid var(--line);margin-top:20px;padding-top:20px}
+.reading-chapters {margin:0;padding:0}
 .reading-sidebar .reading-chapters p {font-size:11px;letter-spacing:.04em;margin:0 0 10px;color:var(--reading-quiet)}
 .reading-chapters a {font-size:12px;line-height:1.5}
 body main.inner-main .reading-content,.home-content {font:400 17px/1.7 var(--sans);color:var(--ink)}
@@ -150,7 +150,6 @@ body[data-home-page] .home-content .mosaic-legend {margin-bottom:40px}
   .reading-navigation[open]>summary::after {content:'−'}
   .reading-navigation:not([open])>.reading-navigation-body {display:none}
   .reading-navigation-body {padding-bottom:20px}
-  .reading-sections {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
   .reading-sidebar a,body.inner-page main.inner-main .reading-sidebar a {min-height:44px;padding:10px 0}
 }
 @media(max-width:600px) {
@@ -253,3 +252,5 @@ body[data-news] .reading-content .news-related a {border:0;border-radius:0;paddi
   body[data-news] main.inner-main .reading-content .news-lead {font-size:19px;line-height:1.55}
   body[data-news] main.inner-main .reading-content .news-article h1 {font-size:30px;line-height:1.16}
 }
+
+.fact-freshness[hidden],.fact-freshness [data-fact-path][hidden]{display:none!important}
