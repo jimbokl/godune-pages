@@ -15,7 +15,8 @@ import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {resolveVisitCalendar, visitFacts} from './visit-calendar.mjs?v=2026101601';
 import {resolveKitchenCalendar} from './kitchen-calendar.mjs?v=2026101305';
 import {transportCard,bindTransport} from './trip-transport-ui.mjs?v=2026101305';
-import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, loadTripTravelMatrix, previousPlace, dayBases} from './travel-estimates.mjs?v=2026101305';
+import {TRAVEL_MODES, travelMode, manualLeg, resolveTravel, resolveAccess, previousPlace, dayBases} from './travel-estimates.mjs?v=2026101305';
+import {loadTripTimingMatrix} from './trip-timing-matrix.mjs?v=2026102101';
 import {clock, ownPointPhoto, stopTimeView, routineStopIssue} from './day-stop-view.mjs?v=2026101305';
 import {initTimingAdvice} from './day-timing-advice-ui.mjs?v=2026101707';
 import {initFlexAdvice} from './day-flex-advice-ui.mjs?v=2026101707';
@@ -385,7 +386,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
         const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);
         section.dataset.scheduleReady='true';return;
       }
-      const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTravelMatrix(base,trip,catalog).catch(()=>null)]);if(ticket!==sequence)return;
+      const [calculate,matrix]=await Promise.all([loadScheduler(base),loadTripTimingMatrix(base,trip,catalog).catch(()=>null)]);if(ticket!==sequence)return;
       progress.render({trip,catalog,matrix,engine:calculate,stillCurrent:()=>ticket===sequence && tripSignature(read())===tripSignature(trip)});
       const result=calculate(planInput(trip,catalog,matrix));
       let light=null;

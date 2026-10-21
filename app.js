@@ -327,7 +327,7 @@
   };
   if (requestedNewDay()) requestNewDay();
   window.addEventListener('hashchange', () => { if (requestedNewDay()) requestNewDay(); });
-  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026102008'))])).then(async ([data, {initWorkshop}]) => {
+  const workshopReady = workshopNeeded.then(() => Promise.all([loadCatalog(), import(url('workshop.mjs?v=2026102101'))])).then(async ([data, {initWorkshop}]) => {
     perfMark('workshop-init-start');
     workshop = await initWorkshop(data, base);
     if (pendingRouteFilters) {
