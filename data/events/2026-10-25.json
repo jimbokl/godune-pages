@@ -1,16 +1,20 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
-  "generated_at": "2026-10-21T10:40:27.188Z",
-  "updated_at": "2026-10-21T02:01:52.994069Z",
+  "revision": "b2f544d7f72d4f1d0f6f3d8ee5da6d0750d987a79f70a2b06b9f34bf299fd051",
+  "generated_at": "2026-10-21T12:34:27.314Z",
+  "updated_at": "2026-10-21T12:13:59Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
       "event-source-03a0eb979f0bc6b9",
-      "event-source-707d2319c774b8e0"
+      "event-source-707d2319c774b8e0",
+      "event-source-906d82fbac956198",
+      "event-source-bf3783fcdd66d141",
+      "event-source-cb769ee162f49dbe",
+      "event-source-d43c8fb8d878b9ec"
     ]
   },
   "events": [
@@ -131,6 +135,490 @@
       }
     },
     {
+      "id": "event-6b7302f8904ff773",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-25",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:b41502b2b6b55d0c40e363a9",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-a85b88af289611f4",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-25",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:504b3f54a5191afddaf8fee1",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-4d75b460b15bef92",
+      "title": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-25",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 1300,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T13:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1300,
+        "max": 1300,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:f1af52542103ccc3f4f037be",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T13:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "13:00Ежедневная экскурсияЗнакомство с органным залом, заалтарным пространством и Органный мини-концерт1300 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-4afa8e8f5035719c",
+      "title": "Глинка: рождение русской классики",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-10-25",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Лекция",
+      "description": "Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+      "admission": "По билетам · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-d43c8fb8d878b9ec",
+      "image": {
+        "src": "assets/editorial/events-astronomy-960.webp",
+        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Телескоп и звёздный атлас",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T14:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
+      "verified_at": "2026-10-21T11:53:18Z",
+      "source_identity": "programme:7958f9bac8a76cf3ade3e7b7",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:53:18Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
+          "sha256": "be51d74088df51a53b14fc62db05d30da1c57d66d036dec76646a4069bd25459",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "a1216082f0d83d7e1a067f25497ca8e842841e881f8279ff3a76654a976e895f",
+        "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «ГЛИНКА: РОЖДЕНИЕ РУССКОЙ КЛАССИКИ» (12+)Скоро 25 октября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+        "explicit_date": "25 ОКТЯБРЯ 2026 14:00"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-60516333854f80e1",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-25",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T14:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:27088dccefaf682d40941a4f",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "14:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-9127c68f35555ba2",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-25",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:beb8be53076f8a22b6c6110c",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "15:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-008fe092cd8c04ec",
+      "title": "Искусство в кино. Арт-лекторий: Тайная жизнь Уффици",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-10-25",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Кинопоказ",
+      "description": "Фильм о жизни одного из старейших музеев мира. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
+      "admission": "По билетам · 16+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-906d82fbac956198",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "cinema",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T17:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
+      "verified_at": "2026-10-21T11:53:18Z",
+      "source_identity": "programme:4ff95bc5b91eae738dc79028",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:53:18Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
+          "sha256": "944aa33758917cb5fd800d1d782d762139709b3057b22410c00d028607cf6e4d",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "a1216082f0d83d7e1a067f25497ca8e842841e881f8279ff3a76654a976e895f",
+        "card_quote": "Купить билетИСКУССТВО В КИНО. АРТ-ЛЕКТОРИЙ: ТАЙНАЯ ЖИЗНЬ УФФИЦИ (16+)Скоро 25 октября в 17:00 Кинозал Фильм о жизни одного из старейших музеев мира. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
+        "explicit_date": "25 ОКТЯБРЯ 2026 17:00"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-37110b69802a8f8c",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-25",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-cb769ee162f49dbe",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:43878f37211b82775f0d8c73",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-25",
+          "sha256": "b81616133748411a2de1eefefe2b1580618e4b24d5c9934ac4e1643da9e99cf8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "17:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-25"
+        ],
+        "calendar_date": "2026-10-25"
+      },
+      "duration_estimate": null
+    },
+    {
       "id": "event-5fccc93defd20879",
       "title": "Виват, Опера!",
       "city": "kaliningrad",
@@ -245,6 +733,61 @@
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
       }
+    },
+    {
+      "id": "event-adfd2c9b9d1a4b5e",
+      "title": "Похороните меня за плинтусом",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр · Основная сцена",
+      "date": "2026-10-25",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Спектакль",
+      "description": "по мотивам повести Павла Санаева",
+      "admission": "На сайте театра билетов нет · 16+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-bf3783fcdd66d141",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-drama",
+      "place_id": null,
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-25T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "verified_at": "2026-10-21T11:51:35Z",
+      "source_identity": "programme:6bdd29fa5eed32331cf4dfc6",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:51:35Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "Премьера25ОктябряВс18:00Похороните меня за плинтусомпо мотивам повести Павла СанаеваПУШКИНСКАЯ КАРТАОсновная сцена2 часа 50 минут с антрактом16+Билетов нет",
+        "year": "Selected programme year: 2026",
+        "duration_quote": "2 часа 50 минут с антрактом",
+        "stage": "Основная сцена"
+      },
+      "duration_estimate": null
     }
   ]
 }

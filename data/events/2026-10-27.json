@@ -1,14 +1,691 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "5c70940760b8c10ad8693a82f3b611640ac547d44e5b95c271ae5a5f1f9c98cf",
-  "generated_at": "2026-10-21T10:40:27.188Z",
-  "updated_at": "2026-10-21T02:01:52.994069Z",
+  "revision": "b2f544d7f72d4f1d0f6f3d8ee5da6d0750d987a79f70a2b06b9f34bf299fd051",
+  "generated_at": "2026-10-21T12:34:27.314Z",
+  "updated_at": "2026-10-21T12:13:59Z",
   "date": "2026-10-27",
   "coverage": {
-    "status": "no_verified_events",
+    "status": "verified_partial",
     "complete": false,
-    "sources": []
+    "sources": [
+      "event-source-160d2d2791443b54",
+      "event-source-bf3783fcdd66d141",
+      "event-source-d490578bf4914d22",
+      "event-source-f9eb4005a625cb21"
+    ]
   },
-  "events": []
+  "events": [
+    {
+      "id": "event-13e139fafb2b7609",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-27",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:9ccc7591f8b13e0bfd19307a",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-82dc24f5014ad374",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-27",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:b83d43e05836f45f9aea1206",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-8b301f0cb5ae16ff",
+      "title": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-27",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 1300,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T13:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1300,
+        "max": 1300,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:7629ed60f84999ab1194e8a6",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T13:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "13:00Ежедневная экскурсияЗнакомство с органным залом, заалтарным пространством и Органный мини-концерт1300 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-431378b8f40886f8",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-27",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T14:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:9ced0c85af40365316b06fa0",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "14:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-34113213850ff6a7",
+      "title": "Коралина в стране кошмаров",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр · Средняя сцена",
+      "date": "2026-10-27",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Спектакль",
+      "description": "Хоррор-мюзикл Анны Морозовой по мотивам повести Нила Геймана",
+      "admission": "На сайте театра билетов нет · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-bf3783fcdd66d141",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-drama",
+      "place_id": null,
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T15:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "verified_at": "2026-10-21T11:51:35Z",
+      "source_identity": "programme:cd7c56c95aa7724c83ec2170",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:51:35Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "27ОктябряВт15:00Коралина в стране кошмаровХоррор-мюзикл Анны Морозовой по мотивам повести Нила ГейманаПУШКИНСКАЯ КАРТАСредняя сцена1 час 20 минут без антракта12+Билетов нет",
+        "year": "Selected programme year: 2026",
+        "duration_quote": "1 час 20 минут без антракта",
+        "stage": "Средняя сцена"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-4f2dbd3e18d0fc00",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-27",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:b3d87c6bfbfe3cb5c773703a",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "15:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-771e4ab289a6d8e2",
+      "title": "Шедевры органной музыки",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Органный зал «Макаров»",
+      "date": "2026-10-27",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари Видор",
+      "admission": "Билеты в кассе зала · 6+",
+      "price": 1500,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-f9eb4005a625cb21",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "organhall-makarov",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-21T11:45:35Z",
+      "source_identity": "programme:882524e83fec1d8dfea4e5de",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:45:35Z",
+          "source_url": "https://organhall.ru/",
+          "sha256": "fcbff953829d261b19bee41097ade98d9a402b8c9a0868d04145177e38617621",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "27 октября (вт), 16:00 билеты только в кассе залаШЕДЕВРЫ ОРГАННОЙ МУЗЫКИАртем Хачатуров (орган)В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари ВидорподробнееПродолжительность: 1 час 10 мин. Цена билета: 1500 руб. Воз. ограничение 6+",
+        "year_corroboration": {
+          "source_url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "sha256": "6c0421caf8395d66d77eda153bae8fce52d0b767de380c7549207f330e57db7d",
+          "fetched_at": "2026-10-21T11:51:37Z",
+          "quote": "\"Шедевры органной музыки\", 6+27 октября (16:00)г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки"
+        }
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-b95ddc3f12b4e6a7",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-10-27",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:cedc6559d12b83a1d00130ed",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "17:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-af23cf1b5934605b",
+      "title": "Искусство в кино. Больше чем музей",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-10-27",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Кинопоказ",
+      "description": "Дом для «Крика». Как большие перемены начинаются с маленьких команд и смелых идей. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
+      "admission": "По билетам · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-160d2d2791443b54",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "cinema",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
+      "verified_at": "2026-10-21T11:53:18Z",
+      "source_identity": "programme:8fde0cce0dc3cb2fe49b0169",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:53:18Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
+          "sha256": "e1597ce9a3911de884f2d265f705379d67769740082e49eec3ce62ff802714ca",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "a1216082f0d83d7e1a067f25497ca8e842841e881f8279ff3a76654a976e895f",
+        "card_quote": "Купить билетИСКУССТВО В КИНО. БОЛЬШЕ ЧЕМ МУЗЕЙ (12+)Скоро 27 октября в 18:00 Кинозал Дом для «Крика». Как большие перемены начинаются с маленьких команд и смелых идей. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
+        "explicit_date": "27 ОКТЯБРЯ 2026 18:00"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-e8aba6a764501891",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-27",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-d490578bf4914d22",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+      "verified_at": "2026-10-21T12:13:59Z",
+      "source_identity": "programme:e6073f81a99be3212ce4cc54",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T12:13:59Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-27",
+          "sha256": "33471b4c55c47da7a14898031948b15e63c444d8b28e0c5cc78aea411b141833",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "18:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-27"
+        ],
+        "calendar_date": "2026-10-27"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
+      "id": "event-8319ae739f9ccb4d",
+      "title": "Коралина в стране кошмаров",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр · Средняя сцена",
+      "date": "2026-10-27",
+      "starts": "19:00",
+      "ends": null,
+      "kind": "Спектакль",
+      "description": "Хоррор-мюзикл Анны Морозовой по мотивам повести Нила Геймана",
+      "admission": "На сайте театра билетов нет · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-bf3783fcdd66d141",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-drama",
+      "place_id": null,
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-27T19:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "verified_at": "2026-10-21T11:51:35Z",
+      "source_identity": "programme:192db4df32110a0938a943fc",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-21T11:51:35Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T19:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "27ОктябряВт19:00Коралина в стране кошмаровХоррор-мюзикл Анны Морозовой по мотивам повести Нила ГейманаПУШКИНСКАЯ КАРТАСредняя сцена1 час 20 минут без антракта12+Билетов нет",
+        "year": "Selected programme year: 2026",
+        "duration_quote": "1 час 20 минут без антракта",
+        "stage": "Средняя сцена"
+      },
+      "duration_estimate": null
+    }
+  ]
 }
