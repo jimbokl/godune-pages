@@ -352,6 +352,12 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
     $('#trip-light').replaceChildren();
     $('#trip-plan-summary').textContent='Раскладываем день…';
     try {
+      // Saved settings do not depend on road estimates or the calculation engine.
+      // Keep their nodes when that asynchronous calculation settles.
+      if(!generated) {
+        renderSettings(settings);
+        if(focused && !focusedStop) [...section.querySelectorAll('[data-plan-field]')].find(node=>node.dataset.planField===focused && (!focusedMode || node.value===focusedMode))?.focus({preventScroll:true});
+      }
       if(generated) {
         $('#trip-plan-stops').replaceChildren();
         const [calculate,{savedKosaJourney},{initKosaFlex}]=await Promise.all([loadScheduler(base),import('./day-kosa-journey.mjs?v=2026101707'),import('./day-kosa-flex-ui.mjs?v=2026101707')]);
@@ -384,7 +390,7 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       const result=calculate(planInput(trip,catalog,matrix));
       let light=null;
       if(trip.date)try {light=calculate.light(lightInput(trip,catalog,result));}catch{/* Preserve the schedule when the optional light layer cannot be calculated. */}
-      renderSettings(settings);renderStops(trip,result,matrix,light);
+      renderStops(trip,result,matrix,light);
       for(const id of visitsExpanded){const node=[...section.querySelectorAll('[data-day-visit]')].find(row=>row.dataset.dayVisit===id);if(node)node.open=true;}
       for(const id of checksExpanded){const node=[...section.querySelectorAll('[data-day-checks]')].find(row=>row.dataset.dayChecks===id);if(node)node.open=true;}
       const applyLight = async alternative => {
@@ -414,10 +420,10 @@ export function initTripSchedule({mount, read, commit, base, catalog}) {
       }).catch(()=>{});
       for(const details of section.querySelectorAll('details[data-plan-editor]')) details.open=expanded.includes(details.dataset.planEditor);
       for(const details of section.querySelectorAll('details[data-transport-editor]')) details.open=transportExpanded.includes(details.dataset.transportEditor);
-      if(focused) [...section.querySelectorAll('[data-plan-field]')].find(node=>node.dataset.planField===focused && node.dataset.planStop===focusedStop && (!focusedMode || node.value===focusedMode))?.focus({preventScroll:true});
+      if(focusedStop) [...section.querySelectorAll('[data-plan-field]')].find(node=>node.dataset.planField===focused && node.dataset.planStop===focusedStop && (!focusedMode || node.value===focusedMode))?.focus({preventScroll:true});
     } catch (error) {
       if(ticket!==sequence)return;
-      renderSettings(settings);$('#trip-plan-stops').replaceChildren();
+      if(generated)renderSettings(settings);$('#trip-plan-stops').replaceChildren();
       $('#trip-plan-summary').textContent=progressMessages[error.message] || (error.message==='departure_before_day'?'Срок возвращения раньше начала дня. Перенесите остановки или измените дату записи.':error.message==='arrival_after_day'?'Прибытие с запасом позже конца дня. Продлите день или перенесите прогулку на следующую дату.':'Расчёт дня сейчас не открылся. Попробуйте ещё раз.');
       if(generated){const link=document.createElement('a');link.href=new URL('kurshskaya-kosa/bez-mashiny/#kosa-planner',base);link.className='day-kosa-edit';link.textContent='Открыть сохранённую поездку на косу →';const entry=document.createElement('li');entry.className='day-journey-action';entry.append(link);$('#trip-plan-stops').append(entry);}
       section.dataset.scheduleReady=(['arrival_after_day','departure_before_day'].includes(error.message) || Object.hasOwn(progressMessages,error.message))?'true':'error';

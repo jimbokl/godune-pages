@@ -129,7 +129,8 @@ export function initTripDays({mount,read,commit,base,catalog}) {
   }
   function render() {
     const trip=read(),days=journeyDays(trip),day=selectedDay(trip),ticket=++sequence;
-    const focused=document.activeElement?.closest('.trip-journey')?document.activeElement.name:null;
+    const focusedElement=document.activeElement?.closest('.trip-journey')?document.activeElement:null;
+    const focused=focusedElement?.name;
     const selection=focused && document.activeElement.type==='text'?document.activeElement.selectionStart:null;
     $('#journey-count').textContent=`${days.length} ${plural(days.length,'день','дня','дней')}`;
     $('#journey-days').replaceChildren(...days.map((row,index)=>{
@@ -139,7 +140,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
     section.querySelector('[data-journey-action="remove"]').hidden=days.length===1;
     renderForms(trip);bookings.render(trip);expenses.render(trip);expenses.pending();menuChoices.render(trip);section.dataset.budgetReady='false';
     renderTotals(trip,ticket);
-    if(focused) {const field=[...section.querySelectorAll('[name]')].find(el=>el.name===focused);field?.focus({preventScroll:true});if(selection!==null)field?.setSelectionRange(selection,selection);}
+    if(focused && !focusedElement.isConnected) {const field=[...section.querySelectorAll('[name]')].find(el=>el.name===focused);field?.focus({preventScroll:true});if(selection!==null)field?.setSelectionRange(selection,selection);}
   }
   for(const id of ['#journey-details','#journey-overview'])$(id).addEventListener('toggle',()=>{
     if($(id).open){section.dataset.budgetReady='false';renderTotals(read(),++sequence);}
