@@ -73,7 +73,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       select.value=isPersonalPoint(day[name])?'__personal__':day[name] || '';wrapper.append(select);
       const pick=button(isPersonalPoint(day[name])?'Передвинуть свою точку на карте':'Выбрать свою точку на карте','personal',name);pick.className='journey-pick-point';wrapper.append(pick);bases.append(wrapper);
     }
-    label(bases,'Адрес ночёвки или заметка для себя','note','textarea',day.note).rows=2;
+    label(bases,'Заметка к дню','note','textarea',day.note).rows=2;
     if(day.note?.includes('Доставка еды — ')){const links=el('div');bases.append(links);import('./food-delivery-ui.mjs?v=2026102201').then(({appendDeliveryOrderLinks})=>appendDeliveryOrderLinks(links,day.note,base)).catch(()=>{});}
     bases.append(el('p','Выберите ориентир или отметьте своё жильё на нашей карте. Дорога считается по ближайшим доступным улицам и тропам; вход и короткий путь до двери нужно сверить. Свои точки и заметка попадут в файл и ссылку поездки.','journey-note'));
     const saveBases=el('button','Сохранить начало и ночёвку','journey-save');saveBases.type='submit';bases.append(saveBases);

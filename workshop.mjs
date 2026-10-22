@@ -314,6 +314,20 @@ export async function initWorkshop(catalog, base) {
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) memory.sync(); });
   refresh();
+  if(linkedDayId!==null&&!linkedDayIssue&&location.hash==='#journey-details'){
+    const details=$('#journey-details'),note=$('#journey-bases [name="note"]'),dialog=details?.closest('dialog');
+    if(details&&note&&dialog){
+      details.open=true;
+      $('.wave-more-button')?.focus({preventScroll:true});
+      if(!dialog.open)dialog.showModal();
+      const focusNote=()=>requestAnimationFrame(()=>{
+        const field=$('#journey-bases [name="note"]');
+        if(dialog.open&&field){field.focus({preventScroll:true});field.scrollIntoView({block:'center'});}
+      });
+      details.querySelector('summary').addEventListener('focus',focusNote,{once:true});
+      focusNote();
+    }
+  }
   if(linkedDayIssue){
     const notice=document.createElement('p');notice.className='transport-plan-context';notice.setAttribute('role','status');notice.dataset.linkedDayStatus='missing';notice.textContent=linkedDayIssue;$('#my-trip').prepend(notice);
   }

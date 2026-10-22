@@ -1,3 +1,4 @@
+import {plannerDayUrl} from './trip-day-link.mjs?v=2026101707';
 import {ensureJourney,selectedDay} from './trip-days-state.mjs?v=2026101707';
 import {deliveryFactState,deliverySelection,addDeliveryNote,deliveryOrderLinks} from './food-delivery-state.mjs?v=2026102201';
 
@@ -44,27 +45,34 @@ export async function initFoodDelivery(root=document){
    try{
     const memory=await context();await memory.sync();opened?.remove();
     const form=element('form');form.className='delivery-save-form';form.dataset.deliveryForm='';
-    const heading=element('p'),label=element('label','В какой день сохранить '),select=element('select');select.name='delivery-day';label.append(select);
+    const label=element('label','В какой день сохранить '),select=element('select');select.name='delivery-day';label.append(select);
     const trip=ensureJourney(memory.get());for(const [i,day]of trip.itinerary.days.entries()){
      const option=element('option',`День ${i+1} · ${day.date||'без даты'}`);option.value=day.id;select.append(option);
     }select.value=selectedDay(trip).id;
     const preview=element('p');preview.className='delivery-note-preview';
     let revision,selection;
-    function refresh(){revision=memory.revision;selection=deliverySelection(data,trigger.dataset.deliverySave,trigger.dataset.deliveryOffer||null);heading.textContent=selection.header;preview.textContent=selection.text;refreshFacts();}
+    function refresh(){revision=memory.revision;selection=deliverySelection(data,trigger.dataset.deliverySave,trigger.dataset.deliveryOffer||null);preview.textContent=selection.text;refreshFacts();}
     refresh();select.addEventListener('change',refresh);
     const save=element('button','Сохранить в заметке дня');save.type='submit';const cancel=element('button','Закрыть');cancel.type='button';
     cancel.addEventListener('click',()=>{form.remove();trigger.focus();});
     form.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();cancel.click();}});
-    const feedback=element('p');feedback.setAttribute('role','status');feedback.dataset.deliveryFeedback='';form.append(heading,label,preview,save,cancel,feedback);trigger.after(form);opened=form;select.focus();
+    const feedback=element('p');feedback.setAttribute('role','status');feedback.dataset.deliveryFeedback='';const multiple=trip.itinerary.days.length>1;
+    form.append(multiple?label:element('p',`Сохранить в заметке дня: ${select.selectedOptions[0].textContent}.`),preview,save,cancel,feedback);trigger.after(form);opened=form;
+    preview.tabIndex=-1;(multiple?select:preview).focus({preventScroll:true});form.scrollIntoView({block:'start'});
+    select.addEventListener('change',()=>{feedback.textContent='';});
+    function receipt(message,saved){
+     feedback.textContent=message;if(saved){const link=element('a','Открыть заметку дня →'),url=plannerDayUrl(base,select.value);url.hash='journey-details';link.href=url;feedback.append(' ',link);}
+    }
+    const dayLabel=()=>select.selectedOptions[0].textContent;
     form.addEventListener('submit',async event=>{
      event.preventDefault();save.disabled=true;refreshFacts();
      try{
       const current=memory.get(),next=addDeliveryNote(current,deliverySelection(data,selection.providerId,selection.offerId),select.value);
-      if(JSON.stringify(next)===JSON.stringify(current)){feedback.textContent='Этот выбор уже есть в заметке дня.';return;}
+      if(JSON.stringify(next)===JSON.stringify(current)){receipt(`Этот выбор уже есть в заметке дня: ${dayLabel()}.`,memory.saved);return;}
       const result=await memory.change(t=>addDeliveryNote(t,deliverySelection(data,selection.providerId,selection.offerId),select.value),{expectedRevision:revision});
       if(result.conflict){await memory.sync();refresh();feedback.textContent='Поездка изменилась. Проверьте день и нажмите «Сохранить» ещё раз.';return;}
       revision=memory.revision;
-      feedback.textContent=result.saved?'Выбор сохранён в заметке дня. Заказ оформите у поставщика.':'Выбор остался в этой вкладке: память недоступна. Откройте поездку и скачайте файл.';
+      receipt(result.saved?`Выбор сохранён в заметке дня: ${dayLabel()}. Заказ оформите у поставщика.`:`Выбор остался в этой вкладке: память недоступна. День: ${dayLabel()}. Откройте поездку и скачайте файл.`,result.saved);
       if(result.saved)document.dispatchEvent(new CustomEvent('godune:useful-action',{detail:'delivery_saved'}));
      }catch{feedback.textContent='Выбор не сохранён. Откройте поездку и проверьте выбранный день.';}
      finally{save.disabled=false;}
