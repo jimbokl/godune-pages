@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
-  "generated_at": "2026-10-21T22:22:43.172Z",
-  "updated_at": "2026-10-21T19:09:52Z",
+  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
+  "generated_at": "2026-10-22T02:08:02.321Z",
+  "updated_at": "2026-10-22T02:07:05.059474Z",
   "date": "2026-10-24",
   "coverage": {
     "status": "verified_partial",
@@ -261,7 +261,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -307,7 +307,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-24"
         ],
-        "calendar_date": "2026-10-24"
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "24.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "75",
+            "timesortnum": ".5",
+            "daysortnum": "2"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -322,7 +339,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -368,7 +385,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-24"
         ],
-        "calendar_date": "2026-10-24"
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "24.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "1130",
+            "timesortnum": ".5",
+            "daysortnum": "2"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -544,7 +578,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 1300,
       "currency": "RUB",
       "status": "scheduled",
@@ -590,7 +624,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-24"
         ],
-        "calendar_date": "2026-10-24"
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "10031",
+          "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
+          "session": {
+            "event_id": "10031",
+            "eventday": "24.10.2026",
+            "eventtime": "13:00",
+            "eventduration": "105",
+            "ticketcount": "32",
+            "timesortnum": ".54167",
+            "daysortnum": "2"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -605,7 +656,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -651,7 +702,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-24"
         ],
-        "calendar_date": "2026-10-24"
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "24.10.2026",
+            "eventtime": "14:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".58333",
+            "daysortnum": "2"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -850,7 +918,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-21T11:51:35Z",
+      "verified_at": "2026-10-22T02:02:26Z",
       "source_identity": "programme:b928d3849a82ccb8f157a8a9",
       "source_scope": "programme",
       "observations": [
@@ -858,6 +926,14 @@
           "verified_at": "2026-10-21T11:51:35Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:26Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T14:30:00+02:00"
@@ -1115,7 +1191,7 @@
         "kind": "exact"
       },
       "source_url": "https://organhall.ru/",
-      "verified_at": "2026-10-21T11:45:35Z",
+      "verified_at": "2026-10-22T02:02:30Z",
       "source_identity": "programme:946a61d2e5ec31327402e12e",
       "source_scope": "programme",
       "observations": [
@@ -1126,14 +1202,22 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:30Z",
+          "source_url": "https://organhall.ru/",
+          "sha256": "b40dd7984b15f4b48e35e3bae4cae48f15e2d173803d8b27e2666c487f71473e",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "24 октября (сб), 16:00билеты только в кассе залаГЕНИИ БАРОККО: БАХ и ВИВАЛЬДИАртем Хачатуров (орган)В программе: Иоганн Себастьян Бах, Антонио ВивальдиподробнееПродолжительность: 1 час 10 мин. Цена билета: 1500 руб. Воз. ограничение 6+",
         "year_corroboration": {
           "source_url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "6c0421caf8395d66d77eda153bae8fce52d0b767de380c7549207f330e57db7d",
-          "fetched_at": "2026-10-21T11:51:37Z",
+          "sha256": "71c836903c75f9fddd95d1960ffbe837cd45bbfc11539bfd268c27ce11e436fd",
+          "fetched_at": "2026-10-22T02:02:32Z",
           "quote": "\"Гении барокко: Бах и Вивальди\". Хачатуров А., 6+24 октября (16:00)г. Светлогорск, ул.Курортная 3, органный зал \"Макаров\"Концерт органной музыки"
         }
       },
@@ -1177,7 +1261,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/802/",
-      "verified_at": "2026-10-21T11:53:18Z",
+      "verified_at": "2026-10-22T02:02:35Z",
       "source_identity": "programme:de2b90e57c9cec4350be42f9",
       "source_scope": "programme",
       "observations": [
@@ -1188,11 +1272,19 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:35Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/802/",
+          "sha256": "58eea359acc0ab9d23a70821ffe66f25d2ee0c7d49fd7e3a9e1379bc622519a3",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T16:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "d4c8cddd0637932e899482e2267c4148cce62f069ff07ead1fb95a35baebeb3f",
+        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
         "card_quote": "Купить билетИСКУССТВО В КИНО. ГРЕХ (18+)Скоро 24 октября в 16:00 Кинозал Картина рассказывает об испытаниях на творческом пути гениального художника и скульптора Микеланджело Буонарроти. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "24 ОКТЯБРЯ 2026 16:00"
       },
@@ -1322,7 +1414,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "verified_at": "2026-10-21T02:01:29Z",
+      "verified_at": "2026-10-22T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1377,6 +1469,14 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:23Z",
+          "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+          "sha256": "2445dc789b13ac5e6136ddad9549b8f23cea31a6e633fd6db2af8e4c98d248d7",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1408,7 +1508,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -1454,7 +1554,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-24"
         ],
-        "calendar_date": "2026-10-24"
+        "calendar_date": "2026-10-24",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "24.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "2"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -1569,7 +1686,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "verified_at": "2026-10-21T02:01:29Z",
+      "verified_at": "2026-10-22T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1621,6 +1738,14 @@
           "verified_at": "2026-10-21T02:01:29Z",
           "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
           "sha256": "4e4cd5ce17d940c392eab6e94feba01a1f082642394945ceab8b322259b8a166",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:23Z",
+          "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+          "sha256": "ce6e3af0665f6e712610faba7e998ef712f340ad570af488647d519c309db7ee",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -1760,7 +1885,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "verified_at": "2026-10-21T02:01:24Z",
+      "verified_at": "2026-10-22T02:02:13Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1812,6 +1937,14 @@
           "verified_at": "2026-10-21T02:01:24Z",
           "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
           "sha256": "e9d7ddc20736f205675f1d703dfdb120eb04ad75aef82073073577740357d1b1",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:13Z",
+          "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+          "sha256": "048cb4c6dd626abed73b82525269f220d8f853ebe8252dc2c8b9dec497f37ea2",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -1871,7 +2004,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-21T11:51:35Z",
+      "verified_at": "2026-10-22T02:02:26Z",
       "source_identity": "programme:c6d7ac5b42cf098b8c9ed126",
       "source_scope": "programme",
       "observations": [
@@ -1879,6 +2012,14 @@
           "verified_at": "2026-10-21T11:51:35Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:26Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -1926,7 +2067,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/818/",
-      "verified_at": "2026-10-21T11:53:18Z",
+      "verified_at": "2026-10-22T02:02:34Z",
       "source_identity": "programme:11f68c901355d37666cf094b",
       "source_scope": "programme",
       "observations": [
@@ -1937,11 +2078,19 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:34Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/818/",
+          "sha256": "74adaa7d466667b4c085e5014b183b8159e2fe3b9d30ed3cffd81a67ad1cda01",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T20:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "d4c8cddd0637932e899482e2267c4148cce62f069ff07ead1fb95a35baebeb3f",
+        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
         "card_quote": "Купить билетШЕДЕВРЫ МИРОВОЙ КЛАССИКИ (СЕКТОР «ПАРТЕР»)(6+)Скоро 24 октября в 20:00 Атриум Концерт камерной музыки в рамках III Школы-фестиваля Леонида Лундстрема в Калининграде",
         "explicit_date": "24 ОКТЯБРЯ 2026 20:00"
       },
@@ -1953,11 +2102,11 @@
       "source_aliases": [
         {
           "url": "https://kaliningrad.tretyakovgallery.ru/events/817/",
-          "sha256": "18d71d4467278cdba7e165796020a2204321666977a4850a50019f1d8e357a74"
+          "sha256": "0c9fa601bf0d58861fdd7f4d34cebc637f92d0f2e8c54434af95d7d4de33d57c"
         },
         {
           "url": "https://kaliningrad.tretyakovgallery.ru/events/817/",
-          "sha256": "18d71d4467278cdba7e165796020a2204321666977a4850a50019f1d8e357a74"
+          "sha256": "0c9fa601bf0d58861fdd7f4d34cebc637f92d0f2e8c54434af95d7d4de33d57c"
         }
       ]
     }

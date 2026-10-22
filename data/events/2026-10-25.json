@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
-  "generated_at": "2026-10-21T22:22:43.172Z",
-  "updated_at": "2026-10-21T19:09:52Z",
+  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
+  "generated_at": "2026-10-22T02:08:02.321Z",
+  "updated_at": "2026-10-22T02:07:05.059474Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
@@ -215,7 +215,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-21T02:01:25Z",
+      "verified_at": "2026-10-22T02:02:13Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -270,6 +270,14 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:13Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "612a033ebbc9f76887e005628a110f8b8e0b01a33434abadc65fdd43d52e37cc",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
         }
       ],
       "evidence": {
@@ -303,7 +311,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -349,7 +357,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-25"
         ],
-        "calendar_date": "2026-10-25"
+        "calendar_date": "2026-10-25",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "25.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "62",
+            "timesortnum": ".5",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -364,7 +389,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -410,7 +435,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-25"
         ],
-        "calendar_date": "2026-10-25"
+        "calendar_date": "2026-10-25",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "25.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "1096",
+            "timesortnum": ".5",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -501,7 +543,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 1300,
       "currency": "RUB",
       "status": "scheduled",
@@ -547,7 +589,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-25"
         ],
-        "calendar_date": "2026-10-25"
+        "calendar_date": "2026-10-25",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "10031",
+          "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
+          "session": {
+            "event_id": "10031",
+            "eventday": "25.10.2026",
+            "eventtime": "13:00",
+            "eventduration": "105",
+            "ticketcount": "38",
+            "timesortnum": ".54167",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -729,7 +788,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
-      "verified_at": "2026-10-21T11:53:18Z",
+      "verified_at": "2026-10-22T02:02:40Z",
       "source_identity": "programme:7958f9bac8a76cf3ade3e7b7",
       "source_scope": "programme",
       "observations": [
@@ -740,11 +799,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T14:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:40Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
+          "sha256": "d84a3d0dbcef73bf0050cc41f107247f27b64b61035e25df66a3154912108e2a",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T14:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "a1216082f0d83d7e1a067f25497ca8e842841e881f8279ff3a76654a976e895f",
+        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
         "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «ГЛИНКА: РОЖДЕНИЕ РУССКОЙ КЛАССИКИ» (12+)Скоро 25 октября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
         "explicit_date": "25 ОКТЯБРЯ 2026 14:00"
       },
@@ -846,7 +913,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -892,7 +959,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-25"
         ],
-        "calendar_date": "2026-10-25"
+        "calendar_date": "2026-10-25",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "25.10.2026",
+            "eventtime": "14:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".58333",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -1224,7 +1308,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
-      "verified_at": "2026-10-21T11:53:18Z",
+      "verified_at": "2026-10-22T02:02:40Z",
       "source_identity": "programme:4ff95bc5b91eae738dc79028",
       "source_scope": "programme",
       "observations": [
@@ -1235,11 +1319,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:40Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
+          "sha256": "3506eb83e689a6cfe37dc6f06f4b0fd3d9efdb541709ef459f431b71f9fdf979",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T17:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "a1216082f0d83d7e1a067f25497ca8e842841e881f8279ff3a76654a976e895f",
+        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
         "card_quote": "Купить билетИСКУССТВО В КИНО. АРТ-ЛЕКТОРИЙ: ТАЙНАЯ ЖИЗНЬ УФФИЦИ (16+)Скоро 25 октября в 17:00 Кинозал Фильм о жизни одного из старейших музеев мира. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "25 ОКТЯБРЯ 2026 17:00"
       },
@@ -1328,7 +1420,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -1374,7 +1466,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-25"
         ],
-        "calendar_date": "2026-10-25"
+        "calendar_date": "2026-10-25",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "25.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "3"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -1502,7 +1611,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-21T02:01:25Z",
+      "verified_at": "2026-10-22T02:02:14Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1557,6 +1666,14 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:14Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "8b89c6a179eca293e3b7ab1e4b357422bd4a42f5b63b31537218d8330c938b44",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1590,7 +1707,7 @@
       "ends": null,
       "kind": "Спектакль",
       "description": "по мотивам повести Павла Санаева",
-      "admission": "На сайте театра билетов нет · 16+",
+      "admission": "По билетам · 16+",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -1613,7 +1730,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-21T11:51:35Z",
+      "verified_at": "2026-10-22T02:02:26Z",
       "source_identity": "programme:6bdd29fa5eed32331cf4dfc6",
       "source_scope": "programme",
       "observations": [
@@ -1624,10 +1741,18 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:26Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "Премьера25ОктябряВс18:00Похороните меня за плинтусомпо мотивам повести Павла СанаеваПУШКИНСКАЯ КАРТАОсновная сцена2 часа 50 минут с антрактом16+Билетов нет",
+        "card_quote": "Премьера25ОктябряВс18:00Похороните меня за плинтусомпо мотивам повести Павла СанаеваПУШКИНСКАЯ КАРТАОсновная сцена2 часа 50 минут с антрактом16+Билеты",
         "year": "Selected programme year: 2026",
         "duration_quote": "2 часа 50 минут с антрактом",
         "stage": "Основная сцена"

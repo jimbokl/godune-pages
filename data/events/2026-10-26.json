@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
-  "generated_at": "2026-10-21T22:22:43.172Z",
-  "updated_at": "2026-10-21T19:09:52Z",
+  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
+  "generated_at": "2026-10-22T02:08:02.321Z",
+  "updated_at": "2026-10-22T02:07:05.059474Z",
   "date": "2026-10-26",
   "coverage": {
     "status": "verified_partial",
@@ -50,7 +50,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-21T11:51:37Z",
+      "verified_at": "2026-10-22T02:04:03Z",
       "source_identity": "programme:cfe9c3e08d21e72f3ff8bb32",
       "source_scope": "programme",
       "observations": [
@@ -58,6 +58,22 @@
           "verified_at": "2026-10-21T11:51:37Z",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "d01d7f8222e9b981fb66ef186508f549567cbe377965731f42ddf1764bb3b3ae",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-21T11:51:37Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "59bb01ca8f8454ff1a5f2856da370729e7fc02b735eb617a910dec214ddf5b04",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:04:03Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "7a8561ca92eb28789770fb9909c3901521bc56c305b5c6cb3381613c8913e90c",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T11:00:00+02:00"
@@ -166,7 +182,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -212,7 +228,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-26"
         ],
-        "calendar_date": "2026-10-26"
+        "calendar_date": "2026-10-26",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "26.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "75",
+            "timesortnum": ".5",
+            "daysortnum": "4"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -227,7 +260,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -273,7 +306,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-26"
         ],
-        "calendar_date": "2026-10-26"
+        "calendar_date": "2026-10-26",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "26.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "1780",
+            "timesortnum": ".5",
+            "daysortnum": "4"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -292,7 +342,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 1300,
       "currency": "RUB",
       "status": "scheduled",
@@ -338,7 +388,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-26"
         ],
-        "calendar_date": "2026-10-26"
+        "calendar_date": "2026-10-26",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "10031",
+          "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
+          "session": {
+            "event_id": "10031",
+            "eventday": "26.10.2026",
+            "eventtime": "13:00",
+            "eventduration": "105",
+            "ticketcount": "36",
+            "timesortnum": ".54167",
+            "daysortnum": "4"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -649,7 +716,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -695,7 +762,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-26"
         ],
-        "calendar_date": "2026-10-26"
+        "calendar_date": "2026-10-26",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "26.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "4"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -795,7 +879,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -841,7 +925,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-26"
         ],
-        "calendar_date": "2026-10-26"
+        "calendar_date": "2026-10-26",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "26.10.2026",
+            "eventtime": "18:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".75",
+            "daysortnum": "4"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -883,7 +984,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-21T11:51:35Z",
+      "verified_at": "2026-10-22T02:02:26Z",
       "source_identity": "programme:60dd60dd8f5853cef990f267",
       "source_scope": "programme",
       "observations": [
@@ -891,6 +992,14 @@
           "verified_at": "2026-10-21T11:51:35Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:26Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"
@@ -947,7 +1056,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
-      "verified_at": "2026-10-21T02:01:30Z",
+      "verified_at": "2026-10-22T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -999,6 +1108,14 @@
           "verified_at": "2026-10-21T02:01:30Z",
           "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
           "sha256": "84000d6066378e9f32510c7e3f32dd833d01b8d2f7e205c45f2e744a99901b96",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:23Z",
+          "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
+          "sha256": "b48445199a8021081ff4efa4b05eb63fcd7910bf6c3654908517c83c8d754648",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"

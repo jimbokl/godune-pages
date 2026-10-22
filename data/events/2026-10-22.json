@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "68835bce2021bf8e4095987a9d930748e7b87aea365906355d98ba0149919cb0",
-  "generated_at": "2026-10-21T22:22:43.172Z",
-  "updated_at": "2026-10-21T19:09:52Z",
+  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
+  "generated_at": "2026-10-22T02:08:02.321Z",
+  "updated_at": "2026-10-22T02:07:05.059474Z",
   "date": "2026-10-22",
   "coverage": {
     "status": "verified_partial",
@@ -112,7 +112,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -158,7 +158,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-22"
         ],
-        "calendar_date": "2026-10-22"
+        "calendar_date": "2026-10-22",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "22.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "1590",
+            "timesortnum": ".5",
+            "daysortnum": "0"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -177,7 +194,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -223,7 +240,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-22"
         ],
-        "calendar_date": "2026-10-22"
+        "calendar_date": "2026-10-22",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "22.10.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "67",
+            "timesortnum": ".5",
+            "daysortnum": "0"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -238,7 +272,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "По билетам · 6+",
       "price": 1300,
       "currency": "RUB",
       "status": "scheduled",
@@ -284,7 +318,24 @@
         "explicit_ticket_occurrence_urls": [
           "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-10-22"
         ],
-        "calendar_date": "2026-10-22"
+        "calendar_date": "2026-10-22",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "10031",
+          "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
+          "session": {
+            "event_id": "10031",
+            "eventday": "22.10.2026",
+            "eventtime": "13:00",
+            "eventduration": "105",
+            "ticketcount": "28",
+            "timesortnum": ".54167",
+            "daysortnum": "0"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -618,7 +669,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events",
-      "verified_at": "2026-10-21T11:45:35Z",
+      "verified_at": "2026-10-22T02:04:05Z",
       "source_identity": "programme:d80e7f3387abfd1657ed5f7a",
       "source_scope": "programme",
       "observations": [
@@ -629,13 +680,21 @@
           "status": "scheduled",
           "date": "2026-10-22",
           "start_time": "2026-10-22T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:04:05Z",
+          "source_url": "https://world-ocean.ru/events",
+          "sha256": "45597b6193559940f79e29bb64a4710d8744bc4f84a893113f0d387bddd428f4",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Музейный лекторий \"Клуб путешественников\" (12+)среда-пятница, 16-001 октября «Индонезийские сказки и их герои» 2 октября«Океаны барка «Седов»7 октября«В гостях у мудрого карпа. Китайские народные сказки и их герои»8 октября«Жизнь и путешествия Н.Н. Миклухо-Маклая»9 октября«Семь дней Будды. О художественном многообразии и символике образа Будды в искусстве скульптуры»22 октября«Горизонты Южного моря: Mar del sur. Народы Океании»23 октября«Традиционные орнаменты и символы Китая»28 октября«Георг Форстер (1754 – 1794). Вокруг света с Джеймсом Куком»29 октября«Летящая над волнами: носовая фигура как часть скульптурного убранства корабля»30 октября«Бали – остров живых богов. Вопросы географии»",
         "year_corroboration": {
           "url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "6c0421caf8395d66d77eda153bae8fce52d0b767de380c7549207f330e57db7d",
+          "sha256": "71c836903c75f9fddd95d1960ffbe837cd45bbfc11539bfd268c27ce11e436fd",
           "quote": "\"Горизонты Южного моря: Mar del sur. Народы Океании\", 12+22 октября (16:00)г. Светлогорск, ул. Ленина, д. 11, Морской выставочный центрМузейный лекторий \"Клуб путешественников\""
         }
       },
@@ -652,7 +711,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "Знакомство с музеем Иммануила Канта",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -698,7 +757,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-10-22"
         ],
-        "calendar_date": "2026-10-22"
+        "calendar_date": "2026-10-22",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "22.10.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "0"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": null
     },
@@ -798,7 +874,7 @@
       "ends": null,
       "kind": "Концерт",
       "description": "Органный мини-концерт",
-      "admission": "По билетам",
+      "admission": "В билетной системе нет доступных билетов · 6+",
       "price": 700,
       "currency": "RUB",
       "status": "scheduled",
@@ -844,7 +920,24 @@
         "explicit_ticket_occurrence_urls": [
           "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-10-22"
         ],
-        "calendar_date": "2026-10-22"
+        "calendar_date": "2026-10-22",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
+          "fetched_at": "2026-10-22T02:02:49Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "22.10.2026",
+            "eventtime": "18:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".75",
+            "daysortnum": "0"
+          },
+          "route_date_matches": true
+        }
       },
       "duration_estimate": {
         "minutes": 120,
@@ -886,7 +979,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-21T11:51:35Z",
+      "verified_at": "2026-10-22T02:02:26Z",
       "source_identity": "programme:10022267b05834e50a5b4dcb",
       "source_scope": "programme",
       "observations": [
@@ -894,6 +987,14 @@
           "verified_at": "2026-10-21T11:51:35Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9df3dfd6f28b39f765aca2e6b9cd09fb2e5560701decc792e90c75e10c12f54c",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:26Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
           "status": "scheduled",
           "date": "2026-10-22",
           "start_time": "2026-10-22T19:00:00+02:00"
@@ -946,7 +1047,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
-      "verified_at": "2026-10-21T02:01:24Z",
+      "verified_at": "2026-10-22T02:02:13Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -998,6 +1099,14 @@
           "verified_at": "2026-10-21T02:01:24Z",
           "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
           "sha256": "323d23b269cae6b2049ed76cd4e045eb76cbadd8839f97bbbe8fa2032c363aa3",
+          "status": "scheduled",
+          "date": "2026-10-22",
+          "start_time": "2026-10-22T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-22T02:02:13Z",
+          "source_url": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/",
+          "sha256": "0fe9d65369c15fc078275b43ae6e9615c13d316cfd777ebda9851c62933c41e1",
           "status": "scheduled",
           "date": "2026-10-22",
           "start_time": "2026-10-22T19:00:00+02:00"
