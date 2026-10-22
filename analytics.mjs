@@ -1,6 +1,6 @@
 // Visit counts and explicit useful actions. Never read the local trip or forms.
 export const COUNTER_ID = 113479863;
-const goals = new Set(['plan_saved', 'trip_file_ready', 'guide_download_click', 'work_budget_saved', 'work_budget_exported', 'work_draft_saved', 'work_draft_exported', 'work_draft_imported', 'work_jobs_exported', 'work_employer_opened']);
+const goals = new Set(['plan_saved', 'trip_file_ready', 'guide_download_click', 'work_budget_saved', 'work_budget_exported', 'work_draft_saved', 'work_draft_exported', 'work_draft_imported', 'work_jobs_exported', 'work_employer_opened', 'delivery_provider_opened', 'delivery_saved']);
 
 export function publicPageUrl(document, location) {
   const canonical = document.querySelector('link[rel="canonical"]')?.href;
@@ -31,6 +31,7 @@ export function startAnalytics(env = globalThis) {
     const link = event.target.closest?.('a[href]');
     if (!link || event.defaultPrevented) return;
     const url = new URL(link.href, location.href);
+    if (link.hasAttribute('data-delivery-provider') && url.origin !== location.origin && /^https?:$/.test(url.protocol)) goal('delivery_provider_opened');
     if (url.origin === location.origin && /^\/guides\/[^/]+\.pdf$/.test(url.pathname)) goal('guide_download_click');
   });
   function load() {

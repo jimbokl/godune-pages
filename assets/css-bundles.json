@@ -4401,6 +4401,109 @@
         }
       ]
     },
+    "4e90875fe7597945ee6f8b2b494131cd494085e1f17c495f51b68726ef616a4d": {
+      "path": "assets/css-bundles/48a6bf5ec451e4d380aed7ca46e813173866df2f129f9205224d847158056f2f.css",
+      "sha256": "48a6bf5ec451e4d380aed7ca46e813173866df2f129f9205224d847158056f2f",
+      "bytes": 507168,
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all"
+        },
+        {
+          "path": "styles.css",
+          "media": "all"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all"
+        },
+        {
+          "path": "tools.css",
+          "media": "all"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all"
+        },
+        {
+          "path": "night.css",
+          "media": "all"
+        },
+        {
+          "path": "housing.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all"
+        },
+        {
+          "path": "nearby-events.css",
+          "media": "all"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all"
+        },
+        {
+          "path": "reading-layout.css",
+          "media": "all"
+        },
+        {
+          "path": "food-delivery.css",
+          "media": "all"
+        }
+      ]
+    },
     "faf79fba072dab708cdcc257f24a9a735c8abbb2f034fe5111b0cb844830d478": {
       "path": "assets/css-bundles/9a25959807fed1932b0bb613809499995a6b64cb83968620046dfaea4d305151.css",
       "sha256": "9a25959807fed1932b0bb613809499995a6b64cb83968620046dfaea4d305151",
@@ -135828,6 +135931,161 @@
             {
               "href": "../../reading-layout.css?v=2026102102",
               "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "zelenogradsk/dostavka-edy/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "4e90875fe7597945ee6f8b2b494131cd494085e1f17c495f51b68726ef616a4d",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../nearby-events.css?v=2026101709",
+              "path": "nearby-events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../food-delivery.css?v=2026102201",
+              "path": "food-delivery.css",
               "media": "all",
               "link_media": null
             }
