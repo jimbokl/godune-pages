@@ -103,7 +103,9 @@ export function initTripEvents({read,commit,base,catalog}){
     const result=await commit(trip=>confirmEventAdd(trip,preview,note.value,fresh||{}),'Событие сохранено в вашем дне.');
     if(result.conflict){preview=null;throw Error('Поездка изменилась. Проверьте день заново перед сохранением.');}
     form.hidden=true;retry.hidden=true;status.textContent=result.saved?'Событие сохранено в вашем дне.':'Событие осталось в этой вкладке. Скачайте файл поездки, чтобы сохранить его.';
-    const link=node('a','Открыть мой день →');link.href=new URL('planner/#my-trip',base);dialog.append(link);link.focus();
+    const link=node('a','Открыть мой день →');link.href=new URL('planner/#my-trip',base);
+    link.addEventListener('click',e=>{if(!e.defaultPrevented&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey)dialog.close();});
+    dialog.append(link);link.focus();
    }catch(error){preview=null;status.textContent=message(error);retry.hidden=false;}
    finally{pending=false;close.disabled=false;save.disabled=!preview;}
   });
