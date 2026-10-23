@@ -14,3 +14,6 @@
 .events-periods button[aria-pressed=true]{font-weight:700}.event-links .event-primary{background:var(--sea);color:#17394a}
 @media(max-width:1000px){.events-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}.events-periods{grid-column:1/-1;margin:0}.events-controls label{min-width:0}.events-controls input,.events-controls select{width:100%;min-width:0}.events-reset{align-self:end}}
 @media(max-width:560px){.events-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.events-periods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.events-periods button{padding:.65rem .3rem;font-size:12px;line-height:1.4}.events-reset{grid-column:1/-1;justify-self:start;min-height:44px;padding:.45rem 0;border:0;border-radius:0;text-decoration:underline;text-underline-offset:4px}.event-date{gap:.6rem;flex-wrap:wrap}.event-toolbar{gap:.4rem}}
+
+/* Keep the native date fully readable when two filter columns are too narrow. */
+@media(max-width:380px){.events-controls{grid-template-columns:minmax(0,1fr)}}
