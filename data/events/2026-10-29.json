@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "07c92933ac3cb54599c5d37ba2a72a8db845a3ff34cea02d6a7bfdc5ced7ef6e",
-  "generated_at": "2026-10-23T05:27:13.772Z",
-  "updated_at": "2026-10-23T05:11:33.556510Z",
+  "revision": "5ef4329dcafbff59f1212d17982da535721e7f30fb78bf4e05df6ee37d4e89f5",
+  "generated_at": "2026-10-23T07:18:10.041Z",
+  "updated_at": "2026-10-23T06:48:25.541818Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -24,13 +24,13 @@
       "title": "Над уровнем моря",
       "city": "kaliningrad",
       "city_name": "Калининград",
-      "venue": "Место встречи уточняется · Музей Мирового океана",
+      "venue": "Сбор: экспозиционный корпус «Глубина»",
       "date": "2026-10-29",
       "starts": "11:00",
       "ends": null,
       "kind": "Занятие",
-      "description": "Занятие «Над уровнем моря» — почувствуйте себя частью экипажа морской авиации на борту самолёта-амфибии Бе-12. Узнаем об истории его службы, разберёмся, как самолёт садится на воду, и познакомимся с особенностями его устройства. Точное место встречи уточните в музее.",
-      "admission": "Условия участия и место встречи уточните в музее",
+      "description": "Занятие «Над уровнем моря» — почувствуйте себя частью экипажа морской авиации на борту самолёта-амфибии Бе-12. Узнаем об истории его службы, разберёмся, как самолёт садится на воду, и познакомимся с особенностями его устройства. Сбор в экспозиционном корпусе «Глубина», набережная Петра Великого, 1. Наличие билетов на этот сеанс уточните у музея.",
+      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-23: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -45,7 +45,7 @@
       },
       "poi": null,
       "route": null,
-      "venue_id": "ocean-school-meeting-unknown",
+      "venue_id": "ocean-glubina-meeting",
       "place_id": null,
       "category": "tour",
       "timezone": "Europe/Kaliningrad",
@@ -71,7 +71,11 @@
         "calendar_date": "2026-10-29",
         "card_quote": "Занятие «Над уровнем моря» — почувствуйте себя частью экипажа морской авиации на борту самолёта-амфибии Бе-12. Узнаем об истории его службы, разберёмся, как самолёт садится на воду, и познакомимся с особенностями его устройства.",
         "meeting": {
-          "status": "unknown"
+          "status": "facility",
+          "quote": "Место встречи: экспозиционный корпус «Глубина» (наб. Петра Великого, 1)",
+          "source_url": "https://tickets.world-ocean.ru/api/no-scheme",
+          "sha256": "4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff",
+          "fetched_at": "2026-10-23T06:32:39Z"
         },
         "city_refs": [
           {
@@ -88,7 +92,57 @@
             "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
             "scope": "City of the named activity object; not a meeting point or full activity venue."
           }
-        ]
+        ],
+        "source_refs": [
+          {
+            "url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "method": "POST",
+            "read_only_endpoint": true,
+            "payload": {
+              "hash": "BEECD907EFC163862728DC9D8A10ABAE841A0A8E"
+            },
+            "http_status": 200,
+            "sha256": "4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff",
+            "checked_at": "2026-10-23",
+            "fetched_at": "2026-10-23T06:32:39Z",
+            "captured_at": "2026-10-23T06:32:39.358628+00:00",
+            "private_capture": "runtime/events-refresh/cache/sources/4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff.json"
+          }
+        ],
+        "meeting_scope": "Meeting point only; the ticket programme separately names the Historic Fleet embankment as the activity venue.",
+        "availability_observation": {
+          "captured_at": "2026-10-23T06:32:39.358628+00:00",
+          "selectable_in_captured_calendar": true,
+          "meaning": "A dated observation; absence does not establish cancellation or sold out, presence does not guarantee a current ticket."
+        },
+        "tariff_observation": {
+          "captured_at": "2026-10-23T06:32:39.358628+00:00",
+          "date": "2026-10-29",
+          "starts": "11:00",
+          "tariffs": [
+            {
+              "category": "Дети до 14 лет",
+              "price": 500,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Посетители старше 14 лет",
+              "price": 800,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Взрослый + 1 ребенок",
+              "price": 1300,
+              "participants": 2,
+              "unit": "На 2 человека",
+              "currency": "RUB"
+            }
+          ]
+        }
       },
       "duration_estimate": null
     },

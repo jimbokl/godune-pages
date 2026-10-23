@@ -1,3 +1,4 @@
+import {appendDeliveryOrderLinks,prepareDeliveryOrderLinks} from './delivery-order-links-ui.mjs?v=2026102301';
 import {hasTransportPlans} from './trip-transport-plans-contract.mjs?v=2026101305';
 import {dayPeople,partyLabel} from './trip-party.mjs?v=2026101305';
 import {DAY_INTERESTS,DAY_NEEDS,emptyPreferences,preferencesLabel} from './day-preferences.mjs?v=2026101305';
@@ -30,6 +31,7 @@ export function loadJourneyTravelMatrices(base,trip,catalog) {
 }
 export function initTripDays({mount,read,commit,base,catalog}) {
   if(!mount)return {render(){},moveControl(){return null;}};
+  if(read().itinerary?.days?.some(day=>day.note?.includes('Доставка еды — ')))prepareDeliveryOrderLinks(base).catch(()=>{});
   const section=el('section',undefined,'trip-journey');section.setAttribute('aria-labelledby','journey-title');
   section.innerHTML=`<div class="journey-heading"><div><p class="eyebrow">Сохранённая поездка</p><h3 id="journey-title">Ваши дни на Балтике</h3></div><span id="journey-count" class="journey-count"></span></div>
     <details class="journey-starters"><summary>Взять готовый план на 3, 5 или 7 дней <span aria-hidden="true">+</span></summary><div id="journey-starters" class="journey-starter-options"></div><p class="journey-note">Калининград, Зеленоградск и коса. Это основа для вашей поездки: остановки, дни и транспорт можно менять. Дни добавятся к вашему черновику. Переезд между городами в начале дня, адрес жилья, билеты и часы работы уточните отдельно.</p></details>
@@ -74,7 +76,7 @@ export function initTripDays({mount,read,commit,base,catalog}) {
       const pick=button(isPersonalPoint(day[name])?'Передвинуть свою точку на карте':'Выбрать свою точку на карте','personal',name);pick.className='journey-pick-point';wrapper.append(pick);bases.append(wrapper);
     }
     label(bases,'Заметка к дню','note','textarea',day.note).rows=2;
-    if(day.note?.includes('Доставка еды — ')){const links=el('div');bases.append(links);import('./food-delivery-ui.mjs?v=2026102201').then(({appendDeliveryOrderLinks})=>appendDeliveryOrderLinks(links,day.note,base)).catch(()=>{});}
+    if(day.note?.includes('Доставка еды — ')){const links=el('div');bases.append(links);appendDeliveryOrderLinks(links,day.note,base);}
     bases.append(el('p','Выберите ориентир или отметьте своё жильё на нашей карте. Дорога считается по ближайшим доступным улицам и тропам; вход и короткий путь до двери нужно сверить. Свои точки и заметка попадут в файл и ссылку поездки.','journey-note'));
     const saveBases=el('button','Сохранить начало и ночёвку','journey-save');saveBases.type='submit';bases.append(saveBases);
     costs.append(el('h4','Сколько взять с собой'));
