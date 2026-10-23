@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "5ef4329dcafbff59f1212d17982da535721e7f30fb78bf4e05df6ee37d4e89f5",
-  "generated_at": "2026-10-23T07:18:10.041Z",
-  "updated_at": "2026-10-23T06:48:25.541818Z",
+  "revision": "99ae1a9325e809547a9d76c85b28f028433d16bac262880c65a802118ceec7aa",
+  "generated_at": "2026-10-23T08:12:05.694Z",
+  "updated_at": "2026-10-23T08:09:55.270475Z",
   "date": "2026-11-14",
   "coverage": {
     "status": "verified_partial",
@@ -25,7 +25,7 @@
       "starts": "11:00",
       "ends": null,
       "kind": "Экскурсия",
-      "description": "Остров Канта: сквозь время. Точное место встречи уточните у организатора перед поездкой.",
+      "description": "Остров Канта: сквозь время. 45-минутная прогулка в очках виртуальной реальности: 5 остановок. Точное место встречи уточните у организатора перед поездкой.",
       "admission": "По билетам · 6+",
       "price": 1000,
       "currency": "RUB",
@@ -82,8 +82,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
+          "fetched_at": "2026-10-23T02:03:01Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -93,7 +93,7 @@
             "eventduration": "45",
             "ticketcount": "50",
             "timesortnum": ".45833",
-            "daysortnum": "23"
+            "daysortnum": "22"
           },
           "route_date_matches": true
         }
