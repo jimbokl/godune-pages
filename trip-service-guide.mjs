@@ -1,3 +1,4 @@
+import {eventVisitPresentation,serviceTimeExplained,serviceDayPresentation} from './trip-service-presentation.mjs?v=2026102306';
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
 import {dayJourneyBoundaries,boundaryForEntry,usesJourneyBoundaries} from './day-journey-boundaries.mjs?v=2026101305';
 // Read-only PDF view of the same Rust assessment used by the day screen.
@@ -49,7 +50,7 @@ function serviceCard(engine,visit,day,index,catalog,asOf){
  if(!validServiceVisit(visit))return card;
  card.selection_facts=serviceSelectionFacts(visit);
  let prepared;try{prepared=engine.serviceTrip(visit);}catch{return card;}
- const a=prepared.assessment;card.context=serviceVisitContext(visit,day);card.assessment=a;card.point=prepared.visit.point;card.date=a.visit.date;card.state=a.state;card.summary=contexts[card.context]||states[a.state];
+ const a=prepared.assessment;card.context=serviceVisitContext(visit,day);card.assessment=a;card.point=prepared.visit.point;card.date=a.visit.date;card.state=a.state;card.summary=contexts[card.context]||(eventVisitPresentation(visit,a,card.context)?'':states[a.state]);
  card.cost=price(a.quote?.cost_total??null,a.quote?.cost_lower_bound??0);
  card.deposit=a.quote?.deposit?price(a.quote.deposit.total,0):'Возвратный залог пока неизвестен.';
  card.upfront=price(a.quote?.upfront_total??null,a.quote?.upfront_lower_bound??0);
@@ -90,11 +91,12 @@ export function serviceGuide(engine,trip,catalog,matrix,{asOf=guideRegionDate()}
  for(const row of check?.overlaps||[])issues.push(`«${name(row.first)}» и «${name(row.second)}» пересекаются ${row.precision==='minimum'?'как минимум ':''}на ${row.minutes} мин.`);
  const transportNeedsInfo=(check?.issues||[]).some(issue=>String(issue.code||'').startsWith('transport_'));
  for(const issue of check?.issues||[]){
+  if(serviceTimeExplained(issue,serviceVisitRows(day),check))continue;
   const text={outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату.`,date_missing:'Укажите дату дня, чтобы сверить посещения.',service_time_unknown:`У «${name(issue.entry)}» неизвестна часть времени.`,service_connections_unknown:'Дорога между прогулкой и посещениями ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить.'}[issue.code]||transportIssueText(issue.code);
   if(text)issues.push(text);
  }
  const summary=transportNeedsInfo&&check?.state==='needs_info'?dayOutcome(check):({fits:check?.itinerary?'Остановки и дорога укладываются в выбранное время.':'Посещения укладываются в день по выбранному времени.',needs_info:'Для полного расчёта дня не хватает сведений.',conflict:'В плане есть пересечения или ограничения.',empty:'В этом дне пока нет остановок.'}[check?.state]||'Полный расчёт пока недоступен.');
- return {services,check,error,transportNeedsInfo,issues:[...new Set(issues)],summary:error||summary};
+ return {services,check,error,transportNeedsInfo,issues:[...new Set(issues)],summary:error||serviceDayPresentation(check,serviceVisitRows(day))||summary};
 }
 export function mixedGuideRows(trip,catalog,guide,issueText){
  const result=guide.check;if(!result?.itinerary)return null;
@@ -139,8 +141,10 @@ export function mixedGuideRows(trip,catalog,guide,issueText){
  return rows;
 }
 export function serviceRow(service,stop){
- const a=service?.assessment,current=service?.context==='ready';
- return {id:`service:${service.key}`,kind:'service',time:current?a?.visit.timeline.arrival??null:null,timeLabel:'Выбрано',title:service.name,text:service.summary+(a?` ${current?'':'Исходный выбор: '}${service.date}. Завершение ${a.summary.departure==null?'пока неизвестно':clock(a.summary.departure)}.`:'')+(stop?.issues.some(v=>v.code==='fixed_visit_missed')?' К выбранному времени не успеваем. Переставьте остановки или измените посещение.':''),state:current&&a?'estimate':'unknown'};
+ const a=service?.assessment,current=service?.context==='ready',presentation=eventVisitPresentation(service,a,service?.context);
+ const conflict=stop?.issues.some(v=>v.code==='fixed_visit_missed')?'К выбранному времени не успеваем. Переставьте остановки или измените посещение.':'';
+ const detail=presentation?'Подробности посещения и источники — в главе «'+service.name+'».':service.summary;
+ return {id:`service:${service.key}`,kind:'service',time:current?a?.visit.timeline.arrival??null:null,timeLabel:'Выбрано',title:service.name,text:(conflict?conflict+' ':'')+detail+(a?` ${current?'':'Исходный выбор: '}${service.date}.${presentation?'':` Завершение ${a.summary.departure==null?'пока неизвестно':clock(a.summary.departure)}.`}`:''),...(conflict?{conflict_text:conflict}:{}),state:current&&a?'estimate':'unknown'};
 }
 export function guideExpenses(engine,trip){
  const day=selectedDay(trip),recorded=Object.values(day.costs||{}).some(v=>v.items?.length||v.amount!=null||v.paid!=null);if(!recorded)return null;

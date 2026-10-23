@@ -1,3 +1,4 @@
+import {serviceTimeExplained,serviceDayPresentation} from './trip-service-presentation.mjs?v=2026102306';
 import {transportIssueText} from './trip-transport-context.mjs?v=2026101705';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
 import {selectedDay} from './trip-days-state.mjs?v=2026101707';
@@ -68,6 +69,7 @@ export function initServiceDayCheck({heading,read,commit,base,catalog,onSettings
   const issues=[];
   for(const row of result.overlaps)issues.push(`«${name(row.first)}» и «${name(row.second)}» пересекаются ${row.precision==='minimum'?'как минимум ':''}на ${row.minutes} мин.`);
   for(const issue of result.issues){
+   if(serviceTimeExplained(issue,serviceVisitRows(day),result))continue;
    const text=transportIssueText(issue.code)||{outside_day_window:`«${name(issue.entry)}» выходит за время дня или выбранные рейсы.`,connection_after_day:'Выбранный рейс возвращает вас позже окончания дня.',connection_after_day_risk:'По приблизительному расчёту выбранная поездка может закончиться позже времени дня.',day_end_risk:'По приблизительному расчёту день может закончиться позже выбранного времени.',selected_connections_changed:'Порядок остановок изменился. Проверьте выбранные пересадки.',date_changed:`«${name(issue.entry)}» выбрано на другую дату. Пересчитайте посещение ниже.`,date_missing:'Укажите дату дня, чтобы сверить выбранные посещения.',service_time_unknown:`У «${name(issue.entry)}» ещё неизвестна часть времени.`,service_connections_unknown:'Дорога между остановками ещё не учтена.',unresolved_visits:'Часть сохранённых посещений пока не удалось проверить. Они остаются в файле поездки.'}[issue.code];
    if(text)issues.push(text);
   }
@@ -98,7 +100,7 @@ export function initServiceDayCheck({heading,read,commit,base,catalog,onSettings
    const [engine,matrix]=await Promise.all([loadScheduler(base),trip.places.length?loadTripTravelMatrix(base,trip,catalog).catch(()=>null):null]);
    if(ticket!==sequence||JSON.stringify(read())!==stamp)return;
    const result=inspectTripServiceDay(engine,trip,catalog,matrix);
-   panel.dataset.serviceDayState=result.state;status.textContent=dayOutcome(result);details(result,trip);renderedDayId=day.id;
+   panel.dataset.serviceDayState=result.state;status.textContent=serviceDayPresentation(result,serviceVisitRows(day))||dayOutcome(result);details(result,trip);renderedDayId=day.id;
    if(pending)panel.querySelectorAll('button').forEach(button=>button.disabled=true);
    if(focusEntry){const item=[...panel.querySelectorAll('[data-timeline-kind]')].find(n=>n.dataset.timelineId===focusEntry.id&&n.dataset.timelineKind===focusEntry.kind);if(item)item.querySelector('[data-timeline-title]').focus({preventScroll:true});else heading.focus({preventScroll:true});focusEntry=null;}
   }catch(error){

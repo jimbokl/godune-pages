@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T12:52:58.562Z",
+  "generated_at": "2026-10-23T14:48:08.569Z",
   "updated_at": "2026-10-23T08:09:55.270475Z",
   "date": "2026-10-07",
   "coverage": {
@@ -61,5 +61,18 @@
       "place_id": null,
       "duration_estimate": null
     }
-  ]
+  ],
+  "venues": {
+    "ocean-education": {
+      "id": "ocean-education",
+      "name": "Образовательный центр ОКЕАНиЯ",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/vsemirnaya-nedelya-kosmosa-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-16"
+    }
+  }
 }

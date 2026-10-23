@@ -1,3 +1,4 @@
+import {eventEndText,eventVisitPresentation} from './trip-service-presentation.mjs?v=2026102306';
 import {eventPath} from './events-engine.mjs?v=2026102001';
 import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {loadScheduler} from './trip-scheduler.mjs?v=2026101707';
@@ -168,10 +169,11 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
    const selection=serviceSelectionElement(visit);if(selection)detail.before(selection);
    if(context==='unsupported')detail.textContent='Сохранено в другой версии. Файл поездки сохранит эти сведения.';
    else if(context!=='ready')detail.textContent=`Выбрано на ${dateText(visit.selection.visit.input.date)}. ${day.date?'Дата дня изменилась.':'Выберите дату дня, чтобы пересчитать.'}`;
+   const eventFacts=node('div');content.append(eventFacts);
    if(visit?.event?.end_time===null){
-    content.append(node('p','Время окончания уточняется.','visit-facts'));
+    const end=eventEndText(visit.event);if(end)eventFacts.append(node('p',end,'visit-facts'));
     const estimate=eventDurationEstimateText(visit.event);
-    if(estimate){const text=node('p',estimate,'visit-facts');text.dataset.eventDurationEstimate='';content.append(text);}
+    if(estimate){const text=node('p',estimate,'visit-facts');text.dataset.eventDurationEstimate='';eventFacts.append(text);}
    }
    if(typeof visit?.event?.id==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(visit.event.id)){const link=node('a','Страница события →');link.href=new URL(eventPath(visit.event.id),base).href;content.append(link);}
    if(visit?.note)content.append(node('p',visit.note,'visit-note'));
@@ -222,14 +224,16 @@ export function initServiceVisits({mount,read,commit,base,catalog,onExpense}){
      }catch(error){feedback.textContent=errorText(error);}finally{recalc.disabled=false;}
     });
    }
-   return {article,detail,rental,visit,context};
+   return {article,detail,rental,visit,context,eventFacts};
   });
   list.replaceChildren(...items.map(item=>item.article));
   try{
    const engine=await loadScheduler(base);if(ticket!==sequence)return;
    for(const item of items)if(item.context==='ready')try{
     const result=engine.serviceTrip(item.visit).assessment;
-    item.detail.textContent=`${clock(item.visit.selection.visit.input.arrival)} → ${clock(result.summary.departure)} · ${money(result.summary.cost_total)}. ${states[result.state]}.`;
+    const presentation=eventVisitPresentation(item.visit,result,item.context);
+    item.detail.textContent=`${clock(item.visit.selection.visit.input.arrival)}${presentation?'':` → ${clock(result.summary.departure)}`} · ${money(result.summary.cost_total)}.${presentation?'':` ${states[result.state]}.`}`;
+    if(presentation){item.eventFacts.replaceChildren();for(const hint of presentation.conditionHints)item.detail.append(node('span',' '+hint.text,'visit-facts'));}
     const facts=rentalFactsElement(item.visit,result);item.rental.replaceChildren(...(facts?[facts]:[]));
    }catch{item.detail.textContent='Сведения о посещении нужно проверить. Сохранённый выбор остаётся в файле поездки.';}
   }catch{if(ticket===sequence)for(const item of items)if(item.context==='ready')item.detail.textContent='Расчёт не загрузился. Посещение остаётся в вашем дне.';}

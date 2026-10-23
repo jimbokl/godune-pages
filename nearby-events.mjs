@@ -201,7 +201,7 @@ export function mountNearbyEvents(root,{now=()=>new Date(),fetcher=globalThis.fe
     const button=event.target.closest('[data-nearby-add]');if(!button||!root.contains(button))return;
     const day=button.dataset.eventDate,record=eventsForDate(buckets.get(day)?.data||{events:[]},day,{now:now()}).find(e=>e.id===button.dataset.nearbyAdd);
     if(!record)return;
-    win.dispatchEvent(new win.CustomEvent('godune:event-proposal',{detail:{event:record,date:day,venue_id:record.venue_id,opener:button}}));
+    win.dispatchEvent(new win.CustomEvent('godune:event-proposal',{detail:{event:record,date:day,venue_id:record.venue_id,venue:buckets.get(day)?.data?.venues?.[record.venue_id]??null,opener:button}}));
   }
   function onVisible(){if(doc.visibilityState!=='hidden')tick();}
   // Route UI publishes only after resolving its visible date, including a

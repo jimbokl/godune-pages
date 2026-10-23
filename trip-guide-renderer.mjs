@@ -1,3 +1,4 @@
+import {eventVisitPresentation,serviceTimingTotal,serviceLocationText} from './trip-service-presentation.mjs?v=2026102306';
 import './assets/vendor/pdf/pdf-lib.js?v=2026101305';
 import './assets/vendor/pdf/fontkit.js?v=2026101305';
 import {clock} from './day-stop-view.mjs?v=2026101305';
@@ -125,9 +126,11 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       source({...s,name:`[Б${number}] ${s.name||'Источник'}${range?' · '+range:''}`,checked_at:s.observed_at||s.checked_at,date_label:s.observed_at?'наблюдение от':'проверено'});
     }
   }
-  async function serviceChapter(s,number){
+  async function serviceChapter(s,number,conflict){
+    const a=s.assessment,presentation=eventVisitPresentation(s,s.assessment,s.context);
     start();text(`${String(number).padStart(2,'0')} · ${s.category}`,{size:9,color:muted,space:16});heading(s.name,true);
-    text(s.summary);if(s.address)text('Адрес: '+s.address);
+    if(conflict)text(conflict);
+    if(s.summary)text(s.summary);if(s.address)text('Адрес: '+s.address);
     if(s.event_presentation){for(const line of s.event_presentation.lines)text(line,{size:phone?10.5:12,space:5});source(s.event_presentation.source);}
     if(s.freshness_text){text(`Статус сведений на ${date(s.freshness?.as_of||snapshot.as_of)} · Калининград.`,{size:phone?9:11,color:muted,space:5});text(s.freshness_text,{size:phone?10.5:12});}
     for(const row of s.selection_facts||[])text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});
@@ -137,19 +140,19 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});
     }
     else if(s.point){text('GPS '+gps(s.point),{size:phone?12:14});await image(media.maps[s.key],phone?175:260);text('Ориентир из сохранённого посещения. Вход и подход уточните.',{size:phone?9:11,color:muted});source({name:s.point.source_id,checked_at:s.point.checked_at});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
-    else text('Координаты не записаны. Сохраните адрес и уточните вход до выхода.',{color:muted});
-    const a=s.assessment;
+    else if(!presentation)text(serviceLocationText(s),{color:muted});
+    if(presentation)for(const hint of [...presentation.hints,...presentation.conditionHints])if(hint.stage!=='event_end')text(hint.text,{size:phone?10.5:12,space:5});
     if(a){
       const sources=groupServiceSources(s.sources);
       const groupHeight=g=>g.details.reduce((sum,d)=>sum+textHeight(d,ui,phone?8.5:10,4),0)+sourceHeight({...g,name:'Источник'});
       const sourcesHeight=sources.reduce((sum,g)=>sum+groupHeight(g),0);
       heading('Выбранное посещение',false,date(s.date));text(date(s.date));
       if(s.rental?.length){for(const row of s.rental)text(`${row.label}: ${row.value}`,{size:phone?10.5:12,space:5});}
-      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],['Начало посещения',a.visit.timeline.activity_start],['Конец посещения',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
+      else for(const [label,value]of [['Прибытие к ориентиру',a.visit.timeline.arrival],['Вход',a.visit.timeline.entry],['Начало посещения',a.visit.timeline.activity_start],['Конец посещения',a.visit.timeline.activity_end],['Возвращение к ориентиру',a.summary.departure]])if(!presentation||value!==null)text(`${label}: ${value==null?'время ещё неизвестно':clock(value)}`,{size:phone?10.5:12,space:5});
       if(a.visit.timeline.wait>0)text(`Ожидание сеанса: ${a.visit.timeline.wait} мин.`,{size:phone?10.5:12});
-      text(`Всего: ${a.summary.total_minutes==null?`известно ${a.visit.duration.known_minutes} мин; полное время нужно уточнить`:`${a.summary.total_minutes} мин`}.`);
+      const total=serviceTimingTotal(a);if(total)text(total);
       heading('Время на подготовку',false,s.stages[0]?.label);
-      for(const stage of s.stages)text(`${stage.label}: ${stage.minutes==null?'нужно уточнить':stage.minutes+' мин'}`,{size:phone?10:12,space:5});
+      for(const [index,stage]of s.stages.entries())if(!presentation||!presentation.coveredStages.includes(a.visit.duration.segments[index]?.stage))text(`${stage.label}: ${stage.minutes==null?'нужно уточнить':stage.minutes+' мин'}`,{size:phone?10:12,space:5});
       const priceLines=(s.price_rows||[]).map(row=>`${row.name}: ${row.total==null?'Нужно уточнить':money(row.total)}${row.detail?' · '+row.detail:''}`);
       const totals=['Стоимость: '+s.cost,...(s.cost_split?[s.cost_split]:[]),...(a.quote?['Возвратный залог: '+s.deposit,'Потребуется при входе: '+s.upfront]:[])];
       // Keep an ordinary receipt with its total on one page; long receipts still flow.
@@ -158,12 +161,13 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
       for(const line of priceLines)text(line,{size:phone?10.5:12,space:5});
       for(const line of totals)text(line);
       text(a.quote?'Это выбранный тариф. Записанные оплаты и возвраты показаны отдельно в расходах дня.':'Тариф ещё не выбран. Уточните стоимость у заведения перед посещением.',{size:phone?9:11,color:muted});
-      if(s.conditions.length){
+      const visibleConditions=presentation?s.conditions.filter(c=>c.status!=='Нужно уточнить'||c.observations.length):s.conditions;
+      if(visibleConditions.length){
         const label=c=>`${c.label} · ${c.status}`,observationText=o=>o.text+(o.status==='current'?'':' · сведения нужно сверить');
         const blockHeight=c=>textHeight(label(c),ui,phone?11:13)+c.observations.reduce((sum,o)=>sum+textHeight(observationText(o),ui,phone?10:12)+sourceHeight(o.source),0);
-        heading('Перед посещением',false,label(s.conditions[0]),Math.max(0,blockHeight(s.conditions[0])-textHeight(label(s.conditions[0]))));
-        for(const [i,condition]of s.conditions.entries()){
-          const tail=i===s.conditions.length-1?sourcesHeight+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0):0;
+        heading('Перед посещением',false,label(visibleConditions[0]),Math.max(0,blockHeight(visibleConditions[0])-textHeight(label(visibleConditions[0]))));
+        for(const [i,condition]of visibleConditions.entries()){
+          const tail=i===visibleConditions.length-1?sourcesHeight+(s.note?textHeight('Ваша заметка',title,phone?24:30,16)+textHeight(s.note):0):0;
           const block=blockHeight(condition);need(block+tail<h-2*m-90?block+tail:Math.min(block,body*6));
           text(label(condition),{size:phone?11:13});
           for(const observation of condition.observations){const size=phone?10:12,block=textHeight(observationText(observation),ui,size)+sourceHeight(observation.source);if(block<h-2*m-90)need(block);text(observationText(observation),{size});source(observation.source);}
@@ -237,8 +241,8 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     if(b.receipt.rail_connection?.state!=='connected'&&b.receipt.rail_connection)text(b.status,{size:phone?9:11,color:muted});
     chapter='ДОРОГА И ПРОГУЛКА';if(phone)start();else y-=14;heading('По шагам',false,b.details[0]?.title);
     for(const row of b.details){
-      const label=row.kind==='cost'?'Стоимость на компанию':row.time===null?row.timeLabel||'Время уточняется':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`;
-      const size=phone?11:12,caption=`${label} · ${row.title}${row.references.length?' ['+row.references.join(', ')+']':''}`,lead=textHeight(caption,ui,size,5),content=textHeight(row.text,ui,phone?10:11,10);
+      const label=row.kind==='cost'?'Стоимость на компанию':row.kind==='notice'?'':row.time===null?row.timeLabel||'Время уточняется':`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`;
+      const size=phone?11:12,caption=`${label?label+' · ':''}${row.title}${row.references.length?' ['+row.references.join(', ')+']':''}`,lead=textHeight(caption,ui,size,5),content=textHeight(row.text,ui,phone?10:11,10);
       need(lead+(lead+content<h-2*m-90?content:body*3));
       text(caption,{size,space:5});text(row.text,{size:phone?10:11,space:10});
     }
@@ -370,16 +374,16 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     text(`${(snapshot.transport_receipt||day.transport_plans?.length)&&!entries.length?'Сохранённый транспортный расчёт':plural(entries.length,['остановка','остановки','остановок'])}${!day.timing_summary?(day.finish!==null?` · окончание по плану ${clock(day.finish)}`:day.earliest_finish!==null?` · не раньше ${clock(day.earliest_finish)}`:'')+(day.slack!==null?` · ${day.slack_label||'запас'} ${day.slack} мин`:''):''}`,{color:muted});
     await image(media.overview[day.id],phone?115:265);
     if(media.overview[day.id]){text('Общий вид. Подробные карты - у остановок. Линия показана только там, где путь рассчитан по дорогам; между остальными местами её нет.',{size:phone?8.5:10,color:muted});text(`© OpenStreetMap contributors · ODbL 1.0 · ${media.source.snapshot_at}`,{size:8,color:muted});}
-    for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):!Number.isFinite(p.lat)||!Number.isFinite(p.lon)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});
+    for(const p of entries)text(`${String(p.number).padStart(2,'0')} · ${p.name}${p.completed?' · уже были, время осмотра не записано':''}${!phone&&Number.isFinite(p.lat)&&Number.isFinite(p.lon)?' · GPS '+gps(p):(!Number.isFinite(p.lat)||!Number.isFinite(p.lon))&&!day.services?.some(s=>s.id===p.id&&s.address)?' · координаты пока не записаны':''}`,{size:phone?9.5:11,space:8});
     heading('По шагам',false,day.rows[0]?.title||'Точное время ещё не рассчитано.',40);
     if(!day.rows.length)text('Точное время ещё не рассчитано. Сверьте прежний план на сайте перед выходом.');
     for(const row of day.rows){
-      const label=row.kind==='cost'?'Стоимость на компанию':`${row.time===null?(row.timeLabel||'Время нужно уточнить'):`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
-      const leadHeight=textHeight(label,ui,phone?9:11,5)+textHeight(row.title,ui,phone?12:14,6),bodyHeight=textHeight(row.text);
+      const label=row.kind==='cost'?'Стоимость на компанию':row.kind==='notice'?'':`${row.time===null?(row.timeLabel||'Время нужно уточнить'):`${row.timeLabel?row.timeLabel+' · ':''}${transferClock(row.time)}`} · ${row.kind==='service'?'Посещение':journeyKinds[row.kind] || 'Остановка'}`;
+      const leadHeight=(label?textHeight(label,ui,phone?9:11,5):0)+textHeight(row.title,ui,phone?12:14,6),bodyHeight=textHeight(row.text);
       // Keep a short event together; a long event starts with at least two body lines.
       const evidenceHeight=(row.source&&!day.kosa?sourceHeight(row.source):0)+(row.sources||[]).reduce((sum,s)=>sum+sourceHeight(s),0);
       need(leadHeight+(leadHeight+bodyHeight+evidenceHeight<h-2*m-90?bodyHeight+evidenceHeight:body*1.48*2));
-      text(label,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
+      if(label)text(label,{size:phone?9:11,color:muted,space:5});text(row.title,{size:phone?12:14,space:6});text(row.text);
       for(const anchor of row.anchors||[])if(anchor.location?.kind==='point')text(`${anchor.name} · GPS ${gps(anchor.location)}`,{size:phone?9:11,color:muted});
       const detail=day.kosa?.timeline.find(item=>item.title===row.title&&item.kind===row.kind&&item.time===row.time) || row;
       if(Object.hasOwn(detail,'boarding'))text(detail.boarding?kosaBoardingText(detail.boarding):'Названия остановок пока не загружены. Уточните их до поездки.');
@@ -431,7 +435,7 @@ export async function renderTripGuide({snapshot,media,base,format='phone'},{sign
     }
     if(day.bookings.length){heading('Билеты и ночёвки');for(const b of day.bookings){need(65);text(`${b.kindLabel} · ${b.name}`,{size:phone?12:14,space:5});text(`${b.statusLabel} · ${date(b.date)}${Number.isInteger(b.time)?' · '+clock(b.time):''}${b.location?' · '+b.locationLabel:''}`);if(b.problem)text('Время этой записи сейчас не закрепляет день. Проверьте дату и привязку.',{color:muted});if(b.private?.reference)text('Номер брони: '+b.private.reference);if(b.private?.note)text(b.private.note);}}
     for(const entry of entries){
-      if(entry.kind==='service'){const service=day.services.find(v=>v.key===entry.key);await serviceChapter(service,entry.number);continue;}
+      if(entry.kind==='service'){const service=day.services.find(v=>v.key===entry.key);await serviceChapter(service,entry.number,day.rows.find(r=>r.id===`service:${service.key}`)?.conflict_text);continue;}
       const p=day.stops.find(v=>v.id===entry.id),i=entry.number-1;
       if(kosaAssets?.chapters.some(c=>c.entry.route===p.id))continue;
       start();text(`${String(i+1).padStart(2,'0')} · ${p.area}`,{size:9,color:muted,space:phone?8:16});

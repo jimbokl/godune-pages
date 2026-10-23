@@ -1,3 +1,4 @@
+import {eventEndText,eventVisitPresentation} from './trip-service-presentation.mjs?v=2026102306';
 import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
 import {placePath} from './place-path.mjs?v=2026101406';
 import {endBookingLabel} from './trip-bookings-state.mjs?v=2026101305';
@@ -56,6 +57,7 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
   header.append(node('p',time,'visit-timeline-time'));
   if(visit)header.append(node('span',assessment?.context==='date_changed'?'Другая дата':assessment?.assessment?'Фиксированное время':'Выбор сохранён','visit-timeline-badge'));
   const title=node('h5',name);title.tabIndex=-1;title.dataset.timelineTitle=entry.id;card.append(header,title);
+  if(stop?.issues?.some(v=>v.code==='fixed_visit_missed'))card.append(node('p','На выбранное время не успеваем. Переставьте остановки или измените посещение.','visit-timeline-warning'));
   if(visit){
    const selection=serviceSelectionElement(visit);if(selection)card.append(selection);
    if(!assessment?.assessment)card.append(node('p','Полный расчёт этого посещения пока недоступен. Выбор остаётся в поездке.','visit-timeline-warning'));
@@ -63,13 +65,14 @@ export function serviceTimelineView({result,day,trip,catalog,base,onMove,onSetti
    const rental=rentalFactsElement(visit,assessment?.assessment);if(rental)card.append(rental);
    if(assessment?.context==='date_changed')card.append(node('p','Пересчитайте посещение на дату этого дня.','visit-timeline-warning'));
    if(visit?.event?.end_time===null){
-    card.append(node('p','Время окончания уточняется.','visit-timeline-warning'));
+    const end=eventEndText(visit.event);if(end)card.append(node('p',end,'visit-timeline-warning'));
     const estimate=eventDurationEstimateText(visit.event);
     if(estimate){const text=node('p',estimate,'visit-timeline-detail');text.dataset.eventDurationEstimate='';card.append(text);}
    }
+   const presentation=eventVisitPresentation(visit,assessment?.assessment,assessment?.context);
+   if(presentation)for(const hint of presentation.hints)if(hint.stage!=='event_end')card.append(node('p',hint.text,'visit-timeline-detail'));
    if(visit.note)card.append(node('p',visit.note,'visit-timeline-note'));
   }else if(stop)card.append(node('p',boundary?(entry.kind==='origin'?'Выходим отсюда':boundaries.bookings.end&&entry.kind==='destination'?(boundaries.bookings.end.kind==='return'?'К выбранному сроку возвращения':'К выбранному отъезду'):'Здесь завершаем день'):entry.kind==='destination'?'Конец выбранного пути':`На месте · ${stop.visit_minutes} мин`,'visit-timeline-detail'));
-  if(stop?.issues?.some(v=>v.code==='fixed_visit_missed'))card.append(node('p','На выбранное время не успеваем. Переставьте остановки или измените посещение.','visit-timeline-warning'));
   const controls=node('div',undefined,'visit-timeline-controls'),index=editable.findIndex(v=>v.id===entry.id&&v.kind===entry.kind);
   if(index>=0){
    number++;card.dataset.timelineNumber=String(number).padStart(2,'0');

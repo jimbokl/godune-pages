@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T12:52:58.562Z",
+  "generated_at": "2026-10-23T14:48:08.569Z",
   "updated_at": "2026-10-23T08:09:55.270475Z",
   "date": "2026-11-16",
   "coverage": {
@@ -795,5 +795,42 @@
         "label": "1 час 20 минут без антракта"
       }
     }
-  ]
+  ],
+  "venues": {
+    "kaliningrad-cathedral-tours-meeting-unknown": {
+      "id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "name": "Место встречи уточняется",
+      "address": null,
+      "place_id": null,
+      "coordinates": null,
+      "city": "kaliningrad",
+      "city_name": "Калининград"
+    },
+    "kaliningrad-cathedral": {
+      "id": "kaliningrad-cathedral",
+      "name": "Кафедральный собор",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "ул. И. Канта, 1",
+      "identity_source_url": "https://sobor39.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
+    },
+    "kaliningrad-drama": {
+      "id": "kaliningrad-drama",
+      "name": "Калининградский областной драматический театр",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "проспект Мира, 4",
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4"
+    }
+  }
 }

@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T12:52:58.562Z",
+  "generated_at": "2026-10-23T14:48:08.569Z",
   "updated_at": "2026-10-23T08:09:55.270475Z",
   "date": "2026-10-19",
   "coverage": {
@@ -92,5 +92,21 @@
       },
       "place_id": null
     }
-  ]
+  ],
+  "venues": {
+    "organhall-makarov": {
+      "id": "organhall-makarov",
+      "name": "Органный зал \"Макаров\"",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": null,
+      "coordinates": null,
+      "address": "ул. Курортная, 3",
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://organhall.ru/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "b40dd7984b15f4b48e35e3bae4cae48f15e2d173803d8b27e2666c487f71473e"
+    }
+  }
 }

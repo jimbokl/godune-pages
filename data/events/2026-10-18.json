@@ -2,7 +2,7 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T12:52:58.562Z",
+  "generated_at": "2026-10-23T14:48:08.569Z",
   "updated_at": "2026-10-23T08:09:55.270475Z",
   "date": "2026-10-18",
   "coverage": {
@@ -440,5 +440,54 @@
       },
       "place_id": null
     }
-  ]
+  ],
+  "venues": {
+    "kaliningrad-philharmonia": {
+      "id": "kaliningrad-philharmonia",
+      "name": "Калининградская областная филармония",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "kirha-svyatogo-semeystva",
+      "coordinates": {
+        "lat": 54.6978239,
+        "lon": 20.5096814
+      },
+      "address": "ул. Б. Хмельницкого, 61а",
+      "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://filarmonia39.ru/kontakty/",
+      "identity_verified_at": "2026-10-17",
+      "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
+      "coordinates_verified_at": "2026-10-01"
+    },
+    "kaliningrad-drama": {
+      "id": "kaliningrad-drama",
+      "name": "Калининградский областной драматический театр",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "проспект Мира, 4",
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4"
+    },
+    "yantar-hall": {
+      "id": "yantar-hall",
+      "name": "Театр эстрады «Янтарь-Холл»",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": "yantar-hall",
+      "coordinates": {
+        "lat": 54.9455297,
+        "lon": 20.1575504
+      },
+      "address": "ул. Ленина, 11",
+      "source_url": "https://yantarholl.ru/",
+      "verified_at": "2026-10-17",
+      "coordinate_evidence_sha256": "c604644e135d7895b2745489b49b7b5fe8733214113363ad84ce7de74ba7edba"
+    }
+  }
 }
