@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
-  "generated_at": "2026-10-23T02:08:13.532Z",
-  "updated_at": "2026-10-23T02:07:26.069804Z",
+  "revision": "07c92933ac3cb54599c5d37ba2a72a8db845a3ff34cea02d6a7bfdc5ced7ef6e",
+  "generated_at": "2026-10-23T05:27:13.772Z",
+  "updated_at": "2026-10-23T05:11:33.556510Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -13,11 +13,85 @@
       "event-source-b07a257286f6b316",
       "event-source-bb998745a289ea86",
       "event-source-bf3783fcdd66d141",
+      "event-source-c079ea456950fa9b",
       "event-source-ceeadb1f19fac8a9",
       "event-source-f8218687dc470ff0"
     ]
   },
   "events": [
+    {
+      "id": "event-5c497d2c9300d008",
+      "title": "Над уровнем моря",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется · Музей Мирового океана",
+      "date": "2026-10-29",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Занятие",
+      "description": "Занятие «Над уровнем моря» — почувствуйте себя частью экипажа морской авиации на борту самолёта-амфибии Бе-12. Узнаем об истории его службы, разберёмся, как самолёт садится на воду, и познакомимся с особенностями его устройства. Точное место встречи уточните в музее.",
+      "admission": "Условия участия и место встречи уточните в музее",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-c079ea456950fa9b",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-school-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-29T11:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-23T02:04:18Z",
+      "source_identity": "programme:a47dda60998d24a02b9edb0e",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-23T02:04:18Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "81ca3b12de6dc42d12cb4b975c579f2a511b49b6f544a3a5b4ef71d7ff73a7d7",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "programme_range": "26 октября 11:00 — 01 ноября 2026 18:00",
+        "calendar_date": "2026-10-29",
+        "card_quote": "Занятие «Над уровнем моря» — почувствуйте себя частью экипажа морской авиации на борту самолёта-амфибии Бе-12. Узнаем об истории его службы, разберёмся, как самолёт садится на воду, и познакомимся с особенностями его устройства.",
+        "meeting": {
+          "status": "unknown"
+        },
+        "city_refs": [
+          {
+            "url": "https://world-ocean.ru/voenno-morskoj-tsentr",
+            "sha256": "68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de",
+            "fetched_at": "2026-10-23T05:08:52Z",
+            "private_capture": "runtime/events-refresh/cache/sources/68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          },
+          {
+            "url": "https://world-ocean.ru/srt-129",
+            "sha256": "e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2",
+            "fetched_at": "2026-10-23T05:08:53Z",
+            "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          }
+        ]
+      },
+      "duration_estimate": null
+    },
     {
       "id": "event-dd8981321043b217",
       "title": "Остров Канта: сквозь время",

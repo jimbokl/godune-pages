@@ -1295,6 +1295,416 @@
           "checked_at": "2026-10-22"
         }
       ]
+    },
+    {
+      "id": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-2026-10-23",
+      "status": "published",
+      "path": "news/2026/10/23/svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya/",
+      "category": "poezdki",
+      "headline": "24 октября из Светлогорска в Калининград назначен дополнительный вечерний поезд",
+      "description": "Поезд отправится из Светлогорска-2 в 21:49, из Пионерского Курорта — в 22:04 и прибудет на Южный вокзал в 22:52.",
+      "published_at": "2026-10-23T07:14:34+02:00",
+      "modified_at": "2026-10-23T07:14:34+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "К фестивалю «Пирс» в Пионерском КППК назначила дополнительный вечерний поезд в Калининград. Он отправится в субботу, 24 октября, из Светлогорска с остановкой в Пионерском.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Когда",
+          "value": "24 октября 2026 года",
+          "source": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-source"
+        },
+        {
+          "label": "Отправление",
+          "value": "Светлогорск-2 — 21:49; Пионерский Курорт — 22:04",
+          "source": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-source"
+        },
+        {
+          "label": "Прибытие",
+          "value": "Калининград-Южный — 22:52",
+          "source": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-source"
+        },
+        {
+          "label": "По пути",
+          "value": "Предусмотрены все остановки",
+          "source": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-source"
+        }
+      ],
+      "context": "Сообщение оператора опубликовано 22 октября. Дополнительный рейс связан с проведением фестиваля в Пионерском.",
+      "interpretations": [
+        {
+          "title": "Для вечера на побережье",
+          "text": "Этот рейс можно учесть при выборе времени возвращения. В плане укажите свою станцию посадки: время из Светлогорска и Пионерского различается."
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ],
+      "follow_up": {
+        "date": "2026-10-24",
+        "action": "Сверить действующие условия в первоисточнике."
+      },
+      "sources": [
+        {
+          "id": "svetlogorsk-kaliningrad-dopolnitelnyy-poezd-24-oktyabrya-source",
+          "title": "КППК: дополнительный вечерний поезд из Светлогорска 24 октября",
+          "url": "https://kppk39.ru/izmeneniya-v-raspisanii/dopolnitelnyy-vecherniy-prigorodnyy-poezd-budet-naznachen-iz-svetlogorska-v-kaliningrad-24-oktyabrya/",
+          "kind": "operator",
+          "published_at": "2026-10-22",
+          "checked_at": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "dachnye-poezda-raspisanie-s-1-noyabrya-2026-10-23",
+      "status": "published",
+      "path": "news/2026/10/23/dachnye-poezda-raspisanie-s-1-noyabrya/",
+      "category": "poezdki",
+      "headline": "С 1 ноября меняется расписание поездов на четырёх направлениях области",
+      "description": "КППК сообщила о сезонных изменениях на Багратионовском, Мамоновском, Чернышевском и Балтийском направлениях.",
+      "published_at": "2026-10-23T07:14:34+02:00",
+      "modified_at": "2026-10-23T07:14:34+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Период курсирования дачных поездов заканчивается. С 1 ноября часть рейсов отменяют, а некоторые оставляют только на выходные и праздники. Изменения нужно учитывать и для поездки в город, и для возвращения.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Багратионовск",
+          "value": "Поезд с Южного вокзала в 8:25 — только по выходным и праздникам. В эти же дни назначается обратный рейс в 14:15 с прибытием в 15:05. Рейс из Багратионовска в 18:35 отменяется",
+          "source": "dachnye-poezda-raspisanie-s-1-noyabrya-source"
+        },
+        {
+          "label": "Мамоново",
+          "value": "Поезда из Калининграда в 10:25 и из Мамоново в 16:20 остаются только по выходным и праздникам",
+          "source": "dachnye-poezda-raspisanie-s-1-noyabrya-source"
+        },
+        {
+          "label": "Черняховск",
+          "value": "На осенне-зимний период отменяются рейсы из Калининграда в 8:15 и из Черняховска в 13:05. Поезда до Чернышевского и обратно сохраняют прежнюю периодичность",
+          "source": "dachnye-poezda-raspisanie-s-1-noyabrya-source"
+        },
+        {
+          "label": "Балтийск",
+          "value": "Отменяются отправления с Южного вокзала в 8:10 и 13:05, из Балтийска — в 9:49 и 16:20. Поезда по рабочим дням продолжают ходить по действующему расписанию",
+          "source": "dachnye-poezda-raspisanie-s-1-noyabrya-source"
+        }
+      ],
+      "context": "КППК опубликовала сезонное изменение 22 октября. Это сообщение об отдельных рейсах, а не об отмене всего пригородного сообщения по перечисленным направлениям.",
+      "interpretations": [
+        {
+          "title": "Если едете в ноябре",
+          "text": "Выберите дату и проверьте отдельно оба направления. Рейс, оставшийся в выходные, может отсутствовать в рабочий день; привычный вечерний поезд также может быть отменён."
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ],
+      "follow_up": {
+        "date": "2026-11-01",
+        "action": "Сверить действующие условия в первоисточнике."
+      },
+      "sources": [
+        {
+          "id": "dachnye-poezda-raspisanie-s-1-noyabrya-source",
+          "title": "КППК: изменение дачных поездов с 1 ноября 2026 года",
+          "url": "https://kppk39.ru/izmeneniya-v-raspisanii/raspisanie-dvizheniya-prigorodnykh-poezdov-na-dachnykh-napravleniyakh-izmenitsya-s-1-noyabrya-2026-g/",
+          "kind": "operator",
+          "published_at": "2026-10-22",
+          "checked_at": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "ostrova-muzej-iskusstv-kanikuly-2026-10-23",
+      "status": "published",
+      "path": "news/2026/10/23/ostrova-muzej-iskusstv-kanikuly/",
+      "category": "poezdki",
+      "headline": "На каникулах музей искусств проведёт мастерские фестиваля «Острова»",
+      "description": "24 и 26 октября дети с родителями смогут сделать набойку на ткани, а 2 ноября — создать свой дождевик. Нужны регистрация и фестивальный билет.",
+      "published_at": "2026-10-23T07:14:34+02:00",
+      "modified_at": "2026-10-23T07:14:34+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Старинные узоры можно перенести на собственную вещь. Музей изобразительных искусств включил творческие мастерские в программу «Модники и модницы» для детей 8–11 лет и родителей.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Набойка на ткани",
+          "value": "«Мастерская старинных принтов» — 24 и 26 октября в 12:00",
+          "source": "ostrova-muzej-iskusstv-kanikuly-source"
+        },
+        {
+          "label": "Дождевик",
+          "value": "Мастер-класс «Кастомный дождевик» — 2 ноября в 12:00",
+          "source": "ostrova-muzej-iskusstv-kanikuly-source"
+        },
+        {
+          "label": "Участие",
+          "value": "Предварительная регистрация и фестивальный билет; ссылки даны в сообщении музея",
+          "source": "ostrova-muzej-iskusstv-kanikuly-source"
+        },
+        {
+          "label": "Фестивальный билет",
+          "value": "Основная программа: детский — 100 ₽, взрослый — 200 ₽",
+          "source": "ostrova-muzej-iskusstv-kanikuly-source"
+        }
+      ],
+      "context": "Музей опубликовал программу 22 октября. На мастерскую набойки можно принести футболку, джинсы или другую свою вещь; занятие также предусматривает работу с хлопковым мешочком.",
+      "interpretations": [
+        {
+          "title": "Для семейного дня",
+          "text": "Сначала выберите занятие и зарегистрируйтесь, затем добавьте его к прогулке. У мастерских разные даты, хотя время начала одинаковое."
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ],
+      "follow_up": {
+        "date": "2026-10-24",
+        "action": "Сверить действующие условия в первоисточнике."
+      },
+      "sources": [
+        {
+          "id": "ostrova-muzej-iskusstv-kanikuly-source",
+          "title": "Музей изобразительных искусств: фестиваль «Острова»",
+          "url": "https://www.kaliningradartmuseum.ru/about/news/festival-ostrova-v-muzee-iskusstv/",
+          "kind": "museum",
+          "published_at": "2026-10-22",
+          "checked_at": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "muzej-yantarya-obnovlennyy-zal-karl-2026-10-23",
+      "status": "published",
+      "path": "news/2026/10/23/muzej-yantarya-obnovlennyy-zal-karl/",
+      "category": "poezdki",
+      "headline": "В Музее янтаря обновили зал «Янтарь XXI века» и разместили оригинал хомлина Карла",
+      "description": "В постоянной экспозиции заменили витрины и освещение, а найденный при ремонте камин XIX века оставили в зале.",
+      "published_at": "2026-10-23T07:14:34+02:00",
+      "modified_at": "2026-10-23T07:14:34+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Кирпичная арка, старинный камин и работы современных художников теперь собраны в обновлённом зале Музея янтаря. Об открытии экспозиции «Янтарь XXI века» сообщил областной туристический информационный центр.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Что посмотреть",
+          "value": "Камнерезные и мозаичные работы петербургских и калининградских художников; модель корабля «Васа» и панно «Русь»",
+          "source": "muzej-yantarya-obnovlennyy-zal-karl-source"
+        },
+        {
+          "label": "Что изменилось",
+          "value": "После капитального ремонта установлены новые витрины и освещение; часть объектов доступна для осмотра без стекла",
+          "source": "muzej-yantarya-obnovlennyy-zal-karl-source"
+        },
+        {
+          "label": "Камин",
+          "value": "Камин XIX века обнаружили под штукатуркой во время ремонта зала",
+          "source": "muzej-yantarya-obnovlennyy-zal-karl-source"
+        },
+        {
+          "label": "Хомлин Карл",
+          "value": "Оригинальная фигурка перенесена с Медового моста в музей. На мосту установлена копия",
+          "source": "muzej-yantarya-obnovlennyy-zal-karl-source"
+        }
+      ],
+      "context": "Сообщение ТИЦ опубликовано 22 октября. Обновлённый зал входит в постоянную экспозицию музея; название «Янтарь XXI века» относится к выставленным в нём современным работам.",
+      "interpretations": [
+        {
+          "title": "Если ищете хомлинов",
+          "text": "У Медового моста можно увидеть копию Карла, а оригинал — в музее. Это разные точки прогулки: визит в музей стоит планировать отдельно от осмотра фигурок на улицах."
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ],
+      "follow_up": {
+        "date": "2026-10-30",
+        "action": "Сверить действующие условия в первоисточнике."
+      },
+      "sources": [
+        {
+          "id": "muzej-yantarya-obnovlennyy-zal-karl-source",
+          "title": "ТИЦ Калининградской области: обновлённый зал Музея янтаря",
+          "url": "https://visit-kaliningrad.ru/news/VMuzeeyantaryaotkryliobnovlennyyzalsostarinnymkaminomidedushkoyKarlom",
+          "kind": "official-tourism",
+          "published_at": "2026-10-22",
+          "checked_at": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-2026-10-23",
+      "status": "published",
+      "path": "news/2026/10/23/besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya/",
+      "category": "poezdki",
+      "headline": "4 ноября по центру Калининграда пройдёт бесплатная экскурсия-эстафета",
+      "description": "Прогулка «80 лет единства» начнётся в 11:00 и займёт два часа. Место сбора сообщат после записи.",
+      "published_at": "2026-10-23T07:14:34+02:00",
+      "modified_at": "2026-10-23T07:14:34+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "На одной прогулке рассказчиков будут сменять пять гидов. Экскурсия «80 лет единства» посвящена восстановлению Калининграда и пройдёт в День народного единства, 4 ноября.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Начало",
+          "value": "4 ноября 2026 года в 11:00",
+          "source": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-source"
+        },
+        {
+          "label": "Формат",
+          "value": "Два часа пешком по центру Калининграда; пять гидов ведут разные отрезки маршрута",
+          "source": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-source"
+        },
+        {
+          "label": "Стоимость",
+          "value": "Участие бесплатное",
+          "source": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-source"
+        },
+        {
+          "label": "Как попасть",
+          "value": "Нужна запись по ссылке в сообщении ТИЦ. Место сбора сообщают после регистрации",
+          "source": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-source"
+        }
+      ],
+      "context": "Анонс опубликован ТИЦ 20 октября. Маршрут проведут участники Союза экскурсоводов Калининградской области; рассказ посвящён людям и послевоенной истории города.",
+      "interpretations": [
+        {
+          "title": "Перед записью",
+          "text": "Оставьте на прогулку два часа и дождитесь сообщения о месте встречи. В анонсе нет общего адреса сбора для тех, кто ещё не записался."
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ],
+      "follow_up": {
+        "date": "2026-11-04",
+        "action": "Сверить действующие условия в первоисточнике."
+      },
+      "sources": [
+        {
+          "id": "besplatnaya-ekskursiya-80-let-edinstva-4-noyabrya-source",
+          "title": "ТИЦ Калининградской области: экскурсия «80 лет единства» 4 ноября",
+          "url": "https://visit-kaliningrad.ru/news/4noyabryabesplatnayaekskursiyaestafeta80letedinstva",
+          "kind": "official-tourism",
+          "published_at": "2026-10-20",
+          "checked_at": "2026-10-23"
+        }
+      ]
     }
   ]
 }

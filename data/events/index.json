@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
-  "generated_at": "2026-10-23T02:08:13.532Z",
-  "updated_at": "2026-10-23T02:07:26.069804Z",
+  "revision": "07c92933ac3cb54599c5d37ba2a72a8db845a3ff34cea02d6a7bfdc5ced7ef6e",
+  "generated_at": "2026-10-23T05:27:13.772Z",
+  "updated_at": "2026-10-23T05:11:33.556510Z",
   "window": {
     "from": "2026-09-23",
     "to": "2026-11-22",
@@ -396,7 +396,7 @@
     },
     "2026-10-28": {
       "url": "/data/events/2026-10-28.json",
-      "count": 15,
+      "count": 16,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -405,13 +405,14 @@
           "event-source-ab071dcc8fa844bf",
           "event-source-bdf61c686ab434a3",
           "event-source-bf3783fcdd66d141",
+          "event-source-c079ea456950fa9b",
           "event-source-f9eb4005a625cb21"
         ]
       }
     },
     "2026-10-29": {
       "url": "/data/events/2026-10-29.json",
-      "count": 16,
+      "count": 17,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -420,6 +421,7 @@
           "event-source-b07a257286f6b316",
           "event-source-bb998745a289ea86",
           "event-source-bf3783fcdd66d141",
+          "event-source-c079ea456950fa9b",
           "event-source-ceeadb1f19fac8a9",
           "event-source-f8218687dc470ff0"
         ]
@@ -933,6 +935,7 @@
     "event-5af588c68f3f40d1",
     "event-5b9ff8d6d8e03510",
     "event-5c36a314a83f17ba",
+    "event-5c497d2c9300d008",
     "event-5c8f17e8d24943e8",
     "event-5c9da2b797e16dd1",
     "event-5d357bb784acf16f",
@@ -1217,6 +1220,7 @@
     "event-cdc4144c19e25999",
     "event-cf0195a5037f6472",
     "event-cf2905e0ec026568",
+    "event-cf36af297f1928c6",
     "event-d1c44dcbc14a35e3",
     "event-d27e5c5a56838f76",
     "event-d2d060edb9c1697a",

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
-  "generated_at": "2026-10-23T02:08:13.532Z",
-  "updated_at": "2026-10-23T02:07:26.069804Z",
+  "revision": "07c92933ac3cb54599c5d37ba2a72a8db845a3ff34cea02d6a7bfdc5ced7ef6e",
+  "generated_at": "2026-10-23T05:27:13.772Z",
+  "updated_at": "2026-10-23T05:11:33.556510Z",
   "date": "2026-10-28",
   "coverage": {
     "status": "verified_partial",
@@ -13,6 +13,7 @@
       "event-source-ab071dcc8fa844bf",
       "event-source-bdf61c686ab434a3",
       "event-source-bf3783fcdd66d141",
+      "event-source-c079ea456950fa9b",
       "event-source-f9eb4005a625cb21"
     ]
   },
@@ -99,6 +100,79 @@
           },
           "route_date_matches": true
         }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-cf36af297f1928c6",
+      "title": "Там, где море встречает героев",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется · Музей Мирового океана",
+      "date": "2026-10-28",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "«Там, где море встречает героев» — узнаем о первых послевоенных годах Калининградской области: с чем приезжали первые переселенцы и в каких условиях они работали. На выставке «Город победителей» увидим, как художники запечатлели жизнь молодого региона. А на борту рыболовного траулера СРТ-129 узнаем, как ловили рыбу в океане. Точное место встречи уточните в музее.",
+      "admission": "Условия участия и место встречи уточните в музее",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-c079ea456950fa9b",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-school-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-28T11:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-23T02:04:18Z",
+      "source_identity": "programme:2943b0541690b2474a16a9de",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-23T02:04:18Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "81ca3b12de6dc42d12cb4b975c579f2a511b49b6f544a3a5b4ef71d7ff73a7d7",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "programme_range": "26 октября 11:00 — 01 ноября 2026 18:00",
+        "calendar_date": "2026-10-28",
+        "card_quote": "«Там, где море встречает героев» — узнаем о первых послевоенных годах Калининградской области: с чем приезжали первые переселенцы и в каких условиях они работали. На выставке «Город победителей» увидим, как художники запечатлели жизнь молодого региона. А на борту рыболовного траулера СРТ-129 узнаем, как ловили рыбу в океане.",
+        "meeting": {
+          "status": "unknown"
+        },
+        "city_refs": [
+          {
+            "url": "https://world-ocean.ru/voenno-morskoj-tsentr",
+            "sha256": "68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de",
+            "fetched_at": "2026-10-23T05:08:52Z",
+            "private_capture": "runtime/events-refresh/cache/sources/68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          },
+          {
+            "url": "https://world-ocean.ru/srt-129",
+            "sha256": "e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2",
+            "fetched_at": "2026-10-23T05:08:53Z",
+            "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          }
+        ]
       },
       "duration_estimate": null
     },
