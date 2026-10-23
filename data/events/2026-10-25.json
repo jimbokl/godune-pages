@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
@@ -215,7 +215,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-22T02:02:13Z",
+      "verified_at": "2026-10-23T02:02:18Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -275,6 +275,14 @@
           "verified_at": "2026-10-22T02:02:13Z",
           "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
           "sha256": "612a033ebbc9f76887e005628a110f8b8e0b01a33434abadc65fdd43d52e37cc",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:18Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "61165d61aae1961757d649318290dbd6e0211479de01373f9e4a8cf2e80a4f9b",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T12:00:00+02:00"
@@ -788,7 +796,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
-      "verified_at": "2026-10-22T02:02:40Z",
+      "verified_at": "2026-10-23T02:02:52Z",
       "source_identity": "programme:7958f9bac8a76cf3ade3e7b7",
       "source_scope": "programme",
       "observations": [
@@ -807,11 +815,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T14:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:52Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
+          "sha256": "801763fb03ac20c89b44bdd91030a90b5ee0f53cc1c417625dd76c9524091404",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T14:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
+        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
         "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «ГЛИНКА: РОЖДЕНИЕ РУССКОЙ КЛАССИКИ» (12+)Скоро 25 октября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
         "explicit_date": "25 ОКТЯБРЯ 2026 14:00"
       },
@@ -1308,7 +1324,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
-      "verified_at": "2026-10-22T02:02:40Z",
+      "verified_at": "2026-10-23T02:02:51Z",
       "source_identity": "programme:4ff95bc5b91eae738dc79028",
       "source_scope": "programme",
       "observations": [
@@ -1327,11 +1343,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:51Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
+          "sha256": "3b2a9c0925bfe37b957226a10d5dba3190a9758c75ac0f4924744a50d5f4a0a0",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T17:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
+        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
         "card_quote": "Купить билетИСКУССТВО В КИНО. АРТ-ЛЕКТОРИЙ: ТАЙНАЯ ЖИЗНЬ УФФИЦИ (16+)Скоро 25 октября в 17:00 Кинозал Фильм о жизни одного из старейших музеев мира. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "25 ОКТЯБРЯ 2026 17:00"
       },
@@ -1611,7 +1635,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-22T02:02:14Z",
+      "verified_at": "2026-10-23T02:02:19Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1674,6 +1698,14 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:19Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "df18de8c4c2c0997c4856a0730f8ef252a60b36aec20ae6a14954d3a39f5c1b6",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1730,7 +1762,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:6bdd29fa5eed32331cf4dfc6",
       "source_scope": "programme",
       "observations": [
@@ -1746,6 +1778,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"

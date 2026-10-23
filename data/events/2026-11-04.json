@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -219,7 +219,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
-      "verified_at": "2026-10-22T02:02:16Z",
+      "verified_at": "2026-10-23T02:02:21Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:41Z",
@@ -247,6 +247,14 @@
           "verified_at": "2026-10-22T02:02:16Z",
           "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
           "sha256": "ec02765d21aa814e325efa92d6b12a945f403d8e9de233d89be2f52205dfc06a",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "0448cb95f845694860bb90b156bc81e5f33e7a53966d908497d500a3c0db61d0",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T12:00:00+02:00"
@@ -384,7 +392,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-22T02:02:37Z",
+      "verified_at": "2026-10-23T02:02:49Z",
       "source_identity": "programme:d79a447c8327cfbc106e6a4f",
       "source_scope": "programme",
       "observations": [
@@ -395,11 +403,19 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T13:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:49Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "2452bc4fda759468ee03c08ac3eee981a6ef16eb28f015263979405e36764974",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T13:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
+        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "4 ноября 2026 13:00"
       },
@@ -672,7 +688,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-22T02:02:15Z",
+      "verified_at": "2026-10-23T02:02:21Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -716,6 +732,14 @@
           "verified_at": "2026-10-22T02:02:15Z",
           "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
           "sha256": "6e70001e67e0f5f1575ba0fc9ef7c7afae45e3e1c20344ca238bada6a9c4505f",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "b83571c6b4f611a65d50a50bfdbd9c9729cd46c162e0e7814fe74c9f4477a089",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
@@ -889,7 +913,7 @@
       "starts": "19:00",
       "ends": null,
       "kind": "Спектакль",
-      "description": "Карина Бесолти. Разговор о театре и музыке",
+      "description": "по письмам Людвига ван Бетховена",
       "admission": "По билетам · 16+",
       "price": null,
       "currency": null,
@@ -913,7 +937,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-22T02:02:27Z",
+      "verified_at": "2026-10-23T02:02:34Z",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -924,10 +948,18 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "Премьера04НоябряСр19:00Опус. БетховенКарина Бесолти. Разговор о театре и музыкеСредняя сцена1 час 15 минут без антракта16+Билеты",
+        "card_quote": "Премьера04НоябряСр19:00Опус. Бетховенпо письмам Людвига ван БетховенаСредняя сцена1 час 15 минут без антракта16+Билеты",
         "year": "Selected programme year: 2026",
         "duration_quote": "1 час 15 минут без антракта",
         "stage": "Средняя сцена"

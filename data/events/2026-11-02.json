@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-11-02",
   "coverage": {
     "status": "verified_partial",
@@ -517,7 +517,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-22T02:02:27Z",
+      "verified_at": "2026-10-23T02:02:34Z",
       "source_identity": "programme:16e5e6d01860fdcd06adad06",
       "source_scope": "programme",
       "observations": [
@@ -525,6 +525,14 @@
           "verified_at": "2026-10-22T02:02:27Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "11eb586d0a39313d7f3cd57d0e806f494d3319469152b33b5d32ec2af7872629",
+          "status": "scheduled",
+          "date": "2026-11-02",
+          "start_time": "2026-11-02T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
           "status": "scheduled",
           "date": "2026-11-02",
           "start_time": "2026-11-02T15:00:00+02:00"
@@ -817,7 +825,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-22T02:02:27Z",
+      "verified_at": "2026-10-23T02:02:34Z",
       "source_identity": "programme:188db7817c79bc1e844cca18",
       "source_scope": "programme",
       "observations": [
@@ -825,6 +833,14 @@
           "verified_at": "2026-10-22T02:02:27Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "11eb586d0a39313d7f3cd57d0e806f494d3319469152b33b5d32ec2af7872629",
+          "status": "scheduled",
+          "date": "2026-11-02",
+          "start_time": "2026-11-02T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
           "status": "scheduled",
           "date": "2026-11-02",
           "start_time": "2026-11-02T19:00:00+02:00"

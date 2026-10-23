@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -142,7 +142,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
-      "verified_at": "2026-10-22T02:02:25Z",
+      "verified_at": "2026-10-23T02:02:30Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:45Z",
@@ -170,6 +170,14 @@
           "verified_at": "2026-10-22T02:02:25Z",
           "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
           "sha256": "95f85c356429ef308fab3d0530b92d2a9fbc00476abafb4da3158bb0f510d924",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:30Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+          "sha256": "9307b3649cf985a151318bd47729d415435781ffb4b6e0e3f2e9a93d2d4efd1b",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -310,7 +318,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-22T02:02:15Z",
+      "verified_at": "2026-10-23T02:02:20Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -370,6 +378,14 @@
           "verified_at": "2026-10-22T02:02:15Z",
           "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
           "sha256": "11904ad7aab1bd33c2582e1b55d3a9e25ebffc16ca9b8116ee038b7fd4971724",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:20Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "bb59527c6fa170f88d8cac42d009a72e3a3c2058313580fc53084cee22e93fa1",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -903,7 +919,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-22T02:02:15Z",
+      "verified_at": "2026-10-23T02:02:20Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -955,6 +971,14 @@
           "verified_at": "2026-10-22T02:02:15Z",
           "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
           "sha256": "f72f4b967b4ad7c6e9efa6764869d9219cb9e524cd69e4dca803f0d44581245f",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:20Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "4a848f7045e3e9fa11bf636046fb53b9bfe12eb8ff6a5204baa93c3c95a183c5",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -1014,7 +1038,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-22T02:02:27Z",
+      "verified_at": "2026-10-23T02:02:34Z",
       "source_identity": "programme:d80ed02026213133a0be7b98",
       "source_scope": "programme",
       "observations": [
@@ -1022,6 +1046,14 @@
           "verified_at": "2026-10-22T02:02:27Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "11eb586d0a39313d7f3cd57d0e806f494d3319469152b33b5d32ec2af7872629",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -1156,7 +1188,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-22T02:02:22Z",
+      "verified_at": "2026-10-23T02:02:28Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -1216,6 +1248,14 @@
           "verified_at": "2026-10-22T02:02:22Z",
           "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
           "sha256": "4e4183e8e6e05becf62e113a6195cd15fe85de4a3e8dc671448672486987b28f",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:28Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "2990a8e241c31ec5d4760a23f20217add4b52567e782ffb820d33e1645eab281",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-10-27",
   "coverage": {
     "status": "verified_partial",
@@ -769,7 +769,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:cd7c56c95aa7724c83ec2170",
       "source_scope": "programme",
       "observations": [
@@ -785,6 +785,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T15:00:00+02:00"
@@ -1432,7 +1440,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
-      "verified_at": "2026-10-22T02:02:41Z",
+      "verified_at": "2026-10-23T02:02:52Z",
       "source_identity": "programme:8fde0cce0dc3cb2fe49b0169",
       "source_scope": "programme",
       "observations": [
@@ -1451,11 +1459,19 @@
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:52Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
+          "sha256": "66c4d75b19bed3f2693cca20aec745d86b8579c5aba28469113c923fa5649451",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
+        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
         "card_quote": "Купить билетИСКУССТВО В КИНО. БОЛЬШЕ ЧЕМ МУЗЕЙ (12+)Скоро 27 октября в 18:00 Кинозал Дом для «Крика». Как большие перемены начинаются с маленьких команд и смелых идей. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "27 ОКТЯБРЯ 2026 18:00"
       },
@@ -1577,7 +1593,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:192db4df32110a0938a943fc",
       "source_scope": "programme",
       "observations": [
@@ -1593,6 +1609,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T19:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -440,7 +440,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/806/",
-      "verified_at": "2026-10-22T02:02:43Z",
+      "verified_at": "2026-10-23T02:02:54Z",
       "source_identity": "programme:6946a1f1af4ef9acb4b9688f",
       "source_scope": "programme",
       "observations": [
@@ -451,11 +451,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:54Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/806/",
+          "sha256": "9baffccfc870ac68e6d9305204e13cb71f319c943223db66905eb52566606421",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T15:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
+        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
         "card_quote": "Купить билетИСКУССТВО В КИНО. АНСЕЛЬМ. ШУМ ВРЕМЕНИ (18+)Скоро 29 октября в 15:00 Кинозал Путешествие по творчеству Ансельма Кифера — художника, чье искусство исследует человеческое существование и цикличность истории. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "29 ОКТЯБРЯ 2026 15:00"
       },
@@ -641,7 +649,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-22T02:02:37Z",
+      "verified_at": "2026-10-23T02:02:49Z",
       "source_identity": "programme:3d3da19cc1273fd25cb4a781",
       "source_scope": "programme",
       "observations": [
@@ -652,11 +660,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:49Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "2452bc4fda759468ee03c08ac3eee981a6ef16eb28f015263979405e36764974",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T15:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
+        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "29 октября 2026 15:00"
       },
@@ -944,7 +960,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/801/",
-      "verified_at": "2026-10-22T02:02:43Z",
+      "verified_at": "2026-10-23T02:02:55Z",
       "source_identity": "programme:4118fb262a7da0cb561ccbc1",
       "source_scope": "programme",
       "observations": [
@@ -955,11 +971,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:55Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/801/",
+          "sha256": "ca5aa695eae9c644d5b1dc859144c5cffbe45a673bcc5914f14abe84caee22f7",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "508df14dba9e170fdde4f34c725e74f257b0f9b708a509dbcd139f8f00def4f0",
+        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
         "card_quote": "Купить билетАБСТРАКЦИЯ И КИНЕТИЗМ: ЖИВАЯ ЛИНИЯ (12+)Скоро 29 октября в 18:00 Кинозал В ходе лекции рассмотрим, как линейные структуры и абстрактные фигуры, открытия конструктивистов 1920-х продолжили свою жизнь в работах советских кинетистов",
         "explicit_date": "29 ОКТЯБРЯ 2026 18:00"
       },
@@ -1090,7 +1114,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
-      "verified_at": "2026-10-22T02:02:14Z",
+      "verified_at": "2026-10-23T02:02:20Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1153,6 +1177,14 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:20Z",
+          "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
+          "sha256": "fbd9e1d7610dea60d7aa144b06fd1bece88c89c269c77554dd60b18c03dfa76e",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1209,7 +1241,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:8b6e68c556e4154123670c84",
       "source_scope": "programme",
       "observations": [
@@ -1217,6 +1249,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"

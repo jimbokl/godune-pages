@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-10-23",
   "coverage": {
     "status": "verified_partial",
@@ -688,7 +688,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events",
-      "verified_at": "2026-10-22T02:04:05Z",
+      "verified_at": "2026-10-23T02:04:19Z",
       "source_identity": "programme:d22a31b1e932cf48c0a65a46",
       "source_scope": "programme",
       "observations": [
@@ -707,13 +707,21 @@
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:04:19Z",
+          "source_url": "https://world-ocean.ru/events",
+          "sha256": "1ecf0fb3a2d77d00152c25ddafd81544894e9f5ed9dbdce24a91556ea4b18421",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Музейный лекторий \"Клуб путешественников\" (12+)среда-пятница, 16-001 октября «Индонезийские сказки и их герои» 2 октября«Океаны барка «Седов»7 октября«В гостях у мудрого карпа. Китайские народные сказки и их герои»8 октября«Жизнь и путешествия Н.Н. Миклухо-Маклая»9 октября«Семь дней Будды. О художественном многообразии и символике образа Будды в искусстве скульптуры»22 октября«Горизонты Южного моря: Mar del sur. Народы Океании»23 октября«Традиционные орнаменты и символы Китая»28 октября«Георг Форстер (1754 – 1794). Вокруг света с Джеймсом Куком»29 октября«Летящая над волнами: носовая фигура как часть скульптурного убранства корабля»30 октября«Бали – остров живых богов. Вопросы географии»",
         "year_corroboration": {
           "url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "71c836903c75f9fddd95d1960ffbe837cd45bbfc11539bfd268c27ce11e436fd",
+          "sha256": "9645208d7f8c6a51b2d1b5e417ac61d474fe14bf4a6e355470679e4bde0fe522",
           "quote": "\"Традиционные орнаменты и символы Китая\", 12+23 октября (16:00)г. Светлогорск, ул. Ленина, д. 11, Морской выставочный центрМузейный лекторий «Клуб путешественников»"
         }
       },
@@ -1002,7 +1010,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
-      "verified_at": "2026-10-22T02:02:13Z",
+      "verified_at": "2026-10-23T02:02:18Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:03Z",
@@ -1065,6 +1073,14 @@
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:18Z",
+          "source_url": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/",
+          "sha256": "313fb4cbd36f20add15c528f94c43ba063e2f0bdc2138c36ffed142315a935e2",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1121,7 +1137,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:458dd0ae53b6191fdc117886",
       "source_scope": "programme",
       "observations": [
@@ -1137,6 +1153,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T19:00:00+02:00"
@@ -1266,7 +1290,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
-      "verified_at": "2026-10-22T02:02:22Z",
+      "verified_at": "2026-10-23T02:02:28Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1326,6 +1350,14 @@
           "verified_at": "2026-10-22T02:02:22Z",
           "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
           "sha256": "13cc869adad5b40aa3cc11d4fe5915a9020fe220b12d47c83a7d87aa55508386",
+          "status": "scheduled",
+          "date": "2026-10-23",
+          "start_time": "2026-10-23T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:28Z",
+          "source_url": "https://yantarholl.ru/afisha/turetskoe-tantsevalnoe-shou-ogni-anatolii%2023%2010/",
+          "sha256": "f25453515d384a4e020c5916d59c7bf7e0a2677cb88ad68b08faee60e03200a0",
           "status": "scheduled",
           "date": "2026-10-23",
           "start_time": "2026-10-23T19:00:00+02:00"

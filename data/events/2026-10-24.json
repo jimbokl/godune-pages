@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "818ef99f993098a8338894dd0ed23d9e6d81762a76549a91d5722dd9077c96a2",
-  "generated_at": "2026-10-22T20:11:48.880Z",
-  "updated_at": "2026-10-22T02:07:05.059474Z",
+  "revision": "ea9da99b61a70a261ae25a7e2fdcadbf1bfcf42ad102ab35a5a808ff99600d04",
+  "generated_at": "2026-10-23T02:08:13.532Z",
+  "updated_at": "2026-10-23T02:07:26.069804Z",
   "date": "2026-10-24",
   "coverage": {
     "status": "verified_partial",
@@ -918,7 +918,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:b928d3849a82ccb8f157a8a9",
       "source_scope": "programme",
       "observations": [
@@ -934,6 +934,14 @@
           "verified_at": "2026-10-22T02:02:26Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "4e1ac97322c825cc1e1a3a8ceda1b7bda2af186e0df42577d409b0ac4077baa6",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T14:30:00+02:00"
@@ -1261,7 +1269,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/802/",
-      "verified_at": "2026-10-22T02:02:35Z",
+      "verified_at": "2026-10-23T02:02:46Z",
       "source_identity": "programme:de2b90e57c9cec4350be42f9",
       "source_scope": "programme",
       "observations": [
@@ -1280,11 +1288,19 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:46Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/802/",
+          "sha256": "8459091dbbb8b289b6cffbdd1e9627e685f3eadf24bdd6e18b2130cfe0f6d57e",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T16:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
+        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
         "card_quote": "Купить билетИСКУССТВО В КИНО. ГРЕХ (18+)Скоро 24 октября в 16:00 Кинозал Картина рассказывает об испытаниях на творческом пути гениального художника и скульптора Микеланджело Буонарроти. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "24 ОКТЯБРЯ 2026 16:00"
       },
@@ -1414,7 +1430,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
-      "verified_at": "2026-10-22T02:02:23Z",
+      "verified_at": "2026-10-23T02:02:28Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1474,6 +1490,14 @@
           "verified_at": "2026-10-22T02:02:23Z",
           "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
           "sha256": "2445dc789b13ac5e6136ddad9549b8f23cea31a6e633fd6db2af8e4c98d248d7",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:28Z",
+          "source_url": "https://yantarholl.ru/afisha/kseniya-gor-ispolnitelnitsa-frantsuzskikh-pesen%2024%2010%2017%2000/",
+          "sha256": "d58295125755728991028efae237a1f4a0edd018cd6d4968df62b79c032d5de9",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T17:00:00+02:00"
@@ -1686,7 +1710,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
-      "verified_at": "2026-10-22T02:02:23Z",
+      "verified_at": "2026-10-23T02:02:28Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1746,6 +1770,14 @@
           "verified_at": "2026-10-22T02:02:23Z",
           "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
           "sha256": "ce6e3af0665f6e712610faba7e998ef712f340ad570af488647d519c309db7ee",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:28Z",
+          "source_url": "https://yantarholl.ru/afisha/1-2-finala-ligi-ms-kvn-zapad-rossii-sezona-2026-goda/",
+          "sha256": "90bad7f3a95bd5cf5276fb3aa3698da99dc2fb44fe7c8cae6557d1add8daa2d2",
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
@@ -1885,7 +1917,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
-      "verified_at": "2026-10-22T02:02:13Z",
+      "verified_at": "2026-10-23T02:02:19Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1948,6 +1980,14 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:19Z",
+          "source_url": "https://filarmonia39.ru/afisha/nina-shatskaya/",
+          "sha256": "5e4bb268a0e77f6981c850614ddf751e4f1a60cca57fa3837c66e62d50ad2f65",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1981,7 +2021,7 @@
       "ends": null,
       "kind": "Спектакль",
       "description": "Михаил Булгаков. Чудовищная история",
-      "admission": "По билетам · 16+",
+      "admission": "На сайте театра билетов нет · 16+",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -2004,7 +2044,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-22T02:02:26Z",
+      "verified_at": "2026-10-23T02:02:32Z",
       "source_identity": "programme:c6d7ac5b42cf098b8c9ed126",
       "source_scope": "programme",
       "observations": [
@@ -2023,10 +2063,18 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:32Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T18:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "24ОктябряСб18:00Собачье сердцеМихаил Булгаков. Чудовищная историяПУШКИНСКАЯ КАРТАОсновная сцена2 часа 30 минут с антрактом16+Билеты",
+        "card_quote": "24ОктябряСб18:00Собачье сердцеМихаил Булгаков. Чудовищная историяПУШКИНСКАЯ КАРТАОсновная сцена2 часа 30 минут с антрактом16+Билетов нет",
         "year": "Selected programme year: 2026",
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
@@ -2067,7 +2115,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/818/",
-      "verified_at": "2026-10-22T02:02:34Z",
+      "verified_at": "2026-10-23T02:02:44Z",
       "source_identity": "programme:11f68c901355d37666cf094b",
       "source_scope": "programme",
       "observations": [
@@ -2086,11 +2134,19 @@
           "status": "scheduled",
           "date": "2026-10-24",
           "start_time": "2026-10-24T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:44Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/818/",
+          "sha256": "7fc381b8ea4ab85024ec802d759239c6a39dc4e99e8b286554ddf363ceec2770",
+          "status": "scheduled",
+          "date": "2026-10-24",
+          "start_time": "2026-10-24T20:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "4045695e0cfc7d3e0ccff0f27047698858ea6f515c53b64215219df93ea459a6",
+        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
         "card_quote": "Купить билетШЕДЕВРЫ МИРОВОЙ КЛАССИКИ (СЕКТОР «ПАРТЕР»)(6+)Скоро 24 октября в 20:00 Атриум Концерт камерной музыки в рамках III Школы-фестиваля Леонида Лундстрема в Калининграде",
         "explicit_date": "24 ОКТЯБРЯ 2026 20:00"
       },
@@ -2102,11 +2158,11 @@
       "source_aliases": [
         {
           "url": "https://kaliningrad.tretyakovgallery.ru/events/817/",
-          "sha256": "0c9fa601bf0d58861fdd7f4d34cebc637f92d0f2e8c54434af95d7d4de33d57c"
+          "sha256": "1c3d4087b7e5ab207d8a3b2c4e82b7e2291aba10f6fdccd10519d9ff3d41e4da"
         },
         {
           "url": "https://kaliningrad.tretyakovgallery.ru/events/817/",
-          "sha256": "0c9fa601bf0d58861fdd7f4d34cebc637f92d0f2e8c54434af95d7d4de33d57c"
+          "sha256": "1c3d4087b7e5ab207d8a3b2c4e82b7e2291aba10f6fdccd10519d9ff3d41e4da"
         }
       ]
     }
