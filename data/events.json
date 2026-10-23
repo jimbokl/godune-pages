@@ -2008,9 +2008,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       },
       "place_id": "kirha-svyatogo-semeystva",
       "source_identity": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/#event"
@@ -2071,7 +2071,12 @@
           "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
           "status": "scheduled"
         }
-      ]
+      ],
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "title": "Вечер джаза",
@@ -2155,9 +2160,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -2259,9 +2264,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       },
       "place_id": "kirha-svyatogo-semeystva",
       "source_identity": "https://filarmonia39.ru/afisha/aybolit/#event"
@@ -2322,7 +2327,12 @@
           "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
           "status": "scheduled"
         }
-      ]
+      ],
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
     },
     {
       "id": "event-e8ba0ec85b64467a",
@@ -2507,9 +2517,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       },
       "place_id": "kirha-svyatogo-semeystva",
       "source_identity": "https://filarmonia39.ru/afisha/shedevry-organnoy-muzyki-18102026/#event"
@@ -2570,7 +2580,12 @@
           "sha256": "332053e977c9db2c90bc9a90497f132910b9e4da78ede6f2a843c6d7cfea3fc0",
           "status": "scheduled"
         }
-      ]
+      ],
+      "duration_estimate": {
+        "minutes": 160,
+        "basis": "published_duration",
+        "label": "2 часа 40 минут с антрактом"
+      }
     },
     {
       "title": "Гении барокко: Бах и Вивальди",
@@ -2645,9 +2660,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -3219,9 +3234,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       },
       "place_id": null,
       "source_identity": "programme:720919715d1933dac83d9834",
@@ -3464,7 +3479,11 @@
         "duration_quote": "1 час 50 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 110,
+        "basis": "published_duration",
+        "label": "1 час 50 минут без антракта"
+      }
     },
     {
       "id": "event-bf2b259e48b1ad55",
@@ -4516,7 +4535,11 @@
         "duration_quote": "2 часа без антракта",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "published_duration",
+        "label": "2 часа без антракта"
+      }
     },
     {
       "id": "event-488cfa6c49556489",
@@ -4637,9 +4660,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/eto-russkie-kartiny/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -5424,9 +5447,9 @@
         }
       ],
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       },
       "place_id": null,
       "source_identity": "programme:65ddbcde73a4f060139d95aa",
@@ -5722,9 +5745,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/kontsert-otkrytie-shkoly-festivalya-leonida-lundstrema/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -5796,7 +5819,11 @@
         "duration_quote": "2 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "published_duration",
+        "label": "2 часа с антрактом"
+      }
     },
     {
       "id": "event-c647a0f4c19765d9",
@@ -6937,7 +6964,11 @@
         "duration_quote": "1 час 30 минут",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
     },
     {
       "id": "event-6189b4408055f92d",
@@ -7214,9 +7245,9 @@
         }
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -7989,9 +8020,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/nina-shatskaya/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -8063,7 +8094,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-304ebfe00ab42964",
@@ -8434,9 +8469,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       }
     },
     {
@@ -9854,9 +9889,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/vivat-opera-/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -9928,7 +9963,11 @@
         "duration_quote": "2 часа 50 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 170,
+        "basis": "published_duration",
+        "label": "2 часа 50 минут с антрактом"
+      }
     },
     {
       "id": "event-2bc07628777d7791",
@@ -10943,8 +10982,8 @@
       },
       "duration_estimate": {
         "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "basis": "published_duration",
+        "label": "2 часа с антрактом"
       }
     },
     {
@@ -11863,7 +11902,11 @@
         "duration_quote": "1 час 20 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 80,
+        "basis": "published_duration",
+        "label": "1 час 20 минут без антракта"
+      }
     },
     {
       "id": "event-4f2dbd3e18d0fc00",
@@ -12153,9 +12196,9 @@
         }
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -12687,7 +12730,11 @@
         "duration_quote": "1 час 20 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 80,
+        "basis": "published_duration",
+        "label": "1 час 20 минут без антракта"
+      }
     },
     {
       "id": "event-3c1801c33a1021e8",
@@ -13449,9 +13496,9 @@
         }
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -13908,7 +13955,11 @@
         "duration_quote": "3 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 180,
+        "basis": "published_duration",
+        "label": "3 часа с антрактом"
+      }
     },
     {
       "id": "event-5c497d2c9300d008",
@@ -15221,9 +15272,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -15287,7 +15338,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-275558bd746c0d60",
@@ -16196,9 +16251,9 @@
         }
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
       }
     },
     {
@@ -16570,7 +16625,11 @@
         "duration_quote": "1 час 30 минут без антракта",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут без антракта"
+      }
     },
     {
       "id": "event-a50b95dedb720107",
@@ -16699,9 +16758,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -17751,9 +17810,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/sila-lyubvi/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -17817,7 +17876,11 @@
         "duration_quote": "2 часа 20 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 140,
+        "basis": "published_duration",
+        "label": "2 часа 20 минут с антрактом"
+      }
     },
     {
       "id": "event-87c6a77c25d33ac5",
@@ -18419,9 +18482,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/genzel-i-gretel/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       }
     },
     {
@@ -19012,9 +19075,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -19078,7 +19141,11 @@
         "duration_quote": "3 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 180,
+        "basis": "published_duration",
+        "label": "3 часа с антрактом"
+      }
     },
     {
       "id": "event-a72794a49ec15ef8",
@@ -19822,7 +19889,11 @@
         "duration_quote": "2 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "published_duration",
+        "label": "2 часа с антрактом"
+      }
     },
     {
       "id": "event-14027173084d5a13",
@@ -20130,7 +20201,11 @@
         "duration_quote": "2 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "published_duration",
+        "label": "2 часа с антрактом"
+      }
     },
     {
       "id": "event-98bbdf0581dbbc2c",
@@ -21153,9 +21228,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -21638,9 +21713,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -21842,7 +21917,11 @@
         "duration_quote": "1 час 15 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 75,
+        "basis": "published_duration",
+        "label": "1 час 15 минут без антракта"
+      }
     },
     {
       "id": "event-f808a6ea3caee79d",
@@ -22437,7 +22516,11 @@
         "duration_quote": "1 час 20 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 80,
+        "basis": "published_duration",
+        "label": "1 час 20 минут без антракта"
+      }
     },
     {
       "id": "event-7eda6ee576290a66",
@@ -22648,9 +22731,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/gitarist-sergey-perelekhov/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -22714,7 +22797,11 @@
         "duration_quote": "1 час 20 минут без антракта",
         "stage": "Средняя сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 80,
+        "basis": "published_duration",
+        "label": "1 час 20 минут без антракта"
+      }
     },
     {
       "id": "event-fa44b15bd8247274",
@@ -23392,7 +23479,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-9d5fe67c7c1e1069",
@@ -23465,9 +23556,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -24101,7 +24192,11 @@
         "duration_quote": "1 час 30 минут",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
     },
     {
       "id": "event-30bde773c0c5fda7",
@@ -24313,9 +24408,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -24379,7 +24474,11 @@
         "duration_quote": "2 часа 20 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 140,
+        "basis": "published_duration",
+        "label": "2 часа 20 минут с антрактом"
+      }
     },
     {
       "id": "event-abc966f74c33f374",
@@ -24697,9 +24796,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       }
     },
     {
@@ -25232,7 +25331,11 @@
         "duration_quote": "2 часа 30 минут с антрактом / ПУШКИНСКАЯ КАРТА",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-6782c2f72f2832f4",
@@ -25382,9 +25485,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -26162,7 +26265,11 @@
         "duration_quote": "1 час 30 минут без антракта",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут без антракта"
+      }
     },
     {
       "id": "event-dc05bb7333e0ae44",
@@ -27726,9 +27833,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/khiroko-inoue-priglashaet-golos-epokhi-95-let-mikaelu-tariverdievu/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -28575,9 +28682,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/khvorostovskiy/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -29283,9 +29390,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/trio-daniila-kramera-/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -30140,7 +30247,11 @@
         "duration_quote": "2 часа 10 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 130,
+        "basis": "published_duration",
+        "label": "2 часа 10 минут с антрактом"
+      }
     },
     {
       "id": "event-be746613aaab4077",
@@ -30213,9 +30324,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/vokalnyy-ansambl-kamerata-belarus-/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -30984,9 +31095,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -31127,7 +31238,11 @@
         "duration_quote": "2 часа 10 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 130,
+        "basis": "published_duration",
+        "label": "2 часа 10 минут с антрактом"
+      }
     },
     {
       "id": "event-f1f763e230f2e015",
@@ -31904,7 +32019,11 @@
         "duration_quote": "1 час 20 минут без антракта",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 80,
+        "basis": "published_duration",
+        "label": "1 час 20 минут без антракта"
+      }
     },
     {
       "id": "event-4d6fb38ecc8caa12",
@@ -32606,9 +32725,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/dzhaz-bez-granits/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -32672,7 +32791,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-042762737d4d6171",
@@ -33374,9 +33497,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/zolotye-khity-dzhaza-18112026/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -34064,7 +34187,11 @@
         "duration_quote": "2 часа 50 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 170,
+        "basis": "published_duration",
+        "label": "2 часа 50 минут с антрактом"
+      }
     },
     {
       "id": "event-bd66bee9e3af3a00",
@@ -34137,9 +34264,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/poeziya-xx-veka-v-muzyke/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -35004,9 +35131,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/posvyashchenie-bakhu/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -35070,7 +35197,11 @@
         "duration_quote": "3 часа с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 180,
+        "basis": "published_duration",
+        "label": "3 часа с антрактом"
+      }
     },
     {
       "id": "event-a01511ee7a75ce59",
@@ -35765,7 +35896,11 @@
         "duration_quote": "2 часа 50 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 170,
+        "basis": "published_duration",
+        "label": "2 часа 50 минут с антрактом"
+      }
     },
     {
       "id": "event-cbe11465ab20db3a",
@@ -35838,9 +35973,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/dva-korolya-bakh-i-organ/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -36081,9 +36216,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/rapuntsel-20261122/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       }
     },
     {
@@ -36470,7 +36605,11 @@
         "duration_quote": "1 час 30 минут",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
     },
     {
       "id": "event-2a36b752347f69ba",
@@ -36757,7 +36896,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-3ad764c3ffb50125",
@@ -36830,9 +36973,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/ot-vivaldi-do-pyatstsolly-2026-11-22/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -38324,7 +38467,11 @@
         "duration_quote": "2 часа 20 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 140,
+        "basis": "published_duration",
+        "label": "2 часа 20 минут с антрактом"
+      }
     },
     {
       "id": "event-0139c1d03395696b",
@@ -39101,7 +39248,11 @@
         "duration_quote": "2 часа 40 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 160,
+        "basis": "published_duration",
+        "label": "2 часа 40 минут с антрактом"
+      }
     },
     {
       "id": "event-2357bb205a492f2c",
@@ -39941,7 +40092,11 @@
         "duration_quote": "2 часа 40 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 160,
+        "basis": "published_duration",
+        "label": "2 часа 40 минут с антрактом"
+      }
     },
     {
       "id": "event-ebefeafe09e15c2d",
@@ -40014,9 +40169,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/elfy-i-sny/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -40722,9 +40877,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/kontsert-organnoy-muzyki-ot-bakha-do-uilyamsa-20261127/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -40788,7 +40943,11 @@
         "duration_quote": "2 часа 40 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 160,
+        "basis": "published_duration",
+        "label": "2 часа 40 минут с антрактом"
+      }
     },
     {
       "id": "event-be1609a5faf5d1b7",
@@ -41637,7 +41796,11 @@
         "duration_quote": "2 часа 40 минут с антрактом / ПУШКИНСКАЯ КАРТА",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 160,
+        "basis": "published_duration",
+        "label": "2 часа 40 минут с антрактом"
+      }
     },
     {
       "id": "event-cda63afe9d66de3c",
@@ -41710,9 +41873,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/kogda-trudnee-vsego/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -41934,9 +42097,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
       }
     },
     {
@@ -42323,7 +42486,11 @@
         "duration_quote": "1 час 30 минут",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
     },
     {
       "id": "event-cf0195a5037f6472",
@@ -42697,9 +42864,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -42763,7 +42930,11 @@
         "duration_quote": "2 часа 30 минут с антрактом",
         "stage": "Основная сцена"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
     },
     {
       "id": "event-798ac1fadb374df1",
@@ -47082,9 +47253,9 @@
       },
       "source_identity": "https://filarmonia39.ru/afisha/velikie-shedevry-muzyki-bakh-rekviem-motsarta/#event",
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
       }
     },
     {
@@ -47743,9 +47914,12 @@
       "city_name": "Калининград",
       "place_id": null,
       "coordinates": null,
-      "address": null,
+      "address": "проспект Мира, 4",
       "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
-      "verified_at": "2026-10-16"
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4"
     },
     "organhall-makarov": {
       "id": "organhall-makarov",
@@ -47754,9 +47928,12 @@
       "city_name": "Светлогорск",
       "place_id": null,
       "coordinates": null,
-      "address": null,
+      "address": "ул. Курортная, 3",
       "source_url": "https://organhall.ru/",
-      "verified_at": "2026-10-16"
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://organhall.ru/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "b40dd7984b15f4b48e35e3bae4cae48f15e2d173803d8b27e2666c487f71473e"
     },
     "kaliningrad-tretyakov": {
       "id": "kaliningrad-tretyakov",
@@ -47765,7 +47942,10 @@
       "city_name": "Калининград",
       "place_id": null,
       "coordinates": null,
-      "address": null
+      "address": "Парадная набережная, 3",
+      "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
     },
     "kaliningrad-cathedral": {
       "id": "kaliningrad-cathedral",
@@ -47774,7 +47954,10 @@
       "city_name": "Калининград",
       "place_id": null,
       "coordinates": null,
-      "address": null
+      "address": "ул. И. Канта, 1",
+      "identity_source_url": "https://sobor39.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
     },
     "ocean-naval-center": {
       "id": "ocean-naval-center",

@@ -99,7 +99,7 @@ export function validateEvents(data,catalog,today){
   if(!['scheduled','cancelled','postponed'].includes(e.status))throw new TypeError('Invalid event status');
   if(!(e.price===null||(typeof e.price==='number'&&Number.isFinite(e.price)&&e.price>=0&&e.currency==='RUB')))throw new TypeError('Unknown price is not zero');
   const estimate=e.duration_estimate;
-  if(estimate!==undefined&&estimate!==null&&(!Number.isSafeInteger(estimate.minutes)||estimate.minutes<=0||estimate.basis!=='planning_assumption'||!text(estimate.label)||e.ends!==null||e.end_time!=null))throw new TypeError('Invalid planning duration estimate');
+  if(estimate!==undefined&&estimate!==null&&(!Number.isSafeInteger(estimate.minutes)||estimate.minutes<=0||!['planning_assumption','published_duration'].includes(estimate.basis)||!text(estimate.label)||e.ends!==null||e.end_time!=null))throw new TypeError('Invalid planning duration estimate');
  if(e.poi&&!places.has(e.poi)||e.route&&!routes.has(e.route))throw new TypeError('Unknown event link');
   const image=e.image;
   const localImage=v=>typeof v==='string'&&/^assets\/[a-z0-9/_-]+\.(?:webp|avif|jpe?g|png)$/.test(v);
