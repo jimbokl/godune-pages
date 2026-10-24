@@ -1705,6 +1705,396 @@
           "checked_at": "2026-10-23"
         }
       ]
+    },
+    {
+      "id": "pianissimo-zimniy-festival-2026-2027-2026-10-24",
+      "status": "published",
+      "path": "news/2026/10/24/pianissimo-zimniy-festival-2026-2027/",
+      "category": "poezdki",
+      "headline": "Зимний Pianissimo в калининградской Третьяковке начнётся 4 декабря",
+      "description": "Фортепианные концерты в атриуме запланированы до 12 февраля 2027 года. Начало — в 20:00.",
+      "published_at": "2026-10-24T08:55:10+02:00",
+      "modified_at": "2026-10-24T08:55:10+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Вечер пятницы можно оставить для фортепианной музыки в музее. Калининградский филиал Третьяковской галереи объявил даты зимнего Pianissimo: с 4 декабря 2026 года по 12 февраля 2027 года.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Период фестиваля",
+          "value": "4 декабря 2026 — 12 февраля 2027 года",
+          "source": "pianissimo-zimniy-festival-2026-2027-source"
+        },
+        {
+          "label": "Площадка",
+          "value": "Атриум филиала Третьяковской галереи, Парадная набережная, 3",
+          "source": "pianissimo-zimniy-festival-2026-2027-source"
+        },
+        {
+          "label": "Начало концертов",
+          "value": "20:00",
+          "source": "pianissimo-zimniy-festival-2026-2027-source"
+        },
+        {
+          "label": "Расписание и билеты",
+          "value": "Ссылка на программу и продажу билетов размещена в анонсе галереи",
+          "source": "pianissimo-zimniy-festival-2026-2027-source"
+        }
+      ],
+      "context": "В сообщении от 23 октября музей назвал среди авторов программы Баха, Моцарта, Шопена и Рахманинова. Выступать будут молодые пианисты из России и других стран.",
+      "interpretations": [
+        {
+          "title": "Для зимней поездки",
+          "text": "Выбирайте конкретный концерт по программе фестиваля, затем планируйте вечер. Анонс охватывает несколько месяцев; расписание и билеты открываются по ссылке из сообщения галереи."
+        }
+      ],
+      "sources": [
+        {
+          "id": "pianissimo-zimniy-festival-2026-2027-source",
+          "title": "Третьяковская галерея: зимний фестиваль Pianissimo",
+          "url": "https://kaliningrad.tretyakovgallery.ru/news/840/",
+          "kind": "museum",
+          "published_at": "2026-10-23",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "noch-iskusstv-tretyakovka-3-noyabrya-2026-10-24",
+      "status": "published",
+      "path": "news/2026/10/24/noch-iskusstv-tretyakovka-3-noyabrya/",
+      "category": "poezdki",
+      "headline": "3 ноября Третьяковка проведёт «Ночь искусств» по единому билету",
+      "description": "Мастерские, кинопоказ и концерт войдут в общую программу. На выставку «Точка и линия» нужен отдельный билет.",
+      "published_at": "2026-10-24T08:55:10+02:00",
+      "modified_at": "2026-10-24T08:55:10+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Коллаж, печать, цианотипия и музыка с проекциями картин войдут в «Ночь искусств» калининградской Третьяковки. Акция пройдёт 3 ноября; музей опубликовал программу 22 октября.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Дата и возраст",
+          "value": "3 ноября 2026 года; 6+",
+          "source": "noch-iskusstv-tretyakovka-3-noyabrya-source"
+        },
+        {
+          "label": "Мастерские",
+          "value": "С 18:00 до 21:00: коллаж, открытка «Катающаяся живопись», «Этно-офорт» и цианотипия",
+          "source": "noch-iskusstv-tretyakovka-3-noyabrya-source"
+        },
+        {
+          "label": "Единый билет",
+          "value": "Мероприятия акции и самостоятельный осмотр постоянных экспозиций «Море возможностей» и «Зал истории Третьяковской галереи»",
+          "source": "noch-iskusstv-tretyakovka-3-noyabrya-source"
+        },
+        {
+          "label": "Отдельный билет",
+          "value": "Временная выставка «Точка и линия»",
+          "source": "noch-iskusstv-tretyakovka-3-noyabrya-source"
+        }
+      ],
+      "context": "Концерт «Звучащие картины» соединит выступление оркестра русских народных инструментов с проекциями живописи. В анонсе также есть квиз «Сказка за сказкой» и документальный фильм «Философия цвета».",
+      "interpretations": [
+        {
+          "title": "Как выбрать билет",
+          "text": "Если хотите за один вечер попасть и на акцию, и на «Точку и линию», предусмотрите два билета. Интервал 18:00–21:00 указан для мастерских; время других событий смотрите в программе по ссылке из анонса."
+        }
+      ],
+      "sources": [
+        {
+          "id": "noch-iskusstv-tretyakovka-3-noyabrya-source",
+          "title": "Третьяковская галерея: программа «Ночи искусств»",
+          "url": "https://kaliningrad.tretyakovgallery.ru/news/839/",
+          "kind": "museum",
+          "published_at": "2026-10-22",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "bagrationovsk-mural-ekskursiya-3-noyabrya-2026-10-24",
+      "status": "published",
+      "path": "news/2026/10/24/bagrationovsk-mural-ekskursiya-3-noyabrya/",
+      "category": "poezdki",
+      "headline": "3 ноября в Багратионовске откроют мурал и проведут бесплатную экскурсию",
+      "description": "Открытие назначено на 11:00 у дома № 42 на Пограничной улице. На прогулку после церемонии нужна предварительная запись.",
+      "published_at": "2026-10-24T08:55:10+02:00",
+      "modified_at": "2026-10-24T08:55:10+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "На фасаде дома № 42 по Пограничной улице появились портреты Дениса Давыдова, Фатыха Карима и образ исследователя. Открытие этого мурала в Багратионовске назначено на 3 ноября в 11:00.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Где",
+          "value": "Багратионовск, улица Пограничная, дом 42",
+          "source": "bagrationovsk-mural-ekskursiya-3-noyabrya-source"
+        },
+        {
+          "label": "Когда открытие",
+          "value": "3 ноября 2026 года в 11:00",
+          "source": "bagrationovsk-mural-ekskursiya-3-noyabrya-source"
+        },
+        {
+          "label": "После церемонии",
+          "value": "Бесплатная экскурсия по городу для участников презентации; новая работа войдёт в маршрут",
+          "source": "bagrationovsk-mural-ekskursiya-3-noyabrya-source"
+        },
+        {
+          "label": "Условие участия в экскурсии",
+          "value": "Предварительная запись, количество мест ограничено",
+          "source": "bagrationovsk-mural-ekskursiya-3-noyabrya-source"
+        }
+      ],
+      "context": "Областной ТИЦ сообщил об открытии 20 октября. Это пятый мурал проекта «ДНК-места». Художники — Маргарита и Грачик Гущян; рядом с работой размещена табличка с QR-кодом проекта.",
+      "interpretations": [
+        {
+          "title": "Перед поездкой в Багратионовск",
+          "text": "Для экскурсии запишитесь заранее. В сообщении ТИЦ сказано следить за обновлениями на официальном сайте; отдельная ссылка на запись в самом анонсе пока не указана."
+        }
+      ],
+      "sources": [
+        {
+          "id": "bagrationovsk-mural-ekskursiya-3-noyabrya-source",
+          "title": "ТИЦ Калининградской области: открытие мурала в Багратионовске",
+          "url": "https://visit-kaliningrad.ru/news/news/OtkrytiemuralavBagrationovskevramkakhproektaDNKmesta",
+          "kind": "official-tourism",
+          "published_at": "2026-10-20",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-2026-10-24",
+      "status": "published",
+      "path": "news/2026/10/24/chernyshevskoe-vecherniy-poezd-26-27-oktyabrya/",
+      "category": "poezdki",
+      "headline": "26 и 27 октября вечерний поезд в Чернышевское прибудет в 21:00",
+      "description": "Отправление из Калининграда — в 18:33. КППК предупредила о прибытии в Чернышевское на десять минут позже.",
+      "published_at": "2026-10-24T08:55:10+02:00",
+      "modified_at": "2026-10-24T08:55:10+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Для вечерней поездки в Чернышевское 26 или 27 октября закладывайте прибытие в 21:00. Из Калининграда пригородный поезд отправится в 18:33; расписание на эти даты изменено из-за путевых работ.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Ближайшие даты изменения",
+          "value": "26 и 27 октября 2026 года",
+          "source": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-source"
+        },
+        {
+          "label": "Отправление",
+          "value": "Калининград — 18:33",
+          "source": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-source"
+        },
+        {
+          "label": "Прибытие",
+          "value": "Чернышевское — 21:00, на 10 минут позже",
+          "source": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-source"
+        },
+        {
+          "label": "Причина",
+          "value": "Ремонтно-путевые работы",
+          "source": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-source"
+        }
+      ],
+      "context": "КППК опубликовала сообщение 30 сентября. Оно касается нескольких дат октября; 26 и 27 октября — следующие из перечисленных в нём дней после 24 октября. Речь идёт о вечернем пригородном поезде Калининград — Чернышевское.",
+      "interpretations": [
+        {
+          "title": "Для встречи на конечной станции",
+          "text": "На эти две даты согласуйте встречу с прибытием в 21:00. Время промежуточных остановок это сообщение не перечисляет."
+        }
+      ],
+      "sources": [
+        {
+          "id": "chernyshevskoe-vecherniy-poezd-26-27-oktyabrya-source",
+          "title": "КППК: изменение вечернего поезда в Чернышевское в октябре",
+          "url": "https://kppk39.ru/izmeneniya-v-raspisanii/raspisanie-vechernego-prigorodnogo-poezda-v-chernyshevskoe-izmenitsya-5-6-12-13-19-20-26-i-27-oktyab/",
+          "kind": "operator",
+          "published_at": "2026-09-30",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "muzej-iskusstv-zimnie-chasy-kassa-2026-10-24",
+      "status": "published",
+      "path": "news/2026/10/24/muzej-iskusstv-zimnie-chasy-kassa/",
+      "category": "poezdki",
+      "headline": "Зимние часы Музея искусств: до 19:00, по четвергам — до 21:00",
+      "description": "Музей работает без выходных. Касса закрывается за полчаса до залов: в 18:30, по четвергам — в 20:30.",
+      "published_at": "2026-10-24T08:55:10+02:00",
+      "modified_at": "2026-10-24T08:55:10+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Вечерний визит в Музей изобразительных искусств удобнее планировать с учётом кассы. С 1 октября музей работает каждый день с 10:00 до 19:00, а по четвергам — до 21:00. Касса закрывается на полчаса раньше.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Обычные дни",
+          "value": "10:00–19:00; без выходных",
+          "source": "muzej-iskusstv-zimnie-chasy-kassa-source"
+        },
+        {
+          "label": "Четверг",
+          "value": "10:00–21:00",
+          "source": "muzej-iskusstv-zimnie-chasy-kassa-source"
+        },
+        {
+          "label": "Касса",
+          "value": "За полчаса до закрытия: 18:30 в обычные дни, 20:30 по четвергам",
+          "source": "muzej-iskusstv-zimnie-chasy-kassa-source"
+        },
+        {
+          "label": "Адрес",
+          "value": "Калининград, Ленинский проспект, 83",
+          "source": "muzej-iskusstv-zimnie-chasy-kassa-source"
+        }
+      ],
+      "context": "Зимний режим музей объявил 29 сентября, с началом действия 1 октября. При проверке 24 октября то же расписание указано в контактном блоке официального сайта.",
+      "interpretations": [
+        {
+          "title": "Если идёте после прогулки",
+          "text": "Покупку билета в кассе планируйте до 18:30, а в четверг — до 20:30. Оставшееся до закрытия время отведите на залы."
+        }
+      ],
+      "sources": [
+        {
+          "id": "muzej-iskusstv-zimnie-chasy-kassa-source",
+          "title": "Музей изобразительных искусств: зимний режим работы",
+          "url": "https://www.kaliningradartmuseum.ru/about/news/s-1-oktyabrya-muzey-iskusstv-perekhodit-na-zimniy-rezhim-raboty/",
+          "kind": "museum",
+          "published_at": "2026-09-29",
+          "checked_at": "2026-10-24"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
     }
   ]
 }
