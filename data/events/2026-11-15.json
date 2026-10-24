@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-11-15",
   "coverage": {
     "status": "verified_partial",
@@ -519,7 +519,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/painting/764/",
-      "verified_at": "2026-10-23T02:02:49Z",
+      "verified_at": "2026-10-24T02:02:49Z",
       "source_identity": "programme:a10b6ced3dc518b4bba3a3c5",
       "source_scope": "programme",
       "observations": [
@@ -538,11 +538,19 @@
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T15:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:49Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/painting/764/",
+          "sha256": "826fe6428d23b600a3c651debceb810533c5724151fe79a0e7af75d773475c30",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T15:30:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
+        "listing_sha256": "7fcc1a368e05b2ce39ab06bc07cc61b738469b0fdc03e6596f5ed6f9d12f3d3f",
         "card_quote": "Купить билетЦВЕТОВОЕ ЗРЕНИЕ (16+)Скоро 21 октября в 16:30 и 15 ноября в 15:30 Мастерская живописи На мастер-классе разберёмся, что такое импрессионизм и пуантилизм,",
         "explicit_date": "15 НОЯБРЯ 2026 15:30"
       },
@@ -750,7 +758,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
-      "verified_at": "2026-10-23T02:02:24Z",
+      "verified_at": "2026-10-24T02:02:28Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:18Z",
@@ -762,6 +770,14 @@
           "verified_at": "2026-10-23T02:02:24Z",
           "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
           "sha256": "caedcf918e62a17260f543f2afbcac586d7e362c61c85a5e631a274244ad0429",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:28Z",
+          "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
+          "sha256": "106d0aecda917f46861fde9f481aba3a69cf9fcf2db4cfeaff207d174586cf59",
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T18:00:00+02:00"
@@ -898,7 +914,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-23T02:02:34Z",
+      "verified_at": "2026-10-24T02:02:39Z",
       "source_identity": "programme:f380eccb5a5da8ad967a2b19",
       "source_scope": "programme",
       "observations": [
@@ -914,6 +930,14 @@
           "verified_at": "2026-10-23T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:39Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T18:00:00+02:00"

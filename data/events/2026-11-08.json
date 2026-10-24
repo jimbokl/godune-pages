@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-11-08",
   "coverage": {
     "status": "verified_partial",
@@ -218,7 +218,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
-      "verified_at": "2026-10-23T02:02:23Z",
+      "verified_at": "2026-10-24T02:02:27Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -230,6 +230,14 @@
           "verified_at": "2026-10-23T02:02:23Z",
           "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
           "sha256": "1f0cff218d3a007006130b11e387ed21bd212cbb7c3622087262b088f041b317",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
+          "sha256": "1f511be476d5f05d36805e67782d7ed0547c980aee5c638d83088624dec789aa",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T12:00:00+02:00"
@@ -758,7 +766,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-23T02:02:34Z",
+      "verified_at": "2026-10-24T02:02:39Z",
       "source_identity": "programme:51ad2c9f4b296bab0fa29807",
       "source_scope": "programme",
       "observations": [
@@ -774,6 +782,14 @@
           "verified_at": "2026-10-23T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:39Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T18:00:00+02:00"
@@ -907,7 +923,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
-      "verified_at": "2026-10-23T02:02:22Z",
+      "verified_at": "2026-10-24T02:02:27Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -919,6 +935,14 @@
           "verified_at": "2026-10-23T02:02:22Z",
           "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
           "sha256": "180db7b9d52c10e1a0a3375a7fb996d624ec83a42137489ea5cbabe2d02ed39c",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
+          "sha256": "5503d458de903d5e01113bebb03e690c2ea195c3c93d2980267439d2079acd0f",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T18:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-11-10",
   "coverage": {
     "status": "verified_partial",
@@ -517,7 +517,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/graphics/720/",
-      "verified_at": "2026-10-23T02:02:48Z",
+      "verified_at": "2026-10-24T02:02:48Z",
       "source_identity": "programme:f598cdebd60b723d17bcc92c",
       "source_scope": "programme",
       "observations": [
@@ -536,11 +536,19 @@
           "status": "scheduled",
           "date": "2026-11-10",
           "start_time": "2026-11-10T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:48Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/graphics/720/",
+          "sha256": "ca025d781d7eab9c7a8724f84f8c8a1a2c4fec46cbc46929a6eb37eecc37505d",
+          "status": "scheduled",
+          "date": "2026-11-10",
+          "start_time": "2026-11-10T16:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "79be041d99420874ccd8b3443462a72aa6e3a384dd45be44b3e8e874f3e8b8ac",
+        "listing_sha256": "7fcc1a368e05b2ce39ab06bc07cc61b738469b0fdc03e6596f5ed6f9d12f3d3f",
         "card_quote": "Купить билетБОТАНИЧЕСКАЯ ИЛЛЮСТРАЦИЯ (16+)Скоро 21 октября в 15:00, 10 и 26 ноября в 16:00 Мастерская графики и печати Попробуем свои силы в удивительном жанре ботанической иллюстрации",
         "explicit_date": "10 НОЯБРЯ 2026 16:00"
       },

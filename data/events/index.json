@@ -1,26 +1,17 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "window": {
-    "from": "2026-09-23",
-    "to": "2026-11-22",
-    "anchor_date": "2026-10-23",
+    "from": "2026-09-24",
+    "to": "2026-11-23",
+    "anchor_date": "2026-10-24",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-23": {
-      "url": "/data/events/2026-09-23.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-24": {
       "url": "/data/events/2026-09-24.json",
       "count": 0,
@@ -349,7 +340,7 @@
     },
     "2026-10-25": {
       "url": "/data/events/2026-10-25.json",
-      "count": 22,
+      "count": 23,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -747,6 +738,17 @@
           "event-source-fbdb74047ee7d70f"
         ]
       }
+    },
+    "2026-11-23": {
+      "url": "/data/events/2026-11-23.json",
+      "count": 9,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-d643be18620958e5"
+        ]
+      }
     }
   },
   "archive_url": "/data/events/archive.json",
@@ -767,6 +769,7 @@
     "event-0651c03345263611",
     "event-072ad9ef88376ca3",
     "event-07bef8af62ff4e9a",
+    "event-086d42a1720d4a8f",
     "event-08d20e3cbe02252d",
     "event-09b4aa206e4ca1ee",
     "event-09e24fb3ff5e34e3",
@@ -817,6 +820,7 @@
     "event-2341575e80f2a634",
     "event-2357bb205a492f2c",
     "event-237aa818794a0b2c",
+    "event-238ed2ce0d6c605c",
     "event-24c99c0298fb27fb",
     "event-25b33aea93eed9ed",
     "event-26b1ef3d8feac95d",
@@ -856,6 +860,8 @@
     "event-37110b69802a8f8c",
     "event-379c93ca4905c973",
     "event-37a9d9a1b09f16e0",
+    "event-37edeadf328545da",
+    "event-37f19034fc474dea",
     "event-3846031f248147cf",
     "event-38623b38e2402223",
     "event-3908bb29377d16f6",
@@ -910,7 +916,9 @@
     "event-5071845f70626423",
     "event-51616cc30e389538",
     "event-51cbcd565d650b06",
+    "event-52ddd7236496f713",
     "event-53ea891e022a4621",
+    "event-540b863fc9c240e5",
     "event-542b523d5fd05c21",
     "event-5446532b1ede0758",
     "event-54c52e30c3ca985a",
@@ -1000,7 +1008,6 @@
     "event-7bfb13d84c2ff52c",
     "event-7c2c58fb70b309db",
     "event-7ccf5d4bf492c50d",
-    "event-7e289d41c2bb409c",
     "event-7e4eadcc57a66ba4",
     "event-7e57d19efc967c12",
     "event-7eda6ee576290a66",
@@ -1023,7 +1030,6 @@
     "event-85ddda29c0def726",
     "event-8676c2962c69c8db",
     "event-86a7b7239f2f77bd",
-    "event-86e3889e3be62cc0",
     "event-86e86ce7d8cacd45",
     "event-86fc43175dc60bad",
     "event-870a1aac2ef4fd5a",
@@ -1054,6 +1060,8 @@
     "event-8e3d082d5d96cf22",
     "event-8e3d5ee24f3df3a7",
     "event-8ef6b9a2b971faad",
+    "event-8ef8c5d37bf9501e",
+    "event-8f702ac6655788f5",
     "event-9049911585f50c62",
     "event-9127c68f35555ba2",
     "event-925f91d21ee40f0c",
@@ -1087,7 +1095,6 @@
     "event-9ac458ad4c4cc000",
     "event-9b16b55de47060d3",
     "event-9b22d869f30a14d8",
-    "event-9b89fe7cfdbd7778",
     "event-9bb45e0ab6d02ee3",
     "event-9c4f1f60a7c1a3b0",
     "event-9c9bc4dc7b013dd6",
@@ -1105,6 +1112,8 @@
     "event-a037e908acbc39f0",
     "event-a047f1d2589ea029",
     "event-a08a9bc22c397be7",
+    "event-a0ea32b8dcf899f1",
+    "event-a13c8452d7fbe45f",
     "event-a16c22ee6d0e2786",
     "event-a21285d13b96d13f",
     "event-a30c17897cde9b4e",
@@ -1151,7 +1160,6 @@
     "event-b41c21f9240340d8",
     "event-b43ccbb6257a787d",
     "event-b4c0ae4a21d9cf7d",
-    "event-b508faffcf10b7ba",
     "event-b571206ebdbd8c4e",
     "event-b5919c22a0c92ede",
     "event-b5ccfc62f439b44c",
@@ -1194,7 +1202,6 @@
     "event-c509a4f14ff369ca",
     "event-c5266e279c22f7ac",
     "event-c5cf3180561a5a19",
-    "event-c647a0f4c19765d9",
     "event-c74da9acf2429401",
     "event-c7850666f700c255",
     "event-c9082b6cb2a0d357",
@@ -1266,6 +1273,7 @@
     "event-ebefeafe09e15c2d",
     "event-ecba445dde911fc4",
     "event-ee6c8b6dbe99a227",
+    "event-ee739006bcb56c22",
     "event-eea7da5394169cda",
     "event-ef0db7fc4377d880",
     "event-ef271c0ae6449df5",
@@ -1300,7 +1308,6 @@
     "event-fbf058bce2260f6c",
     "event-fd12fde0d91275c0",
     "event-fd7390dd6b60d3df",
-    "event-fdd8bc506e1e4563",
     "event-yantarhall-queen-2026-10-30"
   ]
 }

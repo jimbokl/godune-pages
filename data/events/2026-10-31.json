@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-10-31",
   "coverage": {
     "status": "verified_partial",
@@ -837,7 +837,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "verified_at": "2026-10-23T02:02:20Z",
+      "verified_at": "2026-10-24T02:02:24Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -908,6 +908,14 @@
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:24Z",
+          "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
+          "sha256": "7df43cd663fd9013c2062265fa0c0cb1a6873f962223f80597c8095183634a4a",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -964,7 +972,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-23T02:02:32Z",
+      "verified_at": "2026-10-24T02:02:36Z",
       "source_identity": "programme:44a92872245f5e6ab27827b9",
       "source_scope": "programme",
       "observations": [
@@ -980,6 +988,14 @@
           "verified_at": "2026-10-23T02:02:32Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:36Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "d25ee13d8863784724b05aba4664e9ec2a36f1bc0800bd74f72ea954c74bdf51",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
@@ -1118,7 +1134,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "verified_at": "2026-10-23T02:02:30Z",
+      "verified_at": "2026-10-24T02:02:34Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:11Z",
@@ -1186,6 +1202,14 @@
           "verified_at": "2026-10-23T02:02:30Z",
           "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
           "sha256": "18d3c7c9c1b16248a2647523a55325df03129c7c3f6fddd306111276be6a892c",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:34Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
+          "sha256": "f0b410779943557351e3cf0238f6a72d767313cda695efdd6698b1d186d44eac",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"

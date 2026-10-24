@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-10-27",
   "coverage": {
     "status": "verified_partial",
@@ -769,7 +769,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-23T02:02:32Z",
+      "verified_at": "2026-10-24T02:02:36Z",
       "source_identity": "programme:cd7c56c95aa7724c83ec2170",
       "source_scope": "programme",
       "observations": [
@@ -793,6 +793,14 @@
           "verified_at": "2026-10-23T02:02:32Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:36Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "d25ee13d8863784724b05aba4664e9ec2a36f1bc0800bd74f72ea954c74bdf51",
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T15:00:00+02:00"
@@ -1067,7 +1075,7 @@
         "kind": "exact"
       },
       "source_url": "https://organhall.ru/",
-      "verified_at": "2026-10-22T02:02:30Z",
+      "verified_at": "2026-10-24T02:02:41Z",
       "source_identity": "programme:882524e83fec1d8dfea4e5de",
       "source_scope": "programme",
       "observations": [
@@ -1086,14 +1094,22 @@
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:41Z",
+          "source_url": "https://organhall.ru/",
+          "sha256": "aa4bfc174d4ed645eb7ba70cd708f865d7d80d6b5eb7724015100782116dfd10",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "27 октября (вт), 16:00 билеты только в кассе залаШЕДЕВРЫ ОРГАННОЙ МУЗЫКИАртем Хачатуров (орган)В программе: Иоганн Себастьян Бах, Антонио Вивальди, Йозеф Райнбергер, Шарль-Мари ВидорподробнееПродолжительность: 1 час 10 мин. Цена билета: 1500 руб. Воз. ограничение 6+",
         "year_corroboration": {
           "source_url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "71c836903c75f9fddd95d1960ffbe837cd45bbfc11539bfd268c27ce11e436fd",
-          "fetched_at": "2026-10-22T02:02:32Z",
+          "sha256": "08cf43e8c760ad20cbbff6c7022e78b48513f2da18beb6a427efa5d12f546510",
+          "fetched_at": "2026-10-24T02:02:43Z",
           "quote": "\"Шедевры органной музыки\", 6+27 октября (16:00)г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки"
         }
       },
@@ -1444,7 +1460,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
-      "verified_at": "2026-10-23T02:02:52Z",
+      "verified_at": "2026-10-24T02:02:56Z",
       "source_identity": "programme:8fde0cce0dc3cb2fe49b0169",
       "source_scope": "programme",
       "observations": [
@@ -1471,11 +1487,19 @@
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:56Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/804/",
+          "sha256": "d0006c1950681f94960280afc687eb864d9c1cf1977f7582446b6664e98bb8a7",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
+        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
         "card_quote": "Купить билетИСКУССТВО В КИНО. БОЛЬШЕ ЧЕМ МУЗЕЙ (12+)Скоро 27 октября в 18:00 Кинозал Дом для «Крика». Как большие перемены начинаются с маленьких команд и смелых идей. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "27 ОКТЯБРЯ 2026 18:00"
       },
@@ -1597,7 +1621,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-23T02:02:32Z",
+      "verified_at": "2026-10-24T02:02:36Z",
       "source_identity": "programme:192db4df32110a0938a943fc",
       "source_scope": "programme",
       "observations": [
@@ -1621,6 +1645,14 @@
           "verified_at": "2026-10-23T02:02:32Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4",
+          "status": "scheduled",
+          "date": "2026-10-27",
+          "start_time": "2026-10-27T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:36Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "d25ee13d8863784724b05aba4664e9ec2a36f1bc0800bd74f72ea954c74bdf51",
           "status": "scheduled",
           "date": "2026-10-27",
           "start_time": "2026-10-27T19:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ade70c3f7ffbac9bbe1169e610cbb9686aa1ed84ea1a944dba74825da6783cdd",
-  "generated_at": "2026-10-23T14:48:08.569Z",
-  "updated_at": "2026-10-23T08:09:55.270475Z",
+  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
+  "generated_at": "2026-10-24T02:09:11.003Z",
+  "updated_at": "2026-10-24T02:07:56.056159Z",
   "date": "2026-11-12",
   "coverage": {
     "status": "verified_partial",
@@ -763,7 +763,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/838/",
-      "verified_at": "2026-10-23T02:02:58Z",
+      "verified_at": "2026-10-24T02:03:02Z",
       "source_identity": "programme:f6f84d6531ab91a00445e6df",
       "source_scope": "programme",
       "observations": [
@@ -774,11 +774,19 @@
           "status": "scheduled",
           "date": "2026-11-12",
           "start_time": "2026-11-12T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:03:02Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/838/",
+          "sha256": "118682bcd838518be34e295d062580eab8ed3e397c7ed42bddf942f64a0c2916",
+          "status": "scheduled",
+          "date": "2026-11-12",
+          "start_time": "2026-11-12T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "ddfc4f6b80e74c79e635e73a5d4f58dfa269e50902327bcf4d03d18dd105657a",
+        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
         "card_quote": "Купить билетКАЗИМИР МАЛЕВИЧ. НЕ ТОЛЬКО СУПРЕМАТИЗМ (12+)Скоро 12 ноября в 18:00 Кинозал Лекция Натальи Васильевой, старшего научного сотрудника отдела живописи первой половины XX века Государственной Третьяковской галереи в рамках выставки «Точка и линия»",
         "explicit_date": "12 НОЯБРЯ 2026 18:00"
       },
@@ -827,7 +835,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/khvorostovskiy/",
-      "verified_at": "2026-10-23T02:02:23Z",
+      "verified_at": "2026-10-24T02:02:27Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -839,6 +847,14 @@
           "verified_at": "2026-10-23T02:02:23Z",
           "source_url": "https://filarmonia39.ru/afisha/khvorostovskiy/",
           "sha256": "946962aa7ddc07fdedf9c9f6e9b5bf19cdc3961caec5d3db250f3b29f3dc9176",
+          "status": "scheduled",
+          "date": "2026-11-12",
+          "start_time": "2026-11-12T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/khvorostovskiy/",
+          "sha256": "c88aa92ee6f24b73ed6b6358c9822bb7c2a1b609c9dd11f18dbe864881f327a0",
           "status": "scheduled",
           "date": "2026-11-12",
           "start_time": "2026-11-12T19:00:00+02:00"
