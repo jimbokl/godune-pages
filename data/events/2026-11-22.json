@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-11-22",
   "coverage": {
     "status": "verified_partial",
@@ -140,7 +140,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/rapuntsel-20261122/",
-      "verified_at": "2026-10-24T02:02:30Z",
+      "verified_at": "2026-10-25T02:02:18Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:20Z",
@@ -160,6 +160,14 @@
           "verified_at": "2026-10-24T02:02:30Z",
           "source_url": "https://filarmonia39.ru/afisha/rapuntsel-20261122/",
           "sha256": "606e4b59d5a8919c9c69c1970316149558edaa8086985cc2106f415bcc2cb5a8",
+          "status": "scheduled",
+          "date": "2026-11-22",
+          "start_time": "2026-11-22T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:18Z",
+          "source_url": "https://filarmonia39.ru/afisha/rapuntsel-20261122/",
+          "sha256": "0555bc1cf82acd11300bc99ae1ea4075e06895e176f2f0524bf070315ca0c013",
           "status": "scheduled",
           "date": "2026-11-22",
           "start_time": "2026-11-22T12:00:00+02:00"
@@ -542,7 +550,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-24T02:02:39Z",
+      "verified_at": "2026-10-25T02:02:25Z",
       "source_identity": "programme:b15ccef6c169aad41fb2d00f",
       "source_scope": "programme",
       "observations": [
@@ -566,6 +574,14 @@
           "verified_at": "2026-10-24T02:02:39Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
+          "status": "scheduled",
+          "date": "2026-11-22",
+          "start_time": "2026-11-22T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:25Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
           "status": "scheduled",
           "date": "2026-11-22",
           "start_time": "2026-11-22T14:30:00+02:00"
@@ -841,7 +857,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-24T02:02:39Z",
+      "verified_at": "2026-10-25T02:02:25Z",
       "source_identity": "programme:d342a776bce124fe342d7985",
       "source_scope": "programme",
       "observations": [
@@ -865,6 +881,14 @@
           "verified_at": "2026-10-24T02:02:39Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
+          "status": "scheduled",
+          "date": "2026-11-22",
+          "start_time": "2026-11-22T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:25Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
           "status": "scheduled",
           "date": "2026-11-22",
           "start_time": "2026-11-22T18:00:00+02:00"
@@ -921,7 +945,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-vivaldi-do-pyatstsolly-2026-11-22/",
-      "verified_at": "2026-10-24T02:02:30Z",
+      "verified_at": "2026-10-25T02:02:18Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:19Z",
@@ -941,6 +965,14 @@
           "verified_at": "2026-10-24T02:02:30Z",
           "source_url": "https://filarmonia39.ru/afisha/ot-vivaldi-do-pyatstsolly-2026-11-22/",
           "sha256": "81bed0913d8f6da90c9ebb84956628fe59d4ab5956e14f762ab7d6fe1a350b06",
+          "status": "scheduled",
+          "date": "2026-11-22",
+          "start_time": "2026-11-22T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:18Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-vivaldi-do-pyatstsolly-2026-11-22/",
+          "sha256": "38323cf39e8c50750d139f9cf3cdf17f0d1e1f5dd9f20c6cf8c280018b889875",
           "status": "scheduled",
           "date": "2026-11-22",
           "start_time": "2026-11-22T18:00:00+02:00"

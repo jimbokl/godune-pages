@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-10-25",
   "coverage": {
     "status": "verified_partial",
@@ -223,7 +223,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
-      "verified_at": "2026-10-24T02:02:23Z",
+      "verified_at": "2026-10-25T02:02:12Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -299,6 +299,14 @@
           "verified_at": "2026-10-24T02:02:23Z",
           "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
           "sha256": "ecfa327b7b775264aac27b525206f64664b3ed6e46cdc66d9c1397ba2037534c",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:12Z",
+          "source_url": "https://filarmonia39.ru/afisha/gusi-lebedi-perezagruzka/",
+          "sha256": "587176451bf9183d977d53eff13ffb5c9e21f9d10a24d06482e688822dbcaca6",
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T12:00:00+02:00"
@@ -836,7 +844,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
-      "verified_at": "2026-10-24T02:02:56Z",
+      "verified_at": "2026-10-25T02:02:31Z",
       "source_identity": "programme:7958f9bac8a76cf3ade3e7b7",
       "source_scope": "programme",
       "observations": [
@@ -871,11 +879,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T14:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:31Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/771/",
+          "sha256": "a9cb3c0e493bfa20561bdbe85dc3bc0398309fa9a765466b1deb8c38b37fd971",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T14:00:00+02:00"
         }
       ],
       "evidence": {
-        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
+        "listing_sha256": "3cd5a8277034c96e11159c85cebfa17af4d5dec517fa0811d66c4eb196db900d",
         "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «ГЛИНКА: РОЖДЕНИЕ РУССКОЙ КЛАССИКИ» (12+)Скоро 25 октября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
         "explicit_date": "25 ОКТЯБРЯ 2026 14:00"
       },
@@ -1387,7 +1403,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
-      "verified_at": "2026-10-24T02:02:55Z",
+      "verified_at": "2026-10-25T02:02:30Z",
       "source_identity": "programme:4ff95bc5b91eae738dc79028",
       "source_scope": "programme",
       "observations": [
@@ -1422,11 +1438,19 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:30Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/803/",
+          "sha256": "f03826a79cfcd15384bc8a07b18fb5ebae891b3730f33b3fb6fc749761b425ff",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T17:00:00+02:00"
         }
       ],
       "evidence": {
-        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
+        "listing_sha256": "3cd5a8277034c96e11159c85cebfa17af4d5dec517fa0811d66c4eb196db900d",
         "card_quote": "Купить билетИСКУССТВО В КИНО. АРТ-ЛЕКТОРИЙ: ТАЙНАЯ ЖИЗНЬ УФФИЦИ (16+)Скоро 25 октября в 17:00 Кинозал Фильм о жизни одного из старейших музеев мира. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "25 ОКТЯБРЯ 2026 17:00"
       },
@@ -1804,7 +1828,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
-      "verified_at": "2026-10-24T02:02:23Z",
+      "verified_at": "2026-10-25T02:02:12Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1883,6 +1907,14 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:12Z",
+          "source_url": "https://filarmonia39.ru/afisha/vivat-opera-/",
+          "sha256": "26c1490828d23cff1446ee2e45db48be9b9909c5db6d70ca32193f38c3023353",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1916,7 +1948,7 @@
       "ends": null,
       "kind": "Спектакль",
       "description": "по мотивам повести Павла Санаева",
-      "admission": "По билетам · 16+",
+      "admission": "На сайте театра билетов нет · 16+",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -1939,7 +1971,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-24T02:02:36Z",
+      "verified_at": "2026-10-25T02:02:24Z",
       "source_identity": "programme:6bdd29fa5eed32331cf4dfc6",
       "source_scope": "programme",
       "observations": [
@@ -1974,10 +2006,18 @@
           "status": "scheduled",
           "date": "2026-10-25",
           "start_time": "2026-10-25T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:24Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "e9279f299db3154e3ee7e1b18870bcad0e4bd364b9eb01b54d65122e86be39f8",
+          "status": "scheduled",
+          "date": "2026-10-25",
+          "start_time": "2026-10-25T18:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "Премьера25ОктябряВс18:00Похороните меня за плинтусомпо мотивам повести Павла СанаеваПУШКИНСКАЯ КАРТАОсновная сцена2 часа 50 минут с антрактом16+Билеты",
+        "card_quote": "Премьера25ОктябряВс18:00Похороните меня за плинтусомпо мотивам повести Павла СанаеваПУШКИНСКАЯ КАРТАОсновная сцена2 часа 50 минут с антрактом16+Билетов нет",
         "year": "Selected programme year: 2026",
         "duration_quote": "2 часа 50 минут с антрактом",
         "stage": "Основная сцена"

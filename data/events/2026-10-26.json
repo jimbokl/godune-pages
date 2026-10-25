@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-10-26",
   "coverage": {
     "status": "verified_partial",
@@ -50,7 +50,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-24T02:04:24Z",
+      "verified_at": "2026-10-25T02:04:02Z",
       "source_identity": "programme:cfe9c3e08d21e72f3ff8bb32",
       "source_scope": "programme",
       "observations": [
@@ -90,6 +90,14 @@
           "verified_at": "2026-10-24T02:04:24Z",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "7307e0b60ad508bb73e2f6708043eed03dd6b05529d5f79fbec0af3fb8bd4fcc",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:04:02Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "f4ebc0ce476387d112c654425d58864a212add06b8cca8220d07076267be76ff",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T11:00:00+02:00"
@@ -1000,7 +1008,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-24T02:02:36Z",
+      "verified_at": "2026-10-25T02:02:24Z",
       "source_identity": "programme:60dd60dd8f5853cef990f267",
       "source_scope": "programme",
       "observations": [
@@ -1032,6 +1040,14 @@
           "verified_at": "2026-10-24T02:02:36Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "d25ee13d8863784724b05aba4664e9ec2a36f1bc0800bd74f72ea954c74bdf51",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:24Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "e9279f299db3154e3ee7e1b18870bcad0e4bd364b9eb01b54d65122e86be39f8",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"
@@ -1088,7 +1104,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
-      "verified_at": "2026-10-24T02:02:33Z",
+      "verified_at": "2026-10-25T02:02:21Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:10Z",
@@ -1164,6 +1180,14 @@
           "verified_at": "2026-10-24T02:02:33Z",
           "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
           "sha256": "1fe281678abca197adaa182320b595db0599f69f01a0a63dbff2da9eb5eb3f2f",
+          "status": "scheduled",
+          "date": "2026-10-26",
+          "start_time": "2026-10-26T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:21Z",
+          "source_url": "https://yantarholl.ru/afisha/vserossiyskiy-konkurs-khoreograficheskogo-iskusstva-art-kompas-baltika%2026%2010%2026/",
+          "sha256": "7acf7f528ea6b2d8426201a983d35d156081d5a4d05da96f91c1491f7dd92b97",
           "status": "scheduled",
           "date": "2026-10-26",
           "start_time": "2026-10-26T19:00:00+02:00"

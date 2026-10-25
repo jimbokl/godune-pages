@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-11-13",
   "coverage": {
     "status": "verified_partial",
@@ -685,7 +685,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/trio-daniila-kramera-/",
-      "verified_at": "2026-10-24T02:02:28Z",
+      "verified_at": "2026-10-25T02:02:16Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -705,6 +705,14 @@
           "verified_at": "2026-10-24T02:02:28Z",
           "source_url": "https://filarmonia39.ru/afisha/trio-daniila-kramera-/",
           "sha256": "0dd98563345ea5b6be6ea7a5928c1125eb52371cdbc950c896609dab89c13e79",
+          "status": "scheduled",
+          "date": "2026-11-13",
+          "start_time": "2026-11-13T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:16Z",
+          "source_url": "https://filarmonia39.ru/afisha/trio-daniila-kramera-/",
+          "sha256": "c901bbe24d727e0284c0a6cd9b2a138305c3c69de70a1faaf81d19436f0396e6",
           "status": "scheduled",
           "date": "2026-11-13",
           "start_time": "2026-11-13T19:00:00+02:00"

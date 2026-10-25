@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-11-03",
   "coverage": {
     "status": "verified_partial",
@@ -678,7 +678,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
-      "verified_at": "2026-10-24T02:03:01Z",
+      "verified_at": "2026-10-25T02:02:40Z",
       "source_identity": "programme:d6f459c701abbda80110f90c",
       "source_scope": "programme",
       "observations": [
@@ -705,11 +705,19 @@
           "status": "scheduled",
           "date": "2026-11-03",
           "start_time": "2026-11-03T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:40Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
+          "sha256": "39265b72876a9461c062233037b6c61a9ffa65ba0139f16e0f1c6f75dbbe4fc3",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ - 2026 (12+)Скоро 3 ноября в 18:00 Атриум Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
         "explicit_date": "3 НОЯБРЯ 2026 18:00"
       },
@@ -753,7 +761,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/837/",
-      "verified_at": "2026-10-24T02:03:02Z",
+      "verified_at": "2026-10-25T02:02:41Z",
       "source_identity": "programme:7b4e2d34c46576ffe36e8f9c",
       "source_scope": "programme",
       "observations": [
@@ -780,11 +788,19 @@
           "status": "scheduled",
           "date": "2026-11-03",
           "start_time": "2026-11-03T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:41Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/837/",
+          "sha256": "d6c70e736bdfa69f86f67b038b9ae7c988e39a1af979fae195c365fc90f4ff09",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T19:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ. КОНЦЕРТ «ЗВУЧАЩИЕ КАРТИНЫ» (0+)Скоро 3 ноября в 19:00 Атриум Центральное событие Всероссийской акции «Ночь искусств». Музыкально-художественный проект является результатом совместной работы трех институций: Государственной Третьяковской галереи, Калининградского областного оркестра русских народных инструментов и Российского государственного института сценических искусств (РГИСИ)",
         "explicit_date": "3 НОЯБРЯ 2026 19:00"
       },

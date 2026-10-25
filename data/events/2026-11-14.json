@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-11-14",
   "coverage": {
     "status": "verified_partial",
@@ -763,7 +763,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-24T02:02:39Z",
+      "verified_at": "2026-10-25T02:02:25Z",
       "source_identity": "programme:e92ed2fd96aea358fc972248",
       "source_scope": "programme",
       "observations": [
@@ -787,6 +787,14 @@
           "verified_at": "2026-10-24T02:02:39Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
+          "status": "scheduled",
+          "date": "2026-11-14",
+          "start_time": "2026-11-14T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:25Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
           "status": "scheduled",
           "date": "2026-11-14",
           "start_time": "2026-11-14T18:00:00+02:00"
@@ -843,7 +851,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vokalnyy-ansambl-kamerata-belarus-/",
-      "verified_at": "2026-10-24T02:02:28Z",
+      "verified_at": "2026-10-25T02:02:16Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:18Z",
@@ -863,6 +871,14 @@
           "verified_at": "2026-10-24T02:02:28Z",
           "source_url": "https://filarmonia39.ru/afisha/vokalnyy-ansambl-kamerata-belarus-/",
           "sha256": "3357148407e981e6475d79dac36e5ec4f36a05941f2d143378a77968e5738bc3",
+          "status": "scheduled",
+          "date": "2026-11-14",
+          "start_time": "2026-11-14T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:16Z",
+          "source_url": "https://filarmonia39.ru/afisha/vokalnyy-ansambl-kamerata-belarus-/",
+          "sha256": "52e69e510faf03704d46457801dff828af40e416a59c0a4297acaf2ab79b90c2",
           "status": "scheduled",
           "date": "2026-11-14",
           "start_time": "2026-11-14T18:00:00+02:00"

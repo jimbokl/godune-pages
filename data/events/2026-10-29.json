@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "f6d83dcd9dfaa93ddedcb7ad2d322d00578234596dba5320fd48778506df4673",
-  "generated_at": "2026-10-24T07:17:39.523Z",
-  "updated_at": "2026-10-24T02:07:56.056159Z",
+  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
+  "generated_at": "2026-10-25T02:07:47.802Z",
+  "updated_at": "2026-10-25T02:06:44.395292Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -53,7 +53,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-24T02:04:24Z",
+      "verified_at": "2026-10-25T02:04:02Z",
       "source_identity": "programme:a47dda60998d24a02b9edb0e",
       "source_scope": "programme",
       "observations": [
@@ -69,6 +69,14 @@
           "verified_at": "2026-10-24T02:04:24Z",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "7307e0b60ad508bb73e2f6708043eed03dd6b05529d5f79fbec0af3fb8bd4fcc",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:04:02Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "f4ebc0ce476387d112c654425d58864a212add06b8cca8220d07076267be76ff",
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T11:00:00+02:00"
@@ -576,7 +584,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/806/",
-      "verified_at": "2026-10-24T02:02:58Z",
+      "verified_at": "2026-10-25T02:02:37Z",
       "source_identity": "programme:6946a1f1af4ef9acb4b9688f",
       "source_scope": "programme",
       "observations": [
@@ -603,11 +611,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:37Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/806/",
+          "sha256": "d6e5501360fb37306c7dd45c1c6ed3417d3ec913f3ec199343b1722b8e6b6abf",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T15:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
         "card_quote": "Купить билетИСКУССТВО В КИНО. АНСЕЛЬМ. ШУМ ВРЕМЕНИ (18+)Скоро 29 октября в 15:00 Кинозал Путешествие по творчеству Ансельма Кифера — художника, чье искусство исследует человеческое существование и цикличность истории. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "29 ОКТЯБРЯ 2026 15:00"
       },
@@ -793,7 +809,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-24T02:02:49Z",
+      "verified_at": "2026-10-25T02:02:34Z",
       "source_identity": "programme:3d3da19cc1273fd25cb4a781",
       "source_scope": "programme",
       "observations": [
@@ -820,11 +836,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:34Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "46c2c40dd9e76e242d053d98d0130568c4459c2b63329b7f578314ecca326ba9",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T15:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "7fcc1a368e05b2ce39ab06bc07cc61b738469b0fdc03e6596f5ed6f9d12f3d3f",
+        "listing_sha256": "3cd5a8277034c96e11159c85cebfa17af4d5dec517fa0811d66c4eb196db900d",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "29 октября 2026 15:00"
       },
@@ -1112,7 +1136,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/801/",
-      "verified_at": "2026-10-24T02:02:59Z",
+      "verified_at": "2026-10-25T02:02:38Z",
       "source_identity": "programme:4118fb262a7da0cb561ccbc1",
       "source_scope": "programme",
       "observations": [
@@ -1139,11 +1163,19 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:38Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/801/",
+          "sha256": "24506d338d53fe64fe61f446b22cad4cf0c19bed887d49f723c33fc36a184751",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "c08e2515e7bae1f0e66e98649ea4fb1a03662ab23969ab94bb3434625aba4ae8",
+        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
         "card_quote": "Купить билетАБСТРАКЦИЯ И КИНЕТИЗМ: ЖИВАЯ ЛИНИЯ (12+)Скоро 29 октября в 18:00 Кинозал В ходе лекции рассмотрим, как линейные структуры и абстрактные фигуры, открытия конструктивистов 1920-х продолжили свою жизнь в работах советских кинетистов",
         "explicit_date": "29 ОКТЯБРЯ 2026 18:00"
       },
@@ -1274,7 +1306,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
-      "verified_at": "2026-10-24T02:02:24Z",
+      "verified_at": "2026-10-25T02:02:12Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:08Z",
@@ -1353,6 +1385,14 @@
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:12Z",
+          "source_url": "https://filarmonia39.ru/afisha/stenli-kubrik-stiven-spilberg/",
+          "sha256": "adb8a5d8cdedf5eb51042bbe3a01021da61de912650fc04830d3fc06d0c563e6",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1409,7 +1449,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-24T02:02:36Z",
+      "verified_at": "2026-10-25T02:02:24Z",
       "source_identity": "programme:8b6e68c556e4154123670c84",
       "source_scope": "programme",
       "observations": [
@@ -1433,6 +1473,14 @@
           "verified_at": "2026-10-24T02:02:36Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "d25ee13d8863784724b05aba4664e9ec2a36f1bc0800bd74f72ea954c74bdf51",
+          "status": "scheduled",
+          "date": "2026-10-29",
+          "start_time": "2026-10-29T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:24Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "e9279f299db3154e3ee7e1b18870bcad0e4bd364b9eb01b54d65122e86be39f8",
           "status": "scheduled",
           "date": "2026-10-29",
           "start_time": "2026-10-29T19:00:00+02:00"
