@@ -104753,6 +104753,155 @@
         }
       }
     },
+    "events/samayn-kaup-2026-10-31-1700/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "14faf8104b43b159ed8e0c810d1f4807dc39d2cda9876cddd48a659a8c845897",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../events.css?v=6",
+              "path": "events.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
     "events/sea-space-awards-2026/index.html": {
       "groups": {
         "active-0": {
@@ -123667,6 +123816,751 @@
       }
     },
     "news/2026/10/24/pianissimo-zimniy-festival-2026-2027/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../news.css?v=1",
+              "path": "news.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "news/2026/10/25/gurevsk-golubevo-poezd-28-29-oktyabrya/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../news.css?v=1",
+              "path": "news.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "news/2026/10/25/koihm-avtoportret-master-klass-5-noyabrya/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../news.css?v=1",
+              "path": "news.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "news/2026/10/25/kosa-vizit-tsentr-zimnie-chasy-2026-2027/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../news.css?v=1",
+              "path": "news.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "news/2026/10/25/noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya/index.html": {
+      "groups": {
+        "active-0": {
+          "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",
+          "deferred": false,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../news.css?v=1",
+              "path": "news.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "news/2026/10/25/rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya/index.html": {
       "groups": {
         "active-0": {
           "bundle": "0023fe63cec995dd4ba0a37404982c5a1162d2bef1bd38382895bba46ee23428",

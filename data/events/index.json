@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "bf51e25ed54f7d8f4acdca102365b9d7dffd8cb8dd0c198e4d44bc60338e0fea",
-  "generated_at": "2026-10-25T02:07:47.802Z",
-  "updated_at": "2026-10-25T02:06:44.395292Z",
+  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
+  "generated_at": "2026-10-25T05:37:44.378Z",
+  "updated_at": "2026-10-25T05:17:11.791445Z",
   "window": {
     "from": "2026-09-25",
     "to": "2026-11-24",
@@ -430,13 +430,14 @@
     },
     "2026-10-31": {
       "url": "/data/events/2026-10-31.json",
-      "count": 14,
+      "count": 15,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-2d69612d16fda014",
           "event-source-69ccf8164bb379f3",
+          "event-source-8310944ecdcd3c43",
           "event-source-bf3783fcdd66d141",
           "event-source-ff2ea88915efd205"
         ]
@@ -1299,6 +1300,7 @@
     "event-fbf058bce2260f6c",
     "event-fd12fde0d91275c0",
     "event-fd7390dd6b60d3df",
-    "event-yantarhall-queen-2026-10-30"
+    "event-yantarhall-queen-2026-10-30",
+    "samayn-kaup-2026-10-31-1700"
   ]
 }

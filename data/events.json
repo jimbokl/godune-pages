@@ -1722,6 +1722,18 @@
         "url": "https://sobor39.ru/",
         "role": "venue"
       }
+    },
+    "event-source-8310944ecdcd3c43": {
+      "name": "Поселение викингов «Кауп» · Самайн",
+      "url": "https://kaup39.ru/samhain",
+      "checked_at": "2026-10-25",
+      "fetched_at": "2026-10-25T05:17:11.791445+00:00",
+      "sha256": "99ce201defbb1c0c156aa1f7f045839cc52f5e6190bf2023b4d98be9a616b4a5",
+      "private_capture": "runtime/events-refresh/cache/sources/99ce201defbb1c0c156aa1f7f045839cc52f5e6190bf2023b4d98be9a616b4a5.html",
+      "organizer": {
+        "name": "Поселение Кауп",
+        "url": "https://www.kaup39.ru/"
+      }
     }
   },
   "events": [
@@ -18411,6 +18423,84 @@
         }
       },
       "duration_estimate": null
+    },
+    {
+      "id": "samayn-kaup-2026-10-31-1700",
+      "title": "Самайн",
+      "city": "romanovo",
+      "city_name": "Романово",
+      "date": "2026-10-31",
+      "starts": "17:00",
+      "ends": "20:00",
+      "kind": "Театрализованное представление",
+      "venue": "Поселение викингов «Кауп»",
+      "description": "Костюмированное представление в «Каупе»: квест «Руны Одина», создание свечей из воска, конкурс костюмов и огненное шоу в 19:30.",
+      "admission": "12+ · Взрослый билет — 1200 ₽, детский — 700 ₽; семейные и льготные — по условиям организатора. Наличие билетов уточните у организатора.",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-8310944ecdcd3c43",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "romanovo-kaup",
+      "place_id": null,
+      "category": "festival",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-31T17:00:00+02:00",
+      "end_time": "2026-10-31T20:00:00+02:00",
+      "duration_estimate": null,
+      "price_range": null,
+      "source_url": "https://kaup39.ru/samhain",
+      "verified_at": "2026-10-25T05:17:11.791445+00:00",
+      "observations": [
+        {
+          "verified_at": "2026-10-25T05:17:11.791445+00:00",
+          "source_url": "https://kaup39.ru/samhain",
+          "sha256": "99ce201defbb1c0c156aa1f7f045839cc52f5e6190bf2023b4d98be9a616b4a5",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "title_quote": "Самайн",
+        "date_quote": "31.10.26",
+        "time_quote": "С 17:00 ДО 20:00",
+        "year_corroboration": {
+          "source_url": "https://visit-kaliningrad.ru/events/drugie_meropriyatiya/Samayn/",
+          "quote": "31.10.2026, 17:00-20:00",
+          "sha256": "68f3cfbd68473d4673146c39f8d7a17a189fafabd52dc79336f961b826655daf"
+        },
+        "venue_quote": "Поселение Кауп приглашает Вас на театрализованное костюмированное представление.",
+        "address_quote": "Адрес: 4 км от п. Романово",
+        "age_quote": "12+",
+        "programme_quotes": [
+          "Квест \"Руны Одина\"",
+          "Создание свечей из воска",
+          "Конкурс костюмов",
+          "ОГНЕННОЕ ШОУ 19:30"
+        ],
+        "price_quotes": [
+          "Взрослый билет - 1200 руб",
+          "Детский билет - 700 руб",
+          "Семейный билет - 3100 руб.",
+          "Семейный билет - 2800 руб.",
+          "Взрослый льготный билет- 700 руб.",
+          "Детский льготный билет - 500 руб."
+        ],
+        "conditional_price_quote": "Льготные билеты можно приобрести на кассе при предъявлении документов",
+        "availability": "unknown",
+        "end_semantics": "Advertised programme interval, not a guarantee of actual finish",
+        "price_semantics": "Individual, family and concession tariffs differ; no single unconditional exact/range price inferred."
+      }
     },
     {
       "id": "event-4a976bf8c7f6aeb3",
@@ -51210,7 +51300,7 @@
       }
     }
   ],
-  "updated_at": "2026-10-25T02:06:44.395292Z",
+  "updated_at": "2026-10-25T05:17:11.791445Z",
   "venues": {
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",
@@ -51394,6 +51484,20 @@
       "source_url": "https://yantarholl.ru/",
       "verified_at": "2026-10-17",
       "coordinate_evidence_sha256": "c604644e135d7895b2745489b49b7b5fe8733214113363ad84ce7de74ba7edba"
+    },
+    "romanovo-kaup": {
+      "id": "romanovo-kaup",
+      "name": "Поселение викингов «Кауп»",
+      "city": "romanovo",
+      "city_name": "Романово",
+      "place_id": null,
+      "coordinates": null,
+      "address": "4 км от п. Романово",
+      "source_url": "https://kaup39.ru/samhain",
+      "verified_at": "2026-10-25",
+      "identity_source_url": "https://kaup39.ru/samhain",
+      "identity_verified_at": "2026-10-25",
+      "identity_evidence_sha256": "99ce201defbb1c0c156aa1f7f045839cc52f5e6190bf2023b4d98be9a616b4a5"
     }
   }
 }

@@ -2095,6 +2095,421 @@
           "url": "/planner/"
         }
       ]
+    },
+    {
+      "id": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-2026-10-25",
+      "status": "published",
+      "path": "news/2026/10/25/noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya/",
+      "category": "poezdki",
+      "headline": "3 ноября Историко-художественный музей проведёт «Ночь искусств» с 18:00 до 21:00",
+      "description": "В программе — встречи, экскурсии и мастер-классы. Касса на Клинической, 21 закроется в 20:30.",
+      "published_at": "2026-10-25T07:11:19+02:00",
+      "modified_at": "2026-10-25T07:11:19+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Вечер 3 ноября можно провести в Калининградском областном историко-художественном музее. Программа «Ночи искусств» начнётся в 18:00 и закончится в 21:00; касса будет работать до 20:30.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Дата и возраст",
+          "value": "3 ноября 2026 года; 0+",
+          "source": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source"
+        },
+        {
+          "label": "Адрес",
+          "value": "Калининград, улица Клиническая, 21",
+          "source": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source"
+        },
+        {
+          "label": "Время и билеты",
+          "value": "18:00–21:00, касса до 20:30; билеты на сайте музея и в кассе",
+          "source": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source"
+        },
+        {
+          "label": "Встреча о грибах",
+          "value": "19:00–20:00 — «Грибные встречи» с фотографом Ольгой Демиденко",
+          "source": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source"
+        },
+        {
+          "label": "Мастер-класс с росписью",
+          "value": "«Узоры России — символы Балтики»: 18:10, 19:10 и 20:10; до пяти человек",
+          "source": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source"
+        }
+      ],
+      "context": "Музей опубликовал программу 23 октября. В ней также есть встреча с археологом в 18:30 и экскурсия «Материальные свидетельства контактов пруссов с Русью» в 19:30. Мероприятия проходят в разных залах; подробная программа доступна по ссылке на источник.",
+      "interpretations": [
+        {
+          "title": "Как выбрать время",
+          "text": "Выберите главное событие до покупки билета: часовая встреча о грибах пересекается с частью других занятий. Если хотите на роспись, учтите небольшую группу — музей указал до пяти участников."
+        }
+      ],
+      "sources": [
+        {
+          "id": "noch-iskusstv-istoriko-khudozhestvennyy-muzey-3-noyabrya-source",
+          "title": "Историко-художественный музей: программа «Ночи искусств» 3 ноября",
+          "url": "https://koihm.ru/programma-noch-iskusstv-2026-3-noyabrya-v-koihm/",
+          "kind": "museum",
+          "published_at": "2026-10-23",
+          "checked_at": "2026-10-25"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "koihm-avtoportret-master-klass-5-noyabrya-2026-10-25",
+      "status": "published",
+      "path": "news/2026/10/25/koihm-avtoportret-master-klass-5-noyabrya/",
+      "category": "poezdki",
+      "headline": "5 ноября в историко-художественном музее пройдёт мастер-класс «Ах, портрет!»",
+      "description": "Участники напишут автопортрет с любимым предметом. Занятие стоит 500 рублей, материалы включены; возрастная маркировка — 12+.",
+      "published_at": "2026-10-25T07:11:19+02:00",
+      "modified_at": "2026-10-25T07:11:19+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Калининградский областной историко-художественный музей включил в афишу на 5 ноября мастер-класс «Ах, портрет!». На занятии предложат написать автопортрет с любимым предметом.",
+      "facts_title": "Что учесть перед посещением",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Дата",
+          "value": "5 ноября 2026 года",
+          "source": "koihm-avtoportret-master-klass-5-noyabrya-source"
+        },
+        {
+          "label": "Место",
+          "value": "Калининградский областной историко-художественный музей, улица Клиническая, 21",
+          "source": "koihm-avtoportret-master-klass-5-noyabrya-source"
+        },
+        {
+          "label": "Стоимость",
+          "value": "500 рублей за одно занятие; материалы предоставляются",
+          "source": "koihm-avtoportret-master-klass-5-noyabrya-source"
+        },
+        {
+          "label": "Возрастная маркировка",
+          "value": "12+",
+          "source": "koihm-avtoportret-master-klass-5-noyabrya-source"
+        },
+        {
+          "label": "Билеты",
+          "value": "На сайте и в кассе музея; количество мест ограничено",
+          "source": "koihm-avtoportret-master-klass-5-noyabrya-source"
+        }
+      ],
+      "context": "Мастер-класс входит в цикл «Классики и авангард в русской живописи». Его ведущая и автор — художница и сотрудница музея Елена Ананьина. Афиша опубликована 2 октября и обновлена 6 октября.",
+      "interpretations": [
+        {
+          "title": "Время занятия",
+          "text": "Уточните час начала при покупке билета: в общей афише указаны занятия в 17:00 и отдельные занятия в 12:00, а для 5 ноября время отдельно не названо."
+        }
+      ],
+      "sources": [
+        {
+          "id": "koihm-avtoportret-master-klass-5-noyabrya-source",
+          "title": "КОИХМ: афиша мастер-классов «Классики и авангард в русской живописи»",
+          "url": "https://koihm.ru/afisha-master-klassov-klassika-i-avangard-v-russkoj-zhivopisi/",
+          "kind": "museum",
+          "published_at": "2026-10-02",
+          "checked_at": "2026-10-25"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "gurevsk-golubevo-poezd-28-29-oktyabrya-2026-10-25",
+      "status": "published",
+      "path": "news/2026/10/25/gurevsk-golubevo-poezd-28-29-oktyabrya/",
+      "category": "poezdki",
+      "headline": "28 и 29 октября утренний поезд Гурьевск — Голубево пойдёт через Киевскую",
+      "description": "Отправление из Гурьевска-Нового — в 7:20. В Голубево поезд прибудет в 8:05, на десять минут раньше.",
+      "published_at": "2026-10-25T07:11:19+02:00",
+      "modified_at": "2026-10-25T07:11:19+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Утренний пригородный поезд из Гурьевска в Голубево 28 и 29 октября будет следовать через остановочный пункт Киевская. КППК указала отправление из Гурьевска-Нового в 7:20 и прибытие в Голубево в 8:05.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Ближайшие даты изменения",
+          "value": "28 и 29 октября 2026 года",
+          "source": "gurevsk-golubevo-poezd-28-29-oktyabrya-source"
+        },
+        {
+          "label": "Отправление",
+          "value": "Гурьевск-Новый — 7:20",
+          "source": "gurevsk-golubevo-poezd-28-29-oktyabrya-source"
+        },
+        {
+          "label": "Прибытие",
+          "value": "Голубево — 8:05, на десять минут раньше",
+          "source": "gurevsk-golubevo-poezd-28-29-oktyabrya-source"
+        },
+        {
+          "label": "Путь следования",
+          "value": "Через остановочный пункт Киевская",
+          "source": "gurevsk-golubevo-poezd-28-29-oktyabrya-source"
+        },
+        {
+          "label": "Причина изменения",
+          "value": "Ремонтно-путевые работы",
+          "source": "gurevsk-golubevo-poezd-28-29-oktyabrya-source"
+        }
+      ],
+      "context": "Сообщение перевозчика опубликовано 5 октября и перечисляет шесть дат в течение месяца. Здесь оставлены две предстоящие. Изменение касается утреннего поезда, который обычно следует по рабочим дням через Дзержинскую.",
+      "interpretations": [
+        {
+          "title": "Если садитесь по пути",
+          "text": "Сверьте время своей остановки в расписании на 28 или 29 октября. В сообщении приведены времена двух конечных станций; промежуточные остановки по ним рассчитать нельзя."
+        }
+      ],
+      "sources": [
+        {
+          "id": "gurevsk-golubevo-poezd-28-29-oktyabrya-source",
+          "title": "КППК: изменение утреннего поезда Гурьевск — Голубево в октябре",
+          "url": "https://kppk39.ru/izmeneniya-v-raspisanii/raspisanie-utrennego-prigorodnogo-poezda-iz-gurevska-v-golubevo-izmenitsya-6-14-20-21-28-i-29-oktyab/",
+          "kind": "operator",
+          "published_at": "2026-10-05",
+          "checked_at": "2026-10-25"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-2026-10-25",
+      "status": "published",
+      "path": "news/2026/10/25/kosa-vizit-tsentr-zimnie-chasy-2026-2027/",
+      "category": "poezdki",
+      "headline": "Визит-центр Куршской косы зимой работает со среды по воскресенье",
+      "description": "До 30 апреля 2027 года обычные часы — с 9:00 до 17:00. В январе предусмотрены отдельные рабочие и выходные дни.",
+      "published_at": "2026-10-25T07:11:19+02:00",
+      "modified_at": "2026-10-25T07:11:19+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Если хотите зайти в музеи визит-центра «Музейный комплекс» на Куршской косе, выбирайте день со среды по воскресенье. С 5 октября здесь действует осенне-зимний режим: с 9:00 до 17:00, понедельник и вторник — выходные.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Период режима",
+          "value": "5 октября 2026 — 30 апреля 2027 года",
+          "source": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source"
+        },
+        {
+          "label": "Обычные рабочие дни",
+          "value": "Среда–воскресенье, 9:00–17:00",
+          "source": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source"
+        },
+        {
+          "label": "Обычные выходные",
+          "value": "Понедельник и вторник",
+          "source": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source"
+        },
+        {
+          "label": "Праздничные исключения",
+          "value": "31 декабря 2026, 1 и 7 января 2027 — выходные; 4 и 5 января 2027 — рабочие дни",
+          "source": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source"
+        },
+        {
+          "label": "Что доступно в рабочие часы",
+          "value": "Музеи, справочная информация и сувенирная продукция визит-центра",
+          "source": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source"
+        }
+      ],
+      "context": "Национальный парк объявил этот режим 23 сентября. Он относится к визит-центру «Музейный комплекс»; из него не следует, что вся Куршская коса или её тропы закрыты по понедельникам и вторникам.",
+      "interpretations": [
+        {
+          "title": "Для поездки на следующей неделе",
+          "text": "26 и 27 октября приходятся на понедельник и вторник — визит в музейный комплекс на эти дни не планируйте. Прогулку по косе можно собирать отдельно, проверяя условия посещения выбранных мест."
+        }
+      ],
+      "sources": [
+        {
+          "id": "kosa-vizit-tsentr-zimnie-chasy-2026-2027-source",
+          "title": "Национальный парк: осенне-зимний режим визит-центра",
+          "url": "https://park-kosa.ru/vizit-czentr-naczionalnogo-parka-perexodit-na-osenne-zimnij-grafik",
+          "kind": "operator",
+          "published_at": "2026-09-23",
+          "checked_at": "2026-10-25"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
+    },
+    {
+      "id": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-2026-10-25",
+      "status": "published",
+      "path": "news/2026/10/25/rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya/",
+      "category": "poezdki",
+      "headline": "Фотовыставка «Ровесники» в Калининграде открыта до 16 ноября",
+      "description": "В Историко-художественном музее показывают более 30 работ Станислава Покровского с архитектурой и пейзажами региона.",
+      "published_at": "2026-10-25T07:11:19+02:00",
+      "modified_at": "2026-10-25T07:11:19+02:00",
+      "image": {
+        "url": "/assets/author/kaliningrad-2026-10-15/park-autumn-1280.webp",
+        "preview": "/assets/author/kaliningrad-2026-10-15/park-autumn-640.avif",
+        "width": 1280,
+        "height": 960,
+        "alt": "Осенние деревья в городском парке Калининграда",
+        "caption": "Осенний парк в Калининграде. Фото автора проекта; иллюстрация поездки по области.",
+        "kind": "author-photo"
+      },
+      "lead": "Калининградскую область можно увидеть через фотографии Станислава Покровского на выставке «Ровесники». Она идёт в областном Историко-художественном музее до 16 ноября 2026 года.",
+      "facts_title": "Что учесть при поездке",
+      "facts_value_label": "По первоисточнику",
+      "facts": [
+        {
+          "label": "Даты выставки",
+          "value": "19 октября — 16 ноября 2026 года",
+          "source": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source"
+        },
+        {
+          "label": "Автор и объём",
+          "value": "Станислав Покровский; более 30 работ",
+          "source": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source"
+        },
+        {
+          "label": "Адрес",
+          "value": "Калининград, улица Клиническая, 21",
+          "source": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source"
+        },
+        {
+          "label": "Обычный режим музея",
+          "value": "Ежедневно 10:00–18:00, касса до 17:00",
+          "source": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source"
+        },
+        {
+          "label": "Возраст",
+          "value": "6+",
+          "source": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source"
+        }
+      ],
+      "context": "Анонс опубликован 13 октября. Музей описывает снимки, в которых сохранившаяся и исчезающая архитектура региона соседствует с пейзажами. Выставка приурочена к 80-летию автора и области.",
+      "interpretations": [
+        {
+          "title": "Для городской прогулки",
+          "text": "Выставку можно поставить в середину дня между прогулками по городу. Если покупаете билет на месте, ориентируйтесь на закрытие кассы в 17:00; время до 18:00 относится к работе музея."
+        }
+      ],
+      "sources": [
+        {
+          "id": "rovesniki-fotovystavka-pokrovskiy-do-16-noyabrya-source",
+          "title": "Историко-художественный музей: фотовыставка «Ровесники»",
+          "url": "https://koihm.ru/vystavka-rovesniki-14-10-16-11-2026/",
+          "kind": "museum",
+          "published_at": "2026-10-13",
+          "checked_at": "2026-10-25"
+        }
+      ],
+      "relations": [
+        {
+          "type": "Place",
+          "name": "Калининградская область",
+          "url": "/routes/"
+        }
+      ],
+      "related": [
+        {
+          "label": "Прогулки по городам области",
+          "url": "/routes/"
+        },
+        {
+          "label": "Собрать свой день",
+          "url": "/planner/"
+        }
+      ]
     }
   ]
 }
