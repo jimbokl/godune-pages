@@ -593,6 +593,11 @@
           "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
         },
         {
+          "path": "food209.css",
+          "media": "all",
+          "sha256": "fb53042e0207c422793199adc86d2aae0dd266241bd7da17e14fe85571d55e1b"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
@@ -603,9 +608,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "8ba743995e90dee1156366f70a190d1b56623ae95ee012047fe471caeaf1af38",
-      "source_bytes": 551115,
-      "critical_bytes": 126944
+      "sha256": "93655d79503bba76e1ec6dd80eb4a80922cc4b245b4432a55e47f541e49e4a5d",
+      "source_bytes": 551601,
+      "critical_bytes": 128421
     },
     "food/dishes/stroganina/index.html": {
       "sources": [
@@ -1452,9 +1457,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "3874c6324564de8eae5c40aea13c8dd123574c26192a68d5d0e9719fe2a0a1b5",
+      "sha256": "8e1ab25e4be5efaa44d1bafd4fc11bcdedb5370953dd167a780044f0fd4c0fd5",
       "source_bytes": 537991,
-      "critical_bytes": 134359
+      "critical_bytes": 135264
     },
     "food/zelenogradsk/index.html": {
       "sources": [
@@ -1559,6 +1564,11 @@
           "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
         },
         {
+          "path": "food209.css",
+          "media": "all",
+          "sha256": "fb53042e0207c422793199adc86d2aae0dd266241bd7da17e14fe85571d55e1b"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
@@ -1569,9 +1579,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "2435c0c93bc11acdace07108f559848a32cd7a02433139c2950b24a9420b83a2",
-      "source_bytes": 537991,
-      "critical_bytes": 132397
+      "sha256": "1671a7415a267ecec564217e7d61c94e55c26de33bff3c479b64fa41f0817d7e",
+      "source_bytes": 538477,
+      "critical_bytes": 134333
     },
     "food/zelenogradsk/kofe-i-vypechka/index.html": {
       "sources": [
@@ -4154,9 +4164,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "dbf99e7eac40641efba166b38926e9fc60fd7433d1ac44ac6dae5741df3f1aae",
+      "sha256": "998a3fcc5c13bcde19301b718198cef7678834f2acb01e0e4ef6554eb70c171d",
       "source_bytes": 545196,
-      "critical_bytes": 123393
+      "critical_bytes": 123700
     },
     "waves/index.html": {
       "sources": [
@@ -5028,6 +5038,11 @@
           "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
         },
         {
+          "path": "food209.css",
+          "media": "all",
+          "sha256": "fb53042e0207c422793199adc86d2aae0dd266241bd7da17e14fe85571d55e1b"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
@@ -5038,9 +5053,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "4e810fdd6de3f6d4e1f31e49b9708bcef95484dcaeb83cd826dc142553dde6dd",
-      "source_bytes": 553795,
-      "critical_bytes": 121215
+      "sha256": "1fac7b3fcfd3e84c9e04e0ee4754419fd11383e2ea316efe73a706a5296e6f4b",
+      "source_bytes": 554281,
+      "critical_bytes": 122692
     },
     "waves/zelenogradsk-west-sea/index.html": {
       "sources": [
@@ -5282,6 +5297,11 @@
           "sha256": "d50d0e4afbb53cde7e74dfc16f5715242b8fac5f6aa1f8dd04fc0140d381d1d9"
         },
         {
+          "path": "food209.css",
+          "media": "all",
+          "sha256": "fb53042e0207c422793199adc86d2aae0dd266241bd7da17e14fe85571d55e1b"
+        },
+        {
           "path": "editorial-print.css",
           "media": "all",
           "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
@@ -5292,9 +5312,9 @@
           "sha256": "0b014103ea32370c6f2110954000d586e4f49ccdf9347b1de6896399ed16171f"
         }
       ],
-      "sha256": "6bbb453c0dde003d5db5efae6285336df7c499bb3db12abdd5a29650620aa001",
-      "source_bytes": 545196,
-      "critical_bytes": 124518
+      "sha256": "0fa7b37a8b9e3045dbe553580b33b33898eace43286e650531ea63900e602bbc",
+      "source_bytes": 545682,
+      "critical_bytes": 125126
     }
   }
 }

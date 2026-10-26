@@ -54,8 +54,8 @@
   function revealArticleMenu(hash, {scroll=false}={}) {
     let id;
     try { id=decodeURIComponent(hash.slice(1)); } catch { return; }
-    const target=document.getElementById(id), section=target?.closest('.food-guide #menu');
-    const menu=section?.querySelector('.food-menu-disclosure');
+    const target=document.getElementById(id), section=target?.closest('.food-guide #menu, .food-menu-section#menu');
+    const menu=section?.querySelector(':scope > details.food-menu-disclosure');
     if (!menu || (target!==section && !menu.contains(target))) return;
     menu.open=true;
     for (let parent=target; parent && parent!==section; parent=parent.parentElement) {
