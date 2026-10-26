@@ -149,7 +149,7 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
     if(JSON.stringify(trip)!==guard)return {message:'День изменился. Проверьте свежий выбор блюда.'};
     const existing=linkedMenuExpense(selectedDay(trip),id);
     if(existing){await open(existing.kind,existing.item.id);return {message:'Открыт записанный расход. Порции и оплату можно изменить здесь.'};}
-    servicePending=true;let issue='';
+    servicePending=true;let issue='',message,editorItem;
     try{
       const engine=await loadScheduler(base);
       const result=await commit(current=>{
@@ -158,12 +158,14 @@ export function initTripExpenses({section,read,commit,base,catalog}) {
         try{engine.budget(budgetInput(next));}catch{issue='Сумму нужно проверить. Блюдо и прежние расходы сохранены.';return current;}
         return next;
       },'Блюдо добавлено в расходы дня.');
-      const message=result?.conflict?'Поездка изменилась в другой вкладке. Проверьте свежий день.':issue||(result?.saved===false?'Расход пока в этой вкладке. Его можно забрать в файл поездки.':'Блюдо учтено в расходах дня. Оплату можно записать отдельно.');
+      message=result?.conflict?'Поездка изменилась в другой вкладке. Проверьте свежий день.':issue||(result?.saved===false?'Расход пока в этой вкладке. Его можно забрать в файл поездки.':'Блюдо учтено в расходах дня. Оплату можно записать отдельно.');
       status(message);
-      if(!issue&&!result?.conflict){const linked=linkedMenuExpense(selectedDay(read()),id);if(linked)await open(linked.kind,linked.item.id);}
-      return {message};
+      if(!issue&&!result?.conflict)editorItem=linkedMenuExpense(selectedDay(read()),id);
     }catch{const message='Расход пока не добавлен. Попробуйте ещё раз.';status(message);return {message};}
     finally{servicePending=false;}
+    // Price loading belongs to the editor; it must not hold the save transaction lock.
+    if(editorItem)await open(editorItem.kind,editorItem.item.id);
+    return {message};
   }
   dialog.querySelector('.expense-close').addEventListener('click',close);dialog.querySelector('.expense-cancel').addEventListener('click',close);
   dialog.addEventListener('cancel',event=>{event.preventDefault();close();});window.addEventListener('godune:memory-cleared',()=>{if(dialog.open)close();});
