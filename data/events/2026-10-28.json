@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-10-28",
   "coverage": {
     "status": "verified_partial",
@@ -137,7 +137,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-25T02:04:02Z",
+      "verified_at": "2026-10-26T02:04:45Z",
       "source_identity": "programme:2943b0541690b2474a16a9de",
       "source_scope": "programme",
       "observations": [
@@ -161,6 +161,14 @@
           "verified_at": "2026-10-25T02:04:02Z",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "f4ebc0ce476387d112c654425d58864a212add06b8cca8220d07076267be76ff",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:04:45Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "27b129ee1196448363d8d584e7ca0745cf46b9a256a8839ef7a8cc4347505768",
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T11:00:00+02:00"
@@ -701,7 +709,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events",
-      "verified_at": "2026-10-25T02:04:03Z",
+      "verified_at": "2026-10-26T02:04:47Z",
       "source_identity": "programme:100ef6f6a5006bcc631fc48d",
       "source_scope": "programme",
       "observations": [
@@ -736,13 +744,21 @@
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:04:47Z",
+          "source_url": "https://world-ocean.ru/events",
+          "sha256": "ccee4f26256f6f91d5ed2a80175335354a7d5029c34f78acb738a38939e9f047",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Музейный лекторий \"Клуб путешественников\" (12+)среда-пятница, 16-001 октября «Индонезийские сказки и их герои» 2 октября«Океаны барка «Седов»7 октября«В гостях у мудрого карпа. Китайские народные сказки и их герои»8 октября«Жизнь и путешествия Н.Н. Миклухо-Маклая»9 октября«Семь дней Будды. О художественном многообразии и символике образа Будды в искусстве скульптуры»22 октября«Горизонты Южного моря: Mar del sur. Народы Океании»23 октября«Традиционные орнаменты и символы Китая»28 октября«Георг Форстер (1754 – 1794). Вокруг света с Джеймсом Куком»29 октября«Летящая над волнами: носовая фигура как часть скульптурного убранства корабля»30 октября«Бали – остров живых богов. Вопросы географии»",
         "year_corroboration": {
           "url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "992d377de0b13220550db08fd9b4f4d1dbe5358b7ad7f46e374e82f214a8b388",
+          "sha256": "38c4051e0ce3a93015804262eec2138544bac007d6571eacd76ca5afb27c8910",
           "quote": "\"Георг Форстер (1754-1794). Вокруг света с Джеймсом Куком\", 12+28 октября (16:00)г. Светлогорск, ул. Ленина, д. 11, Морской выставочный центрМузейный лекторий «Клуб путешественников»"
         }
       },
@@ -1187,7 +1203,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/805/",
-      "verified_at": "2026-10-25T02:02:37Z",
+      "verified_at": "2026-10-26T02:03:09Z",
       "source_identity": "programme:fb1c1238a254ccdc99f42e76",
       "source_scope": "programme",
       "observations": [
@@ -1222,11 +1238,19 @@
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:09Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/805/",
+          "sha256": "daae107a233ce258b2a7f4466698c26c6e8a79bddc480109ebd8e5a797f93e9f",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T18:00:00+02:00"
         }
       ],
       "evidence": {
-        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
+        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
         "card_quote": "Купить билетИСКУССТВО В КИНО. СТРАСТЬ ИГОРЯ САВИЦКОГО (18+)Скоро 28 октября в 18:00 Кинозал Ставший при жизни легендой художник и искусствовед Игорь Савицкий совсем молодым уехал из Москвы в пустыню Средней Азии. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "28 ОКТЯБРЯ 2026 18:00"
       },
@@ -1266,7 +1290,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-25T02:02:24Z",
+      "verified_at": "2026-10-26T02:02:59Z",
       "source_identity": "programme:64ef23f9123007cc9b88ed96",
       "source_scope": "programme",
       "observations": [
@@ -1298,6 +1322,14 @@
           "verified_at": "2026-10-25T02:02:24Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "e9279f299db3154e3ee7e1b18870bcad0e4bd364b9eb01b54d65122e86be39f8",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:59Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "9409201cb826a039b5536f93f1c460b5645d1fbc671a4db72070d7515989a131",
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T19:00:00+02:00"

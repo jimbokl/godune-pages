@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -221,7 +221,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
-      "verified_at": "2026-10-25T02:02:14Z",
+      "verified_at": "2026-10-26T02:02:47Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:41Z",
@@ -273,6 +273,14 @@
           "verified_at": "2026-10-25T02:02:14Z",
           "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
           "sha256": "805243c5717dc8eada617b0f2e514073d5fe36713ff22c3fc94b25f4e8fca07d",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:47Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "7f20c7381c1d2a428c8c720cf00dc9e425c95fe9f0932316c960e36fe30f2dda",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T12:00:00+02:00"
@@ -410,7 +418,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-25T02:02:34Z",
+      "verified_at": "2026-10-26T02:03:15Z",
       "source_identity": "programme:d79a447c8327cfbc106e6a4f",
       "source_scope": "programme",
       "observations": [
@@ -445,11 +453,19 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T13:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:15Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "623686703353e5b4d45c5ddd517e87afd0d69d5ab1cd39e61b04fb252d31bea1",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T13:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "3cd5a8277034c96e11159c85cebfa17af4d5dec517fa0811d66c4eb196db900d",
+        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "4 ноября 2026 13:00"
       },
@@ -576,13 +592,21 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
-      "verified_at": "2026-10-25T02:02:23Z",
+      "verified_at": "2026-10-26T02:02:57Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
           "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
           "sha256": "d122a1aa7d3ba91b963a4de1ac9d05bf53c99a284c058dcd24cd5bce089f1d12",
           "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:57Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
+          "sha256": "d319c0fc0c7dc9cf6101beedc05dcea2482ba681de209fb3bbc4b2ee9efd888c",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T15:00:00+02:00"
         }
       ],
       "evidence": {
@@ -788,13 +812,21 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
-      "verified_at": "2026-10-25T02:02:23Z",
+      "verified_at": "2026-10-26T02:02:56Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
           "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
           "sha256": "081fbba445ac47d6c3b1927d672f06514f9d03c978f4e5fe6c5206297b8a0201",
           "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:56Z",
+          "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
+          "sha256": "d3eac23e6c0a8a3427f9c7d0da502ab6758959c803a11dc5c7cbef019b13e770",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
         }
       ],
       "evidence": {
@@ -854,7 +886,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-25T02:02:14Z",
+      "verified_at": "2026-10-26T02:02:47Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -922,6 +954,14 @@
           "verified_at": "2026-10-25T02:02:14Z",
           "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
           "sha256": "79b50f32bb75f0c5562c3257c04f14468bbc92dff8954ec55dd0bf7982f5dade",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:47Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "d570c983536c63e2db9aed699b87e871647825c238a778426640d1b0e4e24ecb",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
@@ -1119,7 +1159,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -1151,6 +1191,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-11-06",
   "coverage": {
     "status": "verified_partial",
@@ -11,7 +11,8 @@
     "sources": [
       "event-source-0e3e28a1f902759a",
       "event-source-703266efe6b49e32",
-      "event-source-ac8abe48e82f9e73"
+      "event-source-ac8abe48e82f9e73",
+      "event-source-d4d8481cf0f59123"
     ]
   },
   "events": [
@@ -664,7 +665,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:0cf010c3216ed8ddc8a5f708",
       "source_scope": "programme",
       "observations": [
@@ -696,6 +697,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -752,7 +761,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
-      "verified_at": "2026-10-25T02:02:14Z",
+      "verified_at": "2026-10-26T02:02:48Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -780,6 +789,14 @@
           "verified_at": "2026-10-25T02:02:14Z",
           "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
           "sha256": "19fc375d0430ab3935ce814b677a50c310e048514855bab7ac7f1f61b305ff37",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:48Z",
+          "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
+          "sha256": "096f73f6bebb19aebad3df8329e8c2c7603484bbd0c9f35e5e2de63c3437ca2d",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -881,6 +898,72 @@
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
       }
+    },
+    {
+      "id": "event-e9d4a2c622fc0539",
+      "title": "РАНЕВСКАЯ Великая насмешница",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-11-06",
+      "starts": "19:00",
+      "ends": null,
+      "description": "РАНЕВСКАЯ Великая насмешница",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 1900 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-d4d8481cf0f59123",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-06T19:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1900,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/ranevskaya-velikaya-nasmeshnitsa/",
+      "verified_at": "2026-10-26T02:02:58Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-26T02:02:58Z",
+          "source_url": "https://yantarholl.ru/afisha/ranevskaya-velikaya-nasmeshnitsa/",
+          "sha256": "7888db3ac187fd76ebe0e23b5bc32bc03bd661c8e62a48bf510277c4ada7257e",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: РАНЕВСКАЯ Великая насмешница",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» - РАНЕВСКАЯ Великая насмешница+06.11.2026 19:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 1900 руб.",
+        "age": "12+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa"
+      },
+      "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
     }
   ],
   "venues": {
@@ -936,6 +1019,21 @@
       "identity_verified_at": "2026-10-17",
       "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
       "coordinates_verified_at": "2026-10-01"
+    },
+    "yantar-hall": {
+      "id": "yantar-hall",
+      "name": "Театр эстрады «Янтарь-Холл»",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": "yantar-hall",
+      "coordinates": {
+        "lat": 54.9455297,
+        "lon": 20.1575504
+      },
+      "address": "ул. Ленина, 11",
+      "source_url": "https://yantarholl.ru/",
+      "verified_at": "2026-10-17",
+      "coordinate_evidence_sha256": "c604644e135d7895b2745489b49b7b5fe8733214113363ad84ce7de74ba7edba"
     }
   }
 }

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-11-07",
   "coverage": {
     "status": "verified_partial",
@@ -542,7 +542,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:9d911772966c1e38e27883d0",
       "source_scope": "programme",
       "observations": [
@@ -574,6 +574,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T14:30:00+02:00"
@@ -769,7 +777,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
-      "verified_at": "2026-10-25T02:02:15Z",
+      "verified_at": "2026-10-26T02:02:48Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -797,6 +805,14 @@
           "verified_at": "2026-10-25T02:02:15Z",
           "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
           "sha256": "069721e35564e581ba1f13d36203d5a1b42aa7fadadf2606630c4511fcb37a2b",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:48Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
+          "sha256": "e5606549bf0ac59c06068e5894632ef0320236170b6f0d081ccadf87419a5a9a",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -856,7 +872,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:3398a8720d934dfaafe005ba",
       "source_scope": "programme",
       "observations": [
@@ -888,6 +904,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-11-05",
   "coverage": {
     "status": "verified_partial",
@@ -213,7 +213,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-25T02:02:34Z",
+      "verified_at": "2026-10-26T02:03:15Z",
       "source_identity": "programme:d39cf4030f9ecb1045dd0173",
       "source_scope": "programme",
       "observations": [
@@ -248,11 +248,19 @@
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T13:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:15Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "623686703353e5b4d45c5ddd517e87afd0d69d5ab1cd39e61b04fb252d31bea1",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T13:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "3cd5a8277034c96e11159c85cebfa17af4d5dec517fa0811d66c4eb196db900d",
+        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "5 ноября 2026 13:00"
       },
@@ -598,7 +606,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:b79ede9fad2458a32dcb9c49",
       "source_scope": "programme",
       "observations": [
@@ -630,6 +638,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T15:00:00+02:00"
@@ -841,7 +857,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/gitarist-sergey-perelekhov/",
-      "verified_at": "2026-10-25T02:02:14Z",
+      "verified_at": "2026-10-26T02:02:48Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -869,6 +885,14 @@
           "verified_at": "2026-10-25T02:02:14Z",
           "source_url": "https://filarmonia39.ru/afisha/gitarist-sergey-perelekhov/",
           "sha256": "eb7efb6cf5407f816b28a2911dbb3d3c739ee4ac1fcb197f93910162ce6cd524",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:48Z",
+          "source_url": "https://filarmonia39.ru/afisha/gitarist-sergey-perelekhov/",
+          "sha256": "4ef7b73969445ea90548f3d8348b418f604ed5d232a082be9690df340fc062e1",
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T19:00:00+02:00"
@@ -928,7 +952,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-25T02:02:25Z",
+      "verified_at": "2026-10-26T02:03:01Z",
       "source_identity": "programme:bd0fe73764278db81cea6862",
       "source_scope": "programme",
       "observations": [
@@ -960,6 +984,14 @@
           "verified_at": "2026-10-25T02:02:25Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T19:00:00+02:00"

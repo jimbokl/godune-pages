@@ -1,26 +1,17 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "window": {
-    "from": "2026-09-25",
-    "to": "2026-11-24",
-    "anchor_date": "2026-10-25",
+    "from": "2026-09-26",
+    "to": "2026-11-25",
+    "anchor_date": "2026-10-26",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-25": {
-      "url": "/data/events/2026-09-25.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-26": {
       "url": "/data/events/2026-09-26.json",
       "count": 0,
@@ -517,14 +508,15 @@
     },
     "2026-11-06": {
       "url": "/data/events/2026-11-06.json",
-      "count": 11,
+      "count": 12,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-0e3e28a1f902759a",
           "event-source-703266efe6b49e32",
-          "event-source-ac8abe48e82f9e73"
+          "event-source-ac8abe48e82f9e73",
+          "event-source-d4d8481cf0f59123"
         ]
       }
     },
@@ -755,6 +747,18 @@
           "event-source-13604bdec95e772c"
         ]
       }
+    },
+    "2026-11-25": {
+      "url": "/data/events/2026-11-25.json",
+      "count": 10,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-0e3e28a1f902759a",
+          "event-source-ebd1fb210cef582c"
+        ]
+      }
     }
   },
   "archive_url": "/data/events/archive.json",
@@ -790,6 +794,7 @@
     "event-11d9a185f8131b70",
     "event-12b2b5a011bd824d",
     "event-132af4aa2fcd7bd4",
+    "event-1347cc85e06ba1e2",
     "event-137ce3b6808ae58e",
     "event-13c19841e2fe9c47",
     "event-13e139fafb2b7609",
@@ -825,6 +830,7 @@
     "event-237aa818794a0b2c",
     "event-238ed2ce0d6c605c",
     "event-24c99c0298fb27fb",
+    "event-252646adb3f8e6b4",
     "event-25b33aea93eed9ed",
     "event-26b1ef3d8feac95d",
     "event-26ecb542365bd546",
@@ -914,6 +920,7 @@
     "event-5071845f70626423",
     "event-51616cc30e389538",
     "event-51cbcd565d650b06",
+    "event-523c799e8442ba62",
     "event-52ddd7236496f713",
     "event-53e2dc8340f7c312",
     "event-53ea891e022a4621",
@@ -921,6 +928,7 @@
     "event-5446532b1ede0758",
     "event-54c52e30c3ca985a",
     "event-55d17e678cdb7cf6",
+    "event-55ec9b3f5c47700c",
     "event-57036cfda1dfe4df",
     "event-5708a114443181e6",
     "event-574736184d832e0c",
@@ -953,6 +961,7 @@
     "event-61354fa7f0da9b83",
     "event-62a62564e6c830e1",
     "event-62c0e45ca9627b97",
+    "event-62e65ba7c78d3c6e",
     "event-630a5e51f80f7041",
     "event-63179db53c17ce3e",
     "event-63459ad5d39e4fdf",
@@ -1016,6 +1025,7 @@
     "event-85400def733638f6",
     "event-85bc64dedf83c002",
     "event-85ddda29c0def726",
+    "event-860333953de3ae48",
     "event-8676c2962c69c8db",
     "event-86a7b7239f2f77bd",
     "event-86e86ce7d8cacd45",
@@ -1084,6 +1094,7 @@
     "event-9c9bc4dc7b013dd6",
     "event-9ca8c3d28acc0e0c",
     "event-9ce18b31cd042b8c",
+    "event-9d25f0209cdb6653",
     "event-9d5fe67c7c1e1069",
     "event-9dcd150e636505c6",
     "event-9e1f57eaef59fddd",
@@ -1113,6 +1124,7 @@
     "event-a72794a49ec15ef8",
     "event-a731d80f8308ef50",
     "event-a8949b68b7e229d2",
+    "event-a8bc6b049eab6660",
     "event-a8f031f990058857",
     "event-a9d770fca7d5b3fe",
     "event-aa575abbc164e24b",
@@ -1234,10 +1246,12 @@
     "event-e50c965e4ba547e7",
     "event-e5b5f658c80a9ae4",
     "event-e5d933991a0f059d",
+    "event-e5f77cb46d422dd1",
     "event-e60cc13195a57537",
     "event-e7074caf20373d82",
     "event-e7f074ff752c2fc3",
     "event-e8aba6a764501891",
+    "event-e9d4a2c622fc0539",
     "event-e9ef50208b31144f",
     "event-e9f300095fd89fdf",
     "event-ea634971d93de3b0",
@@ -1268,6 +1282,7 @@
     "event-f80435f31d9b3fbf",
     "event-f808a6ea3caee79d",
     "event-f824390b0b104945",
+    "event-f894c24db766d335",
     "event-f8ccd4ee7c1e3281",
     "event-f9f716e31ca835c6",
     "event-fa44b15bd8247274",

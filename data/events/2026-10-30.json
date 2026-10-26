@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "653fc2f58a4823af8b101735aae247c17344086e66ba76ce2821552e54c0b827",
-  "generated_at": "2026-10-25T18:45:50.835Z",
-  "updated_at": "2026-10-25T05:17:11.791445Z",
+  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
+  "generated_at": "2026-10-26T02:09:25.966Z",
+  "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
@@ -145,7 +145,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
-      "verified_at": "2026-10-25T02:02:21Z",
+      "verified_at": "2026-10-26T02:02:55Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:44Z",
@@ -197,6 +197,14 @@
           "verified_at": "2026-10-25T02:02:21Z",
           "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
           "sha256": "45c8e80df2f1bddcffbd99c94fe2a520cd1f000337e32364354cf9eccf6e92b1",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:55Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2030%2010%2012%2000/",
+          "sha256": "a2332223191bf2fdcdfac87e16e4001e8096b03a295f9941b9daa781961bdd3d",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T12:00:00+02:00"
@@ -642,7 +650,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/808/",
-      "verified_at": "2026-10-25T02:02:40Z",
+      "verified_at": "2026-10-26T02:03:21Z",
       "source_identity": "programme:56a0c0be131b1b8144788af7",
       "source_scope": "programme",
       "observations": [
@@ -677,11 +685,19 @@
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T14:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:21Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/808/",
+          "sha256": "749f780a4bcfa035a5609ec7a0f39f1620ec24f681349119aed016f5d33ee20f",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T14:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
+        "listing_sha256": "488fd54eae19eccb8e1c509f77c008d900909c34d673cf8ae4146057159dc6ff",
         "card_quote": "Купить билетИСКУССТВО В КИНО. МУЗЕЙ (16+)Скоро 31 октября в 14:00 Кинозал О легендарном Пушкинском музее, чья судьба неразрывно связана с историей России. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "30 ОКТЯБРЯ 2026 14:00"
       },
@@ -867,7 +883,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events",
-      "verified_at": "2026-10-25T02:04:03Z",
+      "verified_at": "2026-10-26T02:04:47Z",
       "source_identity": "programme:29ce701a81a25072df55b7bb",
       "source_scope": "programme",
       "observations": [
@@ -902,13 +918,21 @@
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:04:47Z",
+          "source_url": "https://world-ocean.ru/events",
+          "sha256": "ccee4f26256f6f91d5ed2a80175335354a7d5029c34f78acb738a38939e9f047",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Музейный лекторий \"Клуб путешественников\" (12+)среда-пятница, 16-001 октября «Индонезийские сказки и их герои» 2 октября«Океаны барка «Седов»7 октября«В гостях у мудрого карпа. Китайские народные сказки и их герои»8 октября«Жизнь и путешествия Н.Н. Миклухо-Маклая»9 октября«Семь дней Будды. О художественном многообразии и символике образа Будды в искусстве скульптуры»22 октября«Горизонты Южного моря: Mar del sur. Народы Океании»23 октября«Традиционные орнаменты и символы Китая»28 октября«Георг Форстер (1754 – 1794). Вокруг света с Джеймсом Куком»29 октября«Летящая над волнами: носовая фигура как часть скульптурного убранства корабля»30 октября«Бали – остров живых богов. Вопросы географии»",
         "year_corroboration": {
           "url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "992d377de0b13220550db08fd9b4f4d1dbe5358b7ad7f46e374e82f214a8b388",
+          "sha256": "38c4051e0ce3a93015804262eec2138544bac007d6571eacd76ca5afb27c8910",
           "quote": "\"Бали - остров живых богов. Вопросы географии\", 12+30 октября (16:00)г. Светлогорск, ул. Ленина, д. 11, Морской выставочный центрМузейный лекторий \"Клуб путешественников\""
         }
       },
@@ -1186,7 +1210,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/807/",
-      "verified_at": "2026-10-25T02:02:39Z",
+      "verified_at": "2026-10-26T02:03:20Z",
       "source_identity": "programme:d65a202c4576f7731143c50e",
       "source_scope": "programme",
       "observations": [
@@ -1221,11 +1245,19 @@
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:20Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/807/",
+          "sha256": "d887850846602d585ca612eac2135cfb52b8f2a82920e38b93217a794836ec3c",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T17:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "e5550071314acbf7a0bf0ecec92625defb240cbf4ccd0b292f9d80ff756423f7",
+        "listing_sha256": "488fd54eae19eccb8e1c509f77c008d900909c34d673cf8ae4146057159dc6ff",
         "card_quote": "Купить билетИСКУССТВО В КИНО. ПОСЛЕДНИЙ ПОРТРЕТ (18+)Скоро 30 октября в 17:00 Кинозал Эксцентричный художник создает новую работу. Джеффри Раш в драмеди о последних годах жизни Альберто Джакометти. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "30 ОКТЯБРЯ 2026 17:00"
       },
@@ -1347,7 +1379,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-25T02:02:24Z",
+      "verified_at": "2026-10-26T02:02:59Z",
       "source_identity": "programme:26a586862ff3f560dd6c58a5",
       "source_scope": "programme",
       "observations": [
@@ -1379,6 +1411,14 @@
           "verified_at": "2026-10-25T02:02:24Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "e9279f299db3154e3ee7e1b18870bcad0e4bd364b9eb01b54d65122e86be39f8",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:59Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "9409201cb826a039b5536f93f1c460b5645d1fbc671a4db72070d7515989a131",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
@@ -1435,7 +1475,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
-      "verified_at": "2026-10-25T02:02:13Z",
+      "verified_at": "2026-10-26T02:02:46Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -1522,6 +1562,14 @@
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:46Z",
+          "source_url": "https://filarmonia39.ru/afisha/organnaya-frantsiya-30102026/",
+          "sha256": "e322ed64011a1034746fc0ee080f85f5d8bf8cc7eb28b1e6370726c467857293",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1582,7 +1630,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
-      "verified_at": "2026-10-25T02:02:21Z",
+      "verified_at": "2026-10-26T02:02:55Z",
       "observations": [
         {
           "verified_at": "2026-10-17T09:50:54Z",
@@ -1674,6 +1722,14 @@
           "verified_at": "2026-10-25T02:02:21Z",
           "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
           "sha256": "267384dbf4dd2ca029f14229ef6be1021ac6e7db37f4c10393b3afc84c18a89c",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:55Z",
+          "source_url": "https://yantarholl.ru/afisha/kuin-queen-shou-bogemskaya-rapsodiya-v-soprovozhdenii-simfonicheskogo-orkestra%2030%2010/",
+          "sha256": "6519a034deb81658ba245b36336d4b9bb2d8d8f235c107918a3c298a14270956",
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
