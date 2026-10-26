@@ -1,8 +1,8 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "20ff65d74d95ebd67d02ae805fa5db5d8d71dc224207a7f8507cc0bba349024e",
-  "generated_at": "2026-10-26T02:09:25.966Z",
+  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
+  "generated_at": "2026-10-26T05:25:14.398Z",
   "updated_at": "2026-10-26T02:08:26.699786Z",
   "date": "2026-11-06",
   "coverage": {
@@ -909,25 +909,25 @@
       "starts": "19:00",
       "ends": null,
       "description": "РАНЕВСКАЯ Великая насмешница",
-      "kind": "Концерт",
+      "kind": "Спектакль",
       "status": "scheduled",
       "admission": "Билеты от 1900 ₽",
       "price": null,
       "currency": null,
       "source": "event-source-d4d8481cf0f59123",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": "yantar-hall",
       "route": null,
       "venue_id": "yantar-hall",
       "place_id": "yantar-hall",
-      "category": "music",
+      "category": "theatre",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-06T19:00:00+02:00",
       "end_time": null,
@@ -956,14 +956,11 @@
         "price": "Visible: Билеты от 1900 руб.",
         "age": "12+",
         "duration": null,
-        "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa"
+        "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa",
+        "kind": "Visible event description: Лирическая комедия"
       },
       "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa",
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
     }
   ],
   "venues": {
