@@ -1,3 +1,6 @@
+/* Hallmark · checked: 2026-10-26 · genre: editorial (inferred) · copy: verbatim
+ * floor: scoped checks; inherited findings recorded · built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · critique: F1–F8 source contrast, focus, fields, filter states, cards, tables, menu and action spacing; existing system and frozen header/panorama retained. */
 /* The compact dossier language, shared by every page family.
    Header, logo, photographs, maps and factual content retain their own roles. */
 body .inner-main{--card-shadow:none;--radius:12px;max-width:1160px;padding-top:1.5rem}
@@ -12,7 +15,7 @@ body[data-ui-context] .inner-main :is(.inner-section,.tool-section,.collection-f
 body[data-ui-context] .inner-main :is(.inner-section,.tool-section,.collection-footer,.collection-walks,.route-discovery)>h2{font-size:clamp(1.65rem,2.8vw,2.2rem);margin-bottom:1rem}
 body[data-ui-context] .inner-main :is(.button,.save-item,.transport-primary,.transport-secondary,.food-day-save){min-height:44px;border-radius:.55rem;padding:.65rem 1rem;font:500 .85rem/1.5 var(--sans);box-shadow:none}
 body[data-ui-context] .inner-main :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){min-height:44px;border-radius:.5rem;font-size:16px;line-height:1.5}
-body[data-ui-context] .inner-main :is(button,a,summary,input,select,textarea):focus-visible{outline:2px solid var(--sea-line);outline-offset:3px}
+body[data-ui-context] .inner-main :is(button,a,summary,input,select,textarea):focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.food-guide-day,.dining-card-actions,.tool-links){gap:.6rem 1rem;align-items:center;flex-wrap:wrap}
 body[data-ui-context] .inner-main :is(.inner-actions,.poi-card-actions,.dining-card-actions) a{min-height:44px;display:inline-flex;align-items:center}
 

@@ -1,3 +1,6 @@
+/* Hallmark · checked: 2026-10-26 · genre: editorial (inferred) · copy: verbatim
+ * floor: scoped checks; inherited findings recorded · built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · critique: F1–F8 source contrast, focus, fields, filter states, cards, tables, menu and action spacing; existing system and frozen header/panorama retained. */
 /* Shared reading layout. Theme state, live facts and working tools stay native. */
 :root:not([data-theme=night]) {
   color-scheme:light;
@@ -78,7 +81,7 @@ body main.inner-main .reading-content :is(.wave-static,.fish-journey) .journey-p
 body main.inner-main .reading-content :is(.wave-static,.fish-journey) :is(.journey-passport,.fish-day-settings) {background:transparent!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important;padding:24px 0!important;color:var(--ink)}
 body main.inner-main .reading-content :is(.wave-static,.fish-journey) :is(.journey-passport dt,.journey-passport dd,.fish-day-settings h2,.fish-day-settings p,.fish-day-settings label) {color:var(--ink)!important}
 /* Reading and factual material are chapters, not nested panels. */
-body main.inner-main .reading-content :is(.poi-card,.dining-card,.food-card,.service-card,.housing-card,.dream-card,.event-card,.news-card,.tool-hub-card,.route-plate,.route-row,.ready-plan,.city-day-note,.city-day-return,.city-day-rail,.route-access-profile,.route-source-note,.route-stop-note,.visit-guidance,.field-note,.nearby-events,.destination-signature,.collection-practical,.route-practical,.food-guide-practical,.dunes-card,.dunes-fact,.project-card,.project-panel,.project-section,.project-context,.day-disclosure,.day-passport,.trip-offers,.trip-offer-card,.expense-card,.trip-transport-plan,.guide-side,.route-walk,.budget-panel) {
+body main.inner-main .reading-content :is(.poi-card,.dining-card,.food-card,.service-card,.housing-card,.dream-card,.event-card,.news-card,.tool-hub-card,.route-plate,.route-row,.ready-plan,.city-day-note,.city-day-return,.city-day-rail,.route-access-profile,.route-source-note,.route-stop-note,.visit-guidance,.field-note,.nearby-events,.destination-signature,.collection-practical,.route-practical,.food-guide-practical,.food-menu-source,.dunes-card,.dunes-fact,.project-card,.project-panel,.project-section,.project-context,.day-disclosure,.day-passport,.trip-offers,.trip-offer-card,.expense-card,.trip-transport-plan,.guide-side,.route-walk,.budget-panel) {
   background:transparent!important;box-shadow:none!important;border:0!important;border-radius:0!important;min-width:0;
 }
 body main.inner-main .reading-content :is(.poi-card,.dining-card,.food-card,.service-card,.housing-card,.dream-card,.event-card,.news-card,.route-row,.ready-plan,.trip-offer-card,.expense-card) {border-bottom:1px solid var(--line)!important;padding:24px 0!important}
@@ -115,7 +118,9 @@ body.day-planner main.inner-main .reading-content #my-trip .day-view-tabs>button
 body main.inner-main .reading-content a:is(.button-light,.button-outline,.transport-secondary) {background:none!important;border:0!important;padding:10px 0!important;color:var(--reading-link)!important;text-decoration:underline;text-underline-offset:4px}
 body main.inner-main .reading-content :is(.inner-actions,.poi-card-actions,.dining-card-actions,.event-links) {display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;grid-template-columns:none;grid-template-rows:none}
 body main.inner-main .reading-content :is(.planning-wizard,.planner-new-day,.transport-settings,.transport-result,.service-choice,.events-controls,.dining-filters,.trip-picker,.food-planner,.budget-controls,.trip-day-settings) {border:1px solid var(--line)!important;border-radius:4px!important;background:var(--paper)!important;box-shadow:none!important;padding:24px}
-body main.inner-main .reading-content :is(input:not([type=radio]):not([type=checkbox]):not([type=range]),select,textarea) {border-radius:4px;background:var(--paper);color:var(--ink);border-color:var(--line);font-size:16px}
+body main.inner-main .reading-content :is(input:not([type=radio]):not([type=checkbox]):not([type=range]),select,textarea),
+body main.inner-main #gastro-form :is(input,select) {border-radius:4px;background:var(--paper);color:var(--ink);border-color:var(--reading-quiet);font-size:16px}
+body[data-home-page] main .baltic-pulse .pulse-controls {border-color:var(--reading-quiet)}
 body main.inner-main .reading-content table {width:100%;border-collapse:collapse;background:transparent;box-shadow:none;font:14px/1.6 var(--sans)}
 body main.inner-main .reading-content :is(th,td) {background:transparent!important;color:var(--ink);border:0;border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;vertical-align:top}
 body main.inner-main .reading-content th {font-weight:650}
