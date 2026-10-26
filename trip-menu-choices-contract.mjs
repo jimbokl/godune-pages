@@ -5,7 +5,7 @@ const text=v=>typeof v==='string'&&!!v.trim();
 const optional=v=>v===null||typeof v==='string';
 const date=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!v.startsWith('0000')&&Number.isFinite(Date.parse(v+'T12:00:00Z'))&&new Date(v+'T12:00:00Z').toISOString().slice(0,10)===v;
 const money=v=>v===null||Number.isSafeInteger(v)&&v>=0;
-const documents=new Set(['content/dining-menus.json','content/restaurant-guides.json','content/gastronomy.json','content/dining-directory.json','data/catalog.json']);
+const documents=new Set(['content/dining-menus.json','content/restaurant-guides.json','content/restaurant-menu-observations.json','content/gastronomy.json','content/dining-directory.json','data/catalog.json']);
 const sourceFields=['document','pointer','sha256'];
 const safeUrl=v=>{if(v===null)return true;if(typeof v!=='string')return false;try{const u=new URL(v);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password;}catch{return false;}};
 const source=v=>keys(v,sourceFields)&&documents.has(v.document)&&typeof v.pointer==='string'&&v.pointer.startsWith('/')&&typeof v.sha256==='string'&&/^[a-f0-9]{64}$/.test(v.sha256);

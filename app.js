@@ -270,6 +270,7 @@
       const [data, placePath] = await Promise.all([loadCatalog(), placePathReady]);
       if (version !== searchVersion) return;
       const entries = [
+        ...(data.food_articles || []),
         ...data.routes.map(r => ({title: r.name, description: 'Пеший маршрут · ' + r.area_name, path: `routes/${r.slug}/`, text: `${r.name} ${r.area_name} ${r.description}`})),
         ...data.poi.map(p => ({title: p.name, description: p.area_name + ' · ' + p.category_name, path: placePath(data,p.slug), text: `${p.name} ${p.area_name} ${p.category_name} ${p.tags.join(' ')}`})),
         ...data.collections.filter(c=>!['map/','routes/'].includes(c.path)).map(c => ({title: c.name, description: 'Места и остановки на карте', path: c.path, text: `${c.name} ${c.intro}`})),
