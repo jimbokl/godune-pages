@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
-  "generated_at": "2026-10-27T02:07:55.235Z",
-  "updated_at": "2026-10-27T02:06:52.846030Z",
+  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
+  "generated_at": "2026-10-27T06:28:03.546Z",
+  "updated_at": "2026-10-27T05:31:43Z",
   "date": "2026-11-07",
   "coverage": {
     "status": "verified_partial",
@@ -756,7 +756,7 @@
       "date": "2026-11-07",
       "starts": "17:30",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Классика французского кино, романтическая драма Клода Лелуша выйдет в к 60-летию фильма в 4К-реставрации",
       "admission": "По билетам · 16+",
       "price": null,
@@ -764,18 +764,18 @@
       "status": "scheduled",
       "source": "event-source-1dc4f4b1243af42f",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-07T17:30:00+02:00",
       "end_time": null,
@@ -798,12 +798,15 @@
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
         "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
         "card_quote": "Купить билетМУЖЧИНА И ЖЕНЩИНА (16+)Скоро 7 ноября в 17:30 Кинозал Классика французского кино, романтическая драма Клода Лелуша выйдет в к 60-летию фильма в 4К-реставрации",
-        "explicit_date": "7 НОЯБРЯ 2026 17:30"
+        "explicit_date": "7 НОЯБРЯ 2026 17:30",
+        "programme_occurrences": 1,
+        "duration": "Продолжительность: 1 час 42 минут",
+        "kind_quote": "Жанр: драма, мелодрама"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 102,
+        "basis": "published_duration",
+        "label": "1 час 42 минут"
       }
     },
     {

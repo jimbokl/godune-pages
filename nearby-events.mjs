@@ -1,5 +1,5 @@
 import {eventDurationEstimateText} from './trip-events-duration.mjs?v=2026101707';
-import {eventPath,calendarDate,regionClock,eventTiming,eventInterval,eventsForDate,eventCacheState,coverageForDate} from './events-engine.mjs?v=2026102001';
+import {eventPath,calendarDate,regionClock,eventTiming,eventInterval,eventsForDate,eventCacheState,coverageForDate} from './events-engine.mjs?v=2026102701';
 
 const CACHE_PREFIX='godune:nearby:152:';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

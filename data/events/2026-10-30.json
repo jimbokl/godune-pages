@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
-  "generated_at": "2026-10-27T02:07:55.235Z",
-  "updated_at": "2026-10-27T02:06:52.846030Z",
+  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
+  "generated_at": "2026-10-27T06:28:03.546Z",
+  "updated_at": "2026-10-27T05:31:43Z",
   "date": "2026-10-30",
   "coverage": {
     "status": "verified_partial",
@@ -15,12 +15,143 @@
       "event-source-ab071dcc8fa844bf",
       "event-source-b77193025721dd40",
       "event-source-bf3783fcdd66d141",
+      "event-source-c079ea456950fa9b",
       "event-source-cbcb4a099e189f65",
       "event-source-f8bf1b5d6dce2cd6",
       "event-source-f9eb4005a625cb21"
     ]
   },
   "events": [
+    {
+      "id": "event-0936c14158ce9d36",
+      "title": "«Корабельное воскресение» и Навигацкая школа",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Сбор: экспозиционный корпус «Глубина»",
+      "date": "2026-10-30",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Событие",
+      "description": "«Корабельное воскресение»и Навигацкая школа — совершим путешествие в прошлое и узнаем, с чего начиналась история России как морской державы. Изучим устройство корабля, узнаем, что такое шпангоут и такелаж, научимся вязать морские узлы. Сбор в экспозиционном корпусе «Глубина», набережная Петра Великого, 1. Наличие билетов на этот сеанс уточните у музея.",
+      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-27: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-c079ea456950fa9b",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-glubina-meeting",
+      "place_id": null,
+      "category": "programme",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-30T11:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-27T05:20:28.544511+00:00",
+      "source_identity": "programme:cc04616b8f32b439ce737817",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T05:20:28.544511+00:00",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "0a47f91532daf394b77c76c91f2c7fa12553efb38b266798265fec0faf17f589",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "programme_range": "26 октября 11:00 — 01 ноября 2026 18:00",
+        "calendar_date": "2026-10-30",
+        "card_quote": "«Корабельное воскресение»и Навигацкая школа — совершим путешествие в прошлое и узнаем, с чего начиналась история России как морской державы. Изучим устройство корабля, узнаем, что такое шпангоут и такелаж, научимся вязать морские узлы.",
+        "meeting": {
+          "status": "facility",
+          "quote": "Место встречи: экспозиционный корпус «Глубина» (наб. Петра Великого, 1)",
+          "source_url": "https://tickets.world-ocean.ru/api/no-scheme",
+          "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+          "fetched_at": "2026-10-27T05:21:45.613585+00:00"
+        },
+        "city_refs": [
+          {
+            "url": "https://world-ocean.ru/voenno-morskoj-tsentr",
+            "sha256": "68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de",
+            "fetched_at": "2026-10-23T05:08:52Z",
+            "private_capture": "runtime/events-refresh/cache/sources/68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          },
+          {
+            "url": "https://world-ocean.ru/srt-129",
+            "sha256": "e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2",
+            "fetched_at": "2026-10-23T05:08:53Z",
+            "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          }
+        ],
+        "source_refs": [
+          {
+            "url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "method": "POST",
+            "read_only_endpoint": true,
+            "payload": {
+              "hash": "BEECD907EFC163862728DC9D8A10ABAE841A0A8E"
+            },
+            "fetched_at": "2026-10-27T05:21:45.613585+00:00",
+            "status": 200,
+            "final_url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+            "bytes": 55424,
+            "private_capture": "runtime/events-refresh/cache/sources/deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c.json",
+            "http_status": 200,
+            "checked_at": "2026-10-27",
+            "captured_at": "2026-10-27T05:21:45.613585+00:00"
+          }
+        ],
+        "meeting_scope": "Meeting point only; the ticket programme separately names the Historic Fleet embankment as the activity venue.",
+        "availability_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "selectable_in_captured_calendar": true,
+          "meaning": "A dated observation; absence does not establish cancellation or sold out, presence does not guarantee a current ticket."
+        },
+        "tariff_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "date": "2026-10-30",
+          "starts": "11:00",
+          "tariffs": [
+            {
+              "category": "Дети до 14 лет",
+              "price": 500,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Посетители старше 14 лет",
+              "price": 800,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Взрослый + 1 ребенок",
+              "price": 1300,
+              "participants": 2,
+              "unit": "На 2 человека",
+              "currency": "RUB"
+            }
+          ]
+        }
+      },
+      "duration_estimate": null
+    },
     {
       "id": "event-275558bd746c0d60",
       "title": "Остров Канта: сквозь время",
@@ -1820,6 +1951,15 @@
     }
   ],
   "venues": {
+    "ocean-glubina-meeting": {
+      "id": "ocean-glubina-meeting",
+      "name": "Сбор: экспозиционный корпус «Глубина»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "address": "набережная Петра Великого, 1",
+      "place_id": null,
+      "coordinates": null
+    },
     "kaliningrad-cathedral-tours-meeting-unknown": {
       "id": "kaliningrad-cathedral-tours-meeting-unknown",
       "name": "Место встречи уточняется",

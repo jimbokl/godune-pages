@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
-  "generated_at": "2026-10-27T02:07:55.235Z",
-  "updated_at": "2026-10-27T02:06:52.846030Z",
+  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
+  "generated_at": "2026-10-27T06:28:03.546Z",
+  "updated_at": "2026-10-27T05:31:43Z",
   "date": "2026-10-31",
   "coverage": {
     "status": "verified_partial",
@@ -13,6 +13,7 @@
       "event-source-69ccf8164bb379f3",
       "event-source-8310944ecdcd3c43",
       "event-source-bf3783fcdd66d141",
+      "event-source-c079ea456950fa9b",
       "event-source-e3d76be2fde57191",
       "event-source-ff2ea88915efd205"
     ]
@@ -638,6 +639,214 @@
       "duration_estimate": null
     },
     {
+      "id": "event-659c7de95bf95a2b",
+      "title": "Экспедиция на маяк «Ирбенский»: жизнь без GPS",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Сбор: экспозиционный корпус «Глубина»",
+      "date": "2026-10-31",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Интерактивная экскурсия «Экспедиция на маяк «Ирбенский»: жизнь без GPS» – вы узнаете, как веками ориентировались в море по звуку, свету и расчетам. В программе экспедиции: погружение в историю маяков, знакомство с наутофоном, звук которого был слышен сквозь балтийский туман на десятки километров, морская криптография. На занятии вы сможете расшифровать сигналы и шифры знаменитого плавучего маяка «Ирбенский». Сбор в экспозиционном корпусе «Глубина», набережная Петра Великого, 1. Наличие билетов на этот сеанс уточните у музея.",
+      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-27: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-c079ea456950fa9b",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-glubina-meeting",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-31T16:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-27T05:20:28.544511+00:00",
+      "source_identity": "programme:1e1113b9b0d54907fb2eb329",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T05:20:28.544511+00:00",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "0a47f91532daf394b77c76c91f2c7fa12553efb38b266798265fec0faf17f589",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "programme_range": "26 октября 11:00 — 01 ноября 2026 18:00",
+        "calendar_date": "2026-10-31",
+        "card_quote": "Интерактивная экскурсия «Экспедиция на маяк «Ирбенский»: жизнь без GPS» – вы узнаете, как веками ориентировались в море по звуку, свету и расчетам. В программе экспедиции: погружение в историю маяков, знакомство с наутофоном, звук которого был слышен сквозь балтийский туман на десятки километров, морская криптография. На занятии вы сможете расшифровать сигналы и шифры знаменитого плавучего маяка «Ирбенский».",
+        "meeting": {
+          "status": "facility",
+          "quote": "Место встречи: экспозиционный корпус «Глубина» (наб. Петра Великого, 1)",
+          "source_url": "https://tickets.world-ocean.ru/api/no-scheme",
+          "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+          "fetched_at": "2026-10-27T05:21:45.613585+00:00"
+        },
+        "city_refs": [
+          {
+            "url": "https://world-ocean.ru/voenno-morskoj-tsentr",
+            "sha256": "68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de",
+            "fetched_at": "2026-10-23T05:08:52Z",
+            "private_capture": "runtime/events-refresh/cache/sources/68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          },
+          {
+            "url": "https://world-ocean.ru/srt-129",
+            "sha256": "e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2",
+            "fetched_at": "2026-10-23T05:08:53Z",
+            "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          }
+        ],
+        "source_refs": [
+          {
+            "url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "method": "POST",
+            "read_only_endpoint": true,
+            "payload": {
+              "hash": "BEECD907EFC163862728DC9D8A10ABAE841A0A8E"
+            },
+            "fetched_at": "2026-10-27T05:21:45.613585+00:00",
+            "status": 200,
+            "final_url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+            "bytes": 55424,
+            "private_capture": "runtime/events-refresh/cache/sources/deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c.json",
+            "http_status": 200,
+            "checked_at": "2026-10-27",
+            "captured_at": "2026-10-27T05:21:45.613585+00:00"
+          }
+        ],
+        "meeting_scope": "Meeting point only; the ticket programme separately names the Historic Fleet embankment as the activity venue.",
+        "availability_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "selectable_in_captured_calendar": true,
+          "meaning": "A dated observation; absence does not establish cancellation or sold out, presence does not guarantee a current ticket."
+        },
+        "tariff_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "date": "2026-10-31",
+          "starts": "16:00",
+          "tariffs": [
+            {
+              "category": "Дети до 14 лет",
+              "price": 500,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Посетители старше 14 лет",
+              "price": 800,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Взрослый + 1 ребенок",
+              "price": 1300,
+              "participants": 2,
+              "unit": "На 2 человека",
+              "currency": "RUB"
+            }
+          ]
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-72830f5a83310a00",
+      "title": "Звуки острова | Музейно-семейный фестиваль \"Острова\"",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-10-31",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Звуки острова | Музейно-семейный фестиваль \"Острова\"",
+      "admission": "По билетам · 0+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-69ccf8164bb379f3",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-31T16:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-31",
+      "verified_at": "2026-10-27T05:19:38.230123+00:00",
+      "source_identity": "programme:1a48e07da589d0575cd551a1",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T05:19:38.230123+00:00",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-10-31",
+          "sha256": "1643bdc267b39d37c3bdc6a139b675a2961562a9d0a78b3ddca76044da59742c",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "16:00Вечерний концертЗвуки острова | Музейно-семейный фестиваль \"Острова\"купить",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/5DFEA3E1984A95A719FCEEAF80A1C0E6C145F3A0/2026-10-31/16:00/2026-10-31"
+        ],
+        "calendar_date": "2026-10-31",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "27050534672e0d75f90e1e8936d7e7b43d212fc6b328ee45d55c621d0b58b0ec",
+          "fetched_at": "2026-10-27T05:21:46.042074+00:00",
+          "event_id": "11645",
+          "hash_id": "5DFEA3E1984A95A719FCEEAF80A1C0E6C145F3A0",
+          "session": {
+            "event_id": "11645",
+            "eventday": "31.10.2026",
+            "eventtime": "16:00",
+            "eventduration": "70",
+            "ticketcount": "350",
+            "timesortnum": ".66667",
+            "daysortnum": "4"
+          },
+          "route_date_matches": false
+        },
+        "duration": "70 мин"
+      },
+      "duration_estimate": {
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "70 мин"
+      }
+    },
+    {
       "id": "event-a30c17897cde9b4e",
       "title": "Прогулка на трамвае",
       "city": "kaliningrad",
@@ -809,7 +1018,7 @@
       "date": "2026-10-31",
       "starts": "17:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Софи вспоминает летний отдых со своим отцом. Поразительная роль Пола Мескала, отмеченная номинацией на «Оскар»",
       "admission": "По билетам · 18+",
       "price": null,
@@ -817,18 +1026,18 @@
       "status": "scheduled",
       "source": "event-source-e3d76be2fde57191",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-10-31T17:00:00+02:00",
       "end_time": null,
@@ -851,12 +1060,15 @@
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
         "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
         "card_quote": "Купить билетСОЛНЦЕ МОЁ (18+)Скоро 31 октября в 17:00 Кинозал Софи вспоминает летний отдых со своим отцом. Поразительная роль Пола Мескала, отмеченная номинацией на «Оскар»",
-        "explicit_date": "31 ОКТЯБРЯ 2026 17:00"
+        "explicit_date": "31 ОКТЯБРЯ 2026 17:00",
+        "programme_occurrences": 1,
+        "duration": "Продолжительность: 1 час 39 минут",
+        "kind_quote": "Жанр: драма"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 99,
+        "basis": "published_duration",
+        "label": "1 час 39 минут"
       }
     },
     {
@@ -1463,6 +1675,15 @@
       "identity_source_url": "https://sobor39.ru/contacts/",
       "identity_verified_at": "2026-10-23",
       "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
+    },
+    "ocean-glubina-meeting": {
+      "id": "ocean-glubina-meeting",
+      "name": "Сбор: экспозиционный корпус «Глубина»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "address": "набережная Петра Великого, 1",
+      "place_id": null,
+      "coordinates": null
     },
     "kaliningrad-tretyakov": {
       "id": "kaliningrad-tretyakov",

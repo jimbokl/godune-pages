@@ -55,9 +55,10 @@ export function eventTiming(event,now=new Date()){
  const archive=['ended','past_unknown_end','cancelled','postponed'].includes(phase);
  return {phase,now:phase==='now',eligible_today:!archive&&eventOverlapsDate(event,today)&&(end!==null||start>ms),archive,needs_info};
 }
+export function isCurrentEvent(event){return !event.canonical_event_id;}
 export function eventsForDate(registry,date,{now=new Date(),city='',venue_id='',includeChanged=false}={}){
  const seen=new Set();
- return registry.events.filter(e=>eventOverlapsDate(e,date)&&(!city||e.city===city)&&(!venue_id||e.venue_id===venue_id)&&(includeChanged||!['cancelled','postponed'].includes(e.status)))
+ return registry.events.filter(e=>isCurrentEvent(e)&&eventOverlapsDate(e,date)&&(!city||e.city===city)&&(!venue_id||e.venue_id===venue_id)&&(includeChanged||!['cancelled','postponed'].includes(e.status)))
   .map(e=>normalizeEvent(e,registry)).sort((a,b)=>a.start_time.localeCompare(b.start_time)||a.id.localeCompare(b.id))
   .filter(e=>!seen.has(e.id)&&seen.add(e.id));
 }
@@ -111,6 +112,12 @@ export function validateEvents(data,catalog,today){
   for(const url of [s.url,...knownOrganizer?[s.organizer.url]:[s.publisher.url]])sourceUrl(url);
  }
  if(data.version===2){
+  const byId=new Map(data.events.map(e=>[e.id,e]));
+  for(const e of data.events){
+   if(e.canonical_event_id===undefined)continue;
+   const target=byId.get(e.canonical_event_id),key=e.evidence?.source_occurrence_key;
+   if(!target||target===e||!isCurrentEvent(target)||!key||key!==target.evidence?.source_occurrence_key||e.venue_id!==target.venue_id||e.start_time!==target.start_time)throw new TypeError('Invalid canonical event alias');
+  }
   const dateOrInstant=v=>calendarDate(v)||instant(v);
   if(!dateOrInstant(data.updated_at)||data.updated_at.slice(0,10)>today||!data.venues||Array.isArray(data.venues))throw new TypeError('Invalid dataset metadata');
   for(const [id,v] of Object.entries(data.venues)){

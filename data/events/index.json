@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
-  "generated_at": "2026-10-27T02:07:55.235Z",
-  "updated_at": "2026-10-27T02:06:52.846030Z",
+  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
+  "generated_at": "2026-10-27T06:28:03.546Z",
+  "updated_at": "2026-10-27T05:31:43Z",
   "window": {
     "from": "2026-09-27",
     "to": "2026-11-26",
@@ -376,7 +376,7 @@
     },
     "2026-10-29": {
       "url": "/data/events/2026-10-29.json",
-      "count": 17,
+      "count": 18,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -387,13 +387,14 @@
           "event-source-bf3783fcdd66d141",
           "event-source-c079ea456950fa9b",
           "event-source-ceeadb1f19fac8a9",
+          "event-source-d2365bf512f8f251",
           "event-source-f8218687dc470ff0"
         ]
       }
     },
     "2026-10-30": {
       "url": "/data/events/2026-10-30.json",
-      "count": 19,
+      "count": 20,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -404,6 +405,7 @@
           "event-source-ab071dcc8fa844bf",
           "event-source-b77193025721dd40",
           "event-source-bf3783fcdd66d141",
+          "event-source-c079ea456950fa9b",
           "event-source-cbcb4a099e189f65",
           "event-source-f8bf1b5d6dce2cd6",
           "event-source-f9eb4005a625cb21"
@@ -412,7 +414,7 @@
     },
     "2026-10-31": {
       "url": "/data/events/2026-10-31.json",
-      "count": 16,
+      "count": 18,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -421,6 +423,7 @@
           "event-source-69ccf8164bb379f3",
           "event-source-8310944ecdcd3c43",
           "event-source-bf3783fcdd66d141",
+          "event-source-c079ea456950fa9b",
           "event-source-e3d76be2fde57191",
           "event-source-ff2ea88915efd205"
         ]
@@ -428,7 +431,7 @@
     },
     "2026-11-01": {
       "url": "/data/events/2026-11-01.json",
-      "count": 15,
+      "count": 16,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -438,6 +441,7 @@
           "event-source-397dde4c128d3813",
           "event-source-415d64a95f65d553",
           "event-source-84e8439d81a585f7",
+          "event-source-c079ea456950fa9b",
           "event-source-f7e7c3215cca1530",
           "event-source-f8cc398337167c50"
         ]
@@ -787,6 +791,7 @@
     "event-072ad9ef88376ca3",
     "event-07bef8af62ff4e9a",
     "event-086d42a1720d4a8f",
+    "event-0936c14158ce9d36",
     "event-09b4aa206e4ca1ee",
     "event-09e24fb3ff5e34e3",
     "event-0a45372525613359",
@@ -829,7 +834,6 @@
     "event-1d7d5583d04ae029",
     "event-1de6e201176330da",
     "event-1f088fcbda83b3f8",
-    "event-1f4236ef949eb700",
     "event-1fc164328fe187b6",
     "event-202c622f5f67b985",
     "event-20aa64012140637a",
@@ -979,6 +983,7 @@
     "event-6385b4cbea77b26e",
     "event-63ca0040d41ec353",
     "event-63cb3c02ff5c7e3f",
+    "event-659c7de95bf95a2b",
     "event-661387efa6b76733",
     "event-677e4179486e28cc",
     "event-6782c2f72f2832f4",
@@ -989,6 +994,7 @@
     "event-6a3d099ab015eb52",
     "event-6a4b82ab2193e9d2",
     "event-6b14c0e3cf843971",
+    "event-6b3f885cb7566837",
     "event-6bea5cb209756c2b",
     "event-6c1cc3c2c75e5d95",
     "event-6c2fdc545da6d9bf",
@@ -999,6 +1005,7 @@
     "event-70169ea9c53dd015",
     "event-713394c7df3f6f4b",
     "event-71959694f3ac9830",
+    "event-72830f5a83310a00",
     "event-729d2e0a1c488090",
     "event-73cef71815f90708",
     "event-7464db7b37931a8d",
@@ -1071,6 +1078,7 @@
     "event-8ef8c5d37bf9501e",
     "event-8f702ac6655788f5",
     "event-9049911585f50c62",
+    "event-90610af02d5237e3",
     "event-925f91d21ee40f0c",
     "event-9293e98a794e5454",
     "event-929ddf0f51e55c11",

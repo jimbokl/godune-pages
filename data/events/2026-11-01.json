@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
-  "generated_at": "2026-10-27T02:07:55.235Z",
-  "updated_at": "2026-10-27T02:06:52.846030Z",
+  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
+  "generated_at": "2026-10-27T06:28:03.546Z",
+  "updated_at": "2026-10-27T05:31:43Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -14,6 +14,7 @@
       "event-source-397dde4c128d3813",
       "event-source-415d64a95f65d553",
       "event-source-84e8439d81a585f7",
+      "event-source-c079ea456950fa9b",
       "event-source-f7e7c3215cca1530",
       "event-source-f8cc398337167c50"
     ]
@@ -783,6 +784,136 @@
       "duration_estimate": null
     },
     {
+      "id": "event-6b3f885cb7566837",
+      "title": "В поисках сокровищ",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Сбор: экспозиционный корпус «Глубина»",
+      "date": "2026-11-01",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "«В поисках сокровищ», интерактивная экскурсия на НИС «Витязь» – вас ждет море приключений, захватывающие игры и викторины. Найдём и соберем сокровища научно-исследовательского судна «Витязь» в его лабораториях и узнаем, какими были «искатели счастья» на новой выставке музея.Билеты доступны на сайте музея в разделе «КУПИТЬ БИЛЕТ».До встречи в Музее Мирового океана! Сбор в экспозиционном корпусе «Глубина», набережная Петра Великого, 1. Наличие билетов на этот сеанс уточните у музея.",
+      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-27: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-c079ea456950fa9b",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-glubina-meeting",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T16:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-10-27T05:20:28.544511+00:00",
+      "source_identity": "programme:47793373f55d88422ebe6b5f",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T05:20:28.544511+00:00",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "0a47f91532daf394b77c76c91f2c7fa12553efb38b266798265fec0faf17f589",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "programme_range": "26 октября 11:00 — 01 ноября 2026 18:00",
+        "calendar_date": "2026-11-01",
+        "card_quote": "«В поисках сокровищ», интерактивная экскурсия на НИС «Витязь» – вас ждет море приключений, захватывающие игры и викторины. Найдём и соберем сокровища научно-исследовательского судна «Витязь» в его лабораториях и узнаем, какими были «искатели счастья» на новой выставке музея.Билеты доступны на сайте музея в разделе «КУПИТЬ БИЛЕТ».До встречи в Музее Мирового океана!",
+        "meeting": {
+          "status": "facility",
+          "quote": "Место встречи: экспозиционный корпус «Глубина» (наб. Петра Великого, 1)",
+          "source_url": "https://tickets.world-ocean.ru/api/no-scheme",
+          "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+          "fetched_at": "2026-10-27T05:21:45.613585+00:00"
+        },
+        "city_refs": [
+          {
+            "url": "https://world-ocean.ru/voenno-morskoj-tsentr",
+            "sha256": "68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de",
+            "fetched_at": "2026-10-23T05:08:52Z",
+            "private_capture": "runtime/events-refresh/cache/sources/68ee7d7a130d6e8da5145d250c762839a34600ae5d7e0ccff65adedab8d503de.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          },
+          {
+            "url": "https://world-ocean.ru/srt-129",
+            "sha256": "e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2",
+            "fetched_at": "2026-10-23T05:08:53Z",
+            "private_capture": "runtime/events-refresh/cache/sources/e2be3e0668e24ed72bd7c79d3de24995a1dc0c288f2286814e460db1a226d5a2.html",
+            "scope": "City of the named activity object; not a meeting point or full activity venue."
+          }
+        ],
+        "source_refs": [
+          {
+            "url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "method": "POST",
+            "read_only_endpoint": true,
+            "payload": {
+              "hash": "BEECD907EFC163862728DC9D8A10ABAE841A0A8E"
+            },
+            "fetched_at": "2026-10-27T05:21:45.613585+00:00",
+            "status": 200,
+            "final_url": "https://tickets.world-ocean.ru/api/no-scheme",
+            "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
+            "bytes": 55424,
+            "private_capture": "runtime/events-refresh/cache/sources/deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c.json",
+            "http_status": 200,
+            "checked_at": "2026-10-27",
+            "captured_at": "2026-10-27T05:21:45.613585+00:00"
+          }
+        ],
+        "meeting_scope": "Meeting point only; the ticket programme separately names the Historic Fleet embankment as the activity venue.",
+        "availability_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "selectable_in_captured_calendar": true,
+          "meaning": "A dated observation; absence does not establish cancellation or sold out, presence does not guarantee a current ticket."
+        },
+        "tariff_observation": {
+          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "date": "2026-11-01",
+          "starts": "16:00",
+          "tariffs": [
+            {
+              "category": "Дети до 14 лет",
+              "price": 500,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Посетители старше 14 лет",
+              "price": 800,
+              "participants": 1,
+              "unit": "На 1 человека",
+              "currency": "RUB"
+            },
+            {
+              "category": "Взрослый + 1 ребенок",
+              "price": 1300,
+              "participants": 2,
+              "unit": "На 2 человека",
+              "currency": "RUB"
+            }
+          ]
+        }
+      },
+      "duration_estimate": null
+    },
+    {
       "id": "event-b43ccbb6257a787d",
       "title": "Кант и его город",
       "city": "kaliningrad",
@@ -954,7 +1085,7 @@
       "date": "2026-11-01",
       "starts": "17:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Замужняя Нора встречает друга, которого любила в детстве. Тонкая драма с двумя номинациями на «Оскар»",
       "admission": "По билетам · 18+",
       "price": null,
@@ -962,18 +1093,18 @@
       "status": "scheduled",
       "source": "event-source-f8cc398337167c50",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-01T17:00:00+02:00",
       "end_time": null,
@@ -996,12 +1127,15 @@
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
         "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
         "card_quote": "Купить билетПРОШЛЫЕ ЖИЗНИ (18+)Скоро 1 ноября в 17:00 Кинозал Замужняя Нора встречает друга, которого любила в детстве. Тонкая драма с двумя номинациями на «Оскар»",
-        "explicit_date": "1 НОЯБРЯ 2026 17:00"
+        "explicit_date": "1 НОЯБРЯ 2026 17:00",
+        "programme_occurrences": 1,
+        "duration": "Продолжительность: 1 час 46 минут",
+        "kind_quote": "Жанр: мелодрама"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 106,
+        "basis": "published_duration",
+        "label": "1 час 46 минут"
       }
     },
     {
@@ -1558,6 +1692,15 @@
       "identity_verified_at": "2026-10-17",
       "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
       "coordinates_verified_at": "2026-10-01"
+    },
+    "ocean-glubina-meeting": {
+      "id": "ocean-glubina-meeting",
+      "name": "Сбор: экспозиционный корпус «Глубина»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "address": "набережная Петра Великого, 1",
+      "place_id": null,
+      "coordinates": null
     },
     "kaliningrad-tretyakov": {
       "id": "kaliningrad-tretyakov",
