@@ -114,7 +114,12 @@
       wakeWorkshop = () => {};
     };
     const section = $('#my-trip');
-    if(homeHero && !section) { document.documentElement.dataset.tripReady='separate-page'; return; }
+    // The editorial index has no Trip editor or save controls. Keep the shared
+    // catalog/profile/search, but do not import the editor's dependency graph.
+    // Explicit actions/events can still wake it through the existing replay.
+    const articleIndex = document.body.hasAttribute('data-food-article') && $('.food-article-cards')
+      && !document.querySelector('#my-trip,[data-save-place],[data-save-route],[data-plan-starter],[data-start-route]');
+    if((homeHero && !section) || articleIndex) { document.documentElement.dataset.tripReady='separate-page'; return; }
     if (!homeHero || location.hash || !section || !('IntersectionObserver' in window)) wakeWorkshop('direct');
     else {
       document.documentElement.dataset.tripReady = 'deferred';

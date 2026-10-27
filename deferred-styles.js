@@ -3,6 +3,8 @@
   'use strict';
   const links = Array.from(document.querySelectorAll('link[data-deferred-style]'));
   if (!links.length) return;
+  const persistentFonts = document.currentScript?.hasAttribute('data-persistent-fonts')
+    ? document.querySelector('#page-critical')?.sheet : null;
   const root = document.documentElement;
   root.dataset.fullStyles = 'loading';
   const firstPaint = new Promise(resolve => {
@@ -27,6 +29,20 @@
         photo.decode().catch(() => {}).then(painted);
       } else painted();
     }
+  });
+  // A same-URL hint releases the catalogue's queued print sheet only after
+  // its first screen. Changing an already requested link's priority does not.
+  firstPaint.then(() => {
+    if (!persistentFonts) return;
+    links.forEach(link => {
+      if (link.dataset.styleState) return;
+      const hint = document.createElement('link');
+      hint.rel = 'preload';
+      hint.as = 'style';
+      hint.href = link.href;
+      hint.fetchPriority = 'high';
+      document.head.append(hint);
+    });
   });
   const hasLoadedSheet = link => {
     if (!link.sheet) return false;
@@ -56,6 +72,24 @@
     else if (document.readyState === 'complete') afterLoad();
   }));
   Promise.all([firstPaint, Promise.all(states)]).then(([, results]) => {
+    // Preserve the catalogue's active font objects when enabling the full cascade.
+    // Only exact top-level duplicates are redundant; conditional or distinct faces stay.
+    if (persistentFonts) {
+      try {
+        const faces = new Set(Array.from(persistentFonts.cssRules)
+          .filter(rule => rule.type === CSSRule.FONT_FACE_RULE).map(rule => rule.cssText));
+        links.forEach(link => {
+          if (link.dataset.styleState !== 'loaded') return;
+          try {
+            const sheet = link.sheet;
+            for (let index = sheet.cssRules.length - 1; index >= 0; index--) {
+              const rule = sheet.cssRules[index];
+              if (rule.type === CSSRule.FONT_FACE_RULE && faces.has(rule.cssText)) sheet.deleteRule(index);
+            }
+          } catch { /* Unreadable CSSOM keeps ordinary stylesheet promotion. */ }
+        });
+      } catch { /* Inline CSSOM is optional; full styles still become available. */ }
+    }
     links.forEach(link => { if (link.dataset.styleState === 'loaded') link.media = 'all'; });
     root.dataset.fullStyles = results.includes('error') ? 'degraded' : 'ready';
     try { performance.mark('godune:full-styles-ready'); } catch { /* optional measurement */ }
