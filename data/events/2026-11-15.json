@@ -1,15 +1,16 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-15",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
       "event-source-0e3e28a1f902759a",
+      "event-source-12ea3739ead1f5ab",
       "event-source-62ac7cf16bc23f66",
       "event-source-63f662097b2124fb",
       "event-source-ecba17188da36881"
@@ -254,6 +255,61 @@
           },
           "route_date_matches": true
         }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-6302257b2ae4359a",
+      "title": "МУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-11-15",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Лекция",
+      "description": "Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+      "admission": "По билетам · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-12ea3739ead1f5ab",
+      "image": {
+        "src": "assets/editorial/events-astronomy-960.webp",
+        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Телескоп и звёздный атлас",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "lecture",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-15T14:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
+      "verified_at": "2026-10-27T02:02:53Z",
+      "source_identity": "programme:169c1aab338520bb78644433",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T02:02:53Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
+          "sha256": "381d45c2d74debf830f934798fa80d3a7567bff459a01d9ac0c8a4282d80279d",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?» (12+)Скоро 15 ноября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+        "explicit_date": "15 НОЯБРЯ 2026 14:00"
       },
       "duration_estimate": null
     },
@@ -519,7 +575,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/painting/764/",
-      "verified_at": "2026-10-26T02:03:16Z",
+      "verified_at": "2026-10-27T02:02:44Z",
       "source_identity": "programme:a10b6ced3dc518b4bba3a3c5",
       "source_scope": "programme",
       "observations": [
@@ -562,11 +618,19 @@
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T15:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:44Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/painting/764/",
+          "sha256": "c02fe573a519d9b4fa4ad6cf5500572f43dce934070a3f8af863c435323df876",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T15:30:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
+        "listing_sha256": "1c5f51dac3b6f31f35bbac21d40f612cc253fb475ac3b070a5c8b21bdf9e14dd",
         "card_quote": "Купить билетЦВЕТОВОЕ ЗРЕНИЕ (16+)Скоро 21 октября в 16:30 и 15 ноября в 15:30 Мастерская живописи На мастер-классе разберёмся, что такое импрессионизм и пуантилизм,",
         "explicit_date": "15 НОЯБРЯ 2026 15:30"
       },
@@ -774,7 +838,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
-      "verified_at": "2026-10-26T02:02:50Z",
+      "verified_at": "2026-10-27T02:02:24Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:18Z",
@@ -810,6 +874,14 @@
           "verified_at": "2026-10-26T02:02:50Z",
           "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
           "sha256": "41e631acdbae925a92fa2d22310f5b5a0171c4ae563e98dd66933d467a673d37",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:24Z",
+          "source_url": "https://filarmonia39.ru/afisha/orkestr-dzhazovoy-muzyki-imeni-olega-lundstrema-vokal-mari-karne/",
+          "sha256": "0425b50ad6cb56f0d576660bb4e692a049525a76f52504d594752541f317e298",
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T18:00:00+02:00"
@@ -946,7 +1018,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:f380eccb5a5da8ad967a2b19",
       "source_scope": "programme",
       "observations": [
@@ -986,6 +1058,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-15",
+          "start_time": "2026-11-15T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-15",
           "start_time": "2026-11-15T18:00:00+02:00"

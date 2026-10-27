@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-21",
   "coverage": {
     "status": "verified_partial",
@@ -681,7 +681,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:8e572a40f3ebadc609f3cb49",
       "source_scope": "programme",
       "observations": [
@@ -721,6 +721,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-21",
+          "start_time": "2026-11-21T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-21",
           "start_time": "2026-11-21T18:00:00+02:00"
@@ -777,7 +785,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/dva-korolya-bakh-i-organ/",
-      "verified_at": "2026-10-26T02:02:51Z",
+      "verified_at": "2026-10-27T02:02:26Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:19Z",
@@ -813,6 +821,14 @@
           "verified_at": "2026-10-26T02:02:51Z",
           "source_url": "https://filarmonia39.ru/afisha/dva-korolya-bakh-i-organ/",
           "sha256": "073a36716af2feb6ae6c6cd9068717336f0deee1b2ed7928f9aea1f23636e4fd",
+          "status": "scheduled",
+          "date": "2026-11-21",
+          "start_time": "2026-11-21T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:26Z",
+          "source_url": "https://filarmonia39.ru/afisha/dva-korolya-bakh-i-organ/",
+          "sha256": "6fae27bf019a69cee1d735964a8aa7255bc73721404603400f3f2debc2f42cb3",
           "status": "scheduled",
           "date": "2026-11-21",
           "start_time": "2026-11-21T18:00:00+02:00"

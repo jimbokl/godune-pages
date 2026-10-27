@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-18",
   "coverage": {
     "status": "verified_partial",
@@ -682,7 +682,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/zolotye-khity-dzhaza-18112026/",
-      "verified_at": "2026-10-26T02:02:50Z",
+      "verified_at": "2026-10-27T02:02:25Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:18Z",
@@ -718,6 +718,14 @@
           "verified_at": "2026-10-26T02:02:50Z",
           "source_url": "https://filarmonia39.ru/afisha/zolotye-khity-dzhaza-18112026/",
           "sha256": "34d7c1538c14698bbae61b67a1af47560cd2dbaf8371f1f8af7db989f7e782d5",
+          "status": "scheduled",
+          "date": "2026-11-18",
+          "start_time": "2026-11-18T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:25Z",
+          "source_url": "https://filarmonia39.ru/afisha/zolotye-khity-dzhaza-18112026/",
+          "sha256": "56c0b41d7493d08e393c8f11d1bed23aaa5bed5b7927d73609a42b7720f68740",
           "status": "scheduled",
           "date": "2026-11-18",
           "start_time": "2026-11-18T19:00:00+02:00"

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-08",
   "coverage": {
     "status": "verified_partial",
@@ -12,7 +12,8 @@
       "event-source-0e3e28a1f902759a",
       "event-source-47c6e18b98ab1a79",
       "event-source-4ed1e4432207c52e",
-      "event-source-770fb3d9ee9ee098"
+      "event-source-770fb3d9ee9ee098",
+      "event-source-cfc624c710506561"
     ]
   },
   "events": [
@@ -218,7 +219,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
-      "verified_at": "2026-10-26T02:02:49Z",
+      "verified_at": "2026-10-27T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -254,6 +255,14 @@
           "verified_at": "2026-10-26T02:02:49Z",
           "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
           "sha256": "90bf6547020bd7576b928cc854a5e59bd237a97ab76a03dade09bb4c8b414763",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:23Z",
+          "source_url": "https://filarmonia39.ru/afisha/vinni-pukh-nakhodit-khvost-ia/",
+          "sha256": "4753d690b2ec6b24bb1be147e29a4d15ce4ba462b6505ce691479836444fec53",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T12:00:00+02:00"
@@ -586,6 +595,72 @@
       "duration_estimate": null
     },
     {
+      "id": "event-adb1f812cb3c80c4",
+      "title": "\"Ты .. моя мелодия\"",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Театр эстрады «Янтарь-Холл»",
+      "date": "2026-11-08",
+      "starts": "15:00",
+      "ends": null,
+      "description": "\"Ты .. моя мелодия\"",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "Билеты от 600 ₽",
+      "price": null,
+      "currency": null,
+      "source": "event-source-cfc624c710506561",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "yantar-hall",
+      "route": null,
+      "venue_id": "yantar-hall",
+      "place_id": "yantar-hall",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-08T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 600,
+        "max": null,
+        "currency": "RUB",
+        "kind": "from"
+      },
+      "source_url": "https://yantarholl.ru/afisha/kontsertnaya-programma-ty-moya-melodiya%208%2011%2026/",
+      "verified_at": "2026-10-27T02:02:32Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T02:02:32Z",
+          "source_url": "https://yantarholl.ru/afisha/kontsertnaya-programma-ty-moya-melodiya%208%2011%2026/",
+          "sha256": "c588b12c0eea06fc2774e35fd1cfb393b23625a5b0490cb127d0ba8ca0317f5a",
+          "status": "scheduled"
+        }
+      ],
+      "evidence": {
+        "title": "Visible H1: \"Ты .. моя мелодия\"",
+        "date_year_start": "Same-page share metadata: «ЯНТАРЬ-ХОЛЛ» -  \"Ты .. моя мелодия\"+08.11.2026 15:00:00",
+        "venue": "Official map link: Светлогорск ул. Ленина, 11; coordinates 54.9455297,20.1575504",
+        "city": "Official map link: Светлогорск ул. Ленина, 11",
+        "status": "Listed on the official event page; no explicit change notice",
+        "price": "Visible: Билеты от 600 руб.",
+        "age": "6+",
+        "duration": null,
+        "source_identity": "yantarhall:afisha-kontsertnaya-programma-ty-moya-melodiya-208-2011-2026"
+      },
+      "source_identity": "yantarhall:afisha-kontsertnaya-programma-ty-moya-melodiya-208-2011-2026",
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
       "id": "event-1bf6c23d513949d3",
       "title": "Кант и его город",
       "city": "kaliningrad",
@@ -782,7 +857,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:51ad2c9f4b296bab0fa29807",
       "source_scope": "programme",
       "observations": [
@@ -822,6 +897,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T18:00:00+02:00"
@@ -955,7 +1038,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
-      "verified_at": "2026-10-26T02:02:48Z",
+      "verified_at": "2026-10-27T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -991,6 +1074,14 @@
           "verified_at": "2026-10-26T02:02:48Z",
           "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
           "sha256": "53c3ef86fb808fd9ebde2ba0a42c6197de9a99a739645f13093d3626fe7dff91",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:23Z",
+          "source_url": "https://filarmonia39.ru/afisha/tayny-muzykalnykh-shedevrov/",
+          "sha256": "fbf9920e6b324245a507feadf546e5ed9947afa4bd29779a334d852514ec6d80",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T18:00:00+02:00"
@@ -1056,6 +1147,21 @@
       "identity_verified_at": "2026-10-17",
       "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
       "coordinates_verified_at": "2026-10-01"
+    },
+    "yantar-hall": {
+      "id": "yantar-hall",
+      "name": "Театр эстрады «Янтарь-Холл»",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": "yantar-hall",
+      "coordinates": {
+        "lat": 54.9455297,
+        "lon": 20.1575504
+      },
+      "address": "ул. Ленина, 11",
+      "source_url": "https://yantarholl.ru/",
+      "verified_at": "2026-10-17",
+      "coordinate_evidence_sha256": "c604644e135d7895b2745489b49b7b5fe8733214113363ad84ce7de74ba7edba"
     },
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",

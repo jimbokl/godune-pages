@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-10-28",
   "coverage": {
     "status": "verified_partial",
@@ -137,7 +137,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-26T02:04:45Z",
+      "verified_at": "2026-10-27T02:04:13Z",
       "source_identity": "programme:2943b0541690b2474a16a9de",
       "source_scope": "programme",
       "observations": [
@@ -169,6 +169,14 @@
           "verified_at": "2026-10-26T02:04:45Z",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "27b129ee1196448363d8d584e7ca0745cf46b9a256a8839ef7a8cc4347505768",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T11:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:04:13Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "2539be9a7d2131e76aeaa9b8dc5a3820a2cb333f6baf4540d171daac82c1b545",
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T11:00:00+02:00"
@@ -709,7 +717,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events",
-      "verified_at": "2026-10-26T02:04:47Z",
+      "verified_at": "2026-10-27T02:04:14Z",
       "source_identity": "programme:100ef6f6a5006bcc631fc48d",
       "source_scope": "programme",
       "observations": [
@@ -752,13 +760,21 @@
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:04:14Z",
+          "source_url": "https://world-ocean.ru/events",
+          "sha256": "732759926077ac72b046adda8d49ac1a65ebe647bd42a595538b549e70823c0c",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Музейный лекторий \"Клуб путешественников\" (12+)среда-пятница, 16-001 октября «Индонезийские сказки и их герои» 2 октября«Океаны барка «Седов»7 октября«В гостях у мудрого карпа. Китайские народные сказки и их герои»8 октября«Жизнь и путешествия Н.Н. Миклухо-Маклая»9 октября«Семь дней Будды. О художественном многообразии и символике образа Будды в искусстве скульптуры»22 октября«Горизонты Южного моря: Mar del sur. Народы Океании»23 октября«Традиционные орнаменты и символы Китая»28 октября«Георг Форстер (1754 – 1794). Вокруг света с Джеймсом Куком»29 октября«Летящая над волнами: носовая фигура как часть скульптурного убранства корабля»30 октября«Бали – остров живых богов. Вопросы географии»",
         "year_corroboration": {
           "url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "38c4051e0ce3a93015804262eec2138544bac007d6571eacd76ca5afb27c8910",
+          "sha256": "31f658e98985919c863ad025413909ef1e26fa12b8ba8564fe9f074a1dd457b2",
           "quote": "\"Георг Форстер (1754-1794). Вокруг света с Джеймсом Куком\", 12+28 октября (16:00)г. Светлогорск, ул. Ленина, д. 11, Морской выставочный центрМузейный лекторий «Клуб путешественников»"
         }
       },
@@ -803,7 +819,7 @@
         "kind": "exact"
       },
       "source_url": "https://organhall.ru/",
-      "verified_at": "2026-10-24T02:02:41Z",
+      "verified_at": "2026-10-27T02:02:37Z",
       "source_identity": "programme:147751b4f465701ccb88f2f5",
       "source_scope": "programme",
       "observations": [
@@ -822,14 +838,22 @@
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:37Z",
+          "source_url": "https://organhall.ru/",
+          "sha256": "67fe9d8dfe1e765dbec29be8327dc3f5b7437aa5deffac9038cdb5059214a1ab",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T16:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "28 октября (ср), 16:00 билеты только в кассе залаОРГАН — ГОЛОС ВЕКОВАртем Хачатуров (орган)В программе: И.С. Бах, М. Дюрюфле, Феликс Мендельсон, Габриэль Пьерне подробнееПродолжительность: 1 час 10 мин. Цена билета: 1500 руб. Воз. ограничение 6+",
         "year_corroboration": {
           "source_url": "https://www.svetlogorsk-tourism.ru/calendar/",
-          "sha256": "08cf43e8c760ad20cbbff6c7022e78b48513f2da18beb6a427efa5d12f546510",
-          "fetched_at": "2026-10-24T02:02:43Z",
+          "sha256": "31f658e98985919c863ad025413909ef1e26fa12b8ba8564fe9f074a1dd457b2",
+          "fetched_at": "2026-10-27T02:02:38Z",
           "quote": "Орган - голос веков, 6+28 октября (16:00)г. Светлогорск, ул.Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки"
         }
       },
@@ -1203,7 +1227,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/805/",
-      "verified_at": "2026-10-26T02:03:09Z",
+      "verified_at": "2026-10-27T02:02:41Z",
       "source_identity": "programme:fb1c1238a254ccdc99f42e76",
       "source_scope": "programme",
       "observations": [
@@ -1246,11 +1270,19 @@
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:41Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/805/",
+          "sha256": "354559ab47cbbc2fa445e2f7ebe404b591021f406a1da3cf0a94e8df21b31b63",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
+        "listing_sha256": "1c5f51dac3b6f31f35bbac21d40f612cc253fb475ac3b070a5c8b21bdf9e14dd",
         "card_quote": "Купить билетИСКУССТВО В КИНО. СТРАСТЬ ИГОРЯ САВИЦКОГО (18+)Скоро 28 октября в 18:00 Кинозал Ставший при жизни легендой художник и искусствовед Игорь Савицкий совсем молодым уехал из Москвы в пустыню Средней Азии. Кинопоказ пройдет в рамках кинофестиваля «Искусство в кино. Акт творения»",
         "explicit_date": "28 ОКТЯБРЯ 2026 18:00"
       },
@@ -1290,7 +1322,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-26T02:02:59Z",
+      "verified_at": "2026-10-27T02:02:33Z",
       "source_identity": "programme:64ef23f9123007cc9b88ed96",
       "source_scope": "programme",
       "observations": [
@@ -1330,6 +1362,14 @@
           "verified_at": "2026-10-26T02:02:59Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9409201cb826a039b5536f93f1c460b5645d1fbc671a4db72070d7515989a131",
+          "status": "scheduled",
+          "date": "2026-10-28",
+          "start_time": "2026-10-28T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:33Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "91444a09b4ca81d42c49f74dc16f76ecf213d5b6ef524d46e5adccd06b67c31e",
           "status": "scheduled",
           "date": "2026-10-28",
           "start_time": "2026-10-28T19:00:00+02:00"

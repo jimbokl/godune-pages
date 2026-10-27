@@ -1,15 +1,16 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-07",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
       "event-source-0e3e28a1f902759a",
+      "event-source-1dc4f4b1243af42f",
       "event-source-f097f20eb6a0547a",
       "event-source-f1348b26f11cb709"
     ]
@@ -542,7 +543,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:9d911772966c1e38e27883d0",
       "source_scope": "programme",
       "observations": [
@@ -582,6 +583,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T14:30:00+02:00"
@@ -739,6 +748,65 @@
       "duration_estimate": null
     },
     {
+      "id": "event-5d55b2739a483b58",
+      "title": "МУЖЧИНА И ЖЕНЩИНА",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-11-07",
+      "starts": "17:30",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Классика французского кино, романтическая драма Клода Лелуша выйдет в к 60-летию фильма в 4К-реставрации",
+      "admission": "По билетам · 16+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-1dc4f4b1243af42f",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-07T17:30:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/845/",
+      "verified_at": "2026-10-27T02:02:51Z",
+      "source_identity": "programme:239f3b0a20afabc73c72034c",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T02:02:51Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/845/",
+          "sha256": "17ce2c53e3161f3240efa8ea8383b9960516e7b029322629302f786503065e29",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T17:30:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "card_quote": "Купить билетМУЖЧИНА И ЖЕНЩИНА (16+)Скоро 7 ноября в 17:30 Кинозал Классика французского кино, романтическая драма Клода Лелуша выйдет в к 60-летию фильма в 4К-реставрации",
+        "explicit_date": "7 НОЯБРЯ 2026 17:30"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
       "id": "event-7ccf5d4bf492c50d",
       "title": "Музыкальная сборная России. Симфонический концерт",
       "city": "kaliningrad",
@@ -777,7 +845,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
-      "verified_at": "2026-10-26T02:02:48Z",
+      "verified_at": "2026-10-27T02:02:23Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -813,6 +881,14 @@
           "verified_at": "2026-10-26T02:02:48Z",
           "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
           "sha256": "e5606549bf0ac59c06068e5894632ef0320236170b6f0d081ccadf87419a5a9a",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:23Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
+          "sha256": "ef75a6f2d238f788af5ec143b0c2bf7042e161150ce87e1fc477a6a5acba7c06",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -872,7 +948,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:3398a8720d934dfaafe005ba",
       "source_scope": "programme",
       "observations": [
@@ -912,6 +988,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -1047,6 +1131,18 @@
       "identity_source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
       "identity_verified_at": "2026-10-23",
       "identity_evidence_sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4"
+    },
+    "kaliningrad-tretyakov": {
+      "id": "kaliningrad-tretyakov",
+      "name": "Третьяковская галерея в Калининграде",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "Парадная набережная, 3",
+      "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
     },
     "kaliningrad-philharmonia": {
       "id": "kaliningrad-philharmonia",

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -14,7 +14,8 @@
       "event-source-397dde4c128d3813",
       "event-source-415d64a95f65d553",
       "event-source-84e8439d81a585f7",
-      "event-source-f7e7c3215cca1530"
+      "event-source-f7e7c3215cca1530",
+      "event-source-f8cc398337167c50"
     ]
   },
   "events": [
@@ -142,7 +143,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
-      "verified_at": "2026-10-26T02:02:56Z",
+      "verified_at": "2026-10-27T02:02:30Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:45Z",
@@ -202,6 +203,14 @@
           "verified_at": "2026-10-26T02:02:56Z",
           "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
           "sha256": "44834ae1c33c8748084bfd202568faaf331944c60a1fa6b9198797e19364513c",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:30Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+          "sha256": "d454e3571af3ebd33fb2c5a4c0122a17115a4e46a539db31eca29bfb153ac59e",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -342,7 +351,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-26T02:02:47Z",
+      "verified_at": "2026-10-27T02:02:21Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -434,6 +443,14 @@
           "verified_at": "2026-10-26T02:02:47Z",
           "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
           "sha256": "2730ff796c491c2c8705359c0561feb4e3a819de2f1ffb0888d71c46869d19c4",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "f2db621a07f856b96a4eda81a1a5d8b8cc749fd010cfeaf21d97eabad9345f71",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -929,6 +946,65 @@
       "duration_estimate": null
     },
     {
+      "id": "event-77b23df69b510fce",
+      "title": "ПРОШЛЫЕ ЖИЗНИ",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-11-01",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Замужняя Нора встречает друга, которого любила в детстве. Тонкая драма с двумя номинациями на «Оскар»",
+      "admission": "По билетам · 18+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-f8cc398337167c50",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T17:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/844/",
+      "verified_at": "2026-10-27T02:02:49Z",
+      "source_identity": "programme:68e8c80dbc4703f395ac8b1e",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T02:02:49Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/844/",
+          "sha256": "5dbd8e1aabddc7cec8876533f9dae3874677fe9357155df1267c69dc9635b63b",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "card_quote": "Купить билетПРОШЛЫЕ ЖИЗНИ (18+)Скоро 1 ноября в 17:00 Кинозал Замужняя Нора встречает друга, которого любила в детстве. Тонкая драма с двумя номинациями на «Оскар»",
+        "explicit_date": "1 НОЯБРЯ 2026 17:00"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
       "id": "event-20ab99ecc122e836",
       "title": "От Баха до джаза. Орган и саксофон",
       "city": "kaliningrad",
@@ -967,7 +1043,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-26T02:02:47Z",
+      "verified_at": "2026-10-27T02:02:22Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -1054,6 +1130,14 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:22Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "863a86a04f8b2e3ce8fc6a72a89b322ad159f2e5352c440995e2544a20cb9144",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1110,7 +1194,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:d80ed02026213133a0be7b98",
       "source_scope": "programme",
       "observations": [
@@ -1150,6 +1234,14 @@
           "verified_at": "2026-10-26T02:03:01Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -1288,7 +1380,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-26T02:02:56Z",
+      "verified_at": "2026-10-27T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -1383,6 +1475,14 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:29Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "e5d13b0e6bcb9d68e4d0bc47184f1ae2d6db8ab3729efbc9342fb23a407289bd",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1458,6 +1558,18 @@
       "identity_verified_at": "2026-10-17",
       "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
       "coordinates_verified_at": "2026-10-01"
+    },
+    "kaliningrad-tretyakov": {
+      "id": "kaliningrad-tretyakov",
+      "name": "Третьяковская галерея в Калининграде",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "Парадная набережная, 3",
+      "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
     },
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",

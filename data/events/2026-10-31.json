@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-10-31",
   "coverage": {
     "status": "verified_partial",
@@ -13,6 +13,7 @@
       "event-source-69ccf8164bb379f3",
       "event-source-8310944ecdcd3c43",
       "event-source-bf3783fcdd66d141",
+      "event-source-e3d76be2fde57191",
       "event-source-ff2ea88915efd205"
     ]
   },
@@ -800,6 +801,65 @@
       "duration_estimate": null
     },
     {
+      "id": "event-de27a9b75a8bdd48",
+      "title": "СОЛНЦЕ МОЁ",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-10-31",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Софи вспоминает летний отдых со своим отцом. Поразительная роль Пола Мескала, отмеченная номинацией на «Оскар»",
+      "admission": "По билетам · 18+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-e3d76be2fde57191",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-10-31T17:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/843/",
+      "verified_at": "2026-10-27T02:02:48Z",
+      "source_identity": "programme:93b1442635161ff8975248a8",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-27T02:02:48Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/843/",
+          "sha256": "ac79801f6d4fc4643238d6ceb0a57d4de04270d4fc50eb7ec07b122078595b74",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "card_quote": "Купить билетСОЛНЦЕ МОЁ (18+)Скоро 31 октября в 17:00 Кинозал Софи вспоминает летний отдых со своим отцом. Поразительная роль Пола Мескала, отмеченная номинацией на «Оскар»",
+        "explicit_date": "31 ОКТЯБРЯ 2026 17:00"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
+      }
+    },
+    {
       "id": "samayn-kaup-2026-10-31-1700",
       "title": "Самайн",
       "city": "romanovo",
@@ -916,7 +976,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
-      "verified_at": "2026-10-26T02:02:46Z",
+      "verified_at": "2026-10-27T02:02:21Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -1011,6 +1071,14 @@
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/sila-lyubvi/",
+          "sha256": "b34c08fe0fcbaf1d73e89eb0978e3398273baf3cc5f77751260e4fcc931de8f1",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1067,7 +1135,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-26T02:02:59Z",
+      "verified_at": "2026-10-27T02:02:33Z",
       "source_identity": "programme:44a92872245f5e6ab27827b9",
       "source_scope": "programme",
       "observations": [
@@ -1107,6 +1175,14 @@
           "verified_at": "2026-10-26T02:02:59Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
           "sha256": "9409201cb826a039b5536f93f1c460b5645d1fbc671a4db72070d7515989a131",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:33Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "91444a09b4ca81d42c49f74dc16f76ecf213d5b6ef524d46e5adccd06b67c31e",
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
@@ -1216,25 +1292,25 @@
       "starts": "18:00",
       "ends": null,
       "description": "\"Ты где-то рядом\"",
-      "kind": "Концерт",
+      "kind": "Спектакль",
       "status": "scheduled",
       "admission": "Билеты от 2600 ₽",
       "price": null,
       "currency": null,
       "source": "event-source-2d69612d16fda014",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": "yantar-hall",
       "route": null,
       "venue_id": "yantar-hall",
       "place_id": "yantar-hall",
-      "category": "music",
+      "category": "theatre",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-10-31T18:00:00+02:00",
       "end_time": null,
@@ -1245,7 +1321,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
-      "verified_at": "2026-10-26T02:02:55Z",
+      "verified_at": "2026-10-27T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:11Z",
@@ -1340,6 +1416,14 @@
           "status": "scheduled",
           "date": "2026-10-31",
           "start_time": "2026-10-31T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:29Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-ty-gde-to-ryadom/",
+          "sha256": "89cd5e5ea84c7ab81f5796c84a1c8e0c2a1502342cf5d4d10fb0c22b739d7a22",
+          "status": "scheduled",
+          "date": "2026-10-31",
+          "start_time": "2026-10-31T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1350,15 +1434,12 @@
         "status": "Listed on the official event page; no explicit change notice",
         "price": "Visible: Билеты от 2600 руб.",
         "age": "12+",
+        "kind": "Visible event description: Спектакль",
         "duration": null,
         "source_identity": "yantarhall:afisha-spektakl-ty-gde-to-ryadom"
       },
       "source_identity": "yantarhall:afisha-spektakl-ty-gde-to-ryadom",
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
     }
   ],
   "venues": {
@@ -1382,6 +1463,18 @@
       "identity_source_url": "https://sobor39.ru/contacts/",
       "identity_verified_at": "2026-10-23",
       "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
+    },
+    "kaliningrad-tretyakov": {
+      "id": "kaliningrad-tretyakov",
+      "name": "Третьяковская галерея в Калининграде",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "Парадная набережная, 3",
+      "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
     },
     "romanovo-kaup": {
       "id": "romanovo-kaup",

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-11",
   "coverage": {
     "status": "verified_partial",
@@ -767,7 +767,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/khiroko-inoue-priglashaet-golos-epokhi-95-let-mikaelu-tariverdievu/",
-      "verified_at": "2026-10-26T02:02:49Z",
+      "verified_at": "2026-10-27T02:02:24Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:17Z",
@@ -803,6 +803,14 @@
           "verified_at": "2026-10-26T02:02:49Z",
           "source_url": "https://filarmonia39.ru/afisha/khiroko-inoue-priglashaet-golos-epokhi-95-let-mikaelu-tariverdievu/",
           "sha256": "0777e306b4d5e17f26d3f481f037a75fdf3642ed13f0f59e7f61f4a81433fe8f",
+          "status": "scheduled",
+          "date": "2026-11-11",
+          "start_time": "2026-11-11T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:24Z",
+          "source_url": "https://filarmonia39.ru/afisha/khiroko-inoue-priglashaet-golos-epokhi-95-let-mikaelu-tariverdievu/",
+          "sha256": "85063487c6ec979b607ffc72cf1c1c68f3e61c5c788a936ba4ac57650c237b53",
           "status": "scheduled",
           "date": "2026-11-11",
           "start_time": "2026-11-11T19:00:00+02:00"

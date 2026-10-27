@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "3b77ba07d245f6b0cc20b344f96157ad69cb3814f1151feb0969462f27b81599",
-  "generated_at": "2026-10-26T23:29:30.893Z",
-  "updated_at": "2026-10-26T02:08:26.699786Z",
+  "revision": "8a98eb508d8d971de6a9735ae83cd8d4a269844167a02d1ba164d82840fe1016",
+  "generated_at": "2026-10-27T02:07:55.235Z",
+  "updated_at": "2026-10-27T02:06:52.846030Z",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -221,7 +221,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
-      "verified_at": "2026-10-26T02:02:47Z",
+      "verified_at": "2026-10-27T02:02:22Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:41Z",
@@ -281,6 +281,14 @@
           "verified_at": "2026-10-26T02:02:47Z",
           "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
           "sha256": "7f20c7381c1d2a428c8c720cf00dc9e425c95fe9f0932316c960e36fe30f2dda",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:22Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "79a7a97ac6ed075eb29a7b50cb07e1c24c8a04c4ef93132132cf1c438f1915f9",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T12:00:00+02:00"
@@ -418,7 +426,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-26T02:03:15Z",
+      "verified_at": "2026-10-27T02:02:43Z",
       "source_identity": "programme:d79a447c8327cfbc106e6a4f",
       "source_scope": "programme",
       "observations": [
@@ -461,11 +469,19 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T13:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:43Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "fcc1263e4f61bdf4b2a255e39ffd1ddd08fed1b918aa664f627c849a58b45b9e",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T13:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "9170734331373e102a8a332302aa7c62794482b3c39d500e10125568fea1a173",
+        "listing_sha256": "1c5f51dac3b6f31f35bbac21d40f612cc253fb475ac3b070a5c8b21bdf9e14dd",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
         "explicit_date": "4 ноября 2026 13:00"
       },
@@ -563,25 +579,25 @@
       "starts": "15:00",
       "ends": null,
       "description": "\"Лебединое озеро\"",
-      "kind": "Концерт",
+      "kind": "Спектакль",
       "status": "scheduled",
       "admission": "Билеты от 2000 ₽",
       "price": null,
       "currency": null,
       "source": "event-source-a996e14f76e28ca0",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": "yantar-hall",
       "route": null,
       "venue_id": "yantar-hall",
       "place_id": "yantar-hall",
-      "category": "music",
+      "category": "theatre",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-04T15:00:00+02:00",
       "end_time": null,
@@ -592,7 +608,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
-      "verified_at": "2026-10-26T02:02:57Z",
+      "verified_at": "2026-10-27T02:02:31Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
@@ -607,6 +623,14 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:31Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
+          "sha256": "9e25e193783d70f0395b0125e229338819d08e50332810e4b82ccf080b4d5a2a",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T15:00:00+02:00"
         }
       ],
       "evidence": {
@@ -617,15 +641,12 @@
         "status": "Listed on the official event page; no explicit change notice",
         "price": "Visible: Билеты от 2000 руб.",
         "age": "6+",
+        "kind": "Visible event description: Спектакль-балет с симфоническим оркестром",
         "duration": null,
         "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26"
       },
       "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26",
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
     },
     {
       "id": "event-ba21f31f98cca1f0",
@@ -783,25 +804,25 @@
       "starts": "17:00",
       "ends": null,
       "description": "Великие голоса России",
-      "kind": "Концерт",
+      "kind": "Спектакль",
       "status": "scheduled",
       "admission": "Билеты от 600 ₽",
       "price": null,
       "currency": null,
       "source": "event-source-8c4a7336025867b6",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": "yantar-hall",
       "route": null,
       "venue_id": "yantar-hall",
       "place_id": "yantar-hall",
-      "category": "music",
+      "category": "theatre",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-04T17:00:00+02:00",
       "end_time": null,
@@ -812,7 +833,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
-      "verified_at": "2026-10-26T02:02:56Z",
+      "verified_at": "2026-10-27T02:02:30Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
@@ -827,6 +848,14 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:30Z",
+          "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
+          "sha256": "55a162343ad53cc6850cd925abb49d5cd94ac7548913c51d8f9e0cc1221a914f",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
         }
       ],
       "evidence": {
@@ -837,15 +866,12 @@
         "status": "Listed on the official event page; no explicit change notice",
         "price": "Visible: Билеты от 600 руб.",
         "age": "6+",
+        "kind": "Visible event description: Музыкальный спектакль",
         "duration": null,
         "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026"
       },
       "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026",
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
     },
     {
       "id": "event-63573479d935381d",
@@ -886,7 +912,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-26T02:02:47Z",
+      "verified_at": "2026-10-27T02:02:22Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -962,6 +988,14 @@
           "verified_at": "2026-10-26T02:02:47Z",
           "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
           "sha256": "d570c983536c63e2db9aed699b87e871647825c238a778426640d1b0e4e24ecb",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:22Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "96fbc51a429d90f829bfef2e952cb595dbbf6c14ab7d4f5f5f297fb5f885df87",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
@@ -1159,7 +1193,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-26T02:03:01Z",
+      "verified_at": "2026-10-27T02:02:34Z",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -1202,10 +1236,18 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "Премьера04НоябряСр19:00Опус. Бетховенпо письмам Людвига ван БетховенаСредняя сцена1 час 15 минут без антракта16+Билеты",
+        "card_quote": "Премьера04НоябряСр19:00Опус. Бетховенпо письмам Людвига ван БетховенаПУШКИНСКАЯ КАРТАСредняя сцена1 час 15 минут без антракта16+Билеты",
         "year": "Selected programme year: 2026",
         "duration_quote": "1 час 15 минут без антракта",
         "stage": "Средняя сцена"
