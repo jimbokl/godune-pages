@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -86,8 +86,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -97,7 +97,7 @@
             "eventduration": "45",
             "ticketcount": "50",
             "timesortnum": ".45833",
-            "daysortnum": "12"
+            "daysortnum": "7"
           },
           "route_date_matches": true
         }
@@ -164,8 +164,8 @@
         "calendar_date": "2026-11-04",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -173,9 +173,9 @@
             "eventday": "04.11.2026",
             "eventtime": "12:00",
             "eventduration": "45",
-            "ticketcount": "75",
+            "ticketcount": "72",
             "timesortnum": ".5",
-            "daysortnum": "13"
+            "daysortnum": "7"
           },
           "route_date_matches": true
         }
@@ -221,7 +221,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
-      "verified_at": "2026-10-27T02:02:22Z",
+      "verified_at": "2026-10-28T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:41Z",
@@ -289,6 +289,14 @@
           "verified_at": "2026-10-27T02:02:22Z",
           "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
           "sha256": "79a7a97ac6ed075eb29a7b50cb07e1c24c8a04c4ef93132132cf1c438f1915f9",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/shiroka-strana-moya-rodnaya/",
+          "sha256": "7abead0c7476500d823d13fea41f4b4e8eaf12b58a5b37c549f3e19c52bf6b86",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T12:00:00+02:00"
@@ -374,8 +382,8 @@
         "calendar_date": "2026-11-04",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10031",
           "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
           "session": {
@@ -383,9 +391,9 @@
             "eventday": "04.11.2026",
             "eventtime": "13:00",
             "eventduration": "105",
-            "ticketcount": "40",
+            "ticketcount": "37",
             "timesortnum": ".54167",
-            "daysortnum": "13"
+            "daysortnum": "7"
           },
           "route_date_matches": true
         }
@@ -426,7 +434,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
-      "verified_at": "2026-10-27T02:02:43Z",
+      "verified_at": "2026-10-28T02:02:51Z",
       "source_identity": "programme:d79a447c8327cfbc106e6a4f",
       "source_scope": "programme",
       "observations": [
@@ -477,15 +485,30 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T13:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:51Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/creative-studios/ceramics/629/",
+          "sha256": "73f2b3685daf71290fce180cc879ca2fd148dde13ea9d53d6429a4cb672a7804",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T13:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/afisha/",
-        "listing_sha256": "1c5f51dac3b6f31f35bbac21d40f612cc253fb475ac3b070a5c8b21bdf9e14dd",
+        "listing_sha256": "f3e717cd709a06df230dcb61be04a6c5dd77e03d54c199ae6c3c6e3cb076bec7",
         "card_quote": "Купить билетНАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ) (6+)Скоро 21 и 29 октября, 4 и 5 ноября Гончарная мастерская Семейный мастер-класс по лепке и росписи игрушки из глины",
-        "explicit_date": "4 ноября 2026 13:00"
+        "explicit_date": "4 ноября 2026 13:00",
+        "programme_occurrences": 4,
+        "duration": "Продолжительность: 2 часа",
+        "kind_quote": "НАРОДНАЯ ИГРУШКА (СЕМЕЙНЫЙ)"
       },
-      "duration_estimate": null
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "published_duration",
+        "label": "2 часа"
+      }
     },
     {
       "id": "event-8b9ec2e441956f8f",
@@ -547,8 +570,8 @@
         "calendar_date": "2026-11-04",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -556,17 +579,18 @@
             "eventday": "04.11.2026",
             "eventtime": "14:00",
             "eventduration": "45",
-            "ticketcount": "546",
+            "ticketcount": "527",
             "timesortnum": ".58333",
-            "daysortnum": "13"
+            "daysortnum": "7"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -608,7 +632,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
-      "verified_at": "2026-10-27T02:02:31Z",
+      "verified_at": "2026-10-28T02:02:38Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
@@ -628,6 +652,14 @@
           "verified_at": "2026-10-27T02:02:31Z",
           "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
           "sha256": "9e25e193783d70f0395b0125e229338819d08e50332810e4b82ccf080b4d5a2a",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:38Z",
+          "source_url": "https://yantarholl.ru/afisha/spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26/",
+          "sha256": "280dbde49921ed83e1120472b5e93d7e6716ace8dd10b05db27de712cb3a6728",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T15:00:00+02:00"
@@ -715,8 +747,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10074",
           "hash_id": "B2E274D546C4673A07FFDA0226E959045E2466FB",
           "session": {
@@ -726,7 +758,7 @@
             "eventduration": "45",
             "ticketcount": "25",
             "timesortnum": ".625",
-            "daysortnum": "12"
+            "daysortnum": "7"
           },
           "route_date_matches": true
         }
@@ -833,7 +865,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
-      "verified_at": "2026-10-27T02:02:30Z",
+      "verified_at": "2026-10-28T02:02:38Z",
       "observations": [
         {
           "verified_at": "2026-10-25T02:02:23Z",
@@ -853,6 +885,14 @@
           "verified_at": "2026-10-27T02:02:30Z",
           "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
           "sha256": "55a162343ad53cc6850cd925abb49d5cd94ac7548913c51d8f9e0cc1221a914f",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:38Z",
+          "source_url": "https://yantarholl.ru/afisha/muzykalnyy-spektakl-velikie-golosa-rossii%204%2011%2026/",
+          "sha256": "151d1ee0b2ffd6f6d7260e42efd397d89312ffcd5b3c5b957e82dd7eaa7bdd8e",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
@@ -912,7 +952,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
-      "verified_at": "2026-10-27T02:02:22Z",
+      "verified_at": "2026-10-28T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-18T13:08:10Z",
@@ -999,6 +1039,14 @@
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/russkaya-muzyka-na-organe-04112026/",
+          "sha256": "a5af9bcefe52f841b75d5ea1196924378259c3aa122f05a9ebf18978ac899ece",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T17:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1081,8 +1129,8 @@
         "calendar_date": "2026-11-04",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -1092,7 +1140,7 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".70833",
-            "daysortnum": "13"
+            "daysortnum": "7"
           },
           "route_date_matches": true
         }
@@ -1193,7 +1241,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-27T02:02:34Z",
+      "verified_at": "2026-10-28T02:02:41Z",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -1241,6 +1289,14 @@
           "verified_at": "2026-10-27T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"

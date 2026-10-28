@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "date": "2026-11-06",
   "coverage": {
     "status": "verified_partial",
@@ -12,7 +12,8 @@
       "event-source-0e3e28a1f902759a",
       "event-source-703266efe6b49e32",
       "event-source-ac8abe48e82f9e73",
-      "event-source-d4d8481cf0f59123"
+      "event-source-d4d8481cf0f59123",
+      "event-source-f9eb4005a625cb21"
     ]
   },
   "events": [
@@ -83,8 +84,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -94,7 +95,7 @@
             "eventduration": "45",
             "ticketcount": "50",
             "timesortnum": ".45833",
-            "daysortnum": "14"
+            "daysortnum": "9"
           },
           "route_date_matches": true
         }
@@ -161,8 +162,8 @@
         "calendar_date": "2026-11-06",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -172,7 +173,7 @@
             "eventduration": "45",
             "ticketcount": "75",
             "timesortnum": ".5",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
         }
@@ -239,8 +240,8 @@
         "calendar_date": "2026-11-06",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10031",
           "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
           "session": {
@@ -250,7 +251,7 @@
             "eventduration": "105",
             "ticketcount": "40",
             "timesortnum": ".54167",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
         }
@@ -317,8 +318,8 @@
         "calendar_date": "2026-11-06",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -328,15 +329,16 @@
             "eventduration": "45",
             "ticketcount": "546",
             "timesortnum": ".58333",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -401,13 +403,13 @@
           "status": "facility",
           "quote": "Она начинается с органного мини-концерта в Соборе",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10069",
           "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
           "session": {
@@ -417,7 +419,7 @@
             "eventduration": "180",
             "ticketcount": "25",
             "timesortnum": ".58333",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
         }
@@ -486,6 +488,73 @@
       "duration_estimate": null
     },
     {
+      "id": "event-11e6b0572df1b3ff",
+      "title": "ОРГАН. КЛАССИКА И РОМАНТИЗМ",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "venue": "Органный зал «Макаров»",
+      "date": "2026-11-06",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "В программе: И.С.Бах, Р.Шуман, С.Франк, Ш.М.Видор",
+      "admission": "Билеты в кассе зала · 6+",
+      "price": 1500,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-f9eb4005a625cb21",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "organhall-makarov",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-06T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1500,
+        "max": 1500,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-28T02:02:44Z",
+      "source_identity": "programme:1999ff84527171f5b59a8d80",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-28T02:02:44Z",
+          "source_url": "https://organhall.ru/",
+          "sha256": "31a1b8dcea9c283ac55ac98f848d3698f48820b3c08baf69c2649864f77ade5e",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "6 ноября (пт), 16:00билеты только в кассе залаОРГАН. КЛАССИКА И РОМАНТИЗМАртем Хачатуров (орган)В программе: И.С.Бах, Р.Шуман, С.Франк, Ш.М.ВидорподробнееПродолжительность: 1 час 10 мин. Цена билета: 1500 руб. Воз. ограничение 6+",
+        "year_corroboration": {
+          "source_url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "sha256": "29b1b66649cb47b0dee82cab1db0017ecb4204fafb00a3424f9f6b3a0bb512ed",
+          "fetched_at": "2026-10-28T02:02:45Z",
+          "quote": "\"Орган. Классика и романтизм\", 6+6 ноября (16:00)г. Светлогорск, ул. Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки"
+        }
+      },
+      "duration_estimate": {
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "1 час 10 мин."
+      }
+    },
+    {
       "id": "event-54c52e30c3ca985a",
       "title": "В поисках Канта",
       "city": "kaliningrad",
@@ -547,8 +616,8 @@
           "status": "cashdesk",
           "quote": "Место встречи и начала экскурсии — касса Собора.",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         }
       },
       "duration_estimate": null
@@ -613,8 +682,8 @@
         "calendar_date": "2026-11-06",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -624,7 +693,7 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".70833",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
         }
@@ -665,7 +734,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-27T02:02:34Z",
+      "verified_at": "2026-10-28T02:02:41Z",
       "source_identity": "programme:0cf010c3216ed8ddc8a5f708",
       "source_scope": "programme",
       "observations": [
@@ -713,6 +782,14 @@
           "verified_at": "2026-10-27T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -769,7 +846,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
-      "verified_at": "2026-10-27T02:02:23Z",
+      "verified_at": "2026-10-28T02:02:30Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -813,6 +890,14 @@
           "verified_at": "2026-10-27T02:02:23Z",
           "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
           "sha256": "489060546ed53caf353bc06ca5452906f26843e4886961aeb7dd562f66e3c130",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:30Z",
+          "source_url": "https://filarmonia39.ru/afisha/ya-pomnyu-valsa-zvuk-prelestnyy/",
+          "sha256": "72273493740c961426c76dd3e0f4497122efdf651327022516788fe4a52bfa38",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -893,8 +978,8 @@
         "calendar_date": "2026-11-06",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "11608",
           "hash_id": "C57283F87DF96E7D1CEFE8E91E8E62B17D86F0B5",
           "session": {
@@ -902,17 +987,18 @@
             "eventday": "06.11.2026",
             "eventtime": "19:00",
             "eventduration": "70",
-            "ticketcount": "543",
+            "ticketcount": "512",
             "timesortnum": ".79167",
-            "daysortnum": "15"
+            "daysortnum": "9"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "70 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "70 мин"
       }
     },
     {
@@ -954,7 +1040,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/ranevskaya-velikaya-nasmeshnitsa/",
-      "verified_at": "2026-10-27T02:02:31Z",
+      "verified_at": "2026-10-28T02:02:39Z",
       "observations": [
         {
           "verified_at": "2026-10-26T02:02:58Z",
@@ -966,6 +1052,14 @@
           "verified_at": "2026-10-27T02:02:31Z",
           "source_url": "https://yantarholl.ru/afisha/ranevskaya-velikaya-nasmeshnitsa/",
           "sha256": "616ef3cd362a4c910ac2aa29406730787f33486bc179b9aa11cb89074233b0d4",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:39Z",
+          "source_url": "https://yantarholl.ru/afisha/ranevskaya-velikaya-nasmeshnitsa/",
+          "sha256": "91fb7ab42d7367b247904b6935c2e451ef66685e7d6a63a0e8f99e1b42f8b89e",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -1008,6 +1102,20 @@
       "identity_source_url": "https://sobor39.ru/contacts/",
       "identity_verified_at": "2026-10-23",
       "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
+    },
+    "organhall-makarov": {
+      "id": "organhall-makarov",
+      "name": "Органный зал \"Макаров\"",
+      "city": "svetlogorsk",
+      "city_name": "Светлогорск",
+      "place_id": null,
+      "coordinates": null,
+      "address": "ул. Курортная, 3",
+      "source_url": "https://organhall.ru/",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://organhall.ru/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "b40dd7984b15f4b48e35e3bae4cae48f15e2d173803d8b27e2666c487f71473e"
     },
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",

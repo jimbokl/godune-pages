@@ -1,26 +1,17 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "window": {
-    "from": "2026-09-27",
-    "to": "2026-11-26",
-    "anchor_date": "2026-10-27",
+    "from": "2026-09-28",
+    "to": "2026-11-27",
+    "anchor_date": "2026-10-28",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-27": {
-      "url": "/data/events/2026-09-27.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-28": {
       "url": "/data/events/2026-09-28.json",
       "count": 0,
@@ -505,7 +496,7 @@
     },
     "2026-11-06": {
       "url": "/data/events/2026-11-06.json",
-      "count": 12,
+      "count": 13,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -513,7 +504,8 @@
           "event-source-0e3e28a1f902759a",
           "event-source-703266efe6b49e32",
           "event-source-ac8abe48e82f9e73",
-          "event-source-d4d8481cf0f59123"
+          "event-source-d4d8481cf0f59123",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -533,7 +525,7 @@
     },
     "2026-11-08": {
       "url": "/data/events/2026-11-08.json",
-      "count": 13,
+      "count": 14,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
@@ -542,6 +534,7 @@
           "event-source-47c6e18b98ab1a79",
           "event-source-4ed1e4432207c52e",
           "event-source-770fb3d9ee9ee098",
+          "event-source-c2a77ebc3a9f4b19",
           "event-source-cfc624c710506561"
         ]
       }
@@ -560,11 +553,12 @@
     },
     "2026-11-10": {
       "url": "/data/events/2026-11-10.json",
-      "count": 10,
+      "count": 11,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
+          "event-source-089ff28f9dc5d1e5",
           "event-source-36793c22317863dd",
           "event-source-83b84b0264cce4c1"
         ]
@@ -609,41 +603,45 @@
     },
     "2026-11-14": {
       "url": "/data/events/2026-11-14.json",
-      "count": 11,
+      "count": 12,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-0d6b675870f0ab48",
           "event-source-0e3e28a1f902759a",
-          "event-source-be9493a70825064f"
+          "event-source-be9493a70825064f",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
     "2026-11-15": {
       "url": "/data/events/2026-11-15.json",
-      "count": 13,
+      "count": 15,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
+          "event-source-0ae704d0a879a132",
           "event-source-0e3e28a1f902759a",
           "event-source-12ea3739ead1f5ab",
           "event-source-62ac7cf16bc23f66",
           "event-source-63f662097b2124fb",
+          "event-source-8e0225311d684819",
           "event-source-ecba17188da36881"
         ]
       }
     },
     "2026-11-16": {
       "url": "/data/events/2026-11-16.json",
-      "count": 10,
+      "count": 11,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-0e3e28a1f902759a",
-          "event-source-1e46dc64abb71ce6"
+          "event-source-1e46dc64abb71ce6",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -662,13 +660,14 @@
     },
     "2026-11-18": {
       "url": "/data/events/2026-11-18.json",
-      "count": 9,
+      "count": 10,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-41ec8284a3bc5eb2",
-          "event-source-8f8441c9191cb8cf"
+          "event-source-8f8441c9191cb8cf",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -700,14 +699,15 @@
     },
     "2026-11-21": {
       "url": "/data/events/2026-11-21.json",
-      "count": 11,
+      "count": 12,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-0e3e28a1f902759a",
           "event-source-1ee9f52e5be61ea9",
-          "event-source-58cfef63477ccb6d"
+          "event-source-58cfef63477ccb6d",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -727,12 +727,13 @@
     },
     "2026-11-23": {
       "url": "/data/events/2026-11-23.json",
-      "count": 9,
+      "count": 10,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
-          "event-source-d643be18620958e5"
+          "event-source-d643be18620958e5",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -750,13 +751,14 @@
     },
     "2026-11-25": {
       "url": "/data/events/2026-11-25.json",
-      "count": 10,
+      "count": 11,
       "coverage": {
         "status": "verified_partial",
         "complete": false,
         "sources": [
           "event-source-0e3e28a1f902759a",
-          "event-source-ebd1fb210cef582c"
+          "event-source-ebd1fb210cef582c",
+          "event-source-f9eb4005a625cb21"
         ]
       }
     },
@@ -771,6 +773,19 @@
           "event-source-36793c22317863dd",
           "event-source-be4648fa6abaedb0",
           "event-source-df7f4d4b3ca53138"
+        ]
+      }
+    },
+    "2026-11-27": {
+      "url": "/data/events/2026-11-27.json",
+      "count": 11,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-0e3e28a1f902759a",
+          "event-source-a99d20d778cdd6c3",
+          "event-source-d35678d96723ff01"
         ]
       }
     }
@@ -806,6 +821,7 @@
     "event-0eeff0ca22c99ea3",
     "event-0fa4b30f938c9fd7",
     "event-0ff67fadb7c45338",
+    "event-11e6b0572df1b3ff",
     "event-12b2b5a011bd824d",
     "event-132af4aa2fcd7bd4",
     "event-1347cc85e06ba1e2",
@@ -830,6 +846,7 @@
     "event-1bf6c23d513949d3",
     "event-1cb7ebe82b53408c",
     "event-1d7d5583d04ae029",
+    "event-1dad6460bc885ac8",
     "event-1de6e201176330da",
     "event-1f088fcbda83b3f8",
     "event-1fc164328fe187b6",
@@ -852,6 +869,7 @@
     "event-299fe083dde501d4",
     "event-2a36b752347f69ba",
     "event-2b5ea66818f78206",
+    "event-2b7f9077f7cabee9",
     "event-2badc22a37f484db",
     "event-2c5cea854687bdbe",
     "event-2d0969e69ffa323f",
@@ -859,11 +877,14 @@
     "event-2e2c36c27fa561c2",
     "event-2e59d9944873065e",
     "event-2f301023709c9675",
+    "event-2f7c42ee23338f10",
+    "event-2fb69e18dce1c5c0",
     "event-2fb7872983ac0aab",
     "event-30bde773c0c5fda7",
     "event-30f0418d8252edc1",
     "event-31173e315b40d953",
     "event-31ce9c4171084fd7",
+    "event-31dc9c1c18c8b6a5",
     "event-333c68c97c2f39e5",
     "event-334590615a2a6503",
     "event-3377d66204bf8318",
@@ -871,6 +892,7 @@
     "event-33bb105971f4b4d7",
     "event-342d12c007b2efb2",
     "event-34e716c00c0894a3",
+    "event-3580303fb618e614",
     "event-35bc973f9cdf0985",
     "event-3606d3329fbab989",
     "event-36a2a0d2f5267de7",
@@ -897,9 +919,9 @@
     "event-3edc8c23decf6da8",
     "event-3f25bd86bf3c744e",
     "event-3f6d77bb493381aa",
-    "event-402ef16927a49d43",
     "event-409a6a60a920cf5f",
     "event-4111e7933ddc5f54",
+    "event-4258f87c5893e7ed",
     "event-45725bccf5e5f7d0",
     "event-464b424571d415d2",
     "event-46b68dd3f628f36a",
@@ -958,6 +980,7 @@
     "event-5f26dacdc9a09429",
     "event-5f5fe8103c167bb8",
     "event-5f8f5279958ee8ed",
+    "event-5fa5b575dc5d2db5",
     "event-5fd8e3dd35bbb5f9",
     "event-60b8ba53b4fa8824",
     "event-60c327b5f7847a70",
@@ -992,6 +1015,7 @@
     "event-6c2fdc545da6d9bf",
     "event-6d10d425e55daa3d",
     "event-6d1eb5d720797962",
+    "event-6daaa67c75a1572f",
     "event-6f88f282f66a3ce2",
     "event-6f923fd9f8672100",
     "event-70169ea9c53dd015",
@@ -1013,6 +1037,7 @@
     "event-7a973e59eca14ea2",
     "event-7b48528b48e371e5",
     "event-7bfb13d84c2ff52c",
+    "event-7c9d7d987c84b2e9",
     "event-7ccf5d4bf492c50d",
     "event-7e4eadcc57a66ba4",
     "event-7e57d19efc967c12",
@@ -1059,6 +1084,7 @@
     "event-8c57afa36f804e75",
     "event-8d9185411304d857",
     "event-8de4a11b5165fbb2",
+    "event-8ded0ddc40d0c842",
     "event-8e2c52035847607f",
     "event-8e3d082d5d96cf22",
     "event-8ef6b9a2b971faad",
@@ -1069,7 +1095,9 @@
     "event-925f91d21ee40f0c",
     "event-9293e98a794e5454",
     "event-929ddf0f51e55c11",
+    "event-92f98a41ae8ddd73",
     "event-9352921817361b01",
+    "event-935cd3d5ef245ba1",
     "event-93685f6448080844",
     "event-94690a8eb61425f4",
     "event-94a0f105e0f34532",
@@ -1132,6 +1160,7 @@
     "event-a9d770fca7d5b3fe",
     "event-aa575abbc164e24b",
     "event-aad16d263b83fbea",
+    "event-aadedc281bdaeed3",
     "event-ab745cededd3936c",
     "event-ab9ae208a4f84117",
     "event-abc966f74c33f374",
@@ -1144,6 +1173,7 @@
     "event-adeed17d81758500",
     "event-ae2f1fe54fd1cfa4",
     "event-b0491a92efb71906",
+    "event-b0f4200c8ebe52f5",
     "event-b13e06f7f343af4c",
     "event-b167c63e25f68788",
     "event-b16c892054356dce",
@@ -1169,6 +1199,7 @@
     "event-ba21f31f98cca1f0",
     "event-ba499781bd09bd63",
     "event-baad0e2a3b4651c0",
+    "event-bc13dfec21da3ed6",
     "event-bc192290bda06745",
     "event-bc4a9e4aeaa30e6a",
     "event-bc6ad216233386e4",
@@ -1185,6 +1216,7 @@
     "event-c165f182ffec6a06",
     "event-c19408331709a86d",
     "event-c1b07137847d7293",
+    "event-c1f2101e5fe66917",
     "event-c2176144bec8d765",
     "event-c2570a07207555b6",
     "event-c3051b8af49dfeb0",
@@ -1204,6 +1236,7 @@
     "event-cc7ed32a72cae28d",
     "event-ccc70ba070fda8a7",
     "event-cd4bcb12d691364d",
+    "event-cd8e3005cdd61d0d",
     "event-cda63afe9d66de3c",
     "event-cdc4144c19e25999",
     "event-cf0195a5037f6472",
@@ -1234,6 +1267,7 @@
     "event-db3702b8bf7741a3",
     "event-dc05bb7333e0ae44",
     "event-dc222fb86b9d0b4d",
+    "event-dc268127f466b16f",
     "event-dc2dec4a66c36dfa",
     "event-dd8981321043b217",
     "event-de27a9b75a8bdd48",
@@ -1260,6 +1294,7 @@
     "event-eb2a9d310ce0ffe1",
     "event-ebefeafe09e15c2d",
     "event-ecba445dde911fc4",
+    "event-ed8a8dbb671308b8",
     "event-ee6c8b6dbe99a227",
     "event-ee739006bcb56c22",
     "event-eea7da5394169cda",
@@ -1267,6 +1302,7 @@
     "event-ef271c0ae6449df5",
     "event-f0394baf019e8a9a",
     "event-f0798af65c8ff376",
+    "event-f0cd4c3b92d4a135",
     "event-f1f763e230f2e015",
     "event-f20cf4eeef27f9e8",
     "event-f354e164c9e75a94",
@@ -1278,11 +1314,13 @@
     "event-f5fd53fa13d49122",
     "event-f678d05a0c8d8a0a",
     "event-f6cf06d88b89eb1d",
+    "event-f76ab8e678b46487",
     "event-f7d5be2d57011b10",
     "event-f808a6ea3caee79d",
     "event-f824390b0b104945",
     "event-f894c24db766d335",
     "event-f8ccd4ee7c1e3281",
+    "event-f992bc05b85d74ed",
     "event-f9f716e31ca835c6",
     "event-fa44b15bd8247274",
     "event-fa6f7941b56e51cd",

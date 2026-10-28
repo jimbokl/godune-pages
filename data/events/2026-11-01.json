@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -87,8 +87,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -98,7 +98,7 @@
             "eventduration": "45",
             "ticketcount": "50",
             "timesortnum": ".45833",
-            "daysortnum": "9"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -144,7 +144,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
-      "verified_at": "2026-10-27T02:02:30Z",
+      "verified_at": "2026-10-28T02:02:38Z",
       "observations": [
         {
           "verified_at": "2026-10-19T19:16:45Z",
@@ -212,6 +212,14 @@
           "verified_at": "2026-10-27T02:02:30Z",
           "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
           "sha256": "d454e3571af3ebd33fb2c5a4c0122a17115a4e46a539db31eca29bfb153ac59e",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:38Z",
+          "source_url": "https://yantarholl.ru/afisha/shou-illyuzionista-aleksandra-prakhova%2001%2011%2012%2000/",
+          "sha256": "6ee5339e30475aad3e529ff0f6479c0020aa2f45583d75a214c73eacf862194b",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
@@ -295,8 +303,8 @@
         "calendar_date": "2026-11-01",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -306,7 +314,7 @@
             "eventduration": "45",
             "ticketcount": "68",
             "timesortnum": ".5",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -352,7 +360,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
-      "verified_at": "2026-10-27T02:02:21Z",
+      "verified_at": "2026-10-28T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:09Z",
@@ -455,6 +463,14 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/genzel-i-gretel/",
+          "sha256": "859f826108a9c46b25d9a2475fa0eebcaa0b222756e005959eb7204786ce5372",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
         }
       ],
       "evidence": {
@@ -537,8 +553,8 @@
         "calendar_date": "2026-11-01",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10031",
           "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
           "session": {
@@ -546,9 +562,9 @@
             "eventday": "01.11.2026",
             "eventtime": "13:00",
             "eventduration": "105",
-            "ticketcount": "40",
+            "ticketcount": "34",
             "timesortnum": ".54167",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -617,13 +633,13 @@
           "status": "facility",
           "quote": "Она начинается с органного мини-концерта в Соборе",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10069",
           "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
           "session": {
@@ -631,9 +647,9 @@
             "eventday": "01.11.2026",
             "eventtime": "14:00",
             "eventduration": "180",
-            "ticketcount": "23",
+            "ticketcount": "25",
             "timesortnum": ".58333",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -700,8 +716,8 @@
         "calendar_date": "2026-11-01",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -709,17 +725,18 @@
             "eventday": "01.11.2026",
             "eventtime": "14:00",
             "eventduration": "45",
-            "ticketcount": "1171",
+            "ticketcount": "1154",
             "timesortnum": ".58333",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -794,7 +811,7 @@
       "ends": null,
       "kind": "Экскурсия",
       "description": "«В поисках сокровищ», интерактивная экскурсия на НИС «Витязь» – вас ждет море приключений, захватывающие игры и викторины. Найдём и соберем сокровища научно-исследовательского судна «Витязь» в его лабораториях и узнаем, какими были «искатели счастья» на новой выставке музея.Билеты доступны на сайте музея в разделе «КУПИТЬ БИЛЕТ».До встречи в Музее Мирового океана! Сбор в экспозиционном корпусе «Глубина», набережная Петра Великого, 1. Наличие билетов на этот сеанс уточните у музея.",
-      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-27: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
+      "admission": "Наличие билетов уточните у организатора · 6+; тарифы по данным 2026-10-23: Дети до 14 лет — 500 ₽ (на 1 человека), Посетители старше 14 лет — 800 ₽ (на 1 человека), Взрослый + 1 ребенок — 1300 ₽ (на 2 человека)",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -817,7 +834,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
-      "verified_at": "2026-10-27T05:20:28.544511+00:00",
+      "verified_at": "2026-10-28T02:04:26Z",
       "source_identity": "programme:47793373f55d88422ebe6b5f",
       "source_scope": "programme",
       "observations": [
@@ -825,6 +842,14 @@
           "verified_at": "2026-10-27T05:20:28.544511+00:00",
           "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
           "sha256": "0a47f91532daf394b77c76c91f2c7fa12553efb38b266798265fec0faf17f589",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T16:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:04:26Z",
+          "source_url": "https://world-ocean.ru/events/osennyaya-neshkola-v-muzee-mirovogo-okeana",
+          "sha256": "0a26c02525383dfcee728cf5ec10b6d21f08a3bce764341a05851292dddf1052",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T16:00:00+02:00"
@@ -838,8 +863,8 @@
           "status": "facility",
           "quote": "Место встречи: экспозиционный корпус «Глубина» (наб. Петра Великого, 1)",
           "source_url": "https://tickets.world-ocean.ru/api/no-scheme",
-          "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
-          "fetched_at": "2026-10-27T05:21:45.613585+00:00"
+          "sha256": "4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff",
+          "fetched_at": "2026-10-23T06:32:39Z"
         },
         "city_refs": [
           {
@@ -865,25 +890,22 @@
             "payload": {
               "hash": "BEECD907EFC163862728DC9D8A10ABAE841A0A8E"
             },
-            "fetched_at": "2026-10-27T05:21:45.613585+00:00",
-            "status": 200,
-            "final_url": "https://tickets.world-ocean.ru/api/no-scheme",
-            "sha256": "deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c",
-            "bytes": 55424,
-            "private_capture": "runtime/events-refresh/cache/sources/deb9c94ee8fc0a97ebb48ec38a8a2673f47dcb229a67bfba1de3ee80e9e25f4c.json",
             "http_status": 200,
-            "checked_at": "2026-10-27",
-            "captured_at": "2026-10-27T05:21:45.613585+00:00"
+            "sha256": "4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff",
+            "checked_at": "2026-10-23",
+            "fetched_at": "2026-10-23T06:32:39Z",
+            "captured_at": "2026-10-23T06:32:39.358628+00:00",
+            "private_capture": "runtime/events-refresh/cache/sources/4abf57d2762fcb50d0291e9cd4f33e39c5d6b7126e6947e8a7b20aee406db2ff.json"
           }
         ],
         "meeting_scope": "Meeting point only; the ticket programme separately names the Historic Fleet embankment as the activity venue.",
         "availability_observation": {
-          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "captured_at": "2026-10-23T06:32:39.358628+00:00",
           "selectable_in_captured_calendar": true,
           "meaning": "A dated observation; absence does not establish cancellation or sold out, presence does not guarantee a current ticket."
         },
         "tariff_observation": {
-          "captured_at": "2026-10-27T05:21:45.613585+00:00",
+          "captured_at": "2026-10-23T06:32:39.358628+00:00",
           "date": "2026-11-01",
           "starts": "16:00",
           "tariffs": [
@@ -975,13 +997,13 @@
           "status": "facility",
           "quote": "Ticket event 9545 seatroot_id=812",
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z"
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9545",
           "hash_id": "3BECAF7E7C0B8DEAA8C70D0243BBC6E7F2A46FA6",
           "session": {
@@ -991,7 +1013,7 @@
             "eventduration": "90",
             "ticketcount": "20",
             "timesortnum": ".66667",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -1058,8 +1080,8 @@
         "calendar_date": "2026-11-01",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -1069,7 +1091,7 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".70833",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
         }
@@ -1110,7 +1132,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/844/",
-      "verified_at": "2026-10-27T02:02:49Z",
+      "verified_at": "2026-10-28T02:02:56Z",
       "source_identity": "programme:68e8c80dbc4703f395ac8b1e",
       "source_scope": "programme",
       "observations": [
@@ -1121,11 +1143,19 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T17:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:56Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/844/",
+          "sha256": "dbc87f44da3f93f20805062249699c2e7599ea3708188f119bfa3c0c24cb7af1",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T17:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "listing_sha256": "a5be6766aa903ab400f7202adf7ed8f5b076a5b9ea00b8b395b7d57e6777ea9b",
         "card_quote": "Купить билетПРОШЛЫЕ ЖИЗНИ (18+)Скоро 1 ноября в 17:00 Кинозал Замужняя Нора встречает друга, которого любила в детстве. Тонкая драма с двумя номинациями на «Оскар»",
         "explicit_date": "1 НОЯБРЯ 2026 17:00",
         "programme_occurrences": 1,
@@ -1177,7 +1207,7 @@
         "kind": "exact"
       },
       "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
-      "verified_at": "2026-10-27T02:02:22Z",
+      "verified_at": "2026-10-28T02:02:29Z",
       "observations": [
         {
           "verified_at": "2026-10-18T02:31:06Z",
@@ -1272,6 +1302,14 @@
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:29Z",
+          "source_url": "https://filarmonia39.ru/afisha/ot-bakha-do-dzhaza-organ-i-saksofon/",
+          "sha256": "61fc1ea7e200fe67e5dc8ac79e35c8c1d3b2a5326fbd54a0a9b48e7c4d3028f3",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
         }
       ],
       "evidence": {
@@ -1328,7 +1366,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-27T02:02:34Z",
+      "verified_at": "2026-10-28T02:02:41Z",
       "source_identity": "programme:d80ed02026213133a0be7b98",
       "source_scope": "programme",
       "observations": [
@@ -1376,6 +1414,14 @@
           "verified_at": "2026-10-27T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T18:00:00+02:00"
@@ -1453,8 +1499,8 @@
         "calendar_date": "2026-11-01",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -1464,15 +1510,16 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".75",
-            "daysortnum": "10"
+            "daysortnum": "4"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -1514,7 +1561,7 @@
         "kind": "from"
       },
       "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
-      "verified_at": "2026-10-27T02:02:29Z",
+      "verified_at": "2026-10-28T02:02:37Z",
       "observations": [
         {
           "verified_at": "2026-10-17T14:04:12Z",
@@ -1614,6 +1661,14 @@
           "verified_at": "2026-10-27T02:02:29Z",
           "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
           "sha256": "e5d13b0e6bcb9d68e4d0bc47184f1ae2d6db8ab3729efbc9342fb23a407289bd",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T20:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:37Z",
+          "source_url": "https://yantarholl.ru/afisha/delfin-novyy-albom-i-tur-bolshoy-solnyy-kontsert-v-kaliningrade/",
+          "sha256": "b9bd4ac3ab811730110686f0e465a5b4a6ec17d701f730576813c9459e30b2db",
           "status": "scheduled",
           "date": "2026-11-01",
           "start_time": "2026-11-01T20:00:00+02:00"

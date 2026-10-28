@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "date": "2026-11-07",
   "coverage": {
     "status": "verified_partial",
@@ -83,8 +83,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -94,7 +94,7 @@
             "eventduration": "45",
             "ticketcount": "50",
             "timesortnum": ".45833",
-            "daysortnum": "15"
+            "daysortnum": "10"
           },
           "route_date_matches": true
         }
@@ -161,8 +161,8 @@
         "calendar_date": "2026-11-07",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -172,7 +172,7 @@
             "eventduration": "45",
             "ticketcount": "75",
             "timesortnum": ".5",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
         }
@@ -241,13 +241,13 @@
           "status": "cashdesk",
           "quote": "Экскурсия стартует у кассы на Соборной площади",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "11474",
           "hash_id": "66652FE0E1FE3CE6F5114582F6C82BF5CAD45E8E",
           "session": {
@@ -257,7 +257,7 @@
             "eventduration": "105",
             "ticketcount": "30",
             "timesortnum": ".52083",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": false
         }
@@ -324,8 +324,8 @@
         "calendar_date": "2026-11-07",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10031",
           "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
           "session": {
@@ -333,9 +333,9 @@
             "eventday": "07.11.2026",
             "eventtime": "13:00",
             "eventduration": "105",
-            "ticketcount": "40",
+            "ticketcount": "38",
             "timesortnum": ".54167",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
         }
@@ -404,13 +404,13 @@
           "status": "facility",
           "quote": "Она начинается с органного мини-концерта в Соборе",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10069",
           "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
           "session": {
@@ -420,7 +420,7 @@
             "eventduration": "180",
             "ticketcount": "25",
             "timesortnum": ".58333",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
         }
@@ -487,8 +487,8 @@
         "calendar_date": "2026-11-07",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -496,17 +496,18 @@
             "eventday": "07.11.2026",
             "eventtime": "14:00",
             "eventduration": "45",
-            "ticketcount": "1189",
+            "ticketcount": "1181",
             "timesortnum": ".58333",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -543,7 +544,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-27T02:02:34Z",
+      "verified_at": "2026-10-28T02:02:41Z",
       "source_identity": "programme:9d911772966c1e38e27883d0",
       "source_scope": "programme",
       "observations": [
@@ -591,6 +592,14 @@
           "verified_at": "2026-10-27T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T14:30:00+02:00"
@@ -729,8 +738,8 @@
         "calendar_date": "2026-11-07",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -740,7 +749,7 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".70833",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
         }
@@ -781,7 +790,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/845/",
-      "verified_at": "2026-10-27T02:02:51Z",
+      "verified_at": "2026-10-28T02:02:58Z",
       "source_identity": "programme:239f3b0a20afabc73c72034c",
       "source_scope": "programme",
       "observations": [
@@ -792,11 +801,19 @@
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T17:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:58Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/845/",
+          "sha256": "3391af2f6d053204f53d2a0dcf7f63e09904fa436acae3f14e6d30b8e849eaca",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T17:30:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "listing_sha256": "a5be6766aa903ab400f7202adf7ed8f5b076a5b9ea00b8b395b7d57e6777ea9b",
         "card_quote": "Купить билетМУЖЧИНА И ЖЕНЩИНА (16+)Скоро 7 ноября в 17:30 Кинозал Классика французского кино, романтическая драма Клода Лелуша выйдет в к 60-летию фильма в 4К-реставрации",
         "explicit_date": "7 НОЯБРЯ 2026 17:30",
         "programme_occurrences": 1,
@@ -848,7 +865,7 @@
         "kind": "range"
       },
       "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
-      "verified_at": "2026-10-27T02:02:23Z",
+      "verified_at": "2026-10-28T02:02:30Z",
       "observations": [
         {
           "verified_at": "2026-10-22T02:02:16Z",
@@ -892,6 +909,14 @@
           "verified_at": "2026-10-27T02:02:23Z",
           "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
           "sha256": "ef75a6f2d238f788af5ec143b0c2bf7042e161150ce87e1fc477a6a5acba7c06",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:30Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzykalnaya-sbornaya-rossii-simfonicheskiy-kontsert-20261107/",
+          "sha256": "dffe882ffba574df4f3ffbe753a6c5f531f234eb7147d47121050e4f2790ef6f",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -951,7 +976,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-27T02:02:34Z",
+      "verified_at": "2026-10-28T02:02:41Z",
       "source_identity": "programme:3398a8720d934dfaafe005ba",
       "source_scope": "programme",
       "observations": [
@@ -999,6 +1024,14 @@
           "verified_at": "2026-10-27T02:02:34Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -1076,8 +1109,8 @@
         "calendar_date": "2026-11-07",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -1087,15 +1120,16 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".75",
-            "daysortnum": "16"
+            "daysortnum": "10"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     }
   ],

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "56d178b3cd178b3888e95dc8100edfd7204513bb71408c83931f4bcee8b62602",
-  "generated_at": "2026-10-27T19:49:18.387Z",
-  "updated_at": "2026-10-27T05:31:43Z",
+  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
+  "generated_at": "2026-10-28T02:08:03.270Z",
+  "updated_at": "2026-10-28T02:07:14.132409Z",
   "date": "2026-11-03",
   "coverage": {
     "status": "verified_partial",
@@ -82,8 +82,8 @@
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "8edef1c2d655bb858b97d69c0822665b8059d5b3b260d4c8e9dbc767988fc901",
-          "fetched_at": "2026-10-23T02:03:01Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9769",
           "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
           "session": {
@@ -93,7 +93,7 @@
             "eventduration": "45",
             "ticketcount": "48",
             "timesortnum": ".45833",
-            "daysortnum": "11"
+            "daysortnum": "6"
           },
           "route_date_matches": true
         }
@@ -160,8 +160,8 @@
         "calendar_date": "2026-11-03",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -171,7 +171,7 @@
             "eventduration": "45",
             "ticketcount": "75",
             "timesortnum": ".5",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
         }
@@ -238,8 +238,8 @@
         "calendar_date": "2026-11-03",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10031",
           "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
           "session": {
@@ -249,7 +249,7 @@
             "eventduration": "105",
             "ticketcount": "38",
             "timesortnum": ".54167",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
         }
@@ -318,13 +318,13 @@
           "status": "facility",
           "quote": "Она начинается с органного мини-концерта в Соборе",
           "source_url": "https://www.sobor39.ru/events/excursions/author/",
-          "sha256": "fc7049c7e8de7eed020c82f639df01e42f6afa7bf0b6d057725d75fa55ccf1ae",
-          "fetched_at": "2026-10-22T02:02:52Z"
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
         },
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "10069",
           "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
           "session": {
@@ -334,7 +334,7 @@
             "eventduration": "180",
             "ticketcount": "25",
             "timesortnum": ".58333",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
         }
@@ -401,8 +401,8 @@
         "calendar_date": "2026-11-03",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -410,17 +410,18 @@
             "eventday": "03.11.2026",
             "eventtime": "14:00",
             "eventduration": "45",
-            "ticketcount": "1190",
+            "ticketcount": "1179",
             "timesortnum": ".58333",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -544,8 +545,8 @@
         "calendar_date": "2026-11-03",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9559",
           "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
           "session": {
@@ -555,7 +556,7 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".70833",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
         }
@@ -622,8 +623,8 @@
         "calendar_date": "2026-11-03",
         "ticket_calendar": {
           "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
-          "sha256": "734b7dcd1553da5d82e9ea83a7e36fbe4b929d02ee67ceffbec0f3c2f227d4dd",
-          "fetched_at": "2026-10-22T02:02:49Z",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
           "event_id": "9539",
           "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
           "session": {
@@ -633,15 +634,16 @@
             "eventduration": "45",
             "ticketcount": "0",
             "timesortnum": ".75",
-            "daysortnum": "12"
+            "daysortnum": "6"
           },
           "route_date_matches": true
-        }
+        },
+        "duration": "45 мин"
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
       }
     },
     {
@@ -678,7 +680,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
-      "verified_at": "2026-10-27T02:02:50Z",
+      "verified_at": "2026-10-28T02:02:56Z",
       "source_identity": "programme:d6f459c701abbda80110f90c",
       "source_scope": "programme",
       "observations": [
@@ -729,13 +731,23 @@
           "status": "scheduled",
           "date": "2026-11-03",
           "start_time": "2026-11-03T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:56Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
+          "sha256": "f6772a7e58f64eeddb23f9afb37a674134ef2b3eeb599799a3cf2641d0d85a66",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T18:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "listing_sha256": "a5be6766aa903ab400f7202adf7ed8f5b076a5b9ea00b8b395b7d57e6777ea9b",
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ - 2026 (12+)Скоро 3 ноября в 18:00 Атриум Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
-        "explicit_date": "3 НОЯБРЯ 2026 18:00"
+        "explicit_date": "3 НОЯБРЯ 2026 18:00",
+        "programme_occurrences": 1,
+        "kind_quote": "НОЧЬ ИСКУССТВ - 2026"
       },
       "duration_estimate": {
         "minutes": 120,
@@ -777,7 +789,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/837/",
-      "verified_at": "2026-10-27T02:02:50Z",
+      "verified_at": "2026-10-28T02:02:57Z",
       "source_identity": "programme:7b4e2d34c46576ffe36e8f9c",
       "source_scope": "programme",
       "observations": [
@@ -828,13 +840,23 @@
           "status": "scheduled",
           "date": "2026-11-03",
           "start_time": "2026-11-03T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:57Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/837/",
+          "sha256": "fe01cceadd0dea635bbccde4c69a9032b8785b72405071f044c5d5ec729b5807",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T19:00:00+02:00"
         }
       ],
       "evidence": {
         "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
-        "listing_sha256": "df92c043afa3325b473d0e3b5c62f71010856446bc6d02170137b68f5cfabc05",
+        "listing_sha256": "a5be6766aa903ab400f7202adf7ed8f5b076a5b9ea00b8b395b7d57e6777ea9b",
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ. КОНЦЕРТ «ЗВУЧАЩИЕ КАРТИНЫ» (0+)Скоро 3 ноября в 19:00 Атриум Центральное событие Всероссийской акции «Ночь искусств». Музыкально-художественный проект является результатом совместной работы трех институций: Государственной Третьяковской галереи, Калининградского областного оркестра русских народных инструментов и Российского государственного института сценических искусств (РГИСИ)",
-        "explicit_date": "3 НОЯБРЯ 2026 19:00"
+        "explicit_date": "3 НОЯБРЯ 2026 19:00",
+        "programme_occurrences": 1,
+        "kind_quote": "НОЧЬ ИСКУССТВ. КОНЦЕРТ «ЗВУЧАЩИЕ КАРТИНЫ»"
       },
       "duration_estimate": {
         "minutes": 120,
