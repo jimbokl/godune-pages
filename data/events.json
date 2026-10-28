@@ -15954,11 +15954,11 @@
       "status": "scheduled",
       "source": "event-source-ceeadb1f19fac8a9",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -20820,6 +20820,81 @@
         "minutes": 60,
         "basis": "published_duration",
         "label": "1 ч 0 мин"
+      }
+    },
+    {
+      "id": "event-fe15c13321bfd8ea",
+      "title": "Детский органный концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-01",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Детский органный концерт",
+      "admission": "Билеты только в кассе Собора · наличие билетов уточняется",
+      "price": 100,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-199b598823aebe24",
+      "image": {
+        "src": "assets/editorial/events-2026-10-28/event-cathedral-children-organ-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-cathedral-children-organ-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Редакционная иллюстрация: органные клавиши и трубы в образной композиции для детского концерта",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 100,
+        "max": 100,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-01",
+      "verified_at": "2026-10-28T02:03:20Z",
+      "source_identity": "programme:f7f16dfd4b7b3da677fa301b",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-28T02:03:20Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-01",
+          "sha256": "b2a0bcac054302671d7a77dbe8356db428377eba4ce6f708c6bf28e2fc205e67",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Дневной концертДетский органный концерт100 ₽",
+        "explicit_ticket_occurrence_urls": [],
+        "calendar_date": "2026-11-01",
+        "cash_programme": {
+          "source_url": "https://sobor39.ru/events/concerts/for_childrens/2026-11-01",
+          "sha256": "7d5d88cea00652a9e97ad8168b8bb8a2f1be56f78956d6474d625f3afbd4c055",
+          "fetched_at": "2026-10-28T05:17:46.347765+00:00",
+          "private_capture": "runtime/events-refresh/cache/sources/7d5d88cea00652a9e97ad8168b8bb8a2f1be56f78956d6474d625f3afbd4c055.html",
+          "quote": "Купить билеты можно только в кассе Собора на острове Канта.",
+          "scope": "Linked programme purchase method; dated calendar supplies session; ticket availability and exact end unknown"
+        },
+        "programme_url": "https://sobor39.ru/events/concerts/for_childrens/2026-11-01"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
       }
     },
     {
@@ -26648,12 +26723,15 @@
       "status": "scheduled",
       "source": "event-source-f9eb4005a625cb21",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-organ-classics-romanticism-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-organ-classics-romanticism-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация: органные трубы и клавиши в мягком свете",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
@@ -29473,7 +29551,7 @@
       "date": "2026-11-08",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц",
       "admission": "По билетам · 12+",
       "price": null,
@@ -29481,18 +29559,21 @@
       "status": "scheduled",
       "source": "event-source-c2a77ebc3a9f4b19",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-beethoven-seven-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-beethoven-seven-screening-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к экранному показу: силуэт танцора и каменные ступени",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-08T18:00:00+02:00",
       "end_time": null,
@@ -29518,7 +29599,14 @@
         "explicit_date": "8 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 43 минуты",
-        "kind_quote": "КУРЕНТЗИС И САША ВАЛЬЦ: БЕТХОВЕН СИМФОНИЯ № 7"
+        "kind_quote": "Жанр: концерт",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Курентзис и Саша Вальц: Бетховен Симфония № 7», 12+ (Греция, 2021).",
+          "Жанр: концерт",
+          "Язык: на языке оригинала с русскими субтитрами",
+          "Продолжительность: 43 минуты"
+        ]
       },
       "duration_estimate": {
         "minutes": 43,
@@ -31104,12 +31192,15 @@
       "status": "scheduled",
       "source": "event-source-089ff28f9dc5d1e5",
       "image": {
-        "src": "assets/editorial/events-sea-and-space-960.webp",
-        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-summer-will-be-shared-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-summer-will-be-shared-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Морской берег в вечернем свете",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к кинопоказу: два силуэта на морском берегу",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
@@ -32551,11 +32642,11 @@
       "status": "scheduled",
       "source": "event-source-c65ff6149aac8144",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -32805,11 +32896,11 @@
       "status": "scheduled",
       "source": "event-source-3c032c18193411ad",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Скрипка и ноты в камерном зале",
         "kind": "illustration"
       },
       "poi": null,
@@ -34843,7 +34934,7 @@
       "date": "2026-11-15",
       "starts": "11:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Анимационный образовательный проект, знакомящий детей с биографиями и творчеством великих композиторов",
       "admission": "По билетам · 6+",
       "price": null,
@@ -34851,18 +34942,21 @@
       "status": "scheduled",
       "source": "event-source-0ae704d0a879a132",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-old-piano-tales-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-old-piano-tales-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация: старое пианино и фантазийные бумажные фигурки",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T11:00:00+02:00",
       "end_time": null,
@@ -34888,7 +34982,14 @@
         "explicit_date": "15 НОЯБРЯ 2026 11:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 1 час 18 минут",
-        "kind_quote": "СКАЗКИ СТАРОГО ПИАНИНО"
+        "kind_quote": "Жанр: драма",
+        "format_basis": "Explicit screen format",
+        "format_quotes": [
+          "Кинопоказ части альманаха авторской анимационной студии МИР – 6 серий по 13 минут:",
+          "Жанр: драма",
+          "Язык: русский язык",
+          "Продолжительность: 1 час 18 минут"
+        ]
       },
       "duration_estimate": {
         "minutes": 78,
@@ -36014,7 +36115,7 @@
       "date": "2026-11-15",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "«Ну кто ж из нас на палубе большой не падал…» Свобода и буря в стиле хип-хоп",
       "admission": "По билетам · 12+",
       "price": null,
@@ -36022,18 +36123,21 @@
       "status": "scheduled",
       "source": "event-source-8e0225311d684819",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-merzouki-zephyr-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-merzouki-zephyr-screening-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к экранному показу балета: танцор, парус и морской ветер",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T18:00:00+02:00",
       "end_time": null,
@@ -36059,7 +36163,14 @@
         "explicit_date": "15 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 74 минуты",
-        "kind_quote": "МУРАД МЕРЗУКИ: ЗЕФИР"
+        "kind_quote": "Жанр: балет",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Мурад Мерзуки: Зефир», 12+ (Франция, 2021).",
+          "Жанр: балет",
+          "Язык: нет",
+          "Продолжительность: 74 минуты"
+        ]
       },
       "duration_estimate": {
         "minutes": 74,
@@ -45559,11 +45670,11 @@
       "status": "scheduled",
       "source": "event-source-be4648fa6abaedb0",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -47697,12 +47808,15 @@
       "status": "scheduled",
       "source": "event-source-c67508a5b02f3128",
       "image": {
-        "src": "assets/editorial/events-sea-and-space-960.webp",
-        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-sound-of-falling-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-sound-of-falling-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Морской берег в вечернем свете",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к кинопоказу: старый дом и свет в четырёх окнах",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
@@ -49018,7 +49132,7 @@
       "date": "2026-11-29",
       "starts": "17:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Вишнетерапия на сцене театра Пушкина: Виктория Исакова и Александр Петров в чеховской комедии катастроф",
       "admission": "По билетам · 16+",
       "price": null,
@@ -49026,18 +49140,21 @@
       "status": "scheduled",
       "source": "event-source-ecddca2e4ca921be",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-cherry-orchard-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-cherry-orchard-screening-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к экранному показу: стулья, чемодан и ветви вишни",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-29T17:00:00+02:00",
       "end_time": null,
@@ -49062,12 +49179,20 @@
         "card_quote": "Купить билетВИШНЕВЫЙ САД (16+)Скоро 29 ноября в 17:00 Кинозал Вишнетерапия на сцене театра Пушкина: Виктория Исакова и Александр Петров в чеховской комедии катастроф",
         "explicit_date": "29 НОЯБРЯ 2026 17:00",
         "programme_occurrences": 1,
-        "kind_quote": "ВИШНЕВЫЙ САД"
+        "duration": "Хронометраж: 140 минут",
+        "kind_quote": "Жанр: спектакль",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Вишнёвый сад», 16+ (Россия, 2024).",
+          "Жанр: спектакль",
+          "Язык: русский язык",
+          "Хронометраж: 140 минут"
+        ]
       },
       "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
+        "minutes": 140,
+        "basis": "published_duration",
+        "label": "140 минут"
       }
     },
     {
@@ -51880,11 +52005,11 @@
       "status": "scheduled",
       "source": "event-source-9530395ba3b1aef5",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -52569,11 +52694,11 @@
       "status": "scheduled",
       "source": "event-source-4b5d66733b4b4b9e",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -56402,11 +56527,11 @@
       "status": "scheduled",
       "source": "event-source-40b9b9b684283458",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
@@ -57991,7 +58116,7 @@
       }
     }
   ],
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "venues": {
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",

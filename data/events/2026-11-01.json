@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
-  "generated_at": "2026-10-28T02:08:03.270Z",
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-28T06:30:51.491Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "date": "2026-11-01",
   "coverage": {
     "status": "verified_partial",
@@ -491,6 +491,81 @@
         "minutes": 60,
         "basis": "published_duration",
         "label": "1 ч 0 мин"
+      }
+    },
+    {
+      "id": "event-fe15c13321bfd8ea",
+      "title": "Детский органный концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-01",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Детский органный концерт",
+      "admission": "Билеты только в кассе Собора · наличие билетов уточняется",
+      "price": 100,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-199b598823aebe24",
+      "image": {
+        "src": "assets/editorial/events-2026-10-28/event-cathedral-children-organ-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-cathedral-children-organ-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Редакционная иллюстрация: органные клавиши и трубы в образной композиции для детского концерта",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-01T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 100,
+        "max": 100,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-01",
+      "verified_at": "2026-10-28T02:03:20Z",
+      "source_identity": "programme:f7f16dfd4b7b3da677fa301b",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-28T02:03:20Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-01",
+          "sha256": "b2a0bcac054302671d7a77dbe8356db428377eba4ce6f708c6bf28e2fc205e67",
+          "status": "scheduled",
+          "date": "2026-11-01",
+          "start_time": "2026-11-01T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Дневной концертДетский органный концерт100 ₽",
+        "explicit_ticket_occurrence_urls": [],
+        "calendar_date": "2026-11-01",
+        "cash_programme": {
+          "source_url": "https://sobor39.ru/events/concerts/for_childrens/2026-11-01",
+          "sha256": "7d5d88cea00652a9e97ad8168b8bb8a2f1be56f78956d6474d625f3afbd4c055",
+          "fetched_at": "2026-10-28T05:17:46.347765+00:00",
+          "private_capture": "runtime/events-refresh/cache/sources/7d5d88cea00652a9e97ad8168b8bb8a2f1be56f78956d6474d625f3afbd4c055.html",
+          "quote": "Купить билеты можно только в кассе Собора на острове Канта.",
+          "scope": "Linked programme purchase method; dated calendar supplies session; ticket availability and exact end unknown"
+        },
+        "programme_url": "https://sobor39.ru/events/concerts/for_childrens/2026-11-01"
+      },
+      "duration_estimate": {
+        "minutes": 120,
+        "basis": "planning_assumption",
+        "label": "Концерт · около 2 часов"
       }
     },
     {

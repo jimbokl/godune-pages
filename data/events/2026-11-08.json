@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
-  "generated_at": "2026-10-28T02:08:03.270Z",
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-28T06:30:51.491Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "date": "2026-11-08",
   "coverage": {
     "status": "verified_partial",
@@ -1151,7 +1151,7 @@
       "date": "2026-11-08",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц",
       "admission": "По билетам · 12+",
       "price": null,
@@ -1159,18 +1159,21 @@
       "status": "scheduled",
       "source": "event-source-c2a77ebc3a9f4b19",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-beethoven-seven-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-beethoven-seven-screening-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к экранному показу: силуэт танцора и каменные ступени",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-08T18:00:00+02:00",
       "end_time": null,
@@ -1196,7 +1199,14 @@
         "explicit_date": "8 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 43 минуты",
-        "kind_quote": "КУРЕНТЗИС И САША ВАЛЬЦ: БЕТХОВЕН СИМФОНИЯ № 7"
+        "kind_quote": "Жанр: концерт",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Курентзис и Саша Вальц: Бетховен Симфония № 7», 12+ (Греция, 2021).",
+          "Жанр: концерт",
+          "Язык: на языке оригинала с русскими субтитрами",
+          "Продолжительность: 43 минуты"
+        ]
       },
       "duration_estimate": {
         "minutes": 43,

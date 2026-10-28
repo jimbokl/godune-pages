@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
-  "generated_at": "2026-10-28T02:08:03.270Z",
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-28T06:30:51.491Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "date": "2026-11-10",
   "coverage": {
     "status": "verified_partial",
@@ -770,12 +770,15 @@
       "status": "scheduled",
       "source": "event-source-089ff28f9dc5d1e5",
       "image": {
-        "src": "assets/editorial/events-sea-and-space-960.webp",
-        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-summer-will-be-shared-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-summer-will-be-shared-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Морской берег в вечернем свете",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к кинопоказу: два силуэта на морском берегу",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
-  "generated_at": "2026-10-28T02:08:03.270Z",
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-28T06:30:51.491Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "date": "2026-11-15",
   "coverage": {
     "status": "verified_partial",
@@ -28,7 +28,7 @@
       "date": "2026-11-15",
       "starts": "11:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "Анимационный образовательный проект, знакомящий детей с биографиями и творчеством великих композиторов",
       "admission": "По билетам · 6+",
       "price": null,
@@ -36,18 +36,21 @@
       "status": "scheduled",
       "source": "event-source-0ae704d0a879a132",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-old-piano-tales-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-old-piano-tales-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация: старое пианино и фантазийные бумажные фигурки",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T11:00:00+02:00",
       "end_time": null,
@@ -73,7 +76,14 @@
         "explicit_date": "15 НОЯБРЯ 2026 11:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 1 час 18 минут",
-        "kind_quote": "СКАЗКИ СТАРОГО ПИАНИНО"
+        "kind_quote": "Жанр: драма",
+        "format_basis": "Explicit screen format",
+        "format_quotes": [
+          "Кинопоказ части альманаха авторской анимационной студии МИР – 6 серий по 13 минут:",
+          "Жанр: драма",
+          "Язык: русский язык",
+          "Продолжительность: 1 час 18 минут"
+        ]
       },
       "duration_estimate": {
         "minutes": 78,
@@ -1199,7 +1209,7 @@
       "date": "2026-11-15",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
+      "kind": "Кинопоказ",
       "description": "«Ну кто ж из нас на палубе большой не падал…» Свобода и буря в стиле хип-хоп",
       "admission": "По билетам · 12+",
       "price": null,
@@ -1207,18 +1217,21 @@
       "status": "scheduled",
       "source": "event-source-8e0225311d684819",
       "image": {
-        "src": "assets/editorial/events-music-960.webp",
-        "src_small": "assets/editorial/events-music-480.webp",
+        "src": "assets/editorial/events-2026-10-28/event-merzouki-zephyr-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-merzouki-zephyr-screening-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Скрипка и ноты в камерном зале",
-        "kind": "illustration"
+        "alt": "Редакционная иллюстрация к экранному показу балета: танцор, парус и морской ветер",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
       },
       "poi": null,
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "cinema",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T18:00:00+02:00",
       "end_time": null,
@@ -1244,7 +1257,14 @@
         "explicit_date": "15 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 74 минуты",
-        "kind_quote": "МУРАД МЕРЗУКИ: ЗЕФИР"
+        "kind_quote": "Жанр: балет",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Мурад Мерзуки: Зефир», 12+ (Франция, 2021).",
+          "Жанр: балет",
+          "Язык: нет",
+          "Продолжительность: 74 минуты"
+        ]
       },
       "duration_estimate": {
         "minutes": 74,

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "c0fe6ceed19a9c07a5a4c17753cd06cd45c8d27f671934a76b294a9e5654e632",
-  "generated_at": "2026-10-28T02:08:03.270Z",
-  "updated_at": "2026-10-28T02:07:14.132409Z",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-28T06:30:51.491Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
   "date": "2026-10-29",
   "coverage": {
     "status": "verified_partial",
@@ -1023,11 +1023,11 @@
       "status": "scheduled",
       "source": "event-source-ceeadb1f19fac8a9",
       "image": {
-        "src": "assets/editorial/events-astronomy-960.webp",
-        "src_small": "assets/editorial/events-astronomy-480.webp",
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
         "width": 960,
         "height": 640,
-        "alt": "Телескоп и звёздный атлас",
+        "alt": "Морской берег в вечернем свете",
         "kind": "illustration"
       },
       "poi": null,
