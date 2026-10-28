@@ -76,7 +76,17 @@
   const normalize = s => s.toLocaleLowerCase('ru').replaceAll('ё', 'е').trim();
   let catalogLoader;
   function loadCatalog() {
-    catalogLoader ||= import(url('json-loader.mjs?v=2026101401')).then(({createJsonLoader})=>createJsonLoader(url('data/catalog.json')));
+    if (!catalogLoader) {
+      const catalogUrl = url('data/catalog.json');
+      // Start the shared request while the retry loader module is loading.
+      // Let that loader consume failures too, so its retry policy stays intact.
+      let firstRequest = fetch(catalogUrl, {cache:'no-cache'});
+      firstRequest.catch(()=>{});
+      catalogLoader = import(url('json-loader.mjs?v=2026101401')).then(({createJsonLoader})=>createJsonLoader(catalogUrl, {fetch:(...args)=>{
+        const request = firstRequest; firstRequest = null;
+        return request || fetch(...args);
+      }}));
+    }
     perfMark('catalog-start');
     return catalogLoader.then(load=>load()).then(data=>{perfMark('catalog-ready');return data;});
   }
@@ -412,7 +422,7 @@
     if ($('[data-fish-save]')) import(url('fish-walk.mjs?v=2026101714')).then(({initFishWalk})=>initFishWalk({workshop,base,catalog:data})).catch(()=>{ $('[data-fish-status]').textContent='Сохранение пока не открылось. Карточки остановок доступны ниже.'; });
     if ($('[data-weekend-layer]')) import(url('weekend-layer.mjs?v=2026101714')).then(({initWeekendLayer})=>initWeekendLayer({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-layer-status]').textContent='План пока не загрузился. Готовые прогулки доступны ниже.'; });
     if ($('[data-coastal-weekend]')) import(url('coastal-weekend.mjs?v=2026101714')).then(({initCoastalWeekend})=>initCoastalWeekend({workshop,base,catalog:data})).catch(()=>{ $('[data-weekend-status]').textContent='Сохранение пока не открылось. Прогулки и карточки мест доступны ниже.'; });
-    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026101707')).then(({initGastronomy}) => initGastronomy(base,workshop)).catch(() => {
+    if ($('#gastro-form')) import(url('gastronomy.mjs?v=2026102801')).then(({initGastronomy}) => initGastronomy(base,workshop,data)).catch(() => {
       $('#gastro-status').textContent = 'Сборка прогулки пока не загрузилась. Фотографии, меню и сохранение отдельных мест доступны ниже.';
     });
     if ($('#trip-weather')) import(url('live-weather.mjs?v=2026101305')).then(({initWeather}) => initWeather(base, workshop)).catch(() => {

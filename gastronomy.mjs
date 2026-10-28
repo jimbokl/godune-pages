@@ -87,14 +87,16 @@ export function saveTourDay(current,tour,food,settings) {
   Object.assign(day,{...(settings.name?{name:settings.name}:{}),date:prepared.date,places:[...prepared.places],schedule:structuredClone(prepared.schedule)});
   return {...next,date:prepared.date,month:prepared.month,places:[...prepared.places],schedule:structuredClone(prepared.schedule)};
 }
-export async function initGastronomy(base,workshop) {
+export async function initGastronomy(base,workshop,sharedCatalog) {
   const form=document.querySelector('#gastro-form');if(!form)return;
   const status=document.querySelector('#gastro-status'),results=document.querySelector('#gastro-results');
-  const [response,catalogResponse,wasmResponse]=await Promise.all([
-    fetch(new URL('data/gastronomy.json',base)),fetch(new URL('data/catalog.json',base)),fetch(new URL('assets/gastro.wasm?v=1',base))
+  const [response,catalog,wasmResponse]=await Promise.all([
+    fetch(new URL('data/gastronomy.json',base)),
+    sharedCatalog ?? fetch(new URL('data/catalog.json',base)).then(response=>{if(!response.ok)throw Error('food_engine');return response.json();}),
+    fetch(new URL('assets/gastro.wasm?v=1',base))
   ]);
-  if(!response.ok||!catalogResponse.ok||!wasmResponse.ok)throw Error('food_engine');
-  const [food,catalog,{instance}]=await Promise.all([response.json(),catalogResponse.json(),wasmResponse.arrayBuffer().then(b=>WebAssembly.instantiate(b))]);
+  if(!response.ok||!wasmResponse.ok)throw Error('food_engine');
+  const [food,{instance}]=await Promise.all([response.json(),wasmResponse.arrayBuffer().then(b=>WebAssembly.instantiate(b))]);
   const make=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
   const themes={all:'Вкусы города',fish:'Рыбная прогулка',baltic:'Балтика за столом',italian:'Итальянская остановка'};
   const state=workshop.getState();

@@ -1715,7 +1715,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2027-01-01",
+        "expires_on": "2027-01-26",
         "freshness": "current",
         "path": "/menus/0",
         "reason": "within_review_horizon",
@@ -1725,7 +1725,7 @@
           "kind": "place"
         },
         "ttl_days": 90,
-        "verified_at": "2026-10-03",
+        "verified_at": "2026-10-28",
         "visit_applicability": "unknown"
       },
       {
@@ -1805,7 +1805,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2027-01-01",
+        "expires_on": "2027-01-26",
         "freshness": "current",
         "path": "/menus/0",
         "reason": "within_review_horizon",
@@ -1815,7 +1815,7 @@
           "kind": "place"
         },
         "ttl_days": 90,
-        "verified_at": "2026-10-03",
+        "verified_at": "2026-10-28",
         "visit_applicability": "unknown"
       },
       {
@@ -1940,7 +1940,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2027-01-01",
+        "expires_on": "2027-01-26",
         "freshness": "current",
         "path": "/menus/0",
         "reason": "within_review_horizon",
@@ -1950,7 +1950,7 @@
           "kind": "place"
         },
         "ttl_days": 90,
-        "verified_at": "2026-10-03",
+        "verified_at": "2026-10-28",
         "visit_applicability": "unknown"
       },
       {
@@ -2060,7 +2060,7 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2027-01-01",
+        "expires_on": "2027-01-26",
         "freshness": "current",
         "path": "/menus/0",
         "reason": "within_review_horizon",
@@ -2070,7 +2070,7 @@
           "kind": "place"
         },
         "ttl_days": 90,
-        "verified_at": "2026-10-03",
+        "verified_at": "2026-10-28",
         "visit_applicability": "unknown"
       },
       {
@@ -12256,7 +12256,7 @@
       {
         "path": "/menus/0",
         "source": {
-          "checked_at": "2026-10-03",
+          "checked_at": "2026-10-28",
           "reference": "https://telegraph.rest/menu"
         },
         "status": "confirmed",
@@ -12601,7 +12601,7 @@
           "channel": "hall",
           "item_count": 56,
           "note": "Официальный каталог: две страницы; дата обновления не указана. Скумбрия и камбала — 390 ₽ за 100 г.",
-          "observed_at": "2026-10-03",
+          "observed_at": "2026-10-28",
           "source_name": "Телеграф — официальный сайт",
           "source_url": "https://telegraph.rest/menu",
           "updated_label": null
@@ -14337,7 +14337,7 @@
       {
         "path": "/menus/0",
         "source": {
-          "checked_at": "2026-10-03",
+          "checked_at": "2026-10-28",
           "reference": "https://2gis.ru/zelenogradsk/firm/5630028815430157/tab/prices"
         },
         "status": "confirmed",
@@ -14587,7 +14587,7 @@
           "channel": "unknown",
           "item_count": 42,
           "note": "Порции в карточке меню не указаны.",
-          "observed_at": "2026-10-03",
+          "observed_at": "2026-10-28",
           "source_name": "2ГИС",
           "source_url": "https://2gis.ru/zelenogradsk/firm/5630028815430157/tab/prices",
           "updated_label": "Обновлено 26 декабря 2025"
@@ -16321,7 +16321,7 @@
       {
         "path": "/menus/0",
         "source": {
-          "checked_at": "2026-10-03",
+          "checked_at": "2026-10-28",
           "reference": "https://gnezdo.cafe/#popup:menu1"
         },
         "status": "confirmed",
@@ -16666,7 +16666,7 @@
           "channel": "hall",
           "item_count": 53,
           "note": "Официальное меню рыбного гриля; дата обновления не указана.",
-          "observed_at": "2026-10-03",
+          "observed_at": "2026-10-28",
           "source_name": "Гнездо — официальный сайт, рыбный гриль",
           "source_url": "https://gnezdo.cafe/#popup:menu1",
           "updated_label": null
@@ -18420,7 +18420,7 @@
       {
         "path": "/menus/0",
         "source": {
-          "checked_at": "2026-10-03",
+          "checked_at": "2026-10-28",
           "reference": "https://2gis.ru/zelenogradsk/firm/70000001062435163/tab/prices"
         },
         "status": "confirmed",
@@ -18705,7 +18705,7 @@
           "channel": "unknown",
           "item_count": 45,
           "note": "В источнике повторены «Бенедикт классический» и «Бенедикт с лососем»; обе цены лососевого бенедикта сохранены. Порции не указаны.",
-          "observed_at": "2026-10-03",
+          "observed_at": "2026-10-28",
           "source_name": "2ГИС",
           "source_url": "https://2gis.ru/zelenogradsk/firm/70000001062435163/tab/prices",
           "updated_label": "Обновлено 26 июня 2026"
