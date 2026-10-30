@@ -59,7 +59,13 @@ export function menuPresetSelections(preset,data){
   if(!Number.isSafeInteger(item.quantity)||item.quantity<1)throw Error('invalid_menu_choice');
   if(typeof item.key!=='string'||!/^\d+:\d+:\d+$/.test(item.key))throw Error('menu_preset_item_missing');
   const [m,c,i]=item.key.split(':'),suffix=`/menus/${m}/categories/${c}/items/${i}`;
-  const matches=templates.filter(t=>t.source?.pointer?.endsWith(suffix));if(matches.length!==1)throw Error('menu_preset_item_missing');
+  // New presets bind a raw menu key to the exact current observation proof.
+  // Legacy raw presets retain their original pointer guard.
+  const proof=item.source;
+  const matches=proof?templates.filter(t=>t.menu_item_id===data.menu_keys?.[preset.venue]?.[item.key]
+   &&t.source?.document===proof.document&&t.source?.pointer===proof.pointer&&t.source?.sha256===proof.sha256)
+   :templates.filter(t=>t.source?.document==='content/restaurant-guides.json'&&t.source.pointer.endsWith(suffix));
+  if(matches.length!==1)throw Error('menu_preset_item_missing');
   const t=matches[0],price=item.price;
   if(!validMenuChoice(t)||ids.has(t.menu_item_id)||t.name!==item.name||t.category!==item.category||(t.portion||null)!==(item.portion||null)||t.source.url!==preset.source?.url||t.source.observed_at!==preset.source?.observed_at||t.price.observed_at!==preset.source?.observed_at||!price||t.price.amount_kopecks!==price.amount_kopecks||t.price.from_kopecks!==price.from_kopecks||(t.price.label||null)!==(price.label||null))throw Error('menu_preset_source_changed');
   ids.add(t.menu_item_id);return {template:t,quantity:item.quantity};
