@@ -2,34 +2,16 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
-  "generated_at": "2026-10-28T15:52:15.769Z",
+  "generated_at": "2026-10-30T08:22:59.837Z",
   "updated_at": "2026-10-28T05:33:41.636328Z",
   "window": {
-    "from": "2026-09-28",
-    "to": "2026-11-27",
-    "anchor_date": "2026-10-28",
+    "from": "2026-09-30",
+    "to": "2026-11-29",
+    "anchor_date": "2026-10-30",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-09-28": {
-      "url": "/data/events/2026-09-28.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
-    "2026-09-29": {
-      "url": "/data/events/2026-09-29.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-09-30": {
       "url": "/data/events/2026-09-30.json",
       "count": 0,
@@ -788,6 +770,37 @@
           "event-source-d35678d96723ff01"
         ]
       }
+    },
+    "2026-11-28": {
+      "url": "/data/events/2026-11-28.json",
+      "count": 14,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-0e3e28a1f902759a",
+          "event-source-8b138098c173f627",
+          "event-source-ad977a912ce523f3",
+          "event-source-c67508a5b02f3128",
+          "event-source-e1c227b7384a9f70",
+          "event-source-f9eb4005a625cb21"
+        ]
+      }
+    },
+    "2026-11-29": {
+      "url": "/data/events/2026-11-29.json",
+      "count": 14,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-0e3e28a1f902759a",
+          "event-source-1e5c3be13f1c7ffc",
+          "event-source-6d57b7af67f31141",
+          "event-source-ecddca2e4ca921be",
+          "event-source-f8a008202801926f"
+        ]
+      }
     }
   },
   "archive_url": "/data/events/archive.json",
@@ -805,7 +818,6 @@
     "event-07bef8af62ff4e9a",
     "event-086d42a1720d4a8f",
     "event-0936c14158ce9d36",
-    "event-09b4aa206e4ca1ee",
     "event-09e24fb3ff5e34e3",
     "event-0a45372525613359",
     "event-0ae7a6136215417a",
@@ -821,11 +833,9 @@
     "event-12b2b5a011bd824d",
     "event-132af4aa2fcd7bd4",
     "event-1347cc85e06ba1e2",
-    "event-137ce3b6808ae58e",
     "event-13c19841e2fe9c47",
     "event-13fe7844bfb12c4f",
     "event-14027173084d5a13",
-    "event-14240db5849b4341",
     "event-14f8569bb1addf2c",
     "event-151f43754b5d4582",
     "event-1536763c87352d88",
@@ -901,7 +911,6 @@
     "event-3924bf5ff33523ac",
     "event-39a9c4c9f744fa84",
     "event-39fbe9d2ae0c1952",
-    "event-3a00dd3e298bca52",
     "event-3a0ea3b31f0ba802",
     "event-3ac41c42f0370066",
     "event-3ad764c3ffb50125",
@@ -953,17 +962,13 @@
     "event-57f5f504589fcea1",
     "event-58de080b89a6715e",
     "event-5931e12ce0a0ee1c",
-    "event-59a1551e2d01a1b0",
     "event-59e78a7f9efcce80",
     "event-5a273fd060cc81de",
     "event-5a5e7cb7e4038ed3",
     "event-5af588c68f3f40d1",
     "event-5b9ff8d6d8e03510",
     "event-5c36a314a83f17ba",
-    "event-5c497d2c9300d008",
     "event-5c8f17e8d24943e8",
-    "event-5c9da2b797e16dd1",
-    "event-5d357bb784acf16f",
     "event-5d55b2739a483b58",
     "event-5d647fb3bd9620ed",
     "event-5d993c9f5b9d3e65",
@@ -981,7 +986,6 @@
     "event-62a62564e6c830e1",
     "event-62e65ba7c78d3c6e",
     "event-6302257b2ae4359a",
-    "event-630a5e51f80f7041",
     "event-63179db53c17ce3e",
     "event-63459ad5d39e4fdf",
     "event-63573479d935381d",
@@ -1034,7 +1038,6 @@
     "event-7e57d19efc967c12",
     "event-7eda6ee576290a66",
     "event-7efb49cd7389f6fc",
-    "event-7fc80d2f331685f4",
     "event-80d65fac121da61c",
     "event-81002ac7716a7fbf",
     "event-81f54d48849f6a58",
@@ -1082,7 +1085,6 @@
     "event-8ef8c5d37bf9501e",
     "event-8f702ac6655788f5",
     "event-9049911585f50c62",
-    "event-90610af02d5237e3",
     "event-925f91d21ee40f0c",
     "event-9293e98a794e5454",
     "event-929ddf0f51e55c11",
@@ -1100,7 +1102,6 @@
     "event-962bfd6f63a7e717",
     "event-968d270e97895676",
     "event-973120dae5b6654c",
-    "event-974a9300f56e23c9",
     "event-978bd02a6f6b9ad1",
     "event-98bbdf0581dbbc2c",
     "event-9921ac8268d2df10",
@@ -1159,7 +1160,6 @@
     "event-ac08d01d4714e0f9",
     "event-ac132b8bec6343c7",
     "event-ad37e6d9d0f00f31",
-    "event-ad8f82abaf504d3e",
     "event-adb1f812cb3c80c4",
     "event-adeed17d81758500",
     "event-ae2f1fe54fd1cfa4",
@@ -1171,9 +1171,7 @@
     "event-b178be8bdf5b0086",
     "event-b1a0d8f4fca5c8d2",
     "event-b21ae802e95441fe",
-    "event-b2fbe1b3b6fe52ad",
     "event-b38d2d2f683a4db6",
-    "event-b41c21f9240340d8",
     "event-b43ccbb6257a787d",
     "event-b571206ebdbd8c4e",
     "event-b5919c22a0c92ede",
@@ -1232,7 +1230,6 @@
     "event-cf0195a5037f6472",
     "event-cf2905e0ec026568",
     "event-d1c44dcbc14a35e3",
-    "event-d27e5c5a56838f76",
     "event-d2d060edb9c1697a",
     "event-d31854252e95c923",
     "event-d33a6e3fa497eefe",
@@ -1244,7 +1241,6 @@
     "event-d64da78326b392cd",
     "event-d692e999f84d1095",
     "event-d6a2189b6b4d2bf6",
-    "event-d6ce18c9265eb85f",
     "event-d6dedd9cec8f1b4c",
     "event-d7581a6e78ae3fa4",
     "event-d7ad53d4ca1baeaf",
@@ -1258,10 +1254,8 @@
     "event-dc222fb86b9d0b4d",
     "event-dc268127f466b16f",
     "event-dc2dec4a66c36dfa",
-    "event-dd8981321043b217",
     "event-de27a9b75a8bdd48",
     "event-de2c36002989cb75",
-    "event-de329213146ccf4a",
     "event-e0ec458f98763dfa",
     "event-e1182795b506d6b3",
     "event-e18ee4680bf44d14",
@@ -1277,7 +1271,6 @@
     "event-e9d4a2c622fc0539",
     "event-e9ef50208b31144f",
     "event-e9f300095fd89fdf",
-    "event-ea634971d93de3b0",
     "event-ea80d06449291ae0",
     "event-eb2a9d310ce0ffe1",
     "event-ebefeafe09e15c2d",
@@ -1308,7 +1301,6 @@
     "event-f894c24db766d335",
     "event-f8ccd4ee7c1e3281",
     "event-f992bc05b85d74ed",
-    "event-f9f716e31ca835c6",
     "event-fa44b15bd8247274",
     "event-fa6f7941b56e51cd",
     "event-fa76e63b854b2e0c",

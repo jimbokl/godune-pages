@@ -14356,7 +14356,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
+          "sha256": "50574ede7288c651d7e17763e417987c9bf14ce615047ad58a3d45f58fce907e"
         },
         {
           "path": "engagement.css",
@@ -14409,9 +14409,9 @@
           "sha256": "263404883ecd5c5a2cf1e3bbe9d15327665e3eae9a4f2bf3baf889ca6218d83d"
         }
       ],
-      "sha256": "6659d5c76359af07b997b563853e7468c8d80ffeafb1de4adb3f73bb43d86abd",
-      "source_bytes": 567869,
-      "critical_bytes": 117931
+      "sha256": "9929aa9a416a6139aad0b11f93906f101b257de327fa7cb216ce3def47d066bf",
+      "source_bytes": 569722,
+      "critical_bytes": 118850
     },
     "realty/how-it-works/index.html": {
       "sources": [
@@ -14483,7 +14483,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
+          "sha256": "50574ede7288c651d7e17763e417987c9bf14ce615047ad58a3d45f58fce907e"
         },
         {
           "path": "engagement.css",
@@ -14536,9 +14536,9 @@
           "sha256": "263404883ecd5c5a2cf1e3bbe9d15327665e3eae9a4f2bf3baf889ca6218d83d"
         }
       ],
-      "sha256": "0019c2efe13399e0cebd46ee754ad37f79cab2b104bf0662072defa2331f2f8f",
-      "source_bytes": 567869,
-      "critical_bytes": 120334
+      "sha256": "579eec6ff2469131507d08d30f477043c40604c300073288ed5bdaf8d46ab31a",
+      "source_bytes": 569722,
+      "critical_bytes": 120444
     },
     "realty/index.html": {
       "sources": [
@@ -14610,7 +14610,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
+          "sha256": "50574ede7288c651d7e17763e417987c9bf14ce615047ad58a3d45f58fce907e"
         },
         {
           "path": "baltic-reference.css",
@@ -14658,9 +14658,9 @@
           "sha256": "263404883ecd5c5a2cf1e3bbe9d15327665e3eae9a4f2bf3baf889ca6218d83d"
         }
       ],
-      "sha256": "2c3c16f45e1de4a833de3b2986df552b5c41e21149fa2fc5f075aaa231a497f5",
-      "source_bytes": 554745,
-      "critical_bytes": 107601
+      "sha256": "802356e1410c7f02159500037ade5fc4d91bd0b11801b262400e432e65e1e16b",
+      "source_bytes": 556598,
+      "critical_bytes": 107711
     },
     "realty/projects/cosmos-stay/index.html": {
       "sources": [
@@ -14732,7 +14732,7 @@
         {
           "path": "realty.css",
           "media": "all",
-          "sha256": "da1ccd0261b01e9ef544c01622a9f11484ae2a3b9c322869b33d85db24136ccc"
+          "sha256": "50574ede7288c651d7e17763e417987c9bf14ce615047ad58a3d45f58fce907e"
         },
         {
           "path": "engagement.css",
@@ -14785,9 +14785,136 @@
           "sha256": "263404883ecd5c5a2cf1e3bbe9d15327665e3eae9a4f2bf3baf889ca6218d83d"
         }
       ],
-      "sha256": "b3513cb9615f83c3ac54267c285dea4963666a60034d147b51cad1566f0697f6",
-      "source_bytes": 567869,
-      "critical_bytes": 123413
+      "sha256": "63cf06ab4fa4d529a21e92f3e8119a274fa624681b956d28e320df3ea8d7abc8",
+      "source_bytes": 569722,
+      "critical_bytes": 123523
+    },
+    "realty/projects/olshanka-krt/index.html": {
+      "sources": [
+        {
+          "path": "assets/fonts.css",
+          "media": "all",
+          "sha256": "90b2c53a9f2a0f75311721e0896d0d1a956212f2f8be78d1d33e4b0630514abf"
+        },
+        {
+          "path": "styles.css",
+          "media": "all",
+          "sha256": "f56b70a1bdcc73e13fda903308cf99fe4872e34f3c2480652fa4e2442413705c"
+        },
+        {
+          "path": "toolkit.css",
+          "media": "all",
+          "sha256": "1c71db9976c0ffd32300cd353da13c865647b10746458a5f1f0c3f11bb42af0a"
+        },
+        {
+          "path": "gastronomy.css",
+          "media": "all",
+          "sha256": "4ccbe1514212943ed35fee26b8ba2d3b0d3e9b849c8fb3feadfb1f56f0dcbec9"
+        },
+        {
+          "path": "tools.css",
+          "media": "all",
+          "sha256": "160c9e520c0a6928e03d27ec82243b68cf6cfbc4267d64b23b78f538ffe87a8a"
+        },
+        {
+          "path": "planning-wizard.css",
+          "media": "all",
+          "sha256": "39ca46e6bfb108a1022d795e3981b56630748aa6e040649036284cf5e4e848b4"
+        },
+        {
+          "path": "destinations.css",
+          "media": "all",
+          "sha256": "dff3a7e4d95cb8f52eaa2e239dc46a9a31cff13ea7f2d0990386d4f08c447e4f"
+        },
+        {
+          "path": "map-navigation.css",
+          "media": "all",
+          "sha256": "a3bf6522a915a701d1169c570a748c220148b45c74ab20eb9686581c49e5c8a7"
+        },
+        {
+          "path": "night.css",
+          "media": "all",
+          "sha256": "d774f95cf8eefca14f04bbe3fb74aa736d919f2e83c5c7f5cc19158d407ae0ca"
+        },
+        {
+          "path": "housing.css",
+          "media": "all",
+          "sha256": "62873df230b996fdd33269a650d2d5649c5555fbc57f2cb3803fdcc989414439"
+        },
+        {
+          "path": "editorial-cards.css",
+          "media": "all",
+          "sha256": "da8682b674b5c4d3d181338229ea1098ed19c6dbe560cda35537780a3104ceaa"
+        },
+        {
+          "path": "author-media.css",
+          "media": "all",
+          "sha256": "bb72bc88ea1be4174396cc58291f6bd73b565fdb2d889b374b5dda0b65196fd1"
+        },
+        {
+          "path": "day-workspace.css",
+          "media": "all",
+          "sha256": "f898f85dee11f340151d5186b32cce6368dbc6065c7a9e9b5b566c8c09349770"
+        },
+        {
+          "path": "realty.css",
+          "media": "all",
+          "sha256": "50574ede7288c651d7e17763e417987c9bf14ce615047ad58a3d45f58fce907e"
+        },
+        {
+          "path": "engagement.css",
+          "media": "all",
+          "sha256": "3c8b36de4aa174891743e12aa4c69dcc35208a1589fe0e30f5ce639d5c7cbfa4"
+        },
+        {
+          "path": "baltic-reference.css",
+          "media": "all",
+          "sha256": "bceca0f44669d5685367598e9ef4b2e54d69a940335614f45242a42793ee5228"
+        },
+        {
+          "path": "photo-tone.css",
+          "media": "all",
+          "sha256": "cbf3493715c4052de7485e593257dec62f32ba572d3c02a80cb8500b3d3246d5"
+        },
+        {
+          "path": "site-dossier.css",
+          "media": "all",
+          "sha256": "1270f3b32a01d05529cab87b8f570ae2f01219083f512358af2c97c27f59bc68"
+        },
+        {
+          "path": "complementary.css",
+          "media": "all",
+          "sha256": "2c3a3354b7b23007af78d9114ef0e968a001aa88fabb9a75a155228f59b8696f"
+        },
+        {
+          "path": "design-tokens.css",
+          "media": "all",
+          "sha256": "9713b17f43eafd53f5cbb6053e499f826a673e2d2978322b976db727f8518968"
+        },
+        {
+          "path": "mosaic.css",
+          "media": "all",
+          "sha256": "3d6f2d624219162ccc64dc9ece4180d9d4c09b233c8032adb5377f3e06b9ef09"
+        },
+        {
+          "path": "amber-material.css",
+          "media": "all",
+          "sha256": "fd6077577f46a075be065ccfbbc571d2708159f02b942e21ddd2f7fd387597f6"
+        },
+        {
+          "path": "editorial-print.css",
+          "media": "all",
+          "sha256": "686679cf1f3004933ea7cd64f70d348785f37c440daca8c988ed566b4b9210d0"
+        },
+        {
+          "path": "reading-layout.css",
+          "media": "all",
+          "sha256": "263404883ecd5c5a2cf1e3bbe9d15327665e3eae9a4f2bf3baf889ca6218d83d"
+        }
+      ],
+      "sha256": "487f2d484cc524daab01af40b240b0d82073cf2d95b4d98473111722b63b9ac2",
+      "source_bytes": 569722,
+      "critical_bytes": 114838
     },
     "routes/amalienau-2-hours/index.html": {
       "sources": [

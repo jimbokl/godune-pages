@@ -1,0 +1,1317 @@
+{
+  "version": 2,
+  "timezone": "Europe/Kaliningrad",
+  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
+  "generated_at": "2026-10-30T08:22:59.837Z",
+  "updated_at": "2026-10-28T05:33:41.636328Z",
+  "date": "2026-11-29",
+  "coverage": {
+    "status": "verified_partial",
+    "complete": false,
+    "sources": [
+      "event-source-0e3e28a1f902759a",
+      "event-source-1e5c3be13f1c7ffc",
+      "event-source-6d57b7af67f31141",
+      "event-source-ecddca2e4ca921be",
+      "event-source-f8a008202801926f"
+    ]
+  },
+  "events": [
+    {
+      "id": "event-53ea891e022a4621",
+      "title": "Остров Канта: сквозь время",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Место встречи уточняется",
+      "date": "2026-11-29",
+      "starts": "11:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Остров Канта: сквозь время. 45-минутная прогулка в очках виртуальной реальности: 5 остановок. Точное место встречи уточните у организатора перед поездкой.",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 1000,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T11:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1000,
+        "max": 1000,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:aadd8a4d6ef06cfd07992976",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T11:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "11:00Авторская экскурсияОстров Канта: сквозь время1000 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6E79FAF9F494C60A4BE914381070F30639B4C4E8/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "meeting": {
+          "status": "unknown",
+          "quote": null,
+          "source_url": null,
+          "sha256": null,
+          "fetched_at": null
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "9769",
+          "hash_id": "6E79FAF9F494C60A4BE914381070F30639B4C4E8",
+          "session": {
+            "event_id": "9769",
+            "eventday": "29.11.2026",
+            "eventtime": "11:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".45833",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-a731d80f8308ef50",
+      "title": "Сказка о рыбаке и рыбке",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-11-29",
+      "starts": "12:00",
+      "ends": null,
+      "description": "Детский музыкальный спектакль по мотивам сказки Александра Пушкина",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-1e5c3be13f1c7ffc",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 650,
+        "max": 800,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+      "verified_at": "2026-10-28T02:02:35Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "742a71f701aca5302dc1348c31671f44ec8f1520203ad17dde5fbb989b17a384",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "bd64526106c81215bee2665356dd1c548b2683e45732760762c547a06cde5ff7",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:31Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "bc32258956731e81dab643e04989a5116d1beebf1e46db4bfde7c8dfecef23c7",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:20Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "2df1fa1baaecb2af5c7356f368214525c5024c225667954bd263ef70d9df1957",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:53Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "214222644ef1eebe777364d4c84f07efd4e2c3626d95300bc0fb030640c4e905",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "25d35fada5721dc49691f48bbc126fa820e0006f0e3702addb3bdaf492127c9e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:35Z",
+          "source_url": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/",
+          "sha256": "6fd92fcf86210a303360f0ba6a0ea6a4f4a58be94abc8b51e0e1c1bd6940d014",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Сказка о рыбаке и рыбке",
+        "date_year_start": "JSON-LD startDate: 2026-11-29T12:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Детский музыкальный спектакль по мотивам сказки Александра Пушкина",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [650, 700, 800]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:00",
+        "source_identity": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/skazka-o-rybake-i-rybke/#event",
+      "duration_estimate": {
+        "minutes": 60,
+        "basis": "published_duration",
+        "label": "1 ч 0 мин"
+      }
+    },
+    {
+      "id": "event-b5919c22a0c92ede",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-11-29",
+      "starts": "12:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T12:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:0d85fa71669938400d596840",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T12:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "12:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "29.11.2026",
+            "eventtime": "12:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".5",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-a8f031f990058857",
+      "title": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-29",
+      "starts": "13:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с органным залом, заалтарным пространством и Органный мини-концерт",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 1300,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T13:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1300,
+        "max": 1300,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:a1cefd76a7cbf695ad4b2e55",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T13:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "13:00Ежедневная экскурсияЗнакомство с органным залом, заалтарным пространством и Органный мини-концерт1300 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/event/4CF475AA7195B86F15FE74E502395DE3469924D8/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "10031",
+          "hash_id": "4CF475AA7195B86F15FE74E502395DE3469924D8",
+          "session": {
+            "event_id": "10031",
+            "eventday": "29.11.2026",
+            "eventtime": "13:00",
+            "eventduration": "105",
+            "ticketcount": "0",
+            "timesortnum": ".54167",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-132af4aa2fcd7bd4",
+      "title": "Органный мини-концерт",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-29",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Органный мини-концерт",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T14:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:8caea054b3e5dda250a6198f",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "14:00Дневной концертОрганный мини-концерт700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "9539",
+          "hash_id": "6FE5F2AC9DB2939B935FBC4FAD7CA61AB07058ED",
+          "session": {
+            "event_id": "9539",
+            "eventday": "29.11.2026",
+            "eventtime": "14:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".58333",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        },
+        "duration": "45 мин"
+      },
+      "duration_estimate": {
+        "minutes": 45,
+        "basis": "published_duration",
+        "label": "45 мин"
+      }
+    },
+    {
+      "id": "event-6a4b82ab2193e9d2",
+      "title": "Трамвай времени",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-29",
+      "starts": "14:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Трамвай времени. Она начинается с органного мини-концерта в Соборе.",
+      "admission": "По билетам · 6+",
+      "price": 2200,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T14:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 2200,
+        "max": 2200,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:02c2bdefef0ab842f347f45d",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "14:00Авторская экскурсияТрамвай времени2200 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "meeting": {
+          "status": "facility",
+          "quote": "Она начинается с органного мини-концерта в Соборе",
+          "source_url": "https://www.sobor39.ru/events/excursions/author/",
+          "sha256": "61a884d01b1d1b7b43533507845121cdf38f321009a6fdb55c5c2c47207e97cc",
+          "fetched_at": "2026-10-28T02:03:12Z"
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "10069",
+          "hash_id": "CB02E3E9E4E072D723D2210C31D9C38DCAF43CB7",
+          "session": {
+            "event_id": "10069",
+            "eventday": "29.11.2026",
+            "eventtime": "14:00",
+            "eventduration": "180",
+            "ticketcount": "23",
+            "timesortnum": ".58333",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-2b5ea66818f78206",
+      "title": "Экскурсия \"Закулисье театра\"",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр · Основная сцена",
+      "date": "2026-11-29",
+      "starts": "14:30",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Экскурсия по театру",
+      "admission": "По билетам · 12+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-0e3e28a1f902759a",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-drama",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T14:30:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+      "verified_at": "2026-10-28T02:02:41Z",
+      "source_identity": "programme:98dc84e55258a4f809ef6dd8",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:02:27Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "11eb586d0a39313d7f3cd57d0e806f494d3319469152b33b5d32ec2af7872629",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:39Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:25Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T14:30:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "29НоябряВс14:30Экскурсия \"Закулисье театра\"Экскурсия по театруПУШКИНСКАЯ КАРТАОсновная сцена1 час 30 минут12+Билеты",
+        "year": "Selected programme year: 2026",
+        "duration_quote": "1 час 30 минут",
+        "stage": "Основная сцена"
+      },
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 час 30 минут"
+      }
+    },
+    {
+      "id": "event-cf0195a5037f6472",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-11-29",
+      "starts": "15:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "По билетам",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T15:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:7b8471b7e25a8350d9c6a1e2",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T15:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "15:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29"
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-93685f6448080844",
+      "title": "Кант и его город",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-11-29",
+      "starts": "16:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Кант и его город",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T16:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:3a6c021793c27153a7da29d7",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T16:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "16:00Авторская экскурсияКант и его город 700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/3BECAF7E7C0B8DEAA8C70D0243BBC6E7F2A46FA6/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "meeting": {
+          "status": "facility",
+          "quote": "Ticket event 9545 seatroot_id=812",
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z"
+        },
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "9545",
+          "hash_id": "3BECAF7E7C0B8DEAA8C70D0243BBC6E7F2A46FA6",
+          "session": {
+            "event_id": "9545",
+            "eventday": "29.11.2026",
+            "eventtime": "16:00",
+            "eventduration": "90",
+            "ticketcount": "0",
+            "timesortnum": ".66667",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-6daaa67c75a1572f",
+      "title": "ВИШНЕВЫЙ САД",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Третьяковская галерея в Калининграде · Кинозал",
+      "date": "2026-11-29",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Кинопоказ",
+      "description": "Вишнетерапия на сцене театра Пушкина: Виктория Исакова и Александр Петров в чеховской комедии катастроф",
+      "admission": "По билетам · 16+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-ecddca2e4ca921be",
+      "image": {
+        "src": "assets/editorial/events-2026-10-28/event-cherry-orchard-screening-960.webp",
+        "src_small": "assets/editorial/events-2026-10-28/event-cherry-orchard-screening-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Редакционная иллюстрация к экранному показу: стулья, чемодан и ветви вишни",
+        "caption": "Редакционная иллюстрация GoDune, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-tretyakov",
+      "place_id": null,
+      "category": "cinema",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T17:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://kaliningrad.tretyakovgallery.ru/events/493/",
+      "verified_at": "2026-10-28T02:03:05Z",
+      "source_identity": "programme:3f28a127f6e10a88bf3f3314",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-28T02:03:05Z",
+          "source_url": "https://kaliningrad.tretyakovgallery.ru/events/493/",
+          "sha256": "ef30ec6d2c0376fa09868ac69d41ff7df01e5e9b4370563bd045d31142498550",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "listing_url": "https://kaliningrad.tretyakovgallery.ru/events/",
+        "listing_sha256": "a5be6766aa903ab400f7202adf7ed8f5b076a5b9ea00b8b395b7d57e6777ea9b",
+        "card_quote": "Купить билетВИШНЕВЫЙ САД (16+)Скоро 29 ноября в 17:00 Кинозал Вишнетерапия на сцене театра Пушкина: Виктория Исакова и Александр Петров в чеховской комедии катастроф",
+        "explicit_date": "29 НОЯБРЯ 2026 17:00",
+        "programme_occurrences": 1,
+        "duration": "Хронометраж: 140 минут",
+        "kind_quote": "Жанр: спектакль",
+        "format_basis": "Screen format inference: cinema room, country/year caption, source genre, language and published duration",
+        "format_quotes": [
+          "«Вишнёвый сад», 16+ (Россия, 2024).",
+          "Жанр: спектакль",
+          "Язык: русский язык",
+          "Хронометраж: 140 минут"
+        ]
+      },
+      "duration_estimate": {
+        "minutes": 140,
+        "basis": "published_duration",
+        "label": "140 минут"
+      }
+    },
+    {
+      "id": "event-a6d6b4ed1ae71466",
+      "title": "Знакомство с музеем Иммануила Канта",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Музей Иммануила Канта",
+      "date": "2026-11-29",
+      "starts": "17:00",
+      "ends": null,
+      "kind": "Экскурсия",
+      "description": "Знакомство с музеем Иммануила Канта",
+      "admission": "В билетной системе нет доступных билетов · 6+",
+      "price": 700,
+      "currency": "RUB",
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-sea-and-space-960.webp",
+        "src_small": "assets/editorial/events-sea-and-space-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Морской берег в вечернем свете",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "tour",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T17:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 700,
+        "max": 700,
+        "currency": "RUB",
+        "kind": "exact"
+      },
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:c8fab472d6737b2154351da6",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T17:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "17:00Ежедневная экскурсияЗнакомство с музеем Иммануила Канта700 ₽",
+        "explicit_ticket_occurrence_urls": [
+          "http://tickets.sobor-kaliningrad.ru/event/AD655CEE206E68DB096CA712BCB48BEE1080725A/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "9559",
+          "hash_id": "AD655CEE206E68DB096CA712BCB48BEE1080725A",
+          "session": {
+            "event_id": "9559",
+            "eventday": "29.11.2026",
+            "eventtime": "17:00",
+            "eventduration": "45",
+            "ticketcount": "0",
+            "timesortnum": ".70833",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        }
+      },
+      "duration_estimate": null
+    },
+    {
+      "id": "event-6a0e6697b80e96e2",
+      "title": "Всероссийский день органа",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Кафедральный собор · Органный зал",
+      "date": "2026-11-29",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Концерт",
+      "description": "Всероссийский день органа",
+      "admission": "По билетам · 6+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-6d57b7af67f31141",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-cathedral",
+      "place_id": null,
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+      "verified_at": "2026-10-22T02:03:52Z",
+      "source_identity": "programme:f2b66d6be8d90f4fdaac9711",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:03:52Z",
+          "source_url": "https://sobor39.ru/calendar.php?method=events-list&date=2026-11-29",
+          "sha256": "5a896308bd1dd40f772570c02e5e2e635da151a663291fa115026e133930889e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "18:00Вечерний концертВсероссийский день органакупить",
+        "explicit_ticket_occurrence_urls": [
+          "https://tickets.sobor-kaliningrad.ru/scheme/8F8FFF60946F3A6F785817BFCEC7D1DAA69685BA/2026-11-29"
+        ],
+        "calendar_date": "2026-11-29",
+        "ticket_calendar": {
+          "source_url": "https://tickets.sobor-kaliningrad.ru/api/afisha",
+          "sha256": "362b3f4634d0eab877b213f0422ea7b863771a16ef0142ff9a5c52fe5be0189a",
+          "fetched_at": "2026-10-28T02:03:08Z",
+          "event_id": "11616",
+          "hash_id": "8F8FFF60946F3A6F785817BFCEC7D1DAA69685BA",
+          "session": {
+            "event_id": "11616",
+            "eventday": "29.11.2026",
+            "eventtime": "18:00",
+            "eventduration": "70",
+            "ticketcount": "567",
+            "timesortnum": ".75",
+            "daysortnum": "32"
+          },
+          "route_date_matches": true
+        },
+        "duration": "70 мин"
+      },
+      "duration_estimate": {
+        "minutes": 70,
+        "basis": "published_duration",
+        "label": "70 мин"
+      }
+    },
+    {
+      "id": "event-c19408331709a86d",
+      "title": "Музыка кино. Театрализованное шоу",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградская областная филармония",
+      "date": "2026-11-29",
+      "starts": "18:00",
+      "ends": null,
+      "description": "Музыкальный спектакль о закулисном мире кинематографа",
+      "kind": "Концерт",
+      "status": "scheduled",
+      "admission": "По билетам",
+      "price": null,
+      "currency": null,
+      "source": "event-source-f8a008202801926f",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": "kirha-svyatogo-semeystva",
+      "route": null,
+      "venue_id": "kaliningrad-philharmonia",
+      "place_id": "kirha-svyatogo-semeystva",
+      "category": "music",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T18:00:00+02:00",
+      "end_time": null,
+      "price_range": {
+        "min": 1000,
+        "max": 1700,
+        "currency": "RUB",
+        "kind": "range"
+      },
+      "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+      "verified_at": "2026-10-28T02:02:35Z",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:02:21Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "f49db0b57203c9d3404524b8316d38e7d5f3f003db1712d29629e333bb11dcb8",
+          "status": "scheduled"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:26Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "6605faf969464ba52fdc837af1e1e7b42ea3cc5deea123957078d7caa21e96dd",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:31Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "88dbe3eb0ac76e18e4643c108b379ed6d915079bc55e202593305be989e5442d",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:19Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "e2aa2122672816cf80b54322716b6d3acbfb7f8288474b51c8682f06aed8d85f",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:02:53Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "1c8808a60bfe6be2203b7f9e03cff31e4dad076cf2f2630262b034d1b09af891",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:27Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "7dcedcb4076120984c40b3ca88e7e1b00dd9c0be769c3515f05155663e40e2d9",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:35Z",
+          "source_url": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/",
+          "sha256": "0906532364396376a67f3abdb5c2c587be6abba1b9351c67535cb096db7617cc",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "title": "JSON-LD name: Музыка кино. Театрализованное шоу",
+        "date_year_start": "JSON-LD startDate: 2026-11-29T18:00:00+02:00",
+        "venue": "JSON-LD location name: Концертный зал; street: ул. Б. Хмельницкого, 61а",
+        "city": "JSON-LD addressLocality: Калининград",
+        "description": "JSON-LD description: Музыкальный спектакль о закулисном мире кинематографа",
+        "status": "JSON-LD eventStatus: https://schema.org/EventScheduled",
+        "organizer": "Калининградская областная филармония им. Е.Ф. Светланова",
+        "price": "JSON-LD offer price: [1000, 1200, 1500, 1700]; currency: RUB",
+        "age": "Возрастное ограничение:\n 6+",
+        "duration": "Продолжительность:\n 1:30",
+        "source_identity": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/#event"
+      },
+      "source_identity": "https://filarmonia39.ru/afisha/muzyka-kino-teatralizovannoe-shou/#event",
+      "duration_estimate": {
+        "minutes": 90,
+        "basis": "published_duration",
+        "label": "1 ч 30 мин"
+      }
+    },
+    {
+      "id": "event-fd12fde0d91275c0",
+      "title": "Женитьба",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Калининградский областной драматический театр · Основная сцена",
+      "date": "2026-11-29",
+      "starts": "18:00",
+      "ends": null,
+      "kind": "Спектакль",
+      "description": "Николай Гоголь. Лирическая комедия",
+      "admission": "По билетам · 16+",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-0e3e28a1f902759a",
+      "image": {
+        "src": "assets/editorial/events-music-960.webp",
+        "src_small": "assets/editorial/events-music-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Скрипка и ноты в камерном зале",
+        "kind": "illustration"
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "kaliningrad-drama",
+      "place_id": null,
+      "category": "theatre",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-29T18:00:00+02:00",
+      "end_time": null,
+      "price_range": null,
+      "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+      "verified_at": "2026-10-28T02:02:41Z",
+      "source_identity": "programme:5b83eb7519ea5d5718e3b97f",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-10-22T02:02:27Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "11eb586d0a39313d7f3cd57d0e806f494d3319469152b33b5d32ec2af7872629",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-23T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "1c2a5232f96138d6df74382cacfdcb7925ec683fcfcbe9ec989c11ff9ad1e917",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-24T02:02:39Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "02171275d79f563f2c9ae8a37b442a5384f9e860f2ce89fb8db56a9c804404fb",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-25T02:02:25Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "dab255e2943a700637682871918639b7fd7197d3930223442e7c9f6066fbea4f",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-26T02:03:01Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "56863a7c3e4c13f359e9c37ab9b4a7dfe4c7c3e38137740c14800f9d6cbccbaa",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-27T02:02:34Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "e1920f5dabbbcd1d1045e65378f0c82d6a425bea3439ae9e71ae49f288321501",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-10-28T02:02:41Z",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-29",
+          "start_time": "2026-11-29T18:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "card_quote": "29НоябряВс18:00ЖенитьбаНиколай Гоголь. Лирическая комедияПУШКИНСКАЯ КАРТАОсновная сцена2 часа 30 минут с антрактом16+Билеты",
+        "year": "Selected programme year: 2026",
+        "duration_quote": "2 часа 30 минут с антрактом",
+        "stage": "Основная сцена"
+      },
+      "duration_estimate": {
+        "minutes": 150,
+        "basis": "published_duration",
+        "label": "2 часа 30 минут с антрактом"
+      }
+    }
+  ],
+  "venues": {
+    "kaliningrad-cathedral-tours-meeting-unknown": {
+      "id": "kaliningrad-cathedral-tours-meeting-unknown",
+      "name": "Место встречи уточняется",
+      "address": null,
+      "place_id": null,
+      "coordinates": null,
+      "city": "kaliningrad",
+      "city_name": "Калининград"
+    },
+    "kaliningrad-philharmonia": {
+      "id": "kaliningrad-philharmonia",
+      "name": "Калининградская областная филармония",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": "kirha-svyatogo-semeystva",
+      "coordinates": {
+        "lat": 54.6978239,
+        "lon": 20.5096814
+      },
+      "address": "ул. Б. Хмельницкого, 61а",
+      "source_url": "https://filarmonia39.ru/afisha/saundtreki-na-organe-17102026/",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://filarmonia39.ru/kontakty/",
+      "identity_verified_at": "2026-10-17",
+      "identity_evidence_sha256": "810158ad6235a530420d65bdcfbdc330a33da277758473ec0b3acc7011f44cea",
+      "coordinates_verified_at": "2026-10-01"
+    },
+    "kaliningrad-cathedral": {
+      "id": "kaliningrad-cathedral",
+      "name": "Кафедральный собор",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "ул. И. Канта, 1",
+      "identity_source_url": "https://sobor39.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "30b765786a866dc88dff92314f52f82290a8d5c1fdb1d6909e6dff15bde88b8e"
+    },
+    "kaliningrad-drama": {
+      "id": "kaliningrad-drama",
+      "name": "Калининградский областной драматический театр",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "проспект Мира, 4",
+      "source_url": "https://dramteatr39.ru/public/afisha?filter=main&month=10&year=2026",
+      "verified_at": "2026-10-16",
+      "identity_source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2e79bf3554dce8913af2908c05b68ff27a089c1f265bfc8aaf876c2f361f97f4"
+    },
+    "kaliningrad-tretyakov": {
+      "id": "kaliningrad-tretyakov",
+      "name": "Третьяковская галерея в Калининграде",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": "Парадная набережная, 3",
+      "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
+      "identity_verified_at": "2026-10-23",
+      "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
+    }
+  }
+}

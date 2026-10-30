@@ -3529,9 +3529,9 @@
       ]
     },
     "31eee71e1493fe71c7dfa19c1ac1691f8bc709ea3dac79d7eaaa3b713ba116d1": {
-      "path": "assets/css-bundles/654cf61d49a9bc97a1f7ba2c3d1b7979d33c68be98ee7efce014d2a4326496a5.css",
-      "sha256": "654cf61d49a9bc97a1f7ba2c3d1b7979d33c68be98ee7efce014d2a4326496a5",
-      "bytes": 528117,
+      "path": "assets/css-bundles/b3e7d18ff8938f43a103b0f654a3bb2a4b2129451765e3bba45054604923ee15.css",
+      "sha256": "b3e7d18ff8938f43a103b0f654a3bb2a4b2129451765e3bba45054604923ee15",
+      "bytes": 529798,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -3632,9 +3632,9 @@
       ]
     },
     "fadeaf6eab8b3a31ddd95e5f8f7d33b3251837b61700aadcc46bb9e031699fca": {
-      "path": "assets/css-bundles/a5cb095f9cc27933e9a8458b38582a48dd28cd7edf13b80aa9a3defed66f2176.css",
-      "sha256": "a5cb095f9cc27933e9a8458b38582a48dd28cd7edf13b80aa9a3defed66f2176",
-      "bytes": 515295,
+      "path": "assets/css-bundles/dd9ddc07aade945d24da33f2f1632cae72188ffaaa8a642c4c7808b982a5b1ba.css",
+      "sha256": "dd9ddc07aade945d24da33f2f1632cae72188ffaaa8a642c4c7808b982a5b1ba",
+      "bytes": 516976,
       "sources": [
         {
           "path": "assets/fonts.css",
@@ -169075,6 +169075,312 @@
       }
     },
     "realty/projects/cosmos-stay/index.html": {
+      "groups": {
+        "active-deferred-0": {
+          "bundle": "31eee71e1493fe71c7dfa19c1ac1691f8bc709ea3dac79d7eaaa3b713ba116d1",
+          "deferred": true,
+          "location": "active",
+          "sources": [
+            {
+              "href": "../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../realty.css?v=1",
+              "path": "realty.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../engagement.css?v=2026101501",
+              "path": "engagement.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": "print"
+            },
+            {
+              "href": "../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": "print"
+            }
+          ]
+        },
+        "noscript-0": {
+          "bundle": "31eee71e1493fe71c7dfa19c1ac1691f8bc709ea3dac79d7eaaa3b713ba116d1",
+          "deferred": false,
+          "location": "noscript",
+          "sources": [
+            {
+              "href": "../../../assets/fonts.css?v=7",
+              "path": "assets/fonts.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../styles.css?v=31",
+              "path": "styles.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../toolkit.css?v=24",
+              "path": "toolkit.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../gastronomy.css?v=2026102102",
+              "path": "gastronomy.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../tools.css?v=7",
+              "path": "tools.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../planning-wizard.css?v=9",
+              "path": "planning-wizard.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../destinations.css?v=2",
+              "path": "destinations.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../map-navigation.css?v=2",
+              "path": "map-navigation.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../night.css?v=7",
+              "path": "night.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../housing.css?v=20261014",
+              "path": "housing.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../editorial-cards.css?v=3",
+              "path": "editorial-cards.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../author-media.css?v=20261016",
+              "path": "author-media.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../day-workspace.css?v=14",
+              "path": "day-workspace.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../realty.css?v=1",
+              "path": "realty.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../engagement.css?v=2026101501",
+              "path": "engagement.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../baltic-reference.css?v=20261014",
+              "path": "baltic-reference.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../photo-tone.css?v=1",
+              "path": "photo-tone.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../site-dossier.css?v=2026101504",
+              "path": "site-dossier.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../complementary.css?v=2026101501",
+              "path": "complementary.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../design-tokens.css?v=2026101501",
+              "path": "design-tokens.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../mosaic.css?v=2026101601",
+              "path": "mosaic.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../amber-material.css?v=2026101501",
+              "path": "amber-material.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../editorial-print.css?v=1",
+              "path": "editorial-print.css",
+              "media": "all",
+              "link_media": null
+            },
+            {
+              "href": "../../../reading-layout.css?v=2026102102",
+              "path": "reading-layout.css",
+              "media": "all",
+              "link_media": null
+            }
+          ]
+        }
+      }
+    },
+    "realty/projects/olshanka-krt/index.html": {
       "groups": {
         "active-deferred-0": {
           "bundle": "31eee71e1493fe71c7dfa19c1ac1691f8bc709ea3dac79d7eaaa3b713ba116d1",
