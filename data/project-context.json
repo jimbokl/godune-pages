@@ -715,7 +715,7 @@
   "inputs": [
     {
       "registry": "business",
-      "sha256": "16cae8c53bb6255d0b2ae1e025706db9f333997294c82bd36b2c1eef37f6aa6f"
+      "sha256": "5be86b08e7a5dffd5d787be826fda435e5b79be475f57285084e5056e1ff7267"
     },
     {
       "registry": "design",
@@ -2410,6 +2410,18 @@
       "registry": "business",
       "title": "Новый Калининград: заявление об инфраструктуре Белой Дюны",
       "url": "https://www.newkaliningrad.ru/news/briefs/economy/24166400-lapitskiy-kurort-belaya-dyuna-voshyel-v-aktivnuyu-fazu-realizatsii-d1257a15ffc10d1f.html"
+    },
+    {
+      "checked_at": "2026-10-30",
+      "id": "business:olshanka-municipal-pzz-index-read-20261030",
+      "kind": "official_registry",
+      "note": "Прочитана текстовая репрезентация официального индекса, строка 473, ссылка 186: приказ от 30.07.2026 №327 об изменениях ПЗЗ. Дата 30.07 — дата приказа, не установленная дата размещения индекса. PDF и его карты не прочитаны. Эта запись не подтверждает условия или стороны договора КРТ, кадастровые границы либо разрешения.",
+      "proof_path": "research/realty/20261030/olshanka216/evidence/216indexfind.txt",
+      "proof_sha256": "962136bd7eb4da3838139923496d4f2772d115ba3f15d966db013543a49cca6f",
+      "published_at": null,
+      "registry": "business",
+      "title": "Администрация Зеленоградского округа: запись о приказе №327 в разделе ПЗЗ",
+      "url": "https://xn--80afebak0adtkxo.xn--p1ai/graddocs/pzz-selo/"
     },
     {
       "checked_at": "2026-10-10",
