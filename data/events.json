@@ -372,10 +372,10 @@
     "event-source-bf3783fcdd66d141": {
       "name": "Калининградский областной драматический театр",
       "url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "checked_at": "2026-10-28",
-      "fetched_at": "2026-10-28T02:02:40Z",
-      "sha256": "8a1d33b9ddbd7aa27f6ecd0300de1cf68f67f5584109dc088bc0d4c5f5db0d15",
-      "private_capture": "runtime/events-refresh/cache/sources/8a1d33b9ddbd7aa27f6ecd0300de1cf68f67f5584109dc088bc0d4c5f5db0d15.html",
+      "checked_at": "2026-11-01",
+      "fetched_at": "2026-11-01T07:52:20.829386+00:00",
+      "sha256": "d2a47346600acf36d8f7242e346a927f5b85f6c5f96a9a36869a6ad619609f5e",
+      "private_capture": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/d2a47346600acf36d8f7242e346a927f5b85f6c5f96a9a36869a6ad619609f5e.html",
       "organizer": null,
       "publisher": {
         "name": "Калининградский областной драматический театр",
@@ -900,10 +900,10 @@
     "event-source-0e3e28a1f902759a": {
       "name": "Калининградский областной драматический театр",
       "url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "checked_at": "2026-10-28",
-      "fetched_at": "2026-10-28T02:02:41Z",
-      "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
-      "private_capture": "runtime/events-refresh/cache/sources/7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e.html",
+      "checked_at": "2026-11-01",
+      "fetched_at": "2026-11-01T07:52:20.829833+00:00",
+      "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
+      "private_capture": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67.html",
       "organizer": null,
       "publisher": {
         "name": "Калининградский областной драматический театр",
@@ -1996,6 +1996,23 @@
       "publisher": {
         "name": "Кафедральный собор Калининграда",
         "url": "https://sobor39.ru/",
+        "role": "venue"
+      }
+    },
+    "event-source-f45e7666d761d693": {
+      "name": "Музей Мирового океана",
+      "url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+      "checked_at": "2026-11-01",
+      "fetched_at": "2026-11-01T07:56:13.815337+00:00",
+      "sha256": "fc576d851aa0fae9709624799ca72e7ac0849922e7a58cb27f7a52f72e48a985",
+      "private_capture": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/fc576d851aa0fae9709624799ca72e7ac0849922e7a58cb27f7a52f72e48a985.html",
+      "organizer": {
+        "name": "Музей Мирового океана",
+        "url": "https://world-ocean.ru/"
+      },
+      "publisher": {
+        "name": "Музей Мирового океана",
+        "url": "https://world-ocean.ru/",
         "role": "venue"
       }
     }
@@ -18253,7 +18270,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
-      "verified_at": "2026-10-28T02:02:40Z",
+      "verified_at": "2026-11-01T07:52:20.829386+00:00",
       "source_identity": "programme:26a586862ff3f560dd6c58a5",
       "source_scope": "programme",
       "observations": [
@@ -18312,10 +18329,18 @@
           "status": "scheduled",
           "date": "2026-10-30",
           "start_time": "2026-10-30T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829386+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=10&year=2026",
+          "sha256": "d2a47346600acf36d8f7242e346a927f5b85f6c5f96a9a36869a6ad619609f5e",
+          "status": "scheduled",
+          "date": "2026-10-30",
+          "start_time": "2026-10-30T19:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "30ОктябряПт19:00Что делать женщинеАлександр Цыпкин. Комедия безвыходных положенийОсновная сцена1 час 30 минут без антракта18+Билеты",
+        "card_quote": "30ОктябряПт19:00Что делать женщинеАлександр Цыпкин. Комедия безвыходных положенийОсновная сцена1 час 30 минут без антракта18+Мероприятие прошло",
         "year": "Selected programme year: 2026",
         "duration_quote": "1 час 30 минут без антракта",
         "stage": "Основная сцена"
@@ -22577,7 +22602,7 @@
       "ends": null,
       "kind": "Спектакль",
       "description": "Балет в 2-х действиях / Московский областной государственный академический театр «Русский балет»",
-      "admission": "По билетам · 0+",
+      "admission": "На сайте театра билетов нет · 0+",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -22600,7 +22625,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:16e5e6d01860fdcd06adad06",
       "source_scope": "programme",
       "observations": [
@@ -22659,10 +22684,18 @@
           "status": "scheduled",
           "date": "2026-11-02",
           "start_time": "2026-11-02T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
+          "status": "scheduled",
+          "date": "2026-11-02",
+          "start_time": "2026-11-02T15:00:00+02:00"
         }
       ],
       "evidence": {
-        "card_quote": "Аренда02НоябряПн15:00Лебединое озероБалет в 2-х действиях / Московский областной государственный академический театр «Русский балет»Петр ЧайковскийОсновная сцена2 часа с антрактом0+Билеты",
+        "card_quote": "Аренда02НоябряПн15:00Лебединое озероБалет в 2-х действиях / Московский областной государственный академический театр «Русский балет»Петр ЧайковскийОсновная сцена2 часа с антрактом0+Билетов нет",
         "year": "Selected programme year: 2026",
         "duration_quote": "2 часа с антрактом",
         "stage": "Основная сцена"
@@ -22953,7 +22986,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:188db7817c79bc1e844cca18",
       "source_scope": "programme",
       "observations": [
@@ -23009,6 +23042,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-02",
+          "start_time": "2026-11-02T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-02",
           "start_time": "2026-11-02T19:00:00+02:00"
@@ -23666,9 +23707,9 @@
       "date": "2026-11-03",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
-      "description": "Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
-      "admission": "По билетам · 12+",
+      "kind": "Событие",
+      "description": "3 ноября начало в 18:00, вход с 17:30. Подробная программа помечена 12+, новостной анонс — 6+; у отдельных занятий свои ограничения. Мастер-классы по коллажу и открытке — 6+, цианотипия — 12+. На цианотипию нужна предварительная запись у администратора мастерских на втором этаже, на квиз — у библиографа в Книжной гостиной. События акции доступны по единому билету; временная выставка «Точка и линия» оплачивается отдельно. В подробной программе мастерские работают до 20:30, в новостном анонсе указано до 21:00. Цену, возраст и доступность мест уточняйте у галереи.",
+      "admission": "По единому билету · 12+ в программе; возраст уточняйте у галереи",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -23685,7 +23726,7 @@
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "programme",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-03T18:00:00+02:00",
       "end_time": null,
@@ -23758,13 +23799,41 @@
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ - 2026 (12+)Скоро 3 ноября в 18:00 Атриум Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
         "explicit_date": "3 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
-        "kind_quote": "НОЧЬ ИСКУССТВ - 2026"
+        "kind_quote": "НОЧЬ ИСКУССТВ - 2026",
+        "editorial_recheck218": {
+          "checked_at": "2026-11-01T08:02:15.479990+00:00",
+          "evidence_kind": "web_tool_extract",
+          "capture_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/evidence/WEB-TRETYAKOV-CONFLICT218.json",
+          "capture_sha256": "73344236d943b4d63957b40582c40da440f0fecd0700de7b06af3cc0cec56a16",
+          "programme_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
+          "news_url": "https://kaliningrad.tretyakovgallery.ru/news/839/",
+          "http_status": null,
+          "qualification": "Direct HTTPS and HTTP requests failed as recorded. Programme web extract crawled today; news extract crawled4 days ago. This extract is not raw primary HTML or an HTTP200 receipt. Historical source/verified_at/observations retained.",
+          "facts": {
+            "start": "2026-11-03T18:00:00+02:00",
+            "doors": "17:30",
+            "programme_age": "12+",
+            "news_age": "6+",
+            "workshop_ages": {
+              "collage": "6+",
+              "postcard": "6+",
+              "cyanotype": "12+"
+            },
+            "registration": {
+              "cyanotype": "Administrator of creative workshops, floor2, advance registration",
+              "quiz": "Bibliographer in book lounge, advance registration"
+            },
+            "ticket_scope": "Unified ticket for programme, separate ticket for temporary exhibition «Точка и линия»",
+            "numeric_price": null,
+            "programme_end": null,
+            "workshop_hours_conflict": [
+              "18:00–20:30 detailed programme",
+              "18:00–21:00 news announcement"
+            ]
+          }
+        }
       },
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
     },
     {
       "id": "event-b16c892054356dce",
@@ -24531,7 +24600,15 @@
         "age": "6+",
         "kind": "Visible event description: Спектакль-балет с симфоническим оркестром",
         "duration": null,
-        "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26"
+        "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Лебединое озеро\", 6+4 ноября (15:00)г. Светлогорск, ул. Ленина, д. 11, театр эстрады \"Янтарь холл\"Спектакль-балет с симфоническим оркестром",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26",
       "duration_estimate": null
@@ -24764,7 +24841,15 @@
         "age": "6+",
         "kind": "Visible event description: Музыкальный спектакль",
         "duration": null,
-        "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026"
+        "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Великие голоса России\", 6+4 ноября (17:00)г. Светлогорск, ул. Ленина, д. 11, театр эстрады \"Янтарь холл\"Музыкальный спектакль",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026",
       "duration_estimate": null
@@ -25097,7 +25182,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -25153,6 +25238,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"
@@ -25784,7 +25877,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:b79ede9fad2458a32dcb9c49",
       "source_scope": "programme",
       "observations": [
@@ -25840,6 +25933,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T15:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T15:00:00+02:00"
@@ -26163,7 +26264,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:bd0fe73764278db81cea6862",
       "source_scope": "programme",
       "observations": [
@@ -26219,6 +26320,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-05",
+          "start_time": "2026-11-05T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-05",
           "start_time": "2026-11-05T19:00:00+02:00"
@@ -26768,6 +26877,14 @@
           "sha256": "29b1b66649cb47b0dee82cab1db0017ecb4204fafb00a3424f9f6b3a0bb512ed",
           "fetched_at": "2026-10-28T02:02:45Z",
           "quote": "\"Орган. Классика и романтизм\", 6+6 ноября (16:00)г. Светлогорск, ул. Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки"
+        },
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Орган. Классика и романтизм\", 6+6 ноября (16:00)г. Светлогорск, ул. Курортная, д. 3, органный зал \"МАКАРОВ\"Концерт органной музыки",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
         }
       },
       "duration_estimate": {
@@ -26956,7 +27073,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:0cf010c3216ed8ddc8a5f708",
       "source_scope": "programme",
       "observations": [
@@ -27012,6 +27129,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-06",
+          "start_time": "2026-11-06T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-06",
           "start_time": "2026-11-06T19:00:00+02:00"
@@ -27297,7 +27422,15 @@
         "age": "12+",
         "kind": "Visible event description: Лирическая комедия",
         "duration": null,
-        "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa"
+        "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Раневская. Великая насмешница\", 12+6 ноября (19:00)г. Светлогорск, ул. Ленина, д. 11, театр эстрады \"Янтарь холл\"Лирическая комедия",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-ranevskaya-velikaya-nasmeshnitsa",
       "duration_estimate": null
@@ -27830,7 +27963,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:9d911772966c1e38e27883d0",
       "source_scope": "programme",
       "observations": [
@@ -27886,6 +28019,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T14:30:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T14:30:00+02:00"
@@ -28262,7 +28403,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:3398a8720d934dfaafe005ba",
       "source_scope": "programme",
       "observations": [
@@ -28318,6 +28459,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-07",
+          "start_time": "2026-11-07T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-07",
           "start_time": "2026-11-07T18:00:00+02:00"
@@ -29069,7 +29218,15 @@
         "price": "Visible: Билеты от 600 руб.",
         "age": "6+",
         "duration": null,
-        "source_identity": "yantarhall:afisha-kontsertnaya-programma-ty-moya-melodiya-208-2011-2026"
+        "source_identity": "yantarhall:afisha-kontsertnaya-programma-ty-moya-melodiya-208-2011-2026",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Ты... моя мелодия\", 6+8 ноября (15:00)г. Светлогорск, ул.Ленина, д. 11, театр эстрады \"Янтарь Холл\"Песни Муслима Магомаева в исполнении Владимира Гудожникова",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-kontsertnaya-programma-ty-moya-melodiya-208-2011-2026",
       "duration_estimate": {
@@ -29275,7 +29432,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:51ad2c9f4b296bab0fa29807",
       "source_scope": "programme",
       "observations": [
@@ -29331,6 +29488,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-08",
+          "start_time": "2026-11-08T18:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-08",
           "start_time": "2026-11-08T18:00:00+02:00"
@@ -36995,7 +37160,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:3b64931b47da8db1fb8229dc",
       "source_scope": "programme",
       "observations": [
@@ -37054,13 +37219,29 @@
           "status": "scheduled",
           "date": "2026-11-16",
           "start_time": "2026-11-16T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
+          "status": "scheduled",
+          "date": "2026-11-16",
+          "start_time": "2026-11-16T19:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Аренда16НоябряПн19:00Трое на качеляхКомедия с элементами триллера и мистификацииОсновная сцена1 час 20 минут без антракта16+Билеты",
         "year": "Selected programme year: 2026",
         "duration_quote": "1 час 20 минут без антракта",
-        "stage": "Основная сцена"
+        "stage": "Основная сцена",
+        "programme_detail": {
+          "url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "b9c672b3ae5cc0364410bba51d4dcc50b6d840e4f3c6085c12219fc774821e0c",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/b9c672b3ae5cc0364410bba51d4dcc50b6d840e4f3c6085c12219fc774821e0c.html",
+          "checked_at": "2026-11-01T07:55:09.339330+00:00",
+          "ticket_widget_id": "ticketsteam-8709@73279438",
+          "scope": "Programme/session widget; no numeric price or live inventory obtained."
+        }
       },
       "duration_estimate": {
         "minutes": 80,
@@ -58114,9 +58295,70 @@
         "basis": "planning_assumption",
         "label": "Концерт · около 2 часов"
       }
+    },
+    {
+      "id": "event-7b2b3a56fd0d63e5",
+      "title": "«Ночь искусств» в Музее Мирового океана",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Экспозиционно-образовательный центр «Планета Океан»",
+      "date": "2026-11-03",
+      "starts": "19:00",
+      "ends": "23:00",
+      "kind": "Событие",
+      "description": "В «Планете Океан» интерактивные зоны работают с 19:00 до 23:00: аквариумы, лаборатории, рояль и органная музыка. Торжественное открытие — в 18:45. На открытой территории презентация обсерватории проходит с 19:00 до 22:00. Билеты — на сайте музея; цена, возрастное ограничение и условия регистрации в программе не указаны.",
+      "admission": "По билетам · цену, возраст и регистрацию уточняйте у музея",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-f45e7666d761d693",
+      "image": {
+        "src": "assets/editorial/events-2026-11-01/event-ocean-night-of-arts-960.webp",
+        "src_small": "assets/editorial/events-2026-11-01/event-ocean-night-of-arts-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Редакционная иллюстрация: морские формы в мягком свете аквариума и фрагмент фортепианных клавиш",
+        "caption": "Редакционная иллюстрация, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-planet",
+      "place_id": null,
+      "category": "programme",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-03T19:00:00+02:00",
+      "end_time": "2026-11-03T23:00:00+02:00",
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-11-01T07:56:13.815337+00:00",
+      "source_identity": "programme:45675d6d2b28cfd14dd977ec",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-11-01T07:56:13.815337+00:00",
+          "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+          "sha256": "fc576d851aa0fae9709624799ca72e7ac0849922e7a58cb27f7a52f72e48a985",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T19:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "explicit_date": "03 ноября 19:00 — 03 ноября 2026 23:00",
+        "venue_quote": "Корпус Планета Океан",
+        "programme_quote": "Торжественное открытие «Ночи искусств» состоится в 18:45. Мероприятия в «Планете Океан» продлятся с 19:00 до 23:00, на открытой территории музея — с 19:00 до 22:00.",
+        "admission_quote": "Билеты доступны на сайте в разделе «КУПИТЬ БИЛЕТ».",
+        "scope": "One dated programme; individual interactive activities are not extra occurrences.",
+        "capture_url": "http://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+        "capture_transport": "HTTP raw captured; canonical HTTPS public URL is not claimed as a successful HTTPS fetch"
+      },
+      "duration_estimate": null
     }
   ],
-  "updated_at": "2026-10-28T05:33:41.636328Z",
+  "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "venues": {
     "kaliningrad-drama": {
       "id": "kaliningrad-drama",
@@ -58314,6 +58556,17 @@
       "identity_source_url": "https://kaup39.ru/samhain",
       "identity_verified_at": "2026-10-25",
       "identity_evidence_sha256": "99ce201defbb1c0c156aa1f7f045839cc52f5e6190bf2023b4d98be9a616b4a5"
+    },
+    "ocean-planet": {
+      "id": "ocean-planet",
+      "name": "Экспозиционно-образовательный центр «Планета Океан»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-11-01"
     }
   }
 }

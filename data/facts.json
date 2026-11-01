@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-10-30",
+  "as_of": "2026-11-01",
   "freshness": {
-    "as_of": "2026-10-30",
+    "as_of": "2026-11-01",
     "facts": [
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafedralny-sobor",
@@ -19,11 +19,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafedralny-sobor",
@@ -34,11 +34,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafedralny-sobor",
@@ -49,11 +49,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafedralny-sobor",
@@ -64,11 +64,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "mogila-kanta",
@@ -79,11 +79,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "ostrov-kanta",
@@ -94,11 +94,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "rybnaya-derevnya",
@@ -109,11 +109,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "bashnya-mayak",
@@ -124,11 +124,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "medovyy-most",
@@ -139,11 +139,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "sudno-vityaz",
@@ -154,11 +154,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "sudno-vityaz",
@@ -184,11 +184,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "muzej-mirovogo-okeana",
@@ -214,11 +214,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "planeta-okean",
@@ -244,11 +244,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "planeta-okean",
@@ -259,11 +259,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "planeta-okean",
@@ -289,11 +289,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "mayak-irbenskiy",
@@ -334,11 +334,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "brandenburgskie-vorota",
@@ -349,11 +349,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "brandenburgskie-vorota",
@@ -394,11 +394,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "zakhaymskie-vorota",
@@ -409,11 +409,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "zakhaymskie-vorota",
@@ -469,11 +469,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "rosgartenskie-vorota",
@@ -484,11 +484,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kirha-svyatogo-semeystva",
@@ -499,11 +499,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kirha-korolevy-luizy",
@@ -514,11 +514,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kirha-korolevy-luizy",
@@ -529,11 +529,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kirha-korolevy-luizy",
@@ -544,11 +544,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "centralnyy-park",
@@ -559,11 +559,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "villa-shmidt",
@@ -574,11 +574,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "villa-leo",
@@ -634,11 +634,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kaliningradskiy-zoopark",
@@ -664,11 +664,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kaliningradskiy-zoopark",
@@ -679,11 +679,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "pergola-korolevy-luizy",
@@ -694,11 +694,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-zelenogradsk",
@@ -724,11 +724,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kurortnyy-prospekt",
@@ -769,11 +769,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "murarium",
@@ -829,11 +829,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "muzej-zelenogradska",
@@ -889,11 +889,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "muzej-skeletov",
@@ -919,11 +919,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kirha-svyatogo-adalberta",
@@ -934,11 +934,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kurhaus-kranc",
@@ -949,11 +949,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "byuvet-luizy",
@@ -964,11 +964,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "byuvet-luizy",
@@ -994,11 +994,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "skver-luizy",
@@ -1024,11 +1024,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "tancuyushchiy-les",
@@ -1039,11 +1039,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "tancuyushchiy-les",
@@ -1054,11 +1054,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "tancuyushchiy-les",
@@ -1084,11 +1084,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "vysota-efa",
@@ -1099,11 +1099,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "vysota-efa",
@@ -1114,11 +1114,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "vysota-efa",
@@ -1144,11 +1144,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "smotrovaya-efa",
@@ -1159,11 +1159,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "smotrovaya-efa",
@@ -1174,11 +1174,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "smotrovaya-efa",
@@ -1204,11 +1204,26 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
+        "source_status": "confirmed",
+        "subject": {
+          "id": "vysota-myullera",
+          "kind": "place"
+        },
+        "ttl_days": 30,
+        "verified_at": "2026-10-02",
+        "visit_applicability": "unknown"
+      },
+      {
+        "effective_status": "unknown",
+        "expires_on": "2026-11-01",
+        "freshness": "needs_review",
+        "path": "/visit_conditions/2",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "vysota-myullera",
@@ -1220,21 +1235,6 @@
       },
       {
         "effective_status": "confirmed",
-        "expires_on": "2026-11-01",
-        "freshness": "current",
-        "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
-        "source_status": "confirmed",
-        "subject": {
-          "id": "vysota-myullera",
-          "kind": "place"
-        },
-        "ttl_days": 30,
-        "verified_at": "2026-10-02",
-        "visit_applicability": "unknown"
-      },
-      {
-        "effective_status": "confirmed",
         "expires_on": "2026-11-14",
         "freshness": "current",
         "path": "/visit_conditions/0",
@@ -1249,11 +1249,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "fringilla",
@@ -1264,11 +1264,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "fringilla",
@@ -1279,11 +1279,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "fringilla",
@@ -1309,11 +1309,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "korolevskiy-bor",
@@ -1324,11 +1324,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "korolevskiy-bor",
@@ -1354,11 +1354,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "plyazh-lesnoy",
@@ -1369,11 +1369,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "plyazh-lesnoy",
@@ -1399,11 +1399,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "mayak-lesnoy",
@@ -1414,11 +1414,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "mayak-lesnoy",
@@ -1429,11 +1429,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-svetlogorsk",
@@ -1444,11 +1444,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-svetlogorsk",
@@ -1459,11 +1459,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-svetlogorsk",
@@ -1474,11 +1474,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/3",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-svetlogorsk",
@@ -1489,11 +1489,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/4",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-svetlogorsk",
@@ -1504,11 +1504,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "bashnya-svetlogorsk",
@@ -1519,11 +1519,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "ozero-tihoe",
@@ -1534,11 +1534,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "solnechnye-chasy",
@@ -1549,11 +1549,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "baltiyskiy-mayak",
@@ -1594,11 +1594,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "muzej-baltiyskogo-flota",
@@ -1624,11 +1624,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "plyazh-yantarny",
@@ -1639,11 +1639,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "plyazh-yantarny",
@@ -1654,11 +1654,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/2",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "plyazh-yantarny",
@@ -1669,11 +1669,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "promenad-yantarny",
@@ -2104,11 +2104,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafe-granat",
@@ -2194,11 +2194,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "restoran-koptilnyy-tsekh",
@@ -2224,11 +2224,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "restoran-sambiya",
@@ -2254,11 +2254,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kafe-tunets",
@@ -2329,11 +2329,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-01",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "bistro-laba-dena",
@@ -2389,11 +2389,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-10-31",
-        "freshness": "current",
+        "freshness": "outside_validity",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "valid_until_passed",
         "source_status": "confirmed",
         "subject": {
           "id": "pakgauz",

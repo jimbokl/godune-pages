@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
-  "generated_at": "2026-10-30T16:28:28.384Z",
-  "updated_at": "2026-10-28T05:33:41.636328Z",
+  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
+  "generated_at": "2026-11-01T08:17:26.934Z",
+  "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-16",
   "coverage": {
     "status": "verified_partial",
@@ -832,7 +832,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:3b64931b47da8db1fb8229dc",
       "source_scope": "programme",
       "observations": [
@@ -891,13 +891,29 @@
           "status": "scheduled",
           "date": "2026-11-16",
           "start_time": "2026-11-16T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
+          "status": "scheduled",
+          "date": "2026-11-16",
+          "start_time": "2026-11-16T19:00:00+02:00"
         }
       ],
       "evidence": {
         "card_quote": "Аренда16НоябряПн19:00Трое на качеляхКомедия с элементами триллера и мистификацииОсновная сцена1 час 20 минут без антракта16+Билеты",
         "year": "Selected programme year: 2026",
         "duration_quote": "1 час 20 минут без антракта",
-        "stage": "Основная сцена"
+        "stage": "Основная сцена",
+        "programme_detail": {
+          "url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "b9c672b3ae5cc0364410bba51d4dcc50b6d840e4f3c6085c12219fc774821e0c",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/b9c672b3ae5cc0364410bba51d4dcc50b6d840e4f3c6085c12219fc774821e0c.html",
+          "checked_at": "2026-11-01T07:55:09.339330+00:00",
+          "ticket_widget_id": "ticketsteam-8709@73279438",
+          "scope": "Programme/session widget; no numeric price or live inventory obtained."
+        }
       },
       "duration_estimate": {
         "minutes": 80,

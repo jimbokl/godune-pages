@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
-  "generated_at": "2026-10-30T16:28:28.384Z",
-  "updated_at": "2026-10-28T05:33:41.636328Z",
+  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
+  "generated_at": "2026-11-01T08:17:26.934Z",
+  "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-04",
   "coverage": {
     "status": "verified_partial",
@@ -675,7 +675,15 @@
         "age": "6+",
         "kind": "Visible event description: Спектакль-балет с симфоническим оркестром",
         "duration": null,
-        "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26"
+        "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Лебединое озеро\", 6+4 ноября (15:00)г. Светлогорск, ул. Ленина, д. 11, театр эстрады \"Янтарь холл\"Спектакль-балет с симфоническим оркестром",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-spektakl-balet-lebedinoe-ozero-s-simfonicheskim-orkestrom-15-00-26",
       "duration_estimate": null
@@ -908,7 +916,15 @@
         "age": "6+",
         "kind": "Visible event description: Музыкальный спектакль",
         "duration": null,
-        "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026"
+        "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026",
+        "municipal_corroboration218": {
+          "url": "https://www.svetlogorsk-tourism.ru/calendar/",
+          "checked_at": "2026-11-01T07:56:24.254765+00:00",
+          "sha256": "cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/raw/cdefd16d47af026bcba0b3851bdf2ceb417007c1ecbffcf6f57e176c45a19975.html",
+          "quote": "\"Великие голоса России\", 6+4 ноября (17:00)г. Светлогорск, ул. Ленина, д. 11, театр эстрады \"Янтарь холл\"Музыкальный спектакль",
+          "scope": "Date/start/title/venue/age corroborated by official municipality; venue primary HTTP read failed. Price, registration and inventory are not freshly verified."
+        }
       },
       "source_identity": "yantarhall:afisha-muzykalnyy-spektakl-velikie-golosa-rossii-204-2011-2026",
       "duration_estimate": null
@@ -1241,7 +1257,7 @@
       "end_time": null,
       "price_range": null,
       "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-10-28T02:02:41Z",
+      "verified_at": "2026-11-01T07:52:20.829833+00:00",
       "source_identity": "programme:f1c26c2b1b922bb4c9667667",
       "source_scope": "programme",
       "observations": [
@@ -1297,6 +1313,14 @@
           "verified_at": "2026-10-28T02:02:41Z",
           "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
           "sha256": "7c0b82933f79392c5e2e6b4581a1600a1024101481b668fb2ef12494ac36fd4e",
+          "status": "scheduled",
+          "date": "2026-11-04",
+          "start_time": "2026-11-04T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-01T07:52:20.829833+00:00",
+          "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+          "sha256": "5ff214b369da8bcdb20b7d4bdc126b1557095b868b946414c6d3010f1b764b67",
           "status": "scheduled",
           "date": "2026-11-04",
           "start_time": "2026-11-04T19:00:00+02:00"

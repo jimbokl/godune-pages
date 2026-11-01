@@ -1,9 +1,9 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "ac7b8562ee9bee31fdd72cb8b1e35bcb772183459b0b1c32cd1616638600cd05",
-  "generated_at": "2026-10-30T16:28:28.384Z",
-  "updated_at": "2026-10-28T05:33:41.636328Z",
+  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
+  "generated_at": "2026-11-01T08:17:26.934Z",
+  "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-03",
   "coverage": {
     "status": "verified_partial",
@@ -11,6 +11,7 @@
     "sources": [
       "event-source-15beef22c9b5bd6d",
       "event-source-c9bc88cf8cf5202d",
+      "event-source-f45e7666d761d693",
       "event-source-fdd1b4897c9904e0"
     ]
   },
@@ -655,9 +656,9 @@
       "date": "2026-11-03",
       "starts": "18:00",
       "ends": null,
-      "kind": "Концерт",
-      "description": "Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
-      "admission": "По билетам · 12+",
+      "kind": "Событие",
+      "description": "3 ноября начало в 18:00, вход с 17:30. Подробная программа помечена 12+, новостной анонс — 6+; у отдельных занятий свои ограничения. Мастер-классы по коллажу и открытке — 6+, цианотипия — 12+. На цианотипию нужна предварительная запись у администратора мастерских на втором этаже, на квиз — у библиографа в Книжной гостиной. События акции доступны по единому билету; временная выставка «Точка и линия» оплачивается отдельно. В подробной программе мастерские работают до 20:30, в новостном анонсе указано до 21:00. Цену, возраст и доступность мест уточняйте у галереи.",
+      "admission": "По единому билету · 12+ в программе; возраст уточняйте у галереи",
       "price": null,
       "currency": null,
       "status": "scheduled",
@@ -674,7 +675,7 @@
       "route": null,
       "venue_id": "kaliningrad-tretyakov",
       "place_id": null,
-      "category": "music",
+      "category": "programme",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-03T18:00:00+02:00",
       "end_time": null,
@@ -747,13 +748,102 @@
         "card_quote": "Купить билетНОЧЬ ИСКУССТВ - 2026 (12+)Скоро 3 ноября в 18:00 Атриум Всероссийской акции «Ночь искусств» в филиале Государственной Третьяковской галерее Калининград",
         "explicit_date": "3 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
-        "kind_quote": "НОЧЬ ИСКУССТВ - 2026"
+        "kind_quote": "НОЧЬ ИСКУССТВ - 2026",
+        "editorial_recheck218": {
+          "checked_at": "2026-11-01T08:02:15.479990+00:00",
+          "evidence_kind": "web_tool_extract",
+          "capture_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-01/sprint218/events/evidence/WEB-TRETYAKOV-CONFLICT218.json",
+          "capture_sha256": "73344236d943b4d63957b40582c40da440f0fecd0700de7b06af3cc0cec56a16",
+          "programme_url": "https://kaliningrad.tretyakovgallery.ru/events/836/",
+          "news_url": "https://kaliningrad.tretyakovgallery.ru/news/839/",
+          "http_status": null,
+          "qualification": "Direct HTTPS and HTTP requests failed as recorded. Programme web extract crawled today; news extract crawled4 days ago. This extract is not raw primary HTML or an HTTP200 receipt. Historical source/verified_at/observations retained.",
+          "facts": {
+            "start": "2026-11-03T18:00:00+02:00",
+            "doors": "17:30",
+            "programme_age": "12+",
+            "news_age": "6+",
+            "workshop_ages": {
+              "collage": "6+",
+              "postcard": "6+",
+              "cyanotype": "12+"
+            },
+            "registration": {
+              "cyanotype": "Administrator of creative workshops, floor2, advance registration",
+              "quiz": "Bibliographer in book lounge, advance registration"
+            },
+            "ticket_scope": "Unified ticket for programme, separate ticket for temporary exhibition «Точка и линия»",
+            "numeric_price": null,
+            "programme_end": null,
+            "workshop_hours_conflict": [
+              "18:00–20:30 detailed programme",
+              "18:00–21:00 news announcement"
+            ]
+          }
+        }
       },
-      "duration_estimate": {
-        "minutes": 120,
-        "basis": "planning_assumption",
-        "label": "Концерт · около 2 часов"
-      }
+      "duration_estimate": null
+    },
+    {
+      "id": "event-7b2b3a56fd0d63e5",
+      "title": "«Ночь искусств» в Музее Мирового океана",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "venue": "Экспозиционно-образовательный центр «Планета Океан»",
+      "date": "2026-11-03",
+      "starts": "19:00",
+      "ends": "23:00",
+      "kind": "Событие",
+      "description": "В «Планете Океан» интерактивные зоны работают с 19:00 до 23:00: аквариумы, лаборатории, рояль и органная музыка. Торжественное открытие — в 18:45. На открытой территории презентация обсерватории проходит с 19:00 до 22:00. Билеты — на сайте музея; цена, возрастное ограничение и условия регистрации в программе не указаны.",
+      "admission": "По билетам · цену, возраст и регистрацию уточняйте у музея",
+      "price": null,
+      "currency": null,
+      "status": "scheduled",
+      "source": "event-source-f45e7666d761d693",
+      "image": {
+        "src": "assets/editorial/events-2026-11-01/event-ocean-night-of-arts-960.webp",
+        "src_small": "assets/editorial/events-2026-11-01/event-ocean-night-of-arts-480.webp",
+        "width": 960,
+        "height": 640,
+        "alt": "Редакционная иллюстрация: морские формы в мягком свете аквариума и фрагмент фортепианных клавиш",
+        "caption": "Редакционная иллюстрация, созданная с помощью ИИ.",
+        "kind": "illustration",
+        "origin": "generated",
+        "documentary": false
+      },
+      "poi": null,
+      "route": null,
+      "venue_id": "ocean-planet",
+      "place_id": null,
+      "category": "programme",
+      "timezone": "Europe/Kaliningrad",
+      "start_time": "2026-11-03T19:00:00+02:00",
+      "end_time": "2026-11-03T23:00:00+02:00",
+      "price_range": null,
+      "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-11-01T07:56:13.815337+00:00",
+      "source_identity": "programme:45675d6d2b28cfd14dd977ec",
+      "source_scope": "programme",
+      "observations": [
+        {
+          "verified_at": "2026-11-01T07:56:13.815337+00:00",
+          "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+          "sha256": "fc576d851aa0fae9709624799ca72e7ac0849922e7a58cb27f7a52f72e48a985",
+          "status": "scheduled",
+          "date": "2026-11-03",
+          "start_time": "2026-11-03T19:00:00+02:00"
+        }
+      ],
+      "evidence": {
+        "explicit_date": "03 ноября 19:00 — 03 ноября 2026 23:00",
+        "venue_quote": "Корпус Планета Океан",
+        "programme_quote": "Торжественное открытие «Ночи искусств» состоится в 18:45. Мероприятия в «Планете Океан» продлятся с 19:00 до 23:00, на открытой территории музея — с 19:00 до 22:00.",
+        "admission_quote": "Билеты доступны на сайте в разделе «КУПИТЬ БИЛЕТ».",
+        "scope": "One dated programme; individual interactive activities are not extra occurrences.",
+        "capture_url": "http://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+        "capture_transport": "HTTP raw captured; canonical HTTPS public URL is not claimed as a successful HTTPS fetch"
+      },
+      "duration_estimate": null
     },
     {
       "id": "event-b16c892054356dce",
@@ -898,6 +988,17 @@
       "identity_source_url": "https://kaliningrad.tretyakovgallery.ru/contacts/",
       "identity_verified_at": "2026-10-23",
       "identity_evidence_sha256": "2c3e6b873228733863c55423824beac28c0fe6cf04e7cf019ea256bf96ec84e3"
+    },
+    "ocean-planet": {
+      "id": "ocean-planet",
+      "name": "Экспозиционно-образовательный центр «Планета Океан»",
+      "city": "kaliningrad",
+      "city_name": "Калининград",
+      "place_id": null,
+      "coordinates": null,
+      "address": null,
+      "source_url": "https://world-ocean.ru/events/noch-iskusstv-v-muzee-mirovogo-okeana",
+      "verified_at": "2026-11-01"
     }
   }
 }
