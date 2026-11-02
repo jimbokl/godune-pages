@@ -2,25 +2,16 @@
   "version": 2,
   "timezone": "Europe/Kaliningrad",
   "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
-  "generated_at": "2026-11-01T08:17:26.934Z",
+  "generated_at": "2026-11-02T07:57:02.302Z",
   "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "window": {
-    "from": "2026-10-02",
-    "to": "2026-12-01",
-    "anchor_date": "2026-11-01",
+    "from": "2026-10-03",
+    "to": "2026-12-02",
+    "anchor_date": "2026-11-02",
     "before_days": 30,
     "after_days": 30
   },
   "dates": {
-    "2026-10-02": {
-      "url": "/data/events/2026-10-02.json",
-      "count": 0,
-      "coverage": {
-        "status": "no_verified_events",
-        "complete": false,
-        "sources": []
-      }
-    },
     "2026-10-03": {
       "url": "/data/events/2026-10-03.json",
       "count": 0,
@@ -808,6 +799,17 @@
           "event-source-501eaebd950b181c"
         ]
       }
+    },
+    "2026-12-02": {
+      "url": "/data/events/2026-12-02.json",
+      "count": 10,
+      "coverage": {
+        "status": "verified_partial",
+        "complete": false,
+        "sources": [
+          "event-source-7f1d7104b85ff401"
+        ]
+      }
     }
   },
   "archive_url": "/data/events/archive.json",
@@ -860,7 +862,6 @@
     "event-1fc164328fe187b6",
     "event-202c622f5f67b985",
     "event-20aa64012140637a",
-    "event-20ab99ecc122e836",
     "event-212e9cf38ec8c0a4",
     "event-213e2dc5c7830f50",
     "event-2341575e80f2a634",
@@ -924,7 +925,6 @@
     "event-3f6d77bb493381aa",
     "event-409a6a60a920cf5f",
     "event-4258f87c5893e7ed",
-    "event-45725bccf5e5f7d0",
     "event-464b424571d415d2",
     "event-46b68dd3f628f36a",
     "event-46e19bc0010200af",
@@ -968,11 +968,8 @@
     "event-5e84e7aab3c702fc",
     "event-5eb5afb315c0bd9c",
     "event-5f26dacdc9a09429",
-    "event-5f5fe8103c167bb8",
-    "event-5f8f5279958ee8ed",
     "event-5fa5b575dc5d2db5",
     "event-5fd8e3dd35bbb5f9",
-    "event-60b8ba53b4fa8824",
     "event-60c327b5f7847a70",
     "event-611283478ae82e8b",
     "event-61354fa7f0da9b83",
@@ -995,7 +992,6 @@
     "event-6a3d099ab015eb52",
     "event-6a4b82ab2193e9d2",
     "event-6b14c0e3cf843971",
-    "event-6b3f885cb7566837",
     "event-6bea5cb209756c2b",
     "event-6c1cc3c2c75e5d95",
     "event-6d10d425e55daa3d",
@@ -1012,7 +1008,6 @@
     "event-74d11d122c221f9d",
     "event-74de2d4456822154",
     "event-759a42df258db3a8",
-    "event-77b23df69b510fce",
     "event-784d12f0a0c001f5",
     "event-78b59300ff47549e",
     "event-798ac1fadb374df1",
@@ -1049,7 +1044,6 @@
     "event-8750eef227b3e6ff",
     "event-877a554de73fa6a7",
     "event-87a16bec53e634c1",
-    "event-886dba605954bb47",
     "event-89033a21140bdd06",
     "event-89267a9feb7f22bc",
     "event-89af23e7c0041929",
@@ -1075,7 +1069,6 @@
     "event-9293e98a794e5454",
     "event-929ddf0f51e55c11",
     "event-92f98a41ae8ddd73",
-    "event-9352921817361b01",
     "event-935cd3d5ef245ba1",
     "event-93685f6448080844",
     "event-94690a8eb61425f4",
@@ -1125,7 +1118,6 @@
     "event-a6d59b1faab4c707",
     "event-a6d6b4ed1ae71466",
     "event-a6ebf293a3c0e5ff",
-    "event-a72794a49ec15ef8",
     "event-a731d80f8308ef50",
     "event-a8949b68b7e229d2",
     "event-a8bc6b049eab6660",
@@ -1153,7 +1145,6 @@
     "event-b1a0d8f4fca5c8d2",
     "event-b21ae802e95441fe",
     "event-b38d2d2f683a4db6",
-    "event-b43ccbb6257a787d",
     "event-b571206ebdbd8c4e",
     "event-b5919c22a0c92ede",
     "event-b5ccfc62f439b44c",
@@ -1171,7 +1162,6 @@
     "event-baad0e2a3b4651c0",
     "event-bc13dfec21da3ed6",
     "event-bc192290bda06745",
-    "event-bc6ad216233386e4",
     "event-bd42f354056cb118",
     "event-bd66bee9e3af3a00",
     "event-bdae12224bdf6bb6",
@@ -1188,7 +1178,6 @@
     "event-c1f2101e5fe66917",
     "event-c2176144bec8d765",
     "event-c2570a07207555b6",
-    "event-c3051b8af49dfeb0",
     "event-c3e758a297c07b29",
     "event-c4f9541faea3af21",
     "event-c5cf3180561a5a19",
@@ -1198,7 +1187,6 @@
     "event-c9d80ebb62bfba83",
     "event-ca3979d170fbd172",
     "event-ca483b7b219d6dfe",
-    "event-caacfd38b67ae37a",
     "event-cbb6868df5856e50",
     "event-cbe11465ab20db3a",
     "event-cc7ed32a72cae28d",
@@ -1246,7 +1234,6 @@
     "event-e7074caf20373d82",
     "event-e7f074ff752c2fc3",
     "event-e9d4a2c622fc0539",
-    "event-e9ef50208b31144f",
     "event-e9f300095fd89fdf",
     "event-ea80d06449291ae0",
     "event-eb2a9d310ce0ffe1",
@@ -1276,10 +1263,8 @@
     "event-f992bc05b85d74ed",
     "event-fa44b15bd8247274",
     "event-fa76e63b854b2e0c",
-    "event-fad48095e48a6a9c",
     "event-fbf058bce2260f6c",
     "event-fd12fde0d91275c0",
-    "event-fd7390dd6b60d3df",
-    "event-fe15c13321bfd8ea"
+    "event-fd7390dd6b60d3df"
   ]
 }

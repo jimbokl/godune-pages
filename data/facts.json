@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-11-01",
+  "as_of": "2026-11-02",
   "freshness": {
-    "as_of": "2026-11-01",
+    "as_of": "2026-11-02",
     "facts": [
       {
         "effective_status": "unknown",
@@ -2659,11 +2659,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-02",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/schedule",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kaliningrad-north-zelenogradsk-2",
