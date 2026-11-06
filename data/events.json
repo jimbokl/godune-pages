@@ -2015,6 +2015,20 @@
         "url": "https://world-ocean.ru/",
         "role": "venue"
       }
+    },
+    "event-source-b2b2bc00bd31a085": {
+      "name": "Калининградский областной драматический театр · Трое на качелях",
+      "url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+      "checked_at": "2026-11-06",
+      "fetched_at": "2026-11-06T11:10:51.568217+00:00",
+      "sha256": "d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5",
+      "private_capture": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/raw/d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5.html",
+      "organizer": null,
+      "publisher": {
+        "name": "Калининградский областной драматический театр",
+        "url": "https://dramteatr39.ru/",
+        "role": "venue"
+      }
     }
   },
   "events": [
@@ -29717,7 +29731,7 @@
       "starts": "18:00",
       "ends": null,
       "kind": "Кинопоказ",
-      "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц",
+      "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц. Перед сеансом — вступительное слово Зинаиды Погодаевой, хореографа и преподавателя калининградского филиала РГИСИ. Фильм длится 43 минуты; продолжительность вступления в программе не указана.",
       "admission": "По билетам · 12+",
       "price": null,
       "currency": null,
@@ -29771,13 +29785,29 @@
           "Жанр: концерт",
           "Язык: на языке оригинала с русскими субтитрами",
           "Продолжительность: 43 минуты"
-        ]
+        ],
+        "programme_components220": {
+          "url": "https://kaliningrad.tretyakovgallery.ru/events/846/",
+          "method": "web tool extracted primary page; saved tool response, not raw HTML or a fresh HTTP200 receipt",
+          "read_at": "2026-11-06T11:12:03.255998+00:00",
+          "reported_crawl": "yesterday (as returned on 2026-11-06)",
+          "extract_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/evidence/WEB-TRETYAKOV220.json",
+          "extract_sha256": "470072e059fbeb5a7fd26e070c03e391b2d8b972d16fd4181d4134a845429f8f",
+          "lines": [
+            "L112–117",
+            "L123",
+            "L127"
+          ],
+          "direct_http": "Failed direct requests are recorded in HTTP220.json and HTTP-EXTRA220.json; old raw SHA and verified_at remain unchanged.",
+          "film_minutes": 43,
+          "before_film": "Вступительное слово Зинаиды Погодаевой",
+          "introduction_minutes": null,
+          "whole_programme_minutes": null,
+          "whole_programme_end": null,
+          "scope": "The original duration evidence describes the film. It cannot establish total duration with introductory speech."
+        }
       },
-      "duration_estimate": {
-        "minutes": 43,
-        "basis": "published_duration",
-        "label": "43 минуты"
-      }
+      "duration_estimate": null
     },
     {
       "id": "event-b1a0d8f4fca5c8d2",
@@ -31350,7 +31380,7 @@
       "starts": "18:00",
       "ends": null,
       "kind": "Кинопоказ",
-      "description": "Поездка к морю, прощание с детством и простые подвиги. Завораживающая и поэтичная притча о взрослении",
+      "description": "Фильм о поездке к морю и прощании с детством. После сеанса — обсуждение с продюсером и актёром фильма Микой Лимпаном. Фильм длится 78 минут; продолжительность обсуждения в программе не указана.",
       "admission": "По билетам · 18+",
       "price": null,
       "currency": null,
@@ -31397,13 +31427,29 @@
         "explicit_date": "10 НОЯБРЯ 2026 18:00",
         "programme_occurrences": 1,
         "duration": "Продолжительность: 78 минут",
-        "kind_quote": "Жанр: драма"
+        "kind_quote": "Жанр: драма",
+        "programme_components220": {
+          "url": "https://kaliningrad.tretyakovgallery.ru/events/847/",
+          "method": "web tool extracted primary page; saved tool response, not raw HTML or a fresh HTTP200 receipt",
+          "read_at": "2026-11-06T11:12:03.255998+00:00",
+          "reported_crawl": "today (as returned on 2026-11-06)",
+          "extract_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/evidence/WEB-TRETYAKOV220.json",
+          "extract_sha256": "470072e059fbeb5a7fd26e070c03e391b2d8b972d16fd4181d4134a845429f8f",
+          "lines": [
+            "L112–118",
+            "L124",
+            "L128"
+          ],
+          "direct_http": "Failed direct requests are recorded in HTTP220.json and HTTP-EXTRA220.json; old raw SHA and verified_at remain unchanged.",
+          "film_minutes": 78,
+          "after_film": "Обсуждение с продюсером и актёром фильма Микой Лимпаном",
+          "discussion_minutes": null,
+          "whole_programme_minutes": null,
+          "whole_programme_end": null,
+          "scope": "The original duration evidence describes the film. It cannot establish total duration with discussion."
+        }
       },
-      "duration_estimate": {
-        "minutes": 78,
-        "basis": "published_duration",
-        "label": "78 минут"
-      }
+      "duration_estimate": null
     },
     {
       "id": "event-bf212169c3a2f56d",
@@ -35411,9 +35457,9 @@
       "venue": "Третьяковская галерея в Калининграде · Кинозал",
       "date": "2026-11-15",
       "starts": "14:00",
-      "ends": null,
+      "ends": "15:30",
       "kind": "Лекция",
-      "description": "Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+      "description": "Музыковед Александр Великовский расскажет об открытиях Мусоргского и о том, как композитор превращал живую речь в музыку. Лекция с музыкальными примерами проходит в цикле «О великих — с Великовским».",
       "admission": "По билетам · 12+",
       "price": null,
       "currency": null,
@@ -35434,7 +35480,7 @@
       "category": "lecture",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T14:00:00+02:00",
-      "end_time": null,
+      "end_time": "2026-11-15T15:30:00+02:00",
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
       "verified_at": "2026-10-28T02:03:02Z",
@@ -35464,7 +35510,25 @@
         "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?» (12+)Скоро 15 ноября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
         "explicit_date": "15 НОЯБРЯ 2026 14:00",
         "programme_occurrences": 1,
-        "kind_quote": "МУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?»"
+        "kind_quote": "МУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?»",
+        "programme_interval220": {
+          "url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
+          "method": "web tool extracted primary page; saved tool response, not raw HTML or a fresh HTTP200 receipt",
+          "read_at": "2026-11-06T11:12:03.255998+00:00",
+          "reported_crawl": "today (as returned on 2026-11-06)",
+          "extract_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/evidence/WEB-TRETYAKOV220.json",
+          "extract_sha256": "470072e059fbeb5a7fd26e070c03e391b2d8b972d16fd4181d4134a845429f8f",
+          "lines": [
+            "L111–115",
+            "L122",
+            "L125"
+          ],
+          "direct_http": "Failed direct requests are recorded in HTTP220.json and HTTP-EXTRA220.json; old raw SHA and verified_at remain unchanged.",
+          "published_interval": "14:00–15:30",
+          "date": "2026-11-15",
+          "minutes_from_published_interval": 90,
+          "duration_estimate": "null because canonical exact end is known; schema forbids an estimate alongside exact ends/end_time"
+        }
       },
       "duration_estimate": null
     },
@@ -37136,12 +37200,12 @@
       "starts": "19:00",
       "ends": null,
       "kind": "Спектакль",
-      "description": "Комедия с элементами триллера и мистификации",
+      "description": "Три героя открывают двери в разные места, но оказываются в одной комнате и пытаются найти выход. Комедия с элементами триллера и мистификации.",
       "admission": "По билетам · 16+",
       "price": null,
       "currency": null,
       "status": "scheduled",
-      "source": "event-source-0e3e28a1f902759a",
+      "source": "event-source-b2b2bc00bd31a085",
       "image": {
         "src": "assets/editorial/events-music-960.webp",
         "src_small": "assets/editorial/events-music-480.webp",
@@ -37159,8 +37223,8 @@
       "start_time": "2026-11-16T19:00:00+02:00",
       "end_time": null,
       "price_range": null,
-      "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-11-01T07:52:20.829833+00:00",
+      "source_url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+      "verified_at": "2026-11-06T11:10:51.568217+00:00",
       "source_identity": "programme:3b64931b47da8db1fb8229dc",
       "source_scope": "programme",
       "observations": [
@@ -37227,6 +37291,14 @@
           "status": "scheduled",
           "date": "2026-11-16",
           "start_time": "2026-11-16T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-06T11:10:51.568217+00:00",
+          "source_url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5",
+          "status": "scheduled",
+          "date": "2026-11-16",
+          "start_time": "2026-11-16T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -37241,6 +37313,24 @@
           "checked_at": "2026-11-01T07:55:09.339330+00:00",
           "ticket_widget_id": "ticketsteam-8709@73279438",
           "scope": "Programme/session widget; no numeric price or live inventory obtained."
+        },
+        "programme_detail220": {
+          "url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/raw/d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5.html",
+          "checked_at": "2026-11-06T11:10:51.568217+00:00",
+          "http_status": 200,
+          "bytes": 110142,
+          "session": {
+            "day": "16 ноября",
+            "starts": "19:00",
+            "year_source": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+            "year_source_sha256": "26afa66838304a4e62cc489e596b290c859013cfe26de76a11fc9efe184322f2"
+          },
+          "ticket_widget_id": "ticketsteam-8709@73279438",
+          "organizer_name_as_published": "Благотворительный фонд «Верю в чудо»",
+          "organizer_url": null,
+          "scope": "Programme, synopsis and published session ticket widget verified. Numeric price, live stock and exact end remain unknown. Widget presence is not evidence of available seats."
         }
       },
       "duration_estimate": {

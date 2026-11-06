@@ -1,16 +1,16 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
-  "generated_at": "2026-11-02T07:57:02.302Z",
+  "revision": "cf32d7fd8e51d131822a13ad2875b5b930aa6e99c8b2c0b3ab921af13447ee6c",
+  "generated_at": "2026-11-06T12:04:31.797Z",
   "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-16",
   "coverage": {
     "status": "verified_partial",
     "complete": false,
     "sources": [
-      "event-source-0e3e28a1f902759a",
       "event-source-1e46dc64abb71ce6",
+      "event-source-b2b2bc00bd31a085",
       "event-source-f9eb4005a625cb21"
     ]
   },
@@ -808,12 +808,12 @@
       "starts": "19:00",
       "ends": null,
       "kind": "Спектакль",
-      "description": "Комедия с элементами триллера и мистификации",
+      "description": "Три героя открывают двери в разные места, но оказываются в одной комнате и пытаются найти выход. Комедия с элементами триллера и мистификации.",
       "admission": "По билетам · 16+",
       "price": null,
       "currency": null,
       "status": "scheduled",
-      "source": "event-source-0e3e28a1f902759a",
+      "source": "event-source-b2b2bc00bd31a085",
       "image": {
         "src": "assets/editorial/events-music-960.webp",
         "src_small": "assets/editorial/events-music-480.webp",
@@ -831,8 +831,8 @@
       "start_time": "2026-11-16T19:00:00+02:00",
       "end_time": null,
       "price_range": null,
-      "source_url": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
-      "verified_at": "2026-11-01T07:52:20.829833+00:00",
+      "source_url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+      "verified_at": "2026-11-06T11:10:51.568217+00:00",
       "source_identity": "programme:3b64931b47da8db1fb8229dc",
       "source_scope": "programme",
       "observations": [
@@ -899,6 +899,14 @@
           "status": "scheduled",
           "date": "2026-11-16",
           "start_time": "2026-11-16T19:00:00+02:00"
+        },
+        {
+          "verified_at": "2026-11-06T11:10:51.568217+00:00",
+          "source_url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5",
+          "status": "scheduled",
+          "date": "2026-11-16",
+          "start_time": "2026-11-16T19:00:00+02:00"
         }
       ],
       "evidence": {
@@ -913,6 +921,24 @@
           "checked_at": "2026-11-01T07:55:09.339330+00:00",
           "ticket_widget_id": "ticketsteam-8709@73279438",
           "scope": "Programme/session widget; no numeric price or live inventory obtained."
+        },
+        "programme_detail220": {
+          "url": "https://dramteatr39.ru/public/spektakli/troe-na-kachelyah",
+          "sha256": "d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5",
+          "raw_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/raw/d37b01445e8176a74ab9d478434c90202dedbb602e6b04cb6beeab2817eb85e5.html",
+          "checked_at": "2026-11-06T11:10:51.568217+00:00",
+          "http_status": 200,
+          "bytes": 110142,
+          "session": {
+            "day": "16 ноября",
+            "starts": "19:00",
+            "year_source": "https://dramteatr39.ru/public/afisha?month=11&year=2026",
+            "year_source_sha256": "26afa66838304a4e62cc489e596b290c859013cfe26de76a11fc9efe184322f2"
+          },
+          "ticket_widget_id": "ticketsteam-8709@73279438",
+          "organizer_name_as_published": "Благотворительный фонд «Верю в чудо»",
+          "organizer_url": null,
+          "scope": "Programme, synopsis and published session ticket widget verified. Numeric price, live stock and exact end remain unknown. Widget presence is not evidence of available seats."
         }
       },
       "duration_estimate": {

@@ -1,8 +1,8 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
-  "generated_at": "2026-11-02T07:57:02.302Z",
+  "revision": "cf32d7fd8e51d131822a13ad2875b5b930aa6e99c8b2c0b3ab921af13447ee6c",
+  "generated_at": "2026-11-06T12:04:31.797Z",
   "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-15",
   "coverage": {
@@ -340,9 +340,9 @@
       "venue": "Третьяковская галерея в Калининграде · Кинозал",
       "date": "2026-11-15",
       "starts": "14:00",
-      "ends": null,
+      "ends": "15:30",
       "kind": "Лекция",
-      "description": "Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
+      "description": "Музыковед Александр Великовский расскажет об открытиях Мусоргского и о том, как композитор превращал живую речь в музыку. Лекция с музыкальными примерами проходит в цикле «О великих — с Великовским».",
       "admission": "По билетам · 12+",
       "price": null,
       "currency": null,
@@ -363,7 +363,7 @@
       "category": "lecture",
       "timezone": "Europe/Kaliningrad",
       "start_time": "2026-11-15T14:00:00+02:00",
-      "end_time": null,
+      "end_time": "2026-11-15T15:30:00+02:00",
       "price_range": null,
       "source_url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
       "verified_at": "2026-10-28T02:03:02Z",
@@ -393,7 +393,25 @@
         "card_quote": "Купить билетМУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?» (12+)Скоро 15 ноября в 14:00 Кинозал Цикл музыкальных лекций «О великих — с Великовским», посвященный истории русской классической музыки и творчеству выдающихся композиторов",
         "explicit_date": "15 НОЯБРЯ 2026 14:00",
         "programme_occurrences": 1,
-        "kind_quote": "МУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?»"
+        "kind_quote": "МУЗЫКАЛЬНАЯ ЛЕКЦИЯ «МУСОРГСКИЙ: ГЕНИЙ ИЛИ ДИЛЕТАНТ?»",
+        "programme_interval220": {
+          "url": "https://kaliningrad.tretyakovgallery.ru/events/841/",
+          "method": "web tool extracted primary page; saved tool response, not raw HTML or a fresh HTTP200 receipt",
+          "read_at": "2026-11-06T11:12:03.255998+00:00",
+          "reported_crawl": "today (as returned on 2026-11-06)",
+          "extract_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/evidence/WEB-TRETYAKOV220.json",
+          "extract_sha256": "470072e059fbeb5a7fd26e070c03e391b2d8b972d16fd4181d4134a845429f8f",
+          "lines": [
+            "L111–115",
+            "L122",
+            "L125"
+          ],
+          "direct_http": "Failed direct requests are recorded in HTTP220.json and HTTP-EXTRA220.json; old raw SHA and verified_at remain unchanged.",
+          "published_interval": "14:00–15:30",
+          "date": "2026-11-15",
+          "minutes_from_published_interval": 90,
+          "duration_estimate": "null because canonical exact end is known; schema forbids an estimate alongside exact ends/end_time"
+        }
       },
       "duration_estimate": null
     },

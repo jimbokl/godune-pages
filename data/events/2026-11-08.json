@@ -1,8 +1,8 @@
 {
   "version": 2,
   "timezone": "Europe/Kaliningrad",
-  "revision": "7709e2629b18963d425f30ec5f326c3cf317b12121fc7f567ab920825746b032",
-  "generated_at": "2026-11-02T07:57:02.302Z",
+  "revision": "cf32d7fd8e51d131822a13ad2875b5b930aa6e99c8b2c0b3ab921af13447ee6c",
+  "generated_at": "2026-11-06T12:04:31.797Z",
   "updated_at": "2026-11-01T08:13:19.615440+00:00",
   "date": "2026-11-08",
   "coverage": {
@@ -1168,7 +1168,7 @@
       "starts": "18:00",
       "ends": null,
       "kind": "Кинопоказ",
-      "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц",
+      "description": "Параллели между Седьмой симфонией Бетховена и античной архитектурой в эксперименте оркестра musicAeterna и танцевальной труппы Саши Вальц. Перед сеансом — вступительное слово Зинаиды Погодаевой, хореографа и преподавателя калининградского филиала РГИСИ. Фильм длится 43 минуты; продолжительность вступления в программе не указана.",
       "admission": "По билетам · 12+",
       "price": null,
       "currency": null,
@@ -1222,13 +1222,29 @@
           "Жанр: концерт",
           "Язык: на языке оригинала с русскими субтитрами",
           "Продолжительность: 43 минуты"
-        ]
+        ],
+        "programme_components220": {
+          "url": "https://kaliningrad.tretyakovgallery.ru/events/846/",
+          "method": "web tool extracted primary page; saved tool response, not raw HTML or a fresh HTTP200 receipt",
+          "read_at": "2026-11-06T11:12:03.255998+00:00",
+          "reported_crawl": "yesterday (as returned on 2026-11-06)",
+          "extract_ref": "/Volumes/DevSim/GoDune-orchestration/2026-11-06/sprint220/events/evidence/WEB-TRETYAKOV220.json",
+          "extract_sha256": "470072e059fbeb5a7fd26e070c03e391b2d8b972d16fd4181d4134a845429f8f",
+          "lines": [
+            "L112–117",
+            "L123",
+            "L127"
+          ],
+          "direct_http": "Failed direct requests are recorded in HTTP220.json and HTTP-EXTRA220.json; old raw SHA and verified_at remain unchanged.",
+          "film_minutes": 43,
+          "before_film": "Вступительное слово Зинаиды Погодаевой",
+          "introduction_minutes": null,
+          "whole_programme_minutes": null,
+          "whole_programme_end": null,
+          "scope": "The original duration evidence describes the film. It cannot establish total duration with introductory speech."
+        }
       },
-      "duration_estimate": {
-        "minutes": 43,
-        "basis": "published_duration",
-        "label": "43 минуты"
-      }
+      "duration_estimate": null
     }
   ],
   "venues": {

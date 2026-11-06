@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-06",
   "freshness": {
-    "as_of": "2026-11-02",
+    "as_of": "2026-11-06",
     "facts": [
       {
         "effective_status": "unknown",
@@ -2359,11 +2359,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-05",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "zemlyakam-kosmonavtam",
@@ -2374,11 +2374,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-05",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "pakgauz",
@@ -2419,11 +2419,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-05",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/hours",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kosmonavt-viktor-patsaev",
@@ -2434,11 +2434,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-05",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/0",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kosmonavt-viktor-patsaev",
@@ -2449,11 +2449,11 @@
         "visit_applicability": "unknown"
       },
       {
-        "effective_status": "confirmed",
+        "effective_status": "unknown",
         "expires_on": "2026-11-05",
-        "freshness": "current",
+        "freshness": "needs_review",
         "path": "/visit_conditions/1",
-        "reason": "within_review_horizon",
+        "reason": "ttl_expired",
         "source_status": "confirmed",
         "subject": {
           "id": "kosmonavt-viktor-patsaev",
